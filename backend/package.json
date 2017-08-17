@@ -1,0 +1,11 @@
+{
+  "name": "u4-backend",
+  "version": "1.0.0",
+  "description": "backend for u4.no",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC"
+}
