@@ -1,0 +1,21 @@
+{
+  "name": "u4-no",
+  "version": "1.0.0",
+  "description": "Monorepo for u4.no",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netliferesearch/u4-no.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/netliferesearch/u4-no/issues"
+  },
+  "homepage": "https://github.com/netliferesearch/u4-no#readme"
+}
