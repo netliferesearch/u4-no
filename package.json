@@ -6,7 +6,9 @@
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "deploy-frontend": "git subtree push --prefix frontend heroku master",
+    "deploy-frontend--force": "git push heroku `git subtree split --prefix frontend master`:master --force"
   },
   "repository": {
     "type": "git",
