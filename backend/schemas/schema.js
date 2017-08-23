@@ -7,29 +7,12 @@ import term from './term';
 import publicationType from './publicationType';
 import keyword from './keyword';
 import blurb from './blurb';
-
-const pullQuote = {
-    title: 'Pull Quote',
-    name: 'pullQuote',
-    type: 'object',
-    fields: [
-      {
-        name: 'text',
-        type: 'text'
-      }
-    ],
-    preview: {
-      select: {
-        title: 'text'
-      }
-    }
-  }
+import pullQuote from './pullQuote';
 
 
 export default createSchema({
   name: 'default',
   types: [
-    pullQuote,
     nugget,
     topics,
     person,
@@ -37,6 +20,7 @@ export default createSchema({
     publicationType,
     term,
     keyword,
-    blurb
-]
+    blurb,
+    pullQuote,
+  ]
 })
