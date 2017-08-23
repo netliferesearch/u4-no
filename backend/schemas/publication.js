@@ -1,11 +1,16 @@
+/**
+ * A publication is a long form document
+ */
+import {
+  title,
+  date,
+} from './fields'
+
 export default {
     name: 'publication',
     type: 'object',
     fields: [
-      {
-        name: 'title',
-        type: 'string'
-      },
+      title,
       {
         name: 'authors',
         type: 'array',
@@ -20,10 +25,7 @@ export default {
           }
         ]
       },
-      {
-        name: 'date',
-        type: 'date'
-      },
+      date
       {
         name: 'topics',
         type: 'array',
