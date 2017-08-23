@@ -46,11 +46,11 @@
     in-publish "^2.0.0"
     object-assign "^4.1.1"
 
-"@sanity/components@^0.108.7":
-  version "0.108.7"
-  resolved "https://registry.yarnpkg.com/@sanity/components/-/components-0.108.7.tgz#e2b30e3725c8f695739e8ad72806b938653cd4ff"
+"@sanity/components@^0.108.11":
+  version "0.108.11"
+  resolved "https://registry.yarnpkg.com/@sanity/components/-/components-0.108.11.tgz#8d5dabf384777f0b65b5b989db8fb328b9125c3e"
   dependencies:
-    "@sanity/date-input" "^0.108.7"
+    "@sanity/date-input" "^0.108.11"
     "@sanity/imagetool" "^0.108.0"
     "@sanity/observable" "^0.108.0"
     attr-accept "^1.1.0"
@@ -121,11 +121,11 @@
     in-publish "^2.0.0"
     lodash "^4.17.4"
 
-"@sanity/date-input@^0.108.7":
-  version "0.108.7"
-  resolved "https://registry.yarnpkg.com/@sanity/date-input/-/date-input-0.108.7.tgz#5572e2f515446b54987c5dd1c02109b8b659b5a8"
+"@sanity/date-input@^0.108.11":
+  version "0.108.11"
+  resolved "https://registry.yarnpkg.com/@sanity/date-input/-/date-input-0.108.11.tgz#1ecfa813e957d2c375946221138f570bb22e10f1"
   dependencies:
-    "@sanity/form-builder" "^0.108.7"
+    "@sanity/form-builder" "^0.108.11"
     lodash "^4.17.4"
     moment "^2.18.1"
     moment-timezone "^0.5.11"
@@ -133,9 +133,9 @@
     postcss-simple-extend "^1.0.0"
     react-kronos "^1.5.2"
 
-"@sanity/default-layout@^0.108.8":
-  version "0.108.8"
-  resolved "https://registry.yarnpkg.com/@sanity/default-layout/-/default-layout-0.108.8.tgz#c4a5ac2aa6d24434f9d8658982bd0231965b1fc3"
+"@sanity/default-layout@^0.108.11":
+  version "0.108.11"
+  resolved "https://registry.yarnpkg.com/@sanity/default-layout/-/default-layout-0.108.11.tgz#b6913384baeb566dd22fc68b3d595dbfc406751c"
   dependencies:
     react-click-outside "^2.2.0"
 
@@ -145,12 +145,12 @@
   dependencies:
     in-publish "^2.0.0"
 
-"@sanity/desk-tool@^0.108.8":
-  version "0.108.8"
-  resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-0.108.8.tgz#d3094fda1becbe7f5424a75d7461077e1e79d7d2"
+"@sanity/desk-tool@^0.108.11":
+  version "0.108.11"
+  resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-0.108.11.tgz#f6d037d9fec2001e06e85ae02b90099e6b9ea947"
   dependencies:
     "@sanity/data-aspects" "^0.108.0"
-    "@sanity/form-builder" "^0.108.7"
+    "@sanity/form-builder" "^0.108.11"
     "@sanity/mutator" "^0.108.0"
     "@sanity/uuid" "^0.108.0"
     classnames "^2.2.5"
@@ -189,9 +189,9 @@
     loader-utils "^0.2.16"
     webpack-sources "^0.1.0"
 
-"@sanity/form-builder@^0.108.7":
-  version "0.108.7"
-  resolved "https://registry.yarnpkg.com/@sanity/form-builder/-/form-builder-0.108.7.tgz#3c7350a94f48d080623003e68822aeb16788efd5"
+"@sanity/form-builder@^0.108.11":
+  version "0.108.11"
+  resolved "https://registry.yarnpkg.com/@sanity/form-builder/-/form-builder-0.108.11.tgz#c23603f8b9985dc67134fb7db0f6c1274ea0f259"
   dependencies:
     "@sanity/imagetool" "^0.108.0"
     "@sanity/mutator" "^0.108.0"
@@ -219,9 +219,9 @@
   version "0.108.0"
   resolved "https://registry.yarnpkg.com/@sanity/generate-help-url/-/generate-help-url-0.108.0.tgz#da01779844831e5035af71cbe46f4f35d22f2eb5"
 
-"@sanity/google-maps-input@^0.108.7":
-  version "0.108.7"
-  resolved "https://registry.yarnpkg.com/@sanity/google-maps-input/-/google-maps-input-0.108.7.tgz#1c0a012f4e3d728b93acfdbc495e55a2a0ef0fbe"
+"@sanity/google-maps-input@^0.108.11":
+  version "0.108.11"
+  resolved "https://registry.yarnpkg.com/@sanity/google-maps-input/-/google-maps-input-0.108.11.tgz#6cf0e9350a631def8ecb7a9b6476ac24b18a9978"
   dependencies:
     in-publish "^2.0.0"
 
@@ -351,10 +351,10 @@ abbrev@1:
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
 
 accepts@~1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/accepts/-/accepts-1.3.3.tgz#c3ca7434938648c3e0d9c1e328dd68b622c284ca"
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/accepts/-/accepts-1.3.4.tgz#86246758c7dd6d21a6474ff084a4740ec05eb21f"
   dependencies:
-    mime-types "~2.1.11"
+    mime-types "~2.1.16"
     negotiator "0.6.1"
 
 acorn@^3.0.0:
@@ -1091,8 +1091,8 @@ boom@2.x.x:
     hoek "2.x.x"
 
 bowser@^1.6.0:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/bowser/-/bowser-1.7.1.tgz#a4de8f18a1a0dc9531eb2a92a1521fb6a9ba96a5"
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/bowser/-/bowser-1.7.2.tgz#b94cc6925ba6b5e07c421a58e601ce4611264572"
 
 brace-expansion@^1.1.7:
   version "1.1.8"
@@ -1164,8 +1164,8 @@ caniuse-api@^1.5.2, caniuse-api@^1.5.3:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000715"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000715.tgz#0b9b5c795950dfbaf301a8806bafe87f126da8ca"
+  version "1.0.30000717"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000717.tgz#27ddf5feccdd338c99a62c9788c2694f99f67ed7"
 
 canvas-to-blob@^0.0.0:
   version "0.0.0"
@@ -1870,8 +1870,8 @@ es-to-primitive@^1.1.1:
     is-symbol "^1.0.1"
 
 es5-ext@^0.10.14, es5-ext@^0.10.9, es5-ext@~0.10.14:
-  version "0.10.27"
-  resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.27.tgz#bf926b058c62b1cb5de1a887930673b6aa6d9a66"
+  version "0.10.29"
+  resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.29.tgz#768eb2dfc4957bcf35fa0568f193ab71ede53fd8"
   dependencies:
     es6-iterator "2"
     es6-symbol "~3.1"
@@ -2404,13 +2404,13 @@ hawk@~3.1.3:
     sntp "1.x.x"
 
 history@^4.6.3:
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/history/-/history-4.6.3.tgz#6d723a8712c581d6bef37e8c26f4aedc6eb86967"
+  version "4.7.2"
+  resolved "https://registry.yarnpkg.com/history/-/history-4.7.2.tgz#22b5c7f31633c5b8021c7f4a8a954ac139ee8d5b"
   dependencies:
     invariant "^2.2.1"
     loose-envify "^1.2.0"
-    resolve-pathname "^2.0.0"
-    value-equal "^0.2.0"
+    resolve-pathname "^2.2.0"
+    value-equal "^0.4.0"
     warning "^3.0.0"
 
 hoek@2.x.x:
@@ -3184,7 +3184,7 @@ mime-db@~1.29.0:
   version "1.29.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.29.0.tgz#48d26d235589651704ac5916ca06001914266878"
 
-mime-types@^2.1.12, mime-types@~2.1.11, mime-types@~2.1.15, mime-types@~2.1.7:
+mime-types@^2.1.12, mime-types@~2.1.15, mime-types@~2.1.16, mime-types@~2.1.7:
   version "2.1.16"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.16.tgz#2b858a52e5ecd516db897ac2be87487830698e23"
   dependencies:
@@ -4552,8 +4552,8 @@ regenerator-runtime@^0.11.0:
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.0.tgz#7e54fe5b5ccd5d6624ea6255c3473be090b802e1"
 
 regenerator-transform@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/regenerator-transform/-/regenerator-transform-0.10.0.tgz#f9ab3eac9cc2de38431d996a6a8abf1c50f2e459"
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/regenerator-transform/-/regenerator-transform-0.10.1.tgz#1e4996837231da8b7f3cf4114d71b5691a0680dd"
   dependencies:
     babel-runtime "^6.18.0"
     babel-types "^6.19.0"
@@ -4670,9 +4670,9 @@ resolve-from@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-3.0.0.tgz#b22c7af7d9d6881bc8b6e653335eebcb0a188748"
 
-resolve-pathname@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/resolve-pathname/-/resolve-pathname-2.1.0.tgz#e8358801b86b83b17560d4e3c382d7aef2100944"
+resolve-pathname@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/resolve-pathname/-/resolve-pathname-2.2.0.tgz#7e9ae21ed815fd63ab189adeee64dc831eefa879"
 
 resolve@^1.1.7, resolve@^1.3.3:
   version "1.4.0"
@@ -4847,12 +4847,12 @@ source-list-map@^0.1.7, source-list-map@~0.1.7:
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-0.1.8.tgz#c550b2ab5427f6b3f21f5afead88c4f5587b2106"
 
 source-map-support@^0.4.15:
-  version "0.4.15"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.15.tgz#03202df65c06d2bd8c7ec2362a193056fef8d3b1"
+  version "0.4.16"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.16.tgz#16fecf98212467d017d586a2af68d628b9421cd8"
   dependencies:
     source-map "^0.5.6"
 
-source-map@0.5.6, source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1, source-map@~0.5.3:
+source-map@0.5.6:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
 
@@ -4861,6 +4861,10 @@ source-map@^0.4.4, source-map@~0.4.1:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
   dependencies:
     amdefine ">=0.0.4"
+
+source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1, source-map@~0.5.3:
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
 
 source-map@~0.1.7:
   version "0.1.43"
@@ -5151,8 +5155,8 @@ ua-parser-js@^0.7.9:
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.14.tgz#110d53fa4c3f326c121292bbeac904d2e03387ca"
 
 uglify-js@^3.0.1:
-  version "3.0.27"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.0.27.tgz#a97db8c8ba6b9dba4e2f88d86aa9548fa6320034"
+  version "3.0.28"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.0.28.tgz#96b8495f0272944787b5843a1679aa326640d5f7"
   dependencies:
     commander "~2.11.0"
     source-map "~0.5.1"
@@ -5256,9 +5260,9 @@ uuid@^3.0.0, uuid@^3.0.1:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 
-value-equal@^0.2.0:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/value-equal/-/value-equal-0.2.1.tgz#c220a304361fce6994dbbedaa3c7e1a1b895871d"
+value-equal@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/value-equal/-/value-equal-0.4.0.tgz#c5bdd2f54ee093c04839d71ce2e4758a6890abc7"
 
 vary@~1.1.1:
   version "1.1.1"
