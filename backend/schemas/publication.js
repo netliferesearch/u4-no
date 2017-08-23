@@ -28,6 +28,7 @@ export default {
           },
           {
             type: 'reference',
+            tile: 'Nugget',
             to: [
               {
                 type: 'nugget'

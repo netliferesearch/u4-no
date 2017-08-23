@@ -8,4 +8,4 @@ export default {
                          .replace(/\s+/g, '-')
                          .slice(0, 200)
   }
-},
+}
