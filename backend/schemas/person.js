@@ -11,6 +11,16 @@ export default {
       type: 'string'
     },
     {
+      name: 'bio',
+      title: 'Short biography',
+      type: 'array',
+      of: [
+        {
+          type: 'block'
+        },
+      ],
+    },
+    {
       name: 'image',
       type: 'image',
     }
