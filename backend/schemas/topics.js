@@ -1,9 +1,13 @@
 import { 
-  *
- } from './fields'
+  title,
+  longTitle,
+  explainerText,
+  featuredImage,
+ } from './fields';
 
-{
+export default {
   name: 'topics',
+  title: 'Topic',
   type: 'object',
   fields: [
     title,
@@ -79,4 +83,4 @@ import { 
     }
 
   ]
-},
+}

@@ -8,7 +8,7 @@ export { title };
 export { longTitle };
 export { explainerText };
 export { featuredImage };
-export { date }
+export { date };
 
 export default [
   title,

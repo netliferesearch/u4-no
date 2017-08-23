@@ -8,6 +8,7 @@ import {
 
 export default {
     name: 'publication',
+    title: 'Publication',
     type: 'object',
     fields: [
       title,
@@ -25,7 +26,7 @@ export default {
           }
         ]
       },
-      date
+      date,
       {
         name: 'topics',
         type: 'array',

@@ -19,5 +19,5 @@ export default {
     select: {
       title: 'firstName'
     }
-  },
+  }
  }

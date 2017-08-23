@@ -39,4 +39,4 @@ export default {
       title: 'title',
     }
   }
-},
+}

@@ -5,4 +5,4 @@
 export default {
   name: 'title',
   type: 'string',
-},
+}
