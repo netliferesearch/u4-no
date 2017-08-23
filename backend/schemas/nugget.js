@@ -37,6 +37,15 @@ export default {
   preview: {
     select: {
       title: 'title',
-    }
-  }
+      subtitle: 'text'
+    },
+    prepare({ title = '', subtitle = [] }) {
+      console.log(subtitle)
+      const firstTextLine = (subtitle ? subtitle[0].spans[0].text : 'Empty');
+      return {
+        title: title,
+        subtitle: firstTextLine,
+      };
+    },
+  },
 }
