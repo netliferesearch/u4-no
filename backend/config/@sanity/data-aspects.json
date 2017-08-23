@@ -1,4 +1,4 @@
 {
-  "hiddenTypes": ["crewMember", "castMember"],
+  "hiddenTypes": ["pullQuote"],
   "listOptions": {}
 }
