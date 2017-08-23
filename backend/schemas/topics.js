@@ -3,6 +3,7 @@ import { 
   longTitle,
   explainerText,
   featuredImage,
+  slug,
  } from './fields';
 
 export default {
@@ -80,7 +81,7 @@ export default {
           ]
         }
       ]
-    }
-
+    },
+    slug,
   ]
 }
