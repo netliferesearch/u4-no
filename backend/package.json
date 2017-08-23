@@ -22,6 +22,7 @@
     "@sanity/default-login": "^0.108.0",
     "@sanity/desk-tool": "^0.108.11",
     "@sanity/google-maps-input": "^0.108.11",
+    "@sanity/storybook": "^0.108.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },

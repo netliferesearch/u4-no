@@ -14,7 +14,9 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/date-input",
-    "@sanity/google-maps-input"
+    "@sanity/google-maps-input",
+    "@sanity/storybook",
+    "vision"
   ],
   "parts": [
     {
