@@ -1,26 +1,36 @@
-import title from './title';
-import longTitle from './longTitle';
+import date from './date'
 import explainerText from './explainerText';
 import featuredImage from './featuredImage'
-import date from './date'
 import image from './image';
+import leadText from './leadText';
+import license from './license';
+import longTitle from './longTitle';
 import slug from './slug';
+import subtitle from './subtitle';
+import title from './title';
 
-export { title };
-export { longTitle };
+export { date };
 export { explainerText };
 export { featuredImage };
-export { date };
 export { image };
+export { leadText };
+export { license };
+export { longTitle };
 export { slug };
+export { subtitle };
+export { title };
+
 
 export default [
-  title,
-  longTitle,
+  date,
   explainerText,
   featuredImage,
-  date,
   image,
+  leadText,
+  license,
+  longTitle,
   slug,
+  subtitle,
+  title,
 ];
 

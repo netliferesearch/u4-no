@@ -3,8 +3,10 @@
  */
 import {
   title,
+  subtitle,
   date,
   image,
+  leadText,
 } from './fields'
 
 export default {
@@ -13,20 +15,12 @@ export default {
     type: 'object',
     fields: [
       title,
-      {
-        name: 'subtitle',
-        title: 'Subtitle',
-        type: 'string'
-      },
-      {
-        name: 'lead',
-        title: 'Lead text',
-        type: 'text',
-        description: 'One paragraph – max 80 words'
-      },
+      subtitle,
+      leadText,
       {
         name: 'content',
         title: 'Publication content',
+        description: 'The body text and graphic elements.',
         type: 'array',
         of: [
           {
@@ -50,7 +44,7 @@ export default {
       {
         name: 'mainPoints',
         title: 'Main points',
-        description: '2–5 implications/recommendations/must-knows relevant for donors',
+        description: 'List 2–10 implications/recommendations/must-knows for development professionals. 1-2 sentences per point.',
         type: 'array',
         of: [
           {
@@ -60,6 +54,7 @@ export default {
       },
       {
         name: 'authors',
+        description: 'Place in order of appearance',
         type: 'array',
         of: [
           {
@@ -75,6 +70,7 @@ export default {
       {
         name: 'editors',
         title: 'Series editors',
+        description: 'Responsible U4 staff member',
         type: 'array',
         of: [
           {

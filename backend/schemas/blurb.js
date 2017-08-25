@@ -2,7 +2,7 @@ export default {
   name: 'blurb',
   title: 'Blurb',
   type: 'object',
-  description: '',
+  description: '(Optional) A quote from someone with an important opinion promoting the publication.',
   fields: [
     {
       name: 'text',
