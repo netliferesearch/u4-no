@@ -4,6 +4,7 @@
 import {
   title,
   date,
+  image,
 } from './fields'
 
 export default {
@@ -12,6 +13,11 @@ export default {
     type: 'object',
     fields: [
       title,
+      {
+        name: 'subtitle',
+        title: 'Subtitle',
+        type: 'string'
+      },
       {
         name: 'lead',
         title: 'Lead text',
@@ -38,9 +44,7 @@ export default {
           {
             type: 'pullQuote'
           },
-          {
-            type: 'image'
-          },
+          image,
         ]
       },
       {

@@ -8,7 +8,8 @@
   "scripts": {
     "test": "jest",
     "deploy-frontend": "git subtree push --prefix frontend heroku master",
-    "deploy-frontend--force": "git push heroku `git subtree split --prefix frontend master`:master --force"
+    "deploy-frontend--force": "git push heroku `git subtree split --prefix frontend master`:master --force",
+    "deploy-backend": "cd backend && sanity deploy && cd .."
   },
   "repository": {
     "type": "git",
