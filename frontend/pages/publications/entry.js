@@ -2,25 +2,26 @@ import React, { Component } from 'react';
 const sanityClient = require( '@sanity/client' );
 
 export default class extends Component {
-  static async getInitialProps ({req}) {
+  static async getInitialProps ({query}) {
     const client = sanityClient({
       projectId: '1f1lcoov',
       dataset: 'production',
       token: ''
     });
-    const publications = await client.fetch('*[_type in ["publication"]]');
-    return {publications}
+    const {id = ''} = query;
+    const sanityQuery = `*[_id == "${id}"]`
+    const publication = (await client.fetch(sanityQuery))[0];
+    return {publication}
   }
   constructor (props) {
     super(props);
-    const {publications} = props;
-    this.state = {publications};
-
+    const {publication = {title: "loading publication"}} = props;
+    this.state = {publication};
   }
   render () {
     return (
       <div>
-        <h1>Single publication</h1>
+        <h1>{this.state.publication.title}</h1>
       </div>
     )
   }
