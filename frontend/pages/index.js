@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import {
-  HeadComponent
+  Layout
 } from '../components'
 
 export default class extends Component {
@@ -9,12 +9,13 @@ export default class extends Component {
     super(props);
   }
   render () {
-    return ( <div>
-      <HeadComponent />
+    return (
+      <Layout>
       <h1>Velkommen til u4.no</h1>
         <ul>
           <li><Link href={`/publications`}><a>Publikasjoner</a></Link></li>
         </ul>
-      </div>)
+      </Layout>
+    )
   }
 }

@@ -1,5 +1,8 @@
 import React, { Component} from 'react';
 import Link from 'next/link';
+import {
+  Layout
+} from '../../components'
 const sanityClient = require( '@sanity/client' );
 
 export default class extends Component {
@@ -19,7 +22,7 @@ export default class extends Component {
   }
   render () {
     return (
-      <div>
+      <Layout>
         <h1>Publications</h1>
         <ul>
           {this.state.publications.map(pub =>
@@ -29,7 +32,7 @@ export default class extends Component {
               </Link>
             </li>)}
         </ul>
-        </div>
+      </Layout>
     )
   }
 }

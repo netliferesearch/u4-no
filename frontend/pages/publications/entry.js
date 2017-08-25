@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {
+  Layout
+} from '../../components'
 const sanityClient = require( '@sanity/client' );
 
 export default class extends Component {
@@ -20,9 +23,11 @@ export default class extends Component {
   }
   render () {
     return (
-      <div>
-        <h1>{this.state.publication.title}</h1>
-      </div>
+      <Layout>
+        <div>
+          <h1>{this.state.publication.title}</h1>
+        </div>
+      </Layout>
     )
   }
 }
