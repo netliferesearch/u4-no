@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "next",
+    "dev": "npm run sass-dev && concurrently --kill-others \"next\" \"npm run sass-watch\"",
     "build": "next build",
     "start": "next start",
+    "sass-watch": "node-sass --source-map true -w ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
+    "sass-dev": "node-sass --source-map true ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
+    "sass-build": "node-sass ./frontend/style/ -o ./build/static/css ./build/static/css --use autoprefixer -d ./build/static/css --output-style compressed",
     "heroku-postbuild": "next build"
   },
   "engines": {
@@ -17,9 +20,13 @@
   "license": "ISC",
   "dependencies": {
     "@sanity/client": "^0.108.0",
+    "concurrently": "^3.5.0",
     "inuitcss": "^6.0.0-beta.5",
     "next": "^3.0.6",
+    "node-sass": "^4.5.3",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "sass-mq": "^3.3.2"
   }
 }
