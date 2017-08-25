@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+import {
+  HeadComponent
+} from '../components'
 
 export default class extends Component {
   constructor (props) {
@@ -7,7 +10,8 @@ export default class extends Component {
   }
   render () {
     return ( <div>
-      <p>Velkommen til u4.no</p>
+      <HeadComponent />
+      <h1>Velkommen til u4.no</h1>
         <ul>
           <li><Link href={`/publications`}><a>Publikasjoner</a></Link></li>
         </ul>
