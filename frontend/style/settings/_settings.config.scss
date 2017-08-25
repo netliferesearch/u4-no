@@ -1,0 +1,29 @@
+///* ========================================================================
+//   #CONFIG
+//   ======================================================================== */
+
+/**
+  * This is a configuration file that inuitcss uses to handle the state,
+  * location, or environment of your project. This handles very high-level settings
+  * that don’t necessarily affect the CSS itself, but can be used to manipulate things
+  * depending on where you are running things (e.g. turning a debugging mode on,
+  * or telling your CI sever that you’re compiling for production).
+*/
+
+$inuit-config: (
+  env: dev,
+  healthcheck: false,
+  debug: true,
+);
+
+// You can access data in this map using the following function:
+//
+// inuit-config(<key>)
+//
+// Example usage:
+//
+// @if (inuit-config(debug) == true) { ...  }
+
+@function inuit-config($key) {
+  @return map-get($inuit-config, $key);
+}
