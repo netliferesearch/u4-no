@@ -79,6 +79,7 @@
 @import "node_modules/inuitcss/settings/settings.core";
 @import "settings/settings.global";
 @import "settings/settings.colors";
+@import "settings/settings.typography";
 
 // TOOLS
 @import "node_modules/inuitcss/tools/tools.font-size";
@@ -95,6 +96,7 @@
 @import "node_modules/inuitcss/elements/elements.page";
 @import "node_modules/inuitcss/elements/elements.headings";
 @import "elements/elements.body";
+@import "elements/elements.headings";
 @import "elements/elements.links";
 // @import "elements/elements.quotes";
 
