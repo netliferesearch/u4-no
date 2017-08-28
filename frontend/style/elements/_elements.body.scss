@@ -1,3 +1,5 @@
 body {
+  @include inuit-font-size(16px);
+  color: $dark;
   padding: 1em;
 }
