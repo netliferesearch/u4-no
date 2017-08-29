@@ -21,6 +21,13 @@
   "dependencies": {
     "@sanity/client": "^0.108.0",
     "concurrently": "^3.5.0",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-compat": "^1.0.4",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^20.0.3",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.3.0",
     "inuitcss": "^6.0.0-beta.5",
     "next": "^3.0.6",
     "node-sass": "^4.5.3",
@@ -28,5 +35,8 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "sass-mq": "^3.3.2"
+  },
+  "devDependencies": {
+    "prettier-eslint": "^6.4.2"
   }
 }

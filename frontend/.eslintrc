@@ -1,0 +1,17 @@
+{
+  "extends": ["airbnb", "plugin:jest/recommended"],
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/react-in-jsx-scope": 0,
+    "no-underscore-dangle": ["error", { "allow": ["_id", "_type", "_ref", "_key", "_rawJson"] }],
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }]
+  },
+  "plugins": [
+    "jest"
+  ],
+  "env": {
+    "jest": true,
+    "browser": true,
+  }
+}
