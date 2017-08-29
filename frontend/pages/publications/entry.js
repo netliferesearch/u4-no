@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {Layout} from '../../components';
-import BlockContent from '@sanity/block-content-to-react';
+import {Layout, Article} from '../../components';
 const sanityClient = require('@sanity/client');
 
 export default class extends Component {
@@ -25,21 +24,12 @@ export default class extends Component {
     };
   }
   render() {
+    const {publication} = this.props
     return (
       <Layout>
-        <article>
-          <p className="description">U4 issue | Jul 2017</p>
-          <h1>{this.props.publication.title}</h1>
-          <h1>{this.props.publication.subtitle}</h1>
-
-          <p className="byline">By Anthony Nownes - July 2017</p>
-          <p>{this.props.publication._updatedAt}</p>
-          <p className="byline">Bergen: Chr. Michelsen Institute (U4 Issue 8-2017) 28 p.</p>
-          <p className="c-lead">{this.props.publication.lead}</p>
-          <BlockContent blocks={this.props.publication.content}/>
-
-        </article>
+        <Article {...publication}/>
       </Layout>
+
     )
   }
 }
