@@ -10,7 +10,7 @@
     "start": "next start",
     "sass-watch": "node-sass --source-map true -w ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
     "sass-dev": "node-sass --source-map true ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
-    "sass-build": "node-sass ./style/ -o ./build/static/css ./build/static/css --use autoprefixer -d ./build/static/css --output-style compressed",
+    "sass-build": "node-sass ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css --output-style compressed",
     "heroku-postbuild": "next build && npm run sass-build"
   },
   "engines": {
