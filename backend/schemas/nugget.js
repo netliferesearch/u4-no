@@ -40,7 +40,7 @@ export default {
       subtitle: 'text'
     },
 
-    prepare({ title = '', subtitle = [] }) {
+    prepare({ title = '', subtitle = false }) {
       return {
         title,
         subtitle: subtitle ? subtitle[0].spans[0].text : 'Empty'
