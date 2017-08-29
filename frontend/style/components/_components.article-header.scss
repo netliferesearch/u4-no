@@ -1,7 +1,18 @@
-.c-article-header__title {
+.c-article-header {
+}
 
+.c-article-header__issue {
+}
+
+.c-article-header__title {
 }
 
 .c-article-header__subtitle{
-  
+}
+
+.c-article-header__info {
+}
+
+.c-article-header__lead {
+  @include inuit-font-size(24px);
 }

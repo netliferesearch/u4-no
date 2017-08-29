@@ -11,16 +11,19 @@ const Article = ({
 }) => (
   <article>
     <header className="c-article-header">
-      <h1 className="c-article-header__title">{title}
-        <span className="c-article-header__subtitle">{subtitle}</span>
-      </h1>
+      <p className="c-article-header__issue">U4 issue | Jul 2017</p>
+      <h1 className="c-article-header__title">{title}</h1>
+      <p className="c-article-header__subtitle">{subtitle}</p>
+      <section className="c-article-header__info">
+        <p>By Anthony Nownes - July 2017</p>
+        <p>{_updatedAt}</p>
+        <p>Bergen: Chr. Michelsen Institute (U4 Issue 8-2017) 28 p.</p>
+      </section>
+      <p className="c-article-header__lead">{lead}</p>
     </header>
-    <p className="description">U4 issue | Jul 2017</p>
-    <p className="byline">By Anthony Nownes - July 2017</p>
-    <p>{_updatedAt}</p>
-    <p className="byline">Bergen: Chr. Michelsen Institute (U4 Issue 8-2017) 28 p.</p>
-    <p className="c-lead">{lead}</p>
-    <BlockContent blocks={content}/>
+    <main>
+      <BlockContent blocks={content}/>
+    </main>
   </article>
 );
 
