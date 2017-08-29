@@ -11,7 +11,7 @@
     "sass-watch": "node-sass --source-map true -w ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
     "sass-dev": "node-sass --source-map true ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
     "sass-build": "node-sass ./frontend/style/ -o ./build/static/css ./build/static/css --use autoprefixer -d ./build/static/css --output-style compressed",
-    "heroku-postbuild": "next build"
+    "heroku-postbuild": "sass-build && next build"
   },
   "engines": {
     "node": "8.4.0"
