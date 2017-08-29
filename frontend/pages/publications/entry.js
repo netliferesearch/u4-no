@@ -32,7 +32,7 @@ export default class extends Component {
 
           <p className="byline">By Anthony Nownes - July 2017</p>
           <p className="byline">Bergen: Chr. Michelsen Institute (U4 Issue 8-2017) 28 p.</p>
-          <p className="ingress">Can lobbying be a realistic and legitimate alternative to corruption in less developed countries?</p>
+          <p className="c-lead">Can lobbying be a realistic and legitimate alternative to corruption in less developed countries?</p>
           <h2>Intro</h2>
 
           <p className="quotation">When national anti-corruption strategies yield no result, and a country’s corruption rankings do not improve.</p>
