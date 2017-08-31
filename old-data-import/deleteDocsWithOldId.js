@@ -1,11 +1,11 @@
 
-require('dotenv').config
+require('dotenv').config()
 const sanityClient = require('@sanity/client');
 const client = sanityClient({
   projectId: '1f1lcoov',
   dataset: 'production',
   token: process.env.SANITY_TOKEN
-});
+})
 
 async function main() {
   const docs = await client.fetch('*[oldId?]')
