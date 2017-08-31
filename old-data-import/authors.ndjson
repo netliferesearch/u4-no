@@ -1,244 +1,244 @@
-{ "_type": "person", "oldId": "1","surname": "Ledergerber", "firstName": "Zora" }
-{ "_type": "person", "oldId": "2","surname": "Reed", "firstName": "Quentin" }
-{ "_type": "person", "oldId": "3","surname": "Fontana", "firstName": "Alessandra" }
-{ "_type": "person", "oldId": "4","surname": "Palmer", "firstName": "Robert" }
-{ "_type": "person", "oldId": "5","surname": "Mathisen", "firstName": "Harald" }
-{ "_type": "person", "oldId": "6","surname": "Kolstad", "firstName": "Ivar" }
-{ "_type": "person", "oldId": "7","surname": "Fjeldstad", "firstName": "Odd-Helge" }
-{ "_type": "person", "oldId": "8","surname": "Isaksen", "firstName": "Jan" }
-{ "_type": "person", "oldId": "9","surname": "Norberg", "firstName": "Carin" }
-{ "_type": "person", "oldId": "10","surname": "Vian", "firstName": "Taryn" }
-{ "_type": "person", "oldId": "11","surname": "Duncan", "firstName": "Nick" }
-{ "_type": "person", "oldId": "13","surname": "U4", "firstName": "" }
-{ "_type": "person", "oldId": "14","surname": "Mortensen", "firstName": "Gemma" }
-{ "_type": "person", "oldId": "15","surname": "Amundsen", "firstName": "Inge" }
-{ "_type": "person", "oldId": "19","surname": "Mwisongo", "firstName": "Aziza" }
-{ "_type": "person", "oldId": "20","surname": "Williams", "firstName": "Robert" }
-{ "_type": "person", "oldId": "21","surname": "Doig", "firstName": "Alan" }
-{ "_type": "person", "oldId": "22","surname": "Schultz", "firstName": "Jessica" }
-{ "_type": "person", "oldId": "23","surname": "Smith", "firstName": "Jack" }
-{ "_type": "person", "oldId": "24","surname": "Pieth", "firstName": "Mark" }
-{ "_type": "person", "oldId": "25","surname": "Jorge", "firstName": "Guillermo" }
-{ "_type": "person", "oldId": "26","surname": "Kramer", "firstName": "Michael" }
-{ "_type": "person", "oldId": "27","surname": "Rose-Ackerman", "firstName": "Susan" }
-{ "_type": "person", "oldId": "28","surname": "Johnston", "firstName": "Michael" }
-{ "_type": "person", "oldId": "29","surname": "Unsworth", "firstName": "Sue" }
-{ "_type": "person", "oldId": "31","surname": "Devine", "firstName": "Vera" }
-{ "_type": "person", "oldId": "32","surname": "Weimer", "firstName": "Markus" }
-{ "_type": "person", "oldId": "34","surname": "Nell", "firstName": "Mathias" }
-{ "_type": "person", "oldId": "35","surname": "Sundet", "firstName": "Geir" }
-{ "_type": "person", "oldId": "36","surname": "Wiig", "firstName": "Ivar Kolstad and Arne" }
-{ "_type": "person", "oldId": "38","surname": "Hussmann", "firstName": "Karen" }
-{ "_type": "person", "oldId": "40","surname": "Hechler", "firstName": "Hannes" }
-{ "_type": "person", "oldId": "42","surname": "Williams", "firstName": "Aled" }
-{ "_type": "person", "oldId": "43","surname": "Wiig", "firstName": "Arne" }
-{ "_type": "person", "oldId": "44","surname": "Williams", "firstName": "David Aled" }
-{ "_type": "person", "oldId": "45","surname": "Todorov", "firstName": "Boyko" }
-{ "_type": "person", "oldId": "46","surname": "Kaufmann", "firstName": "Friedrich" }
-{ "_type": "person", "oldId": "47","surname": "Madelung", "firstName": "Philip" }
-{ "_type": "person", "oldId": "48","surname": "Spatz", "firstName": "Julius" }
-{ "_type": "person", "oldId": "49","surname": "Wegmann", "firstName": "Mattia" }
-{ "_type": "person", "oldId": "50","surname": "Castilla", "firstName": "Samuel Rotta" }
-{ "_type": "person", "oldId": "51","surname": "Carothers", "firstName": "Thomas" }
-{ "_type": "person", "oldId": "52","surname": "Speck", "firstName": "Bruno Wilhelm" }
-{ "_type": "person", "oldId": "53","surname": "Savedoff", "firstName": "William D." }
-{ "_type": "person", "oldId": "54","surname": "Musau", "firstName": "Steve" }
-{ "_type": "person", "oldId": "55","surname": "Waning", "firstName": "Brenda" }
-{ "_type": "person", "oldId": "56","surname": "Semrau", "firstName": "Katherine" }
-{ "_type": "person", "oldId": "57","surname": "Scott", "firstName": "Nancy" }
-{ "_type": "person", "oldId": "59","surname": "Al-Kasim", "firstName": "Farouk" }
-{ "_type": "person", "oldId": "61","surname": "Zuleta", "firstName": "Juan Carlos" }
-{ "_type": "person", "oldId": "62","surname": "Child", "firstName": "David" }
-{ "_type": "person", "oldId": "63","surname": "Sullivan", "firstName": "John D." }
-{ "_type": "person", "oldId": "64","surname": "Shkolnikov", "firstName": "Aleksandr" }
-{ "_type": "person", "oldId": "65","surname": "Setiono", "firstName": "Bambang" }
-{ "_type": "person", "oldId": "66","surname": "Hamminger", "firstName": "Leo" }
-{ "_type": "person", "oldId": "67","surname": "Fritz", "firstName": "Verna" }
-{ "_type": "person", "oldId": "70","surname": "Whitton", "firstName": "Howard" }
-{ "_type": "person", "oldId": "71","surname": "Nordberg", "firstName": "Carin" }
-{ "_type": "person", "oldId": "72","surname": "Campos", "firstName": "Nauro F." }
-{ "_type": "person", "oldId": "73","surname": "Zyl", "firstName": "Albert van" }
-{ "_type": "person", "oldId": "74","surname": "Ramkumar", "firstName": "Vivek" }
-{ "_type": "person", "oldId": "75","surname": "Renzio", "firstName": "Paolo de" }
-{ "_type": "person", "oldId": "76","surname": "Gillies", "firstName": "Alexandra" }
-{ "_type": "person", "oldId": "77","surname": "Walker", "firstName": "Peter" }
-{ "_type": "person", "oldId": "78","surname": "Maxwell", "firstName": "Daniel" }
-{ "_type": "person", "oldId": "79","surname": "Jansen", "firstName": "Eirik G." }
-{ "_type": "person", "oldId": "82","surname": "Turrent", "firstName": "Victoria" }
-{ "_type": "person", "oldId": "83","surname": "Jansen", "firstName": "Eirik" }
-{ "_type": "person", "oldId": "84","surname": "Messick", "firstName": "Richard" }
-{ "_type": "person", "oldId": "85","surname": "Nelson", "firstName": "Fred" }
-{ "_type": "person", "oldId": "86","surname": "Trivunovic", "firstName": "Marijana" }
-{ "_type": "person", "oldId": "87","surname": "Manandhar", "firstName": "Narayan" }
-{ "_type": "person", "oldId": "88","surname": "Armytage", "firstName": "Livingston" }
-{ "_type": "person", "oldId": "89","surname": "Repucci", "firstName": "Sarah" }
-{ "_type": "person", "oldId": "90","surname": "Butterworth", "firstName": "John" }
-{ "_type": "person", "oldId": "91","surname": "Collins", "firstName": "David" }
-{ "_type": "person", "oldId": "93","surname": "Brinkerhoff", "firstName": "Derick W." }
-{ "_type": "person", "oldId": "95","surname": "Puppo", "firstName": "Lilli di" }
-{ "_type": "person", "oldId": "97","surname": "Bolongaita", "firstName": "Emil P." }
-{ "_type": "person", "oldId": "98","surname": "Chaikin", "firstName": "David" }
-{ "_type": "person", "oldId": "99","surname": "Trefon", "firstName": "Theodore" }
-{ "_type": "person", "oldId": "100","surname": "Strand", "firstName": "Arne" }
-{ "_type": "person", "oldId": "101","surname": "Schultz", "firstName": "Jessica Leigh" }
-{ "_type": "person", "oldId": "102","surname": "Osore", "firstName": "Opimbi" }
-{ "_type": "person", "oldId": "103","surname": "Vennen", "firstName": "Thomas" }
-{ "_type": "person", "oldId": "104","surname": "Bhargava", "firstName": "Vinay" }
-{ "_type": "person", "oldId": "105","surname": "Bofin", "firstName": "Peter" }
-{ "_type": "person", "oldId": "106","surname": "Preez", "firstName": "Mari-Lise du" }
-{ "_type": "person", "oldId": "108","surname": "Heeks", "firstName": "Richard" }
-{ "_type": "person", "oldId": "109","surname": "Mayo-Anda", "firstName": "Grizelda" }
-{ "_type": "person", "oldId": "111","surname": "Truex", "firstName": "Rory" }
-{ "_type": "person", "oldId": "112","surname": "Ryder", "firstName": "Katherine E." }
-{ "_type": "person", "oldId": "130","surname": "Hechler", "firstName": "Karen Hussmann and Hannes" }
-{ "_type": "person", "oldId": "137","surname": "Babini", "firstName": "Maria Luisa" }
-{ "_type": "person", "oldId": "139","surname": "Standing", "firstName": "André" }
-{ "_type": "person", "oldId": "140","surname": "Peñailillo", "firstName": "Miguel" }
-{ "_type": "person", "oldId": "141","surname": "Søreide", "firstName": "Tina" }
-{ "_type": "person", "oldId": "143","surname": "Johnsøn", "firstName": "Jesper" }
-{ "_type": "person", "oldId": "144","surname": "Mathisen", "firstName": "Harald" }
-{ "_type": "person", "oldId": "145","surname": "Hechler", "firstName": "Hannes" }
-{ "_type": "person", "oldId": "146","surname": "Sousa", "firstName": "Luis de" }
-{ "_type": "person", "oldId": "147","surname": "Sousa", "firstName": "Luís de" }
-{ "_type": "person", "oldId": "165","surname": "Miller", "firstName": "Candace" }
-{ "_type": "person", "oldId": "166","surname": "Themba", "firstName": "Zione" }
-{ "_type": "person", "oldId": "167","surname": "Bukuluki", "firstName": "Paul" }
-{ "_type": "person", "oldId": "168","surname": "Speck", "firstName": "Bruno" }
-{ "_type": "person", "oldId": "169","surname": "Bohnstedt", "firstName": "Andrea" }
-{ "_type": "person", "oldId": "192","surname": "Heggstad", "firstName": "Kari K." }
-{ "_type": "person", "oldId": "194","surname": "Goredema", "firstName": "Charles" }
-{ "_type": "person", "oldId": "197","surname": "Mæstad", "firstName": "Ottar" }
-{ "_type": "person", "oldId": "198","surname": "Boehm", "firstName": "Frédéric" }
-{ "_type": "person", "oldId": "201","surname": "Alcázar", "firstName": "Lorena" }
-{ "_type": "person", "oldId": "202","surname": "Frøystad", "firstName": "Mona" }
-{ "_type": "person", "oldId": "203","surname": "Zinkernagel", "firstName": "Gretta Fenner" }
-{ "_type": "person", "oldId": "204","surname": "Koechlin", "firstName": "Lucy" }
-{ "_type": "person", "oldId": "205","surname": "Morris", "firstName": "Dominic" }
-{ "_type": "person", "oldId": "206","surname": "Harpe", "firstName": "Jean de la" }
-{ "_type": "person", "oldId": "207","surname": "Vian", "firstName": "mis á jour par Taryn" }
-{ "_type": "person", "oldId": "208","surname": "Billon", "firstName": "Philippe Le" }
-{ "_type": "person", "oldId": "209","surname": "Schouten", "firstName": "Claire" }
-{ "_type": "person", "oldId": "210","surname": "Watt", "firstName": "David" }
-{ "_type": "person", "oldId": "211","surname": "Perdriel-Vaissiere", "firstName": "Maud" }
-{ "_type": "person", "oldId": "212","surname": "Vibe", "firstName": "Maja de" }
-{ "_type": "person", "oldId": "213","surname": "Rao", "firstName": "Sumedh" }
-{ "_type": "person", "oldId": "214","surname": "Marquette", "firstName": "Heather" }
-{ "_type": "person", "oldId": "215","surname": "Dix", "firstName": "Sarah" }
-{ "_type": "person", "oldId": "216","surname": "Walton", "firstName": "Grant" }
-{ "_type": "person", "oldId": "217","surname": "Cavanagh", "firstName": "Connor" }
-{ "_type": "person", "oldId": "218","surname": "Hardoon", "firstName": "Deborah" }
-{ "_type": "person", "oldId": "219","surname": "Camargo", "firstName": "Claudia Baez" }
-{ "_type": "person", "oldId": "220","surname": "Sharman", "firstName": "Jason" }
-{ "_type": "person", "oldId": "221","surname": "Hansen-Shino", "firstName": "Kjetil" }
-{ "_type": "person", "oldId": "222","surname": "Hearson", "firstName": "Martin" }
-{ "_type": "person", "oldId": "223","surname": "Taxell", "firstName": "Nils" }
-{ "_type": "person", "oldId": "224","surname": "Zaum", "firstName": "Dominik" }
-{ "_type": "person", "oldId": "225","surname": "Pereira", "firstName": "Pedro Gomes" }
-{ "_type": "person", "oldId": "226","surname": "Tostensen", "firstName": "Arne" }
-{ "_type": "person", "oldId": "228","surname": "Sabin", "firstName": "Lora" }
-{ "_type": "person", "oldId": "229","surname": "Millard", "firstName": "Ananda S." }
-{ "_type": "person", "oldId": "230","surname": "Wickberg", "firstName": "Sofia" }
-{ "_type": "person", "oldId": "231","surname": "Wren-Lewis", "firstName": "Liam" }
-{ "_type": "person", "oldId": "233","surname": "Martini", "firstName": "Maira" }
-{ "_type": "person", "oldId": "234","surname": "", "firstName": "" }
-{ "_type": "person", "oldId": "235","surname": "Chêne", "firstName": "Marie" }
-{ "_type": "person", "oldId": "236","surname": "Fagan", "firstName": "Craig" }
-{ "_type": "person", "oldId": "237","surname": "Gutiérrez", "firstName": "Hernán" }
-{ "_type": "person", "oldId": "238","surname": "Kohler", "firstName": "Jillian Clare" }
-{ "_type": "person", "oldId": "239","surname": "Ovtcharenko", "firstName": "Natalia" }
-{ "_type": "person", "oldId": "240","surname": "Biason", "firstName": "Rita de Cássia" }
-{ "_type": "person", "oldId": "241","surname": "Fink", "firstName": "Hady" }
-{ "_type": "person", "oldId": "242","surname": "Hilson", "firstName": "Gavin" }
-{ "_type": "person", "oldId": "243","surname": "Agator", "firstName": "Maxime" }
-{ "_type": "person", "oldId": "244","surname": "Downs", "firstName": "Fiona" }
-{ "_type": "person", "oldId": "245","surname": "Mason", "firstName": "Phil" }
-{ "_type": "person", "oldId": "246","surname": "Bracking", "firstName": "Sarah" }
-{ "_type": "person", "oldId": "247","surname": "Søreide", "firstName": "Tina" }
-{ "_type": "person", "oldId": "248","surname": "Stewart", "firstName": "Davyth" }
-{ "_type": "person", "oldId": "249","surname": "Schütte", "firstName": "Sofie Arjon" }
-{ "_type": "person", "oldId": "250","surname": "Butt", "firstName": "Simon" }
-{ "_type": "person", "oldId": "251","surname": "Isabekova", "firstName": "Gulnaz" }
-{ "_type": "person", "oldId": "252","surname": "Ormushev", "firstName": "Kubanychbek" }
-{ "_type": "person", "oldId": "253","surname": "Omokeev", "firstName": "Toktobek" }
-{ "_type": "person", "oldId": "254","surname": "Zakharchenko", "firstName": "Natalia" }
-{ "_type": "person", "oldId": "255","surname": "Morgner", "firstName": "Matthias" }
-{ "_type": "person", "oldId": "256","surname": "Kukutschka", "firstName": "Roberto Martínez Barranco" }
-{ "_type": "person", "oldId": "257","surname": "Gilbert", "firstName": "Stefan" }
-{ "_type": "person", "oldId": "258","surname": "Beggan", "firstName": "Paul" }
-{ "_type": "person", "oldId": "260","surname": "Guillán", "firstName": "Aránzazu" }
-{ "_type": "person", "oldId": "261","surname": "Lavin", "firstName": "Renzo" }
-{ "_type": "person", "oldId": "262","surname": "Cornejo", "firstName": "Carolina" }
-{ "_type": "person", "oldId": "263","surname": "Hart", "firstName": "Elizabeth" }
-{ "_type": "person", "oldId": "264","surname": "Lindner", "firstName": "Samira" }
-{ "_type": "person", "oldId": "265","surname": "Simone", "firstName": "Francesco De" }
-{ "_type": "person", "oldId": "266","surname": "Golub", "firstName": "Stephen" }
-{ "_type": "person", "oldId": "267","surname": "Jennett", "firstName": "Victoria" }
-{ "_type": "person", "oldId": "268","surname": "Gachanja", "firstName": "Michael" }
-{ "_type": "person", "oldId": "269","surname": "Hoppe", "firstName": "Tilman" }
-{ "_type": "person", "oldId": "270","surname": "Acosta", "firstName": "Andres Mejia" }
-{ "_type": "person", "oldId": "271","surname": "Davies", "firstName": "Tim" }
-{ "_type": "person", "oldId": "272","surname": "Fumega", "firstName": "Silvana" }
-{ "_type": "person", "oldId": "273","surname": "Zagaris", "firstName": "Bruce" }
-{ "_type": "person", "oldId": "274","surname": "Waris", "firstName": "Attiya" }
-{ "_type": "person", "oldId": "275","surname": "Luijken", "firstName": "Thomas" }
-{ "_type": "person", "oldId": "276","surname": "Torres", "firstName": "Justine Nicole V." }
-{ "_type": "person", "oldId": "277","surname": "Fazekas", "firstName": "Mihály" }
-{ "_type": "person", "oldId": "278","surname": "Tóth", "firstName": "István János" }
-{ "_type": "person", "oldId": "279","surname": "Ardigo", "firstName": "Iñaki Albisu" }
-{ "_type": "person", "oldId": "280","surname": "Bosso", "firstName": "Francesco" }
-{ "_type": "person", "oldId": "281","surname": "Brezis", "firstName": "Elise S." }
-{ "_type": "person", "oldId": "282","surname": "Cariolle", "firstName": "Joël" }
-{ "_type": "person", "oldId": "283","surname": "Dupuy", "firstName": "Kendra" }
-{ "_type": "person", "oldId": "284","surname": "Dupuy", "firstName": "Kendra" }
-{ "_type": "person", "oldId": "285","surname": "Potter", "firstName": "Alana" }
-{ "_type": "person", "oldId": "286","surname": "Lesné", "firstName": "Frédéric" }
-{ "_type": "person", "oldId": "289","surname": "Gauthier", "firstName": "Bernard" }
-{ "_type": "person", "oldId": "290","surname": "Messick", "firstName": "Richard E." }
-{ "_type": "person", "oldId": "291","surname": "Johnsøn", "firstName": "Jesper" }
-{ "_type": "person", "oldId": "292","surname": "", "firstName": "" }
-{ "_type": "person", "oldId": "293","surname": "Albanese", "firstName": "Jay S." }
-{ "_type": "person", "oldId": "294","surname": "Borlini", "firstName": "Leonardo" }
-{ "_type": "person", "oldId": "295","surname": "Gramckow", "firstName": "Heike" }
-{ "_type": "person", "oldId": "296","surname": "Hill", "firstName": "Gary" }
-{ "_type": "person", "oldId": "297","surname": "Dermawan", "firstName": "Ahmad" }
-{ "_type": "person", "oldId": "298","surname": "Sinaga", "firstName": "Anna Christina" }
-{ "_type": "person", "oldId": "299","surname": "Peiffer", "firstName": "Caryn" }
-{ "_type": "person", "oldId": "300","surname": "Wells", "firstName": "Jill" }
-{ "_type": "person", "oldId": "301","surname": "Divjak", "firstName": "Boris" }
-{ "_type": "person", "oldId": "302","surname": "Pande", "firstName": "Dr. Suchi" }
-{ "_type": "person", "oldId": "303","surname": "Assembe-Mvondo", "firstName": "Samuel" }
-{ "_type": "person", "oldId": "304","surname": "Passas", "firstName": "Nikos" }
-{ "_type": "person", "oldId": "305","surname": "Baniamin", "firstName": "Hasan Muhammad" }
-{ "_type": "person", "oldId": "306","surname": "Pring", "firstName": "Coralie" }
-{ "_type": "person", "oldId": "307","surname": "", "firstName": "" }
-{ "_type": "person", "oldId": "308","surname": "Wyatt", "firstName": "Tanya" }
-{ "_type": "person", "oldId": "309","surname": "Cao", "firstName": "Anh Ngoc" }
-{ "_type": "person", "oldId": "310","surname": "McDevitt", "firstName": "Andy" }
-{ "_type": "person", "oldId": "311","surname": "Beevers", "firstName": "Michael D." }
-{ "_type": "person", "oldId": "312","surname": "Gippert", "firstName": "Birte" }
-{ "_type": "person", "oldId": "313","surname": "", "firstName": "" }
-{ "_type": "person", "oldId": "314","surname": "Sierra", "firstName": "Erika" }
-{ "_type": "person", "oldId": "315","surname": "Dougherty", "firstName": "Michael L." }
-{ "_type": "person", "oldId": "316","surname": "Rose", "firstName": "Richard" }
-{ "_type": "person", "oldId": "317","surname": "Huynh", "firstName": "Thu Ba" }
-{ "_type": "person", "oldId": "318","surname": "Jahn", "firstName": "Philipp" }
-{ "_type": "person", "oldId": "319","surname": "Reddy", "firstName": "Paavani" }
-{ "_type": "person", "oldId": "321","surname": "Zorzi", "firstName": "Liviana" }
-{ "_type": "person", "oldId": "322","surname": "Stephenson", "firstName": "Matthew C." }
-{ "_type": "person", "oldId": "323","surname": "Fox", "firstName": "Jonathan" }
-{ "_type": "person", "oldId": "324","surname": "Aceron", "firstName": "Joy" }
-{ "_type": "person", "oldId": "325","surname": "Brady", "firstName": "Sheelagh" }
-{ "_type": "person", "oldId": "326","surname": "Parry-Jones", "firstName": "Rob" }
-{ "_type": "person", "oldId": "327","surname": "Roe", "firstName": "Dilys" }
-{ "_type": "person", "oldId": "328","surname": "Skage", "firstName": "Ingvild Aagedal" }
-{ "_type": "person", "oldId": "329","surname": "", "firstName": "" }
-{ "_type": "person", "oldId": "330","surname": "Nest", "firstName": "Michael" }
-{ "_type": "person", "oldId": "331","surname": "Kendra", "firstName": "" }
-{ "_type": "person", "oldId": "332","surname": "", "firstName": "" }
-{ "_type": "person", "oldId": "333","surname": "Aarvik", "firstName": "Per" }
-{ "_type": "person", "oldId": "334","surname": "Longchamp", "firstName": "Olivier" }
-{ "_type": "person", "oldId": "335","surname": "Perrot", "firstName": "Nathalie" }
-{ "_type": "person", "oldId": "336","surname": "Nownes", "firstName": "Anthony" }
-{ "_type": "person", "oldId": "337","surname": "Østensen", "firstName": "Åse Gilje" }
-{ "_type": "person", "oldId": "338","surname": "Stridsman", "firstName": "Mats" }
-{ "_type": "person", "oldId": "339","surname": "Ensminger", "firstName": "Jean" }
+{ "_type": "person", "_id": "author-1","surname": "Ledergerber", "firstName": "Zora" }
+{ "_type": "person", "_id": "author-2","surname": "Reed", "firstName": "Quentin" }
+{ "_type": "person", "_id": "author-3","surname": "Fontana", "firstName": "Alessandra" }
+{ "_type": "person", "_id": "author-4","surname": "Palmer", "firstName": "Robert" }
+{ "_type": "person", "_id": "author-5","surname": "Mathisen", "firstName": "Harald" }
+{ "_type": "person", "_id": "author-6","surname": "Kolstad", "firstName": "Ivar" }
+{ "_type": "person", "_id": "author-7","surname": "Fjeldstad", "firstName": "Odd-Helge" }
+{ "_type": "person", "_id": "author-8","surname": "Isaksen", "firstName": "Jan" }
+{ "_type": "person", "_id": "author-9","surname": "Norberg", "firstName": "Carin" }
+{ "_type": "person", "_id": "author-10","surname": "Vian", "firstName": "Taryn" }
+{ "_type": "person", "_id": "author-11","surname": "Duncan", "firstName": "Nick" }
+{ "_type": "person", "_id": "author-13","surname": "U4", "firstName": "" }
+{ "_type": "person", "_id": "author-14","surname": "Mortensen", "firstName": "Gemma" }
+{ "_type": "person", "_id": "author-15","surname": "Amundsen", "firstName": "Inge" }
+{ "_type": "person", "_id": "author-19","surname": "Mwisongo", "firstName": "Aziza" }
+{ "_type": "person", "_id": "author-20","surname": "Williams", "firstName": "Robert" }
+{ "_type": "person", "_id": "author-21","surname": "Doig", "firstName": "Alan" }
+{ "_type": "person", "_id": "author-22","surname": "Schultz", "firstName": "Jessica" }
+{ "_type": "person", "_id": "author-23","surname": "Smith", "firstName": "Jack" }
+{ "_type": "person", "_id": "author-24","surname": "Pieth", "firstName": "Mark" }
+{ "_type": "person", "_id": "author-25","surname": "Jorge", "firstName": "Guillermo" }
+{ "_type": "person", "_id": "author-26","surname": "Kramer", "firstName": "Michael" }
+{ "_type": "person", "_id": "author-27","surname": "Rose-Ackerman", "firstName": "Susan" }
+{ "_type": "person", "_id": "author-28","surname": "Johnston", "firstName": "Michael" }
+{ "_type": "person", "_id": "author-29","surname": "Unsworth", "firstName": "Sue" }
+{ "_type": "person", "_id": "author-31","surname": "Devine", "firstName": "Vera" }
+{ "_type": "person", "_id": "author-32","surname": "Weimer", "firstName": "Markus" }
+{ "_type": "person", "_id": "author-34","surname": "Nell", "firstName": "Mathias" }
+{ "_type": "person", "_id": "author-35","surname": "Sundet", "firstName": "Geir" }
+{ "_type": "person", "_id": "author-36","surname": "Wiig", "firstName": "Ivar Kolstad and Arne" }
+{ "_type": "person", "_id": "author-38","surname": "Hussmann", "firstName": "Karen" }
+{ "_type": "person", "_id": "author-40","surname": "Hechler", "firstName": "Hannes" }
+{ "_type": "person", "_id": "author-42","surname": "Williams", "firstName": "Aled" }
+{ "_type": "person", "_id": "author-43","surname": "Wiig", "firstName": "Arne" }
+{ "_type": "person", "_id": "author-44","surname": "Williams", "firstName": "David Aled" }
+{ "_type": "person", "_id": "author-45","surname": "Todorov", "firstName": "Boyko" }
+{ "_type": "person", "_id": "author-46","surname": "Kaufmann", "firstName": "Friedrich" }
+{ "_type": "person", "_id": "author-47","surname": "Madelung", "firstName": "Philip" }
+{ "_type": "person", "_id": "author-48","surname": "Spatz", "firstName": "Julius" }
+{ "_type": "person", "_id": "author-49","surname": "Wegmann", "firstName": "Mattia" }
+{ "_type": "person", "_id": "author-50","surname": "Castilla", "firstName": "Samuel Rotta" }
+{ "_type": "person", "_id": "author-51","surname": "Carothers", "firstName": "Thomas" }
+{ "_type": "person", "_id": "author-52","surname": "Speck", "firstName": "Bruno Wilhelm" }
+{ "_type": "person", "_id": "author-53","surname": "Savedoff", "firstName": "William D." }
+{ "_type": "person", "_id": "author-54","surname": "Musau", "firstName": "Steve" }
+{ "_type": "person", "_id": "author-55","surname": "Waning", "firstName": "Brenda" }
+{ "_type": "person", "_id": "author-56","surname": "Semrau", "firstName": "Katherine" }
+{ "_type": "person", "_id": "author-57","surname": "Scott", "firstName": "Nancy" }
+{ "_type": "person", "_id": "author-59","surname": "Al-Kasim", "firstName": "Farouk" }
+{ "_type": "person", "_id": "author-61","surname": "Zuleta", "firstName": "Juan Carlos" }
+{ "_type": "person", "_id": "author-62","surname": "Child", "firstName": "David" }
+{ "_type": "person", "_id": "author-63","surname": "Sullivan", "firstName": "John D." }
+{ "_type": "person", "_id": "author-64","surname": "Shkolnikov", "firstName": "Aleksandr" }
+{ "_type": "person", "_id": "author-65","surname": "Setiono", "firstName": "Bambang" }
+{ "_type": "person", "_id": "author-66","surname": "Hamminger", "firstName": "Leo" }
+{ "_type": "person", "_id": "author-67","surname": "Fritz", "firstName": "Verna" }
+{ "_type": "person", "_id": "author-70","surname": "Whitton", "firstName": "Howard" }
+{ "_type": "person", "_id": "author-71","surname": "Nordberg", "firstName": "Carin" }
+{ "_type": "person", "_id": "author-72","surname": "Campos", "firstName": "Nauro F." }
+{ "_type": "person", "_id": "author-73","surname": "Zyl", "firstName": "Albert van" }
+{ "_type": "person", "_id": "author-74","surname": "Ramkumar", "firstName": "Vivek" }
+{ "_type": "person", "_id": "author-75","surname": "Renzio", "firstName": "Paolo de" }
+{ "_type": "person", "_id": "author-76","surname": "Gillies", "firstName": "Alexandra" }
+{ "_type": "person", "_id": "author-77","surname": "Walker", "firstName": "Peter" }
+{ "_type": "person", "_id": "author-78","surname": "Maxwell", "firstName": "Daniel" }
+{ "_type": "person", "_id": "author-79","surname": "Jansen", "firstName": "Eirik G." }
+{ "_type": "person", "_id": "author-82","surname": "Turrent", "firstName": "Victoria" }
+{ "_type": "person", "_id": "author-83","surname": "Jansen", "firstName": "Eirik" }
+{ "_type": "person", "_id": "author-84","surname": "Messick", "firstName": "Richard" }
+{ "_type": "person", "_id": "author-85","surname": "Nelson", "firstName": "Fred" }
+{ "_type": "person", "_id": "author-86","surname": "Trivunovic", "firstName": "Marijana" }
+{ "_type": "person", "_id": "author-87","surname": "Manandhar", "firstName": "Narayan" }
+{ "_type": "person", "_id": "author-88","surname": "Armytage", "firstName": "Livingston" }
+{ "_type": "person", "_id": "author-89","surname": "Repucci", "firstName": "Sarah" }
+{ "_type": "person", "_id": "author-90","surname": "Butterworth", "firstName": "John" }
+{ "_type": "person", "_id": "author-91","surname": "Collins", "firstName": "David" }
+{ "_type": "person", "_id": "author-93","surname": "Brinkerhoff", "firstName": "Derick W." }
+{ "_type": "person", "_id": "author-95","surname": "Puppo", "firstName": "Lilli di" }
+{ "_type": "person", "_id": "author-97","surname": "Bolongaita", "firstName": "Emil P." }
+{ "_type": "person", "_id": "author-98","surname": "Chaikin", "firstName": "David" }
+{ "_type": "person", "_id": "author-99","surname": "Trefon", "firstName": "Theodore" }
+{ "_type": "person", "_id": "author-100","surname": "Strand", "firstName": "Arne" }
+{ "_type": "person", "_id": "author-101","surname": "Schultz", "firstName": "Jessica Leigh" }
+{ "_type": "person", "_id": "author-102","surname": "Osore", "firstName": "Opimbi" }
+{ "_type": "person", "_id": "author-103","surname": "Vennen", "firstName": "Thomas" }
+{ "_type": "person", "_id": "author-104","surname": "Bhargava", "firstName": "Vinay" }
+{ "_type": "person", "_id": "author-105","surname": "Bofin", "firstName": "Peter" }
+{ "_type": "person", "_id": "author-106","surname": "Preez", "firstName": "Mari-Lise du" }
+{ "_type": "person", "_id": "author-108","surname": "Heeks", "firstName": "Richard" }
+{ "_type": "person", "_id": "author-109","surname": "Mayo-Anda", "firstName": "Grizelda" }
+{ "_type": "person", "_id": "author-111","surname": "Truex", "firstName": "Rory" }
+{ "_type": "person", "_id": "author-112","surname": "Ryder", "firstName": "Katherine E." }
+{ "_type": "person", "_id": "author-130","surname": "Hechler", "firstName": "Karen Hussmann and Hannes" }
+{ "_type": "person", "_id": "author-137","surname": "Babini", "firstName": "Maria Luisa" }
+{ "_type": "person", "_id": "author-139","surname": "Standing", "firstName": "André" }
+{ "_type": "person", "_id": "author-140","surname": "Peñailillo", "firstName": "Miguel" }
+{ "_type": "person", "_id": "author-141","surname": "Søreide", "firstName": "Tina" }
+{ "_type": "person", "_id": "author-143","surname": "Johnsøn", "firstName": "Jesper" }
+{ "_type": "person", "_id": "author-144","surname": "Mathisen", "firstName": "Harald" }
+{ "_type": "person", "_id": "author-145","surname": "Hechler", "firstName": "Hannes" }
+{ "_type": "person", "_id": "author-146","surname": "Sousa", "firstName": "Luis de" }
+{ "_type": "person", "_id": "author-147","surname": "Sousa", "firstName": "Luís de" }
+{ "_type": "person", "_id": "author-165","surname": "Miller", "firstName": "Candace" }
+{ "_type": "person", "_id": "author-166","surname": "Themba", "firstName": "Zione" }
+{ "_type": "person", "_id": "author-167","surname": "Bukuluki", "firstName": "Paul" }
+{ "_type": "person", "_id": "author-168","surname": "Speck", "firstName": "Bruno" }
+{ "_type": "person", "_id": "author-169","surname": "Bohnstedt", "firstName": "Andrea" }
+{ "_type": "person", "_id": "author-192","surname": "Heggstad", "firstName": "Kari K." }
+{ "_type": "person", "_id": "author-194","surname": "Goredema", "firstName": "Charles" }
+{ "_type": "person", "_id": "author-197","surname": "Mæstad", "firstName": "Ottar" }
+{ "_type": "person", "_id": "author-198","surname": "Boehm", "firstName": "Frédéric" }
+{ "_type": "person", "_id": "author-201","surname": "Alcázar", "firstName": "Lorena" }
+{ "_type": "person", "_id": "author-202","surname": "Frøystad", "firstName": "Mona" }
+{ "_type": "person", "_id": "author-203","surname": "Zinkernagel", "firstName": "Gretta Fenner" }
+{ "_type": "person", "_id": "author-204","surname": "Koechlin", "firstName": "Lucy" }
+{ "_type": "person", "_id": "author-205","surname": "Morris", "firstName": "Dominic" }
+{ "_type": "person", "_id": "author-206","surname": "Harpe", "firstName": "Jean de la" }
+{ "_type": "person", "_id": "author-207","surname": "Vian", "firstName": "mis á jour par Taryn" }
+{ "_type": "person", "_id": "author-208","surname": "Billon", "firstName": "Philippe Le" }
+{ "_type": "person", "_id": "author-209","surname": "Schouten", "firstName": "Claire" }
+{ "_type": "person", "_id": "author-210","surname": "Watt", "firstName": "David" }
+{ "_type": "person", "_id": "author-211","surname": "Perdriel-Vaissiere", "firstName": "Maud" }
+{ "_type": "person", "_id": "author-212","surname": "Vibe", "firstName": "Maja de" }
+{ "_type": "person", "_id": "author-213","surname": "Rao", "firstName": "Sumedh" }
+{ "_type": "person", "_id": "author-214","surname": "Marquette", "firstName": "Heather" }
+{ "_type": "person", "_id": "author-215","surname": "Dix", "firstName": "Sarah" }
+{ "_type": "person", "_id": "author-216","surname": "Walton", "firstName": "Grant" }
+{ "_type": "person", "_id": "author-217","surname": "Cavanagh", "firstName": "Connor" }
+{ "_type": "person", "_id": "author-218","surname": "Hardoon", "firstName": "Deborah" }
+{ "_type": "person", "_id": "author-219","surname": "Camargo", "firstName": "Claudia Baez" }
+{ "_type": "person", "_id": "author-220","surname": "Sharman", "firstName": "Jason" }
+{ "_type": "person", "_id": "author-221","surname": "Hansen-Shino", "firstName": "Kjetil" }
+{ "_type": "person", "_id": "author-222","surname": "Hearson", "firstName": "Martin" }
+{ "_type": "person", "_id": "author-223","surname": "Taxell", "firstName": "Nils" }
+{ "_type": "person", "_id": "author-224","surname": "Zaum", "firstName": "Dominik" }
+{ "_type": "person", "_id": "author-225","surname": "Pereira", "firstName": "Pedro Gomes" }
+{ "_type": "person", "_id": "author-226","surname": "Tostensen", "firstName": "Arne" }
+{ "_type": "person", "_id": "author-228","surname": "Sabin", "firstName": "Lora" }
+{ "_type": "person", "_id": "author-229","surname": "Millard", "firstName": "Ananda S." }
+{ "_type": "person", "_id": "author-230","surname": "Wickberg", "firstName": "Sofia" }
+{ "_type": "person", "_id": "author-231","surname": "Wren-Lewis", "firstName": "Liam" }
+{ "_type": "person", "_id": "author-233","surname": "Martini", "firstName": "Maira" }
+{ "_type": "person", "_id": "author-234","surname": "", "firstName": "" }
+{ "_type": "person", "_id": "author-235","surname": "Chêne", "firstName": "Marie" }
+{ "_type": "person", "_id": "author-236","surname": "Fagan", "firstName": "Craig" }
+{ "_type": "person", "_id": "author-237","surname": "Gutiérrez", "firstName": "Hernán" }
+{ "_type": "person", "_id": "author-238","surname": "Kohler", "firstName": "Jillian Clare" }
+{ "_type": "person", "_id": "author-239","surname": "Ovtcharenko", "firstName": "Natalia" }
+{ "_type": "person", "_id": "author-240","surname": "Biason", "firstName": "Rita de Cássia" }
+{ "_type": "person", "_id": "author-241","surname": "Fink", "firstName": "Hady" }
+{ "_type": "person", "_id": "author-242","surname": "Hilson", "firstName": "Gavin" }
+{ "_type": "person", "_id": "author-243","surname": "Agator", "firstName": "Maxime" }
+{ "_type": "person", "_id": "author-244","surname": "Downs", "firstName": "Fiona" }
+{ "_type": "person", "_id": "author-245","surname": "Mason", "firstName": "Phil" }
+{ "_type": "person", "_id": "author-246","surname": "Bracking", "firstName": "Sarah" }
+{ "_type": "person", "_id": "author-247","surname": "Søreide", "firstName": "Tina" }
+{ "_type": "person", "_id": "author-248","surname": "Stewart", "firstName": "Davyth" }
+{ "_type": "person", "_id": "author-249","surname": "Schütte", "firstName": "Sofie Arjon" }
+{ "_type": "person", "_id": "author-250","surname": "Butt", "firstName": "Simon" }
+{ "_type": "person", "_id": "author-251","surname": "Isabekova", "firstName": "Gulnaz" }
+{ "_type": "person", "_id": "author-252","surname": "Ormushev", "firstName": "Kubanychbek" }
+{ "_type": "person", "_id": "author-253","surname": "Omokeev", "firstName": "Toktobek" }
+{ "_type": "person", "_id": "author-254","surname": "Zakharchenko", "firstName": "Natalia" }
+{ "_type": "person", "_id": "author-255","surname": "Morgner", "firstName": "Matthias" }
+{ "_type": "person", "_id": "author-256","surname": "Kukutschka", "firstName": "Roberto Martínez Barranco" }
+{ "_type": "person", "_id": "author-257","surname": "Gilbert", "firstName": "Stefan" }
+{ "_type": "person", "_id": "author-258","surname": "Beggan", "firstName": "Paul" }
+{ "_type": "person", "_id": "author-260","surname": "Guillán", "firstName": "Aránzazu" }
+{ "_type": "person", "_id": "author-261","surname": "Lavin", "firstName": "Renzo" }
+{ "_type": "person", "_id": "author-262","surname": "Cornejo", "firstName": "Carolina" }
+{ "_type": "person", "_id": "author-263","surname": "Hart", "firstName": "Elizabeth" }
+{ "_type": "person", "_id": "author-264","surname": "Lindner", "firstName": "Samira" }
+{ "_type": "person", "_id": "author-265","surname": "Simone", "firstName": "Francesco De" }
+{ "_type": "person", "_id": "author-266","surname": "Golub", "firstName": "Stephen" }
+{ "_type": "person", "_id": "author-267","surname": "Jennett", "firstName": "Victoria" }
+{ "_type": "person", "_id": "author-268","surname": "Gachanja", "firstName": "Michael" }
+{ "_type": "person", "_id": "author-269","surname": "Hoppe", "firstName": "Tilman" }
+{ "_type": "person", "_id": "author-270","surname": "Acosta", "firstName": "Andres Mejia" }
+{ "_type": "person", "_id": "author-271","surname": "Davies", "firstName": "Tim" }
+{ "_type": "person", "_id": "author-272","surname": "Fumega", "firstName": "Silvana" }
+{ "_type": "person", "_id": "author-273","surname": "Zagaris", "firstName": "Bruce" }
+{ "_type": "person", "_id": "author-274","surname": "Waris", "firstName": "Attiya" }
+{ "_type": "person", "_id": "author-275","surname": "Luijken", "firstName": "Thomas" }
+{ "_type": "person", "_id": "author-276","surname": "Torres", "firstName": "Justine Nicole V." }
+{ "_type": "person", "_id": "author-277","surname": "Fazekas", "firstName": "Mihály" }
+{ "_type": "person", "_id": "author-278","surname": "Tóth", "firstName": "István János" }
+{ "_type": "person", "_id": "author-279","surname": "Ardigo", "firstName": "Iñaki Albisu" }
+{ "_type": "person", "_id": "author-280","surname": "Bosso", "firstName": "Francesco" }
+{ "_type": "person", "_id": "author-281","surname": "Brezis", "firstName": "Elise S." }
+{ "_type": "person", "_id": "author-282","surname": "Cariolle", "firstName": "Joël" }
+{ "_type": "person", "_id": "author-283","surname": "Dupuy", "firstName": "Kendra" }
+{ "_type": "person", "_id": "author-284","surname": "Dupuy", "firstName": "Kendra" }
+{ "_type": "person", "_id": "author-285","surname": "Potter", "firstName": "Alana" }
+{ "_type": "person", "_id": "author-286","surname": "Lesné", "firstName": "Frédéric" }
+{ "_type": "person", "_id": "author-289","surname": "Gauthier", "firstName": "Bernard" }
+{ "_type": "person", "_id": "author-290","surname": "Messick", "firstName": "Richard E." }
+{ "_type": "person", "_id": "author-291","surname": "Johnsøn", "firstName": "Jesper" }
+{ "_type": "person", "_id": "author-292","surname": "", "firstName": "" }
+{ "_type": "person", "_id": "author-293","surname": "Albanese", "firstName": "Jay S." }
+{ "_type": "person", "_id": "author-294","surname": "Borlini", "firstName": "Leonardo" }
+{ "_type": "person", "_id": "author-295","surname": "Gramckow", "firstName": "Heike" }
+{ "_type": "person", "_id": "author-296","surname": "Hill", "firstName": "Gary" }
+{ "_type": "person", "_id": "author-297","surname": "Dermawan", "firstName": "Ahmad" }
+{ "_type": "person", "_id": "author-298","surname": "Sinaga", "firstName": "Anna Christina" }
+{ "_type": "person", "_id": "author-299","surname": "Peiffer", "firstName": "Caryn" }
+{ "_type": "person", "_id": "author-300","surname": "Wells", "firstName": "Jill" }
+{ "_type": "person", "_id": "author-301","surname": "Divjak", "firstName": "Boris" }
+{ "_type": "person", "_id": "author-302","surname": "Pande", "firstName": "Dr. Suchi" }
+{ "_type": "person", "_id": "author-303","surname": "Assembe-Mvondo", "firstName": "Samuel" }
+{ "_type": "person", "_id": "author-304","surname": "Passas", "firstName": "Nikos" }
+{ "_type": "person", "_id": "author-305","surname": "Baniamin", "firstName": "Hasan Muhammad" }
+{ "_type": "person", "_id": "author-306","surname": "Pring", "firstName": "Coralie" }
+{ "_type": "person", "_id": "author-307","surname": "", "firstName": "" }
+{ "_type": "person", "_id": "author-308","surname": "Wyatt", "firstName": "Tanya" }
+{ "_type": "person", "_id": "author-309","surname": "Cao", "firstName": "Anh Ngoc" }
+{ "_type": "person", "_id": "author-310","surname": "McDevitt", "firstName": "Andy" }
+{ "_type": "person", "_id": "author-311","surname": "Beevers", "firstName": "Michael D." }
+{ "_type": "person", "_id": "author-312","surname": "Gippert", "firstName": "Birte" }
+{ "_type": "person", "_id": "author-313","surname": "", "firstName": "" }
+{ "_type": "person", "_id": "author-314","surname": "Sierra", "firstName": "Erika" }
+{ "_type": "person", "_id": "author-315","surname": "Dougherty", "firstName": "Michael L." }
+{ "_type": "person", "_id": "author-316","surname": "Rose", "firstName": "Richard" }
+{ "_type": "person", "_id": "author-317","surname": "Huynh", "firstName": "Thu Ba" }
+{ "_type": "person", "_id": "author-318","surname": "Jahn", "firstName": "Philipp" }
+{ "_type": "person", "_id": "author-319","surname": "Reddy", "firstName": "Paavani" }
+{ "_type": "person", "_id": "author-321","surname": "Zorzi", "firstName": "Liviana" }
+{ "_type": "person", "_id": "author-322","surname": "Stephenson", "firstName": "Matthew C." }
+{ "_type": "person", "_id": "author-323","surname": "Fox", "firstName": "Jonathan" }
+{ "_type": "person", "_id": "author-324","surname": "Aceron", "firstName": "Joy" }
+{ "_type": "person", "_id": "author-325","surname": "Brady", "firstName": "Sheelagh" }
+{ "_type": "person", "_id": "author-326","surname": "Parry-Jones", "firstName": "Rob" }
+{ "_type": "person", "_id": "author-327","surname": "Roe", "firstName": "Dilys" }
+{ "_type": "person", "_id": "author-328","surname": "Skage", "firstName": "Ingvild Aagedal" }
+{ "_type": "person", "_id": "author-329","surname": "", "firstName": "" }
+{ "_type": "person", "_id": "author-330","surname": "Nest", "firstName": "Michael" }
+{ "_type": "person", "_id": "author-331","surname": "Kendra", "firstName": "" }
+{ "_type": "person", "_id": "author-332","surname": "", "firstName": "" }
+{ "_type": "person", "_id": "author-333","surname": "Aarvik", "firstName": "Per" }
+{ "_type": "person", "_id": "author-334","surname": "Longchamp", "firstName": "Olivier" }
+{ "_type": "person", "_id": "author-335","surname": "Perrot", "firstName": "Nathalie" }
+{ "_type": "person", "_id": "author-336","surname": "Nownes", "firstName": "Anthony" }
+{ "_type": "person", "_id": "author-337","surname": "Østensen", "firstName": "Åse Gilje" }
+{ "_type": "person", "_id": "author-338","surname": "Stridsman", "firstName": "Mats" }
+{ "_type": "person", "_id": "author-339","surname": "Ensminger", "firstName": "Jean" }

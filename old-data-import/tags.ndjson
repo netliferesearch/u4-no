@@ -1,895 +1,895 @@
-{ "_type": "keyword", "oldId": "549", "keyword": "abubakar", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "831", "keyword": "abuse of per diems", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "282", "keyword": "ACA", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "428", "keyword": "academic", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "283", "keyword": "ACC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1050", "keyword": "access to information", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "64", "keyword": "accountability", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "776", "keyword": "actes répréhensibles", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "749", "keyword": "administrative reform", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "105", "keyword": "Afghanistan", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "720", "keyword": "Afghanistan", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "704", "keyword": "Afghanistan", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "546", "keyword": "africa", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "717", "keyword": "Afrique", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "779", "keyword": "Agences anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "71", "keyword": "Aid", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1024", "keyword": "Aid effectiveness", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "710", "keyword": "aide", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "721", "keyword": "aide publique au développement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "705", "keyword": "Aide publique au développement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "249", "keyword": "Albania", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "757", "keyword": "Allemagne", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "572", "keyword": "allowances", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "30", "keyword": "Angola", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "457", "keyword": "Anti-Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "345", "keyword": "anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "450", "keyword": "anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "591", "keyword": "Anti-Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1025", "keyword": "Anti-Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1030", "keyword": "Anti-Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "102", "keyword": "anti-corruption agencies", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1004", "keyword": "anti-corruption agency", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "313", "keyword": "anti-corruption coalitions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "281", "keyword": "Anti-Corruption Commissions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "74", "keyword": "anti-corruption convention", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "17", "keyword": "anti-corruption conventions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "875", "keyword": "anti-corruption courts", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1137", "keyword": "anti-corruption courts", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1066", "keyword": "anti-corruption measures", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "80", "keyword": "anti-corruption policy", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "558", "keyword": "anti-corruption strategy", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "284", "keyword": "Anti-corruption training", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "543", "keyword": "anti-money laundering", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1096", "keyword": "anti-poaching", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "933", "keyword": "anticorrupción", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "937", "keyword": "anticorrupción", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "941", "keyword": "anticorrupción", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "945", "keyword": "anticorrupción", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "700", "keyword": "Antigua and Barbuda", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1005", "keyword": "appointment", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "795", "keyword": "appraisal", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "42", "keyword": "Argentina", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "882", "keyword": "Asia", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "809", "keyword": "assessment", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "85", "keyword": "Asset Declarations", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "698", "keyword": "asset disclosure regime", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "699", "keyword": "asset disclosure schemes", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "319", "keyword": "asset recovery", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "976", "keyword": "attitudes", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "62", "keyword": "audit", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "871", "keyword": "audit cycle", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "893", "keyword": "auditing", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "742", "keyword": "Auditor General", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "209", "keyword": "Australia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "322", "keyword": "awareness raising", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "99", "keyword": "Azerbaijan", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "258", "keyword": "Bahrain", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "217", "keyword": "Bangladesh", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1106", "keyword": "Bangladesh", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1131", "keyword": "Bangladesh", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1132", "keyword": "Bangladesh", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "327", "keyword": "banking", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "323", "keyword": "behaviour changing", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "228", "keyword": "Benin", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "843", "keyword": "Bhutan", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1067", "keyword": "Bilateral donor support", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "760", "keyword": "blanchiment d?argent", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "771", "keyword": "Blanchiment d?argent", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "696", "keyword": "blind trust", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "43", "keyword": "Bolivia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "550", "keyword": "bongo", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "888", "keyword": "border control", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "880", "keyword": "borders", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "259", "keyword": "Bosnia and Herzegovina", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "208", "keyword": "Botswana", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1107", "keyword": "Botswana", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1138", "keyword": "Botswana", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "265", "keyword": "Brazil", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1011", "keyword": "Bribery", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "3", "keyword": "brief", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "72", "keyword": "Budget support", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "32", "keyword": "Bulgaria", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1139", "keyword": "Bulgaria", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1141", "keyword": "Bulgaria", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1142", "keyword": "Bulgaria", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1108", "keyword": "Bulgarie", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "212", "keyword": "Burkina Faso", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "832", "keyword": "Burma", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "223", "keyword": "Burundi", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1109", "keyword": "Burundi", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1140", "keyword": "Burundi", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "917", "keyword": "business associations", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "234", "keyword": "Cambodia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "266", "keyword": "Cameroon", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1143", "keyword": "Cameroon", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1144", "keyword": "Cameroon", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1110", "keyword": "Cameroun", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "575", "keyword": "capacity building", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "235", "keyword": "Cape Verde", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1045", "keyword": "carbon", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "814", "keyword": "case study", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "581", "keyword": "cash based economy", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1089", "keyword": "Cash for Work programme", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "863", "keyword": "cash transfer schemes", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "994", "keyword": "Cash-based societies", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "834", "keyword": "Certification", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "263", "keyword": "Chad", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "916", "keyword": "chambers of commerce", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1053", "keyword": "Chile", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "324", "keyword": "China", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1147", "keyword": "citizen engagement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "894", "keyword": "civic engagement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "314", "keyword": "civil society", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1063", "keyword": "Climate aid", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1046", "keyword": "climate change", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "922", "keyword": "climate finance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "486", "keyword": "CNUCC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "491", "keyword": "CNUCC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "376", "keyword": "CNUCC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "634", "keyword": "CNUCC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "639", "keyword": "CNUCC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "778", "keyword": "CNUCC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "693", "keyword": "code of ethics", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1092", "keyword": "collaboration", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "975", "keyword": "collective action", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "891", "keyword": "collective donor responses", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "273", "keyword": "Colombia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "440", "keyword": "Columbia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "18", "keyword": "commissions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1078", "keyword": "commodity trading", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1149", "keyword": "community development funds", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "793", "keyword": "community monitoring", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1168", "keyword": "Community-driven development", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "298", "keyword": "Comoros", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "690", "keyword": "competition", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "918", "keyword": "complaints mechanism", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "60", "keyword": "compliance audit", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "989", "keyword": "conflict", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "695", "keyword": "conflict of interest", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "903", "keyword": "Congo", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "790", "keyword": "Conservation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "859", "keyword": "Construction", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1061", "keyword": "consultation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "828", "keyword": "control", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "134", "keyword": "Convenci", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "465", "keyword": "Convención de las Naciones Unidas contra la Corrupción", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "350", "keyword": "Convención de las Naciones Unidas contra la Corrupción", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "596", "keyword": "Convención de las Naciones Unidas contra la Corrupción", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "466", "keyword": "Convención Interamericana contra la Corrupción", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "351", "keyword": "Convención Interamericana contra la Corrupción", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "597", "keyword": "Convención Interamericana contra la Corrupción", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "483", "keyword": "convention anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "368", "keyword": "convention anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "631", "keyword": "convention anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "492", "keyword": "Convention des Nations Unies contre la corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "377", "keyword": "Convention des Nations Unies contre la corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "640", "keyword": "Convention des Nations Unies contre la corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "75", "keyword": "convention follow up", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "336", "keyword": "conventions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "446", "keyword": "conventions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "451", "keyword": "conventions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "585", "keyword": "conventions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "624", "keyword": "conventions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "759", "keyword": "conventions internationales", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "554", "keyword": "Cook Islands", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "818", "keyword": "coordination", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "867", "keyword": "corporate corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "889", "keyword": "corporate service providers", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1152", "keyword": "corporate social responsibility", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "963", "keyword": "Corrections", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "459", "keyword": "Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "344", "keyword": "Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "456", "keyword": "Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "444", "keyword": "corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "449", "keyword": "corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "583", "keyword": "corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "590", "keyword": "Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "593", "keyword": "Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "622", "keyword": "corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1068", "keyword": "Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "270", "keyword": "corruption and aid", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "20", "keyword": "corruption in aid", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "291", "keyword": "corruption in aid; donor policies", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "244", "keyword": "corruption in emergencies", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "286", "keyword": "corruption in humanitarian assistance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1155", "keyword": "corruption reporting", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "904", "keyword": "Corruption Risk Assessment", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1060", "keyword": "Corruption risk management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "983", "keyword": "corruption risks", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "971", "keyword": "cost-benefit", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "972", "keyword": "cost-effectiveness", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "442", "keyword": "Costa Rica", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "687", "keyword": "Côte d'Ivoire", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "846", "keyword": "courses", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1037", "keyword": "courts", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "961", "keyword": "Criminal justice", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "752", "keyword": "Criminalité internationale", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "988", "keyword": "crisis situation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "854", "keyword": "Croatia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1111", "keyword": "Croatie", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "268", "keyword": "Cuba", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "877", "keyword": "customs", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "13", "keyword": "Decentralisation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "840", "keyword": "Democracy and Governance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "104", "keyword": "Democratic Republic of Congo", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "715", "keyword": "démocratie", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "706", "keyword": "démocratie", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "810", "keyword": "design", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "965", "keyword": "Detention", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1069", "keyword": "Detention", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1164", "keyword": "develoment", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "866", "keyword": "development", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1062", "keyword": "Development aid", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "47", "keyword": "development assistance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "312", "keyword": "development cooperation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "707", "keyword": "développement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "716", "keyword": "développement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "378", "keyword": "diffusion des connaissances", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "493", "keyword": "diffusion des connaissances", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "641", "keyword": "diffusion des connaissances", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "494", "keyword": "dispositions institutionnelles", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "379", "keyword": "dispositions institutionnelles", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "642", "keyword": "dispositions institutionnelles", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "804", "keyword": "Donor", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "311", "keyword": "donor anti-corruption strategies", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "269", "keyword": "donor coordination", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "315", "keyword": "donor country due dilligence", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1082", "keyword": "donor policies", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "835", "keyword": "donors", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "999", "keyword": "e-governance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "576", "keyword": "East Africa", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "735", "keyword": "East Asia", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "986", "keyword": "ebola", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1085", "keyword": "economic opportunities", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "454", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "501", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "498", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "506", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "509", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "512", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "461", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "470", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "472", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "476", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "479", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "514", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "397", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "588", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "595", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "601", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "603", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "607", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "610", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "646", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "649", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "654", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "657", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "660", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "662", "keyword": "education", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "49", "keyword": "education sector", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "544", "keyword": "EFCC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "768", "keyword": "égalité homme/femme", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "247", "keyword": "Egypt", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "39", "keyword": "Elections", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "15", "keyword": "emergencies", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1047", "keyword": "emissions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1097", "keyword": "empirical studies", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1064", "keyword": "energy sector", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "557", "keyword": "enforcement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "23", "keyword": "english", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1013", "keyword": "Enquêtes", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1070", "keyword": "Enquêtes", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "761", "keyword": "entraide judiciaire", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "774", "keyword": "entraide judiciaire", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "794", "keyword": "environmental crime", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1093", "keyword": "environmental decision making", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1040", "keyword": "Environmental governance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1042", "keyword": "Environmental impact assessments", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1094", "keyword": "environmental regulation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "94", "keyword": "Equatorial Guinea", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "253", "keyword": "Eritrea", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "241", "keyword": "Estonia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "530", "keyword": "ethics", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "296", "keyword": "Ethiopia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "31", "keyword": "european union", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "567", "keyword": "evaluate", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "560", "keyword": "evaluation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "782", "keyword": "Evaluation d'impact", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1017", "keyword": "Évaluatuon", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1071", "keyword": "Évaluatuon", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "564", "keyword": "evidence", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "801", "keyword": "experience-based data", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1157", "keyword": "export decisions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "58", "keyword": "external audit", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "433", "keyword": "external auditing", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "923", "keyword": "extractive industries", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "935", "keyword": "farmacéuticos", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "939", "keyword": "farmacéuticos", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "946", "keyword": "farmacéuticos", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "803", "keyword": "FATF evaluation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "951", "keyword": "FCPA", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "271", "keyword": "Fiji", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "897", "keyword": "finance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "59", "keyword": "financial audit", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "819", "keyword": "financial crimes", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "580", "keyword": "financial industry", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "579", "keyword": "financial intelligence units", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "993", "keyword": "Financial intermediaries", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "573", "keyword": "financing political campaigns", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "52", "keyword": "fisheries", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "950", "keyword": "Foreign bribery", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "697", "keyword": "foreign exchange control regimes", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1156", "keyword": "foreign investment", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "833", "keyword": "Forest Governance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "27", "keyword": "forestry", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "10", "keyword": "fragile states", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "260", "keyword": "France", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "824", "keyword": "fraud", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "434", "keyword": "fraud detection", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "949", "keyword": "freedom of information", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "453", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "499", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "502", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "507", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "510", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "513", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "490", "keyword": "French", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "515", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "497", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "400", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "626", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "638", "keyword": "French", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "645", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "647", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "650", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "655", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "658", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "661", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "663", "keyword": "french", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "785", "keyword": "Garantie de qualité", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "926", "keyword": "gas", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "733", "keyword": "GBS", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1036", "keyword": "gender", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1003", "keyword": "Gender inequality", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "732", "keyword": "General Budget Support", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "95", "keyword": "Georgia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "321", "keyword": "Germany", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "33", "keyword": "Ghana", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "797", "keyword": "Global Corruption Barometer", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1038", "keyword": "global integrity standard", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "748", "keyword": "good governance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "708", "keyword": "gouvernance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "718", "keyword": "gouvernance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "770", "keyword": "gouvernance des entreprises", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1028", "keyword": "Gouvernance forestière", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1031", "keyword": "Gouvernance forestière", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1034", "keyword": "Gouvernance forestière", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "427", "keyword": "governance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "987", "keyword": "governance challenges", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1160", "keyword": "Governance regime", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "429", "keyword": "government", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "280", "keyword": "grand corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "261", "keyword": "Greece", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "294", "keyword": "Guatemala", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "289", "keyword": "Guyana", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "996", "keyword": "Hawalas", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1058", "keyword": "hazardous waste", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "408", "keyword": "health", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "523", "keyword": "health", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "669", "keyword": "health", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "41", "keyword": "health sector", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "956", "keyword": "high-level corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "508", "keyword": "Honduras", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "210", "keyword": "Hong Kong", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "826", "keyword": "human resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1086", "keyword": "human security", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "66", "keyword": "humanitarian aid", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1065", "keyword": "hydropower", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "487", "keyword": "IACAC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "372", "keyword": "IACAC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "635", "keyword": "IACAC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "930", "keyword": "ICT", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "689", "keyword": "ICTs", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "900", "keyword": "illegal drugs", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "886", "keyword": "illegal fishing", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1057", "keyword": "illegal trade", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1098", "keyword": "illegal wildlife trade", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1101", "keyword": "Illegitimate debt", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "728", "keyword": "illicit enrichment", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "6", "keyword": "illicit financial flows", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "435", "keyword": "illicit flows", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "562", "keyword": "impact", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "830", "keyword": "incentives", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "236", "keyword": "India", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "783", "keyword": "Indicateur", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "485", "keyword": "indicateurs de performance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "370", "keyword": "indicateurs de performance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "633", "keyword": "indicateurs de performance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "568", "keyword": "indicator", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "914", "keyword": "indicators", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "796", "keyword": "indices", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "295", "keyword": "indigenous people", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "48", "keyword": "Indonesia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1112", "keyword": "Indonésie", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1018", "keyword": "Industrial fishing", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "990", "keyword": "industries extractives", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "913", "keyword": "informal justice systems", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "858", "keyword": "Infrastructure", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "83", "keyword": "institutional arrangements", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "901", "keyword": "institutional capacity", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1039", "keyword": "integreity systems", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "691", "keyword": "integrity agreements", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1083", "keyword": "integrity in aid", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "317", "keyword": "international conventions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "727", "keyword": "international cooperation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "5", "keyword": "international drivers", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "86", "keyword": "international drivers of corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "954", "keyword": "international finance centres", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "857", "keyword": "international legal instruments on corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1079", "keyword": "international trade", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "805", "keyword": "Interventions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "743", "keyword": "Investigation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "574", "keyword": "investigative journalism", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "68", "keyword": "Iran", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "864", "keyword": "Iraq", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1002", "keyword": "Isis", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "257", "keyword": "Israel", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "326", "keyword": "issues", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "233", "keyword": "Japan", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "890", "keyword": "Joint donor responses", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "821", "keyword": "Joint response to corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "256", "keyword": "Jordan", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "925", "keyword": "judges", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1104", "keyword": "Judiciaire", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1125", "keyword": "Judiciaire", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1127", "keyword": "Judiciaire", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1133", "keyword": "Judiciaire", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1135", "keyword": "Judiciaire", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "524", "keyword": "judicial corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "527", "keyword": "judicial corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "412", "keyword": "judicial corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "615", "keyword": "judicial corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "670", "keyword": "judicial corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "279", "keyword": "judicial sector", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1014", "keyword": "Judiciare", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1072", "keyword": "Judiciare", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "876", "keyword": "judiciary", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1043", "keyword": "Junior mining companies", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "525", "keyword": "justice", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "528", "keyword": "justice", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "413", "keyword": "justice", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "616", "keyword": "justice", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "671", "keyword": "justice", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1073", "keyword": "Justice", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1012", "keyword": "Justice pénale", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "255", "keyword": "justice sector", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "226", "keyword": "Kazakhstan", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "106", "keyword": "Kenya", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1113", "keyword": "Kenya", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "300", "keyword": "Kiribati", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "802", "keyword": "Kleptocracy", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "82", "keyword": "knowledge dissemination", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "287", "keyword": "knowledge management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "703", "keyword": "Kosovo", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "227", "keyword": "Kyrgyz Republic", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "848", "keyword": "Kyrgyzstan", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "462", "keyword": "La Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "347", "keyword": "La Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "627", "keyword": "La Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "777", "keyword": "Lanceur d?alerte", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "947", "keyword": "land", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "931", "keyword": "Land administration", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "272", "keyword": "Lao PDR", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "37", "keyword": "Latin America", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "817", "keyword": "law enforcement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1008", "keyword": "leadership", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "870", "keyword": "learning", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1021", "keyword": "Lebanon", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "747", "keyword": "legal reform", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "746", "keyword": "legislation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "772", "keyword": "législation et conventions internationales", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "787", "keyword": "Legitimacy", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "131", "keyword": "les ressources naturelles et les p", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "463", "keyword": "les ressources naturelles et les pêches", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "348", "keyword": "les ressources naturelles et les pêches", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "628", "keyword": "les ressources naturelles et les pêches", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "250", "keyword": "Liberia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "740", "keyword": "Libya", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "887", "keyword": "literature", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "921", "keyword": "literature review", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1162", "keyword": "Lobbying", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1161", "keyword": "Lobbying regime", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "56", "keyword": "lobbyism", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1020", "keyword": "local government", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "150", "keyword": "M", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "566", "keyword": "M&E", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "229", "keyword": "Macedonia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "232", "keyword": "Madagascar", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "966", "keyword": "mainstreaming", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "292", "keyword": "mainstreaming anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1114", "keyword": "Malaisie", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "264", "keyword": "Malawi", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "237", "keyword": "Malaysia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "310", "keyword": "Maldives", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "214", "keyword": "Mali", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "723", "keyword": "marine fisheries", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "942", "keyword": "Marruecos", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "301", "keyword": "Marshall Islands", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "561", "keyword": "measurement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "847", "keyword": "measurement tools", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1159", "keyword": "measures", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "424", "keyword": "measuring", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "482", "keyword": "Mécanisme de révision", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "367", "keyword": "Mécanisme de révision", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "630", "keyword": "Mécanisme de révision", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "135", "keyword": "Mecanismo de Seguimiento de la Convenci", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "467", "keyword": "Mecanismo de Seguimiento de la Convención Interamericana contra la Corrupción", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "352", "keyword": "Mecanismo de Seguimiento de la Convención Interamericana contra la Corrupción", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "598", "keyword": "Mecanismo de Seguimiento de la Convención Interamericana contra la Corrupción", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "872", "keyword": "media", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "934", "keyword": "medicinas", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "938", "keyword": "medicinas", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "944", "keyword": "medicinas", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "849", "keyword": "medicines", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1041", "keyword": "Mergers and acquisitions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "488", "keyword": "MESICIC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "373", "keyword": "MESICIC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "636", "keyword": "MESICIC", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "812", "keyword": "methodology", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "230", "keyword": "Mexico", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1115", "keyword": "Mexique", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "302", "keyword": "Micronesia, Federated States of", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "738", "keyword": "Middle East", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "838", "keyword": "Middle East and North Africa", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1084", "keyword": "migration", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1000", "keyword": "military", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "861", "keyword": "minerals", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "860", "keyword": "mining", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1150", "keyword": "mining sector", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1080", "keyword": "mitigation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "869", "keyword": "mixed methods", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "967", "keyword": "MLA", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "242", "keyword": "Moldova", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "437", "keyword": "money in politics", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "320", "keyword": "money laundering", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "844", "keyword": "Mongolia", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "565", "keyword": "monitoring", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "19", "keyword": "monitoring aid", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1169", "keyword": "Monitoring and evaluation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "231", "keyword": "Morocco", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "825", "keyword": "motivation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "758", "keyword": "mouvements illicites de capitaux", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "34", "keyword": "Mozambique", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "822", "keyword": "Mutual accountability", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "318", "keyword": "mutual legal assistance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "276", "keyword": "Myanmar", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "88", "keyword": "Namibia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "924", "keyword": "national anti-corruption strategy", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "955", "keyword": "natrual resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "518", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "464", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "519", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "517", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "406", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "521", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "520", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "629", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "664", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "665", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "666", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "667", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "668", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "678", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "686", "keyword": "natural resource management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "28", "keyword": "natural resources", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "29", "keyword": "natural-resources", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "303", "keyword": "Nauru", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "89", "keyword": "Nepal", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1116", "keyword": "Népal", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "275", "keyword": "Netherlands", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1022", "keyword": "New Deal", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "837", "keyword": "ngo", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "96", "keyword": "Nicaragua", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "215", "keyword": "Niger", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "65", "keyword": "Nigeria", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "709", "keyword": "Nigéria", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "719", "keyword": "Nigéria", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "781", "keyword": "Normes d'évaluation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "773", "keyword": "normes mondiales", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "739", "keyword": "North Africa", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "547", "keyword": "Norway", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "70", "keyword": "NRM", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "548", "keyword": "obiang", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1100", "keyword": "odius debt", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1023", "keyword": "OECD", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "762", "keyword": "offre de corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1052", "keyword": "OGP", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "26", "keyword": "oil", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1153", "keyword": "oil and gas", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "741", "keyword": "ombudsman", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1154", "keyword": "online corruption reporting", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1049", "keyword": "open government", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "808", "keyword": "Operational guidance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "495", "keyword": "organes / services anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "380", "keyword": "organes / services anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "643", "keyword": "organes / services anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "9", "keyword": "organised crime", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1117", "keyword": "Ouganda", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "694", "keyword": "overseas accounts and property", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "731", "keyword": "PAF", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "97", "keyword": "Pakistan", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1118", "keyword": "Pakistan", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "304", "keyword": "Palau", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "820", "keyword": "Palestine", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1119", "keyword": "Palestine", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "441", "keyword": "Panama", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "251", "keyword": "Papua New Guinea", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "443", "keyword": "Paraguay", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "823", "keyword": "Paris decloration", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "873", "keyword": "parliament", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "895", "keyword": "participation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "688", "keyword": "participatory approaches", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "766", "keyword": "passation de marchés", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1016", "keyword": "Peines", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1075", "keyword": "Peines", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1074", "keyword": "pénale", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "874", "keyword": "people's engagement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "545", "keyword": "PEP", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "540", "keyword": "PEPs", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "285", "keyword": "per diems", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "569", "keyword": "performance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "730", "keyword": "Performance Assessment Framework", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "61", "keyword": "performance audit", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "76", "keyword": "performance indicators", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "36", "keyword": "Peru", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "503", "keyword": "pets", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "388", "keyword": "pets", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "651", "keyword": "pets", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1054", "keyword": "petty bribes", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "92", "keyword": "PFM", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "850", "keyword": "pharmaceuticals", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "103", "keyword": "Philippines", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1120", "keyword": "Philippines", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "219", "keyword": "Poland", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "101", "keyword": "police", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1076", "keyword": "police", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "297", "keyword": "police corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "973", "keyword": "policy", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "908", "keyword": "Policy coherence", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "81", "keyword": "policy implementation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1091", "keyword": "Policy monitoring", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "8", "keyword": "Political corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "681", "keyword": "political corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "974", "keyword": "political economy", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "40", "keyword": "political finance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "38", "keyword": "political parties", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "51", "keyword": "political party finance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "968", "keyword": "political will", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "541", "keyword": "Politically Exposed Persons", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "978", "keyword": "politics", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "754", "keyword": "politique publiques de développement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "786", "keyword": "Post-conflict", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "884", "keyword": "post-conflict countries", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "958", "keyword": "Post-Soviet countries", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "865", "keyword": "poverty", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "84", "keyword": "practice insight", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "556", "keyword": "prevention", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "751", "keyword": "prévention de la criminalité", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "21", "keyword": "private sector", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1015", "keyword": "Procès", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1077", "keyword": "Procès", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "248", "keyword": "procurement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "692", "keyword": "professional codes of conduct", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "800", "keyword": "programming", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "799", "keyword": "project cycle", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1170", "keyword": "Project design", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "744", "keyword": "prosecution", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "960", "keyword": "proxy", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "915", "keyword": "proxy indicators", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "577", "keyword": "public administration", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "53", "keyword": "Public Expenditure Tracking", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "45", "keyword": "public financial management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "293", "keyword": "public financial management (PFM)", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "474", "keyword": "public financial management and procurement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "984", "keyword": "public infrastructure", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "985", "keyword": "public investment", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "856", "keyword": "public participation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "278", "keyword": "public procurement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "63", "keyword": "public resources", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "998", "keyword": "public sector", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "806", "keyword": "public sector reform", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "789", "keyword": "Reconstruction", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "755", "keyword": "Recouvrement d?avoirs", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "775", "keyword": "recouvrement d?avoirs", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1006", "keyword": "recruitment", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "109", "keyword": "REDD", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "982", "keyword": "REDD Integrity", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "750", "keyword": "REDD+", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "792", "keyword": "REDD+", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1026", "keyword": "REDD+", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1029", "keyword": "REDD+", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1035", "keyword": "REDD+", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "979", "keyword": "reform", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "883", "keyword": "reforms", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "997", "keyword": "Remittances", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1007", "keyword": "removal", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "726", "keyword": "repatriation of stolen funds", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "288", "keyword": "reporting", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1027", "keyword": "République Démocratique du Congo", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1032", "keyword": "République Démocratique du Congo", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1033", "keyword": "République Démocratique du Congo", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "980", "keyword": "research", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "991", "keyword": "ressources naturelles", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "868", "keyword": "result chain", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "44", "keyword": "revenue administration", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "807", "keyword": "review", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "73", "keyword": "Review mechanism", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "959", "keyword": "revolving doors", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "948", "keyword": "Right to information", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "841", "keyword": "Rights and Legal Institutions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "701", "keyword": "risk assessment", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "702", "keyword": "risk management", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "221", "keyword": "Romania", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "862", "keyword": "rural communities", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "224", "keyword": "Russian Federation", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "245", "keyword": "Rwanda", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "431", "keyword": "SAI", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "902", "keyword": "salaries", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "305", "keyword": "Samoa", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "745", "keyword": "sanctions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1163", "keyword": "sanitation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "582", "keyword": "São Tomé and Principé", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "542", "keyword": "secrecy jurisdictions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "767", "keyword": "secteur éducatif", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "765", "keyword": "secteur privé", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "769", "keyword": "secteur privé", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "932", "keyword": "sector de salud", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "936", "keyword": "sector de salud", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "940", "keyword": "Sector de salud", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "943", "keyword": "sector de salud", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "853", "keyword": "sectors", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1165", "keyword": "security", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1145", "keyword": "self-assessment tools", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "216", "keyword": "Senegal", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1121", "keyword": "Sénégal", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "763", "keyword": "Sensibilisation et formation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "22", "keyword": "Serbia and Montenegro", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "851", "keyword": "service delivery", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "953", "keyword": "Settlements", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "299", "keyword": "Seychelles", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1166", "keyword": "shadow value chains", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "879", "keyword": "shipping", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "511", "keyword": "Sierra Leone", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "211", "keyword": "Singapore", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "220", "keyword": "Slovak Republic", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1087", "keyword": "Slovakia", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1122", "keyword": "Slovaquie", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "898", "keyword": "SME", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1001", "keyword": "smuggling", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1148", "keyword": "social accountability", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1151", "keyword": "social benefits", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "920", "keyword": "social norms", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "836", "keyword": "social sectors", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "725", "keyword": "social trust", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "764", "keyword": "société civile et ONG", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1055", "keyword": "software", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "306", "keyword": "Solomon Islands", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "995", "keyword": "Somalia", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "35", "keyword": "South Africa", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "734", "keyword": "South Asia", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "238", "keyword": "South Korea", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "845", "keyword": "South Sudan", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "839", "keyword": "South-East Europe", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "842", "keyword": "Southeast Asia", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "881", "keyword": "Southern Africa", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1088", "keyword": "Special Criminal Court", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "430", "keyword": "specialised anti-corruption bodies", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1102", "keyword": "specialised anti-corruption courts", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "957", "keyword": "spending efficiency", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "239", "keyword": "Sri Lanka", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "788", "keyword": "Stability", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1099", "keyword": "state-backed debts", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1019", "keyword": "state-corporate crime", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "969", "keyword": "stolen assets", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "753", "keyword": "Stratégies des bailleurs de fonds", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "816", "keyword": "strategy", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "736", "keyword": "Sub-Saharan Africa", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "69", "keyword": "Sudan", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "712", "keyword": "Suede", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "484", "keyword": "suivi de la convention", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "369", "keyword": "suivi de la convention", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "632", "keyword": "suivi de la convention", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "780", "keyword": "Suivi et évaluation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "316", "keyword": "supply side", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "57", "keyword": "Supreme Audit Institution", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "432", "keyword": "supreme audit institutions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "563", "keyword": "survey", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "274", "keyword": "Sweden", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "252", "keyword": "Taiwan", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "243", "keyword": "Tajikistan", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "475", "keyword": "Tanzania", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "791", "keyword": "Tanzanie", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1123", "keyword": "Tanzanie", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "290", "keyword": "tax administration", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "909", "keyword": "Tax avoidance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "555", "keyword": "tax evasion", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "911", "keyword": "Tax exemptions", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "436", "keyword": "tax havens", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "907", "keyword": "Tax incentives", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "912", "keyword": "Tax minimisation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "277", "keyword": "taxation", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "970", "keyword": "technical assistance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1056", "keyword": "technology", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "928", "keyword": "telecommunications", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "992", "keyword": "Terrorism financing", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "714", "keyword": "test", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1103", "keyword": "Thailand", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1124", "keyword": "Thaïlande", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1081", "keyword": "The United Nations Convention Against Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "784", "keyword": "Théorie du changement", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "811", "keyword": "theory of change", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "815", "keyword": "theory-based evalution", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "307", "keyword": "Tonga", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "813", "keyword": "tool", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "878", "keyword": "trade", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1158", "keyword": "trade flows", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "910", "keyword": "Trade mispricing", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "899", "keyword": "trafficking", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "964", "keyword": "trail", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1", "keyword": "training", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "684", "keyword": "training", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "905", "keyword": "Transfer pricing", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1051", "keyword": "transpare", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "724", "keyword": "transparency", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "927", "keyword": "Transparency and Accountability Initiative", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "892", "keyword": "transparency and accountability policy", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "798", "keyword": "Transparency International", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "829", "keyword": "travel", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "906", "keyword": "Treaty shopping", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "325", "keyword": "trends", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1146", "keyword": "trial", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "981", "keyword": "trials", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1105", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1126", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1128", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1129", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1130", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1134", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1136", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "729", "keyword": "Tunisia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "737", "keyword": "Turkey", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "308", "keyword": "Tuvalu", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "218", "keyword": "Uganda", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "952", "keyword": "UKBA", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "225", "keyword": "Ukraine", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "531", "keyword": "uncac", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "423", "keyword": "uncac", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "559", "keyword": "uncac review mechanism", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "110", "keyword": "United Kingdom", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "79", "keyword": "United Nations Convention against Corruption", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "207", "keyword": "United States of America", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1048", "keyword": "Uruguay", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1059", "keyword": "Uzbekistan", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1167", "keyword": "value chains", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "977", "keyword": "values", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "309", "keyword": "Vanuatu", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "1090", "keyword": "Vertical integration", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "246", "keyword": "Vietnam", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "756", "keyword": "vigilance des pays donateurs", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1044", "keyword": "Violence", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "827", "keyword": "wages", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "722", "keyword": "water sector", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "426", "keyword": "website", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "425", "keyword": "website ethics", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "919", "keyword": "whistleblower protection", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "54", "keyword": "whistleblowing", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "87", "keyword": "wildlife", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1095", "keyword": "wildlife crime", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1009", "keyword": "Wildlife trafficking", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "1010", "keyword": "Wildlife Violations", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "254", "keyword": "Yemen", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "885", "keyword": "youth", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "98", "keyword": "Zambia", "isCountry": "1" }
-{ "_type": "keyword", "oldId": "896", "keyword": "Zero tolerance", "isCountry": "0" }
-{ "_type": "keyword", "oldId": "262", "keyword": "Zimbabwe", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-549", "keyword": "abubakar", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-831", "keyword": "abuse of per diems", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-282", "keyword": "ACA", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-428", "keyword": "academic", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-283", "keyword": "ACC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1050", "keyword": "access to information", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-64", "keyword": "accountability", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-776", "keyword": "actes répréhensibles", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-749", "keyword": "administrative reform", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-105", "keyword": "Afghanistan", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-720", "keyword": "Afghanistan", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-704", "keyword": "Afghanistan", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-546", "keyword": "africa", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-717", "keyword": "Afrique", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-779", "keyword": "Agences anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-71", "keyword": "Aid", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1024", "keyword": "Aid effectiveness", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-710", "keyword": "aide", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-721", "keyword": "aide publique au développement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-705", "keyword": "Aide publique au développement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-249", "keyword": "Albania", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-757", "keyword": "Allemagne", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-572", "keyword": "allowances", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-30", "keyword": "Angola", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-457", "keyword": "Anti-Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-345", "keyword": "anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-450", "keyword": "anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-591", "keyword": "Anti-Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1025", "keyword": "Anti-Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1030", "keyword": "Anti-Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-102", "keyword": "anti-corruption agencies", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1004", "keyword": "anti-corruption agency", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-313", "keyword": "anti-corruption coalitions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-281", "keyword": "Anti-Corruption Commissions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-74", "keyword": "anti-corruption convention", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-17", "keyword": "anti-corruption conventions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-875", "keyword": "anti-corruption courts", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1137", "keyword": "anti-corruption courts", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1066", "keyword": "anti-corruption measures", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-80", "keyword": "anti-corruption policy", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-558", "keyword": "anti-corruption strategy", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-284", "keyword": "Anti-corruption training", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-543", "keyword": "anti-money laundering", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1096", "keyword": "anti-poaching", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-933", "keyword": "anticorrupción", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-937", "keyword": "anticorrupción", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-941", "keyword": "anticorrupción", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-945", "keyword": "anticorrupción", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-700", "keyword": "Antigua and Barbuda", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1005", "keyword": "appointment", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-795", "keyword": "appraisal", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-42", "keyword": "Argentina", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-882", "keyword": "Asia", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-809", "keyword": "assessment", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-85", "keyword": "Asset Declarations", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-698", "keyword": "asset disclosure regime", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-699", "keyword": "asset disclosure schemes", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-319", "keyword": "asset recovery", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-976", "keyword": "attitudes", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-62", "keyword": "audit", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-871", "keyword": "audit cycle", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-893", "keyword": "auditing", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-742", "keyword": "Auditor General", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-209", "keyword": "Australia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-322", "keyword": "awareness raising", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-99", "keyword": "Azerbaijan", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-258", "keyword": "Bahrain", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-217", "keyword": "Bangladesh", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1106", "keyword": "Bangladesh", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1131", "keyword": "Bangladesh", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1132", "keyword": "Bangladesh", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-327", "keyword": "banking", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-323", "keyword": "behaviour changing", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-228", "keyword": "Benin", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-843", "keyword": "Bhutan", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1067", "keyword": "Bilateral donor support", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-760", "keyword": "blanchiment d?argent", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-771", "keyword": "Blanchiment d?argent", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-696", "keyword": "blind trust", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-43", "keyword": "Bolivia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-550", "keyword": "bongo", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-888", "keyword": "border control", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-880", "keyword": "borders", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-259", "keyword": "Bosnia and Herzegovina", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-208", "keyword": "Botswana", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1107", "keyword": "Botswana", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1138", "keyword": "Botswana", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-265", "keyword": "Brazil", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1011", "keyword": "Bribery", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-3", "keyword": "brief", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-72", "keyword": "Budget support", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-32", "keyword": "Bulgaria", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1139", "keyword": "Bulgaria", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1141", "keyword": "Bulgaria", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1142", "keyword": "Bulgaria", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1108", "keyword": "Bulgarie", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-212", "keyword": "Burkina Faso", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-832", "keyword": "Burma", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-223", "keyword": "Burundi", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1109", "keyword": "Burundi", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1140", "keyword": "Burundi", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-917", "keyword": "business associations", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-234", "keyword": "Cambodia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-266", "keyword": "Cameroon", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1143", "keyword": "Cameroon", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1144", "keyword": "Cameroon", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1110", "keyword": "Cameroun", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-575", "keyword": "capacity building", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-235", "keyword": "Cape Verde", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1045", "keyword": "carbon", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-814", "keyword": "case study", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-581", "keyword": "cash based economy", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1089", "keyword": "Cash for Work programme", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-863", "keyword": "cash transfer schemes", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-994", "keyword": "Cash-based societies", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-834", "keyword": "Certification", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-263", "keyword": "Chad", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-916", "keyword": "chambers of commerce", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1053", "keyword": "Chile", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-324", "keyword": "China", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1147", "keyword": "citizen engagement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-894", "keyword": "civic engagement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-314", "keyword": "civil society", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1063", "keyword": "Climate aid", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1046", "keyword": "climate change", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-922", "keyword": "climate finance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-486", "keyword": "CNUCC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-491", "keyword": "CNUCC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-376", "keyword": "CNUCC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-634", "keyword": "CNUCC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-639", "keyword": "CNUCC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-778", "keyword": "CNUCC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-693", "keyword": "code of ethics", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1092", "keyword": "collaboration", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-975", "keyword": "collective action", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-891", "keyword": "collective donor responses", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-273", "keyword": "Colombia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-440", "keyword": "Columbia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-18", "keyword": "commissions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1078", "keyword": "commodity trading", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1149", "keyword": "community development funds", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-793", "keyword": "community monitoring", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1168", "keyword": "Community-driven development", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-298", "keyword": "Comoros", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-690", "keyword": "competition", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-918", "keyword": "complaints mechanism", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-60", "keyword": "compliance audit", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-989", "keyword": "conflict", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-695", "keyword": "conflict of interest", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-903", "keyword": "Congo", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-790", "keyword": "Conservation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-859", "keyword": "Construction", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1061", "keyword": "consultation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-828", "keyword": "control", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-134", "keyword": "Convenci", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-465", "keyword": "Convención de las Naciones Unidas contra la Corrupción", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-350", "keyword": "Convención de las Naciones Unidas contra la Corrupción", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-596", "keyword": "Convención de las Naciones Unidas contra la Corrupción", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-466", "keyword": "Convención Interamericana contra la Corrupción", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-351", "keyword": "Convención Interamericana contra la Corrupción", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-597", "keyword": "Convención Interamericana contra la Corrupción", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-483", "keyword": "convention anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-368", "keyword": "convention anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-631", "keyword": "convention anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-492", "keyword": "Convention des Nations Unies contre la corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-377", "keyword": "Convention des Nations Unies contre la corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-640", "keyword": "Convention des Nations Unies contre la corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-75", "keyword": "convention follow up", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-336", "keyword": "conventions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-446", "keyword": "conventions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-451", "keyword": "conventions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-585", "keyword": "conventions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-624", "keyword": "conventions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-759", "keyword": "conventions internationales", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-554", "keyword": "Cook Islands", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-818", "keyword": "coordination", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-867", "keyword": "corporate corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-889", "keyword": "corporate service providers", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1152", "keyword": "corporate social responsibility", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-963", "keyword": "Corrections", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-459", "keyword": "Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-344", "keyword": "Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-456", "keyword": "Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-444", "keyword": "corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-449", "keyword": "corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-583", "keyword": "corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-590", "keyword": "Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-593", "keyword": "Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-622", "keyword": "corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1068", "keyword": "Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-270", "keyword": "corruption and aid", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-20", "keyword": "corruption in aid", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-291", "keyword": "corruption in aid; donor policies", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-244", "keyword": "corruption in emergencies", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-286", "keyword": "corruption in humanitarian assistance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1155", "keyword": "corruption reporting", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-904", "keyword": "Corruption Risk Assessment", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1060", "keyword": "Corruption risk management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-983", "keyword": "corruption risks", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-971", "keyword": "cost-benefit", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-972", "keyword": "cost-effectiveness", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-442", "keyword": "Costa Rica", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-687", "keyword": "Côte d'Ivoire", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-846", "keyword": "courses", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1037", "keyword": "courts", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-961", "keyword": "Criminal justice", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-752", "keyword": "Criminalité internationale", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-988", "keyword": "crisis situation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-854", "keyword": "Croatia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1111", "keyword": "Croatie", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-268", "keyword": "Cuba", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-877", "keyword": "customs", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-13", "keyword": "Decentralisation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-840", "keyword": "Democracy and Governance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-104", "keyword": "Democratic Republic of Congo", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-715", "keyword": "démocratie", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-706", "keyword": "démocratie", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-810", "keyword": "design", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-965", "keyword": "Detention", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1069", "keyword": "Detention", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1164", "keyword": "develoment", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-866", "keyword": "development", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1062", "keyword": "Development aid", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-47", "keyword": "development assistance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-312", "keyword": "development cooperation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-707", "keyword": "développement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-716", "keyword": "développement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-378", "keyword": "diffusion des connaissances", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-493", "keyword": "diffusion des connaissances", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-641", "keyword": "diffusion des connaissances", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-494", "keyword": "dispositions institutionnelles", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-379", "keyword": "dispositions institutionnelles", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-642", "keyword": "dispositions institutionnelles", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-804", "keyword": "Donor", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-311", "keyword": "donor anti-corruption strategies", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-269", "keyword": "donor coordination", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-315", "keyword": "donor country due dilligence", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1082", "keyword": "donor policies", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-835", "keyword": "donors", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-999", "keyword": "e-governance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-576", "keyword": "East Africa", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-735", "keyword": "East Asia", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-986", "keyword": "ebola", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1085", "keyword": "economic opportunities", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-454", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-501", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-498", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-506", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-509", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-512", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-461", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-470", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-472", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-476", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-479", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-514", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-397", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-588", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-595", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-601", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-603", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-607", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-610", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-646", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-649", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-654", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-657", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-660", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-662", "keyword": "education", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-49", "keyword": "education sector", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-544", "keyword": "EFCC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-768", "keyword": "égalité homme/femme", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-247", "keyword": "Egypt", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-39", "keyword": "Elections", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-15", "keyword": "emergencies", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1047", "keyword": "emissions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1097", "keyword": "empirical studies", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1064", "keyword": "energy sector", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-557", "keyword": "enforcement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-23", "keyword": "english", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1013", "keyword": "Enquêtes", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1070", "keyword": "Enquêtes", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-761", "keyword": "entraide judiciaire", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-774", "keyword": "entraide judiciaire", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-794", "keyword": "environmental crime", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1093", "keyword": "environmental decision making", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1040", "keyword": "Environmental governance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1042", "keyword": "Environmental impact assessments", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1094", "keyword": "environmental regulation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-94", "keyword": "Equatorial Guinea", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-253", "keyword": "Eritrea", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-241", "keyword": "Estonia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-530", "keyword": "ethics", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-296", "keyword": "Ethiopia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-31", "keyword": "european union", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-567", "keyword": "evaluate", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-560", "keyword": "evaluation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-782", "keyword": "Evaluation d'impact", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1017", "keyword": "Évaluatuon", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1071", "keyword": "Évaluatuon", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-564", "keyword": "evidence", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-801", "keyword": "experience-based data", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1157", "keyword": "export decisions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-58", "keyword": "external audit", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-433", "keyword": "external auditing", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-923", "keyword": "extractive industries", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-935", "keyword": "farmacéuticos", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-939", "keyword": "farmacéuticos", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-946", "keyword": "farmacéuticos", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-803", "keyword": "FATF evaluation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-951", "keyword": "FCPA", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-271", "keyword": "Fiji", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-897", "keyword": "finance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-59", "keyword": "financial audit", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-819", "keyword": "financial crimes", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-580", "keyword": "financial industry", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-579", "keyword": "financial intelligence units", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-993", "keyword": "Financial intermediaries", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-573", "keyword": "financing political campaigns", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-52", "keyword": "fisheries", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-950", "keyword": "Foreign bribery", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-697", "keyword": "foreign exchange control regimes", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1156", "keyword": "foreign investment", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-833", "keyword": "Forest Governance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-27", "keyword": "forestry", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-10", "keyword": "fragile states", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-260", "keyword": "France", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-824", "keyword": "fraud", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-434", "keyword": "fraud detection", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-949", "keyword": "freedom of information", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-453", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-499", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-502", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-507", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-510", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-513", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-490", "keyword": "French", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-515", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-497", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-400", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-626", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-638", "keyword": "French", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-645", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-647", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-650", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-655", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-658", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-661", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-663", "keyword": "french", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-785", "keyword": "Garantie de qualité", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-926", "keyword": "gas", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-733", "keyword": "GBS", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1036", "keyword": "gender", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1003", "keyword": "Gender inequality", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-732", "keyword": "General Budget Support", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-95", "keyword": "Georgia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-321", "keyword": "Germany", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-33", "keyword": "Ghana", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-797", "keyword": "Global Corruption Barometer", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1038", "keyword": "global integrity standard", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-748", "keyword": "good governance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-708", "keyword": "gouvernance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-718", "keyword": "gouvernance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-770", "keyword": "gouvernance des entreprises", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1028", "keyword": "Gouvernance forestière", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1031", "keyword": "Gouvernance forestière", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1034", "keyword": "Gouvernance forestière", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-427", "keyword": "governance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-987", "keyword": "governance challenges", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1160", "keyword": "Governance regime", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-429", "keyword": "government", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-280", "keyword": "grand corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-261", "keyword": "Greece", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-294", "keyword": "Guatemala", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-289", "keyword": "Guyana", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-996", "keyword": "Hawalas", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1058", "keyword": "hazardous waste", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-408", "keyword": "health", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-523", "keyword": "health", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-669", "keyword": "health", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-41", "keyword": "health sector", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-956", "keyword": "high-level corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-508", "keyword": "Honduras", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-210", "keyword": "Hong Kong", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-826", "keyword": "human resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1086", "keyword": "human security", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-66", "keyword": "humanitarian aid", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1065", "keyword": "hydropower", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-487", "keyword": "IACAC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-372", "keyword": "IACAC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-635", "keyword": "IACAC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-930", "keyword": "ICT", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-689", "keyword": "ICTs", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-900", "keyword": "illegal drugs", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-886", "keyword": "illegal fishing", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1057", "keyword": "illegal trade", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1098", "keyword": "illegal wildlife trade", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1101", "keyword": "Illegitimate debt", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-728", "keyword": "illicit enrichment", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-6", "keyword": "illicit financial flows", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-435", "keyword": "illicit flows", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-562", "keyword": "impact", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-830", "keyword": "incentives", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-236", "keyword": "India", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-783", "keyword": "Indicateur", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-485", "keyword": "indicateurs de performance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-370", "keyword": "indicateurs de performance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-633", "keyword": "indicateurs de performance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-568", "keyword": "indicator", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-914", "keyword": "indicators", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-796", "keyword": "indices", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-295", "keyword": "indigenous people", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-48", "keyword": "Indonesia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1112", "keyword": "Indonésie", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1018", "keyword": "Industrial fishing", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-990", "keyword": "industries extractives", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-913", "keyword": "informal justice systems", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-858", "keyword": "Infrastructure", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-83", "keyword": "institutional arrangements", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-901", "keyword": "institutional capacity", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1039", "keyword": "integreity systems", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-691", "keyword": "integrity agreements", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1083", "keyword": "integrity in aid", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-317", "keyword": "international conventions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-727", "keyword": "international cooperation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-5", "keyword": "international drivers", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-86", "keyword": "international drivers of corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-954", "keyword": "international finance centres", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-857", "keyword": "international legal instruments on corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1079", "keyword": "international trade", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-805", "keyword": "Interventions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-743", "keyword": "Investigation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-574", "keyword": "investigative journalism", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-68", "keyword": "Iran", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-864", "keyword": "Iraq", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1002", "keyword": "Isis", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-257", "keyword": "Israel", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-326", "keyword": "issues", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-233", "keyword": "Japan", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-890", "keyword": "Joint donor responses", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-821", "keyword": "Joint response to corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-256", "keyword": "Jordan", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-925", "keyword": "judges", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1104", "keyword": "Judiciaire", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1125", "keyword": "Judiciaire", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1127", "keyword": "Judiciaire", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1133", "keyword": "Judiciaire", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1135", "keyword": "Judiciaire", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-524", "keyword": "judicial corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-527", "keyword": "judicial corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-412", "keyword": "judicial corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-615", "keyword": "judicial corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-670", "keyword": "judicial corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-279", "keyword": "judicial sector", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1014", "keyword": "Judiciare", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1072", "keyword": "Judiciare", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-876", "keyword": "judiciary", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1043", "keyword": "Junior mining companies", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-525", "keyword": "justice", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-528", "keyword": "justice", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-413", "keyword": "justice", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-616", "keyword": "justice", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-671", "keyword": "justice", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1073", "keyword": "Justice", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1012", "keyword": "Justice pénale", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-255", "keyword": "justice sector", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-226", "keyword": "Kazakhstan", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-106", "keyword": "Kenya", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1113", "keyword": "Kenya", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-300", "keyword": "Kiribati", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-802", "keyword": "Kleptocracy", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-82", "keyword": "knowledge dissemination", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-287", "keyword": "knowledge management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-703", "keyword": "Kosovo", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-227", "keyword": "Kyrgyz Republic", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-848", "keyword": "Kyrgyzstan", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-462", "keyword": "La Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-347", "keyword": "La Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-627", "keyword": "La Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-777", "keyword": "Lanceur d?alerte", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-947", "keyword": "land", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-931", "keyword": "Land administration", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-272", "keyword": "Lao PDR", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-37", "keyword": "Latin America", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-817", "keyword": "law enforcement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1008", "keyword": "leadership", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-870", "keyword": "learning", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1021", "keyword": "Lebanon", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-747", "keyword": "legal reform", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-746", "keyword": "legislation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-772", "keyword": "législation et conventions internationales", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-787", "keyword": "Legitimacy", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-131", "keyword": "les ressources naturelles et les p", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-463", "keyword": "les ressources naturelles et les pêches", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-348", "keyword": "les ressources naturelles et les pêches", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-628", "keyword": "les ressources naturelles et les pêches", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-250", "keyword": "Liberia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-740", "keyword": "Libya", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-887", "keyword": "literature", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-921", "keyword": "literature review", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1162", "keyword": "Lobbying", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1161", "keyword": "Lobbying regime", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-56", "keyword": "lobbyism", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1020", "keyword": "local government", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-150", "keyword": "M", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-566", "keyword": "M&E", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-229", "keyword": "Macedonia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-232", "keyword": "Madagascar", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-966", "keyword": "mainstreaming", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-292", "keyword": "mainstreaming anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1114", "keyword": "Malaisie", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-264", "keyword": "Malawi", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-237", "keyword": "Malaysia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-310", "keyword": "Maldives", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-214", "keyword": "Mali", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-723", "keyword": "marine fisheries", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-942", "keyword": "Marruecos", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-301", "keyword": "Marshall Islands", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-561", "keyword": "measurement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-847", "keyword": "measurement tools", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1159", "keyword": "measures", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-424", "keyword": "measuring", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-482", "keyword": "Mécanisme de révision", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-367", "keyword": "Mécanisme de révision", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-630", "keyword": "Mécanisme de révision", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-135", "keyword": "Mecanismo de Seguimiento de la Convenci", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-467", "keyword": "Mecanismo de Seguimiento de la Convención Interamericana contra la Corrupción", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-352", "keyword": "Mecanismo de Seguimiento de la Convención Interamericana contra la Corrupción", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-598", "keyword": "Mecanismo de Seguimiento de la Convención Interamericana contra la Corrupción", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-872", "keyword": "media", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-934", "keyword": "medicinas", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-938", "keyword": "medicinas", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-944", "keyword": "medicinas", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-849", "keyword": "medicines", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1041", "keyword": "Mergers and acquisitions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-488", "keyword": "MESICIC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-373", "keyword": "MESICIC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-636", "keyword": "MESICIC", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-812", "keyword": "methodology", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-230", "keyword": "Mexico", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1115", "keyword": "Mexique", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-302", "keyword": "Micronesia, Federated States of", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-738", "keyword": "Middle East", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-838", "keyword": "Middle East and North Africa", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1084", "keyword": "migration", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1000", "keyword": "military", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-861", "keyword": "minerals", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-860", "keyword": "mining", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1150", "keyword": "mining sector", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1080", "keyword": "mitigation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-869", "keyword": "mixed methods", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-967", "keyword": "MLA", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-242", "keyword": "Moldova", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-437", "keyword": "money in politics", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-320", "keyword": "money laundering", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-844", "keyword": "Mongolia", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-565", "keyword": "monitoring", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-19", "keyword": "monitoring aid", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1169", "keyword": "Monitoring and evaluation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-231", "keyword": "Morocco", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-825", "keyword": "motivation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-758", "keyword": "mouvements illicites de capitaux", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-34", "keyword": "Mozambique", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-822", "keyword": "Mutual accountability", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-318", "keyword": "mutual legal assistance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-276", "keyword": "Myanmar", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-88", "keyword": "Namibia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-924", "keyword": "national anti-corruption strategy", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-955", "keyword": "natrual resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-518", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-464", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-519", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-517", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-406", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-521", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-520", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-629", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-664", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-665", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-666", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-667", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-668", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-678", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-686", "keyword": "natural resource management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-28", "keyword": "natural resources", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-29", "keyword": "natural-resources", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-303", "keyword": "Nauru", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-89", "keyword": "Nepal", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1116", "keyword": "Népal", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-275", "keyword": "Netherlands", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1022", "keyword": "New Deal", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-837", "keyword": "ngo", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-96", "keyword": "Nicaragua", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-215", "keyword": "Niger", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-65", "keyword": "Nigeria", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-709", "keyword": "Nigéria", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-719", "keyword": "Nigéria", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-781", "keyword": "Normes d'évaluation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-773", "keyword": "normes mondiales", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-739", "keyword": "North Africa", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-547", "keyword": "Norway", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-70", "keyword": "NRM", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-548", "keyword": "obiang", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1100", "keyword": "odius debt", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1023", "keyword": "OECD", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-762", "keyword": "offre de corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1052", "keyword": "OGP", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-26", "keyword": "oil", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1153", "keyword": "oil and gas", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-741", "keyword": "ombudsman", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1154", "keyword": "online corruption reporting", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1049", "keyword": "open government", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-808", "keyword": "Operational guidance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-495", "keyword": "organes / services anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-380", "keyword": "organes / services anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-643", "keyword": "organes / services anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-9", "keyword": "organised crime", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1117", "keyword": "Ouganda", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-694", "keyword": "overseas accounts and property", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-731", "keyword": "PAF", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-97", "keyword": "Pakistan", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1118", "keyword": "Pakistan", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-304", "keyword": "Palau", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-820", "keyword": "Palestine", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1119", "keyword": "Palestine", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-441", "keyword": "Panama", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-251", "keyword": "Papua New Guinea", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-443", "keyword": "Paraguay", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-823", "keyword": "Paris decloration", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-873", "keyword": "parliament", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-895", "keyword": "participation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-688", "keyword": "participatory approaches", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-766", "keyword": "passation de marchés", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1016", "keyword": "Peines", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1075", "keyword": "Peines", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1074", "keyword": "pénale", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-874", "keyword": "people's engagement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-545", "keyword": "PEP", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-540", "keyword": "PEPs", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-285", "keyword": "per diems", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-569", "keyword": "performance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-730", "keyword": "Performance Assessment Framework", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-61", "keyword": "performance audit", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-76", "keyword": "performance indicators", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-36", "keyword": "Peru", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-503", "keyword": "pets", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-388", "keyword": "pets", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-651", "keyword": "pets", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1054", "keyword": "petty bribes", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-92", "keyword": "PFM", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-850", "keyword": "pharmaceuticals", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-103", "keyword": "Philippines", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1120", "keyword": "Philippines", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-219", "keyword": "Poland", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-101", "keyword": "police", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1076", "keyword": "police", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-297", "keyword": "police corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-973", "keyword": "policy", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-908", "keyword": "Policy coherence", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-81", "keyword": "policy implementation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1091", "keyword": "Policy monitoring", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-8", "keyword": "Political corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-681", "keyword": "political corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-974", "keyword": "political economy", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-40", "keyword": "political finance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-38", "keyword": "political parties", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-51", "keyword": "political party finance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-968", "keyword": "political will", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-541", "keyword": "Politically Exposed Persons", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-978", "keyword": "politics", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-754", "keyword": "politique publiques de développement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-786", "keyword": "Post-conflict", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-884", "keyword": "post-conflict countries", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-958", "keyword": "Post-Soviet countries", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-865", "keyword": "poverty", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-84", "keyword": "practice insight", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-556", "keyword": "prevention", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-751", "keyword": "prévention de la criminalité", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-21", "keyword": "private sector", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1015", "keyword": "Procès", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1077", "keyword": "Procès", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-248", "keyword": "procurement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-692", "keyword": "professional codes of conduct", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-800", "keyword": "programming", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-799", "keyword": "project cycle", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1170", "keyword": "Project design", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-744", "keyword": "prosecution", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-960", "keyword": "proxy", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-915", "keyword": "proxy indicators", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-577", "keyword": "public administration", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-53", "keyword": "Public Expenditure Tracking", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-45", "keyword": "public financial management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-293", "keyword": "public financial management (PFM)", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-474", "keyword": "public financial management and procurement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-984", "keyword": "public infrastructure", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-985", "keyword": "public investment", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-856", "keyword": "public participation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-278", "keyword": "public procurement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-63", "keyword": "public resources", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-998", "keyword": "public sector", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-806", "keyword": "public sector reform", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-789", "keyword": "Reconstruction", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-755", "keyword": "Recouvrement d?avoirs", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-775", "keyword": "recouvrement d?avoirs", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1006", "keyword": "recruitment", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-109", "keyword": "REDD", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-982", "keyword": "REDD Integrity", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-750", "keyword": "REDD+", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-792", "keyword": "REDD+", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1026", "keyword": "REDD+", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1029", "keyword": "REDD+", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1035", "keyword": "REDD+", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-979", "keyword": "reform", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-883", "keyword": "reforms", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-997", "keyword": "Remittances", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1007", "keyword": "removal", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-726", "keyword": "repatriation of stolen funds", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-288", "keyword": "reporting", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1027", "keyword": "République Démocratique du Congo", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1032", "keyword": "République Démocratique du Congo", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1033", "keyword": "République Démocratique du Congo", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-980", "keyword": "research", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-991", "keyword": "ressources naturelles", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-868", "keyword": "result chain", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-44", "keyword": "revenue administration", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-807", "keyword": "review", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-73", "keyword": "Review mechanism", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-959", "keyword": "revolving doors", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-948", "keyword": "Right to information", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-841", "keyword": "Rights and Legal Institutions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-701", "keyword": "risk assessment", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-702", "keyword": "risk management", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-221", "keyword": "Romania", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-862", "keyword": "rural communities", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-224", "keyword": "Russian Federation", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-245", "keyword": "Rwanda", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-431", "keyword": "SAI", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-902", "keyword": "salaries", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-305", "keyword": "Samoa", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-745", "keyword": "sanctions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1163", "keyword": "sanitation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-582", "keyword": "São Tomé and Principé", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-542", "keyword": "secrecy jurisdictions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-767", "keyword": "secteur éducatif", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-765", "keyword": "secteur privé", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-769", "keyword": "secteur privé", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-932", "keyword": "sector de salud", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-936", "keyword": "sector de salud", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-940", "keyword": "Sector de salud", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-943", "keyword": "sector de salud", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-853", "keyword": "sectors", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1165", "keyword": "security", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1145", "keyword": "self-assessment tools", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-216", "keyword": "Senegal", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1121", "keyword": "Sénégal", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-763", "keyword": "Sensibilisation et formation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-22", "keyword": "Serbia and Montenegro", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-851", "keyword": "service delivery", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-953", "keyword": "Settlements", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-299", "keyword": "Seychelles", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1166", "keyword": "shadow value chains", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-879", "keyword": "shipping", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-511", "keyword": "Sierra Leone", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-211", "keyword": "Singapore", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-220", "keyword": "Slovak Republic", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1087", "keyword": "Slovakia", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1122", "keyword": "Slovaquie", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-898", "keyword": "SME", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1001", "keyword": "smuggling", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1148", "keyword": "social accountability", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1151", "keyword": "social benefits", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-920", "keyword": "social norms", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-836", "keyword": "social sectors", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-725", "keyword": "social trust", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-764", "keyword": "société civile et ONG", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1055", "keyword": "software", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-306", "keyword": "Solomon Islands", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-995", "keyword": "Somalia", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-35", "keyword": "South Africa", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-734", "keyword": "South Asia", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-238", "keyword": "South Korea", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-845", "keyword": "South Sudan", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-839", "keyword": "South-East Europe", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-842", "keyword": "Southeast Asia", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-881", "keyword": "Southern Africa", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1088", "keyword": "Special Criminal Court", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-430", "keyword": "specialised anti-corruption bodies", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1102", "keyword": "specialised anti-corruption courts", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-957", "keyword": "spending efficiency", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-239", "keyword": "Sri Lanka", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-788", "keyword": "Stability", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1099", "keyword": "state-backed debts", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1019", "keyword": "state-corporate crime", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-969", "keyword": "stolen assets", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-753", "keyword": "Stratégies des bailleurs de fonds", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-816", "keyword": "strategy", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-736", "keyword": "Sub-Saharan Africa", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-69", "keyword": "Sudan", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-712", "keyword": "Suede", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-484", "keyword": "suivi de la convention", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-369", "keyword": "suivi de la convention", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-632", "keyword": "suivi de la convention", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-780", "keyword": "Suivi et évaluation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-316", "keyword": "supply side", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-57", "keyword": "Supreme Audit Institution", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-432", "keyword": "supreme audit institutions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-563", "keyword": "survey", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-274", "keyword": "Sweden", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-252", "keyword": "Taiwan", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-243", "keyword": "Tajikistan", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-475", "keyword": "Tanzania", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-791", "keyword": "Tanzanie", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1123", "keyword": "Tanzanie", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-290", "keyword": "tax administration", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-909", "keyword": "Tax avoidance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-555", "keyword": "tax evasion", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-911", "keyword": "Tax exemptions", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-436", "keyword": "tax havens", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-907", "keyword": "Tax incentives", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-912", "keyword": "Tax minimisation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-277", "keyword": "taxation", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-970", "keyword": "technical assistance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1056", "keyword": "technology", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-928", "keyword": "telecommunications", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-992", "keyword": "Terrorism financing", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-714", "keyword": "test", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1103", "keyword": "Thailand", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1124", "keyword": "Thaïlande", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1081", "keyword": "The United Nations Convention Against Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-784", "keyword": "Théorie du changement", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-811", "keyword": "theory of change", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-815", "keyword": "theory-based evalution", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-307", "keyword": "Tonga", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-813", "keyword": "tool", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-878", "keyword": "trade", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1158", "keyword": "trade flows", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-910", "keyword": "Trade mispricing", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-899", "keyword": "trafficking", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-964", "keyword": "trail", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1", "keyword": "training", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-684", "keyword": "training", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-905", "keyword": "Transfer pricing", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1051", "keyword": "transpare", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-724", "keyword": "transparency", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-927", "keyword": "Transparency and Accountability Initiative", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-892", "keyword": "transparency and accountability policy", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-798", "keyword": "Transparency International", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-829", "keyword": "travel", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-906", "keyword": "Treaty shopping", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-325", "keyword": "trends", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1146", "keyword": "trial", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-981", "keyword": "trials", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1105", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1126", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1128", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1129", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1130", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1134", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1136", "keyword": "Tribunaux  anti-corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-729", "keyword": "Tunisia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-737", "keyword": "Turkey", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-308", "keyword": "Tuvalu", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-218", "keyword": "Uganda", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-952", "keyword": "UKBA", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-225", "keyword": "Ukraine", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-531", "keyword": "uncac", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-423", "keyword": "uncac", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-559", "keyword": "uncac review mechanism", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-110", "keyword": "United Kingdom", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-79", "keyword": "United Nations Convention against Corruption", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-207", "keyword": "United States of America", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1048", "keyword": "Uruguay", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1059", "keyword": "Uzbekistan", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1167", "keyword": "value chains", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-977", "keyword": "values", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-309", "keyword": "Vanuatu", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-1090", "keyword": "Vertical integration", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-246", "keyword": "Vietnam", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-756", "keyword": "vigilance des pays donateurs", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1044", "keyword": "Violence", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-827", "keyword": "wages", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-722", "keyword": "water sector", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-426", "keyword": "website", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-425", "keyword": "website ethics", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-919", "keyword": "whistleblower protection", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-54", "keyword": "whistleblowing", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-87", "keyword": "wildlife", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1095", "keyword": "wildlife crime", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1009", "keyword": "Wildlife trafficking", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-1010", "keyword": "Wildlife Violations", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-254", "keyword": "Yemen", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-885", "keyword": "youth", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-98", "keyword": "Zambia", "isCountry": "1" }
+{ "_type": "keyword", "_id": "tag-896", "keyword": "Zero tolerance", "isCountry": "0" }
+{ "_type": "keyword", "_id": "tag-262", "keyword": "Zimbabwe", "isCountry": "1" }
