@@ -76,7 +76,7 @@
 
 // SETTINGS
 @import "settings/settings.config";
-@import "node_modules/inuitcss/settings/settings.core";
+@import "settings/settings.core";
 @import "settings/settings.global";
 @import "settings/settings.colors";
 @import "settings/settings.typography";
@@ -108,6 +108,7 @@
 @import "node_modules/inuitcss/objects/objects.list-inline";
 @import "node_modules/inuitcss/objects/objects.box";
 @import "node_modules/inuitcss/objects/objects.block";
+@import "node_modules/inuitcss/objects/objects.wrapper";
 // @import "node_modules/inuitcss/objects/objects.tables";
 
 // COMPONENTS
