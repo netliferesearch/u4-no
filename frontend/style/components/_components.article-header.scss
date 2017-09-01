@@ -5,14 +5,18 @@
 }
 
 .c-article-header__title {
+  @include inuit-font-size($font-size-huge);
 }
 
 .c-article-header__subtitle{
+  @include inuit-font-size($font-size-normal);
 }
 
 .c-article-header__info {
 }
 
 .c-article-header__lead {
-  @include inuit-font-size(24px);
+  @include inuit-font-size($font-size-large, $line-height-small);
+  border-left: $spacing $dark-light solid;
+  padding-left: $spacing;
 }
