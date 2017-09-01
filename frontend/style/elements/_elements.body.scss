@@ -1,5 +1,5 @@
 body {
-  @include inuit-font-size(16px);
+  @include inuit-font-size($font-size-normal, 1.4);
   color: $dark;
   padding: 1em;
 }
