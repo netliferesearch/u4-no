@@ -72,9 +72,13 @@ $inuit-global-spacing-unit-factor-huge:   4    !default;
 }
 
 
-// Private/framework-only reassignment. Do not alter anything below.
-
+// Private/framework-only reassignment. Do not alter anything below. Added shorter aliases
+$spacing: $inuit-global-spacing-unit;
 $inuit-global-spacing-unit-tiny:  round($inuit-global-spacing-unit * $inuit-global-spacing-unit-factor-tiny);
+$spacing-tiny: $inuit-global-spacing-unit-tiny;
 $inuit-global-spacing-unit-small: round($inuit-global-spacing-unit * $inuit-global-spacing-unit-factor-small);
+$spacing-small: $inuit-global-spacing-unit-small;
 $inuit-global-spacing-unit-large: round($inuit-global-spacing-unit * $inuit-global-spacing-unit-factor-large);
+$spacing-large: $inuit-global-spacing-unit-large;
 $inuit-global-spacing-unit-huge:  round($inuit-global-spacing-unit * $inuit-global-spacing-unit-factor-huge);
+$spacing-huge: $inuit-global-spacing-unit-huge;
