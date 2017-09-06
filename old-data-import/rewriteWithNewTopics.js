@@ -10,11 +10,11 @@ process.stdin
   .on('data', (publication) => {
     const { topics = '' } = publication
     const oldTopics = topics.split(',').filter(topic => topic)
-    console.table(publication)
-    console.table(oldTopics)
     publication.topics = oldTopics.map(oldTopicId => {
-      const {_id} = topicMapping[oldTopicId]
-      return {_type: 'reference', _ref: _id}
+      const newTopic = topicMapping[oldTopicId]
+      if (newTopic) {
+        return {_type: 'reference', _ref: newTopic._id}
+      }
     })
-    process.stdout.write(JSON.stringify(publication))
+    process.stdout.write(JSON.stringify(publication) + '\n')
   })
