@@ -17,6 +17,5 @@
 
 .c-article-header__lead {
   @include inuit-font-size($font-size-large, $line-height-small);
-  border-left: $spacing $dark-light solid;
-  padding-left: $spacing;
+
 }
