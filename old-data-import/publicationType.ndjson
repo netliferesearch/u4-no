@@ -1,0 +1,6 @@
+{ "_type": "publicationType", "_id": "pubtype-1", "title": "Brief" }
+{ "_type": "publicationType", "_id": "pubtype-2", "title": "Issue" }
+{ "_type": "publicationType", "_id": "pubtype-3", "title": "Helpdesk Answer" }
+{ "_type": "publicationType", "_id": "pubtype-4", "title": "Report" }
+{ "_type": "publicationType", "_id": "pubtype-5", "title": "Practice Insight (PI)" }
+{ "_type": "publicationType", "_id": "pubtype-6", "title": "Practitioner Experience Note (PEN)" }
