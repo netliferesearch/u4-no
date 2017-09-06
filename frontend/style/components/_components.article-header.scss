@@ -20,7 +20,13 @@
 }
 
 .c-article-header__byline {
-  margin: 0;
+  font-family: $font-sans;
+  color: $dark-light;
+  @include inuit-font-size($font-size-tiny);
+}
+
+.c-article-header__photo-credit{
+  font-style: italic;
   font-family: $font-sans;
   color: $dark-light;
   @include inuit-font-size($font-size-tiny);
