@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
+import ArticleContents from './ArticleContents';
 
 const Article = ({
   title = 'No title',
@@ -10,6 +11,7 @@ const Article = ({
   content = []
 }) => (
   <article className="o-wrapper">
+    <ArticleContents content={content} />
     <header className="c-article-header o-wrapper--huge">
       <div className="c-article-header__issue"><a href="#">U4 issue </a>| NRE</div>
       <h1 className="c-article-header__title">{title}</h1>
