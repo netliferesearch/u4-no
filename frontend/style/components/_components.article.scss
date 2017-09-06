@@ -1,3 +1,4 @@
 .c-article{
   @include inuit-font-size($font-size-normal);
+  word-wrap: break-word;
 }
