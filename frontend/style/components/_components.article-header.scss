@@ -6,9 +6,6 @@
   @include inuit-font-size($font-size-tiny);
   font-family: $font-sans;
   text-transform: uppercase;
-  a {
-    font-family: $font-sans;
-  }
 }
 
 .c-article-header__title {
@@ -27,9 +24,6 @@
   font-family: $font-sans;
   color: $dark-light;
   @include inuit-font-size($font-size-tiny);
-  a {
-    font-family: $font-sans;
-  }
 }
 
 .c-article-header__lead {
