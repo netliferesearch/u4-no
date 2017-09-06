@@ -1,7 +1,14 @@
 .c-article-header {
+
 }
 
 .c-article-header__issue {
+  @include inuit-font-size($font-size-tiny);
+  font-family: $font-sans;
+  text-transform: uppercase;
+  a {
+    font-family: $font-sans;
+  }
 }
 
 .c-article-header__title {
@@ -9,13 +16,22 @@
 }
 
 .c-article-header__subtitle{
-  @include inuit-font-size($font-size-normal);
+  @include inuit-font-size($font-size-large, $line-height-large);
+  font-family: $font-sans;
+  color: $dark-light;
+  font-weight: lighter;
 }
 
-.c-article-header__info {
+.c-article-header__byline {
+  margin: 0;
+  font-family: $font-sans;
+  color: $dark-light;
+  @include inuit-font-size($font-size-tiny);
+  a {
+    font-family: $font-sans;
+  }
 }
 
 .c-article-header__lead {
-  @include inuit-font-size($font-size-large, $line-height-small);
-
+  @include inuit-font-size($font-size-large, $line-height-normal);
 }
