@@ -1,10 +1,4 @@
-import { 
-  title,
-  longTitle,
-  explainerText,
-  featuredImage,
-  slug,
- } from './fields';
+import { title, longTitle, explainerText, featuredImage, slug } from './fields'
 
 export default {
   name: 'topics',
@@ -37,13 +31,12 @@ export default {
           to: [
             {
               type: 'nugget'
-            },
-
+            }
           ]
         },
         {
           type: 'image'
-        },
+        }
       ]
     },
     {
@@ -59,12 +52,12 @@ export default {
           to: [
             {
               type: 'nugget'
-            },
+            }
           ]
         },
         {
           type: 'image'
-        },
+        }
       ]
     },
     {
@@ -83,5 +76,20 @@ export default {
       ]
     },
     slug,
+    {
+      name: 'resources',
+      description: 'Relevant resources for this topic page',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'article'
+            }
+          ]
+        }
+      ]
+    }
   ]
 }
