@@ -30,7 +30,8 @@ const blockHandlers = {
 
 const typeHandlers = {
   image: ({ attributes }) => <Figure {...attributes} />,
-  pullQuote: ({ attributes: { text } }) => <div className="c-article_pullQuote">{text}</div>,
+  pullQuote: ({ attributes: { text } }) => <div className="c-article__pullQuote">{text}</div>,
+  nugget: ({ attributes: { text, title } }) => <div className="c-article__nugget"><h2>{title}</h2><BlockContent blocks={text} /></div>,
 };
 
 const Article = ({ title = 'No title', subtitle = 'No subtitle', _updatedAt = 'No date', lead = 'No lead', content = [] }) => (
