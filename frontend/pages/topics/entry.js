@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, Article } from '../../components';
 import Link from 'next/link';
+import materialize from '../../helpers/materialize';
 
 const sanityClient = require('@sanity/client');
 
@@ -10,7 +11,8 @@ export default class extends Component {
     const { id = '' } = query;
     const sanityQuery = `*[_id == "${id}"]`;
     const topic = (await client.fetch(sanityQuery))[0];
-    return { topic };
+    const materialized = await materialize(topic);
+    return { topic: materialized };
   }
   constructor(props) {
     super(props);
@@ -34,6 +36,7 @@ export default class extends Component {
       introduction = [],
       agenda = [],
       advisors = [],
+      resources = [],
     } = topic;
     return (
       <Layout>
@@ -55,12 +58,22 @@ export default class extends Component {
           </li>
           <li>
             <Link href={`/topics/article?id=${topic._id}&topicKey=agenda`}>
-              <a>Research and policy agenda</a>
+              <a>Research and policy</a>
             </Link>
-            , read this to learn about U4's work in the area of {title}.
+            , here we show you the bigger picture of U4's work in the area of {title}. We introduce
+            you to U4's research and policy agenda.
           </li>
         </ul>
         <h3>Resources</h3>
+        <ul>
+          {resources.map(({ _id, title }) => (
+            <li key={_id}>
+              <Link href={`/article?id=${_id}`}>
+                <a>{title}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </Layout>
     );
   }
