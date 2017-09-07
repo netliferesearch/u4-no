@@ -35,6 +35,11 @@ const Article = ({ title = 'No title', subtitle = 'No subtitle', _updatedAt = 'N
       <div className="c-article-header__byline">By <a href="#">Åse Gilje Østensen</a> & <a href="#">Mats Stridsman </a>
          | Bergen: Chr. Michelsen Institute (U4 Issue 2017:3)</div>
       <div className="c-article-header__photo-credit">Photography by <a href="#">Dani Deahl</a></div>
+      <div className="c-article-header__topics">
+        <div className="c-article-header__topics-item">Anti-Corruption</div>
+        <div className="c-article-header__topics-item">Poverty sanitation</div>
+        <div className="c-article-header__topics-item">Water sector</div>
+      </div>
       <p className="c-article-header__lead">{lead}</p>
     </header>
     <main>

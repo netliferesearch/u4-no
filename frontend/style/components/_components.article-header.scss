@@ -35,6 +35,27 @@
   @include inuit-font-size($font-size-small);
 }
 
+.c-article-header__topics{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.c-article-header__topics-item{
+  @include inuit-font-size($font-size-tiny);
+  color: $primary;
+  border: solid $primary 1px;
+  font-family: $font-sans;
+  text-transform: uppercase;
+  border-radius: 2px;
+  margin: 10px 10px 0 0;
+  padding: 0 8px;
+  transition: all 0.1s ease;
+  &:hover {
+    background-color: #1DA1F2;
+    color: white;
+  }
+}
+
 .c-article-header__lead {
   @include inuit-font-size($font-size-large, $line-height-large);
 }
