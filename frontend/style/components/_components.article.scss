@@ -21,8 +21,19 @@
 }
 
 .c-article__nugget {
-  border: 1px solid $primary-dark;
-  padding: 1em
+  border: 1.5px solid lightgrey;
+  padding: 0.5em 2em;
+  font-family: $font-sans;
+  font-size: 0.8em;
+  line-height: 1.5em;
+}
+
+.c-article__nugget-title {
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-normal);
+  margin-bottom: 0;
+  //text-transform: uppercase;
+  font-weight: bold;
 }
 
 .c-article__pullQuote {
