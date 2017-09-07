@@ -33,7 +33,10 @@ export default class extends Component {
   render() {
     return (
       <Layout>
-        <h1>A handbook to anti-corruption in sustainable development</h1>
+        <h1>U4 anti-corruption guides for development practitioners and policymakers</h1>
+        <p>What you'll find: </p>
+        <p>What you won't find: </p>
+        <p>Why we built this: </p>
         <p>
           Need to quickly get up to speed on anti-corruption research in sustainable development? We
           want to share our knowledge by providing you with a selection of carefully crafted
