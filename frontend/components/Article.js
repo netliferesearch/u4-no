@@ -16,7 +16,7 @@ const Figure = ({asset, caption, license, licensor}) => (<figure>
   </figaption>
 </figure>)
 
-const handlers = {
+const blockHandlers = {
   listBlock: {
     number: ({ children = [] }) => <ol key={randomKey()} className="list-numbered">{children}</ol>,
     bullet: ({ children = [] }) => <ul key={randomKey()} className="list-bullets">{children}</ul>,
@@ -25,9 +25,13 @@ const handlers = {
   textBlock: {
     normal: ({ children = [] }) => <p className="lede">{children}</p>,
     h2: ({ children = [] }) => <ScrollableAnchor id={slugify(children[0], { lower: true })}><h2>{children}</h2></ScrollableAnchor>,
-  }
+  },
 };
 
+const typeHandlers = {
+  image: ({ attributes }) => <Figure {...attributes} />,
+  pullQuote: ({ attributes: { text } }) => <div className="c-article_pullQuote">{text}</div>,
+};
 
 const Article = ({ title = 'No title', subtitle = 'No subtitle', _updatedAt = 'No date', lead = 'No lead', content = [] }) => (
   <article className="o-wrapper">
@@ -46,9 +50,9 @@ const Article = ({ title = 'No title', subtitle = 'No subtitle', _updatedAt = 'N
     <main>
       <div className="c-article o-wrapper--huge">
         <BlockContent
-            blocks={content.filter(block => !['reference', 'pullQuote'].includes(block._type))}
-          blockTypeHandlers={{ ...handlers }}
-          customTypeHandlers={{ image: ({attributes}) => <Figure {...attributes} />}}
+          blocks={content.filter(block => !['reference'].includes(block._type))}
+          blockTypeHandlers={{ ...blockHandlers }}
+          customTypeHandlers={typeHandlers}
         />
       </div>
     </main>
