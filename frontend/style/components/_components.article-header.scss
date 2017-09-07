@@ -9,7 +9,10 @@
 }
 
 .c-article-header__title {
-  @include inuit-font-size($font-size-huge);
+  @include inuit-font-size($font-size-larger, $line-height-large);
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-huge, $line-height-large);
+    }
 }
 
 .c-article-header__subtitle{
