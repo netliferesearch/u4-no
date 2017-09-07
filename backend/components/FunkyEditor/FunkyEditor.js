@@ -46,7 +46,6 @@ export default class FunkyEditor extends React.Component {
   }
 
   handleChange = event => {
-    console.log(event)
     this.props.onChange(event)
     this.setState({
       text: event.patches.map(e => e.value.map(e => e.spans.map(t => t.text))).join()
