@@ -2,3 +2,32 @@
   @include inuit-font-size($font-size-normal);
   word-wrap: break-word;
 }
+
+.c-article__figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.c-article__figure-img{
+  width: 100%;
+}
+
+.c-article__figure-figcaption{
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-small);
+  text-transform: uppercase;
+  text-align: center;
+  color: $dark;
+}
+
+blockquote {
+  font-family: $font-sans;
+  border-left: solid lightgray 10px;
+  padding-left: 10px;
+  font-size: 1.2em;
+  line-height: 1.3em;
+  letter-spacing: 0.02em;
+  font-weight: 300;
+  color: #444;
+  font-style: italic;
+}

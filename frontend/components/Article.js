@@ -7,13 +7,13 @@ import ArticleContents from './ArticleContents';
 import randomKey from '../helpers/randomKey';
 configureAnchors({ offset: -60, scrollDuration: 200, keepLastAnchorHash: true })
 
-const Figure = ({asset, caption, license, licensor}) => (<figure>
-  <img src={asset.url} alt={asset.altText} />
-  <figaption>
+const Figure = ({asset, caption, license, licensor}) => (<figure className="c-article__figure">
+  <img className="c-article__figure-img" src={asset.url} alt={asset.altText} />
+  <figcaption className="c-article__figure-figcaption">
     {caption}
     {license}
     {licensor}
-  </figaption>
+  </figcaption>
 </figure>)
 
 const handlers = {
