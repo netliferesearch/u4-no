@@ -20,6 +20,11 @@
   color: $dark;
 }
 
+.c-article__nugget {
+  border: 1px solid $primary-dark;
+  padding: 1em
+}
+
 blockquote {
   font-family: $font-sans;
   border-left: solid lightgray 10px;
