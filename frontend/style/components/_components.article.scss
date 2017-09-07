@@ -25,14 +25,21 @@
   padding: 1em
 }
 
+.c-article__pullQuote {
+  @include inuit-font-size($font-size-larger);
+  font-weight: bold;
+  color: $primary-dark;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
 blockquote {
   font-family: $font-sans;
   border-left: solid lightgray 10px;
   padding-left: 10px;
-  font-size: 1.2em;
-  line-height: 1.3em;
+  @include inuit-font-size($font-size-large);
   letter-spacing: 0.02em;
   font-weight: 300;
-  color: #444;
+  color: $dark-light;
   font-style: italic;
 }
