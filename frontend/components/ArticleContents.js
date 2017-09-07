@@ -14,12 +14,12 @@ function findTitles(articleContents) {
   }, [])
 }
 
-const getClassName = (menuItem) => `menu__item menu__item--${menuItem.style}`
+const getClassName = (menuItem) => `o-list-bare__item menu__item menu__item--${menuItem.style}`
 
 const ArticleContents = ({
   content = []
 }) => (
-  <ul>{findTitles(content).map(menuItem => <li className={getClassName(menuItem)}>{menuItem.title}</li>)}</ul>
+  <ul className="o-list-bare">{findTitles(content).map(menuItem => <li className={getClassName(menuItem)}>{menuItem.title}</li>)}</ul>
 );
 
 export default ArticleContents;

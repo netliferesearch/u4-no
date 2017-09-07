@@ -11,7 +11,9 @@ const Article = ({
   content = []
 }) => (
   <article className="o-wrapper">
-    <ArticleContents content={content} />
+    <div className="c-article-nav">
+      <ArticleContents content={content} />
+    </div>
     <header className="c-article-header o-wrapper--huge">
       <div className="c-article-header__issue"><a href="#">U4 issue </a>| NRE</div>
       <h1 className="c-article-header__title">{title}</h1>
