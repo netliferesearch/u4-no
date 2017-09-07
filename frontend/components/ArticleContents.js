@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import slugify from 'slugify';
 import BlockContent from '@sanity/block-content-to-react';
+
 
 function findTitles(articleContents) {
   return articleContents.reduce((result, elem) => {
@@ -16,10 +18,8 @@ function findTitles(articleContents) {
 
 const getClassName = (menuItem) => `o-list-bare__item menu__item menu__item--${menuItem.style}`
 
-const ArticleContents = ({
-  content = []
-}) => (
-  <ul className="o-list-bare">{findTitles(content).map(menuItem => <li className={getClassName(menuItem)}>{menuItem.title}</li>)}</ul>
+const ArticleContents = ({ content = [] }) => (
+  <ul className="o-list-bare">{findTitles(content).map(menuItem => <li className={getClassName(menuItem)}><a href={`#${slugify(menuItem.title, { lower: true })}`}>{menuItem.title}</a></li>)}</ul>
 );
 
 export default ArticleContents;

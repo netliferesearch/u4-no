@@ -1,15 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
+import slugify from 'slugify';
+import ScrollableAnchor, { configureAnchors } from 'react-scrollable-anchor';
 import ArticleContents from './ArticleContents';
+import randomKey from '../helpers/randomKey';
+configureAnchors({ offset: -60, scrollDuration: 200, keepLastAnchorHash: true })
 
-const Article = ({
-  title = 'No title',
-  subtitle = 'No subtitle',
-  _updatedAt = 'No date',
-  lead = 'No lead',
-  content = []
-}) => (
+const handlers = {
+  listBlock: {
+    number: ({ children = [] }) => <ol key={randomKey()} className="list-numbered">{children}</ol>,
+    bullet: ({ children = [] }) => <ul key={randomKey()} className="list-bullets">{children}</ul>,
+    listItem: ({ children = [] }) => <li key={randomKey()}>{children}</li>,
+  },
+  textBlock: {
+    normal: ({ children = [] }) => <p className="lede">{children}</p>,
+    h2: ({ children = [] }) => <ScrollableAnchor id={slugify(children[0], { lower: true })}><h2>{children}</h2></ScrollableAnchor>,
+  },
+  image: {
+    image: ({ children = []  }) => <div>{console.log(children)}</div>
+  }
+};
+
+
+const Article = ({ title = 'No title', subtitle = 'No subtitle', _updatedAt = 'No date', lead = 'No lead', content = [] }) => (
   <article className="o-wrapper">
     <div className="c-article-nav">
       <ArticleContents content={content} />
@@ -25,7 +39,10 @@ const Article = ({
     </header>
     <main>
       <div className="c-article o-wrapper--huge">
-        <BlockContent blocks={content.filter(block => !['reference', 'pullQuote'].includes(block._type))}/>
+        <BlockContent
+            blocks={content.filter(block => !['reference', 'pullQuote', 'image'].includes(block._type))}
+            blockTypeHandlers={{ ...handlers }}
+        />
       </div>
     </main>
   </article>

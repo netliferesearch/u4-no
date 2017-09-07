@@ -8,6 +8,7 @@ export default () => (
   <Layout>
     <h1>Velkommen til u4.no</h1>
     <ul>
+      <li><Link href={'/topics'}><a>Topic pages</a></Link></li>
       <li><Link href={'/publications'}><a>Publikasjoner</a></Link></li>
     </ul>
   </Layout>

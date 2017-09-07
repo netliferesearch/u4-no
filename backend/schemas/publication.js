@@ -1,6 +1,8 @@
+import FunkyEditor from '../components/FunkyEditor'
 /**
  * A publication is a long form document
  */
+import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
 import {
   title,
   subtitle,
@@ -24,7 +26,7 @@ export default {
         type: 'array',
         of: [
           {
-            type: 'block'
+            type: 'block',
           },
           {
             type: 'reference',
@@ -170,7 +172,12 @@ export default {
             ]
           }
         ]
+      },
+      {
+        name: 'relatedUrl',
+        title: 'Related URL',
+        type: 'urlWithMetadata',
+        inputComponent: UrlWithMetadataInput
       }
     ]
   }
-
