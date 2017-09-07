@@ -1,1 +1,19 @@
-
+.c-article-nav{
+  display: none;
+  @include mq($from:  wide) {
+  display:block;
+  position:fixed;
+  width:250px;
+  top:200px;
+  left: 0;
+  @include inuit-font-size($font-size-small);
+  font-family: $font-sans;
+  li {
+    padding: 10px;
+    border-left: 3px solid lightgrey;
+    &:first-child {
+     border-left: 3px solid $primary;
+   }
+  }
+ }
+}
