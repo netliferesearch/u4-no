@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, Article } from '../../components';
+import materialize from '../../helpers/materialize';
 
 const sanityClient = require('@sanity/client');
 
@@ -9,9 +10,10 @@ export default class extends Component {
     const {
       id = '',
     } = query;
-    const sanityQuery = `*[_id == "${id}"]`;
-    const publication = (await client.fetch(sanityQuery))[0];
-    return { publication };
+    const sanityQuery = `*[_id == "${id}"][0]`;
+    const publication = (await client.fetch(sanityQuery));
+    const materialized = await materialize(publication);
+    return { publication: materialized };
   }
   constructor(props) {
     super(props);

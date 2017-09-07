@@ -7,6 +7,15 @@ import ArticleContents from './ArticleContents';
 import randomKey from '../helpers/randomKey';
 configureAnchors({ offset: -60, scrollDuration: 200, keepLastAnchorHash: true })
 
+const Figure = ({asset, caption, license, licensor}) => (<figure>
+  <img src={asset.url} alt={asset.altText} />
+  <figaption>
+    {caption}
+    {license}
+    {licensor}
+  </figaption>
+</figure>)
+
 const handlers = {
   listBlock: {
     number: ({ children = [] }) => <ol key={randomKey()} className="list-numbered">{children}</ol>,
@@ -16,9 +25,6 @@ const handlers = {
   textBlock: {
     normal: ({ children = [] }) => <p className="lede">{children}</p>,
     h2: ({ children = [] }) => <ScrollableAnchor id={slugify(children[0], { lower: true })}><h2>{children}</h2></ScrollableAnchor>,
-  },
-  image: {
-    image: ({ children = []  }) => <div>{console.log(children)}</div>
   }
 };
 
@@ -45,8 +51,9 @@ const Article = ({ title = 'No title', subtitle = 'No subtitle', _updatedAt = 'N
     <main>
       <div className="c-article o-wrapper--huge">
         <BlockContent
-            blocks={content.filter(block => !['reference', 'pullQuote', 'image'].includes(block._type))}
-            blockTypeHandlers={{ ...handlers }}
+            blocks={content.filter(block => !['reference', 'pullQuote'].includes(block._type))}
+          blockTypeHandlers={{ ...handlers }}
+          customTypeHandlers={{ image: ({attributes}) => <Figure {...attributes} />}}
         />
       </div>
     </main>
