@@ -17,12 +17,28 @@ export default class extends Component {
   constructor(props) {
     super(props);
     const { topics, url } = props;
-    this.state = { topics };
+
+    this.state = {
+      // sort topics by title alphabetically
+      topics: topics.sort((a, b) => {
+        if (a.title < b.title) {
+          return -1;
+        } else if (a.title > b.title) {
+          return 1;
+        }
+        return 0;
+      }),
+    };
   }
   render() {
     return (
       <Layout>
-        <h1>Topics</h1>
+        <h1>A handbook to anti-corruption in sustainable development</h1>
+        <p>
+          Need to quickly get up to speed on anti-corruption research in sustainable development? We
+          want to share our knowledge by providing you with a selection of carefully crafted
+          introductions and in-depth articles sorted by topics.
+        </p>
         <ul>
           {this.state.topics.map(topic => (
             <li key={topic._id}>

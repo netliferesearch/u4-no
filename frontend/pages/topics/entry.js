@@ -37,20 +37,30 @@ export default class extends Component {
     } = topic;
     return (
       <Layout>
+        <p>
+          Tilbake til {' '}
+          <Link href={'/topics'}>
+            <a>topics oversikt</a>
+          </Link>
+        </p>
         <h1>{title}</h1>
+        <h2>{longTitle}</h2>
         <p>{explainerText}</p>
         <ul>
           <li>
             <Link href={`/topics/article?id=${topic._id}&topicKey=introduction`}>
-              <a>A basic guide to to NRE</a>
+              <a>Basic guide</a>
             </Link>
+            , read this to get informed about the field of {title}.
           </li>
           <li>
             <Link href={`/topics/article?id=${topic._id}&topicKey=agenda`}>
               <a>Research and policy agenda</a>
             </Link>
+            , read this to learn about U4's work in the area of {title}.
           </li>
         </ul>
+        <h3>Resources</h3>
       </Layout>
     );
   }
