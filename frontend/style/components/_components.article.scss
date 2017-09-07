@@ -2,3 +2,7 @@
   @include inuit-font-size($font-size-normal);
   word-wrap: break-word;
 }
+.c-article__nugget {
+  border: 1px solid $primary-dark;
+  padding: 1em;
+}
