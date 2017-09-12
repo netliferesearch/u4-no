@@ -20,6 +20,9 @@ export default class extends Component {
       },
     } = props;
   }
+  componentDidUpdate() {
+
+  }
   render() {
     const { article, query = {} } = this.props;
     const {
