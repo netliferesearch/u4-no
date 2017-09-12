@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Layout, TopicArticle } from '../components';
-import Link from 'next/link';
 
 const sanityClient = require('@sanity/client');
 
@@ -20,9 +19,7 @@ export default class extends Component {
       },
     } = props;
   }
-  componentDidUpdate() {
-
-  }
+  componentDidUpdate() {}
   render() {
     const { article, query = {} } = this.props;
     const {

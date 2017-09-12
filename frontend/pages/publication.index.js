@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Link from 'next/link';
+import { Link } from '../routes';
 import { Layout } from '../components';
+import DataLoader from '../helpers/data-loader';
 
 const sanityClient = require('@sanity/client');
 
@@ -26,7 +27,7 @@ export default class extends Component {
         <ul>
           {this.state.publications.map(pub => (
             <li key={pub._id}>
-              <Link href={`/publications/entry?id=${pub._id}`}>
+              <Link route={`/publications/${pub._id}`}>
                 <a>{pub.title}</a>
               </Link>
             </li>

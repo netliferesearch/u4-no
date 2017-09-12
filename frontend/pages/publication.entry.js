@@ -1,40 +1,22 @@
 import React, { Component } from 'react';
 import { Layout, Article } from '../components';
-import materialize from '../helpers/materialize';
+import DataLoader from '../helpers/data-loader';
 
-const sanityClient = require('@sanity/client');
+const PublicationEntry = props => (
+  <Layout>
+    <div className="c-hero">
+      {props.featuredImage && <img className="c-hero__image" src={props.featuredImage.asset.url} />}
+    </div>
+    <Article {...props} />
+  </Layout>
+);
 
-export default class extends Component {
-  static async getInitialProps({ query }) {
-    const client = sanityClient({ projectId: '1f1lcoov', dataset: 'production', token: '' });
-    const { id = '' } = query;
-    const sanityQuery = `*[_id == "${id}"][0]`;
-    const publication = await client.fetch(sanityQuery);
-    const materialized = await materialize(publication);
-    return { publication: materialized };
-  }
-  constructor(props) {
-    super(props);
-    const {
-      publication = {
-        title: 'loading publication',
-      },
-    } = props;
-    this.state = {
-      publication,
-    };
-  }
-  render() {
-    const { publication } = this.props;
-    return (
-      <Layout>
-        <div className="c-hero">
-          {publication.featuredImage && (
-            <img className="c-hero__image" src={publication.featuredImage.asset.url} />
-          )}
-        </div>
-        <Article {...publication} />
-      </Layout>
-    );
-  }
-}
+export default DataLoader(PublicationEntry, {
+  // here you get the next context object that is initially passed into
+  // getInitialProps
+  queryFunc: ({ query }) => {
+    const { publication = '' } = query;
+    const sanityQuery = `*[_id == "${publication}"][0]`;
+    return sanityQuery;
+  },
+});
