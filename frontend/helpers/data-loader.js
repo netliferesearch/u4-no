@@ -8,6 +8,10 @@ export default (Child, { queryFunc, materialize = false }) =>
   class extends Component {
     static async getInitialProps(nextContext) {
       const client = sanityClient({ projectId: '1f1lcoov', dataset: 'production', token: '' });
+      if (!queryFunc) {
+        console.log('No query function provided. Returning empty object');
+        return {};
+      }
       const sanityQuery = queryFunc(nextContext);
       const sanityResults = await client.fetch(sanityQuery);
       if (!materialize) {
