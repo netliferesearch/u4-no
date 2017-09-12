@@ -30,6 +30,12 @@ export default class extends Component {
     const { publication } = this.props;
     return (
       <Layout>
+        <div className="c-hero">
+          {
+            publication.featuredImage && <img className="c-hero__image" src={publication.featuredImage.asset.url} />
+
+          }
+        </div>
         <Article {...publication} />
       </Layout>
 
