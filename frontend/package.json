@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "npm run sass-dev && concurrently --kill-others \"next\" \"npm run sass-watch\"",
+    "dev":
+      "npm run sass-dev && concurrently --kill-others \"nodemon -w server.js -w routes.js server.js\" \"npm run sass-watch\"",
     "build": "next build",
-    "start": "next start",
-    "sass-watch": "node-sass --source-map true -w ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
-    "sass-dev": "node-sass --source-map true ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
-    "sass-build": "node-sass ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css --output-style compressed",
+    "start": "node server.js",
+    "sass-watch":
+      "node-sass --source-map true -w ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
+    "sass-dev":
+      "node-sass --source-map true ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
+    "sass-build":
+      "node-sass ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css --output-style compressed",
     "heroku-postbuild": "next build && npm run sass-build"
   },
   "engines": {
@@ -29,10 +33,12 @@
     "eslint-plugin-jest": "^20.0.3",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.3.0",
+    "express": "^4.15.4",
     "get-random-values": "^1.2.0",
     "inuitcss": "^6.0.0-beta.5",
     "littlefoot": "^1.0.0",
     "next": "^3.0.6",
+    "next-routes": "^1.0.40",
     "node-sass": "^4.5.3",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -42,6 +48,7 @@
     "slugify": "^1.2.1"
   },
   "devDependencies": {
+    "nodemon": "^1.12.0",
     "prettier-eslint": "^6.4.2"
   }
 }
