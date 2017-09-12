@@ -1,5 +1,5 @@
 .c-article{
-  @include inuit-font-size($font-size-normal);
+  @include inuit-font-size($font-size-large, $line-height-normal);
   word-wrap: break-word;
 }
 
@@ -37,20 +37,33 @@
 }
 
 .c-article__pullQuote {
-  @include inuit-font-size($font-size-larger);
+  @include inuit-font-size($font-size-larger, $line-height-normal);
   font-weight: bold;
-  color: $primary-dark;
-  text-align: center;
+  color: $dark;
+  text-align: left;
   letter-spacing: 0.02em;
+  border-top: 1px solid $dark;
+  border-bottom: 1px solid $dark;
+  margin: $spacing*2 -2em $spacing*2 -2em;
+  padding: $spacing 0;
 }
 
 blockquote {
-  font-family: $font-sans;
+  font-family: $font-serif;
   border-left: solid lightgray 10px;
   padding-left: 10px;
-  @include inuit-font-size($font-size-large);
+  @include inuit-font-size($font-size-normal);
   letter-spacing: 0.02em;
   font-weight: 300;
   color: $dark-light;
-  font-style: italic;
+  margin: $spacing 0;
+
 }
+
+.c-article-header__summary-for-busy-people {
+  margin: 1em 0;
+  padding: 1em;
+  border: 1px solid $primary;
+}
+
+
