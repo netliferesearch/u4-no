@@ -2,7 +2,7 @@
   @include inuit-clearfix();
   margin-right: auto;
   margin-left:  auto;
-  max-width: 680px;
+  max-width: 720px;
   @include mq($from: tablet) {
     padding-right: $inuit-global-spacing-unit;
     padding-left:  $inuit-global-spacing-unit;
