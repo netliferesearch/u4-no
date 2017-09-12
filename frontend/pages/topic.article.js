@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, TopicArticle } from '../../components';
+import { Layout, TopicArticle } from '../components';
 import Link from 'next/link';
 
 const sanityClient = require('@sanity/client');

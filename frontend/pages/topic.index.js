@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
-import { Layout } from '../../components';
+import { Layout } from '../components';
 
 const sanityClient = require('@sanity/client');
 

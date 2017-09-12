@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { Layout, Article } from '../../components';
-import materialize from '../../helpers/materialize';
+import { Layout, Article } from '../components';
+import materialize from '../helpers/materialize';
 
 const sanityClient = require('@sanity/client');
 
 export default class extends Component {
   static async getInitialProps({ query }) {
     const client = sanityClient({ projectId: '1f1lcoov', dataset: 'production', token: '' });
-    const {
-      id = '',
-    } = query;
+    const { id = '' } = query;
     const sanityQuery = `*[_id == "${id}"][0]`;
-    const publication = (await client.fetch(sanityQuery));
+    const publication = await client.fetch(sanityQuery);
     const materialized = await materialize(publication);
     return { publication: materialized };
   }
@@ -31,14 +29,12 @@ export default class extends Component {
     return (
       <Layout>
         <div className="c-hero">
-          {
-            publication.featuredImage && <img className="c-hero__image" src={publication.featuredImage.asset.url} />
-
-          }
+          {publication.featuredImage && (
+            <img className="c-hero__image" src={publication.featuredImage.asset.url} />
+          )}
         </div>
         <Article {...publication} />
       </Layout>
-
     );
   }
 }

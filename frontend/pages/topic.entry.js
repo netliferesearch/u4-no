@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Layout, Article } from '../../components';
+import { Layout, Article } from '../components';
 import Link from 'next/link';
-import materialize from '../../helpers/materialize';
+import materialize from '../helpers/materialize';
 
 const sanityClient = require('@sanity/client');
 
