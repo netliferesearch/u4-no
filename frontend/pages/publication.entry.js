@@ -15,8 +15,8 @@ export default DataLoader(PublicationEntry, {
   // here you get the next context object that is initially passed into
   // getInitialProps
   queryFunc: ({ query }) => {
-    const { publication = '' } = query;
-    const sanityQuery = `*[_id == "${publication}"][0]`;
+    const { id = '' } = query;
+    const sanityQuery = `*[_id == "${id}"][0]`;
     return sanityQuery;
   },
 });
