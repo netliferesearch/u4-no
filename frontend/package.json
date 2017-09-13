@@ -5,16 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev":
-      "npm run sass-dev && concurrently --kill-others \"nodemon -w server.js -w routes.js server.js\" \"npm run sass-watch\"",
+    "dev": "npm run sass-dev && concurrently --kill-others \"nodemon -w server.js -w routes.js server.js\" \"npm run sass-watch\"",
     "build": "next build",
     "start": "node server.js",
-    "sass-watch":
-      "node-sass --source-map true -w ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
-    "sass-dev":
-      "node-sass --source-map true ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
-    "sass-build":
-      "node-sass ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css --output-style compressed",
+    "sass-watch": "node-sass --source-map true -w ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
+    "sass-dev": "node-sass --source-map true ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
+    "sass-build": "node-sass ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css --output-style compressed",
     "heroku-postbuild": "next build && npm run sass-build"
   },
   "engines": {
