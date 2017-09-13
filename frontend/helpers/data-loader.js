@@ -15,10 +15,9 @@ export default (Child, { queryFunc, materialize = false }) =>
       const sanityQuery = queryFunc(nextContext);
       const sanityResults = await client.fetch(sanityQuery);
       if (!materialize) {
-        return { ...sanityResults };
+        return sanityResults;
       }
-      const materializedSanityResults = await materialize(sanityResults);
-      return { ...materializedSanityResults };
+      return await materialize(sanityResults);
     }
     constructor(props) {
       super(props);

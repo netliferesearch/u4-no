@@ -11,5 +11,5 @@ const express = require('express');
 app.prepare().then(() => {
   express()
     .use(handler)
-    .listen(3000);
+    .listen(process.env.PORT || 3000);
 });

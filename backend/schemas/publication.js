@@ -51,6 +51,17 @@ export default {
         ]
       },
       {
+        name: 'summary',
+        title: 'Summary for busy people',
+        description: 'One-pager, blog-like, light narrative. Bite-sized chunks with descriptive sub-headings. Explain: 1. the main recommendations and/or implications and findings, and  2. why this is important. Max 1000 words.',
+        type: 'array',
+        of: [
+          {
+            type: 'block'
+          }
+        ]
+      },
+      {
         name: 'content',
         title: 'Publication content',
         description: 'The body text and graphic elements.',
