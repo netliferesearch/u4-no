@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 import ScrollableAnchor, { configureAnchors } from 'react-scrollable-anchor';
-import { GridContainer, GridItem } from 'react-css-grid-layout';
 import ArticleContents from './ArticleContents';
 import randomKey from '../helpers/randomKey';
 
 configureAnchors({ offset: -60, scrollDuration: 400, keepLastAnchorHash: true });
 
 const Figure = ({ asset, caption, license, licensor }) => (
-  <figure className="c-article__figure">
+  <figure className="c-article__figure o-grid-container__item-standard">
     <img className="c-article__figure-img" src={asset.url} alt={asset.altText} />
     <figcaption className="c-article__figure-figcaption">
       {caption}
@@ -23,32 +22,55 @@ const Figure = ({ asset, caption, license, licensor }) => (
 const blockHandlers = {
   listBlock: {
     number: ({ children = [] }) => (
-      <ol key={randomKey()} className="list-numbered">
+      <ol key={randomKey()} className="list-numbered o-grid-container__item-standard">
         {children}
       </ol>
     ),
     bullet: ({ children = [] }) => (
-      <ul key={randomKey()} className="list-bullets">
+      <ul key={randomKey()} className="list-bullets o-grid-container__item-standard">
         {children}
       </ul>
     ),
     listItem: ({ children = [] }) => <li key={randomKey()}>{children}</li>,
   },
   textBlock: {
-    normal: ({ children = [] }) => <p>{children}</p>,
+    normal: ({ children = [] }) => (
+      <p key={randomKey()} className="o-grid-container__item-standard">
+        {children}
+      </p>
+    ),
     h2: ({ children = [] }) => (
-      <ScrollableAnchor id={slugify(children[0], { lower: true })}>
-        <h2>{children}</h2>
+      <ScrollableAnchor key={randomKey()} id={slugify(children[0], { lower: true })}>
+        <h2 className="o-grid-container__item-standard">{children}</h2>
       </ScrollableAnchor>
+    ),
+    h3: ({ children = [] }) => (
+      <h3 key={randomKey()} className="o-grid-container__item-standard">
+        {children}
+      </h3>
+    ),
+    h4: ({ children = [] }) => (
+      <h4 key={randomKey()} className="o-grid-container__item-standard">
+        {children}
+      </h4>
+    ),
+    blockquote: ({ children = [] }) => (
+      <blockquote key={randomKey()} className="o-grid-container__item-standard">
+        {children}
+      </blockquote>
     ),
   },
 };
 
 const typeHandlers = {
-  image: ({ attributes }) => <Figure {...attributes} />,
-  pullQuote: ({ attributes: { text } }) => <div className="c-article__pullQuote">{text}</div>,
+  image: ({ attributes }) => <Figure key={randomKey} {...attributes} />,
+  pullQuote: ({ attributes: { text } }) => (
+    <div key={randomKey()} className="c-article__pullQuote o-grid-container__item-wider">
+      {text}
+    </div>
+  ),
   nugget: ({ attributes: { text, title } }) => (
-    <div className="c-article__nugget">
+    <div className="c-article__nugget o-grid-container__item-wider">
       <h2 className="c-article__nugget-title">{title}</h2>
       <BlockContent blocks={text} />
     </div>
@@ -66,52 +88,49 @@ const Article = ({
     <div className="c-article-nav">
       <ArticleContents content={content} />
     </div>
-    <GridContainer rowTemplate="1fr" columnTemplate="repeat(12,1fr)" style={{ height: '100%' }}>
-      <GridItem columns="1 / 9">
-        <header className="c-article-header o-wrapper--huge">
-          <h1 className="c-article-header__title">{title}</h1>
-          <p className="c-article-header__subtitle">{subtitle}</p>
-          <div className="c-article-header__byline">
-            By <a href="#">Åse Gilje Østensen</a> & <a href="#">Mats Stridsman </a>
-            | Bergen: Chr. Michelsen Institute (U4 Issue 2017:3)
-          </div>
-          <div className="c-article-header__photo-credit">
-            Photography by <a href="#">Dani Deahl</a>
-          </div>
-          <div className="c-article-header__summary-for-busy-people">
-            <details>
-              <summary>Main points for busy people</summary>
-              <ol>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum itaque
-                  at blanditiis nesciunt rem optio eaque qui eligendi?
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum itaque
-                  at blanditiis nesciunt rem optio eaque qui eligendi?
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum itaque
-                  at blanditiis nesciunt rem optio eaque qui eligendi?
-                </li>
-              </ol>
-            </details>
-          </div>
-          <p className="c-article-header__lead">{lead}</p>
-        </header>
-      </GridItem>
-      <GridItem columns="3 / 9">
-        <main>
-          <div className="c-article o-wrapper--huge">
-            <BlockContent
-              blocks={content.filter(block => !['reference'].includes(block._type))}
-              blockTypeHandlers={{ ...blockHandlers }}
-              customTypeHandlers={typeHandlers}
-            />
-          </div>
-        </main>
-      </GridItem>
-      <footer>
+    <header className="c-article-header o-grid-container">
+      {/* Wrap in standard grid width until we know better */}
+      <div className="o-grid-container__item-standard">
+        <h1 className="c-article-header__title">{title}</h1>
+        <p className="c-article-header__subtitle">{subtitle}</p>
+        <div className="c-article-header__byline">
+          By <a href="#">Åse Gilje Østensen</a> & <a href="#">Mats Stridsman </a>
+          | Bergen: Chr. Michelsen Institute (U4 Issue 2017:3)
+        </div>
+        <div className="c-article-header__photo-credit">
+          Photography by <a href="#">Dani Deahl</a>
+        </div>
+        <div className="c-article-header__summary-for-busy-people">
+          <details>
+            <summary>Main points for busy people</summary>
+            <ol>
+              <li>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum itaque
+                at blanditiis nesciunt rem optio eaque qui eligendi?
+              </li>
+              <li>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum itaque
+                at blanditiis nesciunt rem optio eaque qui eligendi?
+              </li>
+              <li>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum itaque
+                at blanditiis nesciunt rem optio eaque qui eligendi?
+              </li>
+            </ol>
+          </details>
+        </div>
+        <p className="c-article-header__lead">{lead}</p>
+      </div>
+    </header>
+    <main className="c-article o-grid-container-sub-div">
+      <BlockContent
+        blocks={content.filter(block => !['reference'].includes(block._type))}
+        blockTypeHandlers={{ ...blockHandlers }}
+        customTypeHandlers={typeHandlers}
+      />
+    </main>
+    <footer className="o-grid-container">
+      <div className="o-grid-container__item-standard">
         <details>
           <summary>Sharing</summary>
           <li>Twitter highlight thingy</li>
@@ -142,8 +161,8 @@ const Article = ({
             vero numquam totam obcaecati eligendi blanditiis?
           </p>
         </details>
-      </footer>
-    </GridContainer>
+      </div>
+    </footer>
   </article>
 );
 

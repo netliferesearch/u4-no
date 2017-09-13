@@ -1,0 +1,25 @@
+.o-grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  height: 100%;
+}
+
+// fugly hack to set grid properties on the div surrounding <BlockContent />
+// output
+.o-grid-container-sub-div > div {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  height: 100%;
+}
+
+.o-grid-container__item-standard {
+  grid-column: 4/10;
+  grid-row: auto;
+}
+
+.o-grid-container__item-wider {
+  grid-column: 3/11;
+  grid-row: auto;
+}
