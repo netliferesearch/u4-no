@@ -12,7 +12,7 @@ export default class extends Component {
       dataset: 'production',
       token: '',
     });
-    const publications = await client.fetch('*[_type in ["publication"]]');
+    const publications = await client.fetch('*[_type in ["publication"]][0..10000]');
     return { publications };
   }
   constructor(props) {
