@@ -22,6 +22,22 @@
   }
 }
 
+.o-grid-container__item-standard-left {
+  grid-row: auto;
+  grid-column: 4/10;
+  @include mq($from: desktop) {
+    grid-column: 1/4;
+  }
+}
+
+.o-grid-container__item-standard-right {
+  grid-row: auto;
+  grid-column: 4/10;
+  @include mq($from: desktop) {
+    grid-column: 10/13;
+  }
+}
+
 .o-grid-container__item-wider {
   grid-column: 3/11;
   grid-row: auto;

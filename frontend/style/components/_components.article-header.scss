@@ -1,5 +1,4 @@
 .c-article-header {
-
 }
 
 .c-article-header__issue {
@@ -9,13 +8,14 @@
 }
 
 .c-article-header__title {
+  margin-top: 0;
   @include inuit-font-size($font-size-larger, $line-height-normal);
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-huge, $line-height-normal);
-    }
+  }
 }
 
-.c-article-header__subtitle{
+.c-article-header__subtitle {
   @include inuit-font-size($font-size-larger, $line-height-larger);
   font-family: $font-sans;
   color: $dark-light;
@@ -28,19 +28,19 @@
   @include inuit-font-size($font-size-small);
 }
 
-.c-article-header__photo-credit{
+.c-article-header__photo-credit {
   font-style: italic;
   font-family: $font-sans;
   color: $dark-light;
   @include inuit-font-size($font-size-small);
 }
 
-.c-article-header__topics{
-    display: flex;
-    flex-wrap: wrap;
+.c-article-header__topics {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.c-article-header__topics-item{
+.c-article-header__topics-item {
   @include inuit-font-size($font-size-tiny);
   color: $primary;
   border: solid $primary 1px;
@@ -51,7 +51,7 @@
   padding: 0 8px;
   transition: all 0.1s ease;
   &:hover {
-    background-color: #1DA1F2;
+    background-color: #1da1f2;
     color: white;
   }
 }
@@ -61,12 +61,12 @@
 }
 .c-article-header__lead::first-letter {
   color: $dark;
-  letter-spacing:0;
-   text-transform:uppercase;
-   color:#250607;
-   @include inuit-font-size($font-size-huge * 1.5);
-   font-weight:normal;
-   float:left;
-   margin:5px 5px -7px 0; /* THESE VALUES SET TXT WRAP AROUND DROP CAP */
-   line-height:1; /* THIS SETS BASELINE POSITION OF DROP CAP */
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #250607;
+  @include inuit-font-size($font-size-huge * 1.5);
+  font-weight: normal;
+  float: left;
+  margin: 5px 5px -7px 0; /* THESE VALUES SET TXT WRAP AROUND DROP CAP */
+  line-height: 1; /* THIS SETS BASELINE POSITION OF DROP CAP */
 }

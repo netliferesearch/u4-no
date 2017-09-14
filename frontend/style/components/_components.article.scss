@@ -1,4 +1,4 @@
-.c-article{
+.c-article {
   @include inuit-font-size($font-size-large, $line-height-normal);
   word-wrap: break-word;
 }
@@ -8,11 +8,11 @@
   margin-right: 0;
 }
 
-.c-article__figure-img{
+.c-article__figure-img {
   width: 100%;
 }
 
-.c-article__figure-figcaption{
+.c-article__figure-figcaption {
   font-family: $font-sans;
   @include inuit-font-size($font-size-small);
   text-transform: uppercase;
@@ -32,7 +32,6 @@
   font-family: $font-sans;
   @include inuit-font-size($font-size-normal);
   margin-bottom: 0;
-  //text-transform: uppercase;
   font-weight: bold;
 }
 
@@ -57,7 +56,6 @@ blockquote {
   font-weight: 300;
   color: $dark-light;
   margin: $spacing 0;
-
 }
 
 .c-article-header__summary-for-busy-people {
@@ -65,5 +63,3 @@ blockquote {
   padding: 1em;
   border: 1px solid $primary;
 }
-
-

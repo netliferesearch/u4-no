@@ -1,19 +1,25 @@
-.c-article-nav{
-  display: none;
-  @include mq($from:  wide) {
-  display:block;
-  position:fixed;
-  width:250px;
-  top:200px;
-  left: 0;
+.c-article-nav {
   @include inuit-font-size($font-size-small);
   font-family: $font-sans;
+  transition: all 1s linear;
   li {
     padding: 5px 10px;
     border-left: 3px solid lightgrey;
     &:first-child {
-     border-left: 3px solid $primary;
-   }
+      border-left: 3px solid $primary;
+    }
   }
- }
+  @include mq($until: tablet) {
+    display: none;
+  }
+
+  @include mq($from: tablet) {
+    display: block;
+  }
+}
+
+.c-article-nav--fixed {
+  position: fixed;
+  width: 250px;
+  top: 200px;
 }

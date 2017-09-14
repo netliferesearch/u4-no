@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
+import Scrollspy from 'react-scrollspy';
 import ScrollableAnchor, { configureAnchors } from 'react-scrollable-anchor';
 import ArticleContents from './ArticleContents';
 import Figure from './Figure';
@@ -9,6 +10,11 @@ import randomKey from '../helpers/randomKey';
 
 configureAnchors({ offset: -60, scrollDuration: 400, keepLastAnchorHash: true });
 
+/**
+ * Here we replace Sanity's react components for rendering basic things like
+ * lists so that we can drop in our classnames
+ * @type {Object}
+ */
 const blockTypeHandlersOverride = {
   listBlock: {
     number: ({ children = [] }) => (
@@ -60,7 +66,7 @@ const customTypeHandlers = {
     </div>
   ),
   nugget: ({ attributes: { text, title } }) => (
-    <div className="c-article__nugget o-grid-container__item-wider">
+    <div key={randomKey()} className="c-article__nugget o-grid-container__item-wider">
       <h2 className="c-article__nugget-title">{title}</h2>
       <BlockContent blocks={text} />
     </div>
@@ -75,16 +81,22 @@ const Article = ({
   content = [],
 }) => (
   <article className="o-wrapper">
-    <div className="c-article-nav">
-      <ArticleContents content={content} />
-    </div>
     <header className="c-article-header o-grid-container">
       {/* Wrap in standard grid width until we know better */}
+      <p className="o-grid-container__item-standard">
+        <a>U4 brief</a> | <a>Natural resources</a>
+      </p>
       <div className="o-grid-container__item-standard">
-        <p>
-          <a>U4 brief</a> | <a>Natural resources</a>
-        </p>
         <h1 className="c-article-header__title">{title}</h1>
+      </div>
+      <div className="o-grid-container__item-standard-right">
+        <Scrollspy items={['article-main']} currentClassName="c-article-nav--fixed">
+          <div className="c-article-nav">
+            <ArticleContents content={content} />
+          </div>
+        </Scrollspy>
+      </div>
+      <div className="o-grid-container__item-standard">
         <p className="c-article-header__subtitle">{subtitle}</p>
         <div className="c-article-header__byline">
           By <a href="#">Åse Gilje Østensen</a> & <a href="#">Mats Stridsman </a>
@@ -145,7 +157,7 @@ const Article = ({
         <p className="c-article-header__lead">{lead}</p>
       </div>
     </header>
-    <main className="c-article o-grid-container-sub-div">
+    <main id="article-main" className="c-article o-grid-container-sub-div">
       <BlockContent
         blocks={content.filter(block => !['reference'].includes(block._type))}
         blockTypeHandlers={{ ...blockTypeHandlersOverride }}
