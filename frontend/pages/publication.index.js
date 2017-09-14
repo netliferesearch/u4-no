@@ -21,18 +21,17 @@ export default class extends Component {
     this.state = { publications };
   }
   render() {
+    const { publications } = this.state
     return (
       <Layout>
         <h1>Publications</h1>
-        <ul>
-          {this.state.publications.map(pub => (
-            <li key={pub._id}>
-              <Link route={`/publications/${pub._id}`}>
-                <a>{pub.title}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {publications.map(({ _id = '', title = '', featuredImage: {} }) => (
+          <div key={_id}>
+            <Link route={`/publications/${_id}`}>
+              <a>{title}</a>
+            </Link>
+          </div>
+        ))}
       </Layout>
     );
   }
