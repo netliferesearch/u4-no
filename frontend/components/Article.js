@@ -91,6 +91,9 @@ const Article = ({
     <header className="c-article-header o-grid-container">
       {/* Wrap in standard grid width until we know better */}
       <div className="o-grid-container__item-standard">
+        <p>
+          <a>U4 brief</a> | <a>Natural resources</a>
+        </p>
         <h1 className="c-article-header__title">{title}</h1>
         <p className="c-article-header__subtitle">{subtitle}</p>
         <div className="c-article-header__byline">
@@ -102,7 +105,12 @@ const Article = ({
         </div>
         <div className="c-article-header__summary-for-busy-people">
           <details>
-            <summary>Main points for busy people</summary>
+            <summary>Read our summary for busy people</summary>
+          </details>
+        </div>
+        <div className="c-article-header__summary-for-busy-people">
+          <details>
+            <summary>Main points</summary>
             <ol>
               <li>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum itaque
@@ -119,6 +127,31 @@ const Article = ({
             </ol>
           </details>
         </div>
+
+        <div className="c-article-header__summary-for-busy-people">
+          <details>
+            <summary>Acknowledgements</summary>
+            <ol />
+          </details>
+        </div>
+        <div className="c-article-header__summary-for-busy-people">
+          <details>
+            <summary>Abstract</summary>
+            <ol />
+          </details>
+        </div>
+        <div className="c-article-header__summary-for-busy-people">
+          <details>
+            <summary>Share or download</summary>
+            <ol />
+          </details>
+        </div>
+        <div className="c-article-header__summary-for-busy-people">
+          <details>
+            <summary>Also available in Spanish</summary>
+            <ol />
+          </details>
+        </div>
         <p className="c-article-header__lead">{lead}</p>
       </div>
     </header>
@@ -131,28 +164,8 @@ const Article = ({
     </main>
     <footer className="o-grid-container">
       <div className="o-grid-container__item-standard">
-        <details>
-          <summary>Sharing</summary>
-          <li>Twitter highlight thingy</li>
-          <li>Smart email thingy</li>
-          <li>Link to this section stuff</li>
-        </details>
-        <details>
-          <summary>Abstract</summary>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, earum velit reiciendis
-            ullam sapiente quidem pariatur repudiandae dolorem amet vel rem vitae delectus minima,
-            vero numquam totam obcaecati eligendi blanditiis?
-          </p>
-        </details>
-        <details>
-          <summary>Acknowledgements</summary>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, earum velit reiciendis
-            ullam sapiente quidem pariatur repudiandae dolorem amet vel rem vitae delectus minima,
-            vero numquam totam obcaecati eligendi blanditiis?
-          </p>
-        </details>
+        {/* TODO add expandable endnotes/footnotes */}
+        {/* Comes after all */}
         <details>
           <summary>We also recommend</summary>
           <p>
