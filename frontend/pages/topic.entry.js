@@ -40,40 +40,75 @@ export default class extends Component {
     } = topic;
     return (
       <Layout>
-        <p>
-          Tilbake til {' '}
-          <Link href={'/topics'}>
-            <a>topics oversikt</a>
-          </Link>
-        </p>
-        <h1>{title}</h1>
-        <h2>{longTitle}</h2>
-        <p>{explainerText}</p>
-        <ul>
-          <li>
-            <Link href={`/topics/article?id=${topic._id}&topicKey=introduction`}>
-              <a>Basic guide</a>
+        <div className="o-wrapper">
+          <p>
+            Tilbake til {' '}
+            <Link href={'/topics'}>
+              <a>topics oversikt</a>
             </Link>
-            , read this to get informed about the field of {title}.
-          </li>
-          <li>
-            <Link href={`/topics/article?id=${topic._id}&topicKey=agenda`}>
-              <a>Research and policy</a>
-            </Link>
-            , here we show you the bigger picture of U4's work in the area of {title}. We introduce
-            you to U4's research and policy agenda.
-          </li>
-        </ul>
-        <h3>Resources</h3>
-        <ul>
-          {resources.map(({ _id, title }) => (
-            <li key={_id}>
-              <Link href={`/article?id=${_id}`}>
-                <a>{title}</a>
+          </p>
+          <h1>{title}</h1>
+          <h2>{longTitle}</h2>
+          <button>Browse our resources</button>
+
+          <section>
+            {
+              featuredImage &&
+                <figure>
+                  <img alt={featuredImage.asset.altText} src={featuredImage.asset.url} />
+                </figure>
+            }
+            <p>{explainerText}</p>
+            <a>Talk to one our of advisors</a>
+          </section>
+          <section>
+            <div>
+              <div>
+                <figure>
+                  <svg></svg>
+                </figure>
+                <p>Read our Essential Guide to corruption and anti-corruption
+                  efforts in the NRE sectiors</p>
+              </div>
+              <div>
+                <figure>
+                  <svg></svg>
+                </figure>
+                <p>Get the Bigger Pocture with our research and policy agenda</p>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h1>Our team is what sets us apart.</h1>
+
+          </section>
+
+          <ul>
+            <li>
+              <Link href={`/topics/article?id=${topic._id}&topicKey=introduction`}>
+                <a>Basic guide</a>
               </Link>
+              , read this to get informed about the field of {title}.
             </li>
-          ))}
-        </ul>
+            <li>
+              <Link href={`/topics/article?id=${topic._id}&topicKey=agenda`}>
+                <a>Research and policy</a>
+              </Link>
+              , here we show you the bigger picture of U4's work in the area of {title}. We introduce
+              you to U4's research and policy agenda.
+            </li>
+          </ul>
+          <h3>Resources</h3>
+          <ul>
+            {resources.map(({ _id, title }) => (
+              <li key={_id}>
+                <Link href={`/article?id=${_id}`}>
+                  <a>{title}</a>
+                </Link>
+              </li>
+            ))}
+            </ul>
+          </div>
       </Layout>
     );
   }
