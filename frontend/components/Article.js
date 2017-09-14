@@ -4,22 +4,12 @@ import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 import ScrollableAnchor, { configureAnchors } from 'react-scrollable-anchor';
 import ArticleContents from './ArticleContents';
+import Figure from './Figure';
 import randomKey from '../helpers/randomKey';
 
 configureAnchors({ offset: -60, scrollDuration: 400, keepLastAnchorHash: true });
 
-const Figure = ({ asset, caption, license, licensor }) => (
-  <figure className="c-article__figure o-grid-container__item-standard">
-    <img className="c-article__figure-img" src={asset.url} alt={asset.altText} />
-    <figcaption className="c-article__figure-figcaption">
-      {caption}
-      {license}
-      {licensor}
-    </figcaption>
-  </figure>
-);
-
-const blockHandlers = {
+const blockTypeHandlersOverride = {
   listBlock: {
     number: ({ children = [] }) => (
       <ol key={randomKey()} className="list-numbered o-grid-container__item-standard">
@@ -62,7 +52,7 @@ const blockHandlers = {
   },
 };
 
-const typeHandlers = {
+const customTypeHandlers = {
   image: ({ attributes }) => <Figure key={randomKey} {...attributes} />,
   pullQuote: ({ attributes: { text } }) => (
     <div key={randomKey()} className="c-article__pullQuote o-grid-container__item-wider">
@@ -91,6 +81,9 @@ const Article = ({
     <header className="c-article-header o-grid-container">
       {/* Wrap in standard grid width until we know better */}
       <div className="o-grid-container__item-standard">
+        <p>
+          <a>U4 brief</a> | <a>Natural resources</a>
+        </p>
         <h1 className="c-article-header__title">{title}</h1>
         <p className="c-article-header__subtitle">{subtitle}</p>
         <div className="c-article-header__byline">
@@ -102,7 +95,12 @@ const Article = ({
         </div>
         <div className="c-article-header__summary-for-busy-people">
           <details>
-            <summary>Main points for busy people</summary>
+            <summary>Read our summary for busy people</summary>
+          </details>
+        </div>
+        <div className="c-article-header__summary-for-busy-people">
+          <details>
+            <summary>Main points</summary>
             <ol>
               <li>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum itaque
@@ -119,40 +117,45 @@ const Article = ({
             </ol>
           </details>
         </div>
+
+        <div className="c-article-header__summary-for-busy-people">
+          <details>
+            <summary>Acknowledgements</summary>
+            <ol />
+          </details>
+        </div>
+        <div className="c-article-header__summary-for-busy-people">
+          <details>
+            <summary>Abstract</summary>
+            <ol />
+          </details>
+        </div>
+        <div className="c-article-header__summary-for-busy-people">
+          <details>
+            <summary>Share or download</summary>
+            <ol />
+          </details>
+        </div>
+        <div className="c-article-header__summary-for-busy-people">
+          <details>
+            <summary>Also available in Spanish</summary>
+            <ol />
+          </details>
+        </div>
         <p className="c-article-header__lead">{lead}</p>
       </div>
     </header>
     <main className="c-article o-grid-container-sub-div">
       <BlockContent
         blocks={content.filter(block => !['reference'].includes(block._type))}
-        blockTypeHandlers={{ ...blockHandlers }}
-        customTypeHandlers={typeHandlers}
+        blockTypeHandlers={{ ...blockTypeHandlersOverride }}
+        customTypeHandlers={customTypeHandlers}
       />
     </main>
     <footer className="o-grid-container">
       <div className="o-grid-container__item-standard">
-        <details>
-          <summary>Sharing</summary>
-          <li>Twitter highlight thingy</li>
-          <li>Smart email thingy</li>
-          <li>Link to this section stuff</li>
-        </details>
-        <details>
-          <summary>Abstract</summary>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, earum velit reiciendis
-            ullam sapiente quidem pariatur repudiandae dolorem amet vel rem vitae delectus minima,
-            vero numquam totam obcaecati eligendi blanditiis?
-          </p>
-        </details>
-        <details>
-          <summary>Acknowledgements</summary>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, earum velit reiciendis
-            ullam sapiente quidem pariatur repudiandae dolorem amet vel rem vitae delectus minima,
-            vero numquam totam obcaecati eligendi blanditiis?
-          </p>
-        </details>
+        {/* TODO add expandable endnotes/footnotes */}
+        {/* Comes after all */}
         <details>
           <summary>We also recommend</summary>
           <p>

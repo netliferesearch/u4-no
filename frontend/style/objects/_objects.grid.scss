@@ -15,8 +15,11 @@
 }
 
 .o-grid-container__item-standard {
-  grid-column: 4/10;
   grid-row: auto;
+  grid-column: 2/11;
+  @include mq($from: desktop) {
+    grid-column: 4/10;
+  }
 }
 
 .o-grid-container__item-wider {
