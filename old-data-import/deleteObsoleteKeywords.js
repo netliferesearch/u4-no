@@ -8,7 +8,7 @@ const client = sanityClient({
 });
 
 async function main() {
-  const docs = await client.fetch("*[_type == 'keyword' && keyword match 'Delete']");
+  const docs = await client.fetch("*[_type == 'keyword' && keyword match 'Delete'][0..10000]");
   for (const doc of docs) {
     await client.delete(doc._id);
     console.log('Deleted ', doc._id);
