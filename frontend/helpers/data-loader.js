@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Layout, Article } from '../components';
+import sanityClient from '@sanity/client';
 import materialize from '../helpers/materialize';
 
-const sanityClient = require('@sanity/client');
-
-export default (Child, { queryFunc, materialize = false }) =>
+export default (Child, { queryFunc, materializeDepth = false }) =>
   class extends Component {
     static async getInitialProps(nextContext) {
       const client = sanityClient({ projectId: '1f1lcoov', dataset: 'production', token: '' });
@@ -14,13 +12,10 @@ export default (Child, { queryFunc, materialize = false }) =>
       }
       const sanityQuery = queryFunc(nextContext);
       const sanityResults = await client.fetch(sanityQuery);
-      if (!materialize) {
+      if (!materializeDepth) {
         return sanityResults;
       }
-      return await materialize(sanityResults);
-    }
-    constructor(props) {
-      super(props);
+      return materialize(sanityResults, materializeDepth);
     }
     render() {
       return (

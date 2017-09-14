@@ -9,7 +9,7 @@ import randomKey from '../helpers/randomKey';
 
 configureAnchors({ offset: -60, scrollDuration: 400, keepLastAnchorHash: true });
 
-const blockHandlers = {
+const blockTypeHandlersOverride = {
   listBlock: {
     number: ({ children = [] }) => (
       <ol key={randomKey()} className="list-numbered o-grid-container__item-standard">
@@ -52,7 +52,7 @@ const blockHandlers = {
   },
 };
 
-const typeHandlers = {
+const customTypeHandlers = {
   image: ({ attributes }) => <Figure key={randomKey} {...attributes} />,
   pullQuote: ({ attributes: { text } }) => (
     <div key={randomKey()} className="c-article__pullQuote o-grid-container__item-wider">
@@ -148,8 +148,8 @@ const Article = ({
     <main className="c-article o-grid-container-sub-div">
       <BlockContent
         blocks={content.filter(block => !['reference'].includes(block._type))}
-        blockTypeHandlers={{ ...blockHandlers }}
-        customTypeHandlers={typeHandlers}
+        blockTypeHandlers={{ ...blockTypeHandlersOverride }}
+        customTypeHandlers={customTypeHandlers}
       />
     </main>
     <footer className="o-grid-container">

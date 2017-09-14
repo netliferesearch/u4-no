@@ -22,4 +22,5 @@ export default DataLoader(PublicationEntry, {
     const sanityQuery = `*[_id == "${id}"][0]`;
     return sanityQuery;
   },
+  materializeDepth: 1,
 });
