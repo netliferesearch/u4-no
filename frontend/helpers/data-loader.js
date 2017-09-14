@@ -5,7 +5,7 @@ import materialize from '../helpers/materialize';
 export default (Child, { queryFunc, materializeDepth = false }) =>
   class extends Component {
     static async getInitialProps(nextContext) {
-      const client = sanityClient({ projectId: '1f1lcoov', dataset: 'production', token: '' });
+      const client = sanityClient({ projectId: '1f1lcoov', dataset: 'production', token: '', useCdn: false });
       if (!queryFunc) {
         console.log('No query function provided. Returning empty object');
         return {};
