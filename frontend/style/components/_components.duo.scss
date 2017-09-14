@@ -1,0 +1,53 @@
+.c-duo {
+  position: relative;
+  flex: 1 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  color: $background;
+  @include mq($from: wide) {
+    & > * {
+      max-width: 50%;
+      min-width: 50%;
+    }
+  }
+}
+.c-duo__body {
+  position: inherit;
+  background: $primary;
+
+  &:nth-of-type(3n+0) {
+    background: $primary-darker;
+  }
+}
+.c-duo__link {
+  color: $secondary-light;
+}
+.c-duo__figure {
+  position: relative;
+  margin: 0;
+  @include mq($from: wide) {
+    margin: $spacing 0;
+
+    & > img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+}
+
+}
+.c-duo__body {
+  padding: $spacing $spacing * 2;
+}
+.c-duo__title {
+
+}
+.c-duo__subtitle {
+
+}
+.c-duo__text {
+
+}
