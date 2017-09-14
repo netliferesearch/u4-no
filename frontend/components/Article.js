@@ -4,20 +4,10 @@ import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 import ScrollableAnchor, { configureAnchors } from 'react-scrollable-anchor';
 import ArticleContents from './ArticleContents';
+import Figure from './Figure';
 import randomKey from '../helpers/randomKey';
 
 configureAnchors({ offset: -60, scrollDuration: 400, keepLastAnchorHash: true });
-
-const Figure = ({ asset, caption, license, licensor }) => (
-  <figure className="c-article__figure o-grid-container__item-standard">
-    <img className="c-article__figure-img" src={asset.url} alt={asset.altText} />
-    <figcaption className="c-article__figure-figcaption">
-      {caption}
-      {license}
-      {licensor}
-    </figcaption>
-  </figure>
-);
 
 const blockHandlers = {
   listBlock: {
