@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 import Scrollspy from 'react-scrollspy';
+import Waypoint from 'react-waypoint';
 import ScrollableAnchor, { configureAnchors } from 'react-scrollable-anchor';
 import ArticleContents from './ArticleContents';
 import Figure from './Figure';
@@ -73,112 +74,140 @@ const customTypeHandlers = {
   ),
 };
 
-const Article = ({
-  title = 'No title',
-  subtitle = 'No subtitle',
-  _updatedAt = 'No date',
-  lead = 'No lead',
-  content = [],
-}) => (
-  <article className="o-wrapper">
-    <header className="c-article-header o-grid-container">
-      {/* Wrap in standard grid width until we know better */}
-      <p className="o-grid-container__item-standard">
-        <a>U4 brief</a> | <a>Natural resources</a>
-      </p>
-      <div className="o-grid-container__item-standard">
-        <h1 className="c-article-header__title">{title}</h1>
-      </div>
-      <div className="o-grid-container__item-standard-right">
-        <Scrollspy items={['article-main']} currentClassName="c-article-nav--fixed">
-          <div className="c-article-nav">
-            <ArticleContents content={content} />
-          </div>
-        </Scrollspy>
-      </div>
-      <div className="o-grid-container__item-standard">
-        <p className="c-article-header__subtitle">{subtitle}</p>
-        <div className="c-article-header__byline">
-          By <a href="#">Åse Gilje Østensen</a> & <a href="#">Mats Stridsman </a>
-          | Bergen: Chr. Michelsen Institute (U4 Issue 2017:3)
-        </div>
-        <div className="c-article-header__photo-credit">
-          Photography by <a href="#">Dani Deahl</a>
-        </div>
-        <div className="c-article-header__summary-for-busy-people">
-          <details>
-            <summary>Read our summary for busy people</summary>
-          </details>
-        </div>
-        <div className="c-article-header__summary-for-busy-people">
-          <details>
-            <summary>Main points</summary>
-            <ol>
-              <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum itaque
-                at blanditiis nesciunt rem optio eaque qui eligendi?
-              </li>
-              <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum itaque
-                at blanditiis nesciunt rem optio eaque qui eligendi?
-              </li>
-              <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum itaque
-                at blanditiis nesciunt rem optio eaque qui eligendi?
-              </li>
-            </ol>
-          </details>
-        </div>
+class PublicationArticle extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { navFollowScreen: false };
+    this.waypointHandler = this.waypointHandler.bind(this);
+  }
 
-        <div className="c-article-header__summary-for-busy-people">
-          <details>
-            <summary>Acknowledgements</summary>
-            <ol />
-          </details>
-        </div>
-        <div className="c-article-header__summary-for-busy-people">
-          <details>
-            <summary>Abstract</summary>
-            <ol />
-          </details>
-        </div>
-        <div className="c-article-header__summary-for-busy-people">
-          <details>
-            <summary>Share or download</summary>
-            <ol />
-          </details>
-        </div>
-        <div className="c-article-header__summary-for-busy-people">
-          <details>
-            <summary>Also available in Spanish</summary>
-            <ol />
-          </details>
-        </div>
-        <p className="c-article-header__lead">{lead}</p>
-      </div>
-    </header>
-    <main id="article-main" className="c-article o-grid-container-sub-div">
-      <BlockContent
-        blocks={content.filter(block => !['reference'].includes(block._type))}
-        blockTypeHandlers={{ ...blockTypeHandlersOverride }}
-        customTypeHandlers={customTypeHandlers}
-      />
-    </main>
-    <footer className="o-grid-container">
-      <div className="o-grid-container__item-standard">
-        {/* TODO add expandable endnotes/footnotes */}
-        {/* Comes after all */}
-        <details>
-          <summary>We also recommend</summary>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, earum velit reiciendis
-            ullam sapiente quidem pariatur repudiandae dolorem amet vel rem vitae delectus minima,
-            vero numquam totam obcaecati eligendi blanditiis?
+  waypointHandler({ currentPosition }) {
+    if (currentPosition === 'above') {
+      this.setState(() => ({ navFollowScreen: true }));
+    } else {
+      this.setState(() => ({ navFollowScreen: false }));
+    }
+  }
+
+  render() {
+    const {
+      title = 'No title',
+      subtitle = 'No subtitle',
+      _updatedAt = 'No date',
+      lead = 'No lead',
+      content = [],
+    } = this.props;
+
+    const articleContentsClass = () => this.state.navFollowScreen;
+
+    return (
+      <article className="o-wrapper">
+        <header className="c-article-header o-grid-container">
+          {/* Wrap in standard grid width until we know better */}
+          <p className="o-grid-container__item-standard">
+            <Waypoint onPositionChange={this.waypointHandler}>
+              <span>
+                <a>U4 brief</a> | <a>Natural resources</a>
+              </span>
+            </Waypoint>
           </p>
-        </details>
-      </div>
-    </footer>
-  </article>
-);
+          <div className="o-grid-container__item-standard">
+            <h1 className="c-article-header__title">{title}</h1>
+          </div>
+          <div className="o-grid-container__item-standard-right">
+            <div
+              className={
+                this.state.navFollowScreen ? 'c-article-nav c-article-nav--fixed' : 'c-article-nav'
+              }
+            >
+              <ArticleContents content={content} />
+            </div>
+          </div>
+          <div className="o-grid-container__item-standard">
+            <p className="c-article-header__subtitle">{subtitle}</p>
+            <div className="c-article-header__byline">
+              By <a href="#">Åse Gilje Østensen</a> & <a href="#">Mats Stridsman </a>
+              | Bergen: Chr. Michelsen Institute (U4 Issue 2017:3)
+            </div>
+            <div className="c-article-header__photo-credit">
+              Photography by <a href="#">Dani Deahl</a>
+            </div>
+            <div className="c-article-header__summary-for-busy-people">
+              <details>
+                <summary>Read our summary for busy people</summary>
+              </details>
+            </div>
+            <div className="c-article-header__summary-for-busy-people">
+              <details>
+                <summary>Main points</summary>
+                <ol>
+                  <li>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum
+                    itaque at blanditiis nesciunt rem optio eaque qui eligendi?
+                  </li>
+                  <li>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum
+                    itaque at blanditiis nesciunt rem optio eaque qui eligendi?
+                  </li>
+                  <li>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum
+                    itaque at blanditiis nesciunt rem optio eaque qui eligendi?
+                  </li>
+                </ol>
+              </details>
+            </div>
 
-export default Article;
+            <div className="c-article-header__summary-for-busy-people">
+              <details>
+                <summary>Acknowledgements</summary>
+                <ol />
+              </details>
+            </div>
+            <div className="c-article-header__summary-for-busy-people">
+              <details>
+                <summary>Abstract</summary>
+                <ol />
+              </details>
+            </div>
+            <div className="c-article-header__summary-for-busy-people">
+              <details>
+                <summary>Share or download</summary>
+                <ol />
+              </details>
+            </div>
+            <div className="c-article-header__summary-for-busy-people">
+              <details>
+                <summary>Also available in Spanish</summary>
+                <ol />
+              </details>
+            </div>
+            <p className="c-article-header__lead">{lead}</p>
+          </div>
+        </header>
+        <main className="c-article o-grid-container-sub-div">
+          <BlockContent
+            blocks={content.filter(block => !['reference'].includes(block._type))}
+            blockTypeHandlers={{ ...blockTypeHandlersOverride }}
+            customTypeHandlers={customTypeHandlers}
+          />
+        </main>
+        <footer className="o-grid-container">
+          <div className="o-grid-container__item-standard">
+            {/* TODO add expandable endnotes/footnotes */}
+            {/* Comes after all */}
+            <details>
+              <summary>We also recommend</summary>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, earum velit reiciendis
+                ullam sapiente quidem pariatur repudiandae dolorem amet vel rem vitae delectus
+                minima, vero numquam totam obcaecati eligendi blanditiis?
+              </p>
+            </details>
+          </div>
+        </footer>
+      </article>
+    );
+  }
+}
+
+export default PublicationArticle;
