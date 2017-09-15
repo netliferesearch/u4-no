@@ -17,7 +17,7 @@
   @include inuit-font-size($font-size-small);
   text-transform: uppercase;
   text-align: center;
-  color: $dark;
+  color: $black;
 }
 
 .c-article__nugget {
@@ -38,11 +38,11 @@
 .c-article__pullQuote {
   @include inuit-font-size($font-size-larger, $line-height-normal);
   font-weight: bold;
-  color: $dark;
+  color: $black;
   text-align: left;
   letter-spacing: 0.02em;
-  border-top: 1px solid $dark;
-  border-bottom: 1px solid $dark;
+  border-top: 1px solid $black;
+  border-bottom: 1px solid $black;
   margin: $spacing*2 -2em $spacing*2 -2em;
   padding: $spacing 0;
 }
@@ -54,12 +54,12 @@ blockquote {
   @include inuit-font-size($font-size-normal);
   letter-spacing: 0.02em;
   font-weight: 300;
-  color: $dark-light;
+  color: $grey;
   margin: $spacing 0;
 }
 
 .c-article-header__summary-for-busy-people {
   margin: 1em 0;
   padding: 1em;
-  border: 1px solid $primary;
+  border: 1px solid $brand-main;
 }

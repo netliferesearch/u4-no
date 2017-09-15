@@ -18,20 +18,20 @@
 .c-article-header__subtitle {
   @include inuit-font-size($font-size-larger, $line-height-larger);
   font-family: $font-sans;
-  color: $dark-light;
+  color: $grey;
   font-weight: lighter;
 }
 
 .c-article-header__byline {
   font-family: $font-sans;
-  color: $dark-light;
+  color: $grey;
   @include inuit-font-size($font-size-small);
 }
 
 .c-article-header__photo-credit {
   font-style: italic;
   font-family: $font-sans;
-  color: $dark-light;
+  color: $grey;
   @include inuit-font-size($font-size-small);
 }
 
@@ -42,8 +42,8 @@
 
 .c-article-header__topics-item {
   @include inuit-font-size($font-size-tiny);
-  color: $primary;
-  border: solid $primary 1px;
+  color: $brand-main;
+  border: solid $brand-main 1px;
   font-family: $font-sans;
   text-transform: uppercase;
   border-radius: 2px;
@@ -60,10 +60,10 @@
   @include inuit-font-size($font-size-large, $line-height-large);
 }
 .c-article-header__lead::first-letter {
-  color: $dark;
+  color: $black;
   letter-spacing: 0;
   text-transform: uppercase;
-  color: #250607;
+  color: $black;
   @include inuit-font-size($font-size-huge * 1.5);
   font-weight: normal;
   float: left;
