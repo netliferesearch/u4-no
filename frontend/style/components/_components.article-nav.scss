@@ -9,11 +9,11 @@
       border-left: 3px solid $brand-main;
     }
   }
-  @include mq($until: tablet) {
+  @include mq($until: desktop) {
     display: none;
   }
 
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     display: block;
   }
 }

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
-import Scrollspy from 'react-scrollspy';
+import HeadRoom from 'react-headroom';
 import Waypoint from 'react-waypoint';
 import ScrollableAnchor, { configureAnchors } from 'react-scrollable-anchor';
 import ArticleContents from './ArticleContents';
+import TocMobile from './TocMobile';
 import Figure from './Figure';
 import randomKey from '../helpers/randomKey';
 
@@ -97,9 +98,6 @@ class PublicationArticle extends Component {
       lead = 'No lead',
       content = [],
     } = this.props;
-
-    const articleContentsClass = () => this.state.navFollowScreen;
-
     return (
       <article className="o-wrapper">
         <header className="c-article-header o-grid-container">
@@ -205,6 +203,9 @@ class PublicationArticle extends Component {
             </details>
           </div>
         </footer>
+        <HeadRoom disableInlineStyles>
+          <TocMobile {...this.props} />
+        </HeadRoom>
       </article>
     );
   }

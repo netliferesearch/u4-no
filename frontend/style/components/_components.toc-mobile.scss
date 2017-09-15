@@ -1,0 +1,21 @@
+.c-toc-mobile {
+  .c-toc-mobile__content {
+    float: right;
+    border-radius: 50%;
+    padding: 14px;
+    margin: 14px;
+    background-color: $brand-main;
+    border: 0;
+    height: 75px;
+    width: 75px;
+    transition: all 0.1s ease-in-out;
+  }
+  .c-toc-mobile__content--open {
+    height: 100vh;
+    width: 100vw;
+    border-radius: 0;
+  }
+  .c-toc-mobile__content img {
+    vertical-align: text-bottom;
+  }
+}

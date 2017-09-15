@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Layout, PublicationArticle } from '../components';
 import DataLoader from '../helpers/data-loader';
 
