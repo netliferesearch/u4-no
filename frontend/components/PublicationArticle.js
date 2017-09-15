@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
-import HeadRoom from 'react-headroom';
 import Waypoint from 'react-waypoint';
 import ScrollableAnchor, { configureAnchors } from 'react-scrollable-anchor';
 import ArticleContents from './ArticleContents';
@@ -203,9 +202,8 @@ class PublicationArticle extends Component {
             </details>
           </div>
         </footer>
-        <HeadRoom disableInlineStyles>
-          <TocMobile {...this.props} />
-        </HeadRoom>
+
+        <TocMobile {...this.props} />
       </article>
     );
   }

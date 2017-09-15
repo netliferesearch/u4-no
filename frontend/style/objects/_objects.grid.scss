@@ -16,7 +16,7 @@
 
 .o-grid-container__item-standard {
   grid-row: auto;
-  grid-column: 2/11;
+  grid-column: 1/13;
   @include mq($from: desktop) {
     grid-column: 4/10;
   }

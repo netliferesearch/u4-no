@@ -22,3 +22,7 @@
   position: fixed;
   transform: translateY(0%);
 }
+
+.disable-headroom-pinning .headroom--unpinned {
+  transform: translateY(0%) !important;
+}
