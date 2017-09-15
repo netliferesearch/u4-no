@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Article } from '../components';
+import { Layout, PublicationArticle } from '../components';
 import DataLoader from '../helpers/data-loader';
 
 const PublicationEntry = props => (
@@ -10,7 +10,7 @@ const PublicationEntry = props => (
           <img className="c-hero__image" src={props.featuredImage.asset.url} />
         </div>
       )}
-    <Article {...props} />
+    <PublicationArticle {...props} />
   </Layout>
 );
 
