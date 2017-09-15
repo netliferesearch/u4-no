@@ -202,7 +202,6 @@ class PublicationArticle extends Component {
             </details>
           </div>
         </footer>
-
         <TocMobile {...this.props} />
       </article>
     );

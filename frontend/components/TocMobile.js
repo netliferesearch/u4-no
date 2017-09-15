@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import HeadRoom from 'react-headroom';
+import ArticleContents from './ArticleContents';
 
 export default class extends Component {
   constructor(props) {
     super(props);
-    this.state = { menuOpen: false };
+    this.state = { menuOpen: true };
     this.buttonClickHandler = this.buttonClickHandler.bind(this);
   }
 
@@ -13,24 +13,16 @@ export default class extends Component {
   }
 
   render() {
+    const { content = [] } = this.props;
     return (
-      <div className={this.state.menuOpen ? 'disable-headroom-pinning' : ''}>
-        <HeadRoom disableInlineStyles>
-          <div className="c-toc-mobile">
-            <button
-              onClick={this.buttonClickHandler}
-              className={
-                this.state.menuOpen ? (
-                  'c-toc-mobile__content c-toc-mobile__content--open'
-                ) : (
-                  'c-toc-mobile__content'
-                )
-              }
-            >
-              <img alt="Table of contents icon" src="/static/table-of-contents-icon.svg" />
-            </button>
-          </div>
-        </HeadRoom>
+      <div className={this.state.menuOpen ? 'c-toc-mobile c-toc-mobile--open' : 'c-toc-mobile'}>
+        <div className="c-toc-mobile__menu">
+          <h2>Table of contents</h2>
+          <ArticleContents content={content} />
+        </div>
+        <button className="c-toc-mobile__button" onClick={this.buttonClickHandler}>
+          <img alt="Table of contents icon" src="/static/table-of-contents-icon.svg" />
+        </button>
       </div>
     );
   }
