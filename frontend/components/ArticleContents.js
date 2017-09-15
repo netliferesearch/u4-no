@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import slugify from 'slugify';
-import BlockContent from '@sanity/block-content-to-react';
 import randomKey from '../helpers/randomKey';
 
 function findTitles(articleContents) {
@@ -18,11 +17,13 @@ function findTitles(articleContents) {
 
 const getClassName = menuItem => `o-list-bare__item menu__item menu__item--${menuItem.style}`;
 
-const ArticleContents = ({ content = [] }) => (
+const ArticleContents = ({ onItemSelected = () => {}, content = [] }) => (
   <ul className="o-list-bare">
     {findTitles(content).map(menuItem => (
       <li key={randomKey()} className={getClassName(menuItem)}>
-        <a href={`#${slugify(menuItem.title, { lower: true })}`}>{menuItem.title}</a>
+        <a onClick={e => onItemSelected(e)} href={`#${slugify(menuItem.title, { lower: true })}`}>
+          {menuItem.title}
+        </a>
       </li>
     ))}
   </ul>
