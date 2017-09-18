@@ -47,10 +47,9 @@ export default class extends Component {
               <a>topics oversikt</a>
             </Link>
           </p>
-          <h1>{title}</h1>
-          <h2>{longTitle}</h2>
-          <button>Browse our resources</button>
-
+          <h1 className="c-topic-page_title">{title}</h1>
+          <h2 className="c-topic-page__longTitle">{longTitle}</h2>
+          <button className="c-topic-page__navigate--down">Browse our resources</button>
           <section>
             {
               featuredImage &&

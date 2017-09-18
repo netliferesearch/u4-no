@@ -1,0 +1,26 @@
+.c-topic-page_title {
+  @include inuit-font-size($font-size-normal);
+  font-family: $font-sans;
+  position: relative;
+  color: $primary;
+  padding: 0 0 0 ($spacing);
+  margin: 0;
+  text-transform: uppercase;
+
+  &:before {
+    position: absolute;
+    content: '–';
+    color: $primary;
+    left: 0;
+
+  }
+}
+.c-topic-page__longTitle {
+  @include inuit-font-size($font-size-huge);
+  font-family: $font-sans;
+  margin: 0;
+  color: $primary;
+}
+.c-topic-page__navigate--down {
+
+}
