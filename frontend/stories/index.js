@@ -36,5 +36,10 @@ storiesOf('Page Elements', module).add('Figure', () => (
   />
 ))
 .add('Buttons', () => (
-  <DownArrowButton onClick={action('Clicked!')} />
+  <div>
+    <h2>Button without text</h2>
+      <DownArrowButton onClick={action('Clicked!')} />
+    <h2>Button with text</h2>
+      <DownArrowButton onClick={action('Clicked!')} text={'This is a button'} />
+  </div>
 ));
