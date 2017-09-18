@@ -1,0 +1,162 @@
+[
+  {
+    "_type": "block",
+    "spans": [
+      {
+        "_type": "span",
+        "marks": [
+          "strong"
+        ],
+        "text": "Basic guide to corruption in natural resources and energy"
+      }
+    ],
+    "style": "h1"
+  },
+  {
+    "_type": "block",
+    "spans": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Natural resources and energy sectors involve vast revenues. Operations happen in remote areas and contracts and concessions are opaque. The incentives for corruption are high, and so is officials' discretionary power. Understanding how this harms the environment and development, can help chose how to act. "
+      }
+    ],
+    "style": "h3"
+  },
+  {
+    "_type": "block",
+    "spans": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Controlling resources through corruption"
+      }
+    ],
+    "style": "h3"
+  },
+  {
+    "_type": "block",
+    "spans": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "People, government, and companies all jostle for control over valuable natural resources. Where the rents (revenues) they get from a resource are high – and institutional quality is low – some may cut corners to secure their benefits. This happens in many ways. Politicians in resource rich developing countries often spend resource rents on political supporters. This form of patronage helps them continue their control of a resource, and capture its benefits. Ordinary citizens lose out when politicians pay more to their followers than to social projects."
+      }
+    ],
+    "style": "normal"
+  },
+  {
+    "_type": "block",
+    "spans": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Corruption in vulnerable systems"
+      }
+    ],
+    "style": "h2"
+  },
+  {
+    "_type": "block",
+    "spans": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Various forms of corruption happen in the systems that administer, authorise, and manage natural resource use. All phases: from exploration – through discovery and sales – to production and use are at risk. Corruption can affect each stage differently and to varying degrees. Resource management systems should prevent informal and skewed solutions, but people have are strong incentives for secret concession deals. An official with power to decide which company can log in a forest, can get bribes or kickbacks from winners in bidding processes that look fair and open. The same goes for fishing rights in particular marine ecosystems. The harm this causes to the environment, society, and people living in poverty is immense."
+      }
+    ],
+    "style": "normal"
+  },
+  {
+    "_type": "block",
+    "spans": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "The resource curse"
+      }
+    ],
+    "style": "h2"
+  },
+  {
+    "_type": "block",
+    "spans": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Standard corruption definitions do not always fit well in natural resource sectors.  The oil industry is a good example, because it is the highest political level that governs it.  openly alters the rules of the game.  Actors at this level do not necessarily bend rules in secret, but will openly alter the rules of the game. We talk about a "
+      },
+      {
+        "_type": "span",
+        "marks": [
+          "em"
+        ],
+        "text": "resource curse "
+      },
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "when"
+      },
+      {
+        "_type": "span",
+        "marks": [
+          "em"
+        ],
+        "text": " "
+      },
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "countries have several problems linked to their natural resource base. They depend on exports from non-renewable natural resources (such as oil), have negative or low economic growth, low levels of human development, and rampant inequality and poverty. Academics have explained this curse with challenges such as "
+      },
+      {
+        "_type": "span",
+        "link": {
+          "href": "https://en.wikipedia.org/wiki/Dutch_disease"
+        },
+        "marks": [],
+        "text": "Dutch disease"
+      },
+      {
+        "_type": "span",
+        "marks": [],
+        "text": ", rent-seeking, patronage, and low institutional quality. Some scholars also view corruption as a root cause of the resource curse."
+      }
+    ],
+    "style": "normal"
+  },
+  {
+    "_type": "block",
+    "spans": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Grand vs administrative corruption"
+      }
+    ],
+    "style": "h2"
+  },
+  {
+    "_type": "block",
+    "spans": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Natural resources are important to most countries’ economies. Natural resource management therefore involves many incentives for grand corruption involving politicians and high-level officials. Administrative or petty corruption happens when officials deal directly with citizens."
+      }
+    ],
+    "style": "normal"
+  },
+  {
+    "_type": "block",
+    "spans": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "We must respond in different ways to these two types of corruption. We can address administrative corruption through institutional reforms to improve accountability and transparency. Grand corruption is trickier. It requires that we change the incentives that political elites and those with strong economic interests have to be corrupt. "
+      }
+    ],
+    "style": "normal"
+  }
+]
