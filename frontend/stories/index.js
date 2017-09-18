@@ -1,13 +1,35 @@
 import React from 'react';
-
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-import { Button, Welcome } from '@storybook/react/demo';
+import '../static/css/main.css';
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+import { Figure, Layout, PublicationArticle, TopicArticle } from '../components';
+import topicArticle from './exampleContent/topicArticle';
 
-storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>);
+storiesOf('Page Elements', module).add('Figure', () => (
+  <Figure
+    {...{
+      asset: {
+        url: 'https://source.unsplash.com/random',
+      },
+      caption: 'This is an cation',
+      license: 'cc0',
+      licensor: 'Photographer',
+    }}
+  />
+))
+.add('Layout', () => (
+  <Layout
+    title='This is an title'
+    description='This is a description'
+  >
+    <p>lorem12</p>
+  </Layout>
+))
+.add('Topic Article', () => (
+  <TopicArticle
+    content={topicArticle}
+  />
+));
