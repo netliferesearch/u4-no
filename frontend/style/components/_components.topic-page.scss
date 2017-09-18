@@ -2,7 +2,7 @@
   @include inuit-font-size($font-size-normal);
   font-family: $font-sans;
   position: relative;
-  color: $primary;
+  color: $brand-main;
   padding: 0 0 0 ($spacing);
   margin: 0;
   text-transform: uppercase;
@@ -10,7 +10,7 @@
   &:before {
     position: absolute;
     content: '–';
-    color: $primary;
+    color: $brand-main;
     left: 0;
 
   }
@@ -19,7 +19,7 @@
   @include inuit-font-size($font-size-huge);
   font-family: $font-sans;
   margin: 0;
-  color: $primary;
+  color: $brand-main;
 }
 .c-topic-page__navigate--down {
 

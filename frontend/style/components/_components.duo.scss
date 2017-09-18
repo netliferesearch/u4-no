@@ -3,7 +3,7 @@
   flex: 1 0 auto;
   display: flex;
   flex-wrap: wrap;
-  color: $background;
+  color: $white;
   @include mq($from: wide) {
     & > * {
       max-width: 50%;
@@ -13,14 +13,14 @@
 }
 .c-duo__body {
   position: inherit;
-  background: $primary;
+  background: $brand-main;
 
   &:nth-of-type(3n+0) {
-    background: $primary-darker;
+    background: $brand-dark;
   }
 }
 .c-duo__link {
-  color: $secondary-light;
+  color: $brand-light;
 }
 .c-duo__figure {
   position: relative;
