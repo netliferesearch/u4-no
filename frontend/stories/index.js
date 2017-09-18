@@ -6,6 +6,8 @@ import { linkTo } from '@storybook/addon-links';
 import '../static/css/main.css';
 
 import { Figure, Layout, PublicationArticle, TopicArticle } from '../components';
+import { DownArrowButton } from '../components/buttons';
+
 import topicArticle from './exampleContent/topicArticle';
 
 storiesOf('Page Elements', module).add('Figure', () => (
@@ -32,4 +34,7 @@ storiesOf('Page Elements', module).add('Figure', () => (
   <TopicArticle
     content={topicArticle}
   />
+))
+.add('Buttons', () => (
+  <DownArrowButton onClick={action('Clicked!')} />
 ));
