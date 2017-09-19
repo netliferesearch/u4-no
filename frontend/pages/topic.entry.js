@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Layout, Article } from '../components';
+import { Layout, Article, ExtendedBlockContent } from '../components';
+import { DownArrowButton }from '../components/buttons'
 import Link from 'next/link';
 import materialize from '../helpers/materialize';
 
@@ -48,34 +49,42 @@ export default class extends Component {
             </Link>
           </p>
           <h1 className="c-topic-page_title">{title}</h1>
-          <h2 className="c-topic-page__longTitle">{longTitle}</h2>
-          <button className="c-topic-page__navigate--down">Browse our resources</button>
-          <section>
+          <h2 className="c-topic-page__longTitle u-margin-bottom">{longTitle}</h2>
+          <DownArrowButton text='Browse our resources' />
+
+          <section className="c-boxOnImage">
             {
               featuredImage &&
-                <figure>
+                <figure className="c-boxOnImage__figure">
                   <img alt={featuredImage.asset.altText} src={featuredImage.asset.url} />
                 </figure>
             }
-            <p>{explainerText}</p>
-            <a>Talk to one our of advisors</a>
+            <div className="c-boxOnImage__body">
+              <p>{explainerText}</p>
+              <ul>See also
+            <li>Area 1 ></li>
+            <li>Area 2 ></li>
+            <li>Area 3 ></li>
+          </ul>
+              <DownArrowButton modifier="secondary" text="Talk to one our of advisors" onClick={() => console.log('clicked!')} />
+            </div>
           </section>
           <section>
             <div>
-              <div>
-                <figure>
-                  <svg></svg>
-                </figure>
-                <p>Read our Essential Guide to corruption and anti-corruption
-                  efforts in the NRE sectiors</p>
-              </div>
-              <div>
-                <figure>
-                  <svg></svg>
-                </figure>
-                <p>Get the Bigger Pocture with our research and policy agenda</p>
-              </div>
+              <figure>
+                <svg></svg>
+              </figure>
+              <p>Read our Essential Guide to corruption and anti-corruption
+                efforts in the NRE sectiors</p>
+              <ExtendedBlockContent content={introduction} />
             </div>
+            <div>
+              <figure>
+                <svg></svg>
+              </figure>
+              <p>Get the Bigger Pocture with our research and policy agenda</p>
+          </div>
+
           </section>
           <section>
             <h1>Our team is what sets us apart.</h1>
