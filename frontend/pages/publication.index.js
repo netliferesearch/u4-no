@@ -21,5 +21,4 @@ export default DataLoader(PublicationOverview, {
   queryFunc: () => ({
     sanityQuery: '{ "publications": *[_type in ["publication"]][0..10000] }',
   }),
-  materializeDepth: 1,
 });
