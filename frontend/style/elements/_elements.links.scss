@@ -2,13 +2,13 @@
     background-image: linear-gradient(to right, $color1 40%, $color2 0%);
     background-position: bottom;
     background-repeat: repeat-x;
-    background-size: 0.3em 0.15em
+    background-size: 0.25em 0.12em
 }
 
 a {
   color: $brand-main;
   text-decoration: none;
-  padding: 0.1em;
+  padding-bottom: 0.05em;
   @include dotted-underline ($brand-main, transparent);
 }
 
