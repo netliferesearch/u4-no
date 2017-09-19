@@ -41,6 +41,7 @@
     "node-sass": "^4.5.3",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
+    "react-bem-helper": "^1.4.1",
     "react-dom": "^15.6.1",
     "react-headroom": "^2.1.6",
     "react-scrollable-anchor": "^0.5.0",
