@@ -20,3 +20,10 @@
 .double-left {
   grid-column: start / right;
 }
+
+.c-box {
+  width: 350px;
+  height: 350px;
+  border: $brand-main solid $spacing;
+  padding: $spacing;
+}
