@@ -10,6 +10,7 @@ describe('main areas', () => {
   const pathsToTest = [
     '/',
     '/topics',
+    '/topics/a8f6ad54-3a41-4ceb-b361-4febfb6fe67d',
     '/publications',
     '/publications/f62b433d-9bbf-4bcb-8a4d-9aed37e5afcd',
   ];

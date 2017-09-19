@@ -16,38 +16,41 @@ const TopicOverview = ({ topics = [] }) => (
       <p>What you won't find: </p>
       <p>Why we built this: </p>
       <p>
-      Need to quickly get up to speed on anti-corruption research in sustainable development? We
-      want to share our knowledge by providing you with a selection of carefully crafted
-      introductions and in-depth articles sorted by topics.
+        Need to quickly get up to speed on anti-corruption research in sustainable development? We
+        want to share our knowledge by providing you with a selection of carefully crafted
+        introductions and in-depth articles sorted by topics.
       </p>
 
       <section>
-        {sortTopcis(topics, 'title').map(({ _id = false, title = 'Title is lacking', explainerText = '', featuredImage, subtitle = '' }) => (
-          <div
-            className="c-duo"
-            key={_id}
-          >
-            {featuredImage &&
-              <figure className="c-duo__figure">
-                <img alt="Consultant" src={featuredImage.asset.url} />
-              </figure>
-            }
-            <div className="c-duo__body">
-              <h2 className="c-duo__title">
-                <Link route={`/topics/${_id}`}>
-                  <a className="c-duo__link">{title}</a>
-                </Link>
-              </h2>
-              <span className="c-duo__subtitle">{subtitle}</span>
-              {
-                explainerText &&
-                  <p className="c-duo__text">
-                    {explainerText}
-                  </p>
-              }
+        {sortTopcis(
+          topics,
+          'title',
+        ).map(
+          ({
+            _id = false,
+            title = 'Title is lacking',
+            explainerText = '',
+            featuredImage,
+            subtitle = '',
+          }) => (
+            <div className="c-duo" key={_id}>
+              {featuredImage && (
+                <figure className="c-duo__figure">
+                  <img alt="Consultant" src={featuredImage.asset.url} />
+                </figure>
+              )}
+              <div className="c-duo__body">
+                <h2 className="c-duo__title">
+                  <Link route={`/topics/${_id}`}>
+                    <a className="c-duo__link">{title}</a>
+                  </Link>
+                </h2>
+                <span className="c-duo__subtitle">{subtitle}</span>
+                {explainerText && <p className="c-duo__text">{explainerText}</p>}
+              </div>
             </div>
-          </div>
-        ))}
+          ),
+        )}
       </section>
     </div>
   </Layout>
@@ -56,6 +59,8 @@ const TopicOverview = ({ topics = [] }) => (
 export default DataLoader(TopicOverview, {
   // here you get the next context object that is initially passed into
   // getInitialProps
-  queryFunc: () => '{"topics": *[_type in ["topics"] && !(_id in path "drafts.**") ]}',
-  materializeDepth: 5,
+  queryFunc: () => ({
+    sanityQuery: '{"topics": *[_type in ["topics"] && !(_id in path "drafts.**") ]}',
+  }),
+  materializeDepth: 2,
 });
