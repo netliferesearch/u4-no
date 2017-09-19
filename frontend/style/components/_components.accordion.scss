@@ -1,0 +1,35 @@
+.c-accordion {
+  > button {
+      padding: $spacing-large;
+      text-align: left;
+      color: $white;
+      background-color: $brand-main;
+      &:hover,
+      &:focus {
+        transform: scale(1.01);
+      }
+  }
+  &:nth-of-type(3) {
+    > button {
+      background-color: $brand-medium;
+    }
+  }
+  &:nth-of-type(4) {
+    > button {
+      background-color: $brand-dark;
+    }
+  }
+}
+.c-accordion--expanded {
+
+
+}
+.c-accordion__toggle {
+  width: 100%;
+  border: none;
+}
+
+.c-accordion__body {
+  background: $white;
+}
+
