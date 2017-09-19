@@ -6,7 +6,7 @@ import Waypoint from 'react-waypoint';
 import ScrollableAnchor, { configureAnchors } from 'react-scrollable-anchor';
 import ArticleContents from './ArticleContents';
 import TocMobile from './TocMobile';
-import Figure from './Figure';
+import { PullQuote, Figure } from './';
 import randomKey from '../helpers/randomKey';
 
 configureAnchors({ offset: -60, scrollDuration: 400, keepLastAnchorHash: true });
@@ -60,12 +60,8 @@ const blockTypeHandlersOverride = {
 };
 
 const customTypeHandlers = {
-  image: ({ attributes }) => <Figure key={randomKey} {...attributes} />,
-  pullQuote: ({ attributes: { text } }) => (
-    <div key={randomKey()} className="c-article__pullQuote o-grid-container__item-wider">
-      {text}
-    </div>
-  ),
+  image: ({ attributes }) => <Figure key={randomKey()} {...attributes} />,
+  pullQuote: ({ attributes: { text } }) => <PullQuote key={randomKey()}>{text}</PullQuote>,
   nugget: ({ attributes: { text, title } }) => (
     <div key={randomKey()} className="c-article__nugget o-grid-container__item-wider">
       <h2 className="c-article__nugget-title">{title}</h2>
