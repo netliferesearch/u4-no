@@ -22,7 +22,7 @@ const TopicOverview = ({ topics = [] }) => (
       </p>
 
       <section>
-        {sortTopcis(topics, 'title').map(({ _id = false, title = 'Title is lacking', explainerText = '', featuredImage }) => (
+        {sortTopcis(topics, 'title').map(({ _id = false, title = 'Title is lacking', explainerText = '', featuredImage, subtitle = '' }) => (
           <div
             className="c-duo"
             key={_id}
@@ -56,6 +56,6 @@ const TopicOverview = ({ topics = [] }) => (
 export default DataLoader(TopicOverview, {
   // here you get the next context object that is initially passed into
   // getInitialProps
-  queryFunc: ({ query }) => '{"topics": *[_type in ["topics"] && !(_id in path "drafts.**") ]}',
+  queryFunc: () => '{"topics": *[_type in ["topics"] && !(_id in path "drafts.**") ]}',
   materializeDepth: 5,
 });
