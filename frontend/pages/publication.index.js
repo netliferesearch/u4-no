@@ -21,7 +21,7 @@ export default class extends Component {
     this.state = { publications };
   }
   render() {
-    const { publications } = this.state
+    const { publications } = this.state;
     return (
       <Layout>
         <h1>Publications</h1>
