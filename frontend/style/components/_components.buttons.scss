@@ -27,6 +27,12 @@
   border: none;
   display: flex;
   align-items: center;
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline; /* [4] */
+  }
 }
 
 .c-btn__icon {
@@ -42,7 +48,6 @@
    ========================================================================== */
 
 .c-btn--primary {
-  background-color: $white;
   color: $brand-main;
 
   & svg g {
@@ -51,40 +56,63 @@
   & svg path {
     color: $brand-main;
   }
+  & svg circle {
+    stroke: $brand-main;
+    fill: transparent;
+  }
 
   &:hover,
-  &:active,
   &:focus {
     border: none;
-    text-decoration: none; /* [4] */
-  }
 
-  &:hover svg g,
-  &:focus svg g {
-    color: $brand-main;
-  }
-  &:hover svg path,
-  &:focus svg path {
-    color: $white;
+    svg g,
+    svg path
+    {
+      stroke: $white;
+      fill: $white;
+    }
+    svg circle
+    {
+      fill: $brand-main;
+    }
   }
 
 }
 
 .c-btn--secondary {
-  background-color: #2f4054;
+  color: $white;
 
-  &,
-  &:hover,
-  &:active,
-  &:focus {
-    text-decoration: none;
-    color: #fff;
+  & svg g {
+    color: transparent;
+  }
+  & svg path {
+    color: $white;
+  }
+  & svg circle {
+    stroke: $white;
+    fill: transparent;
   }
 
   &:hover,
   &:focus {
-    background-color: #1d2733;
+    border: none;
+    outline: none;
+
+    svg g,
+    svg path
+    {
+      stroke: $brand-dark;
+      fill: $brand-dark;
+    }
+    svg circle
+    {
+      //stroke: $brand-main;
+      fill: $white;
+
+    }
   }
+
+
 
 }
 
