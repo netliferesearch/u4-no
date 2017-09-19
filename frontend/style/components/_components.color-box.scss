@@ -1,0 +1,38 @@
+.c-colorBox {
+  height: 200px;
+  width: 200px;
+  float: left;
+  margin: $spacing;
+  color: $white;
+  font-family: $font-sans;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+.c-colorBox--brandDark {
+  background-color: $brand-dark;
+}
+.c-colorBox--brandMedium {
+  background-color: $brand-medium;
+}
+.c-colorBox--brandMain {
+  background-color: $brand-main;
+}
+.c-colorBox--brandLight {
+  background-color: $brand-light;
+}
+.c-colorBox--black {
+  background-color: $black;
+}
+.c-colorBox--grey {
+  background-color: $grey;
+}
+.c-colorBox--white {
+  color: $black;
+  border: 1px solid $grey;
+  background-color: $white;
+}
+.c-colorBox--contrast {
+  background-color: $contrast;
+}

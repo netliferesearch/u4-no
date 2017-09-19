@@ -96,6 +96,7 @@
 @import 'node_modules/inuitcss/elements/elements.page';
 @import 'node_modules/inuitcss/elements/elements.headings';
 @import 'elements/elements.body';
+@import 'elements/elements.figure';
 @import 'elements/elements.headings';
 @import 'elements/elements.links';
 
@@ -118,13 +119,15 @@
 @import 'components/components.article';
 @import 'components/components.article-nav';
 @import 'components/components.buttons';
+@import 'components/components.color-box';
 @import 'components/components.topic-page';
 @import 'components/components.hero';
 @import 'components/components.logo';
 @import 'components/components.top-bar';
 @import 'components/components.headroom';
 @import 'components/components.toc-mobile';
-@import 'components/components.duo';
+@import 'components/components.boxOnImage';
+@import 'components/components.textbox';
 // @import "components/components.buttons";
 // @import "components/components.page-head";
 // @import "components/components.page-foot";
@@ -135,7 +138,7 @@
 // UTILITIES
 @import 'node_modules/inuitcss/utilities/utilities.widths';
 @import 'node_modules/inuitcss/utilities/utilities.headings';
-// @import "node_modules/inuitcss/utilities/utilities.spacing";
+@import "node_modules/inuitcss/utilities/utilities.spacings";
 
 //SANDBOX
 @import 'sandbox';
