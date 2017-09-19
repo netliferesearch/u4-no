@@ -1,4 +1,50 @@
+@mixin dotted-underline ($color1, $color2) {
+    background-image: linear-gradient(to right, $color1 40%, $color2 0%);
+    background-position: bottom;
+    background-repeat: repeat-x;
+    background-size: 0.3em 0.15em
+}
+
 a {
   color: $brand-main;
   text-decoration: none;
+  padding: 0.1em;
+  @include dotted-underline ($brand-main, transparent);
+}
+
+a:visited {
+  color: $brand-dark;
+
+}
+
+a:hover {
+  @include dotted-underline ($brand-main, $brand-main);
+
+}
+
+a:focus {
+  font-weight: bold;
+  @include dotted-underline (transparent, transparent);
+
+}
+
+a:active {
+  font-weight: bold;
+  @include dotted-underline (transparent, transparent);
+}
+
+
+// on dark background
+
+.linksOnDarkBackground {
+  a {
+    color: $white;
+    @include dotted-underline ($white, transparent);
+  }
+  a:visited {
+    color: $brand-lighter;
+  }
+  a:hover {
+    @include dotted-underline ($white, $white);
+  }
 }
