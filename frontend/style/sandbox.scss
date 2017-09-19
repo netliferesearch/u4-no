@@ -1,13 +1,13 @@
 //Grid layout to topics
 
-.grid{
+.grid {
   display: grid;
-  grid-template-columns:  [start] 1fr [left] 1fr [right] 1fr [end];
+  grid-template-columns: [start] 1fr [left] 1fr [right] 1fr [end];
   grid-template-rows: repeat(3, 300px);
   grid-gap: 20px 20px;
 }
 .grid-item {
-  background-image: url("https://www2.shutterstock.com/blog/wp-content/uploads/sites/5/2017/01/white-fog-evergreen-1024x683.jpg");
+  background-image: url('https://www2.shutterstock.com/blog/wp-content/uploads/sites/5/2017/01/white-fog-evergreen-1024x683.jpg');
   background-size: cover;
   display: flex;
   align-items: flex-end;
@@ -24,6 +24,7 @@
 .c-box {
   width: 350px;
   height: 350px;
-  border: $brand-main solid $spacing;
-  padding: $spacing;
+  // TODO figure out why this does not work.
+  //border: $spacing solid $brand-main;
+  //padding: $spacing;
 }
