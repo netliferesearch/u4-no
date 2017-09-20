@@ -2,7 +2,7 @@
   "environments": {
     "test": {
       "scripts": {
-        "test-setup": "npm start &",
+        "test-setup": "cd frontend && node server.js &",
         "test": "npm test"
       }
     }
