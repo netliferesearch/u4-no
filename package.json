@@ -57,7 +57,7 @@
     "deploy-frontend--force":
       "git push heroku `git subtree split --prefix frontend master`:master --force",
     "deploy-backend": "cd backend && sanity deploy && cd ..",
-    "test": "jest",
+    "test": "cd frontend && jest",
     "dev":
       "cd frontend && npm run sass-dev && concurrently --kill-others \"nodemon -w server.js -w routes.js server.js\" \"npm run sass-watch\"",
     "build": "cd frontend && next build",
