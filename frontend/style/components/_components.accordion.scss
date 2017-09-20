@@ -1,9 +1,17 @@
+.c-accordion-wrapper {
+  @include mq($from: wide) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
 .c-accordion {
   > button {
       padding: $spacing-large;
+      background-color: $brand-main;
       text-align: left;
       color: $white;
-      background-color: $brand-main;
+
+
       &:hover,
       &:focus {
         transform: scale(1.01);
@@ -19,9 +27,15 @@
       background-color: $brand-dark;
     }
   }
+  @include mq($from: wide) {
+    max-width: 50%;
+    flex-basis: 50%;
+    transition: all 400ms ease-in-out;
+  }
 }
 .c-accordion--expanded {
-
+  max-width: 100%;
+  flex-basis: 100%;
 
 }
 .c-accordion__toggle {
@@ -33,3 +47,8 @@
   background: $white;
 }
 
+
+@keyframes appear {
+  0% { background: none; }
+  100% { background: white;}
+}
