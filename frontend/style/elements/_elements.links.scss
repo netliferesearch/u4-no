@@ -1,50 +1,53 @@
-@mixin dotted-underline ($color1, $color2) {
-    background-image: linear-gradient(to right, $color1 40%, $color2 0%);
-    background-position: bottom;
-    background-repeat: repeat-x;
-    background-size: 0.25em 0.12em
-}
-
 a {
   color: $brand-main;
   text-decoration: none;
   padding-bottom: 0.05em;
-  @include dotted-underline ($brand-main, transparent);
+  border-bottom: 1px solid rgba(0, 121,  207, .5);
 }
 
 a:visited {
-  color: $brand-dark;
+  color: $brand-medium;
+  border-bottom: 1px solid rgba(9, 84,  167, .5);
+}
 
+a:visited:hover {
+  color: $brand-medium;
+  border-bottom: 1px solid rgba(9, 84,  167, .1);
 }
 
 a:hover {
-  @include dotted-underline ($brand-main, $brand-main);
-
+  font-weight: bold;
+  border-bottom: 1px solid rgba(0, 121,  207, 1);
 }
 
 a:focus {
   font-weight: bold;
-  @include dotted-underline (transparent, transparent);
-
+  border-bottom: none;
 }
 
 a:active {
   font-weight: bold;
-  @include dotted-underline (transparent, transparent);
+  border-bottom: none;
 }
 
-
-// on dark background
+// Add this class when the links are on a dark background
 
 .linksOnDarkBackground {
   a {
-    color: $white;
-    @include dotted-underline ($white, transparent);
+    color: $brand-lighter;
+    border-bottom: 1px solid rgba(139, 223,  253, .5);
   }
   a:visited {
-    color: $brand-lighter;
+    color: #FFEEC3;
+    border-bottom: 1px solid rgba(225, 238,  295, .5);
+  }
+  a:visited:hover {
+    color: #FFEEC3;
+    border-bottom: 1px solid rgba(225, 238,  295, 1);
+
   }
   a:hover {
-    @include dotted-underline ($white, $white);
+    font-weight: bold;
+    border-bottom: 1px solid rgba(139, 223,  253, 1);
   }
 }
