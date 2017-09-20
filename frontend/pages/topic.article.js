@@ -1,47 +1,23 @@
-import React, { Component } from 'react';
-import { Layout, TopicArticle } from '../components';
-import Link from 'next/link';
+import React from 'react';
+import { Layout } from '../components';
+import DataLoader from '../helpers/data-loader';
 
-const sanityClient = require('@sanity/client');
+const TopicArticle = props => (
+  <Layout>
+    {props.featuredImage &&
+      props.featuredImage.asset.url && (
+        <div className="c-hero">
+          <img className="c-hero__image" src={props.featuredImage.asset.url} />
+        </div>
+      )}
+    <TopicArticle {...props} />
+  </Layout>
+);
 
-export default class extends Component {
-  static async getInitialProps({ query }) {
-    const client = sanityClient({ projectId: '1f1lcoov', dataset: 'production', token: '' });
-    const { id = '' } = query;
-    const sanityQuery = `*[_id == "${id}"]`;
-    const topic = (await client.fetch(sanityQuery))[0];
-    return { topic, query };
-  }
-  constructor(props) {
-    super(props);
-    const {
-      topic = {
-        title: 'loading topic',
-      },
-    } = props;
-  }
-  render() {
-    const { topic, query = {} } = this.props;
-    const {
-      title = '',
-      longTitle = '',
-      explainerText = 'Publication has no explainerText',
-      featuredImage,
-      parent = {},
-      introduction = [],
-      agenda = [],
-      advisors = [],
-    } = topic;
-    return (
-      <Layout>
-        <p>
-          Tilbake til {' '}
-          <Link href={`/topics/entry?id=${topic._id}`}>
-            <a>{title}</a>
-          </Link>
-        </p>
-        <TopicArticle content={topic[query.topicKey]} />
-      </Layout>
-    );
-  }
-}
+export default DataLoader(TopicArticle, {
+  queryFunc: ({ query: { id = '' } }) => ({
+    sanityQuery: '*[_id == $id][0]',
+    projection: { id },
+  }),
+  materializeDepth: 1,
+});
