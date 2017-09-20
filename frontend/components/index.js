@@ -5,3 +5,4 @@ export { default as TopicArticle } from './TopicArticle';
 export { default as Figure } from './Figure';
 export { default as PullQuote } from './PullQuote';
 export { default as ExtendedBlockContent } from './ExtendedBlockContent';
+export { default as Accordion } from './Accordion';

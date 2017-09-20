@@ -54,12 +54,13 @@ export default class Accordion extends Component {
 
     return (
       <section {...classes('', modifiers)}>
-        <button type="button" {...classes('toggle')} onClick={this.handleToggle}>
+        <button type="button" {...classes('toggle') } onClick={this.handleToggle}>
+          {icon()}
           <h2 {...classes('title')}>{title}</h2>
           {summary && <p>{summary}</p> }
           <span {...classes('indicator')}>
-            {!simple && <Icon icon="arrow-down" />}
-            {simple && <Icon type="chevron-down" />}
+            {/* !simple && <Icon icon="arrow-down" />*/}
+            {/* simple && <Icon type="chevron-down" />*/}
           </span>
         </button>
 
