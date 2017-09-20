@@ -2,12 +2,12 @@ a {
   color: $brand-main;
   text-decoration: none;
   padding-bottom: 0.05em;
-  border-bottom: 1px solid rgba(0, 121,  207, .5);
+  border-bottom: 1px solid rgba(0, 121,  207, .4);
 }
 
 a:visited {
   color: $brand-medium;
-  border-bottom: 1px solid rgba(9, 84,  167, .5);
+  border-bottom: 1px solid rgba(9, 84,  167, .4);
 }
 
 a:visited:hover {
@@ -16,7 +16,6 @@ a:visited:hover {
 }
 
 a:hover {
-  font-weight: bold;
   border-bottom: 1px solid rgba(0, 121,  207, 1);
 }
 
@@ -47,7 +46,6 @@ a:active {
 
   }
   a:hover {
-    font-weight: bold;
     border-bottom: 1px solid rgba(139, 223,  253, 1);
   }
 }
