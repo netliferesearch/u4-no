@@ -1,0 +1,10 @@
+{
+  "environments": {
+    "test": {
+      "scripts": {
+        "test-setup": "npm start",
+        "test": "npm test"
+      }
+    }
+  }
+}
