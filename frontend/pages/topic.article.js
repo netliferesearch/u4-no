@@ -1,8 +1,8 @@
 import React from 'react';
-import { Layout } from '../components';
+import { Layout, TopicArticle } from '../components';
 import DataLoader from '../helpers/data-loader';
 
-const TopicArticle = props => (
+const TopicArticleEntry = props => (
   <Layout>
     {props.featuredImage &&
       props.featuredImage.asset.url && (
@@ -14,7 +14,7 @@ const TopicArticle = props => (
   </Layout>
 );
 
-export default DataLoader(TopicArticle, {
+export default DataLoader(TopicArticleEntry, {
   queryFunc: ({ query: { id = '' } }) => ({
     sanityQuery: '*[_id == $id][0]',
     projection: { id },
