@@ -1,6 +1,9 @@
 .c-article {
-  @include inuit-font-size($font-size-large, $line-height-normal);
   word-wrap: break-word;
+  @include inuit-font-size($font-size-normal, $line-height-larger);
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-large, $line-height-larger);
+  }
 }
 
 .c-article__figure {

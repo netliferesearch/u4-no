@@ -9,9 +9,10 @@
 
 .c-article-header__title {
   margin-top: 0;
-  @include inuit-font-size($font-size-larger, $line-height-normal);
+  font-family: $font-serif;
+  @include inuit-font-size($font-size-large, $line-height-normal);
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-huge, $line-height-normal);
+    @include inuit-font-size($font-size-larger, $line-height-normal);
   }
 }
 
@@ -57,16 +58,16 @@
 }
 
 .c-article-header__lead {
-  @include inuit-font-size($font-size-large, $line-height-large);
+  @include inuit-font-size($font-size-large, $line-height-larger);
 }
 .c-article-header__lead::first-letter {
   color: $black;
   letter-spacing: 0;
   text-transform: uppercase;
   color: $black;
-  @include inuit-font-size($font-size-huge * 1.5);
+  @include inuit-font-size($font-size-huge * 1.6);
   font-weight: normal;
   float: left;
-  margin: 5px 5px -7px 0; /* THESE VALUES SET TXT WRAP AROUND DROP CAP */
+  margin: 0px 20px -7px 0; /* THESE VALUES SET TXT WRAP AROUND DROP CAP */
   line-height: 1; /* THIS SETS BASELINE POSITION OF DROP CAP */
 }
