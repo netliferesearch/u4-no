@@ -3,13 +3,70 @@
   "version": "1.0.0",
   "description": "Monorepo for u4.no",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "@sanity/block-content-to-react": "^0.1.4",
+    "@sanity/client": "^0.108.0",
+    "concurrently": "^3.5.0",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-compat": "^1.0.4",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^20.0.3",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.3.0",
+    "express": "^4.15.4",
+    "get-random-values": "^1.2.0",
+    "inuitcss": "^6.0.0-beta.5",
+    "isomorphic-fetch": "^2.2.1",
+    "jest": "^21.1.0",
+    "littlefoot": "^1.0.0",
+    "lodash": "^4.17.4",
+    "next": "^3.0.6",
+    "next-routes": "^1.0.40",
+    "node-sass": "^4.5.3",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-accessible-accordion": "^0.6.0",
+    "react-addons-css-transition-group": "^15.6.0",
+    "react-autobind": "^1.0.6",
+    "react-bem-helper": "^1.4.1",
+    "react-dom": "^15.6.1",
+    "react-headroom": "^2.1.6",
+    "react-scrollable-anchor": "^0.5.0",
+    "react-scrollspy": "^3.3.3",
+    "react-waypoint": "^7.1.0",
+    "sass-mq": "^3.3.2",
+    "slugify": "^1.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.0",
+    "prettier-eslint": "^6.4.2",
+    "@storybook/react": "^3.2.8",
+    "@storybook/addon-actions": "^3.2.6",
+    "@storybook/addon-links": "^3.2.6"
+  },
   "scripts": {
-    "test": "jest",
     "deploy-frontend": "git subtree push --prefix frontend heroku master",
-    "deploy-frontend--force": "git push heroku `git subtree split --prefix frontend master`:master --force",
-    "deploy-backend": "cd backend && sanity deploy && cd .."
+    "deploy-frontend--force":
+      "git push heroku `git subtree split --prefix frontend master`:master --force",
+    "deploy-backend": "cd backend && sanity deploy && cd ..",
+    "test": "cd frontend && jest",
+    "dev":
+      "cd frontend && npm run sass-dev && concurrently --kill-others \"nodemon -w server.js -w routes.js server.js\" \"npm run sass-watch\"",
+    "build": "cd frontend && next build",
+    "start": "cd frontend && node server.js",
+    "sass-watch":
+      "cd frontend && node-sass --source-map true -w ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
+    "sass-dev":
+      "cd frontend && node-sass --source-map true ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
+    "sass-build":
+      "cd frontend && node-sass ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css --output-style compressed",
+    "heroku-postbuild": "cd frontend && next build && npm run sass-build",
+    "storybook": "cd frontend && start-storybook -p 6006",
+    "build-storybook": "cd frontend && build-storybook"
+  },
+  "engines": {
+    "node": "8.4.0"
   },
   "repository": {
     "type": "git",

@@ -82,19 +82,19 @@
 @import 'settings/settings.typography';
 
 // TOOLS
-@import 'node_modules/inuitcss/tools/tools.font-size';
-@import 'node_modules/inuitcss/tools/tools.clearfix';
-@import 'node_modules/sass-mq/mq';
+@import '../node_modules/inuitcss/tools/tools.font-size';
+@import '../node_modules/inuitcss/tools/tools.clearfix';
+@import '../node_modules/sass-mq/mq';
 @import 'tools/tools.aliases';
 
 // GENERIC
-@import 'node_modules/inuitcss/generic/generic.box-sizing';
-@import 'node_modules/inuitcss/generic/generic.normalize';
-@import 'node_modules/inuitcss/generic/generic.shared';
+@import '../node_modules/inuitcss/generic/generic.box-sizing';
+@import '../node_modules/inuitcss/generic/generic.normalize';
+@import '../node_modules/inuitcss/generic/generic.shared';
 
 // ELEMENTS
-@import 'node_modules/inuitcss/elements/elements.page';
-@import 'node_modules/inuitcss/elements/elements.headings';
+@import '../node_modules/inuitcss/elements/elements.page';
+@import '../node_modules/inuitcss/elements/elements.headings';
 @import 'elements/elements.body';
 @import 'elements/elements.figure';
 @import 'elements/elements.headings';
@@ -103,16 +103,16 @@
 // @import "elements/elements.quotes";
 
 // OBJECTS
-@import 'node_modules/inuitcss/objects/objects.layout';
-@import 'node_modules/inuitcss/objects/objects.media';
-@import 'node_modules/inuitcss/objects/objects.flag';
-@import 'node_modules/inuitcss/objects/objects.list-bare';
-@import 'node_modules/inuitcss/objects/objects.list-inline';
-@import 'node_modules/inuitcss/objects/objects.box';
-@import 'node_modules/inuitcss/objects/objects.block';
+@import '../node_modules/inuitcss/objects/objects.layout';
+@import '../node_modules/inuitcss/objects/objects.media';
+@import '../node_modules/inuitcss/objects/objects.flag';
+@import '../node_modules/inuitcss/objects/objects.list-bare';
+@import '../node_modules/inuitcss/objects/objects.list-inline';
+@import '../node_modules/inuitcss/objects/objects.box';
+@import '../node_modules/inuitcss/objects/objects.block';
 @import 'objects/objects.grid';
 @import 'objects/objects.wrapper';
-// @import "node_modules/inuitcss/objects/objects.tables";
+// @import "../node_modules/inuitcss/objects/objects.tables";
 
 // COMPONENTS
 @import 'components/components.accordion';
@@ -137,9 +137,9 @@
 // @import "components/components.promo";
 
 // UTILITIES
-@import 'node_modules/inuitcss/utilities/utilities.widths';
-@import 'node_modules/inuitcss/utilities/utilities.headings';
-@import "node_modules/inuitcss/utilities/utilities.spacings";
+@import '../node_modules/inuitcss/utilities/utilities.widths';
+@import '../node_modules/inuitcss/utilities/utilities.headings';
+@import '../node_modules/inuitcss/utilities/utilities.spacings';
 
 //SANDBOX
 @import 'sandbox';

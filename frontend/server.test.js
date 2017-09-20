@@ -1,12 +1,14 @@
 require('isomorphic-fetch');
 
 test('server should return 404 for missing page', async () => {
-  const { status } = await fetch('http://localhost:3000/somepagethatisnotthere');
+  const { status } = await fetch(
+    `http://localhost:${process.env.PORT || 3000}/somepagethatisnotthere`,
+  );
   expect(status).toBe(404);
 });
 
 describe('main areas', () => {
-  const origin = 'http://localhost:3000';
+  const origin = `http://localhost:${process.env.PORT || 3000}`;
   const pathsToTest = [
     '/',
     '/topics',
