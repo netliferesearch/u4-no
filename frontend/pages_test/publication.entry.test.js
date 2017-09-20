@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
-import PublicationEntry from './publication.entry';
+import PublicationEntry from '../pages/publication.entry';
 
 test('publication entry page', async () => {
   const props = await PublicationEntry.getInitialProps({
