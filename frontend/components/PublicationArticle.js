@@ -60,7 +60,11 @@ const blockTypeHandlersOverride = {
 
 const customTypeHandlers = {
   image: ({ attributes }) => <Figure key={randomKey()} {...attributes} />,
-  pullQuote: ({ attributes: { text } }) => <PullQuote key={randomKey()}>{text}</PullQuote>,
+  pullQuote: ({ attributes: { text } }) => (
+    <div className="o-grid-container__item-full">
+      <PullQuote key={randomKey()}>{text}</PullQuote>
+    </div>
+  ),
   nugget: ({ attributes: { text, title } }) => (
     <div key={randomKey()} className="c-article__nugget o-grid-container__item-wider">
       <h2 className="c-article__nugget-title">{title}</h2>
