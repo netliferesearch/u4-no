@@ -58,16 +58,12 @@
     "deploy-frontend--force": "git push heroku --force",
     "deploy-backend": "cd backend && sanity deploy && cd ..",
     "test": "jest",
-    "dev":
-      "cd frontend && npm run sass-dev && concurrently --kill-others \"nodemon -w server.js -w routes.js server.js\" \"npm run sass-watch\"",
+    "dev": "cd frontend && npm run sass-dev && concurrently --kill-others \"nodemon -w server.js -w routes.js server.js\" \"npm run sass-watch\"",
     "build": "cd frontend && next build",
     "start": "cd frontend && node server.js",
-    "sass-watch":
-      "cd frontend && node-sass --source-map true -w ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
-    "sass-dev":
-      "cd frontend && node-sass --source-map true ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
-    "sass-build":
-      "cd frontend && node-sass ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css --output-style compressed",
+    "sass-watch": "cd frontend && node-sass --source-map true -w ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
+    "sass-dev": "cd frontend && node-sass --source-map true ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
+    "sass-build": "cd frontend && node-sass ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css --output-style compressed",
     "heroku-postbuild": "cd frontend && next build && npm run sass-build",
     "storybook": "cd frontend && start-storybook -p 6006",
     "build-storybook": "cd frontend && build-storybook"

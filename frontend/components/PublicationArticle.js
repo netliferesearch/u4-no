@@ -51,7 +51,8 @@ const blockTypeHandlersOverride = {
       </h4>
     ),
     blockquote: ({ children = [] }) => (
-      <blockquote key={randomKey()} className="o-grid-container__item-standard">
+      <blockquote key={randomKey()} className="o-grid-container__offset-right">
+        <div className="quotation-mark">”</div>
         {children}
       </blockquote>
     ),
