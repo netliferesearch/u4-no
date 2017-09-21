@@ -8,3 +8,10 @@
     padding-left: $inuit-global-spacing-unit;
   }
 }
+
+.o-wrapper-inner {
+  @include inuit-clearfix();
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 940px;
+}

@@ -60,13 +60,13 @@
   }
 }
 
-.c-article-header__lead {
+.c-article-lead {
   @include inuit-font-size($font-size-small, $line-height-large );
   @include mq($from: tablet) {
   @include inuit-font-size($font-size-normal, $line-height-large );
   }
 }
-.c-article-header__lead::first-letter {
+.c-article-lead::first-letter {
   color: $black;
   letter-spacing: 0;
   text-transform: uppercase;

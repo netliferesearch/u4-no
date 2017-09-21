@@ -3,6 +3,7 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto;
   height: 100%;
+  grid-column-gap: 2%;
 }
 
 // fugly hack to set grid properties on the div surrounding <BlockContent />
@@ -12,13 +13,14 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto;
   height: 100%;
+  grid-column-gap: 2%;
 }
 
 .o-grid-container__item-standard {
   grid-row: auto;
   grid-column: 1/13;
   @include mq($from: desktop) {
-    grid-column: 4/10;
+    grid-column: 3/11;
   }
 }
 
@@ -40,5 +42,10 @@
 
 .o-grid-container__item-wider {
   grid-column: 3/11;
+  grid-row: auto;
+}
+
+.o-grid-container__item-full {
+  grid-column: 1/13;
   grid-row: auto;
 }

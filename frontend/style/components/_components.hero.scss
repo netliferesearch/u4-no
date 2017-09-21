@@ -1,12 +1,29 @@
 .c-hero {
   width: 100%;
-  max-height: 50vh;
-  overflow: hidden;
 }
+
+$fancy-spacing: 96px;
+
 .c-hero__image {
-  object-fit: cover;
-  object-position: center;
+  padding-right: $fancy-spacing;
   width: 100%;
-  position: relative;
-  z-index: 1;
+}
+.c-hero__grid-content {
+  margin-top: -220px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+}
+
+.c-hero__grid-content__bg {
+  background-color: $brand-dark;
+  grid-row: auto;
+  grid-column: 2/13;
+  grid-row-start: 1;
+}
+
+.c-hero__grid-content__header {
+  grid-column: 3/12;
+  grid-row-start: 1;
+  padding: $spacing 0;
 }

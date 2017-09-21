@@ -4,8 +4,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 import Waypoint from 'react-waypoint';
 import ScrollableAnchor, { configureAnchors } from 'react-scrollable-anchor';
-import ArticleContents from './ArticleContents';
-import TocMobile from './TocMobile';
+
 import { PullQuote, Figure } from './';
 import randomKey from '../helpers/randomKey';
 
@@ -61,7 +60,11 @@ const blockTypeHandlersOverride = {
 
 const customTypeHandlers = {
   image: ({ attributes }) => <Figure key={randomKey()} {...attributes} />,
-  pullQuote: ({ attributes: { text } }) => <PullQuote key={randomKey()}>{text}</PullQuote>,
+  pullQuote: ({ attributes: { text } }) => (
+    <div className="o-grid-container__item-full">
+      <PullQuote key={randomKey()}>{text}</PullQuote>
+    </div>
+  ),
   nugget: ({ attributes: { text, title } }) => (
     <div key={randomKey()} className="c-article__nugget o-grid-container__item-wider">
       <h2 className="c-article__nugget-title">{title}</h2>
@@ -86,121 +89,15 @@ class PublicationArticle extends Component {
   }
 
   render() {
-    const {
-      title = 'No title',
-      subtitle = 'No subtitle',
-      _updatedAt = 'No date',
-      lead = 'No lead',
-      content = [],
-    } = this.props;
+    const { content = [] } = this.props;
     return (
-      <article className="o-wrapper">
-        <header className="c-article-header o-grid-container">
-          {/* Wrap in standard grid width until we know better */}
-          <p className="o-grid-container__item-standard">
-            <Waypoint onPositionChange={this.waypointHandler}>
-              <span>
-                <a>U4 brief</a> | <a>Natural resources</a>
-              </span>
-            </Waypoint>
-          </p>
-          <div className="o-grid-container__item-standard">
-            <h1 className="c-article-header__title">{title}</h1>
-              <p className="c-article-header__subtitle">{subtitle}</p>
-              <div className="c-article-header__byline">
-                By <a href="#">Åse Gilje Østensen</a> & <a href="#">Mats Stridsman </a>
-                | Bergen: Chr. Michelsen Institute (U4 Issue 2017:3)
-              </div>
-              <div className="c-article-header__photo-credit">
-                Photography by <a href="#">Dani Deahl</a>
-              </div>
-          </div>
-          <div className="o-grid-container__item-standard-right">
-            <div
-              className={
-                this.state.navFollowScreen ? 'c-article-nav c-article-nav--fixed' : 'c-article-nav'
-              }
-            >
-              <ArticleContents content={content} />
-            </div>
-          </div>
-          <div className="o-grid-container__item-standard">
-
-            <div className="c-article-header__summary-for-busy-people">
-              <details>
-                <summary>Read our summary for busy people</summary>
-              </details>
-            </div>
-            <div className="c-article-header__summary-for-busy-people">
-              <details>
-                <summary>Main points</summary>
-                <ol>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum
-                    itaque at blanditiis nesciunt rem optio eaque qui eligendi?
-                  </li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum
-                    itaque at blanditiis nesciunt rem optio eaque qui eligendi?
-                  </li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facere nostrum
-                    itaque at blanditiis nesciunt rem optio eaque qui eligendi?
-                  </li>
-                </ol>
-              </details>
-            </div>
-
-            <div className="c-article-header__summary-for-busy-people">
-              <details>
-                <summary>Acknowledgements</summary>
-                <ol />
-              </details>
-            </div>
-            <div className="c-article-header__summary-for-busy-people">
-              <details>
-                <summary>Abstract</summary>
-                <ol />
-              </details>
-            </div>
-            <div className="c-article-header__summary-for-busy-people">
-              <details>
-                <summary>Share or download</summary>
-                <ol />
-              </details>
-            </div>
-            <div className="c-article-header__summary-for-busy-people">
-              <details>
-                <summary>Also available in Spanish</summary>
-                <ol />
-              </details>
-            </div>
-            <p className="c-article-header__lead">{lead}</p>
-          </div>
-        </header>
-        <main className="c-article o-grid-container-sub-div">
-          <BlockContent
-            blocks={content.filter(block => !['reference'].includes(block._type))}
-            blockTypeHandlers={{ ...blockTypeHandlersOverride }}
-            customTypeHandlers={customTypeHandlers}
-          />
-        </main>
-        <footer className="o-grid-container">
-          <div className="o-grid-container__item-standard">
-            {/* TODO add expandable endnotes/footnotes */}
-            {/* Comes after all */}
-            <details>
-              <summary>We also recommend</summary>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, earum velit reiciendis
-                ullam sapiente quidem pariatur repudiandae dolorem amet vel rem vitae delectus
-                minima, vero numquam totam obcaecati eligendi blanditiis?
-              </p>
-            </details>
-          </div>
-        </footer>
-        <TocMobile {...this.props} />
-      </article>
+      <main className="o-wrapper-inner c-article o-grid-container-sub-div">
+        <BlockContent
+          blocks={content.filter(block => !['reference'].includes(block._type))}
+          blockTypeHandlers={{ ...blockTypeHandlersOverride }}
+          customTypeHandlers={customTypeHandlers}
+        />
+      </main>
     );
   }
 }
