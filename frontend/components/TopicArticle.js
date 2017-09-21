@@ -92,6 +92,7 @@ class TopicArticle extends Component {
       _updatedAt = 'No date',
       lead = 'No lead',
       introduction = [],
+      url: { query: { topicPart = 'Basic' } },
     } = this.props;
     return (
       <article className="o-wrapper">
@@ -100,7 +101,7 @@ class TopicArticle extends Component {
           <p className="o-grid-container__item-standard">
             <Waypoint onPositionChange={this.waypointHandler}>
               <span>
-                <a>Basic Guide</a>
+                <a>{topicPart}</a>
               </span>
             </Waypoint>
           </p>

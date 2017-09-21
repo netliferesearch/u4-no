@@ -95,7 +95,7 @@ const TopicEntry = ({
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { id = '' } }) => ({
     sanityQuery: '{ "topic": *[_id == $id][0]}',
-    projection: { id },
+    param: { id },
   }),
   materializeDepth: 2,
 });

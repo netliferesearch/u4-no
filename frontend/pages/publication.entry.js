@@ -5,8 +5,8 @@ import DataLoader from '../helpers/data-loader';
 const PublicationEntry = props => (
   <Layout>
     {props.featuredImage &&
-    props.featuredImage.asset.url && (
-    <div className="c-hero">
+      props.featuredImage.asset.url && (
+        <div className="c-hero">
           <img className="c-hero__image" src={props.featuredImage.asset.url} />
         </div>
       )}
@@ -17,7 +17,7 @@ const PublicationEntry = props => (
 export default DataLoader(PublicationEntry, {
   queryFunc: ({ query: { id = '' } }) => ({
     sanityQuery: '*[_id == $id][0]',
-    projection: { id },
+    param: { id },
   }),
   materializeDepth: 1,
 });

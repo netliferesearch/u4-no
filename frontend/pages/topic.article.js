@@ -17,7 +17,7 @@ const TopicArticleEntry = props => (
 export default DataLoader(TopicArticleEntry, {
   queryFunc: ({ query: { id = '' } }) => ({
     sanityQuery: '*[_id == $id][0]',
-    projection: { id },
+    param: { id },
   }),
   materializeDepth: 1,
 });
