@@ -6,6 +6,7 @@ import DataLoader from '../helpers/data-loader';
 import { Layout, ExtendedBlockContent, Accordion } from '../components';
 import { DownArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources } from '../components/icons';
+import BigBlueBox from '../components/BigBlueBox';
 
 const TopicEntry = ({
   topic: {
@@ -18,6 +19,7 @@ const TopicEntry = ({
     agenda = [],
     advisors = [],
     resources = [],
+    _id = '',
   } = {},
 }) => (
   <Layout>
@@ -54,6 +56,23 @@ const TopicEntry = ({
             onClick={() => console.log('clicked!')}
           />
         </div>
+      </section>
+
+      <section>
+        <BigBlueBox
+          title="Read our essential guide"
+          text="Let us walk you through the basics of this topic"
+          icon={Basics}
+          route="topic.article"
+          params={{ id: _id, topicPart: 'basics' }}
+        />
+        <BigBlueBox
+          title="Get the bigger picture"
+          text="Read our research and policy agenda to see where things are at with this topic world wide."
+          icon={Picture}
+          route="topic.article"
+          params={{ id: _id, topicPart: 'agenda' }}
+        />
       </section>
       <section className="c-accordion-wrapper">
         <Accordion
