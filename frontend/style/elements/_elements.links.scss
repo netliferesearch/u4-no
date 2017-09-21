@@ -2,21 +2,21 @@ a {
   color: $brand-main;
   text-decoration: none;
   padding-bottom: 0.05em;
-  border-bottom: 1px solid rgba(0, 121,  207, .4);
+  border-bottom: 1px solid rgba(0, 121, 207, 0.4);
 }
 
 a:visited {
   color: $brand-medium;
-  border-bottom: 1px solid rgba(9, 84,  167, .4);
+  border-bottom: 1px solid rgba(9, 84, 167, 0.4);
 }
 
 a:visited:hover {
   color: $brand-medium;
-  border-bottom: 1px solid rgba(9, 84,  167, .1);
+  border-bottom: 1px solid rgba(9, 84, 167, 0.1);
 }
 
 a:hover {
-  border-bottom: 1px solid rgba(0, 121,  207, 1);
+  border-bottom: 1px solid rgba(0, 121, 207, 1);
 }
 
 a:focus {
@@ -30,22 +30,20 @@ a:active {
 }
 
 // Add this class when the links are on a dark background
-
-.linksOnDarkBackground {
+.links-wrapper-dark-background {
   a {
     color: $brand-lighter;
-    border-bottom: 1px solid rgba(139, 223,  253, .5);
+    border-bottom: 1px solid rgba(139, 223, 253, 0.5);
   }
   a:visited {
-    color: #FFEEC3;
-    border-bottom: 1px solid rgba(225, 238,  295, .5);
+    color: #ffeec3;
+    border-bottom: 1px solid rgba(225, 238, 295, 0.5);
   }
   a:visited:hover {
-    color: #FFEEC3;
-    border-bottom: 1px solid rgba(225, 238,  295, 1);
-
+    color: #ffeec3;
+    border-bottom: 1px solid rgba(225, 238, 295, 1);
   }
   a:hover {
-    border-bottom: 1px solid rgba(139, 223,  253, 1);
+    border-bottom: 1px solid rgba(139, 223, 253, 1);
   }
 }
