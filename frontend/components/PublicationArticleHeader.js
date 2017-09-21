@@ -5,12 +5,13 @@ const PublicationArticleHeader = ({
   title = 'no title',
   subtitle = 'no subtitle',
   lead = 'no lead',
+  topics = [],
   className = '',
 }) => (
   <header className={`${className} c-article-header`}>
     {/* Wrap in standard grid width until we know better */}
     <div className="c-article-header__meta">
-      <a>U4 brief</a> | <a>Natural resources</a>
+      <a href>U4 Brief</a> | {topics.map(({ title = '' }) => <a href>{title}</a>)}
     </div>
     <div>
       <h1 className="c-article-header__title">{title}</h1>
