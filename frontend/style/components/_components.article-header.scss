@@ -57,10 +57,10 @@
   }
 }
 
-.c-article-header__lead {
+.c-article-lead {
   @include inuit-font-size($font-size-large, $line-height-larger);
 }
-.c-article-header__lead::first-letter {
+.c-article-lead::first-letter {
   color: $black;
   letter-spacing: 0;
   text-transform: uppercase;

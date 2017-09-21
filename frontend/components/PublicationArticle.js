@@ -87,7 +87,7 @@ class PublicationArticle extends Component {
   render() {
     const { content = [] } = this.props;
     return (
-      <main className="c-article o-grid-container-sub-div">
+      <main className="o-wrapper-inner c-article o-grid-container-sub-div">
         <BlockContent
           blocks={content.filter(block => !['reference'].includes(block._type))}
           blockTypeHandlers={{ ...blockTypeHandlersOverride }}
