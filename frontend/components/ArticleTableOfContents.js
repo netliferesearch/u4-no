@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import slugify from 'slugify';
 import randomKey from '../helpers/randomKey';
+import Scrollchor from 'react-scrollchor';
 
 function findTitles(articleContents) {
   return articleContents.reduce((result, elem) => {
@@ -21,9 +22,12 @@ const ArticleTableOfContents = ({ onItemSelected = () => {}, content = [] }) => 
   <ul className="o-list-bare">
     {findTitles(content).map(menuItem => (
       <li key={randomKey()} className={getClassName(menuItem)}>
-        <a onClick={e => onItemSelected(e)} href={`#${slugify(menuItem.title, { lower: true })}`}>
+        <Scrollchor
+          onClick={e => onItemSelected(e)}
+          to={`#${slugify(menuItem.title, { lower: true })}`}
+        >
           {menuItem.title}
-        </a>
+        </Scrollchor>
       </li>
     ))}
   </ul>

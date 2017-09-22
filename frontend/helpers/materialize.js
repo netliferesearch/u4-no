@@ -46,8 +46,7 @@ export default (doc, depth) => {
   const iterations = depth || 1;
   console.log('iterations', iterations);
   let result = Promise.resolve(doc);
-  const iteration = src =>
-    fetchAll(extractRefs(src)).then(docs => merge(src, docs));
+  const iteration = src => fetchAll(extractRefs(src)).then(docs => merge(src, docs));
   for (let i = 0; i < iterations; i++) {
     result = result.then(iteration);
   }

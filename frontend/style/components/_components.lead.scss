@@ -20,7 +20,8 @@
   }
   .c-lead-and-toc__toc {
     flex: 1 1 auto;
-    width: 400px;
+    width: 340px;
+    margin-right: -60;
     @include mq($until: tablet) {
       display: none;
     }
