@@ -15,9 +15,12 @@ const PublicationEntry = (props) => {
               <div className="o-wrapper">
                 <img className="c-hero__image" alt="" src={props.featuredImage.asset.url} />
                 <div className="o-wrapper-inner">
-                  <div className="c-hero__grid-content">
-                    <div className="c-hero__grid-content__bg" />
-                    <PublicationArticleHeader className="c-hero__grid-content__header" {...props} />
+                  <div className="c-hero__grid-container">
+                    <div className="c-hero__grid-container__bg" />
+                    <PublicationArticleHeader
+                      className="c-hero__grid-container__content links-wrapper-dark-background"
+                      {...props}
+                    />
                   </div>
                 </div>
               </div>

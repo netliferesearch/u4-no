@@ -18,7 +18,7 @@
 
 .o-grid-container__item-standard {
   grid-row: auto;
-  grid-column: 1/13;
+  grid-column: 2/12;
   @include mq($from: desktop) {
     grid-column: 3/11;
   }
@@ -48,4 +48,12 @@
 .o-grid-container__item-full {
   grid-column: 1/13;
   grid-row: auto;
+}
+
+.o-grid-container__offset-right {
+  grid-row: auto;
+  grid-column: 2/12;
+  @include mq($from: desktop) {
+    grid-column: 4/13;
+  }
 }

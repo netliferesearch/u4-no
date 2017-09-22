@@ -75,37 +75,7 @@ const TopicEntry = ({
         />
       </section>
       <section className="c-accordion-wrapper">
-        <Accordion
-          title="Read our essential guide"
-          summary="Let us walk you through the basics of this topic"
-          icon={Basics}
-        >
-          <ExtendedBlockContent content={introduction} />
-        </Accordion>
 
-        <Accordion
-          title="Get the bigger picture"
-          summary="Read our research and policy agenda to see where things are at with this topic world wide."
-          icon={Picture}
-        >
-          <ExtendedBlockContent content={agenda} />
-        </Accordion>
-
-        <Accordion
-          title="U4 Publications"
-          summary="Read our recommended publications"
-          icon={Publication}
-        >
-          <ExtendedBlockContent content={introduction} />
-        </Accordion>
-
-        <Accordion
-          title="Resources"
-          summary="Comments, recommendations, case studies, toolkits"
-          icon={Resources}
-        >
-          Resources
-        </Accordion>
       </section>
     </div>
   </Layout>

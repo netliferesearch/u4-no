@@ -39,29 +39,43 @@
 }
 
 .c-article__pullQuote {
-  @include inuit-font-size($font-size-larger, $line-height-normal);
-  font-weight: bold;
+  @include inuit-font-size($font-size-normal, $line-height-large );
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-large, $line-height-large );
+  }
   color: $black;
+  font-style: italic;
   text-align: left;
   letter-spacing: 0.02em;
-  border-top: 1px solid $black;
-  border-bottom: 1px solid $black;
-  padding: $spacing 0;
+  border-top: 3px solid $black;
+  border-bottom: 3px solid $black;
+  padding: $spacing-large 8%;
+  @include mq($from: tablet) {
+    padding: $spacing-huge 8%;
+  }
+  margin-bottom: $spacing-large;
+  margin-top: $spacing-large;
 }
 
 blockquote {
   font-family: $font-serif;
-  border-left: solid lightgray 10px;
-  padding-left: 10px;
-  @include inuit-font-size($font-size-normal);
+  display: flex;
+  //@include inuit-font-size($font-size-normal, $line-height-large);
+  font-style: italic;
   letter-spacing: 0.02em;
   font-weight: 300;
-  color: $grey;
-  margin: $spacing 0;
+  margin: $spacing-large 0;
+
 }
 
-.c-article-header__summary-for-busy-people {
-  margin: 1em 0;
-  padding: 1em;
-  border: 1px solid $brand-main;
+.quotation-mark{
+  font-style: normal;
+  font-weight: bold;
+  color: $grey;
+  font-size: 80px;
+  @include mq($from: tablet) {
+    font-size: 120px;
+  }
+  line-height: 0.9;
+  padding-right: 3%;
 }

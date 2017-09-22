@@ -51,7 +51,8 @@ const blockTypeHandlersOverride = {
       </h4>
     ),
     blockquote: ({ children = [] }) => (
-      <blockquote key={randomKey()} className="o-grid-container__item-standard">
+      <blockquote key={randomKey()} className="o-grid-container__offset-right">
+        <div className="quotation-mark">”</div>
         {children}
       </blockquote>
     ),
@@ -61,8 +62,8 @@ const blockTypeHandlersOverride = {
 const customTypeHandlers = {
   image: ({ attributes }) => <Figure key={randomKey()} {...attributes} />,
   pullQuote: ({ attributes: { text } }) => (
-    <div className="o-grid-container__item-full">
-      <PullQuote key={randomKey()}>{text}</PullQuote>
+    <div key={randomKey()} className="o-grid-container__item-full">
+      <PullQuote>{text}</PullQuote>
     </div>
   ),
   nugget: ({ attributes: { text, title } }) => (
