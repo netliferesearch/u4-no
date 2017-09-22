@@ -44,6 +44,7 @@
     "react-dom": "^15.6.1",
     "react-headroom": "^2.1.6",
     "react-scrollable-anchor": "^0.5.0",
+    "react-scrollchor": "^4.0.0",
     "react-test-renderer": "^15.6.1",
     "react-waypoint": "^7.1.0",
     "slugify": "^1.2.1"
