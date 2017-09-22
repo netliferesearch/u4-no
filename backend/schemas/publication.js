@@ -193,6 +193,11 @@ export default {
         ]
       },
       {
+        name: 'abbreviations',
+        title: 'Abbreviations',
+        type: 'block',
+      },
+      {
         name: 'blurbs',
         type: 'array',
         of: [
