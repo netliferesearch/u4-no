@@ -4,8 +4,8 @@
   "description": "Monorepo for u4.no",
   "main": "index.js",
   "dependencies": {
-    "@sanity/block-content-to-react": "^0.1.4",
-    "@sanity/client": "^0.108.0",
+    "@sanity/block-content-to-react": "^0.3.0",
+    "@sanity/client": "^0.113.0",
     "concurrently": "^3.5.0",
     "eslint": "^4.5.0",
     "eslint-config-airbnb": "^15.1.0",
@@ -32,6 +32,7 @@
     "react-dom": "^15.6.1",
     "react-headroom": "^2.1.6",
     "react-scrollable-anchor": "^0.5.0",
+    "react-scrollchor": "^4.0.0",
     "react-scrollspy": "^3.3.3",
     "react-waypoint": "^7.1.0",
     "sass-mq": "^3.3.2",
