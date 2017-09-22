@@ -37,23 +37,29 @@ class PublicationEntry extends Component {
     return (
       <Layout>
         <article>
-          {this.props.featuredImage &&
-            this.props.featuredImage.asset.url && (
-              <div className="c-hero">
-                <div className="o-wrapper">
-                  <img className="c-hero__image" alt="" src={this.props.featuredImage.asset.url} />
-                  <div id="js-scroll-trigger" className="o-wrapper-inner">
-                    <div className="c-hero__grid-container">
-                      <div className="c-hero__grid-container__bg" />
-                      <PublicationArticleHeader
-                        className="c-hero__grid-container__content links-wrapper-dark-background"
-                        {...this.props}
-                      />
+          <div id="js-scroll-trigger">
+            {this.props.featuredImage &&
+              this.props.featuredImage.asset.url && (
+                <div className="c-hero">
+                  <div className="o-wrapper">
+                    <img
+                      className="c-hero__image"
+                      alt=""
+                      src={this.props.featuredImage.asset.url}
+                    />
+                    <div className="o-wrapper-inner">
+                      <div className="c-hero__grid-container">
+                        <div className="c-hero__grid-container__bg" />
+                        <PublicationArticleHeader
+                          className="c-hero__grid-container__content links-wrapper-dark-background"
+                          {...this.props}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
+          </div>
           <div className="o-wrapper-inner">
             <div className="o-grid-container">
               <div className="o-grid-container__item-standard-full-right">
