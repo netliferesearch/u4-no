@@ -17,7 +17,7 @@ function findTitles(articleContents) {
 
 const getClassName = menuItem => `o-list-bare__item menu__item menu__item--${menuItem.style}`;
 
-const ArticleContents = ({ onItemSelected = () => {}, content = [] }) => (
+const ArticleTableOfContents = ({ onItemSelected = () => {}, content = [] }) => (
   <ul className="o-list-bare">
     {findTitles(content).map(menuItem => (
       <li key={randomKey()} className={getClassName(menuItem)}>
@@ -29,4 +29,4 @@ const ArticleContents = ({ onItemSelected = () => {}, content = [] }) => (
   </ul>
 );
 
-export default ArticleContents;
+export default ArticleTableOfContents;

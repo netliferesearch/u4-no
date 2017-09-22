@@ -1,8 +1,12 @@
 import React from 'react';
-import { Layout, PublicationArticle, PublicationArticleHeader } from '../components';
+import {
+  Layout,
+  PublicationArticle,
+  PublicationArticleHeader,
+  TocMobile,
+  ArticleTableOfContents,
+} from '../components';
 import DataLoader from '../helpers/data-loader';
-import TocMobile from '../components/TocMobile';
-import ArticleContents from '../components/ArticleContents';
 
 const PublicationEntry = (props) => {
   const { lead = 'article had no lead' } = props;
@@ -29,10 +33,11 @@ const PublicationEntry = (props) => {
         <div className="o-wrapper-inner">
           <div className="o-grid-container">
             <div className="o-grid-container__item-standard">
-              <p className="c-article-lead">{lead}</p>
+              <p className="c-article c-lead">{lead}</p>
             </div>
           </div>
         </div>
+        <ArticleTableOfContents {...props} />
         <PublicationArticle {...props} />
         <TocMobile {...props} />
       </article>

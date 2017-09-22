@@ -4,7 +4,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 import Waypoint from 'react-waypoint';
 import ScrollableAnchor, { configureAnchors } from 'react-scrollable-anchor';
-import ArticleContents from './ArticleContents';
+import { ArticleTableOfContents } from './ArticleTableOfContents';
 import TocMobile from './TocMobile';
 import { PullQuote, Figure } from './';
 import randomKey from '../helpers/randomKey';
@@ -114,7 +114,7 @@ class TopicArticle extends Component {
                 this.state.navFollowScreen ? 'c-article-nav c-article-nav--fixed' : 'c-article-nav'
               }
             >
-              <ArticleContents content={introduction} />
+              <ArticleTableOfContents content={introduction} />
             </div>
           </div>
           <div className="o-grid-container__item-standard">

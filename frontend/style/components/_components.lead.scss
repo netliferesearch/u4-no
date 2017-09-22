@@ -1,0 +1,14 @@
+.c-lead::first-letter {
+  color: $black;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: $black;
+  @include inuit-font-size($font-size-huge, $line-height-tiny);
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-huge * 1.2, $line-height-tiny);
+  }
+  font-weight: normal;
+  float: left;
+  margin: 0px 20px -10px 0; /* THESE VALUES SET TXT WRAP AROUND DROP CAP */
+  line-height: 1; /* THIS SETS BASELINE POSITION OF DROP CAP */
+}

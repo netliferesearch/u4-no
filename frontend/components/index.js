@@ -8,4 +8,4 @@ export { default as PullQuote } from './PullQuote';
 export { default as ExtendedBlockContent } from './ExtendedBlockContent';
 export { default as Accordion } from './Accordion';
 export { default as TocMobile } from './TocMobile';
-export { default as ArticleContents } from './ArticleContents';
+export { default as ArticleTableOfContents } from './ArticleTableOfContents';
