@@ -1,0 +1,48 @@
+.c-linkbox-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.c-linkbox {
+  &:nth-child(3n) {
+    background-color: $brand-main;
+  }
+  &:nth-child(3n + 1) {
+    background-color: $brand-medium;
+  }
+  &:nth-child(3n + 2) {
+    background-color: $brand-dark;
+  }
+
+  @include mq($from: wide) {
+    max-width: 50%;
+    flex-basis: 50%;
+  }
+}
+.c-linkbox__content {
+  color: $white;
+  padding: $spacing-small;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+
+.c-linkbox__icon {
+}
+
+.c-linkbox__body {
+  padding: $spacing-small;
+  font-family: $font-sans;
+  line-height: $line-height-normal;
+
+  h2 {
+    font-size: $font-size-tiny;
+    font-weight: bold;
+  }
+  p {
+    font-size: $font-size-tiny;
+  }
+}
+.c-linkbox__arrow {
+}

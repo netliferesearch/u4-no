@@ -6,7 +6,7 @@ import DataLoader from '../helpers/data-loader';
 import { Layout, ExtendedBlockContent, Accordion } from '../components';
 import { DownArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources } from '../components/icons';
-import BigBlueBox from '../components/BigBlueBox';
+import LinkBox from '../components/LinkBox';
 
 const TopicEntry = ({
   topic: {
@@ -58,15 +58,15 @@ const TopicEntry = ({
         </div>
       </section>
 
-      <section>
-        <BigBlueBox
+      <section className="c-linkbox-wrapper">
+        <LinkBox
           title="Read our essential guide"
           text="Let us walk you through the basics of this topic"
           icon={Basics}
           route="topic.article"
           params={{ id: _id, topicPart: 'basics' }}
         />
-        <BigBlueBox
+        <LinkBox
           title="Get the bigger picture"
           text="Read our research and policy agenda to see where things are at with this topic world wide."
           icon={Picture}
@@ -75,7 +75,21 @@ const TopicEntry = ({
         />
       </section>
       <section className="c-accordion-wrapper">
+        <Accordion
+          title="U4 Publications"
+          summary="Read our recommended publications"
+          icon={Publication}
+        >
+          <ExtendedBlockContent content={introduction} />
+        </Accordion>
 
+        <Accordion
+          title="Resources"
+          summary="Comments, recommendations, case studies, toolkits"
+          icon={Resources}
+        >
+          Resources
+        </Accordion>
       </section>
     </div>
   </Layout>
