@@ -50,13 +50,16 @@ const TopicEntry = ({
           </ul>
           <DownArrowButton
             modifier="secondary"
-            text="Talk to one our of advisors"
+            text="Contact one of our advisors"
             onClick={() => console.log('clicked!')}
           />
         </div>
       </section>
       <section className="c-accordion-wrapper">
-
+          <ul>
+            <li>Read our basic guide</li>
+            <li>Research and policy</li>
+          </ul>
       </section>
     </div>
   </Layout>
