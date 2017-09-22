@@ -32,12 +32,16 @@ const PublicationEntry = (props) => {
           )}
         <div className="o-wrapper-inner">
           <div className="o-grid-container">
-            <div className="o-grid-container__item-standard">
-              <p className="c-article c-lead">{lead}</p>
+            <div className="o-grid-container__item-standard-full-right">
+              <div className="c-lead-and-toc">
+                <div className="c-lead-and-toc__lead c-article c-lead">{lead}</div>
+                <div className="c-lead-and-toc__toc">
+                  <ArticleTableOfContents {...props} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <ArticleTableOfContents {...props} />
         <PublicationArticle {...props} />
         <TocMobile {...props} />
       </article>

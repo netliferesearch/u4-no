@@ -24,6 +24,15 @@
   }
 }
 
+//used to achieve toc on tablet/desktop
+.o-grid-container__item-standard-full-right {
+  grid-row: auto;
+  grid-column: 2/13;
+  @include mq($from: desktop) {
+    grid-column: 3/13;
+  }
+}
+
 .o-grid-container__item-standard-left {
   grid-row: auto;
   grid-column: 4/10;

@@ -12,3 +12,17 @@
   margin: 0px 20px -10px 0; /* THESE VALUES SET TXT WRAP AROUND DROP CAP */
   line-height: 1; /* THIS SETS BASELINE POSITION OF DROP CAP */
 }
+
+.c-lead-and-toc {
+  display: flex;
+  .c-lead-and-toc__lead {
+    flex: 3 1 auto;
+  }
+  .c-lead-and-toc__toc {
+    flex: 1 1 auto;
+    width: 400px;
+    @include mq($until: tablet) {
+      display: none;
+    }
+  }
+}
