@@ -20,6 +20,11 @@ const getClassName = menuItem => `o-list-bare__item menu__item menu__item--${men
 
 const ArticleTableOfContents = ({ onItemSelected = () => {}, content = [] }) => (
   <ul className="o-list-bare">
+    <li key={randomKey()} className="o-list-bare__item menu__item">
+      <Scrollchor onClick={e => onItemSelected(e)} to={'#js-top'}>
+        Top
+      </Scrollchor>
+    </li>
     {findTitles(content).map(menuItem => (
       <li key={randomKey()} className={getClassName(menuItem)}>
         <Scrollchor
@@ -30,6 +35,11 @@ const ArticleTableOfContents = ({ onItemSelected = () => {}, content = [] }) => 
         </Scrollchor>
       </li>
     ))}
+    <li key={randomKey()} className="o-list-bare__item menu__item">
+      <Scrollchor onClick={e => onItemSelected(e)} to={'#js-bottom'}>
+        Bottom
+      </Scrollchor>
+    </li>
   </ul>
 );
 
