@@ -18,7 +18,6 @@
     "get-random-values": "^1.2.0",
     "inuitcss": "^6.0.0-beta.5",
     "isomorphic-fetch": "^2.2.1",
-    "jest": "^21.1.0",
     "littlefoot": "^1.0.0",
     "lodash": "^4.17.4",
     "next": "^3.0.6",
@@ -39,31 +38,40 @@
     "slugify": "^1.2.1"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.2.6",
+    "@storybook/addon-links": "^3.2.6",
+    "@storybook/react": "^3.2.8",
+    "babel-jest": "^21.0.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "enzyme": "^2.9.1",
+    "jest": "^21.1.0",
     "nodemon": "^1.12.0",
     "prettier-eslint": "^6.4.2",
-    "@storybook/react": "^3.2.8",
-    "@storybook/addon-actions": "^3.2.6",
-    "@storybook/addon-links": "^3.2.6"
+    "react-test-renderer": "^15.6.1"
   },
   "scripts": {
-    "deploy-frontend": "git subtree push --prefix frontend heroku master",
-    "deploy-frontend--force":
-      "git push heroku `git subtree split --prefix frontend master`:master --force",
+    "deploy-frontend": "git push heroku",
+    "deploy-frontend--force": "git push heroku --force",
     "deploy-backend": "cd backend && sanity deploy && cd ..",
-    "test": "cd frontend && jest",
-    "dev":
-      "cd frontend && npm run sass-dev && concurrently --kill-others \"nodemon -w server.js -w routes.js server.js\" \"npm run sass-watch\"",
+    "test": "jest",
+    "dev": "cd frontend && npm run sass-dev && concurrently --kill-others \"nodemon -w server.js -w routes.js server.js\" \"npm run sass-watch\"",
     "build": "cd frontend && next build",
     "start": "cd frontend && node server.js",
-    "sass-watch":
-      "cd frontend && node-sass --source-map true -w ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
-    "sass-dev":
-      "cd frontend && node-sass --source-map true ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
-    "sass-build":
-      "cd frontend && node-sass ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css --output-style compressed",
+    "sass-watch": "cd frontend && node-sass --source-map true -w ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
+    "sass-dev": "cd frontend && node-sass --source-map true ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css",
+    "sass-build": "cd frontend && node-sass ./style/ -o ./static/css ./static/css --use autoprefixer -d ./static/css --output-style compressed",
     "heroku-postbuild": "cd frontend && next build && npm run sass-build",
     "storybook": "cd frontend && start-storybook -p 6006",
     "build-storybook": "cd frontend && build-storybook"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "<rootDir>/jest.transform.js"
+    }
   },
   "engines": {
     "node": "8.4.0"

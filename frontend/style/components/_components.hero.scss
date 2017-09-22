@@ -1,12 +1,41 @@
 .c-hero {
   width: 100%;
-  max-height: 50vh;
-  overflow: hidden;
 }
+
+$fancy-spacing: 96px;
+
 .c-hero__image {
-  object-fit: cover;
-  object-position: center;
   width: 100%;
-  position: relative;
-  z-index: 1;
+  padding-right: $spacing-huge;
+}
+
+.c-hero__image + div .c-hero__grid-container {
+  margin-top: -60px;
+  @include mq($from: tablet) {
+    margin-top: -220px;
+  }
+}
+
+.c-hero__grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  padding-bottom: $spacing;
+  @include mq($from: tablet) {
+    padding-bottom: $spacing-huge;
+  }
+}
+
+.c-hero__grid-container__bg {
+  background-color: $brand-dark;
+  grid-row: auto;
+  grid-column: 2/13;
+  grid-row-start: 1;
+}
+
+.c-hero__grid-container__content {
+  grid-column: 3/12;
+  grid-row-start: 1;
+  padding: $spacing-large 0;
+  color: $white;
 }

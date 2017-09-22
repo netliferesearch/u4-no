@@ -1,72 +1,63 @@
 .c-article-header {
 }
 
-.c-article-header__issue {
-  @include inuit-font-size($font-size-small);
-  font-family: $font-sans;
-  text-transform: uppercase;
-}
-
 .c-article-header__title {
-  margin-top: 0;
-  @include inuit-font-size($font-size-larger, $line-height-normal);
+  margin: 0;
+  font-family: $font-serif;
+  font-weight: 100;
+  letter-spacing: 1px;
+  @include inuit-font-size($font-size-large, $line-height-normal);
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-huge, $line-height-normal);
+    @include inuit-font-size($font-size-larger, $line-height-normal);
   }
 }
 
 .c-article-header__subtitle {
-  @include inuit-font-size($font-size-larger, $line-height-larger);
+  margin-top: 0;
   font-family: $font-sans;
-  color: $grey;
   font-weight: lighter;
-}
-
-.c-article-header__byline {
-  font-family: $font-sans;
-  color: $grey;
-  @include inuit-font-size($font-size-small);
-}
-
-.c-article-header__photo-credit {
-  font-style: italic;
-  font-family: $font-sans;
-  color: $grey;
-  @include inuit-font-size($font-size-small);
-}
-
-.c-article-header__topics {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.c-article-header__topics-item {
-  @include inuit-font-size($font-size-tiny);
-  color: $brand-main;
-  border: solid $brand-main 1px;
-  font-family: $font-sans;
-  text-transform: uppercase;
-  border-radius: 2px;
-  margin: 10px 10px 0 0;
-  padding: 0 8px;
-  transition: all 0.1s ease;
-  &:hover {
-    background-color: #1da1f2;
-    color: white;
+  @include inuit-font-size($font-size-normal, $line-height-normal);
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-large, $line-height-normal);
   }
 }
 
-.c-article-header__lead {
-  @include inuit-font-size($font-size-large, $line-height-large);
+.c-article-header__meta {
+  font-family: $font-sans;
+  font-weight: 300;
+  @include inuit-font-size($font-size-tiny);
+  padding-bottom: $spacing;
 }
-.c-article-header__lead::first-letter {
+
+.c-article-lead {
+  @include inuit-font-size($font-size-small, $line-height-large );
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-normal, $line-height-large );
+  }
+}
+
+.c-article-lead::first-letter {
   color: $black;
   letter-spacing: 0;
   text-transform: uppercase;
   color: $black;
-  @include inuit-font-size($font-size-huge * 1.5);
+  @include inuit-font-size($font-size-huge, $line-height-tiny);
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-huge * 1.2, $line-height-tiny);
+  }
   font-weight: normal;
   float: left;
-  margin: 5px 5px -7px 0; /* THESE VALUES SET TXT WRAP AROUND DROP CAP */
+  margin: 0px 20px -10px 0; /* THESE VALUES SET TXT WRAP AROUND DROP CAP */
   line-height: 1; /* THIS SETS BASELINE POSITION OF DROP CAP */
+}
+
+.c-article-header__summary-for-busy-people {
+  font-family: $font-serif;
+  font-weight: 100;
+  padding: $spacing 0;
+  a {
+    color: $white;
+    padding: $spacing;
+    background-color: $brand-main;
+  }
 }

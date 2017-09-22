@@ -1,6 +1,10 @@
 h1, h2, h3 {
-  font-family: $font-serif;
+  font-family: $font-sans;
   font-weight: normal;
   line-height: $line-height-large;
+}
 
+h2 {
+  font-size: $font-size-larger;
+  margin-bottom: 0;
 }

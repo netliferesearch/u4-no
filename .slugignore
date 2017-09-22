@@ -1,2 +1,3 @@
 backend/
 old-data-import/
+frontend/.babelrc
