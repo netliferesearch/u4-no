@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '../routes';
+import randomKey from '../helpers/randomKey'
 
 const PublicationArticleHeader = ({
   title = 'no title',
