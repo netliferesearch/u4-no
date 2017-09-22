@@ -8,7 +8,7 @@ function findTitles(articleContents) {
     if (elem.style === 'h2') {
       result.push({
         style: 'h2',
-        title: elem.spans[0].text,
+        title: elem.children[0].text,
       });
     }
     return result;
