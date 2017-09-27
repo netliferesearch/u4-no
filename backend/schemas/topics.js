@@ -5,7 +5,12 @@ export default {
   title: 'Topic',
   type: 'object',
   fields: [
-    title,
+    {
+      name: 'title',
+      type: 'string',
+      title: 'Short title',
+      description: 'Keywords that people search. Not including "corruption". Max 5 words',
+    },
     longTitle,
     explainerText,
     featuredImage,
