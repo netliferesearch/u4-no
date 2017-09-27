@@ -1,4 +1,4 @@
 export default {
   name: 'date',
-  type: 'date'
+  type: 'richDate'
 }
