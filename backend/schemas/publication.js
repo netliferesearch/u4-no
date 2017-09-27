@@ -156,7 +156,7 @@ export default {
               }
             ]
           }
-        ]
+        ],
       },
       {
         name: 'bibliograpicalOverride',
@@ -198,12 +198,30 @@ export default {
             name: 'type',
             type: 'string'
           }
-        ]
+        ],
+        preview: {
+          select: {
+            title: title,
+          }
+        }
       },
       {
         name: 'abbreviations',
         title: 'Abbreviations',
         type: 'block',
+        preview: {
+          select: {
+            title: 'title',
+            subtitle: 'text'
+          },
+
+          prepare({ title = '', subtitle = false }) {
+            return {
+              title,
+              subtitle: subtitle ? subtitle[0].children[0].text : 'Empty'
+            };
+          },
+        }
       },
       {
         name: 'blurbs',
@@ -227,7 +245,10 @@ export default {
               }
             ]
           }
-        ]
+        ],
+        preview: {
+          title: 'topics.title'
+        }
       },
       {
         name: 'relatedUrl',

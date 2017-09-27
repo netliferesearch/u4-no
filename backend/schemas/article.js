@@ -31,5 +31,10 @@ export default {
       ]
     },
     slug
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title'
+    }
+  }
 }
