@@ -20,8 +20,8 @@ export default {
     fields: [
       title,
       subtitle,
-      leadText,
       standfirst,
+      leadText,
       {
         name: 'featuredImage',
         title: 'Featured image',
