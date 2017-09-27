@@ -1,14 +1,26 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 import md5 from 'md5';
 import axios from 'axios';
 import querystring from 'querystring'
-import SlateEditor from '@sanity/form-builder/lib/inputs/BlockEditor-slate'
+import autobind from 'react-autobind'
+import BlockEditor from '@sanity/form-builder/lib/inputs/BlockEditor-slate'
 
-const apiKey = "9T0600IHQ16WDV2B3GCJVA7E19N0BEVL";
+const apiKey = "ZS7I2JBJXHXKM7QXV9UAC0F1OZYHQU3Q";
 const readableUrl = 'https://api.readable.io/api/text/';
 const requestTime = () => Math.floor(new Date().getTime() / 1000);
 const apiSignature = () => ({ token: md5(apiKey + requestTime()), time: requestTime() })
+
+function extractTextFromBlocks(blocks) {
+  return blocks
+    .filter(val => val._type === 'block')
+    .map(block => {
+      return block.children
+        .filter(child => child._type === 'span')
+        .map(span => span.text)
+        .join('')
+    }).join('')
+}
 
 export default class FunkyEditor extends React.Component {
   static propTypes = {
@@ -19,52 +31,58 @@ export default class FunkyEditor extends React.Component {
     value: PropTypes.array,
     onChange: PropTypes.func.isRequired
   };
+
   constructor(props) {
     super(props)
     this.state = {
-      text: ""
+      text: "",
+      readable: {
+        letter_count: '',
+        reading_time: '',
+        rating: '',
+      }
+
     }
+    autobind(this)
+  }
+  componentWillMount() {
+    const time = requestTime();
+    this.setState({ time })
   }
 
-  handleReadable = text => {
-    if (text.length % 50) {
+  handleReadable({ patches = [{ value: [] }] }) {
+    const { token, time } = apiSignature()
+    if (time - this.state.time > 10) {
+      const text = extractTextFromBlocks(patches[0].value)
 
-      const { token, time } = apiSignature()
-      axios.post(readableUrl,
-        querystring.stringify({ text })
-        , {
+      axios.post(readableUrl, querystring.stringify({ text }), {
         headers: {
           'API_SIGNATURE': token,
           'API_REQUEST_TIME': time,
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        data: {
-          text
-        }
-        }).then(data => console.log(data))
+        data: { text}
+        }).then(({ data }) => {
+          this.setState({ readable: data })
+        })
+        this.setState({ time })
     }
   }
 
-  handleChange = event => {
-    this.props.onChange(event)
-    this.setState({
-      text: event.patches.map(e => e.value.map(e => e.children.map(t => t.text))).join()
-    })
-    this.handleReadable(this.state.text)
-  }
-
   render() {
-    const { type, value = [], level } = this.props
-
+    const { type, value, level, onChange } = this.props
+    const { letter_count, reading_time, rating  } = this.state.readable
     return (
       <div>
-        <SlateEditor
+        <BlockEditor
           type={type}
           level={level}
-          value={value === undefined ? '' : value}
-          onChange={this.handleChange}
+          value={value}
+          onChange={this.handleReadable}
         />
-        <p>Letter count: {this.state.letter_count} - Reading time: {this.state.reading_time} - Readable.io rate: {this.state.rating}</p>
+        <p>
+          Letter count: {letter_count} - Reading time: {reading_time} - Readable.io rate: {rating}.
+        </p>
       </div>
     )
   }
