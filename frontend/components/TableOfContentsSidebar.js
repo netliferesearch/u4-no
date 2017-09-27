@@ -13,6 +13,9 @@ export default class extends Component {
        */
       scrollHandler: throttle(() => {
         const elementTarget = document.getElementById('js-scroll-trigger');
+        if (!elementTarget) {
+          return; // do nothing
+        }
         if (window.scrollY > elementTarget.offsetTop + elementTarget.offsetHeight) {
           this.setState(() => ({ navFollowScreen: true }));
         } else {

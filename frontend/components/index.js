@@ -1,8 +1,7 @@
 export { default as HeadComponent } from './HeadComponent';
 export { default as Layout } from './Layout';
-export { default as PublicationArticle } from './PublicationArticle';
+export { default as LongformArticle } from './LongformArticle';
 export { default as PublicationArticleHeader } from './PublicationArticleHeader';
-export { default as TopicArticle } from './TopicArticle';
 export { default as Figure } from './Figure';
 export { default as PullQuote } from './PullQuote';
 export { default as ExtendedBlockContent } from './ExtendedBlockContent';

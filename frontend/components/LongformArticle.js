@@ -31,6 +31,14 @@ const blockTypeHandlersOverride = {
         {children}
       </p>
     ),
+    h1: ({ children = [] }) => (
+      <h1
+        key={randomKey()}
+        className="o-grid-container__item-standard"
+      >
+        {children}
+      </h1>
+    ),
     h2: ({ children = [] }) => (
       <h2
         key={randomKey()}
@@ -74,7 +82,7 @@ const customTypeHandlers = {
   ),
 };
 
-const PublicationArticle = ({ content = [] }) => {
+const LongformArticle = ({ content = [] }) => {
   console.log('content', content);
   return (
     <main className="o-wrapper-inner c-article o-grid-container-sub-div">
@@ -87,4 +95,4 @@ const PublicationArticle = ({ content = [] }) => {
   );
 };
 
-export default PublicationArticle;
+export default LongformArticle;

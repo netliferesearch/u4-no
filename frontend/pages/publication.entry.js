@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Layout,
-  PublicationArticle,
+  LongformArticle,
   PublicationArticleHeader,
   TableOfContentsButton,
   TableOfContentsSidebar,
@@ -45,7 +45,7 @@ const PublicationEntry = (props) => {
             </div>
           </div>
         </div>
-        <PublicationArticle {...props} />
+        <LongformArticle {...props} />
         <span id="js-bottom" />
         <TableOfContentsButton {...props} />
       </article>

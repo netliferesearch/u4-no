@@ -74,12 +74,6 @@ const TopicEntry = ({
           params={{ id: _id, topicPart: 'agenda' }}
         />
       </section>
-      <section className="c-accordion-wrapper">
-        <ul>
-          <li>Read our basic guide</li>
-          <li>Research and policy</li>
-        </ul>
-      </section>
     </div>
   </Layout>
 );
