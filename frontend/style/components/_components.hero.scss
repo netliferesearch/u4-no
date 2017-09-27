@@ -1,41 +1,36 @@
 .c-hero {
-  width: 100%;
+  display: grid;
+    grid-template-columns: 20px auto auto auto 1fr auto auto auto 20px;
+  grid-template-rows: 300px 100px auto;
+  grid-row-gap: 10px;
+
+  @media screen and (min-width: 800px) {
+    grid-template-columns: 1fr auto auto 1fr 620px 1fr auto auto 1fr;
+  }
+  @media screen and (min-width: 1140px) {
+    grid-template-columns: auto 80px 80px 80px 620px 80px 80px 80px auto;
+  }
 }
+
 
 $fancy-spacing: 96px;
 
-.c-hero__image {
-  width: 100%;
-  padding-right: $spacing-huge;
+.c-hero-image {
+  overflow: hidden;
+  grid-column: 1 / 6;
+  grid-row: 1 / 3;
+  background-size: cover;
+  background-image: url("https://envato-shoebox-0.imgix.net/475d/570c-3d58-4f51-8fb8-a30d609db5b2/stevanzz_01674_b.jpg?w=1600&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalpha=18&markalign=center%2Cmiddle&auto=compress%2Cformat&s=5a17bc1ac04343162286de1af4c0012f");
 }
 
-.c-hero__image + div .c-hero__grid-container {
-  margin-top: -60px;
-  @include mq($from: tablet) {
-    margin-top: -220px;
-  }
-}
-
-.c-hero__grid-container {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto;
-  padding-bottom: $spacing;
-  @include mq($from: tablet) {
-    padding-bottom: $spacing-huge;
-  }
-}
-
-.c-hero__grid-container__bg {
+.c-hero-bg {
   background-color: $brand-dark;
-  grid-row: auto;
-  grid-column: 2/13;
-  grid-row-start: 1;
+  grid-column: 4 / 10;
+  grid-row: 2 / 4;
 }
 
-.c-hero__grid-container__content {
-  grid-column: 3/12;
-  grid-row-start: 1;
-  padding: $spacing-large 0;
+.c-hero-header{
   color: $white;
+  grid-column: 5 / 6;
+  grid-row: 2 / 4;
 }

@@ -14,25 +14,23 @@ const PublicationEntry = (props) => {
     <Layout>
       <article>
         <span id="js-top" />
+
         <div id="js-scroll-trigger">
           {props.featuredImage &&
             props.featuredImage.asset.url && (
               <div className="c-hero">
-                <div className="o-wrapper">
-                  <img className="c-hero__image" alt="" src={props.featuredImage.asset.url} />
-                  <div className="o-wrapper-inner">
-                    <div className="c-hero__grid-container">
-                      <div className="c-hero__grid-container__bg" />
-                      <PublicationArticleHeader
-                        className="c-hero__grid-container__content links-wrapper-dark-background"
-                        {...props}
-                      />
-                    </div>
-                  </div>
+                <div className="c-hero-image"></div>
+                <div className="c-hero-bg"></div>
+                <div className="c-hero-header">
+                  <PublicationArticleHeader
+                    className="c-hero__grid-container__content links-wrapper-dark-background"
+                    {...props}
+                  />
                 </div>
               </div>
             )}
         </div>
+
         <div className="o-wrapper-inner">
           <div className="o-grid-container">
             <div className="o-grid-container__item-standard-full-right">
@@ -48,6 +46,7 @@ const PublicationEntry = (props) => {
         <LongformArticle {...props} />
         <span id="js-bottom" />
         <TableOfContentsButton {...props} />
+        <img className="c-hero__image" alt="" src={props.featuredImage.asset.url} />
       </article>
     </Layout>
   );
