@@ -16,7 +16,7 @@ export default class FunkyEditor extends React.Component {
       title: PropTypes.string
     }).isRequired,
     level: PropTypes.number,
-    value: PropTypes.number,
+    value: PropTypes.array,
     onChange: PropTypes.func.isRequired
   };
   constructor(props) {
@@ -48,7 +48,7 @@ export default class FunkyEditor extends React.Component {
   handleChange = event => {
     this.props.onChange(event)
     this.setState({
-      text: event.patches.map(e => e.value.map(e => e.spans.map(t => t.text))).join()
+      text: event.patches.map(e => e.value.map(e => e.children.map(t => t.text))).join()
     })
     this.handleReadable(this.state.text)
   }
