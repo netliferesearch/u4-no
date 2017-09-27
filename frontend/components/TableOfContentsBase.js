@@ -6,9 +6,9 @@ import randomKey from '../helpers/randomKey';
 
 function findTitles(articleContents) {
   return articleContents.reduce((result, elem) => {
-    if (elem.style === 'h2') {
+    if (/h2|h3/gi.test(elem.style)) {
       result.push({
-        style: 'h2',
+        style: elem.style,
         title: elem.children[0].text,
       });
     }

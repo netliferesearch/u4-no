@@ -32,10 +32,7 @@ const blockTypeHandlersOverride = {
       </p>
     ),
     h1: ({ children = [] }) => (
-      <h1
-        key={randomKey()}
-        className="o-grid-container__item-standard"
-      >
+      <h1 key={randomKey()} className="o-grid-container__item-standard">
         {children}
       </h1>
     ),
@@ -49,7 +46,11 @@ const blockTypeHandlersOverride = {
       </h2>
     ),
     h3: ({ children = [] }) => (
-      <h3 key={randomKey()} className="o-grid-container__item-standard">
+      <h3
+        key={randomKey()}
+        id={slugify(children[0], { lower: true })}
+        className="o-grid-container__item-standard"
+      >
         {children}
       </h3>
     ),
@@ -82,16 +83,14 @@ const customTypeHandlers = {
   ),
 };
 
-const LongformArticle = ({ content = [] }) => {
-  return (
-    <main className="o-wrapper-inner c-article o-grid-container-sub-div">
-      <BlockContent
-        blocks={content.filter(block => !['reference'].includes(block._type))}
-        blockTypeHandlers={{ ...blockTypeHandlersOverride }}
-        customTypeHandlers={customTypeHandlers}
-      />
-    </main>
-  );
-};
+const LongformArticle = ({ content = [] }) => (
+  <main className="o-wrapper-inner c-article o-grid-container-sub-div">
+    <BlockContent
+      blocks={content.filter(block => !['reference'].includes(block._type))}
+      blockTypeHandlers={{ ...blockTypeHandlersOverride }}
+      customTypeHandlers={customTypeHandlers}
+    />
+  </main>
+);
 
 export default LongformArticle;
