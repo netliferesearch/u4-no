@@ -7,5 +7,5 @@ export { default as Figure } from './Figure';
 export { default as PullQuote } from './PullQuote';
 export { default as ExtendedBlockContent } from './ExtendedBlockContent';
 export { default as Accordion } from './Accordion';
-export { default as TocMobile } from './TocMobile';
-export { default as ArticleTableOfContents } from './ArticleTableOfContents';
+export { default as TableOfContentsButton } from './TableOfContentsButton';
+export { default as TableOfContentsSidebar } from './TableOfContentsSidebar';

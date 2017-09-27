@@ -32,7 +32,11 @@ const blockTypeHandlersOverride = {
       </p>
     ),
     h2: ({ children = [] }) => (
-      <h2 id={slugify(children[0], { lower: true })} className="o-grid-container__item-standard">
+      <h2
+        key={randomKey()}
+        id={slugify(children[0], { lower: true })}
+        className="o-grid-container__item-standard"
+      >
         {children}
       </h2>
     ),

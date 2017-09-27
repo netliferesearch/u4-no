@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import slugify from 'slugify';
-import randomKey from '../helpers/randomKey';
 import Scrollchor from 'react-scrollchor';
+import randomKey from '../helpers/randomKey';
 
 function findTitles(articleContents) {
   return articleContents.reduce((result, elem) => {
@@ -18,7 +18,12 @@ function findTitles(articleContents) {
 
 const getClassName = menuItem => `o-list-bare__item menu__item menu__item--${menuItem.style}`;
 
-const ArticleTableOfContents = ({ onItemSelected = () => {}, content = [] }) => (
+/**
+ * This breaks down article content and creates a list based on titles found
+ * in the article.
+ * @param {Object} [onItemSelected=(] callback
+ */
+const TableOfContentsBase = ({ onItemSelected = () => {}, content = [] }) => (
   <ul className="o-list-bare">
     <li key={randomKey()} className="o-list-bare__item menu__item">
       <Scrollchor onClick={e => onItemSelected(e)} to={'#js-top'}>
@@ -43,4 +48,4 @@ const ArticleTableOfContents = ({ onItemSelected = () => {}, content = [] }) => 
   </ul>
 );
 
-export default ArticleTableOfContents;
+export default TableOfContentsBase;

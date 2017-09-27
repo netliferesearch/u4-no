@@ -4,9 +4,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 import Waypoint from 'react-waypoint';
 import ScrollableAnchor, { configureAnchors } from 'react-scrollable-anchor';
-import { ArticleTableOfContents } from './ArticleTableOfContents';
-import TocMobile from './TocMobile';
-import { PullQuote, Figure } from './';
+import { PullQuote, Figure, TableOfContentsButton, TableOfContentsSidebar } from './';
 import randomKey from '../helpers/randomKey';
 
 configureAnchors({ offset: -60, scrollDuration: 400, keepLastAnchorHash: true });
@@ -109,13 +107,7 @@ class TopicArticle extends Component {
             <h1 className="c-article-header__title">{title}</h1>
           </div>
           <div className="o-grid-container__item-standard-right">
-            <div
-              className={
-                this.state.navFollowScreen ? 'c-article-nav c-article-nav--fixed' : 'c-article-nav'
-              }
-            >
-              <ArticleTableOfContents content={introduction} />
-            </div>
+            <TableOfContentsSidebar content={introduction} />
           </div>
           <div className="o-grid-container__item-standard">
             <p className="c-article-header__lead">{lead}</p>
@@ -142,7 +134,7 @@ class TopicArticle extends Component {
             </details>
           </div>
         </footer>
-        <TocMobile {...this.props} />
+        <TableOfContentsButton {...this.props} />
       </article>
     );
   }

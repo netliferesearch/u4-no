@@ -12,7 +12,7 @@ const TopicEntry = ({
   topic: {
     title = '',
     longTitle = '',
-    explainerText = 'Publication has no explainerText',
+    explainerText = 'Topic has no explainerText',
     featuredImage,
     parent = {},
     introduction = [],
@@ -75,28 +75,10 @@ const TopicEntry = ({
         />
       </section>
       <section className="c-accordion-wrapper">
-<<<<<<< HEAD
-        <Accordion
-          title="U4 Publications"
-          summary="Read our recommended publications"
-          icon={Publication}
-        >
-          <ExtendedBlockContent content={introduction} />
-        </Accordion>
-
-        <Accordion
-          title="Resources"
-          summary="Comments, recommendations, case studies, toolkits"
-          icon={Resources}
-        >
-          Resources
-        </Accordion>
-=======
-          <ul>
-            <li>Read our basic guide</li>
-            <li>Research and policy</li>
-          </ul>
->>>>>>> fdd792a78fd95aafef28359fc13754e0dbc391f4
+        <ul>
+          <li>Read our basic guide</li>
+          <li>Research and policy</li>
+        </ul>
       </section>
     </div>
   </Layout>
