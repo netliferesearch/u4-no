@@ -32,14 +32,10 @@ const blockTypeHandlersOverride = {
       </p>
     ),
     h1: ({ children = [] }) => (
-<<<<<<< HEAD
-      <h1 key={randomKey()} className="o-grid-container__item-standard">
-=======
       <h1
         key={randomKey()}
         className="c-longform-grid__standard "
       >
->>>>>>> new grid and styling on longform
         {children}
       </h1>
     ),
@@ -53,15 +49,11 @@ const blockTypeHandlersOverride = {
       </h2>
     ),
     h3: ({ children = [] }) => (
-<<<<<<< HEAD
       <h3
         key={randomKey()}
         id={slugify(children[0], { lower: true })}
-        className="o-grid-container__item-standard"
+        className="c-longform-grid__standard"
       >
-=======
-      <h3 key={randomKey()} className="c-longform-grid__standard">
->>>>>>> new grid and styling on longform
         {children}
       </h3>
     ),
@@ -93,9 +85,8 @@ const customTypeHandlers = {
   ),
 };
 
-<<<<<<< HEAD
 const LongformArticle = ({ content = [] }) => (
-  <main className="o-wrapper-inner c-article o-grid-container-sub-div">
+  <main className=" c-article c-longform-grid-sub-div">
     <BlockContent
       blocks={content.filter(block => !['reference'].includes(block._type))}
       blockTypeHandlers={{ ...blockTypeHandlersOverride }}
@@ -103,19 +94,5 @@ const LongformArticle = ({ content = [] }) => (
     />
   </main>
 );
-=======
-const LongformArticle = ({ content = [] }) => {
-  console.log('content', content);
-  return (
-    <main className="c-article c-longform-grid-sub-div">
-      <BlockContent
-        blocks={content.filter(block => !['reference'].includes(block._type))}
-        blockTypeHandlers={{ ...blockTypeHandlersOverride }}
-        customTypeHandlers={customTypeHandlers}
-      />
-    </main>
-  );
-};
->>>>>>> new grid and styling on longform
 
 export default LongformArticle;

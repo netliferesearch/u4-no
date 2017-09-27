@@ -32,7 +32,7 @@ const PublicationEntry = (props) => {
               </div>
             )}
         </div>
-        <div className="meny">
+        <div>
           <TableOfContentsSidebar {...props} />
         </div>
         <div className="c-longform-grid">
