@@ -37,6 +37,7 @@ class PublicationEntry extends Component {
     return (
       <Layout>
         <article>
+          <span id="js-top" />
           <div id="js-scroll-trigger">
             {this.props.featuredImage &&
               this.props.featuredImage.asset.url && (
@@ -81,6 +82,7 @@ class PublicationEntry extends Component {
             </div>
           </div>
           <PublicationArticle {...this.props} />
+          <span id="js-bottom" />
           <TocMobile {...this.props} />
         </article>
       </Layout>
