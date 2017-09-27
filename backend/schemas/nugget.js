@@ -10,10 +10,7 @@ export default {
   name: 'nugget',
   type: 'object',
   fields: [
-    {
-      name: 'title',
-      type: 'string'
-    },
+    title,
     {
       name: 'text',
       type: 'array',
@@ -43,7 +40,7 @@ export default {
     prepare({ title = '', subtitle = false }) {
       return {
         title,
-        subtitle: subtitle ? subtitle[0].spans[0].text : 'Empty'
+        subtitle: subtitle ? subtitle[0].children[0].text : 'Empty'
       };
     },
   },
