@@ -5,9 +5,12 @@
   li {
     padding: 5px 10px;
     border-left: 3px solid lightgrey;
-    &:first-child {
-      border-left: 3px solid $brand-main;
-    }
+  }
+  // li.menu__item--h3 {
+  //   display: none;
+  // }
+  li.is-selected {
+    border-left: 3px solid $brand-main;
   }
   @include mq($until: desktop) {
     display: none;
