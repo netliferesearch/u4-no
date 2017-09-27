@@ -19,7 +19,9 @@ const PublicationEntry = (props) => {
           {props.featuredImage &&
             props.featuredImage.asset.url && (
               <div className="c-hero">
-                <div className="c-hero-image"></div>
+                <div className="c-hero-image" style={{
+                    backgroundImage: 'url(' + props.featuredImage.asset.url + ')'
+                  }}></div>
                 <div className="c-hero-bg"></div>
                 <div className="c-hero-header">
                   <PublicationArticleHeader
@@ -31,23 +33,18 @@ const PublicationEntry = (props) => {
             )}
         </div>
 
-        <div className="o-wrapper-inner">
-          <div className="o-grid-container">
-            <div className="o-grid-container__item-standard-full-right">
-              <div className="c-lead-and-toc">
-                <div className="c-lead-and-toc__lead c-article c-lead">{lead}</div>
-                <div className="c-lead-and-toc__toc">
-                  <TableOfContentsSidebar {...props} />
-                </div>
-              </div>
-            </div>
+        <div className="c-longform-grid">
+          <div className="meny">
+            <TableOfContentsSidebar {...props} />
+          </div>
+          <div className="small">{lead}</div>
+          <div className="small">
+            <LongformArticle {...props} />
+            <span id="js-bottom" />
+            <TableOfContentsButton {...props} />
           </div>
         </div>
-        <LongformArticle {...props} />
-        <span id="js-bottom" />
-        <TableOfContentsButton {...props} />
-        <img className="c-hero__image" alt="" src={props.featuredImage.asset.url} />
-      </article>
+    </article>
     </Layout>
   );
 };
