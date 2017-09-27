@@ -1,0 +1,38 @@
+.c-longform-grid, .c-longform-grid-sub-div > div{
+  display: grid;
+  grid-template-columns: 20px auto auto auto 1fr auto auto auto 20px;
+  grid-template-rows:  auto;
+  grid-row-gap: 10px;
+  @include mq($from: tablet) {
+    grid-template-columns: 1fr auto auto 1fr 620px 1fr auto auto 1fr;
+  }
+
+  @include mq($from: desktop) {
+    grid-template-columns: auto 80px 80px 80px 620px 80px 80px 80px auto;
+  }
+}
+
+
+.c-longform-grid__standard {
+  grid-column: 5 / 6;
+}
+
+.c-longform-grid__medium {
+  grid-column: 4 / 7;
+}
+
+.c-longform-grid__large {
+  grid-column: 3 / 8;
+}
+
+.c-longform-grid__large-right {
+  grid-column: 5 / 8;
+}
+
+.c-longform-grid__larger {
+  grid-column: 2 / 9;
+}
+
+.c-longform-grid__full {
+  grid-column: 1 / 10;
+}

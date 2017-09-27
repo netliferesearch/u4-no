@@ -32,18 +32,16 @@ const PublicationEntry = (props) => {
               </div>
             )}
         </div>
-
-        <div className="c-longform-grid">
-          <div className="meny">
-            <TableOfContentsSidebar {...props} />
-          </div>
-          <div className="small">{lead}</div>
-          <div className="small">
-            <LongformArticle {...props} />
-            <span id="js-bottom" />
-            <TableOfContentsButton {...props} />
-          </div>
+        <div className="meny">
+          <TableOfContentsSidebar {...props} />
         </div>
+        <div className="c-longform-grid">
+          <div className="c-article c-longform-grid__standard">{lead}</div>
+        </div>
+        <LongformArticle {...props} />
+        <span id="js-bottom" />
+        <TableOfContentsButton {...props} />
+
     </article>
     </Layout>
   );
