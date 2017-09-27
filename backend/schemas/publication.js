@@ -7,6 +7,7 @@ import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
 import {
   title,
   subtitle,
+  standfirst,
   date,
   image,
   leadText,
@@ -20,6 +21,7 @@ export default {
       title,
       subtitle,
       leadText,
+      standfirst,
       {
         name: 'featuredImage',
         title: 'Featured image',
@@ -112,6 +114,11 @@ export default {
         ]
       },
       {
+        name: 'notes',
+        description: 'Optional',
+        type: 'block'
+      },
+      {
         name: 'editors',
         title: 'Series editors',
         description: 'Responsible U4 staff member',
@@ -138,6 +145,7 @@ export default {
       date,
       {
         name: 'keywords',
+        description: 'Chose from drop-down menu of the available U4 keywords.',
         type: 'array',
         of: [
           {
@@ -208,6 +216,7 @@ export default {
       },
       {
         name: 'topics',
+        description: 'Select relevant U4 topics',
         type: 'array',
         of: [
           {
