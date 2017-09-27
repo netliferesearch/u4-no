@@ -83,7 +83,6 @@ const customTypeHandlers = {
 };
 
 const LongformArticle = ({ content = [] }) => {
-  console.log('content', content);
   return (
     <main className="o-wrapper-inner c-article o-grid-container-sub-div">
       <BlockContent
