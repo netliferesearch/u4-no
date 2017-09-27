@@ -1,1 +1,1 @@
-export {default} from './FunkyEditor'
+export { default } from './FunkyEditor'
