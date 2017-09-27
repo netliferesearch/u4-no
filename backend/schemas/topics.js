@@ -11,6 +11,8 @@ export default {
     featuredImage,
     {
       name: 'parent',
+      title: 'This is an area of…',
+      description: 'This topic is an area of another topic',
       type: 'reference',
       to: [
         {
