@@ -1,5 +1,5 @@
 export default {
   name: 'explainerText',
   type: 'text',
-  description: 'Punchy one/two-liner to introduce this U4 topic (200-300 characters with spaces)'
+  description: 'Introduce the topic and what is on the page. 250-350 characters with spaces'
 }
