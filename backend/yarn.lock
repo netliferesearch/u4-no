@@ -111,11 +111,11 @@
     webpack-dev-middleware "^1.6.0"
     webpack-hot-middleware "^2.13.2"
 
-"@sanity/base@^0.113.7":
-  version "0.113.7"
-  resolved "https://registry.yarnpkg.com/@sanity/base/-/base-0.113.7.tgz#8e2ff9a8fe75ab48b2e301ef6927ea5ca8ffe683"
+"@sanity/base@^0.114.0":
+  version "0.114.0"
+  resolved "https://registry.yarnpkg.com/@sanity/base/-/base-0.114.0.tgz#d02ab97f54e7fd1a13c9fd586dc5e31e90d3b9a0"
   dependencies:
-    "@sanity/client" "^0.113.7"
+    "@sanity/client" "^0.114.0"
     "@sanity/document-store" "^0.113.7"
     "@sanity/observable" "^0.113.7"
     "@sanity/schema" "^0.113.7"
@@ -143,9 +143,9 @@
     in-publish "^2.0.0"
     promise-props-recursive "^1.0.0"
 
-"@sanity/client@^0.113.7":
-  version "0.113.7"
-  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-0.113.7.tgz#a6abd710a08a062e0b51fa5c1ba3aef8523df932"
+"@sanity/client@^0.114.0":
+  version "0.114.0"
+  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-0.114.0.tgz#c19d64794192f164caaf4b60306d4a4168e34de7"
   dependencies:
     "@sanity/eventsource" "^0.113.7"
     "@sanity/generate-help-url" "^0.113.7"
@@ -155,11 +155,11 @@
     make-error "^1.3.0"
     object-assign "^4.1.1"
 
-"@sanity/components@^0.113.8":
-  version "0.113.8"
-  resolved "https://registry.yarnpkg.com/@sanity/components/-/components-0.113.8.tgz#59b9e9a9d47faa788d84188c84f28186e6842b53"
+"@sanity/components@^0.114.0":
+  version "0.114.0"
+  resolved "https://registry.yarnpkg.com/@sanity/components/-/components-0.114.0.tgz#477c9592b53f9b9ca68b4a616b79e951d2045c6c"
   dependencies:
-    "@sanity/date-input" "^0.113.8"
+    "@sanity/date-input" "^0.114.0"
     "@sanity/imagetool" "^0.113.7"
     "@sanity/observable" "^0.113.7"
     attr-accept "^1.1.0"
@@ -192,12 +192,12 @@
     react-split-pane "^0.1.63"
     scroll "^2.0.0"
 
-"@sanity/core@^0.113.7":
-  version "0.113.7"
-  resolved "https://registry.yarnpkg.com/@sanity/core/-/core-0.113.7.tgz#7342fe812b2e9155dc808cc37fc13d6f441d0fd1"
+"@sanity/core@^0.114.0":
+  version "0.114.0"
+  resolved "https://registry.yarnpkg.com/@sanity/core/-/core-0.114.0.tgz#f251567023bd77525fe1bdb47ed280dca16e920f"
   dependencies:
     "@sanity/check" "^0.113.7"
-    "@sanity/import" "^0.113.7"
+    "@sanity/import" "^0.114.0"
     "@sanity/mutator" "^0.113.7"
     "@sanity/plugin-loader" "^0.113.7"
     "@sanity/resolver" "^0.113.7"
@@ -234,11 +234,11 @@
     in-publish "^2.0.0"
     lodash "^4.17.4"
 
-"@sanity/date-input@^0.113.8":
-  version "0.113.8"
-  resolved "https://registry.yarnpkg.com/@sanity/date-input/-/date-input-0.113.8.tgz#bf5cf19904a4380ecb12523493dd985c03750234"
+"@sanity/date-input@^0.114.0":
+  version "0.114.0"
+  resolved "https://registry.yarnpkg.com/@sanity/date-input/-/date-input-0.114.0.tgz#519a2e2174d82392751f95fd85ac8476f51cda0d"
   dependencies:
-    "@sanity/form-builder" "^0.113.8"
+    "@sanity/form-builder" "^0.114.0"
     "@sanity/generate-help-url" "^0.113.7"
     lodash "^4.17.4"
     moment "^2.18.1"
@@ -248,9 +248,9 @@
     prop-types "^15.5.10"
     react-kronos "^1.5.2"
 
-"@sanity/default-layout@^0.113.8":
-  version "0.113.8"
-  resolved "https://registry.yarnpkg.com/@sanity/default-layout/-/default-layout-0.113.8.tgz#d1b847222a5573b531c46228628fb9f4e78cd349"
+"@sanity/default-layout@^0.114.0":
+  version "0.114.0"
+  resolved "https://registry.yarnpkg.com/@sanity/default-layout/-/default-layout-0.114.0.tgz#efc90609c34ea68481e57d5f1ed0a1be9bdff9b4"
   dependencies:
     lodash "^4.17.4"
     react-click-outside "^2.3.1"
@@ -262,12 +262,12 @@
     in-publish "^2.0.0"
     prop-types "^15.5.10"
 
-"@sanity/desk-tool@^0.113.8":
-  version "0.113.8"
-  resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-0.113.8.tgz#21acac1953ae429f4a355f7e57904fe0e3147efd"
+"@sanity/desk-tool@^0.114.0":
+  version "0.114.0"
+  resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-0.114.0.tgz#36fbcfc5d63c3dd190fc779f9e109e1236a434be"
   dependencies:
     "@sanity/data-aspects" "^0.113.7"
-    "@sanity/form-builder" "^0.113.8"
+    "@sanity/form-builder" "^0.114.0"
     "@sanity/mutator" "^0.113.7"
     "@sanity/uuid" "^0.113.7"
     classnames "^2.2.5"
@@ -306,9 +306,9 @@
     loader-utils "^0.2.16"
     webpack-sources "^0.1.0"
 
-"@sanity/form-builder@^0.113.8":
-  version "0.113.8"
-  resolved "https://registry.yarnpkg.com/@sanity/form-builder/-/form-builder-0.113.8.tgz#afcfae90bf14b89ff1d4d569742f450e6cbc5c57"
+"@sanity/form-builder@^0.114.0":
+  version "0.114.0"
+  resolved "https://registry.yarnpkg.com/@sanity/form-builder/-/form-builder-0.114.0.tgz#35ecfbdcdd36ccf11a305fa4c83f80249d25956d"
   dependencies:
     "@sanity/generate-help-url" "^0.113.7"
     "@sanity/imagetool" "^0.113.7"
@@ -340,9 +340,9 @@
   version "0.113.7"
   resolved "https://registry.yarnpkg.com/@sanity/generate-help-url/-/generate-help-url-0.113.7.tgz#2c6832ffa010f3e8c8251849ff7af18f282737c1"
 
-"@sanity/google-maps-input@^0.113.8":
-  version "0.113.8"
-  resolved "https://registry.yarnpkg.com/@sanity/google-maps-input/-/google-maps-input-0.113.8.tgz#fc909eec8c9fdd87ed31dd52513460f184a4b3fe"
+"@sanity/google-maps-input@^0.114.0":
+  version "0.114.0"
+  resolved "https://registry.yarnpkg.com/@sanity/google-maps-input/-/google-maps-input-0.114.0.tgz#f1b7f6e8352170f319669386102b1a436ab10fcd"
   dependencies:
     in-publish "^2.0.0"
 
@@ -354,9 +354,9 @@
     dom-event "1.0.0"
     lodash "^4.17.4"
 
-"@sanity/import@^0.113.7":
-  version "0.113.7"
-  resolved "https://registry.yarnpkg.com/@sanity/import/-/import-0.113.7.tgz#a95693f9410dc61faa17e5f0496b514719015cfe"
+"@sanity/import@^0.114.0":
+  version "0.114.0"
+  resolved "https://registry.yarnpkg.com/@sanity/import/-/import-0.114.0.tgz#fdbfe82a707ff885a40f787b404be35437e677bb"
   dependencies:
     "@sanity/mutator" "^0.113.7"
     debug "^2.6.3"
@@ -5042,6 +5042,10 @@ react-addons-shallow-compare@^15.4.1:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
+react-autobind@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-autobind/-/react-autobind-1.0.6.tgz#936bb58edf6b89b619c50f82f0e617159fdfd4f1"
+
 react-click-outside@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/react-click-outside/-/react-click-outside-2.3.1.tgz#318737ebdf081a4a3bcd46825663674cbe9836eb"
@@ -5155,8 +5159,8 @@ react-icon-base@2.0.7:
     prop-types "15.5.8"
 
 react-icon-base@^2.0.4:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-icon-base/-/react-icon-base-2.1.0.tgz#a196e33fdf1e7aaa1fda3aefbb68bdad9e82a79d"
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-icon-base/-/react-icon-base-2.1.1.tgz#ec5cd5f5797f29102581693d0ae9a739e3e586c2"
 
 react-icons@^2.2.5:
   version "2.2.5"
@@ -5762,18 +5766,18 @@ slash@^1.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
 
 slate-base64-serializer@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/slate-base64-serializer/-/slate-base64-serializer-0.1.8.tgz#846fcee82aa0b7875c75752ec2c0cdca9133acd2"
-
-slate-dev-logger@^0.1.9:
   version "0.1.9"
-  resolved "https://registry.yarnpkg.com/slate-dev-logger/-/slate-dev-logger-0.1.9.tgz#a021a94c23215bfef0fcf4d504553746908103a8"
+  resolved "https://registry.yarnpkg.com/slate-base64-serializer/-/slate-base64-serializer-0.1.9.tgz#e7d23a5c86f5a6d79ca5747966ca2289519efbf3"
+
+slate-dev-logger@^0.1.10, slate-dev-logger@^0.1.9:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/slate-dev-logger/-/slate-dev-logger-0.1.10.tgz#e6f8f44fa8259a905fe306423d2ebbc78c36d870"
 
 slate-html-serializer@^0.1.8:
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/slate-html-serializer/-/slate-html-serializer-0.1.10.tgz#c8ea538e0091cc201e6ea4a76b2b7c03bba12cf0"
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/slate-html-serializer/-/slate-html-serializer-0.1.11.tgz#fa07e8cf1f7657df17d8a918bf26185e19be22e5"
   dependencies:
-    slate-dev-logger "^0.1.9"
+    slate-dev-logger "^0.1.10"
     type-of "^2.0.1"
 
 slate-insert-block-on-enter@^0.0.5:
@@ -5784,16 +5788,16 @@ slate-insert-block-on-enter@^0.0.5:
     slate "^0.22.0"
 
 slate-plain-serializer@^0.1.8:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/slate-plain-serializer/-/slate-plain-serializer-0.1.9.tgz#6efda8a885bef0dcd4e073322eb457ab10f41421"
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/slate-plain-serializer/-/slate-plain-serializer-0.1.10.tgz#a0ae83430bb6fa9a0695d7210cbea4036441d7d6"
   dependencies:
-    slate-dev-logger "^0.1.9"
+    slate-dev-logger "^0.1.10"
 
 slate-prop-types@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/slate-prop-types/-/slate-prop-types-0.1.8.tgz#fd6ed21c2631c8d4b901fc28c9be2cb28f949392"
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/slate-prop-types/-/slate-prop-types-0.1.9.tgz#f729da5d320dc111479b2710c76828dbda10d6b2"
   dependencies:
-    slate-dev-logger "^0.1.9"
+    slate-dev-logger "^0.1.10"
 
 slate-react@0.1.8:
   version "0.1.8"
@@ -5838,8 +5842,8 @@ slate@^0.22.0:
     type-of "^2.0.1"
 
 slate@^0.25.1:
-  version "0.25.1"
-  resolved "https://registry.yarnpkg.com/slate/-/slate-0.25.1.tgz#eb6aa2eae4b53a8aa529aa224c8f529eb4cb7abc"
+  version "0.25.2"
+  resolved "https://registry.yarnpkg.com/slate/-/slate-0.25.2.tgz#c8602c638fb0a6162a01e6fbc1d3e1c4ef0f492a"
   dependencies:
     debug "^2.3.2"
     direction "^0.1.5"
@@ -5848,7 +5852,7 @@ slate@^0.25.1:
     is-empty "^1.0.0"
     is-plain-object "^2.0.4"
     lodash "^4.17.4"
-    slate-dev-logger "^0.1.9"
+    slate-dev-logger "^0.1.10"
     type-of "^2.0.1"
 
 slide@^1.1.5:
