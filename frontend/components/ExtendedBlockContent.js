@@ -1,6 +1,5 @@
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import ScrollableAnchor from 'react-scrollable-anchor';
 import slugify from 'slugify';
 
 import { PullQuote, Figure } from './';
@@ -27,9 +26,13 @@ const blockTypeHandlersOverride = {
       </p>
     ),
     h2: ({ children = [] }) => (
-      <ScrollableAnchor key={randomKey()} id={slugify(children[0], { lower: true })}>
-        <h2 className="o-grid-container__item-standard">{children}</h2>
-      </ScrollableAnchor>
+      <h2
+        key={randomKey()}
+        id={slugify(children[0], { lower: true })}
+        className="o-grid-container__item-standard"
+      >
+        {children}
+      </h2>
     ),
     h3: ({ children = [] }) => (
       <h3 key={randomKey()} className="o-grid-container__item-standard">
@@ -65,6 +68,7 @@ const ExtendedBlockContent = ({ content = [] }) => (
     blocks={content.filter(block => !['reference'].includes(block._type))}
     blockTypeHandlers={{ ...blockTypeHandlersOverride }}
     customTypeHandlers={customTypeHandlers}
-  />);
+  />
+);
 
 export default ExtendedBlockContent;
