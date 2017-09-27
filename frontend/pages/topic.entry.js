@@ -52,7 +52,7 @@ const TopicEntry = ({
           </ul>
           <DownArrowButton
             modifier="secondary"
-            text="Talk to one our of advisors"
+            text="Contact one of our advisors"
             onClick={() => console.log('clicked!')}
           />
         </div>
@@ -75,6 +75,7 @@ const TopicEntry = ({
         />
       </section>
       <section className="c-accordion-wrapper">
+<<<<<<< HEAD
         <Accordion
           title="U4 Publications"
           summary="Read our recommended publications"
@@ -90,6 +91,12 @@ const TopicEntry = ({
         >
           Resources
         </Accordion>
+=======
+          <ul>
+            <li>Read our basic guide</li>
+            <li>Research and policy</li>
+          </ul>
+>>>>>>> fdd792a78fd95aafef28359fc13754e0dbc391f4
       </section>
     </div>
   </Layout>

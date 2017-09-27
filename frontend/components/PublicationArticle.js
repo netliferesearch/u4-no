@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
-import Waypoint from 'react-waypoint';
-import ScrollableAnchor, { configureAnchors } from 'react-scrollable-anchor';
 
 import { PullQuote, Figure } from './';
 import randomKey from '../helpers/randomKey';
-
-configureAnchors({ offset: -60, scrollDuration: 400, keepLastAnchorHash: true });
 
 /**
  * Here we replace Sanity's react components for rendering basic things like
@@ -36,9 +32,9 @@ const blockTypeHandlersOverride = {
       </p>
     ),
     h2: ({ children = [] }) => (
-      <ScrollableAnchor key={randomKey()} id={slugify(children[0], { lower: true })}>
-        <h2 className="o-grid-container__item-standard">{children}</h2>
-      </ScrollableAnchor>
+      <h2 id={slugify(children[0], { lower: true })} className="o-grid-container__item-standard">
+        {children}
+      </h2>
     ),
     h3: ({ children = [] }) => (
       <h3 key={randomKey()} className="o-grid-container__item-standard">
@@ -74,33 +70,17 @@ const customTypeHandlers = {
   ),
 };
 
-class PublicationArticle extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { navFollowScreen: false };
-    this.waypointHandler = this.waypointHandler.bind(this);
-  }
-
-  waypointHandler({ currentPosition }) {
-    if (currentPosition === 'above') {
-      this.setState(() => ({ navFollowScreen: true }));
-    } else {
-      this.setState(() => ({ navFollowScreen: false }));
-    }
-  }
-
-  render() {
-    const { content = [] } = this.props;
-    return (
-      <main className="o-wrapper-inner c-article o-grid-container-sub-div">
-        <BlockContent
-          blocks={content.filter(block => !['reference'].includes(block._type))}
-          blockTypeHandlers={{ ...blockTypeHandlersOverride }}
-          customTypeHandlers={customTypeHandlers}
-        />
-      </main>
-    );
-  }
-}
+const PublicationArticle = ({ content = [] }) => {
+  console.log('content', content);
+  return (
+    <main className="o-wrapper-inner c-article o-grid-container-sub-div">
+      <BlockContent
+        blocks={content.filter(block => !['reference'].includes(block._type))}
+        blockTypeHandlers={{ ...blockTypeHandlersOverride }}
+        customTypeHandlers={customTypeHandlers}
+      />
+    </main>
+  );
+};
 
 export default PublicationArticle;

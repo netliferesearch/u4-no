@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '../routes';
+import randomKey from '../helpers/randomKey'
 
 const PublicationArticleHeader = ({
   title = 'no title',
@@ -11,7 +12,12 @@ const PublicationArticleHeader = ({
   <header className={`${className} c-article-header`}>
     {/* Wrap in standard grid width until we know better */}
     <div className="c-article-header__meta">
-      <a href>U4 Brief</a> | {topics.map(({ title = '' }) => <a href>{title}</a>)}
+      <a href>U4 Brief</a> |{' '}
+      {topics.map(({ title = '', _id = '' }) => (
+        <a href key={_id}>
+          {title}
+        </a>
+      ))}
     </div>
     <div>
       <h1 className="c-article-header__title">{title}</h1>

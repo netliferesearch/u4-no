@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from '../routes';
 import { DownArrowButton } from '../components/buttons';
 
-const BigBlueBox = ({ title = 'Click me', text = '', icon = '', route = '', params = {} }) => (
+const LinkBox = ({ title = 'Click me', text = '', icon = '', route = '', params = {} }) => (
   <div className="c-linkbox">
     <Link route={route} params={params}>
       <a className="c-linkbox-link">
@@ -21,4 +21,4 @@ const BigBlueBox = ({ title = 'Click me', text = '', icon = '', route = '', para
   </div>
 );
 
-export default BigBlueBox;
+export default LinkBox;
