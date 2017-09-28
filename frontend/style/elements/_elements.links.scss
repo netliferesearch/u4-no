@@ -20,13 +20,11 @@ a:hover {
 }
 
 a:focus {
-  font-weight: bold;
-  border-bottom: none;
+  border-bottom: 1px solid rgba(0, 121, 207, 1);
 }
 
 a:active {
-  font-weight: bold;
-  border-bottom: none;
+  border-bottom: 1px solid rgba(0, 121, 207, 1);
 }
 
 // Add this class when the links are on a dark background
