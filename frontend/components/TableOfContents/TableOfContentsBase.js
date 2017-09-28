@@ -3,40 +3,42 @@ import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import slugify from 'slugify';
 import Scrollchor from 'react-scrollchor';
-import randomKey from '../helpers/randomKey';
 
 class CustomScrollspy extends Component {
   constructor(props) {
     super(props);
-    const { idsToWatch = [] } = props;
+    const { watchables = [] } = props;
     this.state = {
-      idsToWatch,
-      selectedMenuIndex: 0,
+      watchables,
+      menuSelection: {
+        parentId: false,
+        selectedId: false,
+      },
       scrollHandler: throttle(() => {
         // loop through all ids to watch and compare the position of the
         // various elements. Elements that are not found will still be
         // present in the list as null
-        const elements = Array.from(
-          idsToWatch.map(({ title, style, id }) => ({
-            title,
-            style,
-            id,
-            element: document.getElementById(id),
-          })),
-        );
+        //
         // going from top to bottom we try to find last id the user has scrolled by
-        const selectedMenuIndex = elements.reduce((acc, elementToCheck, currentIndex) => {
-          if (!elementToCheck) {
+        //
+        const menuSelection = watchables.reduce((acc, { style, title, id }, currentIndex) => {
+          const element = document.getElementById(id);
+          if (!element) {
             return acc;
           }
-          if (window.scrollY > elementToCheck.offsetTop - elementToCheck.offsetHeight) {
-            return currentIndex;
+          if (window.scrollY > element.offsetTop - element.offsetHeight) {
+            if (style === 'h2') {
+              // store this info to enable us to know about the parentId if
+              // a sub id is selected
+              acc.parentId = id;
+            }
+            acc.selectedId = id;
           }
           return acc;
-        }, 0);
-        if (this.state.selectedMenuIndex !== selectedMenuIndex) {
+        }, {});
+        if (this.state.menuSelection.selectedId !== menuSelection.selectedId) {
           this.setState(() => ({
-            selectedMenuIndex,
+            menuSelection,
           }));
         }
       }, 1000),
@@ -53,14 +55,34 @@ class CustomScrollspy extends Component {
   }
 
   render() {
+    const indexOfSelectedParentId = this.props.watchables.reduce((acc, { id }, index) => {
+      if (id === this.state.menuSelection.parentId) {
+        return index;
+      }
+      return acc;
+    }, 0);
+    const indexOfSelectedId = this.props.watchables.reduce((acc, { id }, index) => {
+      if (id === this.state.menuSelection.selectedId) {
+        return index;
+      }
+      return acc;
+    }, 0);
     const children = React.Children.toArray(this.props.children);
     return (
       <ul className="o-list-bare">
         {children.map((child, index) => {
-          if (index === this.state.selectedMenuIndex) {
-            return React.cloneElement(child, { className: `${child.props.className} is-selected` });
+          let updatedChild = React.cloneElement(child);
+          if (index === indexOfSelectedParentId) {
+            updatedChild = React.cloneElement(updatedChild, {
+              className: `${updatedChild.props.className} is-selected-parent`,
+            });
           }
-          return child;
+          if (index === indexOfSelectedId) {
+            updatedChild = React.cloneElement(updatedChild, {
+              className: `${updatedChild.props.className} is-selected`,
+            });
+          }
+          return updatedChild;
         })}
       </ul>
     );
@@ -93,7 +115,7 @@ function TableOfContentsBase(props) {
    * excessive react updates on scroll.
    */
   return (
-    <CustomScrollspy idsToWatch={['', ...listOfTitleIds, '']}>
+    <CustomScrollspy watchables={['', ...listOfTitleIds, '']}>
       <li key="0" className="o-list-bare__item menu__item">
         <Scrollchor onClick={e => onItemSelected(e)} to={'#js-top'}>
           Top
