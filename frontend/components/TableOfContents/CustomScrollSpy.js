@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 
+/**
+ * Its purpose is to track a number of html titles and see whether or not we have
+ * read past those titles. Will add 'is-selected' (h2 or h3) to the currently selected child
+ * and 'is-selected-parent' to the parent element (the last h2 the reader passed).
+ *
+ * Takes an array of 'watchables' where the array order needs to correspond with
+ * the <li> children of this component.
+ *
+ * see proptype definition below.
+ * @type {Array}
+ */
 class CustomScrollSpy extends Component {
   constructor(props) {
     super(props);
@@ -90,11 +101,13 @@ class CustomScrollSpy extends Component {
 CustomScrollSpy.propTypes = {
   watchables: PropTypes.arrayOf(
     PropTypes.shape({
-      style: PropTypes.string,
-      title: PropTypes.string,
+      style: PropTypes.string, // can be h2, h3 and the like
+      title: PropTypes.string, // the title's text
+      // id of html element to track to determine if we are currently reading that title
       id: PropTypes.string,
     }),
   ).isRequired,
+  children: PropTypes.arrayOf(<li />).isRequired,
 };
 
 export default CustomScrollSpy;
