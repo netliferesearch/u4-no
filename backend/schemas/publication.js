@@ -159,6 +159,16 @@ export default {
         ],
       },
       {
+        name: 'publicationType',
+        title: 'Publication type',
+        type: 'reference',
+        to: [
+          {
+            type: 'publicationType'
+          }
+        ]
+      },
+      {
         name: 'bibliograpicalOverride',
         title: 'Override Bibliography',
         type: 'object',
