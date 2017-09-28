@@ -12,9 +12,8 @@ const PublicationEntry = (props) => {
   const { lead = 'article had no lead' } = props;
   return (
     <Layout>
-      <article className="o-wrapper">
+      <article className="o-wrapper o-wrapper--no-padding">
         <span id="js-top" />
-
         <div id="js-scroll-trigger">
           {props.featuredImage &&
             props.featuredImage.asset.url && (

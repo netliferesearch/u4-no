@@ -9,7 +9,7 @@
   }
 
   @include mq($from: desktop) {
-    grid-template-columns: 10% 80px 80px 80px 620px 80px 80px 80px 10%;
+    grid-template-columns: 1fr 80px 80px 80px 620px 80px 80px 80px 1fr;
   }
 }
 

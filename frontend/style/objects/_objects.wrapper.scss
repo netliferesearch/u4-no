@@ -15,3 +15,10 @@
   margin-left: auto;
   max-width: 940px;
 }
+
+.o-wrapper--no-padding {
+  @include mq($from: tablet) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
