@@ -17,13 +17,31 @@ export default {
     {
       name: 'caption',
       title: 'Caption text',
-      description: '',
-      type: 'string'
+      description: 'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          marks: {
+            // Only allow these decorators
+            decorators: [
+              { title: 'Emphasis', value: 'em' }
+            ],
+          },
+        },
+      ],
     },
     {
-      name: 'licensor',
-      title: 'Lisence',
+      name: 'credit',
+      title: 'Credit',
+      description: 'Photographer/publisher’s name.',
       type: 'text'
+    },
+    {
+      name: 'sourceUrl',
+      title: 'Credit URL',
+      type: 'url',
+      description: 'Enter link for source for the image or the originator'
     },
     license,
   ]
