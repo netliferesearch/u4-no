@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
-import slugify from 'slugify';
-import Scrollchor from 'react-scrollchor';
 
 class CustomScrollSpy extends Component {
   constructor(props) {
@@ -88,5 +86,15 @@ class CustomScrollSpy extends Component {
     );
   }
 }
+
+CustomScrollSpy.propTypes = {
+  watchables: PropTypes.arrayOf(
+    PropTypes.shape({
+      style: PropTypes.string,
+      title: PropTypes.string,
+      id: PropTypes.string,
+    }),
+  ).isRequired,
+};
 
 export default CustomScrollSpy;
