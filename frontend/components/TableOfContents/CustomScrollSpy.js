@@ -29,7 +29,6 @@ class CustomScrollSpy extends Component {
         // present in the list as null
         //
         // going from top to bottom we try to find last id the user has scrolled by
-        //
         const menuSelection = watchables.reduce((acc, { style, title, id }, currentIndex) => {
           const element = document.getElementById(id);
           if (!element) {
