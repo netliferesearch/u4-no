@@ -16,7 +16,14 @@ class CustomScrollspy extends Component {
         // loop through all ids to watch and compare the position of the
         // various elements. Elements that are not found will still be
         // present in the list as null
-        const elements = Array.from(idsToWatch.map(id => document.getElementById(id)));
+        const elements = Array.from(
+          idsToWatch.map(({ title, style, id }) => ({
+            title,
+            style,
+            id,
+            element: document.getElementById(id),
+          })),
+        );
         // going from top to bottom we try to find last id the user has scrolled by
         const selectedMenuIndex = elements.reduce((acc, elementToCheck, currentIndex) => {
           if (!elementToCheck) {
@@ -76,7 +83,11 @@ function TableOfContentsBase(props) {
     }
     return result;
   }, []);
-  const listOfTitleIds = titleObjects.map(({ title }) => slugify(title, { lower: true }));
+  const listOfTitleIds = titleObjects.map(({ title, style }) => ({
+    title,
+    style,
+    id: slugify(title, { lower: true }),
+  }));
   /**
    * We tailor keys here instead of random() generating them to prevent
    * excessive react updates on scroll.

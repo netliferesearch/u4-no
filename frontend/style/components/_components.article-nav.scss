@@ -1,7 +1,11 @@
 .c-article-nav {
+  padding: $spacing 0;
   @include inuit-font-size($font-size-small);
   font-family: $font-sans;
   transition: all 1s linear;
+  ul {
+    padding-left: 0;
+  }
   li {
     padding: 5px 10px;
     border-left: 3px solid lightgrey;
