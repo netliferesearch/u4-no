@@ -11,8 +11,8 @@ const PublicationArticleHeader = ({
 }) => (
   <header className={`${className} c-article-header`}>
     {/* Wrap in standard grid width until we know better */}
-    <div className="c-article-header__meta">
-      <a href>U4 Brief</a> |{' '}
+    <div className="c-article-header__meta c-article-header__meta-uppercase">
+      U4 Brief  |{' '}
       {topics.map(({ title = '', _id = '' }) => (
         <a href key={_id}>
           {title}
@@ -25,15 +25,17 @@ const PublicationArticleHeader = ({
     <div>
       <p className="c-article-header__subtitle">{subtitle}</p>
       <div className="c-article-header__meta">
-        By <a href="#">Åse Gilje Østensen</a> & <a href="#">Mats Stridsman </a>
-        | Bergen: Chr. Michelsen Institute (U4 Issue 2017:3) <br />
-        Photography by <a href="#">Dani Deahl</a>
+        <p>By <a href="#">Åse Gilje Østensen</a> & <a href="#">Mats Stridsman</a><br></br>
+        Series Editor <a href="#">Kendra Dupuy</a><br></br>
+        Bergen: U4 Anti-Corruption Resource Centre @ Chr. Michelsen Institute (U4 Brief 2017:5)</p>
+      <p><a href="#">Also available in Spanish</a></p>
       </div>
-      <div className="c-article-header__summary-for-busy-people">
         <Link route="/">
-          <a>Read our summary for busy people →</a>
+          <a className="c-article-header__button">
+            <div className="c-article-header__button-text">Summary for busy people</div>
+            <div className="c-article-header__button-icon">→</div>
+          </a>
         </Link>
-      </div>
     </div>
   </header>
 );
