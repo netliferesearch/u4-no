@@ -14,9 +14,8 @@
     background-color: $brand-dark;
   }
 
-  @include mq($from: wide) {
-    max-width: 50%;
-    flex-basis: 50%;
+  @include mq($from: tablet) {
+    width: 50%;
   }
 }
 .c-linkbox__content {
