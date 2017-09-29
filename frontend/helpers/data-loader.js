@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import withRedux from 'next-redux-wrapper';
 import sanityClient from '@sanity/client';
-import { initStore, startClock, addCount } from './redux-store';
+import { initStore, updateReadingProgress } from './redux-store';
 
 import materialize from '../helpers/materialize';
 
 const mapDispatchToProps = dispatch => ({
-  addCount: bindActionCreators(addCount, dispatch),
-  startClock: bindActionCreators(startClock, dispatch),
+  updateReadingProgress: bindActionCreators(updateReadingProgress, dispatch),
 });
 
 export default (Child, { queryFunc = false, materializeDepth = false }) =>

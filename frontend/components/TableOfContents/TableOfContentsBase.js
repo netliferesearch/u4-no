@@ -4,6 +4,7 @@ import slugify from 'slugify';
 import Scrollchor from 'react-scrollchor';
 import flatten from 'lodash/flatten';
 import concat from 'lodash/concat';
+import { connect } from 'react-redux';
 import CustomScrollSpy from './CustomScrollSpy';
 
 /**
@@ -11,9 +12,7 @@ import CustomScrollSpy from './CustomScrollSpy';
  * in the article.
  * @param {Object} [onItemSelected=(] callback
  */
-function TableOfContentsBase(props) {
-  const { content = [], onItemSelected } = props;
-
+export default connect(state => state)(({ content = [], onItemSelected, readingProgressId }) => {
   const buildTitleObject = (elem) => {
     const title = elem.children[0].text;
     return {
@@ -34,14 +33,25 @@ function TableOfContentsBase(props) {
     }
     return result;
   }, []);
-  const listOfTitleIds = flatten(titleObjects);
+
+  const isTopTitleOrChildrenSelected = ({ id, children = [] }) => {
+    if (id === readingProgressId) {
+      return true;
+    }
+    return children.reduce((acc, child) => {
+      if (child.id === readingProgressId) {
+        return true;
+      }
+      return acc;
+    }, false);
+  };
 
   /**
    * We tailor keys here instead of random() generating them to prevent
    * excessive react updates on scroll.
    */
   return (
-    <CustomScrollSpy watchables={concat([''], listOfTitleIds, [''])}>
+    <ul>
       <li key="0" className="o-list-bare__item menu__item" onClick={e => onItemSelected(e)}>
         <Scrollchor to={'#js-top'}>Top</Scrollchor>
       </li>
@@ -75,8 +85,6 @@ function TableOfContentsBase(props) {
           Bottom
         </Scrollchor>
       </li>
-    </CustomScrollSpy>
+    </ul>
   );
-}
-
-export default TableOfContentsBase;
+});

@@ -3,38 +3,26 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 
 const exampleInitialState = {
-  lastUpdate: 0,
-  light: false,
-  count: 0,
+  readingProgressId: '1.-introduction',
 };
 
 export const actionTypes = {
-  ADD: 'ADD',
-  TICK: 'TICK',
+  UPDATE_READING_PROGRESS: 'UPDATE_READING_PROGRESS',
 };
 
 // REDUCERS
 export const reducer = (state = exampleInitialState, action) => {
   switch (action.type) {
-    case actionTypes.TICK:
-      return Object.assign({}, state, { lastUpdate: action.ts, light: !!action.light });
-    case actionTypes.ADD:
-      return Object.assign({}, state, {
-        count: state.count + 1,
-      });
+    case actionTypes.UPDATE_READING_PROGRESS:
+      return Object.assign({}, state, { readingProgressId: action.readingProgressId });
     default:
       return state;
   }
 };
 
 // ACTIONS
-export const serverRenderClock = isServer => dispatch =>
-  dispatch({ type: actionTypes.TICK, light: !isServer, ts: Date.now() });
-
-export const startClock = () => dispatch =>
-  setInterval(() => dispatch({ type: actionTypes.TICK, light: true, ts: Date.now() }), 800);
-
-export const addCount = () => dispatch => dispatch({ type: actionTypes.ADD });
+export const updateReadingProgress = readingProgressId => dispatch =>
+  dispatch({ type: actionTypes.UPDATE_READING_PROGRESS, readingProgressId });
 
 export const initStore = (initialState = exampleInitialState) =>
   createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
