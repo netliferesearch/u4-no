@@ -14,7 +14,7 @@ export default class extends Component {
   }
 
   tocItemHandler() {
-    this.setState(prevState => ({ menuOpen: !prevState.menuOpen }));
+    this.setState(prevState => ({ menuOpen: false }));
   }
 
   render() {
