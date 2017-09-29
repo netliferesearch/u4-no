@@ -34,7 +34,6 @@ function TableOfContentsBase(props) {
     }
     return result;
   }, []);
-  console.log('titleObjects', titleObjects);
   const listOfTitleIds = flatten(titleObjects);
 
   /**
@@ -43,13 +42,15 @@ function TableOfContentsBase(props) {
    */
   return (
     <CustomScrollSpy watchables={concat([''], listOfTitleIds, [''])}>
-      <li key="0" className="o-list-bare__item menu__item">
-        <Scrollchor onClick={e => onItemSelected(e)} to={'#js-top'}>
-          Top
-        </Scrollchor>
+      <li key="0" className="o-list-bare__item menu__item" onClick={e => onItemSelected(e)}>
+        <Scrollchor to={'#js-top'}>Top</Scrollchor>
       </li>
       {titleObjects.map(({ style, title, id, children }, listIndex) => (
-        <li key={listIndex + 1} className={`o-list-bare__item menu__item menu__item--${style}`}>
+        <li
+          key={listIndex + 1}
+          className={`o-list-bare__item menu__item menu__item--${style}`}
+          onClick={e => onItemSelected(e)}
+        >
           <Scrollchor onClick={e => onItemSelected(e)} to={`#${id}`}>
             {title}
           </Scrollchor>
@@ -60,10 +61,9 @@ function TableOfContentsBase(props) {
                 <li
                   key={listIndex + 1 + innerListIndex}
                   className={'o-list-bare__item c-article-nav__sub-list__item'}
+                  onClick={e => onItemSelected(e)}
                 >
-                  <Scrollchor onClick={e => onItemSelected(e)} to={`#${id}`}>
-                    {title}
-                  </Scrollchor>
+                  <Scrollchor to={`#${id}`}>{title}</Scrollchor>
                 </li>
               ))}
             </ul>

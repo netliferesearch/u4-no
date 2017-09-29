@@ -41,13 +41,33 @@ export default {
           {
             name: 'caption',
             title: 'Caption text',
-            description: '',
-            type: 'string'
+            description: 'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
+            type: 'array',
+            of: [
+              {
+                type: 'block',
+                lists: [],
+                styles: [],
+                marks: {
+                  // Only allow these decorators
+                  decorators: [
+                    { title: 'Emphasis', value: 'em' }
+                  ],
+                },
+              },
+            ],
           },
           {
-            name: 'licensor',
-            title: 'Lisence',
+            name: 'credit',
+            title: 'Credit',
+            description: 'Photographer/publisher’s name.',
             type: 'text'
+          },
+          {
+            name: 'sourceUrl',
+            title: 'Credit URL',
+            type: 'url',
+            description: 'Enter link for source for the image or the originator'
           },
           license,
         ]
@@ -88,6 +108,25 @@ export default {
         ]
       },
       {
+        name: 'references',
+        title: 'Publication references',
+        description: 'A list of the sources used in this publication',
+        type: 'array',
+        of: [
+          {
+            type: 'block',
+            lists: [],
+            styles: [],
+            marks: {
+              // Only allow these decorators
+              decorators: [
+                { title: 'Emphasis', value: 'em' }
+              ],
+            },
+          },
+        ],
+      },
+      {
         name: 'mainPoints',
         title: 'Main points',
         description: 'List 2–10 implications/recommendations/must-knows for development professionals. 1-2 sentences per point.',
@@ -116,7 +155,20 @@ export default {
       {
         name: 'notes',
         description: 'Optional',
-        type: 'block'
+        type: 'array',
+        of: [
+          {
+            type: 'block',
+            lists: [],
+            styles: [],
+            marks: {
+              // Only allow these decorators
+              decorators: [
+                { title: 'Emphasis', value: 'em' }
+              ],
+            },
+          },
+        ],
       },
       {
         name: 'editors',
@@ -171,6 +223,7 @@ export default {
       {
         name: 'bibliograpicalOverride',
         title: 'Override Bibliography',
+        description: 'Do you want to override some of this publication’s bibliographic details?',
         type: 'object',
         options: {
           collapsable: true,
@@ -178,7 +231,7 @@ export default {
         fields: [
           {
             name: 'year',
-            type: 'date'
+            type: 'richDate'
           },
           {
             name: 'volume',
@@ -266,5 +319,12 @@ export default {
         type: 'urlWithMetadata',
         inputComponent: UrlWithMetadataInput
       }
-    ]
+    ],
+    preview: {
+      select: {
+        title: 'title',
+        subtitle: 'subtitle',
+        image: 'featuredImage.asset.url'
+      }
+    }
   }
