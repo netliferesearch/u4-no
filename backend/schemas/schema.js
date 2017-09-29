@@ -1,15 +1,16 @@
-import createSchema from 'part:@sanity/base/schema-creator'
-import { schema as urlWithMetadata } from 'part:url-metadata-input/input'
-import publication from './publication'
-import nugget from './nugget'
-import topics from './topics'
-import person from './person'
-import term from './term'
-import publicationType from './publicationType'
-import keyword from './keyword'
-import blurb from './blurb'
-import pullQuote from './pullQuote'
-import article from './article'
+import createSchema from 'part:@sanity/base/schema-creator';
+import { schema as urlWithMetadata } from 'part:url-metadata-input/input';
+import publication from './publication';
+import nugget from './nugget';
+import topics from './topics';
+import person from './person';
+import term from './term';
+import publicationType from './publicationType';
+import keyword from './keyword';
+import blurb from './blurb';
+import pullQuote from './pullQuote';
+import article from './article';
+import partners from './partners';
 
 export default createSchema({
   name: 'default',
@@ -24,6 +25,7 @@ export default createSchema({
     blurb,
     pullQuote,
     urlWithMetadata,
-    article
+    article,
+    partners,
   ]
 })
