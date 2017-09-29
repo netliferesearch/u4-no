@@ -1,18 +1,18 @@
 import React from 'react';
 
 const AuthorList = ({ authors = [] }) => (
-  <div>
+  <span>
     By{' '}
     {authors.map(({ firstName = '', surname = '', _id = '' }, index) => (
-      <span>
-        <a href key={_id}>
+      <span key={_id}>
+        <a href>
           {firstName} {surname}
         </a>
         {/* Add ampersands between the authors. */}
         {authors.length > 1 && index + 1 !== authors.length && <span> & </span>}
       </span>
     ))}
-  </div>
+  </span>
 );
 
 export default AuthorList;
