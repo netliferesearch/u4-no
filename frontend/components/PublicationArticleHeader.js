@@ -31,8 +31,6 @@ const PublicationArticleHeader = ({
       <div className="c-article-header__meta">
         <p>
           <AuthorList authors={authors} />
-          By <a href="#">Åse Gilje Østensen</a> & <a href="#">Mats Stridsman</a>
-          <br />
           Series editor <a href="#">Kendra Dupuy</a>
           <br />
           Bergen: U4 Anti-Corruption Resource Centre @ Chr. Michelsen Institute (U4 Brief 2017:5)
