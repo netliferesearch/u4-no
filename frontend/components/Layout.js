@@ -8,7 +8,9 @@ export default ({ title, description, children = [] }) => (
     <div className="o-wrapper">
       <div className="c-top-bar">
         <Link route="/">
-          <a className="c-top-bar__logo"><Logo /></a>
+          <a className="c-top-bar__logo">
+            <Logo />
+          </a>
         </Link>
       </div>
     </div>
