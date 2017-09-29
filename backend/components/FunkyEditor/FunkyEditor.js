@@ -6,7 +6,7 @@ import querystring from 'querystring'
 import autobind from 'react-autobind'
 import BlockEditor from '@sanity/form-builder/lib/inputs/BlockEditor-slate'
 
-const apiKey = "ZS7I2JBJXHXKM7QXV9UAC0F1OZYHQU3Q";
+const apiKey = "984KMAPJY1PJ0MUI5KE18EAWLT1RE2AO";
 const readableUrl = 'https://api.readable.io/api/text/';
 const requestTime = () => Math.floor(new Date().getTime() / 1000);
 const apiSignature = () => ({ token: md5(apiKey + requestTime()), time: requestTime() })

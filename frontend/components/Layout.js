@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '../routes';
-import { HeadComponent } from '../components';
+import { HeadComponent, Logo } from '../components';
 
 export default ({ title, description, children = [] }) => (
   <div>
@@ -8,7 +8,9 @@ export default ({ title, description, children = [] }) => (
     <div className="o-wrapper">
       <div className="c-top-bar">
         <Link route="/">
-          <a>U4.no</a>
+          <a className="c-top-bar__logo">
+            <Logo />
+          </a>
         </Link>
       </div>
     </div>

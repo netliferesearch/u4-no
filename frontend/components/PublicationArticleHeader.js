@@ -33,7 +33,7 @@ const PublicationArticleHeader = ({
           <AuthorList authors={authors} />
           By <a href="#">Åse Gilje Østensen</a> & <a href="#">Mats Stridsman</a>
           <br />
-          Series Editor <a href="#">Kendra Dupuy</a>
+          Series editor <a href="#">Kendra Dupuy</a>
           <br />
           Bergen: U4 Anti-Corruption Resource Centre @ Chr. Michelsen Institute (U4 Brief 2017:5)
         </p>

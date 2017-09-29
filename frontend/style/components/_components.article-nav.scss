@@ -6,20 +6,26 @@
   ul {
     padding-left: 0;
   }
-  li {
-    padding: 5px 10px;
+  .c-article-nav__item {
+    padding: 5px 0 5px 10px;
     border-left: 3px solid lightgrey;
   }
-  // li.menu__item--h3 {
-  //   display: none;
-  // }
+  .c-article-nav__sub-list {
+    padding-left: 25px;
+  }
+  .is-selected-parent .c-article-nav__sub-list {
+    padding-left: 0;
+    display: block;
+  }
+  .c-article-nav__sub-list {
+    display: none;
+  }
   li.is-selected {
     border-left: 3px solid $brand-main;
   }
   @include mq($until: desktop) {
     display: none;
   }
-
   @include mq($from: desktop) {
     display: block;
   }

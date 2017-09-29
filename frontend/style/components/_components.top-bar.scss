@@ -3,4 +3,9 @@
 }
 .c-top-bar__logo {
   height: 50px;
+  border: none;
+
+  &:hover {
+    border: none;
+  }
 }
