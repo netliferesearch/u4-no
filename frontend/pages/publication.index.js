@@ -6,14 +6,16 @@ import randomKey from '../helpers/randomKey';
 
 const PublicationOverview = ({ publications = [] }) => (
   <Layout>
-    <h1>Publications</h1>
-    {publications.map(({ _id = '', title = '' }) => (
-      <div key={randomKey()}>
-        <Link route={`/publications/${_id}`}>
-          <a>{title}</a>
-        </Link>
-      </div>
-    ))}
+    <div className="o-wrapper">
+      <h1>Publications</h1>
+      {publications.map(({ _id = '', title = '' }) => (
+        <div key={randomKey()}>
+          <Link route={`/publications/${_id}`}>
+            <a>{title}</a>
+          </Link>
+        </div>
+      ))}
+    </div>
   </Layout>
 );
 
