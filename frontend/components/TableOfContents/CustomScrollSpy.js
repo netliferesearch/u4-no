@@ -1,53 +1,54 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateReadingProgress } from '../../helpers/redux-store';
+import buildTitleObjects from './buildTitleObjects';
 
 /**
  * Its purpose is to track a number of html titles and see whether or not we have
- * read past those titles. Will add 'is-selected' (h2 or h3) to the currently selected child
- * and 'is-selected-parent' to the parent element (the last h2 the reader passed).
+ * read past those titles.
  *
- * Takes an array of 'watchables' where the array order needs to correspond with
- * the <li> children of this component.
+ * Its only responsibility is to report to redux on scroll updates.
  *
- * see proptype definition below.
- * @type {Array}
+ * Takes article content as input.
+ *
  */
 class CustomScrollSpy extends Component {
   constructor(props) {
     super(props);
-    const { watchables = [] } = props;
+    const { content = [] } = props;
+    const watchables = buildTitleObjects(content).reduce((acc, titleObject) => {
+      // it's important that we add the title before the children to preserve
+      // the chronology
+      acc.push(titleObject);
+      const { children = [] } = titleObject;
+      if (children.length > 0) {
+        acc = acc.concat(children);
+      }
+      return acc;
+    }, []);
+
     this.state = {
-      watchables,
-      menuSelection: {
-        parentId: false,
-        selectedId: false,
-      },
       scrollHandler: throttle(() => {
         // loop through all ids to watch and compare the position of the
         // various elements. Elements that are not found will still be
         // present in the list as null
         //
         // going from top to bottom we try to find last id the user has scrolled by
-        const menuSelection = watchables.reduce((acc, { style, title, id }, currentIndex) => {
+        const { selectedId = false } = watchables.reduce((acc, { id }) => {
           const element = document.getElementById(id);
           if (!element) {
             return acc;
           }
           if (window.scrollY > element.offsetTop - element.offsetHeight) {
-            if (style === 'h2') {
-              // store this info to enable us to know about the parentId if
-              // a sub id is selected
-              acc.parentId = id;
-            }
             acc.selectedId = id;
           }
           return acc;
         }, {});
-        if (this.state.menuSelection.selectedId !== menuSelection.selectedId) {
-          this.setState(() => ({
-            menuSelection,
-          }));
+        if (this.props.readingProgressId !== selectedId) {
+          this.props.updateReadingProgress(selectedId);
         }
       }, 1000),
     };
@@ -63,50 +64,14 @@ class CustomScrollSpy extends Component {
   }
 
   render() {
-    const indexOfSelectedParentId = this.props.watchables.reduce((acc, { id }, index) => {
-      if (id === this.state.menuSelection.parentId) {
-        return index;
-      }
-      return acc;
-    }, 0);
-    const indexOfSelectedId = this.props.watchables.reduce((acc, { id }, index) => {
-      if (id === this.state.menuSelection.selectedId) {
-        return index;
-      }
-      return acc;
-    }, 0);
-    const children = React.Children.toArray(this.props.children);
-    return (
-      <ul className="o-list-bare">
-        {children.map((child, index) => {
-          let updatedChild = React.cloneElement(child);
-          if (index === indexOfSelectedParentId) {
-            updatedChild = React.cloneElement(updatedChild, {
-              className: `${updatedChild.props.className} is-selected-parent`,
-            });
-          }
-          if (index === indexOfSelectedId) {
-            updatedChild = React.cloneElement(updatedChild, {
-              className: `${updatedChild.props.className} is-selected`,
-            });
-          }
-          return updatedChild;
-        })}
-      </ul>
-    );
+    return <div />;
   }
 }
 
-CustomScrollSpy.propTypes = {
-  watchables: PropTypes.arrayOf(
-    PropTypes.shape({
-      style: PropTypes.string, // can be h2, h3 and the like
-      title: PropTypes.string, // the title's text
-      // id of html element to track to determine if we are currently reading that title
-      id: PropTypes.string,
-    }),
-  ).isRequired,
-  children: PropTypes.arrayOf(<li />).isRequired,
-};
+const mapStateToProps = ({ readingProgressId }) => ({ readingProgressId });
 
-export default CustomScrollSpy;
+const mapDispatchToProps = dispatch => ({
+  updateReadingProgress: bindActionCreators(updateReadingProgress, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomScrollSpy);

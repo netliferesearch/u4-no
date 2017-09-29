@@ -5,6 +5,7 @@ import {
   PublicationArticleHeader,
   TableOfContentsButton,
   TableOfContentsSidebar,
+  CustomScrollSpy,
 } from '../components';
 import DataLoader from '../helpers/data-loader';
 
@@ -13,6 +14,7 @@ const PublicationEntry = (props) => {
   return (
     <Layout>
       <article className="o-wrapper o-wrapper--no-padding">
+        <CustomScrollSpy {...props} />
         <span id="js-top" />
         <div id="js-scroll-trigger">
           {props.featuredImage &&

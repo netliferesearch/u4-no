@@ -6,23 +6,6 @@
   ul {
     padding-left: 0;
   }
-  .c-article-nav__item {
-    padding: 5px 0 5px 10px;
-    border-left: 3px solid lightgrey;
-  }
-  .c-article-nav__sub-list {
-    padding-left: 25px;
-  }
-  .is-selected-parent .c-article-nav__sub-list {
-    padding-left: 0;
-    display: block;
-  }
-  .c-article-nav__sub-list {
-    display: none;
-  }
-  li.is-selected {
-    border-left: 3px solid $brand-main;
-  }
   @include mq($until: desktop) {
     display: none;
   }

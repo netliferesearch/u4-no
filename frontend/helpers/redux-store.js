@@ -14,6 +14,7 @@ export const actionTypes = {
 export const reducer = (state = exampleInitialState, action) => {
   switch (action.type) {
     case actionTypes.UPDATE_READING_PROGRESS:
+      console.log('actionTypes.UPDATE_READING_PROGRESS\n', action);
       return Object.assign({}, state, { readingProgressId: action.readingProgressId });
     default:
       return state;
