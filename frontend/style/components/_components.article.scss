@@ -6,6 +6,23 @@
   }
 }
 
+.c-article_mainPoints {
+  font-family: $font-sans;
+  font-weight: 300;
+  ul {
+  }
+  li {
+    margin-bottom: $spacing;
+  }
+}
+
+.c-article_mainPoints-firstWords {
+  font-weight:normal;
+}
+
+.c-article_mainPoints-lastWords {
+}
+
 .c-article__figure {
   margin-left: 0;
   margin-right: 0;

@@ -9,7 +9,7 @@ import {
 import DataLoader from '../helpers/data-loader';
 
 const PublicationEntry = (props) => {
-  const { lead = 'article had no lead' } = props;
+  const { lead = 'article had no lead', mainPoints = [] } = props;
   return (
     <Layout>
       <article className="o-wrapper o-wrapper--no-padding">
@@ -37,6 +37,16 @@ const PublicationEntry = (props) => {
         <div className="c-longform-grid">
           <div className="c-article c-longform-grid__standard">
             <p>{lead}</p>
+          </div>
+          <div className="c-article c-article_mainPoints c-longform-grid__standard">
+            <ul>{mainPoints.map((mainPoint, index) => <li key={index}>
+                <span className="c-article_mainPoints-firstWords">
+                {mainPoint.split(' ').slice(0, 3).join(' ')}
+                </span>
+                <span className="c-article_mainPoints-lastWords">
+                {mainPoint.split(' ').slice(3).join(' ')}
+                </span>
+              </li>)}</ul>
           </div>
           <div className="c-longform-grid__sidebar-right">
             <TableOfContentsSidebar {...props} />
