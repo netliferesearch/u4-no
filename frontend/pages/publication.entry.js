@@ -39,14 +39,24 @@ const PublicationEntry = (props) => {
             <p>{lead}</p>
           </div>
           <div className="c-article c-article_mainPoints c-longform-grid__standard">
-            <ul>{mainPoints.map((mainPoint, index) => <li key={index}>
-                <span className="c-article_mainPoints-firstWords">
-                {mainPoint.split(' ').slice(0, 3).join(' ')}
-                </span>
-                <span className="c-article_mainPoints-lastWords">
-                {mainPoint.split(' ').slice(3).join(' ')}
-                </span>
-              </li>)}</ul>
+            <ul>
+              {mainPoints.map((mainPoint, index) => (
+                <li key={index}>
+                  <span className="c-article_mainPoints-firstWords">
+                    {mainPoint
+                      .split(' ')
+                      .slice(0, 3)
+                      .join(' ')}{' '}
+                  </span>
+                  <span className="c-article_mainPoints-lastWords">
+                    {mainPoint
+                      .split(' ')
+                      .slice(3)
+                      .join(' ')}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="c-longform-grid__sidebar-right">
             <TableOfContentsSidebar {...props} />
