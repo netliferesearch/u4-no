@@ -108,6 +108,25 @@ export default {
         ]
       },
       {
+        name: 'references',
+        title: 'Publication references',
+        description: 'A list of the sources used in this publication',
+        type: 'array',
+        of: [
+          {
+            type: 'block',
+            lists: [],
+            styles: [],
+            marks: {
+              // Only allow these decorators
+              decorators: [
+                { title: 'Emphasis', value: 'em' }
+              ],
+            },
+          },
+        ],
+      },
+      {
         name: 'mainPoints',
         title: 'Main points',
         description: 'List 2–10 implications/recommendations/must-knows for development professionals. 1-2 sentences per point.',
@@ -136,7 +155,20 @@ export default {
       {
         name: 'notes',
         description: 'Optional',
-        type: 'block'
+        type: 'array',
+        of: [
+          {
+            type: 'block',
+            lists: [],
+            styles: [],
+            marks: {
+              // Only allow these decorators
+              decorators: [
+                { title: 'Emphasis', value: 'em' }
+              ],
+            },
+          },
+        ],
       },
       {
         name: 'editors',
@@ -191,6 +223,7 @@ export default {
       {
         name: 'bibliograpicalOverride',
         title: 'Override Bibliography',
+        description: 'Do you want to override some of this publication’s bibliographic details?',
         type: 'object',
         options: {
           collapsable: true,
@@ -198,7 +231,7 @@ export default {
         fields: [
           {
             name: 'year',
-            type: 'richdate'
+            type: 'richDate'
           },
           {
             name: 'volume',
