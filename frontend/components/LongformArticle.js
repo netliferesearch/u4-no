@@ -85,14 +85,19 @@ const customTypeHandlers = {
   ),
 };
 
-const LongformArticle = ({ content = [] }) => (
-  <main className=" c-article c-longform-grid-sub-div">
-    <BlockContent
-      blocks={content.filter(block => !['reference'].includes(block._type))}
-      blockTypeHandlers={{ ...blockTypeHandlersOverride }}
-      customTypeHandlers={customTypeHandlers}
-    />
-  </main>
-);
+class LongformArticle extends Component {
+  render() {
+    const { content = [] } = this.props;
+    return (
+      <main className=" c-article c-longform-grid-sub-div">
+        <BlockContent
+          blocks={content.filter(block => !['reference'].includes(block._type))}
+          blockTypeHandlers={{ ...blockTypeHandlersOverride }}
+          customTypeHandlers={customTypeHandlers}
+        />
+      </main>
+    );
+  }
+}
 
 export default LongformArticle;
