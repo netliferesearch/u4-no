@@ -23,6 +23,10 @@
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema.js"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input-resolver",
+      "path": "./parts/inputResolver"
     }
   ]
 }
