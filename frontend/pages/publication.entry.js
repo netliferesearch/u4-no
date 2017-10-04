@@ -27,6 +27,7 @@ const PublicationEntry = (props) => {
                   }}
                 />
                 <div className="c-hero-bg" />
+                <div className="c-hero-sideText">Photo: Cristiano Zingale</div>
                 <div className="c-hero-header">
                   <PublicationArticleHeader
                     className="c-hero__grid-container__content links-wrapper-dark-background"
