@@ -1,0 +1,100 @@
+// Mosaic Grid Container
+
+.c-mosaic {
+  @include mq($from: tablet) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(300px, auto);
+    grid-column-gap: $spacing;
+    grid-row-gap: $spacing;
+    grid-template-areas:
+      "focus top-center top-right"
+      "focus center-center center-right"
+      "bottom-left bottom-center bottom-right"
+  }
+ }
+
+// Grid items
+.c-mosaic_item {
+  color: $white;
+  padding: $spacing/2;
+}
+
+.c-mosaic_item-1 {
+  grid-area: focus;
+  background-image: url("https://images.unsplash.com/photo-1464823063530-08f10ed1a2dd?dpr=2&auto=compress,format&fit=crop&w=376&h=251&q=80&cs=tinysrgb&crop=");
+  background-size:cover;
+}
+
+.c-mosaic_item-2 {
+  grid-area: top-center;
+  background-color: $brand-dark;
+}
+
+.c-mosaic_item-3 {
+  grid-area: top-right;
+  background-image: url("https://images.unsplash.com/photo-1464823063530-08f10ed1a2dd?dpr=2&auto=compress,format&fit=crop&w=376&h=251&q=80&cs=tinysrgb&crop=");
+}
+
+.c-mosaic_item-4{
+  grid-area: center-center;
+  background-color: $white;
+  color: $brand-dark;
+  border: 1px solid $brand-dark
+}
+
+.c-mosaic_item-5{
+  grid-area: center-right;
+  background-color: $brand-main;
+}
+
+.c-mosaic_item-6 {
+  grid-area: bottom-left;
+  background-color: $brand-main;
+}
+
+.c-mosaic_item-7 {
+  grid-area: bottom-center;
+  background-image: url("https://images.unsplash.com/photo-1464823063530-08f10ed1a2dd?dpr=2&auto=compress,format&fit=crop&w=376&h=251&q=80&cs=tinysrgb&crop=");
+}
+
+.c-mosaic_item-8 {
+  grid-area: bottom-right;
+  background-color: $brand-dark;
+}
+
+// Content inside Grid items
+
+.c-mosaic_item-content{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.c-mosaic_item-content-top{
+  font-family: $font-sans;
+  font-weight: 300;
+  @include inuit-font-size($font-size-tiny);
+  padding-bottom: $spacing;
+}
+
+.c-mosaic_item-content-bottom{
+display: flex;
+ justify-content: space-between;
+ @include mq($from: tablet) {
+   display: block;
+ }
+ h3 {
+   font-family: $font-sans;
+   letter-spacing: 1px;
+   @include inuit-font-size($font-size-small, $line-height-normal);
+   @include mq($from: tablet) {
+     @include inuit-font-size($font-size-normal, $line-height-normal);
+   }
+ }
+}
