@@ -187,6 +187,20 @@ export default {
         ]
       },
       {
+        name: 'partners',
+        type: 'array',
+        of: [
+          {
+            type: 'reference',
+            to: [
+              {
+                type: 'partners'
+              },
+            ],
+          },
+        ],
+      },
+      {
         name: 'acknowledgements',
         type: 'text'
       },
