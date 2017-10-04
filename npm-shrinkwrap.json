@@ -3097,6 +3097,11 @@
       "resolved": "https://registry.npmjs.org/decamelize/-/decamelize-1.2.0.tgz",
       "integrity": "sha1-9lNNFRSCabIDUue+4m9QH5oZEpA="
     },
+    "decode-uri-component": {
+      "version": "0.2.0",
+      "resolved": "https://registry.npmjs.org/decode-uri-component/-/decode-uri-component-0.2.0.tgz",
+      "integrity": "sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU="
+    },
     "decompress-response": {
       "version": "3.3.0",
       "resolved": "https://registry.npmjs.org/decompress-response/-/decompress-response-3.3.0.tgz",
@@ -5017,13 +5022,6 @@
             }
           }
         },
-        "string_decoder": {
-          "version": "1.0.1",
-          "bundled": true,
-          "requires": {
-            "safe-buffer": "5.0.1"
-          }
-        },
         "string-width": {
           "version": "1.0.2",
           "bundled": true,
@@ -5031,6 +5029,13 @@
             "code-point-at": "1.1.0",
             "is-fullwidth-code-point": "1.0.0",
             "strip-ansi": "3.0.1"
+          }
+        },
+        "string_decoder": {
+          "version": "1.0.1",
+          "bundled": true,
+          "requires": {
+            "safe-buffer": "5.0.1"
           }
         },
         "stringstream": {
@@ -8241,6 +8246,17 @@
         "prepend-http": "1.0.4",
         "query-string": "4.3.4",
         "sort-keys": "1.1.2"
+      },
+      "dependencies": {
+        "query-string": {
+          "version": "4.3.4",
+          "resolved": "https://registry.npmjs.org/query-string/-/query-string-4.3.4.tgz",
+          "integrity": "sha1-u7aTucqRXCMlFbIosaArYJBD2+s=",
+          "requires": {
+            "object-assign": "4.1.1",
+            "strict-uri-encode": "1.1.0"
+          }
+        }
       }
     },
     "npm-run-path": {
@@ -10568,10 +10584,11 @@
       "integrity": "sha512-eRzhrN1WSINYCDCbrz796z37LOe3m5tmW7RQf6oBntukAG1nmovJvhnwHHRMAfeoItc1m2Hk02WER2aQ/iqs+A=="
     },
     "query-string": {
-      "version": "4.3.4",
-      "resolved": "https://registry.npmjs.org/query-string/-/query-string-4.3.4.tgz",
-      "integrity": "sha1-u7aTucqRXCMlFbIosaArYJBD2+s=",
+      "version": "5.0.0",
+      "resolved": "https://registry.npmjs.org/query-string/-/query-string-5.0.0.tgz",
+      "integrity": "sha1-+99wBLTSr/eS+YcZgbeieU9VWUc=",
       "requires": {
+        "decode-uri-component": "0.2.0",
         "object-assign": "4.1.1",
         "strict-uri-encode": "1.1.0"
       }
@@ -11981,14 +11998,6 @@
       "resolved": "https://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz",
       "integrity": "sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM="
     },
-    "string_decoder": {
-      "version": "1.0.3",
-      "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-1.0.3.tgz",
-      "integrity": "sha512-4AH6Z5fzNNBcH+6XDMfA/BTt87skxqJlO0lAh3Dker5zThcAxG6mKz+iGu308UKoPPQ8Dcqx/4JhujzltRa+hQ==",
-      "requires": {
-        "safe-buffer": "5.1.1"
-      }
-    },
     "string-hash": {
       "version": "1.1.1",
       "resolved": "https://registry.npmjs.org/string-hash/-/string-hash-1.1.1.tgz",
@@ -12065,6 +12074,14 @@
         "define-properties": "1.1.2",
         "es-abstract": "1.8.2",
         "function-bind": "1.1.1"
+      }
+    },
+    "string_decoder": {
+      "version": "1.0.3",
+      "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-1.0.3.tgz",
+      "integrity": "sha512-4AH6Z5fzNNBcH+6XDMfA/BTt87skxqJlO0lAh3Dker5zThcAxG6mKz+iGu308UKoPPQ8Dcqx/4JhujzltRa+hQ==",
+      "requires": {
+        "safe-buffer": "5.1.1"
       }
     },
     "stringstream": {

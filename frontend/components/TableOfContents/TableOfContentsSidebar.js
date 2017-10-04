@@ -37,13 +37,11 @@ export default class extends Component {
   render() {
     const { content = [] } = this.props;
     return (
-      <div
-        className={
-          this.state.navFollowScreen ? 'c-article-nav c-article-nav--fixed' : 'c-article-nav'
-        }
-      >
-        <TableOfContentsBase onItemSelected={this.tocItemHandler} content={content} />
-      </div>
+      <TableOfContentsBase
+        fixed={this.state.navFollowScreen}
+        onItemSelected={this.tocItemHandler}
+        content={content}
+      />
     );
   }
 }

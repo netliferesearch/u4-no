@@ -10,7 +10,7 @@ import keyword from './keyword';
 import blurb from './blurb';
 import pullQuote from './pullQuote';
 import article from './article';
-import partners from './partners';
+import institution from './institution';
 
 export default createSchema({
   name: 'default',
@@ -26,6 +26,6 @@ export default createSchema({
     pullQuote,
     urlWithMetadata,
     article,
-    partners,
+    institution,
   ]
 })

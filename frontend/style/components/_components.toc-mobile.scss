@@ -25,7 +25,7 @@
   .c-toc-mobile__button img {
     vertical-align: text-bottom;
   }
-  @include mq($from: tablet) {
+  @include mq($from: 1300px) {
     display: none;
   }
 }

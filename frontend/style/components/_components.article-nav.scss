@@ -1,21 +1,70 @@
 .c-article-nav {
-  padding: $spacing 0;
+  margin: $spacing 0;
+  padding: $spacing $spacing-small 0 $spacing;
   @include inuit-font-size($font-size-small);
   font-family: $font-sans;
   transition: all 1s linear;
-  ul {
-    padding-left: 0;
+  list-style: none;
+  .c-article-nav__item:first-child {
+    padding-top: $spacing;
   }
-  @include mq($until: desktop) {
+  .c-article-nav__item {
+    border-left: 2px solid $grey;
+    padding-left: $spacing;
+    padding-bottom: $spacing;
+    a {
+      border-bottom: none;
+      color: $black;
+    }
+    a:hover {
+      border-bottom: 1px solid $black;
+    }
+  }
+  .c-article-nav__item--scrolled-past,
+  .c-article-nav__item--selected {
+    border-left: 2px solid $black;
+  }
+  .c-article-nav__item--selected > a {
+    font-weight: bolder;
+  }
+  @include mq($until: 1300px) {
     display: none;
   }
-  @include mq($from: desktop) {
+  @include mq($from: 1300px) {
     display: block;
   }
 }
 
+.c-article-nav__sub-list {
+  margin: 0;
+  list-style: none;
+  @include inuit-font-size($font-size-small);
+  font-family: $font-sans;
+  padding: 0;
+}
+.c-article-nav__sub-list__item {
+  padding-left: $spacing;
+  padding-bottom: $spacing;
+  a {
+    border-bottom: none;
+    color: $black;
+  }
+  a:hover {
+    border-bottom: 1px solid $black;
+  }
+}
+.c-article-nav__sub-list__item--selected {
+  font-weight: bolder;
+}
+.c-article-nav__sub-list__item:first-child {
+  padding-top: $spacing;
+}
+.c-article-nav__sub-list__item:last-child {
+  padding-bottom: 0;
+}
+
 .c-article-nav--fixed {
   position: fixed;
-  width: 250px;
+  max-width: 300px;
   top: 200px;
 }

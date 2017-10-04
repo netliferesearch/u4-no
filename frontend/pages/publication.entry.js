@@ -38,34 +38,36 @@ const PublicationEntry = (props) => {
             )}
         </div>
         <div className="c-longform-grid">
-          <div className="c-article c-longform-grid__standard">
-            <p>{lead}</p>
+          <div className="c-longform-grid__standard">
+            <div className="c-article">
+              <p>{lead}</p>
+            </div>
+            {mainPoints.length > 0 && (
+              <div className="c-article c-article_mainPoints">
+                <ul>
+                  {mainPoints.map((mainPoint, index) => (
+                    <li key={index}>
+                      <span className="c-article_mainPoints-firstWords">
+                        {mainPoint
+                          .split(' ')
+                          .slice(0, 3)
+                          .join(' ')}{' '}
+                      </span>
+                      <span className="c-article_mainPoints-lastWords">
+                        {mainPoint
+                          .split(' ')
+                          .slice(3)
+                          .join(' ')}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
           <div className="c-longform-grid__sidebar-right">
             <TableOfContentsSidebar {...props} />
           </div>
-          {mainPoints.length > 0 && (
-            <div className="c-article c-article_mainPoints c-longform-grid__standard">
-              <ul>
-                {mainPoints.map((mainPoint, index) => (
-                  <li key={index}>
-                    <span className="c-article_mainPoints-firstWords">
-                      {mainPoint
-                        .split(' ')
-                        .slice(0, 3)
-                        .join(' ')}{' '}
-                    </span>
-                    <span className="c-article_mainPoints-lastWords">
-                      {mainPoint
-                        .split(' ')
-                        .slice(3)
-                        .join(' ')}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
         </div>
         <LongformArticle {...props} />
         <span id="js-bottom" />

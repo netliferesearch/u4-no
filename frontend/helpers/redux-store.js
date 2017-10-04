@@ -2,6 +2,18 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 
+const replaceWindowHash = (hashValue) => {
+  if (!window) {
+    // do nothing
+  } else if (history.pushState) {
+    // update hash without page jumps,
+    // courtesy of https://stackoverflow.com/a/14690177
+    history.pushState(null, null, `#${hashValue}`);
+  } else {
+    window.location.hash = `#${hashValue}`;
+  }
+};
+
 const exampleInitialState = {
   readingProgressId: '1.-introduction',
 };
@@ -14,7 +26,7 @@ export const actionTypes = {
 export const reducer = (state = exampleInitialState, action) => {
   switch (action.type) {
     case actionTypes.UPDATE_READING_PROGRESS:
-      console.log('actionTypes.UPDATE_READING_PROGRESS\n', action);
+      replaceWindowHash(action.readingProgressId);
       return Object.assign({}, state, { readingProgressId: action.readingProgressId });
     default:
       return state;

@@ -1,10 +1,10 @@
 export default {
-  name: 'partners',
+  name: 'institution',
   type: 'object',
   fields: [
     {
       name: 'name',
-      title: 'Name of partner',
+      title: 'Name of institution',
       type: 'string',
     },
     {

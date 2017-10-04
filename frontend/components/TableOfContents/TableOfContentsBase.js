@@ -11,8 +11,8 @@ import buildTitleObjects from './buildTitleObjects';
  */
 export default connect(
   state => state,
-)(({ content = [], onItemSelected = () => {}, readingProgressId }) => {
-  const isTopTitleOrChildrenSelected = ({ id, children = [] }) => {
+)(({ fixed = false, content = [], onItemSelected = () => {}, readingProgressId }) => {
+  const isTitleOrChildrenSelected = ({ id, children = [] }) => {
     if (id === readingProgressId) {
       return true;
     }
@@ -23,34 +23,66 @@ export default connect(
       return acc;
     }, false);
   };
-  const titleObjects = buildTitleObjects(content);
+  // add 'selected': true to titles that are selected and scrolledPast true
+  // to titles that are scrolled past.
+  let hasReachedSelectedTitle = false;
+  const titleObjects = buildTitleObjects(content).reduce((acc, titleObject) => {
+    const copy = Object.assign({}, titleObject);
+    if (isTitleOrChildrenSelected(titleObject)) {
+      hasReachedSelectedTitle = true;
+      copy.selected = true;
+      copy.scrolledPast = true;
+    }
+    if (readingProgressId && !hasReachedSelectedTitle) {
+      copy.scrolledPast = true;
+    }
+    acc.push(copy);
+    return acc;
+  }, []);
+
+  const isTitleScrolledPastClass = ({ scrolledPast = false }) =>
+    (scrolledPast ? 'c-article-nav__item--scrolled-past' : '');
   /**
    * We tailor keys here instead of random() generating them to prevent
    * excessive react updates on scroll.
    */
   return (
-    <ul className="c-article-nav">
-      <li key="0" className="o-list-bare__item menu__item" onClick={e => onItemSelected(e)}>
-        <Scrollchor to={'#js-top'}>Top</Scrollchor>
+    <ul className={`c-article-nav ${fixed ? 'c-article-nav--fixed' : ''}`}>
+      <li
+        key="top"
+        className={`c-article-nav__item ${readingProgressId
+          ? 'c-article-nav__item--scrolled-past'
+          : ''}`}
+      >
+        <Scrollchor beforeAnimate={onItemSelected} to={'#js-top'}>
+          Top
+        </Scrollchor>
       </li>
-      {titleObjects.map((titleObject, listIndex) => {
+      {titleObjects.map((titleObject) => {
         const { style, title, id, children = [] } = titleObject;
         return (
           <li
-            key={listIndex + 1}
-            className={`o-list-bare__item menu__item menu__item--${style}`}
-            onClick={e => onItemSelected(e)}
+            key={id}
+            className={`c-article-nav__item ${isTitleScrolledPastClass(titleObject)} ${id ===
+            readingProgressId
+              ? 'c-article-nav__item--selected'
+              : ''}`}
           >
-            <Scrollchor to={`#${id}`}>{title}</Scrollchor>
-            {isTopTitleOrChildrenSelected(titleObject) && (
-              <ul className="o-list-bare">
-                {children.map(({ title, id }, innerListIndex) => (
+            <Scrollchor beforeAnimate={onItemSelected} to={`#${id}`}>
+              {title}
+            </Scrollchor>
+            {titleObject.selected && (
+              <ul className="c-article-nav__sub-list">
+                {children.map(({ title, id }) => (
                   <li
-                    key={listIndex + 1 + innerListIndex}
-                    className={'o-list-bare__item c-article-nav__sub-list__item'}
-                    onClick={e => onItemSelected(e)}
+                    key={id}
+                    className={`c-article-nav__sub-list__item ${id === readingProgressId
+                      ? 'c-article-nav__sub-list__item--selected'
+                      : ''}`}
                   >
-                    <Scrollchor to={`#${id}`}>{title}</Scrollchor>
+                    <Scrollchor beforeAnimate={onItemSelected} to={`#${id}`}>
+                      {title}
+                    </Scrollchor>
                   </li>
                 ))}
               </ul>
@@ -58,7 +90,7 @@ export default connect(
           </li>
         );
       })}
-      <li key={titleObjects.length + 1} className="o-list-bare__item menu__item">
+      <li key="bottom" className="c-article-nav__item">
         <Scrollchor onClick={e => onItemSelected(e)} to={'#js-bottom'}>
           Bottom
         </Scrollchor>
