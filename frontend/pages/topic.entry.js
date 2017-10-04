@@ -74,6 +74,65 @@ const TopicEntry = ({
           params={{ id: _id, topicPart: 'agenda' }}
         />
       </section>
+
+      <section>
+        <h2>Publications, insights, and ideas
+to inform your anti-corruption work.</h2>
+        <div className="c-mosaic">
+          <div className="c-mosaic_item c-mosaic_item-1">
+            <div className="c-mosaic_item-content">
+              <div className="c-mosaic_item-content-top">U4 ISSUE I 2017</div>
+              <div className="c-mosaic_item-content-bottom">
+                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
+                  <DownArrowButton
+                    modifier="secondary"
+                    onClick={() => console.log('clicked!')}
+                  />
+              </div>
+            </div>
+          </div>
+          <div className="c-mosaic_item c-mosaic_item-2 ">
+            <div className="c-mosaic_item-content">
+              <div className="c-mosaic_item-content-top">U4 ISSUE I 2017</div>
+              <div className="c-mosaic_item-content-bottom">
+                <h3>2 Hva handler denne artikkelen om?</h3>
+                  <DownArrowButton
+                    modifier="secondary"
+                    onClick={() => console.log('clicked!')}
+                  />
+              </div>
+            </div>
+          </div>
+          <div className="c-mosaic_item c-mosaic_item-3">
+            <div className="c-mosaic_item-content">
+              <div className="c-mosaic_item-content-top">U4 ISSUE I 2017</div>
+              <div className="c-mosaic_item-content-bottom">
+                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
+                  <DownArrowButton
+                    modifier="secondary"
+                    onClick={() => console.log('clicked!')}
+                    />
+                </div>
+              </div>
+            </div>
+          <div className="c-mosaic_item c-mosaic_item-4">
+            <div className="c-mosaic_item-content">
+              <div className="c-mosaic_item-content-top">U4 ISSUE I 2017</div>
+              <div className="c-mosaic_item-content-bottom">
+                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
+                  <DownArrowButton
+                    modifier="secondary"
+                    onClick={() => console.log('clicked!')}
+                    />
+                </div>
+              </div>
+            </div>    
+          <div className="c-mosaic_item c-mosaic_item-5">5</div>
+          <div className="c-mosaic_item c-mosaic_item-6">6</div>
+          <div className="c-mosaic_item c-mosaic_item-7">7</div>
+          <div className="c-mosaic_item c-mosaic_item-8">8</div>
+        </div>
+      </section>
     </div>
   </Layout>
 );
