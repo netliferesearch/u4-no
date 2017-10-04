@@ -15,6 +15,21 @@ export default {
       type: 'email'
     },
     {
+      name: 'affiliations',
+      title: 'Affiliations',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'partners',
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: 'bio',
       title: 'Short biography',
       type: 'array',
