@@ -11,7 +11,7 @@ import buildTitleObjects from './buildTitleObjects';
  */
 export default connect(
   state => state,
-)(({ fixed = false, content = [], onItemSelected = () => {}, readingProgressId }) => {
+)(({ showAllItems = false, content = [], onItemSelected = () => {}, readingProgressId }) => {
   const isTitleOrChildrenSelected = ({ id, children = [] }) => {
     if (id === readingProgressId) {
       return true;
@@ -47,7 +47,7 @@ export default connect(
    * excessive react updates on scroll.
    */
   return (
-    <ul className={`c-article-nav ${fixed ? 'c-article-nav--fixed' : ''}`}>
+    <ul className="c-article-nav">
       <li
         key="top"
         className={`c-article-nav__item ${readingProgressId
@@ -71,7 +71,7 @@ export default connect(
             <Scrollchor beforeAnimate={onItemSelected} to={`#${id}`}>
               {title}
             </Scrollchor>
-            {titleObject.selected && (
+            {(showAllItems || titleObject.selected) && (
               <ul className="c-article-nav__sub-list">
                 {children.map(({ title, id }) => (
                   <li

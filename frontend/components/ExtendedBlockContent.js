@@ -3,72 +3,84 @@ import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 
 import { PullQuote, Figure } from './';
-import randomKey from '../helpers/randomKey';
 
-const blockTypeHandlersOverride = {
-  listBlock: {
-    number: ({ children = [] }) => (
-      <ol key={randomKey()} className="list-numbered o-grid-container__item-standard">
+const serializers = {
+  types: {
+    image: ({ node }) => <Figure {...node} />,
+    pullQuote: ({ node: { text } }) => (
+      <div className="c-longform-grid__medium">
+        <PullQuote>{text}</PullQuote>
+      </div>
+    ),
+    nugget: ({ node: { text, title } }) => (
+      <div className="c-article__nugget o-grid-container__item-wider">
+        <h2 className="c-article__nugget-title">{title}</h2>
+        <BlockContent blocks={text} />
+      </div>
+    ),
+    block: ({ node, children }) => {
+      const style = node.style || 'normal';
+
+      // Heading?
+      if (/^h\d/.test(style)) {
+        const level = parseInt(style.slice(1), 10);
+        const id = level === 2 || level === 3
+          ? slugify(children[0], { lower: true })
+          : undefined;
+
+        return React.createElement(
+          style,
+          { id, className: 'o-grid-container__item-standard' },
+          children,
+        );
+      }
+
+      if (style === 'blockquote') {
+        return (
+          <blockquote className="o-grid-container__item-standard">
+            {children}
+          </blockquote>
+        );
+      }
+
+      return (
+        <p className="o-grid-container__item-standard">
+          {children}
+        </p>
+      );
+    },
+  },
+
+  list: ({ type, children }) => {
+    if (type === 'bullet') {
+      return (
+        <ul className="list-bullets o-grid-container__item-standard">
+          {children}
+        </ul>
+      );
+    }
+
+    return (
+      <ol className="list-numbered o-grid-container__item-standard">
         {children}
       </ol>
-    ),
-    bullet: ({ children = [] }) => (
-      <ul key={randomKey()} className="list-bullets o-grid-container__item-standard">
-        {children}
-      </ul>
-    ),
-    listItem: ({ children = [] }) => <li key={randomKey()}>{children}</li>,
-  },
-  textBlock: {
-    normal: ({ children = [] }) => (
-      <p key={randomKey()} className="o-grid-container__item-standard">
-        {children}
-      </p>
-    ),
-    h2: ({ children = [] }) => (
-      <h2
-        key={randomKey()}
-        id={slugify(children[0], { lower: true })}
-        className="o-grid-container__item-standard"
-      >
-        {children}
-      </h2>
-    ),
-    h3: ({ children = [] }) => (
-      <h3 key={randomKey()} className="o-grid-container__item-standard">
-        {children}
-      </h3>
-    ),
-    h4: ({ children = [] }) => (
-      <h4 key={randomKey()} className="o-grid-container__item-standard">
-        {children}
-      </h4>
-    ),
-    blockquote: ({ children = [] }) => (
-      <blockquote key={randomKey()} className="o-grid-container__item-standard">
-        {children}
-      </blockquote>
-    ),
+    );
   },
 };
 
-const customTypeHandlers = {
-  image: ({ attributes }) => <Figure key={randomKey()} {...attributes} />,
-  pullQuote: ({ attributes: { text } }) => <PullQuote key={randomKey()}>{text}</PullQuote>,
-  nugget: ({ attributes: { text, title } }) => (
-    <div key={randomKey()} className="c-article__nugget o-grid-container__item-wider">
-      <h2 className="c-article__nugget-title">{title}</h2>
-      <BlockContent blocks={text} />
-    </div>
-  ),
-};
+const ExtendedBlockContent = ({ content = [] }) => {
+  const blocks = content.filter(block => !['reference'].includes(block._type));
 
-const ExtendedBlockContent = ({ content = [] }) => (
-  <BlockContent
-    blocks={content.filter(block => !['reference'].includes(block._type))}
-    blockTypeHandlers={{ ...blockTypeHandlersOverride }}
-    customTypeHandlers={customTypeHandlers}
-  />
-);
+  if (!blocks.length) {
+    return null;
+  }
+
+  return (
+    <BlockContent
+      blocks={blocks}
+      serializers={serializers}
+    />
+  );
+};
 
 export default ExtendedBlockContent;
