@@ -17,10 +17,12 @@ const PublicationArticleHeader = ({
     {/* Wrap in standard grid width until we know better */}
     <div className="c-article-header__meta c-article-header__meta-uppercase">
       {publicationType.title && `${publicationType.title} | `}
-      {topics.map(({ title = '', _id = '' }) => (
-        <a href key={_id}>
-          {title}
-        </a>
+      {topics.map(({ title = '', _id = '' }, index) => (
+        <span key={_id}>
+          <a href={`/topics/${_id}`}>
+            {title}
+          </a>{index < topics.length ? ', ' : ''}
+        </span>
       ))}
     </div>
     <div>
@@ -31,6 +33,8 @@ const PublicationArticleHeader = ({
       <div className="c-article-header__meta">
         <p>
           <AuthorList authors={authors} />
+        </p>
+        <p>
           Series editor <a href="#">Kendra Dupuy</a>
           <br />
           Bergen: U4 Anti-Corruption Resource Centre @ Chr. Michelsen Institute (U4 Brief 2017:5)
@@ -41,7 +45,7 @@ const PublicationArticleHeader = ({
       </div>
       <Link route="/">
         <a className="c-article-header__button">
-          <div className="c-article-header__button-text">Summary for busy people</div>
+          <div className="c-article-header__button-text">Read our short post or leave a comment on this publication on Medium</div>
           <div className="c-article-header__button-icon">→</div>
         </a>
       </Link>
