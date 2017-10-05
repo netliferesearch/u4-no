@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Layout, LongformArticle } from '../components';
+import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
 const TopicArticleEntry = (props) => {
@@ -12,8 +13,10 @@ const TopicArticleEntry = (props) => {
     agenda: 'agenda',
   };
   const content = props[topicPartMap[topicPart]];
+  const { refid = '' } = query;
   return (
     <Layout>
+      <BreadCrumb url={url} />
       <LongformArticle content={content} />
     </Layout>
   );
