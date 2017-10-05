@@ -1,5 +1,5 @@
 .c-article-nav-list {
-  margin: $spacing 0;
+  margin: 0;
   padding: $spacing $spacing-small 0 $spacing;
   @include inuit-font-size($font-size-small);
   font-family: $font-sans;
@@ -41,11 +41,60 @@
 }
 
 .c-article-nav-sidebar {
+  margin: $spacing 0;
   @include mq($until: 1300px) {
     display: none;
   }
   @include mq($from: 1300px) {
     display: block;
+  }
+}
+
+.c-article-nav-fullscreen {
+  position: fixed;
+  background-color: $white;
+  height: 100vh;
+  width: 100vw;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  overflow-y: auto;
+  opacity: 0;
+  display: none;
+}
+
+@keyframes fullscreenopener {
+  0%,
+  100% {
+    display: block;
+  }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.c-article-nav-fullscreen--open {
+  z-index: 3;
+  opacity: 1;
+  display: block;
+  animation: fullscreenopener 0.2s ease-out;
+}
+
+.c-article-nav-fullscreen-button {
+  position: fixed;
+  z-index: 2;
+  right: 10px;
+  bottom: 10px;
+  border: 0;
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  background-color: $brand-dark;
+  img {
+    vertical-align: text-bottom;
   }
 }
 

@@ -91,7 +91,7 @@ export default connect(
         );
       })}
       <li key="bottom" className="c-article-nav-list__item">
-        <Scrollchor onClick={e => onItemSelected(e)} to={'#js-bottom'}>
+        <Scrollchor beforeAnimate={onItemSelected} to={'#js-bottom'}>
           Bottom
         </Scrollchor>
       </li>

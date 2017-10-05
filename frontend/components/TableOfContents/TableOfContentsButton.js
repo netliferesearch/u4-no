@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import TableOfContentsBase from './TableOfContentsBase';
 import { toggleArticleMenu } from '../../helpers/redux-store';
 
 export class TableOfContentsButton extends Component {
@@ -11,22 +10,22 @@ export class TableOfContentsButton extends Component {
   }
 
   render() {
-    const { content = [], isArticleMenuOpen = false, toggleArticleMenu = () => {} } = this.props;
+    const { toggleArticleMenu = () => {} } = this.props;
     return (
-      <div className={isArticleMenuOpen ? 'c-toc-mobile c-toc-mobile--open' : 'c-toc-mobile'}>
-        <div className="c-toc-mobile__menu">
-          <h2>Table of contents</h2>
-          <TableOfContentsBase onItemSelected={toggleArticleMenu} content={content} />
-        </div>
-        <button className="c-toc-mobile__button" onClick={toggleArticleMenu}>
-          <img alt="Table of contents icon" src="/static/table-of-contents-icon.svg" />
-        </button>
-      </div>
+      <button
+        className="c-article-nav-fullscreen-button"
+        onClick={() => {
+          console.log('toggleArticleMenu()');
+          toggleArticleMenu();
+        }}
+      >
+        <img alt="Table of contents icon" src="/static/table-of-contents-icon.svg" />
+      </button>
     );
   }
 }
 
-const mapStateToProps = ({ isArticleMenuOpen }) => ({ isArticleMenuOpen });
+const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({
   toggleArticleMenu: bindActionCreators(toggleArticleMenu, dispatch),
 });
