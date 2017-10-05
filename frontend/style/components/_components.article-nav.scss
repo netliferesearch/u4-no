@@ -1,14 +1,14 @@
-.c-article-nav {
+.c-article-nav-list {
   margin: $spacing 0;
   padding: $spacing $spacing-small 0 $spacing;
   @include inuit-font-size($font-size-small);
   font-family: $font-sans;
   transition: all 1s linear;
   list-style: none;
-  .c-article-nav__item:first-child {
+  .c-article-nav-list__item:first-child {
     padding-top: $spacing;
   }
-  .c-article-nav__item {
+  .c-article-nav-list__item {
     border-left: 2px solid $grey;
     padding-left: $spacing;
     padding-bottom: $spacing;
@@ -20,41 +20,24 @@
       border-bottom: 1px solid $black;
     }
   }
-  .c-article-nav__item--scrolled-past,
-  .c-article-nav__item--selected {
+  .c-article-nav-list__item--scrolled-past,
+  .c-article-nav-list__item--selected {
     border-left: 2px solid $black;
   }
-  .c-article-nav__item--selected > a {
+  .c-article-nav-list__item--selected > a {
     font-weight: bolder;
   }
 }
 
-.c-article-nav__sub-list {
+.c-article-nav-list--inner {
   margin: 0;
-  list-style: none;
-  @include inuit-font-size($font-size-small);
-  font-family: $font-sans;
   padding: 0;
-}
-.c-article-nav__sub-list__item {
-  padding-left: $spacing;
-  padding-bottom: $spacing;
-  a {
-    border-bottom: none;
-    color: $black;
+  .c-article-nav-list__item {
+    border-left: none;
   }
-  a:hover {
-    border-bottom: 1px solid $black;
+  .c-article-nav-list__item:last-child {
+    padding-bottom: 0;
   }
-}
-.c-article-nav__sub-list__item--selected {
-  font-weight: bolder;
-}
-.c-article-nav__sub-list__item:first-child {
-  padding-top: $spacing;
-}
-.c-article-nav__sub-list__item:last-child {
-  padding-bottom: 0;
 }
 
 .c-article-nav-sidebar {
