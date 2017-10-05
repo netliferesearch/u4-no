@@ -93,6 +93,9 @@ export default {
           to: [
             {
               type: 'article'
+            },
+            {
+              type: 'publication'
             }
           ]
         }
