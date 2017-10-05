@@ -27,12 +27,6 @@
   .c-article-nav__item--selected > a {
     font-weight: bolder;
   }
-  @include mq($until: 1300px) {
-    display: none;
-  }
-  @include mq($from: 1300px) {
-    display: block;
-  }
 }
 
 .c-article-nav__sub-list {
@@ -63,7 +57,16 @@
   padding-bottom: 0;
 }
 
-.c-article-nav--fixed {
+.c-article-nav-sidebar {
+  @include mq($until: 1300px) {
+    display: none;
+  }
+  @include mq($from: 1300px) {
+    display: block;
+  }
+}
+
+.c-article-nav-sidebar--fixed {
   position: fixed;
   max-width: 300px;
   top: 200px;
