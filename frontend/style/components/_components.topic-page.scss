@@ -2,9 +2,10 @@
   @include inuit-font-size($font-size-normal);
   font-family: $font-sans;
   position: relative;
-  color: $brand-main;
+  max-width: $site-width / 2;
+  color: $brand-dark;
   padding: 0 0 0 ($spacing);
-  margin: 0;
+  margin: 0 0 $spacing 0;
   text-transform: uppercase;
 
   &:before {
@@ -16,15 +17,23 @@
   }
 }
 .c-topic-page__longTitle {
-  @include inuit-font-size($font-size-normal);
+  @include inuit-font-size($font-size-larger);
   font-family: $font-sans;
-  margin: 0;
-  color: $brand-main;
+  margin: 0 0 $spacing 0;
+  color: $brand-dark;
 
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-huge);
+    max-width: $site-width / 2;
   }
 }
 .c-topic-page__navigate--down {
 
+}
+
+.c-topic-section__title {
+  color: $brand-dark;
+  text-align: center;
+  margin: $spacing-huge auto;
+  max-width: $site-width / 1.5;
 }

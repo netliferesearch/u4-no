@@ -20,7 +20,7 @@
 }
 .c-linkbox__content {
   color: $white;
-  padding: $spacing-small;
+  padding: $spacing-large;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -31,7 +31,7 @@
 }
 
 .c-linkbox__body {
-  padding: $spacing-small;
+  padding: $spacing;
   font-family: $font-sans;
   line-height: $line-height-normal;
 
