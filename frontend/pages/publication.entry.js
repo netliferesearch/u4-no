@@ -1,19 +1,36 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { toggleArticleMenu } from '../helpers/redux-store';
 import {
   Layout,
   LongformArticle,
   PublicationArticleHeader,
   TableOfContentsButton,
   TableOfContentsSidebar,
+  TableOfContentsContent,
   CustomScrollSpy,
 } from '../components';
 import DataLoader from '../helpers/data-loader';
 
 const PublicationEntry = (props) => {
-  const { lead = 'article had no lead', mainPoints = [] } = props;
+  const {
+    toggleArticleMenu,
+    isArticleMenuOpen = false,
+    lead = 'article had no lead',
+    mainPoints = [],
+  } = props;
   return (
     <Layout>
+      <div
+        className={`c-article-nav-fullscreen ${isArticleMenuOpen
+          ? 'c-article-nav-fullscreen c-article-nav-fullscreen--open'
+          : ''}`}
+      >
+        <TableOfContentsContent showAllItems onItemSelected={toggleArticleMenu} {...props} />
+      </div>
       <article className="o-wrapper o-wrapper--no-padding">
+        <TableOfContentsButton {...props} />
         <CustomScrollSpy {...props} />
         <span id="js-top" />
         <div id="js-scroll-trigger">
@@ -71,16 +88,21 @@ const PublicationEntry = (props) => {
         </div>
         <LongformArticle {...props} />
         <span id="js-bottom" />
-        <TableOfContentsButton {...props} />
       </article>
     </Layout>
   );
 };
 
-export default DataLoader(PublicationEntry, {
-  queryFunc: ({ query: { id = '' } }) => ({
-    sanityQuery: '*[_id == $id][0]',
-    param: { id },
-  }),
-  materializeDepth: 1,
-});
+export default DataLoader(
+  connect(
+    ({ isArticleMenuOpen }) => ({ isArticleMenuOpen }),
+    dispatch => ({ toggleArticleMenu: bindActionCreators(toggleArticleMenu, dispatch) }),
+  )(PublicationEntry),
+  {
+    queryFunc: ({ query: { id = '' } }) => ({
+      sanityQuery: '*[_id == $id][0]',
+      param: { id },
+    }),
+    materializeDepth: 1,
+  },
+);

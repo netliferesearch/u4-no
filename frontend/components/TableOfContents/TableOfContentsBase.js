@@ -41,17 +41,17 @@ export default connect(
   }, []);
 
   const isTitleScrolledPastClass = ({ scrolledPast = false }) =>
-    (scrolledPast ? 'c-article-nav__item--scrolled-past' : '');
+    (scrolledPast ? 'c-article-nav-list__item--scrolled-past' : '');
   /**
    * We tailor keys here instead of random() generating them to prevent
    * excessive react updates on scroll.
    */
   return (
-    <ul className="c-article-nav">
+    <ul className="c-article-nav-list">
       <li
         key="top"
-        className={`c-article-nav__item ${readingProgressId
-          ? 'c-article-nav__item--scrolled-past'
+        className={`c-article-nav-list__item ${readingProgressId
+          ? 'c-article-nav-list__item--scrolled-past'
           : ''}`}
       >
         <Scrollchor beforeAnimate={onItemSelected} to={'#js-top'}>
@@ -63,21 +63,21 @@ export default connect(
         return (
           <li
             key={id}
-            className={`c-article-nav__item ${isTitleScrolledPastClass(titleObject)} ${id ===
+            className={`c-article-nav-list__item ${isTitleScrolledPastClass(titleObject)} ${id ===
             readingProgressId
-              ? 'c-article-nav__item--selected'
+              ? 'c-article-nav-list__item--selected'
               : ''}`}
           >
             <Scrollchor beforeAnimate={onItemSelected} to={`#${id}`}>
               {title}
             </Scrollchor>
             {(showAllItems || titleObject.selected) && (
-              <ul className="c-article-nav__sub-list">
+              <ul className="c-article-nav-list c-article-nav-list--inner">
                 {children.map(({ title, id }) => (
                   <li
                     key={id}
-                    className={`c-article-nav__sub-list__item ${id === readingProgressId
-                      ? 'c-article-nav__sub-list__item--selected'
+                    className={`c-article-nav-list__item ${id === readingProgressId
+                      ? 'c-article-nav-list__item--selected'
                       : ''}`}
                   >
                     <Scrollchor beforeAnimate={onItemSelected} to={`#${id}`}>
@@ -90,8 +90,8 @@ export default connect(
           </li>
         );
       })}
-      <li key="bottom" className="c-article-nav__item">
-        <Scrollchor onClick={e => onItemSelected(e)} to={'#js-bottom'}>
+      <li key="bottom" className="c-article-nav-list__item">
+        <Scrollchor beforeAnimate={onItemSelected} to={'#js-bottom'}>
           Bottom
         </Scrollchor>
       </li>

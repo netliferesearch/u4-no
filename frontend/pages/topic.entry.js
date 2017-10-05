@@ -64,20 +64,19 @@ const TopicEntry = ({
           text="Let us walk you through the basics of this topic"
           icon={Basics}
           route="topic.article"
-          params={{ id: _id, topicPart: 'basics' }}
+          params={{ id: _id, topicPart: 'basics', refid: _id }}
         />
         <LinkBox
           title="Get the bigger picture"
           text="Read our research and policy agenda to see where things are at with this topic world wide."
           icon={Picture}
           route="topic.article"
-          params={{ id: _id, topicPart: 'agenda' }}
+          params={{ id: _id, topicPart: 'agenda', refid: _id }}
         />
       </section>
 
       <section>
-        <h2>Publications, insights, and ideas
-to inform your anti-corruption work.</h2>
+        <h2>Publications, insights, and ideas to inform your anti-corruption work.</h2>
         <div className="c-mosaic">
           <div className="c-mosaic_item">1</div>
           <div className="c-mosaic_item">
@@ -85,6 +84,58 @@ to inform your anti-corruption work.</h2>
               <div>U4 ISSUE I 2017</div>
               <div>
                 <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
+<<<<<<< HEAD
+=======
+                <DownArrowButton modifier="secondary" onClick={() => console.log('clicked!')} />
+>>>>>>> 9f699aa2118812d7b1c600584837613ed689d3bc
+              </div>
+            </div>
+          </div>
+          <div className="c-mosaic_item">
+            <div className="c-mosaic_item-content">
+<<<<<<< HEAD
+              <div>U4 ISSUE I 2017</div>
+              <div>
+                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
+=======
+              <div className="c-mosaic_item-content-top">U4 ISSUE I 2017</div>
+              <div className="c-mosaic_item-content-bottom">
+                <h3>2 Hva handler denne artikkelen om?</h3>
+                <DownArrowButton modifier="secondary" onClick={() => console.log('clicked!')} />
+>>>>>>> 9f699aa2118812d7b1c600584837613ed689d3bc
+              </div>
+            </div>
+          </div>
+          <div className="c-mosaic_item">
+            <div className="c-mosaic_item-content">
+              <div>U4 ISSUE I 2017</div>
+              <div>
+                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
+<<<<<<< HEAD
+              </div>
+            </div>
+          </div>
+          <div className="c-mosaic_item">
+            <div className="c-mosaic_item-content">
+              <div>U4 ISSUE I 2017</div>
+              <div>
+                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
+              </div>
+            </div>
+          </div>
+          <div className="c-mosaic_item">
+=======
+                <DownArrowButton modifier="secondary" onClick={() => console.log('clicked!')} />
+              </div>
+            </div>
+          </div>
+          <div className="c-mosaic_item c-mosaic_item-4">
+>>>>>>> 9f699aa2118812d7b1c600584837613ed689d3bc
+            <div className="c-mosaic_item-content">
+              <div>U4 ISSUE I 2017</div>
+              <div>
+                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
+<<<<<<< HEAD
               </div>
             </div>
           </div>
@@ -112,38 +163,16 @@ to inform your anti-corruption work.</h2>
               </div>
             </div>
           </div>
-          <div className="c-mosaic_item">
-            <div className="c-mosaic_item-content">
-              <div>U4 ISSUE I 2017</div>
-              <div>
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
+=======
+                <DownArrowButton modifier="secondary" onClick={() => console.log('clicked!')} />
               </div>
             </div>
           </div>
-          <div className="c-mosaic_item">
-            <div className="c-mosaic_item-content">
-              <div>U4 ISSUE I 2017</div>
-              <div>
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
-              </div>
-            </div>
-          </div>
-          <div className="c-mosaic_item">
-            <div className="c-mosaic_item-content">
-              <div>U4 ISSUE I 2017</div>
-              <div>
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
-              </div>
-            </div>
-          </div>
-          <div className="c-mosaic_item">
-            <div className="c-mosaic_item-content">
-              <div>U4 ISSUE I 2017</div>
-              <div>
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
-              </div>
-            </div>
-          </div>
+          <div className="c-mosaic_item c-mosaic_item-5">5</div>
+          <div className="c-mosaic_item c-mosaic_item-6">6</div>
+          <div className="c-mosaic_item c-mosaic_item-7">7</div>
+          <div className="c-mosaic_item c-mosaic_item-8">8</div>
+>>>>>>> 9f699aa2118812d7b1c600584837613ed689d3bc
         </div>
       </section>
 
