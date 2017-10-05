@@ -16,10 +16,14 @@
   }
 }
 .c-topic-page__longTitle {
-  @include inuit-font-size($font-size-huge);
+  @include inuit-font-size($font-size-normal);
   font-family: $font-sans;
   margin: 0;
   color: $brand-main;
+
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-huge);
+  }
 }
 .c-topic-page__navigate--down {
 
