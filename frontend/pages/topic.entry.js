@@ -4,7 +4,7 @@ import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 
 import { Layout, ExtendedBlockContent, Accordion } from '../components';
-import { DownArrowButton } from '../components/buttons';
+import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources } from '../components/icons';
 import LinkBox from '../components/LinkBox';
 
@@ -152,7 +152,7 @@ const TopicEntry = ({
 
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { id = '' } }) => ({
-    sanityQuery: '{ "topic": *[_id == $id][0]}',
+    sanityQuery: '{ "topic": *[_id == $id][0], "persons": *[_type == "persons"]  }',
     param: { id },
   }),
   materializeDepth: 2,
