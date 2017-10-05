@@ -79,12 +79,10 @@ class LongformArticle extends Component {
     const blocks = content.filter(block => !['reference'].includes(block._type));
     return (
       <main className="c-article c-longform-grid-sub-div">
-        {blocks.length > 0 && (
-          <BlockContent
-            blocks={blocks}
-            serializers={serializers}
-          />
-        )}
+        <BlockContent
+          blocks={blocks}
+          serializers={serializers}
+        />
       </main>
     );
   }
