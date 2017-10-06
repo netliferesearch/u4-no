@@ -3,7 +3,7 @@ import Link from 'next/link';
 import DataLoader from '../helpers/data-loader';
 
 import { Layout, ExtendedBlockContent, Accordion } from '../components';
-import { DownArrowButton } from '../components/buttons';
+import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources } from '../components/icons';
 import LinkBox from '../components/LinkBox';
 
@@ -19,6 +19,7 @@ const TopicEntry = ({
     advisors = [],
     resources = [],
     _id = '',
+    _type = '',
   } = {},
 }) => (
   <Layout>
@@ -77,56 +78,26 @@ const TopicEntry = ({
       <section>
         <h2>Publications, insights, and ideas to inform your anti-corruption work.</h2>
         <div className="c-mosaic">
-          <div className="c-mosaic_item c-mosaic_item-1">
-            <div className="c-mosaic_item-content">
-              <div className="c-mosaic_item-content-top">U4 ISSUE I 2017</div>
-              <div className="c-mosaic_item-content-bottom">
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
-                <DownArrowButton modifier="secondary" onClick={() => console.log('clicked!')} />
+          <div className="c-mosaic_item" />
+          {resources.map(({ title = '', _id = '', _type = '', imageUrl = '' }) => (
+            <a href={`/publications/${_id}`} className="c-mosaic_item" backgroundImage={imageUrl}>
+              <div className="c-mosaic_item-content">
+                <div className="c-mosaic_item-content__meta">{_type}</div>
+                <div>
+                  <h3>{title}</h3>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="c-mosaic_item c-mosaic_item-2 ">
-            <div className="c-mosaic_item-content">
-              <div className="c-mosaic_item-content-top">U4 ISSUE I 2017</div>
-              <div className="c-mosaic_item-content-bottom">
-                <h3>2 Hva handler denne artikkelen om?</h3>
-                <DownArrowButton modifier="secondary" onClick={() => console.log('clicked!')} />
-              </div>
-            </div>
-          </div>
-          <div className="c-mosaic_item c-mosaic_item-3">
-            <div className="c-mosaic_item-content">
-              <div className="c-mosaic_item-content-top">U4 ISSUE I 2017</div>
-              <div className="c-mosaic_item-content-bottom">
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
-                <DownArrowButton modifier="secondary" onClick={() => console.log('clicked!')} />
-              </div>
-            </div>
-          </div>
-          <div className="c-mosaic_item c-mosaic_item-4">
-            <div className="c-mosaic_item-content">
-              <div className="c-mosaic_item-content-top">U4 ISSUE I 2017</div>
-              <div className="c-mosaic_item-content-bottom">
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
-                <DownArrowButton modifier="secondary" onClick={() => console.log('clicked!')} />
-              </div>
-            </div>
-          </div>
-          <div className="c-mosaic_item c-mosaic_item-5">5</div>
-          <div className="c-mosaic_item c-mosaic_item-6">6</div>
-          <div className="c-mosaic_item c-mosaic_item-7">7</div>
-          <div className="c-mosaic_item c-mosaic_item-8">8</div>
+            </a>
+          ))}
         </div>
       </section>
     </div>
   </Layout>
 );
-
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { id = '' } }) => ({
     sanityQuery:
-      '{ "topic": *[_id == $id]{...,"resources": resources[]->{_id,title,"slug": slug.current,"imageUrl": featuredImage.asset->url}}[0]}',
+      '{ "topic": *[_id == $id]{...,"resources": resources[]->{_id,_type, title,"slug": slug.current,"imageUrl": featuredImage.asset->url}}[0]}',
     param: { id },
   }),
   materializeDepth: 2,
