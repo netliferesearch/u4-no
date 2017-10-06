@@ -20,9 +20,11 @@ const TopicEntry = ({
     advisors = [],
     resources = [],
     _id = '',
+    _type= '',
   } = {},
 }) => (
   <Layout>
+
     <div className="o-wrapper">
       <p>
         Tilbake til {' '}
@@ -75,81 +77,28 @@ const TopicEntry = ({
         />
       </section>
 
+
+
+
       <section>
         <h2>Publications, insights, and ideas to inform your anti-corruption work.</h2>
         <div className="c-mosaic">
           <div className="c-mosaic_item"></div>
-          <div className="c-mosaic_item">
-            <div className="c-mosaic_item-content">
-              <div>U4 ISSUE I 2017</div>
-              <div>
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
+          {resources.map(({title = '', _id = '', _type = '', featuredImage= '' }) => (
+            <a href={`/publications/${_id}`} className="c-mosaic_item">
+              <div className="c-mosaic_item-content">
+                <div>{_type}</div>
+                <div>
+                  <h3>{title}</h3>
+                </div>
               </div>
-            </div>
+            </a>
+          ))}
           </div>
-          <div className="c-mosaic_item">
-            <div className="c-mosaic_item-content">
-              <div>U4 ISSUE I 2017</div>
-              <div>
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
-              </div>
-            </div>
-          </div>
-          <div className="c-mosaic_item">
-            <div className="c-mosaic_item-content">
-              <div>U4 ISSUE I 2017</div>
-              <div>
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
-              </div>
-            </div>
-          </div>
-          <div className="c-mosaic_item">
-            <div className="c-mosaic_item-content">
-              <div>U4 ISSUE I 2017</div>
-              <div>
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
-              </div>
-            </div>
-          </div>
-          <div className="c-mosaic_item">
-            <div className="c-mosaic_item-content">
-              <div>U4 ISSUE I 2017</div>
-              <div>
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
-              </div>
-            </div>
-          </div>
-          <div className="c-mosaic_item">
-            <div className="c-mosaic_item-content">
-              <div>U4 ISSUE I 2017</div>
-              <div>
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
-              </div>
-            </div>
-          </div>
-          <div className="c-mosaic_item">
-            <div className="c-mosaic_item-content">
-              <div>U4 ISSUE I 2017</div>
-              <div>
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
-              </div>
-            </div>
-          </div>
-          <div className="c-mosaic_item">
-            <div className="c-mosaic_item-content">
-              <div>U4 ISSUE I 2017</div>
-              <div>
-                <h3>Pay for Honesty? Lessons on Wages and Corruption from Public Hospitals</h3>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
-
     </div>
   </Layout>
 );
-
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { id = '' } }) => ({
     sanityQuery: '{ "topic": *[_id == $id][0], "persons": *[_type == "persons"]  }',
