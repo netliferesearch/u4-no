@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Link from 'next/link';
+import { Link } from '../routes';
 import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 
@@ -26,7 +26,7 @@ const TopicEntry = ({
   <Layout>
     <div className="o-wrapper">
       <p>
-        <Link href={'/topics'}>
+        <Link route={'/topics'}>
           <a>← Topic overview</a>
         </Link>
       </p>
@@ -77,32 +77,34 @@ const TopicEntry = ({
 
       <section>
         <h2>Publications, insights, and ideas to inform your anti-corruption work.</h2>
-        <div className="c-mosaic">
-          <div
-            className="c-mosaic_item"
-            style={{
-              backgroundImage: `url(${resources[0].imageUrl})`,
-            }}
-          >
-            >
-          </div>
-          {resources.map(({ title = '', _id = '', _type = '', imageUrl = '' }, index) => (
-            <a
-              href={`/publications/${_id}`}
+        {resources.length > 0 && (
+          <div className="c-mosaic">
+            <div
               className="c-mosaic_item"
               style={{
-                backgroundImage: `url(${index % 4 === 2 ? imageUrl : ''})`,
+                backgroundImage: `url(${resources[0].imageUrl})`,
               }}
             >
-              <div className="c-mosaic_item-content">
-                <div className="c-mosaic_item-content__meta">{_type}</div>
-                <div>
-                  <h3>{title}</h3>
+              >
+            </div>
+            {resources.map(({ title = '', _id = '', _type = '', imageUrl = '' }, index) => (
+              <a
+                href={`/publications/${_id}`}
+                className="c-mosaic_item"
+                style={{
+                  backgroundImage: `url(${index % 4 === 2 ? imageUrl : ''})`,
+                }}
+              >
+                <div className="c-mosaic_item-content">
+                  <div className="c-mosaic_item-content__meta">{_type}</div>
+                  <div>
+                    <h3>{title}</h3>
+                  </div>
                 </div>
-              </div>
-            </a>
-          ))}
-        </div>
+              </a>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   </Layout>
