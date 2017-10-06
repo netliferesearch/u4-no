@@ -26,9 +26,8 @@ const TopicEntry = ({
   <Layout>
     <div className="o-wrapper">
       <p>
-        Tilbake til {' '}
         <Link href={'/topics'}>
-          <a>topics oversikt</a>
+          <a>← Topic overview</a>
         </Link>
       </p>
       <h1 className="c-topic-page_title">{title}</h1>

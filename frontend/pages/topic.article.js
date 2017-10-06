@@ -13,10 +13,11 @@ const TopicArticleEntry = (props) => {
     agenda: 'agenda',
   };
   const content = props[topicPartMap[topicPart]];
-  const { refid = '' } = query;
   return (
     <Layout>
-      <BreadCrumb url={url} />
+      <div className="o-wrapper o-wrapper--padded">
+        <BreadCrumb url={url} />
+      </div>
       <LongformArticle content={content} />
     </Layout>
   );

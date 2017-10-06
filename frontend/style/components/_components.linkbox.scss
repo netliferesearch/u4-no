@@ -1,6 +1,10 @@
 .c-linkbox-wrapper {
   display: flex;
   flex-direction: row;
+  align-items: stretch;
+  @include mq($until: tablet) {
+    flex-direction: column;
+  }
 }
 
 .c-linkbox {
@@ -13,7 +17,6 @@
   &:nth-child(3n + 2) {
     background-color: $brand-dark;
   }
-
   @include mq($from: tablet) {
     width: 50%;
   }
@@ -24,13 +27,19 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: auto;
+  height: 100%;
 }
 
 .c-linkbox__icon {
+  padding: $spacing;
+}
+
+.c-linkbox__arrow {
+  padding: $spacing;
 }
 
 .c-linkbox__body {
+  flex-grow: 1;
   padding: $spacing-small;
   font-family: $font-sans;
   line-height: $line-height-normal;
@@ -42,6 +51,4 @@
   p {
     font-size: $font-size-tiny;
   }
-}
-.c-linkbox__arrow {
 }

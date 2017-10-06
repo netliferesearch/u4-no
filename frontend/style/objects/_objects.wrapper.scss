@@ -9,6 +9,11 @@
   }
 }
 
+.o-wrapper--padded {
+  padding-right: $inuit-global-spacing-unit;
+  padding-left: $inuit-global-spacing-unit;
+}
+
 .o-wrapper-inner {
   @include inuit-clearfix();
   margin-right: auto;
