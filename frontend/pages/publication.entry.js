@@ -23,7 +23,7 @@ const PublicationEntry = (props) => {
     mainPoints = [],
   } = props;
   return (
-    <Layout showTopTab={!isArticleMenuOpen}>
+    <Layout showLoadingScreen={showLoadingScreen} showTopTab={!isArticleMenuOpen}>
       {isArticleMenuOpen && (
         <div
           className={`c-article-nav-fullscreen ${isArticleMenuOpen
