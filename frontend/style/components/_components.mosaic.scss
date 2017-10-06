@@ -27,8 +27,8 @@
 .c-mosaic_item:nth-child(1) {
   grid-row: 1 / 2;
   grid-column: 1 / 2;
-  background-image: url("https://images.unsplash.com/photo-1464823063530-08f10ed1a2dd?dpr=2&auto=compress,format&fit=crop&w=376&h=251&q=80&cs=tinysrgb&crop=");
-  background-size:cover;
+  background-size: cover;
+  background-position: center;
   @include mq($from: tablet) {
     grid-row: 1 / 3;
     grid-column: 1 / 3;
@@ -38,6 +38,7 @@
 .c-mosaic_item:nth-child(2) {
   grid-row: 1 / 2;
   grid-column: 1 / 2;
+  background-color: red;
   @include mq($from: tablet) {
     grid-row: 2 / 3;
     grid-column: 1 / 2;
@@ -47,6 +48,7 @@
 // The grid changes according to the number of children
 
 .c-mosaic_item {
+
 
     @include mq($from: tablet, $until: desktop) {
       //3
@@ -147,23 +149,31 @@
 
 // Variation in background color
 
-.c-mosaic_item:nth-child(4n+2) {  /* or 4n+1 */
+.c-mosaic_item:nth-child(4n+2) {
       background-color: $brand-dark;
       color: $white;
 }
-.c-mosaic_item:nth-child(4n+3) {  /* or 4n+1 */
+.c-mosaic_item:nth-child(4n+3) {
       background-color: $brand-main;
       color: $white;
 }
-.c-mosaic_item:nth-child(4n+4) {  /* or 4n+1 */
-      background-image: url('https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?dpr=1&auto=compress,format&fit=crop&w=1351&h=&q=80&cs=tinysrgb&crop=');
-      background-size:cover;
+.c-mosaic_item:nth-child(4n+4) {
+      background-color: $brand-main;
+      background-position: center;
+      background-size: cover;
       color: $white;
 }
-.c-mosaic_item:nth-child(4n+5) {  /* or 4n+1 */
+.c-mosaic_item:nth-child(4n+5) {
       border: solid 2px $brand-dark;
       color: $brand-dark;
 }
+
+@include mq($until: tablet) {
+  .c-mosaic_item:nth-child(2) {
+    background-color: transparent;
+  }
+}
+
 
 // Content inside the grid items
 
