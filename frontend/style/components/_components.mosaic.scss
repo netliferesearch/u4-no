@@ -174,3 +174,11 @@
   justify-content: space-between;
   padding: $spacing;
 }
+
+.c-mosaic_item-content__meta {
+  font-family: $font-sans;
+  font-weight: 300;
+  text-transform: uppercase;
+  @include inuit-font-size($font-size-tiny);
+  padding-bottom: $spacing;
+}

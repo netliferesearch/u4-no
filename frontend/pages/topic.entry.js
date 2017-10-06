@@ -77,9 +77,6 @@ const TopicEntry = ({
         />
       </section>
 
-
-
-
       <section>
         <h2>Publications, insights, and ideas to inform your anti-corruption work.</h2>
         <div className="c-mosaic">
@@ -87,7 +84,7 @@ const TopicEntry = ({
           {resources.map(({title = '', _id = '', _type = '', featuredImage= '' }) => (
             <a href={`/publications/${_id}`} className="c-mosaic_item">
               <div className="c-mosaic_item-content">
-                <div>{_type}</div>
+                <div className="c-mosaic_item-content__meta">{_type}</div>
                 <div>
                   <h3>{title}</h3>
                 </div>
