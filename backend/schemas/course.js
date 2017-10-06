@@ -51,5 +51,23 @@ export default {
         },
       ],
     },
+    {
+      name: 'topics',
+      description: 'Select relevant U4 topics',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'topics'
+            }
+          ]
+        }
+      ],
+      preview: {
+        title: 'topics.title'
+      }
+    },
   ],
 }
