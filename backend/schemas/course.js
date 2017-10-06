@@ -10,17 +10,17 @@ export default {
     },
     {
       name: 'description',
-      title: 'Description'
+      title: 'Description',
       type: 'text'
     },
     {
       name: 'language',
-      title: 'Language'
+      title: 'Language',
       type: 'text'
     },
     {
       name: 'startDate',
-      title: 'Start date'
+      title: 'Start date',
       type: 'richDate',
       options: {
         inputDate: true,
@@ -29,7 +29,7 @@ export default {
     },
     {
       name: 'endDate',
-      title: 'End date'
+      title: 'End date',
       type: 'richDate',
       options: {
         inputDate: true,
