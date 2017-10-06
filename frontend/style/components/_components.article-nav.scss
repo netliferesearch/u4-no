@@ -40,25 +40,8 @@
   }
 }
 
-.c-article-nav-sidebar {
-  margin: $spacing 0;
-  @include mq($until: 1300px) {
-    display: none;
-  }
-  @include mq($from: 1300px) {
-    display: block;
-  }
-}
-
 .c-article-nav-fullscreen {
-  position: fixed;
-  background-color: $white;
-  height: 100vh;
-  width: 100vw;
-  bottom: 0;
-  right: 0;
   margin: 0;
-  overflow-y: auto;
   opacity: 0;
   display: none;
 }
@@ -95,6 +78,22 @@
   background-color: $brand-dark;
   img {
     vertical-align: text-bottom;
+  }
+  @include mq($until: 1300px) {
+    display: block;
+  }
+  @include mq($from: 1300px) {
+    display: none;
+  }
+}
+
+.c-article-nav-sidebar {
+  margin: $spacing 0;
+  @include mq($until: 1300px) {
+    display: none;
+  }
+  @include mq($from: 1300px) {
+    display: block;
   }
 }
 

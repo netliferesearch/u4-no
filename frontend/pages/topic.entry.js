@@ -20,11 +20,10 @@ const TopicEntry = ({
     advisors = [],
     resources = [],
     _id = '',
-    _type= '',
+    _type = '',
   } = {},
 }) => (
   <Layout>
-
     <div className="o-wrapper">
       <p>
         Tilbake til {' '}
@@ -77,20 +76,25 @@ const TopicEntry = ({
         />
       </section>
 
-
-
-
       <section>
         <h2>Publications, insights, and ideas to inform your anti-corruption work.</h2>
         <div className="c-mosaic">
-          <div className="c-mosaic_item" style={{
+          <div
+            className="c-mosaic_item"
+            style={{
               backgroundImage: `url(${resources[0].imageUrl})`,
-            }}>></div>
-          {resources.map(({title = '', _id = '', _type = '', imageUrl= '' }, index) => (
-            <a href={`/publications/${_id}`} className="c-mosaic_item"
+            }}
+          >
+            >
+          </div>
+          {resources.map(({ title = '', _id = '', _type = '', imageUrl = '' }, index) => (
+            <a
+              href={`/publications/${_id}`}
+              className="c-mosaic_item"
               style={{
-                  backgroundImage: `url(${(index % 4) === 2 ? imageUrl  : '' })`,
-                }}>
+                backgroundImage: `url(${index % 4 === 2 ? imageUrl : ''})`,
+              }}
+            >
               <div className="c-mosaic_item-content">
                 <div className="c-mosaic_item-content__meta">{_type}</div>
                 <div>
@@ -99,14 +103,15 @@ const TopicEntry = ({
               </div>
             </a>
           ))}
-          </div>
+        </div>
       </section>
     </div>
   </Layout>
 );
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { id = '' } }) => ({
-    sanityQuery: '{ "topic": *[_id == $id]{...,"resources": resources[]->{_id,_type, title,"slug": slug.current,"imageUrl": featuredImage.asset->url}}[0]}',
+    sanityQuery:
+      '{ "topic": *[_id == $id]{...,"resources": resources[]->{_id,_type, title,"slug": slug.current,"imageUrl": featuredImage.asset->url}}[0]}',
     param: { id },
   }),
   materializeDepth: 2,
