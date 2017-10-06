@@ -7,6 +7,9 @@ class BreadCrumb extends Component {
   constructor(props) {
     super(props);
     this.state = { data: false };
+  }
+
+  componentWillMount() {
     const client = sanityClient({
       projectId: '1f1lcoov',
       dataset: 'production',
@@ -14,7 +17,7 @@ class BreadCrumb extends Component {
       useCdn: false,
     });
     const sanityQuery = '*[_id == $id][0]';
-    const { url = {} } = props;
+    const { url = {} } = this.props;
     const { query = {} } = url;
     const { refid = '' } = query;
     const sanityParams = { id: refid };
