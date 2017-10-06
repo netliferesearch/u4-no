@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
-import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 
 import { Layout, ExtendedBlockContent, Accordion } from '../components';
@@ -126,7 +125,8 @@ const TopicEntry = ({
 
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { id = '' } }) => ({
-    sanityQuery: '{ "topic": *[_id == $id][0]}',
+    sanityQuery:
+      '{ "topic": *[_id == $id]{...,"resources": resources[]->{_id,title,"slug": slug.current,"imageUrl": featuredImage.asset->url}}[0]}',
     param: { id },
   }),
   materializeDepth: 2,
