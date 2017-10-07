@@ -77,8 +77,7 @@ const TopicEntry = ({
       </section>
 
       <section>
-<<<<<<< HEAD
-        <h2 className="c-topic-page__subTitle">Inform your anti-corruption work with handpicked topic related publications, insights and ideas.</h2>
+        <h2>Inform your anti-corruption work with handpicked topic related publications, insights and ideas.</h2>
         <div className="c-mosaic">
           <div className="c-mosaic_item" style={{
               backgroundImage: `url(${resources[0].imageUrl})`,
@@ -95,42 +94,15 @@ const TopicEntry = ({
                   }
                   }>{_type}</div>
                 <div>
-                  { console.log()}
                   <h3 style={{
                       color: (index % 4) === 2 ? titleColor  : ' ' ,
                     }
                     }>{title}</h3>
-=======
-        <h2>Publications, insights, and ideas to inform your anti-corruption work.</h2>
-        {resources.length > 0 && (
-          <div className="c-mosaic">
-            <div
-              className="c-mosaic_item"
-              style={{
-                backgroundImage: `url(${resources[0].imageUrl})`,
-              }}
-            >
-              >
-            </div>
-            {resources.map(({ title = '', _id = '', _type = '', imageUrl = '' }, index) => (
-              <a
-                href={`/publications/${_id}`}
-                className="c-mosaic_item"
-                style={{
-                  backgroundImage: `url(${index % 4 === 2 ? imageUrl : ''})`,
-                }}
-              >
-                <div className="c-mosaic_item-content">
-                  <div className="c-mosaic_item-content__meta">{_type}</div>
-                  <div>
-                    <h3>{title}</h3>
-                  </div>
->>>>>>> 6dadc3e9dc68afe2c75b5241366e8032f81885df
+                </div>
                 </div>
               </a>
             ))}
           </div>
-<<<<<<< HEAD
           <a href="#">Explore all our resources -></a>
       </section>
         <p>Hi! We’re the team developing this topic</p>
@@ -139,9 +111,6 @@ const TopicEntry = ({
       <section>
 
 
-=======
-        )}
->>>>>>> 6dadc3e9dc68afe2c75b5241366e8032f81885df
       </section>
     </div>
 
@@ -168,12 +137,7 @@ const TopicEntry = ({
 );
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { id = '' } }) => ({
-<<<<<<< HEAD
     sanityQuery: '{ "topic": *[_id == $id]{...,"resources": resources[]->{_id,_type, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}}[0]}',
-=======
-    sanityQuery:
-      '{ "topic": *[_id == $id]{...,"resources": resources[]->{_id,_type, title,"slug": slug.current,"imageUrl": featuredImage.asset->url}}[0]}',
->>>>>>> 6dadc3e9dc68afe2c75b5241366e8032f81885df
     param: { id },
   }),
   materializeDepth: 2,
