@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
+import Head from 'next/head';
 
 import { Layout, ExtendedBlockContent, Accordion } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
@@ -81,32 +82,68 @@ const TopicEntry = ({
 
 
       <section>
-        <h2>Publications, insights, and ideas to inform your anti-corruption work.</h2>
+        <h2 className="c-topic-page__subTitle">Inform your anti-corruption work with handpicked topic related publications, insights and ideas.</h2>
         <div className="c-mosaic">
           <div className="c-mosaic_item" style={{
               backgroundImage: `url(${resources[0].imageUrl})`,
             }}>></div>
-          {resources.map(({title = '', _id = '', _type = '', imageUrl= '' }, index) => (
-            <a href={`/publications/${_id}`} className="c-mosaic_item"
+          {resources.map(({title = '', _id = '', _type = '', imageUrl= '', titleColor = '#FFF' }, index) => (
+            <a href={`/publications/${_id}`}
+              className={`c-mosaic_item ${(index % 4) === 2 ? "c-mosaic_item--backgroundImage"  : ''  } ${(index % 4) === 2 && titleColor === "#000" ? "c-mosaic_item--backgroundImage-invert"  : ' '  }` }
               style={{
                   backgroundImage: `url(${(index % 4) === 2 ? imageUrl  : '' })`,
                 }}>
               <div className="c-mosaic_item-content">
-                <div className="c-mosaic_item-content__meta">{_type}</div>
+                <div className="c-mosaic_item-content__meta" style={{
+                    color: (index % 4) === 2 ? titleColor  : ' ' ,
+                  }
+                  }>{_type}</div>
                 <div>
-                  <h3>{title}</h3>
+                  { console.log()}
+                  <h3 style={{
+                      color: (index % 4) === 2 ? titleColor  : ' ' ,
+                    }
+                    }>{title}</h3>
                 </div>
               </div>
             </a>
           ))}
           </div>
+          <a href="#">Explore all our resources -></a>
+      </section>
+        <p>Hi! We’re the team developing this topic</p>
+
+
+      <section>
+
+
       </section>
     </div>
+
+    <Head>
+      <style>{`
+        .c-mosaic_item{
+          position:relative;
+        }
+        .c-mosaic_item--backgroundImage::after {
+        content: "";
+        position: absolute;
+        display: block;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        opacity: .3;
+
+      }
+      `}
+      </style>
+    </Head>
   </Layout>
 );
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { id = '' } }) => ({
-    sanityQuery: '{ "topic": *[_id == $id]{...,"resources": resources[]->{_id,_type, title,"slug": slug.current,"imageUrl": featuredImage.asset->url}}[0]}',
+    sanityQuery: '{ "topic": *[_id == $id]{...,"resources": resources[]->{_id,_type, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}}[0]}',
     param: { id },
   }),
   materializeDepth: 2,

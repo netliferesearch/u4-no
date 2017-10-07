@@ -168,11 +168,7 @@
       color: $brand-dark;
 }
 
-@include mq($until: tablet) {
-  .c-mosaic_item:nth-child(2) {
-    background-color: transparent;
-  }
-}
+
 
 
 // Content inside the grid items
@@ -191,4 +187,40 @@
   text-transform: uppercase;
   @include inuit-font-size($font-size-tiny);
   padding-bottom: $spacing;
+}
+
+// Color overlay
+
+.c-mosaic_item--backgroundImage {
+  box-shadow: inset 0 0 0 500px rgba(0,0,0,0.2);
+  transition: box-shadow 0.4s;
+}
+
+.c-mosaic_item--backgroundImage-invert {
+  box-shadow: inset 0 0 0 500px rgba(255,255,255,0.3);
+}
+
+// Hover
+
+.c-mosaic_item--backgroundImage:hover {
+  box-shadow: inset 0 0 0 500px rgba(0,0,0,0);
+}
+
+a.c-mosaic_item {
+  border-bottom: 0;
+  transition: transform 0.2s;
+  transform-origin: center center;
+  will-change: transform,opacity;
+}
+
+a.c-mosaic_item:hover {
+color:white;
+border-bottom: 0;
+transform: scale(1.03);
+box-shadow: 0 4px 10px rgba(6,8,28,.15)
+}
+
+.c-mosaic_item:nth-child(4n+5):hover  {
+      border: solid 2px $brand-dark;
+      color: $brand-dark;
 }
