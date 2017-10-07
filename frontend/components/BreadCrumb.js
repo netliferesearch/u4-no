@@ -33,7 +33,7 @@ class BreadCrumb extends Component {
         {this.state.data &&
           this.state.data._type === 'topics' && (
             <Link route="topic.entry" params={{ id: this.state.data._id }}>
-              <a>{this.state.data.title}</a>
+              <a>← {this.state.data.title}</a>
             </Link>
           )}
         {this.state.data &&

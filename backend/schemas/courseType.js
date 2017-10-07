@@ -10,12 +10,12 @@ export default {
     },
     {
       name: 'description',
-      title: 'Description'
+      title: 'Description',
       type: 'text'
     },
     {
       name: 'language',
-      title: 'Language'
+      title: 'Language',
       type: 'text'
     },
   ],

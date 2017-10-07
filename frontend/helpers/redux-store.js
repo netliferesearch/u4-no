@@ -17,11 +17,13 @@ const replaceWindowHash = (hashValue) => {
 const exampleInitialState = {
   readingProgressId: '1.-introduction',
   isArticleMenuOpen: false,
+  showLoadingScreen: false,
 };
 
 export const actionTypes = {
   UPDATE_READING_PROGRESS: 'UPDATE_READING_PROGRESS',
   TOGGLE_ARTICLE_MENU: 'TOGGLE_ARTICLE_MENU',
+  TOGGLE_LOADING_SCREEN: 'TOGGLE_LOADING_SCREEN',
 };
 
 // REDUCERS
@@ -29,7 +31,12 @@ export const reducer = (state = exampleInitialState, action) => {
   switch (action.type) {
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
+    case actionTypes.TOGGLE_LOADING_SCREEN:
+      return Object.assign({}, state, { showLoadingScreen: !state.showLoadingScreen });
     case actionTypes.UPDATE_READING_PROGRESS:
+      if (state.isArticleMenuOpen) {
+        return Object.assign({}, state);
+      }
       replaceWindowHash(action.readingProgressId);
       return Object.assign({}, state, { readingProgressId: action.readingProgressId });
     default:
@@ -43,6 +50,9 @@ export const updateReadingProgress = readingProgressId => dispatch =>
 
 export const toggleArticleMenu = () => dispatch =>
   dispatch({ type: actionTypes.TOGGLE_ARTICLE_MENU });
+
+export const toggleLoadingScreen = () => dispatch =>
+  dispatch({ type: actionTypes.TOGGLE_LOADING_SCREEN });
 
 export const initStore = (initialState = exampleInitialState) =>
   createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
