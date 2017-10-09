@@ -8,7 +8,7 @@
   letter-spacing: 1px;
   @include inuit-font-size($font-size-large, $line-height-normal);
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-larger, $line-height-normal);
+    @include inuit-font-size($font-size-largest, $line-height-normal);
   }
 }
 

@@ -5,6 +5,8 @@ h1, h2, h3 {
 }
 
 h2 {
-  font-size: $font-size-larger;
   margin-bottom: 0;
+  @include mq($from: desktop) {
+    font-size: $font-size-larger;
+  }
 }
