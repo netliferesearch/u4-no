@@ -38,9 +38,10 @@
 .c-hero-header{
   padding: $spacing $spacing;
   color: $white;
-  grid-column: 5 / 6;
+  grid-column: 4 / 10;
   grid-row: 2 / 4;
   @include mq($from: tablet) {
     padding: $spacing-large 0;
+    grid-column: 5 / 6;
   }
 }

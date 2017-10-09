@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Scrollchor from 'react-scrollchor';
 import { connect } from 'react-redux';
@@ -42,6 +42,7 @@ export default connect(
 
   const isTitleScrolledPastClass = ({ scrolledPast = false }) =>
     (scrolledPast ? 'c-article-nav-list__item--scrolled-past' : '');
+
   /**
    * We tailor keys here instead of random() generating them to prevent
    * excessive react updates on scroll.
@@ -59,7 +60,7 @@ export default connect(
         </Scrollchor>
       </li>
       {titleObjects.map((titleObject) => {
-        const { style, title, id, children = [] } = titleObject;
+        const { title, id, children = [] } = titleObject;
         return (
           <li
             key={id}

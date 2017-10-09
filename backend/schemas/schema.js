@@ -11,6 +11,8 @@ import blurb from './blurb';
 import pullQuote from './pullQuote';
 import article from './article';
 import institution from './institution';
+import courseType from './courseType';
+import course from './course';
 
 export default createSchema({
   name: 'default',
@@ -27,5 +29,7 @@ export default createSchema({
     urlWithMetadata,
     article,
     institution,
+    courseType,
+    course,
   ]
 })
