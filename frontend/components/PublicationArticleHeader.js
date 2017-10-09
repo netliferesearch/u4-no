@@ -31,6 +31,7 @@ const PublicationArticleHeader = ({
       <div className="c-article-header__meta">
         <p>
           <AuthorList authors={authors} />
+          <br />
           Series editor <a href="#">Kendra Dupuy</a>
           <br />
           Bergen: U4 Anti-Corruption Resource Centre @ Chr. Michelsen Institute (U4 Brief 2017:5)
@@ -45,6 +46,13 @@ const PublicationArticleHeader = ({
           <div className="c-article-header__button-icon">→</div>
         </a>
       </Link>
+      <div>
+        <Link route="/">
+          <a className="c-article-header__meta c-article-header__link">
+            Download as PDF
+          </a>
+        </Link>
+      </div>
     </div>
   </header>
 );
