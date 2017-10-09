@@ -15,10 +15,10 @@ const PublicationArticleHeader = ({
 }) => (
   <header className={`${className} c-article-header`}>
     {/* Wrap in standard grid width until we know better */}
-    <div className="c-article-header__meta c-article-header__meta-uppercase">
+    <div className="c-article-header__meta">
       {publicationType.title && `${publicationType.title} | `}
       {topics.map(({ title = '', _id = '' }) => (
-        <a href key={_id}>
+        <a href className="c-article-header__link-item" key={_id}>
           {title}
         </a>
       ))}
@@ -42,7 +42,7 @@ const PublicationArticleHeader = ({
       </div>
       <Link route="/">
         <a className="c-article-header__button">
-          <div className="c-article-header__button-text">Summary for busy people</div>
+          <div className="c-article-header__button-text">Read our short version</div>
           <div className="c-article-header__button-icon">→</div>
         </a>
       </Link>

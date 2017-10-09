@@ -2,7 +2,7 @@
 }
 
 .c-article-header__title {
-  margin: 0;
+  margin: $spacing-small 0 0 0;
   font-family: $font-serif;
   font-weight: 100;
   letter-spacing: 1px;
@@ -26,11 +26,22 @@
   font-family: $font-sans;
   font-weight: 300;
   @include inuit-font-size($font-size-tiny);
-  padding-bottom: $spacing;
+  padding-bottom: $spacing-small;
 }
 
 .c-article-header__meta-uppercase {
   text-transform: uppercase;
+}
+
+.c-article-header__link-item {
+  margin-right: $spacing-tiny;
+  &:after {
+    content: ',';
+    display: inline-block;
+  }
+  &:last-child:after {
+    display: none;
+  }
 }
 
 .c-article-header__button {

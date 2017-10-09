@@ -2,12 +2,12 @@ a {
   color: $brand-main;
   text-decoration: none;
   padding-bottom: 0.05em;
-  border-bottom: 1px solid rgba(0, 121, 207, 0.4);
+  border-bottom: 1px solid rgba(0, 121, 207, 0.5);
 }
 
 a:visited {
   color: $brand-medium;
-  border-bottom: 1px solid rgba(9, 84, 167, 0.4);
+  border-bottom: 1px solid rgba(0, 121, 207, 0.5);
 }
 
 a:visited:hover {
@@ -31,11 +31,9 @@ a:active {
 .links-wrapper-dark-background {
   a {
     color: $brand-lighter;
-    border-bottom: 1px solid rgba(139, 223, 253, 0.5);
   }
   a:visited {
     color: #ffeec3;
-    border-bottom: 1px solid rgba(225, 238, 295, 0.5);
   }
   a:visited:hover {
     color: #ffeec3;
