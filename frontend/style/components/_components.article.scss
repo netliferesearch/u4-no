@@ -31,8 +31,10 @@
 
 .c-article__figure-img {
   width: 100%;
-  height: 50vh;
   object-fit: cover;
+  @include mq($from: tablet) {
+    height: 50vh;
+  }
 }
 
 .c-article__figure-figcaption {

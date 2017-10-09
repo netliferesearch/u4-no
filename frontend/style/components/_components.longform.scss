@@ -1,10 +1,12 @@
 .c-longform-grid,
 .c-longform-grid-sub-div > div {
-  display: grid;
-  grid-template-columns: 20px auto auto auto 1fr auto auto auto 20px;
-  grid-template-rows: auto;
-  grid-row-gap: 10px;
+  padding: $spacing-small;
   @include mq($from: tablet) {
+    display: grid;
+    padding: 0;
+    grid-template-columns: 20px auto auto auto 1fr auto auto auto 20px;
+    grid-template-rows: auto;
+    grid-row-gap: 10px;
     grid-template-columns: 1fr auto auto 1fr 620px 1fr auto auto 1fr;
   }
 
