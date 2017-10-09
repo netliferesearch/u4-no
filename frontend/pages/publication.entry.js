@@ -84,9 +84,9 @@ const PublicationEntry = (props) => {
               </div>
               {mainPoints.length > 0 && (
                 <div className="c-article c-article_mainPoints">
-                  <ul>
+                  <ul className="c-article_mainPoints-list">
                     {mainPoints.map((mainPoint, index) => (
-                      <li key={index}>
+                      <li key={index} className="c-article_mainPoints-item">
                         <span className="c-article_mainPoints-firstWords">
                           {mainPoint
                             .split(' ')

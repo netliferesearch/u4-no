@@ -23,6 +23,25 @@
 .c-article_mainPoints-lastWords {
 }
 
+.c-article_mainPoints-list {
+  list-style: none;
+}
+
+.c-article_mainPoints-item {
+  position: relative;
+
+  &:before {
+    content: '';
+    height: 1px;
+    width: 30px;
+    background: $black;
+    display: inline-block;
+    position: absolute;
+    top: 12px;
+    left: -40px;
+  }
+}
+
 .c-article__figure {
   margin-left: 0;
   margin-right: 0;
