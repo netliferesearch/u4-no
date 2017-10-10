@@ -18,6 +18,7 @@
   position: inherit;
   background: $brand-dark;
   margin: -$spacing-large 0 0 $spacing-large;
+  padding: $spacing;
 
   @include mq($from: wide) {
     margin: 0;
