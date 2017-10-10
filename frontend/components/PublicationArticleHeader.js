@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from '../routes';
 import randomKey from '../helpers/randomKey';
+import { Download } from './icons';
 
 import { AuthorList } from '../components/';
 
@@ -48,8 +49,8 @@ const PublicationArticleHeader = ({
       </Link>
       <div>
         <Link route="/">
-          <a className="c-article-header__meta c-article-header__link">
-            Download as PDF
+          <a className="c-article-header__meta c-article-header__download">
+            <Download className="c-article-header__download-icon" />  Download as PDF
           </a>
         </Link>
       </div>
