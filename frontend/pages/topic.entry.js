@@ -36,7 +36,6 @@ const TopicEntry = ({
       <div className="u-margin-bottom">
         <DownArrowButton text="Browse our resources" />
       </div>
-
       <section className="c-boxOnImage u-margin-bottom-huge">
         {featuredImage && (
           <figure className="c-boxOnImage__figure">
@@ -78,7 +77,7 @@ const TopicEntry = ({
 
       <section>
         <h2 className="c-statement">Inform your anti-corruption work with handpicked topic related publications, insights and ideas.</h2>
-        <div className="c-mosaic">
+        <div className="o-wrapper-medium c-mosaic">
           {resources.length ?
             <div
               className="c-mosaic_item"

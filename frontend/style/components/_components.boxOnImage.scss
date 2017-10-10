@@ -17,7 +17,7 @@
 .c-boxOnImage__body {
   position: inherit;
   background: $brand-dark;
-  margin: -$spacing-large 0 0 $spacing-large;
+  margin: -$spacing-large 0 0 $spacing;
   padding: $spacing;
 
   @include mq($from: wide) {

@@ -9,10 +9,10 @@
 
 .c-linkbox {
   &:nth-child(3n) {
-    background-color: $brand-main;
+    background-color: $brand-light;
   }
   &:nth-child(3n + 1) {
-    background-color: $brand-medium;
+    background-color: $brand-main;
   }
   &:nth-child(3n + 2) {
     background-color: $brand-dark;
