@@ -30,6 +30,10 @@
   height: 100%;
 }
 
+.c-linkbox__title {
+  @include inuit-font-size($font-size-normal);
+}
+
 .c-linkbox__icon {
   padding: $spacing;
 }
@@ -44,11 +48,8 @@
   font-family: $font-sans;
   line-height: $line-height-normal;
 
-  h2 {
-    font-size: $font-size-tiny;
-    font-weight: bold;
-  }
   p {
     font-size: $font-size-tiny;
+    max-width: 450px;
   }
 }
