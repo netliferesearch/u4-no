@@ -2,7 +2,7 @@
   background: $brand-lightest;
   padding: $spacing-huge $spacing;
 }
-.c-team-wrapper {
+.c-team__wrapper {
   @include mq($from: tablet) {
     display: flex;
     flex-wrap:nowrap;
@@ -14,7 +14,7 @@
   margin-bottom: $spacing-huge;
 }
 .c-team__item {
-  margin: auto;
+  margin: auto auto $spacing;
   @include mq($from: tablet) {
     flex: 1 0 auto;
     display: flex;

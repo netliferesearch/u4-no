@@ -4,10 +4,29 @@ import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 
-import { Layout, ExtendedBlockContent, Accordion } from '../components';
+import { Layout, ExtendedBlockContent, Accordion, Team } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
+
+const teamMembers = [
+  {
+    id: 1,
+    featuredImage: { asset: { url: 'https://cdn.sanity.io/images/1f1lcoov/production/t3Yvuyac5OKZbUz1Sc6HFKeW-684x892.jpg' } },
+    name: 'Kendra Dupuy',
+    position: 'SENIOR PROGRAMME ADVISOR',
+    phone: '+47 479 38 073',
+    email: 'aled.williams@cmi.no',
+  },
+  {
+    id: 2,
+    featuredImage: { asset: { url: 'https://cdn.sanity.io/images/1f1lcoov/production/t3Yvuyac5OKZbUz1Sc6HFKeW-684x892.jpg' } },
+    name: 'Kendra Dupuy',
+    position: 'SENIOR PROGRAMME ADVISOR',
+    phone: '+47 479 38 073',
+    email: 'aled.williams@cmi.no',
+  },
+];
 
 const TopicEntry = ({
   topic: {
@@ -37,6 +56,7 @@ const TopicEntry = ({
         <DownArrowButton text="Browse our resources" />
       </div>
       <section className="c-boxOnImage u-margin-bottom-huge">
+        {console.log(featuredImage)}
         {featuredImage && (
           <figure className="c-boxOnImage__figure">
             <img alt={featuredImage.asset.altText} src={featuredImage.asset.url} />
@@ -133,61 +153,10 @@ const TopicEntry = ({
         </div>
         <h2 className="c-statement"><a href="#">Explore all our resources -></a></h2>
       </section>
-
     </div>
-    <section className="c-team">
-      <div className="o-wrapper">
-        <h2 className="c-team__title">Hi!<br />We’re the team developing this topic</h2>
-      </div>
-      <div className="o-wrapper c-team-wrapper">
 
-        <div className="c-team__item">
-          {featuredImage && (
-            <figure className="c-team__item-figure">
-              <img alt={featuredImage.asset.altText} src={featuredImage.asset.url} />
-            </figure>
-          )}
-          <div className="c-team__item-body">
-            <h3 className="c-team__item-title">Kendra Dupuy</h3>
-            <small className="c-team__item-subtitle">Senior Programme Advisor</small>
-            <div className="c-team__item-meta">
-                +47 479 38 073<br />
-                aled.williams@cmi.no
-            </div>
-            <Link>
-              <a>
-                <span className="c-team__item-link">Bio</span>  <ArrowRight />
-              </a>
-            </Link>
-          </div>
-        </div>
 
-        <div className="c-team__item">
-          {featuredImage && (
-            <figure className="c-team__item-figure">
-              <img alt={featuredImage.asset.altText} src={featuredImage.asset.url} />
-            </figure>
-          )}
-          <div className="c-team__item-body">
-            <h3 className="c-team__item-title">Kendra Dupuy</h3>
-            <small className="c-team__item-subtitle">Senior Programme Advisor</small>
-            <div className="c-team__item-meta">
-              +47 479 38 073<br />
-              aled.williams@cmi.no
-            </div>
-            <Link>
-              <a>
-                <span className="c-team__item-link">Bio</span>  <ArrowRight />
-              </a>
-            </Link>
-          </div>
-        </div>
-
-      </div>
-      <div className="o-wrapper">
-        <h2 className="c-statement"><a href="#">The whole U4 team -></a></h2>
-      </div>
-    </section>
+    <Team title="We’re the team developing this topic" members={teamMembers} />
 
 
     <Head>
