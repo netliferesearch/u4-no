@@ -19,6 +19,7 @@
   background: $brand-dark;
   margin: -$spacing-large 0 0 $spacing;
   padding: $spacing;
+  font-weight: 300;
 
   @include mq($from: wide) {
     margin: 0;

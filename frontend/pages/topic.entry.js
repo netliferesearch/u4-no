@@ -113,12 +113,12 @@ const TopicEntry = ({
             </a>
           ))}
         </div>
-        <a href="#">Explore all our resources -></a>
+        <h2 className="c-statement"><a href="#">Explore all our resources -></a></h2>
       </section>
+
       <p>Hi! We’re the team developing this topic</p>
 
 
-      <section />
     </div>
 
     <Head>
