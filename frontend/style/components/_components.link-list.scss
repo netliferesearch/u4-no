@@ -9,7 +9,7 @@
 
   &:hover {
     .c-link-list__icon {
-      transform: translateX(8px);
+      transform: translateX(8px); // Uhm, ugly nesting. Make it go away pls.
     }
   }
 }
