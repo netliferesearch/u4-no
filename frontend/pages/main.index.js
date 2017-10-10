@@ -17,6 +17,11 @@ export default () => (
             <a>Publikasjoner</a>
           </Link>
         </li>
+        <li>
+          <Link route="/online-training/1">
+            <a>Online training</a>
+          </Link>
+        </li>
       </ul>
     </div>
   </Layout>
