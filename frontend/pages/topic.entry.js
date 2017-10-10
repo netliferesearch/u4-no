@@ -96,6 +96,8 @@ const TopicEntry = ({
         </div>
       </section>
 
+      <h2 className="c-statement">From basic guides to indepth perspectives, all in one place.</h2>
+
       <section className="c-linkbox-wrapper">
         <LinkBox
           title="Read our essential guide"
