@@ -1,0 +1,8 @@
+.c-team {
+  background: rgba($brand-lighter, 0.1);
+  padding: $spacing-huge $spacing;
+}
+.c-team__title {
+  @include inuit-font-size($font-size-normal, $line-height-large );
+  color: $brand-dark;
+}

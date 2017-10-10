@@ -116,10 +116,14 @@ const TopicEntry = ({
         <h2 className="c-statement"><a href="#">Explore all our resources -></a></h2>
       </section>
 
-      <p>Hi! We’re the team developing this topic</p>
-
-
     </div>
+    <section className="c-team">
+      <div className="o-wrapper">
+        <h2 className="c-team__title">Hi! We’re the team developing this topic</h2>
+        <p><a href="#">The whole U4 team -></a></p>
+      </div>
+    </section>
+
 
     <Head>
       <style>{`
