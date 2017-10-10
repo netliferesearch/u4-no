@@ -77,7 +77,7 @@ const TopicEntry = ({
       </section>
 
       <section>
-        <h2>Inform your anti-corruption work with handpicked topic related publications, insights and ideas.</h2>
+        <h2 className="c-statement">Inform your anti-corruption work with handpicked topic related publications, insights and ideas.</h2>
         <div className="c-mosaic">
           {resources.length ?
             <div
