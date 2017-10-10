@@ -32,7 +32,7 @@ const TopicEntry = ({
         </Link>
       </p>
       <h1 className="c-topic-page_title">{title}</h1>
-      <h2 className="c-topic-page__longTitle u-margin-bottom">{longTitle}</h2>
+      <h2 className="c-topic-page__longTitle">{longTitle}</h2>
       <div className="u-margin-bottom">
         <DownArrowButton text="Browse our resources" />
       </div>

@@ -1,10 +1,10 @@
 .c-topic-page_title {
-  @include inuit-font-size($font-size-normal);
+  @include inuit-font-size($font-size-small);
   font-family: $font-sans;
   position: relative;
-  color: $brand-main;
+  color: $brand-dark;
   padding: 0 0 0 ($spacing);
-  margin: 0;
+  margin: $spacing-large 0 0 0;
   text-transform: uppercase;
 
   &:before {
@@ -18,11 +18,12 @@
 .c-topic-page__longTitle {
   @include inuit-font-size($font-size-normal);
   font-family: $font-sans;
-  margin: 0;
-  color: $brand-main;
+  margin: $spacing-small 0 $spacing-large 0;
+  color: $brand-dark;
+  max-width: 600px;
 
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-huge);
+    @include inuit-font-size($font-size-larger, 1.3em);
   }
 }
 .c-topic-page__navigate--down {
