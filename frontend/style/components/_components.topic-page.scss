@@ -21,9 +21,11 @@
   margin: $spacing-small 0 $spacing-large 0;
   color: $brand-dark;
   max-width: 600px;
+  padding: $spacing;
 
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-larger, 1.3em);
+    padding: 0;
   }
 }
 .c-topic-page__navigate--down {
