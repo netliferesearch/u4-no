@@ -137,8 +137,55 @@ const TopicEntry = ({
     </div>
     <section className="c-team">
       <div className="o-wrapper">
-        <h2 className="c-team__title">Hi! We’re the team developing this topic</h2>
-        <p><a href="#">The whole U4 team -></a></p>
+        <h2 className="c-team__title">Hi!<br />We’re the team developing this topic</h2>
+      </div>
+      <div className="o-wrapper c-team-wrapper">
+
+        <div className="c-team__item">
+          {featuredImage && (
+            <figure className="c-team__item-figure">
+              <img alt={featuredImage.asset.altText} src={featuredImage.asset.url} />
+            </figure>
+          )}
+          <div className="c-team__item-body">
+            <h3 className="c-team__item-title">Kendra Dupuy</h3>
+            <small className="c-team__item-subtitle">Senior Programme Advisor</small>
+            <div className="c-team__item-meta">
+                +47 479 38 073<br />
+                aled.williams@cmi.no
+            </div>
+            <Link>
+              <a>
+                <span className="c-team__item-link">Bio</span>  <ArrowRight />
+              </a>
+            </Link>
+          </div>
+        </div>
+
+        <div className="c-team__item">
+          {featuredImage && (
+            <figure className="c-team__item-figure">
+              <img alt={featuredImage.asset.altText} src={featuredImage.asset.url} />
+            </figure>
+          )}
+          <div className="c-team__item-body">
+            <h3 className="c-team__item-title">Kendra Dupuy</h3>
+            <small className="c-team__item-subtitle">Senior Programme Advisor</small>
+            <div className="c-team__item-meta">
+              +47 479 38 073<br />
+              aled.williams@cmi.no
+            </div>
+            <Link>
+              <a>
+                <span className="c-team__item-link">Bio</span>  <ArrowRight />
+              </a>
+            </Link>
+          </div>
+        </div>
+
+      </div>
+      <div className="o-wrapper">
+        <h2 className="c-statement"><a href="#">The whole U4 team -></a></h2>
       </div>
     </section>
 
