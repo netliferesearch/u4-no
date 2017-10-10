@@ -1,0 +1,23 @@
+.c-link-list {
+  list-style: none;
+  margin: 0 0 $spacing;
+  padding: 0;
+}
+.c-link-list__item {
+  @include inuit-font-size($font-size-small);
+  padding: $spacing-small 0 0;
+
+  &:hover {
+    .c-link-list__icon {
+      transform: translateX(8px);
+    }
+  }
+}
+.c-link-list__link {
+  color: $brand-lighter;
+  border: none;
+}
+.c-link-list__icon {
+  margin-left: $spacing;
+  transition: transform .15s ease-out;
+}

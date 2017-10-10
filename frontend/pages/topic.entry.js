@@ -6,7 +6,7 @@ import Head from 'next/head';
 
 import { Layout, ExtendedBlockContent, Accordion } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
-import { Basics, Picture, Publication, Resources } from '../components/icons';
+import { Basics, Picture, Publication, Resources, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
 
 const TopicEntry = ({
@@ -44,11 +44,29 @@ const TopicEntry = ({
         )}
         <div className="c-boxOnImage__body">
           <p>{explainerText}</p>
-          <ul>
+          <ul className="c-link-list">
             See also
-            <li>Area 1 ></li>
-            <li>Area 2 ></li>
-            <li>Area 3 ></li>
+            <li className="c-link-list__item">
+              <Link>
+                <a className="c-link-list__link">
+                  Area 1 <ArrowRight className="c-link-list__icon" />
+                </a>
+              </Link>
+            </li>
+            <li className="c-link-list__item">
+              <Link>
+                <a className="c-link-list__link">
+                  Area 2 <ArrowRight className="c-link-list__icon" />
+                </a>
+              </Link>
+            </li>
+            <li className="c-link-list__item">
+              <Link>
+                <a className="c-link-list__link">
+                  Area 3 <ArrowRight className="c-link-list__icon" />
+                </a>
+              </Link>
+            </li>
           </ul>
           <DownArrowButton
             modifier="secondary"
