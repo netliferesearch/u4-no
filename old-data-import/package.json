@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@sanity/client": "^0.108.0",
+    "bluebird": "^3.5.1",
     "dotenv": "^4.0.0",
     "eslint": "^4.5.0",
     "eslint-config-airbnb": "^15.1.0",
