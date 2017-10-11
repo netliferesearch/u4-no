@@ -17,21 +17,22 @@ const main = async () => {
     '*[_type in ["publication", "topics"]][1..10000]{_id, title, slug}',
   );
   await bluebird.map(
-    [sanityEntities[0]],
+    sanityEntities,
     ({ _id, title, slug }) => {
       if (slug) {
         console.log(`Id: ${_id} already has slug ${slug}`);
-        return new Promise(true);
+        return null;
       }
-      // TODO create something smart to set slugs for all documents
+      if (!title) {
+        console.log('No title to create slug from');
+        return null;
+      }
       console.log('Processing id', _id);
-      // return (
-      //   client
-      //     .patch(_id)
-      //     // .set({})
-      //     .commit()
-      //     .catch(err => console.log(err))
-      // );
+      return client
+        .patch(_id)
+        .set({ slug: { _type: 'slug', auto: true, current: slugify(title, { lower: true }) } })
+        .commit()
+        .catch(err => console.log(err));
     },
     { concurrency: 8 },
   );
