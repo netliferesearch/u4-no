@@ -33,11 +33,12 @@ a:active {
     color: $brand-lighter;
   }
   a:visited {
-    color: #ffeec3;
+    color: $grey;
+    border-bottom: 1px solid $grey;
   }
   a:visited:hover {
-    color: #ffeec3;
-    border-bottom: 1px solid rgba(225, 238, 295, 1);
+    color: $grey;
+    border-bottom: 1px solid $grey;
   }
   a:hover {
     border-bottom: 1px solid rgba(139, 223, 253, 1);

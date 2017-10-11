@@ -1,11 +1,11 @@
+
 .c-topic-page_title {
-  @include inuit-font-size($font-size-normal);
+  @include inuit-font-size($font-size-small);
   font-family: $font-sans;
   position: relative;
-  max-width: $site-width / 2;
   color: $brand-dark;
   padding: 0 0 0 ($spacing);
-  margin: 0 0 $spacing 0;
+  margin: $spacing-large 0 0 0;
   text-transform: uppercase;
 
   &:before {
@@ -17,23 +17,18 @@
   }
 }
 .c-topic-page__longTitle {
-  @include inuit-font-size($font-size-larger);
+  @include inuit-font-size($font-size-normal);
   font-family: $font-sans;
-  margin: 0 0 $spacing 0;
+  margin: $spacing-small 0 $spacing-large 0;
   color: $brand-dark;
+  max-width: 600px;
+  padding: $spacing;
 
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-huge);
-    max-width: $site-width / 2;
+    @include inuit-font-size($font-size-larger, 1.3em);
+    padding: 0;
   }
 }
 .c-topic-page__navigate--down {
 
-}
-
-.c-topic-section__title {
-  color: $brand-dark;
-  text-align: center;
-  margin: $spacing-huge auto;
-  max-width: $site-width / 1.5;
 }

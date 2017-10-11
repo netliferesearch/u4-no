@@ -17,10 +17,13 @@
 .c-boxOnImage__body {
   position: inherit;
   background: $brand-dark;
-  margin: -$spacing-large 0 0 $spacing-large;
+  margin: -$spacing-large 0 0 $spacing;
+  padding: $spacing;
+  font-weight: 300;
 
   @include mq($from: wide) {
     margin: 0;
+    padding: $spacing-large $spacing-huge;
   }
 
   &:nth-of-type(3n+0) {
@@ -44,11 +47,8 @@
       height: 100%;
       object-fit: cover;
     }
-}
+  }
 
-}
-.c-boxOnImage__body {
-  padding: $spacing $spacing-large;
 }
 .c-boxOnImage__title {
 

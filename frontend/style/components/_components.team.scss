@@ -1,0 +1,66 @@
+.c-team {
+  background: $brand-lightest;
+  padding: $spacing-huge $spacing;
+}
+.c-team__wrapper {
+  @include mq($from: tablet) {
+    display: flex;
+    flex-wrap:nowrap;
+  }
+}
+.c-team__title {
+  @include inuit-font-size($font-size-large, $line-height-large );
+  color: $brand-dark;
+  margin-bottom: $spacing-huge;
+}
+.c-team__item {
+  margin: auto auto $spacing;
+  @include mq($from: tablet) {
+    flex: 1 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 49%;
+    min-width: 49%;
+  }
+}
+.c-team__item-body {
+  background: $brand-dark;
+  color: $white;
+  padding: $spacing $spacing-large;
+  font-weight: 300;
+  font-family: $font-sans;
+
+  @include mq($from: tablet) {
+    margin: 24px 0;
+    max-width: 50%;
+    min-width: 50%;
+  }
+
+  a {
+    color: $brand-lighter;
+  }
+}
+.c-team__item-figure {
+  position: relative;
+  margin: 0;
+  @include mq($from: tablet) {
+    max-width: 50%;
+    min-width: 50%;
+  }
+}
+.c-team__item-title {
+  font-weight: 300;
+  margin: 0;
+}
+.c-team__item-subtitle {
+  @include inuit-font-size($font-size-tiny);
+  text-transform: uppercase;
+  margin-bottom: $spacing;
+  display: inline-block;
+}
+.c-team__item-meta {
+  margin-bottom: $spacing;
+}
+.c-team__item-link {
+  margin-right: $spacing-small;
+}

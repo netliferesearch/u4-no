@@ -4,10 +4,29 @@ import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 
-import { Layout, ExtendedBlockContent, Accordion } from '../components';
+import { Layout, ExtendedBlockContent, Accordion, Team } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
-import { Basics, Picture, Publication, Resources } from '../components/icons';
+import { Basics, Picture, Publication, Resources, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
+
+const teamMembers = [
+  {
+    id: 1,
+    featuredImage: { asset: { url: 'https://cdn.sanity.io/images/1f1lcoov/production/t3Yvuyac5OKZbUz1Sc6HFKeW-684x892.jpg' } },
+    name: 'Kendra Dupuy',
+    position: 'SENIOR PROGRAMME ADVISOR',
+    phone: '+47 479 38 073',
+    email: 'aled.williams@cmi.no',
+  },
+  {
+    id: 2,
+    featuredImage: { asset: { url: 'https://cdn.sanity.io/images/1f1lcoov/production/t3Yvuyac5OKZbUz1Sc6HFKeW-684x892.jpg' } },
+    name: 'Kendra Dupuy',
+    position: 'SENIOR PROGRAMME ADVISOR',
+    phone: '+47 479 38 073',
+    email: 'aled.williams@cmi.no',
+  },
+];
 
 const TopicEntry = ({
   topic: {
@@ -32,12 +51,12 @@ const TopicEntry = ({
         </Link>
       </p>
       <h1 className="c-topic-page_title">{title}</h1>
-      <h2 className="c-topic-page__longTitle u-margin-bottom">{longTitle}</h2>
+      <h2 className="c-topic-page__longTitle">{longTitle}</h2>
       <div className="u-margin-bottom">
         <DownArrowButton text="Browse our resources" />
       </div>
-
       <section className="c-boxOnImage u-margin-bottom-huge">
+        {console.log(featuredImage)}
         {featuredImage && (
           <figure className="c-boxOnImage__figure">
             <img alt={featuredImage.asset.altText} src={featuredImage.asset.url} />
@@ -45,11 +64,29 @@ const TopicEntry = ({
         )}
         <div className="c-boxOnImage__body">
           <p>{explainerText}</p>
-          <ul>
+          <ul className="c-link-list">
             See also
-            <li>Area 1 ></li>
-            <li>Area 2 ></li>
-            <li>Area 3 ></li>
+            <li className="c-link-list__item">
+              <Link>
+                <a className="c-link-list__link">
+                  Area 1 <ArrowRight className="c-link-list__icon" />
+                </a>
+              </Link>
+            </li>
+            <li className="c-link-list__item">
+              <Link>
+                <a className="c-link-list__link">
+                  Area 2 <ArrowRight className="c-link-list__icon" />
+                </a>
+              </Link>
+            </li>
+            <li className="c-link-list__item">
+              <Link>
+                <a className="c-link-list__link">
+                  Area 3 <ArrowRight className="c-link-list__icon" />
+                </a>
+              </Link>
+            </li>
           </ul>
           <DownArrowButton
             modifier="secondary"
@@ -78,8 +115,8 @@ const TopicEntry = ({
 
       <h2 className="c-topic-section__title">Inform your anti-corrupion work with handpicked topic related publications, insights and ideas.</h2>
       <section>
-        <h2>Inform your anti-corruption work with handpicked topic related publications, insights and ideas.</h2>
-        <div className="c-mosaic">
+        <h2 className="c-statement">Inform your anti-corruption work with handpicked topic related publications, insights and ideas.</h2>
+        <div className="o-wrapper-medium c-mosaic">
           {resources.length ?
             <div
               className="c-mosaic_item"
@@ -115,13 +152,13 @@ const TopicEntry = ({
             </a>
           ))}
         </div>
-        <a href="#">Explore all our resources -></a>
+        <h2 className="c-statement"><a href="#">Explore all our resources -></a></h2>
       </section>
-      <p>Hi! We’re the team developing this topic</p>
-
-
-      <section />
     </div>
+
+
+    <Team title="We’re the team developing this topic" members={teamMembers} />
+
 
     <Head>
       <style>{`

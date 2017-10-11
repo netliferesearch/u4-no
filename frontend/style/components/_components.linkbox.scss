@@ -9,10 +9,10 @@
 
 .c-linkbox {
   &:nth-child(3n) {
-    background-color: $brand-main;
+    background-color: $brand-light;
   }
   &:nth-child(3n + 1) {
-    background-color: $brand-medium;
+    background-color: $brand-main;
   }
   &:nth-child(3n + 2) {
     background-color: $brand-dark;
@@ -28,6 +28,11 @@
   flex-direction: row;
   align-items: center;
   height: 100%;
+  font-weight: 300;
+}
+
+.c-linkbox__title {
+  @include inuit-font-size($font-size-normal);
 }
 
 .c-linkbox__icon {
@@ -44,11 +49,8 @@
   font-family: $font-sans;
   line-height: $line-height-normal;
 
-  h2 {
-    font-size: $font-size-tiny;
-    font-weight: bold;
-  }
   p {
     font-size: $font-size-tiny;
+    max-width: 450px;
   }
 }

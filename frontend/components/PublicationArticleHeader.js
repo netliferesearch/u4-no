@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from '../routes';
 import randomKey from '../helpers/randomKey';
+import { Download } from './icons';
 
 import { AuthorList } from '../components/';
 
@@ -37,19 +38,19 @@ const PublicationArticleHeader = ({
           Bergen: U4 Anti-Corruption Resource Centre @ Chr. Michelsen Institute (U4 Brief 2017:5)
         </p>
         <p>
-          <a href="#">Also available in Spanish</a>
+          <a href="#1">Also available in Spanish</a>
         </p>
       </div>
-      <Link route="/">
+      <Link route="/3">
         <a className="c-article-header__button">
           <div className="c-article-header__button-text">Read our short version</div>
           <div className="c-article-header__button-icon">→</div>
         </a>
       </Link>
       <div>
-        <Link route="/">
-          <a className="c-article-header__meta c-article-header__link">
-            Download as PDF
+        <Link route="/2">
+          <a className="c-article-header__meta c-article-header__download">
+            <Download className="c-article-header__download-icon" />  Download as PDF
           </a>
         </Link>
       </div>

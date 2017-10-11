@@ -61,12 +61,22 @@
     background-color: $brand-medium;
   }
 }
+.c-article-header__button-text {
+  color: $white;
+}
 
-.c-article-header__link {
+.c-article-header__download {
   font-family: $font-sans;
   display: inline-block;
   margin-bottom: $spacing-large;
+  padding-left: 0;
   padding-bottom: 0;
+}
+.c-article-header__download-icon {
+  width: 26px;
+  height: 26px;
+  fill: $white;
+  margin-bottom: -9px;
 }
 
 a.c-article-header__button, a.c-article-header__button:hover, a.c-article-header__button:visited, a.c-article-header__button:active, {

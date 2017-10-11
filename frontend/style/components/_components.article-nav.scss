@@ -9,9 +9,10 @@
     padding-top: $spacing;
   }
   .c-article-nav-list__item {
-    border-left: 2px solid $grey;
+    border-left: 1px solid rgba($grey, .35);
     padding-left: $spacing;
     padding-bottom: $spacing;
+    transition: all .2s ease-out;
     a {
       border-bottom: none;
       color: $black;
@@ -22,7 +23,7 @@
   }
   .c-article-nav-list__item--scrolled-past,
   .c-article-nav-list__item--selected {
-    border-left: 2px solid $black;
+    border-left: 1px solid $black;
   }
   .c-article-nav-list__item--selected > a {
     font-weight: bolder;
