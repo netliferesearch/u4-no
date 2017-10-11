@@ -1,22 +1,22 @@
 export default {
   title: 'Course',
-  name: 'courseType',
+  name: 'course',
   type: 'object',
   fields: [
     {
       name: 'title',
       title: 'Title',
-      type: 'text'
+      type: 'text',
     },
     {
       name: 'description',
       title: 'Description',
-      type: 'text'
+      type: 'text',
     },
     {
       name: 'language',
       title: 'Language',
-      type: 'text'
+      type: 'text',
     },
     {
       name: 'startDate',
@@ -24,7 +24,7 @@ export default {
       type: 'richDate',
       options: {
         inputDate: true,
-        inputTime: false
+        inputTime: false,
       }
     },
     {
@@ -33,7 +33,7 @@ export default {
       type: 'richDate',
       options: {
         inputDate: true,
-        inputTime: false
+        inputTime: false,
       }
     },
     {

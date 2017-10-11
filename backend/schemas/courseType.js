@@ -6,17 +6,17 @@ export default {
     {
       name: 'title',
       title: 'Title',
-      type: 'text'
+      type: 'text',
     },
     {
       name: 'description',
       title: 'Description',
-      type: 'text'
+      type: 'text',
     },
     {
       name: 'language',
       title: 'Language',
-      type: 'text'
+      type: 'text',
     },
   ],
 }
