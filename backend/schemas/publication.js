@@ -21,6 +21,7 @@ export default {
       title,
       subtitle,
       standfirst,
+      slug,
       leadText,
       {
         name: 'featuredImage',
