@@ -54,7 +54,11 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
-    "slugify": "^1.2.1"
+    "slugify": "^1.2.1",
+    "enzyme": "^2.9.1",
+    "enzyme-adapter-react-16": "^1.0.1",
+    "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.0.0"
   },
   "scripts": {
     "deploy-frontend": "git push heroku",
@@ -88,11 +92,5 @@
   "bugs": {
     "url": "https://github.com/netliferesearch/u4-no/issues"
   },
-  "homepage": "https://github.com/netliferesearch/u4-no#readme",
-  "devDependencies": {
-    "enzyme": "^2.9.1",
-    "enzyme-adapter-react-16": "^1.0.1",
-    "react-addons-test-utils": "^15.6.2",
-    "react-test-renderer": "^16.0.0"
-  }
+  "homepage": "https://github.com/netliferesearch/u4-no#readme"
 }
