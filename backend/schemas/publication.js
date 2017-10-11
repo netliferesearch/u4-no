@@ -76,7 +76,7 @@ export default {
       },
       {
         name: 'summary',
-        title: 'Summary for busy people',
+        title: 'Short version',
         description: 'One-pager, blog-like, light narrative. Bite-sized chunks with descriptive sub-headings. Explain: 1. the main recommendations and/or implications and findings, and  2. why this is important. Max 1000 words.',
         type: 'array',
         of: [
