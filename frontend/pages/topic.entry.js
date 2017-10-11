@@ -95,7 +95,7 @@ const TopicEntry = ({
           />
         </div>
       </section>
-
+      <h2 className="c-topic-section__title">From basic guides to indepth perspectives, all in one place.</h2>
       <section className="c-linkbox-wrapper">
         <LinkBox
           title="Read our essential guide"
@@ -113,6 +113,7 @@ const TopicEntry = ({
         />
       </section>
 
+      <h2 className="c-topic-section__title">Inform your anti-corrupion work with handpicked topic related publications, insights and ideas.</h2>
       <section>
         <h2 className="c-statement">Inform your anti-corruption work with handpicked topic related publications, insights and ideas.</h2>
         <div className="o-wrapper-medium c-mosaic">

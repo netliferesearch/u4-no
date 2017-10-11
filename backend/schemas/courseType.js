@@ -1,6 +1,6 @@
 export default {
   title: 'Course type',
-  name: 'courseType',
+  name: 'courseTypeType',
   type: 'object',
   fields: [
     {
