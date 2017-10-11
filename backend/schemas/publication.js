@@ -11,6 +11,7 @@ import {
   date,
   image,
   leadText,
+  slug
 } from './fields'
 
 export default {
