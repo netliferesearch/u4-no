@@ -11,6 +11,7 @@ import {
   date,
   image,
   leadText,
+  slug
 } from './fields'
 
 export default {
@@ -21,6 +22,7 @@ export default {
       title,
       subtitle,
       standfirst,
+      slug,
       leadText,
       {
         name: 'featuredImage',
