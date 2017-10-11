@@ -7,6 +7,7 @@
 }
 
 .c-article_mainPoints {
+  margin-top: $spacing;
   font-family: $font-sans;
   font-weight: 300;
   ul {
@@ -17,7 +18,7 @@
 }
 
 .c-article_mainPoints-firstWords {
-  font-weight:normal;
+  font-weight: normal;
 }
 
 .c-article_mainPoints-lastWords {
@@ -26,7 +27,7 @@
 .c-article_mainPoints-list {
   list-style: none;
   margin-left: 0;
-  margin-top: $spacing-large;
+  margin-top: $spacing;
   margin-bottom: $spacing-large;
 }
 
@@ -48,7 +49,6 @@
 .c-article__figure {
   margin-left: 0;
   margin-right: 0;
-
 }
 
 .c-article__figure-img {
@@ -106,5 +106,4 @@ blockquote {
   letter-spacing: 0.02em;
   font-weight: 300;
   padding-left: $spacing;
-
 }

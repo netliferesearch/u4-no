@@ -13,6 +13,7 @@ const PublicationArticleHeader = ({
   className = '',
   publicationType = {},
   authors = [],
+  editors = [],
 }) => (
   <header className={`${className} c-article-header`}>
     {/* Wrap in standard grid width until we know better */}
@@ -32,9 +33,20 @@ const PublicationArticleHeader = ({
       <div className="c-article-header__meta">
         <p>
           <AuthorList authors={authors} />
-          <br />
-          Series editor <a href="#">Kendra Dupuy</a>
-          <br />
+        </p>
+        <p>
+          {editors.length > 0 && (
+            <span>
+              Series editor{editors.length > 1 ? 's' : ''}{' '}
+              {editors.map(({ firstName, surname }) => (
+                <a href>
+                  {firstName} {surname}{' '}
+                </a>
+              ))}
+            </span>
+          )}
+        </p>
+        <p>
           Bergen: U4 Anti-Corruption Resource Centre @ Chr. Michelsen Institute (U4 Brief 2017:5)
         </p>
         <p>
@@ -50,7 +62,7 @@ const PublicationArticleHeader = ({
       <div>
         <Link route="/2">
           <a className="c-article-header__meta c-article-header__download">
-            <Download className="c-article-header__download-icon" />  Download as PDF
+            <Download className="c-article-header__download-icon" /> Download as PDF
           </a>
         </Link>
       </div>
