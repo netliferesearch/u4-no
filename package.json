@@ -16,7 +16,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "concurrently": "^3.5.0",
-    "enzyme": "^2.9.1",
     "eslint": "^4.7.2",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-compat": "^1.0.4",
@@ -51,7 +50,6 @@
     "react-headroom": "^2.1.6",
     "react-redux": "^5.0.6",
     "react-scrollchor": "^4.0.0",
-    "react-test-renderer": "^15.6.1",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
@@ -90,5 +88,11 @@
   "bugs": {
     "url": "https://github.com/netliferesearch/u4-no/issues"
   },
-  "homepage": "https://github.com/netliferesearch/u4-no#readme"
+  "homepage": "https://github.com/netliferesearch/u4-no#readme",
+  "devDependencies": {
+    "enzyme": "^2.9.1",
+    "enzyme-adapter-react-16": "^1.0.1",
+    "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.0.0"
+  }
 }
