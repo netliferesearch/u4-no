@@ -24,7 +24,7 @@ const Person = ({ person, linkLabel = 'Bio' }) => (
       <h3 {...classes('item-title')}>{person.firstName && person.firstName} {person.surname && person.surname}</h3>
       <small {...classes('item-subtitle')}>{person.position && person.position}</small>
       <div {...classes('item-meta')}>
-        {person.email && person.email}
+        {person.email && <a href={`mailto:${person.email}`}>{person.email}</a>}
       </div>
       <Link>
         <a>
