@@ -14,19 +14,18 @@ import { Link } from '../routes';
 class BreadCrumb extends Component {
   constructor(props) {
     super(props);
-    const { linkOverride = false } = props;
-    this.state = { data: false, linkOverride };
+    this.state = { data: props.data };
   }
 
   componentWillMount() {
-    if (this.state.linkOverride) {
+    if (this.state.data) {
       return; // no need to fetch data if we got link data passed in.
     }
     const client = sanityClient({
       projectId: '1f1lcoov',
       dataset: 'production',
       token: '',
-      useCdn: false,
+      useCdn: true,
     });
     const sanityQuery = '*[slug.current == $ref][0]';
     const { url = {} } = this.props;
@@ -39,31 +38,25 @@ class BreadCrumb extends Component {
   }
 
   render() {
-    const renderLink = (state) => {
-      const { _type, slug, title } = state.data;
-      if (state.linkOverride) {
-        const { template, params, title } = state.linkOverride;
-        return (
-          <Link route={template} params={params}>
+    const { title } = this.state.data;
+    const buildUrl = ({ _type = 'notype', slug = {} }) => {
+      if (_type === 'publication') {
+        return `/publications/${slug.current}`;
+      } else if (_type === 'topics') {
+        return `/topics/${slug.current}`;
+      }
+      return slug.current;
+    };
+
+    return (
+      <div>
+        {this.state.data && (
+          <Link route={buildUrl(this.state.data)}>
             <a>← {title}</a>
           </Link>
-        );
-      } else if (_type === 'topics') {
-        return (
-          <Link route="topic.entry" params={{ slug: this.state.data.slug.current }}>
-            <a>← {this.state.data.title}</a>
-          </Link>
-        );
-      } else if (_type === 'publication') {
-        return (
-          <Link route="publication.entry" params={{ slug: this.state.data.slug.current }}>
-            <a>← {this.state.data.title}</a>
-          </Link>
-        );
-      }
-      return null;
-    };
-    return <div>{renderLink(this.state)}</div>;
+        )}
+      </div>
+    );
   }
 }
 
