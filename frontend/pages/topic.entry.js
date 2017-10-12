@@ -130,7 +130,7 @@ const TopicEntry = ({
       </h2>
       <section>
         <div className="o-wrapper-medium">
-          {resources.length > 0 && <Mosaic resources={resources} />}
+          <Mosaic resources={resources} />
         </div>
         <h2 className="c-topic-section__title">
           <a href="#">Explore all our resources -></a>
