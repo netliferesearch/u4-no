@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from '../routes';
 import BEMHelper from 'react-bem-helper';
 import { Person } from './';
+import { ArrowRight } from '../components/icons';
 
 const classes = BEMHelper({
   name: 'team',
@@ -21,7 +22,7 @@ const Team = ({ title, members, linkLabel = 'Bio' }) => (
       }
     </div>
     <div className="o-wrapper">
-      <h2 className="c-topic-section__title"><a href="#">The whole U4 team -></a></h2>
+      <h2 className="c-topic-section__title"><a href="#">The whole U4 team &nbsp;<ArrowRight /></a></h2>
     </div>
   </section>
 );

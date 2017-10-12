@@ -107,7 +107,7 @@ const TopicEntry = ({
           <Mosaic resources={resources} />
         </div>
         <h2 className="c-topic-section__title">
-          <a href="#">Explore all our resources -></a>
+          <a href="#">Explore all our resources &nbsp;<ArrowRight /></a>
         </h2>
       </section>
     </div>
