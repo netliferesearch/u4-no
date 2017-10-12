@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Link } from '../routes';
 import DataLoader from '../helpers/data-loader';
 
-import { Layout, ExtendedBlockContent, Accordion, Team, Person, Mosaic, Newsletter } from '../components';
+import { Layout, ExtendedBlockContent, Accordion, Team, Person, Mosaic, Newsletter, PartnerPromo } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
@@ -119,7 +119,7 @@ const TopicEntry = ({
       </div>
       : null}
 
-    Partners her
+    <PartnerPromo />
 
     <Newsletter />
 
