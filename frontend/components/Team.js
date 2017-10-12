@@ -11,18 +11,13 @@ const classes = BEMHelper({
 
 const Team = ({ title, members, linkLabel = 'Bio' }) => (
   <section {...classes('')}>
-    <div className="o-wrapper">
-      <h2 {...classes('title')}>Hi!<br />{title}</h2>
-    </div>
-    <div {...classes('wrapper', null, 'o-wrapper')}>
+    <h2 {...classes('title')}>Hi!<br />{title}</h2>
+    <div {...classes('wrapper', null)}>
       {
         members.map(member =>
           <Person person={member} linkLabel={linkLabel} />,
         )
       }
-    </div>
-    <div className="o-wrapper">
-      <h2 className="c-topic-section__title"><a href="#">The whole U4 team &nbsp;<ArrowRight /></a></h2>
     </div>
   </section>
 );

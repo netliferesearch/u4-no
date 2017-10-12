@@ -1,6 +1,4 @@
 .c-team {
-  background: $brand-lightest;
-  padding: $spacing-huge $spacing;
 }
 .c-team__wrapper {
   @include mq($from: tablet) {
@@ -13,4 +11,3 @@
   color: $brand-dark;
   margin-bottom: $spacing-huge;
 }
-

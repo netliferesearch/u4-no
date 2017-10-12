@@ -106,7 +106,7 @@ const TopicEntry = ({
         <div id="resources" className="o-wrapper-medium">
           <Mosaic resources={resources} />
         </div>
-        <h2 className="c-topic-section__title">
+        <h2 className="c-topic-section__cta">
           <a href="#">Explore all our resources &nbsp;<ArrowRight /></a>
         </h2>
       </section>
@@ -114,12 +114,21 @@ const TopicEntry = ({
 
 
     { advisors.length ?
-      <div id="advisors">
-        <Team title="We’re the team developing this topic" members={advisors} linkLabel="Bio" />
+      <div id="advisors" className="c-topic-section--lightblue">
+        <div className="o-wrapper">
+          <Team title="We’re the team developing this topic" members={advisors} linkLabel="Bio" />
+          <h2 className="c-topic-section__cta">
+            <a href="#">The whole U4 team &nbsp;<ArrowRight /></a>
+          </h2>
+        </div>
       </div>
       : null}
 
-    <PartnerPromo />
+    <div id="partners" className="c-topic-section">
+      <div className="o-wrapper">
+        <PartnerPromo />
+      </div>
+    </div>
 
     <Newsletter />
 
