@@ -5,9 +5,9 @@ import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
 const TopicArticleEntry = (props) => {
-  const { url = {} } = props;
+  const { url = {}, title = '' } = props;
   const { query = {} } = url;
-  const { topicPart = 'nopart' } = query;
+  const { topicPart = 'nopart', slug = '' } = query;
   const topicPartMap = {
     basics: 'introduction',
     agenda: 'agenda',
@@ -16,7 +16,7 @@ const TopicArticleEntry = (props) => {
   return (
     <Layout>
       <div className="o-wrapper o-wrapper--padded">
-        <BreadCrumb url={url} />
+        <BreadCrumb linkOverride={{ template: 'topic.entry', params: { slug }, title }} />
       </div>
       <LongformArticle content={content} />
     </Layout>
