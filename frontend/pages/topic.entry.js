@@ -113,14 +113,14 @@ const TopicEntry = ({
           text="Let us walk you through the basics of this topic"
           icon={Basics}
           route="topic.article"
-          params={{ slug: slug.current, topicPart: 'basics', refid: _id }}
+          params={{ slug: slug.current, topicPart: 'basics', ref: slug.current }}
         />
         <LinkBox
           title="Get the bigger picture"
           text="Read our research and policy agenda to see where things are at with this topic world wide."
           icon={Picture}
           route="topic.article"
-          params={{ slug: slug.current, topicPart: 'agenda', refid: _id }}
+          params={{ slug: slug.current, topicPart: 'agenda', ref: slug.current }}
         />
       </section>
 

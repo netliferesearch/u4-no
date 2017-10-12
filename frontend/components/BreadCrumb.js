@@ -16,11 +16,11 @@ class BreadCrumb extends Component {
       token: '',
       useCdn: false,
     });
-    const sanityQuery = '*[_id == $id][0]';
+    const sanityQuery = '*[slug.current == $ref][0]';
     const { url = {} } = this.props;
     const { query = {} } = url;
-    const { refid = '' } = query;
-    const sanityParams = { id: refid };
+    const { ref = '' } = query;
+    const sanityParams = { ref };
     client.fetch(sanityQuery, sanityParams).then((data) => {
       this.setState(() => ({ data }));
     });
