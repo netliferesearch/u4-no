@@ -3,7 +3,7 @@ import { Link } from '../routes';
 import randomKey from '../helpers/randomKey';
 import { Download } from './icons';
 
-import { AuthorList } from '../components/';
+import { AuthorList, EditorList } from '../components/';
 
 const PublicationArticleHeader = ({
   title = 'no title',
@@ -35,16 +35,7 @@ const PublicationArticleHeader = ({
           <AuthorList authors={authors} />
         </p>
         <p>
-          {editors.length > 0 && (
-            <span>
-              Series editor{editors.length > 1 ? 's' : ''}{' '}
-              {editors.map(({ _id = '', firstName = '', surname = '' }) => (
-                <a key={_id} href="/">
-                  {firstName} {surname}{' '}
-                </a>
-              ))}
-            </span>
-          )}
+          <EditorList editors={editors} />
         </p>
         <p>
           Bergen: U4 Anti-Corruption Resource Centre @ Chr. Michelsen Institute (U4 Brief 2017:5)

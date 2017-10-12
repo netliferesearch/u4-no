@@ -1,4 +1,4 @@
-import { title, longTitle, explainerText, featuredImage, slug } from './fields'
+import { title, longTitle, image, explainerText, featuredImage, slug } from './fields'
 
 export default {
   name: 'article',
@@ -26,8 +26,9 @@ export default {
           ]
         },
         {
-          type: 'image'
-        }
+          type: 'pullQuote'
+        },
+        image,
       ]
     },
     slug

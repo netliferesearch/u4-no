@@ -86,6 +86,12 @@ export default {
         ]
       },
       {
+        name: 'summaryExternal',
+        title: 'Link to external short version',
+        description: 'Most probably a medium link',
+        type: 'url'
+      },
+      {
         name: 'content',
         title: 'Publication content',
         description: 'The body text and graphic elements.',
