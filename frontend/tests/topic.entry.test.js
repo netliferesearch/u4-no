@@ -8,7 +8,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 test('topic entry page', async () => {
   const props = await TopicEntry.getInitialProps({
-    query: { id: 'a8f6ad54-3a41-4ceb-b361-4febfb6fe67d' },
+    query: { slug: 'natural-resources-and-energy' },
   });
   expect(shallow(<TopicEntry {...props} />).exists()).toBe(true);
 });

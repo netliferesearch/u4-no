@@ -8,7 +8,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 test('publication entry page', async () => {
   const props = await PublicationEntry.getInitialProps({
-    query: { id: 'f62b433d-9bbf-4bcb-8a4d-9aed37e5afcd' },
+    query: { slug: 'shadow-value-chains' },
   });
   expect(shallow(<PublicationEntry {...props} />).exists()).toBe(true);
 });
