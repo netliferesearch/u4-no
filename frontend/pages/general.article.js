@@ -4,12 +4,12 @@ import { Layout, LongformArticle } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
-const GeneralArticle = ({ url = {}, content }) => (
+const GeneralArticle = ({ url = {}, content, advisors = [] }) => (
   <Layout>
     <div className="o-wrapper o-wrapper--padded">
       <BreadCrumb url={url} />
     </div>
-    <LongformArticle content={content} />
+    <LongformArticle content={content} advisors={advisors} />
   </Layout>
 );
 

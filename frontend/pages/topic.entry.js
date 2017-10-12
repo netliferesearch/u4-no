@@ -3,39 +3,10 @@ import Head from 'next/head';
 import { Link } from '../routes';
 import DataLoader from '../helpers/data-loader';
 
-import { Layout, ExtendedBlockContent, Accordion, Team, Person, Mosaic } from '../components';
+import { Layout, ExtendedBlockContent, Accordion, Team, Person, Mosaic, Newsletter } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
-
-const teamMembers = [
-  {
-    id: 1,
-    featuredImage: {
-      asset: {
-        url:
-          'https://cdn.sanity.io/images/1f1lcoov/production/t3Yvuyac5OKZbUz1Sc6HFKeW-684x892.jpg',
-      },
-    },
-    name: 'Kendra Dupuy',
-    position: 'SENIOR PROGRAMME ADVISOR',
-    phone: '+47 479 38 073',
-    email: 'aled.williams@cmi.no',
-  },
-  {
-    id: 2,
-    featuredImage: {
-      asset: {
-        url:
-          'https://cdn.sanity.io/images/1f1lcoov/production/t3Yvuyac5OKZbUz1Sc6HFKeW-684x892.jpg',
-      },
-    },
-    name: 'Kendra Dupuy',
-    position: 'SENIOR PROGRAMME ADVISOR',
-    phone: '+47 479 38 073',
-    email: 'aled.williams@cmi.no',
-  },
-];
 
 const TopicEntry = ({
   topic: {
@@ -138,7 +109,12 @@ const TopicEntry = ({
       </section>
     </div>
 
-    <Team title="We’re the team developing this topic" members={teamMembers} linkLabel="Bio" />
+    <Team title="We’re the team developing this topic" members={advisors} linkLabel="Bio" />
+
+    Partners her
+
+    <Newsletter />
+
   </Layout>
 );
 export default DataLoader(TopicEntry, {
