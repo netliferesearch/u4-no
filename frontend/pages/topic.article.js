@@ -5,9 +5,9 @@ import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
 const TopicArticleEntry = (props) => {
-  const { url = {} } = props;
+  const { url = {}, title } = props;
   const { query = {} } = url;
-  const { topicPart = 'nopart' } = query;
+  const { topicPart = 'nopart', slug = '' } = query;
   const topicPartMap = {
     basics: 'introduction',
     agenda: 'agenda',
@@ -16,7 +16,7 @@ const TopicArticleEntry = (props) => {
   return (
     <Layout>
       <div className="o-wrapper o-wrapper--padded">
-        <BreadCrumb url={url} />
+        <BreadCrumb data={{ _type: 'topics', slug: { current: slug }, title }} />
       </div>
       <LongformArticle content={content} />
     </Layout>
@@ -24,9 +24,9 @@ const TopicArticleEntry = (props) => {
 };
 
 export default DataLoader(TopicArticleEntry, {
-  queryFunc: ({ query: { id = '' } }) => ({
-    sanityQuery: '*[_id == $id][0]',
-    param: { id },
+  queryFunc: ({ query: { slug = '' } }) => ({
+    sanityQuery: '*[slug.current == $slug][0]',
+    param: { slug },
   }),
   materializeDepth: 1,
 });

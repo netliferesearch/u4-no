@@ -8,9 +8,9 @@ const PublicationOverview = ({ publications = [] }) => (
   <Layout>
     <div className="o-wrapper">
       <h1>Publications</h1>
-      {publications.map(({ _id = '', title = '' }) => (
+      {publications.map(({ slug = {}, title = '' }) => (
         <div key={randomKey()}>
-          <Link route={`/publications/${_id}`}>
+          <Link route="publication.entry" params={{ slug: slug.current || 'no-slug-defined' }}>
             <a>{title}</a>
           </Link>
         </div>

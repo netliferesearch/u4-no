@@ -68,7 +68,9 @@ const PublicationEntry = (props) => {
                     }}
                   />
                   <div className="c-hero-bg" />
-                  <div className="c-hero-sideText">Photo: Cristiano Zingale</div>
+                  <div className="c-hero-sideText">
+                    <a href={props.featuredImage.sourceUrl}>{props.featuredImage.credit}</a>
+                  </div>
                   <div className="c-hero-header">
                     <PublicationArticleHeader
                       className="c-hero__grid-container__content links-wrapper-dark-background"
@@ -85,6 +87,7 @@ const PublicationEntry = (props) => {
               </div>
               {mainPoints.length > 0 && (
                 <div className="c-article c-article_mainPoints">
+                  <h2>Main points</h2>
                   <ul className="c-article_mainPoints-list">
                     {mainPoints.map((mainPoint, index) => (
                       <li key={index} className="c-article_mainPoints-item">
@@ -113,47 +116,65 @@ const PublicationEntry = (props) => {
           <LongformArticle {...props} />
           <span id="js-bottom" />
           <section>
-            <h2 className="c-statement">Inform your anti-corruption work with handpicked topic related publications, insights and ideas.</h2>
+            <h2 className="c-statement">
+              Inform your anti-corruption work with handpicked topic related publications, insights
+              and ideas.
+            </h2>
             <div className="o-wrapper-medium c-mosaic">
-              {resources.length ?
+              {resources.length ? (
                 <div
                   className="c-mosaic_item"
                   style={{
                     backgroundImage: `url(${resources[0].imageUrl})`,
                   }}
-                >></div>
-                : null }
-              {resources.map(({ title = '', _id = '', _type = '', imageUrl = '', titleColor = '#FFF' }, index) => (
-                <a
-                  href={`/publications/${_id}`}
-                  className={`c-mosaic_item ${(index % 4) === 2 ? 'c-mosaic_item--backgroundImage' : ''} ${(index % 4) === 2 && titleColor === '#000' ? 'c-mosaic_item--backgroundImage-invert' : ' '}`}
-                  style={{
-                    backgroundImage: `url(${(index % 4) === 2 ? imageUrl : ''})`,
-                  }}
                 >
-                  <div className="c-mosaic_item-content">
-                    <div
-                      className="c-mosaic_item-content__meta"
-                      style={{
-                        color: (index % 4) === 2 ? titleColor : ' ',
-                      }
-                      }
-                    >{_type}</div>
-                    <div>
-                      <h3 style={{
-                        color: (index % 4) === 2 ? titleColor : ' ',
-                      }
-                      }
-                      >{title}</h3>
+                  >
+                </div>
+              ) : null}
+              {resources.map(
+                (
+                  { title = '', _id = '', _type = '', imageUrl = '', titleColor = '#FFF' },
+                  index,
+                ) => (
+                  <a
+                    href={`/publications/${_id}`}
+                    className={`c-mosaic_item ${index % 4 === 2
+                      ? 'c-mosaic_item--backgroundImage'
+                      : ''} ${index % 4 === 2 && titleColor === '#000'
+                      ? 'c-mosaic_item--backgroundImage-invert'
+                      : ' '}`}
+                    style={{
+                      backgroundImage: `url(${index % 4 === 2 ? imageUrl : ''})`,
+                    }}
+                  >
+                    <div className="c-mosaic_item-content">
+                      <div
+                        className="c-mosaic_item-content__meta"
+                        style={{
+                          color: index % 4 === 2 ? titleColor : ' ',
+                        }}
+                      >
+                        {_type}
+                      </div>
+                      <div>
+                        <h3
+                          style={{
+                            color: index % 4 === 2 ? titleColor : ' ',
+                          }}
+                        >
+                          {title}
+                        </h3>
+                      </div>
                     </div>
-                  </div>
-                </a>
-              ))}
+                  </a>
+                ),
+              )}
             </div>
-            <h2 className="c-statement"><a href="#">Explore all our resources -></a></h2>
+            <h2 className="c-statement">
+              <a href="#">Explore all our resources -></a>
+            </h2>
           </section>
         </article>
-
       )}
     </Layout>
   );
@@ -168,9 +189,9 @@ export default DataLoader(
     }),
   )(PublicationEntry),
   {
-    queryFunc: ({ query: { id = '' } }) => ({
-      sanityQuery: '*[_id == $id][0]',
-      param: { id },
+    queryFunc: ({ query: { slug = '' } }) => ({
+      sanityQuery: '*[slug.current == $slug && !(_id in path "drafts.**")][0]',
+      param: { slug },
     }),
     materializeDepth: 1,
   },

@@ -1,22 +1,22 @@
 export default {
   title: 'Course type',
-  name: 'courseType',
+  name: 'courseTypeType',
   type: 'object',
   fields: [
     {
       name: 'title',
       title: 'Title',
-      type: 'text'
+      type: 'text',
     },
     {
       name: 'description',
       title: 'Description',
-      type: 'text'
+      type: 'text',
     },
     {
       name: 'language',
       title: 'Language',
-      type: 'text'
+      type: 'text',
     },
   ],
 }
