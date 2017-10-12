@@ -24,9 +24,9 @@ const TopicArticleEntry = (props) => {
 };
 
 export default DataLoader(TopicArticleEntry, {
-  queryFunc: ({ query: { id = '' } }) => ({
-    sanityQuery: '*[_id == $id][0]',
-    param: { id },
+  queryFunc: ({ query: { slug = '' } }) => ({
+    sanityQuery: '*[slug.current == $slug][0]',
+    param: { slug },
   }),
   materializeDepth: 1,
 });
