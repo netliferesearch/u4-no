@@ -13,12 +13,17 @@
   }
   &:nth-child(3n + 1) {
     background-color: $brand-main;
+    margin-top: -$spacing;
+    morgin-bottom: $spacing;
   }
   &:nth-child(3n + 2) {
     background-color: $brand-dark;
   }
   @include mq($from: tablet) {
     width: 50%;
+  }
+  @include mq($from: desktop) {
+    height: 240px;
   }
 }
 .c-linkbox__content {
