@@ -38,8 +38,8 @@ const PublicationArticleHeader = ({
           {editors.length > 0 && (
             <span>
               Series editor{editors.length > 1 ? 's' : ''}{' '}
-              {editors.map(({ firstName, surname }) => (
-                <a href>
+              {editors.map(({ _id = '', firstName = '', surname = '' }) => (
+                <a key={_id} href="/">
                   {firstName} {surname}{' '}
                 </a>
               ))}
