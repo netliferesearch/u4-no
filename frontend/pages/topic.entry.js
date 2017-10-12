@@ -109,7 +109,10 @@ const TopicEntry = ({
       </section>
     </div>
 
-    <Team title="We’re the team developing this topic" members={advisors} linkLabel="Bio" />
+
+    { advisors.length ?
+      <Team title="We’re the team developing this topic" members={advisors} linkLabel="Bio" />
+      : null}
 
     Partners her
 
