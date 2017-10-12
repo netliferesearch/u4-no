@@ -189,9 +189,9 @@ export default DataLoader(
     }),
   )(PublicationEntry),
   {
-    queryFunc: ({ query: { id = '' } }) => ({
-      sanityQuery: '*[_id == $id][0]',
-      param: { id },
+    queryFunc: ({ query: { slug = '' } }) => ({
+      sanityQuery: '*[slug.current == $slug && !(_id in path "drafts.**")][0]',
+      param: { slug },
     }),
     materializeDepth: 1,
   },
