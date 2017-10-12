@@ -129,10 +129,6 @@ const TopicEntry = ({
         ideas.
       </h2>
       <section>
-        <h2 className="c-statement">
-          Inform your anti-corruption work with handpicked topic related publications, insights and
-          ideas.
-        </h2>
         <div className="o-wrapper-medium c-mosaic">
           {resources.length ? (
             <div
