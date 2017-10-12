@@ -1,39 +1,21 @@
-import React, { Component } from 'react';
-import { Layout, TopicArticle } from '../components';
+import React from 'react';
 
-const sanityClient = require('@sanity/client');
+import { Layout, LongformArticle } from '../components';
+import BreadCrumb from '../components/BreadCrumb';
+import DataLoader from '../helpers/data-loader';
 
-export default class extends Component {
-  static async getInitialProps({ query }) {
-    const client = sanityClient({ projectId: '1f1lcoov', dataset: 'production', token: '' });
-    const { id = '' } = query;
-    const sanityQuery = `*[_id == "${id}"]`;
-    const article = (await client.fetch(sanityQuery))[0];
-    return { article, query };
-  }
-  constructor(props) {
-    super(props);
-    const {
-      article = {
-        title: 'loading document',
-      },
-    } = props;
-  }
-  componentDidUpdate() {}
-  render() {
-    const { article, query = {} } = this.props;
-    const {
-      title = '',
-      longTitle = '',
-      explainerText = 'no explainerText',
-      featuredImage,
-      content = [],
-    } = article;
-    return (
-      <Layout>
-        <h1>{title}</h1>
-        <TopicArticle content={content} />
-      </Layout>
-    );
-  }
-}
+const GeneralArticle = ({ url = {}, content }) => (
+  <Layout>
+    <div className="o-wrapper o-wrapper--padded">
+      <BreadCrumb url={url} />
+    </div>
+    <LongformArticle content={content} />
+  </Layout>
+);
+
+export default DataLoader(GeneralArticle, {
+  queryFunc: ({ query: { slug = '' } }) => ({
+    sanityQuery: '*[slug.current == $slug][0]',
+    param: { slug },
+  }),
+});

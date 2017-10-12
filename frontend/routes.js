@@ -7,5 +7,5 @@ routes
   .add('topic.article', '/topics/:slug/:topicPart')
   .add('topic.entry', '/topics/:slug')
   .add('topic.index', '/topics')
-  .add('general.article', '/article/:id')
+  .add('general.article', '/article/:slug')
   .add('online-training.entry', '/online-training/:id');
