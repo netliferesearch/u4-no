@@ -17,9 +17,7 @@
   @include mq($from: wide) {
     grid-template-columns: repeat(4, 1fr);
   }
- }
-
-
+}
 
 // Focus item
 // Child 1 is a big picture child 2 is the first text-box
@@ -48,132 +46,127 @@
 // The grid changes according to the number of children
 
 .c-mosaic_item {
-
-
-    @include mq($from: tablet, $until: desktop) {
-      //3
-    &:nth-child(3):nth-last-child(1){
+  @include mq($from: tablet, $until: desktop) {
+    //3
+    &:nth-child(3):nth-last-child(1) {
       grid-column: 1 / 3;
-      }
-      //5
-    &:nth-child(5):nth-last-child(1){
-      grid-column: 1 / 3;
-      }
-      //7
-    &:nth-child(7):nth-last-child(1){
-      grid-column: 1 / 3;
-      }
-      //8
-    &:nth-child(3):nth-last-child(6){
-      grid-column: 1 / 3;
-      }
-    &:nth-child(8):nth-last-child(1){
-      grid-column: 1 / 3;
-      }
-      //9
-    &:nth-child(7):nth-last-child(3){
-      grid-column: 1 / 3;
-      }
-      //10
-    &:nth-child(5):nth-last-child(6){
-      grid-column: 1 / 3;
-      }
-    &:nth-child(10):nth-last-child(1){
-      grid-column: 1 / 3;
-      }
-     }
-    @include mq($from: desktop, $until: wide) {
-      //3
-    &:nth-child(3):nth-last-child(1){
-      grid-row: 1 / 3;
-      }
-      //5
-    &:nth-child(3):nth-last-child(3){
-      grid-row: 1 / 3;
-      }
-    &:nth-child(5):nth-last-child(1){
-      grid-column: 2 / 4;
-      }
-      //6
-    &:nth-child(6):nth-last-child(1){
-      grid-column: 2 / 4;
-      }
-      //8
-    &:nth-child(3):nth-last-child(6){
-      grid-row: 1 / 3;
-      }
-    &:nth-child(7):nth-last-child(2){
-      grid-column: 1 / 3;
-      }
-      //9
-    &:nth-child(9):nth-last-child(1){
-      grid-column: 2 / 4;
-      }
     }
-    @include mq($from: wide) {
-      //4
-    &:nth-child(3):nth-last-child(2){
-      grid-column: 3 / 5;
-      }
-    &:nth-child(4):nth-last-child(1){
-      grid-column: 3 / 5;
-      }
-      //4
-    &:nth-child(5):nth-last-child(1){
-      grid-column: 3 / 5;
-      }
-      //7
-    &:nth-child(3):nth-last-child(5){
-      grid-column: 3 / 5;
-      }
-    &:nth-child(5):nth-last-child(3){
-      grid-row: 2 / 4;
-      }
-    &:nth-child(6):nth-last-child(2){
+    //5
+    &:nth-child(5):nth-last-child(1) {
       grid-column: 1 / 3;
-      }
-      //8
-    &:nth-child(4):nth-last-child(5){
-      grid-row: 1 / 3;
-      grid-column: 4 / 5;
-      }
-    &:nth-child(6):nth-last-child(3){
+    }
+    //7
+    &:nth-child(7):nth-last-child(1) {
       grid-column: 1 / 3;
-      }
-      //9
-    &:nth-child(9):nth-last-child(1){
-      grid-column: 3 / 5;
-      }
+    }
+    //8
+    &:nth-child(3):nth-last-child(6) {
+      grid-column: 1 / 3;
+    }
+    &:nth-child(8):nth-last-child(1) {
+      grid-column: 1 / 3;
+    }
+    //9
+    &:nth-child(7):nth-last-child(3) {
+      grid-column: 1 / 3;
+    }
+    //10
+    &:nth-child(5):nth-last-child(6) {
+      grid-column: 1 / 3;
+    }
+    &:nth-child(10):nth-last-child(1) {
+      grid-column: 1 / 3;
     }
   }
+  @include mq($from: desktop, $until: wide) {
+    //3
+    &:nth-child(3):nth-last-child(1) {
+      grid-row: 1 / 3;
+    }
+    //5
+    &:nth-child(3):nth-last-child(3) {
+      grid-row: 1 / 3;
+    }
+    &:nth-child(5):nth-last-child(1) {
+      grid-column: 2 / 4;
+    }
+    //6
+    &:nth-child(6):nth-last-child(1) {
+      grid-column: 2 / 4;
+    }
+    //8
+    &:nth-child(3):nth-last-child(6) {
+      grid-row: 1 / 3;
+    }
+    &:nth-child(7):nth-last-child(2) {
+      grid-column: 1 / 3;
+    }
+    //9
+    &:nth-child(9):nth-last-child(1) {
+      grid-column: 2 / 4;
+    }
+  }
+  @include mq($from: wide) {
+    //4
+    &:nth-child(3):nth-last-child(2) {
+      grid-column: 3 / 5;
+    }
+    &:nth-child(4):nth-last-child(1) {
+      grid-column: 3 / 5;
+    }
+    //4
+    &:nth-child(5):nth-last-child(1) {
+      grid-column: 3 / 5;
+    }
+    //7
+    &:nth-child(3):nth-last-child(5) {
+      grid-column: 3 / 5;
+    }
+    &:nth-child(5):nth-last-child(3) {
+      grid-row: 2 / 4;
+    }
+    &:nth-child(6):nth-last-child(2) {
+      grid-column: 1 / 3;
+    }
+    //8
+    &:nth-child(4):nth-last-child(5) {
+      grid-row: 1 / 3;
+      grid-column: 4 / 5;
+    }
+    &:nth-child(6):nth-last-child(3) {
+      grid-column: 1 / 3;
+    }
+    //9
+    &:nth-child(9):nth-last-child(1) {
+      grid-column: 3 / 5;
+    }
+  }
+}
 
 // Variation in background color
 
-.c-mosaic_item:nth-child(4n+2) {
-      background-color: $brand-dark;
-      color: $white;
+.c-mosaic_item:nth-child(4n + 2) {
+  background-color: $brand-dark;
+  color: $white;
 }
-.c-mosaic_item:nth-child(4n+3) {
-      background-color: $brand-main;
-      color: $white;
+.c-mosaic_item:nth-child(4n + 3) {
+  background-color: $brand-main;
+  color: $white;
 }
-.c-mosaic_item:nth-child(4n+4) {
-      background-color: $brand-main;
-      background-position: center;
-      background-size: cover;
-      color: $white;
+.c-mosaic_item:nth-child(4n + 4) {
+  background-color: $brand-main;
+  background-position: center;
+  background-size: cover;
+  color: $white;
 }
-.c-mosaic_item:nth-child(4n+5) {
-      border: solid 2px $brand-dark;
-      color: $brand-dark;
+.c-mosaic_item:nth-child(4n + 5) {
+  border: solid 2px $brand-dark;
+  color: $brand-dark;
 }
-
-
-
 
 // Content inside the grid items
 
-.c-mosaic_item-content{
+.c-mosaic_item-content {
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -192,35 +185,49 @@
 // Color overlay
 
 .c-mosaic_item--backgroundImage {
-  box-shadow: inset 0 0 0 500px rgba(0,0,0,0.2);
+  box-shadow: inset 0 0 0 500px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.4s;
 }
 
 .c-mosaic_item--backgroundImage-invert {
-  box-shadow: inset 0 0 0 500px rgba(255,255,255,0.3);
+  box-shadow: inset 0 0 0 500px rgba(255, 255, 255, 0.3);
 }
 
 // Hover
 
 .c-mosaic_item--backgroundImage:hover {
-  box-shadow: inset 0 0 0 500px rgba(0,0,0,0);
+  box-shadow: inset 0 0 0 500px rgba(0, 0, 0, 0);
 }
 
 a.c-mosaic_item {
   border-bottom: 0;
   transition: transform 0.2s;
   transform-origin: center center;
-  will-change: transform,opacity;
+  will-change: transform, opacity;
 }
 
 a.c-mosaic_item:hover {
-color:white;
-border-bottom: 0;
-transform: scale(1.03);
-box-shadow: 0 4px 10px rgba(6,8,28,.15)
+  color: white;
+  border-bottom: 0;
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(6, 8, 28, 0.15);
 }
 
-.c-mosaic_item:nth-child(4n+5):hover  {
-      border: solid 2px $brand-dark;
-      color: $brand-dark;
+.c-mosaic_item:nth-child(4n + 5):hover {
+  border: solid 2px $brand-dark;
+  color: $brand-dark;
+}
+
+.c-mosaic_item {
+  position: relative;
+}
+.c-mosaic_item--backgroundImage::after {
+  content: '';
+  position: absolute;
+  display: block;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
 }

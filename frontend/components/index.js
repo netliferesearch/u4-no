@@ -9,6 +9,7 @@ export { default as Accordion } from './Accordion';
 export { default as AuthorList } from './AuthorList';
 export { default as Person } from './Person';
 export { default as Team } from './Team';
+export { default as Mosaic } from './Mosaic';
 export {
   TableOfContentsButton,
   TableOfContentsContent,

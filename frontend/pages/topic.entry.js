@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Link } from '../routes';
 import DataLoader from '../helpers/data-loader';
 
-import { Layout, ExtendedBlockContent, Accordion, Team, Person } from '../components';
+import { Layout, ExtendedBlockContent, Accordion, Team, Person, Mosaic } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
@@ -129,52 +129,8 @@ const TopicEntry = ({
         ideas.
       </h2>
       <section>
-        <div className="o-wrapper-medium c-mosaic">
-          {resources.length ? (
-            <div
-              className="c-mosaic_item"
-              style={{
-                backgroundImage: `url(${resources[0].imageUrl})`,
-              }}
-            >
-              >
-            </div>
-          ) : null}
-          {resources.map(
-            ({ title = '', _id = '', _type = '', imageUrl = '', titleColor = '#FFF' }, index) => (
-              <a
-                href={`/publications/${_id}`}
-                className={`c-mosaic_item ${index % 4 === 2
-                  ? 'c-mosaic_item--backgroundImage'
-                  : ''} ${index % 4 === 2 && titleColor === '#000'
-                  ? 'c-mosaic_item--backgroundImage-invert'
-                  : ' '}`}
-                style={{
-                  backgroundImage: `url(${index % 4 === 2 ? imageUrl : ''})`,
-                }}
-              >
-                <div className="c-mosaic_item-content">
-                  <div
-                    className="c-mosaic_item-content__meta"
-                    style={{
-                      color: index % 4 === 2 ? titleColor : ' ',
-                    }}
-                  >
-                    {_type}
-                  </div>
-                  <div>
-                    <h3
-                      style={{
-                        color: index % 4 === 2 ? titleColor : ' ',
-                      }}
-                    >
-                      {title}
-                    </h3>
-                  </div>
-                </div>
-              </a>
-            ),
-          )}
+        <div className="o-wrapper-medium">
+          {resources.length > 0 && <Mosaic resources={resources} />}
         </div>
         <h2 className="c-topic-section__title">
           <a href="#">Explore all our resources -></a>
@@ -183,27 +139,6 @@ const TopicEntry = ({
     </div>
 
     <Team title="We’re the team developing this topic" members={teamMembers} linkLabel="Bio" />
-
-    <Head>
-      <style>
-        {`
-        .c-mosaic_item{
-          position:relative;
-        }
-        .c-mosaic_item--backgroundImage::after {
-        content: "";
-        position: absolute;
-        display: block;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        opacity: .3;
-
-      }
-      `}
-      </style>
-    </Head>
   </Layout>
 );
 export default DataLoader(TopicEntry, {
