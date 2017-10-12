@@ -32,13 +32,14 @@ class BreadCrumb extends Component {
     const { query = {} } = url;
     const { ref = '' } = query;
     const sanityParams = { ref };
-    client.fetch(sanityQuery, sanityParams).then((data) => {
-      this.setState(() => ({ data }));
-    });
+    if (ref) {
+      client.fetch(sanityQuery, sanityParams).then((data) => {
+        this.setState(() => ({ data }));
+      });
+    }
   }
 
   render() {
-    const { title } = this.state.data;
     const buildUrl = ({ _type = 'notype', slug = {} }) => {
       if (_type === 'publication') {
         return `/publications/${slug.current}`;
@@ -47,12 +48,11 @@ class BreadCrumb extends Component {
       }
       return slug.current;
     };
-
     return (
       <div>
         {this.state.data && (
           <Link route={buildUrl(this.state.data)}>
-            <a>← {title}</a>
+            <a>← {this.state.data.title}</a>
           </Link>
         )}
       </div>
