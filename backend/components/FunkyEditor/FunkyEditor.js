@@ -78,7 +78,10 @@ export default class FunkyEditor extends React.Component {
           type={type}
           level={level}
           value={value}
-          onChange={this.handleReadable}
+          onChange={(changeData) => {
+            this.props.onChange(changeData)
+            this.handleReadable(changeData)
+          }}
         />
         <p>
           Letter count: {letter_count} - Reading time: {reading_time} - Readable.io rate: {rating}.
