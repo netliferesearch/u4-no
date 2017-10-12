@@ -34,7 +34,10 @@ const TopicEntry = ({
       <h1 className="c-topic-page_title">{title}</h1>
       <h2 className="c-topic-page__longTitle">{longTitle}</h2>
       <div className="u-margin-bottom">
-        <DownArrowButton text="Browse our resources" />
+        <DownArrowButton
+          text="Browse our resources"
+          onClick={() => document.getElementById('resources').scrollIntoView(true)}
+        />
       </div>
       <section className="c-boxOnImage u-margin-bottom-huge">
         {featuredImage && (
@@ -71,7 +74,7 @@ const TopicEntry = ({
           <DownArrowButton
             modifier="secondary"
             text="Contact one of our advisors"
-            onClick={() => console.log('clicked!')}
+            onClick={() => document.getElementById('advisors').scrollIntoView(true)}
           />
         </div>
       </section>
@@ -100,7 +103,7 @@ const TopicEntry = ({
         ideas.
       </h2>
       <section>
-        <div className="o-wrapper-medium">
+        <div id="resources" className="o-wrapper-medium">
           <Mosaic resources={resources} />
         </div>
         <h2 className="c-topic-section__title">
@@ -111,7 +114,9 @@ const TopicEntry = ({
 
 
     { advisors.length ?
-      <Team title="We’re the team developing this topic" members={advisors} linkLabel="Bio" />
+      <div id="advisors">
+        <Team title="We’re the team developing this topic" members={advisors} linkLabel="Bio" />
+      </div>
       : null}
 
     Partners her
