@@ -40,7 +40,7 @@ const Team = ({ title, members, featuredImage }) => (
       }
     </div>
     <div className="o-wrapper">
-      <h2 className="c-statement"><a href="#">The whole U4 team -></a></h2>
+      <h2 className="c-topic-section__title"><a href="#">The whole U4 team -></a></h2>
     </div>
   </section>
 );

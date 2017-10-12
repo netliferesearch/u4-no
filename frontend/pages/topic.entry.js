@@ -113,14 +113,14 @@ const TopicEntry = ({
           text="Let us walk you through the basics of this topic"
           icon={Basics}
           route="topic.article"
-          params={{ slug: slug.current, topicPart: 'basics' }}
+          params={{ slug, topicPart: 'basics' }}
         />
         <LinkBox
           title="Get the bigger picture"
           text="Read our research and policy agenda to see where things are at with this topic world wide."
           icon={Picture}
           route="topic.article"
-          params={{ slug: slug.current, topicPart: 'agenda' }}
+          params={{ slug, topicPart: 'agenda' }}
         />
       </section>
 
@@ -176,7 +176,7 @@ const TopicEntry = ({
             ),
           )}
         </div>
-        <h2 className="c-statement">
+        <h2 className="c-topic-section__title">
           <a href="#">Explore all our resources -></a>
         </h2>
       </section>
