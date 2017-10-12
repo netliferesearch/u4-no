@@ -115,65 +115,6 @@ const PublicationEntry = (props) => {
           </div>
           <LongformArticle {...props} />
           <span id="js-bottom" />
-          <section>
-            <h2 className="c-statement">
-              Inform your anti-corruption work with handpicked topic related publications, insights
-              and ideas.
-            </h2>
-            <div className="o-wrapper-medium c-mosaic">
-              {resources.length ? (
-                <div
-                  className="c-mosaic_item"
-                  style={{
-                    backgroundImage: `url(${resources[0].imageUrl})`,
-                  }}
-                >
-                  >
-                </div>
-              ) : null}
-              {resources.map(
-                (
-                  { title = '', _id = '', _type = '', imageUrl = '', titleColor = '#FFF' },
-                  index,
-                ) => (
-                  <a
-                    href={`/publications/${_id}`}
-                    className={`c-mosaic_item ${index % 4 === 2
-                      ? 'c-mosaic_item--backgroundImage'
-                      : ''} ${index % 4 === 2 && titleColor === '#000'
-                      ? 'c-mosaic_item--backgroundImage-invert'
-                      : ' '}`}
-                    style={{
-                      backgroundImage: `url(${index % 4 === 2 ? imageUrl : ''})`,
-                    }}
-                  >
-                    <div className="c-mosaic_item-content">
-                      <div
-                        className="c-mosaic_item-content__meta"
-                        style={{
-                          color: index % 4 === 2 ? titleColor : ' ',
-                        }}
-                      >
-                        {_type}
-                      </div>
-                      <div>
-                        <h3
-                          style={{
-                            color: index % 4 === 2 ? titleColor : ' ',
-                          }}
-                        >
-                          {title}
-                        </h3>
-                      </div>
-                    </div>
-                  </a>
-                ),
-              )}
-            </div>
-            <h2 className="c-statement">
-              <a href="#">Explore all our resources -></a>
-            </h2>
-          </section>
         </article>
       )}
     </Layout>
