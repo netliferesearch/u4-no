@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i');
+
+:root {
+  --font-family-sans-serif: 'Lato', Helvetica, Arial, sans-serif;
+  --body-bg: #fff;
+  --text-color: #4A4A4A;
+  --brand-darkest: #000;
+  --brand-lightest: #fff;
+  --brand-primary--text: #fff;
+  --brand-primary-light--text: #000;
+  --brand-primary-light: color(var(--brand-primary) lightness(+ 15%) saturation(- 10%));
+  --brand-primary-lighter: color(var(--brand-primary) lightness(+ 30%) saturation(- 15%));
+  --brand-primary: #0079CF;
+  --brand-secondary-light--text: var(--white);
+  --brand-secondary-light: color(var(--brand-secondary) lightness(+ 5%) saturation(- 10%));
+  --brand-secondary-lighter--text: var(--black);
+  --brand-secondary-lighter: color(var(--brand-secondary) lightness(+ 25%) saturation(- 10%));
+  --brand-secondary: #1DA1F2;
+  --brand-secondary: #f43;
+  --component-bg: #fff;
+  --component-border-color: #0954A7;
+  --component-box-shadow: 0 1px 3px color(var(--black) a(50%));
+  --gray-base: #323232;
+  --state-danger-color: #F8495F;
+}
