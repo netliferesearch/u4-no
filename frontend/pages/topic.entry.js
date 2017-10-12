@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from '../routes';
-import sanityClient from '@sanity/client';
-import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
+import { Link } from '../routes';
+import DataLoader from '../helpers/data-loader';
 
 import { Layout, ExtendedBlockContent, Accordion, Team } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
