@@ -1,0 +1,7 @@
+.c-newsletter {
+  background: $brand-lightest;
+  padding: $spacing $spacing-small;
+  @include mq($from: tablet) {
+    padding: $spacing-huge $spacing-small;
+  }
+}

@@ -10,6 +10,7 @@ export { default as AuthorList } from './AuthorList';
 export { default as Person } from './Person';
 export { default as Team } from './Team';
 export { default as Mosaic } from './Mosaic';
+export { default as Newsletter } from './Newsletter';
 export {
   TableOfContentsButton,
   TableOfContentsContent,
