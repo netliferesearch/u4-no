@@ -125,7 +125,7 @@ const TopicEntry = ({
       </section>
 
       <h2 className="c-topic-section__title">
-        Inform your anti-corrupion work with handpicked topic related publications, insights and
+        Inform your anti-corruption work with handpicked topic related publications, insights and
         ideas.
       </h2>
       <section>
