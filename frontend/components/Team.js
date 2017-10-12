@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from '../routes';
-import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
 import { Person } from './';
 
