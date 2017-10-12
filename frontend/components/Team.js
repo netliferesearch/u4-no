@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from '../routes';
 import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
+import { Person } from './';
 
 const classes = BEMHelper({
   name: 'team',
   prefix: 'c-',
 });
 
-const Team = ({ title, members, featuredImage }) => (
+const Team = ({ title, members, linkLabel = 'Bio' }) => (
   <section {...classes('')}>
     <div className="o-wrapper">
       <h2 {...classes('title')}>Hi!<br />{title}</h2>
@@ -16,26 +17,7 @@ const Team = ({ title, members, featuredImage }) => (
     <div {...classes('wrapper', null, 'o-wrapper')}>
       {
         members.map(member =>
-          (<div {...classes('item')}>
-            {member.featuredImage && (
-              <figure {...classes('item-figure')}>
-                <img src={member.featuredImage.asset.url} />
-              </figure>
-            )}
-            <div {...classes('item-body')}>
-              <h3 {...classes('item-title')}>{member.name}</h3>
-              <small {...classes('item-subtitle')}>{member.position}</small>
-              <div {...classes('item-meta')}>
-                {member.phone}<br />
-                {member.email}
-              </div>
-              <Link>
-                <a>
-                  <span {...classes('item-link')}>Bio</span>  <ArrowRight />
-                </a>
-              </Link>
-            </div>
-          </div>),
+          <Person person={member} linkLabel={linkLabel} />,
         )
       }
     </div>

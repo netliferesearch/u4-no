@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Link } from '../routes';
 import DataLoader from '../helpers/data-loader';
 
-import { Layout, ExtendedBlockContent, Accordion, Team } from '../components';
+import { Layout, ExtendedBlockContent, Accordion, Team, Person } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
@@ -182,7 +182,7 @@ const TopicEntry = ({
       </section>
     </div>
 
-    <Team title="We’re the team developing this topic" members={teamMembers} />
+    <Team title="We’re the team developing this topic" members={teamMembers} linkLabel="Bio" />
 
     <Head>
       <style>
