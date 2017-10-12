@@ -1,7 +1,55 @@
+
 .c-newsletter {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.c-newsletter__content {
   background: $brand-lightest;
   padding: $spacing $spacing-small;
+  @include mq($from: mobile) {
+  }
   @include mq($from: tablet) {
-    padding: $spacing-huge $spacing-small;
+    margin-left: -$spacing;
+    padding: $spacing-huge $spacing-large;
+  }
+}
+
+.c-newsletter__title {
+  @include inuit-font-size($font-size-huge/1.5, $line-height-large );
+  color: $brand-dark;
+  margin: 0 0 $spacing-small;
+  border-bottom: 1px solid $brand-dark;
+  transition: border .2s ease-out;
+
+  &:hover {
+    color: $brand-light;
+    border-bottom: 1px solid $brand-light;
+
+  }
+}
+
+.c-newsletter__title-arrow {
+  float:right;
+  margin-right: $spacing-small;
+}
+
+.c-newsletter__small-title {
+  display: inline-block;
+  @include inuit-font-size($font-size-small, $line-height-normal );
+  color: $brand-dark;
+  margin: 0;
+  font-family: $font-sans;
+  font-weight: 400;
+}
+.c-newsletter__to-top {
+  display: flex;
+  padding: 0 $spacing;
+  grid-column: 2 / 8;
+  writing-mode: vertical-lr;
+  text-align:center;
+  a {
+    border: 0;
+    cursor: pointer;
   }
 }

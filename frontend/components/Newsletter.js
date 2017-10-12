@@ -18,17 +18,37 @@ class Newsletter extends Component {
 
   }
 
+  scrollToTop(e) {
+    window.scrollTo(0, 0);
+  }
+
   render() {
-    const { label, placeholder, link } = this.props;
+    const { smallTitle = 'Keep up with us', title = 'Subscribe to our newsletter', link = '/#' } = this.props;
 
     return (
-      <div {...classes()}>
-        <form {...classes(null, null, 'o-wrapper')}>
-          <label htmlFor="email">{label}</label>
-          <input type="email" placeholder={placeholder} value="" />
-          <button type="submit"><ArrowRight /></button>
-        </form>
-        <span>Back top top</span>
+      <div>
+        <div {...classes(null, null, 'o-wrapper')}>
+          <div {...classes('content')}>
+            <h4 {...classes('small-title')}>{smallTitle}</h4>
+            <Link to={link}>
+              <a>
+                <h3 {...classes('title')}>
+                  {title}
+                  <span {...classes('title-arrow')}>
+                    <ArrowRight />
+                  </span>
+                </h3>
+              </a>
+            </Link>
+          </div>
+          <div {...classes('to-top')}>
+
+            <a onClick={this.scrollToTop}>
+              {console.log(Link.params)}
+                Back on top
+            </a>
+          </div>
+        </div>
       </div>
     );
   }
