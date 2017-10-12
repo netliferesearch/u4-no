@@ -44,8 +44,7 @@ class Newsletter extends Component {
           <div {...classes('to-top')}>
 
             <a onClick={this.scrollToTop}>
-              {console.log(Link.params)}
-                Back on top
+                Back to top
             </a>
           </div>
         </div>
