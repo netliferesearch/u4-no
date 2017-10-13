@@ -1,0 +1,21 @@
+.c-footer {
+  padding: $spacing;
+  @include mq($from: tablet) {
+    padding: $spacing-huge $spacing;
+  }
+}
+
+.c-footer__wrapper {
+  @include mq($from: tablet) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+}
+
+.c-footer__item {
+  @include mq($from: tablet) {
+    width: 25%;
+    display: inline-block;
+  }
+}

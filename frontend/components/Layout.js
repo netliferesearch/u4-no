@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '../routes';
-import { HeadComponent, Logo } from '../components';
+import { HeadComponent, Logo, Footer } from '../components';
 
 export default ({
   showLoadingScreen = false,
@@ -28,5 +28,6 @@ export default ({
       </div>
     )}
     {children}
+    <Footer />
   </div>
 );

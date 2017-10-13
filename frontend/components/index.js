@@ -3,6 +3,7 @@ export { default as AuthorList } from './AuthorList';
 export { default as EditorList } from './EditorList';
 export { default as ExtendedBlockContent } from './ExtendedBlockContent';
 export { default as Figure } from './Figure';
+export { default as Footer } from './Footer';
 export { default as HeadComponent } from './HeadComponent';
 export { default as Layout } from './Layout';
 export { default as LongformArticle } from './LongformArticle';
