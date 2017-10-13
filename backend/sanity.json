@@ -27,6 +27,14 @@
     {
       "implements": "part:@sanity/form-builder/input-resolver",
       "path": "./parts/inputResolver"
+    },
+    {
+      "implements": "part:@sanity/base/brand-logo",
+      "path": "./components/Logo.js"
+    },
+    {
+      "implements": "part:@sanity/base/theme/variables/override-style",
+      "path": "styles/variableOverrides.css"
     }
   ]
 }
