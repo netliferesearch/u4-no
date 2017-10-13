@@ -3,6 +3,7 @@ import { sortBy } from 'lodash';
 import { Link } from '../routes';
 import { Layout } from '../components';
 import DataLoader from '../helpers/data-loader';
+import { DownArrowButton } from '../components/buttons';
 
 function sortTopics(items, key) {
   return sortBy(items, [key]);
@@ -10,10 +11,13 @@ function sortTopics(items, key) {
 const TopicOverview = ({ topics = [] }) => (
   <Layout>
     <div className="o-wrapper-inner">
-      <div className="c-overview-page-header">
-        <h1 className="c-overview-page__title">
-          U4 anti-corruption guides for development practitioners and policymakers
-        </h1>
+      <h1 className="c-topic-page_title">Topics</h1>
+      <h2 className="c-topic-page__longTitle">U4 anti-corruption guides for development practitioners and policymakers</h2>
+      <DownArrowButton
+        text="Browse our topics"
+        onClick={() => document.getElementById('topics').scrollIntoView(true)}
+      />
+      <div className="o-wrapper-inner u-margin-top-huge c-topic-page__body u-margin-bottom-huge">
         <p>What you'll find: </p>
         <p>What you won't find: </p>
         <p>Why we built this: </p>
@@ -22,9 +26,10 @@ const TopicOverview = ({ topics = [] }) => (
           want to share our knowledge by providing you with a selection of carefully crafted
           introductions and in-depth articles sorted by topics.
         </p>
+
       </div>
 
-      <section>
+      <section id="topics" className="o-wrapper-inner">
         {sortTopics(
           topics,
           'title',
@@ -44,8 +49,6 @@ const TopicOverview = ({ topics = [] }) => (
                     <a className="c-duo__link">{title}</a>
                   </Link>
                 </h2>
-                <span className="c-duo__subtitle">{subtitle}</span>
-                {explainerText && <p className="c-duo__text">{explainerText}</p>}
               </div>
             </div>
           ),
