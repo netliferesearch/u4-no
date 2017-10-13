@@ -13,7 +13,7 @@ const Footer = ({ title }) => (
     <div className="o-wrapper">
       <div {...classes('wrapper')}>
         <div {...classes('item')}>
-          <CmiLogo /><br /><br />
+          <CmiLogo {...classes('color-icon')} /><br /><br />
           <Logo {...classes('color-icon')} />
         </div>
         <div {...classes('item')}>
