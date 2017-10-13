@@ -28,7 +28,7 @@ const TopicEntry = ({
     <div className="o-wrapper">
       <p>
         <Link route={'/topics'}>
-          <a>← Topic overview</a>
+          <a className="c-topic-page__back">← Topic overview</a>
         </Link>
       </p>
       <h1 className="c-topic-page_title">{title}</h1>

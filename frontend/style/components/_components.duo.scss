@@ -5,3 +5,6 @@
 .c-duo__link {
   border: none;
 }
+.c-duo__title {
+  @include inuit-font-size($font-size-normal, $font-size-large)
+}

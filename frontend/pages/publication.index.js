@@ -6,13 +6,17 @@ import randomKey from '../helpers/randomKey';
 
 const PublicationOverview = ({ publications = [] }) => (
   <Layout>
-    <div className="o-wrapper">
-      <h1>Publications</h1>
+    <div className="o-wrapper-inner">
+      <h1 className="c-topic-page_longTitle u-margin-bottom-huge">Publications</h1>
       {publications.map(({ slug = {}, title = '' }) => (
-        <div key={randomKey()}>
-          <Link route="publication.entry" params={{ slug: slug.current || 'no-slug-defined' }}>
-            <a>{title}</a>
-          </Link>
+        <div className="c-duo__item" key={randomKey()}>
+          <div className="c-duo__body">
+            <h2 className="c-duo__title">
+              <Link route="publication.entry" params={{ slug: slug.current || 'no-slug-defined' }}>
+                <a className="c-duo__link">{title}</a>
+              </Link>
+            </h2>
+          </div>
         </div>
       ))}
     </div>

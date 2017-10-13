@@ -5,16 +5,16 @@ import { Layout } from '../components';
 export default () => (
   <Layout>
     <div className="o-wrapper">
-      <h1>Velkommen til u4.no</h1>
+      <h1>Welcome to u4.no</h1>
       <ul>
         <li>
           <Link route="/topics">
-            <a>Topic pages</a>
+            <a>Topics</a>
           </Link>
         </li>
         <li>
           <Link route="/publications">
-            <a>Publikasjoner</a>
+            <a>Publications</a>
           </Link>
         </li>
         <li>
