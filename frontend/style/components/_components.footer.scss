@@ -19,3 +19,9 @@
     display: inline-block;
   }
 }
+
+.c-footer__color-icon {
+  path, polygon {
+    fill: $brand-dark;
+  }
+}

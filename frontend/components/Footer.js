@@ -1,5 +1,7 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
+import { Logo } from './';
+import { CmiLogo } from './icons/';
 
 const classes = BEMHelper({
   name: 'footer',
@@ -11,7 +13,8 @@ const Footer = ({ title }) => (
     <div className="o-wrapper">
       <div {...classes('wrapper')}>
         <div {...classes('item')}>
-          Logoer
+          <CmiLogo /><br /><br />
+          <Logo {...classes('color-icon')} />
         </div>
         <div {...classes('item')}>
           <a href="mailto:u4@cmi.no">u4@cmi.no</a><br />
