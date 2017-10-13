@@ -97,7 +97,7 @@
     display: none;
   }
   @include mq($from: 1300px) {
-    display: block;
+    display: flex;
   }
 }
 
@@ -109,6 +109,5 @@
   height: 100%;
   padding-bottom: $spacing-large;
   overflow-y: auto;
-  display: flex;
   align-items: center;
 }
