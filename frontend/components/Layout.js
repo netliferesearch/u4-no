@@ -17,7 +17,7 @@ export default ({
   >
     <HeadComponent title={title} description={description} />
     {showTopTab && (
-      <div className="o-wrapper o-wrapper--padded">
+      <div className="u-padding">
         <div className="c-top-bar">
           <Link route="/">
             <a className="c-top-bar__logo">

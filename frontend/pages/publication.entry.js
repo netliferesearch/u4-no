@@ -53,7 +53,7 @@ const PublicationEntry = (props) => {
         </div>
       )}
       {!isArticleMenuOpen && (
-        <article className="o-wrapper o-wrapper--no-padding">
+        <article className="">
           <TableOfContentsButton {...props} />
           <CustomScrollSpy {...props} />
           <span id="js-top" />

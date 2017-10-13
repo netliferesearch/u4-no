@@ -7,11 +7,6 @@
   flex: 1 0 auto;
   display: flex;
   flex-wrap: wrap;
-
-    & > * {
-      max-width: 50%;
-      min-width: 50%;
-    }
   }
 }
 .c-boxOnImage__body {
@@ -20,8 +15,10 @@
   margin: -$spacing-large 0 0 $spacing;
   padding: $spacing;
   font-weight: 300;
+  @include inuit-font-size($font-size-small, $font-size-large)
 
   @include mq($from: wide) {
+    width: 30%;
     margin: 0;
     padding: $spacing-large $spacing-huge;
   }
@@ -42,6 +39,7 @@
   color: $brand-light;
 }
 .c-boxOnImage__figure {
+  width: 70%;
   position: relative;
   margin: 0 $spacing-large 0 0;
   @include mq($from: wide) {

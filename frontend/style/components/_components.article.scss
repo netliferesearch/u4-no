@@ -67,7 +67,8 @@
 }
 
 .c-article__nugget {
-  border: 1.5px solid lightgrey;
+  border: 1.5px solid $brand-medium;
+  color: $brand-medium;
   padding: 0.5em 2em;
   font-family: $font-sans;
   font-size: 0.8em;

@@ -91,6 +91,7 @@
 .c-article-nav-sidebar {
   margin: $spacing 0;
   height: 1vh;
+  max-width: 300px;
 
   @include mq($until: 1300px) {
     display: none;

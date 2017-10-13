@@ -11,7 +11,7 @@
   }
   @include mq($from: tablet) {
     margin-left: -$spacing;
-    padding: $spacing-huge $spacing-large;
+    padding: $spacing-huge $spacing-huge;
   }
 }
 

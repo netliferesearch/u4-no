@@ -23,17 +23,31 @@
     width: 50%;
   }
   @include mq($from: desktop) {
+    height: auto;
+  }
+  @include mq($from: wide) {
     height: 240px;
+  }
+  &:nth-child(odd){
+    .c-linkbox__content {
+      margin: 0;
+      @include mq($from: wide) {
+        margin: 0 0 0 auto;
+      }
+    }
   }
 }
 .c-linkbox__content {
   color: $white;
   padding: $spacing-large;
-  display: flex;
-  flex-direction: row;
   align-items: center;
   height: 100%;
   font-weight: 300;
+  @include mq($from: wide) {
+    display: flex;
+    flex-direction: row;
+    max-width: 70%;
+  }
 }
 
 .c-linkbox__title {

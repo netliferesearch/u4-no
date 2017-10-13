@@ -25,7 +25,7 @@ const TopicEntry = ({
   } = {},
 }) => (
   <Layout>
-    <div className="o-wrapper">
+    <div className="u-padding">
       <p>
         <Link route={'/topics'}>
           <a className="c-topic-page__back">← Topic overview</a>
@@ -115,19 +115,15 @@ const TopicEntry = ({
 
     { advisors.length ?
       <div id="advisors" className="c-topic-section--lightblue">
-        <div className="o-wrapper">
-          <Team title="We’re the team developing this topic" members={advisors} linkLabel="Bio" />
-          <h2 className="c-topic-section__cta">
-            <a href="#">The whole U4 team &nbsp;<ArrowRight /></a>
-          </h2>
-        </div>
+        <Team title="We’re the team developing this topic" members={advisors} linkLabel="Bio" />
+        <h2 className="c-topic-section__cta">
+          <a href="#">The whole U4 team &nbsp;<ArrowRight /></a>
+        </h2>
       </div>
       : null}
 
     <div id="partners" className="c-topic-section">
-      <div className="o-wrapper">
-        <PartnerPromo />
-      </div>
+      <PartnerPromo />
     </div>
 
     <Newsletter />

@@ -27,7 +27,7 @@ class Newsletter extends Component {
 
     return (
       <div>
-        <div {...classes(null, null, 'o-wrapper')}>
+        <div {...classes(null, null)}>
           <div {...classes('content')}>
             <h4 {...classes('small-title')}>{smallTitle}</h4>
             <Link to={link}>
