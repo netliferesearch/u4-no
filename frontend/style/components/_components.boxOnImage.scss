@@ -1,13 +1,13 @@
 .c-boxOnImage {
   min-height: 400px;
   position: relative;
+  color: $white;
+  font-family: $font-sans;
+  @include mq($from: wide) {
   flex: 1 0 auto;
   display: flex;
   flex-wrap: wrap;
-  color: $white;
-  font-family: $font-sans;
 
-  @include mq($from: wide) {
     & > * {
       max-width: 50%;
       min-width: 50%;
@@ -30,6 +30,14 @@
     background: $brand-dark;
   }
 }
+.c-boxOnImage__body--smaller {
+  text-align: center;
+  @include mq($from: wide) {
+    text-align: left;
+    max-width: 40%;
+    min-width: 40%;
+  }
+}
 .c-boxOnImage__link {
   color: $brand-light;
 }
@@ -48,7 +56,12 @@
       object-fit: cover;
     }
   }
-
+}
+.c-boxOnImage__figure--smaller {
+  @include mq($from: wide) {
+    min-width: 60%;
+    max-width: 60%;
+  }
 }
 .c-boxOnImage__title {
 
