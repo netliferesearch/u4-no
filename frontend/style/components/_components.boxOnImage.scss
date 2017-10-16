@@ -18,7 +18,7 @@
   @include inuit-font-size($font-size-small, $font-size-large)
 
   @include mq($from: wide) {
-    width: 30%;
+    width: 40%;
     margin: 0;
     padding: $spacing-large $spacing-huge;
   }
@@ -39,7 +39,7 @@
   color: $brand-light;
 }
 .c-boxOnImage__figure {
-  width: 70%;
+  width: 60%;
   position: relative;
   margin: 0 $spacing-large 0 0;
   @include mq($from: wide) {
