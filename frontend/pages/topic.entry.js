@@ -26,19 +26,8 @@ const TopicEntry = ({
 }) => (
   <Layout>
     <div className="u-padding">
-      <p>
-        <Link route={'/topics'}>
-          <a className="c-topic-page__back">← Topic overview</a>
-        </Link>
-      </p>
       <h1 className="c-topic-page_title">{title}</h1>
       <h2 className="c-topic-page__longTitle">{longTitle}</h2>
-      <div className="u-margin-bottom">
-        <DownArrowButton
-          text="Browse our resources"
-          onClick={() => document.getElementById('resources').scrollIntoView(true)}
-        />
-      </div>
       <section className="c-boxOnImage u-margin-bottom-huge">
         {featuredImage && (
           <figure className="c-boxOnImage__figure">

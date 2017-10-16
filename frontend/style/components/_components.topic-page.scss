@@ -1,11 +1,11 @@
 
 .c-topic-page_title {
-  @include inuit-font-size($font-size-small);
+  @include inuit-font-size($font-size-tiny);
   font-family: $font-sans;
   position: relative;
   color: $brand-dark;
   padding: 0 0 0 ($spacing);
-  margin: $spacing-large 0 0 0;
+  margin: $spacing 0 0 0;
   text-transform: uppercase;
 
   &:before {
@@ -25,7 +25,8 @@
   padding: $spacing;
 
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-larger, 1.3em);
+    @include inuit-font-size($font-size-largest, 57px);
+    margin-bottom: $spacing-huge;
     padding: 0;
   }
 }
