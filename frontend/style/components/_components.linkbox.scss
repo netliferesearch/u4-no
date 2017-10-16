@@ -3,37 +3,55 @@
   flex-direction: row;
   align-items: stretch;
   @include mq($until: tablet) {
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 
 .c-linkbox {
+  transition: background-color .2s ease-out;
+  svg {
+    transition: all .2s ease-out;
+  }
   &:nth-child(3n) {
     background-color: $brand-light;
+    &:hover {
+      background-color: $brand-medium;
+      svg {
+        transform: scale(1.1);
+      }
+    }
   }
   &:nth-child(3n + 1) {
     background-color: $brand-main;
     margin-top: -$spacing;
-    morgin-bottom: $spacing;
+    margin-bottom: $spacing;
+    &:hover {
+      background-color: $brand-medium;
+      svg {
+        transform: scale(1.1);
+      }
+    }
   }
   &:nth-child(3n + 2) {
     background-color: $brand-dark;
+    &:hover {
+      background-color: $brand-medium;
+      svg {
+        transform: scale(1.1);
+      }
+    }
   }
   @include mq($from: tablet) {
-    width: 50%;
-  }
-  @include mq($from: desktop) {
     height: auto;
   }
+  @include mq($from: desktop) {
+    width: 100%;
+  }
   @include mq($from: wide) {
-    height: 240px;
   }
   &:nth-child(odd){
     .c-linkbox__content {
       margin: 0;
-      @include mq($from: wide) {
-        margin: 0 0 0 auto;
-      }
     }
   }
 }
@@ -43,19 +61,20 @@
   align-items: center;
   height: 100%;
   font-weight: 300;
+  text-align: center;
   @include mq($from: wide) {
     display: flex;
-    flex-direction: row;
-    max-width: 70%;
+    flex-direction: column;
   }
 }
 
 .c-linkbox__title {
   @include inuit-font-size($font-size-normal);
+  margin-top: 0;
 }
 
 .c-linkbox__icon {
-  padding: $spacing;
+  padding: $spacing-small;
 }
 
 .c-linkbox__arrow {
@@ -69,8 +88,9 @@
   line-height: $line-height-normal;
 
   p {
-    font-size: $font-size-tiny;
+    font-size: $font-size-small;
     max-width: 450px;
     color: $white-on-blue;
+    margin-bottom: 0;
   }
 }

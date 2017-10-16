@@ -5,7 +5,7 @@ import DataLoader from '../helpers/data-loader';
 
 import { Layout, ExtendedBlockContent, Accordion, Team, Person, Mosaic, Newsletter, PartnerPromo } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
-import { Basics, Picture, Publication, Resources, ArrowRight } from '../components/icons';
+import { BasicGuide, ResearchAgenda, Picture, Publication, Resources, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
 
 const TopicEntry = ({
@@ -69,14 +69,14 @@ const TopicEntry = ({
         <LinkBox
           title="Basic guide"
           text="Read our introduction to corruption and anti-corruption efforts in natural resources and energy sectors. "
-          icon={Basics}
+          icon={BasicGuide}
           route="topic.article"
           params={{ slug, topicPart: 'basics' }}
         />
         <LinkBox
           title="Research and policy agenda"
           text="Discover what U4 and others do to advance research and reduce corruption in natural resources and energy."
-          icon={Picture}
+          icon={ResearchAgenda}
           route="topic.article"
           params={{ slug, topicPart: 'agenda' }}
         />

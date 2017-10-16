@@ -12,9 +12,6 @@ const LinkBox = ({ title = 'Click me', text = '', icon = '', route = '', params 
             <h2 className="c-linkbox__title">{title}</h2>
             {text && <p>{text}</p>}
           </div>
-          <div className="c-linkbox__arrow">
-            <DownArrowButton modifier="secondary" text="" />
-          </div>
         </div>
       </a>
     </Link>
