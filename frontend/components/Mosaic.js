@@ -16,7 +16,7 @@ const Mosaic = ({ resources = [] }) => (
     ) : null}
     {resources.map(
       (
-        { title = '', _id = '', _type = '', slug = '', imageUrl = '', titleColor = '#FFF' },
+        { title = '', _id = '', _type = '', publicationType = '', slug = '', imageUrl = '', titleColor = '#FFF' },
         index,
       ) => (
         <Link route={buildUrl({ _type, slug })}>
@@ -37,7 +37,7 @@ const Mosaic = ({ resources = [] }) => (
                   color: index % 4 === 2 ? titleColor : ' ',
                 }}
               >
-                {_type}
+                {publicationType}
               </div>
               <div>
                 <h3

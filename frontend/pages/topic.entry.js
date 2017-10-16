@@ -81,6 +81,7 @@ const TopicEntry = ({
       </h2>
       <section className="c-topic-section">
         <div id="resources" className="o-wrapper-medium">
+          {console.log(resources)}
           <Mosaic resources={resources} />
         </div>
         <h2 className="c-topic-section__cta">
@@ -112,9 +113,9 @@ export default DataLoader(TopicEntry, {
     console.log('topic slug is this', slug);
     return {
       sanityQuery:
-        '{ "topic": *[slug.current == $slug]{...,"resources": resources[]->{_id,_type, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}}[0]}',
+        '{ "topic": *[slug.current == $slug]{...,"resources": resources[]->{_id,_type, "publicationType": publicationType->title, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}}[0]}',
       param: { slug },
     };
   },
-  materializeDepth: 2,
+  materializeDepth: 3,
 });
