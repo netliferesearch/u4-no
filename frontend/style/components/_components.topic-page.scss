@@ -1,13 +1,17 @@
 
 .c-topic-page_title {
-  @include inuit-font-size($font-size-tiny);
   font-family: $font-sans;
   position: relative;
   color: $brand-dark;
   font-weight: 300;
   padding: 0 0 0 ($spacing);
-  margin: $spacing-small 0 $spacing 0;
   text-transform: uppercase;
+  margin: $spacing-small $spacing-small $spacing-small;
+  @include inuit-font-size($font-size-tiny, $line-height-normal );
+  @include mq($from: tablet) {
+    margin: 0 $spacing-huge;
+    @include inuit-font-size($font-size-tiny, $line-height-normal );
+  }
 
   &:before {
     position: absolute;
@@ -20,15 +24,13 @@
 .c-topic-page__longTitle {
   @include inuit-font-size($font-size-normal);
   font-family: $font-sans;
-  margin: $spacing-small 0 $spacing-large 0;
   color: $brand-dark;
+  margin: $spacing-small $spacing-small $spacing-large;
   max-width: 600px;
-  padding: $spacing;
 
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-largest, 57px);
-    margin-bottom: $spacing-huge;
-    padding: 0;
+    margin: $spacing-small $spacing $spacing-huge $spacing-huge;
   }
 }
 .c-topic-page__body {

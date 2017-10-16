@@ -25,37 +25,30 @@ const TopicEntry = ({
   } = {},
 }) => (
   <Layout>
-    <div className="u-padding">
+    <div>
       <h1 className="c-topic-page_title">{title}</h1>
       <h2 className="c-topic-page__longTitle">{longTitle}</h2>
       <section className="c-boxOnImage u-margin-bottom-huge">
         {featuredImage && (
           <figure className="c-boxOnImage__figure">
-            <img alt={featuredImage.asset.altText} src={featuredImage.asset.url} />
+            <img alt={featuredImage.asset.altText} src={`${featuredImage.asset.url}?w=1600&h=800&fit=crop&crop=focalpoint`} />
           </figure>
         )}
         <div className="c-boxOnImage__body">
           <p>{explainerText}</p>
           <ul className="c-link-list">
-            See also
+            <span>Related topics</span>
             <li className="c-link-list__item">
               <Link>
                 <a className="c-link-list__link">
-                  Area 1 <ArrowRight className="c-link-list__icon" />
+                  Oil, gas and mining <ArrowRight className="c-link-list__icon" />
                 </a>
               </Link>
             </li>
             <li className="c-link-list__item">
               <Link>
                 <a className="c-link-list__link">
-                  Area 2 <ArrowRight className="c-link-list__icon" />
-                </a>
-              </Link>
-            </li>
-            <li className="c-link-list__item">
-              <Link>
-                <a className="c-link-list__link">
-                  Area 3 <ArrowRight className="c-link-list__icon" />
+                  Renewable resources <ArrowRight className="c-link-list__icon" />
                 </a>
               </Link>
             </li>
@@ -86,7 +79,7 @@ const TopicEntry = ({
         Inform your anti-corruption work with handpicked topic related publications, insights and
         ideas.
       </h2>
-      <section>
+      <section className="c-topic-section">
         <div id="resources" className="o-wrapper-medium">
           <Mosaic resources={resources} />
         </div>

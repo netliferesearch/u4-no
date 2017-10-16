@@ -1,33 +1,43 @@
 .c-topic-section__title {
   margin: $spacing-huge auto;
-  @include inuit-font-size($font-size-normal, 1.5em);
+  @include inuit-font-size(26px, 1.4em);
   text-align: center;
   max-width: 700px;
   color: $brand-dark;
 }
 .c-topic-section__cta {
-  margin: $spacing-large auto;
   @include inuit-font-size($font-size-normal, 1.5em);
   text-align: center;
   max-width: 700px;
-  color: $brand-dark;
   a {
     border: none;
+    color: $brand-dark;
   }
-  svg {
+  svg, svg path {
     transition: transform .2s ease-out;
+    fill: $brand-dark;
   }
   &:hover {
     svg {
       transform: translateX(10px);
     }
   }
+  margin: $spacing-small auto;
+  @include mq($from: tablet) {
+    margin: $spacing-huge auto $spacing-small;
+  }
 }
 
 .c-topic-section {
-  padding: $spacing-huge $spacing;
+  padding: $spacing-large 0;
+  @include mq($from: tablet) {
+    padding: $spacing-huge 0;
+  }
 }
 .c-topic-section--lightblue {
   background: $brand-lightest;
-  padding: $spacing-huge $spacing;
+  padding: $spacing-large $spacing $spacing-small;
+  @include mq($from: tablet) {
+    padding: $spacing-huge 0;
+  }
 }

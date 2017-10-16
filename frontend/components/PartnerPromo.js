@@ -18,21 +18,21 @@ const PartnerPromo = ({
     <section className="c-boxOnImage c-boxOnImage--smaller u-margin-bottom-huge">
       <div className="c-boxOnImage__body c-boxOnImage__body--smaller">
         <div {...classes('statement')}>
-          <Helpdesk {...classes('statement-icon')} />
+          <OnlineTraining {...classes('statement-icon')} />
           <div {...classes('statement-bodywrapper')}>
             <h3 {...classes('statement-title')}>Online training</h3>
             <p {...classes('statement-body')}>Be confident with anti-corruption initiatives in your work. We offer dynamic and time-efficient online courses.</p>
           </div>
         </div>
         <div {...classes('statement')}>
-          <OnlineTraining {...classes('statement-icon')} />
+          <Workshops {...classes('statement-icon')} />
           <div {...classes('statement-bodywrapper')}>
             <h3 {...classes('statement-title')}>Workshops and events</h3>
             <p {...classes('statement-body')}>Our team can help bring momentum to processes. We gather different actors for informed discussions.</p>
           </div>
         </div>
         <div {...classes('statement')}>
-          <Workshops {...classes('statement-icon')} />
+          <Helpdesk {...classes('statement-icon')} />
           <div {...classes('statement-bodywrapper')}>
             <h3 {...classes('statement-title')}>Helpdesk for partners</h3>
             <p {...classes('statement-body')}>Send in your corruption-related questions about development programmes, sectors, or countries. A free research service.</p>
@@ -40,7 +40,7 @@ const PartnerPromo = ({
         </div>
       </div>
       <figure className="c-boxOnImage__figure c-boxOnImage__figure--smaller">
-        <img src="https://cdn.sanity.io/images/1f1lcoov/production/PuuelI1hPXMFFdtYtFCuVtc5-2000x1325.jpg" />
+        <img src="/static/services_partners.jpg?w=1600&amp;h=400&amp;fit=crop&amp;crop=focalpoint" />
       </figure>
 
     </section>

@@ -17,14 +17,12 @@ export default ({
   >
     <HeadComponent title={title} description={description} />
     {showTopTab && (
-      <div className="u-padding">
-        <div className="c-top-bar">
-          <Link route="/">
-            <a className="c-top-bar__logo">
-              <Logo />
-            </a>
-          </Link>
-        </div>
+      <div className="c-top-bar">
+        <Link route="/">
+          <a className="c-top-bar__logo">
+            <Logo />
+          </a>
+        </Link>
       </div>
     )}
     {children}

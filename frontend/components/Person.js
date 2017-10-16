@@ -22,7 +22,7 @@ const Person = ({ person, linkLabel = 'Bio' }) => (
     }
     <div {...classes('item-body')}>
       <h3 {...classes('item-title')}>{person.firstName && person.firstName} {person.surname && person.surname}</h3>
-      <small {...classes('item-subtitle')}>{person.position && person.position}</small>
+      <small {...classes('item-subtitle')}>{person.position && person.position}Senior program advisor</small>
       <div {...classes('item-meta')}>
         {person.email && <a href={`mailto:${person.email}`}>{person.email}</a>}
       </div>

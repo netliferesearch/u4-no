@@ -9,9 +9,13 @@
 }
 
 .c-partner-promo__title {
-  @include inuit-font-size($font-size-large, $line-height-large );
   color: $brand-dark;
-  margin-bottom: $spacing-huge;
+  margin: $spacing-small $spacing-small $spacing-large;
+  @include inuit-font-size($font-size-normal, $line-height-large );
+  @include mq($from: tablet) {
+    margin: $spacing-huge;
+    @include inuit-font-size($font-size-large, $line-height-large );
+  }
 }
 
 .c-partner-promo__cta {
@@ -42,7 +46,7 @@
 }
 
 .c-partner-promo__statement-icon {
-  width: 80px;
+  width: 70px;
   height: auto;
   vertical-align: top;
   margin-top: $spacing;
@@ -56,7 +60,7 @@
 }
 
 .c-partner-promo__statement-body {
-  @include inuit-font-size($font-size-tiny, $line-height-small );
+  @include inuit-font-size($font-size-tiny, $line-height-normal );
   margin-top: $spacing-small;
   margin-bottom: $spacing-large;
   max-width: 550px;

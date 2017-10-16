@@ -1,5 +1,9 @@
 .c-top-bar {
-  padding: $spacing/2 0;
+  padding: $spacing-small;
+  @include mq($from: tablet) {
+    padding: $spacing-large $spacing-huge;
+  }
+
 }
 .c-top-bar__logo {
   height: 50px;

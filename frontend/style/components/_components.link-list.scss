@@ -1,11 +1,16 @@
 .c-link-list {
   list-style: none;
-  margin: 0 0 $spacing;
+  margin: $spacing-large 0 $spacing;
   padding: 0;
+
+  span {
+    @include inuit-font-size($font-size-normal, $font-size-large);
+    font-weight: 400;
+  }
 }
 .c-link-list__item {
-  @include inuit-font-size($font-size-small);
-  padding: $spacing-small 0 0;
+  @include inuit-font-size($font-size-tiny, $font-size-normal);
+  padding: $spacing-tiny 0 0;
 
   &:hover {
     .c-link-list__icon {
