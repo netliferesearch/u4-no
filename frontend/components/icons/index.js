@@ -8,3 +8,4 @@ export { default as Helpdesk } from './Helpdesk';
 export { default as OnlineTraining } from './OnlineTraining';
 export { default as Workshops } from './Workshops';
 export { default as CmiLogo } from './CmiLogo';
+export { default as TOCup } from './TOCup';

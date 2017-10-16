@@ -41,6 +41,20 @@
   }
 }
 
+.c-article-nav-list__arrowup {
+  margin-top: $spacing;
+  margin-left: $spacing-small+8px;
+  display: block;
+  opacity: .3;
+}
+.c-article-nav-list__arrowdown {
+  margin-left: $spacing-small+8px;
+  display: block;
+  svg {
+    transform: rotate(180deg);
+  }
+}
+
 .c-article-nav-fullscreen {
   margin: 0;
   opacity: 0;
@@ -90,7 +104,6 @@
 
 .c-article-nav-sidebar {
   margin: $spacing 0;
-  height: 1vh;
   max-width: 300px;
 
   @include mq($until: 1300px) {
@@ -110,4 +123,8 @@
   padding-bottom: $spacing-large;
   overflow-y: auto;
   align-items: center;
+
+  .c-article-nav-list__arrowup {
+    opacity: 1;
+  }
 }
