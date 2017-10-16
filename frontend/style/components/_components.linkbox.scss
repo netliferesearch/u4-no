@@ -4,6 +4,7 @@
   align-items: stretch;
   @include mq($until: tablet) {
     flex-direction: row;
+    display: block;
   }
 }
 
