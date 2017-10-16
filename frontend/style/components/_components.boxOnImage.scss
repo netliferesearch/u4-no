@@ -10,7 +10,7 @@
   }
 
   @include mq($from: desktop) {
-    grid-template-columns: 50% 20px 20px 300px 20px 20px 20px;
+    grid-template-columns: 50% 20px 20px 600px 20px 20px 20px;
   }
 }
 .c-boxOnImage__body {
@@ -21,11 +21,16 @@
   margin: -$spacing-large 0 0 $spacing;
   padding: $spacing;
   font-weight: 300;
+  color: $white-on-blue;
   @include inuit-font-size($font-size-small, $font-size-large)
 
   @include mq($from: wide) {
     margin: -$spacing 0 $spacing 0;
-    padding: $spacing-large $spacing-huge;
+    padding: $spacing-huge;
+
+    p {
+      margin-top: 0;
+    }
 
     >* {
       max-width: 600px;

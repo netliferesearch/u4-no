@@ -52,6 +52,7 @@
 .c-partner-promo__statement-title {
   @include inuit-font-size($font-size-small, $line-height-normal );
   margin-bottom: 0;
+  color: $white;
 }
 
 .c-partner-promo__statement-body {
@@ -59,4 +60,5 @@
   margin-top: $spacing-small;
   margin-bottom: $spacing-large;
   max-width: 550px;
+  color: $white-on-blue;
 }

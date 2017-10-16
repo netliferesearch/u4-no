@@ -60,11 +60,6 @@ const TopicEntry = ({
               </Link>
             </li>
           </ul>
-          <DownArrowButton
-            modifier="secondary"
-            text="Contact one of our advisors"
-            onClick={() => document.getElementById('advisors').scrollIntoView(true)}
-          />
         </div>
       </section>
       <h2 className="c-topic-section__title">
@@ -72,15 +67,15 @@ const TopicEntry = ({
       </h2>
       <section className="c-linkbox-wrapper">
         <LinkBox
-          title="Read our essential guide"
-          text="Let us walk you through the basics of this topic"
+          title="Basic guide"
+          text="Read our introduction to corruption and anti-corruption efforts in natural resources and energy sectors. "
           icon={Basics}
           route="topic.article"
           params={{ slug, topicPart: 'basics' }}
         />
         <LinkBox
-          title="Get the bigger picture"
-          text="Read our research and policy agenda to see where things are at with this topic world wide."
+          title="Research and policy agenda"
+          text="Discover what U4 and others do to advance research and reduce corruption in natural resources and energy."
           icon={Picture}
           route="topic.article"
           params={{ slug, topicPart: 'agenda' }}

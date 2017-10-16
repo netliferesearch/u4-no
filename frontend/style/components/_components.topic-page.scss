@@ -4,8 +4,9 @@
   font-family: $font-sans;
   position: relative;
   color: $brand-dark;
+  font-weight: 300;
   padding: 0 0 0 ($spacing);
-  margin: $spacing 0 0 0;
+  margin: $spacing-small 0 $spacing 0;
   text-transform: uppercase;
 
   &:before {
