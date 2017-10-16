@@ -10,6 +10,7 @@ import {
   TableOfContentsSidebar,
   TableOfContentsContent,
   CustomScrollSpy,
+  ToggleBlock,
 } from '../components';
 import DataLoader from '../helpers/data-loader';
 
@@ -114,6 +115,13 @@ const PublicationEntry = (props) => {
             </div>
           </div>
           <LongformArticle {...props} />
+
+          <div className="c-longform-grid">
+            <div className="c-longform-grid__standard">
+              <ToggleBlock title="References" content={props.references} />
+            </div>
+          </div>
+
           <span id="js-bottom" />
         </article>
       )}

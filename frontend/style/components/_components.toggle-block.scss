@@ -1,0 +1,45 @@
+.c-toggle-block__item--active {
+
+}
+.c-toggle-block__title {
+  @include inuit-font-size($font-size-large, $font-size-huge);
+  font-family: $font-sans;
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  color: $brand-dark;
+
+  &:hover {
+    color: $brand-main;
+  }
+}
+.c-toggle-block__title-text {
+  display: inline-block;
+}
+.c-toggle-block__content {
+  animation: fadeIn .5s;
+}
+.c-toggle-block__icon {
+  transform: rotate(-90deg);
+  transition: transform .2s ease-out;
+  display: flex;
+  overflow: visible;
+  margin-right: $spacing-small;
+  margin-left: -$spacing-small;
+}
+.c-toggle-block__icon--active {
+  transform: rotate(-180deg);
+  transform-origin: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
