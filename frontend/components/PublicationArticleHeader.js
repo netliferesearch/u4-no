@@ -50,12 +50,13 @@ const PublicationArticleHeader = ({
           <div className="c-article-header__button-icon">→</div>
         </a>
       </Link>
-      <div>
+      <div className="c-article-header__meta c-article-header__download">
         <Link route="/2">
-          <a className="c-article-header__meta c-article-header__download">
-            <Download className="c-article-header__download-icon" /> Download as PDF
+          <a className="c-article-header__download-text">
+            <span>Download as PDF</span>
           </a>
         </Link>
+        <Download className="c-article-header__download-icon" />
       </div>
     </div>
   </header>
