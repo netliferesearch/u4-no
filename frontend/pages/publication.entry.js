@@ -116,11 +116,37 @@ const PublicationEntry = (props) => {
           </div>
           <LongformArticle {...props} />
 
-          <div className="c-longform-grid">
-            <div className="c-longform-grid__standard">
-              <ToggleBlock title="References" content={props.references} />
+          { props.references ?
+            <div className="c-longform-grid">
+              <div className="c-longform-grid__standard">
+                <ToggleBlock title="References" content={props.references} />
+              </div>
             </div>
-          </div>
+            : null }
+
+          { props.acknowledgements ?
+            <div className="c-longform-grid">
+              <div className="c-longform-grid__standard">
+                <ToggleBlock title="Acknowledgements" content={props.acknowledgements} />
+              </div>
+            </div>
+            : null }
+
+          { props.notes ?
+            <div className="c-longform-grid">
+              <div className="c-longform-grid__standard">
+                <ToggleBlock title="Notes" content={props.notes} />
+              </div>
+            </div>
+            : null }
+
+          { props.abstract ?
+            <div className="c-longform-grid">
+              <div className="c-longform-grid__standard">
+                <ToggleBlock title="Abstract" content={props.abstract} />
+              </div>
+            </div>
+            : null }
 
           <span id="js-bottom" />
         </article>
