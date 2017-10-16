@@ -42,7 +42,7 @@
 }
 
 .c-partner-promo__statement-icon {
-  width: 170px;
+  width: 80px;
   height: auto;
   vertical-align: top;
   margin-top: $spacing;
@@ -58,4 +58,5 @@
   @include inuit-font-size($font-size-tiny, $line-height-small );
   margin-top: $spacing-small;
   margin-bottom: $spacing-large;
+  max-width: 550px;
 }

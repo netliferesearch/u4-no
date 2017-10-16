@@ -16,7 +16,7 @@
   font-family: $font-sans;
 
   @include mq($from: tablet) {
-    margin: 24px 0;
+    margin: 24px 0 -24px;
     max-width: 50%;
     min-width: 50%;
   }
