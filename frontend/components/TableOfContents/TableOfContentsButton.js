@@ -15,7 +15,6 @@ export class TableOfContentsButton extends Component {
       <button
         className="c-article-nav-fullscreen-button"
         onClick={() => {
-          console.log('toggleArticleMenu()');
           toggleArticleMenu();
         }}
       >

@@ -44,12 +44,18 @@
 .c-article-nav-list__arrowup {
   margin-top: $spacing;
   margin-left: $spacing-small+8px;
-  display: block;
   opacity: .3;
+  display: none;
+  @include mq($from: tablet) {
+    display: block;
+  }
 }
 .c-article-nav-list__arrowdown {
   margin-left: $spacing-small+8px;
-  display: block;
+  display: none;
+  @include mq($from: tablet) {
+    display: block;
+  }
   svg {
     transform: rotate(180deg);
   }
@@ -91,6 +97,7 @@
   width: 75px;
   border-radius: 50%;
   background-color: $brand-dark;
+  cursor: pointer;
   img {
     vertical-align: text-bottom;
   }

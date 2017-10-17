@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Layout, LongformArticle } from '../components';
+import { Layout, LongformArticle, Footer } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
@@ -22,6 +22,7 @@ const GeneralArticle = ({
       </div>
       <LongformArticle content={content} advisors={advisors} />
     </div>
+    <Footer />
   </Layout>
 );
 

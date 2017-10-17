@@ -4,7 +4,7 @@ import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 
-import { Layout, ExtendedBlockContent, Accordion } from '../components';
+import { Footer, Layout, ExtendedBlockContent, Accordion } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources } from '../components/icons';
 import LinkBox from '../components/LinkBox';
@@ -49,6 +49,7 @@ const TopicEntry = ({
 
 
     </div>
+    <Footer />
   </Layout>
 );
 export default DataLoader(TopicEntry, {

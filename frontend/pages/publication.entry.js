@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import {
+  Footer,
   Layout,
   LongformArticle,
   PublicationArticleHeader,
@@ -155,6 +156,7 @@ const PublicationEntry = (props) => {
           </div>
 
           <span id="js-bottom" />
+          <Footer />
         </article>
       )}
     </Layout>
