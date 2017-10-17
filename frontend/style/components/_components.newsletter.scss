@@ -7,8 +7,7 @@
 .c-newsletter__content {
   background: $brand-lightest;
   padding: $spacing $spacing-small;
-  @include mq($from: mobile) {
-  }
+
   @include mq($from: tablet) {
     margin-left: -$spacing;
     padding: $spacing-huge $spacing-large $spacing-huge $spacing-huge;
@@ -16,11 +15,15 @@
 }
 
 .c-newsletter__title {
-  @include inuit-font-size($font-size-huge/1.5, $line-height-large );
   color: $brand-dark;
   margin: 0 0 $spacing-small;
+  padding-bottom: $spacing-small;
   border-bottom: 1px solid $brand-dark;
   transition: border .2s ease-out;
+  @include inuit-font-size($font-size-large, $line-height-normal );
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-huge/1.5, $line-height-large );
+  }
 
   &:hover {
     color: $brand-light;
