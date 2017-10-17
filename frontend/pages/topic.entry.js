@@ -3,10 +3,21 @@ import Head from 'next/head';
 import { Link } from '../routes';
 import DataLoader from '../helpers/data-loader';
 
-import { Footer, Layout, ExtendedBlockContent, Accordion, Team, Person, Mosaic, Newsletter, PartnerPromo } from '../components';
+import { Footer, Layout, ExtendedBlockContent, Accordion, Team, Person, Mosaic, Newsletter, PartnerPromo, LinkList } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { BasicGuide, ResearchAgenda, Picture, Publication, Resources, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
+
+const linkListContent = [
+  {
+    title: 'Oil, gas and mining',
+    link: '#',
+  },
+  {
+    title: 'Renewable resources',
+    link: '#',
+  },
+];
 
 const TopicEntry = ({
   topic: {
@@ -36,23 +47,7 @@ const TopicEntry = ({
         )}
         <div className="c-boxOnImage__body">
           <p>{explainerText}</p>
-          <ul className="c-link-list">
-            <span>Related topics</span>
-            <li className="c-link-list__item">
-              <Link>
-                <a className="c-link-list__link">
-                  Oil, gas and mining <ArrowRight className="c-link-list__icon" />
-                </a>
-              </Link>
-            </li>
-            <li className="c-link-list__item">
-              <Link>
-                <a className="c-link-list__link">
-                  Renewable resources <ArrowRight className="c-link-list__icon" />
-                </a>
-              </Link>
-            </li>
-          </ul>
+          <LinkList title="Related topics" content={linkListContent} />
         </div>
       </section>
       <h2 className="c-topic-section__title">

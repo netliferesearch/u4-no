@@ -20,6 +20,9 @@
 }
 .c-link-list__link {
   color: $brand-lighter;
+  &:visited {
+    color: $brand-lighter;
+  }
   border: none;
 }
 .c-link-list__icon {
