@@ -15,7 +15,7 @@ const PartnerPromo = ({
   <section {...classes('')}>
     <h2 {...classes('title')} dangerouslySetInnerHTML={title} />
 
-    <section className="c-boxOnImage c-boxOnImage--smaller u-margin-bottom-huge">
+    <section className="c-boxOnImage c-boxOnImage--smaller">
       <div className="c-boxOnImage__body c-boxOnImage__body--smaller">
         <div {...classes('statement')}>
           <OnlineTraining {...classes('statement-icon')} />

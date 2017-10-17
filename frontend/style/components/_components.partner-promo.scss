@@ -24,6 +24,9 @@
   text-align: center;
   max-width: 700px;
   color: $brand-dark;
+  @include mq($from: tablet) {
+    margin: $spacing-huge auto;
+  }
   a {
     border: none;
   }
@@ -46,11 +49,15 @@
 }
 
 .c-partner-promo__statement-icon {
-  width: 70px;
   height: auto;
   vertical-align: top;
-  margin-top: $spacing;
-  margin-right: $spacing;
+  margin-top: $spacing-small;
+  width: 50px;
+  @include mq($from: tablet) {
+    width: 70px;
+    margin-top: $spacing;
+    margin-right: $spacing;
+  }
 }
 
 .c-partner-promo__statement-title {
@@ -63,7 +70,10 @@
 .c-partner-promo__statement-body {
   @include inuit-font-size($font-size-tiny, $line-height-normal );
   margin-top: $spacing-small;
-  margin-bottom: $spacing-large;
   max-width: 550px;
   color: $white-on-blue;
+  margin-bottom: $spacing;
+  @include mq($from: tablet) {
+    margin-bottom: $spacing-large;
+  }
 }
