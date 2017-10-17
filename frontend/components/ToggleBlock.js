@@ -5,7 +5,6 @@ import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import { DownArrowButton } from '../components/buttons';
 
-
 const classes = BEMHelper({
   name: 'toggle-block',
   prefix: 'c-',
@@ -35,29 +34,22 @@ class ToggleBlock extends Component {
     return (
       <div {...classes()}>
         <div {...classes('item', this.state.activeClass)}>
-          <div
-            {...classes('title')}
-            onClick={this.toggle}
-          >
+          <div {...classes('title')} onClick={this.toggle}>
             <div {...classes('icon', this.state.activeClass)}>
-              <DownArrowButton
-                text=""
-              />
+              <DownArrowButton text="" />
             </div>
-            <span {...classes('title-text')}>
-              {title}
-            </span>
+            <span {...classes('title-text')}>{title}</span>
           </div>
-          { this.state.active ?
+          {this.state.active ? (
             <div {...classes('content')}>
-              <BlockContent blocks={content} />
+              {typeof content === 'string' && <p>{content}</p>}
+              {typeof content !== 'string' && <BlockContent blocks={content} />}
             </div>
-            : null}
+          ) : null}
         </div>
       </div>
     );
   }
 }
-
 
 export default ToggleBlock;

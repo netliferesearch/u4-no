@@ -116,37 +116,47 @@ const PublicationEntry = (props) => {
           </div>
           <LongformArticle {...props} />
 
-          { props.references ?
+          {props.references ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="References" content={props.references} />
               </div>
             </div>
-            : null }
+          ) : null}
 
-          { props.acknowledgements ?
+          {props.acknowledgements ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="Acknowledgements" content={props.acknowledgements} />
               </div>
             </div>
-            : null }
+          ) : null}
 
-          { props.notes ?
+          {props.notes ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="Notes" content={props.notes} />
               </div>
             </div>
-            : null }
+          ) : null}
 
-          { props.abstract ?
+          {props.abstract ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="Abstract" content={props.abstract} />
               </div>
             </div>
-            : null }
+          ) : null}
+
+          <div className="c-longform-grid">
+            <div className="c-longform-grid__standard">
+              <ToggleBlock
+                title="Disclaimer"
+                content="U4 is a resource centre for development practitioners who wish to effectively address corruption challenges in their work. The centre is operated by the Chr. Michelsen
+Institute – an independent centre for research on international development and policy – and is funded by DFAT (Australia), SDC (Switzerland), Danida (Denmark), DFID (UK), GIZ (Germany), Norad (Norway), Sida (Sweden) and The Ministry for Foreign Affairs of Finland. All views expressed in this brief are those of the author(s), and do not necessarily reflect the opinions of the U4 Partner Agencies or CMI/U4. (CC BY–NC–ND 4.0)"
+              />
+            </div>
+          </div>
 
           <span id="js-bottom" />
         </article>
