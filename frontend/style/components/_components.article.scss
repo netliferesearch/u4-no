@@ -69,7 +69,7 @@
 .c-article__nugget {
   border: 1.5px solid $brand-medium;
   color: $brand-medium;
-  padding: 0.5em 2em;
+  padding: $spacing;
   font-family: $font-sans;
   font-size: 0.8em;
   line-height: 1.5em;
@@ -78,7 +78,7 @@
 .c-article__nugget-title {
   font-family: $font-sans;
   @include inuit-font-size($font-size-normal);
-  margin-bottom: 0;
+  margin: $spacing 0;
   font-weight: bold;
 }
 
