@@ -103,6 +103,7 @@
   box-shadow: 0 0 20px rgba(black, .4);
   img {
     vertical-align: text-bottom;
+    max-width: 30px;
   }
   @include mq($until: 1300px) {
     display: block;
