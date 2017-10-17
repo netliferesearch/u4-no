@@ -1,7 +1,7 @@
 .c-article-nav-list {
   margin: 0;
   padding: $spacing $spacing-small 0 $spacing;
-  @include inuit-font-size($font-size-small);
+  @include inuit-font-size($font-size-tiny, $font-size-normal);
   font-family: $font-sans;
   transition: all 1s linear;
   list-style: none;
