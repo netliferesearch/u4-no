@@ -75,13 +75,12 @@ const TopicEntry = ({
         />
       </section>
 
-      <h2 className="c-topic-section__title">
+      <h2 className="c-topic-section__title u-padding-top-huge">
         Inform your anti-corruption work with handpicked topic related publications, insights and
         ideas.
       </h2>
-      <section className="c-topic-section">
+      <section className="c-topic-section u-padding-top-none">
         <div id="resources" className="o-wrapper-medium">
-          {console.log(resources)}
           <Mosaic resources={resources} />
         </div>
         <h2 className="c-topic-section__cta">
@@ -93,7 +92,7 @@ const TopicEntry = ({
 
     { advisors.length ?
       <div id="advisors" className="c-topic-section--lightblue">
-        <Team title="We’re the team developing this topic" members={advisors} linkLabel="Bio" />
+        <Team title="We’re the team developing this topic" members={advisors} linkLabel="Read full bio" />
         <h2 className="c-topic-section__cta">
           <a href="#">The whole U4 team &nbsp;<ArrowRight /></a>
         </h2>

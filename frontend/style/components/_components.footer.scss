@@ -1,7 +1,8 @@
 .c-footer {
   padding: $spacing;
+  font-family: $font-sans;
   @include mq($from: tablet) {
-    padding: $spacing-huge $spacing;
+    padding: $spacing-huge $spacing $spacing-huge $spacing-huge;
   }
 }
 

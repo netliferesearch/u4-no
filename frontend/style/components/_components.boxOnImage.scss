@@ -20,10 +20,15 @@
   color: $white-on-blue;
   @include inuit-font-size($font-size-tiny, $font-size-large*0.9)
 
+  @include mq($from: tablet) {
+    padding: 10%;
+    height: 560px;
+    margin: -$spacing 0 $spacing 0;
+  }
+
   @include mq($from: wide) {
     @include inuit-font-size(17px, 28px)
-    margin: -$spacing 0 $spacing 0;
-    padding: $spacing-huge;
+    padding: 15%;
 
     p {
       margin-top: 0;
@@ -46,11 +51,12 @@
   grid-column: 1 / 9;
   grid-row: 1 / 4;
   margin: 0 $spacing-large 0 0;
-  @include mq($from: wide) {
+  @include mq($from: tablet) {
+    height: 560px;
     & > img {
-      object-fit: cover;
       width: 100%;
-      height: auto;
+      height: 560px;
+      object-fit: cover;
     }
   }
 }
@@ -70,6 +76,8 @@ display: block;
   @include mq($from: wide) {
     text-align: left;
     grid-column: 1 / 7;
+    padding: 10%;
+    width: 800px;
   }
 }
 .c-boxOnImage__figure--smaller {
@@ -77,6 +85,9 @@ display: block;
   @include mq($from: wide) {
     grid-column: 2 / 10;
     grid-row: 1 / 4;
+    & > img {
+      height: 560px;
+    }
   }
 }
 .c-boxOnImage__title {

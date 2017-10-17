@@ -41,6 +41,7 @@ const Mosaic = ({ resources = [] }) => (
               </div>
               <div>
                 <h3
+                  className="c-mosaic_item-title"
                   style={{
                     color: index % 4 === 2 ? titleColor : ' ',
                   }}

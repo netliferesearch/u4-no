@@ -160,7 +160,7 @@
   color: $white;
 }
 .c-mosaic_item:nth-child(4n + 5) {
-  border: solid 2px $brand-dark;
+  border: solid 1px $brand-dark;
   color: $brand-dark;
 }
 
@@ -180,6 +180,11 @@
   text-transform: uppercase;
   @include inuit-font-size($font-size-tiny);
   padding-bottom: $spacing;
+}
+
+.c-mosaic_item-title {
+  font-weight: 300;
+  @include inuit-font-size($font-size-normal, $font-size-large*1.1);
 }
 
 // Color overlay

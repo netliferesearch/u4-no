@@ -1,6 +1,6 @@
 .c-person__item {
   margin: auto auto $spacing;
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     flex: 1 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -14,8 +14,11 @@
   padding: $spacing $spacing-large;
   font-weight: 300;
   font-family: $font-sans;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     margin: 24px 0 -24px;
     max-width: 50%;
     min-width: 50%;
@@ -28,7 +31,7 @@
 .c-person__item-figure {
   position: relative;
   margin: 0;
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     max-width: 50%;
     min-width: 50%;
   }
@@ -48,4 +51,5 @@
 }
 .c-person__item-link {
   margin-right: $spacing-small;
+  display: inline-block;
 }
