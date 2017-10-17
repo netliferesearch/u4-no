@@ -27,6 +27,7 @@
   }
   .c-article-nav-list__item--selected > a {
     font-weight: bolder;
+    color: $brand-medium;
   }
 }
 
@@ -68,7 +69,7 @@
 }
 
 @keyframes fullscreenopener {
-  0%,
+  1%,
   100% {
     display: block;
   }
@@ -81,10 +82,11 @@
 }
 
 .c-article-nav-fullscreen--open {
+  background: $brand-lightest;
   z-index: 3;
   opacity: 1;
   display: block;
-  animation: fullscreenopener 0.2s ease-out;
+  animation: fullscreenopener .9s ease-out;
 }
 
 .c-article-nav-fullscreen-button {
@@ -98,6 +100,7 @@
   border-radius: 50%;
   background-color: $brand-dark;
   cursor: pointer;
+  box-shadow: 0 0 20px rgba(black, .4);
   img {
     vertical-align: text-bottom;
   }
