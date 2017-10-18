@@ -1,7 +1,10 @@
 
 .c-newsletter {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 85%;
+  @include mq($from: tablet) {
+    grid-template-columns: 93%;
+  }
 }
 
 .c-newsletter__content {
