@@ -214,13 +214,20 @@ a.c-mosaic_item {
 a.c-mosaic_item:hover {
   color: white;
   border-bottom: 0;
-  transform: scale(1.03);
-  box-shadow: 0 4px 10px rgba(6, 8, 28, 0.15);
 }
-
+.c-mosaic_item:nth-child(4n + 2):hover {
+  background-color: $brand-medium;
+}
+.c-mosaic_item:nth-child(4n + 3):hover {
+  background-color: $brand-medium;
+}
+.c-mosaic_item:nth-child(4n + 4):hover {
+  background-color: $brand-medium;
+}
 .c-mosaic_item:nth-child(4n + 5):hover {
-  border: solid 1px $brand-dark;
+  background-color: $brand-lightest;
   color: $brand-dark;
+  border: 1px solid $brand-dark;
 }
 
 .c-mosaic_item {
