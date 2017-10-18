@@ -1,7 +1,7 @@
 // server.js
 const next = require('next');
 const routes = require('./routes');
-
+const forceSsl = require('force-ssl-heroku');
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
 const handler = routes.getRequestHandler(app);
 
@@ -9,7 +9,9 @@ const handler = routes.getRequestHandler(app);
 const express = require('express');
 
 app.prepare().then(() => {
-  express()
-    .use(handler)
-    .listen(process.env.PORT || 3000);
+  const server = express()
+  server.use(handler).listen(process.env.PORT || 3000);
+  if (process.env.NODE_ENV === 'production') {
+    server.use(forceSsl);
+  }
 });

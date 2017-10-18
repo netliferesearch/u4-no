@@ -33,6 +33,9 @@
   writing-mode: vertical-lr;
   grid-column: 7 / 8;
   grid-row: 1 / 2;
+  a {
+    border: none;
+  }
 }
 
 .c-hero-header{
