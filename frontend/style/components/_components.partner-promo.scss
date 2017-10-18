@@ -29,11 +29,18 @@
   }
   a {
     border: none;
+    color: $brand-dark;
   }
   svg {
+    path {
+      fill: $brand-dark;
+    }
     transition: transform .2s ease-out;
   }
   &:hover {
+    a {
+      color: $brand-dark;
+    }
     svg {
       transform: translateX(10px);
     }

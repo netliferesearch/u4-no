@@ -28,13 +28,15 @@
   &:hover {
     color: $brand-light;
     border-bottom: 1px solid $brand-light;
-
   }
 }
 
 .c-newsletter__title-arrow {
   float:right;
   margin-right: $spacing-small;
+  svg path {
+    fill: $brand-dark;
+  }
 }
 
 .c-newsletter__small-title {
@@ -52,8 +54,23 @@
   writing-mode: vertical-lr;
   text-align:center;
   font-family: $font-sans;
+  transition: all .3s ease-out;
   a {
     border: 0;
+    color: $brand-dark;
     cursor: pointer;
   }
+  &:hover {
+    .c-newsletter__to-top-arrow {
+      transform: translateY(-10px) rotate(-90deg);
+    }
+  }
+}
+.c-newsletter__to-top-arrow {
+  path {
+    fill: $brand-dark;
+  }
+  transform: rotate(-90deg);
+  margin-bottom: $spacing-small;
+  transition: transform .15s ease-out;
 }
