@@ -59,14 +59,14 @@ const TopicEntry = ({
           text="Read our introduction to corruption and anti-corruption efforts in natural resources and energy sectors. "
           icon={BasicGuide}
           route="topic.article"
-          params={{ slug, topicPart: 'basics' }}
+          params={{ slug: slug.current, topicPart: 'basics' }}
         />
         <LinkBox
           title="Research and policy agenda"
           text="Discover what U4 and others do to advance research and reduce corruption in natural resources and energy."
           icon={ResearchAgenda}
           route="topic.article"
-          params={{ slug, topicPart: 'agenda' }}
+          params={{ slug: slug.current, topicPart: 'agenda' }}
         />
       </section>
 
