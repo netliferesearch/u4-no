@@ -26,7 +26,7 @@
   font-family: $font-sans;
   color: $brand-dark;
   margin: $spacing-small $spacing-small $spacing-large;
-  max-width: 600px;
+  max-width: 650px;
 
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-largest, 57px);
