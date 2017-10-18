@@ -71,7 +71,9 @@ const PublicationEntry = (props) => {
                   />
                   <div className="c-hero-bg" />
                   <div className="c-hero-sideText">
-                    <a href={props.featuredImage.sourceUrl}>{props.featuredImage.credit}</a>
+                    { props.featuredImage.credit ?
+                      <a href={props.featuredImage.sourceUrl}>{props.featuredImage.credit}</a>
+                      : null }
                   </div>
                   <div className="c-hero-header">
                     <PublicationArticleHeader
