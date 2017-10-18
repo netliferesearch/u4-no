@@ -8,7 +8,7 @@
 }
 .c-team__title {
   color: $brand-dark;
-  margin: $spacing-small $spacing-small $spacing-large;
+  margin: $spacing-small 0 $spacing-large;
   @include inuit-font-size($font-size-normal, $line-height-large );
   @include mq($from: tablet) {
     margin: 0 $spacing-huge $spacing-huge;

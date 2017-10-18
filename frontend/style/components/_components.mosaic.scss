@@ -6,8 +6,8 @@
   grid-template-columns: 1fr;
   grid-auto-rows: minmax(100px, auto);
   grid-column-gap: 20px;
-  grid-row-gap: 20px;
   @include mq($from: tablet) {
+    grid-row-gap: 20px;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: minmax(300px, auto);
   }
@@ -178,13 +178,19 @@
   font-family: $font-sans;
   font-weight: 300;
   text-transform: uppercase;
-  @include inuit-font-size($font-size-tiny);
   padding-bottom: $spacing;
+  @include inuit-font-size(14px);
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-tiny);
+  }
 }
 
 .c-mosaic_item-title {
   font-weight: 300;
-  @include inuit-font-size($font-size-normal, $font-size-large*1.1);
+  @include inuit-font-size($font-size-small*1.1, $font-size-large);
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-normal, $font-size-large*1.1);
+  }
 }
 
 // Color overlay

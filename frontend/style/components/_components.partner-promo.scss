@@ -10,7 +10,7 @@
 
 .c-partner-promo__title {
   color: $brand-dark;
-  margin: $spacing-small $spacing-small $spacing-large;
+  margin: $spacing-large $spacing $spacing-large;
   @include inuit-font-size($font-size-normal, $line-height-large );
   @include mq($from: tablet) {
     margin: $spacing-huge;
@@ -68,14 +68,14 @@
 }
 
 .c-partner-promo__statement-title {
-  @include inuit-font-size($font-size-small, $line-height-normal );
+  @include inuit-font-size($font-size-normal, $line-height-normal );
   margin-top: $spacing;
   margin-bottom: 0;
   color: $white;
 }
 
 .c-partner-promo__statement-body {
-  @include inuit-font-size($font-size-tiny, $line-height-normal );
+  @include inuit-font-size($font-size-small, $line-height-normal );
   margin-top: $spacing-small;
   max-width: 550px;
   color: $white-on-blue;

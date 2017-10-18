@@ -18,7 +18,7 @@
   padding: $spacing;
   font-weight: 300;
   color: $white-on-blue;
-  @include inuit-font-size($font-size-tiny, $font-size-large*0.9)
+  @include inuit-font-size($font-size-small, $font-size-large)
 
   @include mq($from: tablet) {
     padding: 10%;
@@ -85,6 +85,10 @@ display: block;
 }
 .c-boxOnImage__figure--smaller {
   margin: 0;
+  display: none;
+  @include mq($from: tablet) {
+  display:block;
+  }
   @include mq($from: wide) {
     grid-column: 2 / 10;
     grid-row: 1 / 4;

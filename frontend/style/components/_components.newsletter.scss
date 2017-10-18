@@ -20,7 +20,7 @@
   padding-bottom: $spacing-small;
   border-bottom: 1px solid $brand-dark;
   transition: border .2s ease-out;
-  @include inuit-font-size($font-size-large, $line-height-normal );
+  @include inuit-font-size($font-size-normal, $line-height-normal );
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-huge/1.5, $line-height-large );
   }

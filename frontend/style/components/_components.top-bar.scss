@@ -1,5 +1,5 @@
 .c-top-bar {
-  padding: $spacing-small;
+  padding: $spacing-small $spacing;
   @include mq($from: tablet) {
     padding: $spacing-large $spacing-huge;
   }
