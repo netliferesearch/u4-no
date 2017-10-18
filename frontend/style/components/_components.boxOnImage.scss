@@ -67,7 +67,7 @@
 
 .c-boxOnImage--smaller {
 display: block;
-  @include mq($from: desktop) {
+  @include mq($from: tablet) {
     display: grid;
     grid-template-columns: 20% 20px 20px 400px 20px 20px 20px;
     grid-auto-rows: min-content;
@@ -76,7 +76,7 @@ display: block;
 .c-boxOnImage__body--smaller {
   text-align: center;
   z-index: 9;
-  @include mq($from: wide) {
+  @include mq($from: tablet) {
     text-align: left;
     grid-column: 1 / 7;
     padding: 10%;
@@ -89,7 +89,7 @@ display: block;
   @include mq($from: tablet) {
   display:block;
   }
-  @include mq($from: wide) {
+  @include mq($from: tablet) {
     grid-column: 2 / 10;
     grid-row: 1 / 4;
     & > img {

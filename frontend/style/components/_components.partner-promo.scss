@@ -62,14 +62,14 @@
   width: 50px;
   @include mq($from: tablet) {
     width: 70px;
-    margin-top: $spacing;
+    margin-top: 0;
     margin-right: $spacing;
   }
 }
 
 .c-partner-promo__statement-title {
   @include inuit-font-size($font-size-normal, $line-height-normal );
-  margin-top: $spacing;
+  margin-top: 0;
   margin-bottom: 0;
   color: $white;
 }
