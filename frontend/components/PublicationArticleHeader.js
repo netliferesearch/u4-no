@@ -32,8 +32,8 @@ const PublicationArticleHeader = ({
       <p className="c-article-header__subtitle">{subtitle}</p>
       <div className="c-article-header__meta">
         <p>
-          <AuthorList authors={authors} /><br />
-          <EditorList editors={editors} /><br />
+          {authors ? <div><AuthorList authors={authors} /><br /></div> : null}
+          {editors.length ? <div><EditorList editors={editors} /><br /></div> : null}
           Bergen: U4 Anti-Corruption Resource Centre at Chr. Michelsen Institute (U4 Brief 2017:5)
         </p>
         <p>
