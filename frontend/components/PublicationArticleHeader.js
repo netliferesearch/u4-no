@@ -6,9 +6,9 @@ import { Download } from './icons';
 import { AuthorList, EditorList } from '../components/';
 
 const PublicationArticleHeader = ({
-  title = 'no title',
-  subtitle = 'no subtitle',
-  lead = 'no lead',
+  title = '',
+  subtitle = '',
+  lead = '',
   topics = [],
   className = '',
   publicationType = {},
