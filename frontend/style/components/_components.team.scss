@@ -11,7 +11,7 @@
   margin: $spacing-small 0 $spacing-large;
   @include inuit-font-size($font-size-normal, $line-height-large );
   @include mq($from: tablet) {
-    margin: 0 $spacing-huge $spacing-huge;
+    margin: 0 $spacing-huge $spacing-large;
     @include inuit-font-size($font-size-large, $line-height-large );
   }
 }

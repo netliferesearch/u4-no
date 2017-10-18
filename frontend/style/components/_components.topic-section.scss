@@ -4,6 +4,7 @@
   max-width: 700px;
   color: $brand-dark;
   @include mq($from: tablet) {
+    margin: $spacing-huge auto $spacing-huge;
     text-align: center;
     @include inuit-font-size(26px, 1.4em);
   }
