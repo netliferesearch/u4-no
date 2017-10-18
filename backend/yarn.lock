@@ -6,9 +6,9 @@
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/@hypnosphi/fuse.js/-/fuse.js-3.0.9.tgz#ea99f6121b4a8f065b4c71f85595db2714498807"
 
-"@sanity/base@^0.116.0":
-  version "0.116.0"
-  resolved "https://registry.yarnpkg.com/@sanity/base/-/base-0.116.0.tgz#0b61a926356347014a3c7d38da074fd1669f3461"
+"@sanity/base@^0.116.1":
+  version "0.116.1"
+  resolved "https://registry.yarnpkg.com/@sanity/base/-/base-0.116.1.tgz#850e5ecf1f2755df46a6592ca95da1510b520496"
   dependencies:
     "@sanity/client" "^0.116.0"
     "@sanity/document-store" "^0.116.0"
@@ -87,11 +87,11 @@
     make-error "^1.3.0"
     object-assign "^4.1.1"
 
-"@sanity/components@^0.116.0":
-  version "0.116.0"
-  resolved "https://registry.yarnpkg.com/@sanity/components/-/components-0.116.0.tgz#72f10629836964c6462d1a08fb98a929ae1df6cb"
+"@sanity/components@^0.116.2":
+  version "0.116.2"
+  resolved "https://registry.yarnpkg.com/@sanity/components/-/components-0.116.2.tgz#9fd6a09d0ca2731cdea9e8babc38963364a9f4ff"
   dependencies:
-    "@sanity/date-input" "^0.116.0"
+    "@sanity/date-input" "^0.116.2"
     "@sanity/imagetool" "^0.116.0"
     "@sanity/observable" "^0.116.0"
     attr-accept "^1.1.0"
@@ -124,16 +124,16 @@
     react-split-pane "^0.1.63"
     scroll "^2.0.0"
 
-"@sanity/core@^0.116.0":
-  version "0.116.0"
-  resolved "https://registry.yarnpkg.com/@sanity/core/-/core-0.116.0.tgz#5e921c1cce6b6cfecf880f038d6853d1d77b8ece"
+"@sanity/core@^0.116.2":
+  version "0.116.2"
+  resolved "https://registry.yarnpkg.com/@sanity/core/-/core-0.116.2.tgz#cb0d3e41a19b61af9ab8ff66a1a72531ca276301"
   dependencies:
     "@sanity/check" "^0.116.0"
-    "@sanity/import" "^0.116.0"
+    "@sanity/import" "^0.116.2"
     "@sanity/mutator" "^0.116.0"
     "@sanity/plugin-loader" "^0.116.0"
     "@sanity/resolver" "^0.116.0"
-    "@sanity/server" "^0.116.0"
+    "@sanity/server" "^0.116.2"
     "@sanity/util" "^0.116.0"
     babel-preset-es2015-node4 "^2.1.1"
     babel-preset-stage-2 "^6.22.0"
@@ -167,11 +167,11 @@
     in-publish "^2.0.0"
     lodash "^4.17.4"
 
-"@sanity/date-input@^0.116.0":
-  version "0.116.0"
-  resolved "https://registry.yarnpkg.com/@sanity/date-input/-/date-input-0.116.0.tgz#95deca209f4c00036b3201c026aec269418d2271"
+"@sanity/date-input@^0.116.2":
+  version "0.116.2"
+  resolved "https://registry.yarnpkg.com/@sanity/date-input/-/date-input-0.116.2.tgz#66bed31bece222f113c4d799a8fb35add544adba"
   dependencies:
-    "@sanity/form-builder" "^0.116.0"
+    "@sanity/form-builder" "^0.116.2"
     "@sanity/generate-help-url" "^0.116.0"
     lodash "^4.17.4"
     moment "^2.18.1"
@@ -180,27 +180,27 @@
     prop-types "^15.5.10"
     react-datepicker "^0.55.0"
 
-"@sanity/default-layout@^0.116.0":
-  version "0.116.0"
-  resolved "https://registry.yarnpkg.com/@sanity/default-layout/-/default-layout-0.116.0.tgz#f9e3616fb5869f53bf01a94505fb24d658d1bc89"
+"@sanity/default-layout@^0.116.2":
+  version "0.116.2"
+  resolved "https://registry.yarnpkg.com/@sanity/default-layout/-/default-layout-0.116.2.tgz#b6dc00a5ea13513df4807eb5b7701faa67c8e3b3"
   dependencies:
     lodash "^4.17.4"
     react-click-outside "^2.3.1"
     react-ink "^6.1.0"
 
-"@sanity/default-login@^0.116.0":
-  version "0.116.0"
-  resolved "https://registry.yarnpkg.com/@sanity/default-login/-/default-login-0.116.0.tgz#e61068a2a982f2d03b13d0826437a51a539f45c2"
+"@sanity/default-login@^0.116.1":
+  version "0.116.1"
+  resolved "https://registry.yarnpkg.com/@sanity/default-login/-/default-login-0.116.1.tgz#d3eb0574ec9ca7dfb60dcfb56513539daafc8837"
   dependencies:
     in-publish "^2.0.0"
     prop-types "^15.5.10"
 
-"@sanity/desk-tool@^0.116.0":
-  version "0.116.0"
-  resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-0.116.0.tgz#24294037733f00509230900e3f875bef6dee9771"
+"@sanity/desk-tool@^0.116.2":
+  version "0.116.2"
+  resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-0.116.2.tgz#6a62b2102233050e5261e9ebea8df73721544a96"
   dependencies:
     "@sanity/data-aspects" "^0.116.0"
-    "@sanity/form-builder" "^0.116.0"
+    "@sanity/form-builder" "^0.116.2"
     "@sanity/mutator" "^0.116.0"
     "@sanity/uuid" "^0.116.0"
     classnames "^2.2.5"
@@ -232,9 +232,9 @@
     eventsource "^1.0.4"
     eventsource-polyfill "^0.9.6"
 
-"@sanity/form-builder@^0.116.0":
-  version "0.116.0"
-  resolved "https://registry.yarnpkg.com/@sanity/form-builder/-/form-builder-0.116.0.tgz#068d80b281c810454668ae2df8fefa9c3aee27b4"
+"@sanity/form-builder@^0.116.2":
+  version "0.116.2"
+  resolved "https://registry.yarnpkg.com/@sanity/form-builder/-/form-builder-0.116.2.tgz#5cf474642764cb884bfc7f9e83cea5ca4730a75f"
   dependencies:
     "@sanity/generate-help-url" "^0.116.0"
     "@sanity/imagetool" "^0.116.0"
@@ -269,9 +269,9 @@
   version "0.116.0"
   resolved "https://registry.yarnpkg.com/@sanity/generate-help-url/-/generate-help-url-0.116.0.tgz#58149c46c3b5b6e1b94ce777ce68dc6382c32e8a"
 
-"@sanity/google-maps-input@^0.116.0":
-  version "0.116.0"
-  resolved "https://registry.yarnpkg.com/@sanity/google-maps-input/-/google-maps-input-0.116.0.tgz#54d94fc5fd8724518a77d4444167def217a7e9df"
+"@sanity/google-maps-input@^0.116.2":
+  version "0.116.2"
+  resolved "https://registry.yarnpkg.com/@sanity/google-maps-input/-/google-maps-input-0.116.2.tgz#ddeee716d94ffe4ce477ee2c350de34a517596c5"
   dependencies:
     in-publish "^2.0.0"
 
@@ -283,9 +283,9 @@
     dom-event "1.0.0"
     lodash "^4.17.4"
 
-"@sanity/import@^0.116.0":
-  version "0.116.0"
-  resolved "https://registry.yarnpkg.com/@sanity/import/-/import-0.116.0.tgz#9da606af7351c51b02c8faf64961b03670d8dbc8"
+"@sanity/import@^0.116.2":
+  version "0.116.2"
+  resolved "https://registry.yarnpkg.com/@sanity/import/-/import-0.116.2.tgz#aeff982a04d009cabce2d3eb5353ca91eeb90648"
   dependencies:
     "@sanity/mutator" "^0.116.0"
     debug "^2.6.3"
@@ -340,9 +340,9 @@
     arrify "^1.0.1"
     lodash "^4.17.4"
 
-"@sanity/server@^0.116.0":
-  version "0.116.0"
-  resolved "https://registry.yarnpkg.com/@sanity/server/-/server-0.116.0.tgz#549da8ecd43472c6a44d2532bd571a961f4d4589"
+"@sanity/server@^0.116.2":
+  version "0.116.2"
+  resolved "https://registry.yarnpkg.com/@sanity/server/-/server-0.116.2.tgz#91b5ee37623c43e950b6c189c39abc025a34e7a8"
   dependencies:
     "@sanity/resolver" "^0.116.0"
     "@sanity/webpack-integration" "^0.116.0"
@@ -382,11 +382,11 @@
     lodash "^4.17.4"
     nano-pubsub "^1.0.1"
 
-"@sanity/storybook@^0.116.0":
-  version "0.116.0"
-  resolved "https://registry.yarnpkg.com/@sanity/storybook/-/storybook-0.116.0.tgz#9b272f4d82eebfc6836aa56b580d8690ca68c6c0"
+"@sanity/storybook@^0.116.2":
+  version "0.116.2"
+  resolved "https://registry.yarnpkg.com/@sanity/storybook/-/storybook-0.116.2.tgz#0fad7592d12e9aa40d5b39660de6ccd0de0d1b5d"
   dependencies:
-    "@sanity/server" "^0.116.0"
+    "@sanity/server" "^0.116.2"
     "@sanity/webpack-integration" "^0.116.0"
     "@storybook/addon-knobs" "^3.2.8"
     "@storybook/addons" "^3.2.6"
@@ -487,8 +487,8 @@
     prop-types "^15.6.0"
 
 "@storybook/react-fuzzy@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@storybook/react-fuzzy/-/react-fuzzy-0.4.0.tgz#2961e8a1f6c1afcce97e9e9a14d1dfe9d9061087"
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@storybook/react-fuzzy/-/react-fuzzy-0.4.1.tgz#612bdf7768585ad6e086b4738efbf204e94290a0"
   dependencies:
     babel-runtime "^6.23.0"
     classnames "^2.2.5"
@@ -1625,8 +1625,8 @@ babel-preset-env@1.5.2:
     semver "^5.3.0"
 
 babel-preset-env@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-env/-/babel-preset-env-1.6.0.tgz#2de1c782a780a0a5d605d199c957596da43c44e4"
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/babel-preset-env/-/babel-preset-env-1.6.1.tgz#a18b564cc9b9afdf4aae57ae3c1b0d99188e6f48"
   dependencies:
     babel-plugin-check-es2015-constants "^6.22.0"
     babel-plugin-syntax-trailing-function-commas "^6.22.0"
@@ -1989,8 +1989,8 @@ brorand@^1.0.1:
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
 
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/browserify-aes/-/browserify-aes-1.0.8.tgz#c8fa3b1b7585bb7ba77c5560b60996ddec6d5309"
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/browserify-aes/-/browserify-aes-1.1.0.tgz#1d2ad62a8b479f23f0ab631c1be86a82dbccbe48"
   dependencies:
     buffer-xor "^1.0.3"
     cipher-base "^1.0.0"
@@ -2123,12 +2123,12 @@ caniuse-api@^2.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000746"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000746.tgz#501098c66f5fbbf634c02f25508b05e8809910f4"
+  version "1.0.30000747"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000747.tgz#8f5bd6c1e5e6045a4d4e6c6a3a592d19e1a8b514"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000744:
-  version "1.0.30000746"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000746.tgz#c64f95a3925cfd30207a308ed76c1ae96ea09ea0"
+  version "1.0.30000747"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000747.tgz#da86e78e12d0641abeeaee6ecd55d81bd9bd3b5d"
 
 canvas-to-blob@^0.0.0:
   version "0.0.0"
@@ -2168,8 +2168,8 @@ chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
     supports-color "^2.0.0"
 
 chalk@^2.0.1, chalk@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.1.0.tgz#ac5becf14fa21b99c6c92ca7a7d7cfd5b17e743e"
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.2.0.tgz#477b3bf2f9b8fd5ca9e429747e37f724ee7af240"
   dependencies:
     ansi-styles "^3.1.0"
     escape-string-regexp "^1.0.5"
@@ -2982,9 +2982,9 @@ es-to-primitive@^1.1.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.1"
 
-es5-ext@^0.10.14, es5-ext@^0.10.9, es5-ext@~0.10.14:
-  version "0.10.31"
-  resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.31.tgz#7bb938c95a7f1b9f728092dc09c41edcc398eefe"
+es5-ext@^0.10.14, es5-ext@^0.10.35, es5-ext@^0.10.9, es5-ext@~0.10.14:
+  version "0.10.35"
+  resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.35.tgz#18ee858ce6a3c45c7d79e91c15fcca9ec568494f"
   dependencies:
     es6-iterator "~2.0.1"
     es6-symbol "~3.1.1"
@@ -2994,12 +2994,12 @@ es5-shim@^4.5.9:
   resolved "https://registry.yarnpkg.com/es5-shim/-/es5-shim-4.5.9.tgz#2a1e2b9e583ff5fed0c20a3ee2cbf3f75230a5c0"
 
 es6-iterator@^2.0.1, es6-iterator@~2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/es6-iterator/-/es6-iterator-2.0.1.tgz#8e319c9f0453bf575d374940a655920e59ca5512"
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/es6-iterator/-/es6-iterator-2.0.3.tgz#a7de889141a05a94b0854403b2d0a0fbfa98f3b7"
   dependencies:
     d "1"
-    es5-ext "^0.10.14"
-    es6-symbol "^3.1"
+    es5-ext "^0.10.35"
+    es6-symbol "^3.1.1"
 
 es6-map@^0.1.3, es6-map@^0.1.4:
   version "0.1.5"
@@ -3026,7 +3026,7 @@ es6-shim@^0.35.3:
   version "0.35.3"
   resolved "https://registry.yarnpkg.com/es6-shim/-/es6-shim-0.35.3.tgz#9bfb7363feffff87a6cdb6cd93e405ec3c4b6f26"
 
-es6-symbol@3.1.1, es6-symbol@^3.1, es6-symbol@^3.1.1, es6-symbol@~3.1.1:
+es6-symbol@3.1.1, es6-symbol@^3.1.1, es6-symbol@~3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/es6-symbol/-/es6-symbol-3.1.1.tgz#bf00ef4fdab6ba1b46ecb7b629b4c7ed5715cc77"
   dependencies:
@@ -5497,8 +5497,8 @@ postcss-load-plugins@^2.3.0:
     object-assign "^4.1.0"
 
 postcss-loader@^2.0.6:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-2.0.7.tgz#4d2da1489cee0a14f72c0d9440c9ee7eded34345"
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-2.0.8.tgz#8c67ddb029407dfafe684a406cfc16bad2ce0814"
   dependencies:
     loader-utils "^1.1.0"
     postcss "^6.0.0"
@@ -5764,8 +5764,8 @@ pretty-ms@^2.1.0:
     plur "^1.0.0"
 
 private@^0.1.6, private@^0.1.7, private@~0.1.5:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/private/-/private-0.1.7.tgz#68ce5e8a1ef0a23bb570cc28537b5332aba63ef1"
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
 
 process-nextick-args@~1.0.6:
   version "1.0.7"
@@ -5979,8 +5979,8 @@ raw-body@2.3.2:
     unpipe "1.0.0"
 
 rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.1.tgz#2e03e8e42ee450b8cb3dce65be1bf8974e1dfd95"
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.2.tgz#d8ce9cb57e8d64d9c7badd9876c7c34cbe3c7077"
   dependencies:
     deep-extend "~0.4.0"
     ini "~1.3.0"
@@ -6407,8 +6407,8 @@ reduce-css-calc@^1.2.6, reduce-css-calc@^1.2.7:
     reduce-function-call "^1.0.1"
 
 reduce-css-calc@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/reduce-css-calc/-/reduce-css-calc-2.1.0.tgz#a7a334e26631baf959bbe131ad8469ae443c408a"
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/reduce-css-calc/-/reduce-css-calc-2.1.1.tgz#f4ecd7a00ec3e5683773f208067ad7da117b9db0"
   dependencies:
     css-unit-converter "^1.1.1"
     postcss-value-parser "^3.3.0"
@@ -6866,18 +6866,18 @@ slash@^1.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
 
 slate-base64-serializer@^0.1.9:
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/slate-base64-serializer/-/slate-base64-serializer-0.1.10.tgz#5fb7fe6de52ef56d2619dc34f8960fe81a866bfb"
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/slate-base64-serializer/-/slate-base64-serializer-0.1.18.tgz#1c57c8bdf3754adae085fa7f7537a99f818fc4fd"
 
-slate-dev-logger@^0.1.10, slate-dev-logger@^0.1.11:
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/slate-dev-logger/-/slate-dev-logger-0.1.11.tgz#740fd2e23b1dda1f4629419fc914eea91272b6f0"
+slate-dev-logger@^0.1.10, slate-dev-logger@^0.1.12, slate-dev-logger@^0.1.14:
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/slate-dev-logger/-/slate-dev-logger-0.1.19.tgz#ac7e48219d575ed317800d13dc3e1aac1927cb47"
 
 slate-html-serializer@^0.1.12:
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/slate-html-serializer/-/slate-html-serializer-0.1.13.tgz#82200c78807b4476baec5076ed6e7ea50876751f"
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/slate-html-serializer/-/slate-html-serializer-0.1.16.tgz#51a7245b14733da93d939ca9b26c8ea48baa5688"
   dependencies:
-    slate-dev-logger "^0.1.11"
+    slate-dev-logger "^0.1.14"
     type-of "^2.0.1"
 
 slate-insert-block-on-enter@^0.0.5:
@@ -6888,16 +6888,16 @@ slate-insert-block-on-enter@^0.0.5:
     slate "^0.22.0"
 
 slate-plain-serializer@^0.1.10:
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/slate-plain-serializer/-/slate-plain-serializer-0.1.11.tgz#0b70cd870a935b294d6418785084be33ae23b96e"
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/slate-plain-serializer/-/slate-plain-serializer-0.1.14.tgz#19f6cd9a47d2e7db93d928a8adae10ceb779e743"
   dependencies:
-    slate-dev-logger "^0.1.11"
+    slate-dev-logger "^0.1.14"
 
 slate-prop-types@^0.1.9:
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/slate-prop-types/-/slate-prop-types-0.1.10.tgz#a0c21d880ae72cb7f38a0d0fb025b7db2fa5d5b1"
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/slate-prop-types/-/slate-prop-types-0.1.13.tgz#2045d73b12a2fe7205bd6e8792ff1c5b06420fef"
   dependencies:
-    slate-dev-logger "^0.1.11"
+    slate-dev-logger "^0.1.14"
 
 slate-react@0.1.10:
   version "0.1.10"
@@ -6917,8 +6917,8 @@ slate-react@0.1.10:
     slate-prop-types "^0.1.9"
 
 slate-soft-break@^0.4.1:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/slate-soft-break/-/slate-soft-break-0.4.3.tgz#e3a9279a9b92ca173915467f5fbd359f739a7e96"
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/slate-soft-break/-/slate-soft-break-0.4.4.tgz#f1754800c004010dc65dd174e8e06cbe440f4368"
 
 slate@^0.22.0:
   version "0.22.14"
@@ -6942,8 +6942,8 @@ slate@^0.22.0:
     type-of "^2.0.1"
 
 slate@^0.25.2:
-  version "0.25.3"
-  resolved "https://registry.yarnpkg.com/slate/-/slate-0.25.3.tgz#d232ee168135269f10fbd3534307560e8ebf38b6"
+  version "0.25.4"
+  resolved "https://registry.yarnpkg.com/slate/-/slate-0.25.4.tgz#04c65b80ff2db4310bf65bf211ff57f62cdf92ac"
   dependencies:
     debug "^2.3.2"
     direction "^0.1.5"
@@ -6952,7 +6952,7 @@ slate@^0.25.2:
     is-empty "^1.0.0"
     is-plain-object "^2.0.4"
     lodash "^4.17.4"
-    slate-dev-logger "^0.1.11"
+    slate-dev-logger "^0.1.12"
     type-of "^2.0.1"
 
 slide@^1.1.5:
@@ -7201,8 +7201,8 @@ supports-color@^3.2.3:
     has-flag "^1.0.0"
 
 supports-color@^4.0.0, supports-color@^4.2.1, supports-color@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-4.4.0.tgz#883f7ddabc165142b2a61427f3352ded195d1a3e"
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-4.5.0.tgz#be7a0de484dec5c5cddf8b3d59125044912f635b"
   dependencies:
     has-flag "^2.0.0"
 
@@ -7383,11 +7383,11 @@ uglify-js@^2.8.29:
     uglify-to-browserify "~1.0.0"
 
 uglify-js@^3.0.23:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.1.3.tgz#d61f0453b4718cab01581f3162aa90bab7520b42"
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.1.4.tgz#8e1efa1244b207588e525c9c1835a33458b90aee"
   dependencies:
     commander "~2.11.0"
-    source-map "~0.5.1"
+    source-map "~0.6.1"
 
 uglify-to-browserify@~1.0.0:
   version "1.0.2"
@@ -7598,8 +7598,8 @@ webpack-dev-middleware@^1.10.1, webpack-dev-middleware@^1.12.0:
     time-stamp "^2.0.0"
 
 webpack-hot-middleware@^2.17.1, webpack-hot-middleware@^2.19.1:
-  version "2.19.1"
-  resolved "https://registry.yarnpkg.com/webpack-hot-middleware/-/webpack-hot-middleware-2.19.1.tgz#5db32c31c955c1ead114d37c7519ea554da0d405"
+  version "2.20.0"
+  resolved "https://registry.yarnpkg.com/webpack-hot-middleware/-/webpack-hot-middleware-2.20.0.tgz#cb896d837758b6408fe0afeeafdc0e5316b15319"
   dependencies:
     ansi-html "0.0.7"
     html-entities "^1.2.0"
@@ -7614,8 +7614,8 @@ webpack-sources@^1.0.1:
     source-map "~0.5.3"
 
 webpack@^3.6.0:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.7.1.tgz#6046b5c415ff7df7a0dc54c5b6b86098e8b952da"
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.8.1.tgz#b16968a81100abe61608b0153c9159ef8bb2bd83"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
