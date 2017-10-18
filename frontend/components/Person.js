@@ -13,7 +13,7 @@ const Person = ({ person, linkLabel = 'Bio' }) => (
   <div {...classes('item')}>
     {person.image ? (
       <figure {...classes('item-figure')}>
-        <img src={`${person.image.asset.url}?w=600&h=600&fit=crop&crop=focalpoint`} />
+        <img src={`${person.image.asset.url}?w=600&h=500&fit=crop&crop=focalpoint`} />
       </figure>
     ) :
       <figure {...classes('item-figure')}>
@@ -21,10 +21,11 @@ const Person = ({ person, linkLabel = 'Bio' }) => (
       </figure>
     }
     <div {...classes('item-body')}>
-      <h3 {...classes('item-title')}>{person.firstName && person.firstName} {person.surname && person.surname}</h3>
-      <small {...classes('item-subtitle')}>{person.position && person.position}Senior program advisor</small>
+      <div><h3 {...classes('item-title')}>{person.firstName && person.firstName} {person.surname && person.surname}</h3>
+        <small {...classes('item-subtitle')}>{person.position && person.position}Senior program advisor</small></div>
       <div {...classes('item-meta')}>
-        {person.email && <a href={`mailto:${person.email}`}>{person.email}</a>}
+        {person.email && <a href={`mailto:${person.email}`}>{person.email}</a>}<br />
+        <a href="tel:41044511">+47 410 445 11</a>
       </div>
       <Link>
         <a>

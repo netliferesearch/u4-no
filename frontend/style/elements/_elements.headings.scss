@@ -1,12 +1,21 @@
 h1, h2, h3 {
   font-family: $font-sans;
   font-weight: normal;
-  line-height: $line-height-large;
+  margin-top: $spacing-large;
+  margin-bottom: 0;
 }
 
 h2 {
-  margin-bottom: 0;
   @include mq($from: desktop) {
-    font-size: $font-size-larger;
+    @include inuit-font-size($font-size-larger, $font-size-largest);
   }
+}
+h3 {
+  @include mq($from: desktop) {
+    @include inuit-font-size($font-size-normal, $font-size-larger);
+  }
+}
+
+h4 {
+  margin-bottom: 0;
 }

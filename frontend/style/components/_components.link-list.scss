@@ -1,7 +1,10 @@
 .c-link-list {
   list-style: none;
-  margin: $spacing-large 0 $spacing;
   padding: 0;
+  margin: $spacing 0 $spacing;
+  @include mq($from: tablet) {
+    margin: $spacing-large 0 0;
+  }
 
   span {
     @include inuit-font-size($font-size-normal, $font-size-large);
@@ -20,6 +23,9 @@
 }
 .c-link-list__link {
   color: $brand-lighter;
+  &:visited {
+    color: $brand-lighter;
+  }
   border: none;
 }
 .c-link-list__icon {

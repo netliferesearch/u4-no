@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import {
+  Footer,
   Layout,
   LongformArticle,
   PublicationArticleHeader,
@@ -70,7 +71,9 @@ const PublicationEntry = (props) => {
                   />
                   <div className="c-hero-bg" />
                   <div className="c-hero-sideText">
-                    <a href={props.featuredImage.sourceUrl}>{props.featuredImage.credit}</a>
+                    { props.featuredImage.credit ?
+                      <a href={props.featuredImage.sourceUrl}>{props.featuredImage.credit}</a>
+                      : null }
                   </div>
                   <div className="c-hero-header">
                     <PublicationArticleHeader
@@ -116,39 +119,46 @@ const PublicationEntry = (props) => {
           </div>
           <LongformArticle {...props} />
 
-          { props.references ?
+          {props.references ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="References" content={props.references} />
               </div>
             </div>
-            : null }
+          ) : null}
 
-          { props.acknowledgements ?
+          {props.acknowledgements ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="Acknowledgements" content={props.acknowledgements} />
               </div>
             </div>
-            : null }
+          ) : null}
 
-          { props.notes ?
+          {props.notes ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="Notes" content={props.notes} />
               </div>
             </div>
-            : null }
+          ) : null}
 
-          { props.abstract ?
+          {props.abstract ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="Abstract" content={props.abstract} />
               </div>
             </div>
-            : null }
+          ) : null}
+
+          <div className="c-longform-grid">
+            <div className="c-longform-grid__standard">
+              <ToggleBlock title="Disclaimer" content="" />
+            </div>
+          </div>
 
           <span id="js-bottom" />
+          <Footer />
         </article>
       )}
     </Layout>

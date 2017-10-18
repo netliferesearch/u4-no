@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '../routes';
-import { Layout } from '../components';
+import { Footer, Layout } from '../components';
 import DataLoader from '../helpers/data-loader';
 import randomKey from '../helpers/randomKey';
 
@@ -20,6 +20,7 @@ const PublicationOverview = ({ publications = [] }) => (
         </div>
       ))}
     </div>
+    <Footer />
   </Layout>
 );
 

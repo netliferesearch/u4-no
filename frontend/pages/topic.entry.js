@@ -3,10 +3,21 @@ import Head from 'next/head';
 import { Link } from '../routes';
 import DataLoader from '../helpers/data-loader';
 
-import { Layout, ExtendedBlockContent, Accordion, Team, Person, Mosaic, Newsletter, PartnerPromo } from '../components';
+import { Footer, Layout, ExtendedBlockContent, Accordion, Team, Person, Mosaic, Newsletter, PartnerPromo, LinkList } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { BasicGuide, ResearchAgenda, Picture, Publication, Resources, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
+
+const linkListContent = [
+  {
+    title: 'Oil, gas and mining',
+    link: '#',
+  },
+  {
+    title: 'Renewable resources',
+    link: '#',
+  },
+];
 
 const TopicEntry = ({
   topic: {
@@ -36,26 +47,10 @@ const TopicEntry = ({
         )}
         <div className="c-boxOnImage__body">
           <p>{explainerText}</p>
-          <ul className="c-link-list">
-            <span>Related topics</span>
-            <li className="c-link-list__item">
-              <Link>
-                <a className="c-link-list__link">
-                  Oil, gas and mining <ArrowRight className="c-link-list__icon" />
-                </a>
-              </Link>
-            </li>
-            <li className="c-link-list__item">
-              <Link>
-                <a className="c-link-list__link">
-                  Renewable resources <ArrowRight className="c-link-list__icon" />
-                </a>
-              </Link>
-            </li>
-          </ul>
+          <LinkList title="Related topics" content={linkListContent} />
         </div>
       </section>
-      <h2 className="c-topic-section__title">
+      <h2 className="c-topic-section__title c-topic-section__title--large">
         From basic guides to indepth perspectives, all in one place.
       </h2>
       <section className="c-linkbox-wrapper">
@@ -64,14 +59,14 @@ const TopicEntry = ({
           text="Read our introduction to corruption and anti-corruption efforts in natural resources and energy sectors. "
           icon={BasicGuide}
           route="topic.article"
-          params={{ slug, topicPart: 'basics' }}
+          params={{ slug: slug.current, topicPart: 'basics' }}
         />
         <LinkBox
           title="Research and policy agenda"
           text="Discover what U4 and others do to advance research and reduce corruption in natural resources and energy."
           icon={ResearchAgenda}
           route="topic.article"
-          params={{ slug, topicPart: 'agenda' }}
+          params={{ slug: slug.current, topicPart: 'agenda' }}
         />
       </section>
 
@@ -79,9 +74,8 @@ const TopicEntry = ({
         Inform your anti-corruption work with handpicked topic related publications, insights and
         ideas.
       </h2>
-      <section className="c-topic-section">
+      <section className="c-topic-section u-padding-top-none">
         <div id="resources" className="o-wrapper-medium">
-          {console.log(resources)}
           <Mosaic resources={resources} />
         </div>
         <h2 className="c-topic-section__cta">
@@ -93,7 +87,7 @@ const TopicEntry = ({
 
     { advisors.length ?
       <div id="advisors" className="c-topic-section--lightblue">
-        <Team title="We’re the team developing this topic" members={advisors} linkLabel="Bio" />
+        <Team title="We’re the team developing this topic." members={advisors} linkLabel="Read full bio" />
         <h2 className="c-topic-section__cta">
           <a href="#">The whole U4 team &nbsp;<ArrowRight /></a>
         </h2>
@@ -105,6 +99,8 @@ const TopicEntry = ({
     </div>
 
     <Newsletter />
+
+    <Footer />
 
   </Layout>
 );

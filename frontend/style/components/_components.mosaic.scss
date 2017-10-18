@@ -6,8 +6,8 @@
   grid-template-columns: 1fr;
   grid-auto-rows: minmax(100px, auto);
   grid-column-gap: 20px;
-  grid-row-gap: 20px;
   @include mq($from: tablet) {
+    grid-row-gap: 20px;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: minmax(300px, auto);
   }
@@ -160,7 +160,7 @@
   color: $white;
 }
 .c-mosaic_item:nth-child(4n + 5) {
-  border: solid 2px $brand-dark;
+  border: solid 1px $brand-dark;
   color: $brand-dark;
 }
 
@@ -178,8 +178,19 @@
   font-family: $font-sans;
   font-weight: 300;
   text-transform: uppercase;
-  @include inuit-font-size($font-size-tiny);
   padding-bottom: $spacing;
+  @include inuit-font-size(14px);
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-tiny);
+  }
+}
+
+.c-mosaic_item-title {
+  font-weight: 300;
+  @include inuit-font-size($font-size-small*1.1, $font-size-large);
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-normal, $font-size-large*1.1);
+  }
 }
 
 // Color overlay
@@ -209,13 +220,20 @@ a.c-mosaic_item {
 a.c-mosaic_item:hover {
   color: white;
   border-bottom: 0;
-  transform: scale(1.03);
-  box-shadow: 0 4px 10px rgba(6, 8, 28, 0.15);
 }
-
+.c-mosaic_item:nth-child(4n + 2):hover {
+  background-color: $brand-medium;
+}
+.c-mosaic_item:nth-child(4n + 3):hover {
+  background-color: $brand-medium;
+}
+.c-mosaic_item:nth-child(4n + 4):hover {
+  background-color: $brand-medium;
+}
 .c-mosaic_item:nth-child(4n + 5):hover {
-  border: solid 2px $brand-dark;
+  background-color: $brand-lightest;
   color: $brand-dark;
+  border: 1px solid $brand-dark;
 }
 
 .c-mosaic_item {

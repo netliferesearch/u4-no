@@ -1,7 +1,7 @@
 import React from 'react';
 import { sortBy } from 'lodash';
 import { Link } from '../routes';
-import { Layout } from '../components';
+import { Footer, Layout } from '../components';
 import DataLoader from '../helpers/data-loader';
 import { DownArrowButton } from '../components/buttons';
 
@@ -55,6 +55,7 @@ const TopicOverview = ({ topics = [] }) => (
         )}
       </section>
     </div>
+    <Footer />
   </Layout>
 );
 

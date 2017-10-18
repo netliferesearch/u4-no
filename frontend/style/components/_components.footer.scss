@@ -1,7 +1,8 @@
 .c-footer {
   padding: $spacing;
+  font-family: $font-sans;
   @include mq($from: tablet) {
-    padding: $spacing-huge $spacing;
+    padding: $spacing-huge $spacing $spacing-huge $spacing-huge;
   }
 }
 
@@ -14,6 +15,7 @@
 }
 
 .c-footer__item {
+  padding: $spacing-small;
   @include mq($from: tablet) {
     width: 25%;
     display: inline-block;
@@ -21,6 +23,7 @@
 }
 
 .c-footer__color-icon {
+  max-width: 100%;
   path, polygon {
     fill: $brand-dark;
   }

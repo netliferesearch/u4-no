@@ -10,10 +10,10 @@
 
 .c-partner-promo__title {
   color: $brand-dark;
-  margin: $spacing-small $spacing-small $spacing-large;
+  margin: $spacing-large $spacing $spacing-large;
   @include inuit-font-size($font-size-normal, $line-height-large );
   @include mq($from: tablet) {
-    margin: $spacing-huge;
+    margin: $spacing-large $spacing $spacing-huge $spacing-huge;
     @include inuit-font-size($font-size-large, $line-height-large );
   }
 }
@@ -24,13 +24,23 @@
   text-align: center;
   max-width: 700px;
   color: $brand-dark;
+  @include mq($from: tablet) {
+    margin: $spacing-huge auto;
+  }
   a {
     border: none;
+    color: $brand-dark;
   }
   svg {
+    path {
+      fill: $brand-dark;
+    }
     transition: transform .2s ease-out;
   }
   &:hover {
+    a {
+      color: $brand-dark;
+    }
     svg {
       transform: translateX(10px);
     }
@@ -46,23 +56,31 @@
 }
 
 .c-partner-promo__statement-icon {
-  width: 70px;
   height: auto;
   vertical-align: top;
-  margin-top: $spacing;
-  margin-right: $spacing;
+  margin-top: $spacing-small;
+  width: 50px;
+  @include mq($from: tablet) {
+    width: 70px;
+    margin-top: $spacing;
+    margin-right: $spacing;
+  }
 }
 
 .c-partner-promo__statement-title {
-  @include inuit-font-size($font-size-small, $line-height-normal );
+  @include inuit-font-size($font-size-normal, $line-height-normal );
+  margin-top: $spacing;
   margin-bottom: 0;
   color: $white;
 }
 
 .c-partner-promo__statement-body {
-  @include inuit-font-size($font-size-tiny, $line-height-normal );
+  @include inuit-font-size($font-size-small, $line-height-normal );
   margin-top: $spacing-small;
-  margin-bottom: $spacing-large;
   max-width: 550px;
   color: $white-on-blue;
+  margin-bottom: $spacing;
+  @include mq($from: tablet) {
+    margin-bottom: $spacing-large;
+  }
 }

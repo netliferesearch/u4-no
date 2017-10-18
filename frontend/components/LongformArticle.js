@@ -18,9 +18,11 @@ const serializers = {
       </div>
     ),
     nugget: ({ node: { text, title } }) => (
-      <div className="c-article__nugget c-longform-grid__standard">
-        <h2 className="c-article__nugget-title">{title}</h2>
-        <BlockContent blocks={text} />
+      <div className="c-longform-grid__standard">
+        <div className="c-article__nugget">
+          <h2 className="c-article__nugget-title">{title}</h2>
+          <BlockContent blocks={text} />
+        </div>
       </div>
     ),
     block: ({ node, children }) => {
@@ -35,7 +37,7 @@ const serializers = {
       }
 
       if (style === 'blockquote') {
-        return <blockquote className="c-longform-grid__large-right">{children}</blockquote>;
+        return <div className="c-longform-grid__large-right"><blockquote>{children}</blockquote></div>;
       }
 
       return <p className="c-longform-grid__standard ">{children}</p>;

@@ -15,11 +15,14 @@ export class TableOfContentsButton extends Component {
       <button
         className="c-article-nav-fullscreen-button"
         onClick={() => {
-          console.log('toggleArticleMenu()');
           toggleArticleMenu();
         }}
       >
-        <img alt="Table of contents icon" src="/static/table-of-contents-icon.svg" />
+        { this.props.isArticleMenuOpen ?
+          <img alt="Close icon" src="/static/close.svg" />
+          :
+          <img alt="Table of contents icon" src="/static/table-of-contents-icon.svg" />
+        }
       </button>
     );
   }

@@ -1,15 +1,15 @@
 .c-top-bar {
-  padding: $spacing-small;
+  padding: $spacing-small $spacing;
   @include mq($from: tablet) {
     padding: $spacing-large $spacing-huge;
   }
 
 }
-.c-top-bar__logo {
+a.c-top-bar__logo, a.c-top-bar__logo:visited {
   height: 50px;
-  border: none;
+  border-bottom: 0;
 
   &:hover {
-    border: none;
+    border: 0;
   }
 }

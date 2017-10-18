@@ -7,31 +7,36 @@
 .c-newsletter__content {
   background: $brand-lightest;
   padding: $spacing $spacing-small;
-  @include mq($from: mobile) {
-  }
+
   @include mq($from: tablet) {
     margin-left: -$spacing;
-    padding: $spacing-huge $spacing-large;
+    padding: $spacing-huge $spacing-large $spacing-huge $spacing-huge;
   }
 }
 
 .c-newsletter__title {
-  @include inuit-font-size($font-size-huge/1.5, $line-height-large );
   color: $brand-dark;
   margin: 0 0 $spacing-small;
+  padding-bottom: $spacing-small;
   border-bottom: 1px solid $brand-dark;
   transition: border .2s ease-out;
+  @include inuit-font-size($font-size-normal, $line-height-normal );
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-huge/1.5, $line-height-large );
+  }
 
   &:hover {
     color: $brand-light;
     border-bottom: 1px solid $brand-light;
-
   }
 }
 
 .c-newsletter__title-arrow {
   float:right;
   margin-right: $spacing-small;
+  svg path {
+    fill: $brand-dark;
+  }
 }
 
 .c-newsletter__small-title {
@@ -49,8 +54,23 @@
   writing-mode: vertical-lr;
   text-align:center;
   font-family: $font-sans;
+  transition: all .3s ease-out;
   a {
     border: 0;
+    color: $brand-dark;
     cursor: pointer;
   }
+  &:hover {
+    .c-newsletter__to-top-arrow {
+      transform: translateY(-10px) rotate(-90deg);
+    }
+  }
+}
+.c-newsletter__to-top-arrow {
+  path {
+    fill: $brand-dark;
+  }
+  transform: rotate(-90deg);
+  margin-bottom: $spacing-small;
+  transition: transform .15s ease-out;
 }

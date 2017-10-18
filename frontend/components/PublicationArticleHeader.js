@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from '../routes';
 import randomKey from '../helpers/randomKey';
-import { Download } from './icons';
+import { Download, ArrowRight } from './icons';
 
 import { AuthorList, EditorList } from '../components/';
 
 const PublicationArticleHeader = ({
-  title = 'no title',
-  subtitle = 'no subtitle',
-  lead = 'no lead',
+  title = '',
+  subtitle = '',
+  lead = '',
   topics = [],
   className = '',
   publicationType = {},
@@ -32,13 +32,9 @@ const PublicationArticleHeader = ({
       <p className="c-article-header__subtitle">{subtitle}</p>
       <div className="c-article-header__meta">
         <p>
-          <AuthorList authors={authors} />
-        </p>
-        <p>
-          <EditorList editors={editors} />
-        </p>
-        <p>
-          Bergen: U4 Anti-Corruption Resource Centre @ Chr. Michelsen Institute (U4 Brief 2017:5)
+          <AuthorList authors={authors} /><br />
+          <EditorList editors={editors} /><br />
+          Bergen: U4 Anti-Corruption Resource Centre at Chr. Michelsen Institute (U4 Brief 2017:5)
         </p>
         <p>
           <a href="#1">Also available in Spanish</a>
@@ -47,7 +43,7 @@ const PublicationArticleHeader = ({
       <Link route="/3">
         <a className="c-article-header__button">
           <div className="c-article-header__button-text">Read our short version</div>
-          <div className="c-article-header__button-icon">→</div>
+          <div className="c-article-header__button-icon"><ArrowRight /></div>
         </a>
       </Link>
       <div className="c-article-header__meta c-article-header__download">
