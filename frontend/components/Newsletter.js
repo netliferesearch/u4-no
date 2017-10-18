@@ -44,8 +44,10 @@ class Newsletter extends Component {
           <div {...classes('to-top')}>
 
             <a onClick={this.scrollToTop}>
-                Back to top
+              <ArrowRight {...classes('to-top-arrow')} />
+              Back to top
             </a>
+
           </div>
         </div>
       </div>

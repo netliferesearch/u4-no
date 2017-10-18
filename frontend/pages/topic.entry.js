@@ -50,7 +50,7 @@ const TopicEntry = ({
           <LinkList title="Related topics" content={linkListContent} />
         </div>
       </section>
-      <h2 className="c-topic-section__title">
+      <h2 className="c-topic-section__title c-topic-section__title--large">
         From basic guides to indepth perspectives, all in one place.
       </h2>
       <section className="c-linkbox-wrapper">
@@ -70,7 +70,7 @@ const TopicEntry = ({
         />
       </section>
 
-      <h2 className="c-topic-section__title u-padding-top-huge">
+      <h2 className="c-topic-section__title">
         Inform your anti-corruption work with handpicked topic related publications, insights and
         ideas.
       </h2>
@@ -87,7 +87,7 @@ const TopicEntry = ({
 
     { advisors.length ?
       <div id="advisors" className="c-topic-section--lightblue">
-        <Team title="We’re the team developing this topic" members={advisors} linkLabel="Read full bio" />
+        <Team title="We’re the team developing this topic." members={advisors} linkLabel="Read full bio" />
         <h2 className="c-topic-section__cta">
           <a href="#">The whole U4 team &nbsp;<ArrowRight /></a>
         </h2>

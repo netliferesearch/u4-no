@@ -4,7 +4,7 @@ import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 
-import { Footer, Layout, ExtendedBlockContent, Accordion, LinkList } from '../components';
+import { Footer, Layout, ExtendedBlockContent, Accordion, LinkList, Features } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
@@ -17,6 +17,25 @@ const linkListContent = [
   {
     title: 'Nominate',
     link: '#',
+  },
+];
+
+const features = [
+  {
+    id: 1,
+    title: 'Courses are donor-focused, led by a team of experts.',
+  },
+  {
+    id: 2,
+    title: 'Self-study, group discussions, and assignments in an online forum.',
+  },
+  {
+    id: 3,
+    title: '30–50 hours depending on the course.',
+  },
+  {
+    id: 4,
+    title: 'Log on from home or the office, any time of the day.',
   },
 ];
 
@@ -53,11 +72,7 @@ const TopicEntry = ({
     </section>
 
     <section className="c-topic-section--small">
-      <div>
-        <div className="title">
-          Courses are donor-focused, led by a team of experts.
-        </div>
-      </div>
+      <Features content={features} />
     </section>
 
     <Footer />
