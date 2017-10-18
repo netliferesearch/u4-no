@@ -10,7 +10,7 @@ import sanityClient from '@sanity/client';
 /* send 301 Permanent redirect to path */
 function redirectPermanent(ctx, path) {
   if (ctx.res) {
-    ctx.res.writeHead(302, { Location: path });
+    ctx.res.writeHead(301, { Location: path });
     ctx.res.end();
   } else {
     document.location.pathname = path;
@@ -68,14 +68,12 @@ export default class Error extends React.Component {
       { from: '/info-fr', to: '/' },
       { from: '/conseils-de-lecture', to: '/' },
       { from: '/helpdesk-fr-FR/', to: '/helpdesk' },
-      { from: '/', to: '/' },
-      { from: '/', to: '/' },
     ];
     const redir = redirects.find(({ from }) => ctx.asPath.match(from));
     if (redir) {
       return redirectPermanent(ctx, ctx.asPath.replace(redir.from, redir.to));
     }
-
+    /* TODO: make some query based on requested url to display suggested content
     const client = sanityClient({
       projectId: '1f1lcoov',
       dataset: 'production',
@@ -84,21 +82,23 @@ export default class Error extends React.Component {
     });
 
     const queryFunc = () => ({
-      sanityQuery: '{ "publications": *[_type in ["publication"]][0..1] }',
+      sanityQuery: '{ "suggestions": *[_type in ["publication"]] }',
     });
 
     const { sanityQuery, param } = queryFunc(ctx);
     const sanityResults = await client.fetch(sanityQuery, param);
 
     return { sanityResults };
+  */
+    return {};
   }
 
   render() {
     return (
       <p>
         {this.props.statusCode
-          ? `An error ${this.props.statusCode} occurred on server`
-          : 'An error occurred on client'}
+          ? `Page not found: ${this.props.statusCode} occurred on server`
+          : 'Page not found error occurred on client'}
       </p>
     );
   }
