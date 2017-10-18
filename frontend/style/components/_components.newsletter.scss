@@ -1,17 +1,16 @@
 
 .c-newsletter {
   display: grid;
-  grid-template-columns: 85%;
-  @include mq($from: tablet) {
-    grid-template-columns: 93%;
-  }
+  grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
 }
 
 .c-newsletter__content {
   background: $brand-lightest;
   padding: $spacing $spacing-small;
 
+  grid-column: 1 / 9;
   @include mq($from: tablet) {
+    grid-column: 1 / 10;
     margin-left: -$spacing;
     padding: $spacing-huge $spacing-large $spacing-huge $spacing-huge;
   }
@@ -53,11 +52,14 @@
 .c-newsletter__to-top {
   display: flex;
   padding: 0 $spacing;
-  grid-column: 2 / 8;
   writing-mode: vertical-lr;
   text-align:center;
   font-family: $font-sans;
   transition: all .3s ease-out;
+  grid-column: 9 / 11;
+  @include mq($from: tablet) {
+    grid-column: 10 / 11;
+  }
   a {
     border: 0;
     color: $brand-dark;
