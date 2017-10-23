@@ -8,4 +8,6 @@ routes
   .add('topic.entry', '/topics/:slug')
   .add('topic.index', '/topics')
   .add('general.article', '/article/:slug')
+  .add('search.index', '/search')
+  .add('search.result', '/search/:slug')
   .add('online-training.entry', '/online-training/:id');
