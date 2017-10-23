@@ -1,12 +1,25 @@
 .c-features {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  @include mq($from: tablet) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
 }
 .c-features__item {
-  display: inline-block;
-  width: 25%;
+  @include mq($from: tablet) {
+    display: inline-block;
+    width: 25%;
+  }
   padding: $spacing;
   text-align: center;
-
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-small, $font-size-large);
+  color: $brand-dark;
+  font-weight: 300;
+}
+.c-features__icon {
+  svg, path {
+    fill: $brand-dark;
+  }
+  padding-bottom: $spacing-small;
 }

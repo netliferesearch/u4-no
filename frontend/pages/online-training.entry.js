@@ -4,10 +4,10 @@ import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 
-import { Footer, Layout, ExtendedBlockContent, Accordion, LinkList, Features } from '../components';
+import { Footer, Layout, ExtendedBlockContent, Accordion, LinkList } from '../components';
+import { Feature, Mosaic } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
-import { Basics, Picture, Publication, Resources, ArrowRight } from '../components/icons';
-import LinkBox from '../components/LinkBox';
+import { Basics, Picture, Publication, Resources, ResearchAgenda, ArrowRight } from '../components/icons';
 
 const linkListContent = [
   {
@@ -16,6 +16,20 @@ const linkListContent = [
   },
   {
     title: 'Nominate',
+    link: '#',
+  },
+];
+
+const courses = [
+  {
+    title: 'Corruption in natural resource management',
+    excerpt: 'A three-week programme that provides information and lessons for anti-corruption engagement around natural resources.',
+    cta: 'Register',
+    link: '#',
+  },
+  {
+    title: 'Corruption in the education sector',
+    cta: 'Register',
     link: '#',
   },
 ];
@@ -72,7 +86,17 @@ const TopicEntry = ({
     </section>
 
     <section className="c-topic-section--small">
-      <Features content={features} />
+      <div className="c-features">
+        <Feature title={features[0].title} icon={ResearchAgenda} />
+        <Feature title={features[1].title} icon={ResearchAgenda} />
+        <Feature title={features[2].title} icon={ResearchAgenda} />
+        <Feature title={features[3].title} icon={ResearchAgenda} />
+      </div>
+    </section>
+
+    <section className="c-topic-section">
+      <h2 className="c-topic-section__title">Upcoming courses</h2>
+      <Mosaic resources={courses} />
     </section>
 
     <Footer />
