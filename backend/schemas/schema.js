@@ -13,6 +13,8 @@ import article from './article';
 import institution from './institution';
 import courseType from './courseType';
 import course from './course';
+import service from './service';
+import boxOnBox from './boxOnBox';
 
 export default createSchema({
   name: 'default',
@@ -31,5 +33,6 @@ export default createSchema({
     institution,
     courseType,
     course,
+    service,
   ]
 })

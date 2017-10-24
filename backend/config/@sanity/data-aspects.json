@@ -1,4 +1,4 @@
 {
-  "hiddenTypes": ["pullQuote"],
+  "hiddenTypes": ["pullQuote", "boxOnBox"],
   "listOptions": {}
 }
