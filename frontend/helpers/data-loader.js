@@ -18,8 +18,9 @@ export default (Child, { queryFunc = false, materializeDepth = false }) =>
           projectId: '1f1lcoov',
           dataset: 'production',
           token: '',
-          useCdn: false,
+          useCdn: true,
         });
+        console.log(nextContext)
         if (!queryFunc) {
           console.log('No query function provided. Returning empty object');
           return {};
