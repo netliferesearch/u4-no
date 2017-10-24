@@ -9,4 +9,5 @@ routes
   .add('topic.index', '/topics')
   .add('general.article', '/article/:slug')
   .add('online-training.index', '/online-training')
-  .add('workshops.index', '/workshops');
+  .add('workshops.index', '/workshops')
+  .add('service.entry', '/services/:slug');

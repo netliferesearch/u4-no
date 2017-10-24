@@ -105,13 +105,10 @@ const TopicEntry = ({
   </Layout>
 );
 export default DataLoader(TopicEntry, {
-  queryFunc: ({ query: { slug = '' } }) => {
-    console.log('topic slug is this', slug);
-    return {
-      sanityQuery:
+  queryFunc: ({ query: { slug = '' } }) => ({
+    sanityQuery:
         '{ "topic": *[slug.current == $slug]{...,"resources": resources[]->{_id,_type, "publicationType": publicationType->title, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}}[0]}',
-      param: { slug },
-    };
-  },
+    param: { slug },
+  }),
   materializeDepth: 3,
 });
