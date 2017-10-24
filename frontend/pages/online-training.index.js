@@ -53,7 +53,7 @@ const features = [
   },
 ];
 
-const TopicEntry = ({
+const OnlineTraining = ({
   topic: {
     title = '',
     longTitle = '',
@@ -102,7 +102,7 @@ const TopicEntry = ({
     <Footer />
   </Layout>
 );
-export default DataLoader(TopicEntry, {
+export default DataLoader(OnlineTraining, {
   queryFunc: ({ query: { id = '' } }) => ({
     sanityQuery: '{ "topic": *[_id == $id]{...,"resources": resources[]->{_id,_type, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}}[0]}',
     param: { id },

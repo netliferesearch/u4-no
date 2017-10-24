@@ -8,4 +8,5 @@ routes
   .add('topic.entry', '/topics/:slug')
   .add('topic.index', '/topics')
   .add('general.article', '/article/:slug')
-  .add('online-training.entry', '/online-training/:id');
+  .add('online-training.index', '/online-training')
+  .add('workshops.index', '/workshops');
