@@ -21,6 +21,7 @@ const client = sanityClient({
 });
 
 const buildQuery = (value = '') => {
+  console.log(value)
   const matchString = value.length ? value.split(' ').map(tkn => `"${tkn}*"`).join(',') : value;
   return `{ "results": *[(title match [${matchString}] || longTitle match [${matchString}] || explainerText match [${matchString}] || firstName match [${matchString}] || surname match [${matchString}] || email match [${matchString}] || subtitle match [${matchString}] || standfirst match [${matchString}] || lead match [${matchString}] || summaryExternal match [${matchString}] || acknowledgements match [${matchString}] || abstract match [${matchString}] || description match [${matchString}] || term match [${matchString}] || definition match [${matchString}] || keyword match [${matchString}] || text match [${matchString}] || origin match [${matchString}] || url match [${matchString}] || resolvedUrl match [${matchString}] || crawledAt match [${matchString}] || name match [${matchString}] || language match [${matchString}] || utc match [${matchString}] || local match [${matchString}] || timezone match [${matchString}])][0...20]{title, slug, date, _type} }`;
 };
@@ -60,7 +61,8 @@ class AxiosAutocomplete extends Component {
           isOpen,
           clearSelection,
         }) => (
-          <div>
+            <div>
+              <form onSubmit={handleSubmit}>
             <label {...getLabelProps({ htmlFor: 'search' })}>
               Search
             </label>
@@ -122,16 +124,22 @@ class AxiosAutocomplete extends Component {
                   X
               </button>
               : null
-            }
+                }
+            <button type="submit" value="Search">Search</button>
+          </form>
           </div>
         )}
       </Downshift>
     );
   }
 }
+function handleChange(query) {
+
+}
 function handleSubmit(e) {
   e.preventDefault();
-  Router.pushRoute('search', { search: e.target.search.value });
+  console.log(e.target.search.value)
+  Router.pushRoute(`search?search=${e.target.search.value}`);
 }
 
 const Search = props => (
@@ -144,10 +152,7 @@ const Search = props => (
         <div {...classes({ block: 'search-input' })}>
           <div {...classes({ block: 'search-input', element: 'content' })}>
             <h4 {...classes({ block: 'search-input', element: 'title' })}>Find something on U4.no</h4>
-            <form onSubmit={handleSubmit}>
-              <AxiosAutocomplete onChange={selectedItem => console.log(selectedItem)} />
-              <button type="submit" value="Search">Search</button>
-            </form>
+              <AxiosAutocomplete  />
           </div>
         </div>
       </section>

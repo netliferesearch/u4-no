@@ -20,15 +20,15 @@ export default (Child, { queryFunc = false, materializeDepth = false }) =>
           token: '',
           useCdn: true,
         });
-        console.log(nextContext)
+
         if (!queryFunc) {
           console.log('No query function provided. Returning empty object');
           return {};
         }
         const { sanityQuery, param = {} } = queryFunc(nextContext);
-        console.log('test', sanityQuery)
+
         const sanityResults = await client.fetch(sanityQuery, param);
-        console.log('test2', sanityResults)
+
         if (!materializeDepth) {
           return sanityResults;
         }
