@@ -10,3 +10,6 @@ routes
   .add('general.article', '/article/:slug')
   .add('search.index', '/search')
   .add('online-training.entry', '/online-training/:id');
+  .add('online-training.index', '/online-training')
+  .add('workshops.index', '/workshops')
+  .add('service.entry', '/services/:slug');

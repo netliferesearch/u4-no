@@ -4,8 +4,10 @@
 .c-mosaic {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   grid-auto-rows: minmax(100px, auto);
   grid-column-gap: 20px;
+  clear:both;
   @include mq($from: tablet) {
     grid-row-gap: 20px;
     grid-template-columns: repeat(2, 1fr);
