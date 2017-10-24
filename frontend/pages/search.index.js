@@ -4,12 +4,15 @@ import sanityClient from '@sanity/client';
 import Downshift from 'downshift';
 import BEMHelper from 'react-bem-helper';
 
+import DataLoader from '../helpers/data-loader';
+import {Router} from '../routes'
+import { Layout, Footer, SearchResults } from '../components/';
+
 const classes = BEMHelper({
   name: 'search',
   prefix: 'c-',
 });
 
-import { Layout, Footer } from '../components/';
 
 const client = sanityClient({
   projectId: '1f1lcoov',
@@ -17,6 +20,8 @@ const client = sanityClient({
   token: '',
   useCdn: false,
 });
+
+const buildQuery = value => `*[(title match '${value}*' || longTitle match '${value}*' || explainerText match '${value}*' || firstName match '${value}*' || surname match '${value}*' || email match '${value}*' || subtitle match '${value}*' || standfirst match '${value}*' || lead match '${value}*' || summaryExternal match '${value}*' || acknowledgements match '${value}*' || abstract match '${value}*' || description match '${value}*' || term match '${value}*' || definition match '${value}*' || keyword match '${value}*' || text match '${value}*' || origin match '${value}*' || url match '${value}*' || resolvedUrl match '${value}*' || crawledAt match '${value}*' || name match '${value}*' || language match '${value}*' || utc match '${value}*' || local match '${value}*' || timezone match '${value}*')][0...20]`;
 
 function debounce(fn, time) {
   let timeoutId;
@@ -32,8 +37,6 @@ function debounce(fn, time) {
   }
 }
 
-const baseEndpoint = 'https://api.github.com/search/repositories?q=';
-
 class AxiosAutocomplete extends Component {
   constructor(props) {
     super(props);
@@ -42,17 +45,27 @@ class AxiosAutocomplete extends Component {
 
   render() {
     return (
-      <Downshift>
+      <Downshift
+        id="autocomplete"
+        onChange={this.props.onChange}
+      >
         {({
           selectedItem,
           getInputProps,
           getItemProps,
           highlightedIndex,
+          getLabelProps,
           isOpen,
+          clearSelection
         }) => (
           <div>
-              <input
-                {...classes('input')}
+            <label {...getLabelProps({ htmlFor: 'search' })}>
+              Search
+            </label>
+            <input
+              name='search'
+              {...getInputProps({ id: 'search' })}
+              {...classes('input')}
               {...getInputProps({
                 onChange: (event) => {
                   const value = event.target.value;
@@ -61,7 +74,7 @@ class AxiosAutocomplete extends Component {
                   }
                   debounce(
                     client
-                      .fetch(`*[(title match '${value}*' || longTitle match '${value}*' || explainerText match '${value}*' || firstName match '${value}*' || surname match '${value}*' || email match '${value}*' || subtitle match '${value}*' || standfirst match '${value}*' || lead match '${value}*' || summaryExternal match '${value}*' || acknowledgements match '${value}*' || abstract match '${value}*' || description match '${value}*' || term match '${value}*' || definition match '${value}*' || keyword match '${value}*' || text match '${value}*' || origin match '${value}*' || url match '${value}*' || resolvedUrl match '${value}*' || crawledAt match '${value}*' || name match '${value}*' || language match '${value}*' || utc match '${value}*' || local match '${value}*' || timezone match '${value}*')][0...20]`)
+                      .fetch(buildQuery(value))
                       .then((response) => {
                         const items = response.map(
                           item => `${item.title}`,
@@ -77,11 +90,11 @@ class AxiosAutocomplete extends Component {
               })}
             />
             {isOpen && (
-                <div {...classes('results')}>
+              <div {...classes('results')}>
                 {this.state.items.map((item, index) => (
                   <div
-                      key={index}
-                      {...classes('items')}
+                    key={index}
+                    {...classes('items')}
                     {...getItemProps({
                       item,
                       style: {
@@ -98,29 +111,57 @@ class AxiosAutocomplete extends Component {
                 ))}
               </div>
             )}
+              {selectedItem
+              ? <button
+                  css={{paddingTop: 4}}
+                  onClick={clearSelection}
+                  aria-label="clear selection"
+                >
+                  X
+                </button>
+              : null
+              }
           </div>
         )}
       </Downshift>
     );
   }
 }
+function handleSubmit(e) {
+  e.preventDefault()
+  Router.pushRoute('search', { search: e.target.search.value })
+}
 
-const Search = () => (
+const Search = (props) => (
   <Layout>
+    {
+      console.log(props)
+    }
     <div className="o-wrapper-inner">
-      <h1 className="c-topic-page_title">Search</h1>
-      <h2 className="c-topic-page__longTitle">Find something on U4.no</h2>
       <section id="searchInput" className="o-wrapper-inner">
         <div {...classes({ block: 'search-input' })}>
           <div {...classes({ block: 'search-input', element: 'content' })}>
-            <h4 {...classes({ block: 'search-input', element: 'title' })}>Find something on U4.no</h4>
-            <AxiosAutocomplete />
+            <h4 {...classes({ block: 'search-input', element: 'title' }) }>Find something on U4.no</h4>
+            <form onSubmit={handleSubmit}>
+              <AxiosAutocomplete onChange={selectedItem => console.log(selectedItem)} />
+              <button type="submit" value="Search">Search</button>
+            </form>
           </div>
         </div>
       </section>
-    </div>
+      <section>
+        <SearchResults />
+      </section>
+      </div>
     <Footer />
   </Layout>
 );
 
-export default Search;
+export default DataLoader(Search, {
+  queryFunc: ({ query }) => {
+    return {
+      sanityQuery: buildQuery(query.search)
+    };
+  },
+  materializeDepth: 3,
+});
