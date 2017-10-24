@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import sanityClient from '@sanity/client';
 import Downshift from 'downshift';
 import BEMHelper from 'react-bem-helper';
 
 import DataLoader from '../helpers/data-loader';
-import {Router} from '../routes'
+import { Router } from '../routes';
 import { Layout, Footer, SearchResults } from '../components/';
 
 const classes = BEMHelper({
@@ -18,10 +17,13 @@ const client = sanityClient({
   projectId: '1f1lcoov',
   dataset: 'production',
   token: '',
-  useCdn: false,
+  useCdn: true,
 });
 
-const buildQuery = value => `*[(title match '${value}*' || longTitle match '${value}*' || explainerText match '${value}*' || firstName match '${value}*' || surname match '${value}*' || email match '${value}*' || subtitle match '${value}*' || standfirst match '${value}*' || lead match '${value}*' || summaryExternal match '${value}*' || acknowledgements match '${value}*' || abstract match '${value}*' || description match '${value}*' || term match '${value}*' || definition match '${value}*' || keyword match '${value}*' || text match '${value}*' || origin match '${value}*' || url match '${value}*' || resolvedUrl match '${value}*' || crawledAt match '${value}*' || name match '${value}*' || language match '${value}*' || utc match '${value}*' || local match '${value}*' || timezone match '${value}*')][0...20]`;
+const buildQuery = (value) => {
+  const matchString = value.length ? value.split(' ').map(tkn => `"${tkn}*"`).join(',') : value;
+  return `{ "results": *[(title match [${matchString}] || longTitle match [${matchString}] || explainerText match [${matchString}] || firstName match [${matchString}] || surname match [${matchString}] || email match [${matchString}] || subtitle match [${matchString}] || standfirst match [${matchString}] || lead match [${matchString}] || summaryExternal match [${matchString}] || acknowledgements match [${matchString}] || abstract match [${matchString}] || description match [${matchString}] || term match [${matchString}] || definition match [${matchString}] || keyword match [${matchString}] || text match [${matchString}] || origin match [${matchString}] || url match [${matchString}] || resolvedUrl match [${matchString}] || crawledAt match [${matchString}] || name match [${matchString}] || language match [${matchString}] || utc match [${matchString}] || local match [${matchString}] || timezone match [${matchString}])][0...20]{title, slug, date, _type} }`;
+};
 
 function debounce(fn, time) {
   let timeoutId;
@@ -56,14 +58,14 @@ class AxiosAutocomplete extends Component {
           highlightedIndex,
           getLabelProps,
           isOpen,
-          clearSelection
+          clearSelection,
         }) => (
           <div>
             <label {...getLabelProps({ htmlFor: 'search' })}>
               Search
             </label>
             <input
-              name='search'
+              name="search"
               {...getInputProps({ id: 'search' })}
               {...classes('input')}
               {...getInputProps({
@@ -75,8 +77,8 @@ class AxiosAutocomplete extends Component {
                   debounce(
                     client
                       .fetch(buildQuery(value))
-                      .then((response) => {
-                        const items = response.map(
+                      .then(({ results }) => {
+                        const items = results.map(
                           item => `${item.title}`,
                         ); // Added ID to make it unique
                         this.setState({ items });
@@ -111,16 +113,16 @@ class AxiosAutocomplete extends Component {
                 ))}
               </div>
             )}
-              {selectedItem
+            {selectedItem
               ? <button
-                  css={{paddingTop: 4}}
-                  onClick={clearSelection}
-                  aria-label="clear selection"
-                >
+                css={{ paddingTop: 4 }}
+                onClick={clearSelection}
+                aria-label="clear selection"
+              >
                   X
-                </button>
+              </button>
               : null
-              }
+            }
           </div>
         )}
       </Downshift>
@@ -128,11 +130,11 @@ class AxiosAutocomplete extends Component {
   }
 }
 function handleSubmit(e) {
-  e.preventDefault()
-  Router.pushRoute('search', { search: e.target.search.value })
+  e.preventDefault();
+  Router.pushRoute('search', { search: e.target.search.value });
 }
 
-const Search = (props) => (
+const Search = props => (
   <Layout>
     {
       console.log(props)
@@ -141,7 +143,7 @@ const Search = (props) => (
       <section id="searchInput" className="o-wrapper-inner">
         <div {...classes({ block: 'search-input' })}>
           <div {...classes({ block: 'search-input', element: 'content' })}>
-            <h4 {...classes({ block: 'search-input', element: 'title' }) }>Find something on U4.no</h4>
+            <h4 {...classes({ block: 'search-input', element: 'title' })}>Find something on U4.no</h4>
             <form onSubmit={handleSubmit}>
               <AxiosAutocomplete onChange={selectedItem => console.log(selectedItem)} />
               <button type="submit" value="Search">Search</button>
@@ -150,18 +152,16 @@ const Search = (props) => (
         </div>
       </section>
       <section>
-        <SearchResults />
+        <SearchResults results={props.results} />
       </section>
-      </div>
+    </div>
     <Footer />
   </Layout>
 );
 
 export default DataLoader(Search, {
-  queryFunc: ({ query }) => {
-    return {
-      sanityQuery: buildQuery(query.search)
-    };
-  },
-  materializeDepth: 3,
+  queryFunc: ({ query }) => ({
+    sanityQuery: buildQuery(query.search),
+  }),
+  materializeDepth: 0,
 });
