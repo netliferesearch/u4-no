@@ -35,7 +35,7 @@ const Workshops = ({
 
     <h2 className="c-topic-page__longTitle">Workshops, headquarter visits and events</h2>
 
-    <section className="c-boxOnImage u-margin-bottom-huge">
+    <section className="c-boxOnImage">
       <figure className="c-boxOnImage__figure">
         <img alt="" src="/static/onlinetraining.png" />
       </figure>
@@ -64,7 +64,7 @@ const Workshops = ({
     <section className="c-topic-section">
       <h2 className="c-topic-section__title">We understand how our work, and can contribute to internal processes and policy discussions.</h2>
 
-      <section className="c-boxOnImage u-margin-bottom-huge">
+      <section className="c-boxOnImage">
         <figure className="c-boxOnImage__figure">
           <img alt="" src="/static/onlinetraining.png" />
         </figure>
