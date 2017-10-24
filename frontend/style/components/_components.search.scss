@@ -1,0 +1,32 @@
+.c-search {
+  display: grid;
+  grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+}
+
+
+.c-search__content {
+  background: $brand-lightest;
+  padding: $spacing $spacing-small;
+
+  grid-column: 1 / 11;
+  @include mq($from: tablet) {
+    grid-column: 1 / 11;
+    margin-left: -$spacing;
+    padding: $spacing-huge $spacing-large $spacing-huge $spacing-huge;
+  }
+}
+
+.c-search__input {
+  background: none;
+  border: none;
+  display: block;
+  width: 100%;
+  color: $black;
+  margin: 0 0 $spacing-small;
+  border-bottom: 1px solid $brand-dark;
+  transition: border .2s ease-out;
+  @include inuit-font-size($font-size-normal, $line-height-normal );
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-huge/1.5, $line-height-large );
+  }
+}
