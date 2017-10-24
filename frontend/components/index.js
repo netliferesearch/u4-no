@@ -1,5 +1,6 @@
 export { default as Accordion } from './Accordion';
 export { default as AuthorList } from './AuthorList';
+export { default as BoxOnBox } from './BoxOnBox';
 export { default as EditorList } from './EditorList';
 export { default as ExtendedBlockContent } from './ExtendedBlockContent';
 export { default as Feature } from './Feature';

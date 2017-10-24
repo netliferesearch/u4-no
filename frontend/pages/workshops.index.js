@@ -4,8 +4,8 @@ import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 
-import { Footer, Layout, ExtendedBlockContent, Accordion, LinkList, Newsletter } from '../components';
-import { Feature, Mosaic } from '../components';
+import { BoxOnBox, Footer, Layout, ExtendedBlockContent, Accordion, LinkList, Newsletter } from '../components';
+import { Feature, Mosaic, LinkBox } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources, ResearchAgenda, ArrowRight } from '../components/icons';
 
@@ -56,6 +56,7 @@ const Workshops = ({
     <section className="c-topic-section">
       <h2 className="c-topic-section__title">Expect new knowledge and concrete advice.</h2>
 
+      <BoxOnBox />
 
     </section>
 
@@ -84,6 +85,7 @@ const Workshops = ({
     <section className="c-topic-section">
       <h2 className="c-topic-section__title">Upcoming workshops</h2>
 
+      <section className="c-linkbox-wrapper" />
 
       <h2 className="c-topic-section__cta">
         <a href="#">Talk to us &nbsp;<ArrowRight /></a>

@@ -1,0 +1,39 @@
+.c-boxOnBox {
+  display: block;
+  font-weight: 300;
+  font-family: $font-sans;
+  color: $white-on-blue;
+  @include inuit-font-size($font-size-small, $font-size-large)
+  @include mq($from: tablet) {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-auto-rows: min-content;
+  }
+  p {
+    max-width: 600px;
+  }
+}
+.c-boxOnBox__left {
+  background: $brand-dark;
+  color: $white;
+  z-index: 9;
+  padding: $spacing;
+  @include mq($from: tablet) {
+    padding: 10%;
+    margin-top: -$spacing;
+    grid-column: 1 / 6;
+  }
+}
+.c-boxOnBox__right {
+  background: $brand-lightest;
+  color: $brand-dark;
+  margin: 0;
+  padding: $spacing;
+  @include mq($from: tablet) {
+    padding: 10% 10% 10% 20%;
+    margin-left: -10%;
+    grid-column: 6 / 11;
+    grid-row: 1 / 4;
+  }
+}
