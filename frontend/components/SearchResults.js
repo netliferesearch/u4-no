@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class SearchResults extends Component {
   constructor(props) {
@@ -7,9 +7,10 @@ export default class SearchResults extends Component {
   }
 
   render() {
-
-    return <ul>
-      <li>Search result</li>
-    </ul>
+    return (
+      <ul>
+        <li>Search result</li>
+      </ul>
+    )
   }
 }
