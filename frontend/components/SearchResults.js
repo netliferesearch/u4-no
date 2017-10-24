@@ -9,7 +9,7 @@ export default class SearchResults extends Component {
   render() {
     return (
       <ul>
-        <li>Search result</li>
+        { this.props.results.map(res => <li><a href={`/${res._type}/${res.slug.current}`}>{res.title}</a></li>) }
       </ul>
     )
   }
