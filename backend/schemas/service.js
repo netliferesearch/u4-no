@@ -47,13 +47,32 @@ export default {
               of: [{
                 type: 'block',
               }],
-              preview: {
-                select: {
-                  title: 'textRight'
-                }
-              }
             },
-          ]
+          ],
+          preview: {
+            select: {
+              blocks: 'textLeft',
+              blocks2: 'textRight',
+            },
+            prepare({ blocks, blocks2 }) {
+                const block = (blocks || []).find(block => block._type === 'block')
+                const block2 = (blocks2 || []).find(block => block._type === 'block')
+                return {
+                  title: block
+                    ? block.children
+                      .filter(child => child._type === 'span')
+                      .map(span => span.text)
+                      .join('')
+                    : 'No title',
+                  subtitle: block2
+                    ? block2.children
+                      .filter(child => child._type === 'span')
+                      .map(span => span.text)
+                      .join('')
+                    : 'No title'
+                }
+            },
+          }
         },
         {
           name: 'boxOnImageRef',
@@ -75,7 +94,23 @@ export default {
                 }
               ]
             },
-          ]
+          ],
+          preview: {
+            select: {
+              blocks: 'block',
+            },
+            prepare({ blocks }) {
+                const block = (blocks || []).find(block => block._type === 'block')
+                return {
+                  title: block
+                    ? block.children
+                      .filter(child => child._type === 'span')
+                      .map(span => span.text)
+                      .join('')
+                    : 'No title'
+                }
+            },
+          },
         },
         {
           type: 'reference',
