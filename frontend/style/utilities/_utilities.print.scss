@@ -1,0 +1,11 @@
+/**
+ * Tweak css styles for print.
+ */
+.u-print-width {
+  @include mq($media-type: 'print') {
+    margin: 0 40px;
+    .c-article-nav-fullscreen-button {
+      display: none;
+    }
+  }
+}
