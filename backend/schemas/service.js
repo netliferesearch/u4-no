@@ -73,6 +73,27 @@ export default {
           ]
         },
         {
+          name: 'courses',
+          title: 'Courses list',
+          type: 'object',
+          fields: [
+            {
+              name: 'coursesRef',
+              type: 'array',
+              of: [
+                {
+                  type: 'reference',
+                  to: [
+                    {
+                      type: 'course'
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
           name: 'cta',
           title: 'Call to action link',
           type: 'object',
