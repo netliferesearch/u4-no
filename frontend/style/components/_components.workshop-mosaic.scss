@@ -2,12 +2,15 @@
   display: flex;
   justify-content: center;
   flex-wrap:wrap;
+  margin: $spacing auto $spacing-large;
   @include mq($from: tablet) {
     margin: $spacing-large auto $spacing-huge;
   }
 }
 .c-workshop-mosaic__item {
-  max-width: 300px;
+  @include mq($from: tablet) {
+    max-width: 300px;
+  }
   width: 100%;
   margin: $spacing-small;
   padding: $spacing;
