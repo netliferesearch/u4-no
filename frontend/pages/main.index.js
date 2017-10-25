@@ -5,24 +5,21 @@ import { Layout } from '../components';
 export default () => (
   <Layout>
     <div className="o-wrapper">
-      <h1>Welcome to u4.no</h1>
-      <ul>
-        <li>
-          <Link route="/topics">
-            <a>Topics</a>
-          </Link>
-        </li>
-        <li>
-          <Link route="/publications">
-            <a>Publications</a>
-          </Link>
-        </li>
-        <li>
-          <Link route="/online-training/1">
-            <a>Online training</a>
-          </Link>
-        </li>
-      </ul>
+      <section className="o-wrapper-inner">
+        <form>
+          <label>Search u4</label>
+          <input name="search"/>
+          <button type="submit" value="Search">Search</button>
+        </form>
+      </section>
+      <section className="o-wrapper-inner">
+        <h1>Welcome to u4.no</h1>
+        <p>This is what we do at U4, and a little bit why we do it. We want you to trust that we are REALLY good at what we do. This is why our stuff
+          is relevant for you. And here is how to find stuff that we think is useful for you in your anti-corruption work. Are you looking for a
+          specific <Link route="/topics"><a>topic</a></Link>? Or a <Link route="/publications"><a>publication</a></Link> or another resource of some kind? Or
+          do you want to ask our helpdesk about something? Here is great course
+          you can take if you are a partner. <Link route="/online-training/1"><a>Workshops</a></Link> are also on offer.</p>
+      </section>
     </div>
   </Layout>
 );
