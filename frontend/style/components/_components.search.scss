@@ -43,6 +43,12 @@
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-large, $line-height-large );
   }
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+
+  &:hover {
+    outline: none;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  }
 }
 
 .c-search__button  {
@@ -61,5 +67,25 @@
     width: 100%;
     height: 100%;
   }
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+.c-search__results {
+  padding: $spacing;
+  border: none;
+  border-right: 1px solid $brand-main;
+  border-bottom: 1px solid $brand-main;
+  border-left: 1px solid $brand-main;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+.c-search__items {
+  @include inuit-font-size($font-size-normal, $line-height-large );
+  margin-left: -$spacing;
+  margin-right: -$spacing;
+  padding-left: $spacing;
+  padding-right: $spacing;
+}
 
+.c-search__items--highlighted {
+  background-color: $brand-lightest;
+  font-weight: bold;
 }

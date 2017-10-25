@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '../routes';
-import { LayoutHomepage } from '../components';
+import { LayoutHomepage, SearchField } from '../components';
 import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass } from '../components/icons';
 
@@ -11,13 +11,7 @@ export default () => (
         <div class="o-layout o-layout--center u-margin-bottom-huge">
           <U4LogoSquare />
         </div>
-        <form className="c-search u-margin-bottom-huge">
-          <label className="c-search__lable u-margin-bottom-small">Search for topics, publications, people and all the other stuff</label>
-          <div className="c-search__content">
-            <input className="c-search__input" name="search" placeholder="Search" />
-            <button className="c-search__button" type="submit" value="Search"><MagnifyingGlass /></button>
-          </div>
-        </form>
+        <SearchField />
       </section>
       <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
         <p className="c-introduction-text">
