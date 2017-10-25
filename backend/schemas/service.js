@@ -29,6 +29,29 @@ export default {
           ]
         },
         {
+          name: 'features',
+          title: 'Features',
+          type: 'object',
+          fields: [
+            {
+              name: 'featureArray',
+              type: 'array',
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    image,
+                    {
+                      name: 'featureText',
+                      type: 'text',
+                    },
+                  ]
+                }
+              ]
+            }
+          ],
+        },
+        {
           name: 'workshops',
           title: 'Workshops list',
           type: 'object',
