@@ -202,7 +202,7 @@ export default {
             type: 'reference',
             to: [
               {
-                type: 'partners'
+                type: 'institution'
               },
             ],
           },

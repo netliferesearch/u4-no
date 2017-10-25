@@ -18,14 +18,17 @@ export default (Child, { queryFunc = false, materializeDepth = false }) =>
           projectId: '1f1lcoov',
           dataset: 'production',
           token: '',
-          useCdn: false,
+          useCdn: true,
         });
+
         if (!queryFunc) {
           console.log('No query function provided. Returning empty object');
           return {};
         }
-        const { sanityQuery, param } = queryFunc(nextContext);
+        const { sanityQuery, param = {} } = queryFunc(nextContext);
+
         const sanityResults = await client.fetch(sanityQuery, param);
+
         if (!materializeDepth) {
           return sanityResults;
         }

@@ -18,7 +18,7 @@
   --brand-secondary: #1DA1F2;
   --brand-secondary: #f43;
   --component-bg: #fff;
-  --component-border-color: #0954A7;
+  --component-border-color: color(var(--brand-primary) lightness(+ 15%) saturation(- 10%));
   --component-box-shadow: 0 1px 3px color(var(--black) a(50%));
   --gray-base: #323232;
   --state-danger-color: #F8495F;
