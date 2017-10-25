@@ -8,9 +8,10 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Feature = ({ id, title, icon }) => (
+const Feature = ({ id, title, icon, iconUrl }) => (
   <div {...classes('item')}>
     {icon && <div {...classes('icon')}>{icon()}</div>}
+    {iconUrl && <div {...classes('icon')}><img src={iconUrl} alt={title} /></div>}
     {title}
   </div>
 );

@@ -22,4 +22,8 @@
     fill: $brand-dark;
   }
   padding-bottom: $spacing-small;
+  img {
+    max-width: 100px;
+    height: auto;
+  }
 }
