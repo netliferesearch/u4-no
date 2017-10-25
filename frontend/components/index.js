@@ -11,6 +11,7 @@ export { default as HeadComponent } from './HeadComponent';
 export { default as Layout } from './Layout';
 export { default as LinkList } from './LinkList';
 export { default as LongformArticle } from './LongformArticle';
+export { default as SimpleMosaic } from './SimpleMosaic';
 export { default as Mosaic } from './Mosaic';
 export { default as Newsletter } from './Newsletter';
 export { default as PartnerPromo } from './PartnerPromo';

@@ -10,7 +10,6 @@ const classes = BEMHelper({
 
 const WorkshopMosaic = ({ resources = [] }) => (
   <div {...classes()}>
-    {console.log(resources)}
     {resources.map(item =>
       (
         <div {...classes('item')}>

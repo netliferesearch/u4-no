@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
-import { BoxOnBox, BoxOnImage, WorkshopMosaic, Feature } from './';
+import { BoxOnBox, BoxOnImage, WorkshopMosaic, Feature, SimpleMosaic } from './';
 
 /**
  * Here we replace Sanity's react components for rendering basic things like
@@ -33,6 +33,11 @@ const serializers = {
     workshops: ({ node: { workshopsRef } }) => (
       <div className="o-wrapper">
         <WorkshopMosaic resources={workshopsRef} />
+      </div>
+    ),
+    courses: ({ node: { coursesRef } }) => (
+      <div className="o-wrapper">
+        <SimpleMosaic resources={coursesRef} cta="Register" />
       </div>
     ),
     features: ({ node: { featureArray } }) => (
