@@ -57,7 +57,7 @@ export default {
               name: 'ctaValue',
               title: 'Lenketekst',
               type: 'string',
-            }
+            },
             {
               name: 'ctaURL',
               title: 'URL',
