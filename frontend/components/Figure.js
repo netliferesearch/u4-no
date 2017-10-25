@@ -1,9 +1,16 @@
 import React from 'react';
+import BEMHelper from 'react-bem-helper';
+
+const classes = BEMHelper({
+  name: 'article',
+  prefix: 'c-',
+});
+
 
 const Figure = ({ asset, caption, license, licensor }) => (
-  <figure className="c-article__figure c-longform-grid__full">
-    <img className="c-article__figure-img" src={asset.url} alt={asset.altText} />
-    <figcaption className="c-article__figure-figcaption">
+  <figure {...classes('figure', null, 'c-longform-grid__full')}>
+    <img {...classes('figure-img')} src={asset.url} alt={asset.altText} />
+    <figcaption {...classes('figure-figcaption')}>
       {caption}
       {license}
       {licensor}
