@@ -29,6 +29,21 @@ export default {
           ]
         },
         {
+          name: 'textBlock',
+          title: 'Text field',
+          type: 'object',
+          fields: [
+            {
+              type: 'array',
+              of: [
+                {
+                  type: 'block',
+                }
+              ]
+            }
+          ]
+        },
+        {
           name: 'features',
           title: 'Features',
           type: 'object',

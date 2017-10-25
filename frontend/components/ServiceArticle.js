@@ -20,6 +20,11 @@ const serializers = {
         <a href={href}>{text} &nbsp;<ArrowRight /></a>
       </h2>
     ),
+    textBlock: ({ node: { text = '' } }) => (
+      <div className="o-wrapper-inner u-margin-bottom-large">
+        {text}
+      </div>
+    ),
     boxOnBoxRef: ({ node: { textLeft, textRight } }) => (
       <section className="c-topic-section">
         <BoxOnBox left={textLeft} right={textRight} />
