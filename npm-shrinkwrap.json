@@ -3882,6 +3882,11 @@
         "is-obj": "1.0.1"
       }
     },
+    "dotenv": {
+      "version": "4.0.0",
+      "resolved": "https://registry.npmjs.org/dotenv/-/dotenv-4.0.0.tgz",
+      "integrity": "sha1-hk7xN5rO1Vzm+V3r7NzhefegzR0="
+    },
     "downshift": {
       "version": "1.16.0",
       "resolved": "https://registry.npmjs.org/downshift/-/downshift-1.16.0.tgz",
