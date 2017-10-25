@@ -1,15 +1,21 @@
 import React from 'react';
 import { Link } from '../routes';
 import { DownArrowButton } from '../components/buttons';
+import BEMHelper from 'react-bem-helper';
+
+const classes = BEMHelper({
+  name: 'linkbox',
+  prefix: 'c-',
+});
 
 const LinkBox = ({ title = 'Click me', text = '', icon = '', route = '', params = {} }) => (
-  <div className="c-linkbox">
+  <div {...classes()}>
     <Link route={route} params={params}>
-      <a className="c-linkbox-link">
-        <div className="c-linkbox__content">
-          {icon && <div className="c-linkbox__icon">{icon()}</div>}
-          <div className="c-linkbox__body">
-            <h2 className="c-linkbox__title">{title}</h2>
+      <a {...classes('link')}>
+        <div {...classes('content')}>
+          {icon && <div {...classes('icon')}>{icon()}</div>}
+          <div {...classes('body')}>
+            <h2 {...classes('title')}>{title}</h2>
             {text && <p>{text}</p>}
           </div>
         </div>
