@@ -45,15 +45,6 @@ const Services = (props) => {
       <ServiceArticle blocks={props.service.content} />
 
 
-      <section className="c-topic-section">
-        <section className="c-linkbox-wrapper" />
-
-        <h2 className="c-topic-section__cta">
-          <a href="#">Talk to us &nbsp;<ArrowRight /></a>
-        </h2>
-      </section>
-
-
       <Newsletter />
 
       <Footer />

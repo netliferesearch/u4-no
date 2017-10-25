@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
-import { BoxOnBox, BoxOnImage } from './';
+import { BoxOnBox, BoxOnImage, WorkshopMosaic } from './';
 
 /**
  * Here we replace Sanity's react components for rendering basic things like
@@ -10,6 +10,16 @@ import { BoxOnBox, BoxOnImage } from './';
  */
 const serializers = {
   types: {
+    heading: ({ node: { headingValue = '' } }) => (
+      <h2 className="c-topic-section__title u-margin-bottom-none">
+        {headingValue}
+      </h2>
+    ),
+    cta: ({ node: { text = '', href = '' } }) => (
+      <h2 className="c-topic-section__cta">
+        <a href={href}>{text} &nbsp;<ArrowRight /></a>
+      </h2>
+    ),
     boxOnBoxRef: ({ node: { textLeft, textRight } }) => (
       <section className="c-topic-section">
         <BoxOnBox left={textLeft} right={textRight} />
@@ -17,14 +27,13 @@ const serializers = {
     ),
     boxOnImageRef: ({ node: { block, img } }) => (
       <section className="c-topic-section">
-        {console.log(block)}
         <BoxOnImage text={block} image={img} />
       </section>
     ),
-    heading: ({ node: { headingValue = '' } }) => (
-      <h2 className="c-topic-section__title u-margin-bottom-none">
-        {headingValue}
-      </h2>
+    workshops: ({ node: { workshopsRef } }) => (
+      <div className="o-wrapper">
+        <WorkshopMosaic resources={workshopsRef} />
+      </div>
     ),
   },
   //

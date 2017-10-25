@@ -1,0 +1,44 @@
+.c-workshop-mosaic {
+  display: flex;
+  justify-content: center;
+  flex-wrap:wrap;
+  @include mq($from: tablet) {
+    margin: $spacing-large auto $spacing-huge;
+  }
+}
+.c-workshop-mosaic__item {
+  max-width: 300px;
+  width: 100%;
+  margin: $spacing-small;
+  padding: $spacing;
+  border: 1px solid $brand-dark;
+  font-family: $font-sans;
+  a {
+    border: none;
+    color: $brand-dark;
+  }
+
+  &:hover {
+    background: $brand-medium;
+    color: $white;
+    a {
+      color: $white;
+    }
+    svg path {
+      fill: $white;
+      stroke: $white;
+    }
+  }
+}
+.c-workshop-mosaic__title {
+  @include inuit-font-size($font-size-normal, $font-size-large);
+  margin-bottom: $spacing;
+  display: inline-block;
+  width: 75%;
+}
+.c-workshop-mosaic__icon {
+  display: inline-block;
+  width: 15%;
+  margin-right: 5%;
+  vertical-align: top;
+}

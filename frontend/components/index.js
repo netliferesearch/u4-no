@@ -20,6 +20,7 @@ export { default as PullQuote } from './PullQuote';
 export { default as Team } from './Team';
 export { default as PartnerPromo } from './PartnerPromo';
 export { default as ToggleBlock } from './ToggleBlock';
+export { default as WorkshopMosaic } from './WorkshopMosaic';
 export {
   TableOfContentsButton,
   TableOfContentsContent,
