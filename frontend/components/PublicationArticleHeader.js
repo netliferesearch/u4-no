@@ -2,8 +2,13 @@ import React from 'react';
 import { Link } from '../routes';
 import randomKey from '../helpers/randomKey';
 import { Download, ArrowRight } from './icons';
-
 import { AuthorList, EditorList } from '../components/';
+import BEMHelper from 'react-bem-helper';
+
+const classes = BEMHelper({
+  name: 'article-header',
+  prefix: 'c-',
+});
 
 const PublicationArticleHeader = ({
   title = '',
@@ -15,22 +20,22 @@ const PublicationArticleHeader = ({
   authors = [],
   editors = [],
 }) => (
-  <header className={`${className} c-article-header`}>
+  <header {...classes('', null, className)}>
     {/* Wrap in standard grid width until we know better */}
-    <div className="c-article-header__meta">
+    <div {...classes('meta')}>
       {publicationType.title && `${publicationType.title} | `}
       {topics.map(({ title = '', _id = '' }) => (
-        <a href className="c-article-header__link-item" key={_id}>
+        <a href {...classes('link-item')} key={_id}>
           {title}
         </a>
       ))}
     </div>
     <div>
-      <h1 className="c-article-header__title">{title}</h1>
+      <h1 {...classes('title')}>{title}</h1>
     </div>
     <div>
-      <p className="c-article-header__subtitle">{subtitle}</p>
-      <div className="c-article-header__meta">
+      <p {...classes('subtitle')}>{subtitle}</p>
+      <div {...classes('meta')}>
         <p>
           {authors ? <div><AuthorList authors={authors} /><br /></div> : null}
           {editors.length ? <div><EditorList editors={editors} /><br /></div> : null}
@@ -41,18 +46,18 @@ const PublicationArticleHeader = ({
         </p>
       </div>
       <Link route="/3">
-        <a className="c-article-header__button">
-          <div className="c-article-header__button-text">Read our short version</div>
-          <div className="c-article-header__button-icon"><ArrowRight /></div>
+        <a {...classes('button')}>
+          <div {...classes('button-text')}>Read our short version</div>
+          <div {...classes('button-icon')}><ArrowRight /></div>
         </a>
       </Link>
-      <div className="c-article-header__meta c-article-header__download">
+      <div {...classes('meta', null, 'c-article-header__download')}>
         <Link route="/2">
-          <a className="c-article-header__download-text">
+          <a {...classes('download-text')}>
             <span>Download as PDF</span>
           </a>
         </Link>
-        <Download className="c-article-header__download-icon" />
+        <Download {...classes('download-icon')} />
       </div>
     </div>
   </header>
