@@ -28,6 +28,7 @@ const Services = (props) => {
 
       {console.log(props)}
 
+      <h2 className="c-topic-page_title">{props.service.title}</h2>
       <h2 className="c-topic-page__longTitle">{props.service.longTitle}</h2>
 
       <section className="c-boxOnImage">
