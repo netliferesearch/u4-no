@@ -21,7 +21,7 @@ const WorkshopMosaic = ({ resources = [] }) => (
               {item.title}
             </div>
             <div>
-              {item.subtitle && <BlockContent blocks={item.subtitle} /> }
+              {item.lead && <BlockContent blocks={item.lead} /> }
             </div>
           </a></Link>
         </div>

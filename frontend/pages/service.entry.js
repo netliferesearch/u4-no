@@ -26,9 +26,9 @@ const Services = (props) => {
   return (
     <Layout>
 
-      {console.log(props.service)}
+      {console.log(props)}
 
-      <h2 className="c-topic-page__longTitle">{title}</h2>
+      <h2 className="c-topic-page__longTitle">{props.service.longTitle}</h2>
 
       <section className="c-boxOnImage">
         <figure className="c-boxOnImage__figure">
@@ -53,7 +53,7 @@ const Services = (props) => {
 };
 export default DataLoader(Services, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '{ "service": *[slug.current == $slug]{...,"resources": resources[]->{_id,_type, content, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}}[0]}',
+    sanityQuery: '{ "service": *[slug.current == $slug]{...,"resources": resources[]->{_id,_type, content, title,"slug": slug.current, "imageUrl": featuredImage.asset->url}}[0]}',
     param: { slug },
   }),
   materializeDepth: 3,

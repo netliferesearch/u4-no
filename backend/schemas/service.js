@@ -6,6 +6,7 @@ export default {
   type: 'object',
   fields: [
     title,
+    longTitle,
     leadText,
     featuredImage,
     {
@@ -40,7 +41,7 @@ export default {
                   type: 'reference',
                   to: [
                     {
-                      type: 'publication'
+                      type: 'workshop'
                     }
                   ]
                 }

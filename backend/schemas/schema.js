@@ -15,6 +15,7 @@ import courseType from './courseType';
 import course from './course';
 import service from './service';
 import boxOnBox from './boxOnBox';
+import workshop from './workshop';
 
 export default createSchema({
   name: 'default',
@@ -34,5 +35,6 @@ export default createSchema({
     courseType,
     course,
     service,
+    workshop,
   ]
 })
