@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from '../routes';
 import { HeadComponent, Logo } from '../components';
+import BEMHelper from 'react-bem-helper';
+
+const classes = BEMHelper({
+  name: 'top-bar',
+  prefix: 'c-',
+});
 
 export default ({
   showLoadingScreen = false,
@@ -18,9 +24,9 @@ export default ({
   >
     <HeadComponent title={title} description={description} />
     {showTopTab && (
-      <div className="c-top-bar">
+      <div {...classes()}>
         <Link route="/">
-          <a className="c-top-bar__logo">
+          <a {...classes('logo')}>
             <Logo />
           </a>
         </Link>
