@@ -28,6 +28,44 @@ export default {
           ]
         },
         {
+          name: 'workshops',
+          title: 'Workshops list',
+          type: 'object',
+          fields: [
+            {
+              name: 'workshopsRef',
+              type: 'array',
+              of: [
+                {
+                  type: 'reference',
+                  to: [
+                    {
+                      type: 'publication'
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'cta',
+          title: 'Call to action link',
+          type: 'object',
+          fields: [
+            {
+              name: 'ctaValue',
+              title: 'Lenketekst',
+              type: 'string',
+            }
+            {
+              name: 'ctaURL',
+              title: 'URL',
+              type: 'string',
+            }
+          ]
+        },
+        {
           name: 'boxOnBoxRef',
           title: 'Two text boxes',
           type: 'object',
