@@ -12,4 +12,5 @@ routes
   .add('online-training.entry', '/online-training/:id')
   .add('online-training.index', '/online-training')
   .add('workshops.index', '/workshops')
+  .add('workshops.entry', '/workshops/:slug')
   .add('service.entry', '/services/:slug');

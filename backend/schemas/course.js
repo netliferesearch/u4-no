@@ -1,18 +1,12 @@
+import { title, leadText, featuredImage, slug } from './fields'
+
 export default {
   title: 'Course',
   name: 'course',
   type: 'object',
   fields: [
-    {
-      name: 'title',
-      title: 'Title',
-      type: 'text',
-    },
-    {
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-    },
+    title,
+    leadText,
     {
       name: 'language',
       title: 'Language',

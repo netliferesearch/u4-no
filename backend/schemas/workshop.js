@@ -6,6 +6,7 @@ export default {
   type: 'object',
   fields: [
     title,
+    leadText,
     {
       name: 'content',
       title: 'Article content',

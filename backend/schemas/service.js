@@ -29,6 +29,44 @@ export default {
           ]
         },
         {
+          name: 'textBlock',
+          title: 'Text field',
+          type: 'object',
+          fields: [
+            {
+              type: 'array',
+              of: [
+                {
+                  type: 'block',
+                }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'features',
+          title: 'Features',
+          type: 'object',
+          fields: [
+            {
+              name: 'featureArray',
+              type: 'array',
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    image,
+                    {
+                      name: 'featureText',
+                      type: 'text',
+                    },
+                  ]
+                }
+              ]
+            }
+          ],
+        },
+        {
           name: 'workshops',
           title: 'Workshops list',
           type: 'object',
@@ -42,6 +80,27 @@ export default {
                   to: [
                     {
                       type: 'workshop'
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'courses',
+          title: 'Courses list',
+          type: 'object',
+          fields: [
+            {
+              name: 'coursesRef',
+              type: 'array',
+              of: [
+                {
+                  type: 'reference',
+                  to: [
+                    {
+                      type: 'course'
                     }
                   ]
                 }

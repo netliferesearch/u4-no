@@ -26,23 +26,44 @@ const Services = (props) => {
   return (
     <Layout>
 
-      {console.log(props)}
+      <h2
+        className="c-topic-page_title"
+      >
+        {props.service.title}
+      </h2>
+      <h2
+        className="c-topic-page__longTitle"
+      >
+        {props.service.longTitle}
+      </h2>
 
-      <h2 className="c-topic-page__longTitle">{props.service.longTitle}</h2>
-
-      <section className="c-boxOnImage">
-        <figure className="c-boxOnImage__figure">
-          <img alt="" src={props.service.featuredImage.asset.url} />
+      <section
+        className="c-boxOnImage"
+      >
+        <figure
+          className="c-boxOnImage__figure"
+        >
+          <img
+            alt=""
+            src={props.service.featuredImage.asset.url}
+          />
         </figure>
-        <div className="c-boxOnImage__body">
-          <p className="c-boxOnImage__lead">We facilitate local dialouge
+        <div
+          className="c-boxOnImage__body"
+        >
+          <p
+            className="c-boxOnImage__lead"
+          >
+            We facilitate local dialouge
           </p>
           {props.service.lead.split('\n').map(i => <p>{i}</p>)}
         </div>
       </section>
 
 
-      <ServiceArticle blocks={props.service.content} />
+      <ServiceArticle
+        blocks={props.service.content}
+      />
 
 
       <Newsletter />

@@ -18,7 +18,8 @@ export default () => (
           is relevant for you. And here is how to find stuff that we think is useful for you in your anti-corruption work. Are you looking for a
           specific <Link route="/topics"><a>topic</a></Link>? Or a <Link route="/publications"><a>publication</a></Link> or another resource of some kind? Or
           do you want to ask our helpdesk about something? Here is great course
-          you can take if you are a partner. <Link route="/online-training/1"><a>Workshops</a></Link> are also on offer.</p>
+          you can take if you are a partner. <Link route="/services/workshops"><a>Workshops</a></Link> are also on offer.</p>
+          <Link route="/services/online-training"><a>Online training</a></Link>  <Link route="/search"><a>Search</a></Link>
       </section>
     </div>
   </Layout>
