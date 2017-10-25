@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from '../routes';
 import BEMHelper from 'react-bem-helper';
-import BlockContent from '@sanity/block-content-to-react';
 import { Pin } from './icons';
 
 const classes = BEMHelper({
@@ -15,13 +14,13 @@ const WorkshopMosaic = ({ resources = [] }) => (
     {resources.map(item =>
       (
         <div {...classes('item')}>
-          <Link to={'#'} ><a>
+          <Link to={item.link} ><a>
             <Pin {...classes('icon')} />
             <div {...classes('title')}>
               {item.title}
             </div>
             <div>
-              {item.lead && <BlockContent blocks={item.lead} /> }
+              {item.lead && item.lead.split('\n').map(i => <p>{i}</p>) }
             </div>
           </a></Link>
         </div>
