@@ -8,14 +8,16 @@ const replaceWindowHash = (hashValue) => {
   } else if (history.pushState) {
     // update hash without page jumps,
     // courtesy of https://stackoverflow.com/a/14690177
-    history.pushState(null, null, `#${hashValue}`);
+    const newHash = hashValue ? `#${hashValue}` : window.location.pathname;
+    history.pushState(null, null, newHash);
   } else {
-    window.location.hash = `#${hashValue}`;
+    const newHash = hashValue ? `#${hashValue}` : '';
+    window.location.hash = newHash;
   }
 };
 
 const exampleInitialState = {
-  readingProgressId: '1.-introduction',
+  readingProgressId: '',
   isArticleMenuOpen: false,
   showLoadingScreen: false,
 };
