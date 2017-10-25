@@ -9,6 +9,7 @@ export { default as Figure } from './Figure';
 export { default as Footer } from './Footer';
 export { default as HeadComponent } from './HeadComponent';
 export { default as Layout } from './Layout';
+export { default as LayoutHomepage } from './LayoutHomepage';
 export { default as LinkList } from './LinkList';
 export { default as LongformArticle } from './LongformArticle';
 export { default as SimpleMosaic } from './SimpleMosaic';
