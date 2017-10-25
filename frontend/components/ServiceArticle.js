@@ -55,14 +55,6 @@ const serializers = {
       </section>
     ),
   },
-  //
-  // list: ({ type, children }) => {
-  //   if (type === 'bullet') {
-  //     return <ul className="list-bullets c-longform-grid__standard ">{children}</ul>;
-  //   }
-  //
-  //   return <ol className="list-numbered c-longform-grid__standard ">{children}</ol>;
-  // },
 };
 
 const ServiceArticle = ({ blocks }) => (
