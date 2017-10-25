@@ -18,8 +18,18 @@ export default () => (
           </Link>
         </li>
         <li>
-          <Link route="/online-training/1">
-            <a>Online training</a>
+          <Link route="/services/online-training">
+            <a>Service: Online training</a>
+          </Link>
+        </li>
+        <li>
+          <Link route="/services/workshops">
+            <a>Service: Workshops</a>
+          </Link>
+        </li>
+        <li>
+          <Link route="/search">
+            <a>Search</a>
           </Link>
         </li>
       </ul>
