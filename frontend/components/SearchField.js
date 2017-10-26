@@ -95,7 +95,7 @@ class SearchField extends Component {
                     }
                     debounce(
                       client
-                        .fetch(buildQuery(value))
+                        .fetch(buildQuery({ queryString: value }))
                         .then(({ results }) => {
                           const items = results.map(item => item); // Added ID to make it unique
                           this.setState({ items });
