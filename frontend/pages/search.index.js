@@ -42,21 +42,18 @@ function handleChange(query) {
 
 }
 
-const Search = props => (
+const Search = ({ results = false }) => (
   <Layout>
-    {
-      console.log(props)
-    }
     <div className="o-wrapper-inner">
       <section id="searchInput" className="o-wrapper-inner">
         <div {...classes({ block: 'search-input' })}>
           <div {...classes({ block: 'search-input', element: 'content' })}>
-            <SearchField  />
+            <SearchField />
           </div>
         </div>
       </section>
       <section>
-        <SearchResults results={props.results} />
+        { results && <SearchResults results={results.filter(item => item.slug)} />}
       </section>
     </div>
     <Footer />
@@ -64,8 +61,15 @@ const Search = props => (
 );
 
 export default DataLoader(Search, {
-  queryFunc: ({ query }) => ({
-    sanityQuery: buildSearchQuery(query.search),
-  }),
+  queryFunc: ({ query }) => {
+    if (!query.search) {
+      return {
+        sanityQuery: false
+      }
+    }
+    return {
+      sanityQuery: buildSearchQuery({ queryString: query.search, limit: { from: 0, to: 1000 } }),
+    }
+  },
   materializeDepth: 0,
 });

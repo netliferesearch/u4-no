@@ -1,4 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from '../routes';
+import BEMHelper from 'react-bem-helper';
+
+const classes = BEMHelper({
+  name: 'search-results',
+  prefix: 'c-',
+});
+
 
 export default class SearchResults extends Component {
   constructor(props) {
@@ -7,17 +15,30 @@ export default class SearchResults extends Component {
   }
 
   render() {
+    const { results } = this.props;
     return (
-      <ul>
-        {this.props.results.map(({ _type, slug, title }) => <li>
+      <div>
+        <section>
+          <span>Results:</span> {results.length}
+        </section>
+        <ul>
           {
-            slug ?
-              <a href={`/${_type}s/${slug.current}`}>{title}</a>
-            : title
-          }
+            results
+              .map(({ _id, _type, slug = {}, title, subtitle = false, authors = false }) => (<li {...classes('items')} key={_id}>
+                <span>{_type}</span><br />
+                <Link to={`/${_type}s/${slug.current}`}><a>{title}</a></Link><br />
+                <span>{subtitle}</span>
+                {
+                  console.log(authors)
+                }
+                {
+                  authors && authors.map(author => author.name)
+                }
 
-        </li>)}
-      </ul>
+              </li>))
+          }
+        </ul>
+      </div>
     )
   }
 }

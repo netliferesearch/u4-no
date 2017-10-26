@@ -44,3 +44,12 @@ a:active {
     border-bottom: 1px solid rgba(139, 223, 253, 1);
   }
 }
+a.u-no-underline {
+  text-decoration: none;
+  border: none;
+
+  &:hover {
+    text-decoration: none;
+    border: none;
+  }
+}

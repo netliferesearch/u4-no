@@ -12,8 +12,8 @@ const classes = BEMHelper({
 const LinkList = ({ title, content, otherClasses = null }) => (
   <ul {...classes(null, null, otherClasses)}>
     {title && <span>{title}</span>}
-    { content.map(item =>
-      (<li {...classes('item')}>
+    { content.map((item, index) =>
+      (<li key={index} {...classes('item')}>
         <Link to={item.link}>
           <a {...classes('link')}>
             {item.title} <ArrowRight {...classes('icon')} />
