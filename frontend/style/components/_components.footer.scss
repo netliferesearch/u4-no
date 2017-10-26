@@ -1,30 +1,56 @@
 .c-footer {
+
   padding: $spacing;
   font-family: $font-sans;
   @include mq($from: tablet) {
-    padding: $spacing-huge $spacing $spacing-huge $spacing-huge;
+    padding: $spacing-large;
   }
 }
 
 .c-footer__wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
   @include mq($from: tablet) {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: space-between;
   }
+}
+
+.c-footer__heading {
+  font-weight: bold;
 }
 
 .c-footer__item {
   padding: $spacing-small;
-  @include mq($from: tablet) {
-    width: 25%;
-    display: inline-block;
+  max-width: 200px;
+  a {
+    border-bottom: none;
   }
 }
 
+
 .c-footer__color-icon {
   max-width: 100%;
+  float: left;
+  @include mq($from: tablet) {
+  }
   path, polygon {
     fill: $brand-dark;
   }
+}
+
+.c-footer__some-icon {
+  border-bottom: none;
+  height: 20px;
+  width: 20px;
+  margin-right: $spacing-tiny;
+  margin-bottom: -4px;
+  path, polygon {
+    fill: $brand-dark;
+  }
+
 }

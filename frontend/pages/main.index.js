@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from '../routes';
 import { LayoutHomepage, SearchField } from '../components';
+import { Footer } from '../components';
+import { PartnerAgencies } from '../components';
 import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass } from '../components/icons';
 
@@ -24,5 +26,7 @@ export default () => (
           exclusive <Link route="/services/online-training"><a>online courses</a></Link>, <Link route="/services/workshops"><a>workshops</a></Link> or <Link route="#"><a>helpdesk</a></Link>.</p>
       </section>
     </div>
+    <Footer />
+    <PartnerAgencies />
   </LayoutHomepage>
 );

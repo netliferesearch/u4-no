@@ -32,3 +32,4 @@ export {
   TableOfContentsSidebar,
 } from './TableOfContents';
 export { default as Logo } from './Logo';
+export { default as PartnerAgencies} from './PartnerAgencies';
