@@ -38,8 +38,8 @@ export default ({ queryString = false, limit: { from = 0, to = 20 } = { from: 0,
       date,
       _type,
       subtitle,
-      authors->{...},
-      editors->{...}
+      "authors": authors[]->{...},
+      "editors": editors[]->{...}
 
     }}`.replace('\n', '');
 };

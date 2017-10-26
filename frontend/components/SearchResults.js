@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from '../routes';
 import BEMHelper from 'react-bem-helper';
 
+import { AuthorList, EditorList } from '../components/';
+
 const classes = BEMHelper({
   name: 'search-results',
   prefix: 'c-',
@@ -28,15 +30,8 @@ export default class SearchResults extends Component {
                 <span>{_type}</span><br />
                 <Link to={`/${_type}s/${slug.current}`}><a>{title}</a></Link><br />
                 <span>{subtitle}</span>
-                {
-                  console.log(authors)
-                }
-                {
-                  authors && authors.map(author => author.name)
-                }
-                {
-                  editors && editors.map(editor => editor.name)
-                }
+                {authors ? <div><AuthorList authors={authors} /><br /></div> : null}
+                {editors.length ? <div><EditorList editors={editors} /><br /></div> : null}
 
               </li>))
           }
