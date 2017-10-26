@@ -34,6 +34,7 @@ export default {
           type: 'object',
           fields: [
             {
+              name: 'text',
               type: 'array',
               of: [
                 {

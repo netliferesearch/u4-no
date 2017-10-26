@@ -6,15 +6,15 @@
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/@hypnosphi/fuse.js/-/fuse.js-3.0.9.tgz#ea99f6121b4a8f065b4c71f85595db2714498807"
 
-"@sanity/base@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/base/-/base-0.118.0-alpha.3044306e.tgz#cb797793125e452086f0b9e3de9a32a23d05e1c6"
+"@sanity/base@^0.118.3":
+  version "0.118.3"
+  resolved "https://registry.yarnpkg.com/@sanity/base/-/base-0.118.3.tgz#07822c8434f57023e1f1f30e15d5818696f53d29"
   dependencies:
-    "@sanity/client" "0.118.0-alpha.3044306e"
-    "@sanity/document-store" "0.118.0-alpha.3044306e"
-    "@sanity/observable" "0.118.0-alpha.3044306e"
-    "@sanity/schema" "0.118.0-alpha.3044306e"
-    "@sanity/state-router" "0.118.0-alpha.3044306e"
+    "@sanity/client" "^0.118.0"
+    "@sanity/document-store" "^0.118.0"
+    "@sanity/observable" "^0.118.0"
+    "@sanity/schema" "^0.118.3"
+    "@sanity/state-router" "^0.118.0"
     history "^4.6.3"
     in-publish "^2.0.0"
     lodash "^4.17.4"
@@ -27,24 +27,24 @@
     shallow-equals "^1.0.0"
     stylelint-config-standard "^17.0.0"
 
-"@sanity/check@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/check/-/check-0.118.0-alpha.3044306e.tgz#8c81f0376f2f760dded6b50567796823f7e58a48"
+"@sanity/check@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/check/-/check-0.118.0.tgz#015922c703b780dbce8483dbc6979fb23f18deb4"
   dependencies:
-    "@sanity/generate-help-url" "0.118.0-alpha.3044306e"
-    "@sanity/resolver" "0.118.0-alpha.3044306e"
+    "@sanity/generate-help-url" "^0.118.0"
+    "@sanity/resolver" "^0.118.0"
     chalk "^1.1.3"
     fs-extra "^4.0.2"
     in-publish "^2.0.0"
     promise-props-recursive "^1.0.0"
 
-"@sanity/cli@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/cli/-/cli-0.118.0-alpha.3044306e.tgz#b4f95d0923191cb19986edc84067040c905dad1e"
+"@sanity/cli@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/cli/-/cli-0.118.0.tgz#509a480dce7909ba0874a446b357a84bc6cb3b8f"
   dependencies:
-    "@sanity/client" "0.118.0-alpha.3044306e"
-    "@sanity/resolver" "0.118.0-alpha.3044306e"
-    "@sanity/util" "0.118.0-alpha.3044306e"
+    "@sanity/client" "^0.118.0"
+    "@sanity/resolver" "^0.118.0"
+    "@sanity/util" "^0.118.0"
     babel-polyfill "^6.23.0"
     chalk "^1.1.3"
     configstore "^3.0.0"
@@ -75,25 +75,25 @@
     validate-npm-package-name "^3.0.0"
     xdg-basedir "^3.0.0"
 
-"@sanity/client@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-0.118.0-alpha.3044306e.tgz#471e05747f42a6093f6d27a6f258a8d4e5d0adfd"
+"@sanity/client@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-0.118.0.tgz#476f8ab05f0c0f700a11033b8e994b3830229aa8"
   dependencies:
-    "@sanity/eventsource" "0.118.0-alpha.3044306e"
-    "@sanity/generate-help-url" "0.118.0-alpha.3044306e"
-    "@sanity/observable" "0.118.0-alpha.3044306e"
+    "@sanity/eventsource" "^0.118.0"
+    "@sanity/generate-help-url" "^0.118.0"
+    "@sanity/observable" "^0.118.0"
     deep-assign "^2.0.0"
     get-it "^4.0.0"
     make-error "^1.3.0"
     object-assign "^4.1.1"
 
-"@sanity/components@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/components/-/components-0.118.0-alpha.3044306e.tgz#e12975eb99562ceb31e23eab1b5189ea8a625d01"
+"@sanity/components@^0.118.3":
+  version "0.118.3"
+  resolved "https://registry.yarnpkg.com/@sanity/components/-/components-0.118.3.tgz#c41abacb6a14cf0da744937a03b88bf4ce57552c"
   dependencies:
-    "@sanity/date-input" "0.118.0-alpha.3044306e"
-    "@sanity/imagetool" "0.118.0-alpha.3044306e"
-    "@sanity/observable" "0.118.0-alpha.3044306e"
+    "@sanity/date-input" "^0.118.3"
+    "@sanity/imagetool" "^0.118.0"
+    "@sanity/observable" "^0.118.0"
     attr-accept "^1.1.0"
     canvas-to-blob "^0.0.0"
     chance "^1.0.4"
@@ -124,17 +124,17 @@
     react-split-pane "^0.1.63"
     scroll "^2.0.0"
 
-"@sanity/core@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/core/-/core-0.118.0-alpha.3044306e.tgz#3608bbddddd31c7bcff286100709ce73731a0fe9"
+"@sanity/core@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/core/-/core-0.118.0.tgz#0b8887c04c15e077e8ef853158a5096b2ad33561"
   dependencies:
-    "@sanity/check" "0.118.0-alpha.3044306e"
-    "@sanity/import" "0.118.0-alpha.3044306e"
-    "@sanity/mutator" "0.118.0-alpha.3044306e"
-    "@sanity/plugin-loader" "0.118.0-alpha.3044306e"
-    "@sanity/resolver" "0.118.0-alpha.3044306e"
-    "@sanity/server" "0.118.0-alpha.3044306e"
-    "@sanity/util" "0.118.0-alpha.3044306e"
+    "@sanity/check" "^0.118.0"
+    "@sanity/import" "^0.118.0"
+    "@sanity/mutator" "^0.118.0"
+    "@sanity/plugin-loader" "^0.118.0"
+    "@sanity/resolver" "^0.118.0"
+    "@sanity/server" "^0.118.0"
+    "@sanity/util" "^0.118.0"
     babel-preset-es2015-node4 "^2.1.1"
     babel-preset-stage-2 "^6.22.0"
     babel-register "^6.26.0"
@@ -160,44 +160,44 @@
     through2 "^2.0.3"
     uglify-js "^3.0.23"
 
-"@sanity/data-aspects@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/data-aspects/-/data-aspects-0.118.0-alpha.3044306e.tgz#cc5e85826d7252a942b17ce4e0f3fa625dac71a1"
+"@sanity/data-aspects@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/data-aspects/-/data-aspects-0.118.0.tgz#e88be88be51967be2ff6ed92b2464645254c5ade"
   dependencies:
-    "@sanity/generate-help-url" "0.118.0-alpha.3044306e"
+    "@sanity/generate-help-url" "^0.118.0"
     in-publish "^2.0.0"
     lodash "^4.17.4"
 
-"@sanity/date-input@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/date-input/-/date-input-0.118.0-alpha.3044306e.tgz#5eb27a6139e46b1f0949a9f7839c6819cadbabd5"
+"@sanity/date-input@^0.118.3":
+  version "0.118.3"
+  resolved "https://registry.yarnpkg.com/@sanity/date-input/-/date-input-0.118.3.tgz#43a458552c2dc888fc1307ab24b8aec8fb1f9e89"
   dependencies:
-    "@sanity/generate-help-url" "0.118.0-alpha.3044306e"
-    "@sanity/rich-date-input" "0.118.0-alpha.3044306e"
+    "@sanity/generate-help-url" "^0.118.0"
+    "@sanity/rich-date-input" "^0.118.3"
 
-"@sanity/default-layout@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/default-layout/-/default-layout-0.118.0-alpha.3044306e.tgz#a68d8566d234607cdbab1d6d7449fbaae329a928"
+"@sanity/default-layout@^0.118.3":
+  version "0.118.3"
+  resolved "https://registry.yarnpkg.com/@sanity/default-layout/-/default-layout-0.118.3.tgz#745bc6de70c4e445694b554f92649946cf2f17e6"
   dependencies:
     lodash "^4.17.4"
     react-click-outside "^2.3.1"
     react-ink "^6.1.0"
 
-"@sanity/default-login@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/default-login/-/default-login-0.118.0-alpha.3044306e.tgz#851e510e6eb9707ac4467a94165d8addb2f62e1a"
+"@sanity/default-login@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/default-login/-/default-login-0.118.0.tgz#6e69472a7a301ad9e991387e95912ef8964c2daa"
   dependencies:
     in-publish "^2.0.0"
     prop-types "^15.5.10"
 
-"@sanity/desk-tool@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-0.118.0-alpha.3044306e.tgz#9f953a2f51487e3fa6ffd48400d7c6306def1544"
+"@sanity/desk-tool@^0.118.3":
+  version "0.118.3"
+  resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-0.118.3.tgz#8d712537f3f3f027cbb63fadf670e24e7e14a48e"
   dependencies:
-    "@sanity/data-aspects" "0.118.0-alpha.3044306e"
-    "@sanity/form-builder" "0.118.0-alpha.3044306e"
-    "@sanity/mutator" "0.118.0-alpha.3044306e"
-    "@sanity/uuid" "0.118.0-alpha.3044306e"
+    "@sanity/data-aspects" "^0.118.0"
+    "@sanity/form-builder" "^0.118.3"
+    "@sanity/mutator" "^0.118.0"
+    "@sanity/uuid" "^0.118.0"
     classnames "^2.2.5"
     date-fns "^1.28.5"
     diff "^3.2.0"
@@ -211,31 +211,31 @@
     react-tiny-virtual-list "^2.0.5"
     shallow-equals "^1.0.0"
 
-"@sanity/document-store@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/document-store/-/document-store-0.118.0-alpha.3044306e.tgz#f99adfdcfcf939ef27cf9bb9113f9249d1373884"
+"@sanity/document-store@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/document-store/-/document-store-0.118.0.tgz#49ca2037677b45deb2cca36f8be8c38de8b23bca"
   dependencies:
-    "@sanity/mutator" "0.118.0-alpha.3044306e"
-    "@sanity/observable" "0.118.0-alpha.3044306e"
+    "@sanity/mutator" "^0.118.0"
+    "@sanity/observable" "^0.118.0"
     lodash "^4.17.4"
     nano-pubsub "^1.0.1"
 
-"@sanity/eventsource@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/eventsource/-/eventsource-0.118.0-alpha.3044306e.tgz#47cd3455e4a62f78b1bddd4e8e570171b9c10124"
+"@sanity/eventsource@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/eventsource/-/eventsource-0.118.0.tgz#23be3e427c90d4ac86c0961ca82e8bae8d55736a"
   dependencies:
     eventsource "^1.0.4"
     eventsource-polyfill "^0.9.6"
 
-"@sanity/form-builder@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/form-builder/-/form-builder-0.118.0-alpha.3044306e.tgz#2aec04837aeec8fcb57cd9cac90401d851f2599f"
+"@sanity/form-builder@^0.118.3":
+  version "0.118.3"
+  resolved "https://registry.yarnpkg.com/@sanity/form-builder/-/form-builder-0.118.3.tgz#aa75756988859391c0a40d94fe405236ed21bf58"
   dependencies:
-    "@sanity/generate-help-url" "0.118.0-alpha.3044306e"
-    "@sanity/imagetool" "0.118.0-alpha.3044306e"
-    "@sanity/mutator" "0.118.0-alpha.3044306e"
-    "@sanity/observable" "0.118.0-alpha.3044306e"
-    "@sanity/schema" "0.118.0-alpha.3044306e"
+    "@sanity/generate-help-url" "^0.118.0"
+    "@sanity/imagetool" "^0.118.0"
+    "@sanity/mutator" "^0.118.0"
+    "@sanity/observable" "^0.118.0"
+    "@sanity/schema" "^0.118.3"
     attr-accept "^1.1.0"
     canvas-to-blob "^0.0.0"
     classnames "^2.2.5"
@@ -263,33 +263,33 @@
     slate-soft-break "^0.4.1"
     speakingurl "^13.0.0"
 
-"@sanity/generate-help-url@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/generate-help-url/-/generate-help-url-0.118.0-alpha.3044306e.tgz#4e08a253f5b00192f62a080f1d8c6ab10c509b9a"
-
 "@sanity/generate-help-url@^0.116.0":
   version "0.116.0"
   resolved "https://registry.yarnpkg.com/@sanity/generate-help-url/-/generate-help-url-0.116.0.tgz#58149c46c3b5b6e1b94ce777ce68dc6382c32e8a"
 
-"@sanity/google-maps-input@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/google-maps-input/-/google-maps-input-0.118.0-alpha.3044306e.tgz#3400a9e4e3947def26621f40a1db08a9e3b4a87e"
+"@sanity/generate-help-url@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/generate-help-url/-/generate-help-url-0.118.0.tgz#17df80ac3185dd563bce97920aeb7aa8758d626d"
+
+"@sanity/google-maps-input@^0.118.3":
+  version "0.118.3"
+  resolved "https://registry.yarnpkg.com/@sanity/google-maps-input/-/google-maps-input-0.118.3.tgz#1d430dba82cdd5b1bf15387932ae3242cef7a919"
   dependencies:
     in-publish "^2.0.0"
 
-"@sanity/imagetool@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/imagetool/-/imagetool-0.118.0-alpha.3044306e.tgz#1cd4a02d36664db8aac09b25cbc62c7ced6750c8"
+"@sanity/imagetool@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/imagetool/-/imagetool-0.118.0.tgz#e196440d9e0c75cb6637632f3279810deabdacda"
   dependencies:
     debug "^2.6.3"
     dom-event "1.0.0"
     lodash "^4.17.4"
 
-"@sanity/import@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/import/-/import-0.118.0-alpha.3044306e.tgz#b778788b727daacfe3c88312139ed9e4b910f4ba"
+"@sanity/import@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/import/-/import-0.118.0.tgz#abe0ce2c607d8a9094581a5363ef4995ce0eb514"
   dependencies:
-    "@sanity/mutator" "0.118.0-alpha.3044306e"
+    "@sanity/mutator" "^0.118.0"
     debug "^2.6.3"
     get-uri "^2.0.1"
     lodash "^4.17.4"
@@ -299,47 +299,47 @@
     stream-collect "^1.3.1"
     through2 "^2.0.3"
 
-"@sanity/mutator@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/mutator/-/mutator-0.118.0-alpha.3044306e.tgz#33c5404a2cc3f7002a4c0803135f6b56195af7ac"
+"@sanity/mutator@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/mutator/-/mutator-0.118.0.tgz#7e07bc01beaa058f9c2a1f5c4289d211489971b2"
   dependencies:
     debug "^2.6.3"
     diff-match-patch "^1.0.0"
     lodash "^4.17.4"
 
-"@sanity/observable@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/observable/-/observable-0.118.0-alpha.3044306e.tgz#83e5f359a45660434c65249230d62e864d7d1c4f"
+"@sanity/observable@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/observable/-/observable-0.118.0.tgz#a747d18de7e5ea62958331e0b01ea1cbf7dcb1ce"
   dependencies:
     object-assign "^4.1.1"
     rxjs "5.0.x"
 
-"@sanity/plugin-loader@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/plugin-loader/-/plugin-loader-0.118.0-alpha.3044306e.tgz#334f5e0f719832a3f86b67e0b6ff6e49f54fad68"
+"@sanity/plugin-loader@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/plugin-loader/-/plugin-loader-0.118.0.tgz#670ed99695f530919341dec1a9b5baabe9a48715"
   dependencies:
-    "@sanity/resolver" "0.118.0-alpha.3044306e"
-    "@sanity/util" "0.118.0-alpha.3044306e"
+    "@sanity/resolver" "^0.118.0"
+    "@sanity/util" "^0.118.0"
     css-modules-require-hook "^4.2.2"
     interop-require "^1.0.0"
 
-"@sanity/resolver@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/resolver/-/resolver-0.118.0-alpha.3044306e.tgz#76815b0258132c7585d74fc2b99557bc5e4bf645"
+"@sanity/resolver@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/resolver/-/resolver-0.118.0.tgz#d0110f679d11babef679068eb3868378e2de417c"
   dependencies:
-    "@sanity/generate-help-url" "0.118.0-alpha.3044306e"
-    "@sanity/util" "0.118.0-alpha.3044306e"
+    "@sanity/generate-help-url" "^0.118.0"
+    "@sanity/util" "^0.118.0"
     fs-extra "^4.0.2"
     lodash "^4.17.4"
     path-exists "^3.0.0"
     promise-props-recursive "^1.0.0"
 
-"@sanity/rich-date-input@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/rich-date-input/-/rich-date-input-0.118.0-alpha.3044306e.tgz#0862868b7bd45a61bca2f4ff4d5a4fe87b8fa42c"
+"@sanity/rich-date-input@^0.118.3":
+  version "0.118.3"
+  resolved "https://registry.yarnpkg.com/@sanity/rich-date-input/-/rich-date-input-0.118.3.tgz#8c0f102cc377585f7d07423ab02af8b209bc371d"
   dependencies:
-    "@sanity/form-builder" "0.118.0-alpha.3044306e"
-    "@sanity/generate-help-url" "0.118.0-alpha.3044306e"
+    "@sanity/form-builder" "^0.118.3"
+    "@sanity/generate-help-url" "^0.118.0"
     lodash "^4.17.4"
     moment "^2.19.1"
     moment-timezone "^0.5.11"
@@ -347,11 +347,11 @@
     prop-types "^15.5.10"
     react-datepicker "^0.55.0"
 
-"@sanity/schema@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/schema/-/schema-0.118.0-alpha.3044306e.tgz#e7e8323cd365c82840f639587329829ec4596463"
+"@sanity/schema@^0.118.3":
+  version "0.118.3"
+  resolved "https://registry.yarnpkg.com/@sanity/schema/-/schema-0.118.3.tgz#55accdb2780081174e2861b0afbd1b70e6f9fe0a"
   dependencies:
-    "@sanity/generate-help-url" "0.118.0-alpha.3044306e"
+    "@sanity/generate-help-url" "^0.118.0"
     arrify "^1.0.1"
     humanize-list "^1.0.1"
     json-reduce "^1.0.0"
@@ -359,13 +359,13 @@
     lodash "^4.17.4"
     object-inspect "^1.3.0"
 
-"@sanity/server@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/server/-/server-0.118.0-alpha.3044306e.tgz#038b36a801976486de26f06375a3eca5fa92e481"
+"@sanity/server@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/server/-/server-0.118.0.tgz#c1cf4c6843b35595137c3476f27e1956ddbea49a"
   dependencies:
-    "@sanity/resolver" "0.118.0-alpha.3044306e"
-    "@sanity/webpack-integration" "0.118.0-alpha.3044306e"
-    "@sanity/webpack-loader" "0.118.0-alpha.3044306e"
+    "@sanity/resolver" "^0.118.0"
+    "@sanity/webpack-integration" "^0.118.0"
+    "@sanity/webpack-loader" "^0.118.0"
     babel-core "^6.24.0"
     babel-loader "^7.1.2"
     babel-plugin-lodash "^3.2.11"
@@ -394,19 +394,19 @@
     webpack-dev-middleware "^1.10.1"
     webpack-hot-middleware "^2.17.1"
 
-"@sanity/state-router@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/state-router/-/state-router-0.118.0-alpha.3044306e.tgz#d7f4e16af5cc801418788ace78c88566dc16e255"
+"@sanity/state-router@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/state-router/-/state-router-0.118.0.tgz#ffda6a9af1d88f5a5823f5d58d87a79a9913f8a2"
   dependencies:
     lodash "^4.17.4"
     nano-pubsub "^1.0.1"
 
-"@sanity/storybook@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/storybook/-/storybook-0.118.0-alpha.3044306e.tgz#80e513ac6de672d90453998d4a5ab68e4fd1a9c3"
+"@sanity/storybook@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/storybook/-/storybook-0.118.0.tgz#170966d2fc344ff6416e843bbfd4dfd633855660"
   dependencies:
-    "@sanity/server" "0.118.0-alpha.3044306e"
-    "@sanity/webpack-integration" "0.118.0-alpha.3044306e"
+    "@sanity/server" "^0.118.0"
+    "@sanity/webpack-integration" "^0.118.0"
     "@storybook/addon-knobs" "^3.2.8"
     "@storybook/addons" "^3.2.6"
     "@storybook/react" "^3.2.8"
@@ -414,23 +414,23 @@
     react-addons-create-fragment "^15.4.2"
     shelljs "^0.7.6"
 
-"@sanity/util@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/util/-/util-0.118.0-alpha.3044306e.tgz#312cd1f9926d94a48c7fe8c344228217e29f8abf"
+"@sanity/util@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/util/-/util-0.118.0.tgz#9a6b3827ae8e8eccabbc7d2019eb185ca5325aa0"
   dependencies:
     fs-extra "^4.0.2"
     lodash "^4.17.4"
     resolve-from "^4.0.0"
 
-"@sanity/uuid@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/uuid/-/uuid-0.118.0-alpha.3044306e.tgz#d5e7f08a223d20ee8fbcaf5a25029ac60384cf85"
+"@sanity/uuid@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/uuid/-/uuid-0.118.0.tgz#b7c7eee1abed10408313144c37701900d3b6348e"
   dependencies:
     uuid "^3.0.1"
 
 "@sanity/vision@0.x":
-  version "0.117.1"
-  resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-0.117.1.tgz#a6ce4ea7c10bba07bf172c105194803221e594d4"
+  version "0.118.3"
+  resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-0.118.3.tgz#c441dbdc231f2bdf20baa87175415b8ee3a80aab"
   dependencies:
     classnames "^2.2.5"
     json-lexer "^1.1.1"
@@ -442,23 +442,23 @@
     react-spinner "^0.2.6"
     react-split-pane "^0.1.63"
 
-"@sanity/webpack-integration@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/webpack-integration/-/webpack-integration-0.118.0-alpha.3044306e.tgz#6c711e92457b72a3e8564e5e63b40dc1c167cfd1"
+"@sanity/webpack-integration@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/webpack-integration/-/webpack-integration-0.118.0.tgz#833bed7af96c1043db3ddc24d65797311c229448"
   dependencies:
-    "@sanity/resolver" "0.118.0-alpha.3044306e"
-    "@sanity/webpack-loader" "0.118.0-alpha.3044306e"
+    "@sanity/resolver" "^0.118.0"
+    "@sanity/webpack-loader" "^0.118.0"
     lost "^8.0.0"
     postcss-cssnext "^3.0.2"
     postcss-import "^11.0.0"
     resolve "^1.3.3"
 
-"@sanity/webpack-loader@0.118.0-alpha.3044306e":
-  version "0.118.0-alpha.3044306e"
-  resolved "https://registry.yarnpkg.com/@sanity/webpack-loader/-/webpack-loader-0.118.0-alpha.3044306e.tgz#e8a5e0e656df0a2183fffe2f76a91d6a810480c5"
+"@sanity/webpack-loader@^0.118.0":
+  version "0.118.0"
+  resolved "https://registry.yarnpkg.com/@sanity/webpack-loader/-/webpack-loader-0.118.0.tgz#984c13453f4fb88d50b8d082e9d6a6fc54e24270"
   dependencies:
-    "@sanity/resolver" "0.118.0-alpha.3044306e"
-    "@sanity/util" "0.118.0-alpha.3044306e"
+    "@sanity/resolver" "^0.118.0"
+    "@sanity/util" "^0.118.0"
     loader-utils "^1.1.0"
 
 "@storybook/addon-actions@^3.2.13":
@@ -613,6 +613,14 @@
     react-treebeard "^2.0.3"
     redux "^3.7.2"
 
+"@types/inline-style-prefixer@^3.0.0":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/inline-style-prefixer/-/inline-style-prefixer-3.0.1.tgz#8541e636b029124b747952e9a28848286d2b5bf6"
+
+"@types/react@^16.0.18":
+  version "16.0.18"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.18.tgz#c08eea79ada55bf10b5353e18c21797dd17afa23"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -665,13 +673,13 @@ ajv@^4.9.1:
     json-stable-stringify "^1.0.1"
 
 ajv@^5.0.0, ajv@^5.1.0, ajv@^5.1.5:
-  version "5.2.5"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-5.2.5.tgz#b637234d3e2675eb5f79fc652242a853a48cb49f"
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-5.3.0.tgz#4414ff74a50879c208ee5fdc826e32c303549eda"
   dependencies:
     co "^4.6.0"
     fast-deep-equal "^1.0.0"
+    fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.3.0"
-    json-stable-stringify "^1.0.1"
 
 align-text@^0.1.1, align-text@^0.1.3:
   version "0.1.4"
@@ -2156,12 +2164,12 @@ caniuse-api@^2.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000749"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000749.tgz#556773aa3aa704f581d748fa63b46ca087aac67d"
+  version "1.0.30000751"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000751.tgz#1919a40bc17e91d87c8c09869577c680f9f1befd"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000744, caniuse-lite@^1.0.30000748:
-  version "1.0.30000749"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000749.tgz#2ff382865aead8cca35dacfbab04f58effa4c01c"
+  version "1.0.30000751"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000751.tgz#298ad34182ca4359757b4a93afc681b7b917e358"
 
 canvas-to-blob@^0.0.0:
   version "0.0.0"
@@ -2209,8 +2217,8 @@ chalk@^2.0.1, chalk@^2.1.0, chalk@^2.2.0:
     supports-color "^4.0.0"
 
 chance@^1.0.4:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/chance/-/chance-1.0.11.tgz#48e82f7583df356053e0ad122d4654c5066c570d"
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/chance/-/chance-1.0.12.tgz#6764c9cb7b4f34856fb780d07f0e17a6601c6c08"
 
 charenc@~0.0.1:
   version "0.0.2"
@@ -3263,8 +3271,8 @@ extglob@^0.3.1:
     is-extglob "^1.0.0"
 
 extract-text-webpack-plugin@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.1.tgz#605a8893faca1dd49bb0d2ca87493f33fd43d102"
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.2.tgz#5f043eaa02f9750a9258b78c0a6e0dc1408fb2f7"
   dependencies:
     async "^2.4.1"
     loader-utils "^1.1.0"
@@ -3278,6 +3286,10 @@ extsprintf@1.3.0, extsprintf@^1.2.0:
 fast-deep-equal@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-1.0.0.tgz#96256a3bc975595eb36d82e9929d060d893439ff"
+
+fast-json-stable-stringify@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.0.0.tgz#d5142c0caee6b1189f87d3a76111064f86c8bbf2"
 
 fast-memoize@^2.2.7:
   version "2.2.8"
@@ -4074,8 +4086,8 @@ is-boolean-object@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-boolean-object/-/is-boolean-object-1.0.0.tgz#98f8b28030684219a95f375cfbd88ce3405dff93"
 
 is-buffer@^1.1.5, is-buffer@~1.1.1:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.5.tgz#1f3b26ef613b214b88cbca23cc6c01d87961eecc"
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
 
 is-builtin-module@^1.0.0:
   version "1.0.0"
@@ -4288,6 +4300,10 @@ isobject@^2.0.0:
 isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
+
+isomorphic-base64@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/isomorphic-base64/-/isomorphic-base64-1.0.2.tgz#f426aae82569ba8a4ec5ca73ad21a44ab1ee7803"
 
 isomorphic-fetch@^2.1.1:
   version "2.2.1"
@@ -4940,8 +4956,8 @@ object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
 object-inspect@^1.2.1, object-inspect@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.3.0.tgz#5b1eb8e6742e2ee83342a637034d844928ba2f6d"
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.4.0.tgz#7bcd84fd8db2e833285282bf8356ed87dcef7cf8"
 
 object-keys@^1.0.8:
   version "1.0.11"
@@ -5973,8 +5989,8 @@ querystringify@~1.0.0:
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-1.0.0.tgz#6286242112c5b712fa654e526652bf6a13ff05cb"
 
 radium@^0.19.0:
-  version "0.19.5"
-  resolved "https://registry.yarnpkg.com/radium/-/radium-0.19.5.tgz#2352ffa9c2265ea7c76e07540d9841727f85dbe8"
+  version "0.19.6"
+  resolved "https://registry.yarnpkg.com/radium/-/radium-0.19.6.tgz#b86721d08dbd303b061a4ae2ebb06cc6e335ae72"
   dependencies:
     array-find "^1.0.0"
     exenv "^1.2.1"
@@ -6294,9 +6310,11 @@ react-spinner@^0.2.6:
   resolved "https://registry.yarnpkg.com/react-spinner/-/react-spinner-0.2.7.tgz#ea3ca3375dd7a54edbb5cc01d17496a2e2fc14db"
 
 react-split-pane@^0.1.63, react-split-pane@^0.1.65:
-  version "0.1.66"
-  resolved "https://registry.yarnpkg.com/react-split-pane/-/react-split-pane-0.1.66.tgz#369085dd07ec1237bda123e73813dcc7dc6502c1"
+  version "0.1.68"
+  resolved "https://registry.yarnpkg.com/react-split-pane/-/react-split-pane-0.1.68.tgz#a4ed40b0e77f0578cb6c9f9e65edd32726e4b16a"
   dependencies:
+    "@types/inline-style-prefixer" "^3.0.0"
+    "@types/react" "^16.0.18"
     inline-style-prefixer "^3.0.6"
     prop-types "^15.5.10"
     react-style-proptype "^3.0.0"
@@ -6668,8 +6686,8 @@ resolve-pathname@^2.2.0:
   resolved "https://registry.yarnpkg.com/resolve-pathname/-/resolve-pathname-2.2.0.tgz#7e9ae21ed815fd63ab189adeee64dc831eefa879"
 
 resolve@^1.1.6, resolve@^1.1.7, resolve@^1.3.3:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.4.0.tgz#a75be01c53da25d934a98ebd0e4c4a7312f92a86"
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.5.0.tgz#1f09acce796c9a762579f31b2c1cc4c3cddf9f36"
   dependencies:
     path-parse "^1.0.5"
 
@@ -6906,12 +6924,14 @@ slash@^1.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
 
 slate-base64-serializer@^0.1.9:
-  version "0.1.18"
-  resolved "https://registry.yarnpkg.com/slate-base64-serializer/-/slate-base64-serializer-0.1.18.tgz#1c57c8bdf3754adae085fa7f7537a99f818fc4fd"
+  version "0.1.20"
+  resolved "https://registry.yarnpkg.com/slate-base64-serializer/-/slate-base64-serializer-0.1.20.tgz#856eeb55973fd217758fd0350a49883c92672d4c"
+  dependencies:
+    isomorphic-base64 "^1.0.2"
 
 slate-dev-logger@^0.1.10, slate-dev-logger@^0.1.12, slate-dev-logger@^0.1.14:
-  version "0.1.19"
-  resolved "https://registry.yarnpkg.com/slate-dev-logger/-/slate-dev-logger-0.1.19.tgz#ac7e48219d575ed317800d13dc3e1aac1927cb47"
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/slate-dev-logger/-/slate-dev-logger-0.1.21.tgz#fa9b31bfb5698ddd0c54f7becdc5c5ec6d02313b"
 
 slate-html-serializer@^0.1.12:
   version "0.1.16"
@@ -7006,8 +7026,8 @@ sntp@1.x.x:
     hoek "2.x.x"
 
 sntp@2.x.x:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/sntp/-/sntp-2.0.2.tgz#5064110f0af85f7cfdb7d6b67a40028ce52b4b2b"
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/sntp/-/sntp-2.1.0.tgz#2c6cec14fedc2222739caf9b5c3d85d1cc5a2cc8"
   dependencies:
     hoek "4.x.x"
 
@@ -7288,8 +7308,8 @@ tar-fs@^1.15.2:
     tar-stream "^1.1.2"
 
 tar-pack@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/tar-pack/-/tar-pack-3.4.0.tgz#23be2d7f671a8339376cbdb0b8fe3fdebf317984"
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/tar-pack/-/tar-pack-3.4.1.tgz#e1dbc03a9b9d3ba07e896ad027317eb679a10a1f"
   dependencies:
     debug "^2.2.0"
     fstream "^1.0.10"

@@ -12,6 +12,32 @@ export default {
       type: 'image',
     },
     {
+      name: 'contact',
+      type: 'object',
+      fields: [
+        {
+          name: 'phone',
+          type: 'string',
+        },
+        {
+          name: 'email',
+          type: 'email',
+        },
+        {
+          name: 'postalAdress',
+          type: 'text',
+        },
+        {
+          name: 'postalNumber',
+          type: 'number',
+        },
+        {
+          name: 'country',
+          type: 'string'
+        },
+      ],
+    },
+    {
       name: 'contactInformation',
       type: 'array',
       of: [
