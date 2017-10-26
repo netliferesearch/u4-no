@@ -1,4 +1,4 @@
-import client from './config';
+import client from './sanity-client-config';
 
 function extractRefs(obj) {
   let result = [];
