@@ -1,0 +1,19 @@
+{
+  "name": "u4-publication-pdf-builder",
+  "version": "1.0.0",
+  "description": "Build publication pdfs and attach them to existing publications",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "engines": {
+    "node": "8.4.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sanity/client": "^0.108.0",
+    "bluebird": "^3.5.1",
+    "dotenv": "^4.0.0"
+  }
+}
