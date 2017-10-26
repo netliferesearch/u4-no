@@ -12,7 +12,7 @@ export default class SearchResults extends Component {
         {this.props.results.map(({ _type, slug, title }) => <li>
           {
             slug ?
-              <a href={`/${_type}/${slug.current}`}>{title}</a>
+              <a href={`/${_type}s/${slug.current}`}>{title}</a>
             : title
           }
 
