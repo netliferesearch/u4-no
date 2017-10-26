@@ -9,7 +9,9 @@ export default () => (
     <div className="o-wrapper">
       <section className="o-wrapper-inner o-wrapper--padded ">
         <div className="o-layout o-layout--center u-margin-bottom-huge">
-          <U4LogoSquare />
+        <Link route="/">
+          <a className="u-no-underline" href="/"><U4LogoSquare /></a>
+        </Link>
         </div>
         <SearchField />
       </section>
