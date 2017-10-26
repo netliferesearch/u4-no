@@ -20,6 +20,10 @@ const client = sanityClient({
   useCdn: true,
 });
 
+const SearchItem = ({ classes, children }) => (
+  <div {...classes}>
+    {children.title} <span style={{ color: '#0079CF' }}>{children._type}</span>
+  </div>);
 
 function debounce(fn, time) {
   let timeoutId;
@@ -62,6 +66,7 @@ class SearchField extends Component {
           getLabelProps,
           isOpen,
           clearSelection,
+          inputValue
         }) => (
           <form
             onSubmit={handleSubmit}
@@ -71,15 +76,18 @@ class SearchField extends Component {
               {...getLabelProps({ htmlFor: 'search' })}
               {...classes('label', 'u-margin-bottom-small')}
             >
-                Search for topics, publications, people and all the other stuff
+                Search for topics, publications, people and all the other stuff:
             </label>
             <div className="c-search__content">
               <input
                 placeholder="Search"
-                name="search"
-                {...getInputProps({ id: 'search' })}
                 {...classes('input')}
                 {...getInputProps({
+                  id: 'search',
+                  tabIndex: '0',
+                  name: 'search',
+                  type: 'search',
+                  value: selectedItem && typeof selectedItem === "object" ? selectedItem.title : inputValue,
                   onChange: (event) => {
                     const value = event.target.value;
                     if (!value) {
@@ -89,9 +97,7 @@ class SearchField extends Component {
                       client
                         .fetch(buildQuery(value))
                         .then(({ results }) => {
-                          const items = results.map(
-                            item => `${item.title}`,
-                          ); // Added ID to make it unique
+                          const items = results.map(item => item); // Added ID to make it unique
                           this.setState({ items });
                         })
                         .catch((error) => {
@@ -102,33 +108,23 @@ class SearchField extends Component {
                   },
                 })}
               />
-              <button {...classes('button')}type="submit" value="Search"><MagnifyingGlass /></button>
+              {inputValue && <button {...classes('button', 'clear') } type="button" onClick={clearSelection}>X</button>}
+              <button tabIndex="1" {...classes('button') } type="submit" value="Search"><MagnifyingGlass /></button>
             </div>
             {isOpen && (
               <div {...classes('results')}>
                 {this.state.items.map((item, index) => (
-                  <div
-                    key={index}
-                    {...classes('items', highlightedIndex === index ? 'highlighted' : null)}
-                    {...getItemProps({
+                  <SearchItem
+                      {...getItemProps({
                       item,
+                      index,
+                      classes: { ...classes('items', highlightedIndex === index ? 'highlighted' : null) },
                     })}
-                  >
-                    {item}
-                  </div>
+                    >{item}</SearchItem>
+
                 ))}
               </div>
             )}
-            {selectedItem
-              ? <button
-                css={{ paddingTop: 4 }}
-                onClick={clearSelection}
-                aria-label="clear selection"
-              >
-                  X
-              </button>
-              : null
-            }
           </form>
 
         )}
