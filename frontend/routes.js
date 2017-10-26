@@ -7,10 +7,12 @@ routes
   .add('topic.article', '/topics/:slug/:topicPart')
   .add('topic.entry', '/topics/:slug')
   .add('topic.index', '/topics')
-  .add('general.article', '/article/:slug')
   .add('search.index', '/search')
+  .add('search.entry', '/search')
   .add('online-training.entry', '/online-training/:id')
   .add('online-training.index', '/online-training')
   .add('workshops.index', '/workshops')
   .add('workshops.entry', '/workshops/:slug')
-  .add('service.entry', '/services/:slug');
+  .add('service.entry', '/services/:slug')
+  .add('general.article', '/:slug');
+
