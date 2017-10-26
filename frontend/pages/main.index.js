@@ -25,6 +25,8 @@ export default () => (
       </section>
     </div>
     <Footer />
-    <PartnerAgencies />
+
+      <PartnerAgencies />
+
   </LayoutHomepage>
 );

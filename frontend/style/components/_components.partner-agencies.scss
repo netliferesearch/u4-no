@@ -1,0 +1,51 @@
+.c-partnerAgencies{
+  text-align: center;
+  background-color: $brand-dark;
+  padding: $spacing;
+  font-family: $font-sans;
+  color: $white;
+}
+
+
+
+.c-partnerAgencies__item {
+  float: left;
+  width: 50%;
+  padding: $spacing-small;
+  box-sizing: border-box;
+  @include mq($from: tablet, $until: desktop) {
+    width: 33.33%;
+    padding: $spacing $spacing-large;
+  }
+  @include mq($from: desktop) {
+    padding: $spacing $spacing-large;
+    width: 25%;
+  }
+}
+.c-partnerAgencies__heading {
+  padding-bottom: $spacing;
+  @include mq($from: tablet, $until: desktop) {
+    padding: 0 $spacing-large $spacing-large;
+  }
+  @include mq($from: desktop) {
+    padding: 0 $spacing-huge*1.5 $spacing-large;
+  }
+}
+
+.c-partnerAgencies__text {
+
+  @include mq($from: tablet) {
+    padding: 0 $spacing-large;
+    @include inuit-font-size($font-size-normal, $font-size-larger);
+  }
+}
+
+
+.c-partnerAgencies__color-icon {
+  max-width: 100%;
+  @include mq($from: tablet) {
+  }
+  path, polygon {
+    fill: $white;
+  }
+}
