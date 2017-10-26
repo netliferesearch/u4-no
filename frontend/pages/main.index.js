@@ -8,7 +8,7 @@ export default () => (
   <LayoutHomepage>
     <div className="o-wrapper">
       <section className="o-wrapper-inner o-wrapper--padded ">
-        <div class="o-layout o-layout--center u-margin-bottom-huge">
+        <div className="o-layout o-layout--center u-margin-bottom-huge">
           <U4LogoSquare />
         </div>
         <SearchField />
