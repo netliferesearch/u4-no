@@ -25,6 +25,11 @@ export default {
       slug,
       leadText,
       {
+        name: 'pdfFile',
+        title: 'Pdf file',
+        type: 'file'
+      },
+      {
         name: 'featuredImage',
         title: 'Featured image',
         description: 'This is the image that illustrates this publication in the hero, frontpage and previews',
