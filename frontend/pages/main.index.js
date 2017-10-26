@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from '../routes';
 import { LayoutHomepage } from '../components';
 import { Footer } from '../components';
+import { PartnerAgencies } from '../components';
 import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass } from '../components/icons';
 
@@ -28,5 +29,6 @@ export default () => (
       </section>
     </div>
     <Footer />
+    <PartnerAgencies />
   </LayoutHomepage>
 );
