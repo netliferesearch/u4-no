@@ -29,41 +29,86 @@
       }
     },
     "@sanity/client": {
-      "version": "0.113.7",
-      "resolved": "https://registry.npmjs.org/@sanity/client/-/client-0.113.7.tgz",
-      "integrity": "sha512-zTppQ/xbxlp2pBPeEuDOeLWEreprL6QdBWZmIfPvvXVWDbqwH1ym6kLKAiPWsSiLQ37L9hFP0t5dOuMVbhwzMg==",
+      "version": "0.118.0",
+      "resolved": "https://registry.npmjs.org/@sanity/client/-/client-0.118.0.tgz",
+      "integrity": "sha512-imFcEcy1GvV9YsH0QZjYNLOZM3bA99BkfZR3VEuQf7BBgrhdySBY8cW0X14ST8hWxnRZPGnw2zEuPVO6ouO3nA==",
       "requires": {
-        "@sanity/eventsource": "0.113.7",
-        "@sanity/generate-help-url": "0.113.7",
-        "@sanity/observable": "0.113.7",
+        "@sanity/eventsource": "0.118.0",
+        "@sanity/generate-help-url": "0.118.0",
+        "@sanity/observable": "0.118.0",
         "deep-assign": "2.0.0",
-        "get-it": "3.0.1",
+        "get-it": "4.0.0",
         "make-error": "1.3.0",
         "object-assign": "4.1.1"
-      }
-    },
-    "@sanity/eventsource": {
-      "version": "0.113.7",
-      "resolved": "https://registry.npmjs.org/@sanity/eventsource/-/eventsource-0.113.7.tgz",
-      "integrity": "sha512-q5YkLbPklty1xsAom6P6PVUSbiQvjGvrxDsBgKdd6x0k6lqXn0eV7O4hpQiCJTKNQniYJcYYXG3qncKOq2ULoA==",
-      "requires": {
-        "eventsource": "1.0.5",
-        "eventsource-polyfill": "0.9.6"
+      },
+      "dependencies": {
+        "@sanity/eventsource": {
+          "version": "0.118.0",
+          "resolved": "https://registry.npmjs.org/@sanity/eventsource/-/eventsource-0.118.0.tgz",
+          "integrity": "sha512-m0P+I2oO4xGlqNWZi6Q2cIbRlWOFohU0aHDCcwEb9TtNCdV/CGkMPeJLdXy2cmNEXD1Kz4DYZ5zVcw5OVY+A+A==",
+          "requires": {
+            "eventsource": "1.0.5",
+            "eventsource-polyfill": "0.9.6"
+          }
+        },
+        "@sanity/generate-help-url": {
+          "version": "0.118.0",
+          "resolved": "https://registry.npmjs.org/@sanity/generate-help-url/-/generate-help-url-0.118.0.tgz",
+          "integrity": "sha512-uvEs8IZfxNoN+Z+kNU4PAd+CF3fXQIk2C09FM2SRp3LBDmHMIOgsoRVPDTw+5Xs4RY9KJqN7kpjem3m//mn9pQ=="
+        },
+        "@sanity/observable": {
+          "version": "0.118.0",
+          "resolved": "https://registry.npmjs.org/@sanity/observable/-/observable-0.118.0.tgz",
+          "integrity": "sha512-CKFWcLWZpltBa3xJ5U+T9o4uqwQ3em+44iICBHdLPGP/DECUCNpuxf0xP/S5YsoibMhKoNnOF0PQm0xl1aLedw==",
+          "requires": {
+            "object-assign": "4.1.1",
+            "rxjs": "5.0.3"
+          }
+        },
+        "get-it": {
+          "version": "4.0.0",
+          "resolved": "https://registry.npmjs.org/get-it/-/get-it-4.0.0.tgz",
+          "integrity": "sha512-BXHTf9BxTB8ah+XQRXqeZBzegfxy1nk75RxvJSPsfWK8UjsH9kFdmAUfb7ccUQuaDDJAibuDfBdSAGqGIy6ijg==",
+          "requires": {
+            "create-error-class": "3.0.2",
+            "debug": "2.6.9",
+            "decompress-response": "3.3.0",
+            "follow-redirects": "1.2.4",
+            "in-publish": "2.0.0",
+            "into-stream": "3.1.0",
+            "is-plain-object": "2.0.4",
+            "is-retry-allowed": "1.1.0",
+            "is-stream": "1.1.0",
+            "nano-pubsub": "1.0.2",
+            "object-assign": "4.1.1",
+            "parse-headers": "2.0.1",
+            "progress-stream": "2.0.0",
+            "same-origin": "0.1.1",
+            "simple-concat": "1.0.0",
+            "timed-out": "4.0.1",
+            "url-parse": "1.1.9"
+          }
+        },
+        "querystringify": {
+          "version": "1.0.0",
+          "resolved": "https://registry.npmjs.org/querystringify/-/querystringify-1.0.0.tgz",
+          "integrity": "sha1-YoYkIRLFtxL6ZU5SZlK/ahP/Bcs="
+        },
+        "url-parse": {
+          "version": "1.1.9",
+          "resolved": "https://registry.npmjs.org/url-parse/-/url-parse-1.1.9.tgz",
+          "integrity": "sha1-xn8dd11R8KGJEd17P/rSe7nlvRk=",
+          "requires": {
+            "querystringify": "1.0.0",
+            "requires-port": "1.0.0"
+          }
+        }
       }
     },
     "@sanity/generate-help-url": {
       "version": "0.113.7",
       "resolved": "https://registry.npmjs.org/@sanity/generate-help-url/-/generate-help-url-0.113.7.tgz",
       "integrity": "sha512-GG0zNFnCGx3NTAOppYkqyeLkoRveuA8+mWc319E4+rfEWJ1uV8eFqbGRlXgf8GvwzQs0gy2biBkHTl3F8D/5Kg=="
-    },
-    "@sanity/observable": {
-      "version": "0.113.7",
-      "resolved": "https://registry.npmjs.org/@sanity/observable/-/observable-0.113.7.tgz",
-      "integrity": "sha512-MG1ZwDjXTkKRLvSLb6eB6XM2KJzH7hnYDa0RAaa2owFZNQWwzsW4+Wwh01ZfyW9hwuSbP+cIfuo+CojhGXCQ4g==",
-      "requires": {
-        "object-assign": "4.1.1",
-        "rxjs": "5.0.3"
-      }
     },
     "@semantic-release/commit-analyzer": {
       "version": "3.0.7",
@@ -5828,46 +5873,6 @@
       "version": "1.0.2",
       "resolved": "https://registry.npmjs.org/get-caller-file/-/get-caller-file-1.0.2.tgz",
       "integrity": "sha1-9wLmMSfn4jHBYKgMFVSstw1QR+U="
-    },
-    "get-it": {
-      "version": "3.0.1",
-      "resolved": "https://registry.npmjs.org/get-it/-/get-it-3.0.1.tgz",
-      "integrity": "sha512-BZ0ngYa/aX30HvzFpOAywx1Rk9zG32XYThVD/oskvLvns3dy6hNKLzXQZbQXfNUSX4htFq5QE32xALk72+R5dg==",
-      "requires": {
-        "create-error-class": "3.0.2",
-        "debug": "2.6.9",
-        "decompress-response": "3.3.0",
-        "follow-redirects": "1.2.4",
-        "in-publish": "2.0.0",
-        "into-stream": "3.1.0",
-        "is-plain-object": "2.0.4",
-        "is-retry-allowed": "1.1.0",
-        "is-stream": "1.1.0",
-        "nano-pubsub": "1.0.2",
-        "object-assign": "4.1.1",
-        "parse-headers": "2.0.1",
-        "progress-stream": "2.0.0",
-        "same-origin": "0.1.1",
-        "simple-concat": "1.0.0",
-        "timed-out": "4.0.1",
-        "url-parse": "1.1.9"
-      },
-      "dependencies": {
-        "querystringify": {
-          "version": "1.0.0",
-          "resolved": "https://registry.npmjs.org/querystringify/-/querystringify-1.0.0.tgz",
-          "integrity": "sha1-YoYkIRLFtxL6ZU5SZlK/ahP/Bcs="
-        },
-        "url-parse": {
-          "version": "1.1.9",
-          "resolved": "https://registry.npmjs.org/url-parse/-/url-parse-1.1.9.tgz",
-          "integrity": "sha1-xn8dd11R8KGJEd17P/rSe7nlvRk=",
-          "requires": {
-            "querystringify": "1.0.0",
-            "requires-port": "1.0.0"
-          }
-        }
-      }
     },
     "get-pkg-repo": {
       "version": "1.4.0",

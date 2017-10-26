@@ -38,24 +38,27 @@ const uploadPDF = async ({ targetDocument, pdfFilename }) => {
   if (!fs.existsSync(pdfFilename)) {
     throw Error('Could not find file to upload', pdfFilename);
   }
-  const fileDoc = await client.assets.upload('file', fs.createReadStream(pdfFilename), {
+  const document = await client.assets.upload('file', fs.createReadStream(pdfFilename), {
     filename: pdfFilename,
     contentType: 'application/pdf',
   });
-  console.log('Uploaded file id', fileDoc);
-  await client
-    .patch(targetDocument._id)
-    .set({
-      pdfFile: {
-        _type: 'file',
-        asset: {
-          _type: 'reference',
-          _ref: fileDoc._id,
-        },
+  console.log('Uploaded file', document);
+  const patchPayload = {
+    pdfFile: {
+      _type: 'file',
+      asset: {
+        _ref: document._id,
+        _type: 'reference',
       },
-    })
+    },
+  };
+  console.log('Patch payload', patchPayload);
+  const updatedDoc = await client
+    .patch(targetDocument._id)
+    .set(patchPayload)
     .commit();
-  console.log('Uploaded pdf for:', targetDocument.title);
+  console.log('Updated document with pdf, doc name:', updatedDoc.title);
+  console.log('Contents of updatedDoc.pdfFile', updatedDoc.pdfFile);
 };
 
 async function main() {

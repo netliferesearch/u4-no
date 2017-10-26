@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@sanity/client": "^0.108.0",
     "bluebird": "^3.5.1",
     "dotenv": "^4.0.0",
     "puppeteer": "^0.12.0"
