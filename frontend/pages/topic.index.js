@@ -10,26 +10,10 @@ function sortTopics(items, key) {
 }
 const TopicOverview = ({ topics = [] }) => (
   <Layout>
-    <div className="o-wrapper-inner">
-      <h1 className="c-topic-page_title">Topics</h1>
-      <h2 className="c-topic-page__longTitle">U4 anti-corruption guides for development practitioners and policymakers</h2>
-      <DownArrowButton
-        text="Browse our topics"
-        onClick={() => document.getElementById('topics').scrollIntoView(true)}
-      />
-      <div className="o-wrapper-inner u-margin-top-huge c-topic-page__body u-margin-bottom-huge">
-        <p>What you'll find: </p>
-        <p>What you won't find: </p>
-        <p>Why we built this: </p>
-        <p>
-          Need to quickly get up to speed on anti-corruption research in sustainable development? We
-          want to share our knowledge by providing you with a selection of carefully crafted
-          introductions and in-depth articles sorted by topics.
-        </p>
+    <div className="o-wrapper-inner u-tl">
+      <h1 className="c-topic-index__title">Topics</h1>
 
-      </div>
-
-      <section id="topics" className="o-wrapper-inner">
+      <section id="topics" className="o-wrapper-inner c-topic-index__list">
         {sortTopics(
           topics,
           'title',
@@ -37,19 +21,16 @@ const TopicOverview = ({ topics = [] }) => (
           ({
             _id = false,
             title = 'Title is lacking',
-            explainerText = '',
-            featuredImage,
             slug = {},
-            subtitle = '',
+            related = false,
           }) => (
-            <div className="c-duo__item" key={_id}>
-              <div className="c-duo__body">
-                <h2 className="c-duo__title">
-                  <Link route="topic.entry" params={{ slug: slug.current }}>
-                    <a className="c-duo__link">{title}</a>
-                  </Link>
-                </h2>
-              </div>
+            <div className="c-topic-index__item" key={_id}>
+              <Link route="topic.entry" params={{ slug: slug.current }}>
+                <a className="c-topic-index__title">{title}</a>
+              </Link>
+              <svg width={`${related}px`} height="5px" viewBox={`0 0 ${related} 2`} version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                <path d="M167.536783,1 L1,1" id="Line" stroke="#1E2051"></path>
+              </svg><span className="c-topic-index__count">{related}</span>
             </div>
           ),
         )}
@@ -63,7 +44,7 @@ export default DataLoader(TopicOverview, {
   // here you get the next context object that is initially passed into
   // getInitialProps
   queryFunc: () => ({
-    sanityQuery: '{"topics": *[_type in ["topics"] && !(_id in path "drafts.**") ]}',
+    sanityQuery: '{"topics": *[_type in ["topics"] && !(_id in path "drafts.**") ]{_id, title, slug, "related": count(*[_type in ["publication", "helpdesk"] && references(^._id)])}|order(title asc)}',
   }),
   materializeDepth: 2,
 });
