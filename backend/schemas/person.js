@@ -1,3 +1,5 @@
+import { slug } from './fields';
+
 export default {
   name: 'person',
   type: 'object',
@@ -13,6 +15,17 @@ export default {
     {
       name: 'email',
       type: 'email'
+    },
+    {
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: 'surname',
+        slugify: input => input
+                             .toLowerCase()
+                             .replace(/\s+/g, '-')
+                             .slice(0, 200)
+      }
     },
     {
       name: 'affiliations',
