@@ -7,6 +7,8 @@ routes
   .add('topic.article', '/topics/:slug/:topicPart')
   .add('topic.entry', '/topics/:slug')
   .add('topic.index', '/topics')
+  .add('persons.index', '/persons')
+  .add('persons.entry', '/persons/:slug')
   .add('search.index', '/search')
   .add('search.entry', '/search')
   .add('online-training.entry', '/online-training/:id')
