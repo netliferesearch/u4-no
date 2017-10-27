@@ -6,7 +6,7 @@ import BEMHelper from 'react-bem-helper';
 import buildSearchQuery from '../helpers/buildSearchQuery';
 import DataLoader from '../helpers/data-loader';
 import { Router } from '../routes';
-import { Layout, Footer, SearchResults, SearchField } from '../components/';
+import { Layout, Footer, SearchResults, SearchField, SearchFilters } from '../components/';
 
 const classes = BEMHelper({
   name: 'search',
@@ -49,7 +49,9 @@ const Search = ({ results = false }) => (
         {results && <SearchResults results={results.filter(item => item.slug)} />}
       </section>
 
-      <section className="o-layout__item u-2/12">filters</section>
+      <section className="o-layout__item u-2/12">
+        <SearchFilters results={results} />
+      </section>
     </div>
     <Footer />
   </Layout>
