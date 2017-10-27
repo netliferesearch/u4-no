@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import sanityClient from '@sanity/client';
 import Downshift from 'downshift';
 import BEMHelper from 'react-bem-helper';
+import { connect } from 'react-redux';
 
 import buildSearchQuery from '../helpers/buildSearchQuery';
 import DataLoader from '../helpers/data-loader';
@@ -12,7 +13,7 @@ import {
   SearchResults,
   SearchField,
   SearchFilters,
-  filterBySearchFilterList,
+  filterResultsBySearchFilterList,
 } from '../components/';
 
 const classes = BEMHelper({
@@ -43,7 +44,7 @@ function debounce(fn, time) {
 
 function handleChange(query) {}
 
-const Search = ({ results = [] }) => (
+const Search = ({ results = [], searchFilters = [] }) => (
   <Layout>
     <div className="o-layout c-search__wrapper">
       <div className="o-layout__item u-6/12 u-push-3/12">
@@ -54,9 +55,13 @@ const Search = ({ results = [] }) => (
     </div>
     <div className="o-layout">
       <section className="o-layout__item u-6/12 u-push-3/12">
-        <SearchResults results={results.filter(item => item.slug)} />
+        <SearchResults
+          results={filterResultsBySearchFilterList(
+            results.filter(item => item.slug),
+            searchFilters,
+          )}
+        />
       </section>
-
       <section className="o-layout__item u-2/12 u-push-3/12">
         <SearchFilters results={results} />
       </section>
@@ -65,7 +70,9 @@ const Search = ({ results = [] }) => (
   </Layout>
 );
 
-export default DataLoader(Search, {
+const mapStateToProps = state => state;
+const mapDispatchToProps = () => ({});
+export default DataLoader(connect(mapStateToProps, mapDispatchToProps)(Search), {
   queryFunc: ({ query }) => {
     if (!query.search) {
       return {

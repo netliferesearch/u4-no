@@ -26,7 +26,7 @@ class PublicationFilters extends Component {
         {this.state.allPublicationTypes.map((pub = {}) => (
           <FilterCheckBox
             key={pub._id}
-            id={slugify(`pub-type-${pub.title}`, { lower: true })}
+            id={slugify(`pub-type-${pub._id}`, { lower: true })}
             title={pub.title}
             results={results}
             numResultsIfFiltered={

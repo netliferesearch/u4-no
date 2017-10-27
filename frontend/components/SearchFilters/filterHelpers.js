@@ -25,23 +25,21 @@ export function findPublicationTypes(results = []) {
 }
 
 function applyFilters(document = {}, filterList = []) {
-  let showItem = false;
+  let showItem = true;
   filterList.forEach((filterName) => {
     // apply publication filters
     const re = /^pub-type-(.*)/;
     if (re.test(filterName)) {
-      if (!document.publicationType) {
-        return false;
-      }
-      const publicationTypeTitle = re.exec(filterName)[1];
-      const { title } = document.publicationType;
-      showItem = publicationTypeTitle === title;
+      showItem = false;
+      const publicationTypeId = re.exec(filterName)[1];
+      const { publicationType = {} } = document;
+      showItem = publicationTypeId === publicationType._id;
     }
     return null;
   });
   return showItem;
 }
 
-export function filterBySearchFilterList(results = [], filterList = []) {
+export function filterResultsBySearchFilterList(results = [], filterList = []) {
   return results.filter(res => applyFilters(res, filterList));
 }
