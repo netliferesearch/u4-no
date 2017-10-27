@@ -45,11 +45,11 @@ const Search = ({ results = false }) => (
         </section>
       </div>
 
-      <section className="o-layout__item u-1/2">
+      <section className="o-layout__item u-8/12 u-push-2/12">
         {results && <SearchResults results={results.filter(item => item.slug)} />}
       </section>
 
-      <section className="o-layout__item u-1/2">filters</section>
+      <section className="o-layout__item u-2/12">filters</section>
     </div>
     <Footer />
   </Layout>
