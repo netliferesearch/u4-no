@@ -1,6 +1,8 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
+import uniq from 'lodash/uniq';
+import remove from 'lodash/remove';
 
 const replaceWindowHash = (hashValue) => {
   if (!window) {
@@ -37,6 +39,14 @@ export const actionTypes = {
 // REDUCERS
 export const reducer = (state = defaultState, action) => {
   switch (action.type) {
+    case actionTypes.SEARCH_ADD_FILTER:
+      return Object.assign({}, state, {
+        searchFilters: uniq(state.searchFilters.concat(action.searchFilter)),
+      });
+    case actionTypes.SEARCH_REMOVE_FILTER:
+      return Object.assign({}, state, {
+        searchFilters: state.searchFilters.filter(name => name !== action.searchFilter),
+      });
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
     case actionTypes.TOGGLE_LOADING_SCREEN:
@@ -61,6 +71,16 @@ export const toggleArticleMenu = () => dispatch =>
 
 export const toggleLoadingScreen = () => dispatch =>
   dispatch({ type: actionTypes.TOGGLE_LOADING_SCREEN });
+
+/**
+ * [addSearchFilter description]
+ * @param {Object} searchFilter 'string name of filter'
+ */
+export const addSearchFilter = searchFilter => dispatch =>
+  dispatch({ type: actionTypes.SEARCH_ADD_FILTER, searchFilter });
+
+export const removeSearchFilter = searchFilter => dispatch =>
+  dispatch({ type: actionTypes.SEARCH_REMOVE_FILTER, searchFilter });
 
 export const initStore = (initialState = defaultState) =>
   createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));

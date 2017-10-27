@@ -1,50 +1,12 @@
 import React, { Component } from 'react';
-import uniqBy from 'lodash/uniqBy';
 import some from 'lodash/some';
-import slugify from 'slugify';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import sanityClient from '../../helpers/sanity-client-config';
-
-const findPublications = results => results.filter(({ _type }) => _type === 'publication');
-
-/**
- * Find unique publication types in the list of current search results
- * @param  {Array} results list of sanity documents
- * @return {Array}         publicationTypes
- */
-const findPublicationTypes = (results) => {
-  const publications = findPublications(results);
-  return (
-    // create a publication list with unique publication titles
-    uniqBy(publications, ({ publicationType = {} }) => publicationType.title)
-      // create list of only publication title
-      .map(({ publicationType = {} }) => ({
-        title: publicationType.title,
-        _id: publicationType._id,
-      }))
-      // remove publicationType with no title
-      .filter(({ title }) => !!title)
-  );
-};
-
-const CheckBox = ({ publicationType, disabled = false, results = [] }) => {
-  const numResultsIfFiltered = findPublications(results).filter(
-    resPub => resPub.publicationType._id === publicationType._id,
-  ).length;
-  return (
-    <div>
-      <label htmlFor={publicationType.title}>
-        <input
-          disabled={disabled}
-          type="checkbox"
-          name={publicationType.title}
-          value={slugify(publicationType.title, { lower: true })}
-        />
-        {publicationType.title} ({numResultsIfFiltered})
-      </label>
-    </div>
-  );
-};
+import { addSearchFilter, removeSearchFilter } from '../../helpers/redux-store';
+import { findPublicationTypes } from './filterHelpers';
+import FilterCheckBox from './FilterCheckBox';
 
 class PublicationFilters extends Component {
   constructor(props) {
@@ -62,10 +24,11 @@ class PublicationFilters extends Component {
       <div>
         {this.state.allPublicationTypes.length === 0 && <span>Loading ...</span>}
         {this.state.allPublicationTypes.map(({ _id, title }) => (
-          <CheckBox
+          <FilterCheckBox
             key={_id}
             publicationType={{ _id, title }}
             results={results}
+            {...this.props}
             disabled={!some(publicationTypesInResults, resultPub => resultPub._id === _id)}
           />
         ))}
@@ -74,4 +37,10 @@ class PublicationFilters extends Component {
   }
 }
 
-export default PublicationFilters;
+const mapStateToProps = state => state;
+const mapDispatchToProps = dispatch => ({
+  addSearchFilter: bindActionCreators(addSearchFilter, dispatch),
+  removeSearchFilter: bindActionCreators(removeSearchFilter, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PublicationFilters);
