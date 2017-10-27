@@ -17,7 +17,7 @@ const Persons = ({
   <Layout>
     <div className="o-wrapper o-wrapper--padded">
       <BreadCrumb url={url} />
-      <div className="c-article c-longform-grid">
+      <div className="c-article o-wrapper-inner">
         <ul>
           {
             persons.map(({ _id, firstName = '', surname = '', affiliations = false, email = '', phone = '', slug = {} }) => (<li key={_id}>
