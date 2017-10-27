@@ -6,7 +6,7 @@
 
 
 
-.c-search__lable {
+.c-search__label {
   width: 100%;
   display: inline-block;
   @include inuit-font-size($font-size-small, $line-height-normal );
@@ -20,6 +20,7 @@
   position: relative;
   display: flex;
   flex-wrap: nowrap;
+  background-color: $brand-lightest;
 
   //padding: $spacing $spacing-small;
   //grid-column: 1 / 12;
