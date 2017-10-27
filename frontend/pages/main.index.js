@@ -30,7 +30,7 @@ export default () => (
         <div className="c-introduction-text">
           <h2>
             Looking for someone?<br />
-            <a href="#">The whole U4 team &nbsp;<ArrowRight /></a>
+            <a href="/persons">The whole U4 team &nbsp;<ArrowRight /></a>
           </h2>
         </div>
         </section>
