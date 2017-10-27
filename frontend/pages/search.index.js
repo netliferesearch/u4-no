@@ -49,7 +49,7 @@ const Search = ({ results = false }) => (
         {results && <SearchResults results={results.filter(item => item.slug)} />}
       </section>
 
-      <section className="o-layout__item u-2/12">
+      <section className="o-layout__item u-2/12 u-push-2/12">
         <SearchFilters results={results} />
       </section>
     </div>
