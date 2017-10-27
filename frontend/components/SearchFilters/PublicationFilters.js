@@ -23,21 +23,21 @@ class PublicationFilters extends Component {
     return (
       <div>
         {this.state.allPublicationTypes.length === 0 && <span>Loading ...</span>}
-        {this.state.allPublicationTypes &&
-          this.state.allPublicationTypes.map((pub = {}) => (
-            <FilterCheckBox
-              key={pub._id}
-              id={slugify(`pub-type-${pub.title}`, { lower: true })}
-              title={pub.title}
-              results={results}
-              numResultsIfFiltered={
-                findPublications(results).filter(resPub => resPub.publicationType._id === pub._id)
-                  .length
-              }
-              {...this.props}
-              disabled={!some(publicationTypesInResults, resultPub => resultPub._id === pub._id)}
-            />
-          ))}
+        {this.state.allPublicationTypes.map((pub = {}) => (
+          <FilterCheckBox
+            key={pub._id}
+            id={slugify(`pub-type-${pub.title}`, { lower: true })}
+            title={pub.title}
+            results={results}
+            numResultsIfFiltered={
+              findPublications(results).filter(
+                ({ publicationType = {} }) => publicationType._id === pub._id,
+              ).length
+            }
+            {...this.props}
+            disabled={!some(publicationTypesInResults, resultPub => resultPub._id === pub._id)}
+          />
+        ))}
       </div>
     );
   }

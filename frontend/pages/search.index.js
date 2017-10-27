@@ -6,7 +6,14 @@ import BEMHelper from 'react-bem-helper';
 import buildSearchQuery from '../helpers/buildSearchQuery';
 import DataLoader from '../helpers/data-loader';
 import { Router } from '../routes';
-import { Layout, Footer, SearchResults, SearchField, SearchFilters } from '../components/';
+import {
+  Layout,
+  Footer,
+  SearchResults,
+  SearchField,
+  SearchFilters,
+  filterBySearchFilterList,
+} from '../components/';
 
 const classes = BEMHelper({
   name: 'search',
@@ -38,15 +45,14 @@ function handleChange(query) {}
 
 const Search = ({ results = [] }) => (
   <Layout>
-
-      <div className="o-layout c-search__wrapper">
-        <div className="o-layout__item u-6/12 u-push-3/12">
-          <section {...classes({ block: 'search-input', element: 'content' })}>
-            <SearchField />
-          </section>
-        </div>
+    <div className="o-layout c-search__wrapper">
+      <div className="o-layout__item u-6/12 u-push-3/12">
+        <section {...classes({ block: 'search-input', element: 'content' })}>
+          <SearchField />
+        </section>
       </div>
-<div className="o-layout">
+    </div>
+    <div className="o-layout">
       <section className="o-layout__item u-6/12 u-push-3/12">
         <SearchResults results={results.filter(item => item.slug)} />
       </section>
