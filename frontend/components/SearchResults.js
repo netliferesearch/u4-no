@@ -20,14 +20,12 @@ export default class SearchResults extends Component {
   render() {
     const { results } = this.props;
     return (
-      <div>
         <section>
-          <span>Results:</span> {results.length}
-        </section>
+        <h3>Results: {results.length}</h3>
         <ul>
           {
             results
-              .map(({ _id, _type, date, slug = {}, title, subtitle = false, authors = false, editors = false }) => (<li {...classes('items')} key={_id}>
+            .map(({ _id, _type, date, slug = {}, title, subtitle = false, authors = false, editors = false }) => (<li {...classes('items')} key={_id}>
                 <span>{_type}</span><br />
                 <Link to={`/${_type}s/${slug.current}`}><a>{title}</a></Link><br />
                 <span>{subtitle}</span>
@@ -38,7 +36,7 @@ export default class SearchResults extends Component {
               </li>))
           }
         </ul>
-      </div>
+      </section>
     )
   }
 }
