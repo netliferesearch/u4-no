@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import { Link } from '../routes';
 import BEMHelper from 'react-bem-helper';
+import { Link } from '../routes';
 
 import { AuthorList, EditorList } from '../components/';
 
