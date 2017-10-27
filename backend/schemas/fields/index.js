@@ -9,3 +9,4 @@ export { default as slug } from './slug';
 export { default as standfirst } from './standfirst';
 export { default as subtitle } from './subtitle';
 export { default as title } from './title';
+export { default as language } from './language';

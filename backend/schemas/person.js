@@ -57,19 +57,35 @@ export default {
       type: 'image',
     }
   ],
+  orderings: [
+    {
+      title: 'Last name',
+      name: 'surnameAsc',
+      by: [{ field: 'surname', direction: 'asc' }],
+    },
+    {
+      title: 'First name',
+      name: 'firstNameAsc',
+      by: [{ field: 'firstName', direction: 'asc' }],
+    },
+  ],
   preview: {
     select: {
       firstName: 'firstName',
       surname: 'surname',
       email: 'email',
-      image: 'image.asset.url'
+      image: 'image.asset.url',
     },
-    prepare({ firstName = 'N.', surname = 'N', image, email = '' }) {
+    prepare({ firstName = 'N.', surname = 'N', image, email = ''}, viewOptions = {}) {
+      const previewtitle =
+        viewOptions.ordering && viewOptions.ordering.name === 'firstNameAsc'
+          ? `${firstName} ${surname}`
+          : `${surname}, ${firstName}`;
       return {
-        title: `${firstName} ${surname}`,
+        title: previewtitle,
         subtitle: email,
-        image
-      }
-    }
-  }
+        image,
+      };
+    },
+  },
  }
