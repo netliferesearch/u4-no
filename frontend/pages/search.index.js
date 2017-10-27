@@ -13,15 +13,12 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-
 const client = sanityClient({
   projectId: '1f1lcoov',
   dataset: 'production',
   token: '',
   useCdn: true,
 });
-
-
 
 function debounce(fn, time) {
   let timeoutId;
@@ -37,21 +34,23 @@ function debounce(fn, time) {
   }
 }
 
-
-function handleChange(query) {
-
-}
+function handleChange(query) {}
 
 const Search = ({ results = false }) => (
   <Layout>
-    <section {...classes({ block: 'search-input', element: 'content' }) }>
-      <SearchField />
-    </section>
+    <div className="o-layout">
+      <div className="o-layout__item u-1/1">
+        <section {...classes({ block: 'search-input', element: 'content' })}>
+          <SearchField />
+        </section>
+      </div>
 
-    <section>
-        { results && <SearchResults results={results.filter(item => item.slug)} /> }
-    </section>
+      <section className="o-layout__item u-1/2">
+        {results && <SearchResults results={results.filter(item => item.slug)} />}
+      </section>
 
+      <section className="o-layout__item u-1/2">filters</section>
+    </div>
     <Footer />
   </Layout>
 );
@@ -60,12 +59,12 @@ export default DataLoader(Search, {
   queryFunc: ({ query }) => {
     if (!query.search) {
       return {
-        sanityQuery: false
-      }
+        sanityQuery: false,
+      };
     }
     return {
       sanityQuery: buildSearchQuery({ queryString: query.search, limit: { from: 0, to: 1000 } }),
-    }
+    };
   },
   materializeDepth: 0,
 });
