@@ -17,6 +17,10 @@ export default {
       type: 'email'
     },
     {
+      name: 'phone',
+      type: 'string'
+    },
+    {
       name: 'slug',
       type: 'slug',
       options: {
