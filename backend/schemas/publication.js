@@ -8,10 +8,10 @@ import {
   title,
   subtitle,
   standfirst,
-  date,
   image,
   leadText,
-  slug
+  slug,
+  language
 } from './fields'
 
 export default {
@@ -95,6 +95,17 @@ export default {
         title: 'Link to external short version',
         description: 'Most probably a medium link',
         type: 'url'
+      },
+      {
+        name: 'date',
+        description: 'Date of publication',
+        type: 'richDate',
+        options: {
+          inputUtc: true,
+          dateFormat: 'YYYY-MM-DD',
+          inputDate: true,
+          inputTime: false,
+        }
       },
       {
         name: 'content',
@@ -221,7 +232,6 @@ export default {
         name: 'abstract',
         type: 'text'
       },
-      date,
       {
         name: 'keywords',
         description: 'Chose from drop-down menu of the available U4 keywords.',
@@ -339,6 +349,18 @@ export default {
         preview: {
           title: 'topics.title'
         }
+      },
+      language,
+      {
+        name: 'translation',
+        title: 'Translation of',
+        description: 'If this publication is the translation of another U4 publication',
+        type: 'reference',
+        to: [
+          {
+            type: 'publication'
+          }
+        ]
       },
       {
         name: 'relatedUrl',
