@@ -44,18 +44,14 @@ function handleChange(query) {
 
 const Search = ({ results = false }) => (
   <Layout>
-    <div className="o-wrapper-inner">
-      <section id="searchInput" className="o-wrapper-inner">
-        <div {...classes({ block: 'search-input' })}>
-          <div {...classes({ block: 'search-input', element: 'content' })}>
-            <SearchField />
-          </div>
-        </div>
-      </section>
-      <section>
-        { results && <SearchResults results={results.filter(item => item.slug)} />}
-      </section>
-    </div>
+    <section {...classes({ block: 'search-input', element: 'content' }) }>
+      <SearchField />
+    </section>
+
+    <section>
+        { results && <SearchResults results={results.filter(item => item.slug)} /> }
+    </section>
+
     <Footer />
   </Layout>
 );
