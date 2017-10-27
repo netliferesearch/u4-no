@@ -8239,9 +8239,9 @@
       "integrity": "sha1-4rbN65zhn5kxelNyLz2/XfXqqrI="
     },
     "moment": {
-      "version": "2.19.0",
-      "resolved": "https://registry.npmjs.org/moment/-/moment-2.19.0.tgz",
-      "integrity": "sha1-RPZ172uUSUJ2JYGxwXn7Z55ZnWc="
+      "version": "2.19.1",
+      "resolved": "https://registry.npmjs.org/moment/-/moment-2.19.1.tgz",
+      "integrity": "sha1-VtoaLRy/AdOLfhr8McELz6GSkWc="
     },
     "ms": {
       "version": "2.0.0",
@@ -14007,7 +14007,7 @@
         "filesize": "3.5.10",
         "lodash": "4.17.4",
         "mkdirp": "0.5.1",
-        "moment": "2.19.0"
+        "moment": "2.19.1"
       },
       "dependencies": {
         "ansi-styles": {
