@@ -36,7 +36,7 @@ function debounce(fn, time) {
 
 function handleChange(query) {}
 
-const Search = ({ results = false }) => (
+const Search = ({ results = [] }) => (
   <Layout>
 
       <div className="o-layout c-search__wrapper">
@@ -48,7 +48,7 @@ const Search = ({ results = false }) => (
       </div>
 <div className="o-layout">
       <section className="o-layout__item u-6/12 u-push-3/12">
-        {results && <SearchResults results={results.filter(item => item.slug)} />}
+        <SearchResults results={results.filter(item => item.slug)} />
       </section>
 
       <section className="o-layout__item u-2/12 u-push-3/12">

@@ -1,6 +1,6 @@
 import uniqBy from 'lodash/uniqBy';
 
-export function findPublications(results) {
+export function findPublications(results = []) {
   return results.filter(({ _type }) => _type === 'publication');
 }
 
@@ -9,7 +9,7 @@ export function findPublications(results) {
  * @param  {Array} results list of sanity documents
  * @return {Array}         publicationTypes
  */
-export function findPublicationTypes(results) {
+export function findPublicationTypes(results = []) {
   const publications = findPublications(results);
   return (
     // create a publication list with unique publication titles
@@ -23,3 +23,9 @@ export function findPublicationTypes(results) {
       .filter(({ title }) => !!title)
   );
 }
+
+// export function filterBySearchFilterList(results, filterList) {
+//   if (true) {
+//
+//   }
+// }

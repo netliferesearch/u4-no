@@ -1,3 +1,7 @@
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { addSearchFilter, removeSearchFilter } from '../../helpers/redux-store';
+
 const FilterCheckBox = ({
   id = '',
   title = '',
@@ -25,4 +29,9 @@ const FilterCheckBox = ({
   );
 };
 
-export default FilterCheckBox;
+const mapStateToProps = state => state;
+const mapDispatchToProps = dispatch => ({
+  addSearchFilter: bindActionCreators(addSearchFilter, dispatch),
+  removeSearchFilter: bindActionCreators(removeSearchFilter, dispatch),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(FilterCheckBox);
