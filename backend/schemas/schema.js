@@ -18,10 +18,12 @@ import service from './service';
 import boxOnBox from './boxOnBox';
 import workshop from './workshop';
 import resource from './resource';
+import frontpage from './frontpage';
 
 export default createSchema({
   name: 'default',
   types: [
+    frontpage,
     nugget,
     topics,
     person,
