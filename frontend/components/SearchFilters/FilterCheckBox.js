@@ -1,36 +1,25 @@
-import slugify from 'slugify';
-import { findPublications } from './filterHelpers';
-
 const FilterCheckBox = ({
-  publicationType,
+  id = '',
+  title = '',
   disabled = false,
   results = [],
   addSearchFilter = () => {},
   removeSearchFilter = () => {},
+  numResultsIfFiltered = 0,
 }) => {
-  const numResultsIfFiltered = findPublications(results).filter(
-    resPub => resPub.publicationType._id === publicationType._id,
-  ).length;
-  const slugifiedName = slugify(publicationType.title, { lower: true });
   const checkBoxHandler = (e) => {
     const { checked } = e.target;
     if (checked) {
-      addSearchFilter(slugifiedName);
+      addSearchFilter(id);
     } else {
-      removeSearchFilter(slugifiedName);
+      removeSearchFilter(id);
     }
   };
   return (
     <div>
-      <input
-        onChange={checkBoxHandler}
-        disabled={disabled}
-        type="checkbox"
-        id={slugifiedName}
-        value={slugifiedName}
-      />
-      <label htmlFor={slugifiedName}>
-        {publicationType.title} ({numResultsIfFiltered})
+      <input onChange={checkBoxHandler} disabled={disabled} type="checkbox" id={id} value={id} />
+      <label htmlFor={id}>
+        {title} ({numResultsIfFiltered})
       </label>
     </div>
   );

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import some from 'lodash/some';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import slugify from 'slugify';
 
 import sanityClient from '../../helpers/sanity-client-config';
 import { addSearchFilter, removeSearchFilter } from '../../helpers/redux-store';
-import { findPublicationTypes } from './filterHelpers';
+import { findPublicationTypes, findPublications } from './filterHelpers';
 import FilterCheckBox from './FilterCheckBox';
 
 class PublicationFilters extends Component {
@@ -26,8 +27,12 @@ class PublicationFilters extends Component {
         {this.state.allPublicationTypes.map(({ _id, title }) => (
           <FilterCheckBox
             key={_id}
-            publicationType={{ _id, title }}
+            id={slugify(title, { lower: true })}
+            title={title}
             results={results}
+            numResultsIfFiltered={
+              findPublications(results).filter(resPub => resPub.publicationType._id === _id).length
+            }
             {...this.props}
             disabled={!some(publicationTypesInResults, resultPub => resultPub._id === _id)}
           />
