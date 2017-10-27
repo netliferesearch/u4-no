@@ -47,14 +47,14 @@ function handleChange(query) {}
 const Search = ({ results = [], searchFilters = [] }) => (
   <Layout>
     <div className="o-layout c-search__wrapper">
-      <div className="o-layout__item u-6/12 u-push-3/12">
+      <div className="o-layout__item u-10/12 u-push-1/12 u-6/12@desktop u-push-3/12@desktop">
         <section {...classes({ block: 'search-input', element: 'content' })}>
           <SearchField />
         </section>
       </div>
     </div>
     <div className="o-layout">
-      <section className="o-layout__item u-6/12 u-push-3/12">
+      <section className="o-layout__item u-10/12 u-push-1/12 u-6/12@desktop u-push-3/12@desktop">
         <SearchResults
           results={filterResultsBySearchFilterList(
             results.filter(item => item.slug),
@@ -62,7 +62,7 @@ const Search = ({ results = [], searchFilters = [] }) => (
           )}
         />
       </section>
-      <section className="o-layout__item u-2/12 u-push-3/12">
+      <section className="o-layout__item u-2/12@desktop u-push-4/12@desktop">
         <SearchFilters results={results} />
       </section>
     </div>
