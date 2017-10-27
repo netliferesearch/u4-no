@@ -16,20 +16,26 @@ const replaceWindowHash = (hashValue) => {
   }
 };
 
-const exampleInitialState = {
+const defaultState = {
   readingProgressId: '',
   isArticleMenuOpen: false,
   showLoadingScreen: false,
+  searchSorting: 'relevance',
+  searchFilters: [],
 };
 
 export const actionTypes = {
   UPDATE_READING_PROGRESS: 'UPDATE_READING_PROGRESS',
   TOGGLE_ARTICLE_MENU: 'TOGGLE_ARTICLE_MENU',
   TOGGLE_LOADING_SCREEN: 'TOGGLE_LOADING_SCREEN',
+  SEARCH_CLEAR_ALL_FILTERS: 'SEARCH_CLEAR_ALL_FILTERS',
+  SEARCH_ADD_FILTER: 'SEARCH_ADD_FILTER',
+  SEARCH_REMOVE_FILTER: 'SEARCH_REMOVE_FILTER',
+  SEARCH_UPDATE_SORT: 'SEARCH_UPDATE_SORT',
 };
 
 // REDUCERS
-export const reducer = (state = exampleInitialState, action) => {
+export const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
@@ -56,5 +62,5 @@ export const toggleArticleMenu = () => dispatch =>
 export const toggleLoadingScreen = () => dispatch =>
   dispatch({ type: actionTypes.TOGGLE_LOADING_SCREEN });
 
-export const initStore = (initialState = exampleInitialState) =>
+export const initStore = (initialState = defaultState) =>
   createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
