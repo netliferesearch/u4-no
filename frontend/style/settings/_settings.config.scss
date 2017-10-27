@@ -10,11 +10,7 @@
   * or telling your CI sever that you’re compiling for production).
 */
 
-$inuit-config: (
-  env: dev,
-  healthcheck: false,
-  debug: true,
-);
+$inuit-config: (env: dev, healthcheck: false, debug: true);
 
 // You can access data in this map using the following function:
 //
@@ -27,3 +23,8 @@ $inuit-config: (
 @function inuit-config($key) {
   @return map-get($inuit-config, $key);
 }
+
+// used to enable u-1/12 etc.
+$inuit-fractions: 1 2 3 4 5 6 7 8 9 10 11 12;
+// used to enable .u-push-1/3 etc.
+$inuit-offsets: true;

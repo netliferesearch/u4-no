@@ -6,13 +6,12 @@ import BEMHelper from 'react-bem-helper';
 import buildSearchQuery from '../helpers/buildSearchQuery';
 import DataLoader from '../helpers/data-loader';
 import { Router } from '../routes';
-import { Layout, Footer, SearchResults, SearchField } from '../components/';
+import { Layout, Footer, SearchResults, SearchField, SearchFilters } from '../components/';
 
 const classes = BEMHelper({
   name: 'search',
   prefix: 'c-',
 });
-
 
 const client = sanityClient({
   projectId: '1f1lcoov',
@@ -20,8 +19,6 @@ const client = sanityClient({
   token: '',
   useCdn: true,
 });
-
-
 
 function debounce(fn, time) {
   let timeoutId;
@@ -37,21 +34,27 @@ function debounce(fn, time) {
   }
 }
 
-
-function handleChange(query) {
-
-}
+function handleChange(query) {}
 
 const Search = ({ results = false }) => (
   <Layout>
-    <section {...classes({ block: 'search-input', element: 'content' }) }>
-      <SearchField />
-    </section>
+    <div className="o-layout">
+      <div className="o-layout__item u-1/1 o-layout c-search__wrapper">
+        <div className="o-layout__item u-6/12 u-push-3/12">
+          <section {...classes({ block: 'search-input', element: 'content' })}>
+            <SearchField />
+          </section>
+        </div>
+      </div>
 
-    <section>
-        { results && <SearchResults results={results.filter(item => item.slug)} /> }
-    </section>
+      <section className="o-layout__item u-6/12 u-push-3/12">
+        {results && <SearchResults results={results.filter(item => item.slug)} />}
+      </section>
 
+      <section className="o-layout__item u-2/12 u-push-2/12">
+        <SearchFilters results={results} />
+      </section>
+    </div>
     <Footer />
   </Layout>
 );
@@ -60,12 +63,12 @@ export default DataLoader(Search, {
   queryFunc: ({ query }) => {
     if (!query.search) {
       return {
-        sanityQuery: false
-      }
+        sanityQuery: false,
+      };
     }
     return {
       sanityQuery: buildSearchQuery({ queryString: query.search, limit: { from: 0, to: 1000 } }),
-    }
+    };
   },
   materializeDepth: 0,
 });

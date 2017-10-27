@@ -17,6 +17,7 @@ import course from './course';
 import service from './service';
 import boxOnBox from './boxOnBox';
 import workshop from './workshop';
+import resource from './resource';
 
 export default createSchema({
   name: 'default',
@@ -38,5 +39,6 @@ export default createSchema({
     service,
     workshop,
     richDate,
+    resource,
   ]
 })

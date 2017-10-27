@@ -5,7 +5,6 @@
 
 
 
-
 .c-search__label {
   width: 100%;
   display: inline-block;
@@ -16,12 +15,16 @@
   font-weight: 400;
 }
 
+.c-search__wrapper {
+  background-color: $brand-lightest;
+  padding-top: $spacing-huge;
+}
+
 .c-search__content {
+
   position: relative;
   display: flex;
   flex-wrap: nowrap;
-  background-color: $brand-lightest;
-
   //padding: $spacing $spacing-small;
   //grid-column: 1 / 12;
   @include mq($from: tablet) {

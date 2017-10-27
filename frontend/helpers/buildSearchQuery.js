@@ -1,5 +1,10 @@
 export default ({ queryString = false, limit: { from = 0, to = 20 } = { from: 0, to: 20 } }) => {
-  const matchString = queryString.length ? queryString.split(' ').map(tkn => `"${tkn}*"`).join(',') : queryString;
+  const matchString = queryString.length
+    ? queryString
+      .split(' ')
+      .map(tkn => `"${tkn}*"`)
+      .join(',')
+    : queryString;
   return `{
     "results":
     *[
@@ -38,6 +43,7 @@ export default ({ queryString = false, limit: { from = 0, to = 20 } = { from: 0,
       date,
       _type,
       subtitle,
+      "publicationType": publicationType->{...},
       "authors": authors[]->{...},
       "editors": editors[]->{...},
       firstName,

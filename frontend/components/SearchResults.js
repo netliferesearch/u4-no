@@ -20,18 +20,28 @@ export default class SearchResults extends Component {
   render() {
     const { results } = this.props;
     return (
-        <section>
-        <h3>Results: {results.length}</h3>
-        <ul>
+        <section {...classes()}>
+          <div {...classes('topbar')}>
+            <h3 {...classes('topbar-result')}>Results ({results.length})</h3>
+            <div>
+              <label>Sort by </label>
+              <select {...classes('topbar-select')}>
+                  <option value="1">Relevance</option>
+                  <option value="2">Year</option>
+              </select>
+            </div>
+          </div>
+        <ul {...classes('content')}>
           {
             results
             .map(({ _id, _type, date, slug = {}, title, subtitle = false, authors = false, editors = false }) => (<li {...classes('items')} key={_id}>
-                <span>{_type}</span><br />
-                <Link to={`/${_type}s/${slug.current}`}><a>{title}</a></Link><br />
-                <span>{subtitle}</span>
+                <span {...classes('items-type')}>{_type}</span>
+                <span {...classes('items-date')}>{ date && moment(date.local).format('DD.MM.YYYY') }</span><br />
+                <Link to={`/${_type}s/${slug.current}`}><a {...classes('items-title')}>{title}</a></Link><br />
+                <span {...classes('items-subtitle')}>{subtitle}</span>
                 {authors ? <div><AuthorList authors={authors} /><br /></div> : null}
                 {editors.length ? <div><EditorList editors={editors} /><br /></div> : null}
-                { date && moment(date.local).format('DD.MM.YYYY') }
+
 
               </li>))
           }
