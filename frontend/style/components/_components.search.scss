@@ -37,7 +37,7 @@
 .c-search__input {
 
   flex-grow: 2;
-  background: none;
+  background: $white;
   border: none;
   display: block;
   color: $black;
@@ -91,6 +91,7 @@
   right: 80px;
 }
 .c-search__results {
+  background: $white;
   padding: $spacing;
   border: none;
   border-right: 1px solid $brand-main;
@@ -99,11 +100,18 @@
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
 .c-search__items {
-  @include inuit-font-size($font-size-normal, $line-height-large );
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-normal, $line-height-small );
   margin-left: -$spacing;
   margin-right: -$spacing;
   padding-left: $spacing;
   padding-right: $spacing;
+  padding-bottom: $spacing-tiny;
+}
+.c-search__items-type {
+  @include inuit-font-size($font-size-tiny/1.2, $line-height-tiny );
+  color: $grey;
+  text-transform: uppercase;
 }
 
 .c-search__items--highlighted {

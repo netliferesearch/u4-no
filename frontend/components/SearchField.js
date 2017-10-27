@@ -28,7 +28,7 @@ const generateTitle = ({ title = false, firstName = false, surname = false }) =>
 
 const SearchItem = ({ classes, children }) => (
   <div {...classes}>
-    {generateTitle(children)} <span style={{ color: '#0079CF' }}>{children._type}</span>
+    <span className="c-search__items-type">{children._type}</span><br />{generateTitle(children)}
   </div>);
 
 function debounce(fn, time) {
