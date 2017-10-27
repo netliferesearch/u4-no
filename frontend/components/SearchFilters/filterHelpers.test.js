@@ -1,10 +1,10 @@
-import { filterBySearchFilterList } from './filterHelpers';
+import { filterResultsBySearchFilterList } from './filterHelpers';
 
 test('can filter result list for publication types', async () => {
   const whatToFilterFor = {
     name: 'otherthing',
     publicationType: {
-      title: 'u4-issue',
+      _id: 'u4-issue',
     },
   };
   const resultsToFilter = [
@@ -12,12 +12,25 @@ test('can filter result list for publication types', async () => {
     {
       name: 'thirdthing',
       publicationType: {
-        title: 'u4-brief',
+        _id: 'u4-brief',
       },
     },
     whatToFilterFor,
   ];
-  expect(filterBySearchFilterList(resultsToFilter, ['pub-type-u4-issue'])).toEqual([
+  expect(filterResultsBySearchFilterList(resultsToFilter, ['pub-type-u4-issue'])).toEqual([
     whatToFilterFor,
   ]);
+});
+
+test('should show all results if no filter', async () => {
+  const resultsToFilter = [
+    { name: 'thing' },
+    {
+      name: 'thirdthing',
+      publicationType: {
+        _id: 'u4-brief',
+      },
+    },
+  ];
+  expect(filterResultsBySearchFilterList(resultsToFilter, [])).toEqual(resultsToFilter);
 });
