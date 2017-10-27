@@ -23,7 +23,7 @@ export default () => (
         Anti-corruption resources and services that support your work for successful development results. We offer useable knowledge based on quality research.
       </p>
       <p className="c-introduction-text">
-        Browse by <a href="/topics">topic</a> or <a href="/search">search our publications</a>. Are you U4 partner staff? Enjoy exclusive free access to <a href="/online-training">online courses</a>, <a href="/workshops">workshops</a> and helpdesk. You can also contact our <a href="/persons">researchers and advisors</a>.
+        Browse by <a href="/topics">topic</a> or <a href="/search">search our publications</a>. Are you U4 partner staff? Enjoy exclusive free access to <a href="/online-training">online courses</a>, <a href="/workshops">workshops</a> and helpdesk.
       </p>
       </section>
       <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
