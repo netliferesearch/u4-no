@@ -20,9 +20,15 @@ const client = sanityClient({
   useCdn: true,
 });
 
+const generateTitle = ({ title = false, firstName = false, surname = false }) => {
+  if (title) return title
+  if (firstName) return `${firstName} ${surname}`;
+  return 'no title';
+};
+
 const SearchItem = ({ classes, children }) => (
   <div {...classes}>
-    {children.title} <span style={{ color: '#0079CF' }}>{children._type}</span>
+    {generateTitle(children)} <span style={{ color: '#0079CF' }}>{children._type}</span>
   </div>);
 
 function debounce(fn, time) {
@@ -87,7 +93,7 @@ class SearchField extends Component {
                   tabIndex: '0',
                   name: 'search',
                   type: 'search',
-                  value: selectedItem && typeof selectedItem === "object" ? selectedItem.title : inputValue,
+                  value: selectedItem && typeof selectedItem === "object" ? generateTitle(selectedItem) : inputValue,
                   onChange: (event) => {
                     const value = event.target.value;
                     if (!value) {
