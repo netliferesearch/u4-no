@@ -21,15 +21,11 @@ const client = sanityClient({
 });
 
 const generateTitle = ({ title = false, firstName = false, surname = false }) => {
-  if (title) return title
+  if (title) return title;
   if (firstName) return `${firstName} ${surname}`;
   return 'no title';
 };
 
-const SearchItem = ({ classes, children }) => (
-  <div {...classes}>
-    <span className="c-search__items-type">{children._type}</span><br />{generateTitle(children)}
-  </div>);
 
 function debounce(fn, time) {
   let timeoutId;
@@ -72,7 +68,7 @@ class SearchField extends Component {
           getLabelProps,
           isOpen,
           clearSelection,
-          inputValue
+          inputValue,
         }) => (
           <form
             onSubmit={handleSubmit}
@@ -93,7 +89,7 @@ class SearchField extends Component {
                   tabIndex: '0',
                   name: 'search',
                   type: 'search',
-                  value: selectedItem && typeof selectedItem === "object" ? generateTitle(selectedItem) : inputValue,
+                  value: selectedItem && typeof selectedItem === 'object' ? generateTitle(selectedItem) : inputValue,
                   onChange: (event) => {
                     const value = event.target.value;
                     if (!value) {
@@ -114,20 +110,19 @@ class SearchField extends Component {
                   },
                 })}
               />
-              {inputValue && <button {...classes('button', 'clear') } type="button" onClick={clearSelection}>X</button>}
-              <button tabIndex="1" {...classes('button') } type="submit" value="Search"><MagnifyingGlass /></button>
+              {inputValue && <button {...classes('button', 'clear')} type="button" onClick={clearSelection}>X</button>}
+              <button tabIndex="1" {...classes('button')} type="submit" value="Search"><MagnifyingGlass /></button>
             </div>
             {isOpen && (
               <div {...classes('results')}>
                 {this.state.items.map((item, index) => (
-                  <SearchItem
-                      {...getItemProps({
+                  <div
+                    {...getItemProps({
                       item,
                       index,
-                      classes: { ...classes('items', highlightedIndex === index ? 'highlighted' : null) },
+                      ...classes('items', highlightedIndex === index ? 'highlighted' : null),
                     })}
-                    >{item}</SearchItem>
-
+                  ><span className="c-search__items-type">{item._type}</span><br />{generateTitle(item)}</div>
                 ))}
               </div>
             )}
