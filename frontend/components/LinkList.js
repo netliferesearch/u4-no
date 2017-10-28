@@ -9,10 +9,16 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
+const arrayify = (content) => {
+  console.log(content)
+  if (!Array.isArray(content)) return [content];
+  return content;
+}
+
 const LinkList = ({ title, content, otherClasses = null }) => (
   <ul {...classes(null, null, otherClasses)}>
     {title && <span>{title}</span>}
-    { content.map((item, index) =>
+    { arrayify(content).map((item, index) =>
       (<li key={index} {...classes('item')}>
         <Link to={item.link}>
           <a {...classes('link')}>
