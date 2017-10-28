@@ -8,23 +8,13 @@ import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { BasicGuide, ResearchAgenda, Picture, Publication, Resources, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
 
-const linkListContent = [
-  {
-    title: 'Oil, gas and mining',
-    link: '#',
-  },
-  {
-    title: 'Renewable resources',
-    link: '#',
-  },
-];
-
 const TopicEntry = ({
   topic: {
     title = '',
     longTitle = '',
     explainerText = 'Topic has no explainerText',
     featuredImage,
+    linkListContent = false,
     parent = {},
     slug = {},
     introduction = [],
@@ -47,7 +37,7 @@ const TopicEntry = ({
         )}
         <div className="c-boxOnImage__body">
           <p>{explainerText}</p>
-          <LinkList title="Related topics" content={linkListContent} />
+          {linkListContent && <LinkList title="Related topics" content={linkListContent} />}
         </div>
       </section>
       <h2 className="c-topic-section__title c-topic-section__title--large">
@@ -79,7 +69,7 @@ const TopicEntry = ({
           <Mosaic resources={resources} />
         </div>
         <h2 className="c-topic-section__cta">
-          <a href="#">Explore all our resources &nbsp;<ArrowRight /></a>
+          <a href="/search">Explore all our resources &nbsp;<ArrowRight /></a>
         </h2>
       </section>
     </div>
@@ -89,7 +79,7 @@ const TopicEntry = ({
       <div id="advisors" className="c-topic-section--lightblue">
         <Team title="We’re the team developing this topic." members={advisors} linkLabel="Read full bio" />
         <h2 className="c-topic-section__cta">
-          <a href="#">The whole U4 team &nbsp;<ArrowRight /></a>
+          <a href="/the-team">The whole U4 team &nbsp;<ArrowRight /></a>
         </h2>
       </div>
       : null}
@@ -106,8 +96,7 @@ const TopicEntry = ({
 );
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery:
-        '{ "topic": *[slug.current == $slug]{...,"resources": resources[]->{_id,_type, "publicationType": publicationType->title, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}}[0]}',
+    sanityQuery: '{"topic": *[slug.current == $slug]{...,"linkListContent": coalesce(*[_type == "topics" && references(^._id)]{title, "link": slug.current},parent->{title, "link": slug.current}), "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}}[0]}',
     param: { slug },
   }),
   materializeDepth: 3,
