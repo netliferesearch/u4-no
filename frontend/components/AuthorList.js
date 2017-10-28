@@ -5,7 +5,7 @@ const AuthorList = ({ authors = [] }) => (
     By{' '}
     {authors.map(({ firstName = '', surname = '', _id = '', slug = false }, index) => (
       <span key={_id}>
-        {slug ? <a href={`/persons/${slug.current}`}>
+        {slug ? <a href={`/the-team/${slug.current}`}>
           {firstName} {surname}
         </a> : `${firstName} ${surname}` }
         {/* Add ampersands between the authors. */}

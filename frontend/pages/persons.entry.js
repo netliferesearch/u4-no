@@ -17,7 +17,7 @@ const Persons = ({
     <div className="o-wrapper o-wrapper--padded">
       <BreadCrumb url={url} />
       <div className="c-article o-wrapper-inner">
-        <h3><Link to={`/persons/${slug.current}`}><a>{firstName} {surname}</a></Link></h3>
+        <h3><Link to={`/the-team/${slug.current}`}><a>{firstName} {surname}</a></Link></h3>
         {
           affiliations && affiliations.map(affiliation => affiliation)
         }

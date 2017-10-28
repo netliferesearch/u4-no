@@ -21,7 +21,7 @@ const Persons = ({
         <ul>
           {
             persons.map(({ _id, firstName = '', surname = '', affiliations = false, email = '', phone = '', slug = {} }) => (<li key={_id}>
-              <h3><Link to={`/persons/${slug.current}`}><a>{firstName} {surname}</a></Link></h3>
+              <h3><Link to={`/the-team/${slug.current}`}><a>{firstName} {surname}</a></Link></h3>
               {
                 affiliations && affiliations.map(affiliation => affiliation)
               }
