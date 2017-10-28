@@ -1,22 +1,22 @@
 import React from 'react';
+import BlockContent from '@sanity/block-content-to-react';
 import { Link } from '../routes';
 import { Layout, LongformArticle, Footer } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
 const Persons = ({
-  frontpage: {
-    explainerText = 'has no explainer text',
-    longTitle = 'has no long title',
-    url = {},
-    content,
-    advisors = [],
-  } = {},
+  frontpage,
   persons = [],
+  url,
 }) => (
   <Layout>
     <div className="o-wrapper o-wrapper--padded">
       <BreadCrumb url={url} />
+      <div className="c-longform-grid__standard">
+        <h1>{frontpage.title}</h1>
+        <p>{frontpage.lead}</p>
+      </div>
       <div className="c-article o-wrapper-inner">
         <ul>
           {
@@ -45,7 +45,7 @@ const Persons = ({
 
 export default DataLoader(Persons, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '{ "frontpage": *[slug.current == $slug][0], "persons": *[_type == "person"][0..1000]{..., "affiliations": affiliations[]->name} }',
-    param: { slug },
+    sanityQuery: '{ "frontpage": *[_id == "627b8d42-d8f7-4cf6-9567-f6337678b688"][0], "persons": *[_type == "person"][0..1000]{..., "affiliations": affiliations[]->name} }',
+    materializeDepth: 0,
   }),
 });
