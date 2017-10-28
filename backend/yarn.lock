@@ -6099,6 +6099,10 @@ react-container-query@^0.8.0:
     lodash "4.*"
     resize-observer-lite "0.2.1"
 
+react-datasheet@^1.2.12:
+  version "1.2.12"
+  resolved "https://registry.yarnpkg.com/react-datasheet/-/react-datasheet-1.2.12.tgz#afe220478fc4b14eb0cc43704f58565e1b8cdbdf"
+
 react-datepicker@^0.55.0:
   version "0.55.0"
   resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-0.55.0.tgz#5ab8be35b1ee3e512fadf97d4e96c9d14ae06594"
@@ -6229,7 +6233,7 @@ react-intl@^2.2.2:
     intl-relativeformat "^2.0.0"
     invariant "^2.1.1"
 
-"react-json-inspector@github:rexxars/react-json-inspector#react-15", react-json-inspector@rexxars/react-json-inspector#react-15:
+react-json-inspector@rexxars/react-json-inspector#react-15:
   version "7.0.1"
   resolved "https://codeload.github.com/rexxars/react-json-inspector/tar.gz/b5534e164b54e87b966da3ca0ef14003843cff92"
   dependencies:
