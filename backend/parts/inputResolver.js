@@ -6,7 +6,7 @@ export default function resolveInput(type) {
   if (type.name === 'array' && type.of.find(ofType => ofType.name === 'block')) {
     return FunkyEditor
   }
-  if (type.name === 'table') {
+  if (type.name === 'funkyTable') {
     return FunkyTable
   }
   return false

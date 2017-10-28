@@ -24,7 +24,7 @@ export default createSchema({
   name: 'default',
   types: [
     {
-      name: 'table',
+      name: 'funkyTable',
       type: 'object',
       fields: [
         {

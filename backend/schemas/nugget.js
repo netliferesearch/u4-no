@@ -12,8 +12,8 @@ export default {
   fields: [
     title,
     {
-      name: 'Table',
-      type: 'table',
+      name: 'dataTable',
+      type: 'funkyTable',
     },
     {
       name: 'text',
