@@ -71,7 +71,7 @@ export default class FunkyEditor extends React.Component {
 
   render() {
     const { type, value, level, onChange } = this.props
-    const { letter_count, reading_time, rating  } = this.state.readable
+    const { word_count, reading_time, rating  } = this.state.readable
     return (
       <div>
         <BlockEditor
@@ -84,7 +84,11 @@ export default class FunkyEditor extends React.Component {
           }}
         />
         <p>
-          Letter count: {letter_count} - Reading time: {reading_time} - Readable.io rate: {rating}.
+          {
+            rating ?
+            `${word_count} ${word_count > 1 ? 'words' : 'word' } - ${reading_time === '0:00' ? '' : `Reading time: ${reading_time}` } - Readable.io rate: ${rating}.`
+            : <small>'Stats from readable.io comes after you start typing...'</small>
+          }
         </p>
       </div>
     )
