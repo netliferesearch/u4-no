@@ -21,7 +21,7 @@ export default class FunkyTable extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      _type: 'table',
+      _type: 'funkyTable',
       grid: [
         [{value:  1}, {value:  3},{value:  3}],
         [{value:  2}, {value:  4},{value:  3}],
@@ -31,35 +31,24 @@ export default class FunkyTable extends Component {
     }
     autobind(this)
   }
-  componentWillMount() {
-
-  }
-  componentDidMount() {
-
-  }
-  updateDocs = (cell, rowI, colJ, value) => {
-    console.log(cell, rowI, colJ, value)
-    this.setState({
-      grid: this.state.grid.map((col) =>
-      col.map((rowCell) => (rowCell == cell) ? ({value: value}) : rowCell)
-      )
-    })
-    createPatchFrom({_type: 'table', grid: this.state.grid})
-  }
-
-
 
   render() {
+    console.log(this.props)
     const { type, value, level, onChange } = this.props
     return (
       <div>
         <h3>{type.title}</h3>
         {type.description && <p>{type.description}</p>}
         <ReactDataSheet
-        data={this.state.grid}
-        valueRenderer={(cell) => cell.value}
-        onChange={this.updateDocs}
-      />
+          data={value === undefined ? this.state.grid : value.grid}
+          valueRenderer={(cell) => cell.value}
+          onChange={(cell, rowI, colJ, value) => onChange(createPatchFrom({
+              _type: 'funkyTable',
+              grid: this.state.grid.map((col) =>
+                col.map((rowCell) => (rowCell == cell) ? ({value: value}) : rowCell)
+              )
+          }))}
+        />
       </div>
     )
   }
