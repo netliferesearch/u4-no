@@ -15,9 +15,9 @@
     "@sanity/desk-tool",
     "@sanity/google-maps-input",
     "@sanity/storybook",
-    "vision",
     "url-metadata-input",
-    "@sanity/rich-date-input"
+    "@sanity/rich-date-input",
+    "@sanity/vision"
   ],
   "parts": [
     {

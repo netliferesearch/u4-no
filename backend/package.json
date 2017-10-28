@@ -25,6 +25,7 @@
     "@sanity/google-maps-input": "^0.118.3",
     "@sanity/rich-date-input": "^0.118.3",
     "@sanity/storybook": "^0.118.0",
+    "@sanity/vision": "^0.118.3",
     "axios": "^0.16.2",
     "lodash": "^4.17.4",
     "md5": "^2.2.1",
