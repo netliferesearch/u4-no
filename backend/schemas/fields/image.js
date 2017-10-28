@@ -22,6 +22,7 @@ export default {
       of: [
         {
           type: 'block',
+          styles: [],
           marks: {
             // Only allow these decorators
             decorators: [
