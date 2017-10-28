@@ -12,6 +12,10 @@ export default {
   fields: [
     title,
     {
+      name: 'Table',
+      type: 'table',
+    },
+    {
       name: 'text',
       type: 'array',
       of: [

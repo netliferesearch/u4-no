@@ -23,6 +23,39 @@ import frontpage from './frontpage';
 export default createSchema({
   name: 'default',
   types: [
+    {
+      name: 'table',
+      type: 'object',
+      fields: [
+        {
+          name: 'grid',
+          type: 'array',
+          of: [
+            {
+              type: 'grid'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: 'grid',
+      type: 'object',
+      fields: [
+        {
+          name: 'grid',
+          type: 'array',
+          of: [
+                {
+                  type: 'object',
+                  fields: [
+                    { name: 'value', type: 'string' }
+                  ]
+                }
+              ]
+        },
+      ],
+    },
     frontpage,
     nugget,
     topics,
