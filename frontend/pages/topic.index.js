@@ -22,15 +22,15 @@ const TopicOverview = ({ topics = [] }) => (
             _id = false,
             title = 'Title is lacking',
             slug = {},
-            related = false,
+            relatedCount = 0,
           }) => (
             <div className="c-topic-index__item" key={_id}>
               <Link route="topic.entry" params={{ slug: slug.current }}>
                 <a className="c-topic-index__title">{title}</a>
               </Link>
-              <svg width={`${related}px`} height="5px" viewBox={`0 0 ${related} 2`} version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                <path d="M167.536783,1 L1,1" id="Line" stroke="#1E2051"></path>
-              </svg><span className="c-topic-index__count">{related}</span>
+              <svg width={`${relatedCount}px`} height="5px" viewBox={`0 0 ${relatedCount} 2`} version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                <path d="M167.536783,1 L1,1" id="Line" stroke="#1E2051" />
+              </svg><span className="c-topic-index__count">{relatedCount}</span>
             </div>
           ),
         )}
@@ -44,7 +44,7 @@ export default DataLoader(TopicOverview, {
   // here you get the next context object that is initially passed into
   // getInitialProps
   queryFunc: () => ({
-    sanityQuery: '{"topics": *[_type in ["topics"] && !(_id in path "drafts.**") ]{_id, title, slug, "related": count(*[_type in ["publication", "helpdesk"] && references(^._id)])}|order(title asc)}',
+    sanityQuery: '{"topics": *[_type == "topics"]{_id, title, slug, "relatedCount": count(*[_type in ["publication", "helpdesk"] && references(^._id)])}|order(title asc)}',
   }),
-  materializeDepth: 2,
+  materializeDepth: 0,
 });
