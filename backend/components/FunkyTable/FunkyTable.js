@@ -35,54 +35,58 @@ export default class FunkyTable extends Component {
     ]
     this.state = {
       _type: 'funkyTable',
+      title: props.value.title !== undefined ? props.value.title : '',
       grid: data
     }
     autobind(this)
   }
-  /* [
-				[{value:  1}, {value:  3},{value:  3}],
-				[{value:  2}, {value:  4},{value:  3}],
-				[{value:  2}, {value:  4},{value:  3}],
-				[{value:  2}, {value:  4},{value:  3}]
-      ]
-       */
+  handleTitleChange (event) {
+    this.setState({ title: event.target.value })
+    this.props.onChange(createPatchFrom({ _type: 'funkyTable', title: event.target.value }))
+  }
+  handleTableChange (cell, rowI, colJ, value) {
+    this.props.onChange(createPatchFrom({_type: 'funkyTable', title: this.state.title, grid: convertFromDataSheet(this.state.grid.map((col) => col.map((rowCell) => (rowCell == cell) ? ({value: value}) : rowCell)))}))
+  }
+  handleAddRow () {
+    this.setState((state) => ({grid: state.grid.concat({values: state.grid[0].values.map(i => '')})}))
+  }
+  handleRemoveRow () {
+    this.setState((state) => ({ grid: this.state.grid.slice(0, this.state.grid.length -1) }))
+  }
+  handleAddColumn () {
+    this.setState((state) => ({grid: state.grid.map(row => ({values: row.values.concat('')}))}))
+  }
+  handleRemoveColumn () {
+    this.setState((state) => ({grid: state.grid.map(row => ({ values: row.values.slice(0,row.values.length - 1) }))}))
+  }
+
   render() {
-    console.log('props', this.props)
-    console.log('state', this.state)
     const { type, value: sanityData, level, onChange } = this.props
     return (
       <div>
-        <h3>{type.title}</h3>
-        {type.description && <p>{type.description}</p>}
+        <div>
+          <h3>{type.title}</h3>
+          {type.description && <p>{type.description}</p>}
+        </div>
+        <div>
+          <label htmlFor='title'>Table title</label><br />
+          <input className={styles.funkyTable} name='title' type='text' onChange={this.handleTitleChange} value={this.state.title} />
+        </div>
+        <div>
+          <button onClick={this.handleAddColumn}>Add column</button> <button onClick={this.handleRemoveColumn}>Delete column</button>
+        </div>
         <ReactDataSheet
           className={styles['data-grid']}
           data={convertToDataSheet(this.state.grid)}
           valueRenderer={(cell) => cell.value}
-          onChange={async (cell, rowI, colJ, value) => {
-            this.setState({ grid: this.state.grid.map((col) => col.map((rowCell) => (rowCell == cell) ? ({value: value}) : rowCell)) })
-        onChange(createPatchFrom({grid: convertFromDataSheet(this.state.grid.map((col) => col.map((rowCell) => (rowCell == cell) ? ({value: value}) : rowCell)))}))
-            /* this.setState({
-              grid: d.map((col) =>
-                col.map((rowCell) =>
-                  (rowCell == cell) ? ({value: value}) : rowCell
-                )
-              )
-            }) */
-
-            /* console.log(cell, rowI, colJ, value)
-            const prepareData = convertToDataSheet(data)
-            const grid = prepareData.map((col) => {
-              return col.map((rowCell) => {
-                console.log(rowCell, cell)
-                return (rowCell !== value) ? ({value: value}) : rowCell
-              })
-            })
-            console.log('newGrid', grid)
-            this.setState({ grid: convertFromDataSheet(grid) })
-            onChange(createPatchFrom({grid: convertFromDataSheet(grid)})) */
-
+          onChange={(cell, rowI, colJ, value) => {
+            this.setState({ grid: this.state.grid.map((row) => row.map((rowCell) => (rowCell == cell) ? ({value: value}) : rowCell)) })
+            this.handleTableChange(cell, rowI, colJ, value)
           }}
         />
+        <div>
+          <button onClick={this.handleAddRow}>Add row</button> <button onClick={this.handleRemoveRow}>Delete row</button>
+        </div>
       </div>
     )
   }
