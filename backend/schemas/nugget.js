@@ -12,10 +12,6 @@ export default {
   fields: [
     title,
     {
-      name: 'dataTable',
-      type: 'funkyTable',
-    },
-    {
       name: 'text',
       type: 'array',
       of: [
