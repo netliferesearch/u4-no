@@ -10,3 +10,5 @@ export { default as standfirst } from './standfirst';
 export { default as subtitle } from './subtitle';
 export { default as title } from './title';
 export { default as language } from './language';
+export { default as funkyTable } from './funkyTable';
+export { default as grid } from './grid';

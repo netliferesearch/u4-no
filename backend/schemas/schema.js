@@ -1,7 +1,7 @@
 import createSchema from 'part:@sanity/base/schema-creator';
 import richDate from 'part:@sanity/form-builder/input/rich-date/schema'
 import { schema as urlWithMetadata } from 'part:url-metadata-input/input';
-import { funkyTable, grid } from './fields/funkyTable';
+import { funkyTable, grid } from './fields';
 import publication from './publication';
 import nugget from './nugget';
 import topics from './topics';

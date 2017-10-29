@@ -162,6 +162,9 @@ export default {
           {
             type: 'pullQuote'
           },
+          {
+            type: 'funkyTable'
+          },
           image,
         ]
       },

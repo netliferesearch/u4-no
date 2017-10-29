@@ -1,4 +1,4 @@
 {
-  "hiddenTypes": ["pullQuote", "boxOnBox", "funkyTable", "grid"],
+  "hiddenTypes": ["pullQuote", "boxOnBox", "grid"],
   "listOptions": {}
 }
