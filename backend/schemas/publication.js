@@ -163,7 +163,11 @@ export default {
             type: 'pullQuote'
           },
           {
-            type: 'funkyTable'
+            type: 'funkyTable',
+            options: {
+              defaultNumRows: 3,
+              defaultNumColumns: 3
+            }
           },
           image,
         ]
