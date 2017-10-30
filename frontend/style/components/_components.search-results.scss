@@ -6,6 +6,7 @@
   color: $brand-dark;
   margin: $spacing-large 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   font-family: $font-sans;
   @include inuit-font-size($font-size-tiny, $line-height-normal );
@@ -32,6 +33,12 @@
   box-shadow: none;
   background: transparent;
   background-image: none;
+}
+.c-search-results__topbar-filter{
+  color: red;
+  @include mq($from: desktop) {
+    display: none;
+  }
 }
 
 .c-search-results__content {

@@ -16,6 +16,10 @@ export default class SearchResults extends Component {
     this.state = { results: [] };
   }
 
+  toggle() {
+    console.log("test")
+  }
+
   render() {
     const { results } = this.props;
     return (
@@ -29,6 +33,7 @@ export default class SearchResults extends Component {
               <option value="2">Year</option>
             </select>
           </div>
+          <button onClick={this.toggle} {...classes('topbar-filter')}>filter search result</button>
         </div>
         <ul {...classes('content')}>
           {results.map(
