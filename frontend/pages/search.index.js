@@ -43,7 +43,6 @@ function debounce(fn, time) {
 }
 
 function handleChange(query) {}
-
 const Search = ({ results = [], searchFilters = [] }) => (
   <Layout>
     <div className="o-layout o-layout--center c-search__wrapper">

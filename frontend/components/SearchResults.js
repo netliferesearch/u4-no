@@ -17,7 +17,7 @@ export default class SearchResults extends Component {
   }
 
   toggle() {
-    console.log("test")
+    document.getElementsByClassName('c-filters')[0].classList.toggle('c-filters--open');
   }
 
   render() {
