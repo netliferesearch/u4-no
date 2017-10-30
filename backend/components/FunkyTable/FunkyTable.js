@@ -5,25 +5,30 @@ import ReactDataSheet from 'react-datasheet'
 import styles from './FunkyTable.css'
 import PatchEvent, {insert, set, unset, setIfMissing} from '@sanity/form-builder/PatchEvent'
 
-const defaultNumRows = 10
-const defaultNumColums = 4
-const convertToDataSheet = rows => rows.map(row => row.values)
-const createEmptyGrid = options => {
-  const rows = options.defaultNumRows || defaultNumRows
-  const cols = options.defaultNumColumns || defaultNumColumns
-  const value = options.defaultValue || ''
+/**
+ * Create an empty table
+ */
+const createEmptyGrid = ({defaultNumRows = 10, defaultNumColumns = 4 , defaultValue = '', heading = false }) => {
+  const rows = defaultNumRows
+  const cols = defaultNumColumns
+  const value = ''
 
   const grid = []
   for (let r = 0; r < rows; r++) {
-    const row = {values: []}
+    const row = { columns: [], heading }
     for (let c = 0; c < cols; c++) {
-      row.values.push(value)
+      row.columns.push(value)
     }
     grid.push(row)
   }
-
   return grid
 }
+/**
+ * Convert Sanity schema to a format that
+ * react-datasheet can read
+ * @param {*array} rows
+ */
+const convertToDataSheet = rows => rows.map(row => row.columns)
 
 export default class FunkyTable extends Component {
   static propTypes = {
@@ -39,27 +44,30 @@ export default class FunkyTable extends Component {
     super(props)
     autobind(this)
 
-    const grid = props.value && props.value.grid
-    this.state = {dataSheet: grid && convertToDataSheet(grid)}
+    /**
+     * Load rows from document in Sanity
+     */
+    const rows = props.value && props.value.rows
+    this.state = { dataSheet: rows && convertToDataSheet(rows) }
   }
 
   componentWillReceiveProps(nextProps) {
     const currentValue = this.props.value || {}
     const nextValue = nextProps.value || {}
-    if (!nextValue || !nextValue.grid) {
+    if (!nextValue || !nextValue.rows) {
       this.setState({dataSheet: null})
       return
     }
 
-    if (nextValue.grid && nextValue.grid !== currentValue.grid) {
-      this.setState(state => ({dataSheet: convertToDataSheet(nextProps.value.grid)}))
+    if (nextValue.rows && nextValue.rows !== currentValue.rows) {
+      this.setState(state => ({dataSheet: convertToDataSheet(nextProps.value.rows)}))
     }
   }
 
   handleInitializeTable() {
     const {type, onChange} = this.props
     const emptyGrid = createEmptyGrid(type.options)
-    onChange(PatchEvent.from(setIfMissing({_type: type.name}), set(emptyGrid, ['grid'])))
+    onChange(PatchEvent.from(setIfMissing({_type: type.name}), set(emptyGrid, ['rows'])))
   }
 
   handleTableChange(cell, row, column, value) {
@@ -67,13 +75,13 @@ export default class FunkyTable extends Component {
     onChange(
       PatchEvent.from(
         setIfMissing({_type: type.name}),
-        set(value || '', ['grid', row, 'values', column])
+        set(value || '', ['rows', row, 'columns', column])
       )
     )
   }
 
   handleTitleChange(event) {
-    const {onChange, type} = this.props
+    const { onChange, type } = this.props
     const value = event.target.value
     onChange(
       PatchEvent.from(
@@ -82,12 +90,22 @@ export default class FunkyTable extends Component {
       )
     )
   }
+  /* handleHeaderRowsChange(event) {
+    const { value, type, onChange } = this.props
+    console.log(event.target.value)
+    onChange(
+      PatchEvent.from(
+        setIfMissing({_type: type.name}),
+        set(true || '', ['rows', 1, 'heading'])
+      )
+    )
+  } */
 
   handleAddRow() {
-    const {value, type, onChange} = this.props
+    const { value, type, onChange } = this.props
     const options = type.options
-    const grid = value.grid
-    const numCols = grid[0] ? grid[0].values.length : options.defaultNumColumns || defaultNumColumns
+    const rows = value.rows
+    const numCols = rows[0] ? rows[0].columns.length : options.defaultNumColumns || defaultNumColumns
     const cols = []
     for (let i = 0; i < numCols; i++) {
       cols.push(options.defaultValue || '')
@@ -96,27 +114,27 @@ export default class FunkyTable extends Component {
     onChange(
       PatchEvent.from(
         setIfMissing({_type: type.name}),
-        insert([{values: cols}], 'after', ['grid', -1])
+        insert([{columns: cols}], 'after', ['rows', -1])
       )
     )
   }
 
   handleRemoveRow() {
     const {value, type, onChange} = this.props
-    const grid = value.grid
-    if (!grid.length) {
+    const rows = value.rows
+    if (!rows.length) {
       return
     }
 
-    onChange(PatchEvent.from(setIfMissing({_type: type.name}), unset(['grid', grid.length - 1])))
+    onChange(PatchEvent.from(setIfMissing({_type: type.name}), unset(['rows', grid.length - 1])))
   }
 
   handleAddColumn() {
-    const {value, type, onChange} = this.props
+    const { value, type, onChange } = this.props
     const options = type.options
-    const grid = value.grid
-    const insertOps = grid.map((row, i) =>
-      insert([options.defaultValue || ''], 'after', ['grid', i, 'values', -1])
+    const rows = value.rows
+    const insertOps = rows.map((row, i) =>
+      insert([options.defaultValue || ''], 'after', ['rows', i, 'columns', -1])
     )
 
     onChange(PatchEvent.from([setIfMissing({_type: type.name})].concat(insertOps)))
@@ -125,14 +143,14 @@ export default class FunkyTable extends Component {
   handleRemoveColumn() {
     const {value, type, onChange} = this.props
     const options = type.options
-    const grid = value.grid
+    const rows = value.rows
 
-    if (!grid[0]) {
+    if (!rows[0]) {
       return
     }
 
-    const delColIndex = grid[0].values.length - 1
-    const delOps = grid.map((row, i) => unset(['grid', i, 'values', delColIndex]))
+    const delColIndex = rows[0].columns.length - 1
+    const delOps = rows.map((row, i) => unset(['rows', i, 'columns', delColIndex]))
     onChange(PatchEvent.from([setIfMissing({_type: type.name})].concat(delOps)))
   }
 
@@ -166,6 +184,9 @@ export default class FunkyTable extends Component {
             <div>
               <button onClick={this.handleAddColumn}>Add column</button>{' '}
               <button onClick={this.handleRemoveColumn}>Delete column</button>
+   {/*            <label htmlFor="headerRows"># header rows
+                <input onChange={this.handleHeaderRowsChange} name="headerRows" type="number" />
+              </label> */}
             </div>
 
             <ReactDataSheet
