@@ -103,10 +103,13 @@
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
 .c-search__items {
+  border: none;
+  background: none;
+  display: block;
+  width: 100%;
+  text-align: left;
   font-family: $font-sans;
   @include inuit-font-size($font-size-normal, $line-height-small );
-  margin-left: -$spacing;
-  margin-right: -$spacing;
   padding-left: $spacing;
   padding-right: $spacing;
   padding-bottom: $spacing-tiny;

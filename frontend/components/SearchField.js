@@ -6,6 +6,7 @@ import DataLoader from '../helpers/data-loader';
 import buildQuery from '../helpers/buildSearchQuery';
 import { MagnifyingGlass } from '../components/icons';
 import { Router } from '../routes';
+import autobind from 'react-autobind';
 
 const classes = BEMHelper({
   name: 'search',
@@ -51,7 +52,13 @@ function handleSubmit(e) {
 class SearchField extends Component {
   constructor(props) {
     super(props);
+    autobind(this);
     this.state = { items: [] };
+  }
+
+  handleItemClick(item) {
+    console.log(item);
+    Router.pushRoute(`/${item._type}s/${item.slug.current}`);
   }
 
   render() {
@@ -89,7 +96,7 @@ class SearchField extends Component {
                   tabIndex: '0',
                   name: 'search',
                   type: 'search',
-                  value: selectedItem && typeof selectedItem === 'object' ? generateTitle(selectedItem) : inputValue,
+                  value: selectedItem && typeof selectedItem === 'object' ? generateTitle(selectedItem) : null,
                   onChange: (event) => {
                     const value = event.target.value;
                     if (!value) {
@@ -122,9 +129,13 @@ class SearchField extends Component {
                     {...getItemProps({
                       item,
                       index,
-                      ...classes('items', highlightedIndex === index ? 'highlighted' : null),
                     })}
-                  ><span className="c-search__items-type">{item._type}</span><br />{generateTitle(item)}</div>
+                  >
+                    <button
+                      onClick={() => this.handleItemClick(item)}
+                      {...classes('items', highlightedIndex === index ? 'highlighted' : null)}
+                    >
+                      <span className="c-search__items-type">{item._type}</span><br />{generateTitle(item)}</button></div>
                 ))}
               </div>
             )}
