@@ -95,18 +95,20 @@ class SearchField extends Component {
                     if (!value) {
                       return;
                     }
-                    debounce(
-                      client
-                        .fetch(buildQuery({ queryString: value }))
-                        .then(({ results }) => {
-                          const items = results.map(item => item); // Added ID to make it unique
-                          this.setState({ items });
-                        })
-                        .catch((error) => {
-                          console.log(error);
-                        }),
-                      300,
-                    );
+                    if (event.keyCode != 8) { // Allow backspace
+                      debounce(
+                        client
+                          .fetch(buildQuery({ queryString: value }))
+                          .then(({ results }) => {
+                            const items = results.map(item => item); // Added ID to make it unique
+                            this.setState({ items });
+                          })
+                          .catch((error) => {
+                            console.log(error);
+                          }),
+                        300,
+                      );
+                    }
                   },
                 })}
               />
