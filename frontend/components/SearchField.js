@@ -72,7 +72,7 @@ class SearchField extends Component {
         }) => (
           <form
             onSubmit={handleSubmit}
-            className="c-search u-margin-bottom-huge u-1/1"
+            className="c-search u-1/1"
           >
             <label
               {...getLabelProps({ htmlFor: 'search' })}

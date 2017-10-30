@@ -18,6 +18,10 @@
 .c-search__wrapper {
   background-color: $brand-lightest;
   padding-top: $spacing-huge;
+  padding-bottom: $spacing;
+  @include mq($from: desktop) {
+    padding-bottom: $spacing-huge;
+  }
 }
 
 .c-search__content {
@@ -64,8 +68,8 @@
   background-color: $brand-main;
   padding: $spacing;
   transition: background-color .05s ease-out;
-  //grid-column: 10 / 12;
   border-left: none;
+  cursor: pointer;
   &:hover{
     background-color: $brand-medium;
   }
