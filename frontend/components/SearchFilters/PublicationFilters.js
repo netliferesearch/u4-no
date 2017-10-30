@@ -28,6 +28,7 @@ class PublicationFilters extends Component {
     const publicationTypesInResults = findPublicationTypes(results);
     return (
       <div {...classes('item')}>
+        <h3 {...classes('title')}>Publication type</h3>
         {this.state.allPublicationTypes.length === 0 && <span>Loading ...</span>}
         {this.state.allPublicationTypes.map((pub = {}) => (
           <FilterCheckBox
