@@ -66,7 +66,7 @@ export default class SearchResults extends Component {
                 </Link>
                 <br />
                 <span {...classes('items-subtitle')}>{subtitle}</span>
-                {authors ? (
+                {authors.length > 1 ? (
                   <div>
                     <AuthorList authors={authors} />
                     <br />
