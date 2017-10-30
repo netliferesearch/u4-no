@@ -1,7 +1,7 @@
 import React from 'react';
 import { sortBy } from 'lodash';
 import { Link } from '../routes';
-import { Footer, Layout } from '../components';
+import { Footer, Layout, Newsletter } from '../components';
 import DataLoader from '../helpers/data-loader';
 import { DownArrowButton } from '../components/buttons';
 
@@ -10,10 +10,10 @@ function sortTopics(items, key) {
 }
 const TopicOverview = ({ topics = [] }) => (
   <Layout>
-    <div className="o-wrapper-inner u-tl">
-      <h1 className="c-topic-index__title">Topics</h1>
+    <div className="o-wrapper u-tc">
+      <h1 className="u-margin-bottom">Topics</h1>
 
-      <section id="topics" className="o-wrapper-inner c-topic-index__list">
+      <section id="topics" className=" c-topic-index__list u-margin-bottom-huge">
         {sortTopics(
           topics,
           'title',
@@ -24,18 +24,36 @@ const TopicOverview = ({ topics = [] }) => (
             slug = {},
             relatedCount = 0,
           }) => (
-            <div className="c-topic-index__item" key={_id}>
-              <Link route="topic.entry" params={{ slug: slug.current }}>
-                <a className="c-topic-index__title">{title}</a>
-              </Link>
-              <svg width={`${relatedCount}px`} height="5px" viewBox={`0 0 ${relatedCount} 2`} version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                <path d="M167.536783,1 L1,1" id="Line" stroke="#1E2051" />
-              </svg><span className="c-topic-index__count">{relatedCount}</span>
+            <div className="o-layout--middle c-topic-index__item" key={_id}>
+              <div className="o-layout__item u-1/2@tablet u-tr">
+                <div className="c-topic-index__left">
+                  <Link route="topic.entry" params={{ slug: slug.current }}>
+                    {relatedCount > 0 ?
+                      <a className="c-topic-index__title">{title}</a>
+                      :
+                      <a className="c-topic-index__title">{title}</a>
+                    }
+                  </Link>
+                </div>
+              </div>
+              <div className="o-layout__item u-1/2@tablet u-tl">
+                <div className="c-topic-index__right">
+                  <svg width={`${relatedCount}px`} height="5px" viewBox={`0 0 ${relatedCount} 2`} version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                    <path d="M167.536783,1 L1,1" id="Line" stroke="#1E2051" />
+                  </svg>
+                  {relatedCount > 0 ?
+                    <span className="c-topic-index__count">{relatedCount}</span>
+                    :
+                    <span className="c-topic-index__count">{relatedCount}</span>
+                  }
+                </div>
+              </div>
             </div>
           ),
         )}
       </section>
     </div>
+    <Newsletter />
     <Footer />
   </Layout>
 );
