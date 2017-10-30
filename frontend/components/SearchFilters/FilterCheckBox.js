@@ -5,6 +5,7 @@ import { addSearchFilter, removeSearchFilter } from '../../helpers/redux-store';
 const FilterCheckBox = ({
   id = '',
   title = '',
+  className = '',
   disabled = false,
   results = [],
   addSearchFilter = () => {},
@@ -20,9 +21,9 @@ const FilterCheckBox = ({
     }
   };
   return (
-    <div>
+    <div className={className}>
       <input onChange={checkBoxHandler} disabled={disabled} type="checkbox" id={id} value={id} />
-      <label htmlFor={id}>
+      <label htmlFor={id} className={`${className}-label`}>
         {title} ({numResultsIfFiltered})
       </label>
     </div>

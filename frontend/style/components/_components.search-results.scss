@@ -25,14 +25,23 @@
 }
 
 .c-search-results__topbar-select {
-  margin-left: $spacing-small;
-  border-radius: 0px;
   border: 1px solid $brand-dark;
+  border-radius: 0;
   color: $brand-dark;
-  padding: 5px 8px;
-  box-shadow: none;
   background: transparent;
-  background-image: none;
+  width: 150px;
+  margin-left: $spacing-small;
+  padding: 5px 35px 5px 5px;
+  font-size: 16px;
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* CAUTION: IE hackery ahead */
+.c-search-results__topbar-select::-ms-expand {
+    display: none; /* remove default arrow on ie10 and ie11 */
 }
 .c-search-results__topbar-filter{
   color: red;
@@ -40,6 +49,15 @@
     display: none;
   }
 }
+
+/* target Internet Explorer 9 to undo the custom arrow */
+@media screen and (min-width:0\0) {
+    .c-search-results__topbar-select {
+        background:none\9;
+        padding: 5px\9;
+    }
+}
+
 
 .c-search-results__content {
   margin-left: 0;
