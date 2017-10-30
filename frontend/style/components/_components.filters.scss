@@ -68,7 +68,7 @@
   width: 100%;
   background: $white;
   z-index: 9;
-  animation: slideUp  0.5s ease-out;
+  animation: slideUp  0.2s ease-out;
 }
 
 @keyframes slideUp {
@@ -79,10 +79,45 @@
       transform: translateY(0);
     }
 }
+.c-filters__wrapper{
+  width: 83.33333%;
+  margin: 0 auto;
+  @include mq($from: desktop) {
+    width: 100%;
+  }
+}
 
-.c-filters__topbar-filter {
-  display: block;
+.c-filters__topbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: $spacing 0;
   @include mq($from: desktop) {
     display: none;
+  }
+}
+
+.c-filters__topbar-filter {
+  background: $brand-main;
+  border-radius: 0;
+  border: none;
+  color: $white;
+  padding: 5px 15px;
+  font-size: 16px;
+  min-height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  &:hover {
+    background: $brand-medium;
+  }
+}
+
+.c-filters__topbar-result {
+  padding: 0;
+  margin: 0;
+  @include inuit-font-size($font-size-tiny, $line-height-small );
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-tiny, $line-height-normal);
   }
 }

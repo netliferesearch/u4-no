@@ -61,7 +61,7 @@ const Search = ({ results = [], searchFilters = [] }) => (
           )}
         />
       </section>
-      <section className="o-layout__item u-2/12@desktop u-push-2/12@desktop u-2/12@wide u-push-3/12@wide">
+      <section className=" o-layout__item u-3/12 u-2/12@desktop u-push-2/12@desktop u-2/12@wide u-push-3/12@wide">
         <SearchFilters results={results} />
       </section>
     </div>

@@ -4,14 +4,16 @@
 
 .c-search-results__topbar {
   color: $brand-dark;
-  margin: $spacing-large 0;
+  margin: $spacing 0 $spacing-large;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: baseline;
   font-family: $font-sans;
   @include inuit-font-size($font-size-tiny, $line-height-normal );
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-tiny, $line-height-normal );
+    margin: $spacing-large 0;
   }
 }
 
@@ -23,7 +25,12 @@
     @include inuit-font-size($font-size-tiny, $line-height-normal);
   }
 }
-
+.c-search-results__topbar-sortby{
+  width: 100%;
+  @include mq($from: desktop) {
+    width: auto;
+  }
+}
 .c-search-results__topbar-select {
   background: url('/static/arrowdown.svg') no-repeat;
   background-position: center right;
@@ -31,14 +38,17 @@
   border-radius: 0;
   box-shadow: 1px 1px 1px 1px rgba($black, .1);
   color: $brand-dark;
-  width: 150px;
-  margin-left: $spacing-small;
+  width: 100%;
   padding: 5px 25px 5px 5px;
   font-size: 16px;
   height: 34px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  @include mq($from: desktop) {
+    width: 150px;
+    margin-left: $spacing-small;
+  }
 }
 
 /* CAUTION: IE hackery ahead */
@@ -46,9 +56,22 @@
     display: none; /* remove default arrow on ie10 and ie11 */
 }
 .c-search-results__topbar-filter{
-  color: red;
+  background: $brand-main;
+  border-radius: 0;
+  border: none;
+  color: $white;
+  padding: 5px 15px;
+  font-size: 16px;
+  min-height: 34px;
+  margin-bottom: $spacing-small;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   @include mq($from: desktop) {
     display: none;
+  }
+  &:hover {
+    background: $brand-medium;
   }
 }
 

@@ -26,14 +26,15 @@ export default class SearchResults extends Component {
       <section {...classes()}>
         <div {...classes('topbar')}>
           <h3 {...classes('topbar-result')}>Results ({results.length})</h3>
-          <div>
+          <button onClick={this.toggle} {...classes('topbar-filter')}>Filter search result</button>
+          <div {...classes('topbar-sortby')}>
             <label>Sort by </label>
             <select {...classes('topbar-select')}>
               <option value="1">Relevance</option>
               <option value="2">Year</option>
             </select>
           </div>
-          <button onClick={this.toggle} {...classes('topbar-filter')}>Filter search result</button>
+
         </div>
         <ul {...classes('content')}>
           {results.map(

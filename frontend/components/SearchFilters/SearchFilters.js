@@ -10,6 +10,7 @@ const classes = BEMHelper({
 export default class SearchFilters extends Component {
   constructor(props) {
     super(props);
+    this.state = { results: [] };
   }
 
   toggle() {
@@ -17,12 +18,18 @@ export default class SearchFilters extends Component {
   }
 
   render() {
+    const { results } = this.props;
     const { ...rest } = this.props;
     return (
       <div {...classes()}>
-        <button onClick={this.toggle} {...classes('topbar-filter')}>Update search</button>
-        <h2 {...classes('main-title')}>Filters</h2>
-        <PublicationFilters {...rest} />
+        <div {...classes('wrapper')}>
+          <div {...classes('topbar')}>
+            <h3 {...classes('topbar-result')}>Results ({results.length})</h3>
+            <button onClick={this.toggle} {...classes('topbar-filter')}>Update search</button>
+          </div>
+          <h2 {...classes('main-title')}>Filters</h2>
+          <PublicationFilters {...rest} />
+        </div>
       </div>
 
     );
