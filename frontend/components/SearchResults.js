@@ -33,7 +33,7 @@ export default class SearchResults extends Component {
               <option value="2">Year</option>
             </select>
           </div>
-          <button onClick={this.toggle} {...classes('topbar-filter')}>filter search result</button>
+          <button onClick={this.toggle} {...classes('topbar-filter')}>Filter search result</button>
         </div>
         <ul {...classes('content')}>
           {results.map(

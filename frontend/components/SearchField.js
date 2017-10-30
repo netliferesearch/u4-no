@@ -82,7 +82,7 @@ class SearchField extends Component {
             </label>
             <div className="c-search__content">
               <input
-                placeholder="Search"
+                placeholder="What are you looking for?"
                 {...classes('input')}
                 {...getInputProps({
                   id: 'search',

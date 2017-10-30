@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PublicationFilters from './PublicationFilters';
 import BEMHelper from 'react-bem-helper';
 
@@ -20,7 +20,7 @@ export default class SearchFilters extends Component {
     const { props } = this.props;
     return (
       <div {...classes()}>
-        <button onClick={this.toggle} {...classes('topbar-filter')}>filter search result</button>
+        <button onClick={this.toggle} {...classes('topbar-filter')}>Update search</button>
         <h2 {...classes('main-title')}>Filters</h2>
         <PublicationFilters {...props} />
       </div>
