@@ -1,3 +1,4 @@
+
 import uniqBy from 'lodash/uniqBy';
 
 export function findPublications(results = []) {
@@ -25,24 +26,21 @@ export function findPublicationTypes(results = []) {
 }
 
 function applyFilters(document = {}, filterList = []) {
-  let showItem = false;
+  let showItem = true;
   filterList.forEach((filterName) => {
     // apply publication filters
     const re = /^pub-type-(.*)/;
     if (re.test(filterName)) {
+      showItem = false;
       const publicationTypeId = re.exec(filterName)[1];
       const { publicationType = {} } = document;
-      if (publicationTypeId === publicationType._id) {
-        showItem = true;
-      }
+      showItem = publicationTypeId === publicationType._id;
     }
+    return null;
   });
   return showItem;
 }
 
 export function filterResultsBySearchFilterList(results = [], filterList = []) {
-  if (filterList.length > 0) {
-    return results.filter(res => applyFilters(res, filterList));
-  }
-  return results;
+  return results.filter(res => applyFilters(res, filterList));
 }

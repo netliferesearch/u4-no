@@ -17,12 +17,12 @@ export default class SearchFilters extends Component {
   }
 
   render() {
-    const { results, ...rest } = this.props;
+    const { ...rest } = this.props;
     return (
       <div {...classes()}>
         <button onClick={this.toggle} {...classes('topbar-filter')}>Update search</button>
         <h2 {...classes('main-title')}>Filters</h2>
-        <PublicationFilters results={results} {...rest} />
+        <PublicationFilters {...rest} />
       </div>
 
     );
