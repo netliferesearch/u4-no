@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 
@@ -22,6 +22,26 @@ const serializers = {
         <div className="c-article__nugget">
           <h2 className="c-article__nugget-title">{title}</h2>
           <BlockContent blocks={text} />
+        </div>
+      </div>
+    ),
+    funkyTable: ({ node: { grid = [], title = false} }) => (
+      <div className="c-longform-grid__standard">
+        <div className="c-table-container">
+          {title && <h2 className="c-table-container__heading">{title}</h2>}
+          <table className="c-table">
+            <tbody className="c-table__body">
+              {
+                grid.map(row => (
+                  <tr classNAme="c-table__row">
+                    { row.values.map(col => (
+                      <td className="c-table__cell">{col}</td>
+                    ))}
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
         </div>
       </div>
     ),
