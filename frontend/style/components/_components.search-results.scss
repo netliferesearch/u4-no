@@ -25,13 +25,15 @@
 }
 
 .c-search-results__topbar-select {
+  background: url('/static/arrowdown.svg') no-repeat;
+  background-position: center right;
   border: 1px solid $brand-dark;
   border-radius: 0;
+  box-shadow: 1px 1px 1px 1px rgba($black, .1);
   color: $brand-dark;
-  background: transparent;
   width: 150px;
   margin-left: $spacing-small;
-  padding: 5px 35px 5px 5px;
+  padding: 5px 25px 5px 5px;
   font-size: 16px;
   height: 34px;
   -webkit-appearance: none;
