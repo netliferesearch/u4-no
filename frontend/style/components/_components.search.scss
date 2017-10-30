@@ -10,7 +10,7 @@
   display: inline-block;
   @include inuit-font-size($font-size-small, $line-height-normal );
   color: $brand-dark;
-  margin: 0;
+  margin: 0 0 $spacing-small;
   font-family: $font-sans;
   font-weight: 400;
 }
@@ -21,7 +21,6 @@
 }
 
 .c-search__content {
-
   position: relative;
   display: flex;
   flex-wrap: nowrap;
@@ -35,15 +34,15 @@
 }
 
 .c-search__input {
-
   flex-grow: 2;
   background: $white;
+  width: 80%;
   border: none;
   display: block;
   color: $black;
   margin: 0 0;
-  padding-left: $spacing;
-  padding-right: 80px;
+  padding-left: $spacing-small;
+  padding-right: $spacing-small;
   border: 1px solid $brand-main;
   transition: border .2s ease-out;
   @include inuit-font-size($font-size-normal, $line-height-normal );
