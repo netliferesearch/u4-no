@@ -7,6 +7,13 @@ import sanityClient from '../../helpers/sanity-client-config';
 
 import { findPublicationTypes, findPublications } from './filterHelpers';
 import FilterCheckBox from './FilterCheckBox';
+import BEMHelper from 'react-bem-helper';
+
+const classes = BEMHelper({
+  name: 'filters',
+  prefix: 'c-',
+});
+
 
 class PublicationFilters extends Component {
   constructor(props) {
@@ -21,13 +28,14 @@ class PublicationFilters extends Component {
     const { results = [] } = this.props;
     const publicationTypesInResults = findPublicationTypes(results);
     return (
-      <div>
+      <div {...classes('item')}>
         {this.state.allPublicationTypes.length === 0 && <span>Loading ...</span>}
         {this.state.allPublicationTypes.map((pub = {}) => (
           <FilterCheckBox
             key={pub._id}
             id={slugify(`pub-type-${pub._id}`, { lower: true })}
             title={pub.title}
+            {...classes('checkbox')}
             results={results}
             numResultsIfFiltered={
               findPublications(results).filter(
