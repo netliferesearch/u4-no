@@ -20,7 +20,9 @@ const Frontpage = ({ sections = false }) => (
             </Link>
           </div>
         </div>
-        <SearchField />
+        <div className="c-search__clean-wrapper">
+          <SearchField />
+        </div>
       </section>
       <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
         <div className="c-introduction-text">
