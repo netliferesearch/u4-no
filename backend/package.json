@@ -21,7 +21,7 @@
     "@sanity/date-input": "^0.118.3",
     "@sanity/default-layout": "^0.118.3",
     "@sanity/default-login": "^0.118.0",
-    "@sanity/desk-tool": "^0.118.3",
+    "@sanity/desk-tool": "^0.118.5",
     "@sanity/google-maps-input": "^0.118.3",
     "@sanity/rich-date-input": "^0.118.3",
     "@sanity/storybook": "^0.118.0",
