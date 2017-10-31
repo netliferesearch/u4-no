@@ -44,7 +44,7 @@ test('should handle multiple filters', async () => {
       },
     },
     {
-      name: 'firstthing',
+      name: 'secondthing',
       publicationType: {
         _id: 'u4-test',
       },
