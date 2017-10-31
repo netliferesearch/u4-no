@@ -19,7 +19,6 @@ const Persons = ({
     <div className="c-topic-section--lightblue">
       <div className="o-wrapper c-article">
         <div id="advisors">
-          {console.log(persons)}
           <Team
             light
             members={persons.sort((a, b) => {

@@ -21,12 +21,12 @@
 .c-person__item-body {
   background: $brand-dark;
   color: $white;
-  padding: $spacing $spacing-large;
+  padding: $spacing-large;
   font-weight: 300;
   font-family: $font-sans;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 
   @include mq($from: desktop) {
     margin: 24px 0 -24px;
