@@ -34,3 +34,42 @@ test('should show all results if no filter', async () => {
   ];
   expect(filterResultsBySearchFilterList(resultsToFilter, [])).toEqual(resultsToFilter);
 });
+
+test('should handle multiple filters', async () => {
+  const resultsToFilter = [
+    {
+      name: 'firstthing',
+      publicationType: {
+        _id: 'u4-issue',
+      },
+    },
+    {
+      name: 'firstthing',
+      publicationType: {
+        _id: 'u4-test',
+      },
+    },
+    {
+      name: 'thirdthing',
+      publicationType: {
+        _id: 'u4-brief',
+      },
+    },
+  ];
+  expect(
+    filterResultsBySearchFilterList(resultsToFilter, ['pub-type-u4-brief', 'pub-type-u4-issue']),
+  ).toEqual([
+    {
+      name: 'firstthing',
+      publicationType: {
+        _id: 'u4-issue',
+      },
+    },
+    {
+      name: 'thirdthing',
+      publicationType: {
+        _id: 'u4-brief',
+      },
+    },
+  ]);
+});
