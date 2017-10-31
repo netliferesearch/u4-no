@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
-import sanityClient from '@sanity/client';
-import Downshift from 'downshift';
+import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { connect } from 'react-redux';
 
 import buildSearchQuery from '../helpers/buildSearchQuery';
 import DataLoader from '../helpers/data-loader';
-import { Router } from '../routes';
 import {
   Layout,
   Footer,
@@ -21,28 +18,6 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const client = sanityClient({
-  projectId: '1f1lcoov',
-  dataset: 'production',
-  token: '',
-  useCdn: true,
-});
-
-function debounce(fn, time) {
-  let timeoutId;
-  return wrapper;
-  function wrapper(...args) {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(() => {
-      timeoutId = null;
-      fn(...args);
-    }, time);
-  }
-}
-
-function handleChange(query) {}
 const Search = ({ results = [], searchFilters = [] }) => (
   <Layout>
     <div className="o-layout o-layout--center c-search__wrapper">
@@ -53,7 +28,7 @@ const Search = ({ results = [], searchFilters = [] }) => (
       </div>
     </div>
     <div className="o-layout">
-      <section className="o-layout__item u-10/12 u-push-1/12 u-6/12@desktop u-push-2/12@desktop u-6/12@wide u-push-3/12@wide" >
+      <section className="o-layout__item u-10/12 u-push-1/12 u-6/12@desktop u-push-2/12@desktop u-6/12@wide u-push-3/12@wide">
         <SearchResults
           results={filterResultsBySearchFilterList(
             results.filter(item => item.slug),
