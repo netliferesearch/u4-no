@@ -1,0 +1,31 @@
+.c-topic-index__item {
+  font-family: $font-sans;
+  margin-bottom: $spacing-small;
+}
+.c-topic-index__title {
+  @include inuit-font-size($font-size-normal, $line-height-normal);
+  border: none;
+}
+.c-topic-index__count {
+  @include inuit-font-size($font-size-tiny, $line-height-tiny);
+  margin-left: $spacing-tiny;
+}
+.c-topic-index__left {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  text-align: right;
+  justify-content: center;
+  @include mq($from: tablet) {
+    justify-content: flex-end;
+  }
+}
+.c-topic-index__right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  @include mq($from: tablet) {
+    justify-content: flex-start;
+  }
+}
