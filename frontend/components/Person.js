@@ -27,11 +27,13 @@ const Person = ({ person, linkLabel = 'Bio' }) => (
         {person.email && <a href={`mailto:${person.email}`}>{person.email}</a>}<br />
         <a href="tel:41044511">+47 410 445 11</a>
       </div>
-      <Link>
-        <a>
-          <span {...classes('item-link')}>{ linkLabel }</span>  <ArrowRight />
-        </a>
-      </Link>
+      { person.slug &&
+        <Link to={`/the-team/${person.slug.current}`}>
+          <a>
+            <span {...classes('item-link')}>{ linkLabel }</span>  <ArrowRight />
+          </a>
+        </Link>
+      }
     </div>
   </div>
 );

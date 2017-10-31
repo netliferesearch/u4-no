@@ -48,8 +48,10 @@
 }
 .c-person__item-meta {
   margin-bottom: $spacing;
+  @include inuit-font-size($font-size-tiny);
 }
 .c-person__item-link {
   margin-right: $spacing-small;
   display: inline-block;
+  @include inuit-font-size($font-size-tiny);
 }

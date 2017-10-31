@@ -3,7 +3,7 @@
 .c-team__wrapper {
   @include mq($from: tablet) {
     display: flex;
-    flex-wrap:nowrap;
+    flex-wrap:wrap;
   }
 }
 .c-team__title {

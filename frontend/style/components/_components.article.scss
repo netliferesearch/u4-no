@@ -6,6 +6,23 @@
   }
 }
 
+.c-article__lead {
+  max-width: 950px;
+  margin-top: 0;
+  margin-bottom: $spacing;
+  @include inuit-font-size($font-size-normal, $line-height-large );
+  @include mq($from: tablet) {
+    padding-left: $spacing-huge;
+  }
+}
+
+.c-article__title {
+  margin-bottom: $spacing;
+  @include mq($from: tablet) {
+    padding-left: $spacing-huge;
+  }
+}
+
 .c-article_mainPoints {
   margin-top: $spacing;
   font-family: $font-sans;
