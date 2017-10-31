@@ -26,6 +26,7 @@ export function findPublicationTypes(results = []) {
 
 function applyFilters(document = {}, filterList = []) {
   let showItem = false;
+  console.log('filterList', filterList);
   filterList.forEach((filterName) => {
     // apply publication filters
     const re = /^pub-type-(.*)/;

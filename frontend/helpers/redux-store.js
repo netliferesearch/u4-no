@@ -2,10 +2,11 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import uniq from 'lodash/uniq';
-import remove from 'lodash/remove';
+import queryString from 'query-string';
 
+// for when we need to reflect some redux state in the url
 const replaceWindowHash = (hashValue) => {
-  if (!window) {
+  if (typeof window === 'undefined') {
     // do nothing
   } else if (history.pushState) {
     // update hash without page jumps,
@@ -15,6 +16,35 @@ const replaceWindowHash = (hashValue) => {
   } else {
     const newHash = hashValue ? `#${hashValue}` : '';
     window.location.hash = newHash;
+  }
+};
+
+// for when we need to reflect some redux state in the url
+const addQueryParams = (queryParams) => {
+  if (!window) {
+    return; // do nothing
+  }
+  // loops through object valued and sets any falsy values to undefined
+  // when query-string stringifies undefined values they'll be removed from
+  // the resulting query string. So, if there are no filters= it should not
+  // show up as a query parameter.
+  const nullifyFalsyValues = obj =>
+    Object.entries(obj).reduce((acc, [key, value]) => {
+      acc[key] = value || undefined;
+      return acc;
+    }, {});
+  const currentParams = queryString.parse(location.search);
+  const newQueryString = queryString.stringify(
+    Object.assign(currentParams, nullifyFalsyValues(queryParams)),
+  );
+  // If it's a modern browser we can manipulate url without triggering reloading
+  // source: https://stackoverflow.com/a/19279428
+  if (history.pushState) {
+    const newUrl = `${window.location.protocol}//${window.location.host}${window.location
+      .pathname}?${newQueryString}`;
+    window.history.pushState({ path: newUrl }, '', newUrl);
+  } else {
+    location.search = newQueryString;
   }
 };
 
@@ -40,10 +70,16 @@ export const actionTypes = {
 export const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.SEARCH_ADD_FILTER:
+      addQueryParams({
+        filters: uniq(state.searchFilters.concat(action.searchFilter)).join(),
+      });
       return Object.assign({}, state, {
         searchFilters: uniq(state.searchFilters.concat(action.searchFilter)),
       });
     case actionTypes.SEARCH_REMOVE_FILTER:
+      addQueryParams({
+        filters: state.searchFilters.filter(name => name !== action.searchFilter).join(),
+      });
       return Object.assign({}, state, {
         searchFilters: state.searchFilters.filter(name => name !== action.searchFilter),
       });
@@ -73,8 +109,7 @@ export const toggleLoadingScreen = () => dispatch =>
   dispatch({ type: actionTypes.TOGGLE_LOADING_SCREEN });
 
 /**
- * [addSearchFilter description]
- * @param {Object} searchFilter 'string name of filter'
+ * @param {String} searchFilter name of filter to add
  */
 export const addSearchFilter = searchFilter => dispatch =>
   dispatch({ type: actionTypes.SEARCH_ADD_FILTER, searchFilter });
@@ -82,5 +117,16 @@ export const addSearchFilter = searchFilter => dispatch =>
 export const removeSearchFilter = searchFilter => dispatch =>
   dispatch({ type: actionTypes.SEARCH_REMOVE_FILTER, searchFilter });
 
-export const initStore = (initialState = defaultState) =>
-  createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
+export const initStore = (initialState = defaultState, options) => {
+  const { query = {} } = options;
+  const { filters = '' } = query;
+  let state = initialState;
+  // if there are active filters in the url query params we need to split
+  // and add them to the state.
+  if (filters) {
+    state = Object.assign(initialState, {
+      searchFilters: filters.split(','),
+    });
+  }
+  return createStore(reducer, state, composeWithDevTools(applyMiddleware(thunkMiddleware)));
+};
