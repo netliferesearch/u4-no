@@ -203,6 +203,25 @@ export default {
         ]
       },
       {
+        name: 'relatedContent',
+        title: 'Recommended and related content',
+        description: 'Add related content, max 3 will be displayed in the frontend',
+        type: 'array',
+        of: [
+          {
+            type: 'reference',
+            to: [
+              {
+                type: 'publication',
+              },
+              {
+                type: 'article',
+              },
+            ],
+          },
+        ],
+      },
+      {
         name: 'authors',
         description: 'Place in order of appearance',
         type: 'array',

@@ -6,6 +6,20 @@ export default {
   type: 'object',
   fields: [
     title,
+    {
+      name: 'articleType',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'articleType',
+            },
+          ],
+        },
+      ],
+    },
     longTitle,
     explainerText,
     featuredImage,
