@@ -11,6 +11,8 @@
   margin-top: 0;
   margin-bottom: $spacing;
   @include inuit-font-size($font-size-normal, $line-height-large );
+  padding-left: $spacing;
+  padding-right: $spacing;
   @include mq($from: tablet) {
     padding-left: $spacing-huge;
   }
@@ -18,6 +20,8 @@
 
 .c-article__title {
   margin-bottom: $spacing;
+  padding-left: $spacing;
+  padding-right: $spacing;
   @include mq($from: tablet) {
     padding-left: $spacing-huge;
   }

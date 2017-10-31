@@ -17,9 +17,22 @@ const Persons = ({
       {frontpage.lead}
     </div>
     <div className="c-topic-section--lightblue">
-      <div className="o-wrapper o-wrapper--padded c-article">
+      <div className="o-wrapper c-article">
         <div id="advisors">
-          <Team members={persons} />
+          {console.log(persons)}
+          <Team members={persons.sort((a, b) => {
+            const firstNameA = a.firstName.toUpperCase();
+            const firstNameB = b.firstName.toUpperCase();
+            if (firstNameA < firstNameB) {
+              return -1;
+            }
+            if (firstNameA > firstNameB) {
+              return 1;
+            }
+            // names must be equal
+            return 0;
+          })}
+          />
         </div>
       </div>
     </div>
