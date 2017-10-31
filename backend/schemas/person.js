@@ -13,6 +13,10 @@ export default {
       type: 'string'
     },
     {
+      name: 'position',
+      type: 'string'
+    },
+    {
       name: 'email',
       type: 'email'
     },
