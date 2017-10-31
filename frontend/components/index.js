@@ -12,6 +12,7 @@ export { default as Layout } from './Layout';
 export { default as LayoutHomepage } from './LayoutHomepage';
 export { default as LinkList } from './LinkList';
 export { default as LongformArticle } from './LongformArticle';
+export { default as LongformArticleContainer } from './LongformArticleContainer';
 export { default as SimpleMosaic } from './SimpleMosaic';
 export { default as Mosaic } from './Mosaic';
 export { default as Newsletter } from './Newsletter';
