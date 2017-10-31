@@ -6,7 +6,7 @@ export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      navFollowScreen: false,
+      navFollowScreen: props.alwaysFollow ? props.alwaysFollow : false,
       /**
        * Lodash returns a throttled function which we need to save so that
        * we can later call removeEventListener on that function reference.
@@ -26,11 +26,17 @@ export default class extends Component {
   }
 
   componentDidMount() {
+    if (this.props.alwaysFollow) {
+      return; // do nothing
+    }
     window.addEventListener('scroll', this.state.scrollHandler);
     this.state.scrollHandler();
   }
 
   componentWillUnmount() {
+    if (this.props.alwaysFollow) {
+      return; // do nothing
+    }
     window.removeEventListener('scroll', this.state.scrollHandler);
   }
 

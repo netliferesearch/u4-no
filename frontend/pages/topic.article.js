@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Layout, LongformArticle } from '../components';
+import { Layout, LongformArticleContainer } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
@@ -14,12 +14,12 @@ const TopicArticleEntry = (props) => {
   };
   const content = props[topicPartMap[topicPart]];
   return (
-    <Layout>
-      <div className="o-wrapper o-wrapper--padded">
+    <LongformArticleContainer
+      BreadCrumbComponent={
         <BreadCrumb data={{ _type: 'topics', slug: { current: slug }, title }} />
-      </div>
-      <LongformArticle content={content} />
-    </Layout>
+      }
+      content={content}
+    />
   );
 };
 

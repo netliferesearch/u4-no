@@ -23,6 +23,7 @@ const LongFormArticleContainer = (props) => {
     lead = 'article had no lead',
     mainPoints = [],
     resources = [],
+    BreadCrumbComponent = null,
   } = props;
   return (
     <Layout showLoadingScreen={showLoadingScreen} showTopTab={!isArticleMenuOpen}>
@@ -59,6 +60,7 @@ const LongFormArticleContainer = (props) => {
           <CustomScrollSpy {...props} />
           <span id="js-top" />
           <div id="js-scroll-trigger">
+            {BreadCrumbComponent && BreadCrumbComponent}
             {props.featuredImage &&
               props.featuredImage.asset.url && (
                 <div className="c-hero">
@@ -83,39 +85,54 @@ const LongFormArticleContainer = (props) => {
                 </div>
               )}
           </div>
-          <div className="c-longform-grid">
-            <div className="c-longform-grid__standard">
-              <div className="c-article">
-                <p>{lead}</p>
-              </div>
-              {mainPoints.length > 0 && (
-                <div className="c-article c-article_mainPoints">
-                  <h2>Main points</h2>
-                  <ul className="c-article_mainPoints-list">
-                    {mainPoints.map((mainPoint, index) => (
-                      <li key={index} className="c-article_mainPoints-item">
-                        <span className="c-article_mainPoints-firstWords">
-                          {mainPoint
-                            .split(' ')
-                            .slice(0, 3)
-                            .join(' ')}{' '}
-                        </span>
-                        <span className="c-article_mainPoints-lastWords">
-                          {mainPoint
-                            .split(' ')
-                            .slice(3)
-                            .join(' ')}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+          {props.lead ||
+            (mainPoints.length > 0 && (
+              <div className="c-longform-grid">
+                <div className="c-longform-grid__standard">
+                  {props.lead && (
+                    <div className="c-article">
+                      <p>{lead}</p>
+                    </div>
+                  )}
+                  {mainPoints.length > 0 && (
+                    <div className="c-article c-article_mainPoints">
+                      <h2>Main points</h2>
+                      <ul className="c-article_mainPoints-list">
+                        {mainPoints.map((mainPoint, index) => (
+                          <li key={index} className="c-article_mainPoints-item">
+                            <span className="c-article_mainPoints-firstWords">
+                              {mainPoint
+                                .split(' ')
+                                .slice(0, 3)
+                                .join(' ')}{' '}
+                            </span>
+                            <span className="c-article_mainPoints-lastWords">
+                              {mainPoint
+                                .split(' ')
+                                .slice(3)
+                                .join(' ')}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-            <div className="c-longform-grid__sidebar-right">
-              <TableOfContentsSidebar {...props} />
-            </div>
-          </div>
+                <div className="c-longform-grid__sidebar-right">
+                  <TableOfContentsSidebar {...props} />
+                </div>
+              </div>
+            ))}
+
+          {!props.lead &&
+            !props.mainPoints && (
+              <div className="c-longform-grid">
+                <div className="c-longform-grid__sidebar-right">
+                  <TableOfContentsSidebar alwaysFollow {...props} />
+                </div>
+              </div>
+            )}
+
           <LongformArticle {...props} />
 
           {props.references ? (
