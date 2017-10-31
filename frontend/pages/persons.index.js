@@ -20,18 +20,20 @@ const Persons = ({
       <div className="o-wrapper c-article">
         <div id="advisors">
           {console.log(persons)}
-          <Team members={persons.sort((a, b) => {
-            const firstNameA = a.firstName.toUpperCase();
-            const firstNameB = b.firstName.toUpperCase();
-            if (firstNameA < firstNameB) {
-              return -1;
-            }
-            if (firstNameA > firstNameB) {
-              return 1;
-            }
-            // names must be equal
-            return 0;
-          })}
+          <Team
+            light
+            members={persons.sort((a, b) => {
+              const firstNameA = a.firstName.toUpperCase();
+              const firstNameB = b.firstName.toUpperCase();
+              if (firstNameA < firstNameB) {
+                return -1;
+              }
+              if (firstNameA > firstNameB) {
+                return 1;
+              }
+              // names must be equal
+              return 0;
+            })}
           />
         </div>
       </div>

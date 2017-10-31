@@ -4,8 +4,18 @@
     flex: 1 0 auto;
     display: flex;
     flex-wrap: wrap;
-    max-width: 49%;
-    min-width: 49%;
+    width: 49%;
+  }
+}
+.c-person__item--small {
+  margin: auto auto $spacing;
+  @include mq($from: desktop) {
+    padding-left: $spacing-small;
+    padding-right: $spacing-small;
+    display: flex;
+    flex-wrap: wrap;
+    width: 24%;
+    min-height: 317px;
   }
 }
 .c-person__item-body {
@@ -20,12 +30,16 @@
 
   @include mq($from: desktop) {
     margin: 24px 0 -24px;
-    max-width: 50%;
-    min-width: 50%;
+    width: 50%;
   }
 
   a {
     color: $brand-lighter;
+  }
+}
+.c-person__item-body--small {
+  @include mq($from: desktop) {
+    width: 100%;
   }
 }
 .c-person__item-figure {

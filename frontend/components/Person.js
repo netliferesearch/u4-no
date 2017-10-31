@@ -9,18 +9,15 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Person = ({ person, linkLabel = 'Bio' }) => (
-  <div {...classes('item')}>
+const Person = ({ person, linkLabel = 'Bio', light }) => (
+  <div {...classes('item', person.image ? null : 'small')}>
     {person.image ? (
       <figure {...classes('item-figure')}>
         <img src={`${person.image.asset.url}?w=600&h=500&fit=crop&crop=focalpoint`} />
       </figure>
-    ) :
-      <figure {...classes('item-figure')}>
-        <img src={'https://cdn.sanity.io/images/1f1lcoov/production/t3Yvuyac5OKZbUz1Sc6HFKeW-684x892.jpg?w=600&h=600&fit=crop&crop=focalpoint'} />
-      </figure>
+    ) : null
     }
-    <div {...classes('item-body')}>
+    <div {...classes('item-body', person.image ? null : 'small')}>
       <div><h3 {...classes('item-title')}>{person.firstName && person.firstName} {person.surname && person.surname}</h3>
         <small {...classes('item-subtitle')}>{person.position && person.position}Senior program advisor</small></div>
       <div {...classes('item-meta')}>

@@ -9,7 +9,7 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Team = ({ title, members, linkLabel = 'Bio' }) => (
+const Team = ({ title, members, light = false, linkLabel = 'Bio' }) => (
   <section {...classes('')}>
     { title &&
       <h2 {...classes('title')}>Hi!<br />{title}</h2>
@@ -17,7 +17,7 @@ const Team = ({ title, members, linkLabel = 'Bio' }) => (
     <div {...classes('wrapper', null)}>
       {
         members.map(member =>
-          <Person person={member} linkLabel={linkLabel} />,
+          <Person light person={member} linkLabel={linkLabel} />,
         )
       }
     </div>
