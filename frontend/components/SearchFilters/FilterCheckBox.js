@@ -22,6 +22,7 @@ const FilterCheckBox = ({
   addSearchFilter = () => {},
   removeSearchFilter = () => {},
   numResultsIfFiltered = 0,
+  searchFilters = [],
 }) => {
   const checkBoxHandler = (e) => {
     const { checked } = e.target;
@@ -31,9 +32,17 @@ const FilterCheckBox = ({
       removeSearchFilter(id);
     }
   };
+  const isChecked = searchFilters.find(filterName => filterName === id);
   return (
     <div className={className}>
-      <input onChange={checkBoxHandler} disabled={disabled} type="checkbox" id={id} value={id} />
+      <input
+        onChange={checkBoxHandler}
+        disabled={disabled}
+        type="checkbox"
+        id={id}
+        value={id}
+        defaultChecked={isChecked}
+      />
       <label htmlFor={id} className={`${className}-label`}>
         {title} ({numResultsIfFiltered})
       </label>
