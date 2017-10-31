@@ -18,7 +18,6 @@ const Person = ({ person, linkLabel = 'Bio', light }) => (
     ) : null
     }
     <div {...classes('item-body', person.image ? null : 'small')}>
-      { person.affiliations && console.log(person)}
       <div><h3 {...classes('item-title')}>{person.firstName && person.firstName} {person.surname && person.surname}</h3>
         <small {...classes('item-subtitle')}>
           {person.position && `${person.position}, `}
