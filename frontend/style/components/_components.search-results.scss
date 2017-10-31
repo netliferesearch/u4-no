@@ -1,16 +1,20 @@
-.c-search-results {
-
+.c-search__results {
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .c-search-results__topbar {
   color: $brand-dark;
-  margin: $spacing-large 0;
+  margin: $spacing 0 $spacing-large;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: baseline;
   font-family: $font-sans;
   @include inuit-font-size($font-size-tiny, $line-height-normal );
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-tiny, $line-height-normal );
+    margin: $spacing-large 0;
   }
 }
 
@@ -22,17 +26,64 @@
     @include inuit-font-size($font-size-tiny, $line-height-normal);
   }
 }
-
-.c-search-results__topbar-select {
-  margin-left: $spacing-small;
-  border-radius: 0px;
-  border: 1px solid $brand-dark;
-  color: $brand-dark;
-  padding: 5px 8px;
-  box-shadow: none;
-  background: transparent;
-  background-image: none;
+.c-search-results__topbar-sortby{
+  width: 100%;
+  @include mq($from: desktop) {
+    width: auto;
+  }
 }
+.c-search-results__topbar-select {
+  background: url('/static/arrowdown.svg') no-repeat;
+  background-position: center right;
+  border: 1px solid $brand-dark;
+  border-radius: 0;
+  box-shadow: 1px 1px 1px 1px rgba($black, .1);
+  color: $brand-dark;
+  width: 100%;
+  padding: 5px 25px 5px 5px;
+  font-size: 16px;
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  @include mq($from: desktop) {
+    width: 150px;
+    margin-left: $spacing-small;
+  }
+}
+
+/* CAUTION: IE hackery ahead */
+.c-search-results__topbar-select::-ms-expand {
+    display: none; /* remove default arrow on ie10 and ie11 */
+}
+.c-search-results__topbar-filter{
+  background: $brand-main;
+  border-radius: 0;
+  border: none;
+  color: $white;
+  padding: 5px 15px;
+  font-size: 16px;
+  min-height: 34px;
+  margin-bottom: $spacing-small;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  @include mq($from: desktop) {
+    display: none;
+  }
+  &:hover {
+    background: $brand-medium;
+  }
+}
+
+/* target Internet Explorer 9 to undo the custom arrow */
+@media screen and (min-width:0\0) {
+    .c-search-results__topbar-select {
+        background:none\9;
+        padding: 5px\9;
+    }
+}
+
 
 .c-search-results__content {
   margin-left: 0;

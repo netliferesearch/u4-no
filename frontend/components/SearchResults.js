@@ -16,19 +16,25 @@ export default class SearchResults extends Component {
     this.state = { results: [] };
   }
 
+  toggle() {
+    document.getElementsByClassName('c-filters')[0].classList.toggle('c-filters--open');
+  }
+
   render() {
     const { results } = this.props;
     return (
       <section {...classes()}>
         <div {...classes('topbar')}>
           <h3 {...classes('topbar-result')}>Results ({results.length})</h3>
-          <div>
+          <button onClick={this.toggle} {...classes('topbar-filter')}>Filter search result</button>
+          <div {...classes('topbar-sortby')}>
             <label>Sort by </label>
             <select {...classes('topbar-select')}>
               <option value="1">Relevance</option>
               <option value="2">Year</option>
             </select>
           </div>
+
         </div>
         <ul {...classes('content')}>
           {results.map(
@@ -61,7 +67,7 @@ export default class SearchResults extends Component {
                 </Link>
                 <br />
                 <span {...classes('items-subtitle')}>{subtitle}</span>
-                {authors ? (
+                {authors.length > 1 ? (
                   <div>
                     <AuthorList authors={authors} />
                     <br />

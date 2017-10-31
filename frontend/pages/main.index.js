@@ -7,18 +7,22 @@ import { Footer } from '../components';
 import { PartnerAgencies } from '../components';
 import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass, ArrowRight } from '../components/icons';
-;
+
 
 const Frontpage = ({ sections = false }) => (
   <LayoutHomepage>
     <div className="o-wrapper">
       <section className="o-wrapper-inner o-wrapper--padded ">
-        <div className="o-layout o-layout--center u-margin-bottom-huge">
-        <Link route="/">
-          <a className="u-no-underline" href="/"><U4LogoSquare /></a>
-        </Link>
+        <div className="o-layout">
+          <div className="o-layout__item c-logo--center">
+            <Link route="/">
+              <a className="u-no-underline" href="/"><U4LogoSquare className="c-logo" /></a>
+            </Link>
+          </div>
         </div>
-        <SearchField />
+        <div className="c-search__clean-wrapper">
+          <SearchField />
+        </div>
       </section>
       <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
         <div className="c-introduction-text">
@@ -32,11 +36,11 @@ const Frontpage = ({ sections = false }) => (
             <a href="/the-team">The whole U4 team &nbsp;<ArrowRight /></a>
           </h2>
         </div>
-        </section>
+      </section>
     </div>
     <Footer />
 
-      <PartnerAgencies />
+    <PartnerAgencies />
 
   </LayoutHomepage>
 );

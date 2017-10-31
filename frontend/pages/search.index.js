@@ -43,18 +43,17 @@ function debounce(fn, time) {
 }
 
 function handleChange(query) {}
-
 const Search = ({ results = [], searchFilters = [] }) => (
   <Layout>
-    <div className="o-layout c-search__wrapper">
-      <div className="o-layout__item u-10/12 u-push-1/12 u-6/12@desktop u-push-3/12@desktop">
+    <div className="o-layout o-layout--center c-search__wrapper">
+      <div className="o-layout__item u-10/12  u-8/12@desktop u-6/12@wide">
         <section {...classes({ block: 'search-input', element: 'content' })}>
           <SearchField />
         </section>
       </div>
     </div>
     <div className="o-layout">
-      <section className="o-layout__item u-10/12 u-push-1/12 u-6/12@desktop u-push-3/12@desktop">
+      <section className="o-layout__item u-10/12 u-push-1/12 u-6/12@desktop u-push-2/12@desktop u-6/12@wide u-push-3/12@wide" >
         <SearchResults
           results={filterResultsBySearchFilterList(
             results.filter(item => item.slug),
@@ -62,7 +61,7 @@ const Search = ({ results = [], searchFilters = [] }) => (
           )}
         />
       </section>
-      <section className="o-layout__item u-2/12@desktop u-push-4/12@desktop">
+      <section className=" o-layout__item u-3/12 u-2/12@desktop u-push-2/12@desktop u-2/12@wide u-push-3/12@wide">
         <SearchFilters results={results} />
       </section>
     </div>

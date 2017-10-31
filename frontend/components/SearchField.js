@@ -6,6 +6,7 @@ import DataLoader from '../helpers/data-loader';
 import buildQuery from '../helpers/buildSearchQuery';
 import { MagnifyingGlass } from '../components/icons';
 import { Router } from '../routes';
+import autobind from 'react-autobind';
 
 const classes = BEMHelper({
   name: 'search',
@@ -51,7 +52,13 @@ function handleSubmit(e) {
 class SearchField extends Component {
   constructor(props) {
     super(props);
+    autobind(this);
     this.state = { items: [] };
+  }
+
+  handleItemClick(item) {
+    console.log(item);
+    Router.pushRoute(`/${item._type}s/${item.slug.current}`);
   }
 
   render() {
@@ -72,7 +79,7 @@ class SearchField extends Component {
         }) => (
           <form
             onSubmit={handleSubmit}
-            className="c-search u-margin-bottom-huge u-1/1"
+            className="c-search u-1/1"
           >
             <label
               {...getLabelProps({ htmlFor: 'search' })}
@@ -82,31 +89,33 @@ class SearchField extends Component {
             </label>
             <div className="c-search__content">
               <input
-                placeholder="Search"
+                placeholder="What are you looking for?"
                 {...classes('input')}
                 {...getInputProps({
                   id: 'search',
                   tabIndex: '0',
                   name: 'search',
                   type: 'search',
-                  value: selectedItem && typeof selectedItem === 'object' ? generateTitle(selectedItem) : inputValue,
+                  value: selectedItem && typeof selectedItem === 'object' ? generateTitle(selectedItem) : null,
                   onChange: (event) => {
                     const value = event.target.value;
                     if (!value) {
                       return;
                     }
-                    debounce(
-                      client
-                        .fetch(buildQuery({ queryString: value }))
-                        .then(({ results }) => {
-                          const items = results.map(item => item); // Added ID to make it unique
-                          this.setState({ items });
-                        })
-                        .catch((error) => {
-                          console.log(error);
-                        }),
-                      300,
-                    );
+                    if (event.keyCode != 8) { // Allow backspace
+                      debounce(
+                        client
+                          .fetch(buildQuery({ queryString: value }))
+                          .then(({ results }) => {
+                            const items = results.map(item => item); // Added ID to make it unique
+                            this.setState({ items });
+                          })
+                          .catch((error) => {
+                            console.log(error);
+                          }),
+                        300,
+                      );
+                    }
                   },
                 })}
               />
@@ -120,9 +129,13 @@ class SearchField extends Component {
                     {...getItemProps({
                       item,
                       index,
-                      ...classes('items', highlightedIndex === index ? 'highlighted' : null),
                     })}
-                  ><span className="c-search__items-type">{item._type}</span><br />{generateTitle(item)}</div>
+                  >
+                    <button
+                      onClick={() => this.handleItemClick(item)}
+                      {...classes('items', highlightedIndex === index ? 'highlighted' : null)}
+                    >
+                      <span className="c-search__items-type">{item._type}</span><br />{generateTitle(item)}</button></div>
                 ))}
               </div>
             )}
