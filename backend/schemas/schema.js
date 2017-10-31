@@ -20,6 +20,8 @@ import boxOnBox from './boxOnBox';
 import workshop from './workshop';
 import resource from './resource';
 import frontpage from './frontpage';
+import file from './file';
+import contentType from './contentType';
 
 export default createSchema({
   name: 'default',
@@ -44,5 +46,7 @@ export default createSchema({
     workshop,
     richDate,
     resource,
+    file,
+    contentType,
   ]
 })
