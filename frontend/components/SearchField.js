@@ -132,6 +132,7 @@ class SearchField extends Component {
               <div {...classes('results')}>
                 {this.state.items.map((item, index) => (
                   <div
+                    key={item._id ? item._id : index}
                     {...getItemProps({
                       item,
                       index,
