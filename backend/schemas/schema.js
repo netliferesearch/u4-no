@@ -21,7 +21,7 @@ import workshop from './workshop';
 import resource from './resource';
 import frontpage from './frontpage';
 import file from './file';
-import contentType from './contentType';
+import articleType from './articleType';
 
 export default createSchema({
   name: 'default',
@@ -47,6 +47,6 @@ export default createSchema({
     richDate,
     resource,
     file,
-    contentType,
+    articleType,
   ]
 })

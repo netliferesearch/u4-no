@@ -14,7 +14,7 @@ export default {
           type: 'reference',
           to: [
             {
-              type: 'contentType',
+              type: 'articleType',
             },
           ],
         },

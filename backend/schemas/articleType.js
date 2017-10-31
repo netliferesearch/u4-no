@@ -1,5 +1,5 @@
 export default {
-  name: 'contentType',
+  name: 'articleType',
   type: 'object',
   fields: [
     {
