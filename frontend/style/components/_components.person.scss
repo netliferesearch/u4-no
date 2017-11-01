@@ -16,11 +16,16 @@
   }
 }
 .c-person__item--light {
+  min-height: 380px;
   @include mq($from: tablet) {
     display: flex;
     flex-wrap: wrap;
     width: 33%;
-    min-height: 380px;
+    min-height: 280px;
+  }
+  @include mq($from: desktop) {
+    min-height: 350px;
+
   }
 }
 
@@ -53,10 +58,13 @@
   background: transparent;
   color: $brand-dark;
   font-weight: 400;
-  padding-top: 0;
   justify-content:flex-start;
-  background-size: cover;
-  @include mq($from: desktop) {
+  background: $brand-lightest;
+  padding: $spacing-small;
+  @include mq($from: tablet) {
+    padding: $spacing-large;
+    object-position: bottom right;
+    object-fit:cover;
     width: 100%;
   }
 
@@ -68,7 +76,9 @@
 .c-person__item-figure {
   position: relative;
   margin: 0;
-  @include mq($from: desktop) {
+  display: block;
+  @include mq($from: tablet) {
+    display: none;
     max-width: 50%;
     min-width: 50%;
   }

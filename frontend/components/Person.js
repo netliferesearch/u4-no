@@ -11,6 +11,11 @@ const classes = BEMHelper({
 
 const Person = ({ person, linkLabel = 'Bio', light = true }) => (
   <div {...classes('item', person.image ? light && 'light' : 'small')}>
+    {person.image ? (
+      <figure {...classes('item-figure')}>
+        <img src={`${person.image.asset.url}?w=600&h=500&fit=crop&crop=focalpoint`} />
+      </figure>
+    ) : null}
     <div {...classes('item-body', person.image ? light && 'light' : 'small')} style={{ backgroundImage: `url(${person.image.asset.url}?w=600&h=500&fit=crop&crop=focalpoint)` }}>
       <div>
         <small {...classes('item-subtitle')}>
