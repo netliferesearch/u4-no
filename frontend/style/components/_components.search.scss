@@ -25,10 +25,10 @@
 }
 
 .c-search__clean-wrapper {
-  padding-top: $spacing-huge;
+  padding-top: $spacing-large;
   padding-bottom: $spacing;
   @include mq($from: desktop) {
-    padding-bottom: $spacing-huge;
+    padding-bottom: $spacing-large;
   }
 }
 
