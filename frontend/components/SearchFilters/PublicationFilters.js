@@ -5,7 +5,7 @@ import slugify from 'slugify';
 
 import sanityClient from '../../helpers/sanity-client-config';
 
-import { findPublicationTypes, findPublications } from './filterHelpers';
+import { findPublicationTypes, findPublications } from './searchHelpers';
 import FilterCheckBox from './FilterCheckBox';
 import BEMHelper from 'react-bem-helper';
 

@@ -1,4 +1,4 @@
-import { filterResultsBySearchFilterList } from './filterHelpers';
+import { filterResultsBySearchFilterList } from './searchHelpers';
 
 test('can filter result list for publication types', async () => {
   const whatToFilterFor = {
