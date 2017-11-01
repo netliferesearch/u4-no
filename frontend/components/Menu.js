@@ -176,6 +176,21 @@ class Menu extends Component {
                 </h4>
 
 
+                <div {...menuClasses('links--round')}>
+                  <Link to={'/'}>
+                    <a {...menuClasses('link-round')}>
+                      Partner Helpdesk
+                    </a>
+                  </Link>
+
+                  <Link to={'/'}>
+                    <a {...menuClasses('link-round')}>
+                      Contact
+                    </a>
+                  </Link>
+                </div>
+
+
               </div>
             </div>
           )

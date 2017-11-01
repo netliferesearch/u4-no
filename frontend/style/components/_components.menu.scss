@@ -102,3 +102,32 @@
     color: $brand-lighter;
   }
 }
+
+.c-menu__links--round {
+  display: flex;
+  margin-top: $spacing-large;
+  &:first-child {
+    margin-right: $spacing;
+  }
+}
+.c-menu__link-round, .c-menu__link-round:visited {
+  margin: $spacing-tiny;
+  border: 1px solid $white;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-self: center;
+  @include inuit-font-size(14px, $line-height-tiny);
+  color: $white;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  &:hover {
+    border: 1px solid $brand-light;
+    color: $brand-lighter;
+  }
+}
