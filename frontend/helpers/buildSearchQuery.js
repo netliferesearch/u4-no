@@ -6,6 +6,7 @@ export default ({ queryString = false, limit: { from = 0, to = 20 } = { from: 0,
       .join(',')
     : queryString;
   return `{
+    "topics": *[_type == "topics"]{_id, title, slug},
     "results":
     *[
       (title match [${matchString}]

@@ -19,8 +19,8 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Search = ({ results = [], searchFilters = [], searchSorting = '' }) => (
-  <Layout>
+const Search = ({ results = [], topics = {}, searchFilters = [], searchSorting = '' }) => (
+  <Layout topics={topics}>
     <div className="o-layout o-layout--center c-search__wrapper">
       <div className="o-layout__item u-10/12  u-8/12@desktop u-6/12@wide">
         <section {...classes({ block: 'search-input', element: 'content' })}>
@@ -54,7 +54,9 @@ export default DataLoader(connect(mapStateToProps, mapDispatchToProps)(Search), 
   queryFunc: ({ query }) => {
     if (!query.search) {
       return {
-        sanityQuery: false,
+        sanityQuery: `{
+          "topics": *[_type == "topics"]{_id, title, slug},
+        }`,
       };
     }
     return {
