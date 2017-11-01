@@ -382,8 +382,8 @@ export default {
           ],
           // Support annotating text with a reference to an author
           annotations: [
-            {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-            {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'}]},
+            { name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
+            { name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'}]},
           ]
         },
         preview: {
@@ -438,6 +438,43 @@ export default {
             type: 'publication'
           }
         ]
+      },
+      {
+        name: 'workflow',
+        type: 'object',
+        title: 'Editorial workflow',
+        description: 'Keep track',
+        fields: [
+          {
+            name: 'assigned',
+            type: 'array',
+            of: [
+              {
+                type: 'reference',
+                to: [
+                  {
+                    type: 'person'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            name: 'progress',
+            type: 'string',
+            options: {
+                list: [
+                  { title: 'ready', value: 'ready' },
+                  { title: 'authoring', value: 'authoring' },
+                  { title: 'editing', value: 'editing' },
+                  { title: 'proof reading', value: 'proof reading' },
+                  { title: 'ready for publishing', value: 'ready for publishing' },
+                  { title: 'published', value: 'published' },
+                ],
+                layout: 'radio',
+              },
+          },
+        ],
       },
       {
         name: 'relatedUrl',
