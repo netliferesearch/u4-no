@@ -15,28 +15,34 @@ const Person = ({ person, linkLabel = 'Bio', light }) => (
       <figure {...classes('item-figure')}>
         <img src={`${person.image.asset.url}?w=600&h=500&fit=crop&crop=focalpoint`} />
       </figure>
-    ) : null
-    }
+    ) : null}
     <div {...classes('item-body', person.image ? null : 'small')}>
       <div>
-        <h3 {...classes('item-title')}>{person.firstName && person.firstName} {person.surname && person.surname}</h3>
+        <h3 {...classes('item-title')}>
+          {person.firstName && person.firstName} {person.surname && person.surname}
+        </h3>
         <small {...classes('item-subtitle')}>
-          {person.position && `${person.position}, `}
-          {person.affiliations && person.affiliations.map(i => <span>i</span>)}
+          {person.position && `${person.position}`}
+          {person.affiliations && (
+            <span>
+              {', i '}
+              {person.affiliations.map(({ _id = '', name = '' }) => <span key={_id}>{name} </span>)}
+            </span>
+          )}
         </small>
       </div>
       <div {...classes('item-meta')}>
-        {person.email && <a href={`mailto:${person.email}`}>{person.email}</a>}<br />
+        {person.email && <a href={`mailto:${person.email}`}>{person.email}</a>}
+        <br />
         <a href="tel:41044511">+47 410 445 11</a>
       </div>
-      { person.slug && person.bio ?
+      {person.slug && person.bio ? (
         <Link to={`/the-team/${person.slug.current}`}>
           <a>
-            <span {...classes('item-link')}>{ linkLabel }</span>  <ArrowRight />
+            <span {...classes('item-link')}>{linkLabel}</span> <ArrowRight />
           </a>
         </Link>
-        : null
-      }
+      ) : null}
     </div>
   </div>
 );

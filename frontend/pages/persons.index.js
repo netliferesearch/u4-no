@@ -25,7 +25,7 @@ export default DataLoader(Persons, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
       "frontpage": *[_id == "627b8d42-d8f7-4cf6-9567-f6337678b688"][0],
-      "persons": *[_type == "person"][0..1000]{..., "image": image.asset->url[0] , "affiliations": affiliations[]->name},
+      "persons": *[_type == "person"][0..1000]{..., "image": image.asset->url[0] , "affiliations": affiliations[]->{_id, name}},
     }`,
   }),
   materializeDepth: 2,
