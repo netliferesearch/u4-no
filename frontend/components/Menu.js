@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from '../routes';
 import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
-
+import sanityClient from '@sanity/client';
 
 const classes = BEMHelper({
   name: 'top-bar',
@@ -21,9 +21,28 @@ class Menu extends Component {
     this.state = {
       activeMenu: false,
       activeExpand: false,
+      data: '',
     };
     this.triggerMenu = this.triggerMenu.bind(this);
     this.triggerExpand = this.triggerExpand.bind(this);
+  }
+
+  componentWillMount() {
+    if (this.state.data) {
+      return; // no need to fetch data if we got link data passed in.
+    }
+    const client = sanityClient({
+      projectId: '1f1lcoov',
+      dataset: 'production',
+      token: '',
+      useCdn: true,
+    });
+    const sanityQuery = '*[_type == "topics"]{_id, title, slug}';
+    client.fetch(sanityQuery, {}).then((data) => {
+      this.setState({
+        data,
+      });
+    });
   }
 
   triggerMenu(e) {
@@ -41,10 +60,7 @@ class Menu extends Component {
   }
 
   render() {
-    const {
-      topics,
-    } = this.props;
-
+    const topics = this.state.data;
     return (
       <div>
         <ul {...classes('menu')}>
@@ -77,7 +93,7 @@ class Menu extends Component {
                   </h4>
                   <ul {...menuClasses('list')}>
                     {topics.slice(0, 5).map(topic =>
-                      (<li>
+                      (<li key={topic._id}>
                         <Link route="topic.entry" params={{ slug: topic.slug.current }}>
                           <a {...menuClasses('link')}>
                             {topic.title}
@@ -88,7 +104,7 @@ class Menu extends Component {
                     }
                     {this.state.activeExpand &&
                       topics.slice(5, 50).map(topic =>
-                        (<li>
+                        (<li key={topic._id}>
                           <Link route="topic.entry" params={{ slug: topic.slug.current }}>
                             <a {...menuClasses('link')}>
                               {topic.title}

@@ -7,7 +7,6 @@ export default ({
   showTopTab = true,
   title,
   description,
-  topics = {},
   children = [],
 }) => (
   <div
@@ -21,7 +20,7 @@ export default ({
     {showTopTab && (
       <div className="c-top-bar">
         <div />
-        <Menu topics={topics} />
+        <Menu />
       </div>
     )}
     {children}

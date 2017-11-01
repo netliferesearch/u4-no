@@ -11,11 +11,10 @@ const Persons = ({
   affiliations = false,
   email = '',
   phone = '',
-  topics = {},
   person = {},
   url,
 }) => (
-  <Layout topics={topics}>
+  <Layout>
     <div className="o-wrapper o-wrapper--padded">
       <BreadCrumb url={url} />
       <div className="c-article o-wrapper-inner">

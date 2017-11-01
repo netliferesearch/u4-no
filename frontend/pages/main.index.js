@@ -9,8 +9,8 @@ import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass, ArrowRight } from '../components/icons';
 
 
-const Frontpage = ({ sections = {}, topics = {} }) => (
-  <LayoutHomepage topics={topics}>
+const Frontpage = ({ sections = {} }) => (
+  <LayoutHomepage>
     <div className="o-wrapper">
       <section className="o-wrapper-inner o-wrapper--padded ">
         <div className="o-layout">
@@ -50,7 +50,6 @@ export default DataLoader(Frontpage, {
   queryFunc: () => ({
     sanityQuery: `{
       "sections": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0],
-      "topics": *[_type == "topics"]{_id, title, slug},
     }`,
   }),
   materializeDepth: 2,

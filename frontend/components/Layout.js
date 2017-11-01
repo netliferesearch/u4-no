@@ -13,7 +13,6 @@ export default ({
   showTopTab = true,
   title,
   description,
-  topics = {},
   children = [],
 }) => (
   <div
@@ -31,7 +30,7 @@ export default ({
             <Logo />
           </a>
         </Link>
-        <Menu topics={topics} />
+        <Menu />
       </div>
     )}
     {children}
