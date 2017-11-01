@@ -28,7 +28,7 @@ const PublicationDrawer = ({
           )}
         </div>
       )}
-    {!isPublicationDrawerOpen || (_type !== 'publication' && children)}
+    {(!isPublicationDrawerOpen || _type !== 'publication') && children}
   </div>
 );
 
