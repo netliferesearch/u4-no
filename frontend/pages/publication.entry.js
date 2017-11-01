@@ -6,7 +6,10 @@ const PublicationEntry = props => <LongformArticleContainer {...props} />;
 
 export default DataLoader(PublicationEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '*[slug.current == $slug && !(_id in path "drafts.**")][0]',
+    sanityQuery: `{
+    "entry": *[slug.current == $slug && !(_id in path "drafts.**")][0],
+    "topics": *[_type == "topics"]{_id, title, slug},
+    }`,
     param: { slug },
   }),
   materializeDepth: 1,
