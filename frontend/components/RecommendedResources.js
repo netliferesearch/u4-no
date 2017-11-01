@@ -23,7 +23,9 @@ const RecommendedResource = ({
 
 const RecommendedResources = ({ relatedContent = [] }) => (
   <div className="c-simple-mosaic">
-    {relatedContent.slice(0, 3).map(res => <RecommendedResource {...res} />)}
+    {relatedContent
+      .slice(0, 3)
+      .map(({ _id, ...rest }) => <RecommendedResource key={_id} {...rest} />)}
   </div>
 );
 
