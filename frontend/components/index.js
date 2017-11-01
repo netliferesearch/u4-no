@@ -32,6 +32,10 @@ export {
   TableOfContentsContent,
   TableOfContentsSidebar,
 } from './TableOfContents';
-export { SearchFilters, filterResultsBySearchFilterList } from './SearchFilters';
+export {
+  SearchFilters,
+  filterResultsBySearchFilterList,
+  sortResultsBySortCriteria,
+} from './SearchFilters';
 export { default as Logo } from './Logo';
 export { default as PartnerAgencies } from './PartnerAgencies';

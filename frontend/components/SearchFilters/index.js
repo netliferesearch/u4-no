@@ -1,2 +1,2 @@
 export { default as SearchFilters } from './SearchFilters';
-export { filterResultsBySearchFilterList } from './searchHelpers';
+export { filterResultsBySearchFilterList, sortResultsBySortCriteria } from './searchHelpers';

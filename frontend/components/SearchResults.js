@@ -33,7 +33,8 @@ const SearchResults = (props) => {
             {...classes('topbar-select')}
           >
             <option value="relevance">Relevance</option>
-            <option value="year">Year</option>
+            <option value="year-desc">Year, new → old</option>
+            <option value="year-asc">Year, old → new</option>
           </select>
         </div>
       </div>

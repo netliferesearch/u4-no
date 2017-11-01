@@ -1,4 +1,6 @@
 import uniqBy from 'lodash/uniqBy';
+import sortBy from 'lodash/sortBy';
+import moment from 'moment';
 
 export function findPublications(results = []) {
   return results.filter(({ _type }) => _type === 'publication');
@@ -44,5 +46,26 @@ export function filterResultsBySearchFilterList(results = [], filterList = []) {
   if (filterList.length > 0) {
     return results.filter(res => applyFilters(res, filterList));
   }
+  return results;
+}
+
+export function sortResultsBySortCriteria({ results = [], sortCriteria = '' }) {
+  if (sortCriteria === 'relevance') {
+    // we consider the results returned by sanity as already organized by relevance
+    // so we return them as is. If relevance need to be improved we must first
+    // try to improve the sanity query and then perhaps add logic here.
+    return results;
+  } else if (/^year-.*/.test(sortCriteria)) {
+    const docsWithoutDate = results.filter(res => !res.date);
+    const docsWithDate = results.filter(res => res.date);
+    // sort the docs that have date and attach the rest at the end
+    const sortedDocs = sortBy(docsWithDate, ({ date }) => moment(date.local).valueOf());
+    if (sortCriteria === 'year-asc') {
+      return sortedDocs.concat(docsWithoutDate);
+    } else if (sortCriteria === 'year-desc') {
+      return sortedDocs.reverse().concat(docsWithoutDate);
+    }
+  }
+  // sortCriteria did not match anything just return results as is.
   return results;
 }
