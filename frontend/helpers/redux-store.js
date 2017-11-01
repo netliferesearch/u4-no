@@ -69,6 +69,11 @@ export const actionTypes = {
 // REDUCERS
 export const reducer = (state = defaultState, action) => {
   switch (action.type) {
+    case actionTypes.SEARCH_UPDATE_SORT:
+      addQueryParams({
+        sort: action.sortName,
+      });
+      return Object.assign({}, state, { searchSorting: action.sortName });
     case actionTypes.SEARCH_ADD_FILTER:
       addQueryParams({
         filters: uniq(state.searchFilters.concat(action.searchFilter)).join(),
@@ -108,6 +113,9 @@ export const toggleArticleMenu = () => dispatch =>
 export const toggleLoadingScreen = () => dispatch =>
   dispatch({ type: actionTypes.TOGGLE_LOADING_SCREEN });
 
+export const updateSearchSorting = sortName => dispatch =>
+  dispatch({ type: actionTypes.SEARCH_UPDATE_SORT, sortName });
+
 /**
  * @param {String} searchFilter name of filter to add
  */
@@ -119,13 +127,20 @@ export const removeSearchFilter = searchFilter => dispatch =>
 
 export const initStore = (initialState = defaultState, options) => {
   const { query = {} } = options;
-  const { filters = '' } = query;
+  const { filters = '', sort = '' } = query;
   let state = initialState;
   // if there are active filters in the url query params we need to split
   // and add them to the state.
   if (filters) {
     state = Object.assign(initialState, {
       searchFilters: filters.split(','),
+    });
+  }
+  // if there is an active query param sort configured we let it override
+  // the default sorting in state
+  if (sort) {
+    state = Object.assign(initialState, {
+      searchSorting: sort,
     });
   }
   return createStore(reducer, state, composeWithDevTools(applyMiddleware(thunkMiddleware)));
