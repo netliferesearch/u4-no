@@ -1,39 +1,19 @@
 import React from 'react';
-import BlockContent from '@sanity/block-content-to-react';
-import { Link } from '../routes';
-import { Layout, LongformArticle, Footer, Team } from '../components';
+import sortBy from 'lodash/sortBy';
+import { Link } from '../routes';
+import { Layout, Footer, Team } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
-const Persons = ({
-  frontpage,
-  persons = [],
-  url,
-}) => (
+const Persons = ({ frontpage = {}, persons = [], url }) => (
   <Layout>
     <h1 className="c-article__title">{frontpage.title}</h1>
     <BreadCrumb url={url} />
-    <div className="c-article__lead">
-      {frontpage.lead}
-    </div>
+    <div className="c-article__lead">{frontpage.lead}</div>
     <div className="c-topic-section--lightblue">
       <div className="o-wrapper c-article">
         <div id="advisors">
-          <Team
-            light
-            members={persons.sort((a, b) => {
-              const firstNameA = a.firstName.toUpperCase();
-              const firstNameB = b.firstName.toUpperCase();
-              if (firstNameA < firstNameB) {
-                return -1;
-              }
-              if (firstNameA > firstNameB) {
-                return 1;
-              }
-              // names must be equal
-              return 0;
-            })}
-          />
+          <Team light members={sortBy(persons, ({ firstName = '' }) => firstName.toUpperCase())} />
         </div>
       </div>
     </div>
