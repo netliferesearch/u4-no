@@ -9,8 +9,8 @@ import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass, ArrowRight } from '../components/icons';
 
 
-const Frontpage = ({ sections = false }) => (
-  <LayoutHomepage>
+const Frontpage = ({ sections = {}, topics = {} }) => (
+  <LayoutHomepage topics={topics}>
     <div className="o-wrapper">
       <section className="o-wrapper-inner o-wrapper--padded ">
         <div className="o-layout">
@@ -26,7 +26,7 @@ const Frontpage = ({ sections = false }) => (
       </section>
       <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
         <div className="c-introduction-text">
-          <BlockContent blocks={sections} />
+          <BlockContent blocks={sections.sections} />
         </div>
       </section>
       <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
@@ -45,9 +45,13 @@ const Frontpage = ({ sections = false }) => (
   </LayoutHomepage>
 );
 
+
 export default DataLoader(Frontpage, {
   queryFunc: () => ({
-    sanityQuery: '*[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0]',
+    sanityQuery: `{
+      "sections": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0],
+      "topics": *[_type == "topics"]{_id, title, slug},
+    }`,
   }),
   materializeDepth: 2,
 });

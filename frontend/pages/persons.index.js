@@ -8,9 +8,10 @@ import DataLoader from '../helpers/data-loader';
 const Persons = ({
   frontpage,
   persons = [],
+  topics = {},
   url,
 }) => (
-  <Layout>
+  <Layout topics={topics}>
     <h1 className="c-article__title">{frontpage.title}</h1>
     <BreadCrumb url={url} />
     <div className="c-article__lead">
@@ -43,7 +44,11 @@ const Persons = ({
 
 export default DataLoader(Persons, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '{ "frontpage": *[_id == "627b8d42-d8f7-4cf6-9567-f6337678b688"][0], "persons": *[_type == "person"][0..1000]{..., "image": image.asset->url[0] , "affiliations": affiliations[]->name} }',
+    sanityQuery: `{
+      "frontpage": *[_id == "627b8d42-d8f7-4cf6-9567-f6337678b688"][0],
+      "persons": *[_type == "person"][0..1000]{..., "image": image.asset->url[0] , "affiliations": affiliations[]->name},
+      "topics": *[_type == "topics"]{_id, title, slug},
+    }`,
   }),
   materializeDepth: 2,
 });

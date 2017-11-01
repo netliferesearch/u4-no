@@ -9,7 +9,7 @@ function sortTopics(items, key) {
   return sortBy(items, [key]);
 }
 const TopicOverview = ({ topics = [] }) => (
-  <Layout>
+  <Layout topics={topics}>
     <div className="o-wrapper u-tc">
       <h1 className="u-margin-bottom">Topics</h1>
 

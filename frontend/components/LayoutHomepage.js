@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from '../routes';
-import { HeadComponent, Logo } from '../components';
+import { HeadComponent, Logo, Menu } from '../components';
 
 export default ({
   showLoadingScreen = false,
   showTopTab = true,
   title,
   description,
+  topics = {},
   children = [],
 }) => (
   <div
@@ -19,7 +20,8 @@ export default ({
     <HeadComponent title={title} description={description} />
     {showTopTab && (
       <div className="c-top-bar">
-
+        <div />
+        <Menu topics={topics} />
       </div>
     )}
     {children}

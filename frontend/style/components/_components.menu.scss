@@ -1,0 +1,104 @@
+.c-menu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9;
+  height: 100vh;
+  width: 40%;
+  width: 40vw;
+  background: $brand-dark;
+  color: $white;
+  font-family: $font-sans;
+  font-weight: 300;
+  animation: toggle 0.3s ease-out;
+  padding: $spacing;
+  overflow-y: auto;
+  @include mq($from: desktop) {
+    padding: $spacing-large $spacing-huge;
+  }
+}
+
+.c-menu__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  width: 100vw;
+  height: 100%;
+  z-index: 2;
+  border: 0;
+  background: rgba($brand-dark, .5);
+  animation: fadeIn .2s ease-out;
+}
+
+.c-menu__heading {
+  @include inuit-font-size(14px, $line-height-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  margin-top: $spacing-large;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba($white, .7);
+  }
+}
+
+.c-menu__heading-bg {
+  display: inline-block;
+  background: $brand-dark;
+  z-index: 1;
+  position: relative;
+  padding-right: $spacing-small;
+}
+
+.c-menu__list {
+  list-style: none;
+  margin: $spacing-small 0 0;
+  padding: 0;
+  @include inuit-font-size(14px, $line-height-large)
+}
+
+@keyframes toggle {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(0vw);
+  }
+}
+
+.c-menu__clean-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $brand-main;
+  margin: $spacing-small 0 0 0;
+  padding: 0;
+}
+
+.c-menu__arrowdown {
+  transform: rotate(90deg);
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c-menu__arrowdown--flipped {
+  transform: rotate(-90deg);
+}
+
+.c-menu__link, .c-menu__link:visited {
+  color: $white;
+  border: none;
+
+  &:hover {
+    color: $brand-lighter;
+  }
+}

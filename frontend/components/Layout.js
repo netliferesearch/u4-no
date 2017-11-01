@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '../routes';
-import { HeadComponent, Logo } from '../components';
+import { HeadComponent, Logo, Menu } from '../components';
 import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper({
@@ -13,6 +13,7 @@ export default ({
   showTopTab = true,
   title,
   description,
+  topics = {},
   children = [],
 }) => (
   <div
@@ -30,6 +31,7 @@ export default ({
             <Logo />
           </a>
         </Link>
+        <Menu topics={topics} />
       </div>
     )}
     {children}

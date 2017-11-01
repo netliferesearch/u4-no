@@ -11,23 +11,25 @@ const Persons = ({
   affiliations = false,
   email = '',
   phone = '',
-  url
+  topics = {},
+  person = {},
+  url,
 }) => (
-  <Layout>
+  <Layout topics={topics}>
     <div className="o-wrapper o-wrapper--padded">
       <BreadCrumb url={url} />
       <div className="c-article o-wrapper-inner">
-        <h3><Link to={`/the-team/${slug.current}`}><a>{firstName} {surname}</a></Link></h3>
+        <h3><Link to={`/the-team/${slug.current}`}><a>{person.firstName} {person.surname}</a></Link></h3>
         {
-          affiliations && affiliations.map(affiliation => affiliation)
+          person.affiliations && person.affiliations.map(affiliation => affiliation)
         }
         <br />
         {
-          email && <a href={`mailto:${email}`}>{email}</a>
+          person.email && <a href={`mailto:${person.email}`}>{email}</a>
         }
         <br />
         {
-          phone && <a href={`tel:+47${phone}`}>+47&nbsp;{phone}</a>
+          person.phone && <a href={`tel:+47${person.phone}`}>+47&nbsp;{person.phone}</a>
         }
       </div>
       {/* <LongformArticle content={content} advisors={advisors} /> */}
@@ -38,7 +40,11 @@ const Persons = ({
 
 export default DataLoader(Persons, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '*[slug.current == $slug][0]{..., "affiliations": affiliations[]->name}',
+    sanityQuery: `{
+      "person": *[slug.current == $slug][0]{..., "affiliations": affiliations[]->name},
+      "topics": *[_type == "topics"]{_id, title, slug}
+    }`,
     param: { slug },
   }),
+
 });
