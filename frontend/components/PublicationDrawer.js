@@ -15,7 +15,7 @@ const PublicationDrawer = ({
     {isPublicationDrawerOpen &&
       _type === 'publication' && (
         <div className="c-publication-drawer">
-          <div className="u-1/1 u-tc u-margin-top-huge">
+          <div className="u-1/1 u-tc">
             <button className="" onClick={togglePublicationDrawer}>
               Read the whole publication
             </button>
