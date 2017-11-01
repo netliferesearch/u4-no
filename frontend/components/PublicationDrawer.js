@@ -16,9 +16,14 @@ const PublicationDrawer = ({
       _type === 'publication' && (
         <div className="c-publication-drawer">
           <div className="u-1/1 u-tc">
-            <button className="" onClick={togglePublicationDrawer}>
-              Read the whole publication
-            </button>
+            <div>
+              <button
+                className="c-btn c-btn--primary c-btn--large"
+                onClick={togglePublicationDrawer}
+              >
+                <h3 className="c-btn__body">Read the whole publication</h3>
+              </button>
+            </div>
           </div>
           {relatedContent.length > 0 && (
             <div className="o-wrapper">

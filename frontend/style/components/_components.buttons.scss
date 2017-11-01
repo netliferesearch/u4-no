@@ -16,7 +16,7 @@
  * 5. Force all button-styled elements to appear clickable.
  */
 
- .c-btn {
+.c-btn {
   display: inline-block; /* [1] */
   vertical-align: middle; /* [2] */
   font: inherit; /* [3] */
@@ -25,14 +25,16 @@
   cursor: pointer; /* [5] */
   transition: $global-transition;
   border: none;
-  display: flex;
-  align-items: center;
   background-color: transparent;
-
   &:hover,
   &:focus {
     text-decoration: underline; /* [4] */
   }
+}
+
+.c-btn--flex {
+  display: flex;
+  align-items: center;
 }
 
 .c-btn__icon {
@@ -42,8 +44,6 @@
   margin-left: $spacing / 2;
   text-align: left;
 }
-
-
 
 /* Style variants
    ========================================================================== */
@@ -67,17 +67,14 @@
     border: none;
 
     svg g,
-    svg path
-    {
+    svg path {
       stroke: $white;
       fill: $white;
     }
-    svg circle
-    {
+    svg circle {
       fill: $brand-main;
     }
   }
-
 }
 
 .c-btn--secondary {
@@ -100,21 +97,15 @@
     outline: none;
 
     svg g,
-    svg path
-    {
+    svg path {
       stroke: $brand-dark;
       fill: $brand-dark;
     }
-    svg circle
-    {
+    svg circle {
       //stroke: $brand-main;
       fill: $white;
-
     }
   }
-
-
-
 }
 
 .c-btn--tertiary {
@@ -133,12 +124,7 @@
   &:focus {
     color: #3774a2;
   }
-
 }
-
-
-
-
 
 /* Size variants
    ========================================================================== */
@@ -151,10 +137,6 @@
   padding: $inuit-global-spacing-unit $inuit-global-spacing-unit-large;
 }
 
-
-
-
-
 /* Ghost buttons
    ========================================================================== */
 
@@ -166,7 +148,10 @@ $btn-ghost-border-width: 2px;
 
 .c-btn--ghost {
   border: $btn-ghost-border-width solid currentColor;
-  padding: ($inuit-global-spacing-unit-small - $btn-ghost-border-width) ($inuit-global-spacing-unit - $btn-ghost-border-width);
+  padding: ($inuit-global-spacing-unit-small - $btn-ghost-border-width)
+    (
+      $inuit-global-spacing-unit - $btn-ghost-border-width
+    );
 
   &,
   &:hover,
@@ -176,11 +161,17 @@ $btn-ghost-border-width: 2px;
   }
 
   &.c-btn--small {
-    padding: ($inuit-global-spacing-unit-tiny - $btn-ghost-border-width) ($inuit-global-spacing-unit-small - $btn-ghost-border-width);
+    padding: ($inuit-global-spacing-unit-tiny - $btn-ghost-border-width)
+      (
+        $inuit-global-spacing-unit-small - $btn-ghost-border-width
+      );
   }
 
   &.c-btn--large {
-    padding: ($inuit-global-spacing-unit - $btn-ghost-border-width) ($inuit-global-spacing-unit-large - $btn-ghost-border-width);
+    padding: ($inuit-global-spacing-unit - $btn-ghost-border-width)
+      (
+        $inuit-global-spacing-unit-large - $btn-ghost-border-width
+      );
   }
 
   &.c-btn--primary {
@@ -190,7 +181,6 @@ $btn-ghost-border-width: 2px;
     &:focus {
       color: #3774a2;
     }
-
   }
 
   &.c-btn--secondary {
@@ -200,7 +190,6 @@ $btn-ghost-border-width: 2px;
     &:focus {
       color: #1d2733;
     }
-
   }
 
   &.c-btn--tertiary {
@@ -210,7 +199,5 @@ $btn-ghost-border-width: 2px;
     &:focus {
       color: #fff;
     }
-
   }
-
 }
