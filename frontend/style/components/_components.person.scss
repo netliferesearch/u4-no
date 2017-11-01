@@ -1,21 +1,18 @@
 .c-person__item {
   margin: auto auto $spacing;
   @include mq($from: desktop) {
-    flex: 1 0 auto;
     display: flex;
     flex-wrap: wrap;
     width: 49%;
   }
 }
 .c-person__item--small {
-  margin: auto auto $spacing;
+  margin: auto auto $spacing-large;
   @include mq($from: desktop) {
-    padding-left: $spacing-small;
-    padding-right: $spacing-small;
     display: flex;
     flex-wrap: wrap;
     width: 24%;
-    min-height: 317px;
+    min-height: 280px;
   }
 }
 .c-person__item-body {

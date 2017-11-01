@@ -18,11 +18,13 @@ const Person = ({ person, linkLabel = 'Bio', light }) => (
     ) : null
     }
     <div {...classes('item-body', person.image ? null : 'small')}>
-      <div><h3 {...classes('item-title')}>{person.firstName && person.firstName} {person.surname && person.surname}</h3>
+      <div>
+        <h3 {...classes('item-title')}>{person.firstName && person.firstName} {person.surname && person.surname}</h3>
         <small {...classes('item-subtitle')}>
           {person.position && `${person.position}, `}
-          {person.affiliations && person.affiliations.map(i => i)}
-        </small></div>
+          {person.affiliations && person.affiliations.map(i => <span>i</span>)}
+        </small>
+      </div>
       <div {...classes('item-meta')}>
         {person.email && <a href={`mailto:${person.email}`}>{person.email}</a>}<br />
         <a href="tel:41044511">+47 410 445 11</a>
