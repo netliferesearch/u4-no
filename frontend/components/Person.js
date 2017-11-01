@@ -9,21 +9,15 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Person = ({ person, linkLabel = 'Bio', light }) => (
-  <div {...classes('item', person.image ? null : 'small')}>
-    {person.image ? (
-      <figure {...classes('item-figure')}>
-        <img src={`${person.image.asset.url}?w=600&h=500&fit=crop&crop=focalpoint`} />
-      </figure>
-    ) : null
-    }
-    <div {...classes('item-body', person.image ? null : 'small')}>
+const Person = ({ person, linkLabel = 'Bio', light = true }) => (
+  <div {...classes('item', person.image ? light && 'light' : 'small')}>
+    <div {...classes('item-body', person.image ? light && 'light' : 'small')} style={{ backgroundImage: `url(${person.image.asset.url}?w=600&h=500&fit=crop&crop=focalpoint)` }}>
       <div>
-        <h3 {...classes('item-title')}>{person.firstName && person.firstName} {person.surname && person.surname}</h3>
         <small {...classes('item-subtitle')}>
           {person.position && `${person.position}, `}
-          {person.affiliations && person.affiliations.map(i => <span>i</span>)}
+          {person.affiliations && person.affiliations.map(i => <span>{i.name}</span>)}
         </small>
+        <h3 {...classes('item-title')}>{person.firstName && person.firstName} {person.surname && person.surname}</h3>
       </div>
       <div {...classes('item-meta')}>
         {person.email && <a href={`mailto:${person.email}`}>{person.email}</a>}<br />
@@ -38,6 +32,7 @@ const Person = ({ person, linkLabel = 'Bio', light }) => (
         : null
       }
     </div>
+
   </div>
 );
 

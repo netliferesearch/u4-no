@@ -15,6 +15,15 @@
     min-height: 280px;
   }
 }
+.c-person__item--light {
+  @include mq($from: desktop) {
+    display: flex;
+    flex-wrap: wrap;
+    width: 33%;
+    min-height: 380px;
+  }
+}
+
 .c-person__item-body {
   background: $brand-dark;
   color: $white;
@@ -39,6 +48,23 @@
     width: 100%;
   }
 }
+.c-person__item-body--light {
+  display: block;
+  background: transparent;
+  color: $brand-dark;
+  font-weight: 400;
+  padding-top: 0;
+  justify-content:flex-start;
+  background-size: cover;
+  @include mq($from: desktop) {
+    width: 100%;
+  }
+
+  a {
+    color: $brand-dark;
+    display: inline-block;
+  }
+}
 .c-person__item-figure {
   position: relative;
   margin: 0;
@@ -48,13 +74,13 @@
   }
 }
 .c-person__item-title {
-  font-weight: 300;
   margin: 0;
 }
 .c-person__item-subtitle {
-  @include inuit-font-size($font-size-tiny);
+  @include inuit-font-size(14px);
   text-transform: uppercase;
-  margin-bottom: $spacing;
+  font-weight: 400;
+  margin-top: $spacing;
   display: inline-block;
 }
 .c-person__item-meta {

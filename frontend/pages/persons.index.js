@@ -19,6 +19,7 @@ const Persons = ({
     <div className="c-topic-section--lightblue">
       <div className="o-wrapper c-article">
         <div id="advisors">
+          {console.log(persons)}
           <Team
             light
             members={persons.sort((a, b) => {
@@ -45,7 +46,7 @@ export default DataLoader(Persons, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
       "frontpage": *[_id == "627b8d42-d8f7-4cf6-9567-f6337678b688"][0],
-      "persons": *[_type == "person"][0..1000]{..., "image": image.asset->url[0] , "affiliations": affiliations[]->name},
+      "persons": *[_type == "person" && references("0e1b0ebc-e016-4d2b-97e8-859b91e3e147") && "0e1b0ebc-e016-4d2b-97e8-859b91e3e147" in affiliations[]._ref][0..100]{..., "image": image.asset->url[0], affiliations},
     }`,
   }),
   materializeDepth: 2,
