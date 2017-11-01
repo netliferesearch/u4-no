@@ -21,6 +21,9 @@ const LongFormArticleContainer = (props) => {
     isArticleMenuOpen,
     showLoadingScreen,
     lead = 'article had no lead',
+    _type = '',
+    longTitle = '',
+    title = '',
     mainPoints = [],
     resources = [],
     BreadCrumbComponent = null,
@@ -61,7 +64,8 @@ const LongFormArticleContainer = (props) => {
           <span id="js-top" />
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
-            {props.featuredImage &&
+            {_type === 'publication' &&
+              props.featuredImage &&
               props.featuredImage.asset.url && (
                 <div className="c-hero">
                   <div
@@ -85,7 +89,7 @@ const LongFormArticleContainer = (props) => {
                 </div>
               )}
           </div>
-          {props.featuredImage && (
+          {_type === 'publication' && (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 {lead && (
@@ -122,9 +126,10 @@ const LongFormArticleContainer = (props) => {
               </div>
             </div>
           )}
-          {!props.featuredImage && (
+          {_type !== 'publication' && (
             <div className="c-longform-grid">
-              {lead && <div className="c-longform-grid__standard">{lead}</div>}
+              <h1 className="c-longform-grid__standard">{longTitle || title}</h1>
+              {lead && <div className="c-article c-longform-grid__standard">{lead}</div>}
               <div className="c-longform-grid__sidebar-right">
                 <TableOfContentsSidebar alwaysFollow {...props} />
               </div>
