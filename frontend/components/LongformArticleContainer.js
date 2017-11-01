@@ -12,6 +12,7 @@ import {
   TableOfContentsContent,
   CustomScrollSpy,
   ToggleBlock,
+  PublicationDrawer,
 } from './';
 
 const LongFormArticleContainer = (props) => {
@@ -58,7 +59,7 @@ const LongFormArticleContainer = (props) => {
         </div>
       )}
       {!isArticleMenuOpen && (
-        <article className="">
+        <article className="u-relative">
           <TableOfContentsButton {...props} />
           <CustomScrollSpy {...props} />
           <span id="js-top" />
@@ -135,44 +136,46 @@ const LongFormArticleContainer = (props) => {
               </div>
             </div>
           )}
-          <LongformArticle {...props} />
-          {props.references ? (
-            <div className="c-longform-grid">
-              <div className="c-longform-grid__standard">
-                <ToggleBlock title="References" content={props.references} />
+          <PublicationDrawer {...props}>
+            <LongformArticle {...props} />
+            {props.references ? (
+              <div className="c-longform-grid">
+                <div className="c-longform-grid__standard">
+                  <ToggleBlock title="References" content={props.references} />
+                </div>
               </div>
-            </div>
-          ) : null}
-          {props.acknowledgements ? (
-            <div className="c-longform-grid">
-              <div className="c-longform-grid__standard">
-                <ToggleBlock title="Acknowledgements" content={props.acknowledgements} />
+            ) : null}
+            {props.acknowledgements ? (
+              <div className="c-longform-grid">
+                <div className="c-longform-grid__standard">
+                  <ToggleBlock title="Acknowledgements" content={props.acknowledgements} />
+                </div>
               </div>
-            </div>
-          ) : null}
-          {props.notes ? (
-            <div className="c-longform-grid">
-              <div className="c-longform-grid__standard">
-                <ToggleBlock title="Notes" content={props.notes} />
+            ) : null}
+            {props.notes ? (
+              <div className="c-longform-grid">
+                <div className="c-longform-grid__standard">
+                  <ToggleBlock title="Notes" content={props.notes} />
+                </div>
               </div>
-            </div>
-          ) : null}
-          {props.abstract ? (
-            <div className="c-longform-grid">
-              <div className="c-longform-grid__standard">
-                <ToggleBlock title="Abstract" content={props.abstract} />
+            ) : null}
+            {props.abstract ? (
+              <div className="c-longform-grid">
+                <div className="c-longform-grid__standard">
+                  <ToggleBlock title="Abstract" content={props.abstract} />
+                </div>
               </div>
-            </div>
-          ) : null}
-          {props._type === 'publication' && (
-            <div className="c-longform-grid">
-              <div className="c-longform-grid__standard">
-                <ToggleBlock title="Disclaimer" content="" />
+            ) : null}
+            {props._type === 'publication' && (
+              <div className="c-longform-grid">
+                <div className="c-longform-grid__standard">
+                  <ToggleBlock title="Disclaimer" content="" />
+                </div>
               </div>
-            </div>
-          )}
-          <span id="js-bottom" />
-          <Footer />
+            )}
+            <span id="js-bottom" />
+            <Footer />
+          </PublicationDrawer>
         </article>
       )}
     </Layout>
