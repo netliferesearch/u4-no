@@ -16,7 +16,7 @@
   }
 }
 .c-person__item--light {
-  @include mq($from: desktop) {
+  @include mq($from: tablet) {
     display: flex;
     flex-wrap: wrap;
     width: 33%;
