@@ -37,8 +37,18 @@ const PublicationArticleHeader = ({
       <p {...classes('subtitle')}>{subtitle}</p>
       <div {...classes('meta')}>
         <p>
-          {authors ? <div><AuthorList authors={authors} /><br /></div> : null}
-          {editors.length ? <div><EditorList editors={editors} /><br /></div> : null}
+          {authors ? (
+            <span>
+              <AuthorList authors={authors} />
+              <br />
+            </span>
+          ) : null}
+          {editors.length ? (
+            <span>
+              <EditorList editors={editors} />
+              <br />
+            </span>
+          ) : null}
           Bergen: U4 Anti-Corruption Resource Centre at Chr. Michelsen Institute (U4 Brief 2017:5)
         </p>
         <p>
@@ -48,7 +58,9 @@ const PublicationArticleHeader = ({
       <Link route="/3">
         <a {...classes('button')}>
           <div {...classes('button-text')}>Read our short version</div>
-          <div {...classes('button-icon')}><ArrowRight /></div>
+          <div {...classes('button-icon')}>
+            <ArrowRight />
+          </div>
         </a>
       </Link>
       <div {...classes('meta', null, 'c-article-header__download')}>
