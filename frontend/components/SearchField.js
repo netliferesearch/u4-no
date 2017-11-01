@@ -4,6 +4,7 @@ import Downshift from 'downshift';
 import BEMHelper from 'react-bem-helper';
 import autobind from 'react-autobind';
 import buildQuery from '../helpers/buildSearchQuery';
+import { Loader } from '../components';
 import { MagnifyingGlass } from '../components/icons';
 import { Router } from '../routes';
 
@@ -39,19 +40,25 @@ function debounce(fn, time) {
   return wrapper;
 }
 
-function handleSubmit(e) {
-  e.preventDefault();
-  Router.pushRoute(`search?search=${e.target.search.value}`);
-}
-
 class SearchField extends Component {
   constructor(props) {
     super(props);
     autobind(this);
-    this.state = { items: [] };
+    this.state = { items: [], loading: false };
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.setState({
+      loading: !this.state.loading,
+    });
+    Router.pushRoute(`search?search=${e.target.search.value}`);
   }
 
   handleItemClick(item) {
+    this.setState({
+      loading: !this.state.loading,
+    });
     Router.pushRoute(`/${item._type}s/${item.slug.current}`);
   }
 
@@ -69,8 +76,7 @@ class SearchField extends Component {
           clearSelection,
           inputValue,
         }) => (
-          <form onSubmit={handleSubmit} {...classes('', modifier, 'u-1/1')}>
-            {console.log(this.props)}
+          <form onSubmit={this.handleSubmit} {...classes('', modifier, 'u-1/1')}>
             <label
               {...getLabelProps({ htmlFor: 'search' })}
               {...classes('label', modifier, 'u-margin-bottom-small')}
@@ -125,7 +131,11 @@ class SearchField extends Component {
                 </button>
               )}
               <button tabIndex="1" {...classes('button')} type="submit" value="Search">
-                <MagnifyingGlass />
+                {this.state.loading ?
+                  <Loader />
+                  :
+                  <MagnifyingGlass />
+                }
               </button>
             </div>
             {isOpen && (
