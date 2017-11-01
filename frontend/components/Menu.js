@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '../routes';
+import { SearchField } from '../components';
 import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
 import sanityClient from '@sanity/client';
@@ -20,10 +21,12 @@ class Menu extends Component {
 
     this.state = {
       activeMenu: false,
+      activeSearchMenu: false,
       activeExpand: false,
       data: '',
     };
     this.triggerMenu = this.triggerMenu.bind(this);
+    this.triggerSearchMenu = this.triggerSearchMenu.bind(this);
     this.triggerExpand = this.triggerExpand.bind(this);
   }
 
@@ -52,6 +55,13 @@ class Menu extends Component {
     });
   }
 
+  triggerSearchMenu(e) {
+    e.preventDefault();
+    this.setState({
+      activeSearchMenu: !this.state.activeSearchMenu,
+    });
+  }
+
   triggerExpand(e) {
     e.preventDefault();
     this.setState({
@@ -73,7 +83,7 @@ class Menu extends Component {
             A-Z
           </li>
           <li {...classes('menu-item')}>
-            <button>
+            <button onClick={this.triggerSearchMenu}>
               Search
             </button>
           </li>
@@ -195,6 +205,18 @@ class Menu extends Component {
             </div>
           )
           : null}
+
+        {this.state.activeSearchMenu ?
+          (
+            <div>
+              <button onClick={this.triggerSearchMenu} {...menuClasses('backdrop')} />
+              <div {...menuClasses()}>
+                <SearchField modifier="small" />
+              </div>
+            </div>
+          )
+          : null }
+
       </div>
     );
   }

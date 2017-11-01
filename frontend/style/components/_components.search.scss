@@ -4,7 +4,6 @@
 }
 
 
-
 .c-search__label {
   width: 100%;
   display: inline-block;
@@ -124,4 +123,13 @@
 .c-search__items--highlighted {
   background-color: $brand-lightest;
   font-weight: bold;
+}
+
+
+
+.c-search__input--small {
+  @include inuit-font-size($font-size-small, $line-height-small );
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-normal, $line-height-normal );
+  }
 }

@@ -41,7 +41,6 @@ function debounce(fn, time) {
 
 function handleSubmit(e) {
   e.preventDefault();
-  console.log(e.target.search.value);
   Router.pushRoute(`search?search=${e.target.search.value}`);
 }
 
@@ -53,11 +52,11 @@ class SearchField extends Component {
   }
 
   handleItemClick(item) {
-    console.log(item);
     Router.pushRoute(`/${item._type}s/${item.slug.current}`);
   }
 
   render() {
+    const { modifier } = this.props;
     return (
       <Downshift id="autocomplete" onChange={this.props.onChange}>
         {({
@@ -70,17 +69,18 @@ class SearchField extends Component {
           clearSelection,
           inputValue,
         }) => (
-          <form onSubmit={handleSubmit} className="c-search u-1/1">
+          <form onSubmit={handleSubmit} {...classes('', modifier, 'u-1/1')}>
+            {console.log(this.props)}
             <label
               {...getLabelProps({ htmlFor: 'search' })}
-              {...classes('label', 'u-margin-bottom-small')}
+              {...classes('label', modifier, 'u-margin-bottom-small')}
             >
               Search for topics, publications, people and all the other stuff:
             </label>
             <div className="c-search__content">
               <input
                 placeholder="What are you looking for?"
-                {...classes('input')}
+                {...classes('input', modifier)}
                 {...getInputProps({
                   id: 'search',
                   tabIndex: '0',
