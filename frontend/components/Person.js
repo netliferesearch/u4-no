@@ -25,7 +25,7 @@ const Person = ({ person, linkLabel = 'Bio', light }) => (
           {person.position && `${person.position}`}
           {person.affiliations && (
             <span>
-              {', i '}
+              {person.position && person.affiliations && ', i '}
               {person.affiliations.map(({ _id = '', name = '' }) => <span key={_id}>{name} </span>)}
             </span>
           )}
