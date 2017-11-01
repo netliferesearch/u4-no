@@ -21,11 +21,12 @@ const LongFormArticleContainer = (props) => {
     toggleLoadingScreen,
     isArticleMenuOpen,
     showLoadingScreen,
-    lead = 'article had no lead',
+    lead = '',
     _type = '',
     longTitle = '',
     title = '',
     mainPoints = [],
+    isPublicationDrawerOpen,
     resources = [],
     BreadCrumbComponent = null,
   } = props;
@@ -60,7 +61,8 @@ const LongFormArticleContainer = (props) => {
       )}
       {!isArticleMenuOpen && (
         <article className="u-relative">
-          <TableOfContentsButton {...props} />
+          {_type === 'publication' &&
+            !isPublicationDrawerOpen && <TableOfContentsButton {...props} />}
           <CustomScrollSpy {...props} />
           <span id="js-top" />
           <div id="js-scroll-trigger">
@@ -122,9 +124,12 @@ const LongFormArticleContainer = (props) => {
                   </div>
                 )}
               </div>
-              <div className="c-longform-grid__sidebar-right">
-                <TableOfContentsSidebar {...props} />
-              </div>
+              {_type === 'publication' &&
+                !isPublicationDrawerOpen && (
+                  <div className="c-longform-grid__sidebar-right">
+                    <TableOfContentsSidebar {...props} />
+                  </div>
+                )}
             </div>
           )}
           {_type !== 'publication' && (

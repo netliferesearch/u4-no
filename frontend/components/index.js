@@ -27,6 +27,7 @@ export { default as Team } from './Team';
 export { default as ToggleBlock } from './ToggleBlock';
 export { default as PublicationDrawer } from './PublicationDrawer';
 export { default as WorkshopMosaic } from './WorkshopMosaic';
+export { default as RecommendedResources } from './RecommendedResources';
 export {
   CustomScrollSpy,
   TableOfContentsButton,
