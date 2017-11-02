@@ -29,7 +29,10 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
 }
 .c-top-bar__menu--active {
   margin-top: $spacing;
-  @include mq($from: desktop) {
+  @include mq($from: tablet) {
+    position: absolute;
+    top: $spacing;
+    right: ($spacing-huge)-20px;
     margin-left: $spacing-huge+24px;
   }
 }

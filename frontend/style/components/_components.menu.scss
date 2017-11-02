@@ -16,7 +16,7 @@
   @include mq($from: tablet) {
     width: 40%;
     width: 40vw;
-    padding: $spacing $spacing-large;
+    padding: $spacing-large $spacing-large;
   }
   @include mq($from: wide) {
     padding: $spacing-large $spacing-huge;
