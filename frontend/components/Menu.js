@@ -82,7 +82,6 @@ class Menu extends Component {
           <li {...classes('menu-item')}>
             <button onClick={this.triggerMenu}>Menu</button>
           </li>
-          <li {...classes('menu-item')}>A-Z</li>
           <li {...classes('menu-item')}>
             <button onClick={this.triggerSearchMenu}>Search</button>
           </li>
@@ -96,7 +95,6 @@ class Menu extends Component {
                 <li {...classes('menu-item', this.state.activeItem == 1 && 'active')}>
                   <button onClick={this.triggerMenu}>Close</button>
                 </li>
-                <li {...classes('menu-item')}>A-Z</li>
                 <li {...classes('menu-item', this.state.activeItem == 3 && 'active')}>
                   <button onClick={this.triggerSearchMenu}>Search</button>
                 </li>
@@ -190,7 +188,6 @@ class Menu extends Component {
                 <li {...classes('menu-item', this.state.activeItem == 1 && 'active')}>
                   <button onClick={this.triggerMenu}>Menu</button>
                 </li>
-                <li {...classes('menu-item')}>A-Z</li>
                 <li {...classes('menu-item', this.state.activeItem == 3 && 'active')}>
                   <button onClick={this.triggerSearchMenu}>Close</button>
                 </li>

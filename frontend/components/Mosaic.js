@@ -6,7 +6,7 @@ const Mosaic = ({ resources = [] }) => (
   <div className="c-mosaic">
     {resources.length ? (
       <div
-        className="c-mosaic_item"
+        className={`c-mosaic_item ${Object.keys(resources).length == 1 && 'c-mosaic_item--single'}`}
         style={{
           backgroundImage: `url(${resources[0].imageUrl})`,
         }}
