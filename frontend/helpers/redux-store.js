@@ -52,6 +52,8 @@ const defaultState = {
   readingProgressId: '',
   isArticleMenuOpen: false,
   isPublicationDrawerOpen: true,
+  // for the times when we need to remember where we last were on the page.
+  storedScrollPosition: false,
   showLoadingScreen: false,
   searchSorting: 'relevance',
   searchFilters: [],
@@ -66,6 +68,7 @@ export const actionTypes = {
   SEARCH_ADD_FILTER: 'SEARCH_ADD_FILTER',
   SEARCH_REMOVE_FILTER: 'SEARCH_REMOVE_FILTER',
   SEARCH_UPDATE_SORT: 'SEARCH_UPDATE_SORT',
+  SCROLL_POSITION_SAVE: 'SCROLL_POSITION_SAVE',
 };
 
 // REDUCERS
@@ -102,6 +105,8 @@ export const reducer = (state = defaultState, action) => {
       }
       replaceWindowHash(action.readingProgressId);
       return Object.assign({}, state, { readingProgressId: action.readingProgressId });
+    case actionTypes.SCROLL_POSITION_SAVE:
+      return Object.assign({}, state, { storedScrollPosition: action.scrollPosition });
     default:
       return state;
   }
@@ -131,6 +136,9 @@ export const addSearchFilter = searchFilter => dispatch =>
 
 export const removeSearchFilter = searchFilter => dispatch =>
   dispatch({ type: actionTypes.SEARCH_REMOVE_FILTER, searchFilter });
+
+export const saveScrollPosition = scrollPosition => dispatch =>
+  dispatch({ type: actionTypes.SCROLL_POSITION_SAVE, scrollPosition });
 
 export const initStore = (initialState = defaultState, options) => {
   const { query = {} } = options;
