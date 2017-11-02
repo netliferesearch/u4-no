@@ -4,6 +4,7 @@ import { SearchField } from '../components';
 import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
 import sanityClient from '@sanity/client';
+import PropTypes from 'prop-types';
 
 const classes = BEMHelper({
   name: 'top-bar',
@@ -76,15 +77,18 @@ class Menu extends Component {
 
   render() {
     const topics = this.state.data;
+    const { noSearch } = this.props;
     return (
       <div>
         <ul {...classes('menu')}>
           <li {...classes('menu-item')}>
             <button onClick={this.triggerMenu}>Menu</button>
           </li>
-          <li {...classes('menu-item')}>
-            <button onClick={this.triggerSearchMenu}>Search</button>
-          </li>
+          {!noSearch &&
+            <li {...classes('menu-item')}>
+              <button onClick={this.triggerSearchMenu}>Search</button>
+            </li>
+          }
         </ul>
         {this.state.activeMenu ? (
           <div>
@@ -95,9 +99,11 @@ class Menu extends Component {
                 <li {...classes('menu-item', this.state.activeItem == 1 && 'active')}>
                   <button onClick={this.triggerMenu}>Close</button>
                 </li>
-                <li {...classes('menu-item', this.state.activeItem == 3 && 'active')}>
-                  <button onClick={this.triggerSearchMenu}>Search</button>
-                </li>
+                {!noSearch &&
+                  <li {...classes('menu-item', this.state.activeItem == 3 && 'active')}>
+                    <button onClick={this.triggerSearchMenu}>Search</button>
+                  </li>
+                }
               </ul>
 
               {topics && (
@@ -201,5 +207,9 @@ class Menu extends Component {
     );
   }
 }
+
+Menu.PropTypes = {
+  noSearch: false,
+};
 
 export default Menu;

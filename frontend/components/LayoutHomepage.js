@@ -7,6 +7,7 @@ export default ({
   showTopTab = true,
   title,
   description,
+  noSearch = false,
   children = [],
 }) => (
   <div
@@ -20,7 +21,7 @@ export default ({
     {showTopTab && (
       <div className="c-top-bar">
         <div />
-        <Menu />
+        <Menu noSearch />
       </div>
     )}
     {children}
