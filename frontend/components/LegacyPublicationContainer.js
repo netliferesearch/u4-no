@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Document } from 'react-pdf/build/entry.noworker';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import {
   Footer,
@@ -14,6 +13,7 @@ import {
   CustomScrollSpy,
   ToggleBlock,
   PublicationDrawer,
+  PdfViewer,
 } from './';
 
 const LegacyPublicationContainer = (props) => {
@@ -63,13 +63,11 @@ const LegacyPublicationContainer = (props) => {
           </div>
         </div>
         {legacypdf.asset && (
-          <div className="c-longform-grid__larger">
-            <Document
-              file={{
-                url: legacypdf.asset.url,
-              }}
-            />
-          </div>
+          <PdfViewer
+            file={{
+              url: legacypdf.asset.url,
+            }}
+          />
         )}
       </article>
     </Layout>
