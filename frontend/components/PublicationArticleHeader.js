@@ -19,13 +19,15 @@ const PublicationArticleHeader = ({
   publicationType = {},
   authors = [],
   editors = [],
+  pdfFile = {},
+  legacypdf = {},
 }) => (
   <header {...classes('', null, className)}>
     {/* Wrap in standard grid width until we know better */}
     <div {...classes('meta')}>
       {publicationType.title && `${publicationType.title} | `}
-      {topics.map(({ title = '', _id = '' }) => (
-        <a href {...classes('link-item')} key={_id}>
+      {topics.map(({ title = '', _id = '', slug = '' }) => (
+        <a href={`/topics/${slug.current}`} {...classes('link-item')} key={_id}>
           {title}
         </a>
       ))}
@@ -63,14 +65,22 @@ const PublicationArticleHeader = ({
           </div>
         </a>
       </Link>
-      <div {...classes('meta', null, 'c-article-header__download')}>
-        <Link route="/2">
-          <a {...classes('download-text')}>
+      {pdfFile.asset && (
+        <div {...classes('meta', null, 'c-article-header__download')}>
+          <a href={pdfFile.asset.url} {...classes('download-text')}>
             <span>Download as PDF</span>
+            <Download {...classes('download-icon')} />
           </a>
-        </Link>
-        <Download {...classes('download-icon')} />
-      </div>
+        </div>
+      )}
+      {legacypdf.asset && (
+        <div {...classes('meta', null, 'c-article-header__download')}>
+          <a href={legacypdf.asset.url} {...classes('download-text')}>
+            <span>Download PDF</span>
+            <Download {...classes('download-icon')} />
+          </a>
+        </div>
+      )}
     </div>
   </header>
 );

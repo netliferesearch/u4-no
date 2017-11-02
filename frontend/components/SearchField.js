@@ -119,8 +119,19 @@ class SearchField extends Component {
                   },
                   onKeyDown: (e) => {
                     // if enter pressed we reload search page with search value
-                    if (e.keyCode === 13) {
+                    if (e.keyCode !== 13) {
+                      // if it's not enter do nothing
+                    } else if (typeof highlightedIndex !== 'number') {
+                      // if highlightedIndex is not a number it tells us that
+                      // the user has clicked enter in the search field but not
+                      // selected something from the dropdown. So, we just try
+                      // make a search for it
                       Router.pushRoute(`search?search=${e.target.value}`);
+                    } else if (typeof highlightedIndex === 'number') {
+                      // user has selected some item, we find it from state and
+                      // visit it directly
+                      const item = this.state.items[highlightedIndex];
+                      this.handleItemClick(item);
                     }
                   },
                 })}
@@ -131,11 +142,7 @@ class SearchField extends Component {
                 </button>
               )}
               <button tabIndex="1" {...classes('button')} type="submit" value="Search">
-                {this.state.loading ?
-                  <Loader />
-                  :
-                  <MagnifyingGlass />
-                }
+                {this.state.loading ? <Loader /> : <MagnifyingGlass />}
               </button>
             </div>
             {isOpen && (
