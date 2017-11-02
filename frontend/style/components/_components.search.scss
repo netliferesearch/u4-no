@@ -24,7 +24,7 @@
 }
 
 .c-search__clean-wrapper {
-  padding-top: $spacing-large;
+  padding-top: $spacing;
   padding-bottom: $spacing;
   @include mq($from: desktop) {
     padding-bottom: $spacing-large;

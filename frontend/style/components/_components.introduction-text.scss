@@ -1,9 +1,9 @@
 .c-introduction-text{
- color: $brand-dark;
+ color: $brand-main;
  font-family: $font-sans;
  text-align: center;
  @include inuit-font-size($font-size-normal, $line-height-normal );
  @include mq($from: tablet) {
-   @include inuit-font-size($font-size-normal, $line-height-normal);
+   @include inuit-font-size($font-size-normal, $line-height-large);
  }
 }
