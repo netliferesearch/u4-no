@@ -23,7 +23,7 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
   margin: $spacing 0 0 0;
   padding: 0;
   justify-content: center;
-  @include mq($from: desktop) {
+  @include mq($from: tablet) {
     margin: 0;
   }
 }
