@@ -1,10 +1,11 @@
 .c-logo {
-  max-width: 100%;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: $spacing;
   @include mq($from: tablet) {
-    margin-bottom: $spacing-huge;
+    margin-bottom: $spacing-large;
+    max-width: 250px;
   }
 }
 .c-logo--center {
