@@ -14,11 +14,13 @@ const PublicationArticleHeader = ({
   title = '',
   subtitle = '',
   lead = '',
+  slug = {},
   topics = [],
   className = '',
   publicationType = {},
   authors = [],
   editors = [],
+  shortVersion = [],
   pdfFile = {},
   legacypdf = {},
 }) => (
@@ -57,14 +59,16 @@ const PublicationArticleHeader = ({
           <a href="#1">Also available in Spanish</a>
         </p>
       </div>
-      <Link route="/3">
-        <a {...classes('button')}>
-          <div {...classes('button-text')}>Read our short version</div>
-          <div {...classes('button-icon')}>
-            <ArrowRight />
-          </div>
-        </a>
-      </Link>
+      {shortVersion.length > 0 && (
+        <Link route="publication.shortVersion" params={{ slug: slug.current }}>
+          <a {...classes('button')}>
+            <div {...classes('button-text')}>Read our short version</div>
+            <div {...classes('button-icon')}>
+              <ArrowRight />
+            </div>
+          </a>
+        </Link>
+      )}
       {pdfFile.asset && (
         <div {...classes('meta', null, 'c-article-header__download')}>
           <a href={pdfFile.asset.url} {...classes('download-text')}>

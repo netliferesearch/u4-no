@@ -2,6 +2,7 @@ const routes = (module.exports = require('next-routes')());
 
 routes
   .add('main.index', '/')
+  .add('publication.shortVersion', '/publications/:slug/shortversion')
   .add('publication.entry', '/publications/:slug')
   .add('publication.index', '/publications')
   .add('topic.article', '/topics/:slug/:topicPart')
@@ -17,4 +18,3 @@ routes
   .add('workshops.entry', '/workshops/:slug')
   .add('service.entry', '/services/:slug')
   .add('general.article', '/:slug');
-
