@@ -33,6 +33,20 @@ export default {
       ],
     },
     {
+      name: 'size',
+      type: 'string',
+      options: {
+        list: [
+          {
+            text: 'full', value: 'full',
+          },
+          {
+            text: 'half', value: 'half',
+          },
+        ],
+      },
+    },
+    {
       name: 'credit',
       title: 'Credit',
       description: 'Photographer/publisher’s name.',
