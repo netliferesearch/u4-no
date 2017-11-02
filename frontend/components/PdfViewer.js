@@ -27,7 +27,7 @@ export default class PdfViewer extends Component {
   decrementPageNumber() {
     if (!this.state.numPages) {
       // do nothing
-    } else if (this.state.pageNumber > 0) {
+    } else if (this.state.pageNumber > 1) {
       this.setState({ pageNumber: this.state.pageNumber - 1 });
     }
   }
@@ -37,25 +37,27 @@ export default class PdfViewer extends Component {
     const { file } = this.props;
 
     return (
-      <div>
-        <div className="o-layout">
-          <div className="o-layout__item u-padding u-2/12">
-            <button onClick={this.decrementPageNumber}>Previous</button>
+      <div className="c-pdf-viewer">
+        <div className="c-pdf-viewer__controls">
+          <div className="u-padding">
+            <button className="c-btn c-btn--primary" onClick={this.decrementPageNumber}>
+              <span className="c-btn__body">Previous</span>
+            </button>
           </div>
-          <div className="o-layout__item u-padding u-2/12">
-            <button onClick={this.incrementPageNumber}>Next</button>
+          <div className="u-padding">
+            Page {pageNumber} of {numPages}
           </div>
-          <Document
-            className="o-layout__item u-padding u-1/1"
-            file={file}
-            onLoadSuccess={this.onDocumentLoad}
-          >
-            <Page pageNumber={pageNumber} />
+          <div className="u-padding">
+            <button className="c-btn c-btn--primary" onClick={this.incrementPageNumber}>
+              <span className="c-btn__body">Next</span>
+            </button>
+          </div>
+        </div>
+        <div className="c-pdf-viewer__pdf">
+          <Document file={file} onLoadSuccess={this.onDocumentLoad}>
+            <Page scale="1.5" pageNumber={pageNumber} />
           </Document>
         </div>
-        <p>
-          Page {pageNumber} of {numPages}
-        </p>
       </div>
     );
   }

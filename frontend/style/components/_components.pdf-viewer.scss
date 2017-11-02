@@ -1,0 +1,16 @@
+.c-pdf-viewer {
+}
+
+.c-pdf-viewer__pdf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.c-pdf-viewer__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: 0 auto;
+}
