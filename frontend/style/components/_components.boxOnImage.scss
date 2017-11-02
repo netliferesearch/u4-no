@@ -53,8 +53,9 @@
 .c-boxOnImage__figure {
   grid-column: 1 / 9;
   grid-row: 1 / 4;
-  margin: 0 $spacing-large 0 0;
+  margin: 0;
   @include mq($from: tablet) {
+    margin: 0 $spacing-large 0 0;
     height: 560px;
     & > img {
       width: 100%;

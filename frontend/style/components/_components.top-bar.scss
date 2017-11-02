@@ -18,9 +18,14 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
 
 .c-top-bar__menu {
   list-style: none;
-  margin: 0;
   display: flex;
   font-family: $font-sans;
+  margin: $spacing 0 0 0;
+  padding: 0;
+  justify-content: center;
+  @include mq($from: desktop) {
+    margin: 0;
+  }
 }
 .c-top-bar__menu--active {
   margin-top: $spacing;
