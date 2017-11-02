@@ -86,8 +86,8 @@ export default class PdfViewer extends Component {
               <span className="c-btn__body">Previous</span>
             </button>
           </div>
-          <div className="u-padding">
-            Page {pageNumber} of {numPages}
+          <div className="u-padding u-tc">
+            {pageNumber} of {numPages}
           </div>
           <div className="u-padding">
             <button className="c-btn c-btn--primary" onClick={this.incrementPageNumber}>
@@ -95,6 +95,9 @@ export default class PdfViewer extends Component {
             </button>
           </div>
         </div>
+        <p className="u-tc">
+          Tip: You can use the left/right arrows on your keyboard to navigate the pdf.
+        </p>
         <div className="c-pdf-viewer__pdf">
           <Document file={file} onLoadSuccess={this.onDocumentLoad}>
             <Page width={pdfWidth} pageNumber={pageNumber} />
