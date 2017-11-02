@@ -1,0 +1,21 @@
+{
+  "name": "sanity-plugin-funkyworkflow",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Custom Plugin to view progress of documents with a workflow object",
+  "main": "src/FunkyWorkFlow.js",
+  "author": "Knut Melvær <knut@netliferesearch.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sanity",
+    "sanity-plugin"
+  ],
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-icon-base": "^2.1.1"
+  },
+  "devDependencies": {}
+}
