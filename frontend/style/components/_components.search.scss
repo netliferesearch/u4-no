@@ -132,6 +132,7 @@
 
 .c-search__label--small {
   color: $white;
+  margin-top: $spacing-large;
 }
 .c-search__input--small {
   @include inuit-font-size($font-size-small, $line-height-small );

@@ -53,6 +53,7 @@ class Menu extends Component {
     e.preventDefault();
     this.setState({
       activeMenu: !this.state.activeMenu,
+      activeSearchMenu: false,
       activeItem: 1,
     });
   }
