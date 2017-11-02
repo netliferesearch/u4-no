@@ -73,6 +73,17 @@
     display: inline-block;
   }
 }
+.c-person__item-body--noimg {
+  background: transparent;
+  border: 4px solid $brand-medium;
+  color: $brand-dark;
+  display: block;
+  padding-bottom: $spacing-large;
+  a {
+    color: $brand-dark;
+    display: inline-block;
+  }
+}
 .c-person__item-figure {
   position: relative;
   margin: 0;
