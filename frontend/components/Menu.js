@@ -94,7 +94,7 @@ class Menu extends Component {
 
               <ul {...classes('menu', 'active')}>
                 <li {...classes('menu-item', this.state.activeItem == 1 && 'active')}>
-                  <button onClick={this.triggerMenu}>Menu</button>
+                  <button onClick={this.triggerMenu}>Close</button>
                 </li>
                 <li {...classes('menu-item')}>A-Z</li>
                 <li {...classes('menu-item', this.state.activeItem == 3 && 'active')}>
@@ -192,7 +192,7 @@ class Menu extends Component {
                 </li>
                 <li {...classes('menu-item')}>A-Z</li>
                 <li {...classes('menu-item', this.state.activeItem == 3 && 'active')}>
-                  <button onClick={this.triggerSearchMenu}>Search</button>
+                  <button onClick={this.triggerSearchMenu}>Close</button>
                 </li>
               </ul>
 
