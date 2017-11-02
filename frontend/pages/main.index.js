@@ -4,13 +4,13 @@ import DataLoader from '../helpers/data-loader';
 import { Link } from '../routes';
 import { LayoutHomepage, SearchField } from '../components';
 import { Footer } from '../components';
-import { PartnerAgencies } from '../components';
+import { PartnerAgencies, FrontpageFeature } from '../components';
 import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass, ArrowRight } from '../components/icons';
 
 
-const Frontpage = ({ sections = {} }) => (
-  <LayoutHomepage>
+const Frontpage = ({ sections = {}, topics = {} }) => (
+  <LayoutHomepage noSearch>
     <div className="o-wrapper">
       <section className="o-wrapper-inner o-wrapper--padded ">
         <div className="o-layout">
@@ -29,6 +29,9 @@ const Frontpage = ({ sections = {} }) => (
           <BlockContent blocks={sections.sections} />
         </div>
       </section>
+
+      <FrontpageFeature topics={topics} />
+
       <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
         <div className="c-introduction-text">
           <h2>
@@ -50,6 +53,7 @@ export default DataLoader(Frontpage, {
   queryFunc: () => ({
     sanityQuery: `{
       "sections": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0],
+      "topics": *[_type == "topics"][0..5]{_id, title, slug}
     }`,
   }),
   materializeDepth: 2,

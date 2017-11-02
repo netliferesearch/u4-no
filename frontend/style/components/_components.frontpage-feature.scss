@@ -1,0 +1,22 @@
+.c-frontpage-feature {
+  background: $brand-main;
+  color: $white;
+  padding: $spacing-huge $spacing-large;
+  font-family: $font-sans;
+  margin-bottom: $spacing-huge;
+}
+.c-frontpage-feature__heading {
+    @include inuit-font-size($font-size-tiny, $line-height-tiny);
+    margin: 0;
+}
+.c-frontpage-feature__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.c-frontpage-feature__list-item {
+  @include inuit-font-size($font-size-large, $line-height-large);
+}
+.c-frontpage-feature__link, .c-frontpage-feature__link:visited {
+  color: $white;
+}
