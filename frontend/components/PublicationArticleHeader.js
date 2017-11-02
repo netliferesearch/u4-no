@@ -27,9 +27,11 @@ const PublicationArticleHeader = ({
     <div {...classes('meta')}>
       {publicationType.title && `${publicationType.title} | `}
       {topics.map(({ title = '', _id = '', slug = '' }) => (
-        <a href={`/topics/${slug.current}`} {...classes('link-item')} key={_id}>
-          {title}
-        </a>
+        <Link route="topic.entry" params={{ slug: slug.current }}>
+          <a {...classes('link-item')} key={_id}>
+            {title}
+          </a>
+        </Link>
       ))}
     </div>
     <div>
