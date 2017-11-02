@@ -133,7 +133,7 @@ export const removeSearchFilter = searchFilter => dispatch =>
   dispatch({ type: actionTypes.SEARCH_REMOVE_FILTER, searchFilter });
 
 export const initStore = (initialState = defaultState, options) => {
-  const { query = {}, req = {} } = options;
+  const { query = {} } = options;
   const { filters = '', sort = '' } = query;
   let state = initialState;
   // if there are active filters in the url query params we need to split
@@ -150,11 +150,5 @@ export const initStore = (initialState = defaultState, options) => {
       searchSorting: sort,
     });
   }
-  // //
-  // if (/\/^publications/.test(req.path)) {
-  //   state = Object.assign(initialState, {
-  //     isPublicationDrawerOpen: true,
-  //   });
-  // }
   return createStore(reducer, state, composeWithDevTools(applyMiddleware(thunkMiddleware)));
 };
