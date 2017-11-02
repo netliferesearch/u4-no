@@ -17,7 +17,8 @@
     "@sanity/storybook",
     "url-metadata-input",
     "@sanity/rich-date-input",
-    "@sanity/vision"
+    "@sanity/vision",
+    "./plugins/FunkyWorkflow"
   ],
   "parts": [
     {
