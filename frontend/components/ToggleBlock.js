@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
+import autobind from 'react-autobind';
+
+
 import { Link } from '../routes';
 import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import { DownArrowButton } from '../components/buttons';
+import serializers from './serializers'
 
 const classes = BEMHelper({
   name: 'toggle-block',
   prefix: 'c-',
 });
 
+
+
 class ToggleBlock extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      active: false,
+      active: props.active || false,
       activeClass: '',
     };
-    this.toggle = this.toggle.bind(this);
+    autobind(this)
   }
 
   toggle(e) {
@@ -43,7 +49,7 @@ class ToggleBlock extends Component {
           {this.state.active ? (
             <div {...classes('content')}>
               {typeof content === 'string' && <p>{content}</p>}
-              {typeof content !== 'string' && <BlockContent blocks={content} />}
+              {typeof content !== 'string' && <BlockContent blocks={content} serializers={serializers} />}
             </div>
           ) : null}
         </div>
