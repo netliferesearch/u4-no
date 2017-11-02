@@ -1,9 +1,8 @@
 .c-person__item {
-  margin: auto auto $spacing;
   @include mq($from: desktop) {
     display: flex;
     flex-wrap: wrap;
-    width: 49%;
+    width: 33%;
   }
 }
 .c-person__item--small {
@@ -11,7 +10,7 @@
   @include mq($from: desktop) {
     display: flex;
     flex-wrap: wrap;
-    width: 24%;
+    width: 33%;
     min-height: 280px;
   }
 }
@@ -40,8 +39,7 @@
   justify-content: space-between;
 
   @include mq($from: desktop) {
-    margin: 24px 0 -24px;
-    width: 50%;
+    width: 100%;
   }
 
   a {
@@ -58,6 +56,7 @@
   background: transparent;
   color: $brand-dark;
   font-weight: 400;
+  margin: $spacing-small;
   justify-content:flex-start;
   background: $brand-lightest;
   padding: $spacing-small;
@@ -75,10 +74,12 @@
 }
 .c-person__item-body--noimg {
   background: transparent;
-  border: 4px solid $brand-medium;
+  margin: $spacing-small;
+  border: 4px solid rgba($brand-medium, .1);
   color: $brand-dark;
   display: block;
   padding-bottom: $spacing-large;
+  width: 100%;
   a {
     color: $brand-dark;
     display: inline-block;

@@ -4,6 +4,7 @@
   @include mq($from: tablet) {
     display: flex;
     flex-wrap:wrap;
+    justify-content: center;
   }
 }
 .c-team__title {
