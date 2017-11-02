@@ -1,32 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { toggleArticleMenu } from '../../helpers/redux-store';
 
-export class TableOfContentsButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { menuOpen: false };
-  }
-
-  render() {
-    const { toggleArticleMenu = () => {} } = this.props;
-    return (
-      <button
-        className="c-article-nav-fullscreen-button"
-        onClick={() => {
-          toggleArticleMenu();
-        }}
-      >
-        { this.props.isArticleMenuOpen ?
-          <img alt="Close icon" src="/static/close.svg" />
-          :
-          <img alt="Table of contents icon" src="/static/table-of-contents-icon.svg" />
-        }
-      </button>
-    );
-  }
-}
+const TableOfContentsButton = (props) => {
+  const { toggleArticleMenu = () => {} } = props;
+  return (
+    <button
+      className="c-article-nav-fullscreen-button"
+      onClick={() => {
+        toggleArticleMenu();
+      }}
+    >
+      {props.isArticleMenuOpen ? (
+        <img alt="Close icon" src="/static/close.svg" />
+      ) : (
+        <img alt="Table of contents icon" src="/static/table-of-contents-icon.svg" />
+      )}
+    </button>
+  );
+};
 
 const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({
