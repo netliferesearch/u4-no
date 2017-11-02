@@ -34,15 +34,13 @@ export default {
     },
     {
       name: 'size',
+      title: 'Image size',
+      description: 'Set size for image in frontend that supports it',
       type: 'string',
       options: {
         list: [
-          {
-            text: 'full', value: 'full',
-          },
-          {
-            text: 'half', value: 'half',
-          },
+          { title: 'full', value: 'full' },
+          { title: 'half', value: 'half' },
         ],
       },
     },
