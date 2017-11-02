@@ -21,7 +21,10 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
   margin: 0;
   display: flex;
   font-family: $font-sans;
-
+}
+.c-top-bar__menu--active {
+  margin-top: $spacing;
+  margin-left: $spacing-huge+24px;
 }
 .c-top-bar__menu-item {
   margin-right: $spacing;
@@ -40,4 +43,11 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
     outline: inherit;
     cursor: pointer;
   }
+}
+
+.c-top-bar__menu-item--active {
+  background-color: $white;
+  color: $brand-dark;
+  padding: 0 $spacing-tiny;
+  border-radius: 3px;
 }

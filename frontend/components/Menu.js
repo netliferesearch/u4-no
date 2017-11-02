@@ -24,6 +24,7 @@ class Menu extends Component {
       activeSearchMenu: false,
       activeExpand: false,
       data: '',
+      activeItem: 0,
     };
     this.triggerMenu = this.triggerMenu.bind(this);
     this.triggerSearchMenu = this.triggerSearchMenu.bind(this);
@@ -52,6 +53,7 @@ class Menu extends Component {
     e.preventDefault();
     this.setState({
       activeMenu: !this.state.activeMenu,
+      activeItem: 1,
     });
   }
 
@@ -59,6 +61,8 @@ class Menu extends Component {
     e.preventDefault();
     this.setState({
       activeSearchMenu: !this.state.activeSearchMenu,
+      activeMenu: false,
+      activeItem: 3,
     });
   }
 
@@ -86,6 +90,17 @@ class Menu extends Component {
           <div>
             <button onClick={this.triggerMenu} {...menuClasses('backdrop')} />
             <div {...menuClasses()}>
+
+              <ul {...classes('menu', 'active')}>
+                <li {...classes('menu-item', this.state.activeItem == 1 && 'active')}>
+                  <button onClick={this.triggerMenu}>Menu</button>
+                </li>
+                <li {...classes('menu-item')}>A-Z</li>
+                <li {...classes('menu-item', this.state.activeItem == 3 && 'active')}>
+                  <button onClick={this.triggerSearchMenu}>Search</button>
+                </li>
+              </ul>
+
               {topics && (
                 <div>
                   <h4 {...menuClasses('heading')}>
@@ -169,6 +184,17 @@ class Menu extends Component {
           <div>
             <button onClick={this.triggerSearchMenu} {...menuClasses('backdrop')} />
             <div {...menuClasses()}>
+
+              <ul {...classes('menu', 'active')}>
+                <li {...classes('menu-item', this.state.activeItem == 1 && 'active')}>
+                  <button onClick={this.triggerMenu}>Menu</button>
+                </li>
+                <li {...classes('menu-item')}>A-Z</li>
+                <li {...classes('menu-item', this.state.activeItem == 3 && 'active')}>
+                  <button onClick={this.triggerSearchMenu}>Search</button>
+                </li>
+              </ul>
+
               <SearchField modifier="small" />
             </div>
           </div>
