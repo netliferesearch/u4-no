@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
-import { Document, Page } from 'react-pdf';
+import { Document, Page } from 'react-pdf/build/entry.noworker';
 import throttle from 'lodash/throttle';
 
 /**
