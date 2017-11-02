@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Document } from 'react-pdf';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import {
   Footer,
@@ -29,6 +30,7 @@ const LegacyPublicationContainer = (props) => {
     isPublicationDrawerOpen,
     resources = [],
     BreadCrumbComponent = null,
+    legacypdf = {},
   } = props;
   return (
     <Layout showLoadingScreen={showLoadingScreen} showTopTab={!isArticleMenuOpen}>
@@ -141,7 +143,7 @@ const LegacyPublicationContainer = (props) => {
               </div>
             </div>
           )}
-          <LongformArticle {...props} />
+          {legacypdf.asset && <Document file={{ url: legacypdf.asset.url }} />}
         </article>
       )}
     </Layout>
