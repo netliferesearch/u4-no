@@ -1,0 +1,98 @@
+// The button that activates the footnote. By default, this will appear as a
+// flat button that has an ellipse contained inside of it.
+//
+// @state .is-active - The associated popover has been activated and is visible.
+
+.littlefoot-footnote__button {
+  -webkit-font-smoothing: antialiased;
+  backface-visibility: hidden;
+  background-color: rgba($button-color, $button-standard-opacity);
+  border-radius: $button-border-radius;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 0;
+  margin: 0 $button-right-margin 0 $button-left-margin;
+  padding: $button-per-side-padding;
+  position: relative;
+  text-decoration: none;
+  top: $button-vertical-adjust;
+  transition-duration: $popover-transition-default-duration;
+  transition-property: $button-transition-properties;
+  vertical-align: middle;
+  z-index: 5;
+
+  &:hover,
+  &:focus {
+    background-color: rgba($button-hovered-color, $button-hovered-opacity);
+  }
+
+  &:active {
+    background-color: rgba($button-activating-color, $button-activating-opacity);
+  }
+
+  &.is-active {
+    background-color: rgba($button-active-color, $button-active-opacity);
+    transition-delay: $button-active-style-delay;
+  }
+
+  // Clearfix
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+.littlefoot-footnote__button__ellipsis {
+  svg {
+    display: inline-block;
+    float: left;
+    height: $button-inner-circle-size;
+  }
+}
+
+.littlefoot-footnote__button__number {
+  border-radius: $button-height / 2;
+  height: $button-height;
+  position: relative;
+  width: 1.5em;
+
+  &::after {
+    color: rgba($button-color, .5);
+    content: attr(data-footnote-number);
+    display: block;
+    font-size: $button-height * .6;
+    font-weight: bold;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: color $popover-transition-default-duration $popover-transition-default-timing-function;
+  }
+
+  &:hover,
+  &.is-active {
+    &::after {
+      color: white;
+    }
+  }
+
+  svg {
+    display: none;
+  }
+}
+
+// The container for the button and popover. This is required so that the popover
+// is guaranteed to have a relatively-positioned container, and to help with the
+// positioning calculation.
+
+.littlefoot-footnote__container {
+  display: inline-block;
+  position: relative;
+  text-indent: 0;
+}
+
+@include print-styles;

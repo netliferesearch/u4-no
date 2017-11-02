@@ -26,8 +26,8 @@ const PublicationArticleHeader = ({
     {/* Wrap in standard grid width until we know better */}
     <div {...classes('meta')}>
       {publicationType.title && `${publicationType.title} | `}
-      {topics.map(({ title = '', _id = '' }) => (
-        <a href {...classes('link-item')} key={_id}>
+      {topics.map(({ title = '', _id = '', slug = '' }) => (
+        <a href={`/topics/${slug.current}`} {...classes('link-item')} key={_id}>
           {title}
         </a>
       ))}

@@ -146,7 +146,11 @@ const LongFormArticleContainer = (props) => {
             {props.references ? (
               <div className="c-longform-grid">
                 <div className="c-longform-grid__standard">
-                  <ToggleBlock title="References" content={props.references} />
+                  <div className="footnotes">
+                    <ol>
+                        <ToggleBlock title="References" active content={props.references} />
+                    </ol>
+                  </div>
                 </div>
               </div>
             ) : null}
