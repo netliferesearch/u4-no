@@ -13,6 +13,18 @@ export default {
       type: 'string'
     },
     {
+      name: 'display',
+      title: 'Display as',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'table', value: 'table' },
+          { title: 'Line chart', value: 'line' },
+          { title: 'Bar chart', value: 'bar' },
+        ],
+      },
+    },
+    {
       name: 'rows',
       type: 'array',
       of: [
