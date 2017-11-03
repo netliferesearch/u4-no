@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from '../routes';
 import { DownArrowButton } from '../components/buttons';
+import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper({
@@ -23,6 +24,9 @@ const FrontpageFeature = ({ topics = {} }) => (
           </li>),
         )}
       </ul>
+      <button {...classes('btn')}>
+        <ArrowRight {...classes('arrowdown')} /> View all topics
+      </button>
     </section>
   </div>
 );
