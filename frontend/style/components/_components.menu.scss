@@ -111,6 +111,7 @@
 .c-menu__links--round {
   display: flex;
   margin-top: $spacing-large;
+  justify-content: space-around;
   &:first-child {
     margin-right: $spacing;
   }
@@ -119,8 +120,6 @@
   margin: $spacing-tiny;
   border: 1px solid $white;
   text-align: center;
-  width: 100px;
-  height: 100px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -130,6 +129,12 @@
   color: $white;
   font-weight: 700;
   text-transform: uppercase;
+  width: 100px;
+  height: 100px;
+  @include mq($from: wide) {
+    width: 180px;
+    height: 180px;
+  }
 
   &:hover {
     border: 1px solid $brand-light;
