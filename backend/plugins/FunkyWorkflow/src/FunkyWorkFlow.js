@@ -28,13 +28,12 @@ class FunkyWorkflow extends Component {
       loaded: false
     }
   }
-  componentDidMount() {
+  componentWillMount() {
     const data = this.fetchData()
 
   }
-  async fetchData() {
-    const data = await client.fetch('*[_type == "publication" && defined(workflow.progress)][0..10]{_type, _id, title, "workflow": workflow{progress,"assigned": assigned[]->{firstName, surname, _id, _type}}}')
-    this.setState({ data, loaded: true })
+  fetchData() {
+    client.fetch('*[_type == "publication" && defined(workflow.progress)][0..100] | order(_updatedAt){_type, _id, title, "workflow": workflow{progress,"assigned": assigned[]->{firstName, surname, _id, _type}}}').then(data => this.setState({ data, loaded: true })).catch(err => console.log(err))
   }
   render() {
     if (!this.state.loaded) return <Spinner fullscreen center message="Loading documents" />
