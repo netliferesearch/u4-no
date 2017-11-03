@@ -1,5 +1,8 @@
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
+import FunkyTable from './FunkyTable';
+import LineChart from './LineChart';
+import BarChart from './BarChart';
 
 const classes = BEMHelper({
   name: 'longform-grid',
@@ -25,26 +28,11 @@ export default {
         </div>
       </div>
     ),
-    funkyTable: ({ node: { rows = [], title = false } }) => (
-      <div className="c-longform-grid__standard">
-        <div className="c-table-container">
-          {title && <h2 className="c-table-container__heading">{title}</h2>}
-          <table className="c-table">
-            <tbody className="c-table__body">
-              {
-                rows.map((row, index) => (
-                  <tr key={index} classNAme="c-table__row">
-                    { row.columns.map((col, index) => (
-                      <td key={index} className="c-table__cell">{col}</td>
-                    ))}
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        </div>
-      </div>
-    ),
+    funkyTable: ({ node: { display = 'table', rows = [], title = false } }) => {
+      if (display === 'line') return <LineChart rows={rows} title={title} />;
+      if (display === 'bar') return <BarChart rows={rows} title={title} />;
+      return <FunkyTable rows={rows} title={title} />;
+    },
     block: ({ node, children }) => {
       const style = node.style || 'normal';
 
@@ -72,6 +60,9 @@ export default {
     return <ol {...classes('standard', null, 'list-numbered')}>{children}</ol>;
   },
   marks: {
+    internalReferance: (props) => {
+      return <a href={props.mark.href}>{props.children}</a>;
+    },
     link: (props) => {
       if (props.mark.href.match(/#_ftn(\d+)/)) {
         const ref = props.mark.href.match(/#_ftn(\d+)/)[1];
