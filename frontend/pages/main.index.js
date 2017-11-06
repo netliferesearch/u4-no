@@ -4,12 +4,12 @@ import DataLoader from '../helpers/data-loader';
 import { Link } from '../routes';
 import { LayoutHomepage, SearchField } from '../components';
 import { Footer } from '../components';
-import { PartnerAgencies, FrontpageFeature } from '../components';
+import { PartnerAgencies, FrontpageFeature, Mosaic } from '../components';
 import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass, ArrowRight } from '../components/icons';
 
 
-const Frontpage = ({ sections = {}, topics = {} }) => (
+const Frontpage = ({ frontPage = {}, topics = {} }) => (
   <LayoutHomepage noSearch>
     <div className="o-wrapper">
       <section className="o-wrapper-inner o-wrapper--padded ">
@@ -26,12 +26,20 @@ const Frontpage = ({ sections = {}, topics = {} }) => (
       </section>
       <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
         <div className="c-introduction-text">
-          <BlockContent blocks={sections.sections} />
+          <BlockContent blocks={frontPage.sections} />
         </div>
       </section>
 
       <FrontpageFeature topics={topics} />
 
+        <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
+          <div className="c-topic-section__title">
+            <h2> Browse our handpicked anti-corruption publications, insights and ideas.
+            </h2>
+          </div>
+        <Mosaic resources={frontPage.resources} />
+        </section>
+        {console.log(frontPage)}
       <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
         <div className="c-introduction-text">
           <h2>
@@ -52,9 +60,9 @@ const Frontpage = ({ sections = {}, topics = {} }) => (
 export default DataLoader(Frontpage, {
   queryFunc: () => ({
     sanityQuery: `{
-      "sections": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0],
+      "frontPage": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0]{id,title,sections,"resources": resources[]->{_id,_type, "publicationType": publicationType->title, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}},
       "topics": *[_type == "topics"][0..5]{_id, title, slug}
     }`,
   }),
-  materializeDepth: 2,
+  materializeDepth: 4,
 });

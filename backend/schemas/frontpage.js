@@ -77,6 +77,24 @@ export default {
       ],
     },
     {
+      name: 'resources',
+      description: 'Relevant resources for this topic page',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'article'
+            },
+            {
+              type: 'publication'
+            }
+          ]
+        }
+      ]
+    },
+    {
       name: 'slug',
       type: 'slug',
       options: {
