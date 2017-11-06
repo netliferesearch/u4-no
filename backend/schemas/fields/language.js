@@ -4,7 +4,7 @@ export default {
   type: "string",
   options: {
     list: [
-      { title: 'English', value: 'en_EN'},
+      { title: 'English', value: 'en_US'},
       { title: 'French', value: 'fr_FR'},
       { title: 'Spanish', value: 'es_ES' },
       { title: 'German', value: 'de_DE' },
