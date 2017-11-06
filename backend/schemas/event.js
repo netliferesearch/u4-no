@@ -1,4 +1,4 @@
-import { title, leadText, featuredImage, slug } from './fields'
+import { title, leadText, featuredImage, slug, image } from './fields'
 
 export default {
   title: 'Event',
@@ -11,7 +11,7 @@ export default {
     {
       name: 'location',
       title: 'Location',
-      description: 'Country, place, venue, address'
+      description: 'Country, place, venue, address',
       type: 'text',
     },
     {
@@ -20,7 +20,7 @@ export default {
       type: 'richDate',
       options: {
         inputDate: true,
-        inputTime: false,
+        inputTime: true,
       }
     },
     {
@@ -29,18 +29,19 @@ export default {
       type: 'richDate',
       options: {
         inputDate: true,
-        inputTime: false,
+        inputTime: true,
       }
     },
     {
       name: 'organiser',
       title: 'Organiser',
-      description: 'Who will organise this event'
-      type: 'text',
+      description: 'Who will organise this event',
+      type: 'string',
     },
+
     {
       name: 'content',
-      title: 'Description',
+      title: 'Content',
       type: 'array',
       of: [
         {
@@ -59,38 +60,20 @@ export default {
             // Support annotating text with a reference to an author
             annotations: [
               {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-              { name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{ type: 'person' }, { type: 'publication' }] },
-              { name: 'footnote', title: 'Footnote', type: 'object', fields: [ { type: 'text', name: 'footnoteText', title: 'Footnote text' }] }
+              {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'}]},
             ]
-          }
-        },
-        {
-          type: 'reference',
-          tile: 'Nugget',
-          to: [
-            {
-              type: 'nugget'
-            },
-          ]
-        },
-        {
-          type: 'pullQuote'
-        },
-        {
-          type: 'funkyTable',
-          options: {
-            defaultNumRows: 3,
-            defaultNumColumns: 3
           }
         },
         image,
       ]
     },
+
     {
-      title: 'URL to external event page (if any)',
       name: 'eventLink',
+      title: 'URL to external event page (if any)',
       type: 'url'
     },
+
     {
       name: 'contact',
       title: 'Contact person(s)',
@@ -106,6 +89,7 @@ export default {
         },
       ],
     },
+
     {
       name: 'relatedContent',
       title: 'Recommended and related content',
@@ -125,6 +109,7 @@ export default {
         },
       ],
     },
+
     {
       name: 'topics',
       description: 'Select relevant U4 topics',
@@ -143,6 +128,7 @@ export default {
         title: 'topics.title'
       }
     },
+
     {
       name: 'keywords',
       description: 'Select relevant U4 keywords',

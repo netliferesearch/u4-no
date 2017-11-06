@@ -22,6 +22,7 @@ import resource from './resource';
 import frontpage from './frontpage';
 import file from './file';
 import articleType from './articleType';
+import event from './event';
 
 export default createSchema({
   name: 'default',
@@ -48,5 +49,6 @@ export default createSchema({
     resource,
     file,
     articleType,
+    event,
   ]
 })
