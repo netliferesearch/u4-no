@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'react-autobind'
 import ReactDataSheet from 'react-datasheet'
+import DefaultSelect from 'part:@sanity/components/selects/default';
 import styles from './FunkyTable.css'
 import PatchEvent, {insert, set, unset, setIfMissing} from '@sanity/form-builder/PatchEvent'
 
@@ -37,6 +38,7 @@ export default class FunkyTable extends Component {
     }).isRequired,
     level: PropTypes.number,
     value: PropTypes.object,
+    display: PropTypes.string,
     onChange: PropTypes.func.isRequired
   }
 
@@ -87,6 +89,15 @@ export default class FunkyTable extends Component {
       PatchEvent.from(
         setIfMissing({_type: type.name}),
         value ? set(event.target.value, ['title']) : unset(['title'])
+      )
+    )
+  }
+  handleDisplayChange({ value = '' }) {
+    const { onChange, type } = this.props
+    onChange(
+      PatchEvent.from(
+        setIfMissing({_type: type.name}),
+        value ? set(value, ['display']) : unset(['display'])
       )
     )
   }
@@ -155,16 +166,18 @@ export default class FunkyTable extends Component {
   }
 
   render() {
-    const {type, value: sanityData, level, onChange} = this.props
+    const {type, level, onChange} = this.props
     const {dataSheet} = this.state
     const value = this.props.value || {}
+
+    console.log(value)
     return (
       <div>
         <div>
           <h3>{type.title}</h3>
           {type.description && <p>{type.description}</p>}
         </div>
-        <div>
+        <div style={{marginBottom: '1rem' }}>
           <label htmlFor="title">Table title</label>
           <br />
           <input
@@ -174,13 +187,26 @@ export default class FunkyTable extends Component {
             onChange={this.handleTitleChange}
             value={value.title || ''}
           />
-          <br />
+          <div style={{ marginBottom: '1rem' }}>
+            <label htmlFor="display">Display type</label>
+            <DefaultSelect
+              name='display'
+              items={[
+                { title: 'Table', value: 'table' },
+                { title: 'Line', value: 'line' },
+                { title: 'Bar', value: 'bar' },
+              ]}
+              onChange={this.handleDisplayChange}
+              value={{title: value.display, value: 2 } || { title: 'Table', value: 'table' }}
+            />
+
+        </div>
 
           {!dataSheet && <button onClick={this.handleInitializeTable}>Initialize table</button>}
         </div>
 
         {dataSheet && (
-          <div>
+          <div style={{marginBottom: '1rem' }}>
             <div>
               <button onClick={this.handleAddColumn}>Add column</button>{' '}
               <button onClick={this.handleRemoveColumn}>Delete column</button>

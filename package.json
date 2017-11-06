@@ -64,7 +64,8 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
-    "slugify": "^1.2.1"
+    "slugify": "^1.2.1",
+    "victory": "^0.24.0"
   },
   "scripts": {
     "deploy-frontend": "git push heroku",

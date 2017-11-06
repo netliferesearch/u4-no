@@ -7,16 +7,76 @@
 }
 .c-frontpage-feature__heading {
     @include inuit-font-size($font-size-tiny, $line-height-tiny);
-    margin: 0;
+    margin: 0 0 $spacing;
 }
 .c-frontpage-feature__list {
   list-style: none;
   margin: 0;
   padding: 0;
+  counter-reset: counter;
+
 }
 .c-frontpage-feature__list-item {
   @include inuit-font-size($font-size-large, $line-height-large);
+  font-weight: 300;
+  position: relative;
+
+  &:after {
+    position: absolute;
+    left: -$spacing-large/1.5;
+    top: $font-size-tiny;
+    content: counter(counter, decimal-leading-zero);
+	  counter-increment: counter;
+    @include inuit-font-size($font-size-tiny, $line-height-tiny);
+    color: $brand-dark;
+    padding-right: $spacing-small;
+    transition: all .2s ease-out;
+  }
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 1px;
+    width: 0px;
+    background: $brand-dark;
+    position: absolute;
+    left: -$spacing-small;
+    top: $font-size-normal;
+    transition: all .2s ease-out;
+  }
+}
+.c-frontpage-feature__list-item:hover {
+  &:after {
+    left: -$spacing-large;
+  }
+  &:before {
+    width: 20px;
+    left: -$spacing;
+  }
 }
 .c-frontpage-feature__link, .c-frontpage-feature__link:visited {
   color: $white;
+
+  &:hover {
+    padding-bottom: 0.05em;
+    border-bottom: 1px solid rgba($brand-dark, 0.5);
+    color: $brand-dark;
+  }
+}
+
+.c-frontpage-feature__btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: $white;
+  padding: 0;
+  margin-top: $spacing;
+  padding-bottom: 0.05em;
+
+  &:hover {
+    border-bottom: 1px solid rgba($white, 1);
+  }
+}
+
+.c-frontpage-feature__arrowdown {
+  transform: rotate(90deg);
 }
