@@ -31,7 +31,7 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
 
     <FrontpageFeature topics={topics} />
 
-    <section className="o-wrapper--padded o-wrapper-medium u-margin-bottom-huge">
+    <section className="o-wrapper-medium u-margin-bottom-huge">
       <div className="c-topic-section__title">
         <h2> Browse our handpicked anti-corruption publications, insights and ideas.</h2>
       </div>
@@ -56,7 +56,9 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
         </h2>
       </div>
     </section>
+
     <Newsletter />
+
     <Footer />
 
     <PartnerAgencies />

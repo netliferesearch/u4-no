@@ -10,9 +10,7 @@ const Mosaic = ({ resources = [] }) => (
         style={{
           backgroundImage: `url(${resources[0].imageUrl})`,
         }}
-      >
-        >
-      </div>
+      />
     ) : null}
     {resources.map(
       (
