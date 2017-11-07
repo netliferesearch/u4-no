@@ -52,6 +52,7 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
     color: $brand-main;
   }
   margin-right: $spacing;
+  padding: $spacing-small/1.4 $spacing-small;
 
   &:last-child {
     margin-right: 0;
@@ -63,7 +64,6 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
     appearance: normal;
     outline: inherit;
     cursor: pointer;
-    padding: $spacing-small/1.4 $spacing-small;
     font-weight: 300;
     color: inherit;
     @include mq($from: tablet) {
@@ -75,5 +75,5 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
 .c-top-bar__menu-item--active {
   background-color: $white;
   color: $brand-dark;
-  padding: 0;
+  padding: $spacing-tiny/1.4 $spacing-tiny;
 }
