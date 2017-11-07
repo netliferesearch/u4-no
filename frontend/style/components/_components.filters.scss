@@ -5,20 +5,33 @@
     display: block;
   }
 }
+.c-filters--standalone {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: $font-sans;
+  text-align: center;
+  margin-top: $spacing-huge;
+  margin-bottom: $spacing-huge;
+  @include inuit-font-size($font-size-small, $line-height-small);
+}
 
 .c-filters__item {
   font-family: $font-sans;
-  @include inuit-font-size($font-size-tiny, $font-size-normal);
+  @include inuit-font-size($font-size-tiny, $line-height-tiny);
+}
+.c-filters__item--standalone {
+  background: none;
+  border: none;
 }
 .c-filters__main-title {
-  @include inuit-font-size($font-size-normal, $font-size-large);
+  @include inuit-font-size($font-size-normal, $line-height-normal);
   font-weight: bold;
   border-bottom: 1px solid $brand-dark;
   padding-bottom: $spacing-small;
 }
 .c-filters__title {
   margin: $spacing-small 0 $spacing;
-  @include inuit-font-size($font-size-small, $font-size-large);
+  @include inuit-font-size($font-size-small, $line-height-small);
 }
 .c-filters__checkbox {
   margin-bottom: $spacing-small/1.5;
