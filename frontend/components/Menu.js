@@ -42,7 +42,7 @@ class Menu extends Component {
       token: '',
       useCdn: true,
     });
-    const sanityQuery = '*[_type == "topics"]{_id, title, slug}';
+    const sanityQuery = '*[_type == "topics"] | order(title){_id, title, slug}';
     client.fetch(sanityQuery, {}).then((data) => {
       this.setState({
         data,

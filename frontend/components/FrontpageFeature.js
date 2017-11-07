@@ -23,7 +23,6 @@ class FrontpageFeature extends Component {
     this.setState({
       active: !this.state.active,
     });
-    console.log(this.state);
   }
 
   render() {
