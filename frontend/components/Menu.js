@@ -150,6 +150,7 @@ class Menu extends Component {
               <ul {...menuClasses('list')}>
                 <li>Publications</li>
                 <li>Expert answers</li>
+                <li>Glossary</li>
               </ul>
 
               <h4 {...menuClasses('heading')}>
@@ -171,12 +172,24 @@ class Menu extends Component {
               </ul>
 
               <h4 {...menuClasses('heading')}>
-                <span {...menuClasses('heading-bg')}>Online training</span>
+                <span {...menuClasses('heading-bg')}>Services</span>
               </h4>
-
-              <h4 {...menuClasses('heading')}>
-                <span {...menuClasses('heading-bg')}>Workshops & events</span>
-              </h4>
+              <ul {...menuClasses('list')}>
+                <li>
+                  <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
+                    <Link to={'/online-training'}>
+                      <a {...menuClasses('link')}>Online training</a>
+                    </Link>
+                  </button>
+                </li>
+                <li>
+                  <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
+                    <Link to={'/workshops'}>
+                      <a {...menuClasses('link')}>Workshops</a>
+                    </Link>
+                  </button>
+                </li>
+              </ul>
 
               <div {...menuClasses('links--round')}>
                 <Link to={'/'}>
