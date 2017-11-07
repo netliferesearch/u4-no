@@ -45,6 +45,7 @@
   }
   font-weight: 300;
   position: relative;
+  margin-bottom: $spacing-small;
 
   &:after {
     position: absolute;
@@ -96,6 +97,7 @@
   padding: 0;
   margin-top: $spacing;
   padding-bottom: 0.05em;
+  font-family: $font-sans;
 
   &:hover {
     border-bottom: 1px solid rgba($white, 1);
