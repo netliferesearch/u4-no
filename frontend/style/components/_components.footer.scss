@@ -1,10 +1,6 @@
 .c-footer {
-
   padding: $spacing;
   font-family: $font-sans;
-  @include mq($from: tablet) {
-    padding: $spacing-large;
-  }
 }
 
 .c-footer__wrapper {
@@ -42,13 +38,12 @@
 
 .c-footer__link {
   display: block;
+  svg {
+  }
 }
 
 .c-footer__color-icon {
-  max-width: 100%;
-  min-width: 100px;
   margin-bottom: $spacing;
-  float: left;
   path, polygon {
     fill: $brand-dark;
   }
@@ -63,5 +58,10 @@
   path, polygon {
     fill: $brand-dark;
   }
+}
 
+.c-footer {
+  .c-logo__text {
+    display: inline-block;
+  }
 }
