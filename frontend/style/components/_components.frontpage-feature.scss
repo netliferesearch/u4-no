@@ -1,16 +1,23 @@
 .c-frontpage-feature {
   background: $brand-main;
   color: $white;
-  padding: $spacing-huge $spacing-large;
+  padding: $spacing-large $spacing-large;
+  @include mq($from: tablet) {
+    margin-top: $spacing-huge;
+    margin-bottom: $spacing-huge;
+    padding: $spacing-huge $spacing-large;
+  }
   font-family: $font-sans;
-  margin-top: $spacing-huge;
-  margin-bottom: $spacing-huge;
 }
 .c-frontpage-feature__wrapper {
-  display: flex;
+  @include mq($from: tablet) {
+    display: flex;
+  }
 }
 .c-frontpage-feature__left {
+  display: none;
   @include mq($from: tablet) {
+    display: inline-block;
     width: 60%;
   }
   img {
