@@ -52,19 +52,12 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
       <div className="c-introduction-text">
         <h2>
             Looking for someone?<br />
-<<<<<<< HEAD
             <a href="/the-team">The whole U4 team &nbsp;<ArrowRight /></a>
           </h2>
         </div>
       </section>
     </div>
     <Newsletter />
-=======
-          <a href="/the-team">The whole U4 team &nbsp;<ArrowRight /></a>
-        </h2>
-      </div>
-    </section>
->>>>>>> fdeec72d53b662a1828c74ca96c90cf898210697
     <Footer />
 
     <PartnerAgencies />
