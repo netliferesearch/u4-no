@@ -6,6 +6,23 @@
   margin-top: $spacing-huge;
   margin-bottom: $spacing-huge;
 }
+.c-frontpage-feature__wrapper {
+  display: flex;
+}
+.c-frontpage-feature__left {
+  @include mq($from: tablet) {
+    width: 60%;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+.c-frontpage-feature__right {
+  @include mq($from: tablet) {
+    width: 40%;
+    margin-left: $spacing-large;
+  }
+}
 .c-frontpage-feature__heading {
     @include inuit-font-size($font-size-tiny, $line-height-tiny);
     margin: 0 0 $spacing;
