@@ -92,6 +92,7 @@
   height: auto;
   vertical-align: top;
   margin-top: $spacing-small;
+  margin-bottom: $spacing-small;
   width: 50px;
   @include mq($from: tablet) {
     width: 70px;
