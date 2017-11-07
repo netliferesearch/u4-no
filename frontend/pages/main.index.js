@@ -46,7 +46,7 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
         <BoxOnBoxPartnerFeatures />
       </section>
 
-      <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
+      <section className="o-wrapper-inner o-wrapper--padded u-margin-top-huge u-margin-bottom-huge">
         <div className="c-introduction-text">
           <h2>
             Looking for someone?<br />
