@@ -2,12 +2,14 @@ import React from 'react';
 
 export default function Logo(props) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 50" xmlnsXlink="http://www.w3.org/1999/xlink" width={240} height={50} {...props}>
-      <g>
+    <svg className="c-logo" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width={240} height={50} {...props}>
+      <g className="c-logo__symbol">
         <path fill="#0079CF" d="M44.19.9L14.55 43.53h22.67V50h6.97v-6.48h4.9v-6.27h-4.9V.9zm-6.97 21.05v15.3H26.57l10.65-15.3z" />
 
         <path fill="#0079CF" d="M8.81 32.39c-1.28-1.8-1.92-4.65-1.92-8.54V.51H0v25.22c0 4.77 1.5 8.7 4.5 11.79a16.58 16.58 0 0 0 6.97 4.36l3.95-5.68a9.19 9.19 0 0 1-6.6-3.81" />
         <polygon fill="#0079CF" points="33.809 .505 26.917 .505 26.917 19.636 33.809 9.71" />
+      </g>
+      <g className="c-logo__text">
         <path fill="#0079CF" d="M60.25 17.73h3.23l-1.58-6.15h-.07l-1.58 6.15zm3.92 2.7h-4.62l-.94 3.72h-3.45l4.93-17.37h3.57l4.92 17.37h-3.46l-.95-3.72z" />
         <polygon fill="#0079CF" points="82.201 24.145 78.797 24.145 73.44 13.039 73.369 13.063 73.369 24.145 69.938 24.145 69.938 6.775 73.369 6.775 78.724 17.871 78.797 17.847 78.797 6.775 82.201 6.775" />
         <polygon fill="#0079CF" points="94.839 9.484 90.891 9.484 90.891 24.146 87.473 24.146 87.473 9.484 83.551 9.484 83.551 6.776 94.839 6.776" />

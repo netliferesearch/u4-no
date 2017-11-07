@@ -70,7 +70,7 @@ export default DataLoader(Frontpage, {
   queryFunc: () => ({
     sanityQuery: `{
       "frontPage": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0]{id,title,sections,"resources": resources[]->{_id,_type, "publicationType": publicationType->title, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}},
-      "topics": *[_type == "topics"][0..5]{_id, title, slug}
+      "topics": *[_type == "topics"]{_id, title, slug}
     }`,
   }),
   materializeDepth: 4,
