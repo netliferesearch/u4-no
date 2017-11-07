@@ -40,7 +40,7 @@ const Footer = ({ title }) => (
           5006 Bergen, Norway
         </div>
         <div {...classes('item')}>
-          <div {...classes('heading')}>Overskrift</div>
+          <div {...classes('heading')} />
           <a href="#">Privacy / licence</a><br />
           <a href="#">Vacancy</a><br />
           <a href="#">Cookies</a><br />
