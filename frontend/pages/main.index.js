@@ -2,7 +2,7 @@ import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
 import { Link } from '../routes';
-import { LayoutHomepage, SearchField, BoxOnBoxPartnerFeatures } from '../components';
+import { LayoutHomepage, SearchField, BoxOnBoxPartnerFeatures, Newsletter } from '../components';
 import { Footer } from '../components';
 import { PartnerAgencies, FrontpageFeature, Mosaic } from '../components';
 import { U4LogoSquare } from '../components/icons';
@@ -31,7 +31,7 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
 
     <FrontpageFeature topics={topics} />
 
-    <section className="o-wrapper--padded o-wrapper-medium u-margin-bottom-huge">
+    <section className="o-wrapper-medium u-margin-bottom-huge">
       <div className="c-topic-section__title">
         <h2> Browse our handpicked anti-corruption publications, insights and ideas.</h2>
       </div>
@@ -56,6 +56,9 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
         </h2>
       </div>
     </section>
+
+    <Newsletter />
+
     <Footer />
 
     <PartnerAgencies />

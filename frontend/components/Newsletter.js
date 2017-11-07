@@ -31,13 +31,13 @@ class Newsletter extends Component {
           <div {...classes('content')}>
             <h4 {...classes('small-title')}>{smallTitle}</h4>
             <Link to={link}>
-              <a>
+              <a {...classes('title-wrapper')}>
                 <h3 {...classes('title')}>
                   {title}
-                  <span {...classes('title-arrow')}>
-                    <ArrowRight />
-                  </span>
                 </h3>
+                <span {...classes('title-arrow')}>
+                  <ArrowRight />
+                </span>
               </a>
             </Link>
           </div>
