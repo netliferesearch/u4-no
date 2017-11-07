@@ -1,5 +1,6 @@
 export default {
   name: 'articleType',
+  title: 'Article type',
   type: 'object',
   fields: [
     {
