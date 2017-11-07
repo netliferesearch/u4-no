@@ -14,8 +14,10 @@ class FrontpageFeature extends Component {
     super(props);
     this.state = {
       active: false,
+      image: 'https://cdn.sanity.io/images/1f1lcoov/production/YCZv9hQlTcNdiI1zYXLrIglw-1642x1087.jpg',
     };
     this.triggerToggle = this.triggerToggle.bind(this);
+    this.triggerImg = this.triggerImg.bind(this);
   }
 
   triggerToggle(e) {
@@ -25,44 +27,55 @@ class FrontpageFeature extends Component {
     });
   }
 
+  triggerImg(img) {
+    this.setState({
+      image: img || 'https://cdn.sanity.io/images/1f1lcoov/production/YCZv9hQlTcNdiI1zYXLrIglw-1642x1087.jpg',
+    });
+  }
+
   render() {
     const { topics } = this.props;
     return (
       <div {...classes()}>
-        <section className="o-wrapper-inner o-wrapper--padded">
-          <h3 {...classes('heading')}>Knowledge on</h3>
-          <ul {...classes('list')}>
-            {topics.slice(0, 5).map(topic =>
-              (<li {...classes('list-item')}>
-                <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                  <a {...classes('link')}>
-                    {topic.title}
-                  </a>
-                </Link>
-              </li>),
-            )}
-          </ul>
-          { this.state.active ?
-            <ul {...classes('list', 'active')}>
-              {topics.slice(5, 50).map(topic =>
+        <section {...classes('wrapper', null, 'o-wrapper-inner o-wrapper--padded')}>
+          <div {...classes('left')}>
+            <img src={`${this.state.image}?w=470&h=470&fit=crop&crop=focalpoint`} />
+          </div>
+          <div {...classes('right')}>
+            <h3 {...classes('heading')}>Anti-corruption by topic</h3>
+            <ul {...classes('list')}>
+              {topics.slice(0, 5).map(topic =>
                 (<li {...classes('list-item')}>
                   <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                    <a {...classes('link')}>
+                    <a {...classes('link')} onMouseEnter={() => this.triggerImg(topic.imageUrl)}>
                       {topic.title}
                     </a>
                   </Link>
                 </li>),
               )}
             </ul>
-            : null
-          }
-          <button {...classes('btn')} onClick={this.triggerToggle}>
-            <ArrowRight {...classes('arrowdown', this.state.active ? 'active' : null)} />
             { this.state.active ?
-              <span>View fewer topics</span>
-              : <span>View all topics</span>
+              <ul {...classes('list', 'active')}>
+                {topics.slice(5, 50).map(topic =>
+                  (<li {...classes('list-item')}>
+                    <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                      <a {...classes('link')} onMouseEnter={() => this.triggerImg(topic.imageUrl)}>
+                        {topic.title}
+                      </a>
+                    </Link>
+                  </li>),
+                )}
+              </ul>
+              : null
             }
-          </button>
+            <button {...classes('btn')} onClick={this.triggerToggle}>
+              <ArrowRight {...classes('arrowdown', this.state.active ? 'active' : null)} />
+              { this.state.active ?
+                <span>View fewer topics</span>
+                : <span>View all topics</span>
+              }
+            </button>
+          </div>
         </section>
       </div>
     );

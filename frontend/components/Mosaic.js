@@ -27,7 +27,7 @@ const Mosaic = ({ resources = [] }) => (
             style={{
               backgroundImage: `url(${index % 4 === 2 ? imageUrl : ''})`,
             }}
-          > {console.log(imageUrl)}
+          >
             <div className="c-mosaic_item-content">
               <div
                 className="c-mosaic_item-content__meta"

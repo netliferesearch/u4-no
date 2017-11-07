@@ -2,6 +2,7 @@
 .c-newsletter {
   display: grid;
   grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+  margin-bottom: $spacing-large;
 }
 
 .c-newsletter__content {
@@ -34,7 +35,6 @@
 
   &:hover {
     color: $brand-light;
-    border-bottom: 1px solid $brand-light;
   }
 }
 

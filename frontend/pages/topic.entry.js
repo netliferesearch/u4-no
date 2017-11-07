@@ -60,18 +60,23 @@ const TopicEntry = ({
         />
       </section>
 
-      <h2 className="c-topic-section__title">
-        Inform your anti-corruption work with handpicked topic related publications, insights and
-        ideas.
-      </h2>
-      <section className="c-topic-section u-padding-top-none">
-        <div id="resources" className="o-wrapper-medium">
-          <Mosaic resources={resources} />
+      { resources.length ?
+        <div>
+          <h2 className="c-topic-section__title">
+          Inform your anti-corruption work with handpicked topic related publications, insights and
+          ideas.
+          </h2>
+
+          <section className="c-topic-section u-padding-top-none">
+            <div id="resources" className="o-wrapper-medium">
+              <Mosaic resources={resources} />
+            </div>
+            <h2 className="c-topic-section__cta">
+              <a href="/search">Explore all our resources &nbsp;<ArrowRight /></a>
+            </h2>
+          </section>
         </div>
-        <h2 className="c-topic-section__cta">
-          <a href="/search">Explore all our resources &nbsp;<ArrowRight /></a>
-        </h2>
-      </section>
+        : null }
     </div>
 
 

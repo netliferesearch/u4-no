@@ -1,10 +1,34 @@
 .c-frontpage-feature {
   background: $brand-main;
   color: $white;
-  padding: $spacing-huge $spacing-large;
+  padding: $spacing-large $spacing-large;
+  @include mq($from: tablet) {
+    margin-top: $spacing-huge;
+    margin-bottom: $spacing-huge;
+    padding: $spacing-huge $spacing-large;
+  }
   font-family: $font-sans;
-  margin-top: $spacing-huge;
-  margin-bottom: $spacing-huge;
+}
+.c-frontpage-feature__wrapper {
+  @include mq($from: tablet) {
+    display: flex;
+  }
+}
+.c-frontpage-feature__left {
+  display: none;
+  @include mq($from: tablet) {
+    display: inline-block;
+    width: 60%;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+.c-frontpage-feature__right {
+  @include mq($from: tablet) {
+    width: 40%;
+    margin-left: $spacing-large;
+  }
 }
 .c-frontpage-feature__heading {
     @include inuit-font-size($font-size-tiny, $line-height-tiny);
@@ -28,6 +52,7 @@
   }
   font-weight: 300;
   position: relative;
+  margin-bottom: $spacing-small;
 
   &:after {
     position: absolute;
@@ -79,6 +104,7 @@
   padding: 0;
   margin-top: $spacing;
   padding-bottom: 0.05em;
+  font-family: $font-sans;
 
   &:hover {
     border-bottom: 1px solid rgba($white, 1);
