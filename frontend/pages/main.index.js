@@ -11,7 +11,7 @@ import { MagnifyingGlass, ArrowRight } from '../components/icons';
 
 const Frontpage = ({ frontPage = {}, topics = {} }) => (
   <LayoutHomepage noSearch>
-    <div className="o-wrapper">
+    <div>
       <section className="o-wrapper-inner o-wrapper--padded ">
         <div className="o-layout">
           <div className="o-layout__item c-logo--center">
