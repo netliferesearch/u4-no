@@ -52,11 +52,10 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
       <div className="c-introduction-text">
         <h2>
             Looking for someone?<br />
-            <a href="/the-team">The whole U4 team &nbsp;<ArrowRight /></a>
-          </h2>
-        </div>
-      </section>
-    </div>
+          <a href="/the-team">The whole U4 team &nbsp;<ArrowRight /></a>
+        </h2>
+      </div>
+    </section>
     <Newsletter />
     <Footer />
 
