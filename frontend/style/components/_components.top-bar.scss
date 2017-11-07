@@ -1,8 +1,10 @@
 .c-top-bar {
   padding: $spacing-small $spacing;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   @include mq($from: tablet) {
     padding: $spacing-large $spacing-huge;
-    display: flex;
     justify-content: space-between;
   }
 
@@ -10,6 +12,10 @@
 a.c-top-bar__logo, a.c-top-bar__logo:visited {
   height: 50px;
   border-bottom: 0;
+  margin: auto;
+  @include mq($from: tablet) {
+    margin: 0;
+  }
 
   &:hover {
     border: 0;
@@ -37,8 +43,15 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
   }
 }
 .c-top-bar__menu-item {
+  background: $brand-medium;
+  color: $white;
+  @include mq($from: tablet) {
+    background: none;
+    padding: 0;
+    border: none;
+    color: $brand-main;
+  }
   margin-right: $spacing;
-  color: $brand-main;
 
   &:last-child {
     margin-right: 0;
@@ -46,18 +59,21 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
   button {
     border: none;
     background: none;
-    color: $brand-main;
-    padding: 0;
     margin: 0;
     appearance: normal;
     outline: inherit;
     cursor: pointer;
+    padding: $spacing-small/1.4 $spacing-small;
+    font-weight: 300;
+    color: inherit;
+    @include mq($from: tablet) {
+      padding: 0;
+    }
   }
 }
 
 .c-top-bar__menu-item--active {
   background-color: $white;
   color: $brand-dark;
-  padding: 0 $spacing-tiny;
-  border-radius: 3px;
+  padding: 0;
 }

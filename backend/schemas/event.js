@@ -1,18 +1,35 @@
-import { title, leadText, featuredImage, slug, image } from './fields'
+import { leadText, featuredImage, slug, image } from './fields'
 
 export default {
   title: 'Event',
   name: 'event',
   type: 'object',
   fields: [
-    title,
-    featuredImage,
-    leadText,
+    {
+      name: 'title',
+      title: 'Title',
+      description: 'Event title (include country name for in-country workshop)',
+      type: 'string',
+    },
+    {
+      name: "eventType",
+      title: "Event type",
+      type: "string",
+      options: {
+        list: [
+          { title: 'In-country workshop', value: 'incountryworkshop'},
+          { title: 'HQ workshop', value: 'hqworkshop'},
+          { title: 'Other', value: 'other'},
+        ],
+      },
+      layout: "dropdown",
+    },
+
     {
       name: 'location',
       title: 'Location',
       description: 'Country, place, venue, address',
-      type: 'text',
+      type: 'string',
     },
     {
       name: 'startDate',
@@ -38,6 +55,9 @@ export default {
       description: 'Who will organise this event',
       type: 'string',
     },
+
+    featuredImage,
+    leadText,
 
     {
       name: 'content',
@@ -146,4 +166,38 @@ export default {
     },
     slug
   ],
+
+  orderings: [
+    {
+      title: 'Title',
+      name: 'titleAsc',
+      by: [{ field: 'title', direction: 'asc' }],
+    },
+    {
+      title: 'Date',
+      name: 'dateDesc',
+      by: [{ field: 'startDate', direction: 'desc' }],
+    },
+  ],
+
+  preview: {
+    select: {
+      title: 'title',
+      date: 'startDate.utc',
+      location: 'location',
+      image: 'image.asset.url',
+    },
+    prepare({ title = '(title missing)', date = '', location = '', image }) {
+      const subtitle =
+        date === ''
+          ? `${location}`
+          : `${date.split('T')[0]}, ${location}`;
+      return {
+        title: title,
+        subtitle: subtitle,
+        image,
+      };
+    },
+  },
+
 }
