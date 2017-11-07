@@ -114,17 +114,21 @@ class Menu extends Component {
                   <ul {...menuClasses('list')}>
                     {topics.slice(0, 5).map(topic => (
                       <li key={topic._id}>
-                        <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                          <a {...menuClasses('link')}>{topic.title}</a>
-                        </Link>
+                        <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
+                          <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                            <a {...menuClasses('link')}>{topic.title}</a>
+                          </Link>
+                        </button>
                       </li>
                     ))}
                     {this.state.activeExpand &&
                       topics.slice(5, 50).map(topic => (
                         <li key={topic._id}>
-                          <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                            <a {...menuClasses('link')}>{topic.title}</a>
-                          </Link>
+                          <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
+                            <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                              <a {...menuClasses('link')}>{topic.title}</a>
+                            </Link>
+                          </button>
                         </li>
                       ))}
                     {this.state.activeExpand ? (
@@ -153,9 +157,11 @@ class Menu extends Component {
               </h4>
               <ul {...menuClasses('list')}>
                 <li>
-                  <Link to={'/the-team'}>
-                    <a {...menuClasses('link')}>U4 staff</a>
-                  </Link>
+                  <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
+                    <Link to={'/the-team'}>
+                      <a {...menuClasses('link')}>U4 staff</a>
+                    </Link>
+                  </button>
                 </li>
                 <li>
                   <Link to={'/'}>
