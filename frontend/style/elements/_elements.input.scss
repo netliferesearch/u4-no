@@ -1,0 +1,5 @@
+// Fix for iOs fucking up input styling :(
+input:not([type="radio"]):not([type="checkbox"]) {
+  border-radius: 0;
+  -webkit-appearance: none;
+}
