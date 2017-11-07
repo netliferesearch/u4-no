@@ -2,17 +2,16 @@
   padding: $spacing-small $spacing;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   @include mq($from: tablet) {
     padding: $spacing-large $spacing-huge;
-    justify-content: space-between;
   }
 
 }
 a.c-top-bar__logo, a.c-top-bar__logo:visited {
   height: 50px;
+  display: inline-block;
   border-bottom: 0;
-  margin: auto;
   @include mq($from: tablet) {
     margin: 0;
   }
@@ -26,15 +25,16 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
   list-style: none;
   display: flex;
   font-family: $font-sans;
-  margin: $spacing 0 0 0;
+  margin: $spacing-tiny 0 0 0;
   padding: 0;
-  justify-content: center;
+  justify-content: flex-end;
   @include mq($from: tablet) {
+    justify-content: center;
     margin: 0;
   }
 }
 .c-top-bar__menu--active {
-  margin-top: $spacing;
+  margin-top: -$spacing-tiny;
   @include mq($from: tablet) {
     position: absolute;
     top: $spacing;
@@ -43,8 +43,7 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
   }
 }
 .c-top-bar__menu-item {
-  background: $brand-medium;
-  color: $white;
+  border-bottom: 3px solid $brand-main;
   @include mq($from: tablet) {
     background: none;
     padding: 0;
@@ -52,7 +51,7 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
     color: $brand-main;
   }
   margin-right: $spacing;
-  padding: $spacing-small/1.4 $spacing-small;
+  padding: 0 $spacing-tiny $spacing-tiny;
 
   &:last-child {
     margin-right: 0;
@@ -73,7 +72,7 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
 }
 
 .c-top-bar__menu-item--active {
-  background-color: $white;
-  color: $brand-dark;
-  padding: $spacing-tiny/1.4 $spacing-tiny;
+  border-bottom: 3px solid $white;
+  color: $white;
+  padding: 0 $spacing-tiny $spacing-tiny;
 }

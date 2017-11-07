@@ -1,7 +1,5 @@
 .c-logo {
-  max-width: 200px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 80px;
   @include mq($from: tablet) {
     margin-bottom: $spacing-large;
     max-width: 250px;
@@ -9,4 +7,18 @@
 }
 .c-logo--center {
   text-align: center;
+  svg {
+    max-width: 180px;
+    margin: auto;
+    @include mq($from: tablet) {
+      margin-bottom: $spacing-large;
+      max-width: 250px;
+    }
+  }
+}
+.c-logo__text {
+  display: none;
+  @include mq($from: tablet) {
+    display: inline-block;
+  }
 }
