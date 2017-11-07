@@ -39,7 +39,7 @@ class Persons extends Component {
             this.state.activeGroup == 1 ?
               <div id="advisors">
                 <h2 className="c-article__title c-article__title--center">U4 TEAM</h2>
-                <Team light members={sortBy(persons, ({ firstName = '' }) => firstName.toUpperCase())} />
+                <Team light applyJob members={sortBy(persons, ({ firstName = '' }) => firstName.toUpperCase())} />
               </div>
               : null
           }

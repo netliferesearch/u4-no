@@ -14,6 +14,7 @@ export default ({
   title,
   description,
   children = [],
+  noSearch = false,
 }) => (
   <div
     className="u-print-width o-wrapper-page"
@@ -30,7 +31,7 @@ export default ({
             <Logo />
           </a>
         </Link>
-        <Menu />
+        <Menu noSearch={noSearch && noSearch} />
       </div>
     )}
     {children}

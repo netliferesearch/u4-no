@@ -9,7 +9,7 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Team = ({ title, members, light = false, linkLabel = 'Bio' }) => (
+const Team = ({ title, members, light = false, linkLabel = 'Bio', applyJob = false }) => (
   <section {...classes('', light && 'light')}>
     { title &&
       <h2 {...classes('title')}>Hi!<br />{title}</h2>
@@ -19,6 +19,20 @@ const Team = ({ title, members, light = false, linkLabel = 'Bio' }) => (
         members.map(member =>
           <Person light person={member} linkLabel={linkLabel} />,
         )
+      }
+      {applyJob &&
+        <div className="c-person__item c-person__item--apply">
+          <div className="c-person__item-body c-person__item-body--apply">
+            <div>
+              <h3 className="c-person__item-title--apply">JOBS APPLY</h3>
+            </div>
+            <Link to="mailto:work@u4.no">
+              <a>
+                work@u4.no
+              </a>
+            </Link>
+          </div>
+        </div>
       }
     </div>
   </section>
