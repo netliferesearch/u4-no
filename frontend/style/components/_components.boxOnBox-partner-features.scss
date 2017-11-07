@@ -1,0 +1,119 @@
+.c-boxOnBox-partner-features {
+  display: block;
+  font-weight: 300;
+  font-family: $font-sans;
+  color: $white-on-blue;
+  @include inuit-font-size($font-size-small, $font-size-large)
+  @include mq($from: tablet) {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-auto-rows: min-content;
+  }
+  p {
+    max-width: 600px;
+  }
+}
+.c-boxOnBox-partner-features__left {
+  background: $brand-main;
+  color: $white;
+  z-index: 9;
+  position: relative;
+  padding: $spacing $spacing-large;
+  margin-left: $spacing;
+  @include mq($from: tablet) {
+    padding: 15% 20%;
+    padding-bottom: $spacing-huge;
+    margin-top: -$spacing-large;
+    margin-left: 0;
+    grid-column: 1 / 5;
+  }
+  p {
+    @include inuit-font-size($font-size-large, $line-height-normal);
+    font-weight: 300;
+  }
+}
+.c-boxOnBox-partner-features__right {
+  background: $brand-dark;
+  color:  $white;
+  margin: 0;
+  z-index: 0;
+  margin-top: -$spacing-large;
+  padding: $spacing;
+  padding-top: $spacing-huge;
+  @include mq($from: tablet) {
+    padding: 15% 10% 10% 20%;
+    margin-top: 0;
+    margin-left: -10%;
+    grid-column: 5 / 11;
+    grid-row: 1 / 4;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    margin: 0;
+
+    a {
+      display: block;
+      border: none;
+      color: $brand-dark;
+      border-bottom: 1px solid rgba($brand-dark, .1);
+      padding: $spacing 0;
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url('/static/arrowright.svg') no-repeat;
+        float:right;
+        margin-top: $spacing-small;
+      }
+
+      &:hover {
+        color: $brand-main;
+      }
+    }
+  }
+}
+
+.c-boxOnBox-partner-features__statement {
+  font-weight: 300;
+  @include mq($from: tablet) {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.c-boxOnBox-partner-features__statement-icon {
+  height: auto;
+  vertical-align: top;
+  margin-top: $spacing-small;
+  width: 50px;
+  @include mq($from: tablet) {
+    width: 70px;
+    margin-top: 0;
+    margin-right: $spacing;
+  }
+}
+
+.c-boxOnBox-partner-features__statement-title {
+  @include inuit-font-size($font-size-normal, $line-height-normal );
+  margin-top: 0;
+  margin-bottom: 0;
+  color: $white;
+}
+
+.c-boxOnBox-partner-features__statement-body {
+  @include inuit-font-size($font-size-small, $line-height-normal );
+  margin-top: $spacing-small;
+  max-width: 550px;
+  color: $white-on-blue;
+  margin-bottom: $spacing;
+  @include mq($from: tablet) {
+    margin-bottom: $spacing-large;
+  }
+}

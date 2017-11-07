@@ -2,7 +2,7 @@ import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
 import { Link } from '../routes';
-import { LayoutHomepage, SearchField } from '../components';
+import { LayoutHomepage, SearchField, BoxOnBoxPartnerFeatures } from '../components';
 import { Footer } from '../components';
 import { PartnerAgencies, FrontpageFeature, Mosaic } from '../components';
 import { U4LogoSquare } from '../components/icons';
@@ -40,6 +40,10 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
         <h2 className="c-topic-section__cta">
           <a href="/search">Explore all our resources &nbsp;<ArrowRight /></a>
         </h2>
+      </section>
+
+      <section>
+        <BoxOnBoxPartnerFeatures />
       </section>
 
       <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
