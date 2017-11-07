@@ -40,10 +40,14 @@
   }
 }
 
+.c-footer__link {
+  display: block;
+}
 
 .c-footer__color-icon {
   max-width: 100%;
   min-width: 100px;
+  margin-bottom: $spacing;
   float: left;
   path, polygon {
     fill: $brand-dark;

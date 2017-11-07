@@ -1,6 +1,7 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { Logo } from './';
+import { Link } from '../routes';
 import { CmiLogo } from './icons/';
 import { MediumLogo } from './icons/';
 import { TwitterLogo } from './icons/';
@@ -16,8 +17,16 @@ const Footer = ({ title }) => (
     <div>
       <div {...classes('wrapper', null, 'o-wrapper')}>
         <div {...classes('item')}>
-          <CmiLogo {...classes('color-icon')} /><br /><br />
-          <Logo {...classes('color-icon')} />
+          <Link to="http://www.cmi.no">
+            <a {...classes('link')}>
+              <CmiLogo {...classes('color-icon')} />
+            </a>
+          </Link>
+          <Link to="/">
+            <a {...classes('link')}>
+              <Logo {...classes('color-icon')} />
+            </a>
+          </Link>
         </div>
         <div {...classes('item')}>
           <div {...classes('heading')}>Contact</div>
