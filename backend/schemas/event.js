@@ -166,4 +166,38 @@ export default {
     },
     slug
   ],
+
+  orderings: [
+    {
+      title: 'Title',
+      name: 'titleAsc',
+      by: [{ field: 'title', direction: 'asc' }],
+    },
+    {
+      title: 'Date',
+      name: 'dateDesc',
+      by: [{ field: 'startDate', direction: 'desc' }],
+    },
+  ],
+
+  preview: {
+    select: {
+      title: 'title',
+      date: 'startDate.utc',
+      location: 'location',
+      image: 'image.asset.url',
+    },
+    prepare({ title = '(title missing)', date = '', location = '', image }) {
+      const subtitle =
+        date === ''
+          ? `${location}`
+          : `${date.split('T')[0]}, ${location}`;
+      return {
+        title: title,
+        subtitle: subtitle,
+        image,
+      };
+    },
+  },
+
 }
