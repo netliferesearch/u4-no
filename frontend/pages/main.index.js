@@ -32,14 +32,16 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
 
       <FrontpageFeature topics={topics} />
 
-        <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
-          <div className="c-topic-section__title">
-            <h2> Browse our handpicked anti-corruption publications, insights and ideas.
-            </h2>
-          </div>
+      <section className="o-wrapper-medium u-margin-bottom-huge">
+        <div className="c-topic-section__title">
+          <h2> Browse our handpicked anti-corruption publications, insights and ideas.</h2>
+        </div>
         <Mosaic resources={frontPage.resources} />
-        </section>
-        {console.log(frontPage)}
+        <h2 className="c-topic-section__cta">
+          <a href="/search">Explore all our resources &nbsp;<ArrowRight /></a>
+        </h2>
+      </section>
+
       <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
         <div className="c-introduction-text">
           <h2>
