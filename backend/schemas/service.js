@@ -115,6 +115,9 @@ export default {
                   to: [
                     {
                       type: 'workshop'
+                    },
+                    {
+                      type: 'event'
                     }
                   ]
                 }
