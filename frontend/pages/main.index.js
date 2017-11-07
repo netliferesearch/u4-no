@@ -2,7 +2,7 @@ import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
 import { Link } from '../routes';
-import { LayoutHomepage, SearchField, BoxOnBoxPartnerFeatures } from '../components';
+import { LayoutHomepage, SearchField, BoxOnBoxPartnerFeatures, Newsletter } from '../components';
 import { Footer } from '../components';
 import { PartnerAgencies, FrontpageFeature, Mosaic } from '../components';
 import { U4LogoSquare } from '../components/icons';
@@ -58,6 +58,7 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
         </div>
       </section>
     </div>
+    <Newsletter />
     <Footer />
 
     <PartnerAgencies />
