@@ -59,8 +59,8 @@ class FrontpageFeature extends Component {
           <button {...classes('btn')} onClick={this.triggerToggle}>
             <ArrowRight {...classes('arrowdown', this.state.active ? 'active' : null)} />
             { this.state.active ?
-              <span>View all topics</span>
-              : <span>View fewer topics</span>
+              <span>View fewer topics</span>
+              : <span>View all topics</span>
             }
           </button>
         </section>
