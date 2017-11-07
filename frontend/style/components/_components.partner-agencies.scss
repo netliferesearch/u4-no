@@ -49,6 +49,7 @@
 
 .c-partnerAgencies__text {
   max-width: 950px;
+  font-weight: 300;
   margin: auto;
   @include mq($from: tablet) {
     padding: 0 $spacing-large;

@@ -3,6 +3,7 @@
   color: $white;
   padding: $spacing-huge $spacing-large;
   font-family: $font-sans;
+  margin-top: $spacing-huge;
   margin-bottom: $spacing-huge;
 }
 .c-frontpage-feature__heading {
@@ -14,10 +15,17 @@
   margin: 0;
   padding: 0;
   counter-reset: counter;
-
+}
+.c-frontpage-feature__list--active {
+  counter-reset: counter 5 ;
 }
 .c-frontpage-feature__list-item {
-  @include inuit-font-size($font-size-large, $line-height-large);
+  @include inuit-font-size($font-size-normal, $line-height-large);
+  padding-top: $spacing-tiny;
+  @include mq($from: tablet) {
+    padding-top: 0;
+    @include inuit-font-size($font-size-large, $line-height-large);
+  }
   font-weight: 300;
   position: relative;
 
@@ -79,4 +87,7 @@
 
 .c-frontpage-feature__arrowdown {
   transform: rotate(90deg);
+}
+.c-frontpage-feature__arrowdown--active {
+  transform: rotate(-90deg);
 }
