@@ -14,7 +14,7 @@ const classes = BEMHelper({
 const Footer = ({ title }) => (
   <footer {...classes()}>
     <div>
-      <div {...classes('wrapper')}>
+      <div {...classes('wrapper', null, 'o-wrapper')}>
         <div {...classes('item')}>
           <CmiLogo {...classes('color-icon')} /><br /><br />
           <Logo {...classes('color-icon')} />
