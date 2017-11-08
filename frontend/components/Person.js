@@ -16,7 +16,7 @@ const Person = ({ person, linkLabel = 'Bio', light = true }) => (
         <img src={`${person.image.asset.url}?w=600&h=500&fit=crop&crop=focalpoint`} />
       </figure>
     ) : null}
-    <div {...classes('item-body', person.image ? 'light' : 'noimg')} style={{ backgroundImage: `url(${person.image && person.image.asset.url}?w=600&h=500&fit=crop&crop=focalpoint)` }}>
+    <div {...classes('item-body', person.image ? 'light' : 'noimg')} style={{ backgroundImage: `url(${person.image && person.image.asset.url}?w=400&h=600)` }}>
       <div>
         <small {...classes('item-subtitle')}>
           {person.position && `${person.position}, `}
