@@ -23,7 +23,7 @@ class Newsletter extends Component {
   }
 
   render() {
-    const { smallTitle = 'Keep up with us', title = 'Subscribe to our newsletter', link = '/#' } = this.props;
+    const { smallTitle = 'Keep up with us', title = 'Subscribe to our newsletter', link = 'http://u4.nationbuilder.com/' } = this.props;
 
     return (
       <div>
