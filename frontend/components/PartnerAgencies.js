@@ -14,7 +14,7 @@ const PartnerAgencies = ({ title }) => (
     <div {...classes('heading')}>
       <h1>Partner Agencies</h1>
       <p {...classes('text')}>The U4 Anti-Corruption Resource Centre is an institutional partnership
-  of bilateral international development agencies/foreign departments.</p>
+  of bilateral international development agencies/ministries of foreign affairs.</p>
     </div>
     <section {...classes('wrapper', null, 'o-wrapper')}>
       <div {...classes('item')}>
