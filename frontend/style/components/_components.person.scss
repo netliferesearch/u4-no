@@ -27,6 +27,8 @@
   padding: $spacing-large;
   font-weight: 300;
   font-family: $font-sans;
+  background-repeat: no-repeat;
+  background-position: top right;
 
   @include mq($from: desktop) {
     width: 100%;
