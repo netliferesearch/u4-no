@@ -58,6 +58,7 @@ export default {
                 marks: {
                   // Only allow these decorators
                   decorators: [
+                    {title: 'Strong', value: 'strong'},
                     { title: 'Emphasis', value: 'em' }
                   ],
                 },
@@ -98,6 +99,7 @@ export default {
             marks: {
               // Only allow these decorators
               decorators: [
+                {title: 'Strong', value: 'strong'},
                 {title: 'Emphasis', value: 'em'}
               ],
               // Support annotating text with a reference to an author
@@ -145,6 +147,7 @@ export default {
             marks: {
               // Only allow these decorators
               decorators: [
+                {title: 'Strong', value: 'strong'},
                 {title: 'Emphasis', value: 'em'}
               ],
               // Support annotating text with a reference to an author
@@ -190,6 +193,7 @@ export default {
             marks: {
               // Only allow these decorators
               decorators: [
+                {title: 'Strong', value: 'strong'},
                 { title: 'Emphasis', value: 'em' }
               ],
             },
@@ -253,6 +257,7 @@ export default {
             marks: {
               // Only allow these decorators
               decorators: [
+                {title: 'Strong', value: 'strong'},
                 { title: 'Emphasis', value: 'em' }
               ],
             },
@@ -388,6 +393,7 @@ export default {
             marks: {
               // Only allow these decorators
               decorators: [
+                {title: 'Strong', value: 'strong'},
                 {title: 'Emphasis', value: 'em'}
               ],
               // Support annotating text with a reference to an author
