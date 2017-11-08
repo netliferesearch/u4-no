@@ -30,11 +30,13 @@ const TopicEntry = ({
       <h1 className="c-topic-page_title">{title}</h1>
       <h2 className="c-topic-page__longTitle">{longTitle}</h2>
       <section className="c-boxOnImage u-margin-bottom-huge">
-        {featuredImage && (
+        {console.log(featuredImage)}
+        {featuredImage ?
           <figure className="c-boxOnImage__figure">
             <img alt={featuredImage.asset.altText} src={`${featuredImage.asset.url}?w=1600&h=800&fit=crop&crop=focalpoint`} />
+            {featuredImage.caption && (<span className="c-boxOnImage__caption">{featuredImage.caption}</span>)}
           </figure>
-        )}
+          : null }
         <div className="c-boxOnImage__body">
           <p>{explainerText}</p>
           {linkListContent && <LinkList title="Related topics" content={linkListContent} />}

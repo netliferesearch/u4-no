@@ -63,7 +63,15 @@
     }
   }
 }
-
+.c-boxOnImage__caption {
+  display: inline-block;
+  color: $brand-main;
+  text-transform: uppercase;
+  @include mq($from: tablet) {
+    margin-top: $spacing-small;
+    margin-left: $spacing-huge;
+  }
+}
 
 .c-boxOnImage--smaller {
 display: block;
