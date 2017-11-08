@@ -10,10 +10,12 @@
 }
 .c-person__item--light {
   min-height: 380px;
+  min-width: 300px;
+
   @include mq($from: tablet) {
+    min-width: 500px;
     display: flex;
     flex-wrap: wrap;
-    width: 33%;
     min-height: 280px;
   }
   @include mq($from: desktop) {
@@ -29,13 +31,10 @@
   font-family: $font-sans;
   background-repeat: no-repeat;
   background-position: top right;
+  background-size: contain;
 
-  @include mq($from: desktop) {
+  @include mq($from: tablet) {
     width: 100%;
-  }
-
-  a {
-    color: $brand-lighter;
   }
 }
 .c-person__item-body--small {
