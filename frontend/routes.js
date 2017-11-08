@@ -12,9 +12,8 @@ routes
   .add('persons.entry', '/the-team/:slug')
   .add('search.index', '/search')
   .add('search.entry', '/search')
-  .add('online-training.entry', '/online-training/:id')
-  .add('online-training.index', '/online-training')
-  .add('workshops.index', '/workshops')
   .add('workshops.entry', '/workshops/:slug')
-  .add('service.entry', '/services/:slug')
+  .add('service.workshops', '/workshops-and-events')
+  .add('service.online-courses', '/online-courses')
+  .add('service.helpdesk', '/helpdesk')
   .add('general.article', '/:slug');
