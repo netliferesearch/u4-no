@@ -17,4 +17,5 @@ routes
   .add('workshops.index', '/workshops')
   .add('workshops.entry', '/workshops/:slug')
   .add('service.entry', '/services/:slug')
+  .add('glossary.index', '/glossary')
   .add('general.article', '/:slug');
