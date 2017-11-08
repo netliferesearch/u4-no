@@ -1,0 +1,12 @@
+.c-notification {
+  background-color: $brand-lightest;
+  padding: 0.5em 1em;
+}
+
+.c-notification__label {
+  @include inuit-font-size($font-size-small, $line-height-normal);
+  margin-bottom: $spacing-small;
+}
+.c-notification__body {
+  @include inuit-font-size($font-size-small, $line-height-normal);
+}

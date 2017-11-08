@@ -53,9 +53,11 @@ const LegacyPublicationContainer = (props) => {
           <div className="c-longform-grid__standard">
             {date &&
               new Date().getFullYear() - pubyear > 5 && (
-                <div className="c-warning">
-                  This publication is from {pubyear}. Some of the content may be outdated. Search
-                  related topics to find more recent resources.
+                <div className="c-notification">
+                  <p className="c-notification__body">
+                    This publication is from {pubyear}. Some of the content may be outdated. Search
+                    related topics to find more recent resources.
+                  </p>
                 </div>
               )}
             {lead && (
