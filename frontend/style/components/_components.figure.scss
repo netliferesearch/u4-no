@@ -1,0 +1,27 @@
+.c-figure {
+}
+
+.c-figure--narrow {
+  width: 100%;
+  @include mq($from: tablet) {
+    width: 50%;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.c-figure--small{
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.c-figure--normal {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

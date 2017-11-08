@@ -60,9 +60,7 @@ export default {
     return <ol {...classes('standard', null, 'list-numbered')}>{children}</ol>;
   },
   marks: {
-    internalReferance: (props) => {
-      return <a href={props.mark.href}>{props.children}</a>;
-    },
+    internalReferance: props => <a href={props.mark.href}>{props.children}</a>,
     link: (props) => {
       if (props.mark.href.match(/#_ftn(\d+)/)) {
         const ref = props.mark.href.match(/#_ftn(\d+)/)[1];
@@ -76,11 +74,11 @@ export default {
           {props.children}<a href={`#fnref:${ref}`} title="return to article"> ↩</a>
         </li>);
       }
-      return <span>{props.children}</span>;
+      return <a href={props.mark.href}>{props.children}</a>;
     },
     footnote: (props) => {
       console.log('footnote', props);
       return <span>{props.children}</span>;
-    }
+    },
   },
 };

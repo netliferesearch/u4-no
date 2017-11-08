@@ -39,8 +39,10 @@ export default {
       type: 'string',
       options: {
         list: [
-          { title: 'full', value: 'full' },
-          { title: 'half', value: 'half' },
+          { title: 'wide', value: 'wide' },
+          { title: 'normal', value: 'normal' },
+          { title: 'small', value: 'small' },
+          { title: 'narrow', value: 'narrow' },
         ],
       },
     },

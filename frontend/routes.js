@@ -16,4 +16,5 @@ routes
   .add('service.workshops', '/workshops-and-events')
   .add('service.online-courses', '/online-courses')
   .add('service.helpdesk', '/helpdesk')
+  .add('glossary.index', '/glossary')
   .add('general.article', '/:slug');
