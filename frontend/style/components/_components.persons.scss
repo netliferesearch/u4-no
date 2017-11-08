@@ -1,9 +1,9 @@
 .c-persons {
-
   margin: $spacing 0;
   @include mq($from: tablet) {
     display: flex;
     justify-content: space-around;
+    margin: $spacing-huge 0;
   }
 }
 
@@ -18,10 +18,10 @@
 }
 
 .c-persons__bio {
-
     font-family: $font-sans;
     color: $brand-dark;
     margin: 0;
+    @include inuit-font-size($font-size-small, $line-height-large )
     @include mq($from: tablet) {
       width: 45%;
     }
@@ -35,7 +35,7 @@
 }
 
 .c-persons__profile-position {
-    margin-top: $spacing-tiny;
+    margin: $spacing-tiny 0 0;
     font-family: $font-sans;
     color: $brand-main;
     font-weight: bold;
@@ -46,6 +46,5 @@
     margin-top: $spacing-tiny;
     font-family: $font-sans;
     color: $brand-main;
-    a {}
     @include inuit-font-size($font-size-tiny, $line-height-large );
 }
