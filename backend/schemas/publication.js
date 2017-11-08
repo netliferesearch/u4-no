@@ -1,5 +1,9 @@
 import FunkyEditor from '../components/FunkyEditor'
 import license from './fields/license';
+const annotations = [
+    {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
+    {name: 'internalReferance', title: 'Find some internal resource', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article', },{type:'workshop'},{type:'frontpage'},{type:'file'}]},
+  ]
 /**
  * A publication is a long form document
  */
@@ -88,21 +92,18 @@ export default {
           {
             type: 'block',
             styles: [
-              {title: 'Normal', value: 'normal'},
-              {title: 'H2', value: 'h2'},
-              {title: 'H3', value: 'h3'},
+              { title: 'Normal', value: 'normal' },
+              { title: 'H2', value: 'h2' },
+              { title: 'H3', value: 'h3' },
             ],
             // Only allow numbered lists
             marks: {
               // Only allow these decorators
               decorators: [
-                {title: 'Emphasis', value: 'em'}
+                { title: 'Emphasis', value: 'em' }
               ],
               // Support annotating text with a reference to an author
-              annotations: [
-                {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-                {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'}]},
-              ]
+              annotations,
             }
           }
         ]
@@ -110,8 +111,7 @@ export default {
       {
         name: 'summaryExternal',
         title: 'Link to external short version',
-        description: 'Most probably a medium link',
-        type: 'url'
+        description: 'Most probably a medium link',  type: 'url'
       },
       {
         name: 'date',
@@ -133,31 +133,27 @@ export default {
           {
             type: 'block',
             styles: [
-              {title: 'Normal', value: 'normal'},
-              {title: 'H2', value: 'h2'},
-              {title: 'H3', value: 'h3'},
+              { title: 'Normal', value: 'normal' },
+              { title: 'H2', value: 'h2' },
+              { title: 'H3', value: 'h3' },
             ],
             // Only allow numbered lists
             marks: {
               // Only allow these decorators
               decorators: [
-                {title: 'Emphasis', value: 'em'}
+                { title: 'Emphasis', value: 'em' }
               ],
               // Support annotating text with a reference to an author
-              annotations: [
-                {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-                { name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{ type: 'person' }, { type: 'publication' }] },
-                { name: 'footnote', title: 'Footnote', type: 'object', fields: [ { type: 'text', name: 'footnoteText', title: 'Footnote text' }] }
-              ]
-            }
+              annotations,
+            },
           },
+
           {
             type: 'reference',
             tile: 'Nugget',
             to: [
               {
-                type: 'nugget'
-              },
+                type: 'nugget'        },
             ]
           },
           {
@@ -374,30 +370,26 @@ export default {
           {
             type: 'block',
             styles: [
-              {title: 'Normal', value: 'normal'},
-              {title: 'H2', value: 'h2'},
-              {title: 'H3', value: 'h3'},
+              { title: 'Normal', value: 'normal' },
+              { title: 'H2', value: 'h2' },
+              { title: 'H3', value: 'h3' },
             ],
             // Only allow numbered lists
             marks: {
               // Only allow these decorators
               decorators: [
-                {title: 'Emphasis', value: 'em'}
+                { title: 'Emphasis', value: 'em' }
               ],
               // Support annotating text with a reference to an author
-              annotations: [
-                { name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-                { name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'}]},
-              ]
-            }
-          }
+              annotations,
+            },
+          },
         ],
         preview: {
           select: {
             title: 'title',
             subtitle: 'text'
           },
-
           prepare({ title = '', subtitle = false }) {
             return {
               title,
