@@ -4,11 +4,14 @@
 .c-mosaic {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  //grid-template-rows: 1fr 1fr 1fr;
   grid-auto-rows: minmax(100px, auto);
   grid-column-gap: 20px;
   clear:both;
+  grid-row-gap: 5px;
+  margin: 0 5px;
   @include mq($from: tablet) {
+    margin: 0;
     grid-row-gap: 20px;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: minmax(300px, auto);
@@ -25,11 +28,11 @@
 // Child 1 is a big picture child 2 is the first text-box
 
 .c-mosaic_item:nth-child(1) {
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
+  display:none;
   background-size: cover;
   background-position: center;
   @include mq($from: tablet) {
+    display: block;
     grid-row: 1 / 3;
     grid-column: 1 / 3;
   }
@@ -198,9 +201,10 @@
 }
 
 .c-mosaic_item-title {
-  font-weight: 300;
+  font-weight: 400;
   @include inuit-font-size($font-size-small*1.1, $font-size-large);
   @include mq($from: tablet) {
+    font-weight: 300;
     @include inuit-font-size($font-size-normal, $font-size-large*1.1);
   }
 }
@@ -213,7 +217,7 @@
 }
 
 .c-mosaic_item--backgroundImage-invert {
-  box-shadow: inset 0 0 0 500px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 0 500px rgba(255, 255, 255, 0.4);
 }
 
 // Hover

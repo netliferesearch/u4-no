@@ -51,6 +51,11 @@ export default {
       ],
     },
     {
+      name: 'cv',
+      title: 'CV',
+      type: 'file'
+    },
+    {
       name: 'bio',
       title: 'Short biography',
       type: 'array',

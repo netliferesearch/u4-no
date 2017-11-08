@@ -1,15 +1,20 @@
 .c-top-bar {
   padding: $spacing-small $spacing;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   @include mq($from: tablet) {
     padding: $spacing-large $spacing-huge;
-    display: flex;
-    justify-content: space-between;
   }
 
 }
 a.c-top-bar__logo, a.c-top-bar__logo:visited {
   height: 50px;
+  display: inline-block;
   border-bottom: 0;
+  @include mq($from: tablet) {
+    margin: 0;
+  }
 
   &:hover {
     border: 0;
@@ -20,25 +25,33 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
   list-style: none;
   display: flex;
   font-family: $font-sans;
-  margin: $spacing 0 0 0;
+  margin: $spacing-small*0.8 0 0 0;
   padding: 0;
-  justify-content: center;
+  justify-content: flex-end;
   @include mq($from: tablet) {
+    justify-content: center;
     margin: 0;
   }
 }
 .c-top-bar__menu--active {
-  margin-top: $spacing;
+  margin-top: -$spacing-tiny;
   @include mq($from: tablet) {
     position: absolute;
-    top: $spacing;
-    right: ($spacing-huge)-20px;
+    top: $spacing-large;
+    right: ($spacing-huge)+8px;
     margin-left: $spacing-huge+24px;
   }
 }
 .c-top-bar__menu-item {
+  border-bottom: 3px solid $brand-main;
+  @include mq($from: tablet) {
+    background: none;
+    padding: 0;
+    border: none;
+    color: $brand-main;
+  }
   margin-right: $spacing;
-  color: $brand-main;
+  padding: 0 $spacing-tiny $spacing-tiny;
 
   &:last-child {
     margin-right: 0;
@@ -46,18 +59,20 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
   button {
     border: none;
     background: none;
-    color: $brand-main;
-    padding: 0;
     margin: 0;
     appearance: normal;
     outline: inherit;
     cursor: pointer;
+    font-weight: 300;
+    color: inherit;
+    @include mq($from: tablet) {
+      padding: 0;
+    }
   }
 }
 
 .c-top-bar__menu-item--active {
-  background-color: $white;
-  color: $brand-dark;
-  padding: 0 $spacing-tiny;
-  border-radius: 3px;
+  border-bottom: 3px solid $white;
+  color: $white;
+  padding: 0 $spacing-tiny $spacing-tiny;
 }

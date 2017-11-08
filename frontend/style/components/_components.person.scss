@@ -1,25 +1,21 @@
 .c-person__item {
-  @include mq($from: desktop) {
-    display: flex;
-    flex-wrap: wrap;
-    width: 33%;
+  @include mq($from: tablet) {
+    width: 50%;
   }
-}
-.c-person__item--small {
-  margin: auto auto $spacing-large;
   @include mq($from: desktop) {
     display: flex;
     flex-wrap: wrap;
     width: 33%;
-    min-height: 280px;
   }
 }
 .c-person__item--light {
   min-height: 380px;
+  min-width: 300px;
+
   @include mq($from: tablet) {
+    min-width: 500px;
     display: flex;
     flex-wrap: wrap;
-    width: 33%;
     min-height: 280px;
   }
   @include mq($from: desktop) {
@@ -28,48 +24,22 @@
   }
 }
 
+
 .c-person__item-body {
-  background: $brand-dark;
-  color: $white;
   padding: $spacing-large;
   font-weight: 300;
   font-family: $font-sans;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
 
-  @include mq($from: desktop) {
+  @include mq($from: tablet) {
     width: 100%;
-  }
-
-  a {
-    color: $brand-lighter;
   }
 }
 .c-person__item-body--small {
   @include mq($from: desktop) {
     width: 100%;
-  }
-}
-.c-person__item-body--light {
-  display: block;
-  background: transparent;
-  color: $brand-dark;
-  font-weight: 400;
-  margin: $spacing-small;
-  justify-content:flex-start;
-  background: $brand-lightest;
-  padding: $spacing-small;
-  @include mq($from: tablet) {
-    padding: $spacing-large;
-    object-position: bottom right;
-    object-fit:cover;
-    width: 100%;
-  }
-
-  a {
-    color: $brand-dark;
-    display: inline-block;
   }
 }
 .c-person__item-body--noimg {
@@ -79,12 +49,19 @@
   color: $brand-dark;
   display: block;
   padding-bottom: $spacing-large;
-  width: 100%;
   a {
     color: $brand-dark;
     display: inline-block;
   }
 }
+.c-person__item-body--apply {
+  border: none;
+  padding: $spacing;
+  color: $brand-dark;
+}
+
+
+
 .c-person__item-figure {
   position: relative;
   margin: 0;
@@ -97,6 +74,10 @@
 }
 .c-person__item-title {
   margin: 0;
+}
+.c-person__item-title--apply {
+  @include inuit-font-size($font-size-huge, $line-height-small);
+  margin-top: 0;
 }
 .c-person__item-subtitle {
   @include inuit-font-size(14px);

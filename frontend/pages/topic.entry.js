@@ -30,11 +30,13 @@ const TopicEntry = ({
       <h1 className="c-topic-page_title">{title}</h1>
       <h2 className="c-topic-page__longTitle">{longTitle}</h2>
       <section className="c-boxOnImage u-margin-bottom-huge">
-        {featuredImage && (
+        {console.log(featuredImage)}
+        {featuredImage ?
           <figure className="c-boxOnImage__figure">
             <img alt={featuredImage.asset.altText} src={`${featuredImage.asset.url}?w=1600&h=800&fit=crop&crop=focalpoint`} />
+            {featuredImage.caption && (<span className="c-boxOnImage__caption">{featuredImage.caption}</span>)}
           </figure>
-        )}
+          : null }
         <div className="c-boxOnImage__body">
           <p>{explainerText}</p>
           {linkListContent && <LinkList title="Related topics" content={linkListContent} />}
@@ -60,24 +62,29 @@ const TopicEntry = ({
         />
       </section>
 
-      <h2 className="c-topic-section__title">
-        Inform your anti-corruption work with handpicked topic related publications, insights and
-        ideas.
-      </h2>
-      <section className="c-topic-section u-padding-top-none">
-        <div id="resources" className="o-wrapper-medium">
-          <Mosaic resources={resources} />
+      { resources.length ?
+        <div>
+          <h2 className="c-topic-section__title">
+          Inform your anti-corruption work with handpicked topic related publications, insights and
+          ideas.
+          </h2>
+
+          <section className="c-topic-section u-padding-top-none">
+            <div id="resources" className="o-wrapper-medium">
+              <Mosaic resources={resources} />
+            </div>
+            <h2 className="c-topic-section__cta">
+              <a href="/search">Explore all our resources &nbsp;<ArrowRight /></a>
+            </h2>
+          </section>
         </div>
-        <h2 className="c-topic-section__cta">
-          <a href="/search">Explore all our resources &nbsp;<ArrowRight /></a>
-        </h2>
-      </section>
+        : null }
     </div>
 
 
     { advisors.length ?
       <div id="advisors" className="c-topic-section--lightblue">
-        <Team title="We’re the team developing this topic." members={advisors} linkLabel="Read full bio" />
+        <Team title={advisors.length > 1 ? 'We’re the team developing this topic.' : 'I’m developing this topic.'} members={advisors} linkLabel="Read full bio" />
         <h2 className="c-topic-section__cta">
           <a href="/the-team">The whole U4 team &nbsp;<ArrowRight /></a>
         </h2>

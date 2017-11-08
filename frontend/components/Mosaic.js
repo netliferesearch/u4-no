@@ -10,9 +10,7 @@ const Mosaic = ({ resources = [] }) => (
         style={{
           backgroundImage: `url(${resources[0].imageUrl})`,
         }}
-      >
-        >
-      </div>
+      />
     ) : null}
     {resources.map(
       (
@@ -29,7 +27,7 @@ const Mosaic = ({ resources = [] }) => (
             style={{
               backgroundImage: `url(${index % 4 === 2 ? imageUrl : ''})`,
             }}
-          > {console.log(imageUrl)}
+          >
             <div className="c-mosaic_item-content">
               <div
                 className="c-mosaic_item-content__meta"
@@ -37,8 +35,7 @@ const Mosaic = ({ resources = [] }) => (
                   color: index % 4 === 2 ? titleColor : ' ',
                 }}
               >
-                {publicationType &&
-                  publicationType.title}
+                {publicationType}
               </div>
               <div>
                 <h3

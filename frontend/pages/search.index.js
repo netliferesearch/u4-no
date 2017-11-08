@@ -20,7 +20,7 @@ const classes = BEMHelper({
 });
 
 const Search = ({ results = [], searchFilters = [], searchSorting = '' }) => (
-  <Layout>
+  <Layout noSearch>
     <div className="o-layout o-layout--center c-search__wrapper">
       <div className="o-layout__item u-10/12  u-8/12@desktop u-6/12@wide">
         <section {...classes({ block: 'search-input', element: 'content' })}>

@@ -42,7 +42,7 @@ class Menu extends Component {
       token: '',
       useCdn: true,
     });
-    const sanityQuery = '*[_type == "topics"]{_id, title, slug}';
+    const sanityQuery = '*[_type == "topics"] | order(title){_id, title, slug}';
     client.fetch(sanityQuery, {}).then((data) => {
       this.setState({
         data,
@@ -114,17 +114,21 @@ class Menu extends Component {
                   <ul {...menuClasses('list')}>
                     {topics.slice(0, 5).map(topic => (
                       <li key={topic._id}>
-                        <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                          <a {...menuClasses('link')}>{topic.title}</a>
-                        </Link>
+                        <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
+                          <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                            <a {...menuClasses('link')}>{topic.title}</a>
+                          </Link>
+                        </button>
                       </li>
                     ))}
                     {this.state.activeExpand &&
                       topics.slice(5, 50).map(topic => (
                         <li key={topic._id}>
-                          <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                            <a {...menuClasses('link')}>{topic.title}</a>
-                          </Link>
+                          <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
+                            <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                              <a {...menuClasses('link')}>{topic.title}</a>
+                            </Link>
+                          </button>
                         </li>
                       ))}
                     {this.state.activeExpand ? (
@@ -146,6 +150,7 @@ class Menu extends Component {
               <ul {...menuClasses('list')}>
                 <li>Publications</li>
                 <li>Expert answers</li>
+                <li>Glossary</li>
               </ul>
 
               <h4 {...menuClasses('heading')}>
@@ -153,9 +158,11 @@ class Menu extends Component {
               </h4>
               <ul {...menuClasses('list')}>
                 <li>
-                  <Link to={'/the-team'}>
-                    <a {...menuClasses('link')}>U4 staff</a>
-                  </Link>
+                  <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
+                    <Link to={'/the-team'}>
+                      <a {...menuClasses('link')}>U4 staff</a>
+                    </Link>
+                  </button>
                 </li>
                 <li>
                   <Link to={'/'}>
@@ -165,12 +172,24 @@ class Menu extends Component {
               </ul>
 
               <h4 {...menuClasses('heading')}>
-                <span {...menuClasses('heading-bg')}>Online training</span>
+                <span {...menuClasses('heading-bg')}>Services</span>
               </h4>
-
-              <h4 {...menuClasses('heading')}>
-                <span {...menuClasses('heading-bg')}>Workshops & events</span>
-              </h4>
+              <ul {...menuClasses('list')}>
+                <li>
+                  <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
+                    <Link to={'/online-training'}>
+                      <a {...menuClasses('link')}>Online training</a>
+                    </Link>
+                  </button>
+                </li>
+                <li>
+                  <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
+                    <Link to={'/workshops'}>
+                      <a {...menuClasses('link')}>Workshops</a>
+                    </Link>
+                  </button>
+                </li>
+              </ul>
 
               <div {...menuClasses('links--round')}>
                 <Link to={'/'}>

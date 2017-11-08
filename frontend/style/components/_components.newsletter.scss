@@ -2,6 +2,7 @@
 .c-newsletter {
   display: grid;
   grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+  margin-bottom: $spacing-large;
 }
 
 .c-newsletter__content {
@@ -15,27 +16,30 @@
     padding: $spacing-huge $spacing-large $spacing-huge $spacing-huge;
   }
 }
-
+.c-newsletter__title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $brand-dark;
+}
 .c-newsletter__title {
   color: $brand-dark;
   margin: 0 0 $spacing-small;
-  padding-bottom: $spacing-small;
-  border-bottom: 1px solid $brand-dark;
+  padding-bottom: $spacing-tiny;
   transition: border .2s ease-out;
   @include inuit-font-size($font-size-normal, $line-height-normal );
   @include mq($from: tablet) {
+    padding-bottom: $spacing-small;
     @include inuit-font-size($font-size-huge/1.5, $line-height-large );
   }
 
   &:hover {
     color: $brand-light;
-    border-bottom: 1px solid $brand-light;
   }
 }
 
 .c-newsletter__title-arrow {
-  float:right;
-  margin-right: $spacing-small;
+  padding: 0 $spacing-small $spacing-small;
   svg path {
     fill: $brand-dark;
   }

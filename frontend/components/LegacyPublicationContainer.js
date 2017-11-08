@@ -32,7 +32,10 @@ const LegacyPublicationContainer = (props) => {
     resources = [],
     BreadCrumbComponent = null,
     legacypdf = {},
+    date = {},
   } = props;
+  const pubyear = date && date.utc ? new Date(date.utc).getFullYear() : '';
+
   return (
     <Layout showLoadingScreen={showLoadingScreen} showTopTab={!isArticleMenuOpen}>
       <article className="u-relative">
@@ -48,6 +51,15 @@ const LegacyPublicationContainer = (props) => {
         </div>
         <div className="c-longform-grid">
           <div className="c-longform-grid__standard">
+            {date &&
+              new Date().getFullYear() - pubyear > 5 && (
+                <div className="c-notification">
+                  <p className="c-notification__body">
+                    This publication is from {pubyear}. Some of the content may be outdated. Search
+                    related topics to find more recent resources.
+                  </p>
+                </div>
+              )}
             {lead && (
               <div className="c-article">
                 <p>{lead}</p>

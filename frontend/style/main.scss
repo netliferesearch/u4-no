@@ -99,6 +99,7 @@
 @import 'elements/elements.figure';
 @import 'elements/elements.headings';
 @import 'elements/elements.links';
+@import 'elements/elements.input';
 
 // @import "elements/elements.quotes";
 
@@ -121,6 +122,7 @@
 @import 'components/components.article-nav';
 @import 'components/components.buttons';
 @import 'components/components.boxOnBox';
+@import 'components/components.boxOnBox-partner-features';
 @import 'components/components.color-box';
 @import 'components/components.duo';
 @import 'components/components.frontpage-feature';
@@ -142,9 +144,11 @@
 @import 'components/components.linkbox';
 @import 'components/components.mosaic';
 @import 'components/components.newsletter';
+@import 'components/components.notification';
 @import 'components/components.simple-mosaic';
 @import 'components/components.partner-promo';
 @import 'components/components.person';
+@import 'components/components.persons';
 @import 'components/components.team';
 @import 'components/components.textbox';
 @import 'components/components.topic-section';

@@ -20,8 +20,11 @@
 }
 
 .c-longform-grid__sidebar-right {
-  padding: 0 $spacing;
-  grid-column: 8 / 10;
+  display:none;
+  @include mq($from: wide) {
+    display: block;
+    grid-column: 8 / 10;
+  }
 }
 
 .c-longform-grid__medium {

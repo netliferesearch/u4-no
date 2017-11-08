@@ -7,6 +7,7 @@
 }
 
 .c-article__lead {
+  color: $brand-dark;
   max-width: 950px;
   margin-top: 0;
   margin-bottom: $spacing;
@@ -18,13 +19,27 @@
   }
 }
 
+.c-article__lead--center {
+  text-align: center;
+  font-family: $font-sans;
+  margin: auto auto $spacing-huge auto;
+  padding: 0;
+  max-width: 840px;
+}
+
 .c-article__title {
+  color: $brand-dark;
   margin-bottom: $spacing;
   padding-left: $spacing;
   padding-right: $spacing;
   @include mq($from: tablet) {
     padding-left: $spacing-huge;
+    @include inuit-font-size($font-size-largest, $line-height-large );
   }
+}
+.c-article__title--center {
+  padding: 0;
+  text-align: center;
 }
 
 .c-article_mainPoints {

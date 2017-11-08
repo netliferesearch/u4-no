@@ -83,8 +83,11 @@
   border: none;
   cursor: pointer;
   color: $brand-main;
-  margin: $spacing-small 0 0 0;
   padding: 0;
+  font-size: inherit;
+  @include inuit-font-size(14px, $line-height-large);
+  font-weight: 300;
+  font-family: $font-sans;
 }
 
 .c-menu__arrowdown {

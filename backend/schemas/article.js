@@ -34,11 +34,14 @@ export default {
             {title: 'Normal', value: 'normal'},
             {title: 'H2', value: 'h2'},
             {title: 'H3', value: 'h3'},
+            {title: 'H4', value: 'h4'},
+            {title: 'H5', value: 'h5'},
           ],
           // Only allow numbered lists
           marks: {
             // Only allow these decorators
             decorators: [
+              {title: 'Strong', value: 'strong'},
               {title: 'Emphasis', value: 'em'}
             ],
             // Support annotating text with a reference to an author

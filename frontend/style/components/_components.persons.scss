@@ -1,0 +1,50 @@
+.c-persons {
+  margin: $spacing 0;
+  @include mq($from: tablet) {
+    display: flex;
+    justify-content: space-around;
+    margin: $spacing-huge 0;
+  }
+}
+
+.c-persons__profile {
+    margin: 0;
+    @include mq($from: tablet) {
+      width: 35%;
+    }
+    img {
+      width: 100%;
+    }
+}
+
+.c-persons__bio {
+    font-family: $font-sans;
+    color: $brand-dark;
+    margin: 0;
+    @include inuit-font-size($font-size-small, $line-height-large )
+    @include mq($from: tablet) {
+      width: 45%;
+    }
+}
+
+.c-persons__profile-name {
+    margin-top: $spacing;
+    color: $brand-dark;
+    font-weight: bolder;
+    @include inuit-font-size($font-size-largest, $line-height-tiny );
+}
+
+.c-persons__profile-position {
+    margin: $spacing-tiny 0 0;
+    font-family: $font-sans;
+    color: $brand-main;
+    font-weight: bold;
+    @include inuit-font-size($font-size-normal, $line-height-normal );
+}
+
+.c-persons__profile-info {
+    margin-top: $spacing-tiny;
+    font-family: $font-sans;
+    color: $brand-main;
+    @include inuit-font-size($font-size-tiny, $line-height-large );
+}
