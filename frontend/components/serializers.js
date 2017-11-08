@@ -62,19 +62,25 @@ export default {
   marks: {
     internalReferance: props => <a href={props.mark.href}>{props.children}</a>,
     link: (props) => {
-      if (props.mark.href.match(/#_ftn(\d+)/)) {
-        const ref = props.mark.href.match(/#_ftn(\d+)/)[1];
-        return (<sup id={`fnref:${ref}`}>
-          <a href={`#fn:${ref}`} rel="footnote">{ref}</a>
-        </sup>);
+      if (props.mark.href) {
+        if (props.mark.href.match(/#_ftn(\d+)/)) {
+          const ref = props.mark.href.match(/#_ftn(\d+)/)[1];
+          return (<sup id={`fnref:${ref}`}>
+            <a href={`#fn:${ref}`} rel="footnote">{ref}</a>
+          </sup>);
+        }
+        if (props.mark.href.match(/#_ftnref(\d+)/)) {
+          const ref = props.mark.href.match(/#_ftnref(\d+)/)[1];
+          return (<li className="c-footnote__item" id={`fn:${ref}`}>
+            {props.children}<a href={`#fnref:${ref}`} title="return to article"> ↩</a>
+          </li>);
+        }
+        return <a href={props.mark.href}>{props.children}</a>;
       }
-      if (props.mark.href.match(/#_ftnref(\d+)/)) {
-        const ref = props.mark.href.match(/#_ftnref(\d+)/)[1];
-        return (<li className="c-footnote__item" id={`fn:${ref}`}>
-          {props.children}<a href={`#fnref:${ref}`} title="return to article"> ↩</a>
-        </li>);
-      }
-      return <a href={props.mark.href}>{props.children}</a>;
+
+      console.log(props.mark);
+
+      return null;
     },
     footnote: (props) => {
       console.log('footnote', props);
