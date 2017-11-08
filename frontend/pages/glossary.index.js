@@ -7,12 +7,18 @@ import Head from 'next/head';
 import { BoxOnBox, Footer, Layout, ExtendedBlockContent, Accordion, LinkList, Newsletter } from '../components';
 
 
-const Glossary = ({
-  terms = {},
-}) => (
+const Glossary = ({ terms = [] }) => (
   <Layout>
     <div>
-      {terms.map(term => term.term)}
+      <h1>Glossary</h1>
+      {terms.map(({ term = '', definition = '' }, index) =>
+        (<div>
+          <h3>{term}</h3>
+          <p>{definition}</p>
+        </div>),
+
+
+      )}
       <Footer />
     </div>
   </Layout>
