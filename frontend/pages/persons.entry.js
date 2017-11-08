@@ -19,29 +19,29 @@ const Persons = ({
   email = '',
   phone = '',
   person = {},
+  image = {},
+  cv = {},
   url,
 }) => (
   <Layout>
     <div className="o-wrapper o-wrapper--padded">
       <BreadCrumb url={url} />
-      <div className="c-article o-wrapper-medium">
+      <div className="o-wrapper-medium">
         <section {...classes()}>
           <div {...classes('profile')}>
             <h1{...classes('profile-name')}>{person.firstName}<br /> {person.surname}</h1>
             <p{...classes('profile-position')}>{person.position}</p>
-            <img src="https://images.unsplash.com/photo-1450297350677-623de575f31c?auto=format&fit=crop&w=934&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
+            {person.image && <img alt="x" src={person.image.asset.url} /> }
             <div{...classes('profile-info')}>
-              <a href="#">{person.email}</a><br />
-              {person.phone && <a href={`tel:${person.phone}`}>+{person.phone}</a>}<br />
-              <a href="#">Downlaod CV</a><br />
-              <a href="#">Hi-res image</a><br />
-              <a href="#">{person.affiliations && person.affiliations.map(affiliation => affiliation)}</a>
+              <a href={`mailto:${person.email}`}>{person.email}</a><br />
+              {person.phone && <a href={`tel:${person.phone}`}>+{person.phone}<br /></a>}
+              {person.cv && <a href={person.cv.asset.url}>Downlaod CV</a>}<br />
+              {person.image && <a href={person.image.asset.url}>Hi-res image<br /></a>}
+              {person.affiliations && person.affiliations.map(affiliation => affiliation)}
             </div>
           </div>
           <div {...classes('bio')}>
-
             <BlockContent blocks={person.bio} />
-
           </div>
         </section>
       </div>
@@ -60,4 +60,5 @@ export default DataLoader(Persons, {
     }`,
     param: { slug },
   }),
+  materializeDepth: 3,
 });
