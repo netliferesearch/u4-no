@@ -84,7 +84,7 @@ const TopicEntry = ({
 
     { advisors.length ?
       <div id="advisors" className="c-topic-section--lightblue">
-        <Team title="We’re the team developing this topic." members={advisors} linkLabel="Read full bio" />
+        <Team title={advisors.length > 1 ? 'We’re the team developing this topic.' : 'I’m developing this topic.'} members={advisors} linkLabel="Read full bio" />
         <h2 className="c-topic-section__cta">
           <a href="/the-team">The whole U4 team &nbsp;<ArrowRight /></a>
         </h2>

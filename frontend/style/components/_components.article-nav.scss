@@ -120,6 +120,7 @@
 .c-article-nav-sidebar {
   margin: $spacing 0;
   max-width: 300px;
+  padding: 0 $spacing;
 
   @include mq($until: 1300px) {
     display: none;
@@ -130,8 +131,9 @@
 }
 
 .c-article-nav-sidebar--fixed {
+  padding: 0 $spacing;
   position: fixed;
-  max-width: 300px;
+  display: block;
   top: 0;
   bottom: 0;
   height: 100%;

@@ -20,6 +20,8 @@
   animation: fadeIn .5s;
 }
 .c-toggle-block__icon {
+  width: 64px;
+  height: 64px;
   transform: rotate(-90deg);
   transition: transform .2s ease-out;
   display: flex;
