@@ -8,6 +8,7 @@ routes
   .add('topic.article', '/topics/:slug/:topicPart')
   .add('topic.entry', '/topics/:slug')
   .add('topic.index', '/topics')
+  .add('glossary.index', '/terms')
   .add('persons.index', '/the-team')
   .add('persons.entry', '/the-team/:slug')
   .add('search.index', '/search')
@@ -16,5 +17,4 @@ routes
   .add('service.workshops', '/workshops-and-events')
   .add('service.online-courses', '/online-courses')
   .add('service.helpdesk', '/helpdesk')
-  .add('glossary.index', '/glossary')
   .add('general.article', '/:slug');

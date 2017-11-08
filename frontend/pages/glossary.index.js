@@ -5,26 +5,24 @@ import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 
 import { BoxOnBox, Footer, Layout, ExtendedBlockContent, Accordion, LinkList, Newsletter } from '../components';
-import { Feature, Mosaic, LinkBox } from '../components';
-import { DownArrowButton, RightArrowButton } from '../components/buttons';
-import { Basics, Picture, Publication, Resources, ResearchAgenda, ArrowRight } from '../components/icons';
 
 
 const Glossary = ({
-  terms: {
-    definition = '',
-    term = '',
-  },
+  terms = {},
 }) => (
   <Layout>
-    {terms.map(term => term.term)}
-
-    <Footer />
+    <div>
+      {terms.map(term => term.term)}
+      <Footer />
+    </div>
   </Layout>
 );
 
 export default DataLoader(Glossary, {
   queryFunc: () => ({
-    sanityQuery: '{ "terms": *[_type == "term"]}',
+    sanityQuery: `{
+      "terms": *[_type == "term"]
+    }`,
   }),
+  materializeDepth: 2,
 });

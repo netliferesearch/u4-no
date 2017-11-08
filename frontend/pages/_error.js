@@ -57,7 +57,6 @@ export default class Error extends React.Component {
       { from: '/home/', to: '/' },
       { from: '/your-partner-profile/', to: '/' },
       { from: '/document/', to: '/' },
-      { from: '/glossary', to: '/' },
       { from: '/glossaire', to: '/' },
       { from: '/projects', to: '/' },
       { from: '/u4-centre-de-ressources-anti-corruption/', to: '/' },
