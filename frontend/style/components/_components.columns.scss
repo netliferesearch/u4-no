@@ -1,20 +1,18 @@
 .c-columns {
-  display: flex;
-  justify-content: center;
   font-family: $font-sans;
-  @include inuit-font-size($font-size-small);
+  @include inuit-font-size($font-size-small, $line-height-normal);
   @include mq($from: tablet) {
+    display: flex;
+    justify-content: center;
     margin-top: $spacing-large;
-    margin-bottom: $spacing-large;
   }
 }
 .c-columns--two__item {
+  padding: $spacing-small;
+  width: 100%;
   @include mq($from: tablet) {
     width: 50%;
     padding: $spacing;
-  }
-
-  ul {
   }
   li {
     border: none;
@@ -22,4 +20,14 @@
     border-bottom: 1px solid rgba($brand-dark, .1);
     padding: $spacing-small 0;
   }
+}
+
+.c-columns__item--narrow {
+  @include mq($from: tablet) {
+    width: 50%;
+    padding: $spacing-small;
+  }
+}
+.c-columns__title {
+  margin: 0 0 $spacing;
 }

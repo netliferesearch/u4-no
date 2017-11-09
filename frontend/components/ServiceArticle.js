@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
+import ReactPlayer from 'react-player';
 import { ArrowRight } from './icons';
 import { BoxOnBox, BoxOnImage, WorkshopMosaic, Feature, SimpleMosaic } from './';
 
@@ -43,6 +44,11 @@ const serializers = {
         <BoxOnBox left={textLeft} right={textRight} />
       </section>
     ),
+    HelpdeskTeam: ({ node: { textRight, img, personLeft, personRight } }) => (
+      <section className="c-topic-section">
+        <BoxOnImage wide helpdesk text={textRight} image={img} personsLeft={personLeft} personsRight={personRight} />
+      </section>
+    ),
     boxOnImageRef: ({ node: { block, img } }) => (
       <section className="c-topic-section">
         <BoxOnImage text={block} image={img} />
@@ -58,9 +64,23 @@ const serializers = {
         <SimpleMosaic resources={coursesRef} cta="Register" />
       </div>
     ),
-    vimeo: ({ node: { src } }) => (
-      <div className="o-wrapper o-layout--center">
-        <iframe src={`${src}?title=0&byline=0&portrait=0`} width="640" height="360" frameBorder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowFullScreen="true" />
+    vimeo: ({ node: { src, title } }) => (
+      <div className="u-bg-light-blue">
+        <div className="o-wrapper o-layout--center">
+          <h2 className="c-topic-section__title u-margin-bottom-none">
+            {title}
+          </h2>
+          <ReactPlayer
+            controls
+            vimeoConfig={{
+              preload: true,
+            }}
+            style={{
+              margin: '40px auto 40px',
+            }}
+            url={src}
+          />
+        </div>
       </div>
     ),
     features: ({ node: { featureArray } }) => (

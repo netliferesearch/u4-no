@@ -22,6 +22,7 @@
     "@sanity/default-layout": "^0.120.0",
     "@sanity/default-login": "^0.120.0",
     "@sanity/desk-tool": "^0.120.0",
+    "@sanity/form-builder": "^0.120.0",
     "@sanity/google-maps-input": "^0.120.0",
     "@sanity/rich-date-input": "^0.120.0",
     "@sanity/storybook": "^0.120.0",
