@@ -20,7 +20,6 @@ export default {
         },
       ],
     },
-    explainerText,
     featuredImage,
     {
       name: 'content',
