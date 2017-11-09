@@ -102,25 +102,35 @@ const serializers = {
           ? slugify(children[0], { lower: true })
           : undefined;
 
-        return React.createElement(
-          style,
-          { id, className: 'o-grid-container__item-standard' },
-          children,
+        return (
+          <div className="o-grid-container">
+            <div className="o-grid-container__item-standard u-margin-bottom">
+              {React.createElement(
+                style,
+                { id, className: '' },
+                children,
+              )}
+            </div>
+          </div>
         );
       }
 
       if (style === 'blockquote') {
         return (
-          <blockquote className="o-grid-container__item-standard">
-            {children}
-          </blockquote>
+          <div className="o-grid-container">
+            <blockquote className="o-grid-container__item-standard c-article">
+              {children}
+            </blockquote>
+          </div>
         );
       }
 
       return (
-        <p className="o-grid-container__item-standard">
-          {children}
-        </p>
+        <div className="o-grid-container">
+          <div className="o-grid-container__item-standard c-article">
+            {children}
+          </div>
+        </div>
       );
     },
   },

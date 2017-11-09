@@ -45,7 +45,6 @@ const ServicePage = ({
     <ServiceArticle
       blocks={service.sections}
     />
-
     <Newsletter />
 
     <Footer />
