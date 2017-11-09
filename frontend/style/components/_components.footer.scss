@@ -1,6 +1,8 @@
 .c-footer {
-  padding: $spacing;
+  margin-top: $spacing-large;
+  padding: $spacing-large $spacing;
   font-family: $font-sans;
+  border-top: 1px solid $brand-lightest;
 }
 
 .c-footer__wrapper {
