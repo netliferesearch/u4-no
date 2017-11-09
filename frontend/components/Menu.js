@@ -150,7 +150,11 @@ class Menu extends Component {
               <ul {...menuClasses('list')}>
                 <li>Publications</li>
                 <li>Expert answers</li>
-                <li>Glossary</li>
+                <li>
+                  <Link to={'/terms'}>
+                    <a {...menuClasses('link')}>Glossary</a>
+                  </Link>
+                </li>
               </ul>
 
               <h4 {...menuClasses('heading')}>
@@ -165,7 +169,7 @@ class Menu extends Component {
                   </button>
                 </li>
                 <li>
-                  <Link to={'/'}>
+                  <Link to={'/partner-agencies'}>
                     <a {...menuClasses('link')}>Partner Agencies</a>
                   </Link>
                 </li>
