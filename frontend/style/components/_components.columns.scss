@@ -1,11 +1,10 @@
 .c-columns {
   font-family: $font-sans;
-  @include inuit-font-size($font-size-small);
+  @include inuit-font-size($font-size-small, $line-height-normal);
   @include mq($from: tablet) {
     display: flex;
     justify-content: center;
     margin-top: $spacing-large;
-    margin-bottom: $spacing-large;
   }
 }
 .c-columns--two__item {
@@ -28,4 +27,7 @@
     width: 50%;
     padding: $spacing-small;
   }
+}
+.c-columns__title {
+  margin: 0 0 $spacing;
 }

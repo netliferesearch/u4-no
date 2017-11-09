@@ -44,9 +44,9 @@ const serializers = {
         <BoxOnBox left={textLeft} right={textRight} />
       </section>
     ),
-    HelpdeskTeam: ({ node: { textRight, img } }) => (
+    HelpdeskTeam: ({ node: { textRight, img, personLeft, personRight } }) => (
       <section className="c-topic-section">
-        <BoxOnImage wide helpdesk text={textRight} image={img} />
+        <BoxOnImage wide helpdesk text={textRight} image={img} personsLeft={personLeft} personsRight={personRight} />
       </section>
     ),
     boxOnImageRef: ({ node: { block, img } }) => (
@@ -64,18 +64,23 @@ const serializers = {
         <SimpleMosaic resources={coursesRef} cta="Register" />
       </div>
     ),
-    vimeo: ({ node: { src } }) => (
-      <div className="o-wrapper o-layout--center">
-        <ReactPlayer
-          controls
-          vimeoConfig={{
-            preload: true,
-          }}
-          style={{
-            margin: '40px auto 40px',
-          }}
-          url={src}
-        />
+    vimeo: ({ node: { src, title } }) => (
+      <div className="u-bg-light-blue">
+        <div className="o-wrapper o-layout--center">
+          <h2 className="c-topic-section__title u-margin-bottom-none">
+            {title}
+          </h2>
+          <ReactPlayer
+            controls
+            vimeoConfig={{
+              preload: true,
+            }}
+            style={{
+              margin: '40px auto 40px',
+            }}
+            url={src}
+          />
+        </div>
       </div>
     ),
     features: ({ node: { featureArray } }) => (
