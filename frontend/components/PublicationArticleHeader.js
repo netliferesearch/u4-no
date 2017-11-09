@@ -56,7 +56,7 @@ const PublicationArticleHeader = ({
           Bergen: U4 Anti-Corruption Resource Centre at Chr. Michelsen Institute (U4 Brief 2017:5)
         </p>
         <p>
-          <a href="#1">Also available in Spanish</a>
+            <a {...classes('language')} href="#1">Also available in Spanish</a>
         </p>
       </div>
       {shortVersion.length > 0 && (
