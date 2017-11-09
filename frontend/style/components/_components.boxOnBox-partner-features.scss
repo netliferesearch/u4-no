@@ -34,6 +34,7 @@
   }
 }
 .c-boxOnBox-partner-features__right {
+  text-align: center;
   background: $brand-dark;
   color:  $white;
   margin: 0;
@@ -42,6 +43,7 @@
   padding: $spacing;
   padding-top: $spacing-huge;
   @include mq($from: tablet) {
+    text-align: left;
     padding: 15% 10% 10% 20%;
     margin-top: 0;
     margin-left: -10%;
