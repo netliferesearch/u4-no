@@ -161,6 +161,19 @@ export default {
           ]
         },
         {
+          name: 'vimeo',
+          title: 'Vimeo video',
+          description: 'Paste URL to the vimeo video (not the whole embed code)',
+          type: 'object',
+          fields: [
+            {
+              name: 'src',
+              title: 'URL',
+              type: 'string',
+            }
+          ]
+        },
+        {
           name: 'cta',
           title: 'Call to action link',
           type: 'object',
@@ -176,6 +189,89 @@ export default {
               type: 'string',
             }
           ]
+        },
+        {
+          name: 'twoColumns',
+          title: 'Text in two columns',
+          type: 'object',
+          fields: [
+            {
+              name: 'textLeft',
+              title: 'Text in left hand box',
+              type: 'array',
+              of: [{
+                type: 'block',
+                styles: [
+                  {title: 'Normal', value: 'normal'},
+                  {title: 'H2', value: 'h2'},
+                  {title: 'H3', value: 'h3'},
+                ],
+                // Only allow numbered lists
+                marks: {
+                  // Only allow these decorators
+                  decorators: [
+                    {title: 'Strong', value: 'strong'},
+                    {title: 'Emphasis', value: 'em'}
+                  ],
+                  // Support annotating text with a reference to an author
+                  annotations: [
+                    {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
+                    {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'}]},
+                  ]
+                },
+              }],
+            },
+            {
+              name: 'textRight',
+              title: 'Text in right hand box',
+              type: 'array',
+              of: [{
+                type: 'block',
+                styles: [
+                  {title: 'Normal', value: 'normal'},
+                  {title: 'H2', value: 'h2'},
+                  {title: 'H3', value: 'h3'},
+                ],
+                // Only allow numbered lists
+                marks: {
+                  // Only allow these decorators
+                  decorators: [
+                    {title: 'Strong', value: 'strong'},
+                    {title: 'Emphasis', value: 'em'}
+                  ],
+                  // Support annotating text with a reference to an author
+                  annotations: [
+                    {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
+                    {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'}]},
+                  ]
+                }
+              }],
+            },
+          ],
+          preview: {
+            select: {
+              blocks: 'textLeft',
+              blocks2: 'textRight',
+            },
+            prepare({ blocks, blocks2 }) {
+                const block = (blocks || []).find(block => block._type === 'block')
+                const block2 = (blocks2 || []).find(block => block._type === 'block')
+                return {
+                  title: block
+                    ? block.children
+                      .filter(child => child._type === 'span')
+                      .map(span => span.text)
+                      .join('')
+                    : 'No title',
+                  subtitle: block2
+                    ? block2.children
+                      .filter(child => child._type === 'span')
+                      .map(span => span.text)
+                      .join('')
+                    : 'No title'
+                }
+            },
+          }
         },
         {
           name: 'boxOnBoxRef',

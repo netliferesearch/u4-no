@@ -65,9 +65,9 @@ export default {
       if (props.mark.href) {
         if (props.mark.href.match(/#_ftn(\d+)/)) {
           const ref = props.mark.href.match(/#_ftn(\d+)/)[1];
-          return (<sup id={`fnref:${ref}`}>
-            <a href={`#fn:${ref}`} rel="footnote">{ref}</a>
-          </sup>);
+          return (<span className="fn" id={`fnref:${ref}`}>
+            This is a footnote!
+          </span>);
         }
         if (props.mark.href.match(/#_ftnref(\d+)/)) {
           const ref = props.mark.href.match(/#_ftnref(\d+)/)[1];
@@ -75,7 +75,7 @@ export default {
             {props.children}<a href={`#fnref:${ref}`} title="return to article"> ↩</a>
           </li>);
         }
-        return <a href={props.mark.href}>{props.children}</a>;
+        return <span>{props.children}<span className="fn"><a href={props.mark.href}></a></span></span>;
       }
 
       console.log(props.mark);
@@ -84,7 +84,7 @@ export default {
     },
     footnote: (props) => {
       console.log('footnote', props);
-      return <span>{props.children}</span>;
+      return <span className="fn">{props.children}</span>;
     },
   },
 };

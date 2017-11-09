@@ -20,7 +20,6 @@ export default {
         },
       ],
     },
-    longTitle,
     explainerText,
     featuredImage,
     {

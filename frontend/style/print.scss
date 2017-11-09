@@ -1,0 +1,100 @@
+// SETTINGS
+@import 'settings/settings.config';
+@import 'settings/settings.core';
+@import 'settings/settings.global';
+@import 'settings/settings.colors';
+@import 'settings/settings.typography';
+
+// TOOLS
+@import '../node_modules/inuitcss/tools/tools.font-size';
+@import '../node_modules/inuitcss/tools/tools.clearfix';
+@import '../node_modules/sass-mq/mq';
+@import 'tools/tools.aliases';
+
+// GENERIC
+@import '../node_modules/inuitcss/generic/generic.box-sizing';
+@import '../node_modules/inuitcss/generic/generic.normalize';
+@import '../node_modules/inuitcss/generic/generic.shared';
+
+// ELEMENTS
+@import '../node_modules/inuitcss/elements/elements.page';
+@import '../node_modules/inuitcss/elements/elements.headings';
+@import 'elements/elements.body';
+@import 'elements/elements.figure';
+@import 'elements/elements.headings';
+@import 'elements/elements.links';
+@import 'elements/elements.input';
+
+@import '../node_modules/inuitcss/utilities/utilities.widths';
+@import '../node_modules/inuitcss/utilities/utilities.headings';
+@import '../node_modules/inuitcss/utilities/utilities.spacings';
+@import 'utilities/utilities.print';
+@import 'utilities/utilities.typography';
+@import 'utilities/utilities.general';
+
+/**
+* Resets
+*/
+
+.c-article-header__language,
+.c-article-header__download,
+.c-top-bar {
+  display: none;
+}
+
+/**
+* Print layout
+*/
+.contents {
+  display: block;
+  page: table-of-contents;
+  counter-reset: page 1;
+}
+
+@page table-of-contents {
+    @top { content: "Table of Contents"; }
+    a::after { content: leader(".") target-counter(attr(href), page); }
+}
+.body {
+  display: block;
+  page: main;
+  counter-reset: page 1;
+}
+@page main {
+  @top { content: string(chapter-title); }
+  @bottom {
+      content: counter(page);
+  }
+}
+.body h2 {
+  string-set: chapter-title content();
+}
+
+a[href]::after {
+  content: " [See page " target-counter(attr(href), page) "]";
+}
+
+
+@page {
+    @bottom { content: counter(page); }
+  }
+
+  @page {
+    size: A4;
+    margin-bottom: 3cm;
+    font-size: 11pt;
+}
+h1, h2 {
+    page-break-before: always;
+}
+p {
+  orphans: 2;
+  widows: 2;
+}
+.fn {
+  float: footnote;
+}
+@footnotes {
+  border-top: solid black thin;
+  padding-top: 8pt;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
+import { ArrowRight } from './icons';
 import { BoxOnBox, BoxOnImage, WorkshopMosaic, Feature, SimpleMosaic } from './';
 
 /**
@@ -15,14 +16,26 @@ const serializers = {
         {headingValue}
       </h2>
     ),
-    cta: ({ node: { text = '', href = '' } }) => (
+    cta: ({ node: { ctaValue = '', ctaURL = '' } }) => (
       <h2 className="c-topic-section__cta">
-        <a href={href}>{text} &nbsp;<ArrowRight /></a>
+        <a href={ctaURL}>{ctaValue} &nbsp;<ArrowRight /></a>
       </h2>
     ),
     textBlock: ({ node: { text = '' } }) => (
       <div className="o-wrapper-inner u-margin-bottom-large">
         {text}
+      </div>
+    ),
+    twoColumns: ({ node: { textLeft, textRight } }) => (
+      <div className="o-wrapper-inner">
+        <div className="c-columns c-columns--two">
+          <div className="c-columns__item c-columns--two__item">
+            <BlockContent blocks={textLeft} />
+          </div>
+          <div className="c-columns__item c-columns--two__item">
+            <BlockContent blocks={textRight} />
+          </div>
+        </div>
       </div>
     ),
     boxOnBoxRef: ({ node: { textLeft, textRight } }) => (
@@ -43,6 +56,11 @@ const serializers = {
     courses: ({ node: { coursesRef } }) => (
       <div className="o-wrapper">
         <SimpleMosaic resources={coursesRef} cta="Register" />
+      </div>
+    ),
+    vimeo: ({ node: { src } }) => (
+      <div className="o-wrapper o-layout--center">
+        <iframe src={`${src}?title=0&byline=0&portrait=0`} width="640" height="360" frameBorder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowFullScreen="true" />
       </div>
     ),
     features: ({ node: { featureArray } }) => (
