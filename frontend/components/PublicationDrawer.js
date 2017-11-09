@@ -18,10 +18,10 @@ const PublicationDrawer = ({
           <div className="u-1/1 u-tc">
             <div>
               <button
-                className="c-btn c-btn--primary c-btn--large"
+                className="c-btn c-btn--large"
                 onClick={togglePublicationDrawer}
               >
-                <h3 className="c-btn__body">Read the whole publication</h3>
+                <h3 className="c-btn--body">Read the whole publication</h3>
               </button>
             </div>
           </div>

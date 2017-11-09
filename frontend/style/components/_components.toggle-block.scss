@@ -2,10 +2,13 @@
 
 }
 .c-toggle-block__title {
-  @include inuit-font-size($font-size-large, $font-size-huge);
+  @include inuit-font-size($font-size-large, $font-size-larger);
   font-family: $font-sans;
   position: relative;
   display: flex;
+  align-items: center;
+  flex-direction:row;
+  text-align: left;
   cursor: pointer;
   color: $brand-dark;
 
@@ -14,23 +17,17 @@
   }
 }
 .c-toggle-block__title-text {
-  display: inline-block;
+  margin-left: $spacing-small;
 }
 .c-toggle-block__content {
   animation: fadeIn .5s;
 }
-.c-toggle-block__icon {
-  width: 64px;
-  height: 64px;
+.c-toggle-block--icon .c-btn--icon {
   transform: rotate(-90deg);
   transition: transform .2s ease-out;
-  display: flex;
-  overflow: visible;
-  margin-right: $spacing-small;
-  margin-left: -$spacing-small;
 }
-.c-toggle-block__icon--active {
-  transform: rotate(-180deg);
+.c-toggle-block--icon--active .c-btn--icon {
+  transform: rotate(0deg);
   transform-origin: center;
 }
 

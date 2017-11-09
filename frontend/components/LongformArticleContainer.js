@@ -147,9 +147,7 @@ const LongFormArticleContainer = (props) => {
               <div className="c-longform-grid">
                 <div className="c-longform-grid__standard">
                   <div className="footnotes">
-                    <ol>
-                      <ToggleBlock title="References" active content={props.references} />
-                    </ol>
+                    <ToggleBlock title="References" active content={props.references} />
                   </div>
                 </div>
               </div>
@@ -178,7 +176,9 @@ const LongFormArticleContainer = (props) => {
             {props._type === 'publication' && (
               <div className="c-longform-grid">
                 <div className="c-longform-grid__standard">
-                  <ToggleBlock title="Disclaimer" content="All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies." />
+                  <div className="footnotes">
+                    <ToggleBlock title="Disclaimer" content="All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies." />
+                  </div>
                 </div>
               </div>
             )}

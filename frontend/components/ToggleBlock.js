@@ -7,13 +7,12 @@ import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import { DownArrowButton } from '../components/buttons';
-import serializers from './serializers'
+import serializers from './serializers';
 
 const classes = BEMHelper({
   name: 'toggle-block',
   prefix: 'c-',
 });
-
 
 
 class ToggleBlock extends Component {
@@ -22,16 +21,15 @@ class ToggleBlock extends Component {
 
     this.state = {
       active: props.active || false,
-      activeClass: '',
+      activeClass: 'icon--active',
     };
-    autobind(this)
+    autobind(this);
   }
 
   toggle(e) {
     e.preventDefault();
     this.setState({
       active: !this.state.active,
-      activeClass: this.state.active ? '' : 'active',
     });
   }
   render() {
@@ -39,10 +37,10 @@ class ToggleBlock extends Component {
 
     return (
       <div {...classes()}>
-        <div {...classes('item', this.state.activeClass)}>
+        <div {...classes('item')}>
           <div {...classes('title')} onClick={this.toggle}>
-            <div {...classes('icon', this.state.activeClass)}>
-              <DownArrowButton text="" />
+            <div {...classes(null, this.state.active ? this.state.activeClass : 'icon')}>
+              <DownArrowButton modifier="icon" text="" />
             </div>
             <span {...classes('title-text')}>{title}</span>
           </div>

@@ -12,9 +12,9 @@ const SimpleHero = ({ title, content, cta = false }) => (
     <h1 {...classes('title')}>{title}</h1>
     <p {...classes('content')}>{content}</p>
     { cta &&
-      <Link>
+      <Link to={'#'}>
         <a {...classes('cta')}>
-          CTA
+          Ask our free helpdesk today
         </a>
       </Link>
     }
