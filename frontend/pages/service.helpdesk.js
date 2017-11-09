@@ -5,7 +5,7 @@ import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 
 import { BoxOnBox, Footer, Layout, ExtendedBlockContent, Accordion, Newsletter, ServiceArticle } from '../components';
-import { Feature, Mosaic, LinkBox } from '../components';
+import { Feature, Mosaic, LinkBox, SimpleHero } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources, ResearchAgenda, ArrowRight } from '../components/icons';
 
@@ -13,16 +13,9 @@ const ServicePage = ({
   service = {},
 }) => (
   <Layout>
-    <h2
-      className="c-topic-page_title"
-    >
-      {service.title}
-    </h2>
-    <h2
-      className="c-topic-page__longTitle"
-    >
-      {service.longTitle}
-    </h2>
+
+    <SimpleHero title={service.title} content={service.longTitle} cta />
+
     {service.featuredImage ?
       <section
         className="c-boxOnImage"
