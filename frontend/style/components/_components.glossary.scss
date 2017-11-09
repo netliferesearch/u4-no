@@ -1,0 +1,46 @@
+.c-glossary {
+  @include mq($from: tablet) {
+
+  }
+
+}
+
+.c-glossary__title {
+  color: $brand-dark;
+  font-weight: bolder;
+  margin-bottom: $spacing-large;
+  @include inuit-font-size($font-size-largest, $line-height-tiny );
+}
+
+.c-glossary__terms {
+  @include mq($from: tablet) {
+    display: grid;
+    grid-template-columns: 300px auto;
+    grid-column-gap: $spacing-large;
+    border-top: solid 2px $brand-lightest;
+  }
+
+
+}
+
+.c-glossary__terms-term {
+  margin: $spacing-tiny 0 0;
+  font-family: $font-sans;
+  color: $brand-dark;
+  font-weight: bold;
+  @include inuit-font-size($font-size-normal, $line-height-normal );
+  @include mq($from: tablet) {
+    margin: $spacing-large 0;
+  }
+
+}
+
+.c-glossary__terms-definition {
+  font-family: $font-sans;
+  color: $brand-dark;
+  margin: $spacing-tiny 0 $spacing-large;
+  @include inuit-font-size($font-size-small, $line-height-large )
+  @include mq($from: tablet) {
+    margin: $spacing-large 0;
+  }
+}

@@ -3,24 +3,29 @@ import { Link } from '../routes';
 import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
+import BEMHelper from 'react-bem-helper';
 
-import { BoxOnBox, Footer, Layout, ExtendedBlockContent, Accordion, LinkList, Newsletter } from '../components';
+import { Footer, Layout } from '../components';
 
+const classes = BEMHelper({
+  name: 'glossary',
+  prefix: 'c-',
+});
 
 const Glossary = ({ terms = [] }) => (
-  <Layout>
-    <div>
-      <h1>Glossary</h1>
-      {terms.map(({ term = '', definition = '' }, index) =>
-        (<div>
-          <h3>{term}</h3>
-          <p>{definition}</p>
-        </div>),
-
-
-      )}
-      <Footer />
+  <Layout className="o-wrapper">
+    <div className="o-wrapper-inner o-wrapper--padded">
+      <section {...classes()}>
+        <h1{...classes('title')}>Glossary</h1>
+        {terms.map(({ term = '', definition = '' }) =>
+          (<div {...classes('terms')}>
+            <h3{...classes('terms-term')}>{term}</h3>
+            <p{...classes('terms-definition')}>{definition}</p>
+          </div>),
+        )}
+      </section>
     </div>
+    <Footer />
   </Layout>
 );
 
