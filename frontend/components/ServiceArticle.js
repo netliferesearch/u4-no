@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
+import ReactPlayer from 'react-player';
 import { ArrowRight } from './icons';
 import { BoxOnBox, BoxOnImage, WorkshopMosaic, Feature, SimpleMosaic } from './';
 
@@ -43,6 +44,11 @@ const serializers = {
         <BoxOnBox left={textLeft} right={textRight} />
       </section>
     ),
+    HelpdeskTeam: ({ node: { textRight, img } }) => (
+      <section className="c-topic-section">
+        <BoxOnImage wide helpdesk text={textRight} image={img} />
+      </section>
+    ),
     boxOnImageRef: ({ node: { block, img } }) => (
       <section className="c-topic-section">
         <BoxOnImage text={block} image={img} />
@@ -60,7 +66,16 @@ const serializers = {
     ),
     vimeo: ({ node: { src } }) => (
       <div className="o-wrapper o-layout--center">
-        <iframe src={`${src}?title=0&byline=0&portrait=0`} width="640" height="360" frameBorder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowFullScreen="true" />
+        <ReactPlayer
+          controls
+          vimeoConfig={{
+            preload: true,
+          }}
+          style={{
+            margin: '40px auto 40px',
+          }}
+          url={src}
+        />
       </div>
     ),
     features: ({ node: { featureArray } }) => (
