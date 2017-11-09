@@ -33,9 +33,9 @@
       transform: translateX(10px);
     }
   }
-  margin: $spacing-large auto;
+  margin: $spacing auto;
   @include mq($from: tablet) {
-    margin: $spacing-huge auto $spacing-small;
+    margin: $spacing-large auto $spacing-small;
   }
 }
 
