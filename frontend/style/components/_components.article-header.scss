@@ -82,6 +82,10 @@
 }
 .c-article-header__download-text {
   font-family: $font-sans;
+  span {
+    padding-bottom: 0.05em;
+    border-bottom: 1px solid rgba(0, 121, 207, 0.5);
+  }
   border: none;
 }
 .c-article-header__download-icon {

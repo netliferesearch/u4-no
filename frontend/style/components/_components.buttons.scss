@@ -37,27 +37,16 @@
   align-items: center;
 }
 
-.c-btn__icon {
-}
-.c-btn__body {
-  font-family: $font-sans;
-  margin-left: $spacing / 2;
-  text-align: left;
-}
-
-/* Style variants
-   ========================================================================== */
-
-.c-btn--primary {
+.c-btn--icon {
   color: $brand-main;
+  height: 54px;
 
-  & svg g {
-    color: $white;
+  svg g {
   }
-  & svg path {
-    color: $brand-main;
+  svg path {
+    stroke: $brand-main;
   }
-  & svg circle {
+  svg circle {
     stroke: $brand-main;
     fill: transparent;
   }
@@ -65,6 +54,7 @@
   &:hover,
   &:focus {
     border: none;
+    outline: none;
 
     svg g,
     svg path {
@@ -72,9 +62,29 @@
       fill: $white;
     }
     svg circle {
+      //stroke: $brand-main;
       fill: $brand-main;
     }
   }
+}
+.c-btn--body {
+  font-family: $font-sans;
+  margin-left: $spacing / 2;
+  display: inline-block;
+  margin: auto;
+  padding: $spacing-small $spacing;
+  border: 2px solid $brand-main;
+
+  &:hover {
+    border: 2px solid $brand-lighter;
+  }
+}
+
+/* Style variants
+   ========================================================================== */
+
+.c-btn--primary {
+
 }
 
 .c-btn--secondary {
