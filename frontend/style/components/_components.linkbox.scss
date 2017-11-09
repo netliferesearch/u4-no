@@ -11,6 +11,7 @@
 }
 
 .c-linkbox {
+  margin: 5px;
   transition: background-color .2s ease-out;
   svg {
     transition: all .2s ease-out;
@@ -48,6 +49,7 @@
   }
   @include mq($from: tablet) {
     height: auto;
+    margin: 0;
   }
   @include mq($from: desktop) {
     width: 100%;
