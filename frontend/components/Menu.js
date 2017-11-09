@@ -181,22 +181,22 @@ class Menu extends Component {
               <ul {...menuClasses('list')}>
                 <li>
                   <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
-                    <Link to={'/online-training'}>
-                      <a {...menuClasses('link')}>Online training</a>
+                    <Link to={'/online-courses'}>
+                      <a {...menuClasses('link')}>Online courses</a>
                     </Link>
                   </button>
                 </li>
                 <li>
                   <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
-                    <Link to={'/workshops'}>
-                      <a {...menuClasses('link')}>Workshops</a>
+                    <Link to={'/workshops-and-events'}>
+                      <a {...menuClasses('link')}>Workshops and events</a>
                     </Link>
                   </button>
                 </li>
               </ul>
 
               <div {...menuClasses('links--round')}>
-                <Link to={'/'}>
+                <Link to={'/helpdesk'}>
                   <a {...menuClasses('link-round')}>Partner Helpdesk</a>
                 </Link>
 
