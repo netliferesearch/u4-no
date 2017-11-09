@@ -134,7 +134,7 @@ const LongFormArticleContainer = (props) => {
           )}
           {_type !== 'publication' && (
             <div className="c-longform-grid">
-              <h1 className="c-longform-grid__standard">{longTitle || title}</h1>
+              <h1 className="c-longform-grid__standard">{ title || longTitle}</h1>
               {lead && <div className="c-article c-longform-grid__standard">{lead}</div>}
               <div className="c-longform-grid__sidebar-right">
                 <TableOfContentsSidebar alwaysFollow {...props} />
