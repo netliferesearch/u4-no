@@ -1,159 +1,172 @@
 // Mosaic Grid Container
 // Can contain 4 to 10 children
-
 .c-mosaic {
-  display: grid;
-  grid-template-columns: 1fr;
-  //grid-template-rows: 1fr 1fr 1fr;
-  grid-auto-rows: minmax(100px, auto);
-  grid-column-gap: 20px;
-  clear:both;
-  grid-row-gap: 5px;
-  margin: 0 5px;
-  @include mq($from: tablet) {
-    margin: 0;
-    grid-row-gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(300px, auto);
-  }
-  @include mq($from: desktop) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @include mq($from: wide) {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  display: flex;
+  flex-wrap: wrap;
 }
-
-// Focus item
-// Child 1 is a big picture child 2 is the first text-box
-
-.c-mosaic_item:nth-child(1) {
-  display:none;
-  background-size: cover;
-  background-position: center;
-  @include mq($from: tablet) {
-    display: block;
-    grid-row: 1 / 3;
-    grid-column: 1 / 3;
-  }
-}
-
-.c-mosaic_item:nth-child(2) {
-  grid-column: 1 / 2;
-  background-color: red;
-  @include mq($from: tablet) {
-    grid-row: 2 / 3;
-    grid-column: 1 / 2;
-  }
-}
-
-// The grid changes according to the number of children
-
 .c-mosaic_item {
-  @include mq($from: tablet, $until: desktop) {
-    //3
-    &:nth-child(3):nth-last-child(1) {
-      grid-column: 1 / 3;
-    }
-    //5
-    &:nth-child(5):nth-last-child(1) {
-      grid-column: 1 / 3;
-    }
-    //7
-    &:nth-child(7):nth-last-child(1) {
-      grid-column: 1 / 3;
-    }
-    //8
-    &:nth-child(3):nth-last-child(6) {
-      grid-column: 1 / 3;
-    }
-    &:nth-child(8):nth-last-child(1) {
-      grid-column: 1 / 3;
-    }
-    //9
-    &:nth-child(7):nth-last-child(3) {
-      grid-column: 1 / 3;
-    }
-    //10
-    &:nth-child(5):nth-last-child(6) {
-      grid-column: 1 / 3;
-    }
-    &:nth-child(10):nth-last-child(1) {
-      grid-column: 1 / 3;
-    }
-  }
-  @include mq($from: desktop, $until: wide) {
-    //3
-    &:nth-child(3):nth-last-child(1) {
-      grid-row: 1 / 3;
-    }
-    //5
-    &:nth-child(3):nth-last-child(3) {
-      grid-row: 1 / 3;
-    }
-    &:nth-child(5):nth-last-child(1) {
-      grid-column: 2 / 4;
-    }
-    //6
-    &:nth-child(6):nth-last-child(1) {
-      grid-column: 2 / 4;
-    }
-    //8
-    &:nth-child(3):nth-last-child(6) {
-      grid-row: 1 / 3;
-    }
-    &:nth-child(7):nth-last-child(2) {
-      grid-column: 1 / 3;
-    }
-    //9
-    &:nth-child(9):nth-last-child(1) {
-      grid-column: 2 / 4;
-    }
-  }
-  @include mq($from: wide) {
-    //4
-    &:nth-child(3):nth-last-child(2) {
-      grid-column: 3 / 5;
-    }
-    &:nth-child(4):nth-last-child(1) {
-      grid-column: 3 / 5;
-    }
-    //4
-    &:nth-child(5):nth-last-child(1) {
-      grid-column: 3 / 5;
-    }
-    //7
-    &:nth-child(3):nth-last-child(5) {
-      grid-column: 3 / 5;
-    }
-    &:nth-child(5):nth-last-child(3) {
-      grid-row: 2 / 4;
-    }
-    &:nth-child(6):nth-last-child(2) {
-      grid-column: 1 / 3;
-    }
-    //8
-    &:nth-child(4):nth-last-child(5) {
-      grid-row: 1 / 3;
-      grid-column: 4 / 5;
-    }
-    &:nth-child(6):nth-last-child(3) {
-      grid-column: 1 / 3;
-    }
-    //9
-    &:nth-child(9):nth-last-child(1) {
-      grid-column: 3 / 5;
-    }
+  width: 100%;
+  background-size: cover;
+  @include mq($from: tablet) {
+    width: 50%;
   }
 }
-.c-mosaic_item--single:nth-child(1) {
-  grid-column: 1/5;
-
-  &+.c-mosaic_item:nth-child(2) {
-    grid-column: 1 / 5;
+@supports(display:grid) {
+  .c-mosaic {
+    display: grid;
+    grid-template-columns: 1fr;
+    //grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    grid-column-gap: 20px;
+    clear:both;
+    grid-row-gap: 5px;
+    margin: 0 5px;
+    @include mq($from: tablet) {
+      margin: 0;
+      grid-row-gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: minmax(300px, auto);
+    }
     @include mq($from: desktop) {
-      grid-row: 2 / 3;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include mq($from: wide) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  // Focus item
+  // Child 1 is a big picture child 2 is the first text-box
+
+  .c-mosaic_item:nth-child(1) {
+    display:none;
+    background-size: cover;
+    background-position: center;
+    @include mq($from: tablet) {
+      display: block;
+      grid-row: 1 / 3;
       grid-column: 1 / 3;
+    }
+  }
+
+  .c-mosaic_item:nth-child(2) {
+    grid-column: 1 / 2;
+    background-color: red;
+    @include mq($from: tablet) {
+      grid-row: 2 / 3;
+      grid-column: 1 / 2;
+    }
+  }
+
+  // The grid changes according to the number of children
+
+  .c-mosaic_item {
+    width: 100%;
+    @include mq($from: tablet, $until: desktop) {
+      //3
+      &:nth-child(3):nth-last-child(1) {
+        grid-column: 1 / 3;
+      }
+      //5
+      &:nth-child(5):nth-last-child(1) {
+        grid-column: 1 / 3;
+      }
+      //7
+      &:nth-child(7):nth-last-child(1) {
+        grid-column: 1 / 3;
+      }
+      //8
+      &:nth-child(3):nth-last-child(6) {
+        grid-column: 1 / 3;
+      }
+      &:nth-child(8):nth-last-child(1) {
+        grid-column: 1 / 3;
+      }
+      //9
+      &:nth-child(7):nth-last-child(3) {
+        grid-column: 1 / 3;
+      }
+      //10
+      &:nth-child(5):nth-last-child(6) {
+        grid-column: 1 / 3;
+      }
+      &:nth-child(10):nth-last-child(1) {
+        grid-column: 1 / 3;
+      }
+    }
+    @include mq($from: desktop, $until: wide) {
+      //3
+      &:nth-child(3):nth-last-child(1) {
+        grid-row: 1 / 3;
+      }
+      //5
+      &:nth-child(3):nth-last-child(3) {
+        grid-row: 1 / 3;
+      }
+      &:nth-child(5):nth-last-child(1) {
+        grid-column: 2 / 4;
+      }
+      //6
+      &:nth-child(6):nth-last-child(1) {
+        grid-column: 2 / 4;
+      }
+      //8
+      &:nth-child(3):nth-last-child(6) {
+        grid-row: 1 / 3;
+      }
+      &:nth-child(7):nth-last-child(2) {
+        grid-column: 1 / 3;
+      }
+      //9
+      &:nth-child(9):nth-last-child(1) {
+        grid-column: 2 / 4;
+      }
+    }
+    @include mq($from: wide) {
+      //4
+      &:nth-child(3):nth-last-child(2) {
+        grid-column: 3 / 5;
+      }
+      &:nth-child(4):nth-last-child(1) {
+        grid-column: 3 / 5;
+      }
+      //4
+      &:nth-child(5):nth-last-child(1) {
+        grid-column: 3 / 5;
+      }
+      //7
+      &:nth-child(3):nth-last-child(5) {
+        grid-column: 3 / 5;
+      }
+      &:nth-child(5):nth-last-child(3) {
+        grid-row: 2 / 4;
+      }
+      &:nth-child(6):nth-last-child(2) {
+        grid-column: 1 / 3;
+      }
+      //8
+      &:nth-child(4):nth-last-child(5) {
+        grid-row: 1 / 3;
+        grid-column: 4 / 5;
+      }
+      &:nth-child(6):nth-last-child(3) {
+        grid-column: 1 / 3;
+      }
+      //9
+      &:nth-child(9):nth-last-child(1) {
+        grid-column: 3 / 5;
+      }
+    }
+  }
+  .c-mosaic_item--single:nth-child(1) {
+    grid-column: 1/5;
+
+    &+.c-mosaic_item:nth-child(2) {
+      grid-column: 1 / 5;
+      @include mq($from: desktop) {
+        grid-row: 2 / 3;
+        grid-column: 1 / 3;
+      }
     }
   }
 }
