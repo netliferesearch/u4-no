@@ -26,7 +26,18 @@ export function findPublicationTypes(results = []) {
   );
 }
 
+/**
+ * Decide whether or not to include a document according to filter list criteria.
+ *
+ * Pro-tip: Have the tests running in watch mode before working on this function
+ * since the logic can throw people off.
+ *
+ * @param  {Object} [document={}]    document to filter.
+ * @param  {Array}  [filterList=[]]  list of filter names.
+ * @return {Boolean}                 whether or not to show this document.
+ */
 function applyFilters(document = {}, filterList = []) {
+  // start by assuming that the document should not be shown.
   let showItem = false;
   filterList.forEach((filterName) => {
     // apply publication filters
@@ -34,6 +45,9 @@ function applyFilters(document = {}, filterList = []) {
     if (re.test(filterName)) {
       const publicationTypeId = re.exec(filterName)[1];
       const { publicationType = {} } = document;
+      // Only if there is a positive filter match do we flip the showItem flag
+      // to positive. This is because we do not want any other negative filter
+      // matches to exclude a document that has at least one positive match.
       if (publicationTypeId === publicationType._id) {
         showItem = true;
       }
@@ -42,7 +56,17 @@ function applyFilters(document = {}, filterList = []) {
   return showItem;
 }
 
+/**
+ * Filter Sanity search results.
+ *
+ * @param  {Array}  [results=[]]    Sanity search results
+ * @param  {Array}  [filterList=[]] List of filter names to apply
+ * @return {Array}                  Filtered result.
+ */
 export function filterResultsBySearchFilterList(results = [], filterList = []) {
+  // it's important that if there are no filters we skip this filtering entirely
+  // because the filter logic assumes that a document should not be shown by default.
+  // In other words, if we filter and have no active filters there will be no results.
   if (filterList.length > 0) {
     return results.filter(res => applyFilters(res, filterList));
   }
