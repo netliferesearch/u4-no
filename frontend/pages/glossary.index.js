@@ -18,10 +18,10 @@ const Glossary = ({ terms = [] }) => (
       <section {...classes()}>
         <h1{...classes('title')}>Glossary</h1>
         {terms.map(({ term = '', definition = '' }) =>
-          (<div {...classes('terms')}>
+          (definition.length > 0 && (<div {...classes('terms')}>
             <h3{...classes('terms-term')}>{term}</h3>
             <p{...classes('terms-definition')}>{definition}</p>
-          </div>),
+          </div>)),
         )}
       </section>
     </div>
@@ -32,7 +32,7 @@ const Glossary = ({ terms = [] }) => (
 export default DataLoader(Glossary, {
   queryFunc: () => ({
     sanityQuery: `{
-      "terms": *[_type == "term"]
+      "terms": *[_type == "term"] | order(term)
     }`,
   }),
   materializeDepth: 2,
