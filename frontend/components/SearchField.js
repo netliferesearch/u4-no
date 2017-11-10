@@ -81,7 +81,7 @@ class SearchField extends Component {
               {...getLabelProps({ htmlFor: 'search' })}
               {...classes('label', modifier, 'u-margin-bottom-small')}
             >
-              Search for topics, publications, people and all the other stuff:
+              Search to find topics, publications, people, services, and more:
             </label>
             <div className="c-search__content">
               <input

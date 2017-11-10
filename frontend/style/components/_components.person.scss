@@ -10,19 +10,6 @@
   }
 }
 .c-person__item--light {
-  //min-height: 380px;
-  //min-width: 300px;
-
-  @include mq($from: tablet) {
-    //min-width: 500px;
-    //display: flex;
-    //flex-wrap: wrap;
-    //min-height: 280px;
-  }
-  @include mq($from: desktop) {
-    //min-height: 350px;
-
-  }
 }
 
 
@@ -34,10 +21,11 @@
   background-position: top right;
   background-size: contain;
   display: flex;
-  margin-bottom: $spacing-large;
+  margin-bottom: $spacing;
   @include mq($from: tablet) {
+    margin-bottom: 0;
     width: 100%;
-    padding: $spacing-large;
+    padding: $spacing-large $spacing;
   }
 }
 
@@ -55,12 +43,14 @@
 }
 
 .c-person__item-body-img--noimg {
-  //border: solid 1px $grey;
 
 }
 
 .c-person__item-body-text {
-  min-width: 50%;
+  width: 60%;
+  @include mq($from: tablet) {
+    width: 50%;
+  }
 }
 
 
@@ -71,25 +61,13 @@
   }
 }
 .c-person__item-body--noimg {
-  
-  //background-color: $brand-lightest;
-  //margin: $spacing-small;
-  //border: 4px solid rgba($brand-medium, .1);
-  //color: $brand-dark;
-  //display: block;
-  //padding-bottom: $spacing-large;
-  a {
-    //color: $brand-dark;
-    //display: inline-block;
-  }
 }
+
 .c-person__item-body--apply {
   border: none;
   padding: $spacing;
   color: $brand-dark;
 }
-
-
 
 .c-person__item-figure {
   position: relative;
@@ -116,9 +94,10 @@
   margin-top: 0;
 }
 .c-person__item-subtitle {
-  @include inuit-font-size(14px);
+  @include inuit-font-size(14px, $line-height-tiny);
   font-weight: 400;
   display: inline-block;
+  
 }
 .c-person__item-meta {
   margin-bottom: $spacing;
