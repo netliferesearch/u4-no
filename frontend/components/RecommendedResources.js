@@ -5,9 +5,10 @@ const RecommendedResource = ({
   _id = '',
   lead = '',
   _type = '',
+  target,
   publicationType = {},
-  title = '',
-  slug,
+  title = target.title,
+  slug = target.slug,
 }) => {
   const type = publicationType.title ? `${_type}: ${publicationType.title}` : _type;
   return (

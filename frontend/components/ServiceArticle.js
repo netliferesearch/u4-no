@@ -23,8 +23,9 @@ const serializers = {
       </h2>
     ),
     textBlock: ({ node: { text = '' } }) => (
-      <div className="o-wrapper-inner u-margin-bottom-large">
-        {text}
+      <div className="o-wrapper-inner c-article u-margin-top u-margin-bottom-large">
+        {text ?
+          text[0].children.map(i => i.text) : null}
       </div>
     ),
     twoColumns: ({ node: { textLeft, textRight } }) => (
@@ -61,8 +62,7 @@ const serializers = {
     ),
     expertAnswers: ({ node: { expertAnswersRef } }) => (
       <div className="o-wrapper u-margin-top u-margin-bottom-huge">
-        <Mosaic alt resources={expertAnswersRef} />
-        {console.log(expertAnswersRef)}
+        <Mosaic resources={expertAnswersRef} />
       </div>
     ),
     courses: ({ node: { coursesRef } }) => (

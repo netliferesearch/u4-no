@@ -13,13 +13,13 @@ const SimpleMosaic = ({ resources = [], cta = '' }) => (
     {resources.map(item =>
       (
         <div {...classes('item')}>
-          <Link to={item.link} >
+          <Link to={item.target.link} >
             <a>
               <div {...classes('title')}>
-                {item.title}
+                {item.target.title}
               </div>
               <div>
-                {item.lead && item.lead.split('\n').map(i => <p>{i}</p>) }
+                {item.target.lead && item.target.lead.split('\n').map(i => <p>{i}</p>) }
               </div>
               { cta &&
               <div {...classes('cta')}>

@@ -28,8 +28,8 @@ const PublicationArticleHeader = ({
     {/* Wrap in standard grid width until we know better */}
     <div {...classes('meta')}>
       {publicationType.title && `${publicationType.title} | `}
-      {topics.map(({ title = '', _id = '', slug = '' }) => (
-        <Link key={_id} route="topic.entry" params={{ slug: slug.current }}>
+      {topics.map(({ title = '', _id = '', target = '' }) => (
+        <Link key={_id} route="topic.entry" params={{ slug: target.slug.current }}>
           <a {...classes('link-item')}>{title}</a>
         </Link>
       ))}
@@ -56,7 +56,7 @@ const PublicationArticleHeader = ({
           Bergen: U4 Anti-Corruption Resource Centre at Chr. Michelsen Institute (U4 Brief 2017:5)
         </p>
         <p>
-            <a {...classes('language')} href="#1">Also available in Spanish</a>
+          <a {...classes('language')} href="#1">Also available in Spanish</a>
         </p>
       </div>
       {shortVersion.length > 0 && (

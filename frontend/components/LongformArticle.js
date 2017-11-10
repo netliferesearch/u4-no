@@ -16,7 +16,7 @@ const classes = BEMHelper({
 
 class LongformArticle extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
   componentDidMount() {
     // const littlefoot = require('littlefoot').default;
@@ -27,7 +27,7 @@ class LongformArticle extends Component {
     // littlefoot()
   }
   render() {
-    const { content = [] } = this.props
+    const { content = [] } = this.props;
     const blocks = content.filter(block => !['reference'].includes(block._type));
     return (
       <main

@@ -24,11 +24,11 @@ const BoxOnImage = ({ text = '', image, wide = false, helpdesk = false, personsL
               personsLeft &&
               personsLeft.map(person =>
                 (
-                  <Link to={`/the-team/${person.slug.current}`}>
+                  <Link to={`/the-team/${person.target.slug.current}`}>
                     <a>
-                      {person.firstName} {person.surname}<br />
-                      {person.position}<br />
-                      {person.email}
+                      {person.target.firstName} {person.target.surname}<br />
+                      {person.target.position}<br />
+                      {person.target.email}
                     </a>
                   </Link>
                 ),
@@ -40,9 +40,9 @@ const BoxOnImage = ({ text = '', image, wide = false, helpdesk = false, personsL
             {
               personsRight &&
               personsRight.map(person =>
-                (<p><Link to={`/the-team/${person.slug.current}`}>
+                (<p><Link to={`/the-team/${person.target.slug.current}`}>
                   <a>
-                    {person.firstName} {person.surname}
+                    {person.target.firstName} {person.target.surname}
                   </a>
                 </Link></p>),
               )

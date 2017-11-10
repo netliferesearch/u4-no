@@ -85,9 +85,5 @@ export default {
       console.log('footnote', props);
       return <span>{props.children}</span>;
     },
-    '07c1f85be6c4': (props) => {
-      console.log(props);
-      return <a href={props.mark.href}>{props.children}</a>;
-    },
   },
 };

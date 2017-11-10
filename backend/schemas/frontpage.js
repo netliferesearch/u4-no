@@ -20,7 +20,16 @@ export default {
   fields: [
     title,
     longTitle,
-    leadText,
+    {
+      name: 'lead',
+      title: 'Lead text',
+      description: `One or two main points to highlight importance, relevance, and benefit for development professionals.
+      (Aim for 400–500 characters with spaces)`,
+      type: 'array',
+      of: [{
+        type: 'block'
+      }]
+    },
     {
       name: 'leadLinks',
       title: 'Links in lead text box',
