@@ -44,6 +44,7 @@
 
   .c-mosaic_item:nth-child(1) {
     display:none;
+    background: $brand-medium;
     background-size: cover;
     background-position: center;
     @include mq($from: tablet) {
