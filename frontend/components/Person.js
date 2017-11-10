@@ -17,8 +17,7 @@ const Person = ({ person, linkLabel = 'Bio', light = true }) => (
       <div {...classes('item-body-text')}>
         <div>
           <small {...classes('item-subtitle')}>
-            {person.position && `${person.position}, `}
-            {person.affiliations && person.affiliations.map(i => <span>{i.name}</span>)}
+            {person.position && `${person.position}`}
           </small>
           <h3 {...classes('item-title')}>{person.firstName && person.firstName} {person.surname && person.surname}</h3>
         </div>
