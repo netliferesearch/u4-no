@@ -8,15 +8,16 @@ const Mosaic = ({ resources = [], alt = false }) => (
       <div
         className={`c-mosaic_item ${Object.keys(resources).length == 1 && 'c-mosaic_item--single'}`}
         style={{
-          backgroundImage: `url(${resources[0].imageUrl})`,
+          backgroundImage: `url(${resources[0].target.imageUrl})`,
         }}
       />
     ) : null}
     {resources.map(
       (
-        { title = '', _id = '', _type = '', publicationType = [], slug = {}, imageUrl = '', titleColor = '#FFF' },
+        { target, title = target.title, _id = target._id, _type = target._type, publicationType = '', slug = target.slug, imageUrl = target.imageUrl, titleColor = '#FFF' },
         index,
       ) => (
+
         <Link route={buildUrl({ _type, slug })}>
           <a
             className={`c-mosaic_item ${index % 4 === 2
