@@ -51,61 +51,65 @@ export default connect(
    */
   return (
     <div>
-      <ul className="c-article-nav-list">
-        <li
-          key="top"
-          className={`c-article-nav-list__item ${readingProgressId
-            ? 'c-article-nav-list__item--scrolled-past'
-            : ''}`}
-        >
-          <Scrollchor beforeAnimate={onItemSelected} to={'#js-top'}>
-            Top
-          </Scrollchor>
-        </li>
-        {titleObjects.map((titleObject) => {
-          const { title, id, children = [] } = titleObject;
-          return (
+      { titleObjects.length ?
+        <div>
+          <ul className="c-article-nav-list">
             <li
-              key={id}
-              className={`c-article-nav-list__item ${isTitleScrolledPastClass(titleObject)} ${id ===
-              readingProgressId
-                ? 'c-article-nav-list__item--selected'
+              key="top"
+              className={`c-article-nav-list__item ${readingProgressId
+                ? 'c-article-nav-list__item--scrolled-past'
                 : ''}`}
             >
-              <Scrollchor beforeAnimate={onItemSelected} to={`#${id}`}>
-                {title}
+              <Scrollchor beforeAnimate={onItemSelected} to={'#js-top'}>
+              Top
               </Scrollchor>
-              {(showAllItems || titleObject.selected) && (
-                <ul className="c-article-nav-list c-article-nav-list--inner">
-                  {children.map(({ title, id }) => (
-                    <li
-                      key={id}
-                      className={`c-article-nav-list__item ${id === readingProgressId
-                        ? 'c-article-nav-list__item--selected'
-                        : ''}`}
-                    >
-                      <Scrollchor beforeAnimate={onItemSelected} to={`#${id}`}>
-                        {title}
-                      </Scrollchor>
-                    </li>
-                  ))}
-                </ul>
-              )}
             </li>
-          );
-        })}
-        <li key="bottom" className="c-article-nav-list__item">
-          <Scrollchor beforeAnimate={onItemSelected} to={'#js-bottom'}>
-            Bottom
-          </Scrollchor>
-        </li>
-      </ul>
-      <div className="c-article-nav-list__arrowup">
-        <TOCup />
-      </div>
-      <div className="c-article-nav-list__arrowdown">
-        <TOCup />
-      </div>
+            {titleObjects.map((titleObject) => {
+              const { title, id, children = [] } = titleObject;
+              return (
+                <li
+                  key={id}
+                  className={`c-article-nav-list__item ${isTitleScrolledPastClass(titleObject)} ${id ===
+                readingProgressId
+                    ? 'c-article-nav-list__item--selected'
+                    : ''}`}
+                >
+                  <Scrollchor beforeAnimate={onItemSelected} to={`#${id}`}>
+                    {title}
+                  </Scrollchor>
+                  {(showAllItems || titleObject.selected) && (
+                    <ul className="c-article-nav-list c-article-nav-list--inner">
+                      {children.map(({ title, id }) => (
+                        <li
+                          key={id}
+                          className={`c-article-nav-list__item ${id === readingProgressId
+                            ? 'c-article-nav-list__item--selected'
+                            : ''}`}
+                        >
+                          <Scrollchor beforeAnimate={onItemSelected} to={`#${id}`}>
+                            {title}
+                          </Scrollchor>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              );
+            })}
+            <li key="bottom" className="c-article-nav-list__item">
+              <Scrollchor beforeAnimate={onItemSelected} to={'#js-bottom'}>
+              Bottom
+              </Scrollchor>
+            </li>
+          </ul>
+          <div className="c-article-nav-list__arrowup">
+            <TOCup />
+          </div>
+          <div className="c-article-nav-list__arrowdown">
+            <TOCup />
+          </div>
+        </div>
+        : null }
     </div>
   );
 });
