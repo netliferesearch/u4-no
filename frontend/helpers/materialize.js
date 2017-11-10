@@ -31,7 +31,7 @@ function merge(obj, children) {
   if (Array.isArray(obj)) {
     return obj.map(sub => merge(sub, children));
   } else if (children[obj._ref]) {
-    return Object.assign({ _key: obj._key }, children[obj._ref]);
+    return children[obj._ref];
   } else if (typeof obj === 'object') {
     const result = {};
     Object.keys(obj).forEach((key) => {
