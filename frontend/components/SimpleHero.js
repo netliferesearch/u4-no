@@ -13,9 +13,9 @@ const SimpleHero = ({ title, content, cta = false }) => (
     <h1 {...classes('title')}>{title}</h1>
     <div {...classes('content')}><BlockContent blocks={content} /></div>
     { cta &&
-      <Link to={'#'}>
+      <Link to={'mailto:helpdesk@u4.no'}>
         <a {...classes('cta')}>
-          Ask our free helpdesk today
+          Ask our free helpdesk today – send your question to helpdesk@u4.no
         </a>
       </Link>
     }
