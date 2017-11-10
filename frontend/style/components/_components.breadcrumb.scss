@@ -1,0 +1,6 @@
+.c-breadcrumb {
+  font-family: $font-sans;
+  @include mq($from: tablet) {
+    margin-left: $spacing-huge;
+  }
+}

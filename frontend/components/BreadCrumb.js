@@ -49,10 +49,10 @@ class BreadCrumb extends Component {
       return slug.current;
     };
     return (
-      <div>
+      <div className="c-breadcrumb">
         {this.state.data && (
           <Link route={buildUrl(this.state.data)}>
-            <a>← {this.state.data.title}</a>
+            <a className="c-breadcrumb__link">← {this.state.data.title}</a>
           </Link>
         )}
       </div>
