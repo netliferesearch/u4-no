@@ -8,13 +8,13 @@ const Mosaic = ({ resources = [], alt = false }) => (
       <div
         className={`c-mosaic_item ${Object.keys(resources).length == 1 && 'c-mosaic_item--single'}`}
         style={{
-          backgroundImage: `url(${resources[0].target.imageUrl})`,
+          backgroundImage: `url(${resources[0].imageUrl})`,
         }}
       />
     ) : null}
     {resources.map(
       (
-        { target, title = target.title, _id = target._id, _type = target._type, publicationType = '', slug = target.slug, imageUrl = target.imageUrl, titleColor = '#FFF' },
+        { target, title = target.title, _id = target._id, _type = target._type, publicationType = '', slug = target.slug, imageUrl, titleColor = '#FFF' },
         index,
       ) => (
 
