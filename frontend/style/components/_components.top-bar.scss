@@ -46,8 +46,8 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
   @include mq($from: tablet) {
     background: none;
     border: none;
-    color: $brand-main;
   }
+  color: $brand-main;
   margin-right: $spacing-small;
   padding: $spacing-tiny;
 
