@@ -61,7 +61,6 @@ const serializers = {
     ),
     expertAnswers: ({ node: { expertAnswersRef } }) => (
       <div className="o-wrapper u-margin-top u-margin-bottom-huge">
-        {console.log(expertAnswersRef)}
         <Mosaic resources={expertAnswersRef} />
       </div>
     ),
