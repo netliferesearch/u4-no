@@ -42,7 +42,7 @@ class FrontpageFeature extends Component {
             <img src={`${this.state.image}?w=470&h=470&fit=crop&crop=focalpoint`} />
           </div>
           <div {...classes('right')}>
-            <h3 {...classes('heading')}>Anti-corruption by topic</h3>
+            <h3 {...classes('heading')}>Corruption by topic</h3>
             <ul {...classes('list')}>
               {topics.slice(0, 5).map(topic =>
                 (<li {...classes('list-item')}>
