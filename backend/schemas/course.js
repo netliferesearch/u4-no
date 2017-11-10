@@ -13,6 +13,11 @@ export default {
       type: 'text',
     },
     {
+      name: 'link',
+      title: 'Link to registration/info',
+      type: 'string',
+    },
+    {
       name: 'startDate',
       title: 'Start date',
       type: 'richDate',

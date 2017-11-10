@@ -21,6 +21,28 @@ export default {
     title,
     longTitle,
     leadText,
+    {
+      name: 'leadLinks',
+      title: 'Links in lead text box',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+            },
+            {
+              name: 'link',
+              title: 'Link URL',
+              type: 'string',
+            },
+          ]
+        }
+      ]
+    },
     featuredImage,
     {
       name: 'sections',
@@ -133,6 +155,27 @@ export default {
                     {
                       type: 'event'
                     }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'expertAnswers',
+          title: 'Expert answers',
+          type: 'object',
+          fields: [
+            {
+              name: 'expertAnswersRef',
+              type: 'array',
+              of: [
+                {
+                  type: 'reference',
+                  to: [
+                    {
+                      type: 'publication'
+                    },
                   ]
                 }
               ]
