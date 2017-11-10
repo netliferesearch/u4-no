@@ -3,9 +3,10 @@ import { Link } from '../routes';
 import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
+import BlockContent from '@sanity/block-content-to-react';
 
 import { BoxOnBox, Footer, Layout, ExtendedBlockContent, Accordion, Newsletter, ServiceArticle } from '../components';
-import { Feature, Mosaic, LinkBox } from '../components';
+import { Feature, Mosaic, LinkBox, LinkList } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources, ResearchAgenda, ArrowRight } from '../components/icons';
 
@@ -38,12 +39,8 @@ const ServicePage = ({
         <div
           className="c-boxOnImage__body"
         >
-          <p
-            className="c-boxOnImage__lead"
-          >
-            We facilitate local dialouge
-          </p>
-          {service.lead.split('\n').map(i => <p>{i}</p>)}
+          <BlockContent blocks={service.lead} />
+          {service.leadLinks && <LinkList title="" content={service.leadLinks} />}
         </div>
       </section>
       : null
@@ -60,9 +57,9 @@ const ServicePage = ({
 );
 export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '{ "service": *[slug.current == "workshops-and-events"][0]{title, longTitle, slug, lead, _id, sections, "featuredImage": featuredImage.asset->url}}',
+    sanityQuery: '{ "service": *[slug.current == "workshops-and-events"][0]{title, longTitle, slug, lead, leadLinks, _id, sections, "featuredImage": featuredImage.asset->url}}',
     param: { slug },
   }),
-  materializeDepth: 3,
+  materializeDepth: 1,
 });
 
