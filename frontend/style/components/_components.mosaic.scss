@@ -35,6 +35,9 @@
       grid-template-columns: repeat(4, 1fr);
     }
   }
+  .c-mosaic_item {
+    background: $white;
+  }
 
   // Focus item
   // Child 1 is a big picture child 2 is the first text-box
