@@ -113,7 +113,7 @@ class Menu extends Component {
                   </h4>
                   <ul {...menuClasses('list')}>
                     {topics.slice(0, 5).map(topic => (
-                      <li key={topic._id}>
+                      <li {...menuClasses('list-item')} key={topic._id}>
                         <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
                           <Link route="topic.entry" params={{ slug: topic.slug.current }}>
                             <a {...menuClasses('link')}>{topic.title}</a>
@@ -123,7 +123,7 @@ class Menu extends Component {
                     ))}
                     {this.state.activeExpand &&
                       topics.slice(5, 50).map(topic => (
-                        <li key={topic._id}>
+                        <li {...menuClasses('list-item')} key={topic._id}>
                           <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
                             <Link route="topic.entry" params={{ slug: topic.slug.current }}>
                               <a {...menuClasses('link')}>{topic.title}</a>
@@ -148,9 +148,9 @@ class Menu extends Component {
                 <span {...menuClasses('heading-bg')}>Resources</span>
               </h4>
               <ul {...menuClasses('list')}>
-                <li>Publications</li>
-                <li>Expert answers</li>
-                <li>
+                <li {...menuClasses('list-item')}>Publications</li>
+                <li {...menuClasses('list-item')}>Expert answers</li>
+                <li {...menuClasses('list-item')}>
                   <Link to={'/terms'}>
                     <a {...menuClasses('link')}>Glossary</a>
                   </Link>
@@ -161,14 +161,14 @@ class Menu extends Component {
                 <span {...menuClasses('heading-bg')}>People</span>
               </h4>
               <ul {...menuClasses('list')}>
-                <li>
+                <li {...menuClasses('list-item')}>
                   <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
                     <Link to={'/the-team'}>
                       <a {...menuClasses('link')}>U4 staff</a>
                     </Link>
                   </button>
                 </li>
-                <li>
+                <li {...menuClasses('list-item')}>
                   <Link to={'/partner-agencies'}>
                     <a {...menuClasses('link')}>Partner Agencies</a>
                   </Link>
@@ -179,14 +179,14 @@ class Menu extends Component {
                 <span {...menuClasses('heading-bg')}>Services</span>
               </h4>
               <ul {...menuClasses('list')}>
-                <li>
+                <li {...menuClasses('list-item')}>
                   <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
                     <Link to={'/online-courses'}>
                       <a {...menuClasses('link')}>Online courses</a>
                     </Link>
                   </button>
                 </li>
-                <li>
+                <li {...menuClasses('list-item')}>
                   <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
                     <Link to={'/workshops-and-events'}>
                       <a {...menuClasses('link')}>Workshops and events</a>

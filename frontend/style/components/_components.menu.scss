@@ -66,7 +66,7 @@
   list-style: none;
   margin: $spacing-small 0 0;
   padding: 0;
-  @include inuit-font-size(14px, $line-height-large)
+  @include inuit-font-size(16px, $line-height-large)
 }
 
 @keyframes toggle {
@@ -78,6 +78,10 @@
   }
 }
 
+.c-menu__list-item {
+  margin-bottom: $spacing-tiny;
+}
+
 .c-menu__clean-btn {
   background: none;
   border: none;
@@ -85,7 +89,7 @@
   color: $brand-main;
   padding: 0;
   font-size: inherit;
-  @include inuit-font-size(14px, $line-height-large);
+  @include inuit-font-size(16px, $line-height-large);
   font-weight: 300;
   font-family: $font-sans;
 }
