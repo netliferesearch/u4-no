@@ -38,18 +38,17 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
   @include mq($from: tablet) {
     position: absolute;
     top: $spacing-large;
-    right: ($spacing-huge)+8px;
+    right: ($spacing-huge)-8px;
     margin-left: $spacing-huge+24px;
   }
 }
 .c-top-bar__menu-item {
   @include mq($from: tablet) {
     background: none;
-    padding: 0;
     border: none;
     color: $brand-main;
   }
-  margin-right: $spacing;
+  margin-right: $spacing-small;
   padding: $spacing-tiny;
 
   &:last-child {
@@ -73,5 +72,5 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
 .c-top-bar__menu-item--active {
   background: $brand-medium;
   color: $white;
-  padding: 0 $spacing-tiny $spacing-tiny;
+  padding: $spacing-tiny;
 }
