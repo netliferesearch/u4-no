@@ -16,7 +16,7 @@ test('can link back to a topic page', async () => {
   };
   const wrapper = mount(<BreadCrumb {...props} />);
   expect(wrapper.html()).toEqual(
-    '<div><a href="/topics/natural-resources-and-energy">← Natural resources and energy</a></div>',
+    '<div class="c-breadcrumb"><a class="c-breadcrumb__link" href="/topics/natural-resources-and-energy">← Natural resources and energy</a></div>',
   );
 });
 
@@ -30,6 +30,6 @@ test('can link back to a publication page', async () => {
   };
   const wrapper = mount(<BreadCrumb {...props} />);
   expect(wrapper.html()).toEqual(
-    '<div><a href="/publications/publication-name">← Publication name</a></div>',
+    '<div class="c-breadcrumb"><a class="c-breadcrumb__link" href="/publications/publication-name">← Publication name</a></div>',
   );
 });
