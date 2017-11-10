@@ -35,7 +35,8 @@ const Mosaic = ({ resources = [] }) => (
                   color: index % 4 === 2 ? titleColor : ' ',
                 }}
               >
-                {publicationType ? publicationType.title : null}
+                {publicationType || publicationType}
+                {publicationType.title || publicationType.title}
               </div>
               <div>
                 <h3
