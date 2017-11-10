@@ -64,6 +64,6 @@ export default DataLoader(ServicePage, {
     sanityQuery: '{ "service": *[slug.current == "online-courses"][0]{title, longTitle, slug, lead, leadLinks, _id, sections, "featuredImage": featuredImage.asset->url}}',
     param: { slug },
   }),
-  materializeDepth: 3,
+  materializeDepth: 2,
 });
 

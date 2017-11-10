@@ -7,6 +7,7 @@
 .c-mosaic_item {
   width: 100%;
   background-size: cover;
+  background: $brand-medium;
   @include mq($from: tablet) {
     width: 50%;
   }

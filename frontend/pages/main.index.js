@@ -35,6 +35,7 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
       <div className="c-topic-section__title">
         <h2> Browse our handpicked anti-corruption publications, insights and ideas.</h2>
       </div>
+      {console.log(frontPage.resources)}
       <Mosaic resources={frontPage.resources} />
       <h2 className="c-topic-section__cta u-padding-bottom-huge">
         <a href="/search">Explore all our resources &nbsp;<ArrowRight /></a>

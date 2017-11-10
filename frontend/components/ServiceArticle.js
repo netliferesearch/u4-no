@@ -3,7 +3,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 import ReactPlayer from 'react-player';
 import { ArrowRight } from './icons';
-import { BoxOnBox, BoxOnImage, WorkshopMosaic, Feature, SimpleMosaic } from './';
+import { BoxOnBox, BoxOnImage, WorkshopMosaic, Feature, SimpleMosaic, Mosaic } from './';
 
 /**
  * Here we replace Sanity's react components for rendering basic things like
@@ -57,6 +57,12 @@ const serializers = {
     workshops: ({ node: { workshopsRef } }) => (
       <div className="o-wrapper">
         <WorkshopMosaic resources={workshopsRef} />
+      </div>
+    ),
+    expertAnswers: ({ node: { expertAnswersRef } }) => (
+      <div className="o-wrapper u-margin-top u-margin-bottom-huge">
+        {console.log(expertAnswersRef)}
+        <Mosaic resources={expertAnswersRef} />
       </div>
     ),
     courses: ({ node: { coursesRef } }) => (

@@ -10,10 +10,9 @@ const classes = BEMHelper({
 });
 
 const arrayify = (content) => {
-  console.log(content)
   if (!Array.isArray(content)) return [content];
   return content;
-}
+};
 
 const LinkList = ({ title, content, otherClasses = null }) => (
   <ul {...classes(null, null, otherClasses)}>
