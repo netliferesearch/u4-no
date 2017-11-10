@@ -17,10 +17,6 @@ const About = ({
     <SimpleHero title={about.title} content={about.lead} cta />
 
 
-    <ServiceArticle
-      blocks={about.sections}
-    />
-
     <Newsletter />
 
     <Footer />

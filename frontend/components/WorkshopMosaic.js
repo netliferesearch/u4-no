@@ -13,13 +13,13 @@ const WorkshopMosaic = ({ resources = [] }) => (
     {resources.map(item =>
       (
         <div {...classes('item')}>
-          <Link to={item.link} ><a>
+          <Link to={item.target.link} ><a>
             <Pin {...classes('icon')} />
             <div {...classes('title')}>
-              {item.title}
+              {item.target.title}
             </div>
             <div>
-              {item.lead && item.lead.split('\n').map(i => <p>{i}</p>) }
+              {item.target.lead && item.target.lead.split('\n').map(i => <p>{i}</p>) }
             </div>
           </a></Link>
         </div>
