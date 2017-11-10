@@ -12,7 +12,7 @@ const TopicEntry = ({
   topic: {
     title = '',
     longTitle = '',
-    explainerText = 'Topic has no explainerText',
+    explainerText = '',
     featuredImage,
     linkListContent = false,
     parent = {},
@@ -49,14 +49,14 @@ const TopicEntry = ({
           title="Basic guide"
           text="Read our introduction to corruption and anti-corruption efforts in natural resources and energy sectors. "
           icon={BasicGuide}
-          route="topic.article"
+          route={introduction.length ? 'topic.article' : null}
           params={{ slug: slug.current, topicPart: 'basics' }}
         />
         <LinkBox
           title="Research and policy agenda"
           text="Discover what U4 and others do to advance research and reduce corruption in natural resources and energy."
           icon={ResearchAgenda}
-          route="topic.article"
+          route={agenda.length ? 'topic.article' : null}
           params={{ slug: slug.current, topicPart: 'agenda' }}
         />
       </section>
