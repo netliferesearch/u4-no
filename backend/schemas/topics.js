@@ -27,7 +27,7 @@ export default {
     },
     {
       name: 'introduction',
-      title: 'Topic introduction',
+      title: 'Basic guide',
       type: 'array',
       of: [
         {
