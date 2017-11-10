@@ -2,7 +2,8 @@
   margin-bottom: $spacing-large;
 }
 .c-team__wrapper {
-  @include mq($from: tablet) {
+  
+  @include mq($from: desktop) {
     display: flex;
     flex-wrap:wrap;
     justify-content: center;

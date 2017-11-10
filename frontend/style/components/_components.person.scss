@@ -1,57 +1,86 @@
 .c-person__item {
-  @include mq($from: tablet) {
-    width: 50%;
-  }
   @include mq($from: desktop) {
     display: flex;
     flex-wrap: wrap;
+    width: 50%;
+  }
+  @include mq($from: wide) {
     width: 33%;
+    
   }
 }
 .c-person__item--light {
-  min-height: 380px;
-  min-width: 300px;
+  //min-height: 380px;
+  //min-width: 300px;
 
   @include mq($from: tablet) {
-    min-width: 500px;
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 280px;
+    //min-width: 500px;
+    //display: flex;
+    //flex-wrap: wrap;
+    //min-height: 280px;
   }
   @include mq($from: desktop) {
-    min-height: 350px;
+    //min-height: 350px;
 
   }
 }
 
 
 .c-person__item-body {
-  padding: $spacing-large;
+  padding: $spacing-small;
   font-weight: 300;
   font-family: $font-sans;
   background-repeat: no-repeat;
   background-position: top right;
   background-size: contain;
-
+  display: flex;
+  margin-bottom: $spacing-large;
   @include mq($from: tablet) {
     width: 100%;
+    padding: $spacing-large;
   }
 }
+
+.c-person__item-body-img {
+  background-color: $brand-lightest;
+  width: 40%;
+  min-height: 180px;
+  background-size: cover;
+  background-position:top center;
+  margin-right: $spacing;
+  @include mq($from: tablet) {
+    width: 50%;
+    min-height: 240px;
+  }
+}
+
+.c-person__item-body-img--noimg {
+  //border: solid 1px $grey;
+
+}
+
+.c-person__item-body-text {
+  min-width: 50%;
+}
+
+
+
 .c-person__item-body--small {
   @include mq($from: desktop) {
     width: 100%;
   }
 }
 .c-person__item-body--noimg {
-  background: transparent;
-  margin: $spacing-small;
-  border: 4px solid rgba($brand-medium, .1);
-  color: $brand-dark;
-  display: block;
-  padding-bottom: $spacing-large;
+  
+  //background-color: $brand-lightest;
+  //margin: $spacing-small;
+  //border: 4px solid rgba($brand-medium, .1);
+  //color: $brand-dark;
+  //display: block;
+  //padding-bottom: $spacing-large;
   a {
-    color: $brand-dark;
-    display: inline-block;
+    //color: $brand-dark;
+    //display: inline-block;
   }
 }
 .c-person__item-body--apply {
@@ -73,17 +102,22 @@
   }
 }
 .c-person__item-title {
-  margin: 0;
+  margin: $spacing-small 0;
+  color: $brand-dark;
+  font-weight: bold;
+  @include inuit-font-size($font-size-normal, $line-height-tiny );
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-large, $line-height-tiny );
+  }
 }
+
 .c-person__item-title--apply {
   @include inuit-font-size($font-size-huge, $line-height-small);
   margin-top: 0;
 }
 .c-person__item-subtitle {
   @include inuit-font-size(14px);
-  text-transform: uppercase;
   font-weight: 400;
-  margin-top: $spacing;
   display: inline-block;
 }
 .c-person__item-meta {
