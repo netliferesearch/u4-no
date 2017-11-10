@@ -43,7 +43,6 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
   }
 }
 .c-top-bar__menu-item {
-  border-bottom: 3px solid $brand-main;
   @include mq($from: tablet) {
     background: none;
     padding: 0;
@@ -51,7 +50,7 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
     color: $brand-main;
   }
   margin-right: $spacing;
-  padding: 0 $spacing-tiny $spacing-tiny;
+  padding: $spacing-tiny;
 
   &:last-child {
     margin-right: 0;
@@ -72,7 +71,7 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
 }
 
 .c-top-bar__menu-item--active {
-  border-bottom: 3px solid $white;
+  background: $brand-medium;
   color: $white;
   padding: 0 $spacing-tiny $spacing-tiny;
 }

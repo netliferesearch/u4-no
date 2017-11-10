@@ -134,9 +134,9 @@
   padding: 0 $spacing;
   position: fixed;
   display: block;
-  top: 0;
+  top: $spacing-large;
   bottom: 0;
-  height: 100%;
+  height: calc(100%-$spacing-large);
   padding-bottom: $spacing-large;
   overflow-y: auto;
   align-items: center;

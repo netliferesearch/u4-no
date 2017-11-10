@@ -2,7 +2,7 @@ import React from 'react';
 import buildUrl from '../helpers/buildUrl';
 import { Link } from '../routes';
 
-const Mosaic = ({ resources = [] }) => (
+const Mosaic = ({ resources = [], alt = false }) => (
   <div className="c-mosaic">
     {resources.length ? (
       <div
@@ -14,7 +14,7 @@ const Mosaic = ({ resources = [] }) => (
     ) : null}
     {resources.map(
       (
-        { title = '', _id = '', _type = '', publicationType = '', slug = '', imageUrl = '', titleColor = '#FFF' },
+        { title = '', _id = '', _type = '', publicationType = [], slug = {}, imageUrl = '', titleColor = '#FFF' },
         index,
       ) => (
         <Link route={buildUrl({ _type, slug })}>
@@ -35,7 +35,7 @@ const Mosaic = ({ resources = [] }) => (
                   color: index % 4 === 2 ? titleColor : ' ',
                 }}
               >
-                {publicationType ? publicationType.title : null}
+                { alt ? publicationType.title : publicationType }
               </div>
               <div>
                 <h3

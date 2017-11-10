@@ -5,7 +5,7 @@ export default ({ _type = 'notype', slug = {} }) => {
   } else if (_type === 'topics') {
     return `/topics/${actualSlug}`;
   } else if (_type === 'article') {
-    return `/article/${actualSlug}`;
+    return `/${actualSlug}`;
   }
   return actualSlug;
 };

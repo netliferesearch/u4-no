@@ -53,7 +53,6 @@ export default {
   },
 
   list: ({ type, children }) => {
-    console.log(children);
     if (type === 'bullet') {
       return <ul {...classes('standard', null, 'list-bullets')}>{children}</ul>;
     }
@@ -79,12 +78,16 @@ export default {
 
         return <a href={props.mark.href}>{props.children}</a>;
       }
-      console.log(props);
+      console.log(`test${props}`);
       return null;
     },
     footnote: (props) => {
       console.log('footnote', props);
       return <span>{props.children}</span>;
+    },
+    '07c1f85be6c4': (props) => {
+      console.log(props);
+      return <a href={props.mark.href}>{props.children}</a>;
     },
   },
 };

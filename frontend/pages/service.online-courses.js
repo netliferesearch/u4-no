@@ -3,6 +3,7 @@ import { Link } from '../routes';
 import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
+import BlockContent from '@sanity/block-content-to-react';
 
 import { BoxOnBox, Footer, Layout, ExtendedBlockContent, Accordion, Newsletter, ServiceArticle } from '../components';
 import { Feature, Mosaic, LinkBox, LinkList } from '../components';
@@ -38,12 +39,7 @@ const ServicePage = ({
         <div
           className="c-boxOnImage__body"
         >
-          <p
-            className="c-boxOnImage__lead"
-          >
-            We facilitate local dialouge
-          </p>
-          {service.lead.split('\n').map(i => <p>{i}</p>)}
+          <BlockContent blocks={service.lead} />
           {service.leadLinks && <LinkList title="" content={service.leadLinks} />}
         </div>
       </section>

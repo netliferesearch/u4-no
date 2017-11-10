@@ -324,6 +324,11 @@ export default {
         ]
       },
       {
+        name: 'reference',
+        title: 'Bibliographic reference (like U4 Issue 2016:1, 45 p.)',
+        type: 'string'
+      },
+      {
         name: 'bibliograpicalOverride',
         title: 'Override Bibliography',
         description: 'Do you want to override some of this publication’s bibliographic details?',

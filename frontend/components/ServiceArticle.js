@@ -61,7 +61,8 @@ const serializers = {
     ),
     expertAnswers: ({ node: { expertAnswersRef } }) => (
       <div className="o-wrapper u-margin-top u-margin-bottom-huge">
-        <Mosaic resources={expertAnswersRef} />
+        <Mosaic alt resources={expertAnswersRef} />
+        {console.log(expertAnswersRef)}
       </div>
     ),
     courses: ({ node: { coursesRef } }) => (
@@ -75,16 +76,19 @@ const serializers = {
           <h2 className="c-topic-section__title u-margin-bottom-none">
             {title}
           </h2>
-          <ReactPlayer
-            controls
-            vimeoConfig={{
-              preload: true,
-            }}
-            style={{
-              margin: '40px auto 40px',
-            }}
-            url={src}
-          />
+          <div className="u-video">
+            <ReactPlayer
+              controls
+              width="100%"
+              vimeoConfig={{
+                preload: true,
+              }}
+              style={{
+                margin: '40px auto 40px',
+              }}
+              url={src}
+            />
+          </div>
         </div>
       </div>
     ),

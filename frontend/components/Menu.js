@@ -158,19 +158,26 @@ class Menu extends Component {
               </ul>
 
               <h4 {...menuClasses('heading')}>
-                <span {...menuClasses('heading-bg')}>People</span>
+                <span {...menuClasses('heading-bg')}>General information</span>
               </h4>
               <ul {...menuClasses('list')}>
                 <li {...menuClasses('list-item')}>
                   <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
+                    <Link to={'/about-u4'}>
+                      <a {...menuClasses('link')}>About U4</a>
+                    </Link>
+                  </button>
+                </li>
+                <li {...menuClasses('list-item')}>
+                  <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
                     <Link to={'/the-team'}>
-                      <a {...menuClasses('link')}>U4 staff</a>
+                      <a {...menuClasses('link')}>People</a>
                     </Link>
                   </button>
                 </li>
                 <li {...menuClasses('list-item')}>
                   <Link to={'/partner-agencies'}>
-                    <a {...menuClasses('link')}>Partner Agencies</a>
+                    <a {...menuClasses('link')}>Partner agencies</a>
                   </Link>
                 </li>
               </ul>
@@ -193,14 +200,21 @@ class Menu extends Component {
                     </Link>
                   </button>
                 </li>
+                <li {...menuClasses('list-item')}>
+                  <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
+                    <Link to={'/helpdesk'}>
+                      <a {...menuClasses('link')}>Anti-corruption helpdesk</a>
+                    </Link>
+                  </button>
+                </li>
               </ul>
 
               <div {...menuClasses('links--round')}>
                 <Link to={'/helpdesk'}>
-                  <a {...menuClasses('link-round')}>Partner Helpdesk</a>
+                  <a {...menuClasses('link-round')}>Helpdesk</a>
                 </Link>
 
-                <Link to={'/'}>
+                <Link to={'/the-team'}>
                   <a {...menuClasses('link-round')}>Contact</a>
                 </Link>
               </div>

@@ -23,7 +23,7 @@
   display:none;
   @include mq($from: wide) {
     display: block;
-    grid-column: 8 / 10;
+    grid-column: 7 / 10;
   }
 }
 
