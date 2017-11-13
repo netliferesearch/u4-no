@@ -30,7 +30,7 @@ class Newsletter extends Component {
         <div {...classes(null, null)}>
           <div {...classes('content')}>
             <h4 {...classes('small-title')}>{smallTitle}</h4>
-            <Link to={link}>
+            <Link to={'http://u4.nationbuilder.com/'}>
               <a {...classes('title-wrapper')}>
                 <h3 {...classes('title')}>
                   {title}
