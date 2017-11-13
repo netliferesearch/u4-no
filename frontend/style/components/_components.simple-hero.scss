@@ -15,6 +15,10 @@
 .c-simple-hero--light {
   background: $white;
   color: $brand-dark;
+  @include mq($from: tablet) {
+    min-height: 360px;
+    padding: $spacing $spacing 0;
+  }
 }
 .c-simple-hero__title {
   @include inuit-font-size($font-size-tiny);
