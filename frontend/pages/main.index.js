@@ -8,8 +8,12 @@ import { PartnerAgencies, FrontpageFeature, Mosaic } from '../components';
 import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass, ArrowRight } from '../components/icons';
 
-const Frontpage = ({ frontPage = {}, topics = {} }) => (
-  <Layout hideLogo noSearch>
+const Frontpage = ({ frontPage = {}, topics = {}, url }) => (
+  <Layout
+    hideLogo
+    noSearch
+    headComponentConfig={{ url: url.asPath ? `beta.u4.no${url.asPath}` : '' }}
+  >
     <section className="o-wrapper-inner o-wrapper--padded ">
       <div className="o-layout">
         <div className="o-layout__item c-logo--center">

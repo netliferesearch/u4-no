@@ -1,8 +1,15 @@
 import React from 'react';
+import find from 'lodash/find';
 
-import { Layout, LongformArticleContainer } from '../components';
+import { LongformArticleContainer } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
+
+const firstTitleInContent = (content = []) =>
+  find(content, ({ style = '' }) => style === 'h1' || style === 'h2').children[0].text;
+
+const firstParagraphInContent = (content = []) =>
+  find(content, ({ style = '' }) => style === 'normal').children[0].text;
 
 const TopicArticleEntry = (props) => {
   const { url = {}, title } = props;
@@ -19,6 +26,11 @@ const TopicArticleEntry = (props) => {
         <BreadCrumb data={{ _type: 'topics', slug: { current: slug }, title }} />
       }
       content={content}
+      headComponentConfigOverride={{
+        title: firstTitleInContent(content),
+        description: firstParagraphInContent(content),
+        url: url.asPath ? `beta.u4.no${url.asPath}` : '',
+      }}
     />
   );
 };

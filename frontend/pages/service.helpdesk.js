@@ -4,57 +4,71 @@ import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 
-import { BoxOnBox, Footer, Layout, ExtendedBlockContent, Accordion, Newsletter, ServiceArticle } from '../components';
+import {
+  BoxOnBox,
+  Footer,
+  Layout,
+  ExtendedBlockContent,
+  Accordion,
+  Newsletter,
+  ServiceArticle,
+} from '../components';
 import { Feature, Mosaic, LinkBox, SimpleHero } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
-import { Basics, Picture, Publication, Resources, ResearchAgenda, ArrowRight } from '../components/icons';
+import {
+  Basics,
+  Picture,
+  Publication,
+  Resources,
+  ResearchAgenda,
+  ArrowRight,
+} from '../components/icons';
 
-const ServicePage = ({
-  service = {},
-}) => (
-  <Layout>
+const ServicePage = ({ service = {}, url = {} }) => {
+  const {
+    title = '',
+    longTitle = '',
+    featuredImage = {},
+    lead = '',
+    sections = [],
+    relatedUrl = {},
+  } = service;
+  return (
+    <Layout
+      headComponentConfig={{
+        title,
+        description: lead,
+        image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
+        url: url.asPath ? `beta.u4.no${url.asPath}` : '',
+        ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
+      }}
+    >
+      <SimpleHero title={title} content={longTitle} cta />
 
-    <SimpleHero title={service.title} content={service.longTitle} cta />
+      {featuredImage ? (
+        <section className="c-boxOnImage">
+          <figure className="c-boxOnImage__figure">
+            <img alt="" src={featuredImage} />
+          </figure>
+          <div className="c-boxOnImage__body">
+            <p className="c-boxOnImage__lead">We facilitate local dialouge</p>
+            {lead.split('\n').map(i => <p>{i}</p>)}
+          </div>
+        </section>
+      ) : null}
 
-    {service.featuredImage ?
-      <section
-        className="c-boxOnImage"
-      >
-        <figure
-          className="c-boxOnImage__figure"
-        >
-          <img
-            alt=""
-            src={service.featuredImage}
-          />
-        </figure>
-        <div
-          className="c-boxOnImage__body"
-        >
-          <p
-            className="c-boxOnImage__lead"
-          >
-            We facilitate local dialouge
-          </p>
-          {service.lead.split('\n').map(i => <p>{i}</p>)}
-        </div>
-      </section>
-      : null
-    }
+      <ServiceArticle blocks={sections} />
+      <Newsletter />
 
-    <ServiceArticle
-      blocks={service.sections}
-    />
-    <Newsletter />
-
-    <Footer />
-  </Layout>
-);
+      <Footer />
+    </Layout>
+  );
+};
 export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '{ "service": *[slug.current == "helpdesk"][0]{title, longTitle, slug, lead, _id, "sections": sections, "featuredImage": featuredImage.asset->url}}',
+    sanityQuery:
+      '{ "service": *[slug.current == "helpdesk"][0]{title, longTitle, slug, lead, _id, "sections": sections, "featuredImage": featuredImage.asset->url}}',
     param: { slug },
   }),
   materializeDepth: 4,
 });
-

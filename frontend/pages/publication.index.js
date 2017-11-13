@@ -5,7 +5,12 @@ import DataLoader from '../helpers/data-loader';
 import randomKey from '../helpers/randomKey';
 
 const PublicationOverview = ({ publications = [] }) => (
-  <Layout>
+  <Layout
+    headComponentConfig={{
+      title: 'Publications',
+      url: url.asPath ? `beta.u4.no${url.asPath}` : '',
+    }}
+  >
     <div className="o-wrapper-inner">
       <h1 className="c-topic-page_longTitle u-margin-bottom-huge">Publications</h1>
       {publications.map(({ slug = {}, title = '' }) => (

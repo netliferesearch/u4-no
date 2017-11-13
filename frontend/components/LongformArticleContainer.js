@@ -32,21 +32,25 @@ const LongFormArticleContainer = (props) => {
     relatedUrl,
     BreadCrumbComponent = null,
     url = {},
+    headComponentConfigOverride,
   } = props;
+  const headComponentConfig =
+    headComponentConfigOverride ||
+    Object.assign(
+      {
+        title,
+        description: lead,
+        image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
+        url: url.asPath ? `beta.u4.no${url.asPath}` : '',
+        ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
+      },
+      relatedUrl,
+    );
   return (
     <Layout
       showLoadingScreen={showLoadingScreen}
       showTopTab={!isArticleMenuOpen}
-      headComponentConfig={Object.assign(
-        {
-          title,
-          description: lead,
-          image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
-          url: url.asPath ? `beta.u4.no${url.asPath}` : '',
-          ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
-        },
-        relatedUrl,
-      )}
+      headComponentConfig={headComponentConfig}
     >
       {isArticleMenuOpen && (
         <div

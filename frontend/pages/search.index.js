@@ -19,8 +19,15 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Search = ({ results = [], searchFilters = [], searchSorting = '' }) => (
-  <Layout noSearch>
+const Search = ({ results = [], searchFilters = [], searchSorting = '', url }) => (
+  <Layout
+    noSearch
+    headComponentConfig={{
+      title: Search,
+      description: '',
+      url: url.asPath ? `beta.u4.no${url.asPath}` : '',
+    }}
+  >
     <div className="o-layout o-layout--center c-search__wrapper">
       <div className="o-layout__item u-10/12  u-8/12@desktop u-6/12@wide">
         <section {...classes({ block: 'search-input', element: 'content' })}>

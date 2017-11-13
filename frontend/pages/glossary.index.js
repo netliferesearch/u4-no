@@ -12,12 +12,13 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Glossary = ({ terms = [] }) => (
+const Glossary = ({ terms = [], url }) => (
   <Layout
     className="o-wrapper"
     headComponentConfig={{
       title: 'Glossary',
       description: '',
+      url: url.asPath ? `beta.u4.no${url.asPath}` : '',
     }}
   >
     <div className="o-wrapper-inner o-wrapper--padded">
