@@ -12,7 +12,9 @@ const classes = BEMHelper({
 const Team = ({ title, members, light = false, linkLabel = 'Bio', applyJob = false }) => (
   <section {...classes('', light && 'light')}>
     { title &&
-      <h2 {...classes('title')}>Hi!<br />{title}</h2>
+      <div className="o-wrapper">
+        <h2 {...classes('title')}>Hi!<br />{title}</h2>
+      </div>
     }
     <div {...classes('wrapper', null)}>
       {

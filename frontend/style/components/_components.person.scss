@@ -94,7 +94,7 @@
   margin-top: 0;
 }
 .c-person__item-subtitle {
-  @include inuit-font-size(14px, $line-height-tiny);
+  @include inuit-font-size($font-size-tiny);
   font-weight: 400;
   display: inline-block;
   
