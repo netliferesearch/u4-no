@@ -115,6 +115,8 @@ const serializers = {
         return (
           <div className="o-grid-container">
             <div className="o-grid-container__item-standard u-margin-bottom">
+              {console.log(children)}
+
               {React.createElement(
                 style,
                 { id, className: '' },

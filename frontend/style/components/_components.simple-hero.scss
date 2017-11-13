@@ -12,6 +12,10 @@
     padding: $spacing-large;
   }
 }
+.c-simple-hero--light {
+  background: $white;
+  color: $brand-dark;
+}
 .c-simple-hero__title {
   @include inuit-font-size($font-size-tiny);
   font-family: $font-sans;

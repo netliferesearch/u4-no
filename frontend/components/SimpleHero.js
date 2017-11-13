@@ -8,8 +8,8 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const SimpleHero = ({ title, content, cta = false }) => (
-  <div {...classes()}>
+const SimpleHero = ({ title, content, light = false, cta = false }) => (
+  <div {...classes(null, light ? 'light' : null)}>
     <h1 {...classes('title')}>{title}</h1>
     <div {...classes('content')}><BlockContent blocks={content} /></div>
     { cta &&

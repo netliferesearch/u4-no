@@ -10,12 +10,19 @@ import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import { Basics, Picture, Publication, Resources, ResearchAgenda, ArrowRight } from '../components/icons';
 
 const About = ({
-  about = { title: '', longTitle: '', featuredImage: {}, lead: '', sections: {} },
+  about = { title: '', longTitle: '', featuredImage: {}, lead: '', sections: '' },
 }) => (
   <Layout>
     {console.log(about)}
-    <SimpleHero title={about.title} content={about.lead} cta />
+    {about.lead &&
+      <SimpleHero light title={about.title} content={about.lead} />
+    }
 
+    { about.sections ?
+      <ServiceArticle
+        blocks={about.sections}
+      />
+      : null}
 
     <Newsletter />
 
@@ -24,7 +31,7 @@ const About = ({
 );
 export default DataLoader(About, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '{ "about": *[slug.current == "about-u4"][0]{title, slug, lead, _id, sections, "featuredImage": featuredImage.asset->url}}',
+    sanityQuery: '{ "about": *[slug.current == "about-u4"][0]{title, slug, lead, _id, "sections": sections, "featuredImage": featuredImage.asset->url}}',
     param: { slug },
   }),
   materializeDepth: 3,
