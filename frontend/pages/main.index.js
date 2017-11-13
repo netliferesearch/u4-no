@@ -8,14 +8,15 @@ import { PartnerAgencies, FrontpageFeature, Mosaic } from '../components';
 import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass, ArrowRight } from '../components/icons';
 
-
 const Frontpage = ({ frontPage = {}, topics = {} }) => (
   <LayoutHomepage noSearch>
     <section className="o-wrapper-inner o-wrapper--padded ">
       <div className="o-layout">
         <div className="o-layout__item c-logo--center">
           <Link route="/">
-            <a className="u-no-underline" href="/"><U4LogoSquare className="c-logo" /></a>
+            <a className="u-no-underline" href="/">
+              <U4LogoSquare className="c-logo" />
+            </a>
           </Link>
         </div>
       </div>
@@ -23,8 +24,8 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
         <SearchField />
       </div>
     </section>
-    <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
-      <div className="c-introduction-text">
+    <section className="o-wrapper-medium u-margin-bottom-huge">
+      <div className="c-topic-section__title">
         <BlockContent blocks={frontPage.sections} />
       </div>
     </section>
@@ -37,22 +38,28 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
       </div>
       <Mosaic resources={frontPage.resources} />
       <h2 className="c-topic-section__cta u-padding-bottom-huge">
-        <a href="/search">Explore all our resources &nbsp;<ArrowRight /></a>
+        <a href="/search">
+          Explore all our resources &nbsp;<ArrowRight />
+        </a>
       </h2>
     </section>
 
-    <section >
+    <section>
       <BoxOnBoxPartnerFeatures />
       <h2 className="c-topic-section__cta u-padding-bottom">
-        <a href="/search">See all our partners &nbsp;<ArrowRight /></a>
+        <a href="/search">
+          See all our partners &nbsp;<ArrowRight />
+        </a>
       </h2>
     </section>
 
     <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
       <div className="c-introduction-text">
         <h2>
-            Looking for someone?<br />
-          <a href="/the-team">The whole U4 team &nbsp;<ArrowRight /></a>
+          Looking for someone?<br />
+          <a href="/the-team">
+            The whole U4 team &nbsp;<ArrowRight />
+          </a>
         </h2>
       </div>
     </section>
@@ -62,10 +69,8 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
     <Footer />
 
     <PartnerAgencies />
-
   </LayoutHomepage>
 );
-
 
 export default DataLoader(Frontpage, {
   queryFunc: () => ({

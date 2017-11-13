@@ -18,4 +18,5 @@ routes
   .add('service.workshops', '/workshops-and-events')
   .add('service.online-courses', '/online-courses')
   .add('service.helpdesk', '/helpdesk')
+  .add('service.about', '/about-u4')
   .add('general.article', '/:slug');

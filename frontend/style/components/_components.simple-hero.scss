@@ -21,7 +21,7 @@
   font-family: $font-sans;
   font-weight: 300;
   max-width: 800px;
-  margin: auto;
+  margin: auto auto $spacing;
   @include inuit-font-size($font-size-normal, $line-height-normal);
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-larger);

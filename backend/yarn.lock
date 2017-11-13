@@ -6223,7 +6223,7 @@ react-intl@^2.2.2:
     intl-relativeformat "^2.0.0"
     invariant "^2.1.1"
 
-"react-json-inspector@github:rexxars/react-json-inspector#react-15":
+react-json-inspector@rexxars/react-json-inspector#react-15:
   version "7.0.1"
   resolved "https://codeload.github.com/rexxars/react-json-inspector/tar.gz/b5534e164b54e87b966da3ca0ef14003843cff92"
   dependencies:

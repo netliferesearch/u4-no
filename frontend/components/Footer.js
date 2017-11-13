@@ -41,15 +41,12 @@ const Footer = ({ title }) => (
         </div>
         <div {...classes('item')}>
           <div {...classes('heading')} />
-          <a href="#">Privacy / licence</a><br />
-          <a href="#">Vacancy</a><br />
-          <a href="#">Cookies</a><br />
         </div>
         <div {...classes('item')}>
           <div {...classes('heading')}>Follow us</div>
-          <a href="#"><MediumLogo {...classes('some-icon')} />Medium</a><br />
-          <a href="#"><TwitterLogo {...classes('some-icon')} />Twitter</a><br />
-          <a href="#"><FacebookLogo {...classes('some-icon')} />Facebook</a>
+          <a href="https://medium.com/u4-anti-corruption-resource-centre"><MediumLogo {...classes('some-icon')} />Medium</a><br />
+          <a href="https://twitter.com/U4_ACRC"><TwitterLogo {...classes('some-icon')} />Twitter</a><br />
+          <a href="https://www.facebook.com/U4anticorruption/"><FacebookLogo {...classes('some-icon')} />Facebook</a>
         </div>
       </div>
     </div>

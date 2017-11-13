@@ -102,8 +102,8 @@ const TopicEntry = ({
 );
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '{"topic": *[slug.current == $slug]{...,"linkListContent": coalesce(*[_type == "topics" && references(^._id)]{title, "link": slug.current},parent->{title, "link": slug.current}), "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}}[0]}',
+    sanityQuery: '{"topic": *[slug.current == $slug]{...,"advisors": advisors[]->{_id, title, image, position, firstName, surname, email, slug, bio}, "linkListContent": coalesce(*[_type == "topics" && references(^._id)]{title, "link": slug.current},parent->{title, "link": slug.current}), "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}}[0]}',
     param: { slug },
   }),
-  materializeDepth: 3,
+  materializeDepth: 4,
 });

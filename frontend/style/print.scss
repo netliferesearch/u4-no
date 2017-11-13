@@ -45,6 +45,106 @@
 /**
 * Print layout
 */
+
+/*
+ * Page Layout
+*/
+@page {
+  margin-top: 2cm;
+  margin-bottom: 3.5cm;
+  margin-inside: 3.5cm;
+  margin-outside: 3.5cm;
+
+  @footnotes {
+    border-top: solid black thin;
+    padding-top: 11pt;
+    font-size: 11pt;
+  }
+}
+.contents {
+  display: block;
+  page: table-of-contents;
+  counter-reset: page 1;
+}
+@page table-of-contents {
+  @top { content: "Table of Contents" }
+  @bottom {
+      content: counter(page, lower-alpha);
+  }
+}
+
+.body {
+  display: block;
+  page: main;
+  counter-reset: page 1;
+}
+
+p {
+  orphans: 2;
+  widows: 2;
+}
+@page main {
+
+  @top {
+    content: string(chapter-title);
+  }
+  @bottom {
+      content: counter(page);
+  }
+}
+
+.body h2 {
+  string-set: chapter-title content();
+  page-break-before: always
+}
+
+.fn {
+  float: footnote;
+}
+
+
+
+/*
+// SETTINGS
+@import 'settings/settings.config';
+@import 'settings/settings.core';
+@import 'settings/settings.global';
+@import 'settings/settings.colors';
+@import 'settings/settings.typography';
+
+// TOOLS
+@import '../node_modules/inuitcss/tools/tools.font-size';
+@import '../node_modules/inuitcss/tools/tools.clearfix';
+@import '../node_modules/sass-mq/mq';
+@import 'tools/tools.aliases';
+
+// GENERIC
+@import '../node_modules/inuitcss/generic/generic.box-sizing';
+@import '../node_modules/inuitcss/generic/generic.normalize';
+@import '../node_modules/inuitcss/generic/generic.shared';
+
+// ELEMENTS
+@import '../node_modules/inuitcss/elements/elements.page';
+@import '../node_modules/inuitcss/elements/elements.headings';
+@import 'elements/elements.body';
+@import 'elements/elements.figure';
+@import 'elements/elements.headings';
+@import 'elements/elements.links';
+@import 'elements/elements.input';
+
+@import '../node_modules/inuitcss/utilities/utilities.widths';
+@import '../node_modules/inuitcss/utilities/utilities.headings';
+@import '../node_modules/inuitcss/utilities/utilities.spacings';
+@import 'utilities/utilities.print';
+@import 'utilities/utilities.typography';
+@import 'utilities/utilities.general';
+
+.c-article-header__language,
+.c-article-header__download,
+.c-top-bar {
+  display: none;
+}
+
 .contents {
   display: block;
   page: table-of-contents;
@@ -52,9 +152,13 @@
 }
 
 @page table-of-contents {
-    @top { content: "Table of Contents"; }
+    @top {
+      content: "Table of Contents";
+    }
+
     a::after { content: leader(".") target-counter(attr(href), page); }
 }
+
 .body {
   display: block;
   page: main;
@@ -98,3 +202,5 @@ p {
   border-top: solid black thin;
   padding-top: 8pt;
 }
+
+*/

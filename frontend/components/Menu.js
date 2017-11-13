@@ -149,7 +149,7 @@ class Menu extends Component {
               </h4>
               <ul {...menuClasses('list')}>
                 <li {...menuClasses('list-item')}>Publications</li>
-                <li {...menuClasses('list-item')}>Expert answers</li>
+                <li {...menuClasses('list-item')}>Helpdesk answers</li>
                 <li {...menuClasses('list-item')}>
                   <Link to={'/terms'}>
                     <a {...menuClasses('link')}>Glossary</a>
