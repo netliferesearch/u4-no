@@ -50,7 +50,7 @@ const TopicEntry = ({
       {
         title,
         description: explainerText,
-        image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
+        image: featuredImage && featuredImage.asset ? featuredImage.asset.url : '',
         url: url.asPath ? `beta.u4.no${url.asPath}` : '',
         ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
       },
