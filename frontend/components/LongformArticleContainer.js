@@ -28,10 +28,26 @@ const LongFormArticleContainer = (props) => {
     mainPoints = [],
     isPublicationDrawerOpen,
     resources = [],
+    featuredImage = {},
+    relatedUrl,
     BreadCrumbComponent = null,
+    url = {},
   } = props;
   return (
-    <Layout showLoadingScreen={showLoadingScreen} showTopTab={!isArticleMenuOpen}>
+    <Layout
+      showLoadingScreen={showLoadingScreen}
+      showTopTab={!isArticleMenuOpen}
+      headComponentConfig={Object.assign(
+        {
+          title,
+          description: lead,
+          image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
+          url: url.asPath ? `beta.u4.no${url.asPath}` : '',
+          ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
+        },
+        relatedUrl,
+      )}
+    >
       {isArticleMenuOpen && (
         <div
           className={`c-article-nav-fullscreen ${isArticleMenuOpen
@@ -134,7 +150,7 @@ const LongFormArticleContainer = (props) => {
           )}
           {_type !== 'publication' && (
             <div className="c-longform-grid">
-              <h1 className="c-longform-grid__standard">{ title || longTitle}</h1>
+              <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
               {lead && <div className="c-article c-longform-grid__standard">{lead}</div>}
               <div className="c-longform-grid__sidebar-right">
                 <TableOfContentsSidebar alwaysFollow {...props} />
@@ -177,7 +193,10 @@ const LongFormArticleContainer = (props) => {
               <div className="c-longform-grid">
                 <div className="c-longform-grid__standard">
                   <div className="footnotes">
-                    <ToggleBlock title="Disclaimer" content="All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies." />
+                    <ToggleBlock
+                      title="Disclaimer"
+                      content="All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies."
+                    />
                   </div>
                 </div>
               </div>

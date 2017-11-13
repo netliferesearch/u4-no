@@ -11,10 +11,10 @@ const classes = BEMHelper({
 export default ({
   showLoadingScreen = false,
   showTopTab = true,
-  title,
-  description,
   children = [],
   noSearch = false,
+  headComponentConfig = {},
+  hideLogo = false,
 }) => (
   <div
     className="u-print-width o-wrapper-page"
@@ -23,15 +23,18 @@ export default ({
       opacity: showLoadingScreen ? 0 : 1,
     }}
   >
-    <HeadComponent title={title} description={description} />
+    <HeadComponent {...headComponentConfig} />
     {showTopTab && (
       <div {...classes()}>
-        <Link route="/">
-          <a {...classes('logo')}>
-            <Logo />
-          </a>
-        </Link>
-        <Menu noSearch={noSearch && noSearch} />
+        {!hideLogo && (
+          <Link route="/">
+            <a {...classes('logo')}>
+              <Logo />
+            </a>
+          </Link>
+        )}
+        {hideLogo && <div />}
+        <Menu noSearch={noSearch} />
       </div>
     )}
     {children}

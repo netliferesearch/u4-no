@@ -13,15 +13,24 @@ const classes = BEMHelper({
 });
 
 const Glossary = ({ terms = [] }) => (
-  <Layout className="o-wrapper">
+  <Layout
+    className="o-wrapper"
+    headComponentConfig={{
+      title: 'Glossary',
+      description: '',
+    }}
+  >
     <div className="o-wrapper-inner o-wrapper--padded">
       <section {...classes()}>
-        <h1{...classes('title')}>Glossary</h1>
-        {terms.map(({ term = '', definition = '' }) =>
-          (definition.length > 0 && (<div {...classes('terms')}>
-            <h3{...classes('terms-term')}>{term}</h3>
-            <p{...classes('terms-definition')}>{definition}</p>
-          </div>)),
+        <h1 {...classes('title')}>Glossary</h1>
+        {terms.map(
+          ({ term = '', definition = '' }) =>
+            definition.length > 0 && (
+              <div {...classes('terms')}>
+                <h3 {...classes('terms-term')}>{term}</h3>
+                <p {...classes('terms-definition')}>{definition}</p>
+              </div>
+            ),
         )}
       </section>
     </div>
