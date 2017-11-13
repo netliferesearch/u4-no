@@ -48,13 +48,13 @@ const PublicationArticleHeader = ({
         <p>
           {authors ? (
             <span>
-              <AuthorList authors={authors} />
+              <AuthorList authors={authors.map(({ target }) => target)} />
               <br />
             </span>
           ) : null}
           {editors.length ? (
             <span>
-              <EditorList editors={editors} />
+              <EditorList editors={editors.map(({ target }) => target)} />
               <br />
             </span>
           ) : null}
