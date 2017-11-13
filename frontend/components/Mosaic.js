@@ -14,11 +14,19 @@ const Mosaic = ({ resources = [], alt = false }) => (
     ) : null}
     {resources.map(
       (
-        { target, title = target.title, _id = target._id, _type = target._type, publicationType = '', slug = target.slug, imageUrl, titleColor = '#FFF' },
+        {
+          target,
+          title = target.title,
+          _id = target._id,
+          _type = target._type,
+          publicationType = '',
+          slug = target.slug,
+          imageUrl,
+          titleColor = '#FFF',
+        },
         index,
       ) => (
-
-        <Link route={buildUrl({ _type, slug })}>
+        <Link key={_id} route={buildUrl({ _type, slug })}>
           <a
             className={`c-mosaic_item ${index % 4 === 2
               ? 'c-mosaic_item--backgroundImage'
@@ -36,7 +44,7 @@ const Mosaic = ({ resources = [], alt = false }) => (
                   color: index % 4 === 2 ? titleColor : ' ',
                 }}
               >
-                { alt ? publicationType.title : publicationType }
+                {alt ? publicationType.title : publicationType}
               </div>
               <div>
                 <h3
