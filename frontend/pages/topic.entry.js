@@ -83,14 +83,14 @@ const TopicEntry = ({
       <section className="c-linkbox-wrapper">
         <LinkBox
           title="Basic guide"
-          text="Read our introduction to corruption and anti-corruption efforts in natural resources and energy sectors. "
+          text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
           icon={BasicGuide}
           route={introduction.length ? 'topic.article' : '#'}
           params={{ slug: slug.current, topicPart: 'basics' }}
         />
         <LinkBox
           title="Research and policy agenda"
-          text="Discover what U4 and others do to advance research and reduce corruption in natural resources and energy."
+          text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
           icon={ResearchAgenda}
           route={agenda.length ? 'topic.article' : '#'}
           params={{ slug: slug.current, topicPart: 'agenda' }}
