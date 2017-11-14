@@ -52,8 +52,8 @@
 @page {
   margin-top: 2cm;
   margin-bottom: 3.5cm;
-  margin-inside: 3.5cm;
-  margin-outside: 3.5cm;
+  margin-inside: 4cm;
+  margin-outside: 4cm;
 
   @footnotes {
     border-top: solid black thin;
@@ -61,6 +61,8 @@
     font-size: 11pt;
   }
 }
+
+
 .contents {
   display: block;
   page: table-of-contents;
@@ -77,6 +79,9 @@
   display: block;
   page: main;
   counter-reset: page 1;
+  font-size: 14pt;
+  line-height: 22pt;
+  color: red;
 }
 
 p {
@@ -95,13 +100,56 @@ p {
 
 .body h2 {
   string-set: chapter-title content();
-  page-break-before: always
+  page-break-before: always;
 }
 
 .fn {
   float: footnote;
 }
 
+.c-print__front-image {
+  width: 19cm;
+  height: auto;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: 50% 50%;
+  margin-left: -4cm;
+  z-index: -10;
+  figcaption{
+    font-size: 10pt;
+    color: grey;
+  }
+}
+
+
+.c-print__front-text {
+  border: solid 0.1cm $brand-dark;
+  background-color: white;
+  z-index: 10;
+  padding: 1cm 2cm;
+  margin-right: -3cm;
+  margin-left: -2cm;
+  page-break-after: always;
+  page-break-inside: avoid;
+  position: fixed;
+  bottom: 0;
+}
+
+.c-print__title {
+  color: $brand-dark;
+}
+
+.c-print__subtitle {
+  color: $brand-dark;
+  font-weight: lighter;
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-large, $line-height-normal);
+}
+
+.c-print__meta{
+  color: $brand-dark;
+  font-family: $font-sans;
+}
 
 
 /*

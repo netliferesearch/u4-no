@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
 import { PrintLongformArticle } from './';
+import BEMHelper from 'react-bem-helper';
 import {
   Footer,
   Layout,
@@ -15,6 +16,11 @@ import {
   PublicationDrawer,
 
 } from '../';
+
+const classes = BEMHelper({
+  name: 'print',
+  prefix: 'c-',
+});
 
 const LongFormArticleContainer = (props) => {
   const {
@@ -30,23 +36,44 @@ const LongFormArticleContainer = (props) => {
     isPublicationDrawerOpen,
     resources = [],
     BreadCrumbComponent = null,
+    subtitle = '',
+    slug = {},
+    topics = [],
+    className = '',
+    publicationType = {},
+    authors = [],
+    editors = [],
+    shortVersion = [],
+    pdfFile = {},
+    legacypdf = {},
+    reference = '',
   } = props;
   return (
     <article className="u-relative u-print-width o-wrapper-page">
-      <div className="c-print__frontmatter">
-        <figure className="c-print__image">
-          <img src={props.featuredImage.asset.url} alt={props.featuredImage.credit} />
+      <div {...classes('front')}>
+        <figure {...classes('front-image')}>
           {props.featuredImage.credit && (
             <figcaption>
-              {props.featuredImage.credit}
+              photo: {props.featuredImage.credit}
             </figcaption>)}
+          <img src={props.featuredImage.asset.url} alt={props.featuredImage.credit} />
         </figure>
+        <div {...classes('front-text')}>
+          <div {...classes('meta')}>
+            <p>
+Natural resources and energy, Illicit financial flows</p>
+          </div>
+          <h1 {...classes('title')}>{title}</h1>
+          <p {...classes('subtitle')}>{subtitle}</p>
+          <div {...classes('meta')}>
+            <p>
+              By Mats Stridsman & Åse Gilje Østensen <br />
+              Series editor Arne Strand<br />
+              {reference}
+            </p>
+          </div>
+        </div>
       </div>
-      <PublicationArticleHeader
-        className="c-hero__grid-container__content links-wrapper-dark-background"
-        {...props}
-      />
-
       {_type === 'publication' && (
         <div className="c-longform-grid">
           <div className="c-longform-grid__standard">
