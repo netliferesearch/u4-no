@@ -50,7 +50,7 @@
  * Page Layout
 */
 @page {
-  margin-top: 2cm;
+  margin-top: 3.5cm;
   margin-bottom: 3.5cm;
   margin-inside: 4cm;
   margin-outside: 4cm;
@@ -81,7 +81,6 @@
   counter-reset: page 1;
   font-size: 14pt;
   line-height: 22pt;
-  color: red;
 }
 
 p {
@@ -123,11 +122,11 @@ p {
 
 
 .c-print__front-text {
-  border: solid 0.1cm $brand-dark;
-  background-color: white;
+  //border: solid 0.1cm $brand-dark;
+  background-color: $brand-lightest;
   z-index: 10;
   padding: 1cm 2cm;
-  margin-right: -3cm;
+  margin-right: -4cm;
   margin-left: -2cm;
   page-break-after: always;
   page-break-inside: avoid;
@@ -137,18 +136,27 @@ p {
 
 .c-print__title {
   color: $brand-dark;
+  margin: 0;
+  font-family: $font-serif;
+  font-weight: bold;
 }
 
 .c-print__subtitle {
   color: $brand-dark;
   font-weight: lighter;
   font-family: $font-sans;
+  padding-top: $spacing-tiny;
+  padding-bottom: $spacing;
+  margin: 0;
+
   @include inuit-font-size($font-size-large, $line-height-normal);
 }
 
 .c-print__meta{
   color: $brand-dark;
   font-family: $font-sans;
+
+
 }
 
 
