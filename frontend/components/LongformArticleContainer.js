@@ -29,7 +29,7 @@ const LongFormArticleContainer = (props) => {
     isPublicationDrawerOpen,
     resources = [],
     featuredImage = {},
-    relatedUrl,
+    relatedUrl = {},
     BreadCrumbComponent = null,
     url = {},
     headComponentConfigOverride,
