@@ -16,32 +16,6 @@ const ServicePage = ({
 
     <SimpleHero title={service.title} content={service.longTitle} cta />
 
-    {service.featuredImage ?
-      <section
-        className="c-boxOnImage"
-      >
-        <figure
-          className="c-boxOnImage__figure"
-        >
-          <img
-            alt=""
-            src={service.featuredImage}
-          />
-        </figure>
-        <div
-          className="c-boxOnImage__body"
-        >
-          <p
-            className="c-boxOnImage__lead"
-          >
-            We facilitate local dialouge
-          </p>
-          {service.lead.split('\n').map(i => <p>{i}</p>)}
-        </div>
-      </section>
-      : null
-    }
-
     <ServiceArticle
       blocks={service.sections}
     />
