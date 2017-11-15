@@ -16,6 +16,7 @@ import {
   PublicationDrawer,
   AuthorList,
   EditorList,
+  Logo,
 
 } from '../';
 
@@ -53,6 +54,9 @@ const LongFormArticleContainer = (props) => {
   return (
     <article className="u-relative u-print-width o-wrapper-page">
       <div {...classes('front')}>
+        <a {...classes('front-logo')}>
+          <Logo />
+        </a>
         <figure {...classes('front-image')}>
           {props.featuredImage.credit && (
             <figcaption>
