@@ -2,14 +2,18 @@ import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
 import { Link } from '../routes';
-import { LayoutHomepage, SearchField, BoxOnBoxPartnerFeatures, Newsletter } from '../components';
+import { Layout, SearchField, BoxOnBoxPartnerFeatures, Newsletter } from '../components';
 import { Footer } from '../components';
 import { PartnerAgencies, FrontpageFeature, Mosaic } from '../components';
 import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass, ArrowRight } from '../components/icons';
 
-const Frontpage = ({ frontPage = {}, topics = {} }) => (
-  <LayoutHomepage noSearch>
+const Frontpage = ({ frontPage = {}, topics = {}, url }) => (
+  <Layout
+    hideLogo
+    noSearch
+    headComponentConfig={{ url: url.asPath ? `beta.u4.no${url.asPath}` : '' }}
+  >
     <section className="o-wrapper-inner o-wrapper--padded ">
       <div className="o-layout">
         <div className="o-layout__item c-logo--center">
@@ -69,7 +73,7 @@ const Frontpage = ({ frontPage = {}, topics = {} }) => (
     <Footer />
 
     <PartnerAgencies />
-  </LayoutHomepage>
+  </Layout>
 );
 
 export default DataLoader(Frontpage, {

@@ -278,13 +278,27 @@ export default {
       },
       {
         name: 'partners',
+        title: 'Partnership',
         type: 'array',
         of: [
           {
-            type: 'reference',
-            to: [
+            name: 'partner',
+            type: 'object',
+            fields: [
               {
-                type: 'institution'
+                type: 'text',
+                name: 'description',
+                description: 'E.g. “This is a joint partnership”',
+              },
+              {
+                type: 'reference',
+                name: 'institution',
+                title: 'institution',
+                to: [
+                  {
+                    type: 'institution',
+                  },
+                ],
               },
             ],
           },

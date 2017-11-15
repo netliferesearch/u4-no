@@ -23,20 +23,39 @@ const Persons = ({
   cv = {},
   url,
 }) => (
-  <Layout>
+  <Layout
+    headComponentConfig={{
+      title: `${person.firstName} ${person.surname}`,
+      url: url.asPath ? `beta.u4.no${url.asPath}` : '',
+    }}
+  >
     <div className="o-wrapper o-wrapper--padded">
       <BreadCrumb url={url} />
       <div className="o-wrapper-medium">
         <section {...classes()}>
           <div {...classes('profile')}>
-            <h1{...classes('profile-name')}>{person.firstName}<br /> {person.surname}</h1>
-            <p{...classes('profile-position')}>{person.position}</p>
-            {person.image && <img alt="x" src={person.image.asset.url} /> }
-            <div{...classes('profile-info')}>
-              <a href={`mailto:${person.email}`}>{person.email}</a><br />
-              {person.phone && <a href={`tel:${person.phone}`}>+{person.phone}<br /></a>}
-              {person.cv && <a href={person.cv.asset.url}>Downlaod CV</a>}<br />
-              {person.image && <a href={person.image.asset.url}>Hi-res image<br /></a>}
+            <h1 {...classes('profile-name')}>
+              {person.firstName}
+              <br /> {person.surname}
+            </h1>
+            <p {...classes('profile-position')}>{person.position}</p>
+            {person.image && <img alt="x" src={person.image.asset.url} />}
+            <div {...classes('profile-info')}>
+              <a href={`mailto:${person.email}`}>{person.email}</a>
+              <br />
+              {person.phone && (
+                <a href={`tel:${person.phone}`}>
+                  +{person.phone}
+                  <br />
+                </a>
+              )}
+              {person.cv && <a href={person.cv.asset.url}>Downlaod CV</a>}
+              <br />
+              {person.image && (
+                <a href={person.image.asset.url}>
+                  Hi-res image<br />
+                </a>
+              )}
               {person.affiliations && person.affiliations.map(affiliation => affiliation)}
             </div>
           </div>
@@ -46,7 +65,6 @@ const Persons = ({
         </section>
       </div>
     </div>
-
 
     <Footer />
   </Layout>

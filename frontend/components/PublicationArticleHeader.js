@@ -29,9 +29,13 @@ const PublicationArticleHeader = ({
     {/* Wrap in standard grid width until we know better */}
     <div {...classes('meta')}>
       {publicationType.title && `${publicationType.title} | `}
-      {topics.map(({ title = '', _id = '', target = '' }) => (
-        <Link key={_id} route="topic.entry" params={{ slug: target.slug.current }}>
-          <a {...classes('link-item')}>{title}</a>
+      {topics.map(({ _ref = '', target = {} }) => (
+        <Link
+          key={_ref}
+          route="topic.entry"
+          params={{ slug: target.slug ? target.slug.current : '' }}
+        >
+          <a {...classes('link-item')}>{target.title}</a>
         </Link>
       ))}
     </div>
@@ -44,13 +48,13 @@ const PublicationArticleHeader = ({
         <p>
           {authors ? (
             <span>
-              <AuthorList authors={authors} />
+              <AuthorList authors={authors.map(({ target }) => target)} />
               <br />
             </span>
           ) : null}
           {editors.length ? (
             <span>
-              <EditorList editors={editors} />
+              <EditorList editors={editors.map(({ target }) => target)} />
               <br />
             </span>
           ) : null}

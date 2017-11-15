@@ -5,7 +5,6 @@ import { Layout, Footer, Team } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
-
 class Persons extends Component {
   constructor(props) {
     super(props);
@@ -24,33 +23,47 @@ class Persons extends Component {
   render() {
     const { frontpage, persons, helpdesk, url } = this.props;
     return (
-      <Layout>
+      <Layout
+        headComponentConfig={{
+          title: frontpage.title,
+          description: frontpage.lead,
+          url: url.asPath ? `beta.u4.no${url.asPath}` : '',
+        }}
+      >
         <h1 className="c-article__title c-article__title--center">{frontpage.title}</h1>
         <BreadCrumb url={url} />
         <div className="c-article__lead c-article__lead--center">{frontpage.lead}</div>
         <div className="c-filters--standalone">
-          <div className="c-filters__label--standalone">Filter people by
-            <button className="c-filters__item--standalone" onClick={() => this.changeGroup(1)}><a>U4 Team</a></button>
-            <button className="c-filters__item--standalone" onClick={() => this.changeGroup(2)}><a>U4 Helpdesk</a></button>
+          <div className="c-filters__label--standalone">
+            Filter people by:
+            <button className="c-filters__item--standalone" onClick={() => this.changeGroup(1)}>
+              <a>U4 Team</a>
+            </button>
+            <button className="c-filters__item--standalone" onClick={() => this.changeGroup(2)}>
+              <a>U4 Helpdesk</a>
+            </button>
           </div>
         </div>
         <div className="o-wrapper c-article">
-          {
-            this.state.activeGroup == 1 ?
-              <div id="advisors">
-                <h2 className="c-article__title c-article__title--center">U4 TEAM</h2>
-                <Team light applyJob members={sortBy(persons, ({ firstName = '' }) => firstName.toUpperCase())} />
-              </div>
-              : null
-          }
-          {
-            this.state.activeGroup == 2 ?
-              <div id="advisors">
-                <h2 className="c-article__title c-article__title--center">U4 HELPDESK</h2>
-                <Team light members={sortBy(helpdesk, ({ firstName = '' }) => firstName.toUpperCase())} />
-              </div>
-              : null
-          }
+          {this.state.activeGroup === 1 ? (
+            <div id="advisors">
+              <h2 className="c-article__title c-article__title--center">U4 TEAM</h2>
+              <Team
+                light
+                applyJob
+                members={sortBy(persons, ({ firstName = '' }) => firstName.toUpperCase())}
+              />
+            </div>
+          ) : null}
+          {this.state.activeGroup === 2 ? (
+            <div id="advisors">
+              <h2 className="c-article__title c-article__title--center">U4 HELPDESK</h2>
+              <Team
+                light
+                members={sortBy(helpdesk, ({ firstName = '' }) => firstName.toUpperCase())}
+              />
+            </div>
+          ) : null}
         </div>
         <Footer />
       </Layout>
