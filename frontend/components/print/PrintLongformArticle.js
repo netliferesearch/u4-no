@@ -19,7 +19,7 @@ const classes = BEMHelper({
  */
 
 class LongformArticle extends PureComponent {
-render() {
+  render() {
     const { content = [] } = this.props;
     const blocks = content.filter(block => !['reference'].includes(block._type));
     return (
@@ -27,9 +27,14 @@ render() {
         className={`c-article ${blocks.length === 1 ? 'c-longform-grid' : 'c-longform-grid-sub-div'}`}
       >
         <div className="contents">
-          <ul>Table of contents
+          <ul className="contents__list" >Table of contents
             {
-              buildTitleObjects(content).map(item => <li><a href={`#${item.id}`}>{item.title}</a></li>)
+              buildTitleObjects(content).map(item => (<li className="contents__list-item" ><a href={`#${item.id}`}>{item.title}</a>
+                {item.children &&
+                <ul className="contents__list">
+                  {item.children.map(subitem => <li className="contents__list-item contents__list-subitem"><a href={`#${subitem.id}`}>{subitem.title}</a></li>)}
+                </ul>
+                }</li>))
             }
           </ul>
         </div>

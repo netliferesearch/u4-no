@@ -69,11 +69,16 @@
   counter-reset: page 1;
 }
 @page table-of-contents {
-  @top { content: "Table of Contents" }
+  @top { }
   @bottom {
       content: counter(page, lower-alpha);
   }
 }
+
+.contents__list-item a[href]::after {
+  content: leader(" ") target-counter(attr(href), page);
+  margin-left: 1cm;
+  }
 
 .body {
   display: block;
@@ -93,7 +98,7 @@ p {
     content: string(chapter-title);
   }
   @bottom {
-      content: counter(page);
+      content: "Page " counter(page) " of " counter(pages);
   }
 }
 
@@ -105,6 +110,38 @@ p {
 .fn {
   float: footnote;
 }
+
+.contents__list{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: black;
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-large, $line-height-large);
+
+}
+
+.contents__list-item{
+  margin: 0.5cm 0 ;
+  padding: 0;
+  font-size: 12pt;
+  line-height: 20pt;
+  font-weight: bold;
+
+  a {
+    text-decoration: none;
+    color: black;
+    border-bottom: none;
+  }
+}
+
+.contents__list-subitem {
+  font-weight: normal;
+  margin-left: $spacing;
+}
+
+
+
 
 .c-print__front-image {
   width: 19cm;
