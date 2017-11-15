@@ -22,6 +22,11 @@ const HeadComponent = ({ title, description, image, url, ogp }) => (
     {/* Twitter will reuse OGP declarations for description and image */}
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@U4_ACRC" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/static/favicon.png"
+    />
 
     <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
   </Head>
