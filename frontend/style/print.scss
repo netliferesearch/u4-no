@@ -86,6 +86,7 @@
   counter-reset: page 1;
   font-size: 14pt;
   line-height: 22pt;
+  color: black;
 }
 
 p {
@@ -117,8 +118,6 @@ p {
   padding: 0;
   color: black;
   font-family: $font-sans;
-  @include inuit-font-size($font-size-large, $line-height-large);
-
 }
 
 .contents__list-item{
@@ -144,7 +143,7 @@ p {
 
 
 .c-print__front-image {
-  width: 19cm;
+  width: 19.5cm;
   height: auto;
   overflow: hidden;
   object-fit: cover;
@@ -162,13 +161,13 @@ p {
   //border: solid 0.1cm $brand-dark;
   background-color: $brand-lightest;
   z-index: 10;
-  padding: 1cm 2cm;
+  padding: 1cm 4cm 1cm 2cm;
   margin-right: -4cm;
   margin-left: -2cm;
   page-break-after: always;
   page-break-inside: avoid;
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+  top: 9cm;
 }
 
 .c-print__title {
@@ -192,8 +191,11 @@ p {
 .c-print__meta{
   color: $brand-dark;
   font-family: $font-sans;
+}
 
-
+.c-print__meta-inline{
+  display: inline-block;
+  padding-right: $spacing-small;
 }
 
 
