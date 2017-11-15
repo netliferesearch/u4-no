@@ -14,6 +14,8 @@ import {
   CustomScrollSpy,
   ToggleBlock,
   PublicationDrawer,
+  AuthorList,
+  EditorList,
 
 } from '../';
 
@@ -60,15 +62,27 @@ const LongFormArticleContainer = (props) => {
         </figure>
         <div {...classes('front-text')}>
           <div {...classes('meta')}>
-            <p>
-Natural resources and energy, Illicit financial flows</p>
+            {publicationType.title && `${publicationType.title} | `}
+            {topics.map(({ _ref = '', target = {} }) => (
+              <p {...classes('meta-inline')}> {target.title} </p>
+            ))}
           </div>
           <h1 {...classes('title')}>{title}</h1>
           <p {...classes('subtitle')}>{subtitle}</p>
           <div {...classes('meta')}>
             <p>
-              By Mats Stridsman & Åse Gilje Østensen <br />
-              Series editor Arne Strand<br />
+              {authors ? (
+                <span>
+                  <AuthorList authors={authors.map(({ target }) => target)} />
+                  <br />
+                </span>
+              ) : null}
+              {editors.length ? (
+                <span>
+                  <EditorList editors={editors.map(({ target }) => target)} />
+                  <br />
+                </span>
+              ) : null}
               {reference}
             </p>
           </div>

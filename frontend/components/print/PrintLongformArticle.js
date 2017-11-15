@@ -27,7 +27,8 @@ class LongformArticle extends PureComponent {
         className={`c-article ${blocks.length === 1 ? 'c-longform-grid' : 'c-longform-grid-sub-div'}`}
       >
         <div className="contents">
-          <ul className="contents__list" >Table of contents
+          <ul className="contents__list" >
+            <h2>Table of contents</h2>
             {
               buildTitleObjects(content).map(item => (<li className="contents__list-item" ><a href={`#${item.id}`}>{item.title}</a>
                 {item.children &&
@@ -43,7 +44,6 @@ class LongformArticle extends PureComponent {
         </div>
         <Head>
           <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-
         </Head>
       </main>
     );
