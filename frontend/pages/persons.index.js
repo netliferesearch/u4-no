@@ -35,7 +35,7 @@ class Persons extends Component {
         <div className="c-article__lead c-article__lead--center">{frontpage.lead}</div>
         <div className="c-filters--standalone">
           <div className="c-filters__label--standalone">
-            Filter people by
+            Filter people by:
             <button className="c-filters__item--standalone" onClick={() => this.changeGroup(1)}>
               <a>U4 Team</a>
             </button>
@@ -45,7 +45,7 @@ class Persons extends Component {
           </div>
         </div>
         <div className="o-wrapper c-article">
-          {this.state.activeGroup == 1 ? (
+          {this.state.activeGroup === 1 ? (
             <div id="advisors">
               <h2 className="c-article__title c-article__title--center">U4 TEAM</h2>
               <Team
@@ -55,7 +55,7 @@ class Persons extends Component {
               />
             </div>
           ) : null}
-          {this.state.activeGroup == 2 ? (
+          {this.state.activeGroup === 2 ? (
             <div id="advisors">
               <h2 className="c-article__title c-article__title--center">U4 HELPDESK</h2>
               <Team
