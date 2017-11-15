@@ -45,18 +45,6 @@ const ServicePage = ({ service = {}, url = {} }) => {
     >
       <SimpleHero title={title} content={longTitle} cta />
 
-      {featuredImage ? (
-        <section className="c-boxOnImage">
-          <figure className="c-boxOnImage__figure">
-            <img alt="" src={featuredImage} />
-          </figure>
-          <div className="c-boxOnImage__body">
-            <p className="c-boxOnImage__lead">We facilitate local dialouge</p>
-            {lead.split('\n').map(i => <p>{i}</p>)}
-          </div>
-        </section>
-      ) : null}
-
       <ServiceArticle blocks={sections} />
       <Newsletter />
 
