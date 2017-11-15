@@ -6,6 +6,11 @@ export default {
   type: 'object',
   fields: [
     {
+      title: 'Is this topic published (available on the website)',
+      name: 'isPublished',
+      type: 'boolean'
+    },
+    {
       name: 'title',
       type: 'string',
       title: 'Short title',
