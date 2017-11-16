@@ -28,6 +28,9 @@
     max-width: 50%;
     max-height: 100%;
   }
+  a {
+    border: none;
+  }
 }
 .c-partnerAgencies__item--small {
   @include mq($from: desktop) {
