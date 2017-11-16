@@ -60,16 +60,14 @@ const LongFormArticleContainer = (props) => {
         <figure {...classes('front-image')}>
           {props.featuredImage.credit && (
             <figcaption>
-              photo: {props.featuredImage.credit}
+              Photo: {props.featuredImage.credit}
             </figcaption>)}
           <img src={props.featuredImage.asset.url} alt={props.featuredImage.credit} />
         </figure>
         <div {...classes('front-text')}>
           <div {...classes('meta')}>
             {publicationType.title && `${publicationType.title} | `}
-            {topics.map(({ _ref = '', target = {} }) => (
-              <p {...classes('meta-inline')}> {target.title} </p>
-            ))}
+            <p {...classes('meta-inline')}>September 2016:1</p><br />
           </div>
           <h1 {...classes('title')}>{title}</h1>
           <p {...classes('subtitle')}>{subtitle}</p>
@@ -91,6 +89,7 @@ const LongFormArticleContainer = (props) => {
             </p>
           </div>
         </div>
+
       </div>
       {_type === 'publication' && (
         <div className="c-longform-grid">
@@ -186,6 +185,7 @@ const LongFormArticleContainer = (props) => {
       <Footer />
     </article>);
 };
+
 
 export default connect(
   state => state,

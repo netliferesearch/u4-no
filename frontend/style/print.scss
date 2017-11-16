@@ -96,11 +96,14 @@ p {
   orphans: 2;
   widows: 2;
 }
+
 @page main {
 
   @top {
-    content: string(chapter-title);
+    content: "U4 Issue | September 2016:1";
   }
+
+
   @bottom {
       content: "Page " counter(page) " of " counter(pages);
   }
@@ -149,7 +152,7 @@ a {
 
 .c-print__front-logo{
   position: absolute;
-  top: -2cm;
+  top: -2.4cm;
   left: -2cm;
 }
 
@@ -165,6 +168,7 @@ a {
   figcaption{
     font-size: 10pt;
     color: grey;
+    text-align: right;
   }
 }
 
@@ -187,6 +191,7 @@ a {
   margin: 0;
   font-family: $font-serif;
   font-weight: bold;
+  padding-top: $spacing;
 }
 
 .c-print__subtitle {
@@ -212,7 +217,8 @@ a {
 
 .c-print__meta-inline{
   display: inline-block;
-  padding-right: $spacing-small;
+  margin: 0;
+  padding-right: $spacing-tiny;
 }
 
 .c-article__pullQuote {
@@ -242,9 +248,24 @@ figure {
 .c-article__figure-img {
   margin: 0;
   max-height: 10cm;
-
 }
 
+.footnotes {
+  ol {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.c-footnote__item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c-toggle-block__title {
+  display: none;
+}
 
 /*
 // SETTINGS

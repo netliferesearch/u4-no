@@ -75,7 +75,7 @@ export default {
             {props.children}<a href={`#fnref:${ref}`} title="return to article"> ↩</a>
           </li>);
         }
-        return <span>{props.children}<span className="fn"><a href={props.mark.href}></a></span></span>;
+        return <span>{props.children}<span className="fn"><a href={props.mark.href} /></span></span>;
       }
 
       console.log(props.mark);
