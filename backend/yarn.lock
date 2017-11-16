@@ -6,15 +6,15 @@
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/@hypnosphi/fuse.js/-/fuse.js-3.0.9.tgz#ea99f6121b4a8f065b4c71f85595db2714498807"
 
-"@sanity/base@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/base/-/base-0.122.0-weakrefs.bc3b5c11.tgz#e15e69d0125caf3f462bdf22e4aced5b9b500e3a"
+"@sanity/base@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/base/-/base-0.122.0-weakrefs.962100b2.tgz#841263be1f2b2b2af85a9e3245258e1f8c3e4471"
   dependencies:
-    "@sanity/client" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/document-store" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/observable" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/schema" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/state-router" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/client" "0.122.0-weakrefs.962100b2"
+    "@sanity/document-store" "0.122.0-weakrefs.962100b2"
+    "@sanity/observable" "0.122.0-weakrefs.962100b2"
+    "@sanity/schema" "0.122.0-weakrefs.962100b2"
+    "@sanity/state-router" "0.122.0-weakrefs.962100b2"
     history "^4.6.3"
     in-publish "^2.0.0"
     lodash "^4.17.4"
@@ -27,31 +27,31 @@
     shallow-equals "^1.0.0"
     stylelint-config-standard "^17.0.0"
 
-"@sanity/block-tools@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/block-tools/-/block-tools-0.122.0-weakrefs.bc3b5c11.tgz#1fce51b504ca1c1d1e46b7abba105ca153934d8a"
+"@sanity/block-tools@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/block-tools/-/block-tools-0.122.0-weakrefs.962100b2.tgz#d198c4b6d16a56473e28a5a793c0990c042cb4d0"
   dependencies:
     get-random-values "^1.2.0"
     lodash "^4.17.4"
 
-"@sanity/check@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/check/-/check-0.122.0-weakrefs.bc3b5c11.tgz#9be4811890d221067156899aee7ade6fa438b5c5"
+"@sanity/check@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/check/-/check-0.122.0-weakrefs.962100b2.tgz#565576a9415576f558af0dace25b189507bac8fa"
   dependencies:
-    "@sanity/generate-help-url" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/resolver" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/generate-help-url" "0.122.0-weakrefs.962100b2"
+    "@sanity/resolver" "0.122.0-weakrefs.962100b2"
     chalk "^1.1.3"
     fs-extra "^4.0.2"
     in-publish "^2.0.0"
     promise-props-recursive "^1.0.0"
 
-"@sanity/cli@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/cli/-/cli-0.122.0-weakrefs.bc3b5c11.tgz#2cdf5724949d394b0c17f70d6ff6c7310954be35"
+"@sanity/cli@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/cli/-/cli-0.122.0-weakrefs.962100b2.tgz#161a7272214341d2fdf160a5170565d3080598ad"
   dependencies:
-    "@sanity/client" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/resolver" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/util" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/client" "0.122.0-weakrefs.962100b2"
+    "@sanity/resolver" "0.122.0-weakrefs.962100b2"
+    "@sanity/util" "0.122.0-weakrefs.962100b2"
     babel-polyfill "^6.23.0"
     chalk "^1.1.3"
     configstore "^3.0.0"
@@ -83,25 +83,25 @@
     validate-npm-package-name "^3.0.0"
     xdg-basedir "^3.0.0"
 
-"@sanity/client@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-0.122.0-weakrefs.bc3b5c11.tgz#7716a4a763c9f07a55b9616f74db98bfb4d6d27f"
+"@sanity/client@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-0.122.0-weakrefs.962100b2.tgz#e2ca09e96b7f245c39d410824d94489529a2a6ba"
   dependencies:
-    "@sanity/eventsource" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/generate-help-url" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/observable" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/eventsource" "0.122.0-weakrefs.962100b2"
+    "@sanity/generate-help-url" "0.122.0-weakrefs.962100b2"
+    "@sanity/observable" "0.122.0-weakrefs.962100b2"
     deep-assign "^2.0.0"
     get-it "^4.0.1"
     make-error "^1.3.0"
     object-assign "^4.1.1"
 
-"@sanity/components@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/components/-/components-0.122.0-weakrefs.bc3b5c11.tgz#df319e8d271d59831b4cab324357072dc70e248c"
+"@sanity/components@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/components/-/components-0.122.0-weakrefs.962100b2.tgz#ffa6a02218696488d96e6e3695de821b4f17d22a"
   dependencies:
-    "@sanity/date-input" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/imagetool" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/observable" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/date-input" "0.122.0-weakrefs.962100b2"
+    "@sanity/imagetool" "0.122.0-weakrefs.962100b2"
+    "@sanity/observable" "0.122.0-weakrefs.962100b2"
     attr-accept "^1.1.0"
     canvas-to-blob "^0.0.0"
     chance "^1.0.4"
@@ -133,17 +133,17 @@
     react-split-pane "^0.1.63"
     scroll "^2.0.0"
 
-"@sanity/core@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/core/-/core-0.122.0-weakrefs.bc3b5c11.tgz#50e4a00a5945df8f91c6a34df7452bbb66d5cf1c"
+"@sanity/core@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/core/-/core-0.122.0-weakrefs.962100b2.tgz#ddb2a68233c541a6e6602850d7ed45bf43b85f80"
   dependencies:
-    "@sanity/check" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/import" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/mutator" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/plugin-loader" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/resolver" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/server" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/util" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/check" "0.122.0-weakrefs.962100b2"
+    "@sanity/import" "0.122.0-weakrefs.962100b2"
+    "@sanity/mutator" "0.122.0-weakrefs.962100b2"
+    "@sanity/plugin-loader" "0.122.0-weakrefs.962100b2"
+    "@sanity/resolver" "0.122.0-weakrefs.962100b2"
+    "@sanity/server" "0.122.0-weakrefs.962100b2"
+    "@sanity/util" "0.122.0-weakrefs.962100b2"
     babel-preset-es2015-node4 "^2.1.1"
     babel-preset-stage-2 "^6.22.0"
     babel-register "^6.26.0"
@@ -171,45 +171,45 @@
     through2 "^2.0.3"
     uglify-js "^3.0.23"
 
-"@sanity/data-aspects@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/data-aspects/-/data-aspects-0.122.0-weakrefs.bc3b5c11.tgz#472ec11de812f387f2d5aaa946ed65acabbc78d1"
+"@sanity/data-aspects@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/data-aspects/-/data-aspects-0.122.0-weakrefs.962100b2.tgz#11055cc3c58afefda6c0c02f5c4562cc77f5315a"
   dependencies:
-    "@sanity/generate-help-url" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/generate-help-url" "0.122.0-weakrefs.962100b2"
     in-publish "^2.0.0"
     lodash "^4.17.4"
 
-"@sanity/date-input@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/date-input/-/date-input-0.122.0-weakrefs.bc3b5c11.tgz#86abce1accf6ef7ae94e96174c34b1ce5e8ed532"
+"@sanity/date-input@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/date-input/-/date-input-0.122.0-weakrefs.962100b2.tgz#027dc67c03968c71a4952672266606d3457915f2"
   dependencies:
-    "@sanity/generate-help-url" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/rich-date-input" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/generate-help-url" "0.122.0-weakrefs.962100b2"
+    "@sanity/rich-date-input" "0.122.0-weakrefs.962100b2"
 
-"@sanity/default-layout@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/default-layout/-/default-layout-0.122.0-weakrefs.bc3b5c11.tgz#6369d9676c2c81da42c44b681e4e71646968c700"
+"@sanity/default-layout@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/default-layout/-/default-layout-0.122.0-weakrefs.962100b2.tgz#21105096a8cc85bc513ee83d972dcae45b42573b"
   dependencies:
     lodash "^4.17.4"
     react-click-outside "^2.3.1"
     react-ink "^6.1.0"
 
-"@sanity/default-login@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/default-login/-/default-login-0.122.0-weakrefs.bc3b5c11.tgz#f47e08d42956ec83b662ebc446c455c9ddb0fecd"
+"@sanity/default-login@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/default-login/-/default-login-0.122.0-weakrefs.962100b2.tgz#6fdd1a3783382ba30fd03d5f5e13f515bee51b34"
   dependencies:
     in-publish "^2.0.0"
     prop-types "^15.6.0"
 
-"@sanity/desk-tool@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-0.122.0-weakrefs.bc3b5c11.tgz#17072f4f702ade0d3c924a4a4103b5fbef48448c"
+"@sanity/desk-tool@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-0.122.0-weakrefs.962100b2.tgz#cabe8602c5d9f1d4f19e290eb03ed40aef86e507"
   dependencies:
-    "@sanity/data-aspects" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/form-builder" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/mutator" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/data-aspects" "0.122.0-weakrefs.962100b2"
+    "@sanity/form-builder" "0.122.0-weakrefs.962100b2"
+    "@sanity/mutator" "0.122.0-weakrefs.962100b2"
     "@sanity/observable" "^0.120.0"
-    "@sanity/uuid" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/uuid" "0.122.0-weakrefs.962100b2"
     classnames "^2.2.5"
     date-fns "^1.29.0"
     diff "^3.2.0"
@@ -223,32 +223,32 @@
     react-tiny-virtual-list "^2.0.5"
     shallow-equals "^1.0.0"
 
-"@sanity/document-store@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/document-store/-/document-store-0.122.0-weakrefs.bc3b5c11.tgz#adccb318c71b5000aa13adc7aebddbbe4faa0475"
+"@sanity/document-store@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/document-store/-/document-store-0.122.0-weakrefs.962100b2.tgz#9a1441f76056050849d160787ff1b6453caf8f74"
   dependencies:
-    "@sanity/mutator" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/observable" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/mutator" "0.122.0-weakrefs.962100b2"
+    "@sanity/observable" "0.122.0-weakrefs.962100b2"
     lodash "^4.17.4"
     nano-pubsub "^1.0.1"
 
-"@sanity/eventsource@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/eventsource/-/eventsource-0.122.0-weakrefs.bc3b5c11.tgz#dbf761e2f764b061c50820e432bb3cde10af5a74"
+"@sanity/eventsource@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/eventsource/-/eventsource-0.122.0-weakrefs.962100b2.tgz#1577bbb2de330ad34ac4105519163a3a818a7ad7"
   dependencies:
     eventsource "^1.0.4"
     eventsource-polyfill "^0.9.6"
 
-"@sanity/form-builder@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/form-builder/-/form-builder-0.122.0-weakrefs.bc3b5c11.tgz#1eead595aa4a844b28c1eb65af6e51821b640069"
+"@sanity/form-builder@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/form-builder/-/form-builder-0.122.0-weakrefs.962100b2.tgz#ea53651e5b79ce129f6fde48e2c9e730c1d16986"
   dependencies:
-    "@sanity/block-tools" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/generate-help-url" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/imagetool" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/mutator" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/observable" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/schema" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/block-tools" "0.122.0-weakrefs.962100b2"
+    "@sanity/generate-help-url" "0.122.0-weakrefs.962100b2"
+    "@sanity/imagetool" "0.122.0-weakrefs.962100b2"
+    "@sanity/mutator" "0.122.0-weakrefs.962100b2"
+    "@sanity/observable" "0.122.0-weakrefs.962100b2"
+    "@sanity/schema" "0.122.0-weakrefs.962100b2"
     attr-accept "^1.1.0"
     canvas-to-blob "^0.0.0"
     classnames "^2.2.5"
@@ -275,33 +275,33 @@
     slate-soft-break "^0.4.1"
     speakingurl "^13.0.0"
 
-"@sanity/generate-help-url@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/generate-help-url/-/generate-help-url-0.122.0-weakrefs.bc3b5c11.tgz#e56878a3418195249f8c1f64a7c375b9471aa212"
+"@sanity/generate-help-url@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/generate-help-url/-/generate-help-url-0.122.0-weakrefs.962100b2.tgz#1f5cb1ed8ccbd74801d9313572094227e780866c"
 
 "@sanity/generate-help-url@^0.116.0":
   version "0.116.0"
   resolved "https://registry.yarnpkg.com/@sanity/generate-help-url/-/generate-help-url-0.116.0.tgz#58149c46c3b5b6e1b94ce777ce68dc6382c32e8a"
 
-"@sanity/google-maps-input@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/google-maps-input/-/google-maps-input-0.122.0-weakrefs.bc3b5c11.tgz#ba0308a2495ecf1045a0817c8cbe18479168d87a"
+"@sanity/google-maps-input@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/google-maps-input/-/google-maps-input-0.122.0-weakrefs.962100b2.tgz#2a4462c829f61345c3659a0f1824632e0c17e1d7"
   dependencies:
     in-publish "^2.0.0"
 
-"@sanity/imagetool@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/imagetool/-/imagetool-0.122.0-weakrefs.bc3b5c11.tgz#76200c64a372d7dee2892bc159002cebb8c69f43"
+"@sanity/imagetool@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/imagetool/-/imagetool-0.122.0-weakrefs.962100b2.tgz#1eaee88578654dc23a363361e05ee28135db5b5b"
   dependencies:
     debug "^2.6.3"
     dom-event "1.0.0"
     lodash "^4.17.4"
 
-"@sanity/import@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/import/-/import-0.122.0-weakrefs.bc3b5c11.tgz#1cbb7dd5e50dc618cf59b9ce55c1a9ec3b483d90"
+"@sanity/import@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/import/-/import-0.122.0-weakrefs.962100b2.tgz#0f7bb185fe77dbbb389331b30f56596da8265fed"
   dependencies:
-    "@sanity/mutator" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/mutator" "0.122.0-weakrefs.962100b2"
     debug "^2.6.3"
     get-uri "^2.0.1"
     lodash "^4.17.4"
@@ -311,17 +311,17 @@
     stream-collect "^1.3.1"
     through2 "^2.0.3"
 
-"@sanity/mutator@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/mutator/-/mutator-0.122.0-weakrefs.bc3b5c11.tgz#8c00605362f53aca603d1f19df6f74e97cb3c0e1"
+"@sanity/mutator@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/mutator/-/mutator-0.122.0-weakrefs.962100b2.tgz#bb60f41e292ce6be10e6c110fb9a0d9ee049f849"
   dependencies:
     debug "^2.6.3"
     diff-match-patch "^1.0.0"
     lodash "^4.17.4"
 
-"@sanity/observable@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/observable/-/observable-0.122.0-weakrefs.bc3b5c11.tgz#ca008c64bab7fd8024b00ffae5f150094503b15d"
+"@sanity/observable@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/observable/-/observable-0.122.0-weakrefs.962100b2.tgz#b4960b9a8c2a3752ae1e5c04959243d99dc8a728"
   dependencies:
     object-assign "^4.1.1"
     rxjs "5.0.x"
@@ -333,32 +333,32 @@
     object-assign "^4.1.1"
     rxjs "5.0.x"
 
-"@sanity/plugin-loader@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/plugin-loader/-/plugin-loader-0.122.0-weakrefs.bc3b5c11.tgz#df3465b5e8b89bcd85abe1e48e821708e3710c42"
+"@sanity/plugin-loader@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/plugin-loader/-/plugin-loader-0.122.0-weakrefs.962100b2.tgz#6aa8968336d4da07795015d0a1a1ad4f104fd9f6"
   dependencies:
-    "@sanity/resolver" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/util" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/resolver" "0.122.0-weakrefs.962100b2"
+    "@sanity/util" "0.122.0-weakrefs.962100b2"
     css-modules-require-hook "^4.2.2"
     interop-require "^1.0.0"
 
-"@sanity/resolver@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/resolver/-/resolver-0.122.0-weakrefs.bc3b5c11.tgz#8cd9d02c07edb09f425c94cd9ab7a2e4a1dd2a5b"
+"@sanity/resolver@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/resolver/-/resolver-0.122.0-weakrefs.962100b2.tgz#893d888fafa28af1ad112016d0223d7452f940a8"
   dependencies:
-    "@sanity/generate-help-url" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/util" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/generate-help-url" "0.122.0-weakrefs.962100b2"
+    "@sanity/util" "0.122.0-weakrefs.962100b2"
     fs-extra "^4.0.2"
     lodash "^4.17.4"
     path-exists "^3.0.0"
     promise-props-recursive "^1.0.0"
 
-"@sanity/rich-date-input@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/rich-date-input/-/rich-date-input-0.122.0-weakrefs.bc3b5c11.tgz#d8270ca5eaf56a5772ffe734bcf779c0f5714af9"
+"@sanity/rich-date-input@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/rich-date-input/-/rich-date-input-0.122.0-weakrefs.962100b2.tgz#23526493b76d4b8081e00b0ccf31d4a1afcafda4"
   dependencies:
-    "@sanity/form-builder" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/generate-help-url" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/form-builder" "0.122.0-weakrefs.962100b2"
+    "@sanity/generate-help-url" "0.122.0-weakrefs.962100b2"
     lodash "^4.17.4"
     moment "^2.19.1"
     moment-timezone "^0.5.11"
@@ -366,11 +366,11 @@
     prop-types "^15.6.0"
     react-datepicker "^0.55.0"
 
-"@sanity/schema@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/schema/-/schema-0.122.0-weakrefs.bc3b5c11.tgz#a7eede89f54e7ba92c2a598b8c6ab1292a4efafb"
+"@sanity/schema@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/schema/-/schema-0.122.0-weakrefs.962100b2.tgz#aa38ef77fab44c2e83a0fcb48aa98fb922383eee"
   dependencies:
-    "@sanity/generate-help-url" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/generate-help-url" "0.122.0-weakrefs.962100b2"
     arrify "^1.0.1"
     humanize-list "^1.0.1"
     json-reduce "^1.0.0"
@@ -378,13 +378,13 @@
     lodash "^4.17.4"
     object-inspect "^1.3.0"
 
-"@sanity/server@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/server/-/server-0.122.0-weakrefs.bc3b5c11.tgz#8343da7a51efe49e07aadb29333ce901480ac924"
+"@sanity/server@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/server/-/server-0.122.0-weakrefs.962100b2.tgz#026a08981a8a812c4740251112f8d35a3f12b407"
   dependencies:
-    "@sanity/resolver" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/webpack-integration" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/webpack-loader" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/resolver" "0.122.0-weakrefs.962100b2"
+    "@sanity/webpack-integration" "0.122.0-weakrefs.962100b2"
+    "@sanity/webpack-loader" "0.122.0-weakrefs.962100b2"
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
     babel-plugin-lodash "^3.2.11"
@@ -413,19 +413,19 @@
     webpack-dev-middleware "^1.10.1"
     webpack-hot-middleware "^2.17.1"
 
-"@sanity/state-router@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/state-router/-/state-router-0.122.0-weakrefs.bc3b5c11.tgz#9d016dead60e0ee50531678a8476255d176829a7"
+"@sanity/state-router@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/state-router/-/state-router-0.122.0-weakrefs.962100b2.tgz#4f30b203ceb860d99ad265068b4160db8d012e73"
   dependencies:
     lodash "^4.17.4"
     nano-pubsub "^1.0.1"
 
-"@sanity/storybook@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/storybook/-/storybook-0.122.0-weakrefs.bc3b5c11.tgz#567bfb7f4e39cfdeafa8e52a41fb943e0c440534"
+"@sanity/storybook@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/storybook/-/storybook-0.122.0-weakrefs.962100b2.tgz#6e5dc44ec5625fbe211f67a35a5ce81aa3951834"
   dependencies:
-    "@sanity/server" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/webpack-integration" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/server" "0.122.0-weakrefs.962100b2"
+    "@sanity/webpack-integration" "0.122.0-weakrefs.962100b2"
     "@storybook/addon-knobs" "^3.2.8"
     "@storybook/addons" "^3.2.6"
     "@storybook/react" "^3.2.8"
@@ -433,23 +433,23 @@
     react-addons-create-fragment "^15.4.2"
     shelljs "^0.7.6"
 
-"@sanity/util@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/util/-/util-0.122.0-weakrefs.bc3b5c11.tgz#5bd506ba54607b7bb1d6d810d3d5cc3d8e8b16c6"
+"@sanity/util@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/util/-/util-0.122.0-weakrefs.962100b2.tgz#9123a3ba68faa17603bd86683e0763d7ba6b0399"
   dependencies:
     fs-extra "^4.0.2"
     lodash "^4.17.4"
     resolve-from "^4.0.0"
 
-"@sanity/uuid@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/uuid/-/uuid-0.122.0-weakrefs.bc3b5c11.tgz#f54234563ac88888a4f5a30d4e5147af55a794c6"
+"@sanity/uuid@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/uuid/-/uuid-0.122.0-weakrefs.962100b2.tgz#c8fb3cbaebaa9b06cc0c5e64fb25054bbb05a03f"
   dependencies:
     uuid "^3.0.1"
 
-"@sanity/vision@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-0.122.0-weakrefs.bc3b5c11.tgz#bf0979c08b3b41a9d685c1e7e17ddc22a3cce525"
+"@sanity/vision@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-0.122.0-weakrefs.962100b2.tgz#7bfa35d732c33833acb42453f9cce58ee7940881"
   dependencies:
     classnames "^2.2.5"
     json-lexer "^1.1.1"
@@ -475,12 +475,12 @@
     react-spinner "^0.2.6"
     react-split-pane "^0.1.63"
 
-"@sanity/webpack-integration@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/webpack-integration/-/webpack-integration-0.122.0-weakrefs.bc3b5c11.tgz#939afe37266cd58060698b71d996853b488ba0d6"
+"@sanity/webpack-integration@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/webpack-integration/-/webpack-integration-0.122.0-weakrefs.962100b2.tgz#02ee4ee79d1361452df207efb6e2e14834470561"
   dependencies:
-    "@sanity/resolver" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/webpack-loader" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/resolver" "0.122.0-weakrefs.962100b2"
+    "@sanity/webpack-loader" "0.122.0-weakrefs.962100b2"
     fs.realpath "^1.0.0"
     lost "^8.0.0"
     p-async-cache "^1.0.2"
@@ -488,19 +488,19 @@
     postcss-import "^11.0.0"
     resolve "^1.3.3"
 
-"@sanity/webpack-loader@0.122.0-weakrefs.bc3b5c11":
-  version "0.122.0-weakrefs.bc3b5c11"
-  resolved "https://registry.yarnpkg.com/@sanity/webpack-loader/-/webpack-loader-0.122.0-weakrefs.bc3b5c11.tgz#80efb309b076c9775519a815d3cbf03dd5bb82ec"
+"@sanity/webpack-loader@0.122.0-weakrefs.962100b2":
+  version "0.122.0-weakrefs.962100b2"
+  resolved "https://registry.yarnpkg.com/@sanity/webpack-loader/-/webpack-loader-0.122.0-weakrefs.962100b2.tgz#adfd6f96bd0bd02cc5c65f94021e1f5ef2f70f0a"
   dependencies:
-    "@sanity/resolver" "0.122.0-weakrefs.bc3b5c11"
-    "@sanity/util" "0.122.0-weakrefs.bc3b5c11"
+    "@sanity/resolver" "0.122.0-weakrefs.962100b2"
+    "@sanity/util" "0.122.0-weakrefs.962100b2"
     loader-utils "^1.1.0"
 
-"@storybook/addon-actions@^3.2.15":
-  version "3.2.15"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.2.15.tgz#a54228d86baeb637adbbbdd11ff0c040d9862952"
+"@storybook/addon-actions@^3.2.16":
+  version "3.2.16"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.2.16.tgz#dc53d48dc8035b426a02628687c6cb0601b933b9"
   dependencies:
-    "@storybook/addons" "^3.2.15"
+    "@storybook/addons" "^3.2.16"
     deep-equal "^1.0.1"
     json-stringify-safe "^5.0.1"
     prop-types "^15.6.0"
@@ -508,51 +508,59 @@
     uuid "^3.1.0"
 
 "@storybook/addon-knobs@^3.2.8":
-  version "3.2.15"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-3.2.15.tgz#c9619c33bec490ad972415689ba019ede53d8bf4"
+  version "3.2.16"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-3.2.16.tgz#c19747656a969e5b960e4edeb54e5d5f4198609b"
   dependencies:
-    "@storybook/addons" "^3.2.15"
+    "@storybook/addons" "^3.2.16"
     babel-runtime "^6.26.0"
     deep-equal "^1.0.1"
     global "^4.3.2"
     insert-css "^2.0.0"
     lodash.debounce "^4.0.8"
-    moment "^2.19.1"
+    moment "^2.19.2"
     prop-types "^15.6.0"
     react-color "^2.11.4"
-    react-datetime "^2.10.3"
-    react-textarea-autosize "^5.2.0"
+    react-datetime "^2.11.0"
+    react-textarea-autosize "^5.2.1"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-links@^3.2.15":
-  version "3.2.15"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-3.2.15.tgz#87a0dc9bad7b208aca7142863a237b5135a47a34"
+"@storybook/addon-links@^3.2.16":
+  version "3.2.16"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-3.2.16.tgz#58b807f7fbcdadb405c6379e69a22c48025c9558"
   dependencies:
-    "@storybook/addons" "^3.2.15"
+    "@storybook/addons" "^3.2.16"
 
-"@storybook/addons@^3.2.15", "@storybook/addons@^3.2.6":
-  version "3.2.15"
-  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-3.2.15.tgz#120fc3e34454b9e6c779f25b945d354511168abc"
+"@storybook/addons@^3.2.16", "@storybook/addons@^3.2.6":
+  version "3.2.16"
+  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-3.2.16.tgz#cbad5d9e8222aba3d5a5d06af98a095322f62cb5"
 
-"@storybook/channel-postmessage@^3.2.15":
-  version "3.2.15"
-  resolved "https://registry.yarnpkg.com/@storybook/channel-postmessage/-/channel-postmessage-3.2.15.tgz#34ef971cd231a4c034c293693bb5b78c83a1b7cb"
+"@storybook/channel-postmessage@^3.2.16":
+  version "3.2.16"
+  resolved "https://registry.yarnpkg.com/@storybook/channel-postmessage/-/channel-postmessage-3.2.16.tgz#036b2c1c412e2806badc1c1f7bcbb19b069fedde"
   dependencies:
-    "@storybook/channels" "^3.2.15"
+    "@storybook/channels" "^3.2.16"
     global "^4.3.2"
     json-stringify-safe "^5.0.1"
 
-"@storybook/channels@^3.2.15":
-  version "3.2.15"
-  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-3.2.15.tgz#c76277d9050e0a0027a9e06edff662db55f391d6"
+"@storybook/channels@^3.2.16":
+  version "3.2.16"
+  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-3.2.16.tgz#07d8686328c0bb885aa8b69254fcf0745d22a620"
 
-"@storybook/components@^3.2.15":
-  version "3.2.15"
-  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-3.2.15.tgz#238e8faf0f5668534dea98868327760b24139460"
+"@storybook/components@^3.2.16":
+  version "3.2.16"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-3.2.16.tgz#381c4ce414f139fb03b059f1f0265c6246457e7b"
   dependencies:
     glamor "^2.20.40"
     glamorous "^4.11.0"
     prop-types "^15.6.0"
+
+"@storybook/mantra-core@^1.7.0":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@storybook/mantra-core/-/mantra-core-1.7.2.tgz#e10c7faca29769e97131e0e0308ef7cfb655b70c"
+  dependencies:
+    "@storybook/react-komposer" "^2.0.1"
+    "@storybook/react-simple-di" "^1.2.1"
+    babel-runtime "6.x.x"
 
 "@storybook/react-fuzzy@^0.4.3":
   version "0.4.3"
@@ -563,15 +571,38 @@
     fuse.js "^3.0.1"
     prop-types "^15.5.9"
 
-"@storybook/react@^3.2.8":
-  version "3.2.15"
-  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-3.2.15.tgz#f031d78c667dead434ae196aba4d5d9b83376f46"
+"@storybook/react-komposer@^2.0.0", "@storybook/react-komposer@^2.0.1":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@storybook/react-komposer/-/react-komposer-2.0.3.tgz#f9e12a9586b2ce95c24c137eabb8b71527ddb369"
   dependencies:
-    "@storybook/addon-actions" "^3.2.15"
-    "@storybook/addon-links" "^3.2.15"
-    "@storybook/addons" "^3.2.15"
-    "@storybook/channel-postmessage" "^3.2.15"
-    "@storybook/ui" "^3.2.15"
+    "@storybook/react-stubber" "^1.0.0"
+    babel-runtime "^6.11.6"
+    hoist-non-react-statics "^1.2.0"
+    lodash.pick "^4.4.0"
+    shallowequal "^0.2.2"
+
+"@storybook/react-simple-di@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@storybook/react-simple-di/-/react-simple-di-1.2.1.tgz#fe4b29a32459e168da3aae8e6fcd8631861210c9"
+  dependencies:
+    babel-runtime "6.x.x"
+    hoist-non-react-statics "1.x.x"
+
+"@storybook/react-stubber@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@storybook/react-stubber/-/react-stubber-1.0.1.tgz#8c312c2658b9eeafce470e1c39e4193f0b5bf9b1"
+  dependencies:
+    babel-runtime "^6.5.0"
+
+"@storybook/react@^3.2.8":
+  version "3.2.16"
+  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-3.2.16.tgz#9a0eaecbc7ba6c97e89ce1d17dee7a2af68260c9"
+  dependencies:
+    "@storybook/addon-actions" "^3.2.16"
+    "@storybook/addon-links" "^3.2.16"
+    "@storybook/addons" "^3.2.16"
+    "@storybook/channel-postmessage" "^3.2.16"
+    "@storybook/ui" "^3.2.16"
     airbnb-js-shims "^1.3.0"
     autoprefixer "^7.1.6"
     babel-core "^6.26.0"
@@ -619,13 +650,15 @@
     webpack-dev-middleware "^1.12.0"
     webpack-hot-middleware "^2.20.0"
 
-"@storybook/ui@^3.2.15":
-  version "3.2.15"
-  resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-3.2.15.tgz#a73d24aa67877df4f69f497a0d7a67cfb34f3f39"
+"@storybook/ui@^3.2.16":
+  version "3.2.16"
+  resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-3.2.16.tgz#b7df979c2f5770e54cf84300cc09b7072c2fef16"
   dependencies:
     "@hypnosphi/fuse.js" "^3.0.9"
-    "@storybook/components" "^3.2.15"
+    "@storybook/components" "^3.2.16"
+    "@storybook/mantra-core" "^1.7.0"
     "@storybook/react-fuzzy" "^0.4.3"
+    "@storybook/react-komposer" "^2.0.0"
     babel-runtime "^6.26.0"
     deep-equal "^1.0.1"
     events "^1.1.1"
@@ -635,15 +668,13 @@
     lodash.debounce "^4.0.8"
     lodash.pick "^4.4.0"
     lodash.sortby "^4.7.0"
-    mantra-core "^1.7.0"
     podda "^1.2.2"
     prop-types "^15.6.0"
     qs "^6.5.1"
     react-icons "^2.2.7"
     react-inspector "^2.2.1"
-    react-komposer "^2.0.0"
     react-modal "^3.1.2"
-    react-split-pane "^0.1.68"
+    react-split-pane "^0.1.71"
     react-treebeard "^2.0.3"
     redux "^3.7.2"
 
@@ -2083,11 +2114,11 @@ browserify-sign@^4.0.0:
     inherits "^2.0.1"
     parse-asn1 "^5.0.0"
 
-browserify-zlib@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/browserify-zlib/-/browserify-zlib-0.1.4.tgz#bb35f8a519f600e0fa6b8485241c979d0141fb2d"
+browserify-zlib@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/browserify-zlib/-/browserify-zlib-0.2.0.tgz#2869459d9aa3be245fe8fe2ca1f46e2e7f54d73f"
   dependencies:
-    pako "~0.2.0"
+    pako "~1.0.5"
 
 browserslist@^1.3.6, browserslist@^1.5.2, browserslist@^1.7.6:
   version "1.7.7"
@@ -2184,12 +2215,12 @@ caniuse-api@^2.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000764"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000764.tgz#d73ab11ae62f6a9e2f69867d6d9c23ae3f2e5d8d"
+  version "1.0.30000765"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000765.tgz#15555432420baacbb169bc51e5b6de804c9994b4"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000748, caniuse-lite@^1.0.30000760:
-  version "1.0.30000764"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000764.tgz#97ea7472f9d3e691eede34f21983cfc219ac7842"
+  version "1.0.30000765"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000765.tgz#aa1a75019276b48463c0fca2a5257fb9f26a7c9d"
 
 canvas-to-blob@^0.0.0:
   version "0.0.0"
@@ -3998,9 +4029,9 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-https-browserify@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
+https-browserify@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
 humanize-list@^1.0.1:
   version "1.0.1"
@@ -4145,7 +4176,7 @@ into-stream@^3.1.0:
     from2 "^2.1.1"
     p-is-promise "^1.1.0"
 
-invariant@2.x.x, invariant@^2.1.1, invariant@^2.2.1, invariant@^2.2.2:
+invariant@^2.1.1, invariant@^2.2.1, invariant@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:
@@ -4748,14 +4779,6 @@ make-error@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/make-error/-/make-error-1.3.0.tgz#52ad3a339ccf10ce62b4040b708fe707244b8b96"
 
-mantra-core@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/mantra-core/-/mantra-core-1.7.0.tgz#a8c83e8cee83ef6a7383131519fe8031ad546386"
-  dependencies:
-    babel-runtime "6.x.x"
-    react-komposer "^1.9.0"
-    react-simple-di "^1.2.0"
-
 material-colors@^1.2.1:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/material-colors/-/material-colors-1.2.5.tgz#5292593e6754cb1bcc2b98030e4e0d6a3afc9ea1"
@@ -4889,17 +4912,13 @@ minimist@^1.2.0:
   dependencies:
     minimist "0.0.8"
 
-mobx@^2.3.4:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/mobx/-/mobx-2.7.0.tgz#cf3d82d18c0ca7f458d8f2a240817b3dc7e54a01"
-
 moment-timezone@^0.5.11:
   version "0.5.14"
   resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.14.tgz#4eb38ff9538b80108ba467a458f3ed4268ccfcb1"
   dependencies:
     moment ">= 2.9.0"
 
-"moment@>= 2.9.0", moment@^2.17.1, moment@^2.19.1:
+"moment@>= 2.9.0", moment@^2.17.1, moment@^2.19.1, moment@^2.19.2:
   version "2.19.2"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.2.tgz#8a7f774c95a64550b4c7ebd496683908f9419dbe"
 
@@ -4937,28 +4956,28 @@ node-fetch@^1.0.1:
     is-stream "^1.0.1"
 
 node-libs-browser@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/node-libs-browser/-/node-libs-browser-2.0.0.tgz#a3a59ec97024985b46e958379646f96c4b616646"
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/node-libs-browser/-/node-libs-browser-2.1.0.tgz#5f94263d404f6e44767d726901fff05478d600df"
   dependencies:
     assert "^1.1.1"
-    browserify-zlib "^0.1.4"
+    browserify-zlib "^0.2.0"
     buffer "^4.3.0"
     console-browserify "^1.1.0"
     constants-browserify "^1.0.0"
     crypto-browserify "^3.11.0"
     domain-browser "^1.1.1"
     events "^1.0.0"
-    https-browserify "0.0.1"
-    os-browserify "^0.2.0"
+    https-browserify "^1.0.0"
+    os-browserify "^0.3.0"
     path-browserify "0.0.0"
-    process "^0.11.0"
+    process "^0.11.10"
     punycode "^1.2.4"
     querystring-es3 "^0.2.0"
-    readable-stream "^2.0.5"
+    readable-stream "^2.3.3"
     stream-browserify "^2.0.1"
-    stream-http "^2.3.1"
-    string_decoder "^0.10.25"
-    timers-browserify "^2.0.2"
+    stream-http "^2.7.2"
+    string_decoder "^1.0.0"
+    timers-browserify "^2.0.4"
     tty-browserify "0.0.0"
     url "^0.11.0"
     util "^0.10.3"
@@ -5158,9 +5177,9 @@ original@^1.0.0:
   dependencies:
     url-parse "1.0.x"
 
-os-browserify@^0.2.0:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/os-browserify/-/os-browserify-0.2.1.tgz#63fc4ccee5d2d7763d26bbf8601078e6c2e0044f"
+os-browserify@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/os-browserify/-/os-browserify-0.3.0.tgz#854373c7f5c2315914fc9bfc6bd8238fdda1ec27"
 
 os-homedir@^1.0.0, os-homedir@^1.0.1:
   version "1.0.2"
@@ -5236,9 +5255,9 @@ package-json@^4.0.0, package-json@^4.0.1:
     registry-url "^3.0.3"
     semver "^5.1.0"
 
-pako@~0.2.0:
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/pako/-/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
+pako@~1.0.5:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.6.tgz#0101211baa70c4bca4a0f63f2206e97b7dfaf258"
 
 parse-asn1@^5.0.0:
   version "5.1.0"
@@ -5952,7 +5971,7 @@ process-nextick-args@~1.0.6:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-1.0.7.tgz#150e20b756590ad3f91093f25a4f2ad8bff30ba3"
 
-process@^0.11.0:
+process@^0.11.10:
   version "0.11.10"
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
 
@@ -6254,7 +6273,7 @@ react-datepicker@^0.56.0:
     react-onclickoutside "^6.1.1"
     react-popper "^0.7.2"
 
-react-datetime@^2.10.3:
+react-datetime@^2.11.0:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/react-datetime/-/react-datetime-2.11.0.tgz#6560a8e5b81f7e52986083dc2e8cb94bb74528ea"
   dependencies:
@@ -6374,26 +6393,6 @@ react-intl@^2.2.2:
     object-assign "2.0.0"
     prop-types "^15.5.10"
 
-react-komposer@^1.9.0:
-  version "1.13.1"
-  resolved "https://registry.yarnpkg.com/react-komposer/-/react-komposer-1.13.1.tgz#4b8ac4bcc71323bd7413dcab95c831197f50eed0"
-  dependencies:
-    babel-runtime "6.x.x"
-    hoist-non-react-statics "1.x.x"
-    invariant "2.x.x"
-    mobx "^2.3.4"
-    shallowequal "0.2.x"
-
-react-komposer@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-komposer/-/react-komposer-2.0.0.tgz#b964738014a9b4aee494a83c0b5b833d66072a90"
-  dependencies:
-    babel-runtime "^6.11.6"
-    hoist-non-react-statics "^1.2.0"
-    lodash.pick "^4.4.0"
-    react-stubber "^1.0.0"
-    shallowequal "^0.2.2"
-
 react-modal@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.1.2.tgz#6e1fd656315d6fc62a1edda2b5aecc9752ac6bca"
@@ -6424,13 +6423,6 @@ react-proxy@^3.0.0-alpha.0:
   dependencies:
     lodash "^4.6.1"
 
-react-simple-di@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-simple-di/-/react-simple-di-1.2.0.tgz#dde0e5bf689f391ef2ab02c9043b213fe239c6d0"
-  dependencies:
-    babel-runtime "6.x.x"
-    hoist-non-react-statics "1.x.x"
-
 react-sortable-hoc@^0.6.3:
   version "0.6.8"
   resolved "https://registry.yarnpkg.com/react-sortable-hoc/-/react-sortable-hoc-0.6.8.tgz#b08562f570d7c41f6e393fca52879d2ebb9118e9"
@@ -6444,7 +6436,7 @@ react-spinner@^0.2.6:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/react-spinner/-/react-spinner-0.2.7.tgz#ea3ca3375dd7a54edbb5cc01d17496a2e2fc14db"
 
-react-split-pane@^0.1.63, react-split-pane@^0.1.68:
+react-split-pane@^0.1.63, react-split-pane@^0.1.71:
   version "0.1.71"
   resolved "https://registry.yarnpkg.com/react-split-pane/-/react-split-pane-0.1.71.tgz#19b1b30638655e655f9f5fe57b1ae7cc6c151829"
   dependencies:
@@ -6454,19 +6446,13 @@ react-split-pane@^0.1.63, react-split-pane@^0.1.68:
     prop-types "^15.5.10"
     react-style-proptype "^3.0.0"
 
-react-stubber@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-stubber/-/react-stubber-1.0.0.tgz#41ee2cac72d4d4fd70a63896da98e13739b84628"
-  dependencies:
-    babel-runtime "^6.5.0"
-
 react-style-proptype@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/react-style-proptype/-/react-style-proptype-3.1.0.tgz#c8912fc13460f5b0c1ec1114c729d535b52b8073"
   dependencies:
     prop-types "^15.5.4"
 
-react-textarea-autosize@^5.2.0:
+react-textarea-autosize@^5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-5.2.1.tgz#2b78f9067180f41b08ac59f78f1581abadd61e54"
   dependencies:
@@ -6552,7 +6538,7 @@ readable-stream@1.1.x:
     isarray "0.0.1"
     string_decoder "~0.10.x"
 
-readable-stream@2, readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.5, readable-stream@^2.0.6, readable-stream@^2.1.4, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.2.6:
+readable-stream@2, readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.5, readable-stream@^2.0.6, readable-stream@^2.1.4, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.2.6, readable-stream@^2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.3.tgz#368f2512d79f9d46fdfc71349ae7878bbc1eb95c"
   dependencies:
@@ -7010,7 +6996,7 @@ shallow-equals@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/shallow-equals/-/shallow-equals-1.0.0.tgz#24b74bf1c634c11ed4c7182a6df6fb300dce4390"
 
-shallowequal@0.2.x, shallowequal@^0.2.2:
+shallowequal@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-0.2.2.tgz#1e32fd5bcab6ad688a4812cb0cc04efc75c7014e"
   dependencies:
@@ -7280,7 +7266,7 @@ stream-collect@^1.3.1:
     debug "^2.1.1"
     promise-util "^1.1.0"
 
-stream-http@^2.3.1:
+stream-http@^2.7.2:
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/stream-http/-/stream-http-2.7.2.tgz#40a050ec8dc3b53b33d9909415c02c0bf1abfbad"
   dependencies:
@@ -7329,15 +7315,15 @@ string.prototype.padstart@^3.0.0:
     es-abstract "^1.4.3"
     function-bind "^1.0.2"
 
-string_decoder@^0.10.25, string_decoder@~0.10.x:
-  version "0.10.31"
-  resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
-
-string_decoder@~1.0.3:
+string_decoder@^1.0.0, string_decoder@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.0.3.tgz#0fc67d7c141825de94282dd536bec6b9bce860ab"
   dependencies:
     safe-buffer "~5.1.0"
+
+string_decoder@~0.10.x:
+  version "0.10.31"
+  resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
 
 stringstream@~0.0.4, stringstream@~0.0.5:
   version "0.0.5"
@@ -7502,7 +7488,7 @@ timed-out@^4.0.0, timed-out@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/timed-out/-/timed-out-4.0.1.tgz#f32eacac5a175bea25d7fab565ab3ed8741ef56f"
 
-timers-browserify@^2.0.2:
+timers-browserify@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-2.0.4.tgz#96ca53f4b794a5e7c0e1bd7cc88a372298fa01e6"
   dependencies:
