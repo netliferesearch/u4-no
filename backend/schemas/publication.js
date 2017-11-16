@@ -441,11 +441,11 @@ export default {
       {
         name: 'topics',
         description: 'Select relevant U4 topics',
-        weak: true,
         type: 'array',
         of: [
           {
             type: 'reference',
+            weak: true,
             to: [
               {
                 type: 'topics'
