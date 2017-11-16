@@ -18,31 +18,31 @@ const PartnerAgencies = ({ title }) => (
     </div>
     <section {...classes('wrapper', null, 'o-wrapper')}>
       <div {...classes('item')}>
-        <PartnerLogo1 />
+        <a href="http://um.dk/en/danida-en/" rel="noopener noreferrer" target="_blank"><PartnerLogo1 /></a>
       </div>
       <div {...classes('item')}>
-        <PartnerLogo2 />
+        <a href="http://dfat.gov.au/pages/default.aspx" rel="noopener noreferrer" target="_blank"><PartnerLogo2 /></a>
       </div>
       <div {...classes('item', 'small')}>
-        <PartnerLogo3 />
+        <a href="https://www.giz.de/en/html/index.html" rel="noopener noreferrer" target="_blank"><PartnerLogo3 /></a>
       </div>
       <div {...classes('item')}>
-        <PartnerLogo4 />
+        <a href="http://formin.finland.fi/public/default.aspx?culture=en-US&contentlan=2" rel="noopener noreferrer" target="_blank"><PartnerLogo4 /></a>
       </div>
       <div {...classes('item')}>
-        <PartnerLogo5 />
+        <a href="https://www.norad.no/en/front/" rel="noopener noreferrer" target="_blank"><PartnerLogo5 /></a>
       </div>
       <div {...classes('item')}>
-        <PartnerLogo6 />
+        <a href="http://www.sida.se/English/" rel="noopener noreferrer" target="_blank"><PartnerLogo6 /></a>
       </div>
       <div {...classes('item')}>
-        <PartnerLogo7 />
+        <a href="https://www.eda.admin.ch/sdc" rel="noopener noreferrer" target="_blank"><PartnerLogo7 /></a>
       </div>
       <div {...classes('item')}>
-        <PartnerLogo8 />
+        <a href="https://www.transparency.org/" rel="noopener noreferrer" target="_blank"><PartnerLogo8 /></a>
       </div>
       <div {...classes('item', 'small')}>
-        <PartnerLogo9 />
+        <a href="https://www.ukaiddirect.org/" rel="noopener noreferrer" target="_blank"><PartnerLogo9 /></a>
       </div>
     </section>
   </div>
