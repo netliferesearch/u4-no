@@ -338,6 +338,12 @@ export default {
         ]
       },
       {
+        name: 'publicationNumber',
+        title: 'Publication Number',
+        description: '2016:1',
+        type: 'string'
+      },
+      {
         name: 'reference',
         title: 'Bibliographic reference (like U4 Issue 2016:1, 45 p.)',
         type: 'string'
