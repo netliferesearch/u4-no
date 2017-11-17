@@ -46,9 +46,9 @@ const PublicationArticleHeader = ({
       <p {...classes('subtitle')}>{subtitle}</p>
       <div {...classes('meta')}>
         <p>
-          {authors ? (
+          {authors.length ? (
             <span>
-              <AuthorList authors={authors.map(({ target }) => target)} />
+              <AuthorList authors={authors} />
               <br />
             </span>
           ) : null}
