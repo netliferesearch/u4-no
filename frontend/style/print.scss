@@ -50,8 +50,8 @@
  * Page Layout
 */
 @page {
-  margin-top: 3.5cm;
-  margin-bottom: 3.5cm;
+  margin-top: 2cm;
+  margin-bottom: 2cm;
   margin-inside: 4cm;
   margin-outside: 4cm;
 
@@ -61,7 +61,15 @@
     font-size: 11pt;
   }
 }
-
+.page2 {
+  display: block;
+  page: page2;
+  color: black;
+}
+@page page2 {
+  @top { }
+  @bottom { }
+}
 
 .contents {
   display: block;
@@ -87,8 +95,8 @@
   display: block;
   page: main;
   counter-reset: page 1;
-  font-size: 14pt;
-  line-height: 22pt;
+  font-size: 12pt;
+  line-height: 1.5;
   color: black;
 }
 
@@ -100,7 +108,7 @@ p {
 @page main {
 
   @top {
-    content: "U4 Issue | September 2016:1";
+    content: string(publication-meta);
   }
 
 
@@ -108,9 +116,10 @@ p {
       content: "Page " counter(page) " of " counter(pages);
   }
 }
-
+.c-print__meta-inline {
+  string-set: publication-meta content();
+}
 .body h2 {
-  string-set: chapter-title content();
   page-break-before: always;
 }
 a {
@@ -150,9 +159,10 @@ a {
   margin-left: $spacing;
 }
 
+
 .c-print__front-logo{
   position: absolute;
-  top: -2.4cm;
+  top: -1.5cm;
   left: -2cm;
 }
 
@@ -161,9 +171,8 @@ a {
   width: 19.5cm;
   height: auto;
   overflow: hidden;
-  object-fit: cover;
-  object-position: 50% 50%;
   margin-left: -4cm;
+  padding-top: 0.5cm;
   z-index: -10;
   figcaption{
     font-size: 10pt;
@@ -265,6 +274,32 @@ figure {
 
 .c-toggle-block__title {
   display: none;
+}
+
+.page2 {
+  p {
+    color: black;
+    font-family: $font-sans;
+    margin: 0;
+    margin-bottom: $spacing-tiny;
+    font-size: 10pt;
+    line-height: 1.1;
+  }
+  h2 {
+    font-weight: bold;
+    font-size: 10pt;
+    margin: 0;
+    margin-top: $spacing-tiny;
+  }
+  img {
+    height: 1cm;
+    margin-right: 0.5cm;
+    margin-top: 0.2cm;
+  }
+}
+.page2-ccimage{
+  height: 0.6cm;
+  width: auto;
 }
 
 /*

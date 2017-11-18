@@ -10,8 +10,8 @@ const PublicationEntry = props => (
 
 export default DataLoader(PublicationEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '*[slug.current == $slug && !(_id in path "drafts.**")][0]',
+    sanityQuery: '*[slug.current == $slug && !(_id in path "drafts.**")][0] ',
     param: { slug },
   }),
-  materializeDepth: 1,
+  materializeDepth: 3,
 });

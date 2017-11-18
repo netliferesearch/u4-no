@@ -50,24 +50,22 @@ const LongFormArticleContainer = (props) => {
     pdfFile = {},
     legacypdf = {},
     reference = '',
+    publicationNumber = '',
+    partners = [],
   } = props;
   return (
     <article className="u-relative u-print-width o-wrapper-page">
+      {console.log(partners)}
       <div {...classes('front')}>
-        <a {...classes('front-logo')}>
+        <div {...classes('front-logo')}>
           <Logo />
-        </a>
+        </div>
         <figure {...classes('front-image')}>
-          {props.featuredImage.credit && (
-            <figcaption>
-              Photo: {props.featuredImage.credit}
-            </figcaption>)}
           <img src={props.featuredImage.asset.url} alt={props.featuredImage.credit} />
         </figure>
         <div {...classes('front-text')}>
           <div {...classes('meta')}>
-            {publicationType.title && `${publicationType.title} | `}
-            <p {...classes('meta-inline')}>September 2016:1</p><br />
+            <p {...classes('meta-inline')}>{publicationType.title} {publicationNumber}</p><br />
           </div>
           <h1 {...classes('title')}>{title}</h1>
           <p {...classes('subtitle')}>{subtitle}</p>
@@ -85,7 +83,7 @@ const LongFormArticleContainer = (props) => {
                   <br />
                 </span>
               ) : null}
-              {reference}
+
             </p>
           </div>
         </div>

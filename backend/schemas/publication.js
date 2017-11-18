@@ -340,7 +340,7 @@ export default {
       {
         name: 'publicationNumber',
         title: 'Publication Number',
-        description: '2016:1',
+        description: 'e.g. "2016:1" ',
         type: 'string'
       },
       {
