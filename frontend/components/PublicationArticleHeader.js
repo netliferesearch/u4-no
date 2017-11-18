@@ -24,6 +24,8 @@ const PublicationArticleHeader = ({
   pdfFile = {},
   legacypdf = {},
   reference = '',
+  translation = {},
+  language = '',
 }) => (
   <header {...classes('', null, className)}>
     {/* Wrap in standard grid width until we know better */}
@@ -60,11 +62,14 @@ const PublicationArticleHeader = ({
           ) : null}
           {reference}
         </p>
-        <p>
-          <a {...classes('language')} href="#1">
-            Also available in Spanish
-          </a>
-        </p>
+        {translation.language &&
+          translation.language !== language && (
+            <p>
+              <Link route="publication.entry" params={{ slug: translation.slug.current }}>
+                <a {...classes('language')}>Also available in {translation.language}</a>
+              </Link>
+            </p>
+          )}
       </div>
       {shortVersion.length > 0 && (
         <Link route="publication.shortVersion" params={{ slug: slug.current }}>
