@@ -33,6 +33,8 @@ const LegacyPublicationContainer = (props) => {
     BreadCrumbComponent = null,
     legacypdf = {},
     date = {},
+    translation = {},
+    language = '',
   } = props;
   const pubyear = date && date.utc ? new Date(date.utc).getFullYear() : '';
 

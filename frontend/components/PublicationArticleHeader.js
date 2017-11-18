@@ -10,6 +10,19 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
+function languageName(langcode) {
+  const languageNames = {
+    en_US: 'English',
+    fr_FR: 'French',
+    es_ES: 'Spanish',
+    de_DE: 'German',
+    pt_PT: 'Portuguese',
+    ru_RU: 'Russian',
+    uk_UA: 'Ukranian',
+  };
+  return languageNames[langcode] ? languageNames[langcode] : 'another language';
+}
+
 const PublicationArticleHeader = ({
   title = '',
   subtitle = '',
@@ -24,6 +37,8 @@ const PublicationArticleHeader = ({
   pdfFile = {},
   legacypdf = {},
   reference = '',
+  translation = {},
+  language = '',
 }) => (
   <header {...classes('', null, className)}>
     {/* Wrap in standard grid width until we know better */}
@@ -46,9 +61,9 @@ const PublicationArticleHeader = ({
       <p {...classes('subtitle')}>{subtitle}</p>
       <div {...classes('meta')}>
         <p>
-          {authors ? (
+          {authors.length ? (
             <span>
-              <AuthorList authors={authors.map(({ target }) => target)} />
+              <AuthorList authors={authors} />
               <br />
             </span>
           ) : null}
@@ -60,11 +75,16 @@ const PublicationArticleHeader = ({
           ) : null}
           {reference}
         </p>
-        <p>
-          <a {...classes('language')} href="#1">
-            Also available in Spanish
-          </a>
-        </p>
+        {translation.language &&
+          translation.language !== language && (
+            <p>
+              <Link route="publication.entry" params={{ slug: translation.slug.current }}>
+                <a {...classes('language')}>
+                  Also available in {languageName(translation.language)}
+                </a>
+              </Link>
+            </p>
+          )}
       </div>
       {shortVersion.length > 0 && (
         <Link route="publication.shortVersion" params={{ slug: slug.current }}>

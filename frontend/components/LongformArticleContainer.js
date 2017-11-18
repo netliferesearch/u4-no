@@ -33,6 +33,8 @@ const LongFormArticleContainer = (props) => {
     BreadCrumbComponent = null,
     url = {},
     headComponentConfigOverride,
+    translation = {},
+    language = '',
   } = props;
   const headComponentConfig =
     headComponentConfigOverride ||

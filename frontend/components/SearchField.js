@@ -52,7 +52,7 @@ class SearchField extends Component {
     this.setState({
       loading: !this.state.loading,
     });
-    Router.pushRoute(`search?search=${e.target.search.value}`);
+    Router.pushRoute(`/search?search=${e.target.search.value}`);
   }
 
   handleItemClick(item) {
@@ -126,7 +126,7 @@ class SearchField extends Component {
                       // the user has clicked enter in the search field but not
                       // selected something from the dropdown. So, we just try
                       // make a search for it
-                      Router.pushRoute(`search?search=${e.target.value}`);
+                      Router.pushRoute(`/search?search=${e.target.value}`);
                     } else if (typeof highlightedIndex === 'number') {
                       // user has selected some item, we find it from state and
                       // visit it directly
