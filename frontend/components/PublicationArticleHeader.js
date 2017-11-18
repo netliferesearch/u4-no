@@ -10,6 +10,19 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
+function languageName(langcode) {
+  const languageNames = {
+    en_US: 'English',
+    fr_FR: 'French',
+    es_ES: 'Spanish',
+    de_DE: 'German',
+    pt_PT: 'Portuguese',
+    ru_RU: 'Russian',
+    uk_UA: 'Ukranian',
+  };
+  return languageNames[langcode] ? languageNames[langcode] : 'another language';
+}
+
 const PublicationArticleHeader = ({
   title = '',
   subtitle = '',
@@ -66,7 +79,9 @@ const PublicationArticleHeader = ({
           translation.language !== language && (
             <p>
               <Link route="publication.entry" params={{ slug: translation.slug.current }}>
-                <a {...classes('language')}>Also available in {translation.language}</a>
+                <a {...classes('language')}>
+                  Also available in {languageName(translation.language)}
+                </a>
               </Link>
             </p>
           )}
