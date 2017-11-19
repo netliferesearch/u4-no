@@ -176,7 +176,7 @@ class Menu extends Component {
                   </button>
                 </li>
                 <li {...menuClasses('list-item')}>
-                  <Link to={'/partner-agencies'}>
+                  <Link to={'/u4-partner-agencies'}>
                     <a {...menuClasses('link')}>Partner agencies</a>
                   </Link>
                 </li>
