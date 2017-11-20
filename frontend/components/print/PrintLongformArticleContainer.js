@@ -66,7 +66,7 @@ const LongFormArticleContainer = (props) => {
         </figure>
         <div {...classes('front-text')}>
           <div {...classes('meta')}>
-            <p {...classes('meta-inline')}>{publicationType.title} {publicationNumber}</p><br />
+            <p {...classes('meta-inline', null, 'c-print__publication-type-and-number')}>{publicationType.title} {publicationNumber}</p><br />
           </div>
           <h1 {...classes('title')}>{title}</h1>
           <p {...classes('subtitle')}>{subtitle}</p>
@@ -125,17 +125,6 @@ const LongFormArticleContainer = (props) => {
         <h2>Online version</h2>
         <p>{props.relatedUrl.url}</p>
       </div>
-      <p>
-Footnotes<span className="fn">A footnote is a note placed at
-the bottom of a page of a book or manuscript that comments on or
-cites a reference for a designated part of the text.
-</span>
-are essential in printed documents and Prince knows how to generate
-them. Most readers will read the footnotes before they read the text
-from where the footnotes are anchored<span className="fn">Often,
-the most interesting information is found in the footnotes.
-</span>.
-      </p>
       {_type === 'publication' && (
         <div className="c-longform-grid">
           <div className="c-longform-grid__standard">

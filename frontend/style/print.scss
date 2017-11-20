@@ -49,6 +49,10 @@
 /*
  * Page Layout
 */
+
+body {
+  color: black;
+}
 @page {
   margin-top: 2cm;
   margin-bottom: 2cm;
@@ -62,16 +66,42 @@
   }
 }
 .page2 {
+  page-break-before: always;
   display: block;
   page: page2;
-  color: black;
 }
 @page page2 {
   @top { }
   @bottom { }
 }
 
+.page2 {
+  p {
+    font-family: $font-sans;
+    margin: 0;
+    margin-bottom: $spacing-tiny;
+    font-size: 10pt;
+    line-height: 1.1;
+  }
+  h2 {
+    font-weight: bold;
+    font-size: 10pt;
+    margin: 0;
+    margin-top: $spacing-tiny;
+  }
+  img {
+    height: 1cm;
+    margin-right: 0.5cm;
+    margin-top: 0.2cm;
+  }
+}
+.page2-ccimage{
+  height: 0.6cm;
+  width: auto;
+}
+
 .contents {
+  page-break-before: always;
   display: block;
   page: table-of-contents;
   counter-reset: page 1;
@@ -97,7 +127,6 @@
   counter-reset: page 1;
   font-size: 12pt;
   line-height: 1.5;
-  color: black;
 }
 
 p {
@@ -106,18 +135,15 @@ p {
 }
 
 @page main {
-
   @top {
-    content: string(publication-meta);
+    content: string(publication-type-and-number);
   }
-
-
   @bottom {
       content: "Page " counter(page) " of " counter(pages);
   }
 }
-.c-print__meta-inline {
-  string-set: publication-meta content();
+.c-print__publication-type-and-number{
+  string-set: publication-type-and-number content();
 }
 .body h2 {
   page-break-before: always;
@@ -136,7 +162,6 @@ a {
   list-style-type: none;
   margin: 0 0 0.5cm 0 ;
   padding: 0;
-  color: black;
   font-family: $font-sans;
   h2 {
     margin-bottom: $spacing;
@@ -253,6 +278,7 @@ a {
   letter-spacing: 0.02em;
   margin-bottom: $spacing-large;
   margin-top: $spacing-large;
+  page-break-inside: avoid;
 }
 
 blockquote {
@@ -262,6 +288,7 @@ blockquote {
   font-weight: 300;
   padding-left: $spacing;
   line-height: 1.2em;
+  page-break-inside: avoid;
 }
 
 figure {
@@ -295,31 +322,7 @@ figure {
   display: none;
 }
 
-.page2 {
-  p {
-    color: black;
-    font-family: $font-sans;
-    margin: 0;
-    margin-bottom: $spacing-tiny;
-    font-size: 10pt;
-    line-height: 1.1;
-  }
-  h2 {
-    font-weight: bold;
-    font-size: 10pt;
-    margin: 0;
-    margin-top: $spacing-tiny;
-  }
-  img {
-    height: 1cm;
-    margin-right: 0.5cm;
-    margin-top: 0.2cm;
-  }
-}
-.page2-ccimage{
-  height: 0.6cm;
-  width: auto;
-}
+
 
 /*
 // SETTINGS
