@@ -44,7 +44,7 @@ const SearchResults = (props) => {
             _id,
             _type,
             publicationType = false,
-            date,
+            date = {},
             slug = {},
             title,
             subtitle = false,
@@ -61,7 +61,7 @@ const SearchResults = (props) => {
                 {!publicationType && <span>{_type}</span>}
               </span>
               <span {...classes('items-date')}>
-                {date && moment(date.local).format('DD.MM.YYYY')}
+                {date && moment(date.utc).format('DD.MM.YYYY')}
               </span>
               <br />
               <Link to={`/${_type}s/${slug.current}`}>
@@ -69,7 +69,7 @@ const SearchResults = (props) => {
               </Link>
               <br />
               <span {...classes('items-subtitle')}>{subtitle}</span>
-              {authors.length > 1 ? (
+              {authors.length ? (
                 <div>
                   <AuthorList authors={authors} />
                   <br />
