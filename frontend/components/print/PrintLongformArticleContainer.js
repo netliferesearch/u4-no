@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
 import { PrintLongformArticle } from './';
+import { CreativecommonsCC, CreativecommonsBY, CreativecommonsNC, CreativecommonsND } from '../icons';
 import BEMHelper from 'react-bem-helper';
 import {
   Footer,
@@ -88,6 +89,36 @@ const LongFormArticleContainer = (props) => {
           </div>
         </div>
 
+      </div>
+
+      <div className="page2">
+        <h2>Partners in this publication</h2>
+        {props.partners.map(partner =>
+          <img src={partner.institution.logo.asset.url} />)
+        }
+        <h2>Acknowledgments</h2>
+        <p>{props.acknowledgements}</p>
+        <h2>Publisher</h2>
+        <p>U4 Anti-Corruption Resource Centre, Chr. Michelsen Institute, Bergen, Norway.</p>
+        <h2>Disclaimer</h2>
+        <p>All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies.</p>
+        <h2>U4 partner agencies</h2>
+        <p>The U4 Anti-Corruption Resource Centre is an institutional partnership of bilateral international development agencies/ministries of foreign affairs: Australian Government – Department of Foreign Affairs and Trade, Danida – Ministry of Foreign Affairs of Denmark, Ministry for Foreign Affairs of Finland, Germany – Federal Ministry for Economic Cooperation and Development and GIZ, Norad – The Norwegian Agency for Development Cooperation, Sida – Swedish International Development Cooperation Agency, Switzerland – Swiss Agency for Development and Cooperation, UK Aid – Department for International Development.</p>
+        <h2>About U4</h2>
+        <p>At U4, we work to reduce the harmful impact of corruption on society. We share research and evidence to help international development actors get sustainable results. U4 is a permanent centre at the Chr. Michelsen Institute (CMI) in Norway. CMI is a non-profit, multi-disciplinary research institute with social scientists specialising in development studies.</p>
+        <h2>Cover photo</h2>
+        <p>{props.featuredImage.caption.map(caption => caption.children[0].text)} {props.featuredImage.credit} {props.featuredImage.sourceUrl} <br />
+        CIFOR CC BY-NC-SA
+        </p>
+        <h2>Creative commons</h2>
+        <p><CreativecommonsCC className="page2-ccimage" />
+          <CreativecommonsBY className="page2-ccimage" />
+          <CreativecommonsNC className="page2-ccimage" />
+          <CreativecommonsND className="page2-ccimage" /><br />
+        CC BY-NC-ND 4.0
+        </p>
+        <h2>Online version</h2>
+        <p>{props.relatedUrl.url}</p>
       </div>
       {_type === 'publication' && (
         <div className="c-longform-grid">
