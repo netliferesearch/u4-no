@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
 import { PrintLongformArticle } from './';
-import { CreativecommonsCC, CreativecommonsBY, CreativecommonsNC, CreativecommonsND } from '../icons';
+import { CreativecommonsCC, CreativecommonsBY, CreativecommonsNC, CreativecommonsND, CmiLogo } from '../icons';
 import BEMHelper from 'react-bem-helper';
 import {
   Footer,
@@ -58,7 +58,7 @@ const LongFormArticleContainer = (props) => {
     <article className="u-relative u-print-width o-wrapper-page">
       {console.log(partners)}
       <div {...classes('front')}>
-        <div {...classes('front-logo')}>
+        <div {...classes('front-logo-top')}>
           <Logo />
         </div>
         <figure {...classes('front-image')}>
@@ -71,7 +71,7 @@ const LongFormArticleContainer = (props) => {
           <h1 {...classes('title')}>{title}</h1>
           <p {...classes('subtitle')}>{subtitle}</p>
           <div {...classes('meta')}>
-            <p>
+            <p {...classes('float-left')}>
               {authors ? (
                 <span>
                   <AuthorList authors={authors.map(({ target }) => target)} />
@@ -84,15 +84,20 @@ const LongFormArticleContainer = (props) => {
                   <br />
                 </span>
               ) : null}
-
             </p>
+            <div {...classes('float-right')}>
+              <CmiLogo />
+            </div>
           </div>
         </div>
 
       </div>
 
       <div className="page2">
+
         <h2>Partners in this publication</h2>
+
+
         {props.partners.map(partner =>
           <img src={partner.institution.logo.asset.url} />)
         }
@@ -120,6 +125,17 @@ const LongFormArticleContainer = (props) => {
         <h2>Online version</h2>
         <p>{props.relatedUrl.url}</p>
       </div>
+      <p>
+Footnotes<span className="fn">A footnote is a note placed at
+the bottom of a page of a book or manuscript that comments on or
+cites a reference for a designated part of the text.
+</span>
+are essential in printed documents and Prince knows how to generate
+them. Most readers will read the footnotes before they read the text
+from where the footnotes are anchored<span className="fn">Often,
+the most interesting information is found in the footnotes.
+</span>.
+      </p>
       {_type === 'publication' && (
         <div className="c-longform-grid">
           <div className="c-longform-grid__standard">

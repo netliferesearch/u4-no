@@ -38,7 +38,7 @@
 
 .c-article-header__language,
 .c-article-header__download,
-.c-top-bar {
+.c-top-bar, .c-footer {
   display: none;
 }
 
@@ -163,10 +163,21 @@ a {
 }
 
 
-.c-print__front-logo{
+.c-print__front-logo-top{
   position: absolute;
   top: -1.5cm;
   left: -2cm;
+}
+
+.c-print__float-right{
+  float: right;
+  margin-top: 20px;
+  margin-right: -2cm;
+}
+
+.c-print__float-left{
+  float: left;
+
 }
 
 
@@ -263,6 +274,7 @@ figure {
 }
 
 .footnotes {
+  display: block;
   ol {
     margin: 0;
     padding: 0;
@@ -270,9 +282,13 @@ figure {
 }
 
 .c-footnote__item {
+  float: left;
   list-style: none;
   margin: 0;
   padding: 0;
+  a {
+    display: none;
+  }
 }
 
 .c-toggle-block__title {
