@@ -1,5 +1,5 @@
 import { slug } from './fields';
-
+import license from './fields/license';
 export default {
   name: 'person',
   type: 'object',

@@ -94,22 +94,7 @@ export default {
             description: 'Enter link for source for the image or the originator'
           },
           license,
-        ]
-          },
-          {
-            name: 'credit',
-            title: 'Credit',
-            description: 'Photographer/publisher’s name.',
-            type: 'text'
-          },
-          {
-            name: 'sourceUrl',
-            title: 'Credit URL',
-            type: 'url',
-            description: 'Enter link for source for the image or the originator'
-          },
-          license,
-        ]
+        ],
       },
       {
         name: 'summary',

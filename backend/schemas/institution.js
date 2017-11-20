@@ -1,3 +1,4 @@
+import license from './fields/license';
 export default {
   name: 'institution',
   type: 'object',

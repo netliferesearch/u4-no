@@ -1,5 +1,5 @@
 import { title, longTitle, explainerText, featuredImage, slug } from './fields'
-
+import license from './fields/license';
 export default {
   name: 'topics',
   title: 'Topic',
