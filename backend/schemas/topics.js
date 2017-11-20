@@ -1,4 +1,4 @@
-import { title, longTitle, explainerText, featuredImage, slug } from './fields'
+import { title, longTitle, explainerText, featuredImage, slug, license } from './fields'
 
 export default {
   name: 'topics',

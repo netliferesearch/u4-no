@@ -1,4 +1,4 @@
-import { slug } from './fields';
+import { slug, license } from './fields';
 
 export default {
   name: 'person',
