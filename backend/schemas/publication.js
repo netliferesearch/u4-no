@@ -519,11 +519,45 @@ export default {
         inputComponent: UrlWithMetadataInput
       }
     ],
+    orderings: [
+      {
+        title: 'Title',
+        name: 'titleAsc',
+        by: [{ field: 'title', direction: 'asc' }],
+      },
+      {
+        title: 'Date',
+        name: 'dateDesc',
+        by: [{ field: 'date', direction: 'desc' }],
+      },
+      {
+        title: 'Publication type',
+        name: 'typeAsc',
+        by: [{ field: 'publicationType.title', direction: 'asc' }],
+      },
+    ],
     preview: {
       select: {
         title: 'title',
-        subtitle: 'subtitle',
-        image: 'featuredImage.asset.url'
-      }
-    }
+        authors: 'authors',
+        publicationType: 'publicationType.title',
+        reference: 'reference',
+        date: 'date',
+        image: 'image.asset.url',
+      },
+      prepare({ title = '(title missing)', authors = {}, publicationNumber = '', publicationType = '', reference = '', date = '', image }) {
+
+        const author = authors.length == 0 ? '(no authors)' : ''; // should have been authors.map(({ firstName = 'N', surname = 'N' }) => (`${firstName} ${surname}`));
+        const pubYear = (date != '' ) ? date.utc.split('-')[0] : '';
+        const subtitle =
+          publicationNumber != ''
+            ? `${publicationType} ${publicationNumber} ${author}`
+            : `${publicationType} ${pubYear} ${reference}  ${author}`;
+        return {
+          title: title,
+          subtitle: subtitle,
+          image,
+        };
+      },
+    },
   }
