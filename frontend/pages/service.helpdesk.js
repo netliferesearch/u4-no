@@ -55,7 +55,7 @@ const ServicePage = ({ service = {}, url = {} }) => {
 export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery:
-      '{ "service": *[slug.current == "helpdesk"][0]{title, longTitle, slug, lead, _id, "sections": sections, "featuredImage": featuredImage.asset->url}}',
+      '{ "service": *[_type == "frontpage" && slug.current == "helpdesk"][0]{title, longTitle, slug, lead, _id, "sections": sections, "featuredImage": featuredImage.asset->url}}',
     param: { slug },
   }),
   materializeDepth: 4,
