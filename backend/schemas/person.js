@@ -53,7 +53,7 @@ export default {
     {
       name: 'cv',
       title: 'CV',
-      type: 'file'
+      type: 'url'
     },
     {
       name: 'bio',

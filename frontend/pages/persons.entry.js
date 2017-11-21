@@ -20,7 +20,7 @@ const Persons = ({
   phone = '',
   person = {},
   image = {},
-  cv = {},
+  cv = '',
   url,
 }) => (
   <Layout
@@ -49,7 +49,7 @@ const Persons = ({
                   <br />
                 </a>
               )}
-              {person.cv && <a href={person.cv.asset.url}>Downlaod CV</a>}
+              {person.cv && <a href={person.cv}>Download CV</a>}
               <br />
               {person.image && (
                 <a href={person.image.asset.url}>
