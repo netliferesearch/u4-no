@@ -1,5 +1,5 @@
-import { slug } from './fields';
-import license from './fields/license';
+import { slug, license } from './fields';
+
 export default {
   name: 'person',
   type: 'object',
@@ -53,7 +53,7 @@ export default {
     {
       name: 'cv',
       title: 'CV',
-      type: 'file'
+      type: 'url'
     },
     {
       name: 'bio',

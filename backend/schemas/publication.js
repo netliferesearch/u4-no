@@ -1,5 +1,5 @@
 import FunkyEditor from '../components/FunkyEditor'
-import license from './fields/license';
+
 const annotations = [
     {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
     {name: 'internalReferance', title: 'Find some internal resource', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article', },{type:'workshop'},{type:'frontpage'},{type:'file'}]},
@@ -15,7 +15,8 @@ import {
   image,
   leadText,
   slug,
-  language
+  language,
+  license
 } from './fields'
 
 export default {
@@ -94,7 +95,7 @@ export default {
             description: 'Enter link for source for the image or the originator'
           },
           license,
-        ],
+        ]
       },
       {
         name: 'summary',
@@ -204,6 +205,7 @@ export default {
                 {title: 'Strong', value: 'strong'},
                 { title: 'Emphasis', value: 'em' }
               ],
+              annotations,
             },
           },
         ],

@@ -1,5 +1,5 @@
-import { title, longTitle, image, leadText, featuredImage, slug } from './fields'
-import license from './fields/license';
+import { title, longTitle, image, leadText, featuredImage, slug, license } from './fields'
+
 export default {
   name: 'service',
   title: 'Service',
