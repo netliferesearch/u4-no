@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from './serializers';
-import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper({
   name: 'longform-grid',

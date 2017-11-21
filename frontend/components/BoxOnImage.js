@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from '../routes';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
+import { Link } from '../routes';
 import { PartnerLogo8 } from './icons/';
 
 const classes = BEMHelper({
@@ -9,7 +9,9 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const BoxOnImage = ({ text = '', image, wide = false, helpdesk = false, personsLeft = [], personsRight = [] }) => (
+const BoxOnImage = ({
+  text = '', image, wide = false, helpdesk = false, personsLeft = [], personsRight = [],
+}) => (
   <div {...classes()}>
     <figure {...classes('figure')}>
       { image && <img alt="" src={image.asset.url} /> }
@@ -31,8 +33,7 @@ const BoxOnImage = ({ text = '', image, wide = false, helpdesk = false, personsL
                       {person.target.email}
                     </a>
                   </Link>
-                ),
-              )
+                ),)
             }
           </div>
           <div className="c-columns__item c-columns--two__item c-columns__item--narrow">
@@ -44,8 +45,8 @@ const BoxOnImage = ({ text = '', image, wide = false, helpdesk = false, personsL
                   <a>
                     {person.target.firstName} {person.target.surname}
                   </a>
-                </Link></p>),
-              )
+                    </Link>
+                 </p>),)
             }
             <br /><br />
             <div className="c-logo">
