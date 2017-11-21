@@ -77,26 +77,33 @@ const TopicEntry = ({
           {linkListContent && <LinkList title="Related topics" content={linkListContent} />}
         </div>
       </section>
-      <h2 className="c-topic-section__title c-topic-section__title--large">
-        From basic guides to indepth perspectives, all in one place.
-      </h2>
-      <section className="c-linkbox-wrapper">
-        <LinkBox
-          title="Basic guide"
-          text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
-          icon={BasicGuide}
-          route={introduction.length ? 'topic.article' : '#'}
-          params={{ slug: slug.current, topicPart: 'basics' }}
-        />
-        <LinkBox
-          title="Research and policy agenda"
-          text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
-          icon={ResearchAgenda}
-          route={agenda.length ? 'topic.article' : '#'}
-          params={{ slug: slug.current, topicPart: 'agenda' }}
-        />
-      </section>
-
+      {introduction.length + agenda.length > 0 && (
+        <div>
+          <h2 className="c-topic-section__title c-topic-section__title--large">
+            From basic guides to indepth perspectives, all in one place.
+          </h2>
+          <section className="c-linkbox-wrapper">
+            {introduction.length > 0 && (
+              <LinkBox
+                title="Basic guide"
+                text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
+                icon={BasicGuide}
+                route={introduction.length ? 'topic.article' : '#'}
+                params={{ slug: slug.current, topicPart: 'basics' }}
+              />
+            )}
+            {agenda.length > 0 && (
+              <LinkBox
+                title="Research and policy agenda"
+                text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
+                icon={ResearchAgenda}
+                route={agenda.length ? 'topic.article' : '#'}
+                params={{ slug: slug.current, topicPart: 'agenda' }}
+              />
+            )}
+          </section>
+        </div>
+      )}
       {resources.length ? (
         <div>
           <h2 className="c-topic-section__title">
