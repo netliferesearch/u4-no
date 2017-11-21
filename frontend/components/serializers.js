@@ -1,16 +1,18 @@
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
+import slugify from 'slugify';
+import ReactPlayer from 'react-player';
 import FunkyTable from './FunkyTable';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
+import { Figure, PullQuote, BoxOnBox, BoxOnImage, WorkshopMosaic, Feature, SimpleMosaic, Mosaic } from './';
+import { ArrowRight } from './icons';
 
 const classes = BEMHelper({
   name: 'longform-grid',
   prefix: 'c-',
 });
 
-import slugify from 'slugify';
-import { PullQuote, Figure } from './';
 
 export default {
   types: {
@@ -33,6 +35,94 @@ export default {
       if (display === 'bar') return <BarChart rows={rows} title={title} />;
       return <FunkyTable rows={rows} title={title} />;
     },
+    heading: ({ node: { headingValue = '' } }) => (
+      <h2 className="c-topic-section__title u-margin-bottom-none">
+        {headingValue}
+      </h2>
+    ),
+    cta: ({ node: { ctaValue = '', ctaURL = '' } }) => (
+      <h2 className="c-topic-section__cta">
+        <a href={ctaURL}>{ctaValue} &nbsp;<ArrowRight /></a>
+      </h2>
+    ),
+    textBlock: ({ node: { text = '' } }) => (
+      <div className="o-wrapper-inner c-article u-margin-top u-margin-bottom-large">
+        <BlockContent blocks={text} />
+      </div>
+    ),
+    twoColumns: ({ node: { textLeft, textRight } }) => (
+      <div className="o-wrapper-inner">
+        <div className="c-columns c-columns--two">
+          <div className="c-columns__item c-columns--two__item">
+            <BlockContent blocks={textLeft} serializers={serializers} />
+          </div>
+          <div className="c-columns__item c-columns--two__item">
+            <BlockContent blocks={textRight} />
+          </div>
+        </div>
+      </div>
+    ),
+    boxOnBoxRef: ({ node: { textLeft, textRight } }) => (
+      <section className="c-topic-section">
+        <BoxOnBox left={textLeft} right={textRight} />
+      </section>
+    ),
+    HelpdeskTeam: ({ node: { textRight, img, personLeft, personRight } }) => (
+      <section className="c-topic-section">
+        <BoxOnImage wide helpdesk text={textRight} image={img} personsLeft={personLeft} personsRight={personRight} />
+      </section>
+    ),
+    boxOnImageRef: ({ node: { block, img } }) => (
+      <section className="c-topic-section">
+        <BoxOnImage text={block} image={img} />
+      </section>
+    ),
+    workshops: ({ node: { workshopsRef } }) => (
+      <div className="o-wrapper">
+        <WorkshopMosaic resources={workshopsRef} />
+      </div>
+    ),
+    expertAnswers: ({ node: { expertAnswersRef } }) => (
+      <div className="o-wrapper u-margin-top u-margin-bottom-huge">
+        <Mosaic resources={expertAnswersRef} />
+      </div>
+    ),
+    courses: ({ node: { coursesRef } }) => (
+      <div className="o-wrapper">
+        <SimpleMosaic resources={coursesRef} cta="Register" />
+      </div>
+    ),
+    vimeo: ({ node: { src, title } }) => (
+      <div className="u-bg-light-blue">
+        <div className="o-wrapper o-layout--center">
+          <h2 className="c-topic-section__title u-margin-bottom-none">
+            {title}
+          </h2>
+          <div className="u-video">
+            <ReactPlayer
+              controls
+              width="100%"
+              vimeoConfig={{
+                preload: true,
+              }}
+              style={{
+                margin: '40px auto 40px',
+              }}
+              url={src}
+            />
+          </div>
+        </div>
+      </div>
+    ),
+    features: ({ node: { featureArray } }) => (
+      <section className="o-wrapper c-topic-section">
+        <div className="c-features">
+          {featureArray.map(item =>
+            <Feature title={item.featureText} iconUrl={item.image.asset.url} />,
+          )}
+        </div>
+      </section>
+    ),
     block: ({ node, children }) => {
       const style = node.style || 'normal';
 
