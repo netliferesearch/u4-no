@@ -21,7 +21,7 @@ class Persons extends Component {
   }
 
   render() {
-    const { frontpage, persons, helpdesk, url } = this.props;
+    const { frontpage, persons, helpdesk, affiliatedexperts, url } = this.props;
     return (
       <Layout
         headComponentConfig={{
@@ -42,6 +42,9 @@ class Persons extends Component {
             <button className="c-filters__item--standalone" onClick={() => this.changeGroup(2)}>
               <a>U4 Helpdesk</a>
             </button>
+            <button className="c-filters__item--standalone" onClick={() => this.changeGroup(3)}>
+              <a>Affiliated Experts</a>
+            </button>
           </div>
         </div>
         <div className="o-wrapper c-article">
@@ -56,11 +59,20 @@ class Persons extends Component {
             </div>
           ) : null}
           {this.state.activeGroup === 2 ? (
-            <div id="advisors">
+            <div id="advisors2">
               <h2 className="c-article__title c-article__title--center">U4 HELPDESK</h2>
               <Team
                 light
                 members={sortBy(helpdesk, ({ firstName = '' }) => firstName.toUpperCase())}
+              />
+            </div>
+          ) : null}
+          {this.state.activeGroup === 3 ? (
+            <div id="advisors3">
+              <h2 className="c-article__title c-article__title--center">Affiliated Experts</h2>
+              <Team
+                light
+                members={sortBy(affiliatedexperts, ({ firstName = '' }) => firstName.toUpperCase())}
               />
             </div>
           ) : null}
@@ -77,6 +89,7 @@ export default DataLoader(Persons, {
       "frontpage": *[_id == "627b8d42-d8f7-4cf6-9567-f6337678b688"][0],
       "persons": *[_type == "person" && references("0e1b0ebc-e016-4d2b-97e8-859b91e3e147") && "0e1b0ebc-e016-4d2b-97e8-859b91e3e147" in affiliations[]._ref][0..100]{..., "image": image.asset->url[0], affiliations},
       "helpdesk": *[_type == "person" && references("17ec3576-0afa-4203-9626-a38a16b27c2a") && "17ec3576-0afa-4203-9626-a38a16b27c2a" in affiliations[]._ref][0..100]{..., "image": image.asset->url[0], affiliations},
+      "affiliatedexperts": *[_type == "person" && references("3babc8f1-9e38-4493-9823-a9352b46585b") && "3babc8f1-9e38-4493-9823-a9352b46585b" in affiliations[]._ref][0..100]{..., "image": image.asset->url[0], affiliations},
     }`,
   }),
   materializeDepth: 2,
