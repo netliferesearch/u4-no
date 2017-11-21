@@ -12,55 +12,56 @@ const Mosaic = ({ resources = [], alt = false }) => (
         }}
       />
     ) : null}
-    {resources.map(
-      (
-        {
-          target,
-          title = target.title,
-          _id = target._id,
-          _type = target._type,
-          publicationType = '',
-          slug = target.slug,
-          imageUrl,
-          titleColor = '#FFF',
-        },
-        index,
-      ) => (
-        <Link key={_id} route={buildUrl({ _type, slug })}>
-          <a
-            className={`c-mosaic_item ${index % 4 === 2
-              ? 'c-mosaic_item--backgroundImage'
-              : ''} ${index % 4 === 2 && titleColor === '#000'
-              ? 'c-mosaic_item--backgroundImage-invert'
-              : ' '}`}
-            style={{
-              backgroundImage: `url(${index % 4 === 2 ? imageUrl : ''})`,
-            }}
-          >
-            <div className="c-mosaic_item-content">
-              <div
-                className="c-mosaic_item-content__meta"
-                style={{
-                  color: index % 4 === 2 ? titleColor : ' ',
-                }}
-              >
-                {alt ? publicationType.title : publicationType}
-              </div>
-              <div>
-                <h3
-                  className="c-mosaic_item-title"
+    {resources
+      .map(resource => (resource.target ? resource.target : resource))
+      .map(
+        (
+          {
+            title = '',
+            _id = '',
+            _type = '',
+            publicationType = '',
+            slug = '',
+            imageUrl,
+            titleColor = '#FFF',
+          },
+          index,
+        ) => (
+          <Link key={_id} route={buildUrl({ _type, slug })}>
+            <a
+              className={`c-mosaic_item ${index % 4 === 2
+                ? 'c-mosaic_item--backgroundImage'
+                : ''} ${index % 4 === 2 && titleColor === '#000'
+                ? 'c-mosaic_item--backgroundImage-invert'
+                : ' '}`}
+              style={{
+                backgroundImage: `url(${index % 4 === 2 ? imageUrl : ''})`,
+              }}
+            >
+              <div className="c-mosaic_item-content">
+                <div
+                  className="c-mosaic_item-content__meta"
                   style={{
                     color: index % 4 === 2 ? titleColor : ' ',
                   }}
                 >
-                  {title}
-                </h3>
+                  {publicationType._ref ? publicationType._ref : publicationType}
+                </div>
+                <div>
+                  <h3
+                    className="c-mosaic_item-title"
+                    style={{
+                      color: index % 4 === 2 ? titleColor : ' ',
+                    }}
+                  >
+                    {title}
+                  </h3>
+                </div>
               </div>
-            </div>
-          </a>
-        </Link>
-      ),
-    )}
+            </a>
+          </Link>
+        ),
+      )}
   </div>
 );
 
