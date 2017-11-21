@@ -14,7 +14,7 @@ const classes = BEMHelper({
 });
 
 
-export default {
+const serializers = {
   types: {
     image: ({ node }) => <Figure {...node} />,
     pullQuote: ({ node: { text } }) => (
@@ -26,7 +26,7 @@ export default {
       <div {...classes('standard')}>
         <div {...classes('nugget')}>
           <h2 {...classes('nugget-title')}>{title}</h2>
-          <BlockContent blocks={text} />
+          <BlockContent blocks={text} serializers={serializers} />
         </div>
       </div>
     ),
@@ -47,7 +47,7 @@ export default {
     ),
     textBlock: ({ node: { text = '' } }) => (
       <div className="o-wrapper-inner c-article u-margin-top u-margin-bottom-large">
-        <BlockContent blocks={text} />
+        <BlockContent blocks={text} serializers={serializers} />
       </div>
     ),
     twoColumns: ({ node: { textLeft, textRight } }) => (
@@ -57,7 +57,7 @@ export default {
             <BlockContent blocks={textLeft} serializers={serializers} />
           </div>
           <div className="c-columns__item c-columns--two__item">
-            <BlockContent blocks={textRight} />
+            <BlockContent blocks={textRight} serializers={serializers} />
           </div>
         </div>
       </div>
@@ -177,3 +177,5 @@ export default {
     },
   },
 };
+
+export default serializers;
