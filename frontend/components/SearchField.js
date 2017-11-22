@@ -77,15 +77,17 @@ class SearchField extends Component {
           inputValue,
         }) => (
           <form onSubmit={this.handleSubmit} {...classes('', modifier, 'u-1/1')}>
-            <label
-              {...getLabelProps({ htmlFor: 'search' })}
-              {...classes('label', modifier, 'u-margin-bottom-small')}
-            >
-              Search to find topics, publications, people, services, and more:
-            </label>
+            {false && (
+              <label
+                {...getLabelProps({ htmlFor: 'search' })}
+                {...classes('label', modifier, 'u-margin-bottom-small')}
+              >
+                Search to find topics, publications, people, services, and more:
+              </label>
+            )}
             <div className="c-search__content">
               <input
-                placeholder="What are you looking for?"
+                placeholder="Search to find topics, publications, people, services, and more"
                 {...classes('input', modifier)}
                 {...getInputProps({
                   id: 'search',

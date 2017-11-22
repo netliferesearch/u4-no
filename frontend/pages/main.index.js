@@ -29,7 +29,7 @@ const Frontpage = ({ frontPage = {}, topics = {}, url }) => (
       </div>
     </section>
     <section className="o-wrapper-medium u-margin-bottom-huge">
-      <div className="c-topic-section__title">
+      <div className="c-introduction-text">
         <BlockContent blocks={frontPage.sections} />
       </div>
     </section>
@@ -37,9 +37,10 @@ const Frontpage = ({ frontPage = {}, topics = {}, url }) => (
     <FrontpageFeature topics={topics} />
 
     <section className="o-wrapper-medium u-margin-bottom-huge">
-      <div className="c-topic-section__title">
-        <h2> Browse our handpicked anti-corruption publications, insights and ideas.</h2>
-      </div>
+      <h2 className="c-topic-section__title">
+        Browse our handpicked anti-corruption publications, insights and ideas.
+      </h2>
+
       <Mosaic resources={frontPage.resources} />
       <h2 className="c-topic-section__cta u-padding-bottom-huge">
         <a href="/search">

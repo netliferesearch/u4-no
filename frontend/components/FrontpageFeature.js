@@ -70,10 +70,15 @@ class FrontpageFeature extends Component {
                 ))}
               </ul>
             ) : null}
-            <button {...classes('btn')} onClick={this.triggerToggle}>
-              <ArrowRight {...classes('arrowdown', this.state.active ? 'active' : null)} />
-              {this.state.active ? <span>View fewer topics</span> : <span>View all topics</span>}
-            </button>
+            <a className="c-topic-section__cta" href="/topics">
+              View all topics &nbsp;<ArrowRight />
+            </a>
+            {false && (
+              <button {...classes('btn')} onClick={this.triggerToggle}>
+                <ArrowRight {...classes('arrowdown', this.state.active ? 'active' : null)} />
+                {this.state.active ? <span>View fewer topics</span> : <span>View all topics</span>}
+              </button>
+            )}
           </div>
         </section>
       </div>

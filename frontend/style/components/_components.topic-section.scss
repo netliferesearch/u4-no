@@ -3,9 +3,9 @@
   @include inuit-font-size(24px, 1.3em);
   max-width: 700px;
   color: $brand-dark;
+  text-align: center;
   @include mq($from: tablet) {
     margin: $spacing-huge auto $spacing-huge;
-    text-align: center;
     @include inuit-font-size(26px, 1.4em);
   }
 }
@@ -20,12 +20,14 @@
   @include inuit-font-size($font-size-small, 1.5em);
   text-align: center;
   max-width: 700px;
-  a, a:hover {
+  a,
+  a:hover {
     border: none;
     color: $brand-dark;
   }
-  svg, svg path {
-    transition: transform .2s ease-out;
+  svg,
+  svg path {
+    transition: transform 0.2s ease-out;
     fill: $brand-dark;
   }
   &:hover {

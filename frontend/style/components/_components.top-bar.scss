@@ -6,9 +6,9 @@
   @include mq($from: tablet) {
     padding: $spacing-large $spacing-huge;
   }
-
 }
-a.c-top-bar__logo, a.c-top-bar__logo:visited {
+a.c-top-bar__logo,
+a.c-top-bar__logo:visited {
   height: 50px;
   display: inline-block;
   border-bottom: 0;
@@ -16,7 +16,7 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
     margin: 0;
   }
 
-  &:hover {
+  &:hover  {
     border: 0;
   }
 }
@@ -61,7 +61,8 @@ a.c-top-bar__logo, a.c-top-bar__logo:visited {
     appearance: normal;
     outline: inherit;
     cursor: pointer;
-    font-weight: 400;
+    font-family: $font-sans;
+    font-weight: 700;
     color: inherit;
     @include mq($from: tablet) {
       padding: 0;
