@@ -173,7 +173,7 @@ const serializers = {
     },
     footnote: (props) => {
       console.log('footnote', props);
-      return <span>{props.children}</span>;
+      return <BlockContent serializers={serializers} blocks={props.mark.content} />;
     },
   },
 };

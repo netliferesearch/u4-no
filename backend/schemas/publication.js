@@ -3,7 +3,37 @@ import FunkyEditor from '../components/FunkyEditor'
 const annotations = [
     {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
     {name: 'internalReferance', title: 'Find some internal resource', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article', },{type:'workshop'},{type:'frontpage'},{type:'file'}]},
-  ]
+    {
+      name: 'footnote',
+      type: 'object',
+      fields: [
+        {
+          name: 'content',
+          title: 'Footnote content',
+          type: 'array',
+          of: [
+            {
+              type: 'block',
+              styles: [
+                {title: 'Normal', value: 'normal'},
+              ],
+              lists: [],
+              // Only allow numbered lists
+              marks: {
+                // Only allow these decorators
+                decorators: [
+                  {title: 'Strong', value: 'strong'},
+                  {title: 'Emphasis', value: 'em'}
+                ],
+                // Support annotating text with a reference to an author
+                annotations,
+              }
+            }
+          ]
+        }
+      ]
+    }
+]
 /**
  * A publication is a long form document
  */
