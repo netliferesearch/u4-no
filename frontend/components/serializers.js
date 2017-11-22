@@ -45,7 +45,7 @@ const serializers = {
         <a href={ctaURL}>{ctaValue} &nbsp;<ArrowRight /></a>
       </h2>
     ),
-    textBlock: ({ node: { text = '' } }) => (
+    textBlock: ({ node: { text = false } }) => (text &&
       <div className="o-wrapper-inner c-article u-margin-top u-margin-bottom-large">
         <BlockContent blocks={text} serializers={serializers} />
       </div>
