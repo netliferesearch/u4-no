@@ -10,9 +10,6 @@ export default class MyDocument extends Document {
   render() {
     return (
       <html>
-        <Head>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js" />
-        </Head>
         <body>
           {this.props.customValue}
           <Main />
