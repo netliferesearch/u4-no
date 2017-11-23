@@ -4,7 +4,7 @@ import { Footer, Layout } from '../components';
 import DataLoader from '../helpers/data-loader';
 import randomKey from '../helpers/randomKey';
 
-const PublicationOverview = ({ publications = [] }) => (
+const PublicationOverview = ({ publications = [], url = {} }) => (
   <Layout
     headComponentConfig={{
       title: 'Publications',
