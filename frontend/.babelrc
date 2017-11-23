@@ -1,8 +1,9 @@
 {
+  "plugins": ["transform-object-assign"],
   "presets": [
-    "next/babel",
-    {
-      "env": {
+    [
+      "env",
+      {
         "modules": false,
         "debug": false,
         "useBuiltIns": false,
@@ -10,6 +11,7 @@
           "browsers": ["last 2 versions", "ie >= 10"]
         }
       }
-    }
+    ],
+    "next/babel"
   ]
 }
