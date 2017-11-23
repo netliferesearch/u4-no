@@ -29,6 +29,13 @@ const HeadComponent = ({ title, description, image, url, ogp }) => (
     />
 
     <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
+      <!--[if IE]>
+  <style>
+      .c-longform-grid {
+        max-width: 620px !important;
+      }
+  </style>
+  <![endif]-->
   </Head>
 );
 
