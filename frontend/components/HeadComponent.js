@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import stylesheet from '../style/main.scss';
 
-const HeadComponent = ({ title, description, image, url, ogp }) => (
+const HeadComponent = ({
+  title, description, image, url, ogp,
+}) => (
   <Head>
     <meta charSet="utf-8" />
     <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -22,20 +24,20 @@ const HeadComponent = ({ title, description, image, url, ogp }) => (
     {/* Twitter will reuse OGP declarations for description and image */}
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@U4_ACRC" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="/static/favicon.png"
-    />
+    <link rel="icon" type="image/png" href="/static/favicon.png" />
 
     <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-      <!--[if IE]>
-  <style>
-      .c-longform-grid {
-        max-width: 620px !important;
-      }
-  </style>
-  <![endif]-->
+    <div
+      dangerouslySetInnerHTML={{
+        __html: `<!--[if IE]>
+                  <style>
+                      .c-longform-grid {
+                        max-width: 620px !important;
+                      }
+                  </style>
+                <![endif]-->`,
+      }}
+    />
   </Head>
 );
 
