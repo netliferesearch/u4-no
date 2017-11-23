@@ -55,7 +55,11 @@ export default class PdfViewer extends Component {
     } else {
       const windowWidth = window.innerWidth;
       // let's make the pdf slightly narrower than the fullwidth window
-      this.setState({ pdfWidth: windowWidth - 50 });
+      if (windowWidth > 1000) {
+        this.setState({ pdfWidth: 1000 });
+      } else {
+        this.setState({ pdfWidth: windowWidth - 50 });
+      }
     }
   }
 
