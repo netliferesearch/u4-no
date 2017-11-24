@@ -1,15 +1,15 @@
 {
   "presets": [
-    "next/babel",
-    {
-      "env": {
-        "modules": false,
-        "debug": false,
-        "useBuiltIns": false,
+    [
+      "env",
+      {
         "targets": {
           "browsers": ["last 2 versions", "ie >= 10"]
-        }
+        },
+        "userBuiltIns": true,
+        "debug": false
       }
-    }
+    ],
+    "next/babel"
   ]
 }
