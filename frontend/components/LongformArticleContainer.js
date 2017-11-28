@@ -81,6 +81,7 @@ const LongFormArticleContainer = (props) => {
           />
         </div>
       )}
+
       {!isArticleMenuOpen && (
         <article className="u-relative">
           {_type === 'publication' &&
@@ -89,30 +90,31 @@ const LongFormArticleContainer = (props) => {
           <span id="js-top" />
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
-            {_type === 'publication' &&
-              props.featuredImage &&
-              props.featuredImage.asset.url && (
-                <div className="c-hero">
-                  <div
-                    className="c-hero-image"
-                    style={{
-                      backgroundImage: `url(${props.featuredImage.asset.url})`,
-                    }}
-                  />
-                  <div className="c-hero-bg" />
-                  <div className="c-hero-sideText">
-                    {props.featuredImage.credit ? (
-                      <a href={props.featuredImage.sourceUrl}>{props.featuredImage.credit}</a>
-                    ) : null}
-                  </div>
-                  <div className="c-hero-header">
-                    <PublicationArticleHeader
-                      className="c-hero__grid-container__content links-wrapper-dark-background"
-                      {...props}
-                    />
-                  </div>
+            {_type === 'publication' && (
+              <div className="c-hero">
+                <div
+                  className="c-hero-image"
+                  style={{
+                    backgroundImage: `url(${props.featuredImage &&
+                      props.featuredImage.asset &&
+                      props.featuredImage.asset.url})`,
+                    backgroundColor: '#0079CF',
+                  }}
+                />
+                <div className="c-hero-bg" />
+                <div className="c-hero-sideText">
+                  {props.featuredImage && props.featuredImage.credit ? (
+                    <a href={props.featuredImage.sourceUrl}>{props.featuredImage.credit}</a>
+                  ) : null}
                 </div>
-              )}
+                <div className="c-hero-header">
+                  <PublicationArticleHeader
+                    className="c-hero__grid-container__content links-wrapper-dark-background"
+                    {...props}
+                  />
+                </div>
+              </div>
+            )}
           </div>
           {_type === 'publication' && (
             <div className="c-longform-grid">

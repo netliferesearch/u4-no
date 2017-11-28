@@ -44,15 +44,17 @@ const LegacyPublicationContainer = (props) => {
       <article className="u-relative">
         {BreadCrumbComponent && BreadCrumbComponent}
         <div className="c-hero">
-          {featuredImage.asset &&
-            props.featuredImage.asset.url && (
-              <div
-                className="c-hero-image"
-                style={{
-                  backgroundImage: `url(${featuredImage.asset.url})`,
-                }}
-              />
-            )}
+          {
+            <div
+              className="c-hero-image"
+              style={{
+                backgroundImage: `url(${props.featuredImage &&
+                  props.featuredImage.asset &&
+                  props.featuredImage.asset.url})`,
+                backgroundColor: '#0079CF',
+              }}
+            />
+          }
           <div className="c-hero-bg" />
           <div className="c-hero-header">
             <PublicationArticleHeader
