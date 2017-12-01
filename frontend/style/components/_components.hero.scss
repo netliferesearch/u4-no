@@ -1,4 +1,27 @@
+
+
 .c-hero {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 $spacing-small;
+}
+
+.c-hero-image {
+  overflow: hidden;
+  height: 300px;
+  height: 40vh;
+  background-size: cover;
+}
+
+.c-hero-header{
+  padding: $spacing 0;
+}
+
+@supports (display: grid) {
+.c-hero {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: 20px auto auto auto 1fr auto auto auto 20px;
   grid-template-rows: 40vh 20vh auto;
@@ -18,6 +41,7 @@
   grid-column: 1 / 7;
   grid-row: 1 / 3;
   background-size: cover;
+  height: 100%;
 }
 
 .c-hero-bg {
@@ -48,4 +72,5 @@
     padding: $spacing-large 0;
     grid-column: 5 / 6;
   }
+}
 }

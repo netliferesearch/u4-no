@@ -3,6 +3,9 @@
 */
 .c-longform-grid,
 .c-longform-grid-sub-div > div {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 $spacing-small;
 }
 .c-longform-grid__standard {
 }
@@ -10,7 +13,9 @@
 @supports (display: grid) {
   .c-longform-grid,
   .c-longform-grid-sub-div > div {
+    max-width: 100%;
     @include mq($from: tablet) {
+
       display: grid;
       padding: 0;
       grid-template-columns: 20px auto auto auto 1fr auto auto auto 20px;

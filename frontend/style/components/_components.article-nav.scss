@@ -136,12 +136,15 @@
   display: block;
   top: $spacing-large;
   bottom: 0;
+  right: 0;
   height: calc(100%-$spacing-large);
   padding-bottom: $spacing-large;
   overflow-y: auto;
   align-items: center;
-
   .c-article-nav-list__arrowup {
     opacity: 1;
+  }
+  @include mq($until: 1300px) {
+    display: none;
   }
 }
