@@ -27,17 +27,6 @@ const HeadComponent = ({
     <link rel="icon" type="image/png" href="/static/favicon.png" />
 
     <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-    <div
-      dangerouslySetInnerHTML={{
-        __html: `<!--[if IE]>
-                  <style>
-                      .c-longform-grid {
-                        max-width: 620px !important;
-                      }
-                  </style>
-                <![endif]-->`,
-      }}
-    />
   </Head>
 );
 
