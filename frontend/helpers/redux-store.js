@@ -8,11 +8,11 @@ import queryString from 'query-string';
 const replaceWindowHash = (hashValue) => {
   if (typeof window === 'undefined') {
     // do nothing
-  } else if (history.pushState) {
+  } else if (history.replaceState) {
     // update hash without page jumps,
     // courtesy of https://stackoverflow.com/a/14690177
     const newHash = hashValue ? `#${hashValue}` : window.location.pathname;
-    history.pushState(null, null, newHash);
+    history.replaceState(null, null, newHash);
   } else {
     const newHash = hashValue ? `#${hashValue}` : '';
     window.location.hash = newHash;
@@ -34,15 +34,14 @@ const addQueryParams = (queryParams) => {
       return acc;
     }, {});
   const currentParams = queryString.parse(location.search);
-  const newQueryString = queryString.stringify(
-    Object.assign(currentParams, nullifyFalsyValues(queryParams)),
-  );
+  const newQueryString = queryString.stringify(Object.assign(currentParams, nullifyFalsyValues(queryParams)));
   // If it's a modern browser we can manipulate url without triggering reloading
   // source: https://stackoverflow.com/a/19279428
-  if (history.pushState) {
-    const newUrl = `${window.location.protocol}//${window.location.host}${window.location
-      .pathname}?${newQueryString}`;
-    window.history.pushState({ path: newUrl }, '', newUrl);
+  if (history.replaceState) {
+    const newUrl = `${window.location.protocol}//${window.location.host}${
+      window.location.pathname
+    }?${newQueryString}`;
+    window.history.replaceState({ path: newUrl }, '', newUrl);
   } else {
     location.search = newQueryString;
   }
