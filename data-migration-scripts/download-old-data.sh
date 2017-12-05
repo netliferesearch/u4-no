@@ -7,4 +7,6 @@ echo 'Downloading publications'
 curl http://www.u4.no/partner/admin/sanity/publications.cfm > publications.ndjson
 echo 'Downloading resources'
 curl http://www.u4.no/partner/admin/sanity/resources.cfm > resources.ndjson
+echo 'Downloading terms'
+curl http://www.u4.no/partner/admin/sanity/terms.cfm > terms.ndjson
 echo 'Finished downloading'

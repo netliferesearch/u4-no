@@ -58,5 +58,5 @@ export default DataLoader(ServicePage, {
       '{ "service": *[_type == "frontpage" && slug.current == "helpdesk"][0]{title, longTitle, slug, lead, _id, "sections": sections, "featuredImage": featuredImage.asset->url}}',
     param: { slug },
   }),
-  materializeDepth: 4,
+  materializeDepth: 5,
 });

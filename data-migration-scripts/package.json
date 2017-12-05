@@ -12,8 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@sanity/client": "^0.108.0",
+    "@sanity/client": "^0.118.0",
     "bluebird": "^3.5.1",
+    "can-ndjson-stream": "^0.1.6",
     "dotenv": "^4.0.0",
     "eslint": "^4.5.0",
     "eslint-config-airbnb": "^15.1.0",

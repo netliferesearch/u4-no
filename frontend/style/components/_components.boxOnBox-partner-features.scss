@@ -3,8 +3,7 @@
   font-weight: 300;
   font-family: $font-sans;
   color: $white-on-blue;
-  @include inuit-font-size($font-size-small, $font-size-large)
-  @include mq($from: tablet) {
+  @include inuit-font-size($font-size-small, $font-size-large) @include mq($from: tablet) {
     margin-right: auto;
     margin-left: auto;
     max-width: 1100px;
@@ -24,14 +23,14 @@
     margin-left: $spacing-large;
   }
   p {
-    @include inuit-font-size($font-size-large, $line-height-normal);
-    font-weight: 300;
+    @include inuit-font-size(26px, $line-height-normal);
+    font-weight: 400;
   }
 }
 .c-boxOnBox-partner-features__right {
   text-align: center;
   background: $brand-dark;
-  color:  $white;
+  color: $white;
   margin: 0;
   z-index: 0;
   margin-top: -$spacing-large;
@@ -55,7 +54,7 @@
       display: block;
       border: none;
       color: $brand-dark;
-      border-bottom: 1px solid rgba($brand-dark, .1);
+      border-bottom: 1px solid rgba($brand-dark, 0.1);
       padding: $spacing 0;
       &:after {
         content: '';
@@ -63,7 +62,7 @@
         width: 20px;
         height: 20px;
         background: url('/static/arrowright.svg') no-repeat;
-        float:right;
+        float: right;
         margin-top: $spacing-small;
       }
 
@@ -113,7 +112,7 @@
   }
 }
 
-@supports(display:grid) {
+@supports (display: grid) {
   .c-boxOnBox-partner-features {
     @include mq($from: tablet) {
       margin-right: auto;
