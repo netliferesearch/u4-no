@@ -17,7 +17,6 @@ import courseType from './courseType';
 import course from './course';
 import service from './service';
 import boxOnBox from './boxOnBox';
-import workshop from './workshop';
 import resource from './resource';
 import frontpage from './frontpage';
 import file from './file';
@@ -27,28 +26,27 @@ import event from './event';
 export default createSchema({
   name: 'default',
   types: [
-    funkyTable,
     frontpage,
-    nugget,
     topics,
-    person,
     publication,
-    publicationType,
+    article,
+    event,
+    course,
+    person,
+    institution,
     term,
+    nugget,
     keyword,
+    resource,
+    publicationType,
     blurb,
     pullQuote,
     urlWithMetadata,
-    article,
-    institution,
     courseType,
-    course,
     service,
-    workshop,
     richDate,
-    resource,
     file,
     articleType,
-    event,
+    funkyTable,
   ]
 })
