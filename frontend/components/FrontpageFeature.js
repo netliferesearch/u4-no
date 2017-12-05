@@ -71,7 +71,7 @@ class FrontpageFeature extends Component {
               </ul>
             ) : null}
             <a className="c-topic-section__cta" href="/topics">
-              View all topics &nbsp;<ArrowRight />
+              View all {topics.length} topics &nbsp;<ArrowRight />
             </a>
             {false && (
               <button {...classes('btn')} onClick={this.triggerToggle}>

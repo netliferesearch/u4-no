@@ -5,7 +5,7 @@
   color: $brand-dark;
   text-align: center;
   @include mq($from: tablet) {
-    margin: $spacing-huge auto $spacing-huge;
+    margin: $spacing-huge auto $spacing-large;
     @include inuit-font-size(26px, 1.4em);
   }
 }
@@ -16,14 +16,21 @@
     margin: $spacing-huge*2 auto;
   }
 }
-.c-topic-section__cta {
+a.c-topic-section__cta {
   @include inuit-font-size($font-size-small, 1.5em);
   text-align: center;
   max-width: 700px;
-  a,
-  a:hover {
+  color: $white;
+  text-decoration: none;
+  border: none;
+
+  &:hover,
+  &:visited {
     border: none;
-    color: $brand-dark;
+    color: $white;
+  }
+  &:hover {
+    border-bottom: 1px solid $white;
   }
   svg,
   svg path {
