@@ -1,18 +1,15 @@
 
 .c-newsletter {
-  display: grid;
-  grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
   margin-bottom: $spacing-large;
   margin-top: $spacing-large;
+  display: flex;
 }
 
 .c-newsletter__content {
+  flex-grow: 10;
   background: $brand-lightest;
   padding: $spacing $spacing-small;
-
-  grid-column: 1 / 9;
   @include mq($from: tablet) {
-    grid-column: 1 / 10;
     margin-left: -$spacing;
     padding: $spacing-huge $spacing-large $spacing-huge $spacing-huge;
   }
@@ -55,32 +52,60 @@
   font-weight: 400;
 }
 .c-newsletter__to-top {
-  display: flex;
+  width: 70px;
   padding: 0 $spacing;
   writing-mode: vertical-lr;
   text-align:center;
   font-family: $font-sans;
   transition: all .3s ease-out;
-  grid-column: 9 / 11;
   @include mq($from: tablet) {
-    grid-column: 10 / 11;
   }
+
   a {
     border: 0;
     color: $brand-dark;
     cursor: pointer;
-  }
-  &:hover {
-    .c-newsletter__to-top-arrow {
-      transform: translateY(-10px) rotate(-90deg);
-    }
   }
 }
 .c-newsletter__to-top-arrow {
   path {
     fill: $brand-dark;
   }
-  transform: rotate(-90deg);
+  writing-mode: vertical-lr;
+  transform: translateY(-5px) rotate(-270deg);
   margin-bottom: $spacing-small;
   transition: transform .15s ease-out;
+}
+
+@supports(display:grid) {
+ .c-newsletter {
+   display: grid;
+   grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+ }
+
+ .c-newsletter__content {
+   grid-column: 1 / 9;
+   @include mq($from: tablet) {
+     grid-column: 1 / 10;
+   }
+ }
+ .c-newsletter__to-top {
+   grid-column: 9 / 11;
+   @include mq($from: tablet) {
+     grid-column: 10 / 11;
+   }
+   &:hover {
+     .c-newsletter__to-top-arrow {
+       transform: translateY(-10px) rotate(-90deg);
+     }
+   }
+ }
+   .c-newsletter__to-top-arrow {
+     path {
+       fill: $brand-dark;
+     }
+     transform: rotate(-90deg);
+     transition: transform .15s ease-out;
+   }
+
 }

@@ -12,6 +12,10 @@
     width: 50%;
   }
 }
+
+.c-mosaic_item:nth-child(1) {
+  display:none; }
+
 @supports(display:grid) {
   .c-mosaic {
     display: grid;
@@ -194,6 +198,7 @@
 }
 .c-mosaic_item:nth-child(4n + 5) {
   border: solid 1px $brand-dark;
+  background-color: $white;
   color: $brand-dark;
 }
 
