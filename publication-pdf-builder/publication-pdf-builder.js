@@ -1,8 +1,8 @@
 require('dotenv').config();
 const axios = require('axios');
 const sanityClient = require('@sanity/client');
-const puppeteer = require('puppeteer');
 const fs = require('fs');
+const pdfConfig = require('./pdfConfig');
 
 const client = sanityClient({
   projectId: '1f1lcoov',
@@ -10,26 +10,7 @@ const client = sanityClient({
   token: process.env.SANITY_TOKEN,
 });
 const buildPDF = async ({ url, title = 'output.pdf' }) => {
-  const pdfDataBuffer = await axios({
-    url: 'https://docraptor.com/docs',
-    method: 'POST',
-    encoding: null, // IMPORTANT! This produces a binary body response instead of text
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    data: {
-      user_credentials: process.env.DOCRAPTOR_API_KEY,
-      doc: {
-        document_url: `${url}/pdf`,
-        type: 'pdf',
-        test: true,
-        // prince_options: {
-        //   media:   "screen",          // use screen styles instead of print styles
-        //   baseurl: "http://hello.com" // URL to use for generating absolute URLs for assets from relative URLs
-        // }
-      },
-    },
-  });
+  const pdfDataBuffer = await axios(pdfConfig({ url }));
   return pdfDataBuffer;
 };
 
