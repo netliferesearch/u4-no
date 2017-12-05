@@ -1,4 +1,5 @@
 require('dotenv').config();
+const axios = require('axios');
 const sanityClient = require('@sanity/client');
 const puppeteer = require('puppeteer');
 const fs = require('fs');
@@ -8,29 +9,27 @@ const client = sanityClient({
   dataset: 'production',
   token: process.env.SANITY_TOKEN,
 });
-
 const buildPDF = async ({ url, title = 'output.pdf' }) => {
-  const browser = await puppeteer.launch({
-    headless: true,
-    ignoreHTTPSErrors: true,
-    args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
-  });
-  const page = await browser.newPage();
-  await page.goto(url, { options: { waitUntil: 'networkidle2' } });
-  const pdfDataBuffer = await page.pdf({
-    path: title,
-    format: 'A4',
-    displayHeaderFooter: true,
-    printBackground: true,
-    scale: 0.7,
-    margin: {
-      top: '1cm',
-      bottom: '1cm',
-      left: '1cm',
-      right: '1cm',
+  const pdfDataBuffer = await axios({
+    url: 'https://docraptor.com/docs',
+    method: 'POST',
+    encoding: null, // IMPORTANT! This produces a binary body response instead of text
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: {
+      user_credentials: process.env.DOCRAPTOR_API_KEY,
+      doc: {
+        document_url: `${url}/pdf`,
+        type: 'pdf',
+        test: true,
+        // prince_options: {
+        //   media:   "screen",          // use screen styles instead of print styles
+        //   baseurl: "http://hello.com" // URL to use for generating absolute URLs for assets from relative URLs
+        // }
+      },
     },
   });
-  await browser.close();
   return pdfDataBuffer;
 };
 
@@ -63,9 +62,7 @@ const uploadPDF = async ({ targetDocument, pdfFilename }) => {
 
 async function main() {
   console.log('Starting work');
-  const docs = await client.fetch(
-    '*[_type in ["publication"] && _id == "f62b433d-9bbf-4bcb-8a4d-9aed37e5afcd" ]',
-  );
+  const docs = await client.fetch('*[_type in ["publication"] && _id == "f62b433d-9bbf-4bcb-8a4d-9aed37e5afcd" ]');
 
   /* eslint-disable no-restricted-syntax, no-await-in-loop */
   for (const doc of docs) {
