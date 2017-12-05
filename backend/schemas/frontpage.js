@@ -159,9 +159,6 @@ export default {
                   type: 'reference',
                   to: [
                     {
-                      type: 'workshop'
-                    },
-                    {
                       type: 'event'
                     }
                   ]

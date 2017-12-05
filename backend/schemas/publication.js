@@ -217,6 +217,23 @@ export default {
             }
           },
           image,
+          {
+            name: 'vimeo',
+            title: 'Vimeo video',
+            type: 'object',
+            fields: [
+              {
+                name: 'src',
+                title: 'URL to the vimeo video (not the whole embed code)',
+                type: 'string',
+              },
+              {
+                name: 'title',
+                title: 'Title',
+                type: 'string',
+              }
+            ]
+          },
         ]
       },
       {
