@@ -217,6 +217,24 @@ export default {
             }
           },
           image,
+          {
+            name: 'vimeo',
+            title: 'Vimeo video',
+            description: 'Paste URL to the vimeo video (not the whole embed code)',
+            type: 'object',
+            fields: [
+              {
+                name: 'src',
+                title: 'URL',
+                type: 'string',
+              },
+              {
+                name: 'title',
+                title: 'Title',
+                type: 'string',
+              }
+            ]
+          },
         ]
       },
       {
