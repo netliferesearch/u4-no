@@ -6,19 +6,12 @@ import LineChart from './LineChart';
 import BarChart from './BarChart';
 import findFootnotes from './findFootnotes';
 import { PullQuote, Figure } from './';
+import footnoteSerializer from './footnoteSerializer';
 
 const classes = BEMHelper({
   name: 'longform-grid',
   prefix: 'c-',
 });
-const footnoteSerializer = {
-  types: {
-    block: ({ node, children }) => {
-      const style = node.style || 'normal';
-      return <span>{children}</span>;
-    },
-  },
-};
 
 function printSerializers(blocks) {
   const footnotes = findFootnotes(blocks);
@@ -115,13 +108,13 @@ function printSerializers(blocks) {
 
         return null;
       },
-      footnote: ({ children, markKey = '' }) =>(
+      footnote: ({ children, markKey = '' }) => (
         <span>
           {children}
           <span className="fn">
             {markKey && (
-            <BlockContent blocks={footnotes[markKey]} serializers={footnoteSerializer} />
-              )}
+              <BlockContent blocks={footnotes[markKey]} serializers={footnoteSerializer} />
+            )}
           </span>
         </span>
       ),
