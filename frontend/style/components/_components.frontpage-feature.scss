@@ -33,7 +33,7 @@
 .c-frontpage-feature__heading {
   @include inuit-font-size($font-size-tiny, $line-height-tiny);
   margin: 0 0 $spacing;
-  font-weight: 300;
+  font-weight: 400;
 }
 .c-frontpage-feature__list {
   list-style: none;
@@ -51,7 +51,7 @@
     padding-top: 0;
     @include inuit-font-size($font-size-large, $line-height-large);
   }
-  font-weight: 300;
+  font-weight: 400;
   position: relative;
   margin-bottom: $spacing-small;
 

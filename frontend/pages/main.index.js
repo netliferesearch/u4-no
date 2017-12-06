@@ -38,7 +38,7 @@ const Frontpage = ({ frontPage = {}, topics = {}, url }) => (
 
     <section className="o-wrapper-medium u-margin-bottom-huge">
       <h2 className="c-topic-section__title">
-        Browse our handpicked anti-corruption publications, insights and ideas.
+        Browse our handpicked anti-corruption <br /> publications, insights and ideas.
       </h2>
 
       <Mosaic resources={frontPage.resources} />
@@ -52,22 +52,24 @@ const Frontpage = ({ frontPage = {}, topics = {}, url }) => (
     <section>
       <BoxOnBoxPartnerFeatures />
       <h2 className="c-topic-section__cta u-padding-bottom">
-        <a href="/search">
+        <a href="/u4-partner-agencies">
           See all our partners &nbsp;<ArrowRight />
         </a>
       </h2>
     </section>
 
-    <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
-      <div className="c-introduction-text">
-        <h2>
-          Looking for someone?<br />
-          <a href="/the-team">
-            The whole U4 team &nbsp;<ArrowRight />
-          </a>
-        </h2>
-      </div>
-    </section>
+    {false && (
+      <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
+        <div className="c-introduction-text">
+          <h2>
+            Looking for someone?<br />
+            <a href="/the-team">
+              The whole U4 team &nbsp;<ArrowRight />
+            </a>
+          </h2>
+        </div>
+      </section>
+    )}
 
     <Newsletter />
 

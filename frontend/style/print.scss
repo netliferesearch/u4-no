@@ -17,7 +17,7 @@
 @import '../node_modules/inuitcss/generic/generic.shared';
 
 // ELEMENTS
-@import '../node_modules/inuitcss/elements/elements.page';
+//@import '../node_modules/inuitcss/elements/elements.page';
 @import '../node_modules/inuitcss/elements/elements.headings';
 @import 'elements/elements.body';
 @import 'elements/elements.figure';
@@ -38,7 +38,8 @@
 
 .c-article-header__language,
 .c-article-header__download,
-.c-top-bar, .c-footer {
+.c-top-bar,
+.c-footer {
   display: none;
 }
 
@@ -58,24 +59,12 @@ body {
   margin-bottom: 2cm;
   margin-inside: 4cm;
   margin-outside: 4cm;
-
-  @footnotes {
-    border-top: solid black thin;
-    padding-top: 11pt;
-    font-size: 11pt;
-  }
 }
 .page2 {
   page-break-before: always;
   display: block;
   page: page2;
-}
-@page page2 {
-  @top { }
-  @bottom { }
-}
 
-.page2 {
   p {
     font-family: $font-sans;
     margin: 0;
@@ -95,7 +84,15 @@ body {
     margin-top: 0.2cm;
   }
 }
-.page2-ccimage{
+@page page2 {
+  @top {
+  }
+  @bottom {
+  }
+}
+.page2 {
+}
+.page2-ccimage {
   height: 0.6cm;
   width: auto;
 }
@@ -107,19 +104,20 @@ body {
   counter-reset: page 1;
 }
 @page table-of-contents {
-  @top { }
+  @top {
+  }
   @bottom {
-      content: counter(page, lower-alpha);
+    content: counter(page, lower-alpha);
   }
 }
 
 .contents__list-item a[href]::after {
-  content: leader(" ") target-counter(attr(href), page);
+  content: leader(' ') target-counter(attr(href), page);
   margin-left: 1cm;
   position: absolute;
   right: 0;
   top: 0;
-  }
+}
 
 .body {
   display: block;
@@ -133,16 +131,17 @@ p {
   orphans: 2;
   widows: 2;
 }
-
-@page main {
-  @top {
-    content: string(publication-type-and-number);
-  }
-  @bottom {
-      content: "Page " counter(page) " of " counter(pages);
-  }
+.fn {
+  font-size: 9pt;
+  counter-increment: footnote;
+  display: prince-footnote;
+  footnote-style-position: inside;
+  float: footnote;
 }
-.c-print__publication-type-and-number{
+p {
+  prince-footnote-policy: keep-with-block;
+}
+.c-print__publication-type-and-number {
   string-set: publication-type-and-number content();
 }
 .body h2 {
@@ -154,13 +153,9 @@ a {
   text-decoration: none;
 }
 
-.fn {
-  float: footnote;
-}
-
-.contents__list{
+.contents__list {
   list-style-type: none;
-  margin: 0 0 0.5cm 0 ;
+  margin: 0 0 0.5cm 0;
   padding: 0;
   font-family: $font-sans;
   h2 {
@@ -168,8 +163,8 @@ a {
   }
 }
 
-.contents__list-item{
-  margin: 0.2cm 0 ;
+.contents__list-item {
+  margin: 0.2cm 0;
   padding: 0;
   font-size: 12pt;
   line-height: 20pt;
@@ -187,24 +182,21 @@ a {
   margin-left: $spacing;
 }
 
-
-.c-print__front-logo-top{
+.c-print__front-logo-top {
   position: absolute;
   top: -1.5cm;
   left: -2cm;
 }
 
-.c-print__float-right{
+.c-print__float-right {
   float: right;
   margin-top: 20px;
   margin-right: -2cm;
 }
 
-.c-print__float-left{
+.c-print__float-left {
   float: left;
-
 }
-
 
 .c-print__front-image {
   width: 19.5cm;
@@ -213,13 +205,12 @@ a {
   margin-left: -4cm;
   padding-top: 0.5cm;
   z-index: -10;
-  figcaption{
+  figcaption {
     font-size: 10pt;
     color: grey;
     text-align: right;
   }
 }
-
 
 .c-print__front-text {
   //border: solid 0.1cm $brand-dark;
@@ -253,7 +244,7 @@ a {
   @include inuit-font-size($font-size-large, $line-height-normal);
 }
 
-.c-print__meta{
+.c-print__meta {
   color: $brand-dark;
   font-family: $font-sans;
   a {
@@ -263,7 +254,7 @@ a {
   }
 }
 
-.c-print__meta-inline{
+.c-print__meta-inline {
   display: inline-block;
   margin: 0;
   padding-right: $spacing-tiny;
@@ -321,106 +312,17 @@ figure {
 .c-toggle-block__title {
   display: none;
 }
-
-
-
-/*
-// SETTINGS
-@import 'settings/settings.config';
-@import 'settings/settings.core';
-@import 'settings/settings.global';
-@import 'settings/settings.colors';
-@import 'settings/settings.typography';
-
-// TOOLS
-@import '../node_modules/inuitcss/tools/tools.font-size';
-@import '../node_modules/inuitcss/tools/tools.clearfix';
-@import '../node_modules/sass-mq/mq';
-@import 'tools/tools.aliases';
-
-// GENERIC
-@import '../node_modules/inuitcss/generic/generic.box-sizing';
-@import '../node_modules/inuitcss/generic/generic.normalize';
-@import '../node_modules/inuitcss/generic/generic.shared';
-
-// ELEMENTS
-@import '../node_modules/inuitcss/elements/elements.page';
-@import '../node_modules/inuitcss/elements/elements.headings';
-@import 'elements/elements.body';
-@import 'elements/elements.figure';
-@import 'elements/elements.headings';
-@import 'elements/elements.links';
-@import 'elements/elements.input';
-
-@import '../node_modules/inuitcss/utilities/utilities.widths';
-@import '../node_modules/inuitcss/utilities/utilities.headings';
-@import '../node_modules/inuitcss/utilities/utilities.spacings';
-@import 'utilities/utilities.print';
-@import 'utilities/utilities.typography';
-@import 'utilities/utilities.general';
-
-.c-article-header__language,
-.c-article-header__download,
-.c-top-bar {
-  display: none;
-}
-
-.contents {
-  display: block;
-  page: table-of-contents;
-  counter-reset: page 1;
-}
-
-@page table-of-contents {
-    @top {
-      content: "Table of Contents";
-    }
-
-    a::after { content: leader(".") target-counter(attr(href), page); }
-}
-
-.body {
-  display: block;
-  page: main;
-  counter-reset: page 1;
-}
 @page main {
-  @top { content: string(chapter-title); }
+  @top {
+    content: string(publication-type-and-number);
+  }
   @bottom {
-      content: counter(page);
+    content: 'Page ' counter(page) ' of ' counter(pages);
+  }
+  @footnote {
+    border-top: solid black thin;
+    padding-top: 11pt;
+    margin-top: 4pt;
+    bottom: 0;
   }
 }
-.body h2 {
-  string-set: chapter-title content();
-}
-
-a[href]::after {
-  content: " [See page " target-counter(attr(href), page) "]";
-}
-
-
-@page {
-    @bottom { content: counter(page); }
-  }
-
-  @page {
-    size: A4;
-    margin-bottom: 3cm;
-    font-size: 11pt;
-}
-h1, h2 {
-    page-break-before: always;
-}
-p {
-  orphans: 2;
-  widows: 2;
-}
-.fn {
-  float: footnote;
-}
-@footnotes {
-  border-top: solid black thin;
-  padding-top: 8pt;
-}
-
-*/

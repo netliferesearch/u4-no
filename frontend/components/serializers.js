@@ -5,14 +5,22 @@ import ReactPlayer from 'react-player';
 import FunkyTable from './FunkyTable';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
-import { Figure, PullQuote, BoxOnBox, BoxOnImage, WorkshopMosaic, Feature, SimpleMosaic, Mosaic } from './';
+import {
+  Figure,
+  PullQuote,
+  BoxOnBox,
+  BoxOnImage,
+  WorkshopMosaic,
+  Feature,
+  SimpleMosaic,
+  Mosaic,
+} from './';
 import { ArrowRight } from './icons';
 
 const classes = BEMHelper({
   name: 'longform-grid',
   prefix: 'c-',
 });
-
 
 const serializers = {
   types: {
@@ -36,25 +44,26 @@ const serializers = {
       return <FunkyTable rows={rows} title={title} />;
     },
     heading: ({ node: { headingValue = '' } }) => (
-      <h2 className="c-topic-section__title u-margin-bottom-none">
-        {headingValue}
-      </h2>
+      <h2 className="c-topic-section__title u-margin-bottom-none">{headingValue}</h2>
     ),
     cta: ({ node: { ctaValue = '', ctaURL = '' } }) => (
       <h2 className="c-topic-section__cta">
-        <a href={ctaURL}>{ctaValue} &nbsp;<ArrowRight /></a>
+        <a href={ctaURL}>
+          {ctaValue} &nbsp;<ArrowRight />
+        </a>
       </h2>
     ),
-    textBlock: ({ node: { text = false } }) => (text &&
-      <div className="o-wrapper-inner c-article u-margin-top u-margin-bottom-large">
-        <BlockContent blocks={text} serializers={serializers} />
-      </div>
-    ),
+    textBlock: ({ node: { text = false } }) =>
+      text && (
+        <div className="o-wrapper-inner c-article u-margin-top u-margin-bottom-large">
+          <BlockContent blocks={text} serializers={serializers} />
+        </div>
+      ),
     twoColumns: ({ node: { textLeft, textRight } }) => (
       <div className="o-wrapper-inner">
         <div className="c-columns c-columns--two">
           <div className="c-columns__item c-columns--two__item">
-            <BlockContent blocks={textLeft} serializers={serializers} />
+            <BlockContent blocks={textLeft} serializers={serializers} />
           </div>
           <div className="c-columns__item c-columns--two__item">
             <BlockContent blocks={textRight} serializers={serializers} />
@@ -67,9 +76,20 @@ const serializers = {
         <BoxOnBox left={textLeft} right={textRight} />
       </section>
     ),
-    HelpdeskTeam: ({ node: { textRight, img, personLeft, personRight } }) => (
+    HelpdeskTeam: ({
+      node: {
+        textRight, img, personLeft, personRight,
+      },
+    }) => (
       <section className="c-topic-section">
-        <BoxOnImage wide helpdesk text={textRight} image={img} personsLeft={personLeft} personsRight={personRight} />
+        <BoxOnImage
+          wide
+          helpdesk
+          text={textRight}
+          image={img}
+          personsLeft={personLeft}
+          personsRight={personRight}
+        />
       </section>
     ),
     boxOnImageRef: ({ node: { block, img } }) => (
@@ -95,9 +115,7 @@ const serializers = {
     vimeo: ({ node: { src, title } }) => (
       <div className="u-bg-light-blue">
         <div className="o-wrapper o-layout--center">
-          <h2 className="c-topic-section__title u-margin-bottom-none">
-            {title}
-          </h2>
+          <h2 className="c-topic-section__title u-margin-bottom-none">{title}</h2>
           <div className="u-video">
             <ReactPlayer
               controls
@@ -117,9 +135,9 @@ const serializers = {
     features: ({ node: { featureArray } }) => (
       <section className="o-wrapper c-topic-section">
         <div className="c-features">
-          {featureArray.map(item =>
-            <Feature title={item.featureText} iconUrl={item.image.asset.url} />,
-          )}
+          {featureArray.map(item => (
+            <Feature title={item.featureText} iconUrl={item.image.asset.url} />
+          ))}
         </div>
       </section>
     ),
@@ -135,7 +153,11 @@ const serializers = {
       }
 
       if (style === 'blockquote') {
-        return <div {...classes('large-right')}><blockquote>{children}</blockquote></div>;
+        return (
+          <div {...classes('large-right')}>
+            <blockquote>{children}</blockquote>
+          </div>
+        );
       }
 
       return <p {...classes('standard')}>{children}</p>;
@@ -155,15 +177,25 @@ const serializers = {
       if (props.mark.href) {
         if (props.mark.href.match(/#_ftn(\d+)/)) {
           const ref = props.mark.href.match(/#_ftn(\d+)/)[1];
-          return (<sup id={`fnref:${ref}`}>
-            <a href={`#fn:${ref}`} rel="footnote">{ref}</a>
-          </sup>);
+          return (
+            <sup id={`fnref:${ref}`}>
+              <a href={`#fn:${ref}`} rel="footnote">
+                {ref}
+              </a>
+            </sup>
+          );
         }
         if (props.mark.href.match(/#_ftnref(\d+)/)) {
           const ref = props.mark.href.match(/#_ftnref(\d+)/)[1];
-          return (<li className="c-footnote__item" id={`fn:${ref}`}>
-            {props.children}<a href={`#fnref:${ref}`} title="return to article"> ↩</a>
-          </li>);
+          return (
+            <li className="c-footnote__item" id={`fn:${ref}`}>
+              {props.children}
+              <a href={`#fnref:${ref}`} title="return to article">
+                {' '}
+                ↩
+              </a>
+            </li>
+          );
         }
 
         return <a href={props.mark.href}>{props.children}</a>;
@@ -171,10 +203,7 @@ const serializers = {
       console.log(`test${props}`);
       return null;
     },
-    footnote: (props) => {
-      console.log('footnote', props);
-      return <BlockContent serializers={serializers} blocks={props.mark.content} />;
-    },
+    footnote: ({ mark }) => <BlockContent serializers={serializers} blocks={mark.content} />,
   },
 };
 

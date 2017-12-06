@@ -4,8 +4,11 @@
  * to prevent using of quota when testing the service.
  * @param {*url} param0
  */
+require('dotenv').config();
+
+const token = process.env.DOCRAPTOR_API_KEY;
 const pdfConfig = ({ url = '', title = 'output' }) => ({
-  url: `https://${process.env.DOCRAPTOR_API_KEY}@docraptor.com/docs`,
+  url: `https://${token}@docraptor.com/docs`,
   method: 'POST',
   encoding: null, // IMPORTANT! This produces a binary body response instead of text
   headers: {
@@ -13,6 +16,7 @@ const pdfConfig = ({ url = '', title = 'output' }) => ({
   },
   data: {
     doc: {
+      user_credentials: token,
       document_url: `${url}/print`,
       type: 'pdf',
       name: title,

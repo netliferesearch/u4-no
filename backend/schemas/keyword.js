@@ -8,11 +8,6 @@ export default {
       type: 'string'
     },
     {
-      title: 'Does this keyword represent a country?',
-      name: 'isCountry',
-      type: 'boolean'
-    },
-    {
       name: "category",
       title: "Category",
       type: "string",
@@ -23,7 +18,25 @@ export default {
           { title: 'Region', value: 'region'},
         ],
       },
-      layout: "dropdown",
+      layout: "radio",
+    },
+  ],
+  orderings: [
+    {
+      title: 'Keywords',
+      name: 'keywordsAsc',
+      by: [
+        { field: 'category', direction: 'desc' },
+        { field: 'keyword', direction: 'asc'}
+        ],
+    },
+    {
+      title: 'Countries',
+      name: 'firstNameAsc',
+      by: [
+        { field: 'category', direction: 'asc' },
+        { field: 'keyword', direction: 'asc'}
+        ],
     },
   ],
   preview: {
