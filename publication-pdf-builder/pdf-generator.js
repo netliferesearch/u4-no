@@ -1,6 +1,6 @@
 require('dotenv').config();
 const axios = require('axios');
-const pdfConfig = require('./pdfConfig');
+const { pdfConfig } = require('./pdfConfig');
 /**
  * Purpose: Receives publication url to render pdf from
  *
