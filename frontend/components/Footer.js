@@ -13,7 +13,7 @@ const classes = BEMHelper({
 });
 
 const Footer = ({ title }) => (
-  <footer {...classes()}>
+  <footer {...classes(null, null, 'o-wrapper-full-width')}>
     <div>
       <div {...classes('wrapper', null, 'o-wrapper')}>
         <div {...classes('item')}>

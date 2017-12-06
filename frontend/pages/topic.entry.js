@@ -126,7 +126,7 @@ const TopicEntry = ({
     </div>
 
     {advisors.length ? (
-      <div id="advisors" className="c-topic-section--lightblue">
+      <div id="advisors" className="c-topic-section--lightblue o-wrapper-full-width">
         <Team
           title={
             advisors.length > 1
