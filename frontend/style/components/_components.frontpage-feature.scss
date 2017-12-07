@@ -34,6 +34,7 @@
   @include inuit-font-size($font-size-tiny, $line-height-tiny);
   margin: 0 0 $spacing;
   font-weight: 400;
+  font-style: italic;
 }
 .c-frontpage-feature__list {
   list-style: none;

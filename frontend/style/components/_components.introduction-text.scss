@@ -5,7 +5,6 @@
   padding: 0 50px;
 
   h2 {
-    //font-size: 1.8rem;
     line-height: 1.5;
     @include inuit-font-size($font-size-normal, $line-height-normal );
     @include mq($from: tablet) {
