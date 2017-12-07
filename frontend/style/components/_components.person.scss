@@ -6,7 +6,7 @@
   }
   @include mq($from: wide) {
     width: 33%;
-    
+
   }
 }
 .c-person__item--light {
@@ -15,7 +15,6 @@
 
 .c-person__item-body {
   padding: $spacing-small;
-  font-weight: 300;
   font-family: $font-sans;
   background-repeat: no-repeat;
   background-position: top right;
@@ -97,7 +96,7 @@
   @include inuit-font-size($font-size-tiny);
   font-weight: 400;
   display: inline-block;
-  
+
 }
 .c-person__item-meta {
   margin-bottom: $spacing;
@@ -107,4 +106,20 @@
   margin-right: $spacing-small;
   display: inline-block;
   @include inuit-font-size($font-size-tiny);
+  svg {
+    transition: transform 0.2s ease-out;
+    transform: translateX(0px);
+    margin-left: $spacing-tiny;
+    padding-top: 2px;
+  }
+  svg path {
+
+    fill: currentColor;
+  }
+  &:hover {
+    border-bottom: none;
+    svg {
+      transform: translateX(10px);
+    }
+  }
 }

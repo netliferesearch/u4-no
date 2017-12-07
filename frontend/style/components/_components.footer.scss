@@ -26,9 +26,6 @@
   &:first-child {
     width: 100%;
   }
-  a {
-    border-bottom: none;
-  }
   @include mq($from: tablet) {
     &:first-child {
       width: auto;
@@ -40,6 +37,9 @@
 
 .c-footer__link {
   display: block;
+   &:hover {
+     border-bottom: none;
+   }
   svg {
   }
 }

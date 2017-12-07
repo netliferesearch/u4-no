@@ -22,6 +22,7 @@ a.c-top-bar__logo:visited {
 }
 
 .c-top-bar__menu {
+  color: $brand-light;
   list-style: none;
   display: flex;
   font-family: $font-sans;
@@ -35,6 +36,7 @@ a.c-top-bar__logo:visited {
 }
 .c-top-bar__menu--active {
   margin-top: -$spacing-tiny;
+    color: $brand-lighter;
   @include mq($from: tablet) {
     position: absolute;
     top: $spacing-large;
@@ -47,9 +49,13 @@ a.c-top-bar__logo:visited {
     background: none;
     border: none;
   }
-  color: $brand-main;
+  button {
+    letter-spacing: 0.6px;
+  }
+
+
   margin-right: $spacing-small;
-  padding: $spacing-tiny;
+  padding: $spacing-tiny $spacing-small;
 
   &:last-child {
     margin-right: 0;
@@ -71,7 +77,7 @@ a.c-top-bar__logo:visited {
 }
 
 .c-top-bar__menu-item--active {
-  background: $brand-medium;
+  background: $brand-main;
   color: $white;
-  padding: $spacing-tiny;
+  //padding: $spacing-tiny;
 }

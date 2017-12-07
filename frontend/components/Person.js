@@ -30,8 +30,8 @@ const Person = ({ person, linkLabel = 'Bio', light = true }) => (
         </div>
         {person.slug && person.bio ? (
           <Link to={`/the-team/${person.slug.current}`}>
-            <a>
-              <span {...classes('item-link')}>{linkLabel}</span> <ArrowRight />
+            <a {...classes('item-link')}>
+              <span >{linkLabel}</span> <ArrowRight />
             </a>
           </Link>
         ) : null}

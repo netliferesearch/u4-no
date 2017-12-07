@@ -10,19 +10,19 @@ a:visited {
 
 a:visited:hover {
   color: $brand-medium;
-  border-bottom: 1px solid rgba(9, 84, 167, 0.1);
+  border-bottom: 1px solid currentColor;
 }
 
 a:hover {
-  border-bottom: 1px solid rgba(0, 121, 207, 1);
+  border-bottom: 1px solid currentColor;
 }
 
 a:focus {
-  border-bottom: 1px solid rgba(0, 121, 207, 1);
+  border-bottom: 1px solid currentColor;
 }
 
 a:active {
-  border-bottom: 1px solid rgba(0, 121, 207, 1);
+  border-bottom: 1px solid rcurrentColor;
 }
 
 // Add this class when the links are on a dark background
@@ -39,7 +39,7 @@ a:active {
     border-bottom: 1px solid $grey;
   }
   a:hover {
-    border-bottom: 1px solid rgba(139, 223, 253, 1);
+    border-bottom: 1px solid currentColor;
   }
 }
 a.u-no-underline {
