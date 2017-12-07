@@ -8,10 +8,10 @@
 .c-newsletter__content {
   flex-grow: 10;
   background: $brand-lightest;
-  padding: $spacing $spacing-small;
+  padding: $spacing-large $spacing;
   @include mq($from: tablet) {
-    margin-left: -$spacing;
-    padding: $spacing-huge $spacing-large $spacing-huge $spacing-huge;
+    //margin-left: -$spacing;
+    padding: $spacing-huge*1.5 $spacing-large $spacing-huge $spacing-huge;
   }
 }
 .c-newsletter__title-wrapper {
@@ -19,6 +19,15 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid $brand-dark;
+  &:hover {
+    .c-newsletter__title {
+    color: $brand-light; }
+    .c-newsletter__title-arrow{
+    svg path {
+      fill: $brand-light;
+    }
+  }
+  }
 }
 .c-newsletter__title {
   color: $brand-dark;
@@ -31,31 +40,34 @@
     @include inuit-font-size($font-size-huge/1.5, $line-height-large );
   }
 
-  &:hover {
-    color: $brand-light;
-  }
 }
 
 .c-newsletter__title-arrow {
   padding: 0 $spacing-small $spacing-small;
   svg path {
     fill: $brand-dark;
+
   }
+
 }
 
 .c-newsletter__small-title {
   display: inline-block;
-  @include inuit-font-size($font-size-small, $line-height-normal );
+  @include inuit-font-size($font-size-tiny, $line-height-normal );
+  padding-bottom: $spacing-small;
   color: $brand-dark;
   margin: 0;
   font-family: $font-sans;
   font-weight: 400;
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-small, $line-height-normal );
+  }
 }
 .c-newsletter__to-top {
   width: 70px;
   padding: 0 $spacing;
   writing-mode: vertical-lr;
-  text-align:center;
+  text-align:right;
   font-family: $font-sans;
   transition: all .3s ease-out;
   @include mq($from: tablet) {
@@ -79,20 +91,20 @@
 
 @supports(display:grid) {
  .c-newsletter {
-   display: grid;
-   grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+   //display: grid;
+   //grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
  }
 
  .c-newsletter__content {
-   grid-column: 1 / 9;
+   //grid-column: 1 / 9;
    @include mq($from: tablet) {
-     grid-column: 1 / 10;
+     //grid-column: 1 / 10;
    }
  }
  .c-newsletter__to-top {
-   grid-column: 9 / 11;
+   //grid-column: 9 / 11;
    @include mq($from: tablet) {
-     grid-column: 10 / 11;
+     //grid-column: 10 / 11;
    }
    &:hover {
      .c-newsletter__to-top-arrow {
