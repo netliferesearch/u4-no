@@ -40,9 +40,6 @@ const Footer = ({ title }) => (
           5006 Bergen, Norway
         </div>
         <div {...classes('item')}>
-          <div {...classes('heading')} />
-        </div>
-        <div {...classes('item')}>
           <div {...classes('heading')}>Follow us</div>
           <a href="https://medium.com/u4-anti-corruption-resource-centre"><MediumLogo {...classes('some-icon')} />Medium</a><br />
           <a href="https://twitter.com/U4_ACRC"><TwitterLogo {...classes('some-icon')} />Twitter</a><br />
