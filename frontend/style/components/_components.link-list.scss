@@ -22,13 +22,22 @@
   }
 }
 .c-link-list__link {
+  border-bottom: none;
   color: $brand-lighter;
   &:visited {
     color: $brand-lighter;
   }
-  border: none;
+  &:hover {
+    color: $brand-lighter;
+    border-bottom: none;
+    }
+  &:visited:hover {
+    color: $brand-lighter;
+  }
+
 }
 .c-link-list__icon {
   margin-left: $spacing;
   transition: transform .15s ease-out;
+  transform: translateX(0px);
 }
