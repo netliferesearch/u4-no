@@ -70,7 +70,7 @@ class FrontpageFeature extends Component {
                 ))}
               </ul>
             ) : null}
-            <a className="c-topic-section__cta" href="/topics">
+            <a className="c-topic-section__cta-light" href="/topics">
               View all {topics.length} topics &nbsp;<ArrowRight />
             </a>
             {false && (
