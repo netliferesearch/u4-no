@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import autobind from 'react-autobind';
 
-
 import { Link } from '../routes';
 import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
@@ -13,7 +12,6 @@ const classes = BEMHelper({
   name: 'toggle-block',
   prefix: 'c-',
 });
-
 
 class ToggleBlock extends Component {
   constructor(props) {
@@ -47,7 +45,9 @@ class ToggleBlock extends Component {
           {this.state.active ? (
             <div {...classes('content')}>
               {typeof content === 'string' && <p>{content}</p>}
-              {typeof content !== 'string' && <BlockContent blocks={content} serializers={serializers} />}
+              {typeof content !== 'string' && (
+                <BlockContent blocks={content} serializers={serializers(content)} />
+              )}
             </div>
           ) : null}
         </div>
