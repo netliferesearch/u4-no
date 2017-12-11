@@ -10,6 +10,7 @@ routes
   .add('topic.entry', '/topics/:slug')
   .add('topic.index', '/topics')
   .add('glossary.index', '/terms')
+  .add('keywords.index', '/keywords')
   .add('persons.index', '/the-team')
   .add('persons.entry', '/the-team/:slug')
   .add('search.index', '/search')

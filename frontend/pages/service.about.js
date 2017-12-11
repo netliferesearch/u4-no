@@ -4,15 +4,7 @@ import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 
-import {
-  BoxOnBox,
-  Footer,
-  Layout,
-  ExtendedBlockContent,
-  Accordion,
-  Newsletter,
-  ServiceArticle,
-} from '../components';
+import { BoxOnBox, Footer, Layout, Accordion, Newsletter, ServiceArticle } from '../components';
 import { Feature, Mosaic, LinkBox, SimpleHero } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import {

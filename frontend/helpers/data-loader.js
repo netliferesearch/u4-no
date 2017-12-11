@@ -11,35 +11,41 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default (Child, { queryFunc = false, materializeDepth = false }) =>
-  withRedux(initStore, null, mapDispatchToProps)(
-    class DataLoader extends Component {
-      static async getInitialProps(nextContext) {
-        const client = sanityClient({
-          projectId: '1f1lcoov',
-          dataset: 'production',
-          token: '',
-          useCdn: true,
-        });
+  withRedux(initStore, null, mapDispatchToProps)(class DataLoader extends Component {
+    static async getInitialProps(nextContext) {
+      const client = sanityClient({
+        projectId: '1f1lcoov',
+        dataset: 'production',
+        token: '',
+        useCdn: true,
+      });
 
-        if (!queryFunc) {
-          console.log('No query function provided. Returning empty object');
-          return {};
-        }
-        const { sanityQuery, param = {} } = queryFunc(nextContext);
-
-        const sanityResults = await client.fetch(sanityQuery, param);
-
-        if (!materializeDepth) {
-          return sanityResults;
-        }
-        return materialize(sanityResults, materializeDepth);
+      if (!queryFunc) {
+        console.log('No query function provided. Returning empty object');
+        return {};
       }
-      render() {
-        return (
-          <div>
-            <Child {...this.props} />
-          </div>
-        );
+      const { sanityQuery, param = {} } = queryFunc(nextContext);
+
+      console.log(sanityQuery);
+
+      const sanityResults = await client.fetch(sanityQuery, param);
+
+      if (!sanityResults) {
+        console.warn('Sanity results was empty, nothing to materialize', sanityResults);
+        throw new Error('No content found');
       }
-    },
-  );
+
+      if (!materializeDepth) {
+        return sanityResults;
+      }
+
+      return materialize(sanityResults, materializeDepth);
+    }
+    render() {
+      return (
+        <div>
+          <Child {...this.props} />
+        </div>
+      );
+    }
+  });

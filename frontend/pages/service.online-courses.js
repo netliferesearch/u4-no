@@ -5,15 +5,7 @@ import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
 
-import {
-  BoxOnBox,
-  Footer,
-  Layout,
-  ExtendedBlockContent,
-  Accordion,
-  Newsletter,
-  ServiceArticle,
-} from '../components';
+import { BoxOnBox, Footer, Layout, Accordion, Newsletter, ServiceArticle } from '../components';
 import { Feature, Mosaic, LinkBox, LinkList } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import {

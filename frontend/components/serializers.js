@@ -6,7 +6,7 @@ import FunkyTable from './FunkyTable';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
 import findFootnotes from './findFootnotes';
-import footnoteSerializer from './footnoteSerializer'
+import footnoteSerializer from './footnoteSerializer';
 import {
   Figure,
   PullQuote,
@@ -211,9 +211,12 @@ const serializers = (blocks = []) => {
         return null;
       },
       footnote: ({ children, markKey = '' }) => (
-        <span>{children}
+        <span>
+          {children}
           <sup id={`fnref:${markKey}`}>
-            <a href={`#fn:${markKey}`} rel="footnote">{markKey}</a>
+            <a href={`#fn:${markKey}`} rel="footnote">
+              {markKey}
+            </a>
           </sup>
         </span>
       ),
