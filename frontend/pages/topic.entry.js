@@ -6,7 +6,6 @@ import DataLoader from '../helpers/data-loader';
 import {
   Footer,
   Layout,
-  ExtendedBlockContent,
   Accordion,
   Team,
   Person,

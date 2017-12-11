@@ -4,7 +4,6 @@ export { default as BoxOnBox } from './BoxOnBox';
 export { default as BoxOnBoxPartnerFeatures } from './BoxOnBoxPartnerFeatures';
 export { default as BoxOnImage } from './BoxOnImage';
 export { default as EditorList } from './EditorList';
-export { default as ExtendedBlockContent } from './ExtendedBlockContent';
 export { default as FrontpageFeature } from './FrontpageFeature';
 export { default as Feature } from './Feature';
 export { default as Figure } from './Figure';
