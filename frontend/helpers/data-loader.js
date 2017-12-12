@@ -1,4 +1,4 @@
-import '@babel/polyfill';
+import 'babel-polyfill';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import withRedux from 'next-redux-wrapper';
