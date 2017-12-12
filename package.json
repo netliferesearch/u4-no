@@ -89,6 +89,21 @@
       "^.+\\.(css|less|scss)$": "babel-jest"
     }
   },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": ["last 2 versions", "ie >= 10"]
+          },
+          "useBuiltIns": "usage",
+          "debug": false
+        }
+      ],
+      "next/babel"
+    ]
+  },
   "engines": {
     "node": "8.4.0"
   },
