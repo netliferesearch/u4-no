@@ -38,9 +38,17 @@ const result = {
   ],
 };
 
-test('Make footnote object from block content', () => {
-  const footnotes = findFootnotes(data.content);
+test('Make legacy footnote object from legacy block content', () => {
+  const footnotes = findFootnotes(data[0].content);
   expect(findFootnotes()).toEqual({});
   expect(footnotes['911b4dbaf10f']).toEqual(result['911b4dbaf10f']);
   expect(footnotes['980694afbe3d']).toEqual(result['980694afbe3d']);
+});
+
+test('Make footnote object from block content', () => {
+  const footnotes = findFootnotes(data[1].content);
+  console.log(footnotes);
+
+  /* expect(footnotes['911b4dbaf10f']).toEqual(result['911b4dbaf10f']);
+  expect(footnotes['980694afbe3d']).toEqual(result['980694afbe3d']); */
 });

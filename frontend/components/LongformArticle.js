@@ -51,11 +51,11 @@ class LongformArticle extends Component {
           blocks.length === 1 ? 'c-longform-grid' : 'c-longform-grid-sub-div'
         }`}
       >
-        <BlockContent blocks={blocks} serializers={serializers(blocks)} />
+        <BlockContent blocks={blocks} serializers={serializers} />
 
         <div className="footnotes">
           <ol>
-            {footNotesKeys.map(key => (
+            { footNotesKeys.map(key => (
               <BlockContent blocks={footnotes[key]} serializers={footnoteSerializer(key)} />
             ))}
           </ol>

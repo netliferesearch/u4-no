@@ -7,6 +7,7 @@ import stylesheet from '../../style/print.scss';
 import serializers from '../printSerializers';
 import buildTitleObjects from '../TableOfContents/buildTitleObjects';
 
+
 const classes = BEMHelper({
   name: 'longform-grid',
   prefix: 'c-',
@@ -32,12 +33,12 @@ class LongformArticle extends PureComponent {
           <ul className="contents__list">
             <h2>Table of contents</h2>
             {buildTitleObjects(content).map(item => (
-              <li className="contents__list-item">
+              <li key={item.id} className="contents__list-item">
                 <a href={`#${item.id}`}>{item.title}</a>
                 {item.children && (
                   <ul className="contents__list">
                     {item.children.map(subitem => (
-                      <li className="contents__list-item contents__list-subitem">
+                      <li key={subitem.id} className="contents__list-item contents__list-subitem">
                         <a href={`#${subitem.id}`}>{subitem.title}</a>
                       </li>
                     ))}

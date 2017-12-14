@@ -1,4 +1,4 @@
-{
+[{
   "_id": "f62b433d-9bbf-4bcb-8a4d-9aed37e5afcd",
   "_rev": "rdpddk-s1d-69p-l2c-jud7fqsu7",
   "_type": "publication",
@@ -7546,4 +7546,5150 @@
     }
   ],
   "_updatedAt": "2017-12-05T12:38:44.125Z"
-}
+},
+{
+  "_createdAt": "2017-12-14T06:13:34Z",
+  "_id": "853b8de8-22e8-4b60-b6d5-fd1ae7ccddba",
+  "_rev": "564ni4-it3-vds-jno-nufgl8gs0",
+  "_type": "publication",
+  "_updatedAt": "2017-12-14T06:13:34Z",
+  "authors": [
+    {
+      "_key": "372cb771938a",
+      "_ref": "author-272",
+      "_type": "reference"
+    }
+  ],
+  "content": [
+    {
+      "_key": "52cd2216efe9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "52cd2216efe90",
+          "_type": "span",
+          "marks": [],
+          "text": "Introduction"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "5a72e945d82a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "5a72e945d82a0",
+          "_type": "span",
+          "marks": [],
+          "text": "Over the past two decades, advances in information and communication technology (ICTs) have transformed the way people access and interact with the information that governments produce and hold. The development of online digital portals to enable users to submit requests for information, under Right to Information (RTI) legislation, is one of many examples of these changes (Fumega 2014)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "11468584c8d9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "11468584c8d90",
+          "_type": "span",
+          "marks": [],
+          "text": "Arguably, ICTs would help to increase the efficiency of the "
+        },
+        {
+          "_key": "11468584c8d91",
+          "_type": "span",
+          "marks": [
+            "fe413311d8ab"
+          ],
+          "text": "information"
+        },
+        {
+          "_key": "11468584c8d92",
+          "_type": "span",
+          "marks": [],
+          "text": " publication process as well as the way requesters access information. In the digital era, transparency may well be what people see on their computer screens (Meijer 2007). However, governments did not always develop technology to facilitate such processes on their own and, in many cases when they did, "
+        },
+        {
+          "_key": "11468584c8d93",
+          "_type": "span",
+          "marks": [
+            "bc54e41cd17c"
+          ],
+          "text": "they were not the first to do so"
+        },
+        {
+          "_key": "11468584c8d94",
+          "_type": "span",
+          "marks": [],
+          "text": ". In 2006, Phil Rodgers and Francis Irving developed the basics of the website "
+        },
+        {
+          "_key": "11468584c8d95",
+          "_type": "span",
+          "marks": [
+            "em",
+            "df6ea310642b"
+          ],
+          "text": "whatdotheyknow.org"
+        },
+        {
+          "_key": "11468584c8d96",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "."
+        },
+        {
+          "_key": "11468584c8d97",
+          "_type": "span",
+          "marks": [],
+          "text": " The idea was simple: a piece of software that would allow citizens to issue RTI requests. In 2008, the British non-governmental organisation My Society pushed forward the idea and fully developed the website. This approach was novel for several reasons: it did not require government’s consent, and it was developed"
+        },
+        {
+          "_key": "11468584c8d98",
+          "_type": "span",
+          "marks": [
+            "e14f3a6c1c55"
+          ],
+          "text": " based on free-software"
+        },
+        {
+          "_key": "11468584c8d99",
+          "_type": "span",
+          "marks": [],
+          "text": ". The rationale behind the project was that citizens would ask information through a single portal and the government would reply, eliminating the need to know the email address of each mandated agency. According to the My Society Research Unit, 15-20% of British RTI requests are currently issued through My Society portal (Rumbul 2016)."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "fe413311d8ab",
+          "_type": "blockNote",
+          "style": "footnote"
+        },
+        {
+          "_key": "bc54e41cd17c",
+          "_type": "blockNote",
+          "content": [
+            {
+              "_key": "0c8bb407d68c",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "0c8bb407d68c0",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Currently there are several government portals allowing citizens to exercise their right to information. In this study, we do not cover such portals, and we focus only in the ones developed by civil society."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "style": "footnote"
+        },
+        {
+          "_key": "df6ea310642b",
+          "_type": "link",
+          "href": "http://whatdotheyknow.org"
+        },
+        {
+          "_key": "e14f3a6c1c55",
+          "_type": "blockNote",
+          "content": [
+            {
+              "_key": "561618e5353e",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "561618e5353e0",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "It could be added that in many cases it was run on volunteer basis. Through this paper we use the term free and open source software meaning software that can be inspected and is licensed to foster re-use. We understand that philosophically and practically they are not exactly the same."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "style": "footnote"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "47995bf04396",
+      "_type": "pullQuote",
+      "text": "Over the past two decades, advances in information and communication technology (ICTs) have transformed the way people access and interact with the information that governments produce and hold."
+    },
+    {
+      "_key": "f0e1730604b9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "f0e1730604b90",
+          "_type": "span",
+          "marks": [],
+          "text": "Following the steps of that initial development, an emerging group of civil society actors have deployed RTI portals in at least 22 countries, allowing citizens to make requests online. Civil society organisations and individual developers have not asked for government permission to set up these portals. Thus, they have built these websites, enabled by open/free source software, and have targeted government email addresses. These portals allow users to not only issue requests by accessing just one site – no matter the agency or topic – but also without having to search for email addresses. Further, these portals usually present a feature of proactive disclosure of all responses in order to allegedly improve the efficiency of the procedure allowing users to monitor requests, as well as setting up a knowledge repository where all requests are centralised. As more portals are set up, a pertinent question for all these portals relates to the relationship between these portals and the actual improvement of RTI regimes, as well as the dissemination of the exercise of the right to access information."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "f2cc1122e4d8",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "f2cc1122e4d80",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "f2cc1122e4d81",
+          "_type": "span",
+          "marks": [
+            "e588c35b6a9b"
+          ],
+          "text": "This paper"
+        },
+        {
+          "_key": "f2cc1122e4d82",
+          "_type": "span",
+          "marks": [],
+          "text": " analyses RTI online portals developed by civil society organisations in five countries with different traditions and at different stages of implementation of the RTI legislation. We selected these cases to explore the effect, if any, of RTI portals on RTI regimes. First, we provide an overview on how actors and technologies evolved at the global level and offer a set of basic definitions. Next, we analyse each of our cases following a comparative framework that we have developed. We then discuss the role of requesters, government and enforcement institutions. Finally, we provide a set of recommendations to donors and other organisations based on our cases and the available literature. We argue that portals play a meaningful, but limited, role in improving RTI regimes. We note that the sustainability of these initiatives requires new ways of understanding the role of civic tech organisations in RTI regimes. We draw attention to the fact that without these portals, some of the positive changes in these RTI regimes would not have materialised."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "e588c35b6a9b",
+          "_type": "footnote",
+          "content": [
+            {
+              "_key": "8892b9714e3e",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "8892b9714e3e0",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "A previous version of this article was published at proceedings of the 18th Annual International Conference on Digital Government Research: "
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ]
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "fabbb25ecd41",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "fabbb25ecd410",
+          "_type": "span",
+          "marks": [],
+          "text": "2. Right to Information regimes: what's new in the digital age?"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "73555d6a1a89",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "73555d6a1a890",
+          "_type": "span",
+          "marks": [],
+          "text": "2.1 Right to Information arenas"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "fecfdcce605f",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "fecfdcce605f0",
+          "_type": "span",
+          "marks": [],
+          "text": "Right to Information (also referred as Freedom of Information or the Right to Know) is a very basic, powerful, and relatively old, concept. The right establishes that every individual should have access to government-held and produced information, except in very specific circumstances. A RTI law mandates that government agencies proactively publish basic information about their activities and establishes the right of every individual to ask for public information. This has been the result of a long quest by civil society advocates around the world, gaining momentum in the USA with the famous Harold Cross Report (Cross 1953)"
+        },
+        {
+          "_key": "fecfdcce605f1",
+          "_type": "span",
+          "marks": [
+            "da1b5455c0ff"
+          ],
+          "text": "[4]"
+        },
+        {
+          "_key": "fecfdcce605f2",
+          "_type": "span",
+          "marks": [],
+          "text": " and continuing through the 20th century. The period from the early 1990s to late 2000s, also known as RTI advocates “Golden Period”[5], witnessed the expansion of national RTI laws from 13 to over 72 countries in 2011 (Vleugels 2011) and over 100 by the end of 2015 (Banisar 2015). Despite this increase in numbers, there is consensus that implementation of these laws across the globe has been poor in many cases (Darbishire 2010, Hazell, Worthy and Glover 2010, Fumega, Lanza and Scrollini 2013). In short, while passing a RTI law is an important step, it is far from being sufficient for a successful RTI regime. However, researchers in this field note that there are only a few studies systematically assessing the impact of RTI in governance (Bailur and Longley 2014)."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "da1b5455c0ff",
+          "_type": "link",
+          "href": "#_ftn4"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "c4546927f358",
+      "_type": "pullQuote",
+      "text": "The right establishes that every individual should have access to government-held and produced information, except in very specific circumstances"
+    },
+    {
+      "_key": "59696c04ccfe",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "59696c04ccfe0",
+          "_type": "span",
+          "marks": [],
+          "text": "The development and implementation of RTI portals by civil society provides an excellent starting point for understanding the potential effects of these portals on right to information regimes. RTI regimes are a system of institutions, actors and practices dealing with the exchange of official information between the state and society. RTI laws create a new, and often contentious, type of relationship between government and civil society. They are the foundation for RTI regimes or arenas (Scrollini 2015), where several actors interplay to access and use public information. Conflicts and disagreements about who gets the information, when, and how, are common in these information arenas, but there are several ways in which government and other actors could manage this conflict. Nonetheless, in order to understand how these regimes work, it is necessary to consider factors such as the emergence of these regimes, the professionalism of public bureaucracy and the role RTI enforcement institutions play."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "e8062cdf838a",
+      "_type": "pullQuote",
+      "text": "RTI laws create a new, and often contentious, type of relationship between government and civil society. "
+    },
+    {
+      "_key": "5610ebe9faab",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "5610ebe9faab0",
+          "_type": "span",
+          "marks": [],
+          "text": "It is possible to distinguish between several types of regimes according to their outputs. The following table presents an initial typology of RTI regimes based on three outputs: the proactive availability of public information, the efficiency in answering RTI requests, and the effectiveness to resolve disputes."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ff6d0f423922",
+      "_type": "funkyTable",
+      "rows": [
+        {
+          "columns": [
+            "Type of RTI Regime (Arena)",
+            "Key characteristics"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Functional",
+            "●\tPublic Information readily available, published regularly by public agencies ●\tBureaucracy receives and processes RTI requests on time ●\tRequesters can access an independent institution and resolve conflicts within a reasonable timeframe"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Mixed",
+            "●\tPublic Information readily available, published regularly by public agencies with certain inconsistencies ●\tBureaucracy receives and processes information inconsistently ●\tRequesters have a certain degree of access to an institution and resolve conflicts within a reasonable timeframe"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Contested",
+            "●\tPublic Information is seldom available and is not published regularly by public agencies ●\tBureaucracy does not receive and process RTI requests on time or it does but showing resistance ●\tRequesters have difficulties in accessing an independent institution and resolve conflicts within a non-reasonable timeframe or may not resolve the conflict at all"
+          ]
+        }
+      ],
+      "title": "Type of RTI Regime (Arena)"
+    },
+    {
+      "_key": "a8d810c472e3",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a8d810c472e30",
+          "_type": "span",
+          "marks": [
+            "strong",
+            "em"
+          ],
+          "text": "Source"
+        },
+        {
+          "_key": "a8d810c472e31",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": ": Scrollini (2015)"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "89ab3f6a35ad",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "89ab3f6a35ad0",
+          "_type": "span",
+          "marks": [],
+          "text": "2.2 The role of Right to Information portals"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "011961235c42",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "011961235c420",
+          "_type": "span",
+          "marks": [],
+          "text": "RTI portals are a vital aspect of any RTI regime: the availability to request and obtain official information. Even though these portals mainly contribute to the reactive disclosure of official information, the evolution, dissemination and use of these tools could also contribute to other outputs such as the publication of proactive information as well as the general understanding of RTI regimes."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "394128339ccf",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "394128339ccf0",
+          "_type": "span",
+          "marks": [],
+          "text": "Digitalisation leads to a larger number of requests received via email and other digital tools from mandated bodies, as well as more information proactively published online compared to paper-based systems. Thus, RTI arenas are becoming an environment where information is relatively easy to store and distribute, in a cheap and efficient way (Scrollini 2015). While there may be value in the distinction between offline and online systems (see, for instance, Bailur and Longley 2014), digital and offline services seem to be converging in both developed and developing "
+        },
+        {
+          "_key": "394128339ccf1",
+          "_type": "span",
+          "marks": [
+            "c951e78903d2"
+          ],
+          "text": "countries."
+        },
+        {
+          "_key": "394128339ccf2",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "c951e78903d2",
+          "_type": "footnote",
+          "content": [
+            {
+              "_key": "c8a02c63d49e",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "c8a02c63d49e0",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Note that his assertion does not mean that public services are becoming more inclusive as a result of digitalization. It means that increasingly public services are going “digital” by default."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ]
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "9491d18246be",
+      "_type": "pullQuote",
+      "text": "RTI portals are supposed to increase the efficiency of receiving and processing requests"
+    },
+    {
+      "_key": "a5353649dbd7",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a5353649dbd70",
+          "_type": "span",
+          "marks": [],
+          "text": "RTI portals are supposed to increase the efficiency of receiving and processing requests. Governments and civil society across the globe have developed these portals with the goal of increasing efficiency and effectiveness. According to Bailur and Longley (2014), RTI portals such as Alaveteli"
+        },
+        {
+          "_key": "a5353649dbd71",
+          "_type": "span",
+          "marks": [
+            "6e7b8afdc967"
+          ],
+          "text": "[7]"
+        },
+        {
+          "_key": "a5353649dbd72",
+          "_type": "span",
+          "marks": [],
+          "text": " bring a series of benefits, outlined below"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "6e7b8afdc967",
+          "_type": "link",
+          "href": "#_ftn7"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "64cdbcd88131",
+      "_type": "funkyTable",
+      "rows": [
+        {
+          "columns": [
+            "Benefit claimed by Civil Society portals",
+            "Specific features"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Efficiency and automatization of RTI requests",
+            "●\tAutomate the process of helping people write messages to the relevant authority – no manual intervention is required to assist people to send their request or to receive their request ●\tEliminate the need to find the contact address for a mandated agency"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Ease of use",
+            "●\tSupply guidance about how to make a proper request while the user is actually composing the message ●\tUse simple, plain language and avoids legal jargon ●\tEliminate the need to find the contact address for a mandated agency"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Improvement of public understanding of RTI",
+            "●\tEncourage users to think of RTI requests as a ‘normal’ thing that any citizen can do ●\tEncourage and enable users to look for existing information (via their proactive disclosure of all responses feature) before they make an RTI request, which can actually lead to a quicker result ●\tOffer various features designed to make it easier to find information previously known only to authorities ●\tProvide a browsing interface to increase the chance of finding interesting materials that users were not specifically looking for"
+          ]
+        }
+      ],
+      "title": "Benefit claimed by Civil Society portals"
+    },
+    {
+      "_key": "9e502cfb33c5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "9e502cfb33c50",
+          "_type": "span",
+          "marks": [
+            "strong",
+            "em"
+          ],
+          "text": "Source"
+        },
+        {
+          "_key": "9e502cfb33c51",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": ": Authors’ adaptation based on Bailur and Longley (2014)"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "fd7323d7ca1a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "fd7323d7ca1a0",
+          "_type": "span",
+          "marks": [],
+          "text": "The current technological landscape offers several alternatives based on either closed or open source software to developing these portals."
+        },
+        {
+          "_key": "fd7323d7ca1a1",
+          "_type": "span",
+          "marks": [
+            "0643418b1763"
+          ],
+          "text": "[8]"
+        },
+        {
+          "_key": "fd7323d7ca1a2",
+          "_type": "span",
+          "marks": [],
+          "text": " There are other alternatives based on closed source software. Further, commercial ventures sell RTI-related software to governments. The following table provides a list of some of the most popular technologies run by civil society organisations:"
+        },
+        {
+          "_key": "fd7323d7ca1a3",
+          "_type": "span",
+          "marks": [
+            "0fb952dcf3f1"
+          ],
+          "text": "[9]"
+        },
+        {
+          "_key": "fd7323d7ca1a4",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "0643418b1763",
+          "_type": "link",
+          "href": "#_ftn8"
+        },
+        {
+          "_key": "0fb952dcf3f1",
+          "_type": "link",
+          "href": "#_ftn9"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "d4092bc6cde3",
+      "_type": "funkyTable",
+      "rows": [
+        {
+          "columns": [
+            "Product",
+            "Lead Organisation",
+            "Number of instances",
+            "Status"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Alaveteli",
+            "My Society",
+            "24",
+            "Operational"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "FragDenStaat",
+            "OKFN Germany (Germany)",
+            "1",
+            "Operational"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "FOIA Machine",
+            "Center for Investigative Journalism (US)",
+            "1",
+            "Operational"
+          ]
+        },
+        {
+          "columns": [
+            "Acceso Inteligente",
+            "Ciudadano Inteligente (Chile)",
+            "1",
+            "No longer operational"
+          ]
+        },
+        {
+          "columns": [
+            "MuckRock",
+            "Muckrock (US)",
+            "1",
+            "Operational"
+          ]
+        },
+        {
+          "columns": [
+            "RecordTrack",
+            "Post (US)",
+            "1",
+            "Operational"
+          ]
+        },
+        {
+          "columns": [
+            "Ifoia",
+            "Reporters Committee for Freedom of the Press (US)",
+            "1",
+            "Operational"
+          ]
+        }
+      ],
+      "title": "Most popular technologies run by civil society organisations"
+    },
+    {
+      "_key": "97dba952889a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "97dba952889a0",
+          "_type": "span",
+          "marks": [],
+          "text": "2.3 The role of public administration"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "ff175854b74e",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ff175854b74e0",
+          "_type": "span",
+          "marks": [],
+          "text": "According to existing literature, governments usually react to ICT innovations in two different ways. On one hand, they can create an enabling environment and cooperate with requests received through the external systems. On the other hand, they can develop alternative government-controlled systems for managing requests and reports from citizens (Davies and Fumega 2014). When governments develop their own systems, they usually set up closed software portals and do not incorporate innovations developed by open-source portals. In many cases, responses are not proactively disclosed for every user to check (however, there are exceptions to this such as the Mexican official "
+        },
+        {
+          "_key": "ff175854b74e1",
+          "_type": "span",
+          "marks": [
+            "a9582788a182"
+          ],
+          "text": "portal)"
+        },
+        {
+          "_key": "ff175854b74e2",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "a9582788a182",
+          "_type": "footnote",
+          "content": [
+            {
+              "_key": "779fae5d35fd",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "779fae5d35fd0",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "With regard to the disclosure of responses given to the requesters, in Mexico, both the requests and the responses can be accessed on the INAI (National Transparency Institute) portal. Through this portal, a user can access information that was previously requested -and for which a satisfactory response has been given- without having to re-file the same request. There is a rationale behind publishing this information: the INAI understands that when information is requested, it is not just for an individual to access a particular piece of information, but rather a request for that information to be made public; this is why both the requests and the responses are regarded as public. In Chile, on the other hand, the portal of the Council for Transparency only allows the request and the response to be seen by the user who filed it. This is because the portal’s information system cannot differentiate which parts of the request and the response should be classified as private or sensitive information, and which should be public. Therefore, responsibility is entrusted to the agency involved (Fumega 2014)."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ]
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "04a6c996c5ec",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "04a6c996c5ec0",
+          "_type": "span",
+          "marks": [],
+          "text": "However, we argue that governments can react to the introduction of RTI civil society-led portals in two additional ways. After accepting and working with the civil society portal, governments may decide to build their own portal. Alternatively, governments may choose to resist and ignore the portals."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ae1d3a303e9c",
+      "_type": "pullQuote",
+      "text": "Governments are not monolithic entities and different agencies within a government might have different reactions to a RTI portal"
+    },
+    {
+      "_key": "72d8fe334636",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "72d8fe3346360",
+          "_type": "span",
+          "marks": [],
+          "text": "Governments are not monolithic entities and different agencies within a government might have different reactions to a RTI portal. As the implementation of the portal evolves, and the interaction between civil society actors and public officials increases, agencies might shift attitudes. Outlined in the table below are possible attitudes from agencies:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "b5f2a0e9eb4f",
+      "_type": "funkyTable",
+      "rows": [
+        {
+          "columns": [
+            "Ignoring RTI civil society portals",
+            "By not acknowledging a portal’s existence, government agencies do not reply to requests nor acknowledge civil society campaigns to answer those requests"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Resistance",
+            "Government agencies resist the portals in different ways and forms, for example:  -\tThey indicate they would not reply to the requests coming from the portal because it is not an official source  -\tThey reply to initial requests via email outside of the portal -\tSome governments develop their own portal that could compete with civil society portal"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Acceptance",
+            "Government agencies accept the existence of the portal and reply requests through it"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Proactive Attitude",
+            "Government agencies remove administrative and technical barriers. They may consider creating channels through their own portals to process external systems request"
+          ]
+        }
+      ],
+      "title": "Attitudes from agencies"
+    },
+    {
+      "_key": "cd12e2d7ccad",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "cd12e2d7ccad0",
+          "_type": "span",
+          "marks": [
+            "strong",
+            "em"
+          ],
+          "text": "Source"
+        },
+        {
+          "_key": "cd12e2d7ccad1",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": ": Fumega, Scrollini and Semsrott (2016)"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "b3ea8d297cee",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b3ea8d297cee0",
+          "_type": "span",
+          "marks": [],
+          "text": "Another key actor in a RTI regime is the oversight agency that is responsible for the implementation of the legislation. Oversight institutions could react to the launch of civil society-led portals in different ways. There are four particular attitudes that these agencies could adopt, as follows:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "750f93c651ff",
+      "_type": "funkyTable",
+      "rows": [
+        {
+          "columns": [
+            "Obstruction",
+            "Oversight agencies could effectively block the use of RTI portals by declaring them illegal"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Neutrality",
+            "Oversight agencies could remain neutral once these RTI portals emerge"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Validation",
+            "Oversight agencies could validate the tool, making it equivalent to a traditional offline request"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Support",
+            "Oversight agencies could issue guidelines promoting the use of the portal and assuring users that it is a valid way of requesting information"
+          ]
+        }
+      ],
+      "title": "Attitudes that these agencies could adopt"
+    },
+    {
+      "_key": "192ff554d24f",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "192ff554d24f0",
+          "_type": "span",
+          "marks": [
+            "strong",
+            "em"
+          ],
+          "text": "Source"
+        },
+        {
+          "_key": "192ff554d24f1",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": ": Fumega, Scrollini and Semsrott (2016)"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "b30fcdd8cd6a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b30fcdd8cd6a0",
+          "_type": "span",
+          "marks": [],
+          "text": "These behaviours are likely to be linked to the kind of regime where a particular RTI portal is introduced. Variables, such as the structure and capacity of public bureaucracy and the independence of oversight institutions, are key factors to understand different reactions."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "e1026d8b2610",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "e1026d8b26100",
+          "_type": "span",
+          "marks": [],
+          "text": "2.4 Changes Right to Information portals bring to these regimes"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "321b16293fa7",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "321b16293fa70",
+          "_type": "span",
+          "marks": [],
+          "text": "It is difficult to measure the impact of RTI websites (Bailur and Longley 2014). Our aim in this paper is to understand if and how these portals changed the behaviour of public authorities and whether they improved the entire RTI regime. We view these portals as an intervening variable in already existing RTI regimes and document whether the introduction of this variable modified or not the behaviour of involved actors."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "186781545dee",
+      "_type": "pullQuote",
+      "text": "It is difficult to measure the impact of RTI websites"
+    },
+    {
+      "_key": "d20b39f61992",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "d20b39f619920",
+          "_type": "span",
+          "marks": [],
+          "text": "We avoid discussing the ‘impact’ of these portals for two reasons (Fumega 2016):"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "c5b73d373284",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "c5b73d3732840",
+          "_type": "span",
+          "marks": [],
+          "text": "In order to answer whether portals contributed to a more ‘transparent’ polity, a ten-year period is needed between the project and its evaluation. A more articulated hypothesis or theory of change is also required but so far, none of these portals have developed such a theory beforehand. Further, this astringent way of considering impact might not even be applied to RTI laws themselves (or several policies for the matter)."
+        }
+      ],
+      "level": 1,
+      "listItem": "number",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "9273045c8f1f",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "9273045c8f1f0",
+          "_type": "span",
+          "marks": [],
+          "text": "Methodologically, we look at qualitative changes in a RTI regime. We track behavioural challenges produced by the RTI portal in the cases introduced in the following section, similarly to the outcome mapping methodology (Earl, Carden and Smutylo 2001)."
+        }
+      ],
+      "level": 1,
+      "listItem": "number",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "aea464cd7445",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "aea464cd74450",
+          "_type": "span",
+          "marks": [],
+          "text": "3. Case studies"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "6e13b09399ed",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6e13b09399ed0",
+          "_type": "span",
+          "marks": [],
+          "text": "In this section, we look at five cases"
+        },
+        {
+          "_key": "6e13b09399ed1",
+          "_type": "span",
+          "marks": [
+            "dcd6356f3106"
+          ],
+          "text": "[11]"
+        },
+        {
+          "_key": "6e13b09399ed2",
+          "_type": "span",
+          "marks": [],
+          "text": " where RTI portals were implemented by civil society organisations. The cases encompass a mix of developing and developed countries and different types of RTI regimes and both active and terminated cases are examined. Although not a representative sample, the cases provide a good description of contributions and challenges ICTs projects face.\n"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "dcd6356f3106",
+          "_type": "link",
+          "href": "#_ftn11"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "57da955d5830",
+      "_type": "funkyTable",
+      "rows": [
+        {
+          "columns": [
+            "Country",
+            "Type of regime",
+            "Civil Society Portal Status"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Chile",
+            "Mixed",
+            "Terminated"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "Germany",
+            "Mixed",
+            "Active"
+          ],
+          "heading": false
+        },
+        {
+          "columns": [
+            "New Zealand",
+            "Functional",
+            "Active"
+          ]
+        },
+        {
+          "columns": [
+            "Spain",
+            "Contested",
+            "Terminated"
+          ]
+        },
+        {
+          "columns": [
+            "Uruguay",
+            "Contested",
+            "Active"
+          ]
+        }
+      ],
+      "title": "Status"
+    },
+    {
+      "_key": "a7182603d875",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a7182603d8750",
+          "_type": "span",
+          "marks": [],
+          "text": "Chile, Germany, New Zealand, Spain and Uruguay were selected because in each case, civil society organisations developed and launched a RTI portal before governments created their own. These countries present differences in terms of oversight institutions, RTI legislation, and institutional traditions.These differences allow us to explore how these portals adapt to a diverse set of environments."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "de6194562ba3",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "de6194562ba30",
+          "_type": "span",
+          "marks": [],
+          "text": "A “maverick” developer based in New Zealand, designed the first Alaveteli portal outside the United Kingdom in 2009. The website FYI (For Your Information) became a new channel through which to issue information requests. The civil society portal has run smoothly in New Zealand, although it faced initial resistance from a few authorities. The portal helped to uncover several government practices (including the questionable practice of heavily redacting or “blacking out” replies) from New Zealand government (Caleb 2015)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "d6dd3b14316d",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "d6dd3b14316d0",
+          "_type": "span",
+          "marks": [],
+          "text": "In Chile, a local NGO (Smart Citizen Foundation/"
+        },
+        {
+          "_key": "d6dd3b14316d1",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Fundación Ciudadano Inteligente"
+        },
+        {
+          "_key": "d6dd3b14316d2",
+          "_type": "span",
+          "marks": [],
+          "text": "/FCI) developed an RTI web portal (Smart Access) in 2011. This portal allowed users to request information online under the Chilean RTI legislation, which was enacted back in 2009. The portal gathered initial traction and led the government to build its own in 2013."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "6aa2ab94a515",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6aa2ab94a5150",
+          "_type": "span",
+          "marks": [],
+          "text": "The same year as the launch of the Chilean portal, "
+        },
+        {
+          "_key": "6aa2ab94a5151",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "FragDenStaa "
+        },
+        {
+          "_key": "6aa2ab94a5152",
+          "_type": "span",
+          "marks": [],
+          "text": "(Ask the State) was developed by a civil society organisation in Germany. Currently, approximately half of RTI requests in Germany are filed through this portal. The online tool has allowed for changes in public agencies response patterns, which are currently adopting a more open and receptive approach but many challenges still remain."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "31e362936126",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "31e3629361260",
+          "_type": "span",
+          "marks": [],
+          "text": "More recently, in 2012, a Uruguayan NGO (Data UY) launched a portal based on the British software, Alaveteli. The portal was designed to allow users to submit RTI requests and targeted public authorities’ emails. Despite resistance from public officials, it has prompted Uruguayan authorities to acknowledge emails as a legal way to request public information. It has also recently triggered the initial development of a government RTI portal."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "d04dbdc3703a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "d04dbdc3703a0",
+          "_type": "span",
+          "marks": [],
+          "text": "In Spain, "
+        },
+        {
+          "_key": "d04dbdc3703a1",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Tu Derecho a Saber"
+        },
+        {
+          "_key": "d04dbdc3703a2",
+          "_type": "span",
+          "marks": [],
+          "text": " (Your Right to Know) was a civil society- developed portal aimed to reduce barriers between public agencies and information requesters. Two Spanish organisations, "
+        },
+        {
+          "_key": "d04dbdc3703a3",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Access Info-Europe"
+        },
+        {
+          "_key": "d04dbdc3703a4",
+          "_type": "span",
+          "marks": [],
+          "text": " and "
+        },
+        {
+          "_key": "d04dbdc3703a5",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Civio"
+        },
+        {
+          "_key": "d04dbdc3703a6",
+          "_type": "span",
+          "marks": [],
+          "text": ", who have been collaborating in different civic technology projects, developed the project (Access Info- Europe 2015)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "4fe2a938d8f8",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4fe2a938d8f80",
+          "_type": "span",
+          "marks": [],
+          "text": "In the following sub-sections we introduce details of the selected cases, as well as some relevant features of these civil society-led RTI portals."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ce114736df48",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ce114736df480",
+          "_type": "span",
+          "marks": [],
+          "text": "3.1 Chile: Smart Access(Acceso Inteligente)"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "a18e5bd37bfe",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a18e5bd37bfe0",
+          "_type": "span",
+          "marks": [],
+          "text": "Background"
+        }
+      ],
+      "markDefs": [],
+      "style": "h4"
+    },
+    {
+      "_key": "ecc3ef332424",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ecc3ef3324240",
+          "_type": "span",
+          "marks": [],
+          "text": "On September 19th 2006, the Inter-American Court of Human Rights issued an important decision in the case of Claude Reyes v. the State of Chile. The Court recognised that public access to information was essential to democratic participation and freedom of expression (Open Society Foundations 2009). This case provided the foundation for the debate and enactment of the Chilean RTI law in 2009."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ca953a6d9265",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ca953a6d92650",
+          "_type": "span",
+          "marks": [],
+          "text": "A couple of years after the enactment of the Chilean RTI law, the first civil society led web portal with the purpose of centralising information requests to the Chilean government, "
+        },
+        {
+          "_key": "ca953a6d92651",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Acceso Inteligente"
+        },
+        {
+          "_key": "ca953a6d92652",
+          "_type": "span",
+          "marks": [],
+          "text": "(Smart Access), was developed by "
+        },
+        {
+          "_key": "ca953a6d92653",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Fundación Ciudadano Inteligente"
+        },
+        {
+          "_key": "ca953a6d92654",
+          "_type": "span",
+          "marks": [],
+          "text": " (Smart Citizen Foundation, FCI)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "6269bbf50b82",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6269bbf50b820",
+          "_type": "span",
+          "marks": [],
+          "text": "According to a report carried out by FCI for the Open Society Foundation (OSF), during the first years of implementation, the Chilean Transparency Law presented barriers for users requesting information. Some obstacles related to the variety of government websites: each presented a different access to public information form. This multiplicity of channels made requesting information online a difficult matter. Thus, FCI decided to build a portal to send a unique public information request form to multiple government agencies (Fundación Ciudadano Inteligente 2011)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "eefa40dfa5c3",
+      "_type": "pullQuote",
+      "text": "The portal aimed to not only ease the process of requesting information to the Chilean government but also to raise awareness about the right to access public information"
+    },
+    {
+      "_key": "bbbf981ae253",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "bbbf981ae2530",
+          "_type": "span",
+          "marks": [],
+          "text": "The portal aimed to not only ease the process of requesting information to the Chilean government but also to raise awareness about the right to access public information. The portal presented two main components: 1) citizen requests for public information and, 2) a repository of information from all previous requests managed by the portal. The goal of the repository was to contribute to the monitoring and evaluation processes of the access to information regime."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "e56195a13f52",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "e56195a13f520",
+          "_type": "span",
+          "marks": [],
+          "text": "Reactions"
+        }
+      ],
+      "markDefs": [],
+      "style": "h4"
+    },
+    {
+      "_key": "b251ad81d6e5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b251ad81d6e50",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Acceso Inteligente"
+        },
+        {
+          "_key": "b251ad81d6e51",
+          "_type": "span",
+          "marks": [],
+          "text": " was designed to allow any person to submit requests and then also access the portal to check the documentation of all previous requests and responses.Further, information about when the requests were made and how the government responded was available. These changes were an update to the features of the previous Council of Transparency’s portal, through "
+        },
+        {
+          "_key": "b251ad81d6e52",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Acceso Inteligente"
+        },
+        {
+          "_key": "b251ad81d6e53",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ba978f7a4d5a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ba978f7a4d5a0",
+          "_type": "span",
+          "marks": [],
+          "text": "After the portal was launched, its progression was not as smooth as developers imagined while designing it. According to a FCI report, the actual implementation of the portal faced multiple technological and non-technological challenges as some public agencies received the request by email and others through paper forms. According to FCI, the Chilean government initially resisted the idea of a unique site for requesting information because the website “may encourage citizens to request more information than they usually do” (Fundación Ciudadano Inteligente 2011)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "b67079b55404",
+      "_type": "pullQuote",
+      "text": "Developing a portal that was capable of sending requests to different public agencies and ensuring all requests were received and answered was not an easy task. "
+    },
+    {
+      "_key": "d2f4df45b337",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "d2f4df45b3370",
+          "_type": "span",
+          "marks": [],
+          "text": "Developing a portal that was capable of sending requests to different public agencies and ensuring all requests were received and answered was not an easy task. To bring all the information into a unique civil society site, FCI developers needed to design a complex system flexible enough to be able to send the request in different formats. Once an individual submitted an information request (according to the law 20.285), "
+        },
+        {
+          "_key": "d2f4df45b3371",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Acceso Inteligente"
+        },
+        {
+          "_key": "d2f4df45b3372",
+          "_type": "span",
+          "marks": [],
+          "text": " automatically connected the request to the appropriate public agency. The system would take that request and transform it into to the format that particular agency required. The mandated agency replied to "
+        },
+        {
+          "_key": "d2f4df45b3373",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Acceso Inteligente"
+        },
+        {
+          "_key": "d2f4df45b3374",
+          "_type": "span",
+          "marks": [],
+          "text": " and the information was delivered through the system to the requester."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "186d8033436a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "186d8033436a0",
+          "_type": "span",
+          "marks": [],
+          "text": "In 2011, to complement their work on the field of RTI in Chile, FCI signed an agreement to collaborate with two other Chilean NGOs, "
+        },
+        {
+          "_key": "186d8033436a1",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Pro Acceso"
+        },
+        {
+          "_key": "186d8033436a2",
+          "_type": "span",
+          "marks": [],
+          "text": " and "
+        },
+        {
+          "_key": "186d8033436a3",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "ProBono"
+        },
+        {
+          "_key": "186d8033436a4",
+          "_type": "span",
+          "marks": [],
+          "text": ", in the submission of appeals to the Council of Transparency, the oversight body (Fundación Ciudadano Inteligente 2012)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "35906d77ce36",
+      "_type": "pullQuote",
+      "text": "Acceso Inteligente processed 2,779 requests for public information from 537 government agencies and, according to their dataset, 80% of the requests received a response "
+    },
+    {
+      "_key": "bfc169ae0589",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "bfc169ae05890",
+          "_type": "span",
+          "marks": [],
+          "text": "According to an evaluation report of "
+        },
+        {
+          "_key": "bfc169ae05891",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Acceso Inteligente"
+        },
+        {
+          "_key": "bfc169ae05892",
+          "_type": "span",
+          "marks": [],
+          "text": ", commissioned by FCI, 2,823 users registered to exercise their right to access public information through the civil society portal over a period of four years. Further, "
+        },
+        {
+          "_key": "bfc169ae05893",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Acceso Inteligente"
+        },
+        {
+          "_key": "bfc169ae05894",
+          "_type": "span",
+          "marks": [],
+          "text": " processed 2,779 requests for public information from 537 government agencies and, according to their dataset, 80% of the requests received a response (Marshall 2013).This civil society-led portal provided the foundation for the 15,000 requests processed through the current Transparency Portal."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "391f49b08361",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "391f49b083610",
+          "_type": "span",
+          "marks": [],
+          "text": "In 2013, two years after the development of the portal, the Council of Transparency, the RTI oversight agency, launched its own website. However, the requests and responses were only publicly accessible if the agency in question proactively decided to publish them. Before the development of this portal, the Council for Transparency examined several websites including the Mexican Infomex portal and the Chilean civil society-led portal, "
+        },
+        {
+          "_key": "391f49b083611",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Acceso Inteligente"
+        },
+        {
+          "_key": "391f49b083612",
+          "_type": "span",
+          "marks": [],
+          "text": ". As work began on portal design, the Council invited FCI and twelve other stakeholders to participate in a series of roundtable discussions, known as “active listening sessions”, to share their knowledge and feedback (Fumega 2014)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "26561bea07c5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "26561bea07c50",
+          "_type": "span",
+          "marks": [],
+          "text": "The current official Transparency Portal, developed by the Council of Transparency and the General Secretariat of the Presidency, launched in 2013, several years after the country’s Transparency Law was enacted."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "58415b2c4385",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "58415b2c43850",
+          "_type": "span",
+          "marks": [],
+          "text": "In 2015, FCI temporarily suspended their website and recommended that users submit their requests via the Transparency Portal of the Chilean Government. However, after a few months, "
+        },
+        {
+          "_key": "58415b2c43851",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Acceso Inteligente’s"
+        },
+        {
+          "_key": "58415b2c43852",
+          "_type": "span",
+          "marks": [],
+          "text": " website was no longer available and the project was terminated."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "17d0629ea462",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "17d0629ea4620",
+          "_type": "span",
+          "marks": [],
+          "text": "3.2 Germany: Ask The State (Frag den Staat)"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "137214766c6d",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "137214766c6d0",
+          "_type": "span",
+          "marks": [],
+          "text": "Background"
+        }
+      ],
+      "markDefs": [],
+      "style": "h4"
+    },
+    {
+      "_key": "4c711e39d5ec",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4c711e39d5ec0",
+          "_type": "span",
+          "marks": [],
+          "text": "The national German RTI legislation was enacted in 2005, after being on the policy agenda for approximately seven years. Despite bills already existing at the local level, in states such as Brandenburg and Berlin, it took pressure from civil society organisations and MPs to draft a national bill (Schoch 2016)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "e153e476b5c0",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "e153e476b5c00",
+          "_type": "span",
+          "marks": [],
+          "text": "The national law presents several weaknesses, despite innovations in the RTI field coming from local governments."
+        },
+        {
+          "_key": "e153e476b5c01",
+          "_type": "span",
+          "marks": [
+            "af3de3c7ff33"
+          ],
+          "text": "[12]"
+        },
+        {
+          "_key": "e153e476b5c02",
+          "_type": "span",
+          "marks": [],
+          "text": " According to an evaluation of the Institute for Regulatory Impact Analysis and Evaluation ("
+        },
+        {
+          "_key": "e153e476b5c03",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Institut für Gesetzesfolgenabschätzung"
+        },
+        {
+          "_key": "e153e476b5c04",
+          "_type": "span",
+          "marks": [],
+          "text": "2013), some problems relate to overloading fees, poor responses to the requests, and large amount of undisclosed information."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "af3de3c7ff33",
+          "_type": "link",
+          "href": "#_ftn12"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "c31a3156e31c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "c31a3156e31c0",
+          "_type": "span",
+          "marks": [],
+          "text": "When the portal was first developed, it had three main goals: 1) to promote the use of the RTI law; 2) to simplify the process of filing a request;"
+        },
+        {
+          "_key": "c31a3156e31c1",
+          "_type": "span",
+          "marks": [
+            "123ff3871a0c"
+          ],
+          "text": "[13]"
+        },
+        {
+          "_key": "c31a3156e31c2",
+          "_type": "span",
+          "marks": [],
+          "text": " 3) to produce changes in the attitude of public officials by proactively displaying all the responses (or lack thereof) for everyone to see."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "123ff3871a0c",
+          "_type": "link",
+          "href": "#_ftn13"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "a4a8b287a6e1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a4a8b287a6e10",
+          "_type": "span",
+          "marks": [],
+          "text": "Reactions"
+        }
+      ],
+      "markDefs": [],
+      "style": "h4"
+    },
+    {
+      "_key": "606a715cb2ed",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "606a715cb2ed0",
+          "_type": "span",
+          "marks": [],
+          "text": "After the launch and media coverage of the online portal, request numbers rose significantly from less than 2,000 requests per year, to 9,376 requests in 2015 (German Ministry of Interior 2016). Up until July 2016, 7,460 users visited the website to file 17,322 RTI requests (Semsrott 2016). Approximately 40% of all requests to federal mandated bodies are processed each year via the online portal, "
+        },
+        {
+          "_key": "606a715cb2ed1",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "FragDenStaat"
+        },
+        {
+          "_key": "606a715cb2ed2",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "f656af51ddfe",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "f656af51ddfe0",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "FragDenStaat"
+        },
+        {
+          "_key": "f656af51ddfe1",
+          "_type": "span",
+          "marks": [],
+          "text": " was initially advertised as a tool to reduce the workload of public official because the proactive publication of all the responses would avoid multiple requests on the same topic. However, the tool actually increased the amount of requests received by officials. A parliamentary assessment of the RTI legislation mentioned some frustration coming from public officials with regard to some of the features of the portal:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "08a466a598b6",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "08a466a598b60",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "\"[...] authorities criticized the RTI portal FragDenStaat.de, which it is used more and more by citizens, because it would publish personal data without the authorities knowing about it and because it prevented requesters from directly interacting with authorities. [...] Also, they are sceptical about disclosing information about their registers and lists\" "
+        },
+        {
+          "_key": "08a466a598b61",
+          "_type": "span",
+          "marks": [],
+          "text": "("
+        },
+        {
+          "_key": "08a466a598b62",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Institut für Gesetzesfolgenabschätzung"
+        },
+        {
+          "_key": "08a466a598b63",
+          "_type": "span",
+          "marks": [],
+          "text": " 2013)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "7a01e0a49f3e",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "7a01e0a49f3e0",
+          "_type": "span",
+          "marks": [],
+          "text": "According to Arne Semsrott, from Open Knowledge Germany, the portal led to two main changes regarding proactive transparency, regarding copyright and proactive disclosure of information:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "7bc8a95e208c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "7bc8a95e208c0",
+          "_type": "span",
+          "marks": [],
+          "text": "1) "
+        },
+        {
+          "_key": "7bc8a95e208c1",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Regarding copyright and publishing claims held by public authorities"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "4c8db76c329a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4c8db76c329a0",
+          "_type": "span",
+          "marks": [],
+          "text": "In 2014, the Ministry of Interior (the RTI enforcement agency), sued "
+        },
+        {
+          "_key": "4c8db76c329a1",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "FragDenStaat"
+        },
+        {
+          "_key": "4c8db76c329a2",
+          "_type": "span",
+          "marks": [],
+          "text": " for illegally publishing an internal report on the constitutionality of an election law. The Ministry gave out this report in response to an RTI request however, it was forbidden to re-publish it for copyright reasons. A Berlin court ruled that the Ministry could not claim copyright on that document (Semsrott 2016). To avoid this type of claim in the future, a feature on "
+        },
+        {
+          "_key": "4c8db76c329a3",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "FragDenStaat"
+        },
+        {
+          "_key": "4c8db76c329a4",
+          "_type": "span",
+          "marks": [],
+          "text": " can be unlocked that enables other users to request the same information with only one click."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "1697e3af1091",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1697e3af10910",
+          "_type": "span",
+          "marks": [],
+          "text": "For example, 850 people requested the list of participants of the 60th birthday party for the Deutsche Bank manager Josef Ackermann, held in Angela Merkel’s Chancellor’s Office, through "
+        },
+        {
+          "_key": "1697e3af10911",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "FragDenStaat"
+        },
+        {
+          "_key": "1697e3af10912",
+          "_type": "span",
+          "marks": [],
+          "text": " until the authority decided to lift the ban. After that, bans on publishing have rarely happened."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "b111f0373081",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b111f03730810",
+          "_type": "span",
+          "marks": [],
+          "text": "2) "
+        },
+        {
+          "_key": "b111f03730811",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Transparency of the German Parliament’s Research Section"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "478807b1c4db",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "478807b1c4db0",
+          "_type": "span",
+          "marks": [],
+          "text": "In 2015, the Federal Administrative Court decided that the Parliament was mandated to disclose thousands of reports when asked via a RTI request. In response to this, "
+        },
+        {
+          "_key": "478807b1c4db1",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "FragDenStaat"
+        },
+        {
+          "_key": "478807b1c4db2",
+          "_type": "span",
+          "marks": [],
+          "text": " unsuccessfully pushed for the proactive publication of all parliamentary reports on a large variety of topics – from UFO sightings to human right abuses in China. When "
+        },
+        {
+          "_key": "478807b1c4db3",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "FragDenStaat"
+        },
+        {
+          "_key": "478807b1c4db4",
+          "_type": "span",
+          "marks": [],
+          "text": " acquired a title list of 5,000 reports conducted between 2005 and 2015, it developed a tool that made it possible for users to search the database of report titles and request individual reports with only one click."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "2c64eaf2d566",
+      "_type": "pullQuote",
+      "text": "Within three weeks of the campaign in January 2016, more than 2,000 citizens requested reports"
+    },
+    {
+      "_key": "a4625009a11a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a4625009a11a0",
+          "_type": "span",
+          "marks": [],
+          "text": "Within three weeks of the campaign in January 2016, more than 2,000 citizens requested reports. Following the public pressure, the Parliament decided to publish all reports of the Research Section on February 16, 2016 (Semsrott 2016)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "829a58f7d19b",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "829a58f7d19b0",
+          "_type": "span",
+          "marks": [],
+          "text": "Nevertheless, some challenges remain. Some Ministries still refuse to answer requests coming via "
+        },
+        {
+          "_key": "829a58f7d19b1",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "FragDenStaat"
+        },
+        {
+          "_key": "829a58f7d19b2",
+          "_type": "span",
+          "marks": [],
+          "text": " as they still argue that the website is “not a proper email provider” and/or that they only answer via postal services. This has led to about 500 requests not being pursued further because requesters refused to disclose their postal address and identity. It remains a contested issue by the ministries, despite public support from the German Commissioner on Access to Information."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "a8db2f4656c3",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a8db2f4656c30",
+          "_type": "span",
+          "marks": [],
+          "text": "3.3 New Zealand: For Your Information (FYI)"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "99030d7c8b0b",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "99030d7c8b0b0",
+          "_type": "span",
+          "marks": [],
+          "text": "Background"
+        }
+      ],
+      "markDefs": [],
+      "style": "h4"
+    },
+    {
+      "_key": "e2e9ee750405",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "e2e9ee7504050",
+          "_type": "span",
+          "marks": [],
+          "text": "New Zealand passed its RTI law (Official Information Act -OIA) in 1982 . The law was designed to gradually include the principal of openness across the state. The law was the result of a long campaign by civil society advocates and emerged after the Ombudsman recommended the security and intelligence services be reformed."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "caf01aeed9bc",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "caf01aeed9bc0",
+          "_type": "span",
+          "marks": [],
+          "text": "New Zealand’s OIA was subsequently reformed several times, expanding its scope and increasing the robustness of the regime. New Zealand exhibits problems in terms of RTI implementation (most notably, the absence of statistics from 1987 onwards), as well as issues in delays and resistance from the bureaucracy to release information.  RTI oversight agency (the Office of the Ombudsman) only holds recommendation powers (non-binding powers to force the administration to release information), however, to date, its recommendations have been followed and implemented."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "68d41aaea96d",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "68d41aaea96d0",
+          "_type": "span",
+          "marks": [],
+          "text": "In recent years, the Ombudsman has warned about deterioration in the quality of the RTI regime, due to the overwhelming demand for its services (Donnelly 2012). There is also evidence of worrying behaviour, such as hiding information from the Ombudsmen, by some agencies (Donnelly 2012). Nonetheless, New Zealand remains a functional regime where institutions seem to work in a consistent way (Scrollini 2015)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "7daa7050a5f4",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "7daa7050a5f40",
+          "_type": "span",
+          "marks": [],
+          "text": "New Zealand developer Rowan Crawford started a project to resolve some of those issues. He designed and implemented “For your Information” (FYI) in 2009. The website was the first use of Alaveteli outside the UK. Concerns regarding the lack of innovation in RTI legislation implementation and general concerns about OIA not performing as expected motivated the development of the portal (Crawford 2013)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "4a165f18f782",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4a165f18f7820",
+          "_type": "span",
+          "marks": [],
+          "text": "FYI was developed with the support of individual donations and contributions. Crawford largely worked alone in the development and implementation of the portal, although he received some support from colleagues at the Open NZ group and the Open Knowledge Foundation (Caleb 2015)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "2254bea43e39",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2254bea43e390",
+          "_type": "span",
+          "marks": [],
+          "text": "Reactions"
+        }
+      ],
+      "markDefs": [],
+      "style": "h4"
+    },
+    {
+      "_key": "f69d65047761",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "f69d650477610",
+          "_type": "span",
+          "marks": [],
+          "text": "Despite media attention after the launch of the RTI portal, there was no organisation available to host FYI.org.nz. Crawford’s initial vision was that after the launch and implementation of the portal, the NZ government would take over and make it an official channel to request information (Caleb 2015). However, governmental support never materialised and he continued working on the website on a volunteer basis."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "5276917be38e",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "5276917be38e0",
+          "_type": "span",
+          "marks": [],
+          "text": "Crawford recruited volunteers to handle some operational aspects of the website. Users contributed e-mail addresses from several New Zealand administrative agencies, as well as helping keep the database updated. Eventually the website received the support of one of the largest newspapers in NZ, The New Zealand Herald, which contributed towards costs of the maintenance of the site. Furthermore, the website earned a national prize at the prestigious technical community New Zealand open source awards. In general, the government did not resist the website, with the exception of a few government agencies, most notably the New Zealand police."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "5e5edc0883d9",
+      "_type": "pullQuote",
+      "text": "Up until October 2016, the website processed 4600 requests, covering 3041 authorities from 1500 users"
+    },
+    {
+      "_key": "e4ac6831565c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "e4ac6831565c0",
+          "_type": "span",
+          "marks": [],
+          "text": "The RTI oversight institution (the NZ Ombudsman Office) not only accepted the website, but also produced an official guide for NZ public authorities on how to deal with FYI.org.nz requests. FYI website requests have been used in diverse ways; to get information from security agencies, such as the Police, and even as evidence in the New Zealand Human Rights Tribunal. Up until October 2016, the website processed 4600 requests, covering 3041 authorities from 1500 users."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ec08e4951569",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ec08e49515690",
+          "_type": "span",
+          "marks": [],
+          "text": "3.4 Spain: Your Right to Know ("
+        },
+        {
+          "_key": "ec08e49515691",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Tu derecho a saber"
+        },
+        {
+          "_key": "ec08e49515692",
+          "_type": "span",
+          "marks": [],
+          "text": ")"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "2b68ccd46499",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2b68ccd464990",
+          "_type": "span",
+          "marks": [],
+          "text": "Background"
+        }
+      ],
+      "markDefs": [],
+      "style": "h4"
+    },
+    {
+      "_key": "fe3d6328113a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "fe3d6328113a0",
+          "_type": "span",
+          "marks": [],
+          "text": "Although an electoral promise from 2004 (Anderica Caffarena 2013), Spain waited until 2015 to enact a RTI law. Spain was, at that time, the only country in Europe with over a million inhabitants without a RTI law. Thus, requesting public information was not an easy task. Two Spanish civil society organisations, "
+        },
+        {
+          "_key": "fe3d6328113a1",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Access Info-Europe"
+        },
+        {
+          "_key": "fe3d6328113a2",
+          "_type": "span",
+          "marks": [],
+          "text": " and "
+        },
+        {
+          "_key": "fe3d6328113a3",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Civio"
+        },
+        {
+          "_key": "fe3d6328113a4",
+          "_type": "span",
+          "marks": [],
+          "text": ", built a web portal that enabled users to request government-held information. The project aimed to create a simple tool for anyone to request information about the performance of a public institution."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "26aa7687fa8d",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "26aa7687fa8d0",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Tu derecho a saber"
+        },
+        {
+          "_key": "26aa7687fa8d1",
+          "_type": "span",
+          "marks": [],
+          "text": " (Your Right to Know) was launched in 2012, at the same time as the presentation of the first draft of the RTI bill. The project was funded by small individual donations, via "
+        },
+        {
+          "_key": "26aa7687fa8d2",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Goteo,"
+        },
+        {
+          "_key": "26aa7687fa8d3",
+          "_type": "span",
+          "marks": [],
+          "text": " a crowd-funding website. The portal ("
+        },
+        {
+          "_key": "26aa7687fa8d4",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Tuderechoasaber.es"
+        },
+        {
+          "_key": "26aa7687fa8d5",
+          "_type": "span",
+          "marks": [],
+          "text": ") was built using the British Alaveteli software. The same team (Access Info and Civio) had earlier launched AsktheEU.org, a website through which individuals could request information to any institution of the European Union."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "7c37092b8627",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "7c37092b86270",
+          "_type": "span",
+          "marks": [],
+          "text": "The idea behind the project was simple, the user would send a request via the portal, it would automatically reach the appropriate agency and be published on the portal. When the agency sent an answer, it was automatically published on the public web portal. After receiving the information, the user would comment on the response and decide to send a clarification and/or more information."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "aaa75cd374aa",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "aaa75cd374aa0",
+          "_type": "span",
+          "marks": [],
+          "text": "The project presented two main goals in two different stages. The first goal was to highlight the need to enact a RTI law, promised since 2004. Later, after the initiation of the RTI law, the website would make the process for requesting information online easier for the user. The immediate publication of the responses promoted the dissemination of public information (Cabo 2012)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "61d30a3e26fe",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "61d30a3e26fe0",
+          "_type": "span",
+          "marks": [],
+          "text": "Reactions"
+        }
+      ],
+      "markDefs": [],
+      "style": "h4"
+    },
+    {
+      "_key": "c124ee89da29",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "c124ee89da290",
+          "_type": "span",
+          "marks": [],
+          "text": "The website faced many challenges and the lack of response to requests was higher than in any other RTI portal. In 2012, the institutions ignored 54% of the applications received through the portal and in 2013, agencies left 81% of requests for information unanswered. Throughout 2014, during the debate of the RTI bill, administrative silence fell to, a still very high, 42%. Despite the high percentage of unanswered requests, citizens were able to access information, such as the number and the annual cost of interpreters in the Senate, the number of applicants for pardons, unstandardized Defence Ministry budget deviations and the cost of the coronation of Philip VI (El Confidencial 2015)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "368dfd569001",
+      "_type": "pullQuote",
+      "text": "In 2013, more than 180,000 people signed a petition via the portal to amend the bill to include political parties and their foundations, unions, and the Royal House within mandated bodies under the RTI regime"
+    },
+    {
+      "_key": "fc06708c2e39",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "fc06708c2e390",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Tu derecho a saber"
+        },
+        {
+          "_key": "fc06708c2e391",
+          "_type": "span",
+          "marks": [],
+          "text": " has been an instrumental advocacy tool to amend significant gaps in the RTI Law. In 2013, more than 180,000 people signed a petition via the portal to amend the bill to include political parties and their foundations, unions, and the Royal House within mandated bodies under the RTI regime. This was later debated in Congress and public pressure was key to the inclusion of these entities as mandated bodies, against the preferences expressed by the Government and the President of the Court of Auditors (El Confidencial 2015)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "7a6115816329",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "7a61158163290",
+          "_type": "span",
+          "marks": [],
+          "text": "However, after the enactment of the RTI legislation the website faced new challenges. From January 2015, "
+        },
+        {
+          "_key": "7a61158163291",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Tu derecho a saber"
+        },
+        {
+          "_key": "7a61158163292",
+          "_type": "span",
+          "marks": [],
+          "text": " defied legislation and manually processed requests to the official Transparency Portal from requesters without proper ID, or from those who wanted their questions and answers publicly disclosed. The website goal to process online requests was getting more difficult to achieve, as both the central government and the local regions were adopting their own systems rather than sending their answers via email. Paradoxically, when Spain enacted a RTI legislation requesting information became more difficult. Due to these challenges and because they could not afford to continue requesting information, "
+        },
+        {
+          "_key": "7a61158163293",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Access Info"
+        },
+        {
+          "_key": "7a61158163294",
+          "_type": "span",
+          "marks": [],
+          "text": " and "
+        },
+        {
+          "_key": "7a61158163295",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Civio"
+        },
+        {
+          "_key": "7a61158163296",
+          "_type": "span",
+          "marks": [],
+          "text": " announced that they were closing down the website (Access Info- Europe 2015)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "c0d8b4573667",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "c0d8b45736670",
+          "_type": "span",
+          "marks": [],
+          "text": "Within three years, the portal processed more than 1,800 requests. After the enactment of the RTI law in Spain (2015), "
+        },
+        {
+          "_key": "c0d8b45736671",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Tu Derecho a Saber"
+        },
+        {
+          "_key": "c0d8b45736672",
+          "_type": "span",
+          "marks": [],
+          "text": " contributed to uncovering some of the weaknesses of the legislation and the lack of responses from mandated agencies."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "b427187fdc43",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b427187fdc430",
+          "_type": "span",
+          "marks": [],
+          "text": "3.5 Uruguay: What You Know (Quesabes.uy)"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "cfc9f4378929",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "cfc9f43789290",
+          "_type": "span",
+          "marks": [],
+          "text": "Background"
+        }
+      ],
+      "markDefs": [],
+      "style": "h4"
+    },
+    {
+      "_key": "e869a56d68b5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "e869a56d68b50",
+          "_type": "span",
+          "marks": [],
+          "text": "The long process towards a Uruguayan RTI law started in 2002, during public and parliamentary discussions of human rights violations during the military dictatorship (1973-1985). The RTI law was finally enacted in 2008. The Uruguayan law is progressive (Centre for Law and Democracy and Access Info-Europe 2015) as it includes the whole of the public sector and a public interest test. Further, it allows individual requests for any kind of information, the only requisite for which is to have a written request following basic specifications. However, the law does not set an independent oversight public body. As a result, the implementation of the RTI law – eight years after its enactment – shows challenges in terms of proactive transparency, request procedures and resolution for conflicts (Scrollini 2015). One of the main challenges in the early days of RTI was to make citizens aware of the law. Another challenge was to simplify request mechanisms so requesters could ask for information in an efficient and simple way."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ea2b4747395a",
+      "_type": "pullQuote",
+      "text": "The long process towards a Uruguayan RTI law started in 2002, during public and parliamentary discussions of human rights violations during the military dictatorship (1973-1985)"
+    },
+    {
+      "_key": "063e06cb54eb",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "063e06cb54eb0",
+          "_type": "span",
+          "marks": [],
+          "text": "In 2012, DATA Uruguay, an open data and civic tech-oriented organisation, developed "
+        },
+        {
+          "_key": "063e06cb54eb1",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Quesabes"
+        },
+        {
+          "_key": "063e06cb54eb2",
+          "_type": "span",
+          "marks": [],
+          "text": " (What You Know), a website based on Alaveteli that aimed to help users make RTI requests to government agencies. The website was launched with the support of a local RTI-oriented organisation, CAINFO Uruguay. The main objective of the website was to democratise access, allowing users to make RTI requests through email. It was conceived as an awareness and service delivery tool and was designed to test whether the Uruguayan government would reply to RTI requests through email. The whole project was done on a voluntary basis."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "79d9a1dde3e0",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "79d9a1dde3e00",
+          "_type": "span",
+          "marks": [],
+          "text": "The portal initially included 80 public sector agencies and slowly increased the number of departments available, based on users’ feedback. DATA Uruguay used an online authority’s guide provided by the National Civil Service Office, which was in a closed data format, to find the email addresses for each public agency. The portal received wide media coverage and established DATA’s reputation in Uruguay. The national innovation agency, ANII, awarded DATA an honorary mention in its annual challenge in 2013."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ae42308f802a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ae42308f802a0",
+          "_type": "span",
+          "marks": [],
+          "text": "Reactions"
+        }
+      ],
+      "markDefs": [],
+      "style": "h4"
+    },
+    {
+      "_key": "b3d2b9966a62",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b3d2b9966a620",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Quesabes"
+        },
+        {
+          "_key": "b3d2b9966a621",
+          "_type": "span",
+          "marks": [],
+          "text": " received mixed responses from government. The oversight RTI agency, Access to Public Information Unit (UAIP),"
+        },
+        {
+          "_key": "b3d2b9966a622",
+          "_type": "span",
+          "marks": [
+            "d0bcf67a8f83"
+          ],
+          "text": "[14]"
+        },
+        {
+          "_key": "b3d2b9966a623",
+          "_type": "span",
+          "marks": [],
+          "text": " and the e-government agency did not oppose the portal and even mildly encouraged it. The local Council of Montevideo initially resisted the idea of replying through the website, but eventually began to use the portal to reply to requests. The Parliament, however, notified users that they would only reply if users visited their office in person and filled out their form. Other departments did not reply to emails."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "d0bcf67a8f83",
+          "_type": "link",
+          "href": "#_ftn14"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "8e0717a5eb7e",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "8e0717a5eb7e0",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Quesabes"
+        },
+        {
+          "_key": "8e0717a5eb7e1",
+          "_type": "span",
+          "marks": [],
+          "text": " received mixed responses from users. Some users eagerly used the portal to submit RTI requests and make comments to help other users. DATA, with the support of local RTI organisation CAINFO, actively lobbied public institutions to join the portal. Some institutions declined to reply, as it was not an official portal. DATA aimed to engage volunteers to run the website, but due to the lack of resources this did not happen."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "adbfb45e3e5e",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "adbfb45e3e5e0",
+          "_type": "span",
+          "marks": [],
+          "text": "In 2016, "
+        },
+        {
+          "_key": "adbfb45e3e5e1",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Quesabes"
+        },
+        {
+          "_key": "adbfb45e3e5e2",
+          "_type": "span",
+          "marks": [],
+          "text": " registered 621 users and processed 434 requests. According to the user rating, 23% of the requests were considered successful or partially successful, while 15.6% of the requests were denied. About 44% of requests were ignored or an appropriate response was not provided. The rest of the requests were classified under a set of miscellaneous categories."
+        },
+        {
+          "_key": "adbfb45e3e5e3",
+          "_type": "span",
+          "marks": [
+            "6072bba0883d"
+          ],
+          "text": "[15]"
+        },
+        {
+          "_key": "adbfb45e3e5e4",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Quesabes"
+        },
+        {
+          "_key": "adbfb45e3e5e5",
+          "_type": "span",
+          "marks": [],
+          "text": " results are similar to other studies carried out by local researchers (Pineiro and Rossell 2015). Whether received by email or offline mechanisms, the most common response by the Uruguayan public agencies has been to ignore information requests."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "6072bba0883d",
+          "_type": "link",
+          "href": "#_ftn15"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "2e6e44a0e71d",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2e6e44a0e71d0",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Quesabes"
+        },
+        {
+          "_key": "2e6e44a0e71d1",
+          "_type": "span",
+          "marks": [],
+          "text": " influenced the Uruguayan RTI regime in a number of different ways. It increased awareness of RTI in Uruguay and improved policy, as well as service delivery. Through media exposure and the sustained effort of DATA, "
+        },
+        {
+          "_key": "2e6e44a0e71d2",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Quesabes"
+        },
+        {
+          "_key": "2e6e44a0e71d3",
+          "_type": "span",
+          "marks": [],
+          "text": " increased awareness of RTI. "
+        },
+        {
+          "_key": "2e6e44a0e71d4",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Quesabes"
+        },
+        {
+          "_key": "2e6e44a0e71d5",
+          "_type": "span",
+          "marks": [],
+          "text": " has featured in 50 press articles at a national and international level since its launch. Furthermore, it informed more than 50 public administration departments about RTI through the portal and the advocacy of DATA and Cainfo. Currently, 25% of the Uruguayan population is aware of the RTI (Del Piazzo 2013)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "75835defc90a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "75835defc90a0",
+          "_type": "span",
+          "marks": [],
+          "text": "The portal sparked a debate about the validity of email as a channel to submit RTI requests. The debate concluded that email was a valid way of exercising the RTI. Nevertheless, due to the limited enforcement capacity of the regulator, this is often not the case. Currently, the Uruguayan government is committed to a full legal reform to specifically include emails as a valid way of communication."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "bc7ecf18b88e",
+      "_type": "pullQuote",
+      "text": "The portal remains the only centralised tool that allows users to exercise RTI online"
+    },
+    {
+      "_key": "a5068c962b0f",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a5068c962b0f0",
+          "_type": "span",
+          "marks": [],
+          "text": "The portal remains the only centralised tool that allows users to exercise RTI online. It is also the only place where statistics about the use of RTI are available, as the Uruguayan government does not gather these records. Arguably, the portal had a performative function showing that it was possible to create this tool, and nudged the Uruguayan government to develop its own. To date, the national RTI portal is in beta mode, with only one organisation answering requests through it."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ec2569d14b35",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ec2569d14b350",
+          "_type": "span",
+          "marks": [],
+          "text": "4. Analysis: What kind of effect do these portals have on Right to Information regimes?"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "4e3d72d4e33f",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4e3d72d4e33f0",
+          "_type": "span",
+          "marks": [],
+          "text": "In this section, we focus on the demand and supply sides of public information to better understand the effects of these portals over RTI regimes. We observe requesters and civil society organisations behind these portals (demand) and analyse the behaviours of the actors on the supply side of information, public agencies and RTI oversight institutions."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "9b233774207a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "9b233774207a0",
+          "_type": "span",
+          "marks": [],
+          "text": "4.1. Demand side"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "006747ebc18f",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "006747ebc18f0",
+          "_type": "span",
+          "marks": [],
+          "text": "We have observed seven effects over the demand side of public information. First, in all our cases the portals gave rise to one particular kind of actor: a civic tech organisation or individual. In Spain, Uruguay and New Zealand, the portal helped organisations that were relatively new or unknown become key players in the RTI regime. In the cases of Chile and Germany, the portal contributed significantly to the work and trajectory that organisations in these countries had before these projects. By developing and organising these projects, all the organisations and individuals involved gained recognition as key stakeholders of the RTI regime."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "227c21fd180d",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "227c21fd180d0",
+          "_type": "span",
+          "marks": [],
+          "text": "Second, in all selected cases the portals paved the way for a new type of digital activism and digital service. The construction of such a portal should be considered a radical act of digital activism as the action is designed to solve a public problem based on open tools and is carried out by self-organised citizens. This act operates at the border of traditional civil society activism, ethical hacking and government reformers communities. The development and organisation of a portal, without consent of a government agency contributed, in most cases, to the development of an official portal. More importantly, these portals embedded a set of values in their code about how the process for submitting a request could be designed to reflect citizens’ priorities; this performative effect should not be understated."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "6f19d555aa58",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6f19d555aa580",
+          "_type": "span",
+          "marks": [],
+          "text": "Third, just three of these projects have survived and continue without a stable source of funding: New Zealand, Germany and Uruguay. If these projects did not exist, there would be no digital channel through which to make RTI requests. Although these projects survived without donors and funders, the role of external funding should not be underestimated. With external support, these portals would probably achieve greater results at a lower cost for individuals and small organisations. Moreover, with the support of funders these portals could have produced similar effects in other RTI regimes."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "6b5ef3dc4eb4",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6b5ef3dc4eb40",
+          "_type": "span",
+          "marks": [],
+          "text": "Fourth, as a result of the activity and press exposure all these projects contributed to raise awareness about RTI. Through ‘leading cases’ (most notably in Spain and Germany) these projects contributed to raising specific issues in the media. Thus, these portals contributed to the work of advocates in this field."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "765532465b2e",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "765532465b2e0",
+          "_type": "span",
+          "marks": [],
+          "text": "Fifth, there is the matter of access. Due to poor record keeping and the lack of official statistics about RTI requests (except in the Chilean case), it is difficult to estimate if and how these portals have increased the overall exercise of the right to access government-held information by groups that are not usually engaged. It is likely that these portals contribute to increased access to particular groups of users; however, those groups are likely to be very similar to average RTI users. According to the available data about RTI users, most of them have a high degree of education (see, for instance, the case of Chile) however; there is a lack of comparative study in terms of RTI users in different settings."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "4fb5e9eb6923",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4fb5e9eb69230",
+          "_type": "span",
+          "marks": [],
+          "text": "Sixth, these portals contributed to the interaction between civic technologist and more traditional transparency-oriented RTI organisations. These developments contributed to discussions and established common points to pursue advocacy goals and promote RTI. Whilst the coordination of these activities is far from perfect (Fumega 2015), these projects provide motivation to these communities to start a more fluid dialogue."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "19660f33c99e",
+      "_type": "pullQuote",
+      "text": "All these projects operate in different civil society settings and require a careful contextual analysis to understand how portals interplay with larger issues and organisations"
+    },
+    {
+      "_key": "cba4c542276b",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "cba4c542276b0",
+          "_type": "span",
+          "marks": [],
+          "text": "Finally, all these projects operate in different civil society settings and require a careful contextual analysis to understand how portals interplay with larger issues and organisations. Due to the limitations of this work, we are unable to delve into this matter. We note that funding is less relevant in these cases, except for the Chilean case. All the portals were developed through voluntary efforts and supported by civil society organisations or private citizens initially through crowd-funding. However, as previously mentioned, the role of funders should not be underestimated."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "caa6a818daf2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "caa6a818daf20",
+          "_type": "span",
+          "marks": [],
+          "text": "4.2 Not all public administrations are the same"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "a12d5f0242bd",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a12d5f0242bd0",
+          "_type": "span",
+          "marks": [],
+          "text": "Public administrations are fragmented entities and communication between organisations can be a problem. This fragmentation has a twofold effect. In all cases it was possible to find sympathetic public organisations willing to answer requests, even without a specific mandate to do so. However, even with a mandate to reply, organisations in a public administration might not be willing to do so and may ignore requests to reply or even executive orders. Nevertheless, finding examples of organisations within a given public administration, and getting those replies is already a significant behavioural change. In order to reply to an email through an ‘unofficial portal’ it is likely that public servants obtained clearance from managers and politicians in charge of answering emails."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "c89bde0366f1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "c89bde0366f10",
+          "_type": "span",
+          "marks": [],
+          "text": "Public administrations have certain administrative and legal traditions that may favour (or not) engagement with these portals. Certain public administrations also have more capacity to engage than others do.In the New Zealand, for example, there was only one organisation not willing to answer through the portal due to the strong RTI tradition. This was not the case in Uruguay, Chile, Germany or Spain, probably due to the legal background of these public administrations or the so-called ‘administrative silence’. In the Uruguayan and Chilean cases, some organisations might not have the basic capacities in place to engage with these portals, especially during the early days. Note that even when there is a strong RTI tradition (NZ) or good state capacity (Germany), some organisations might still resist replying through an unofficial portal or via email."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "f300a7cadf49",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "f300a7cadf490",
+          "_type": "span",
+          "marks": [],
+          "text": "4.3 Role of enforcement institutions: Friend or foe?"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "092b219f1ee5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "092b219f1ee50",
+          "_type": "span",
+          "marks": [],
+          "text": "Depending on the RTI regime, oversight institutions can play a more or a less prominent role. While it seems intuitive that these institutions should welcome developments, this is not necessarily always the case. Some institutions decided to ignore the portals (Germany and Spain), while in Chile and Uruguay there were different degrees of collaboration. However, in New Zealand there was an explicit acknowledgement of the portal by the Ombudsman."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "79f0fde99737",
+      "_type": "pullQuote",
+      "text": "These portals also could contribute to visibility of the institutions and their capacity to oversee the enforcement of the RTI legislation."
+    },
+    {
+      "_key": "fad8cc23e5bb",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "fad8cc23e5bb0",
+          "_type": "span",
+          "marks": [],
+          "text": "In a case where the RTI oversight institution presents some features that support these developments, then the oversight body could evolve as an ally of civil society actors behind the RTI portal. This was the case in the Uruguayan RTI regime where the regulator issued a directive indicating that email requests were a valid channel of communication and thus, they should be answered. In the Chilean case, the oversight institution cooperated in the initial promotion of the portal and built on FCI experiences when developing their own portal. These reactions add legitimacy to the work of these NGOs and could re-assert the authority and influence these institutions have in this field. Furthermore, these portals also could contribute to visibility of the institutions and their capacity to oversee the enforcement of the RTI legislation."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "2a9b29c115b5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2a9b29c115b50",
+          "_type": "span",
+          "marks": [],
+          "text": "Nevertheless, in the Uruguayan, Chilean and Spanish cases, RTI oversight institutions developed their own official portal after the emergence of civil society portals. This represents an important behavioural change, as there were no plans to develop such portals until civil society portals were in place and performing as a de facto portal. In most cases, these official portals were not developed in partnership with civil society actors but in some cases, the NGO was asked to share their experiences of establishing a portal."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "493c208c4c96",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "493c208c4c960",
+          "_type": "span",
+          "marks": [],
+          "text": "A lack of collaboration between NGOs and governments in developing official portals often results in a shift away from the citizen-oriented logic that was embedded in the initial civil society-led portals. This is clearly demonstrated in the Spanish case, where the portal ultimately shut down because there were serious difficulties in submitting requests as a result of the registration policy."
+        },
+        {
+          "_key": "493c208c4c961",
+          "_type": "span",
+          "marks": [
+            "535086348ed8"
+          ],
+          "text": "[16]"
+        },
+        {
+          "_key": "493c208c4c962",
+          "_type": "span",
+          "marks": [],
+          "text": " Registration policy is likely to become an issue in the Uruguayan case as well. It is not clear if, and how, NGOs are able to influence these processes. However, it is clear that their work contributed to opening up a previously untapped market for a particular aspect of government ICTs. While it is clear that these innovations affect the implementation of technological tools in a RTI regime, official portals are yet to fully incorporate citizen or civil society experience in their design."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "535086348ed8",
+          "_type": "link",
+          "href": "#_ftn16"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "f5d243dc6d9c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "f5d243dc6d9c0",
+          "_type": "span",
+          "marks": [],
+          "text": "5. Final remarks: What role for civil society lead portals in the digital age?"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "0df476518fea",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "0df476518fea0",
+          "_type": "span",
+          "marks": [],
+          "text": "In this paper, we reviewed the experience of five civil society portals in developing and developed countries with different RTI regimes. We argued that civil society-led portals affected these RTI regimes in a positive way. In short, without the development of these portals, some of the positive changes in these RTI regimes would either not have materialised or would have developed later. In the following paragraphs, we provide a set of conclusions and recommendations to enhance positive outcomes, and present new lines of research in this field."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "cb1fcc8d2d29",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "cb1fcc8d2d290",
+          "_type": "span",
+          "marks": [],
+          "text": "Civil society portals affect RTI regimes in different ways. In best-case scenarios, the portals positively influence the way public administration and RTI oversight institutions function, as in Chile and Uruguay. In worst-case scenarios, the portals document, beyond doubt and in real time, the difficulties requesters face, as in the Spanish case. The portals were pioneers in providing users a simple way to request information online. Furthermore, they included positive features that were later not included in official portals. Proactive disclosure of all responses was an important feature that should be included in all future cases. It means that when there is a request for information, it should be further understood as a request to make that information public."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "b9b87d7617e0",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b9b87d7617e00",
+          "_type": "span",
+          "marks": [],
+          "text": "The portals in the selected cases enabled a new type of civil society actor. Thus, donors and other supporters might consider supporting these projects to develop a new generation of NGOs. Funding has not been a determinant factor for the success of these projects and four of the selected five cases did not have any support from international donors, the three cases that remain active did not have any support. Local ownership by local actors is a way to sustain these efforts beyond funding. With more resources, these projects could have delivered increased behavioural change and continued to contribute to each RTI regime by engaging in activities that are mostly non-tech related, such as reaching out to the public sector, educating requesters and engaging in campaigning activities. Donors and civil society advocates need to consider the kind of regime they are engaging with and the objectives they are pursuing in these regimes in the design and decision to support these projects."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "3a9a40c1cab8",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "3a9a40c1cab80",
+          "_type": "span",
+          "marks": [],
+          "text": "It is necessary to develop a more detailed hypothesis (or “theory of change”) for these portals as the portals are not an immediate game changer in any RTI regime. It is not possible to support the techno-utopian visions about the tools that were eagerly celebrated in the optimistic first years of the civic tech movement. The initiatives all faced different institutional constraints, most notably the nature of the public administration and the role oversight institutions play. These initiatives act like a trigger in RTI regimes unchaining a set of (generally) beneficial effects for the regime. To date, there is no developed theory of change and it requires further research, particularly if researchers and practitioners face these studies in partnership. Such a theory would need to identify key metrics, but also should include qualitative aspects. Some of the changes the portals have already helped to bring included changes in the legal and institutional system."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "59050155f009",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "59050155f0090",
+          "_type": "span",
+          "marks": [],
+          "text": "Each case demonstrates an innovative use of technology, but innovation does not directly translate to an improvement of digital public services. It seems that governments or RTI oversight institutions mirror civil society behaviour to develop their own portals. However, good practices implemented by civil society are not always adopted in official portals or portals. This begs for analysis on whether it makes sense to maintain civil society portals while there is also an official portal. We do not have a clear answer for this. Nevertheless, if official portals do not deliver a good service or are restrictive, then there is a case for the continuation of these portals and the addition of innovative features. Forums, such as the Open Government Partnership, might be good spaces through which to foster dialogue, but ultimately governments need reliable providers to run these services and might not be willing to incorporate all civil society suggestions."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "6dd2c1437a68",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6dd2c1437a680",
+          "_type": "span",
+          "marks": [],
+          "text": "A better understanding of the impact of these portals on the way RTI delivers transparency and accountability is needed. These developments are part of a larger debate about the role of RTI in delivering accountability (see, for instance, Fox 2007; Hazell, Worthy and Glover 2010). Technology is just one important variable in a RTI regime, and portals are part of this landscape. Further, this is a very particular kind of technological development in a RTI regime. Concurring with Bailur and Longley (2014), developing and implementing a portal (in particular an open source, civil society one) is a radical act. To further explore the value of these portals, we might need to understand more about their specific advantages over government portals or other ways of requesting information. To judge success (or lack of success) of a project, it is important to understand the objectives these portals establish at the beginning of their design. In all the selected case studies, portals were developed with the aim of changing a given RTI regime. This overarching goal was, to varying degrees of success, achieved and the level of success depended on the resources and status of the RTI regime."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "849a9f0660a4",
+      "_type": "pullQuote",
+      "text": "Institutions are likely to resist, but with a good strategic focus, these portal might well improve the RTI regime"
+    },
+    {
+      "_key": "ec642f1afe80",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ec642f1afe800",
+          "_type": "span",
+          "marks": [],
+          "text": "There are currently more than 100 countries with a RTI law. Thus, there is potential to spread these portals further and, in particular, there is space to re-think the way these projects can be implemented at a local level. Actors need to clearly articulate the kind of changes they will pursue in the short, medium and long run. Institutions are likely to resist, but with a good strategic focus, these portal might well improve the RTI regime."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "a15fbd3f1499",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a15fbd3f14990",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "734cf6ea3ca4",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "734cf6ea3ca40",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "7c2b6aa30a70",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "7c2b6aa30a700",
+          "_type": "span",
+          "marks": [],
+          "text": "\n"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "5c7bb94f93fb",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "5c7bb94f93fb0",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "5c7bb94f93fb1",
+          "_type": "span",
+          "marks": [
+            "ce571d4496b4"
+          ],
+          "text": "[1]"
+        },
+        {
+          "_key": "5c7bb94f93fb2",
+          "_type": "span",
+          "marks": [],
+          "text": "Currently there are several government portals allowing citizens to exercise their right to information. In this study, we do not cover such portals, and we focus only in the ones developed by civil society."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ce571d4496b4",
+          "_type": "link",
+          "href": "#_ftnref1"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "933a35f1d7f2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "933a35f1d7f20",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "933a35f1d7f21",
+          "_type": "span",
+          "marks": [
+            "eed91c19bb9f"
+          ],
+          "text": "[2]"
+        },
+        {
+          "_key": "933a35f1d7f22",
+          "_type": "span",
+          "marks": [],
+          "text": " It could be added that in many cases it was run on volunteer basis. Through this paper we use the term free and open source software meaning software that can be inspected and is licensed to foster re-use. We understand that philosophically and practically they are not exactly the same."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "eed91c19bb9f",
+          "_type": "link",
+          "href": "#_ftnref2"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "d0192df04f6a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "d0192df04f6a0",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "d0192df04f6a1",
+          "_type": "span",
+          "marks": [
+            "ac2551b2330f"
+          ],
+          "text": "[3]"
+        },
+        {
+          "_key": "d0192df04f6a2",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "d0192df04f6a3",
+          "_type": "span",
+          "marks": [
+            "83d5d96e1d98"
+          ],
+          "text": "A previous version of this article was published at proceedings of the 18th Annual International Conference on Digital Government Research"
+        },
+        {
+          "_key": "d0192df04f6a4",
+          "_type": "span",
+          "marks": [],
+          "text": ":"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ac2551b2330f",
+          "_type": "link",
+          "href": "#_ftnref3"
+        },
+        {
+          "_key": "83d5d96e1d98",
+          "_type": "link",
+          "href": "http://dl.acm.org/citation.cfm?id=3085301&CFID=775641205&CFTOKEN=77359375"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "c3f953f04c47",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "c3f953f04c470",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "c3f953f04c471",
+          "_type": "span",
+          "marks": [
+            "eb31b6642d79"
+          ],
+          "text": "[4]"
+        },
+        {
+          "_key": "c3f953f04c472",
+          "_type": "span",
+          "marks": [],
+          "text": " The Kingdom of Sweden was the first country to enact a regulation covering the access to public information back in 1766."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "eb31b6642d79",
+          "_type": "link",
+          "href": "#_ftnref4"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "9e3ea6cb8313",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "9e3ea6cb83130",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "9e3ea6cb83131",
+          "_type": "span",
+          "marks": [
+            "2067696cc1e6"
+          ],
+          "text": "[5]"
+        },
+        {
+          "_key": "9e3ea6cb83132",
+          "_type": "span",
+          "marks": [],
+          "text": " As named by Darch and Underwood (2010. p.47)"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "2067696cc1e6",
+          "_type": "link",
+          "href": "#_ftnref5"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "f3ff28c53033",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "f3ff28c530330",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "f3ff28c530331",
+          "_type": "span",
+          "marks": [
+            "0b9451fea3b5"
+          ],
+          "text": "[6]"
+        },
+        {
+          "_key": "f3ff28c530332",
+          "_type": "span",
+          "marks": [],
+          "text": " Note that his assertion does not mean that public services are becoming more inclusive as a result of digitalization. It means that increasingly public services are going “digital” by default."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "0b9451fea3b5",
+          "_type": "link",
+          "href": "#_ftnref6"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "723788f017da",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "723788f017da0",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "723788f017da1",
+          "_type": "span",
+          "marks": [
+            "dfd909a4f8c6"
+          ],
+          "text": "[7]"
+        },
+        {
+          "_key": "723788f017da2",
+          "_type": "span",
+          "marks": [],
+          "text": " Alaveteli is a type of software available to civil society to build portals to fill-in RTI requests."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "dfd909a4f8c6",
+          "_type": "link",
+          "href": "#_ftnref7"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "93ed8c9577e1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "93ed8c9577e10",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "93ed8c9577e11",
+          "_type": "span",
+          "marks": [
+            "ae0a16a1b76c"
+          ],
+          "text": "[8]"
+        },
+        {
+          "_key": "93ed8c9577e12",
+          "_type": "span",
+          "marks": [],
+          "text": " Open source means that the software is available with little or no-restriction to inspect, copy or redistribute. Further, it implies a collaborative development model where several actors can contribute to the development of the code. This model promotes rapid software development."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ae0a16a1b76c",
+          "_type": "link",
+          "href": "#_ftnref8"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "dd89c96bd875",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "dd89c96bd8750",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "dd89c96bd8751",
+          "_type": "span",
+          "marks": [
+            "91320763db2a"
+          ],
+          "text": "[9]"
+        },
+        {
+          "_key": "dd89c96bd8752",
+          "_type": "span",
+          "marks": [],
+          "text": " A list of FOIA technologies available have been compiled by 18F available at "
+        },
+        {
+          "_key": "dd89c96bd8753",
+          "_type": "span",
+          "marks": [
+            "73f3674c628d"
+          ],
+          "text": "https://github.com/18F/foia/wiki/Portals"
+        },
+        {
+          "_key": "dd89c96bd8754",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "91320763db2a",
+          "_type": "link",
+          "href": "#_ftnref9"
+        },
+        {
+          "_key": "73f3674c628d",
+          "_type": "link",
+          "href": "https://github.com/18F/foia/wiki/Platforms"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "c1be688f773c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "c1be688f773c0",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "c1be688f773c1",
+          "_type": "span",
+          "marks": [
+            "289af9659004"
+          ],
+          "text": "[10]"
+        },
+        {
+          "_key": "c1be688f773c2",
+          "_type": "span",
+          "marks": [],
+          "text": " With regard to the disclosure of responses given to the requesters, in Mexico, both the requests and the responses can be accessed on the INAI (National Transparency Institute) portal. Through this portal, a user can access information that was previously requested -and for which a satisfactory response has been given- without having to re-file the same request. There is a rationale behind publishing this information: the INAI understands that when information is requested, it is not just for an individual to access a particular piece of information, but rather a request for that information to be made public; this is why both the requests and the responses are regarded as public. In Chile, on the other hand, the portal of the Council for Transparency only allows the request and the response to be seen by the user who filed it. This is because the portal’s information system cannot differentiate which parts of the request and the response should be classified as private or sensitive information, and which should be public. Therefore, responsibility is entrusted to the agency involved (Fumega 2014)."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "289af9659004",
+          "_type": "link",
+          "href": "#_ftnref10"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "2356e291a6b0",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2356e291a6b00",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "2356e291a6b01",
+          "_type": "span",
+          "marks": [
+            "61de3bb7f3ac"
+          ],
+          "text": "[11]"
+        },
+        {
+          "_key": "2356e291a6b02",
+          "_type": "span",
+          "marks": [],
+          "text": " The cases of Chile, Germany and Uruguay were previously explored in a preliminary working paper presented at the Global FOI Conference (Los Angeles, November 2016). This paper was developed by Silvana Fumega, Fabrizio Scrollini and Arne Semsrott. (Fumega, Scrollini and Semsrott 2016)."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "61de3bb7f3ac",
+          "_type": "link",
+          "href": "#_ftnref11"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "ace9b99c920b",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ace9b99c920b0",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "ace9b99c920b1",
+          "_type": "span",
+          "marks": [
+            "7c4b83e0b94e"
+          ],
+          "text": "[12]"
+        },
+        {
+          "_key": "ace9b99c920b2",
+          "_type": "span",
+          "marks": [],
+          "text": " For example, Hamburg introduced its Transparency Law that mandates authorities not only to disclose most of its data reactively, but also proactively. Contracts with private actors have to be published a month before they come into effect, giving the public the option of vetoing it beforehand"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "7c4b83e0b94e",
+          "_type": "link",
+          "href": "#_ftnref12"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "1c1981feee2a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1c1981feee2a0",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "1c1981feee2a1",
+          "_type": "span",
+          "marks": [
+            "a769343c4f35"
+          ],
+          "text": "[13]"
+        },
+        {
+          "_key": "1c1981feee2a2",
+          "_type": "span",
+          "marks": [],
+          "text": " Relevant in a country with more than 60 different RTI regulations at the local level and which establish different exemptions, fees and deadlines. Portal users do not need to know about the particular legal provisions and do not need to cite it when filing a request."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "a769343c4f35",
+          "_type": "link",
+          "href": "#_ftnref13"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "36402e8a8b90",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "36402e8a8b900",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "36402e8a8b901",
+          "_type": "span",
+          "marks": [
+            "cb50d00f6f5e"
+          ],
+          "text": "[14]"
+        },
+        {
+          "_key": "36402e8a8b902",
+          "_type": "span",
+          "marks": [],
+          "text": " The Access to Public Information Unit (UAIP) was created by article 19 of Law 18,381 on Access to Public Information as a decentralised body of AGESIC, the Uruguayan E-Government Agency dependent of the Executive"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "cb50d00f6f5e",
+          "_type": "link",
+          "href": "#_ftnref14"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "e5a4a283375c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "e5a4a283375c0",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "e5a4a283375c1",
+          "_type": "span",
+          "marks": [
+            "ff904215d0a5"
+          ],
+          "text": "[15]"
+        },
+        {
+          "_key": "e5a4a283375c2",
+          "_type": "span",
+          "marks": [],
+          "text": " This information emerges from quesabes.uy admin data. Other categories included: unsatisfactory reply, answer via postal mail and withdrawal of the request. However, these constituted only a small percentage."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ff904215d0a5",
+          "_type": "link",
+          "href": "#_ftnref15"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "d37675e7631c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "d37675e7631c0",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "d37675e7631c1",
+          "_type": "span",
+          "marks": [
+            "cd968b4e5181"
+          ],
+          "text": "[16]"
+        },
+        {
+          "_key": "d37675e7631c2",
+          "_type": "span",
+          "marks": [],
+          "text": " Note the Spanish website is not owned by the RTI oversight institution, but by the Spanish Government"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "cd968b4e5181",
+          "_type": "link",
+          "href": "#_ftnref16"
+        }
+      ],
+      "style": "normal"
+    }
+  ],
+  "date": {
+    "_type": "richDate",
+    "utc": "2017-12-11T23:00:00Z"
+  },
+  "featuredImage": {
+    "_type": "image",
+    "asset": {
+      "_ref": "image-CDwR6nTXrees_u5KN4Ff7uYiZjLQOsEVsGVim-6000x4189-jpg",
+      "_type": "reference"
+    },
+    "caption": [
+      {
+        "_key": "44a187b71f95",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "44a187b71f950",
+            "_type": "span",
+            "marks": [],
+            "text": "Photo by "
+          },
+          {
+            "_key": "44a187b71f951",
+            "_type": "span",
+            "marks": [
+              "7961f48ea551"
+            ],
+            "text": "rawpixel.com"
+          },
+          {
+            "_key": "44a187b71f952",
+            "_type": "span",
+            "marks": [],
+            "text": " on "
+          },
+          {
+            "_key": "44a187b71f953",
+            "_type": "span",
+            "marks": [
+              "f1cf815c8791"
+            ],
+            "text": "Unsplash"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ]
+  },
+  "lead": "Over the past two decades, advances in information and communication technology (ICT) have transformed the way people access and interact with the information that governments produce and hold. The development of online platforms, which enable users to submit requests for information under right to information legislation (RTI), is one of many examples of these changes. This paper presents an analytic framework to explore how RTI online portals impact RTI regimes, while reviewing the experience of five civil society portals in developing and developed countries. We argue that these civil society-led portals have affected in a positive way these RTI regimes. However, further research about the influence of these platforms (and the whole RTI regime) in transparency and accountability is needed.",
+  "mainPoints": [
+    "Civil society RTI portals can positively influence the way public RTI oversight institutions function",
+    "The portals enabled a new type of civil society actor to emerge. Donors could consider supporting these types of projects to encourage the further development of this new type of organisation",
+    "Supporting dialogue between NGOs and government in developing official portals can ensure that citizen-oriented logic is maintained in official RTI portals"
+  ],
+  "references": [
+    {
+      "_key": "34e66ffe5eb3",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "34e66ffe5eb30",
+          "_type": "span",
+          "marks": [],
+          "text": "Access Info-Europe. 2015. "
+        },
+        {
+          "_key": "34e66ffe5eb31",
+          "_type": "span",
+          "marks": [
+            "e1a675066ba7"
+          ],
+          "text": "Electronic ID requirements and government refusal to answer emails force civil society to close Spanish request website"
+        },
+        {
+          "_key": "34e66ffe5eb32",
+          "_type": "span",
+          "marks": [],
+          "text": ". Access Info- Europe Website.\n"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "e1a675066ba7",
+          "_type": "link",
+          "href": "https://www.access-info.org/frontpage/21531"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "273f12f84bf5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "273f12f84bf50",
+          "_type": "span",
+          "marks": [],
+          "text": "Anderica Caffarena, V. 2013. “"
+        },
+        {
+          "_key": "273f12f84bf51",
+          "_type": "span",
+          "marks": [
+            "099983196516"
+          ],
+          "text": "España tiene mucho camino por recorrer para ver un sistema de transparencia establecido y eficaz"
+        },
+        {
+          "_key": "273f12f84bf52",
+          "_type": "span",
+          "marks": [],
+          "text": "”.Dialogos de la Comunicacion. 87: July- December."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "099983196516",
+          "_type": "link",
+          "href": "http://dialogosfelafacs.net/wp-content/uploads/2015/87/87_Revista_Dialogos_Entrevista_Helen_Darbishire.pdf"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "406bb6778746",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "406bb67787460",
+          "_type": "span",
+          "marks": [],
+          "text": "Bailur, S., and T. Longley. 2014. "
+        },
+        {
+          "_key": "406bb67787461",
+          "_type": "span",
+          "marks": [
+            "b9215c0fdae9"
+          ],
+          "text": "The Impact of Online Freedom of Information Tools: What Is the Evidence?"
+        },
+        {
+          "_key": "406bb67787462",
+          "_type": "span",
+          "marks": [],
+          "text": " MySociety, UK."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "b9215c0fdae9",
+          "_type": "link",
+          "href": "https://www.mysociety.org/files/2014/11/FOI-Impact_Part-1-Literature-Review-05.pdf"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "4ae246058121",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4ae2460581210",
+          "_type": "span",
+          "marks": [],
+          "text": "Banisar, D. 2015. "
+        },
+        {
+          "_key": "4ae2460581211",
+          "_type": "span",
+          "marks": [
+            "5f9c5c198bbf"
+          ],
+          "text": "National Right to Information Laws, Regulations and Initiatives 2015"
+        },
+        {
+          "_key": "4ae2460581212",
+          "_type": "span",
+          "marks": [],
+          "text": ". London: ARTICLE 19: Global Campaign for Free Expression."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "5f9c5c198bbf",
+          "_type": "link",
+          "href": "http://ssrn.com/abstract=1857498"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "3d5b36dace87",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "3d5b36dace870",
+          "_type": "span",
+          "marks": [],
+          "text": "Cabo, D. 2012. "
+        },
+        {
+          "_key": "3d5b36dace871",
+          "_type": "span",
+          "marks": [
+            "b74405980692"
+          ],
+          "text": "Tool for accessing and creating information requests to Spanish public bodies"
+        },
+        {
+          "_key": "3d5b36dace872",
+          "_type": "span",
+          "marks": [],
+          "text": ". Goteo Website."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "b74405980692",
+          "_type": "link",
+          "href": "http://www.goteo.org/project/tuderechoasaber.es"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "41440d8d6607",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "41440d8d66070",
+          "_type": "span",
+          "marks": [],
+          "text": "Caleb, T. 2015. "
+        },
+        {
+          "_key": "41440d8d66071",
+          "_type": "span",
+          "marks": [
+            "38d310391c3e"
+          ],
+          "text": "OIA requests website relaunched by the Herald"
+        },
+        {
+          "_key": "41440d8d66072",
+          "_type": "span",
+          "marks": [],
+          "text": ". New Zealand Herald Website."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "38d310391c3e",
+          "_type": "link",
+          "href": "http://www.nzherald.co.nz/nz/news/article.cfm?c_id=1&objectid=11432526"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "3a4586068006",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "3a45860680060",
+          "_type": "span",
+          "marks": [],
+          "text": "Centre for Law and Democracy and Access Info-Europe. 2015. "
+        },
+        {
+          "_key": "3a45860680061",
+          "_type": "span",
+          "marks": [
+            "2353fb5f9d23"
+          ],
+          "text": "RTI Rating Data Analysis Series: Overview of Results and Trends"
+        },
+        {
+          "_key": "3a45860680062",
+          "_type": "span",
+          "marks": [],
+          "text": ". Ottawa, Canada."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "2353fb5f9d23",
+          "_type": "link",
+          "href": "http://www.rti-rating.org/rti-rating-data-analysis-series-overviewof-results-and-trends/"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "e412078420f1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "e412078420f10",
+          "_type": "span",
+          "marks": [],
+          "text": "Crawford. 2013. Interview with Fabrizio Scrollini, Wellington"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "4f6693e05619",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4f6693e056190",
+          "_type": "span",
+          "marks": [],
+          "text": "Cross, H. 1953. The People's Right to Know, Cumulative Supplement. Columbia University Press."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "d852ac6cbbdc",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "d852ac6cbbdc0",
+          "_type": "span",
+          "marks": [],
+          "text": "Darbishire, H. 2010. \""
+        },
+        {
+          "_key": "d852ac6cbbdc1",
+          "_type": "span",
+          "marks": [
+            "5404690502f8"
+          ],
+          "text": "Proactive Transparency: The future of the right to information"
+        },
+        {
+          "_key": "d852ac6cbbdc2",
+          "_type": "span",
+          "marks": [],
+          "text": ".\" World Bank Institute Governance Working Paper Series."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "5404690502f8",
+          "_type": "link",
+          "href": "http://siteresources.worldbank.org/WBI/Resources/213798-1259011531325/6598384-1268250334206/Darbishire_Proactive_Transparency.pdf"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "0915a98da02f",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "0915a98da02f0",
+          "_type": "span",
+          "marks": [],
+          "text": "Darch, C. and P. Underwood. 2010. Freedom of Information and the Developing World: the citizen, the state, and models of openness. Oxford, United Kingdom: Chandos Publishing Ltd."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "a3be8a45a3b0",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a3be8a45a3b00",
+          "_type": "span",
+          "marks": [],
+          "text": "Davies, T. and S. Fumega. 2014. "
+        },
+        {
+          "_key": "a3be8a45a3b01",
+          "_type": "span",
+          "marks": [
+            "96a849e6c529"
+          ],
+          "text": "Mixed Incentives: Adopting ICT innovations for transparency, accountability, and anti-corruption"
+        },
+        {
+          "_key": "a3be8a45a3b02",
+          "_type": "span",
+          "marks": [],
+          "text": ". U4 Issue 2014 (4). Bergen: Chr. Michelsen Institute."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "96a849e6c529",
+          "_type": "link",
+          "href": "http://www.cmi.no/publications/file/5172-mixed-incentives.pdf"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "2081b978d0f8",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2081b978d0f80",
+          "_type": "span",
+          "marks": [],
+          "text": "Del Piazzo, G. 2013. Comments made at the II International Symposium on Transparency and Access to Information, April, Montevideo, Uruguay."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "6828946c50f6",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6828946c50f60",
+          "_type": "span",
+          "marks": [],
+          "text": "Donnelly, L. 2012 Insights & experiences from investigating complaints about the actions of public authorities and accessing. International Seminar. Wellington, New Zealand."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "01fca3e104ad",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "01fca3e104ad0",
+          "_type": "span",
+          "marks": [],
+          "text": "Earl, S., F. Carden, and T. Smutylo. 2001. "
+        },
+        {
+          "_key": "01fca3e104ad1",
+          "_type": "span",
+          "marks": [
+            "bf847b51e23c"
+          ],
+          "text": "Outcome mapping. Building learning and reflection into development programs"
+        },
+        {
+          "_key": "01fca3e104ad2",
+          "_type": "span",
+          "marks": [],
+          "text": ". Ottawa: International Development Research Center."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "bf847b51e23c",
+          "_type": "link",
+          "href": "https://www.idrc.ca/en/book/outcome-mapping-building-learning-and-reflection-development-programs"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "41aee5208620",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "41aee52086200",
+          "_type": "span",
+          "marks": [],
+          "text": "El Confidencial. 2015. "
+        },
+        {
+          "_key": "41aee52086201",
+          "_type": "span",
+          "marks": [
+            "203b0a4ea3d3"
+          ],
+          "text": "Las trabas de las instituciones llevan al cierre del primer portal pro-Transparencia español"
+        },
+        {
+          "_key": "41aee52086202",
+          "_type": "span",
+          "marks": [],
+          "text": ". El Confidencial website."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "203b0a4ea3d3",
+          "_type": "link",
+          "href": "http://www.elconfidencial.com/sociedad/2015-12-10/cierre-tu-derecho-a-saber-portal-transparencia-espanol_1117508/"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "86a67cd05d99",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "86a67cd05d990",
+          "_type": "span",
+          "marks": [],
+          "text": "Fox, J. 2007. The uncertain relationship between transparency and accountability. Development in Practice, 17(4-5), 663—671."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "563f4577ee33",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "563f4577ee330",
+          "_type": "span",
+          "marks": [],
+          "text": "Fumega, S. 2013. "
+        },
+        {
+          "_key": "563f4577ee331",
+          "_type": "span",
+          "marks": [
+            "f85b76a29db2"
+          ],
+          "text": "OGD and FOI: Different Approaches To Government Information And Data"
+        },
+        {
+          "_key": "563f4577ee332",
+          "_type": "span",
+          "marks": [],
+          "text": ". OGP Civil Society Hub, Open Government Partnership Independent Civil Society Coordination team."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "f85b76a29db2",
+          "_type": "link",
+          "href": "http://www.ogphub.org/blog/ogd-and-foi-different-approaches-to-government-information-and-data/"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "9010d932a4fc",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "9010d932a4fc0",
+          "_type": "span",
+          "marks": [],
+          "text": "Fumega, S. 2014. "
+        },
+        {
+          "_key": "9010d932a4fc1",
+          "_type": "span",
+          "marks": [
+            "3ea8f3c5c86c"
+          ],
+          "text": "Information & Communication Technologies and Access to Public Information Laws"
+        },
+        {
+          "_key": "9010d932a4fc2",
+          "_type": "span",
+          "marks": [],
+          "text": ". Washington DC: Transparency and Access to Information Network (RTA) and World Bank."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "3ea8f3c5c86c",
+          "_type": "link",
+          "href": "http://redrta.cplt.cl/_public/public/folder_attachment/a5/1a/1a8b_42ea.pdf"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "90b1236d9ea5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "90b1236d9ea50",
+          "_type": "span",
+          "marks": [],
+          "text": "Fumega, S. 2015. "
+        },
+        {
+          "_key": "90b1236d9ea51",
+          "_type": "span",
+          "marks": [
+            "33110a93cf4d"
+          ],
+          "text": "Understanding Two Mechanisms for Accessing Government Information and Data around the World"
+        },
+        {
+          "_key": "90b1236d9ea52",
+          "_type": "span",
+          "marks": [],
+          "text": ". Web Foundation."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "33110a93cf4d",
+          "_type": "link",
+          "href": "http://webfoundation.org/wp-content/uploads/2015/08/UnderstandingTwoMechanismsforAccessingGovernmentInformationandData.pdf"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "07a27abc9258",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "07a27abc92580",
+          "_type": "span",
+          "marks": [],
+          "text": "Fumega, S. 2016. "
+        },
+        {
+          "_key": "07a27abc92581",
+          "_type": "span",
+          "marks": [
+            "ab3c3a4fa654"
+          ],
+          "text": "The increasing demand for measuring"
+        },
+        {
+          "_key": "07a27abc92582",
+          "_type": "span",
+          "marks": [],
+          "text": ". Silvana’s Blog. "
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ab3c3a4fa654",
+          "_type": "link",
+          "href": "http://silvanafumega.blogspot.com.ar/2016/05/the-increasing-demand-for-measuring.html"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "b19c03880762",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b19c038807620",
+          "_type": "span",
+          "marks": [],
+          "text": "Fumega, S. 2016. Transformations in International Civil Society Organisations working towards a Greater Access and Use of Governmental Informational Resources. PhD Dissertation. University of Tasmania. Hobart, Australia."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "bd778b82837c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "bd778b82837c0",
+          "_type": "span",
+          "marks": [],
+          "text": "Fumega, S., E. Lanza and F. Scrollini (2011) "
+        },
+        {
+          "_key": "bd778b82837c1",
+          "_type": "span",
+          "marks": [
+            "e25ec6ac743d"
+          ],
+          "text": "Venciendo la Cultura del Secreto"
+        },
+        {
+          "_key": "bd778b82837c2",
+          "_type": "span",
+          "marks": [],
+          "text": ". CAinfo. Montevideo, Uruguay."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "e25ec6ac743d",
+          "_type": "link",
+          "href": "https://www.dropbox.com/s/t2n5z4cmgra3ytv/venciendo_la_cultura_del_secreto.pdf?dl=0"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "a7730e0c27f2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a7730e0c27f20",
+          "_type": "span",
+          "marks": [],
+          "text": "Fumega, S., F. Scrollini and A. Semsrott. 2016. Ask and it will be given to you? The journey of civil society-led FOI portals. Paper presented at the Conference on “Freedom of Information Laws on the Global Stage: Past, Present and Future”. November 4, 2016. Southwestern Law School."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "497597fc3a7a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "497597fc3a7a0",
+          "_type": "span",
+          "marks": [],
+          "text": "Fundación Ciudadano Inteligente. 2011. Report I for the Open Society Institute. Santiago, Chile."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "be6c844494e8",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "be6c844494e80",
+          "_type": "span",
+          "marks": [],
+          "text": "Fundación Ciudadano Inteligente. 2012. Narrative Interim Report Grant ID 20029768. Santiago, Chile"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ade580180011",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ade5801800110",
+          "_type": "span",
+          "marks": [],
+          "text": "German Ministry of Interior. 2016. "
+        },
+        {
+          "_key": "ade5801800111",
+          "_type": "span",
+          "marks": [
+            "73f35d788848"
+          ],
+          "text": "Informationsfreiheitsgesetz"
+        },
+        {
+          "_key": "ade5801800112",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "73f35d788848",
+          "_type": "link",
+          "href": "https://www.bmi.bund.de/DE/Themen/Moderne-Verwaltung/Open-Government/Informationsfreiheitsgesetz/informationsfreiheitsgesetz_node.html"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "2e1a576e0201",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2e1a576e02010",
+          "_type": "span",
+          "marks": [],
+          "text": "Hazell, R., B. Worthy, and M. Glover. 2010. “Has Freedom of Information Increased Government Accountability?” In "
+        },
+        {
+          "_key": "2e1a576e02011",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "The Impact of the Freedom of Information Act on Central Government in the UK."
+        },
+        {
+          "_key": "2e1a576e02012",
+          "_type": "span",
+          "marks": [],
+          "text": " Edited by R. Hazell, B. Worthy and M. Glover, 117-133. UK: Palgrave Macmillan."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "af45cbf59c9e",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "af45cbf59c9e0",
+          "_type": "span",
+          "marks": [],
+          "text": "Institut für Gesetzesfolgenabschätzung. 2013. Evaluation des Gesetzes zur Regelung des Zugangs zu Informationen des Bundes – Informationsfreiheitsgesetz des Bundes (IFG). Speyer, Germany."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ab3660162a3f",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ab3660162a3f0",
+          "_type": "span",
+          "marks": [],
+          "text": "Marshall, C. 2013. An evaluation of Acceso Inteligente. Assessing Program Rationality, Design, Effectiveness and Efficiency. Santiago, Chile."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "275f09caceb7",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "275f09caceb70",
+          "_type": "span",
+          "marks": [],
+          "text": "Meijer, A. 2007. “Why don't they listen to us? Reasserting the role of ICT in Public Administration”. "
+        },
+        {
+          "_key": "275f09caceb71",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Information Polity"
+        },
+        {
+          "_key": "275f09caceb72",
+          "_type": "span",
+          "marks": [],
+          "text": " 12.4: 233-242."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "8d74812c78d6",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "8d74812c78d60",
+          "_type": "span",
+          "marks": [],
+          "text": "Open Knowledge Foundation Germany. 2014. "
+        },
+        {
+          "_key": "8d74812c78d61",
+          "_type": "span",
+          "marks": [
+            "3ffaa378289b"
+          ],
+          "text": "Zensurheberrecht. "
+        },
+        {
+          "_key": "8d74812c78d62",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "8d74812c78d63",
+          "_type": "span",
+          "marks": [
+            "23903b4f9042"
+          ],
+          "text": "FragDenStaat.de veröffentlicht ein staatliches Dokument und das Bundesinnenministerium mahnt uns wegen Urheberrechtsverletzung ab"
+        },
+        {
+          "_key": "8d74812c78d64",
+          "_type": "span",
+          "marks": [],
+          "text": ". "
+        },
+        {
+          "_key": "8d74812c78d65",
+          "_type": "span",
+          "marks": [
+            "20dedeefcd94"
+          ],
+          "text": "www.fragdenstaat.de"
+        },
+        {
+          "_key": "8d74812c78d66",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "3ffaa378289b",
+          "_type": "link",
+          "href": "https://fragdenstaat.de/presse/2014-01-21-bmi-mahnt-fragdenstaat-ab/"
+        },
+        {
+          "_key": "23903b4f9042",
+          "_type": "link",
+          "href": "https://fragdenstaat.de/presse/2014-01-21-bmi-mahnt-fragdenstaat-ab/"
+        },
+        {
+          "_key": "20dedeefcd94",
+          "_type": "link",
+          "href": "http://www.fragdenstaat.de/"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "c5a369f2cbfb",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "c5a369f2cbfb0",
+          "_type": "span",
+          "marks": [],
+          "text": "Open Society Foundation. 2009. "
+        },
+        {
+          "_key": "c5a369f2cbfb1",
+          "_type": "span",
+          "marks": [
+            "2a1bb2df6174"
+          ],
+          "text": "Claude Reyes v. Chile"
+        },
+        {
+          "_key": "c5a369f2cbfb2",
+          "_type": "span",
+          "marks": [],
+          "text": ". "
+        },
+        {
+          "_key": "c5a369f2cbfb3",
+          "_type": "span",
+          "marks": [
+            "1503aa13e45d"
+          ],
+          "text": "www.opensocietyfoundations.org"
+        },
+        {
+          "_key": "c5a369f2cbfb4",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "2a1bb2df6174",
+          "_type": "link",
+          "href": "http://www.opensocietyfoundations.org/%20litigation/claude-reyes-v-chile"
+        },
+        {
+          "_key": "1503aa13e45d",
+          "_type": "link",
+          "href": "file:///C:/Users/annag/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/N1XKPLPL/www.opensocietyfoundations.org"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "6f51226b6ed1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6f51226b6ed10",
+          "_type": "span",
+          "marks": [],
+          "text": "Pineiro R. and Rossell C. 2015. "
+        },
+        {
+          "_key": "6f51226b6ed11",
+          "_type": "span",
+          "marks": [
+            "2fb5d7ece3b0"
+          ],
+          "text": "Acceso a la Informacion Publica en Uruguay. Normativa, condiciones de aplicacion y enforcement"
+        },
+        {
+          "_key": "6f51226b6ed12",
+          "_type": "span",
+          "marks": [],
+          "text": ". Policy paper N°2. Universidad Catolica de Uruguay."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "2fb5d7ece3b0",
+          "_type": "link",
+          "href": "http://www.icso.cl/wp-content/uploads/2014/12/Pi%C3%B1eiro-y-Rossel.-Acceso-de-informaci%C3%B3n-p%C3%BAblica-en-Uruguay.pdf"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "6245745203c1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6245745203c10",
+          "_type": "span",
+          "marks": [],
+          "text": "Rumbul, R. 2016. "
+        },
+        {
+          "_key": "6245745203c11",
+          "_type": "span",
+          "marks": [
+            "34c7b73fb993"
+          ],
+          "text": "What People Want To Know on WhatDoTheyKnow"
+        },
+        {
+          "_key": "6245745203c12",
+          "_type": "span",
+          "marks": [],
+          "text": ". "
+        },
+        {
+          "_key": "6245745203c13",
+          "_type": "span",
+          "marks": [
+            "a05e0c103321"
+          ],
+          "text": "My Society blog"
+        },
+        {
+          "_key": "6245745203c14",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "34c7b73fb993",
+          "_type": "link",
+          "href": "https://www.mysociety.org/2016/05/18/what-people-want-to-know-on-whatdotheyknow/"
+        },
+        {
+          "_key": "a05e0c103321",
+          "_type": "link",
+          "href": "http://www.mysociety.org"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "3454b042c384",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "3454b042c3840",
+          "_type": "span",
+          "marks": [],
+          "text": "Schoch, F. 2016. Informationsfreiheitsgesetz, 115, Beck."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "2d06d006b4b0",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2d06d006b4b00",
+          "_type": "span",
+          "marks": [],
+          "text": "Scrollini Mendez, F. (2015) "
+        },
+        {
+          "_key": "2d06d006b4b01",
+          "_type": "span",
+          "marks": [
+            "7abc60407810"
+          ],
+          "text": "Right to information arenas: exploring the right to information in Chile, New Zealand and Uruguay"
+        },
+        {
+          "_key": "2d06d006b4b02",
+          "_type": "span",
+          "marks": [],
+          "text": ". PhD Dissertation. The London School of Economics and Political Science (LSE)."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "7abc60407810",
+          "_type": "link",
+          "href": "http://etheses.lse.ac.uk/3361/"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "6807e9c38f03",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6807e9c38f030",
+          "_type": "span",
+          "marks": [],
+          "text": "Semsrott, A. 2016. "
+        },
+        {
+          "_key": "6807e9c38f031",
+          "_type": "span",
+          "marks": [
+            "1c6e84da9080"
+          ],
+          "text": "FragDenBundestag erfolgreich: Bundestag öffnet seine Aktenschränke!"
+        },
+        {
+          "_key": "6807e9c38f032",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        },
+        {
+          "_key": "6807e9c38f033",
+          "_type": "span",
+          "marks": [
+            "0acac1e76e3b"
+          ],
+          "text": "http://www.netzpolitik.org"
+        },
+        {
+          "_key": "6807e9c38f034",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "1c6e84da9080",
+          "_type": "link",
+          "href": "https://netzpolitik.org/2016/fragdenbundestag-erfolgreich-bundestag-oeffnet-seine-aktenschraenke/"
+        },
+        {
+          "_key": "0acac1e76e3b",
+          "_type": "link",
+          "href": "http://www.netzpolitik.org"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "1ad9b8210931",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1ad9b82109310",
+          "_type": "span",
+          "marks": [],
+          "text": "Semsrott, A. 2016. Informationsfreiheit - mehr Transparenz für mehr Demokratie, 11, Otto-Brenner-Stiftung."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "00c5a26dedf9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "00c5a26dedf90",
+          "_type": "span",
+          "marks": [],
+          "text": "Vleugels, R. 2011. "
+        },
+        {
+          "_key": "00c5a26dedf91",
+          "_type": "span",
+          "marks": [
+            "141fc4fdbac6"
+          ],
+          "text": "Overview of all FOI laws"
+        },
+        {
+          "_key": "00c5a26dedf92",
+          "_type": "span",
+          "marks": [],
+          "text": ". Fringe Special."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "141fc4fdbac6",
+          "_type": "link",
+          "href": "http://www.llrx.com/system/files?file=OverviewFOIA2011.pdf"
+        }
+      ],
+      "style": "normal"
+    }
+  ],
+  "slug": {
+    "auto": true,
+    "current": "exploring-the-role-of-digital-civil-society-portals-in-improving-right-to-information-regimes"
+  },
+  "title": "Exploring the role of digital civil society portals in improving Right to Information regimes"
+}]

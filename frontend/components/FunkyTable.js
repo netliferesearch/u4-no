@@ -5,7 +5,7 @@ const FunkyTable = ({ rows = [], title = false }) => (<div className="c-longform
       <tbody className="c-table__body">
         {
           rows.map((row, index) => (
-            <tr key={index} classNAme="c-table__row">
+            <tr key={index} className="c-table__row">
               { row.columns.map((col, index) => (
                 <td key={index} className="c-table__cell">{col}</td>
               ))}

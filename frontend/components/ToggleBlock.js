@@ -46,7 +46,7 @@ class ToggleBlock extends Component {
             <div {...classes('content')}>
               {typeof content === 'string' && <p>{content}</p>}
               {typeof content !== 'string' && (
-                <BlockContent blocks={content} serializers={serializers(content)} />
+                <BlockContent blocks={content} serializers={serializers} />
               )}
             </div>
           ) : null}

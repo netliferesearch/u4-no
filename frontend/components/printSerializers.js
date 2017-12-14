@@ -5,8 +5,9 @@ import FunkyTable from './FunkyTable';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
 import findFootnotes from './findFootnotes';
+import findLinks from './findLinks';
 import { PullQuote, Figure } from './';
-import footnoteSerializer from './footnoteSerializer';
+import printFootnoteSerializer from './print/printFootnoteSerializer';
 
 const classes = BEMHelper({
   name: 'longform-grid',
@@ -15,6 +16,8 @@ const classes = BEMHelper({
 
 function printSerializers(blocks) {
   const footnotes = findFootnotes(blocks);
+  const links = findLinks(blocks)
+
   return {
     types: {
       image: ({ node }) => <Figure {...node} />,
@@ -75,45 +78,32 @@ function printSerializers(blocks) {
       link: (props) => {
         if (props.mark.href) {
           if (props.mark.href.match(/#_ftn(\d+)/)) {
-            const ref = props.mark.href.match(/#_ftn(\d+)/)[1];
-            return (
-              <span className="fn" id={`fnref:${ref}`}>
-                This is a footnote!
-              </span>
-            );
+            return null
           }
           if (props.mark.href.match(/#_ftnref(\d+)/)) {
-            const ref = props.mark.href.match(/#_ftnref(\d+)/)[1];
-            return (
-              <li className="c-footnote__item" id={`fn:${ref}`}>
-                {props.children}
-                <a href={`#fnref:${ref}`} title="return to article">
-                  {' '}
-                  ↩
-                </a>
-              </li>
-            );
+            return null
           }
-          return (
-            <span>
-              {props.children}
-              {/*             <span className="fn">
-              <a href={props.mark.href} />
-            </span> */}
-            </span>
-          );
+          return <a className="fn" href={props.mark.href}>{props.children}</a>;
         }
-
-        console.log(props.mark);
-
         return null;
+      },
+      blockNote: ({children, markKey = '', mark = {}}) => {
+        console.log(children)
+        if (!mark.content) return null;
+        return <span>
+          {children}
+          <span>
+          {markKey && (<BlockContent blocks={footnotes[markKey]} serializers={printFootnoteSerializer(markKey)} />)}
+        </span>
+        </span>;
       },
       footnote: ({ children, markKey = '' }) => (
         <span>
-          {children}
-          <span className="fn">
+        {console.log(children, footnotes[markKey])}
+         {children}
+          <span>
             {markKey && (
-              <BlockContent blocks={footnotes[markKey]} serializers={footnoteSerializer} />
+              <BlockContent blocks={footnotes[markKey]} serializers={printFootnoteSerializer(markKey)} />
             )}
           </span>
         </span>

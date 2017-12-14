@@ -5,13 +5,8 @@ export default (key = false) => ({
       return null
     },
     block: ({ node, children }) => {
-      if (!key) return;
-      const style = node.style || 'normal';
-      return (
-        <li className="footnote" id={`fn:${key}`}>
-          {children}
-        </li>
-      );
+      if (!key) return null;
+      return <span className="fn">{children}</span>
     },
   },
 });
