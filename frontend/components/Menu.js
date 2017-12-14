@@ -96,11 +96,11 @@ class Menu extends Component {
             <div {...menuClasses()}>
 
               <ul {...classes('menu', 'active')}>
-                <li {...classes('menu-item', this.state.activeItem == 1 && 'active')}>
+                <li {...classes('menu-item', this.state.activeItem === 1 && 'active')}>
                   <button onClick={this.triggerMenu}>Close</button>
                 </li>
                 {!noSearch &&
-                  <li {...classes('menu-item', this.state.activeItem == 3 && 'active')}>
+                  <li {...classes('menu-item', this.state.activeItem === 3 && 'active')}>
                     <button onClick={this.triggerSearchMenu}>Search</button>
                   </li>
                 }
@@ -148,10 +148,18 @@ class Menu extends Component {
                 <span {...menuClasses('heading-bg')}>Resources</span>
               </h4>
               <ul {...menuClasses('list')}>
-                <li {...menuClasses('list-item')}>Publications</li>
-                <li {...menuClasses('list-item')}>Helpdesk answers</li>
                 <li {...menuClasses('list-item')}>
-                  <Link to={'/terms'}>
+                  <Link href="/search?filters=pub-type-pubtype-2&search=*">
+                    <a {...menuClasses('link')}>Publications</a>
+                  </Link>
+                </li>
+                <li {...menuClasses('list-item')}>
+                  <Link href="/search?filters=pub-type-pubtype-3&search=*">
+                    <a {...menuClasses('link')}>Helpdesk answers</a>
+                  </Link>
+                </li>
+                <li {...menuClasses('list-item')}>
+                  <Link to="/terms">
                     <a {...menuClasses('link')}>Glossary</a>
                   </Link>
                 </li>
@@ -228,10 +236,10 @@ class Menu extends Component {
             <div {...menuClasses()}>
 
               <ul {...classes('menu', 'active')}>
-                <li {...classes('menu-item', this.state.activeItem == 1 && 'active')}>
+                <li {...classes('menu-item', this.state.activeItem === 1 && 'active')}>
                   <button onClick={this.triggerMenu}>Menu</button>
                 </li>
-                <li {...classes('menu-item', this.state.activeItem == 3 && 'active')}>
+                <li {...classes('menu-item', this.state.activeItem === 3 && 'active')}>
                   <button onClick={this.triggerSearchMenu}>Close</button>
                 </li>
               </ul>
@@ -245,8 +253,11 @@ class Menu extends Component {
   }
 }
 
-Menu.PropTypes = {
+Menu.defaultProps = {
   noSearch: false,
+};
+Menu.propTypes = {
+  noSearch: PropTypes.bool,
 };
 
 export default Menu;

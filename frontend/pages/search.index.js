@@ -23,7 +23,7 @@ const Search = ({ results = [], searchFilters = [], searchSorting = '', url }) =
   <Layout
     noSearch
     headComponentConfig={{
-      title: Search,
+      title: 'Search',
       description: '',
       url: url.asPath ? `beta.u4.no${url.asPath}` : '',
     }}
