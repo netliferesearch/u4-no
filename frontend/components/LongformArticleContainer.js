@@ -11,6 +11,7 @@ import {
   TableOfContentsSidebar,
   TableOfContentsContent,
   CustomScrollSpy,
+  RecommendedResources,
   ToggleBlock,
   PublicationDrawer,
 } from './';
@@ -209,9 +210,16 @@ const LongFormArticleContainer = (props) => {
                 </div>
               </div>
             )}
+            {props.relatedContent && (
+              <div className="o-wrapper">
+                <h2>We also recommend</h2>
+                <RecommendedResources relatedContent={props.relatedContent} />
+              </div>
+            )}
             <span id="js-bottom" />
             <Footer />
           </PublicationDrawer>
+
         </article>
       )}
     </Layout>
