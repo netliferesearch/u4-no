@@ -13,7 +13,9 @@
 // @state .is-positioned-bottom - The popover is below the button.
 // @state .is-scrollable        - The popover content is greater than the popover height.
 // @state .is-fully-scrolled    - The popover content is scrolled to the bottom.
-
+.footnotes {
+  display: none;
+}
 .littlefoot-footnote {
   background: $popover-color-background;
   border-radius: $popover-border-radius;
@@ -121,7 +123,7 @@
     }
 
     .littlefoot-footnote__wrapper {
-      margin: 0 0 0 50%;
+     // margin: 0 0 0 50%;
       max-width: 100% !important;
       transform: none;
       width: 100%;
