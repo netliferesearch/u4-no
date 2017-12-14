@@ -4,6 +4,29 @@ const annotations = [
     {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
     {name: 'internalReferance', title: 'Find some internal resource', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article', },{type:'workshop'},{type:'frontpage'},{type:'file'}]},
     {
+      type: 'object',
+      name: 'blockNote',
+      title: 'Block note',
+      fields: [
+        {
+          type: 'string',
+          name: 'style',
+          options: {
+            list: [
+              {title: 'Footnote', value: 'footnote'},
+              {title: 'Endnote', value: 'endnote'}
+            ]
+          }
+        },
+        {
+          name: 'content',
+          title: 'Content',
+          type: 'array',
+          of: [{type: 'block'}]
+        }
+      ]
+    },
+    {
       name: 'footnote',
       type: 'object',
       fields: [
