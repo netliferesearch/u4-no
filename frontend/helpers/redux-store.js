@@ -50,7 +50,7 @@ const addQueryParams = (queryParams) => {
 const defaultState = {
   readingProgressId: '',
   isArticleMenuOpen: false,
-  isPublicationDrawerOpen: true,
+  isPublicationDrawerOpen: false, // read the whole-button is now deactivated
   // for the times when we need to remember where we last were on the page.
   storedScrollPosition: false,
   showLoadingScreen: false,
