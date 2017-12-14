@@ -7,6 +7,7 @@ const annotations = [
       type: 'object',
       name: 'blockNote',
       title: 'Block note',
+      annotationMarker: '*',
       fields: [
         {
           type: 'string',
@@ -15,7 +16,7 @@ const annotations = [
             list: [
               {title: 'Footnote', value: 'footnote'},
               {title: 'Endnote', value: 'endnote'}
-            ]
+            ],
           }
         },
         {
