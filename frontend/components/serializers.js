@@ -209,23 +209,23 @@ const serializers = {
     blockNote: ({children, markKey = '', mark = {}}) => {
       if (!mark.content) return <span></span>;
       return <span>
-        {children}
-        <sup id={`fnref:${markKey}`}>
+
+        <span id={`fnref:${markKey}`}>
           <a href={`#fn:${markKey}`} rel="footnote">
             {markKey}
           </a>
-        </sup>
+        </span>
       </span>;
     },
     footnote: ({ children, mark = {}, markKey = '' }) => {
       if (!mark.content) return <span></span>;
       return <span>
           {children}
-          <sup id={`fnref:${markKey}`}>
+          <span id={`fnref:${markKey}`}>
             <a href={`#fn:${markKey}`} rel="footnote">
               {markKey}
             </a>
-          </sup>
+          </span>
       </span>
     },
   },
