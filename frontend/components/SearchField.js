@@ -77,101 +77,99 @@ class SearchField extends Component {
           inputValue,
         }) => (
           <form onSubmit={this.handleSubmit} {...classes('', modifier, 'u-1/1')}>
-
-
-            <label
-              {...getLabelProps({ htmlFor: 'search' })}
-              {...classes('label', modifier, 'u-margin-bottom-small')}
-            >
+              <label
+                {...getLabelProps({ htmlFor: 'search' })}
+                {...classes('label', modifier, 'u-margin-bottom-small')}
+              >
                 Search to find topics, publications, people, services, and more:
-            </label>
+              </label>
 
-            <div className="c-search__content">
+              <div className="c-search__content">
 
-              <input
-                {...classes('input', modifier)}
-                {...getInputProps({
-                  id: 'search',
-                  tabIndex: '0',
-                  name: 'search',
-                  type: 'search',
-                  value:
-                    selectedItem && typeof selectedItem === 'object'
-                      ? generateTitle(selectedItem)
-                      : undefined,
-                  onChange: (event) => {
-                    const value = event.target.value;
-                    if (!value) {
-                      return;
-                    }
-                    if (event.keyCode != 8) {
-                      // Allow backspace
-                      debounce(
-                        client
-                          .fetch(buildQuery({ queryString: value }))
-                          .then(({ results }) => {
-                            const items = results.map(item => item); // Added ID to make it unique
-                            this.setState({ items });
-                          })
-                          .catch((error) => {
-                            console.log(error);
-                          }),
-                        300,
-                      );
-                    }
-                  },
-                  onKeyDown: (e) => {
-                    // if enter pressed we reload search page with search value
-                    if (e.keyCode !== 13) {
-                      // if it's not enter do nothing
-                    } else if (typeof highlightedIndex !== 'number') {
-                      // if highlightedIndex is not a number it tells us that
-                      // the user has clicked enter in the search field but not
-                      // selected something from the dropdown. So, we just try
-                      // make a search for it
-                      Router.pushRoute(`/search?search=${e.target.value}`);
-                    } else if (typeof highlightedIndex === 'number') {
-                      // user has selected some item, we find it from state and
-                      // visit it directly
-                      const item = this.state.items[highlightedIndex];
-                      this.handleItemClick(item);
-                    }
-                  },
-                })}
-              />
-              {inputValue && (
-                <button {...classes('button', 'clear')} type="button" onClick={clearSelection}>
-                  X
+                <input
+                  {...classes('input', modifier)}
+                  {...getInputProps({
+                    id: 'search',
+                    tabIndex: '0',
+                    name: 'search',
+                    type: 'search',
+                    value:
+                      selectedItem && typeof selectedItem === 'object'
+                        ? generateTitle(selectedItem)
+                        : undefined,
+                    onChange: (event) => {
+                      const value = event.target.value;
+                      if (!value) {
+                        return;
+                      }
+                      if (event.keyCode != 8) {
+                        // Allow backspace
+                        debounce(
+                          client
+                            .fetch(buildQuery({ queryString: value }))
+                            .then(({ results }) => {
+                              const items = results.map(item => item); // Added ID to make it unique
+                              this.setState({ items });
+                            })
+                            .catch((error) => {
+                              console.log(error);
+                            }),
+                          300,
+                        );
+                      }
+                    },
+                    onKeyDown: (e) => {
+                      // if enter pressed we reload search page with search value
+                      if (e.keyCode !== 13) {
+                        // if it's not enter do nothing
+                      } else if (typeof highlightedIndex !== 'number') {
+                        // if highlightedIndex is not a number it tells us that
+                        // the user has clicked enter in the search field but not
+                        // selected something from the dropdown. So, we just try
+                        // make a search for it
+                        Router.pushRoute(`/search?search=${e.target.value}`);
+                      } else if (typeof highlightedIndex === 'number') {
+                        // user has selected some item, we find it from state and
+                        // visit it directly
+                        const item = this.state.items[highlightedIndex];
+                        this.handleItemClick(item);
+                      }
+                    },
+                  })}
+                />
+                {inputValue && (
+                  <button {...classes('button', 'clear')} type="button" onClick={clearSelection}>
+                    X
+                  </button>
+                )}
+                <button tabIndex="1" {...classes('button')} type="submit" value="Search">
+                  {this.state.loading ? <Loader /> : <MagnifyingGlass />}
                 </button>
-              )}
-              <button tabIndex="1" {...classes('button')} type="submit" value="Search">
-                {this.state.loading ? <Loader /> : <MagnifyingGlass />}
-              </button>
-            </div>
-            {isOpen && (
-              <div {...classes('results')}>
-                {this.state.items.map((item, index) => (
-                  <div
-                    key={item._id ? item._id : index}
-                    {...getItemProps({
-                      item,
-                      index,
-                    })}
-                  >
-                    <button
-                      onClick={() => this.handleItemClick(item)}
-                      {...classes('items', highlightedIndex === index ? 'highlighted' : null)}
-                    >
-                      <span className="c-search__items-type">{item._type}</span>
-                      <br />
-                      {generateTitle(item)}
-                    </button>
-                  </div>
-                ))}
               </div>
-            )}
-          </form>
-        )}
+              {isOpen && (
+                <div {...classes('results')}>
+                  {this.state.items.map((item, index) => (
+                    <div
+                      key={item._id ? item._id : index}
+                      {...getItemProps({
+                        item,
+                        index,
+                      })}
+                    >
+                      <button
+                        onClick={() => this.handleItemClick(item)}
+                        {...classes('items', highlightedIndex === index ? 'highlighted' : null)}
+                      >
+                        <span className="c-search__items-type">{item._type}</span>
+                        <br />
+                        {generateTitle(item)}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </form>
+          )}
       </Downshift>
     );
   }
