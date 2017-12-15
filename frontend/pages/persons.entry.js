@@ -59,9 +59,9 @@ const Persons = ({
               {person.affiliations && person.affiliations.map(affiliation => affiliation)}
             </div>
           </div>
-          <div {...classes('bio')}>
+          {person.bio && <div {...classes('bio')}>
             <BlockContent blocks={person.bio} />
-          </div>
+          </div>}
         </section>
       </div>
     </div>
@@ -73,10 +73,10 @@ const Persons = ({
 export default DataLoader(Persons, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-      "person": *[slug.current == $slug][0]{..., "affiliations": affiliations[]->name},
+      "person": *[slug.current == $slug][0]{..., "affiliations": affiliations[]->name, "image": { "asset": { "url": image.asset->url}}},
       "topics": *[_type == "topics"]{_id, title, slug}
     }`,
     param: { slug },
   }),
-  materializeDepth: 3,
+  materializeDepth: 0,
 });
