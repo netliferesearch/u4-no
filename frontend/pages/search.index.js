@@ -73,7 +73,7 @@ export default DataLoader(connect(mapStateToProps, mapDispatchToProps)(Search), 
     if (!query.search && query.topics) {
       return {
         sanityQuery: `{
-          "results": *[references("${query.topics}")][0..1000],
+          "results": *[references("${query.topics}")][0..1000]{..., "authors": authors[]->{...}},
           "topic": *[_id == "${query.topics}"][0]
         }`,
       }
