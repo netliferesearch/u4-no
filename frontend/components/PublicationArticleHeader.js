@@ -33,7 +33,7 @@ const PublicationArticleHeader = ({
   publicationType = {},
   authors = [],
   editors = [],
-  shortVersion = [],
+  summary = [],
   pdfFile = {},
   legacypdf = {},
   reference = '',
@@ -86,7 +86,7 @@ const PublicationArticleHeader = ({
             </p>
           )}
       </div>
-      {shortVersion.length > 0 && (
+      {summary.length > 0 && (
         <Link route="publication.shortVersion" params={{ slug: slug.current }}>
           <a {...classes('button')}>
             <div {...classes('button-text')}>Read our short version</div>
