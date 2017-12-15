@@ -14,7 +14,7 @@ const Person = ({ person, linkLabel = 'Bio', light = true }) => (
     <div {...classes('item-body', person.image ? 'light' : 'noimg')}>
       <div
         {...classes('item-body-img', person.image ? 'light' : 'noimg')}
-        style={{ backgroundImage: `url(${person.image && person.image.asset.url})` }}
+        style={{ backgroundImage: `url(${person.image && person.image.asset.url}?w=240)` }}
       />
       <div {...classes('item-body-text')}>
         <div>
