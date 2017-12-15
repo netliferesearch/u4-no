@@ -21,6 +21,7 @@ class Persons extends Component {
   }
 
   render() {
+    console.log(this.props)
     const { frontpage, persons, helpdesk, affiliatedexperts, url } = this.props;
     return (
       <Layout
@@ -87,9 +88,9 @@ export default DataLoader(Persons, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
       "frontpage": *[_id == "627b8d42-d8f7-4cf6-9567-f6337678b688"][0],
-      "persons": *[_type == "person" && references("0e1b0ebc-e016-4d2b-97e8-859b91e3e147") && "0e1b0ebc-e016-4d2b-97e8-859b91e3e147" in affiliations[]._ref][0..100]{..., "image": image.asset->url[0], affiliations},
-      "helpdesk": *[_type == "person" && references("17ec3576-0afa-4203-9626-a38a16b27c2a") && "17ec3576-0afa-4203-9626-a38a16b27c2a" in affiliations[]._ref][0..100]{..., "image": image.asset->url[0], affiliations},
-      "affiliatedexperts": *[_type == "person" && references("3babc8f1-9e38-4493-9823-a9352b46585b") && "3babc8f1-9e38-4493-9823-a9352b46585b" in affiliations[]._ref][0..100]{..., "image": image.asset->url[0], affiliations},
+      "persons": *[_type == "person" && references("0e1b0ebc-e016-4d2b-97e8-859b91e3e147")][0..100]{..., "image": image.asset->url[0], affiliations},
+      "helpdesk": *[_type == "person" && references("17ec3576-0afa-4203-9626-a38a16b27c2a")][0..100]{..., "image": image.asset->url[0], affiliations},
+      "affiliatedexperts": *[_type == "person" && references("3babc8f1-9e38-4493-9823-a9352b46585b")][0..100]{..., "image": image.asset->url[0], affiliations},
     }`,
   }),
   materializeDepth: 2,
