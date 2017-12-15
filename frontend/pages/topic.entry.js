@@ -115,7 +115,7 @@ const TopicEntry = ({
               <Mosaic resources={resources} />
             </div>
             <h2 className="c-topic-section__cta">
-              <a href="/search">
+              <a href={`/search?topics=${_id}`}>
                 Explore all our resources &nbsp;<ArrowRight />
               </a>
             </h2>
