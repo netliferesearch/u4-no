@@ -1,26 +1,19 @@
-import React, { Component } from 'react';
-import Head from 'next/head';
-import { Link } from '../routes';
+import React from 'react';
+import BlockContent from '@sanity/block-content-to-react'
 import DataLoader from '../helpers/data-loader';
 
 import {
   Footer,
   Layout,
-  Accordion,
   Team,
-  Person,
   Mosaic,
   Newsletter,
   PartnerPromo,
   LinkList,
 } from '../components';
-import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import {
   BasicGuide,
   ResearchAgenda,
-  Picture,
-  Publication,
-  Resources,
   ArrowRight,
 } from '../components/icons';
 import LinkBox from '../components/LinkBox';
@@ -67,7 +60,7 @@ const TopicEntry = ({
               src={`${featuredImage.asset.url}?w=1600&h=800&fit=crop&crop=focalpoint`}
             />
             {featuredImage.caption && (
-              <span className="c-boxOnImage__caption">{featuredImage.caption}</span>
+              <span className="c-boxOnImage__caption"><BlockContent blocks={featuredImage.caption} /></span>
             )}
           </figure>
         ) : null}
@@ -154,9 +147,46 @@ const TopicEntry = ({
 );
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery:
-      '{"topic": *[slug.current == $slug]{...,"advisors": advisors[]->{_id, title, image, position, firstName, surname, email, slug, bio}, "linkListContent": coalesce(*[_type == "topics" && references(^._id)]{title, "link": slug.current},parent->{title, "link": slug.current}), "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}}[0]}',
+    sanityQuery:  `{
+      "topic": *[slug.current == $slug]{
+        ...,
+        "featuredImage": {
+          "caption": featuredImage.caption,
+          "asset": featuredImage.asset->{
+            "altText": altText,
+            "url": url
+          }
+        },
+        "advisors": advisors[]->{
+          _id,
+          title,
+          "image": image.asset->{"asset": { "url": url}},
+          position,
+          firstName,
+          surname,
+          email,
+          slug,
+          bio
+        },
+        "linkListContent": coalesce(*[_type == "topics" && references(^._id)]{
+          title,
+          "link": slug.current
+        },
+        parent->{
+          title,
+          "link": slug.current
+         }),
+        "resources": resources[]->{
+          _id,
+          _type,
+          "publicationType": publicationType->title,
+          title,
+          "slug": slug.current,
+          "titleColor": featuredImage.asset->metadata.palette.dominant.title,
+          "imageUrl": featuredImage.asset->url
+        }
+    }[0]}`,
     param: { slug },
   }),
-  materializeDepth: 4,
+  materializeDepth: 0,
 });
