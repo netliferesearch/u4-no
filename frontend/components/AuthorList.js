@@ -1,4 +1,5 @@
 import React from 'react';
+import randomKey from '../helpers/randomKey';
 
 const AuthorList = ({ authors = false }) => (
   <span>
@@ -7,8 +8,8 @@ const AuthorList = ({ authors = false }) => (
       authors
         .filter(author => author)
         .map(author => (author.target ? author.target : author))
-        .map(({ firstName = '', surname = '', _id = '', slug = false }, index) => (
-          <span key={_id}>
+        .map(({ firstName = '', surname = '', slug = false }, index) => (
+          <span key={randomKey()}>
             {slug ? (
               <a href={`/the-team/${slug.current}`}>
                 {firstName} {surname}
