@@ -2,12 +2,9 @@ require('dotenv').config();
 const axios = require('axios');
 const { pdfConfig } = require('./pdfConfig');
 /**
- * Purpose: Receives publication url to render pdf from
- *
- * 1.
- *
+ * Purpose: To be used by frontend/server.js, providing a pdf endpoint handler.
  */
-async function pdfGenerationHandler(req, res) {
+async function pdfHandler(req, res) {
   const { url = 'no url' } = req.query;
   try {
     const response = await axios(pdfConfig({ url }));
@@ -20,4 +17,4 @@ async function pdfGenerationHandler(req, res) {
   }
 }
 
-module.exports = { pdfGenerationHandler };
+module.exports = { pdfHandler };
