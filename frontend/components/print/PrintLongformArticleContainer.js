@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Head from 'next/head';
+import BEMHelper from 'react-bem-helper';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
 import { PrintLongformArticle } from './';
 import {
@@ -11,21 +12,7 @@ import {
   CreativecommonsND,
   CmiLogo,
 } from '../icons';
-import BEMHelper from 'react-bem-helper';
-import {
-  Footer,
-  Layout,
-  PublicationArticleHeader,
-  TableOfContentsButton,
-  TableOfContentsSidebar,
-  TableOfContentsContent,
-  CustomScrollSpy,
-  ToggleBlock,
-  PublicationDrawer,
-  AuthorList,
-  EditorList,
-  Logo,
-} from '../';
+import { Footer, ToggleBlock, AuthorList, EditorList, Logo } from '../';
 
 const classes = BEMHelper({
   name: 'print',
@@ -66,10 +53,11 @@ const LongFormArticleContainer = (props) => {
         <div {...classes('front-logo-top')}>
           <Logo />
         </div>
-        {props.featuredImage.asset &&
-        <figure {...classes('front-image')}>
-          <img src={props.featuredImage.asset.url} alt={props.featuredImage.credit} />
-        </figure>}
+        {props.featuredImage.asset && (
+          <figure {...classes('front-image')}>
+            <img src={props.featuredImage.asset.url} alt={props.featuredImage.credit} />
+          </figure>
+        )}
         <div {...classes('front-text')}>
           <div {...classes('meta')}>
             <p {...classes('meta-inline', null, 'c-print__publication-type-and-number')}>
@@ -103,8 +91,9 @@ const LongFormArticleContainer = (props) => {
 
       <div className="page2">
         <h2>Partners in this publication</h2>
-
-        {props.partners && props.partners.map((partner = '') => partner && <img  key={partner._key} src={partner.institution.logo.asset.url} />)}
+        {props.partners &&
+          props.partners.map((partner = '') =>
+              partner && <img key={partner._key} src={partner.institution.logo.asset.url} />)}
         <h2>Acknowledgments</h2>
         <p>{props.acknowledgements}</p>
         <h2>Publisher</h2>
@@ -149,8 +138,7 @@ const LongFormArticleContainer = (props) => {
           CC BY-NC-ND 4.0
         </p>
         <h2>Online version</h2>
-        {props.relatedUrl &&
-        <p>{props.relatedUrl.url}</p>}
+        {props.relatedUrl && <p>{props.relatedUrl.url}</p>}
       </div>
       {_type === 'publication' && (
         <div className="c-longform-grid">
@@ -184,21 +172,13 @@ const LongFormArticleContainer = (props) => {
               </div>
             )}
           </div>
-          {_type === 'publication' &&
-            !isPublicationDrawerOpen && (
-              <div className="c-longform-grid__sidebar-right">
-                <TableOfContentsSidebar {...props} />
-              </div>
-            )}
         </div>
       )}
       {_type !== 'publication' && (
         <div className="c-longform-grid">
           <h1 className="c-longform-grid__standard">{longTitle || title}</h1>
           {lead && <div className="c-article c-longform-grid__standard">{lead}</div>}
-          <div className="c-longform-grid__sidebar-right">
-            <TableOfContentsSidebar alwaysFollow {...props} />
-          </div>
+          <div className="c-longform-grid__sidebar-right" />
         </div>
       )}
 
