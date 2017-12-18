@@ -48,18 +48,18 @@ a.c-top-bar__logo:visited {
   @include mq($from: tablet) {
     background: none;
     border: none;
+    margin-right: $spacing-small;
+    padding: $spacing-tiny $spacing-small;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
   button {
     letter-spacing: 0.6px;
   }
+  margin-left: $spacing-small;
 
-
-  margin-right: $spacing-small;
-  padding: $spacing-tiny $spacing-small;
-
-  &:last-child {
-    margin-right: 0;
-  }
   button {
     border: none;
     background: none;
