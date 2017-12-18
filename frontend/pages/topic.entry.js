@@ -1,21 +1,9 @@
 import React from 'react';
-import BlockContent from '@sanity/block-content-to-react'
+import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
 
-import {
-  Footer,
-  Layout,
-  Team,
-  Mosaic,
-  Newsletter,
-  PartnerPromo,
-  LinkList,
-} from '../components';
-import {
-  BasicGuide,
-  ResearchAgenda,
-  ArrowRight,
-} from '../components/icons';
+import { Footer, Layout, Team, Mosaic, Newsletter, PartnerPromo, LinkList } from '../components';
+import { BasicGuide, ResearchAgenda, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
 
 const TopicEntry = ({
@@ -56,11 +44,15 @@ const TopicEntry = ({
         {featuredImage ? (
           <figure className="c-boxOnImage__figure">
             <img
-              alt={featuredImage.asset.altText}
-              src={`${featuredImage.asset.url}?w=1600&h=800&fit=crop&crop=focalpoint`}
+              alt={featuredImage.asset ? featuredImage.asset.altText : ''}
+              src={`${
+                featuredImage.asset ? featuredImage.asset.url : ''
+              }?w=1600&h=800&fit=crop&crop=focalpoint`}
             />
             {featuredImage.caption && (
-              <span className="c-boxOnImage__caption"><BlockContent blocks={featuredImage.caption} /></span>
+              <span className="c-boxOnImage__caption">
+                <BlockContent blocks={featuredImage.caption} />
+              </span>
             )}
           </figure>
         ) : null}
@@ -147,7 +139,7 @@ const TopicEntry = ({
 );
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery:  `{
+    sanityQuery: `{
       "topic": *[slug.current == $slug]{
         ...,
         "featuredImage": {

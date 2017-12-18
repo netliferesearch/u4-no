@@ -1,3 +1,4 @@
 # Convert all files to crlf on checkout.
 # more info: https://www.git-scm.com/docs/gitattributes
 * text=auto
+*.js text eol=lf
