@@ -13,7 +13,7 @@ const classes = BEMHelper({
 const SimpleHero = ({
   title, content = [], light = false, cta = false,
 }) => (
-  <div {...classes(null, light ? 'light' : null)}>
+  <div {...classes(null, light ? 'light' : null, 'o-wrapper-full-width')}>
     <h1 {...classes('title')}>{title}</h1>
     <div {...classes('content')}>
       {isArray(content) && <BlockContent blocks={content} serializers={serializers} />}

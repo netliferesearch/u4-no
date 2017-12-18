@@ -37,13 +37,14 @@
 }
 .c-simple-hero__cta {
   display: inline-block;
-  margin: auto;
-  color: $white;
+  margin: $spacing-large auto;
+  color: $brand-lighter;
   padding: $spacing-small $spacing;
   font-family: $font-sans;
-  border: 2px solid $brand-main;
+  border: 2px solid $brand-lighter;
 
   &:hover {
-    border: 2px solid $brand-lighter;
+    border: 2px solid $brand-main;
+      color: $brand-main;
   }
 }
