@@ -1,3 +1,8 @@
+import {
+  language
+} from './fields'
+
+
 export default {
   name: 'keyword',
   type: 'object',
@@ -20,6 +25,19 @@ export default {
       },
       layout: "radio",
     },
+    language,
+    {
+      name: 'translation',
+      title: 'Translation of',
+      description: 'Which keyword (in English) this is a translation of',
+      type: 'reference',
+      to: [
+        {
+          type: 'keyword'
+        }
+      ]
+    },
+
   ],
   orderings: [
     {
