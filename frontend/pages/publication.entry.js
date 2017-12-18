@@ -13,7 +13,16 @@ export default DataLoader(PublicationEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `*[slug.current == $slug && !(_id in path "drafts.**")]{...,
       _id, title, subtitle, standfirst, pdfFile, slug, featuredImage, summary, summaryExternal, date, content,
-      reference, bibliographicalOverride, abbreviations, blurbs, language, translation,
+      reference, bibliographicalOverride, abbreviations, blurbs, language,
+      "translations": coalesce(
+        *[translation._ref == ^._id]{
+           "slug": slug.current,
+           language
+         },
+         translation->{
+         "slug": slug.current,
+         language
+       }),
       "topics": topics->target,
       "references": references->target, mainPoints,
       "relatedContent": relatedContent->target, authors, notes, editors, partners, acknowledgements, abstract, keywords,
