@@ -34,7 +34,7 @@ const Search = ({ results = [], searchFilters = [], searchSorting = '', url, top
           <SearchField />
         </section>
         {
-          topic && (<div>
+          topic && topic.slug && (<div>
             <h3>Viewing all resources for <a href={`/topics/${topic.slug.current}`}>{topic.title}</a></h3>
           </div>)
         }
