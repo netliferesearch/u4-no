@@ -16,45 +16,47 @@ const TopicOverview = ({ topics = [] }) => (
     }}
   >
     <div className="o-wrapper u-tc">
-      <h1 className="u-margin-bottom">Topics</h1>
+      <h1 className="c-topic-heading">Topics</h1>
 
       <section id="topics" className=" c-topic-index__list u-margin-bottom-huge">
         {sortTopics(
           topics,
           'title',
-        ).map(({ _id = false, title = 'Title is lacking', slug = {}, relatedCount = 0 }) => (
-          <div className="o-layout--middle c-topic-index__item" key={_id}>
-            <div className="o-layout__item u-1/2@tablet u-tr">
-              <div className="c-topic-index__left">
-                <Link route="topic.entry" params={{ slug: slug.current }}>
-                  {relatedCount > 0 ? (
-                    <a className="c-topic-index__title">{title}</a>
+        ).map(({
+ _id = false, title = 'Title is lacking', slug = {}, relatedCount = 0,
+}) => (
+  <div className="o-layout--middle c-topic-index__item" key={_id}>
+    <div className="o-layout__item c-topic-index__item-child u-1/2@tablet u-tr">
+      <div className="c-topic-index__left">
+        <Link route="topic.entry" params={{ slug: slug.current }}>
+          {relatedCount > 0 ? (
+            <a className="c-topic-index__title">{title}</a>
                   ) : (
                     <a className="c-topic-index__title">{title}</a>
                   )}
-                </Link>
-              </div>
-            </div>
-            <div className="o-layout__item u-1/2@tablet u-tl">
-              <div className="c-topic-index__right">
-                <svg
-                  width={`${relatedCount}px`}
-                  height="5px"
-                  viewBox={`0 0 ${relatedCount} 2`}
-                  version="1.1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                >
-                  <path d="M167.536783,1 L1,1" id="Line" stroke="#1E2051" />
-                </svg>
-                {relatedCount > 0 ? (
-                  <span className="c-topic-index__count">{relatedCount}</span>
+        </Link>
+      </div>
+    </div>
+    <div className="o-layout__item  c-topic-index__item-child  u-1/2@tablet u-tl">
+      <div className="c-topic-index__right">
+        <svg
+          width={`${relatedCount}px`}
+          height="5px"
+          viewBox={`0 0 ${relatedCount} 2`}
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
+          <path d="M167.536783,1 L1,1" id="Line" stroke="#1E2051" />
+        </svg>
+        {relatedCount > 0 ? (
+          <span className="c-topic-index__count">{relatedCount}</span>
                 ) : (
                   <span className="c-topic-index__count">{relatedCount}</span>
                 )}
-              </div>
-            </div>
-          </div>
+      </div>
+    </div>
+  </div>
         ))}
       </section>
     </div>

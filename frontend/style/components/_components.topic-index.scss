@@ -1,10 +1,40 @@
+.c-topic-heading {
+  color: $brand-dark;
+  font-weight: bold;
+  margin-bottom: $spacing;
+  @include mq($from: tablet) {
+    margin-bottom: $spacing-large;
+  }
+}
 .c-topic-index__item {
   font-family: $font-sans;
   margin-bottom: $spacing-small;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include mq($from: tablet) {
+  justify-content: space-around;
+  }
 }
+
+.c-topic-index__item-child  {
+  width: auto;
+}
+
 .c-topic-index__title {
   @include inuit-font-size($font-size-normal, $line-height-normal);
   border: none;
+  color: $brand-dark;
+  border-bottom: 1px solid transparent;
+  &:visited {
+    color: $brand-dark;
+  }
+  &:hover {
+    color: $brand-dark;
+  }
+  &:visited:hover {
+    color: $brand-dark;
+  }
 }
 .c-topic-index__count {
   @include inuit-font-size($font-size-tiny, $line-height-tiny);
@@ -14,18 +44,27 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  text-align: right;
-  justify-content: center;
+  text-align: left;
+  //justify-content: center;
   @include mq($from: tablet) {
     justify-content: flex-end;
+    text-align: right;
   }
 }
 .c-topic-index__right {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: right;
+  width: min-content;
+  padding-right: $spacing;
+  svg {
+    display: none;
+  }
   @include mq($from: tablet) {
     justify-content: flex-start;
+    svg {
+      display:block;
+    }
   }
 }
