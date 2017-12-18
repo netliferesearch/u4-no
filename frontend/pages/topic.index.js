@@ -60,7 +60,6 @@ const TopicOverview = ({ topics = [] }) => (
         ))}
       </section>
     </div>
-    <Newsletter />
     <Footer />
   </Layout>
 );
