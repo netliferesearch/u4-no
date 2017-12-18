@@ -33,7 +33,7 @@ export default (Child, { queryFunc = false, materializeDepth = false }) =>
 
       if (!sanityResults) {
         console.warn('Sanity results was empty, nothing to materialize', sanityResults);
-        //throw new Error('No content found');
+        // throw new Error('No content found');
       }
 
       if (!materializeDepth) {
