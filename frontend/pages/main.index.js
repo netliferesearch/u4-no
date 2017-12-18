@@ -36,7 +36,7 @@ const Frontpage = ({ frontPage = {}, topics = {}, url }) => (
 
     <FrontpageFeature topics={topics} />
 
-    <section className="o-wrapper-medium u-margin-bottom-huge">
+    <section className="o-wrapper u-margin-bottom-huge">
       <h2 className="c-topic-section__title">
         Browse our handpicked anti-corruption <br /> publications, insights and ideas.
       </h2>
