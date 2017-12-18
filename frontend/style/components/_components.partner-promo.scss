@@ -49,9 +49,11 @@
 
 .c-partner-promo__statement {
   font-weight: 300;
+  padding: $spacing-small 0;
   @include mq($from: tablet) {
     display: flex;
     align-items: flex-start;
+    padding: $spacing 0;
   }
 }
 
@@ -79,8 +81,8 @@
   margin-top: $spacing-small;
   max-width: 550px;
   color: $white-on-blue;
-  margin-bottom: $spacing;
+  margin-bottom: 0;
   @include mq($from: tablet) {
-    margin-bottom: $spacing-large;
+    margin-bottom: 0;
   }
 }
