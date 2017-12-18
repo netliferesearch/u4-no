@@ -12,33 +12,37 @@
 .c-frontpage-feature__wrapper {
   @include mq($from: tablet) {
     display: flex;
+    justify-content: space-between;
   }
 }
 .c-frontpage-feature__left {
   display: none;
   @include mq($from: tablet) {
     display: inline-block;
-    width: 50%;
+    width: 40%;
   }
   img {
     max-width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 .c-frontpage-feature__right {
+  font-weight: 300;
   @include mq($from: tablet) {
-    width: 50%;
+    width: 40%;
     margin-left: $spacing-large;
   }
 }
 .c-frontpage-feature__heading {
   @include inuit-font-size($font-size-tiny, $line-height-tiny);
   margin: 0 0 $spacing;
-  font-weight: 400;
+  font-weight: 300;
   font-style: italic;
 }
 .c-frontpage-feature__list {
   list-style: none;
-  margin: 0;
+  margin: $spacing-large 0;
   padding: 0;
   counter-reset: counter;
 }
@@ -52,7 +56,7 @@
     padding-top: 0;
     @include inuit-font-size($font-size-large, $line-height-large);
   }
-  font-weight: 400;
+  font-weight: 300;
   position: relative;
   margin-bottom: $spacing-small;
 
@@ -80,13 +84,14 @@
   }
 }
 .c-frontpage-feature__list-item:hover {
+    @include mq($from: tablet) {
   &:after {
-    left: -$spacing-large;
+    left: -60%;
   }
   &:before {
-    width: 20px;
-    left: -$spacing;
-  }
+    width: 55%;
+    left: -55%;
+  } }
 }
 .c-frontpage-feature__link,
 .c-frontpage-feature__link:visited {

@@ -40,7 +40,7 @@ class FrontpageFeature extends Component {
     const { topics } = this.props;
     return (
       <div {...classes(null, null, 'o-wrapper-full-width')}>
-        <section {...classes('wrapper', null, 'o-wrapper-inner o-wrapper--padded')}>
+        <section {...classes('wrapper', null, 'o-wrapper-medium o-wrapper--padded')}>
           <div {...classes('left')}>
             <img src={`${this.state.image}?w=470&h=470&fit=crop&crop=focalpoint`} />
           </div>
