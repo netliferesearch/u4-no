@@ -42,7 +42,10 @@ function applyFilters(document = {}, filterList = []) {
   filterList.forEach((filterName) => {
     // apply publication filters
     const re = /^pub-type-(.*)/;
-    if (re.test(filterName)) {
+    if (filterName === 'pub-type-0' && document._type === 'publication') {
+      // show all publications"
+      showItem = true;
+    } else if (re.test(filterName)) {
       const publicationTypeId = re.exec(filterName)[1];
       const { publicationType = {} } = document;
       // Only if there is a positive filter match do we flip the showItem flag

@@ -30,22 +30,34 @@ class PublicationFilters extends Component {
       <div {...classes('item')}>
         <h3 {...classes('title')}>Publication type</h3>
         {this.state.allPublicationTypes.length === 0 && <span>Loading ...</span>}
-        {this.state.allPublicationTypes.map((pub = {}) => (
-          <FilterCheckBox
-            key={pub._id}
-            id={slugify(`pub-type-${pub._id}`, { lower: true })}
-            title={pub.title}
-            {...classes('checkbox')}
-            results={results}
-            numResultsIfFiltered={
-              findPublications(results).filter(
-                ({ publicationType = {} }) => publicationType._id === pub._id,
-              ).length
-            }
-            {...this.props}
-            disabled={!some(publicationTypesInResults, resultPub => resultPub._id === pub._id)}
-          />
-        ))}
+        {this.state.allPublicationTypes.length > 0 && (
+          <span>
+            <FilterCheckBox
+              key="0"
+              id="pub-type-0"
+              title="All publications"
+              {...classes('checkbox')}
+              results={results}
+              numResultsIfFiltered={findPublications(results).length}
+              {...this.props}
+              disabled={findPublications(results).length === 0}
+            />
+            {this.state.allPublicationTypes.map((pub = {}) => (
+              <FilterCheckBox
+                key={pub._id}
+                id={slugify(`pub-type-${pub._id}`, { lower: true })}
+                title={pub.title}
+                {...classes('checkbox')}
+                results={results}
+                numResultsIfFiltered={
+                  findPublications(results).filter(({ publicationType = {} }) => publicationType._id === pub._id).length
+                }
+                {...this.props}
+                disabled={!some(publicationTypesInResults, resultPub => resultPub._id === pub._id)}
+              />
+            ))}
+          </span>
+        )}
       </div>
     );
   }
