@@ -1,6 +1,9 @@
 import React from 'react';
-import { Link } from '../routes';
 import BEMHelper from 'react-bem-helper';
+import isArray from 'lodash/isArray';
+import BlockContent from '@sanity/block-content-to-react';
+import { Link } from '../routes';
+import serializers from './serializers';
 
 const classes = BEMHelper({
   name: 'simple-hero',
@@ -12,7 +15,10 @@ const SimpleHero = ({
 }) => (
   <div {...classes(null, light ? 'light' : null)}>
     <h1 {...classes('title')}>{title}</h1>
-    <div {...classes('content')}>{content}</div>
+    <div {...classes('content')}>
+      {isArray(content) && <BlockContent blocks={content} serializers={serializers} />}
+      {!isArray(content) && content}
+    </div>
     {cta && (
       <Link to="mailto:helpdesk@u4.no">
         <a {...classes('cta')}>
