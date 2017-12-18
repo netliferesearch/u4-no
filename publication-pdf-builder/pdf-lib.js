@@ -9,7 +9,7 @@ const getSanityClient = () =>
   sanityClient({
     projectId: '1f1lcoov',
     dataset: 'production',
-    token: process.env.SANITY_TOKEN,
+    token: process.env.SANITY_PDF_WORKER_TOKEN,
   });
 
 const buildPDF = async ({ url, title = 'output.pdf' }) => {
