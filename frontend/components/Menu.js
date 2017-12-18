@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from '../routes';
-import { SearchField } from '../components';
-import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
 import sanityClient from '@sanity/client';
 import PropTypes from 'prop-types';
+import { Link } from '../routes';
+import { SearchField } from '../components';
+import { ArrowRight } from '../components/icons';
 
 const classes = BEMHelper({
   name: 'top-bar',
@@ -84,26 +84,25 @@ class Menu extends Component {
           <li {...classes('menu-item')}>
             <button onClick={this.triggerMenu}>Menu</button>
           </li>
-          {!noSearch &&
+          {!noSearch && (
             <li {...classes('menu-item')}>
               <button onClick={this.triggerSearchMenu}>Search</button>
             </li>
-          }
+          )}
         </ul>
         {this.state.activeMenu ? (
           <div>
             <button onClick={this.triggerMenu} {...menuClasses('backdrop')} />
             <div {...menuClasses()}>
-
               <ul {...classes('menu', 'active')}>
                 <li {...classes('menu-item', this.state.activeItem === 1 && 'active')}>
                   <button onClick={this.triggerMenu}>Close</button>
                 </li>
-                {!noSearch &&
+                {!noSearch && (
                   <li {...classes('menu-item', this.state.activeItem === 3 && 'active')}>
                     <button onClick={this.triggerSearchMenu}>Search</button>
                   </li>
-                }
+                )}
               </ul>
 
               {topics && (
@@ -114,21 +113,17 @@ class Menu extends Component {
                   <ul {...menuClasses('list')}>
                     {topics.slice(0, 5).map(topic => (
                       <li {...menuClasses('list-item')} key={topic._id}>
-                        <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
-                          <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                            <a {...menuClasses('link')}>{topic.title}</a>
-                          </Link>
-                        </button>
+                        <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                          <a {...menuClasses('link')}>{topic.title}</a>
+                        </Link>
                       </li>
                     ))}
                     {this.state.activeExpand &&
                       topics.slice(5, 50).map(topic => (
                         <li {...menuClasses('list-item')} key={topic._id}>
-                          <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
-                            <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                              <a {...menuClasses('link')}>{topic.title}</a>
-                            </Link>
-                          </button>
+                          <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                            <a {...menuClasses('link')}>{topic.title}</a>
+                          </Link>
                         </li>
                       ))}
                     {this.state.activeExpand ? (
@@ -170,21 +165,17 @@ class Menu extends Component {
               </h4>
               <ul {...menuClasses('list')}>
                 <li {...menuClasses('list-item')}>
-                  <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
-                    <Link to={'/about-u4'}>
-                      <a {...menuClasses('link')}>About U4</a>
-                    </Link>
-                  </button>
+                  <Link to="/about-u4">
+                    <a {...menuClasses('link')}>About U4</a>
+                  </Link>
                 </li>
                 <li {...menuClasses('list-item')}>
-                  <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
-                    <Link to={'/the-team'}>
-                      <a {...menuClasses('link')}>People</a>
-                    </Link>
-                  </button>
+                  <Link to="/the-team">
+                    <a {...menuClasses('link')}>People</a>
+                  </Link>
                 </li>
                 <li {...menuClasses('list-item')}>
-                  <Link to={'/u4-partner-agencies'}>
+                  <Link to="/u4-partner-agencies">
                     <a {...menuClasses('link')}>Partner agencies</a>
                   </Link>
                 </li>
@@ -195,34 +186,28 @@ class Menu extends Component {
               </h4>
               <ul {...menuClasses('list')}>
                 <li {...menuClasses('list-item')}>
-                  <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
-                    <Link to={'/online-courses'}>
-                      <a {...menuClasses('link')}>Online courses</a>
-                    </Link>
-                  </button>
+                  <Link to="/online-courses">
+                    <a {...menuClasses('link')}>Online courses</a>
+                  </Link>
                 </li>
                 <li {...menuClasses('list-item')}>
-                  <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
-                    <Link to={'/workshops-and-events'}>
-                      <a {...menuClasses('link')}>Workshops and events</a>
-                    </Link>
-                  </button>
+                  <Link to="/workshops-and-events">
+                    <a {...menuClasses('link')}>Workshops and events</a>
+                  </Link>
                 </li>
                 <li {...menuClasses('list-item')}>
-                  <button {...menuClasses('clean-btn')} onClick={this.triggerMenu}>
-                    <Link to={'/helpdesk'}>
-                      <a {...menuClasses('link')}>Anti-corruption helpdesk</a>
-                    </Link>
-                  </button>
+                  <Link to="/helpdesk">
+                    <a {...menuClasses('link')}>Anti-corruption helpdesk</a>
+                  </Link>
                 </li>
               </ul>
 
               <div {...menuClasses('links--round')}>
-                <Link to={'/helpdesk'}>
+                <Link to="/helpdesk">
                   <a {...menuClasses('link-round')}>Helpdesk</a>
                 </Link>
 
-                <Link to={'/the-team'}>
+                <Link to="/the-team">
                   <a {...menuClasses('link-round')}>Contact</a>
                 </Link>
               </div>
@@ -234,7 +219,6 @@ class Menu extends Component {
           <div>
             <button onClick={this.triggerSearchMenu} {...menuClasses('backdrop')} />
             <div {...menuClasses()}>
-
               <ul {...classes('menu', 'active')}>
                 <li {...classes('menu-item', this.state.activeItem === 1 && 'active')}>
                   <button onClick={this.triggerMenu}>Menu</button>
