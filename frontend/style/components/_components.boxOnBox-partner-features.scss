@@ -11,6 +11,11 @@
   p {
     max-width: 600px;
   }
+  &:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 }
 .c-boxOnBox-partner-features__left {
   background: $brand-main;
@@ -21,10 +26,11 @@
   margin-left: $spacing;
   @include mq($from: tablet) {
     margin-left: $spacing-large;
+    float: left;
   }
   p {
     @include inuit-font-size(26px, $line-height-normal);
-    font-weight: 400;
+    font-weight: 300;
   }
 }
 .c-boxOnBox-partner-features__right {
@@ -39,6 +45,7 @@
   @include mq($from: tablet) {
     margin-right: $spacing-large;
     text-align: left;
+    float: right;
     padding-left: $spacing-huge;
   }
 
@@ -75,6 +82,7 @@
 
 .c-boxOnBox-partner-features__statement {
   font-weight: 300;
+  padding: $spacing 0;
   @include mq($from: tablet) {
     display: flex;
     align-items: flex-start;
@@ -106,9 +114,9 @@
   margin-top: $spacing-small;
   max-width: 550px;
   color: $white-on-blue;
-  margin-bottom: $spacing;
+  margin-bottom: 0;
   @include mq($from: tablet) {
-    margin-bottom: $spacing-large;
+    margin-bottom: 0;
   }
 }
 
@@ -128,7 +136,6 @@
   .c-boxOnBox-partner-features__left {
     @include mq($from: tablet) {
       padding: 15% 20%;
-      padding-bottom: $spacing-huge;
       margin-top: -$spacing-large;
       margin-left: 0;
       grid-column: 1 / 5;
@@ -138,7 +145,7 @@
   .c-boxOnBox-partner-features__right {
     @include mq($from: tablet) {
       text-align: left;
-      padding: 15% 10% 10% 20%;
+      padding: 10% 10% 10% 20%;
       margin-top: 0;
       margin-left: -10%;
       margin-right: 0;

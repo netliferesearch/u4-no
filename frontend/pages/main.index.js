@@ -49,7 +49,7 @@ const Frontpage = ({ frontPage = {}, topics = {}, url }) => (
       </h2>
     </section>
 
-    <section>
+    <section className="o-wrapper u-margin-bottom-huge">
       <BoxOnBoxPartnerFeatures />
       <h2 className="c-topic-section__cta u-padding-bottom">
         <a href="/u4-partner-agencies">
