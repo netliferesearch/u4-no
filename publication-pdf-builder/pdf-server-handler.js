@@ -1,6 +1,6 @@
 require('dotenv').config();
 const axios = require('axios');
-const { pdfConfig } = require('./pdfConfig');
+const pdfConfig = require('./pdfConfig');
 /**
  * Purpose: To be used by frontend/server.js, providing a pdf endpoint handler.
  */

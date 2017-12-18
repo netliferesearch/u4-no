@@ -35,4 +35,4 @@ const pdfConfig = ({ url = '', title = 'output' }) => {
   };
 };
 
-module.exports = { pdfConfig };
+module.exports = pdfConfig;
