@@ -43,11 +43,12 @@ const PartnerPromo = ({
         <img src="/static/services_partners.jpg?w=1600&amp;h=400&amp;fit=crop&amp;crop=focalpoint" />
       </figure>
 
-    </section>
-
-    <h2 {...classes('cta')}><a href="#">See all our partners &nbsp;<ArrowRight /></a></h2>
+    </section><h2 {...classes('cta')}>
+      <Link to="/u4-partner-agencies">
+        <a>See all our partners &nbsp;<ArrowRight /></a>
+      </Link>
+    </h2>
   </section>
 );
 
 export default PartnerPromo;
-
