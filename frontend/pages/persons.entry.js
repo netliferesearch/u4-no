@@ -2,6 +2,7 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { Link } from '../routes';
 import { Layout, LongformArticle, Footer } from '../components';
+import { MediumLogo, TwitterLogo } from '../components/icons/';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
@@ -21,6 +22,8 @@ const Persons = ({
   person = {},
   image = {},
   cv = '',
+  medium = '',
+  twitter = '',
   url,
 }) => (
   <Layout
@@ -49,14 +52,22 @@ const Persons = ({
                   <br />
                 </a>
               )}
-              {person.cv && <a href={person.cv}>Download CV</a>}
-              <br />
               {person.image && (
                 <a href={person.image.asset.url}>
                   Hi-res image<br />
                 </a>
               )}
-              {person.affiliations && person.affiliations.map(affiliation => affiliation)}
+              {person.medium && (
+                <a href={person.medium}>
+                  <MediumLogo {...classes('some-icon')} />Medium
+                </a>
+              )}
+              <br />
+              {person.twitter && (
+                <a href={person.twitter}>
+                  <TwitterLogo {...classes('some-icon')} />Twitter
+                </a>
+              )}
             </div>
           </div>
           {person.bio && <div {...classes('bio')}>

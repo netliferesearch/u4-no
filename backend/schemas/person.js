@@ -25,6 +25,14 @@ export default {
       type: 'string'
     },
     {
+      name: 'twitter',
+      type: 'url'
+    },
+    {
+      name: 'medium',
+      type: 'url'
+    },
+    {
       name: 'slug',
       type: 'slug',
       options: {

@@ -21,8 +21,10 @@ class Persons extends Component {
   }
 
   render() {
-    console.log(this.props)
-    const { frontpage, persons, helpdesk, affiliatedexperts, url } = this.props;
+    console.log(this.props);
+    const {
+      frontpage, persons, helpdesk, affiliatedexperts, url,
+    } = this.props;
     return (
       <Layout
         headComponentConfig={{
@@ -34,7 +36,7 @@ class Persons extends Component {
         <h1 className="c-article__title c-article__title--center">{frontpage.title}</h1>
         <BreadCrumb url={url} />
         <div className="c-article__lead c-article__lead--center">{frontpage.lead}</div>
-        <div className="c-filters--standalone">
+        <div className="c-filters--standalone " >
           <div className="c-filters__label--standalone">
             Filter people by:
             <button className="c-filters__item--standalone" onClick={() => this.changeGroup(1)}>
@@ -48,7 +50,7 @@ class Persons extends Component {
             </button>
           </div>
         </div>
-        <div className="o-wrapper c-article">
+        <div className="o-wrapper c-article u-margin-bottom-huge">
           {this.state.activeGroup === 1 ? (
             <div id="advisors">
               <h2 className="c-article__title c-article__title--center">U4 TEAM</h2>

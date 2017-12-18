@@ -17,6 +17,9 @@
   @include mq($from: tablet) {
     padding-left: $spacing-huge;
   }
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-large, $line-height-large );
+  }
 }
 
 .c-article__lead--center {

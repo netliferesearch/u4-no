@@ -39,6 +39,9 @@
     width: 50%;
     min-height: 240px;
   }
+  &:hover {
+    border-bottom: none;
+  }
 }
 
 .c-person__item-body-img--noimg {
@@ -79,12 +82,12 @@
   }
 }
 .c-person__item-title {
-  margin: $spacing-small 0;
+  margin:  0;
   color: $brand-dark;
   font-weight: bold;
-  @include inuit-font-size($font-size-normal, $line-height-tiny );
+  @include inuit-font-size($font-size-normal, $line-height-small );
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-large, $line-height-tiny );
+    @include inuit-font-size($font-size-large, $line-height-small );
   }
 }
 
@@ -94,8 +97,11 @@
 }
 .c-person__item-subtitle {
   @include inuit-font-size($font-size-tiny);
-  font-weight: 400;
+  font-weight: bold;
   display: inline-block;
+  text-transform: uppercase;
+  color: $brand-main;
+  margin-bottom: $spacing;
 
 }
 .c-person__item-meta {

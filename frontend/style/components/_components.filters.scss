@@ -10,7 +10,8 @@
   margin-right: auto;
   font-family: $font-sans;
   text-align: center;
-  margin-top: $spacing-huge;
+  margin-top: $spacing-huge*1.5;
+  color: $brand-dark;
   margin-bottom: $spacing-huge;
   @include inuit-font-size($font-size-small, $line-height-small);
 }
