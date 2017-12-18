@@ -19,7 +19,9 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Search = ({ results = [], searchFilters = [], searchSorting = '', url, topic = {} }) => (
+const Search = ({
+  results = [], searchFilters = [], searchSorting = '', url, topic = {},
+}) => (
   <Layout
     noSearch
     headComponentConfig={{
@@ -33,11 +35,15 @@ const Search = ({ results = [], searchFilters = [], searchSorting = '', url, top
         <section {...classes({ block: 'search-input', element: 'content' })}>
           <SearchField />
         </section>
-        {
-          topic && topic.slug && (<div>
-            <h3>Viewing all resources for <a href={`/topics/${topic.slug.current}`}>{topic.title}</a></h3>
-          </div>)
-        }
+        {topic &&
+          topic.slug && (
+            <div>
+              <h3>
+                Viewing all resources for{' '}
+                <a href={`/topics/${topic.slug.current}`}>{topic.title}</a>
+              </h3>
+            </div>
+          )}
       </div>
     </div>
     <div className="o-layout">
@@ -64,7 +70,7 @@ const mapStateToProps = state => state;
 const mapDispatchToProps = () => ({});
 export default DataLoader(connect(mapStateToProps, mapDispatchToProps)(Search), {
   queryFunc: ({ query }) => {
-    console.log('query', query)
+    console.log('query', query);
     if (!query.search && !query.topics) {
       return {
         sanityQuery: false,
@@ -76,7 +82,7 @@ export default DataLoader(connect(mapStateToProps, mapDispatchToProps)(Search), 
           "results": *[references("${query.topics}")][0..1000]{..., "authors": authors[]->{...}},
           "topic": *[_id == "${query.topics}"][0]
         }`,
-      }
+      };
     }
     return {
       sanityQuery: buildSearchQuery({ queryString: query.search, limit: { from: 0, to: 1000 } }),

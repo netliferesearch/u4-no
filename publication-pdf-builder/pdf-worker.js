@@ -44,8 +44,9 @@ async function startPdfWorker() {
     try {
       const axiosResponse = await buildPDF({ url, title: pdfFilename });
       console.log('DocRaptor responded positively with pdf data');
-      console.log('Start piping data to Sanity');
-      await uploadPDF({ targetDocument: result, pdfFilename, dataStream: axiosResponse.data });
+      await writePDFBufferToFile({ dataStream: axiosResponse.data, filename: pdfFilename });
+      console.log('Wrote file to disk. Start uploading file to Sanity');
+      await uploadPDF({ targetDocument: result, pdfFilename });
       console.log(`Built and updated pdf for document: ${result.title}.`);
     } catch (e) {
       console.log('buildPDF failed for:', pdfFilename);

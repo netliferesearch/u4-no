@@ -20,13 +20,13 @@ const figureOutFigureClass = (size) => {
   return 'c-figure--medium c-longform-grid__large';
 };
 
-const Figure = ({ asset, caption, license, licensor, size }) => (
+const Figure = ({
+  asset, caption, license, licensor, size,
+}) => (
   <figure {...classes('figure', null, figureOutFigureClass(size))}>
     <img {...classes('figure-img')} src={asset.url} alt={asset.altText} />
     <figcaption {...classes('figure-figcaption')}>
-      {caption}
-      {license}
-      {licensor}
+      {caption} Photo by: {licensor}, licensed under {license}.
     </figcaption>
   </figure>
 );
