@@ -17,26 +17,20 @@ const buildPDF = async ({ url, title = 'output.pdf' }) => {
   return pdfDataBuffer;
 };
 
-const writePDFBufferToFile = async ({ axiosPDFResponse, filename = 'output.pdf' }) =>
+const writePDFBufferToFile = async ({ dataStream, filename = 'output.pdf' }) =>
   new Promise((resolve, reject) => {
     const writeStream = fs.createWriteStream(filename);
-    axiosPDFResponse.pipe(writeStream);
-    axiosPDFResponse.on('error', reject);
-    axiosPDFResponse.on('end', resolve);
+    dataStream.pipe(writeStream);
+    dataStream.on('error', reject);
+    dataStream.on('end', resolve);
   });
 
-const uploadPDF = async ({
-  targetDocument,
-  pdfFilename,
-  // if no readStream provided, try to create a read stream from the pdf
-  // filename provided
-  dataStream = fs.createReadStream(pdfFilename),
-}) => {
+const uploadPDF = async ({ targetDocument, pdfFilename }) => {
   const client = getSanityClient();
   if (!fs.existsSync(pdfFilename)) {
     throw Error('Could not find file to upload', pdfFilename);
   }
-  const document = await client.assets.upload('file', dataStream, {
+  const document = await client.assets.upload('file', fs.createReadStream(pdfFilename), {
     filename: pdfFilename,
     contentType: 'application/pdf',
   });
