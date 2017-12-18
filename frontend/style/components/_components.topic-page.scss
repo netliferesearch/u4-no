@@ -24,11 +24,11 @@
 .c-topic-page__longTitle {
   font-family: $font-sans;
   color: $brand-dark;
-  margin: $spacing-small $spacing $spacing-huge;
+  margin: $spacing-small $spacing $spacing;
   max-width: 650px;
-  @include inuit-font-size($font-size-large, $font-size-larger);
-
+  @include inuit-font-size($font-size-normal, $font-size-large);
   @include mq($from: tablet) {
+    margin: $spacing-small $spacing $spacing-huge;
     @include inuit-font-size($font-size-largest, 57px);
     margin: $spacing-small $spacing $spacing-huge $spacing-huge;
   }
