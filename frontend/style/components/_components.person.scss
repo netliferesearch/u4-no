@@ -129,3 +129,20 @@
     }
   }
 }
+
+.c-person__team {
+  margin-bottom: -36px;
+  z-index: 10;
+}
+.c-person__team-text {
+  @include inuit-font-size($font-size-small);
+  color: $brand-light;
+  text-align: center;
+}
+.c-person__team-arrow {
+  svg path{
+  fill: $brand-light;}
+  text-align: center;
+  transform: rotate(90deg) translateX(30px);
+
+}

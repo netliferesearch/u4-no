@@ -22,12 +22,26 @@
   }
 }
 
+
+
+
 .c-article__lead--center {
   text-align: center;
   font-family: $font-sans;
   margin: auto auto $spacing-huge auto;
   padding: 0;
   max-width: 840px;
+}
+
+.c-article__lead--big-light {
+  color: $white;
+  font-weight: 300;
+  margin:  $spacing-large auto;
+  padding: 0 $spacing-small;
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-larger, $line-height-large );
+      margin:  $spacing-huge auto;
+  }
 }
 
 .c-article__title {

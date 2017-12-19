@@ -4,6 +4,7 @@ import { Link } from '../routes';
 import { Layout, Footer, Team } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
+import { ArrowLarge } from '../components/icons';
 
 class Persons extends Component {
   constructor(props) {
@@ -33,9 +34,18 @@ class Persons extends Component {
           url: url.asPath ? `beta.u4.no${url.asPath}` : '',
         }}
       >
-        <h1 className="c-article__title c-article__title--center">{frontpage.title}</h1>
+
         <BreadCrumb url={url} />
-        <div className="c-article__lead c-article__lead--center">{frontpage.lead}</div>
+        <div className="u-bg-dark-blue o-wrapper-full-width">
+          <div className="c-article__lead c-article__lead--big-light   c-article__lead--center">{frontpage.lead}</div>
+          <div className="c-person__team">
+            <h1 className="c-person__team-text ">{frontpage.title}</h1>
+            <div className="c-person__team-arrow">
+              <ArrowLarge />
+            </div>
+          </div>
+        </div>
+
         <div className="c-filters--standalone " >
           <div className="c-filters__label--standalone">
             Filter people by:
