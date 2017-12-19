@@ -11,36 +11,32 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-export default class SearchFilters extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { results: [] };
+function toggle() {
+  if (document) {
+    document.querySelector('.c-filters').classList.toggle('c-filters--open');
+    document.querySelector('html').classList.toggle('u-overflow-hidden');
   }
+}
 
-  toggle() {
-    document.getElementsByClassName('c-filters')[0].classList.toggle('c-filters--open');
-  }
-
-  render() {
-    const { results } = this.props;
-    const { ...rest } = this.props;
-    return (
-      <div {...classes()}>
-        <div {...classes('wrapper')}>
-          <div {...classes('topbar')}>
-            <h3 {...classes('topbar-result')}>Results ({results.length})</h3>
-            <button onClick={this.toggle} {...classes('topbar-filter')}>
-              Update search
-            </button>
-          </div>
-          <h2 {...classes('main-title')}>Filters</h2>
-          <PublicationFilters {...rest} />
-          <PublicationLanguageFilters {...rest} />
-          <PublicationTopicFilters {...rest} />
-          <PublicationYearFilters {...rest} />
-          <PublicationAuthorsFilters {...rest} />
+export default function SearchFilters(props) {
+  const { results } = props;
+  const { ...rest } = props;
+  return (
+    <div {...classes()}>
+      <div {...classes('wrapper')}>
+        <div {...classes('topbar')}>
+          <h3 {...classes('topbar-result')}>Results ({results.length})</h3>
+          <button onClick={toggle} {...classes('topbar-filter')}>
+            Update search
+          </button>
         </div>
+        <h2 {...classes('main-title')}>Filters</h2>
+        <PublicationFilters {...rest} />
+        <PublicationLanguageFilters {...rest} />
+        <PublicationTopicFilters {...rest} />
+        <PublicationYearFilters {...rest} />
+        <PublicationAuthorsFilters {...rest} />
       </div>
-    );
-  }
+    </div>
+  );
 }

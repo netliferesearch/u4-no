@@ -13,8 +13,12 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const toggleFilterMenu = () =>
-  document.getElementsByClassName('c-filters')[0].classList.toggle('c-filters--open');
+const toggleFilterMenu = () => {
+  if (document) {
+    document.querySelector('.c-filters').classList.toggle('c-filters--open');
+    document.querySelector('html').classList.toggle('u-overflow-hidden');
+  }
+};
 
 const SearchResults = (props) => {
   const { results = [], searchSorting = 'relevance', updateSearchSorting = () => {} } = props;
@@ -39,8 +43,7 @@ const SearchResults = (props) => {
         </div>
       </div>
       <ul {...classes('content')}>
-        {results.map(
-          ({
+        {results.map(({
             _id,
             _type,
             publicationType = false,
@@ -82,8 +85,7 @@ const SearchResults = (props) => {
                 </div>
               ) : null}
             </li>
-          ),
-        )}
+          ))}
       </ul>
     </section>
   );
