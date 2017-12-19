@@ -117,7 +117,7 @@
 }
 
 .c-article-nav-sidebar {
-  z-index: 1;
+  z-index: -1;
   padding: 0 $spacing;
   position: fixed;
   display: block;
@@ -133,4 +133,3 @@
     display: none;
   }
 }
-

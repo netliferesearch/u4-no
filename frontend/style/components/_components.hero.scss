@@ -1,9 +1,4 @@
 .c-hero {
-  // Elevate component so that fixed table of contents can go underneath.
-  background-color: $white;
-  position: relative;
-  z-index: 2;
-
   margin: 0 auto;
   margin-bottom: $spacing-large;
 }

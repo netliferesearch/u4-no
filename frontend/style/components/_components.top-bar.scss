@@ -1,9 +1,4 @@
 .c-top-bar {
-  // Elevate component so that fixed table of contents can go underneath.
-  background-color: $white;
-  position: relative;
-  z-index: 2;
-
   padding: $spacing-small $spacing;
   display: flex;
   flex-wrap: wrap;
