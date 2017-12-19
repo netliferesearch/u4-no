@@ -73,6 +73,12 @@ function applyFilters(document = {}, filterList = []) {
       if (getPubYear(document) === Number.parseInt(year, 10)) {
         showItem = true;
       }
+    } else if (/^pub-lang-(.*)/.test(filterName)) {
+      const filterLanguage = /^pub-lang-(.*)/.exec(filterName)[1];
+      const { language = '' } = document;
+      if (language === filterLanguage) {
+        showItem = true;
+      }
     }
   });
   return showItem;
