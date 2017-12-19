@@ -57,6 +57,9 @@ export default ({ queryString = false, limit: { from = 0, to = 20 } = { from: 0,
       "publicationType": publicationType->{...},
       "authors": authors[]->{...},
       "editors": editors[]->{...},
+      topics[]->{_id, title},
+      language,
+      year,
       firstName,
       surname
     }}`.replace('\n', '');

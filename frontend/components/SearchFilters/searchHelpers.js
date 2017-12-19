@@ -1,7 +1,10 @@
 import uniqBy from 'lodash/uniqBy';
 import sortBy from 'lodash/sortBy';
+import some from 'lodash/some';
 import moment from 'moment';
-import prioritize from './searchWeighting'
+import slugify from 'slugify';
+
+import prioritize from './searchWeighting';
 
 export function findPublications(results = []) {
   return results.filter(({ _type }) => _type === 'publication');
@@ -41,18 +44,25 @@ function applyFilters(document = {}, filterList = []) {
   // start by assuming that the document should not be shown.
   let showItem = false;
   filterList.forEach((filterName) => {
-    // apply publication filters
-    const re = /^pub-type-(.*)/;
     if (filterName === 'pub-type-0' && document._type === 'publication') {
       // show all publications"
       showItem = true;
-    } else if (re.test(filterName)) {
-      const publicationTypeId = re.exec(filterName)[1];
+    } else if (/^pub-type-(.*)/.test(filterName)) {
+      const publicationTypeId = /^pub-type-(.*)/.exec(filterName)[1];
       const { publicationType = {} } = document;
       // Only if there is a positive filter match do we flip the showItem flag
       // to positive. This is because we do not want any other negative filter
       // matches to exclude a document that has at least one positive match.
       if (publicationTypeId === publicationType._id) {
+        showItem = true;
+      }
+    } else if (/^pub-topic-(.*)/.test(filterName)) {
+      const topicTitle = /^pub-topic-(.*)/.exec(filterName)[1];
+      const { topics = [] } = document;
+      // for each topic attached to the document we evaluate we try to
+      // slugify the title and compare it to the topic title derived from
+      // the filtername
+      if (some(topics, ({ title = '' }) => slugify(title, { lower: true }) === topicTitle)) {
         showItem = true;
       }
     }
