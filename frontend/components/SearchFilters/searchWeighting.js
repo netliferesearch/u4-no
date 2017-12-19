@@ -21,7 +21,7 @@ export default function prioritize(searchString, hits) {
     let story = hit.title + ' ';
     // const baseScore = 1.0 + count - (1 / count) * count;
     let score = 1;
-    const title = hit.title || hit.name;
+    const title = hit.title || hit.name || hit.longTitle;
     if (title) {
       const titleMatchCount = uniqueMatches(title);
       story += "tmc:" + titleMatchCount + ' ';

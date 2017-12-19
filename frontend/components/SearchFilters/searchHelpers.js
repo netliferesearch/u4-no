@@ -1,6 +1,7 @@
 import uniqBy from 'lodash/uniqBy';
 import sortBy from 'lodash/sortBy';
 import moment from 'moment';
+import prioritize from './searchWeighting'
 
 export function findPublications(results = []) {
   return results.filter(({ _type }) => _type === 'publication');
@@ -76,12 +77,13 @@ export function filterResultsBySearchFilterList(results = [], filterList = []) {
   return results;
 }
 
-export function sortResultsBySortCriteria({ results = [], sortCriteria = '' }) {
+export function sortResultsBySortCriteria({ searchString = '', results = [], sortCriteria = '' }) {
   if (sortCriteria === 'relevance') {
     // we consider the results returned by sanity as already organized by relevance
     // so we return them as is. If relevance need to be improved we must first
     // try to improve the sanity query and then perhaps add logic here.
-    return results;
+    const weightedResults = prioritize(searchString, results);
+    return weightedResults;
   } else if (/^year-.*/.test(sortCriteria)) {
     const docsWithoutDate = results.filter(res => !res.date);
     const docsWithDate = results.filter(res => res.date);
