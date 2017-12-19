@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import some from 'lodash/some';
-
 import slugify from 'slugify';
-
+import BEMHelper from 'react-bem-helper';
 import sanityClient from '../../helpers/sanity-client-config';
-
 import { findPublicationTypes, findPublications } from './searchHelpers';
 import FilterCheckBox from './FilterCheckBox';
-import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper({
   name: 'filters',

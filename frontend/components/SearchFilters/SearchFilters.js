@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PublicationFilters from './PublicationFilters';
 import PublicationTopicFilters from './PublicationTopicFilters';
+import PublicationYearFilters from './PublicationYearFilters';
 import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper({
@@ -32,6 +33,7 @@ export default class SearchFilters extends Component {
           </div>
           <h2 {...classes('main-title')}>Filters</h2>
           <PublicationFilters {...rest} />
+          <PublicationYearFilters {...rest} />
           <PublicationTopicFilters {...rest} />
         </div>
       </div>

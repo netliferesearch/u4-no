@@ -3,11 +3,14 @@ import sortBy from 'lodash/sortBy';
 import some from 'lodash/some';
 import moment from 'moment';
 import slugify from 'slugify';
-
 import prioritize from './searchWeighting';
 
 export function findPublications(results = []) {
   return results.filter(({ _type }) => _type === 'publication');
+}
+
+export function getPubYear({ date = {} }) {
+  return moment(date.utc).year();
 }
 
 /**
@@ -63,6 +66,11 @@ function applyFilters(document = {}, filterList = []) {
       // slugify the title and compare it to the topic title derived from
       // the filtername
       if (some(topics, ({ title = '' }) => slugify(title, { lower: true }) === topicTitle)) {
+        showItem = true;
+      }
+    } else if (/^pub-year-(.*)/.test(filterName)) {
+      const year = /^pub-year-(.*)/.exec(filterName)[1];
+      if (getPubYear(document) === Number.parseInt(year, 10)) {
         showItem = true;
       }
     }
