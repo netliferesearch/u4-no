@@ -83,7 +83,7 @@ const LongFormArticleContainer = (props) => {
       )}
 
       {!isArticleMenuOpen && (
-        <article className="u-relative">
+        <article>
           {_type === 'publication' &&
             !isPublicationDrawerOpen && <TableOfContentsButton {...props} />}
           <CustomScrollSpy {...props} />
@@ -91,7 +91,7 @@ const LongFormArticleContainer = (props) => {
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
             {_type === 'publication' && (
-              <div className="c-hero u-bg-white">
+              <div className="c-hero u-bg-white u-z-index-x">
                 <div
                   className="c-hero-image"
                   style={{

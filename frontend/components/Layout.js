@@ -25,7 +25,7 @@ export default ({
   >
     <HeadComponent {...headComponentConfig} />
     {showTopTab && (
-      <div {...classes('', '', 'u-bg-white')}>
+      <div {...classes('', '', 'u-z-index-xx u-bg-white')}>
         {!hideLogo && (
           <Link route="/">
             <a {...classes('logo')}>
@@ -34,9 +34,7 @@ export default ({
           </Link>
         )}
         {hideLogo && <div />}
-        <div className="u-z-index-xxx">
-          <Menu noSearch={noSearch} />
-        </div>
+        <Menu noSearch={noSearch} />
       </div>
     )}
     {children}
