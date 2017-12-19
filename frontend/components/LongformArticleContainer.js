@@ -13,7 +13,6 @@ import {
   CustomScrollSpy,
   RecommendedResources,
   ToggleBlock,
-  PublicationDrawer,
 } from './';
 
 const LongFormArticleContainer = (props) => {
@@ -57,9 +56,9 @@ const LongFormArticleContainer = (props) => {
     >
       {isArticleMenuOpen && (
         <div
-          className={`c-article-nav-fullscreen ${isArticleMenuOpen
-            ? 'c-article-nav-fullscreen c-article-nav-fullscreen--open'
-            : ''}`}
+          className={`c-article-nav-fullscreen ${
+            isArticleMenuOpen ? 'c-article-nav-fullscreen c-article-nav-fullscreen--open' : ''
+          }`}
         >
           <TableOfContentsButton {...props} />
           <TableOfContentsContent
@@ -166,60 +165,55 @@ const LongFormArticleContainer = (props) => {
               </div>
             </div>
           )}
-          <PublicationDrawer {...props}>
-            <LongformArticle {...props} />
-            {props.references ? (
-              <div className="c-longform-grid">
-                <div className="c-longform-grid__standard">
-                  <div className="footnotes">
-                    <ToggleBlock title="References" active content={props.references} />
-                  </div>
+          <LongformArticle {...props} />
+          {props.references ? (
+            <div className="c-longform-grid">
+              <div className="c-longform-grid__standard">
+                <div className="footnotes">
+                  <ToggleBlock title="References" active content={props.references} />
                 </div>
               </div>
-            ) : null}
-            {props.acknowledgements ? (
-              <div className="c-longform-grid">
-                <div className="c-longform-grid__standard">
-                  <ToggleBlock title="Acknowledgements" content={props.acknowledgements} />
-                </div>
+            </div>
+          ) : null}
+          {props.acknowledgements ? (
+            <div className="c-longform-grid">
+              <div className="c-longform-grid__standard">
+                <ToggleBlock title="Acknowledgements" content={props.acknowledgements} />
               </div>
-            ) : null}
-            {props.notes ? (
-              <div className="c-longform-grid">
-                <div className="c-longform-grid__standard">
-                  <ToggleBlock title="Notes" content={props.notes} />
-                </div>
+            </div>
+          ) : null}
+          {props.notes ? (
+            <div className="c-longform-grid">
+              <div className="c-longform-grid__standard">
+                <ToggleBlock title="Notes" content={props.notes} />
               </div>
-            ) : null}
-            {props.abstract ? (
-              <div className="c-longform-grid">
-                <div className="c-longform-grid__standard">
-                  <ToggleBlock title="Abstract" content={props.abstract} />
-                </div>
+            </div>
+          ) : null}
+          {props.abstract ? (
+            <div className="c-longform-grid">
+              <div className="c-longform-grid__standard">
+                <ToggleBlock title="Abstract" content={props.abstract} />
               </div>
-            ) : null}
-            {props._type === 'publication' && (
-              <div className="c-longform-grid">
-                <div className="c-longform-grid__standard">
-                  <div className="footnotes">
-                    <ToggleBlock
-                      title="Disclaimer"
-                      content="All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies."
-                    />
-                  </div>
-                </div>
+            </div>
+          ) : null}
+          {props._type === 'publication' && (
+            <div className="c-longform-grid">
+              <div className="c-longform-grid__standard">
+                <ToggleBlock
+                  title="Disclaimer"
+                  content="All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies."
+                />
               </div>
-            )}
-            {props.relatedContent && (
-              <div className="o-wrapper">
-                <h2>We also recommend</h2>
-                <RecommendedResources relatedContent={props.relatedContent} />
-              </div>
-            )}
-            <span id="js-bottom" />
-            <Footer />
-          </PublicationDrawer>
-
+            </div>
+          )}
+          {props.relatedContent && (
+            <div className="o-wrapper">
+              <h2>We also recommend</h2>
+              <RecommendedResources relatedContent={props.relatedContent} />
+            </div>
+          )}
+          <span id="js-bottom" />
+          <Footer />
         </article>
       )}
     </Layout>

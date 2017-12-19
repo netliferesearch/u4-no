@@ -11,7 +11,7 @@ const mapDispatchToProps = dispatch => ({
   updateReadingProgress: bindActionCreators(updateReadingProgress, dispatch),
 });
 
-export default (Child, { queryFunc = false, materializeDepth = false }) =>
+export default (Child, { queryFunc = false, materializeDepth = false, query = {} }) =>
   withRedux(initStore, null, mapDispatchToProps)(class DataLoader extends Component {
     static async getInitialProps(nextContext) {
       const client = sanityClient({

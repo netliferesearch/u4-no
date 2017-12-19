@@ -33,17 +33,17 @@ export default ({ queryString = false, limit: { from = 0, to = 20 } = { from: 0,
         || language match [${matchString}]
         || utc match [${matchString}]
         || local match [${matchString}]
-        || content[].children[].text match ${matchString}
-        || sections[].children[].text match ${matchString}
-        || textLeft[].children[].text match ${matchString}
-        || textRight[].children[].text match ${matchString}
-        || caption[].children[].text match ${matchString}
-        || bio[].children[].text match ${matchString}
-        || summary[].children[].text match ${matchString}
-        || abbreviations[].children[].text match ${matchString}
-        || boxOnBoxRef[].children[].text match ${matchString}
-        || introduction[].children[].text match ${matchString}
-        || agenda[].children[].text match ${matchString}
+        || content[].children[].text match [${matchString}]
+        || sections[].children[].text match [${matchString}]
+        || textLeft[].children[].text match [${matchString}]
+        || textRight[].children[].text match [${matchString}]
+        || caption[].children[].text match [${matchString}]
+        || bio[].children[].text match [${matchString}]
+        || summary[].children[].text match [${matchString}]
+        || abbreviations[].children[].text match [${matchString}]
+        || boxOnBoxRef[].children[].text match [${matchString}]
+        || introduction[].children[].text match [${matchString}]
+        || agenda[].children[].text match [${matchString}]
         || timezone match [${matchString}]
       ) && defined(slug.current)
     ]
