@@ -13,6 +13,11 @@ export function getPubYear({ date = {} }) {
   return moment(date.utc).year();
 }
 
+export function isAuthorInPublication({ author, publication }) {
+  const { authors } = publication;
+  return some(authors, ({ _id }) => _id === author._id);
+}
+
 /**
  * Find unique publication types in the list of current search results
  * @param  {Array} results list of sanity documents
@@ -77,6 +82,18 @@ function applyFilters(document = {}, filterList = []) {
       const filterLanguage = /^pub-lang-(.*)/.exec(filterName)[1];
       const { language = '' } = document;
       if (language === filterLanguage) {
+        showItem = true;
+      }
+    } else if (/^pub-author-(.*)/.test(filterName)) {
+      const slugifiedAuthorName = /^pub-author-(.*)/.exec(filterName)[1];
+      const { authors = [] } = document;
+      if (
+        some(
+          authors,
+          ({ surname, firstName }) =>
+            slugify(`${surname}-${firstName}`, { lower: true }) === slugifiedAuthorName,
+        )
+      ) {
         showItem = true;
       }
     }
