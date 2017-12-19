@@ -113,8 +113,8 @@ const serializers = {
       </div>
     ),
     vimeo: ({ node: { src, title } }) => (
-      <div className="u-bg-light-blue">
-        <div className="o-wrapper o-layout--center">
+      <div className="u-bg-light-blue o-wrapper-full-width">
+        <div className="o-wrapper o-wrapper-medium ">
           <h2 className="c-topic-section__title u-margin-bottom-none">{title}</h2>
           <div className="u-video">
             <ReactPlayer
@@ -206,27 +206,27 @@ const serializers = {
       }
       return null;
     },
-    blockNote: ({children, markKey = '', mark = {}}) => {
-      if (!mark.content) return <span></span>;
-      return <span>
+    blockNote: ({ children, markKey = '', mark = {} }) => {
+      if (!mark.content) return <span />;
+      return (<span>
 
         <span id={`fnref:${markKey}`}>
           <a href={`#fn:${markKey}`} rel="footnote">
             {markKey}
           </a>
         </span>
-      </span>;
+              </span>);
     },
     footnote: ({ children, mark = {}, markKey = '' }) => {
-      if (!mark.content) return <span></span>;
-      return <span>
-          {children}
-          <span id={`fnref:${markKey}`}>
-            <a href={`#fn:${markKey}`} rel="footnote">
-              {markKey}
-            </a>
-          </span>
-      </span>
+      if (!mark.content) return <span />;
+      return (<span>
+        {children}
+        <span id={`fnref:${markKey}`}>
+          <a href={`#fn:${markKey}`} rel="footnote">
+            {markKey}
+          </a>
+        </span>
+              </span>);
     },
   },
 };
