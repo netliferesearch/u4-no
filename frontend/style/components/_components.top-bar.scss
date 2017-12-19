@@ -1,4 +1,9 @@
 .c-top-bar {
+  // Elevate component so that fixed table of contents can go underneath.
+  background-color: $white;
+  position: relative;
+  z-index: 2;
+
   padding: $spacing-small $spacing;
   display: flex;
   flex-wrap: wrap;
@@ -36,7 +41,7 @@ a.c-top-bar__logo:visited {
 }
 .c-top-bar__menu--active {
   margin-top: -$spacing-tiny;
-    color: $brand-lighter;
+  color: $brand-lighter;
   @include mq($from: tablet) {
     position: absolute;
     top: $spacing-large;
