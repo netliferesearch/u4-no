@@ -36,7 +36,7 @@ a.c-top-bar__logo:visited {
 }
 .c-top-bar__menu--active {
   margin-top: -$spacing-tiny;
-    color: $brand-lighter;
+  color: $brand-lighter;
   @include mq($from: tablet) {
     position: absolute;
     top: $spacing-large;

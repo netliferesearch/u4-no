@@ -91,7 +91,7 @@ const LongFormArticleContainer = (props) => {
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
             {_type === 'publication' && (
-              <div className="c-hero">
+              <div className="c-hero u-bg-white">
                 <div
                   className="c-hero-image"
                   style={{

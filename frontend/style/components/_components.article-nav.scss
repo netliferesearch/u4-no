@@ -9,10 +9,10 @@
     padding-top: $spacing;
   }
   .c-article-nav-list__item {
-    border-left: 1px solid rgba($grey, .35);
+    border-left: 1px solid rgba($grey, 0.35);
     padding-left: $spacing;
     padding-bottom: $spacing;
-    transition: all .2s ease-out;
+    transition: all 0.2s ease-out;
     a {
       border-bottom: none;
       color: $black;
@@ -52,11 +52,10 @@
   }
 }
 
-
 .c-article-nav-list__arrowup {
   margin-top: $spacing;
   margin-left: $spacing-small+8px;
-  opacity: .3;
+  opacity: 0.3;
 }
 .c-article-nav-list__arrowdown {
   margin-left: $spacing-small+8px;
@@ -90,7 +89,7 @@
   z-index: 3;
   opacity: 1;
   display: block;
-  animation: fullscreenopener .9s ease-out;
+  animation: fullscreenopener 0.9s ease-out;
 }
 
 .c-article-nav-fullscreen-button {
@@ -104,7 +103,7 @@
   border-radius: 50%;
   background-color: $brand-dark;
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(black, .4);
+  box-shadow: 0 0 20px rgba(black, 0.4);
   img {
     vertical-align: text-bottom;
     max-width: 30px;
@@ -118,22 +117,11 @@
 }
 
 .c-article-nav-sidebar {
-  margin: $spacing 0;
-  max-width: 300px;
-  padding: 0 $spacing;
-
-  @include mq($until: 1300px) {
-    display: none;
-  }
-  @include mq($from: 1300px) {
-    display: flex;
-  }
-}
-
-.c-article-nav-sidebar--fixed {
+  z-index: -1;
   padding: 0 $spacing;
   position: fixed;
   display: block;
+  max-width: 300px;
   top: $spacing-large;
   bottom: 0;
   right: 0;
@@ -141,9 +129,6 @@
   padding-bottom: $spacing-large;
   overflow-y: auto;
   align-items: center;
-  .c-article-nav-list__arrowup {
-    opacity: 1;
-  }
   @include mq($until: 1300px) {
     display: none;
   }
