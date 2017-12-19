@@ -50,7 +50,6 @@ const addQueryParams = (queryParams) => {
 const defaultState = {
   readingProgressId: '',
   isArticleMenuOpen: false,
-  isPublicationDrawerOpen: false, // read the whole-button is now deactivated
   // for the times when we need to remember where we last were on the page.
   storedScrollPosition: false,
   showLoadingScreen: false,
@@ -60,7 +59,6 @@ const defaultState = {
 
 export const actionTypes = {
   UPDATE_READING_PROGRESS: 'UPDATE_READING_PROGRESS',
-  TOGGLE_PUBLICATION_DRAWER: 'TOGGLE_PUBLICATION_DRAWER',
   TOGGLE_ARTICLE_MENU: 'TOGGLE_ARTICLE_MENU',
   TOGGLE_LOADING_SCREEN: 'TOGGLE_LOADING_SCREEN',
   SEARCH_CLEAR_ALL_FILTERS: 'SEARCH_CLEAR_ALL_FILTERS',
@@ -92,8 +90,6 @@ export const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         searchFilters: state.searchFilters.filter(name => name !== action.searchFilter),
       });
-    case actionTypes.TOGGLE_PUBLICATION_DRAWER:
-      return Object.assign({}, state, { isPublicationDrawerOpen: !state.isPublicationDrawerOpen });
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
     case actionTypes.TOGGLE_LOADING_SCREEN:
@@ -120,9 +116,6 @@ export const toggleArticleMenu = () => dispatch =>
 
 export const toggleLoadingScreen = () => dispatch =>
   dispatch({ type: actionTypes.TOGGLE_LOADING_SCREEN });
-
-export const togglePublicationDrawer = () => dispatch =>
-  dispatch({ type: actionTypes.TOGGLE_PUBLICATION_DRAWER });
 
 export const updateSearchSorting = sortName => dispatch =>
   dispatch({ type: actionTypes.SEARCH_UPDATE_SORT, sortName });
