@@ -31,7 +31,7 @@
   padding-bottom: $spacing-small;
 }
 .c-filters__title {
-  margin: $spacing-small 0 $spacing;
+  margin: $spacing 0 $spacing-small;
   @include inuit-font-size($font-size-small, $line-height-small);
 }
 .c-filters__checkbox {
