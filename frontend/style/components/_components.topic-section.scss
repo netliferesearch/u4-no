@@ -37,7 +37,7 @@
   }
   margin: $spacing auto;
   @include mq($from: tablet) {
-    margin: $spacing-large auto $spacing-small;
+    margin: $spacing-large auto;
   }
 }
 

@@ -115,8 +115,8 @@ const serializers = {
     vimeo: ({ node: { src, title } }) => (
       <div className="u-bg-light-blue o-wrapper-full-width">
         <div className="o-wrapper o-wrapper-medium ">
-          <h2 className="c-topic-section__title u-margin-bottom-none">{title}</h2>
-          <div className="u-video">
+          <h2 className="c-topic-section__title u-margin-top-large u-margin-bottom-huge">{title}</h2>
+          <div className="u-video u-margin-bottom-huge">
             <ReactPlayer
               controls
               width="100%"
