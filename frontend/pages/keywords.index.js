@@ -76,9 +76,9 @@ export default DataLoader(ListKeywords, {
   // getInitialProps
   queryFunc: () => ({
     sanityQuery: `{
-      "keywords": *[_type == "keyword" && category == "keyword"][1..200]{_id, keyword, "relatedCount": count(*[_type in ["publication"] && references(^._id)])}|order(keyword asc),
-      "countries": *[_type == "keyword" && category == "country"][1..200]{_id, keyword, "relatedCount": count(*[_type in ["publication"] && references(^._id)])}|order(keyword asc),
-      "regions": *[_type == "keyword" && category == "region"][1..200]{_id, keyword, "relatedCount": count(*[_type in ["publication"] && references(^._id)])}|order(keyword asc)
+      "keywords": *[_type == "keyword" && category == "keyword" && language == "en_US"][1..200]{_id, keyword, "relatedCount": count(*[_type in ["publication"] && references(^._id)])}|order(keyword asc),
+      "countries": *[_type == "keyword" && category == "country" && language == "en_US"][1..200]{_id, keyword, "relatedCount": count(*[_type in ["publication"] && references(^._id)])}|order(keyword asc),
+      "regions": *[_type == "keyword" && category == "region" && language == "en_US"][1..200]{_id, keyword, "relatedCount": count(*[_type in ["publication"] && references(^._id)])}|order(keyword asc)
     }`,
   }),
   materializeDepth: 0,
