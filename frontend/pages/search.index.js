@@ -50,6 +50,7 @@ const Search = ({
       <section className="o-layout__item u-10/12 u-push-1/12 u-6/12@desktop u-push-2/12@desktop u-6/12@wide u-push-3/12@wide">
         <SearchResults
           results={sortResultsBySortCriteria({
+            searchString: url.query.search || '',
             results: filterResultsBySearchFilterList(
               results.filter(item => item.slug),
               searchFilters,
@@ -86,6 +87,7 @@ export default DataLoader(connect(mapStateToProps, mapDispatchToProps)(Search), 
     }
     return {
       sanityQuery: buildSearchQuery({ queryString: query.search, limit: { from: 0, to: 1000 } }),
+      query: query.search,
     };
   },
   materializeDepth: 0,
