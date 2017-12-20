@@ -3,7 +3,6 @@ import sanityClient from '@sanity/client';
 import Downshift from 'downshift';
 import BEMHelper from 'react-bem-helper';
 import autobind from 'react-autobind';
-import Typed from 'typed.js';
 import prioritize from './SearchFilters/searchWeighting';
 import buildQuery from '../helpers/buildSearchQuery';
 import buildUrl from '../helpers/buildUrl';
