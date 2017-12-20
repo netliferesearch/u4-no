@@ -24,7 +24,7 @@ export default class PublicationTopicFilters extends Component {
     const { results = [] } = this.props;
     const publicationsInResult = findPublications(results);
     const publicationTopicsInResults = uniqBy(
-      flatten(publicationsInResult.map(({ topics = [] }) => topics)).filter(topic => topic),
+      flatten(publicationsInResult.map(({ topics = [] }) => topics)).filter(({ _id = false }) => _id),
       ({ _id }) => _id,
     );
     return (
