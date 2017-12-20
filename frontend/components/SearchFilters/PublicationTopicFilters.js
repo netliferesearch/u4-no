@@ -19,10 +19,7 @@ export default class PublicationTopicFilters extends Component {
     super(props);
     this.state = { allTopics: [] };
   }
-  async componentDidMount() {
-    const allTopics = await sanityClient.fetch('*[_type in ["topics"]]');
-    this.setState({ allTopics });
-  }
+  async componentDidMount() {}
   render() {
     const { results = [] } = this.props;
     const publicationsInResult = findPublications(results);
@@ -33,8 +30,7 @@ export default class PublicationTopicFilters extends Component {
     return (
       <div {...classes('item')}>
         <h3 {...classes('title')}>Publication topics</h3>
-        {this.state.allTopics.length === 0 && <span>Loading ...</span>}
-        {this.state.allTopics.map((topic = {}) => (
+        {publicationTopicsInResults.map((topic = {}) => (
           <FilterCheckBox
             key={topic._id}
             id={slugify(`pub-topic-${topic.title}`, { lower: true })}
