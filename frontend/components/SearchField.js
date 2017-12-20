@@ -3,6 +3,7 @@ import sanityClient from '@sanity/client';
 import Downshift from 'downshift';
 import BEMHelper from 'react-bem-helper';
 import autobind from 'react-autobind';
+import prioritize from './SearchFilters/searchWeighting';
 import buildQuery from '../helpers/buildSearchQuery';
 import { Loader } from '../components';
 import { MagnifyingGlass } from '../components/icons';
@@ -106,9 +107,9 @@ class SearchField extends Component {
                         // Allow backspace
                         debounce(
                           client
-                            .fetch(buildQuery({ queryString: value }))
+                            .fetch(buildQuery({ queryString: value, limit: { from: 0, to: 1000 } }))
                             .then(({ results }) => {
-                              const items = results.map(item => item); // Added ID to make it unique
+                              const items = prioritize(value, results.map(item => item)); // Added ID to make it unique
                               this.setState({ items });
                             })
                             .catch((error) => {
