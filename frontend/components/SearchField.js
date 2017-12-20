@@ -80,7 +80,11 @@ class SearchField extends Component {
           <form onSubmit={this.handleSubmit} {...classes('', modifier, 'u-1/1')}>
             <label
               {...getLabelProps({ htmlFor: 'search' })}
+<<<<<<< HEAD
               {...classes('label', modifier, 'u-margin-bottom-small')}
+=======
+              {...classes('label', modifier, 'u-margin-bottom-small', 'visually-hidden')}
+>>>>>>> fix label and placeholder
             >
                 Search to find topics, publications, people, services, and more:
             </label>
@@ -94,6 +98,7 @@ class SearchField extends Component {
                     id: 'search',
                     tabIndex: '0',
                     name: 'search',
+                    placeholder: 'Search'
                     type: 'search',
                     value:
                       selectedItem && typeof selectedItem === 'object'
@@ -108,7 +113,7 @@ class SearchField extends Component {
                         // Allow backspace
                         debounce(
                           client
-                            .fetch(buildQuery({ queryString: value, limit: { from: 0, to: 1000 } }))
+                            .fetch(buildQuery({ queryString: value, limit: { from: 0, to: 200 } }))
                             .then(({ results }) => {
                               const items = prioritize(value, results.map(item => item)); // Added ID to make it unique
                               this.setState({ items });
@@ -144,6 +149,7 @@ class SearchField extends Component {
                     X
               </button>
                 )}
+<<<<<<< HEAD
               <button tabIndex="1" {...classes('button')} type="submit" value="Search">
                 {this.state.loading ? <Loader /> : <MagnifyingGlass />}
               </button>
@@ -154,6 +160,18 @@ class SearchField extends Component {
                 <div
                   key={item._id ? item._id : index}
                   {...getItemProps({
+=======
+                <button tabIndex="1" {...classes('button')} type="submit" value="Search">
+                  {this.state.loading ? <Loader /> : <MagnifyingGlass />}
+                </button>
+              </div>
+            {isOpen && (
+                <div {...classes('results')}>
+                  {this.state.items.map((item, index) => (
+                    <div
+                      key={item._id ? item._id : index}
+                      {...getItemProps({
+>>>>>>> fix label and placeholder
                         item,
                         index,
                       })}
