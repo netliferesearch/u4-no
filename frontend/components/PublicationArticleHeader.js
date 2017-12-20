@@ -104,14 +104,15 @@ const PublicationArticleHeader = ({
           </a>
         </div>
       )}
-      {legacypdf.asset && (
-        <div {...classes('meta', null, 'c-article-header__download')}>
-          <a href={legacypdf.asset.url} {...classes('download-text')}>
-            <span>Download PDF</span>
-            <Download {...classes('download-icon')} />
-          </a>
-        </div>
-      )}
+      {!pdfFile.asset &&
+        legacypdf.asset && (
+          <div {...classes('meta', null, 'c-article-header__download')}>
+            <a href={legacypdf.asset.url} {...classes('download-text')}>
+              <span>Download PDF</span>
+              <Download {...classes('download-icon')} />
+            </a>
+          </div>
+        )}
     </div>
   </header>
 );
