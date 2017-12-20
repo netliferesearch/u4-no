@@ -25,9 +25,9 @@ const Figure = ({
 }) => (
   <figure {...classes('figure', null, figureOutFigureClass(size))}>
     <img {...classes('figure-img')} src={asset.url} alt={asset.altText} />
-    <figcaption {...classes('figure-figcaption')}>
+    {caption && <figcaption {...classes('figure-figcaption')}>
       {caption} Photo by: {licensor}, licensed under {license}.
-    </figcaption>
+    </figcaption>}
   </figure>
 );
 
