@@ -5,6 +5,7 @@ import BEMHelper from 'react-bem-helper';
 import autobind from 'react-autobind';
 import prioritize from './SearchFilters/searchWeighting';
 import buildQuery from '../helpers/buildSearchQuery';
+import buildUrl from '../helpers/buildUrl';
 import { Loader } from '../components';
 import { MagnifyingGlass } from '../components/icons';
 import { Router } from '../routes';
@@ -56,11 +57,11 @@ class SearchField extends Component {
     Router.pushRoute(`/search?search=${e.target.search.value}`);
   }
 
-  handleItemClick(item) {
+  handleItemClick({ _type = '', slug = {} }) {
     this.setState({
       loading: !this.state.loading,
     });
-    Router.pushRoute(`/${item._type}s/${item.slug.current}`);
+    Router.pushRoute(buildUrl({ _type, slug }));
   }
 
   render() {
