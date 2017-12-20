@@ -3,6 +3,7 @@ import sanityClient from '@sanity/client';
 import Downshift from 'downshift';
 import BEMHelper from 'react-bem-helper';
 import autobind from 'react-autobind';
+import Typed from 'typed.js';
 import prioritize from './SearchFilters/searchWeighting';
 import buildQuery from '../helpers/buildSearchQuery';
 import buildUrl from '../helpers/buildUrl';
@@ -46,8 +47,21 @@ class SearchField extends Component {
   constructor(props) {
     super(props);
     autobind(this);
-    this.state = { items: [], loading: false };
+    this.state = { items: [], loading: false, placeholder: 'topics', placeholderIndex: 0 };
   }
+  componentDidMount() {
+    const strings = ['topics', 'publications', 'people', 'services', 'articles'];
+    this.intervalTimer = setInterval(() => {
+      this.setState({
+        placeholderIndex: this.state.placeholderIndex < strings.length - 1 ? this.state.placeholderIndex + 1 : 0,
+        placeholder: strings[this.state.placeholderIndex],
+      });
+    }, 3000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.intervalTimer);
+  }
+
 
   handleSubmit(e) {
     e.preventDefault();
@@ -87,15 +101,15 @@ class SearchField extends Component {
             </label>
 
             <div className="c-search__content">
-
               <input
+                ref={(el) => { this.el = el; }}
                 autoFocus
                 {...classes('input', modifier)}
                 {...getInputProps({
                     id: 'search',
                     tabIndex: '0',
                     name: 'search',
-                    placeholder: 'Search',
+                    placeholder: `Search for ${this.state.placeholder}`,
                     type: 'search',
                     value:
                       selectedItem && typeof selectedItem === 'object'
