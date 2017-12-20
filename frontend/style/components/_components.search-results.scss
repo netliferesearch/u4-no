@@ -113,6 +113,7 @@
 }
 
 .c-search-results__items-title {
+  hyphens: none;
   font-weight: bold;
   @include inuit-font-size($font-size-normal, $line-height-normal );
   border-bottom: none;
