@@ -1,4 +1,5 @@
 .c-filters {
+  color: $brand-dark;
   padding: 0 $spacing-small;
   display: none;
   @include mq($from: desktop) {
@@ -18,6 +19,9 @@
 
 .c-filters__item {
   font-family: $font-sans;
+  padding:0;
+  margin: 20px 0;
+  border-top: 1px solid $brand-dark;
   @include inuit-font-size($font-size-tiny, $line-height-tiny);
 }
 .c-filters__item--standalone {
@@ -27,16 +31,20 @@
 .c-filters__main-title {
   @include inuit-font-size($font-size-normal, $line-height-normal);
   font-weight: bold;
-  border-bottom: 1px solid $brand-dark;
-  padding-bottom: $spacing-small;
+  //border-bottom: 1px solid $brand-dark;
+  //padding-bottom: $spacing-small;
 }
 .c-filters__title {
-  margin: $spacing 0 $spacing-small;
+  padding:0;
+  margin: 20px 0;
   @include inuit-font-size($font-size-small, $line-height-small);
 }
 .c-filters__checkbox {
-  margin-bottom: $spacing-small/1.5;
+  margin-bottom:14px;
+  display: grid;
+  grid-template-columns: 16px auto;
   input {
+    margin-top: 1px;
     width: 16px !important;
     height: 16px !important;
     border-radius: 2px;
@@ -48,7 +56,7 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
     display: inline-block;
     position: relative;
-    border: 1px solid $brand-light;
+    border: 1px solid $brand-dark;
 
     &:active {
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -57,7 +65,7 @@
     &:checked {
       background: $brand-main;
       color: $white;
-      border-color: $white;
+      border-color: $brand-main;
 
       &:after {
         content: '\2713';
@@ -71,7 +79,7 @@
   }
 }
 .c-filters__checkbox-label {
-  margin-left: $spacing-small/2;
+  margin-left: 14px;
 }
 .c-filters--open {
   display: block;
