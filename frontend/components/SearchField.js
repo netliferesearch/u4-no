@@ -78,18 +78,19 @@ class SearchField extends Component {
           inputValue,
         }) => (
           <form onSubmit={this.handleSubmit} {...classes('', modifier, 'u-1/1')}>
-              <label
-                {...getLabelProps({ htmlFor: 'search' })}
-                {...classes('label', modifier, 'u-margin-bottom-small')}
-              >
+            <label
+              {...getLabelProps({ htmlFor: 'search' })}
+              {...classes('label', modifier, 'u-margin-bottom-small')}
+            >
                 Search to find topics, publications, people, services, and more:
-              </label>
+            </label>
 
-              <div className="c-search__content">
+            <div className="c-search__content">
 
-                <input
-                  {...classes('input', modifier)}
-                  {...getInputProps({
+              <input
+                autoFocus
+                {...classes('input', modifier)}
+                {...getInputProps({
                     id: 'search',
                     tabIndex: '0',
                     name: 'search',
@@ -137,39 +138,39 @@ class SearchField extends Component {
                       }
                     },
                   })}
-                />
-                {inputValue && (
-                  <button {...classes('button', 'clear')} type="button" onClick={clearSelection}>
+              />
+              {inputValue && (
+              <button {...classes('button', 'clear')} type="button" onClick={clearSelection}>
                     X
-                  </button>
+              </button>
                 )}
-                <button tabIndex="1" {...classes('button')} type="submit" value="Search">
-                  {this.state.loading ? <Loader /> : <MagnifyingGlass />}
-                </button>
-              </div>
-              {isOpen && (
-                <div {...classes('results')}>
-                  {this.state.items.map((item, index) => (
-                    <div
-                      key={item._id ? item._id : index}
-                      {...getItemProps({
+              <button tabIndex="1" {...classes('button')} type="submit" value="Search">
+                {this.state.loading ? <Loader /> : <MagnifyingGlass />}
+              </button>
+            </div>
+            {isOpen && (
+            <div {...classes('results')}>
+              {this.state.items.map((item, index) => (
+                <div
+                  key={item._id ? item._id : index}
+                  {...getItemProps({
                         item,
                         index,
                       })}
-                    >
-                      <button
-                        onClick={() => this.handleItemClick(item)}
-                        {...classes('items', highlightedIndex === index ? 'highlighted' : null)}
-                      >
-                        <span className="c-search__items-type">{item._type}</span>
-                        <br />
-                        {generateTitle(item)}
-                      </button>
-                    </div>
-                  ))}
+                >
+                  <button
+                    onClick={() => this.handleItemClick(item)}
+                    {...classes('items', highlightedIndex === index ? 'highlighted' : null)}
+                  >
+                    <span className="c-search__items-type">{item._type}</span>
+                    <br />
+                    {generateTitle(item)}
+                  </button>
                 </div>
+                  ))}
+            </div>
               )}
-            </form>
+          </form>
           )}
       </Downshift>
     );
