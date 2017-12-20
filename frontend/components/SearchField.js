@@ -80,7 +80,7 @@ class SearchField extends Component {
           <form onSubmit={this.handleSubmit} {...classes('', modifier, 'u-1/1')}>
             <label
               {...getLabelProps({ htmlFor: 'search' })}
-              {...classes('label', modifier, 'u-margin-bottom-small', 'u-visually-hidden')}
+              {...classes('label', modifier, 'u-margin-bottom-small u-visually-hidden')}
             >
                 Search to find topics, publications, people, services, and more:
             </label>
