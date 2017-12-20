@@ -23,7 +23,7 @@ export default class PublicationLanguageFilters extends Component {
     const { results = [] } = this.props;
     const publicationsInResult = findPublications(results);
     // copied from languages.js in backend/schema/
-    const languages = [
+    const languageList = [
       { title: 'English', value: 'en_US' },
       { title: 'French', value: 'fr_FR' },
       { title: 'Spanish', value: 'es_ES' },
@@ -32,18 +32,23 @@ export default class PublicationLanguageFilters extends Component {
       { title: 'Russian', value: 'ru_RU' },
       { title: 'Ukranian', value: 'uk_UA' }, // <-- predefined values
     ];
+    const languageMapping = languageList.reduce((acc, { title, value }) => {
+      acc[value] = title;
+      return acc;
+    }, {});
+    const languages = uniq(publicationsInResult.map(({ language }) => language).filter(lang => lang));
     return (
       <div {...classes('item')}>
         <h3 {...classes('title')}>Publication languages</h3>
-        {languages.map(({ title, value }) => (
+        {languages.map(languageCode => (
           <FilterCheckBox
-            key={value}
-            id={slugify(`pub-lang-${value}`)}
-            title={title}
+            key={languageCode}
+            id={slugify(`pub-lang-${languageCode}`)}
+            title={languageMapping[languageCode]}
             {...classes('checkbox')}
             results={results}
             numResultsIfFiltered={
-              publicationsInResult.filter(({ language = '' }) => language === value).length
+              publicationsInResult.filter(({ language = '' }) => language === languageCode).length
             }
             {...this.props}
           />
