@@ -16,7 +16,7 @@ const Person = ({ person, linkLabel = 'Bio', light = true }) => (
         <Link to={`/the-team/${person.slug.current}`}>
           <a
             {...classes('item-body-img', person.image ? 'light' : 'noimg')}
-            style={{ backgroundImage: `url(${person.image && person.image.asset.url}?w=240)` }}
+            style={{ backgroundImage: `url(${person.image && person.image.asset.url}?w=255)` }}
           />
         </Link>
         ) : null}

@@ -47,7 +47,7 @@ const TopicEntry = ({
               alt={featuredImage.asset ? featuredImage.asset.altText : ''}
               src={`${
                 featuredImage.asset ? featuredImage.asset.url : ''
-              }?w=1600&h=800&fit=crop&crop=focalpoint`}
+              }?w=1120&fit=crop&crop=focalpoint`}
             />
             {featuredImage.caption && (
               <span className="c-boxOnImage__caption">

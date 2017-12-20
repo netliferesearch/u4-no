@@ -27,7 +27,7 @@ const Mosaic = ({ resources = [], alt = false }) => (
                 ? 'c-mosaic_item--backgroundImage-invert'
                 : ' '}`}
               style={{
-                backgroundImage: `url(${index % 4 === 0 ? imageUrl : ''})`,
+                backgroundImage: `url(${index % 4 === 0 ? `${imageUrl}?w=1200` : ''})`,
               }}
             >
               <div

@@ -42,7 +42,7 @@ const Persons = ({
               <br /> {person.surname}
             </h1>
             <p {...classes('profile-position')}>{person.position}</p>
-            {person.image && <img alt="x" src={person.image.asset.url} />}
+            {person.image && <img alt="x" src={`${person.image.asset.url}?w=400`} />}
             <div {...classes('profile-info')}>
               <a href={`mailto:${person.email}`}>{person.email}</a>
               <br />
