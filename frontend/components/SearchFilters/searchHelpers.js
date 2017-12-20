@@ -50,19 +50,19 @@ export function findPublicationTypes(results = []) {
  */
 function applyFilters(document = {}, filterList = []) {
   // start by assuming that the document should not be shown.
-  let showItem = false;
+  let showItem = true;
   filterList.forEach((filterName) => {
-    if (filterName === 'pub-type-0' && document._type === 'publication') {
+    if (filterName === 'pub-type-0' && document._type !== 'publication') {
       // show all publications"
-      showItem = true;
+      showItem = false;
     } else if (/^pub-type-(.*)/.test(filterName)) {
       const publicationTypeId = /^pub-type-(.*)/.exec(filterName)[1];
       const { publicationType = {} } = document;
-      // Only if there is a positive filter match do we flip the showItem flag
-      // to positive. This is because we do not want any other negative filter
-      // matches to exclude a document that has at least one positive match.
-      if (publicationTypeId === publicationType._id) {
-        showItem = true;
+      // Only if there is a negative filter match do we flip the showItem flag
+      // to negative. This is because we do not want any other positive filter
+      // matches to include a document that has at least one negative match.
+      if (publicationTypeId !== publicationType._id) {
+        showItem = false;
       }
     } else if (/^pub-topic-(.*)/.test(filterName)) {
       const topicTitle = /^pub-topic-(.*)/.exec(filterName)[1];
@@ -70,31 +70,31 @@ function applyFilters(document = {}, filterList = []) {
       // for each topic attached to the document we evaluate we try to
       // slugify the title and compare it to the topic title derived from
       // the filtername
-      if (some(topics, ({ title = '' }) => slugify(title, { lower: true }) === topicTitle)) {
-        showItem = true;
+      if (!some(topics, ({ title = '' }) => slugify(title, { lower: true }) === topicTitle)) {
+        showItem = false;
       }
     } else if (/^pub-year-(.*)/.test(filterName)) {
       const year = /^pub-year-(.*)/.exec(filterName)[1];
-      if (getPubYear(document) === Number.parseInt(year, 10)) {
-        showItem = true;
+      if (getPubYear(document) !== Number.parseInt(year, 10)) {
+        showItem = false;
       }
     } else if (/^pub-lang-(.*)/.test(filterName)) {
       const filterLanguage = /^pub-lang-(.*)/.exec(filterName)[1];
       const { language = '' } = document;
-      if (language === filterLanguage) {
-        showItem = true;
+      if (language !== filterLanguage) {
+        showItem = false;
       }
     } else if (/^pub-author-(.*)/.test(filterName)) {
       const slugifiedAuthorName = /^pub-author-(.*)/.exec(filterName)[1];
       const { authors = [] } = document;
       if (
-        some(
+        !some(
           authors,
           ({ surname, firstName }) =>
             slugify(`${surname}-${firstName}`, { lower: true }) === slugifiedAuthorName,
         )
       ) {
-        showItem = true;
+        showItem = false;
       }
     }
   });
