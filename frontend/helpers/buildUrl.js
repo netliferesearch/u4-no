@@ -6,6 +6,10 @@ export default ({ _type = 'notype', slug = {} }) => {
     return `/topics/${actualSlug}`;
   } else if (_type === 'article') {
     return `/${actualSlug}`;
+  } else if (_type === 'person') {
+    return `/the-team/${actualSlug}`;
+  } else if (_type === 'frontpage') {
+    return `/${actualSlug}`;
   }
   return actualSlug;
 };
