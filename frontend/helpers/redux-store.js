@@ -90,6 +90,11 @@ export const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         searchFilters: state.searchFilters.filter(name => name !== action.searchFilter),
       });
+    case actionTypes.SEARCH_CLEAR_ALL_FILTERS:
+      addQueryParams({ filters: false });
+      return Object.assign({}, state, {
+        searchFilters: [],
+      });
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
     case actionTypes.TOGGLE_LOADING_SCREEN:
@@ -128,6 +133,9 @@ export const addSearchFilter = searchFilter => dispatch =>
 
 export const removeSearchFilter = searchFilter => dispatch =>
   dispatch({ type: actionTypes.SEARCH_REMOVE_FILTER, searchFilter });
+
+export const clearAllSearchFilters = () => dispatch =>
+  dispatch({ type: actionTypes.SEARCH_CLEAR_ALL_FILTERS });
 
 export const saveScrollPosition = scrollPosition => dispatch =>
   dispatch({ type: actionTypes.SCROLL_POSITION_SAVE, scrollPosition });
