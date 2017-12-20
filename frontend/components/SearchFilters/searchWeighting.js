@@ -56,6 +56,7 @@ export default function prioritize(searchString, hits) {
     hit.___score = score;
   });
 
+
   return hits.sort((a, b) => {
     return b.___score - a.___score;
   });
