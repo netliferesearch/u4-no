@@ -39,7 +39,6 @@ export default class PublicationTopicFilters extends Component {
             results={results}
             numResultsIfFiltered={numberIfFiltered({ publicationsInResult, topic })}
             {...this.props}
-            disabled={!some(publicationTopicsInResults, ({ _id }) => _id === topic._id)}
           />
         ))}
       </div>

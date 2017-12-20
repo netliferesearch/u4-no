@@ -50,7 +50,6 @@ class PublicationFilters extends Component {
                   findPublications(results).filter(({ publicationType = {} }) => publicationType._id === pub._id).length
                 }
                 {...this.props}
-                disabled={!some(publicationTypesInResults, resultPub => resultPub._id === pub._id)}
               />
             ))}
           </span>

@@ -46,7 +46,6 @@ export default class PublicationLanguageFilters extends Component {
               publicationsInResult.filter(({ language = '' }) => language === value).length
             }
             {...this.props}
-            disabled={!some(publicationsInResult, ({ language = '' }) => language === value)}
           />
         ))}
       </div>

@@ -44,7 +44,6 @@ export default class PublicationTopicFilters extends Component {
               publicationsInResult.filter(pub => getPubYear(pub) === year).length
             }
             {...this.props}
-            disabled={!some(publicationsInResult, pub => getPubYear(pub) === year)}
           />
         ))}
       </div>
