@@ -24,16 +24,19 @@ export default class PublicationTopicFilters extends Component {
     const { results = [] } = this.props;
     const publicationsInResult = findPublications(results);
     const publicationTopicsInResults = uniqBy(
-      flatten(publicationsInResult.map(({ topics = [] }) => topics)).filter(({ _id = false }) => _id),
+      flatten(publicationsInResult.map(({ topics = [] }) => topics)).filter(
+        ({ _id = false }) => _id,
+      ),
       ({ _id }) => _id,
     );
+    console.log(publicationTopicsInResults);
     return (
       <div {...classes('item')}>
         <h3 {...classes('title')}>Publication topics</h3>
         {publicationTopicsInResults.map((topic = {}) => (
           <FilterCheckBox
             key={topic._id}
-            id={slugify(`pub-topic-${topic.title}`, { lower: true })}
+            id={`pub-topic-${topic.slug.current}`}
             title={topic.title}
             {...classes('checkbox')}
             results={results}
