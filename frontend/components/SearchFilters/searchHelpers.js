@@ -49,56 +49,56 @@ export function findPublicationTypes(results = []) {
  * @return {Boolean}                 whether or not to show this document.
  */
 function applyFilters(document = {}, filterList = []) {
-  // start by assuming that the document should not be shown.
-  let showItem = true;
+  // start with no filter values
+  const filterValue = {};
   filterList.forEach((filterName) => {
-    if (filterName === 'pub-type-0' && document._type !== 'publication') {
-      // show all publications"
-      showItem = false;
-    } else if (/^pub-type-(.*)/.test(filterName)) {
+    /* if show only publications then hide others */
+    if (filterName === 'pub-type-0') {
+      filterValue.pubtype = document._type === 'publication';
+
+      /* if pubtype filter and not already true */
+    } else if (/^pub-type-(.*)/.test(filterName) && !filterValue.pubtype) {
       const publicationTypeId = /^pub-type-(.*)/.exec(filterName)[1];
       const { publicationType = {} } = document;
-      // Only if there is a negative filter match do we flip the showItem flag
-      // to negative. This is because we do not want any other positive filter
-      // matches to include a document that has at least one negative match.
-      if (publicationTypeId !== publicationType._id) {
-        showItem = false;
-      }
-    } else if (/^pub-topic-(.*)/.test(filterName)) {
+      filterValue.pubtype = publicationTypeId === publicationType._id;
+
+      /* if topic filter and not already true */
+    } else if (/^pub-topic-(.*)/.test(filterName) && !filterValue.pubtopic) {
       const topicTitle = /^pub-topic-(.*)/.exec(filterName)[1];
       const { topics = [] } = document;
       // for each topic attached to the document we evaluate we try to
       // slugify the title and compare it to the topic title derived from
       // the filtername
-      if (!some(topics, ({ title = '' }) => slugify(title, { lower: true }) === topicTitle)) {
-        showItem = false;
-      }
-    } else if (/^pub-year-(.*)/.test(filterName)) {
+      filterValue.pubtopic = some(
+        topics,
+        ({ title = '' }) => slugify(title, { lower: true }) === topicTitle,
+      );
+
+      /* if pubyear filter and not already true */
+    } else if (/^pub-year-(.*)/.test(filterName) && !filterValue.pubyear) {
       const year = /^pub-year-(.*)/.exec(filterName)[1];
-      if (getPubYear(document) !== Number.parseInt(year, 10)) {
-        showItem = false;
-      }
-    } else if (/^pub-lang-(.*)/.test(filterName)) {
+      filterValue.pubyear = getPubYear(document) === Number.parseInt(year, 10);
+
+      /* if language filter and not already true */
+    } else if (/^pub-lang-(.*)/.test(filterName) && !filterValue.publang) {
       const filterLanguage = /^pub-lang-(.*)/.exec(filterName)[1];
       const { language = '' } = document;
-      if (language !== filterLanguage) {
-        showItem = false;
-      }
-    } else if (/^pub-author-(.*)/.test(filterName)) {
+      filterValue.publang = language === filterLanguage;
+
+      /* if author filter and not already true */
+    } else if (/^pub-author-(.*)/.test(filterName) && !filterValue.pubauthor) {
       const slugifiedAuthorName = /^pub-author-(.*)/.exec(filterName)[1];
       const { authors = [] } = document;
-      if (
-        !some(
-          authors,
-          ({ surname, firstName }) =>
-            slugify(`${surname}-${firstName}`, { lower: true }) === slugifiedAuthorName,
-        )
-      ) {
-        showItem = false;
-      }
+      filterValue.pubauthor = some(
+        authors,
+        ({ surname, firstName }) =>
+          slugify(`${surname}-${firstName}`, { lower: true }) === slugifiedAuthorName,
+      );
     }
   });
-  return showItem;
+  /* if at least one filter is false return false */
+  for (const f in filterValue) if (!filterValue[f]) return false;
+  return true;
 }
 
 /**
