@@ -35,7 +35,7 @@ test('should show all results if no filter', async () => {
   expect(filterResultsBySearchFilterList(resultsToFilter, [])).toEqual(resultsToFilter);
 });
 
-test('filtering should be exclusive', async () => {
+test('filtering should be inclusive', async () => {
   const resultsToFilter = [
     {
       name: 'firstthing',
@@ -57,7 +57,22 @@ test('filtering should be exclusive', async () => {
     },
   ];
   // should be empty since no publication fulfill several publication types
-  expect(filterResultsBySearchFilterList(resultsToFilter, ['pub-type-u4-brief', 'pub-type-u4-issue'])).toEqual([]);
+  expect(
+    filterResultsBySearchFilterList(resultsToFilter, ['pub-type-u4-brief', 'pub-type-u4-issue']),
+  ).toEqual([
+    {
+      name: 'firstthing',
+      publicationType: {
+        _id: 'u4-issue',
+      },
+    },
+    {
+      name: 'thirdthing',
+      publicationType: {
+        _id: 'u4-brief',
+      },
+    },
+  ]);
   expect(filterResultsBySearchFilterList(resultsToFilter, ['pub-type-u4-brief'])).toEqual([
     {
       name: 'thirdthing',
