@@ -47,7 +47,9 @@ class PublicationFilters extends Component {
                 {...classes('checkbox')}
                 results={results}
                 numResultsIfFiltered={
-                  findPublications(results).filter(({ publicationType = {} }) => publicationType._id === pub._id).length
+                  findPublications(results).filter(
+                    ({ publicationType = {} }) => publicationType._id === pub._id,
+                  ).length
                 }
                 {...this.props}
               />
