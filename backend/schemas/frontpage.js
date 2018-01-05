@@ -147,7 +147,7 @@ export default {
           fields: [
             {
               name: 'text',
-              title: 'Text box contents'
+              title: 'Text box contents',
               type: 'array',
               of: [
                 {
