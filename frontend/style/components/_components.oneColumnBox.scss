@@ -1,0 +1,21 @@
+.c-oneColumnBox {
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-small, $line-height-normal);
+
+  padding-top: $spacing;
+  padding-bottom: $spacing;
+}
+.c-oneColumnBox__darkOnWhite {
+  background: $white;
+}
+.c-oneColumnBox__darkOnLightBlue {
+  background: $brand-lightest;
+}
+.c-oneColumnBox__whiteOnBlue {
+  background: $brand-main;
+  color: $white;
+}
+.c-oneColumnBox__whiteOnDarkBlue {
+  background: $brand-dark;
+  color: $white;
+}

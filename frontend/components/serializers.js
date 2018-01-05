@@ -9,6 +9,7 @@ import {
   Figure,
   PullQuote,
   BoxOnBox,
+  BoxOnBoxTopics,
   BoxOnImage,
   WorkshopMosaic,
   Feature,
@@ -59,6 +60,16 @@ const serializers = {
           <BlockContent blocks={text} serializers={serializers} />
         </div>
       ),
+
+    oneColumn: ({ node: { text = false, colorScheme = 'darkOnWhite' } }) =>
+      text && (
+        <div className={`c-oneColumnBox c-oneColumnBox__${colorScheme}`}>
+          <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
+            <BlockContent blocks={text} serializers={serializers} />
+          </div>
+        </div>
+      ),
+
     twoColumns: ({ node: { textLeft, textRight } }) => (
       <div className="o-wrapper-inner">
         <div className="c-columns c-columns--two">
@@ -76,11 +87,12 @@ const serializers = {
         <BoxOnBox left={textLeft} right={textRight} />
       </section>
     ),
-    HelpdeskTeam: ({
-      node: {
-        textRight, img, personLeft, personRight,
-      },
-    }) => (
+    boxOnBoxTopics: ({ node: { textLeft, textRight } }) => (
+      <section className="c-topic-section">
+        <BoxOnBoxTopics left={textLeft} right={textRight} />
+      </section>
+    ),
+    HelpdeskTeam: ({ node: { textRight, img, personLeft, personRight } }) => (
       <section className="c-topic-section">
         <BoxOnImage
           wide
@@ -115,7 +127,9 @@ const serializers = {
     vimeo: ({ node: { src, title } }) => (
       <div className="u-bg-light-blue o-wrapper-full-width">
         <div className="o-wrapper o-wrapper-medium ">
-          <h2 className="c-topic-section__title u-margin-top-large u-margin-bottom-huge">{title}</h2>
+          <h2 className="c-topic-section__title u-margin-top-large u-margin-bottom-huge">
+            {title}
+          </h2>
           <div className="u-video u-margin-bottom-huge">
             <ReactPlayer
               controls
@@ -149,11 +163,7 @@ const serializers = {
         const level = parseInt(style.slice(1), 10);
         const id = level === 2 || level === 3 ? slugify(children[0], { lower: true }) : undefined;
 
-        return React.createElement(
-          style,
-          { id, className: 'c-longform-grid__standard' },
-          children,
-        );
+        return React.createElement(style, { id, className: 'c-longform-grid__standard' }, children);
       }
 
       if (style === 'blockquote') {
@@ -208,25 +218,28 @@ const serializers = {
     },
     blockNote: ({ children, markKey = '', mark = {} }) => {
       if (!mark.content) return <span />;
-      return (<span>
-
-        <span id={`fnref:${markKey}`}>
-          <a href={`#fn:${markKey}`} rel="footnote">
-            {markKey}
-          </a>
+      return (
+        <span>
+          <span id={`fnref:${markKey}`}>
+            <a href={`#fn:${markKey}`} rel="footnote">
+              {markKey}
+            </a>
+          </span>
         </span>
-              </span>);
+      );
     },
     footnote: ({ children, mark = {}, markKey = '' }) => {
       if (!mark.content) return <span />;
-      return (<span>
-        {children}
-        <span id={`fnref:${markKey}`}>
-          <a href={`#fn:${markKey}`} rel="footnote">
-            {markKey}
-          </a>
+      return (
+        <span>
+          {children}
+          <span id={`fnref:${markKey}`}>
+            <a href={`#fn:${markKey}`} rel="footnote">
+              {markKey}
+            </a>
+          </span>
         </span>
-              </span>);
+      );
     },
   },
 };
