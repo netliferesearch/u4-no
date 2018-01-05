@@ -147,6 +147,7 @@ export default {
           fields: [
             {
               name: 'text',
+              title: 'Text box contents'
               type: 'array',
               of: [
                 {
@@ -171,7 +172,21 @@ export default {
                   }
                 }
               ]
-            }
+            },
+            {
+              name: 'colorScheme',
+              title: 'Color scheme',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Dark on white', value: 'darkOnWhite'},
+                  { title: 'Dark on light blue', value: 'darkOnLightBlue'},
+                  { title: 'White on blue', value: 'whiteOnBlue'},
+                  { title: 'White on dark blue', value: 'whiteOnDarkBlue'},
+                ],
+              },
+              layout: "dropdown"
+            },
           ],
           preview: {
             select: {
