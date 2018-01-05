@@ -121,8 +121,77 @@ export default {
                 }
               ]
             }
-          ]
+          ],
+          preview: {
+            select: {
+              blocks: 'text',
+            },
+            prepare({ blocks }) {
+                const block = (blocks || []).find(block => block._type === 'block')
+                return {
+                  title: block
+                    ? block.children
+                      .filter(child => child._type === 'span')
+                      .map(span => span.text)
+                      .join('')
+                    : 'No title'
+                }
+            },
+          },
         },
+
+        {
+          name: 'oneColumn',
+          title: 'One column text box',
+          type: 'object',
+          fields: [
+            {
+              name: 'text',
+              type: 'array',
+              of: [
+                {
+                  type: 'block',
+                  styles: [
+                    {title: 'Normal', value: 'normal'},
+                    {title: 'H2', value: 'h2'},
+                    {title: 'H3', value: 'h3'},
+                  ],
+                  // Only allow numbered lists
+                  marks: {
+                    // Only allow these decorators
+                    decorators: [
+                      {title: 'Strong', value: 'strong'},
+                      {title: 'Emphasis', value: 'em'}
+                    ],
+                    // Support annotating text with a reference to an author
+                    annotations: [
+                      {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
+                      {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          preview: {
+            select: {
+              blocks: 'text',
+            },
+            prepare({ blocks }) {
+                const block = (blocks || []).find(block => block._type === 'block')
+                return {
+                  title: block
+                    ? block.children
+                      .filter(child => child._type === 'span')
+                      .map(span => span.text)
+                      .join('')
+                    : 'No title'
+                }
+            },
+          },
+
+        },
+
         {
           name: 'features',
           title: 'Features',
