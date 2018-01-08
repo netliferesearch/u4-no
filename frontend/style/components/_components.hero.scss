@@ -70,6 +70,16 @@
   }
 }
 
+/* no-image styles if grid not supported */
+.c-hero.c-hero-no-image {
+  .c-hero-image {
+    display: none;
+  }
+  .c-hero-header {
+    margin-top: 0;
+  }
+}
+
 // Css grid
 
 @supports (display: grid) {
@@ -135,6 +145,18 @@
       height: 100%;
       width: 100%;
       grid-column: 5 / 6;
+    }
+  }
+
+  .c-hero.c-hero-no-image {
+    grid-template-rows: auto;
+    grid-row-gap: 0;
+
+    .c-hero-bg {
+      grid-row: 1/4;
+    }
+    .c-hero-header {
+      grid-row: 1/4;
     }
   }
 }

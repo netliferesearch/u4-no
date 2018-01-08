@@ -35,6 +35,7 @@ const LongFormArticleContainer = (props) => {
     headComponentConfigOverride,
     translation = {},
     language = '',
+    publicationType = {},
   } = props;
   const headComponentConfig =
     headComponentConfigOverride ||
@@ -56,9 +57,9 @@ const LongFormArticleContainer = (props) => {
     >
       {isArticleMenuOpen && (
         <div
-          className={`c-article-nav-fullscreen ${
-            isArticleMenuOpen ? 'c-article-nav-fullscreen c-article-nav-fullscreen--open' : ''
-          }`}
+          className={`c-article-nav-fullscreen ${isArticleMenuOpen
+            ? 'c-article-nav-fullscreen c-article-nav-fullscreen--open'
+            : ''}`}
         >
           <TableOfContentsButton {...props} />
           <TableOfContentsContent
@@ -91,7 +92,11 @@ const LongFormArticleContainer = (props) => {
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
             {_type === 'publication' && (
-              <div className="c-hero u-bg-white u-z-index-x">
+              <div
+                className={`c-hero u-bg-white u-z-index-x ${publicationType._id === 'pubtype-3'
+                  ? 'c-hero-no-image'
+                  : ''}`}
+              >
                 <div
                   className="c-hero-image"
                   style={{

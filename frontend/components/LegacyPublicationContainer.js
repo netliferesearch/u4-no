@@ -36,6 +36,7 @@ const LegacyPublicationContainer = (props) => {
     date = {},
     translation = {},
     language = '',
+    publicationType = {},
   } = props;
   const pubyear = date && date.utc ? new Date(date.utc).getFullYear() : '';
 
@@ -43,18 +44,16 @@ const LegacyPublicationContainer = (props) => {
     <Layout showLoadingScreen={showLoadingScreen} showTopTab={!isArticleMenuOpen}>
       <article className="u-relative">
         {BreadCrumbComponent && BreadCrumbComponent}
-        <div className="c-hero">
-          {
-            <div
-              className="c-hero-image"
-              style={{
-                backgroundImage: `url(${props.featuredImage &&
-                  props.featuredImage.asset &&
-                  props.featuredImage.asset.url})`,
-                backgroundColor: '#0079CF',
-              }}
-            />
-          }
+        <div className={`c-hero ${publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''}`}>
+          <div
+            className="c-hero-image"
+            style={{
+              backgroundImage: `url(${props.featuredImage &&
+                props.featuredImage.asset &&
+                props.featuredImage.asset.url})`,
+              backgroundColor: '#0079CF',
+            }}
+          />
           <div className="c-hero-bg" />
           <div className="c-hero-header">
             <PublicationArticleHeader
