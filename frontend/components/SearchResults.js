@@ -54,6 +54,8 @@ const SearchResults = (props) => {
             subtitle = false,
             authors = false,
             editors = false,
+            firstName = '',
+            surname = '',
           }) => (
             <li {...classes('items')} key={_id}>
               <span {...classes('items-type')}>
@@ -69,7 +71,9 @@ const SearchResults = (props) => {
               </span>
               <br />
               <Link to={`${_type === 'frontpage' ? '/' : `/${_type}s/`}${slug.current}`}>
-                <a {...classes('items-title')}>{title}</a>
+                <a {...classes('items-title')}>
+                  {_type === 'person' ? `${firstName} ${surname}` : `${title}`}
+                </a>
               </Link>
               <br />
               <span {...classes('items-subtitle')}>{subtitle}</span>
