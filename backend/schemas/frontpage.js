@@ -294,6 +294,27 @@ export default {
           ]
         },
         {
+          name: 'assets',
+          title: 'Assets',
+          type: 'object',
+          fields: [
+            {
+              name: 'assetsRef',
+              type: 'array',
+              of: [
+                {
+                  type: 'reference',
+                  to: [
+                    {
+                      type: 'asset'
+                    },
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
           name: 'courses',
           title: 'Courses list',
           type: 'object',
