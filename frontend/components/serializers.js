@@ -119,6 +119,11 @@ const serializers = {
         <Mosaic resources={expertAnswersRef} />
       </div>
     ),
+    resources: ({ node: { resourcesRef } }) => (
+      <div className="o-wrapper u-margin-top u-margin-bottom-huge">
+        <Mosaic resources={resourcesRef} />
+      </div>
+    ),
     courses: ({ node: { coursesRef } }) => (
       <div className="o-wrapper">
         <SimpleMosaic resources={coursesRef} cta="Register" />

@@ -273,6 +273,27 @@ export default {
           ]
         },
         {
+          name: 'resources',
+          title: 'Resources',
+          type: 'object',
+          fields: [
+            {
+              name: 'resourcesRef',
+              type: 'array',
+              of: [
+                {
+                  type: 'reference',
+                  to: [
+                    {
+                      type: 'resource'
+                    },
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
           name: 'courses',
           title: 'Courses list',
           type: 'object',
@@ -507,6 +528,8 @@ export default {
                 type: 'block',
                 styles: [
                   {title: 'Normal', value: 'normal'},
+                  {title: 'H2', value: 'h2'},
+                  {title: 'H3', value: 'h3'},
                 ],
                 // Only allow numbered lists
                 marks: {
