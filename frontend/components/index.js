@@ -10,6 +10,7 @@ export { default as Feature } from './Feature';
 export { default as Figure } from './Figure';
 export { default as Footer } from './Footer';
 export { default as HeadComponent } from './HeadComponent';
+export { default as InstitutionList } from './InstitutionList';
 export { default as SimpleHero } from './SimpleHero';
 export { default as Layout } from './Layout';
 export { default as Loader } from './Loader';

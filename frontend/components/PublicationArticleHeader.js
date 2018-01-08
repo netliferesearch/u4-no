@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from '../routes';
 import randomKey from '../helpers/randomKey';
-import { Download, ArrowRight } from './icons';
-import { AuthorList, EditorList } from '../components/';
+import { Download, ArrowRight, PartnerLogo8 } from './icons';
+import { AuthorList, EditorList, InstitutionList } from '../components/';
 import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper({
@@ -39,6 +39,7 @@ const PublicationArticleHeader = ({
   reference = '',
   translation = {},
   language = '',
+  partners = [],
 }) => (
   <header {...classes('', null, className)}>
     {/* Wrap in standard grid width until we know better */}
@@ -85,6 +86,15 @@ const PublicationArticleHeader = ({
               </Link>
             </p>
           )}
+        {partners.length ? <InstitutionList institutions={partners} /> : null}
+        {publicationType._id === 'pubtype-3' ? (
+          <p>
+            The U4 Helpdesk is operated by {' '}
+            <div className="c-logo">
+              <PartnerLogo8 />
+            </div>
+          </p>
+        ) : null}
       </div>
       {summary.length > 0 && (
         <Link route="publication.shortVersion" params={{ slug: slug.current }}>
