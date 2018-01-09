@@ -1,10 +1,20 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
+import BlockContent from '@sanity/block-content-to-react';
 
 const classes = BEMHelper({
   name: 'article',
   prefix: 'c-',
 });
+
+const renderCaption = (caption) => {
+  console.log(caption)
+  if (Array.isArray(caption)) {
+    return <BlockContent blocks={caption} />
+  } else {
+    return caption
+  }
+}
 
 const figureOutFigureClass = (size) => {
   if (size === 'narrow') {
@@ -25,8 +35,8 @@ const Figure = ({
 }) => (
   <figure {...classes('figure', null, figureOutFigureClass(size))}>
     <img {...classes('figure-img')} src={asset.url} alt={asset.altText} />
-    {caption && <figcaption {...classes('figure-figcaption')}>
-      {caption} Photo by: {licensor}, licensed under {license}.
+    {caption.length > 0 && <figcaption {...classes('figure-figcaption')}>
+      {renderCaption(caption)} {licensor && `Photo by: ${licensor}`}{license && `, licensed under ${license}`}{(licensor || license) && '.'}
     </figcaption>}
   </figure>
 );
