@@ -1,31 +1,18 @@
-import React, { Component } from 'react';
-import { Link } from '../routes';
-import sanityClient from '@sanity/client';
+import React from 'react';
+import PropTypes from 'prop-types';
 import DataLoader from '../helpers/data-loader';
-import Head from 'next/head';
 
-import { BoxOnBox, Footer, Layout, Accordion, Newsletter, ServiceArticle } from '../components';
-import { Feature, Mosaic, LinkBox, SimpleHero } from '../components';
-import { DownArrowButton, RightArrowButton } from '../components/buttons';
-import {
-  Basics,
-  Picture,
-  Publication,
-  Resources,
-  ResearchAgenda,
-  ArrowRight,
-} from '../components/icons';
+import { Footer, Layout, Newsletter, ServiceArticle, SimpleHero } from '../components';
 
-const ServicePage = ({ service = {}, url = {} }) => {
-  const {
-    title = '',
-    longTitle = '',
-    featuredImage = {},
-    lead = '',
-    sections = [],
-    relatedUrl = {},
-  } = service;
-  return (
+const ServicePage = ({
+  title = '',
+  longTitle = '',
+  featuredImage = {},
+  lead = '',
+  sections = [],
+  relatedUrl = {},
+  url = ''
+}) => (
     <Layout
       headComponentConfig={{
         title,
@@ -39,15 +26,48 @@ const ServicePage = ({ service = {}, url = {} }) => {
 
       <ServiceArticle blocks={sections} />
       <Newsletter />
-
       <Footer />
     </Layout>
-  );
-};
+);
+
+ServicePage.propTypes = {
+  longTitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  featuredImage: PropTypes.shape({
+    asset: PropTypes.shape({
+      url: PropTypes.string,
+    }),
+  }).isRequired,
+  lead: PropTypes.string.isRequired,
+  sections: PropTypes.array.isRequired,
+  relatedUrl: PropTypes.object.isRequired,
+  url: PropTypes.shape({
+    asPAth: PropTypes.string,
+  }).isRequired,
+}
+
 export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery:
-      '{ "service": *[_type == "frontpage" && slug.current == "helpdesk"][0]{title, longTitle, slug, lead, _id, "sections": sections, "featuredImage": featuredImage.asset->url}}',
+      `*[_type == "frontpage" && slug.current == "helpdesk"][0]{
+        title,
+            longTitle,
+            slug,
+            lead,
+            _id,
+      sections[]{
+        ...,
+        expertAnswersRef[]->{
+          _id,
+          slug,
+          title,
+          "publicationType": publicationType->title,
+          "featuredImage": featuredImage.asset->url
+        }
+      },
+      "featuredImage": featuredImage.asset->url
+    }
+`,
     param: { slug },
   }),
   materializeDepth: 5,
