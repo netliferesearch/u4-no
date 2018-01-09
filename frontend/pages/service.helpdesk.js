@@ -59,6 +59,7 @@ export default DataLoader(ServicePage, {
         ...,
         expertAnswersRef[]->{
           _id,
+          _type,
           slug,
           title,
           "publicationType": publicationType->title,
