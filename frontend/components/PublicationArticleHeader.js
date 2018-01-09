@@ -88,7 +88,7 @@ const PublicationArticleHeader = ({
           )}
         {partners.length ? <InstitutionList institutions={partners} /> : null}
         {publicationType._id === 'pubtype-3' ? (
-          <p>
+          <p className="c-article-header__institution">
             The U4 Helpdesk is operated by {' '}
             <div className="c-logo">
               <PartnerLogo8 />

@@ -94,13 +94,15 @@
   fill: $white;
   margin-bottom: -4px;
   margin-left: $spacing;
-  transition: transform .2s ease-out;
+  transition: transform 0.2s ease-out;
 }
 
-a.c-article-header__button, a.c-article-header__button:hover, a.c-article-header__button:visited, a.c-article-header__button:active, {
+a.c-article-header__button,
+a.c-article-header__button:hover,
+a.c-article-header__button:visited,
+a.c-article-header__button:active {
   border-bottom: 0;
 }
-
 
 .c-article-header__button-icon {
   padding-left: $spacing;
@@ -109,5 +111,12 @@ a.c-article-header__button, a.c-article-header__button:hover, a.c-article-header
   }
   path {
     fill: $white;
+  }
+}
+
+.c-article-header__institution {
+  .c-logo {
+    margin-top: $spacing*0.5;
+    margin-bottom: $spacing*0.5;
   }
 }

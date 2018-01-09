@@ -2,7 +2,7 @@ import React from 'react';
 import randomKey from '../helpers/randomKey';
 
 const InstitutionList = ({ institutions = {} }) => (
-  <p>
+  <p className="c-article-header__institution">
     {institutions &&
       institutions
         .filter(inst => inst)
