@@ -20,8 +20,16 @@ const classes = BEMHelper({
 });
 
 const Search = ({
-  results = [], searchFilters = [], searchSorting = '', url, topic = {},
-}) => (
+  results = [],
+  searchFilters = [],
+  searchSorting = '',
+  url = '',
+  topic = {},
+}) => {
+  console.log(results);
+  const washedResults = results.filter(doc => doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc)
+  console.log(washedResults)
+  return (
   <Layout
     noSearch
     headComponentConfig={{
@@ -52,7 +60,7 @@ const Search = ({
           results={sortResultsBySortCriteria({
             searchString: url.query.search || '',
             results: filterResultsBySearchFilterList(
-              results.filter(item => item.slug),
+              washedResults.filter(item => item.slug),
               searchFilters,
             ),
             sortCriteria: searchSorting,
@@ -60,12 +68,13 @@ const Search = ({
         />
       </section>
       <section className=" o-layout__item u-3/12 u-3/12@desktop u-push-3/12@desktop u-2/12@wide u-push-4/12@wide">
-        <SearchFilters results={results} />
+        <SearchFilters results={washedResults} />
       </section>
     </div>
     <Footer />
   </Layout>
-);
+  )
+};
 
 const mapStateToProps = state => state;
 const mapDispatchToProps = () => ({});
@@ -85,6 +94,7 @@ export default DataLoader(connect(mapStateToProps, mapDispatchToProps)(Search), 
         }`,
       };
     }
+    console.log(buildSearchQuery({ queryString: query.search, limit: { from: 0, to: 1000 } }))
     return {
       sanityQuery: buildSearchQuery({ queryString: query.search, limit: { from: 0, to: 1000 } }),
       query: query.search,
