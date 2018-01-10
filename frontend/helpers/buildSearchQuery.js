@@ -45,6 +45,7 @@ export default ({ queryString = false, limit: { from = 0, to = 20 } = { from: 0,
         || introduction[].children[].text match [${matchString}]
         || agenda[].children[].text match [${matchString}]
         || timezone match [${matchString}]
+        || references(*[[firstName, lastName] match [${matchString}]]._id, false)
       ) && defined(slug.current)
     ]
     [${from}...${to}]
