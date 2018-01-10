@@ -31,7 +31,7 @@ const figureOutFigureClass = (size) => {
 };
 
 const Figure = ({
-  asset, caption, license, licensor, size,
+  asset, caption = {}, license, licensor, size,
 }) => (
   <figure {...classes('figure', null, figureOutFigureClass(size))}>
     <img {...classes('figure-img')} src={asset.url} alt={asset.altText} />
