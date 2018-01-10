@@ -45,6 +45,9 @@ const LongFormArticleContainer = (props) => {
     legacypdf = {},
     reference = '',
     publicationNumber = '',
+    featuredImage = {
+      asset: {}
+    },
     partners = [],
   } = props;
   return (
@@ -53,9 +56,9 @@ const LongFormArticleContainer = (props) => {
         <div {...classes('front-logo-top')}>
           <Logo />
         </div>
-        {props.featuredImage.asset && (
+        {featuredImage.asset && (
           <figure {...classes('front-image')}>
-            <img src={props.featuredImage.asset.url} alt={props.featuredImage.credit} />
+            <img src={featuredImage.asset.url} alt={featuredImage.credit} />
           </figure>
         )}
         <div {...classes('front-text')}>
@@ -124,8 +127,8 @@ const LongFormArticleContainer = (props) => {
         </p>
         <h2>Cover photo</h2>
         <p>
-          {props.featuredImage.caption.map(caption => caption.children[0].text)}{' '}
-          {props.featuredImage.credit} {props.featuredImage.sourceUrl} <br />
+          {featuredImage.caption && featuredImage.caption.map(caption => caption.children[0].text)}{' '}
+          {featuredImage && featuredImage.credit} {featuredImage.sourceUrl && featuredImage.sourceUrl} <br />
           CIFOR CC BY-NC-SA
         </p>
         <h2>Creative commons</h2>
