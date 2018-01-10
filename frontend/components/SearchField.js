@@ -49,7 +49,8 @@ class SearchField extends Component {
     this.state = { items: [], loading: false, placeholder: 'topics', placeholderIndex: 0 };
   }
   componentDidMount() {
-    const strings = ['topics', 'publications', 'people', 'services', 'articles'];
+    const strings = ['publications', 'topics', 'people', 'services', 'articles'];
+    if (this.state.items.length === 0) return;
     this.intervalTimer = setInterval(() => {
       this.setState({
         placeholderIndex: this.state.placeholderIndex < strings.length - 1 ? this.state.placeholderIndex + 1 : 0,
@@ -125,7 +126,8 @@ class SearchField extends Component {
                           client
                             .fetch(buildQuery({ queryString: value, limit: { from: 0, to: 200 } }))
                             .then(({ results }) => {
-                              const items = prioritize(value, results.map(item => item)); // Added ID to make it unique
+                              const washedResults = results.filter(doc => doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc)
+                              const items = prioritize(value, washedResults.map(item => item)); // Added ID to make it unique
                               this.setState({ items });
                             })
                             .catch((error) => {
