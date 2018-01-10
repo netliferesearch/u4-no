@@ -98,10 +98,9 @@ const LongFormArticleContainer = (props) => {
               _key && <img key={_key} alt="Partner Logo" src={institution.logo.asset.url} />)
         }
         {
-          acknowledgements &&
-          <h2>Acknowledgments</h2>
-          <p>{acknowledgements}</p>
+          acknowledgements && <h2>Acknowledgments</h2>
         }
+        {acknowledgements && <p>{acknowledgements}</p>}
         <h2>Publisher</h2>
         <p>U4 Anti-Corruption Resource Centre, Chr. Michelsen Institute, Bergen, Norway.</p>
         <h2>Disclaimer</h2>
