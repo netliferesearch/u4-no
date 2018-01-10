@@ -47,6 +47,7 @@ const LongFormArticleContainer = (props) => {
     publicationNumber = '',
     featuredImage = {},
     partners = [],
+    acknowledgements = '',
   } = props;
   return (
     <article className="u-relative u-print-width o-wrapper-page">
@@ -92,11 +93,15 @@ const LongFormArticleContainer = (props) => {
 
       <div className="page2">
         <h2>Partners in this publication</h2>
-        {props.partners &&
-          props.partners.map((partner = '') =>
-              partner && <img key={partner._key} src={partner.institution.logo.asset.url} />)}
-        <h2>Acknowledgments</h2>
-        <p>{props.acknowledgements}</p>
+        {partners &&
+          partners.map(({ _key = '', institution = {} }) =>
+              _key && <img key={_key} alt="Partner Logo" src={institution.logo.asset.url} />)
+        }
+        {
+          acknowledgements &&
+          <h2>Acknowledgments</h2>
+          <p>{acknowledgements}</p>
+        }
         <h2>Publisher</h2>
         <p>U4 Anti-Corruption Resource Centre, Chr. Michelsen Institute, Bergen, Norway.</p>
         <h2>Disclaimer</h2>
