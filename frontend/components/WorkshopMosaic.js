@@ -10,21 +10,17 @@ const classes = BEMHelper({
 
 const WorkshopMosaic = ({ resources = [] }) => (
   <div {...classes()}>
-    {resources.map(item =>
-      (
-        <div {...classes('item')}>
-          <Link to={item.target.link} ><a>
+    {resources.map(item => (
+      <div {...classes('item')}>
+        <Link route="event.entry" params={{ slug: item.target.slug.current }}>
+          <a>
             <Pin {...classes('icon')} />
-            <div {...classes('title')}>
-              {item.target.title}
-            </div>
-            <div>
-              {item.target.lead && item.target.lead.split('\n').map(i => <p>{i}</p>) }
-            </div>
-          </a></Link>
-        </div>
-      ),
-    )}
+            <div {...classes('title')}>{item.target.title}</div>
+            <div>{item.target.lead && item.target.lead.split('\n').map(i => <p>{i}</p>)}</div>
+          </a>
+        </Link>
+      </div>
+    ))}
   </div>
 );
 

@@ -15,7 +15,7 @@ routes
   .add('persons.entry', '/the-team/:slug')
   .add('search.index', '/search')
   .add('search.entry', '/search')
-  .add('workshops.entry', '/workshops/:slug')
+  .add('event.entry', '/events/:slug')
   .add('service.workshops', '/workshops-and-events')
   .add('service.online-courses', '/online-courses')
   .add('service.helpdesk', '/helpdesk')
