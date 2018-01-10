@@ -45,9 +45,7 @@ const LongFormArticleContainer = (props) => {
     legacypdf = {},
     reference = '',
     publicationNumber = '',
-    featuredImage = {
-      asset: {}
-    },
+    featuredImage = {},
     partners = [],
   } = props;
   return (
@@ -126,11 +124,12 @@ const LongFormArticleContainer = (props) => {
           studies.
         </p>
         <h2>Cover photo</h2>
+        {featuredImage &&
         <p>
           {featuredImage.caption && featuredImage.caption.map(caption => caption.children[0].text)}{' '}
           {featuredImage && featuredImage.credit} {featuredImage.sourceUrl && featuredImage.sourceUrl} <br />
           CIFOR CC BY-NC-SA
-        </p>
+        </p>}
         <h2>Creative commons</h2>
         <p>
           <CreativecommonsCC className="page2-ccimage" />
