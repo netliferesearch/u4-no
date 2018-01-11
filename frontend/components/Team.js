@@ -9,19 +9,31 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Team = ({ title, members, light = false, linkLabel = 'Bio', applyJob = false }) => (
+const Team = ({
+  title,
+  members,
+  light = false,
+  linkLabel = 'Bio',
+  applyJob = false,
+  sayHi = true,
+}) => (
   <section {...classes('', light && 'light')}>
-    { title &&
+    {title && (
       <div className="o-wrapper">
-        <h2 {...classes('title')}>Hi!<br />{title}</h2>
+        <h2 {...classes('title')}>
+          {sayHi && (
+            <span>
+              Hi!<br />
+            </span>
+          )}
+          {title}
+        </h2>
       </div>
-    }
+    )}
     <div {...classes('wrapper', null)}>
-      {
-        members.map(member =>
-          <Person light person={member} linkLabel={linkLabel} />,
-        )
-      }
+      {members
+        .map(member => (member.target ? member.target : member))
+        .map(member => <Person light person={member} linkLabel={linkLabel} />)}
     </div>
   </section>
 );

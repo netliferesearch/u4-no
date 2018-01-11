@@ -6,7 +6,7 @@ import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
 
 import { BoxOnBox, Footer, Layout, Accordion, Newsletter, ServiceArticle } from '../components';
-import { Feature, Mosaic, LinkBox, LinkList, Person } from '../components';
+import { Feature, Mosaic, LinkBox, LinkList, Team } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import {
   Basics,
@@ -78,11 +78,19 @@ const EventPage = ({ event = {}, url = {} }) => {
           )}
         </div>
       </div>
-      {contact.length > 0 &&
-        contact.map(person => (
-          <Person light person={person.target ? person.target : person} linkLabel="" />
-        ))}
-
+      {contact.length > 0 && (
+        <div id="contacts" className="c-topic-section--lightblue o-wrapper-full-width">
+          <Team
+            title={
+              contact.length > 1
+                ? 'We’re the team responsible for this event.'
+                : 'I’m responsible for this event.'
+            }
+            members={contact}
+            linkLabel="Read full bio"
+          />
+        </div>
+      )}
       <Newsletter />
       <Footer />
     </Layout>
@@ -91,8 +99,20 @@ const EventPage = ({ event = {}, url = {} }) => {
 
 export default DataLoader(EventPage, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery:
-      '{ "event": *[_type=="event" && slug.current == $slug][0]{title, eventType, location, startDate, endDate, organiser, leadText, content, slug, eventLink, contact, relatedContent, topics, keywords,  _id, "featuredImage": featuredImage.asset->url}}',
+    sanityQuery: `{
+       "event": *[_type=="event" && slug.current == $slug][0]{title, eventType, location, startDate, endDate, organiser, leadText, content, slug, eventLink,
+          "contact": contact[]->{
+          _id,
+           title,
+           "image": image.asset->{"asset": { "url": url}},
+           position,
+           firstName,
+           surname,
+           email,
+           slug,
+           bio
+         },
+        relatedContent, topics, keywords,  _id, "featuredImage": featuredImage.asset->url}}`,
     param: { slug },
   }),
   materializeDepth: 5,
