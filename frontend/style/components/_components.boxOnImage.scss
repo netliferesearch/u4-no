@@ -5,18 +5,20 @@
 }
 
 .c-boxOnImage__body {
-
   background: $brand-dark;
   padding: $spacing;
   font-weight: 300;
   color: $white-on-blue;
   margin-right: $spacing;
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $white;
   }
-  @include inuit-font-size($font-size-small, $font-size-large)
-
-  @include mq($from: tablet) {
+  @include inuit-font-size($font-size-small, $font-size-large) @include mq($from: tablet) {
     max-width: 50%;
     position: absolute;
     top: 0;
@@ -27,14 +29,13 @@
   }
 
   @include mq($from: wide) {
-    @include inuit-font-size(17px, 28px)
-    padding: 6%;
+    @include inuit-font-size(17px, 28px) padding: 6%;
 
     p {
       //margin-top: 0;
     }
 
-    >* {
+    > * {
       max-width: 600px;
     }
   }
@@ -43,20 +44,20 @@
     color: $brand-lighter;
   }
 
-  &:nth-of-type(3n+0) {
+  &:nth-of-type(3n + 0) {
     background: $brand-dark;
   }
 }
 
 .c-boxOnImage__lead {
-  @include inuit-font-size($font-size-normal, $font-size-larger)
+  @include inuit-font-size($font-size-normal, $font-size-larger);
 }
 
 .c-boxOnImage__link {
   color: $brand-light;
 }
 .c-boxOnImage__figure {
-  z-index: -10;
+  /* z-index: -10; */
   margin: 0;
   position: relative;
   margin-left: $spacing;
@@ -93,40 +94,33 @@
     position: relative;
     padding-left: $spacing-tiny;
   }
-
 }
 
 .c-boxOnImage--smaller {
-display: block;
+  display: block;
   @include mq($from: tablet) {
-
   }
 }
 .c-boxOnImage__body--smaller {
-
   @include mq($from: tablet) {
-  position: relative;
+    position: relative;
   }
 }
 .c-boxOnImage__figure--smaller {
-display: none;
+  display: none;
   @include mq($from: tablet) {
-  right: 0;
-  top: $spacing;
-  position: absolute;
-  display: block;
+    right: 0;
+    top: $spacing;
+    position: absolute;
+    display: block;
   }
   @include mq($from: tablet) {
-
     & > img {
-
     }
   }
 }
 
-
-@supports(display:grid) {
-
+@supports (display: grid) {
   .c-boxOnImage {
     @include mq($from: tablet) {
       display: grid;
@@ -145,8 +139,8 @@ display: none;
       padding: 10%;
     }
     @include mq($from: wide) {
-      @include inuit-font-size(17px, 28px)
-      padding: 15%; }
+      @include inuit-font-size(17px, 28px) padding: 15%;
+    }
   }
 
   .c-boxOnImage__body--wide {
@@ -160,7 +154,7 @@ display: none;
   }
 
   .c-boxOnImage--smaller {
-  display: block;
+    display: block;
     @include mq($from: tablet) {
       display: grid;
       grid-template-columns: 20% 20px 20px 400px 20px 20px 20px;
@@ -181,7 +175,7 @@ display: none;
     margin: 0;
     display: none;
     @include mq($from: tablet) {
-    display:block;
+      display: block;
     }
     @include mq($from: tablet) {
       grid-column: 2 / 10;
