@@ -69,5 +69,6 @@ export default {
         title: 'topics.title'
       }
     },
+    slug,
   ],
 }
