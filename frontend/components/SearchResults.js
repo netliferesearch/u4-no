@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateSearchSorting } from '../helpers/redux-store';
 import { Link } from '../routes';
+import buildUrl from '../helpers/buildUrl';
 
 import { AuthorList, EditorList } from '../components/';
 
@@ -43,8 +44,7 @@ const SearchResults = (props) => {
         </div>
       </div>
       <ul {...classes('content')}>
-        {results.map(
-          ({
+        {results.map(({
             _id,
             _type,
             publicationType = false,
@@ -70,7 +70,7 @@ const SearchResults = (props) => {
                 {date && moment(date.utc).format('DD.MM.YYYY')}
               </span>
               <br />
-              <Link to={`${_type === 'frontpage' ? '/' : `/${_type}s/`}${slug.current}`}>
+              <Link to={buildUrl({ _type, slug })}>
                 <a {...classes('items-title')}>
                   {_type === 'person' ? `${firstName} ${surname}` : `${title}`}
                 </a>
@@ -90,8 +90,7 @@ const SearchResults = (props) => {
                 </div>
               ) : null}
             </li>
-          ),
-        )}
+          ))}
       </ul>
     </section>
   );
