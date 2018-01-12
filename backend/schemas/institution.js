@@ -67,6 +67,17 @@ export default {
       ]
     },
     {
+      name: 'svgLogo',
+      title: 'Logo in svg format',
+      description: 'For selected institutions we create svg logos that look better on screen',
+      type: 'string',
+    },
+    {
+      name: 'website',
+      title: 'Website url',
+      type: 'url',
+    },
+    {
       name: 'contact',
       type: 'object',
       fields: [
