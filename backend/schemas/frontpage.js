@@ -621,7 +621,7 @@ export default {
         },
         {
           name: 'HelpdeskTeam',
-          title: 'Two text boxes for Helpdesk Team',
+          title: 'Two text boxes for contacts',
           type: 'object',
           fields: [
             {
@@ -709,8 +709,13 @@ export default {
               }],
             },
             {
+              name: 'headingLeft',
+              title: 'Heading for left column contacts',
+              type: 'string'
+            },
+            {
               name: 'personLeft',
-              title: 'Left column persons',
+              title: 'Left column contacts',
               type: 'array',
               of: [
                 {
@@ -724,8 +729,13 @@ export default {
               ]
             },
             {
+              name: 'headingRight',
+              title: 'Heading for right column contacts',
+              type: 'string'
+            },
+            {
               name: 'personRight',
-              title: 'Right column persons',
+              title: 'Right column contacts',
               type: 'array',
               of: [
                 {

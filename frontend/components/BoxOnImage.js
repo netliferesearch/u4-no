@@ -3,6 +3,7 @@ import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import { Link } from '../routes';
 import { PartnerLogo8 } from './icons/';
+import buildUrl from '../helpers/buildUrl';
 
 const classes = BEMHelper({
   name: 'boxOnImage',
@@ -10,51 +11,60 @@ const classes = BEMHelper({
 });
 
 const BoxOnImage = ({
-  text = '', image, wide = false, helpdesk = false, personsLeft = [], personsRight = [],
+  text = '',
+  image,
+  wide = false,
+  headingLeft = '',
+  headingRight = '',
+  personsLeft = [],
+  personsRight = [],
 }) => (
   <div {...classes()}>
-    <figure {...classes('figure')}>
-      { image && <img alt="" src={image.asset.url} /> }
-    </figure>
+    <figure {...classes('figure')}>{image && <img alt="" src={image.asset.url} />}</figure>
     <div {...classes('body', wide ? 'wide' : null)}>
       <BlockContent blocks={text} />
-      { helpdesk ?
+      {personsLeft.length ? (
         <div className="c-columns">
           <div className="c-columns__item c-columns--two__item c-columns__item--narrow">
-            <h3 className="c-columns__title">U4 helpdesk coordinator in Bergen</h3>
-            {
-              personsLeft &&
-              personsLeft.map(person =>
-                (
-                  <Link to={`/the-team/${person.target.slug.current}`}>
+            {headingLeft && <h3 className="c-columns__title">{headingLeft}</h3>}
+            {personsLeft.map(person => (person.target ? person.target : person)).map(person => (
+              <Link to={buildUrl({ _type: 'person', slug: person.slug.current })}>
+                <a>
+                  {person.firstName} {person.surname}
+                  <br />
+                  {person.position}
+                  <br />
+                  {person.email}
+                </a>
+              </Link>
+            ))}
+          </div>
+          {personsRight && (
+            <div className="c-columns__item c-columns--two__item c-columns__item--narrow">
+              {headingRight && <h3 className="c-columns__title">{headingRight}</h3>}
+              {personsRight.map(person => (person.target ? person.target : person)).map(person => (
+                <p>
+                  <Link to={buildUrl({ _type: 'person', slug: person.slug.current })}>
                     <a>
-                      {person.target.firstName} {person.target.surname}<br />
-                      {person.target.position}<br />
-                      {person.target.email}
+                      {person.firstName} {person.surname}
                     </a>
                   </Link>
-                ),)
-            }
-          </div>
-          <div className="c-columns__item c-columns--two__item c-columns__item--narrow">
-            <h3 className="c-columns__title">U4 helpdesk at Transparency International</h3>
-            {
-              personsRight &&
-              personsRight.map(person =>
-                (<p><Link to={`/the-team/${person.target.slug.current}`}>
-                  <a>
-                    {person.target.firstName} {person.target.surname}
-                  </a>
-                    </Link>
-                 </p>),)
-            }
-            <br /><br />
-            <div className="c-logo">
-              <PartnerLogo8 />
+                </p>
+              ))}
+              {headingRight &&
+                headingRight.match(/Transparency/i) && (
+                  <div>
+                    <br />
+                    <br />
+                    <div className="c-logo">
+                      <PartnerLogo8 />
+                    </div>
+                  </div>
+                )}
             </div>
-          </div>
+          )}
         </div>
-        : null}
+      ) : null}
     </div>
   </div>
 );

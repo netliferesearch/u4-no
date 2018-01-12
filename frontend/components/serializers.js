@@ -92,13 +92,18 @@ const serializers = {
         <BoxOnBoxTopics left={textLeft} right={textRight} />
       </section>
     ),
-    HelpdeskTeam: ({ node: { textRight, img, personLeft, personRight } }) => (
+    HelpdeskTeam: ({
+      node: {
+        textRight, img, headingLeft, headingRight, personLeft, personRight,
+      },
+    }) => (
       <section className="c-topic-section">
         <BoxOnImage
           wide
-          helpdesk
           text={textRight}
           image={img}
+          headingLeft={headingLeft}
+          headingRight={headingRight}
           personsLeft={personLeft}
           personsRight={personRight}
         />
