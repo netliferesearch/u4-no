@@ -1,4 +1,4 @@
-import { title, leadText, featuredImage, slug } from './fields'
+import { title, leadText, featuredImage, language, slug } from './fields'
 
 export default {
   title: 'Course',
@@ -8,9 +8,31 @@ export default {
     title,
     leadText,
     {
-      name: 'language',
-      title: 'Language',
-      type: 'text',
+      name: 'content',
+      title: 'Description',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            {title: 'Normal', value: 'normal'},
+            {title: 'H2', value: 'h2'},
+            {title: 'H3', value: 'h3'},
+          ],
+          // Only allow numbered lists
+          marks: {
+            // Only allow these decorators
+            decorators: [
+              {title: 'Emphasis', value: 'em'}
+            ],
+            // Support annotating text with a reference to an author
+            annotations: [
+              {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
+              {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
+            ]
+          }
+        },
+      ],
     },
     {
       name: 'link',
@@ -35,6 +57,7 @@ export default {
         inputTime: false,
       }
     },
+    language,
     {
       name: 'contact',
       title: 'Contact person',
@@ -69,6 +92,6 @@ export default {
         title: 'topics.title'
       }
     },
-    slug,
+    slug
   ],
 }
