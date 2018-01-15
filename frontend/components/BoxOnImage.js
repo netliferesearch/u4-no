@@ -28,16 +28,24 @@ const BoxOnImage = ({
           <div className="c-columns__item c-columns--two__item c-columns__item--narrow">
             {headingLeft && <h3 className="c-columns__title">{headingLeft}</h3>}
             {personsLeft.map(person => (person.target ? person.target : person)).map(person => (
-              <Link to={buildUrl({ _type: 'person', slug: person.slug.current })}>
-                <a>
-                  {person.firstName} {person.surname}
-                  <br />
-                  {person.position}
-                  <br />
-                  {person.email}
-                </a>
-              </Link>
+              <p>
+                <Link to={buildUrl({ _type: 'person', slug: person.slug.current })}>
+                  <a>
+                    {person.firstName} {person.surname}
+                  </a>
+                </Link>
+              </p>
             ))}
+            {headingLeft &&
+              headingLeft.match(/Transparency/i) && (
+                <div>
+                  <br />
+                  <br />
+                  <div className="c-logo">
+                    <PartnerLogo8 />
+                  </div>
+                </div>
+              )}
           </div>
           {personsRight && (
             <div className="c-columns__item c-columns--two__item c-columns__item--narrow">
