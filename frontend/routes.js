@@ -16,6 +16,7 @@ routes
   .add('search.index', '/search')
   .add('search.entry', '/search')
   .add('event.entry', '/events/:slug')
+  .add('course.entry', '/courses/:slug')
   .add('service.workshops', '/workshops-and-events')
   .add('service.online-courses', '/online-courses')
   .add('service.helpdesk', '/helpdesk')

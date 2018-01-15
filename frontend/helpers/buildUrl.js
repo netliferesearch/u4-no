@@ -10,6 +10,8 @@ export default ({ _type = 'notype', slug = {} }) => {
     return `/the-team/${actualSlug}`;
   } else if (_type === 'frontpage') {
     return `/${actualSlug}`;
+  } else if (_type === 'course') {
+    return `/courses/${actualSlug}`;
   }
   return actualSlug;
 };
