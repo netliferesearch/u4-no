@@ -11,11 +11,6 @@ const InstitutionList = ({ institutions = {} }) => (
           <span key={randomKey()}>
             {description}
             {institution ? ` ${institution.name}` : ''}
-            {institution.logo && institution.logo.asset && institution.logo.asset.url ? (
-              <img src={institution.logo.asset.url} alt={institution.name} className="c-logo" />
-            ) : (
-              ''
-            )}
           </span>
         ))}
   </p>

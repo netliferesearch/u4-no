@@ -16,10 +16,12 @@ export default DataLoader(PublicationEntry, {
       reference, bibliographicalOverride, abbreviations, blurbs, language,
       "translations": coalesce(
         *[translation._ref == ^._id]{
+           title,
            "slug": slug.current,
            language
          },
          translation->{
+         title,
          "slug": slug.current,
          language
        }),

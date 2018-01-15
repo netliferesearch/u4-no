@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from '../routes';
 import randomKey from '../helpers/randomKey';
+import languageName from '../helpers/languageName';
+import buildUrl from '../helpers/buildUrl';
 import { Download, ArrowRight, PartnerLogo8 } from './icons';
 import { AuthorList, EditorList, InstitutionList } from '../components/';
 import BEMHelper from 'react-bem-helper';
@@ -9,19 +11,6 @@ const classes = BEMHelper({
   name: 'article-header',
   prefix: 'c-',
 });
-
-function languageName(langcode) {
-  const languageNames = {
-    en_US: 'English',
-    fr_FR: 'French',
-    es_ES: 'Spanish',
-    de_DE: 'German',
-    pt_PT: 'Portuguese',
-    ru_RU: 'Russian',
-    uk_UA: 'Ukranian',
-  };
-  return languageNames[langcode] ? languageNames[langcode] : 'another language';
-}
 
 const PublicationArticleHeader = ({
   title = '',
@@ -38,6 +27,7 @@ const PublicationArticleHeader = ({
   legacypdf = {},
   reference = '',
   translation = {},
+  translations = {},
   language = '',
   partners = [],
 }) => (
@@ -70,7 +60,11 @@ const PublicationArticleHeader = ({
           ) : null}
           {editors.length ? (
             <span>
-              <EditorList editors={editors.map(({ target }) => target)} />
+              <EditorList
+                editors={editors}
+                intro={publicationType._id === 'pubtype-3' ? 'Reviewed by' : 'Edited by'}
+                pluralize={false}
+              />
               <br />
             </span>
           ) : null}
@@ -80,16 +74,32 @@ const PublicationArticleHeader = ({
           translation.language !== language && (
             <p>
               <Link route="publication.entry" params={{ slug: translation.slug.current }}>
-                <a {...classes('language')}>
-                  Also available in {languageName(translation.language)}
+                <a {...classes('language')} title={translation.title}>
+                  Also available in {languageName({ langcode: translation.language })}
                 </a>
               </Link>
             </p>
           )}
+        {translations.length &&
+          translations.filter(item => item.language !== language).map((item = {}) =>
+              item.slug &&
+              item.language &&
+              item.title && (
+                <p>
+                  <a
+                    {...classes('language')}
+                    href={buildUrl({ _type: 'publication', slug: item.slug })}
+                    title={item.title}
+                  >
+                    Also available in {languageName({ langcode: item.language })}
+                  </a>
+                </p>
+              ))}
+
         {partners.length ? <InstitutionList institutions={partners} /> : null}
         {publicationType._id === 'pubtype-3' ? (
           <p className="c-article-header__institution">
-            The U4 Helpdesk is operated by {' '}
+            The U4 Helpdesk is operated by{' '}
             <div className="c-logo">
               <PartnerLogo8 />
             </div>
