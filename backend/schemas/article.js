@@ -1,3 +1,64 @@
+import FunkyEditor from '../components/FunkyEditor'
+
+const annotations = [
+    {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
+    {name: 'internalReferance', title: 'Find some internal resource', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article', },{type:'workshop'},{type:'frontpage'},{type:'file'}]},
+    {
+      type: 'object',
+      name: 'blockNote',
+      title: 'Block note',
+      annotationMarker: '*',
+      fields: [
+        {
+          type: 'string',
+          name: 'style',
+          options: {
+            list: [
+              {title: 'Footnote', value: 'footnote'},
+              {title: 'Endnote', value: 'endnote'}
+            ],
+          }
+        },
+        {
+          name: 'content',
+          title: 'Content',
+          type: 'array',
+          of: [{type: 'block'}]
+        }
+      ]
+    },
+    {
+      name: 'footnote',
+      type: 'object',
+      fields: [
+        {
+          name: 'content',
+          title: 'Footnote content',
+          type: 'array',
+          of: [
+            {
+              type: 'block',
+              styles: [
+                {title: 'Normal', value: 'normal'},
+              ],
+              lists: [],
+              // Only allow numbered lists
+              marks: {
+                // Only allow these decorators
+                decorators: [
+                  {title: 'Strong', value: 'strong'},
+                  {title: 'Emphasis', value: 'em'}
+                ],
+                // Support annotating text with a reference to an author
+                annotations,
+              }
+            }
+          ]
+        }
+      ]
+    }
+]
+
 import { title, longTitle, image, explainerText, featuredImage, slug } from './fields'
 
 export default {
@@ -24,6 +85,7 @@ export default {
     {
       name: 'content',
       title: 'Article content',
+      description: 'The body text and graphic elements.',
       type: 'array',
       of: [
         {
@@ -43,24 +105,46 @@ export default {
               {title: 'Emphasis', value: 'em'}
             ],
             // Support annotating text with a reference to an author
-            annotations: [
-              {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-              {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-            ]
-          }
+            annotations,
+          },
         },
+
         {
           type: 'reference',
+          tile: 'Nugget',
           to: [
             {
-              type: 'nugget'
-            }
+              type: 'nugget'        },
           ]
         },
         {
           type: 'pullQuote'
         },
+        {
+          type: 'funkyTable',
+          options: {
+            defaultNumRows: 3,
+            defaultNumColumns: 3
+          }
+        },
         image,
+        {
+          name: 'vimeo',
+          title: 'Vimeo video',
+          type: 'object',
+          fields: [
+            {
+              name: 'src',
+              title: 'URL to the vimeo video (not the whole embed code)',
+              type: 'string',
+            },
+            {
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+            }
+          ]
+        },
       ]
     },
     slug
