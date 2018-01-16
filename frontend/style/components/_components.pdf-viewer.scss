@@ -1,6 +1,14 @@
 .c-pdf-viewer {
 }
 
+.c-pdf-viewer-standalone {
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid #aaa;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
 .c-pdf-viewer__pdf {
   display: flex;
   flex-direction: column;

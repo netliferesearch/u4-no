@@ -81,32 +81,58 @@ export default class PdfViewer extends Component {
 
   render() {
     const { pageNumber, numPages, pdfWidth } = this.state;
-    const { file } = this.props;
+    const { file, standalone = false } = this.props;
     return (
-      <div className="c-pdf-viewer">
-        <div className="c-pdf-viewer__controls">
-          <div className="u-padding">
-            <button className="c-btn c-btn--primary" onClick={this.decrementPageNumber}>
-              <span className="c-btn__body">Previous</span>
-            </button>
+      <div className={`c-pdf-viewer ${standalone ? 'c-pdf-viewer-standalone' : ''}`}>
+        {!standalone && (
+          <div className="c-pdf-viewer__controls">
+            <div className="u-padding">
+              <button className="c-btn c-btn--primary" onClick={this.decrementPageNumber}>
+                <span className="c-btn__body">Previous</span>
+              </button>
+            </div>
+            <div className="u-padding u-tc">
+              {pageNumber} of {numPages}
+            </div>
+            <div className="u-padding">
+              <button className="c-btn c-btn--primary" onClick={this.incrementPageNumber}>
+                <span className="c-btn__body">Next</span>
+              </button>
+            </div>
           </div>
-          <div className="u-padding u-tc">
-            {pageNumber} of {numPages}
-          </div>
-          <div className="u-padding">
-            <button className="c-btn c-btn--primary" onClick={this.incrementPageNumber}>
-              <span className="c-btn__body">Next</span>
-            </button>
-          </div>
-        </div>
-        <p className="u-tc">
-          Tip: You can use the left/right arrows on your keyboard to navigate the pdf.
-        </p>
+        )}
+        {!standalone && (
+          <p className="u-tc">
+            Tip: You can use the left/right arrows on your keyboard to navigate the pdf.
+          </p>
+        )}
         <div className="c-pdf-viewer__pdf">
           <Document file={file} onLoadSuccess={this.onDocumentLoad}>
             <Page width={pdfWidth} pageNumber={pageNumber} />
           </Document>
         </div>
+        {standalone && (
+          <div className="c-pdf-viewer__controls">
+            <div className="u-padding">
+              <button className="c-btn c-btn--primary" onClick={this.decrementPageNumber}>
+                <span className="c-btn__body">Previous</span>
+              </button>
+            </div>
+            <div className="u-padding u-tc">
+              {pageNumber} of {numPages}
+            </div>
+            <div className="u-padding">
+              <button className="c-btn c-btn--primary" onClick={this.incrementPageNumber}>
+                <span className="c-btn__body">Next</span>
+              </button>
+            </div>
+          </div>
+        )}
+        {standalone && (
+          <p className="u-tc">
+            Tip: You can use the left/right arrows on your keyboard to navigate the pdf.
+          </p>
+        )}
       </div>
     );
   }
