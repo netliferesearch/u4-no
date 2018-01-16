@@ -57,9 +57,9 @@ const LongFormArticleContainer = (props) => {
     >
       {isArticleMenuOpen && (
         <div
-          className={`c-article-nav-fullscreen ${isArticleMenuOpen
-            ? 'c-article-nav-fullscreen c-article-nav-fullscreen--open'
-            : ''}`}
+          className={`c-article-nav-fullscreen ${
+            isArticleMenuOpen ? 'c-article-nav-fullscreen c-article-nav-fullscreen--open' : ''
+          }`}
         >
           <TableOfContentsButton {...props} />
           <TableOfContentsContent
@@ -93,9 +93,9 @@ const LongFormArticleContainer = (props) => {
             {BreadCrumbComponent && BreadCrumbComponent}
             {_type === 'publication' && (
               <div
-                className={`c-hero u-bg-white u-z-index-x ${publicationType._id === 'pubtype-3'
-                  ? 'c-hero-no-image'
-                  : ''}`}
+                className={`c-hero u-bg-white u-z-index-x ${
+                  publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''
+                }`}
               >
                 <div
                   className="c-hero-image"
@@ -108,9 +108,17 @@ const LongFormArticleContainer = (props) => {
                 />
                 <div className="c-hero-bg" />
                 <div className="c-hero-sideText">
-                  {props.featuredImage && props.featuredImage.credit ? (
-                    <a href={props.featuredImage.sourceUrl}>{props.featuredImage.credit}</a>
-                  ) : null}
+                  {props.featuredImage &&
+                    props.featuredImage.sourceUrl && (
+                      <a href={props.featuredImage.sourceUrl}>
+                        {props.featuredImage.credit
+                          ? props.featuredImage.credit
+                          : props.featuredImage.sourceUrl}
+                      </a>
+                    )}
+                  {props.featuredImage &&
+                    !props.featuredImage.sourceUrl &&
+                    props.featuredImage.credit && <span>{props.featuredImage.credit}</span>}
                 </div>
                 <div className="c-hero-header">
                   <PublicationArticleHeader

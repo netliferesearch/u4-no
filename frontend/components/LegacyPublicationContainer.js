@@ -55,6 +55,19 @@ const LegacyPublicationContainer = (props) => {
             }}
           />
           <div className="c-hero-bg" />
+          <div className="c-hero-sideText">
+            {props.featuredImage &&
+              props.featuredImage.sourceUrl && (
+                <a href={props.featuredImage.sourceUrl}>
+                  {props.featuredImage.credit
+                    ? props.featuredImage.credit
+                    : props.featuredImage.sourceUrl}
+                </a>
+              )}
+            {props.featuredImage &&
+              !props.featuredImage.sourceUrl &&
+              props.featuredImage.credit && <span>{props.featuredImage.credit}</span>}
+          </div>
           <div className="c-hero-header">
             <PublicationArticleHeader
               className="c-hero__grid-container__content links-wrapper-dark-background"
