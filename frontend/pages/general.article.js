@@ -1,11 +1,47 @@
 import React from 'react';
 
-import { LongformArticleContainer } from '../components';
+import {
+  LongformArticleContainer,
+  Footer,
+  Layout,
+  Newsletter,
+  ServiceArticle,
+  SimpleHero,
+} from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
 const GeneralArticle = (props) => {
-  const { url, explainerText } = props;
+  const { url = '', explainerText = '', _type = '' } = props;
+  if (_type === 'frontpage') {
+    const {
+      title = '',
+      longTitle = '',
+      featuredImage = {},
+      lead = '',
+      sections,
+      relatedUrl = {},
+    } = props;
+    return (
+      <Layout
+        headComponentConfig={{
+          title,
+          description: lead,
+          image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
+          url: url.asPath ? `beta.u4.no${url.asPath}` : '',
+          ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
+        }}
+      >
+        {lead && <SimpleHero light title={title} content={lead} />}
+
+        {sections ? <ServiceArticle blocks={sections} /> : null}
+
+        <Newsletter />
+
+        <Footer />
+      </Layout>
+    );
+  }
   return (
     <LongformArticleContainer
       BreadCrumbComponent={<BreadCrumb url={url} />}
@@ -20,5 +56,5 @@ export default DataLoader(GeneralArticle, {
     sanityQuery: '*[slug.current == $slug][0]',
     param: { slug },
   }),
-  materializeDepth: 1,
+  materializeDepth: 2,
 });

@@ -12,6 +12,8 @@ export default ({ _type = 'notype', slug = {} }) => {
     return `/${actualSlug}`;
   } else if (_type === 'course') {
     return `/courses/${actualSlug}`;
+  } else if (_type === 'asset') {
+    return `/assets/${actualSlug}`;
   }
   return actualSlug;
 };
