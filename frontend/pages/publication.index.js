@@ -1,10 +1,22 @@
 import React from 'react';
-import { Link } from '../routes';
-import { Footer, Layout } from '../components';
+import moment from 'moment';
+import BEMHelper from 'react-bem-helper';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateSearchSorting } from '../helpers/redux-store';
 import DataLoader from '../helpers/data-loader';
-import randomKey from '../helpers/randomKey';
 
-const PublicationOverview = ({ publications = [], url = {} }) => (
+import { Link } from '../routes';
+import buildUrl from '../helpers/buildUrl';
+
+import { Layout, Footer, AuthorList, EditorList } from '../components/';
+
+const classes = BEMHelper({
+  name: 'search-results',
+  prefix: 'c-',
+});
+
+const Publications = ({ publications = [], url = {} }) => (
   <Layout
     headComponentConfig={{
       title: 'Publications',
@@ -13,24 +25,62 @@ const PublicationOverview = ({ publications = [], url = {} }) => (
   >
     <div className="o-wrapper-inner">
       <h1 className="c-topic-page_longTitle u-margin-bottom-huge">Publications</h1>
-      {publications.map(({ slug = {}, title = '' }) => (
-        <div className="c-duo__item" key={randomKey()}>
-          <div className="c-duo__body">
-            <h2 className="c-duo__title">
-              <Link route="publication.entry" params={{ slug: slug.current || 'no-slug-defined' }}>
-                <a className="c-duo__link">{title}</a>
+      <ul {...classes('content')}>
+        {publications.map(({
+            _id,
+            _type,
+            slug = {},
+            title = '',
+            subtitle = false,
+            authors = false,
+            editors = false,
+            publicationType = false,
+            date = {},
+            reference = '',
+            publicationNumber = false,
+          }) => (
+            <li {...classes('items')} key={_id}>
+              <span {...classes('items-type')}>
+                {publicationType && <span>{publicationType.title}</span>}
+                {!publicationType && <span>{_type}</span>}
+              </span>
+              <span {...classes('items-date')}>
+                {date && moment(date.utc).format('DD.MM.YYYY')}
+              </span>
+              <br />
+              <Link to={buildUrl({ _type, slug })}>
+                <a {...classes('items-title')}>{title}</a>
               </Link>
-            </h2>
-          </div>
-        </div>
-      ))}
+              <br />
+              <span {...classes('items-subtitle')}>{subtitle}</span>
+              {authors.length ? (
+                <div>
+                  <AuthorList authors={authors} />
+                  <br />
+                </div>
+              ) : null}
+              {editors.length ? (
+                <div>
+                  <EditorList editors={editors} />
+                  <br />
+                </div>
+              ) : null}
+              <div>
+                {publicationNumber
+                  ? `${publicationType.title} ${publicationNumber}`
+                  : `${publicationType.title} ${reference}`}
+              </div>
+            </li>
+          ))}
+      </ul>
     </div>
     <Footer />
   </Layout>
 );
 
-export default DataLoader(PublicationOverview, {
+export default DataLoader(Publications, {
   queryFunc: () => ({
-    sanityQuery: '{ "publications": *[_type in ["publication"]][0..10000] }',
+    sanityQuery:
+      '{ "publications": *[_type in ["publication"]][0..10000]{..., "authors": authors[]->{...}, "editors": editors[]->{...},publicationType->{...}}|order(date.utc desc) }',
   }),
 });
