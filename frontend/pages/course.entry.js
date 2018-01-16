@@ -46,6 +46,9 @@ const CoursePage = ({ course = {}, url = {} }) => {
       <div className="c-oneColumnBox c-oneColumnBox__darkOnWhite">
         <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
           <div>
+            <p className="c-longform-grid__standard">
+              <a href="/online-courses">Online courses</a>
+            </p>
             <h2 className="c-longform-grid__standard">{title}</h2>
             {lead && <p className="c-longform-grid__standard">{lead}</p>}
             {startDate.utc && (
@@ -63,6 +66,7 @@ const CoursePage = ({ course = {}, url = {} }) => {
 
           {topics.length > 0 && (
             <p className="c-longform-grid__standard">
+              Related topics:{' '}
               {topics.map(({ _ref = '', target = {} }) => (
                 <Link
                   key={_ref}

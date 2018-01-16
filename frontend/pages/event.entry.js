@@ -47,10 +47,11 @@ const EventPage = ({ event = {}, url = {} }) => {
       <div className="c-oneColumnBox c-oneColumnBox__darkOnWhite">
         <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
           <div>
-            {eventType === 'incountryworkshop' && (
-              <p className="c-longform-grid__standard">In-country workshop</p>
-            )}
-            {eventType === 'hqworkshop' && <p className="c-longform-grid__standard">HQ workshop</p>}
+            <p className="c-longform-grid__standard">
+              <a href="/workshops-and-events">Workshops and events</a>
+              {eventType === 'incountryworkshop' && ' - In-country workshop'}
+              {eventType === 'hqworkshop' && ' - HQ workshop'}
+            </p>
             <h2 className="c-longform-grid__standard">{title}</h2>
             {location && <p className="c-longform-grid__standard">{location}</p>}
             {startDate.utc && (
@@ -65,6 +66,7 @@ const EventPage = ({ event = {}, url = {} }) => {
 
           {topics.length > 0 && (
             <p className="c-longform-grid__standard">
+              Related topics:{' '}
               {topics.map(({ _ref = '', target = {} }) => (
                 <Link
                   key={_ref}
@@ -83,9 +85,10 @@ const EventPage = ({ event = {}, url = {} }) => {
           <Team
             title={
               contact.length > 1
-                ? 'We’re the team responsible for this event.'
-                : 'I’m responsible for this event.'
+                ? 'We’re the team responsible for this event'
+                : 'I’m responsible for this event'
             }
+            sayHi
             members={contact}
             linkLabel="Read full bio"
           />
