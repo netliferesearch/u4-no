@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from '../routes';
 import randomKey from '../helpers/randomKey';
 import languageName from '../helpers/languageName';
+import bibliographicReference from '../helpers/bibliographicReference';
 import buildUrl from '../helpers/buildUrl';
 import { Download, ArrowRight, PartnerLogo8 } from './icons';
 import { AuthorList, EditorList, InstitutionList } from '../components/';
@@ -20,6 +21,7 @@ const PublicationArticleHeader = ({
   topics = [],
   className = '',
   publicationType = {},
+  publicationNumber = '',
   authors = [],
   editors = [],
   summary = [],
@@ -68,7 +70,7 @@ const PublicationArticleHeader = ({
               <br />
             </span>
           ) : null}
-          {reference}
+          {bibliographicReference({ publicationType, publicationNumber, reference })}
         </p>
         {translation.language &&
           translation.language !== language && (
