@@ -430,56 +430,9 @@ export default {
       },
       {
         name: 'reference',
-        title: 'Bibliographic reference (like U4 Issue 2016:1, 45 p.)',
+        title: 'Bibliographic reference override',
+        description: 'Leave this empty to generate from fields above, like "U4 Anti-Corruption Resource Centre, Chr. Michelsen Institute (U4 Brief 2017:1)""',
         type: 'string'
-      },
-      {
-        name: 'bibliograpicalOverride',
-        title: 'Override Bibliography',
-        description: 'Do you want to override some of this publication’s bibliographic details?',
-        type: 'object',
-        options: {
-          collapsable: true,
-        },
-        fields: [
-          {
-            name: 'year',
-            type: 'richDate'
-          },
-          {
-            name: 'volume',
-            type: 'number'
-          },
-          {
-            name: 'series',
-            type: 'string'
-          },
-          {
-            name: 'issue',
-            type: 'number'
-          },
-          {
-            name: 'publisher',
-            type: 'string'
-          },
-          {
-            name: 'location',
-            type: 'string'
-          },
-          {
-            name: 'pages',
-            type: 'number'
-          },
-          {
-            name: 'type',
-            type: 'string'
-          }
-        ],
-        preview: {
-          select: {
-            title: title,
-          }
-        }
       },
       {
         name: 'abbreviations',
@@ -613,7 +566,7 @@ export default {
       {
         title: 'Date',
         name: 'dateDesc',
-        by: [{ field: 'date', direction: 'desc' }],
+        by: [{ field: 'date.utc', direction: 'desc' }],
       },
       {
         title: 'Publication type',
