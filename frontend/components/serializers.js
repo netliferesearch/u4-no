@@ -2,6 +2,7 @@ import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 import ReactPlayer from 'react-player';
+import buildUrl from '../helpers/buildUrl'
 import FunkyTable from './FunkyTable';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
@@ -201,7 +202,15 @@ const serializers = {
     return <ol {...classes('standard', null, 'list-numbered')}>{children}</ol>;
   },
   marks: {
-    internalReferance: props => <a href={props.mark.href}>{props.children}</a>,
+    internalReferance: ({
+      children = [],
+      mark: {
+        target: {
+          slug = '',
+          _type = ''
+        } = {}
+      } = {}
+    }) => <a href={buildUrl({_type, slug: slug.current})}>{children}</a>,
     link: (props) => {
       if (props.mark.href) {
         if (props.mark.href.match(/#_ftn(\d+)/)) {
