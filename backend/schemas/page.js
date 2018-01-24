@@ -185,6 +185,7 @@ export default {
         of: [
           {
             type: 'reference',
+            weak: true,
             to: [
               {
                 type: 'topics'
