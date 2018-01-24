@@ -2,10 +2,13 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { Logo } from './';
 import { Link } from '../routes';
-import { CmiLogo } from './icons/';
-import { MediumLogo } from './icons/';
-import { TwitterLogo } from './icons/';
-import { FacebookLogo } from './icons/';
+import {
+  CmiLogo,
+  MediumLogo,
+  TwitterLogo,
+  FacebookLogo,
+  LinkedIn,
+ } from './icons/';
 
 const classes = BEMHelper({
   name: 'footer',
@@ -43,18 +46,16 @@ const Footer = ({ title }) => (
           <Link to="/privacy-policy">
             <a>Privacy Policy</a>
           </Link><br />
-          <Link to="/creative-commons">
-            <a>Creative Commons</a>
+          <Link to="/about-u4#openaccess">
+            <a>Open access policy</a>
           </Link><br />
-          <Link to="/vacancies">
-            <a>Vacancies</a>
-          </Link><br />
-          <Link to="/cookies">
-            <a>Cookies</a>
+          <Link to="/about-u4">
+            <a>About U4</a>
           </Link><br />
         </div>
         <div {...classes('item')}>
           <div {...classes('heading')}>Follow us</div>
+          <a href="https://www.linkedin.com/showcase/u4-anti-corruption-resource-centre/"><LinkedIn {...classes('some-icon')} />LinkedIn</a><br />
           <a href="https://medium.com/u4-anti-corruption-resource-centre"><MediumLogo {...classes('some-icon')} />Medium</a><br />
           <a href="https://twitter.com/U4_ACRC"><TwitterLogo {...classes('some-icon')} />Twitter</a><br />
           <a href="https://www.facebook.com/U4anticorruption/"><FacebookLogo {...classes('some-icon')} />Facebook</a>
