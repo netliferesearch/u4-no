@@ -92,7 +92,10 @@ const LongFormArticleContainer = (props) => {
       </div>
 
       <div className="page2">
-        <h2>Partners in this publication</h2>
+        {partners.length ? (
+          <h2>Partners in this publication</h2>
+        ) : null}
+
         {partners &&
           partners.map(({ _key = '', institution = {} }) =>
               _key && <img key={_key} alt="Partner Logo" src={institution.logo.asset.url} />)
