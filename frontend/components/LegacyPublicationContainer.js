@@ -37,11 +37,19 @@ const LegacyPublicationContainer = (props) => {
     translation = {},
     language = '',
     publicationType = {},
+    url = { asPath }
   } = props;
   const pubyear = date && date.utc ? new Date(date.utc).getFullYear() : '';
 
   return (
-    <Layout showLoadingScreen={showLoadingScreen} showTopTab={!isArticleMenuOpen}>
+    <Layout
+      headComponentConfig={{
+        title: title,
+        url: url.asPath ? `https://beta.u4.no${url.asPath}` : '',
+      }}
+      showLoadingScreen={showLoadingScreen}
+      showTopTab={!isArticleMenuOpen}
+    >
       <article className="u-relative">
         {BreadCrumbComponent && BreadCrumbComponent}
         <div className={`c-hero ${publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''}`}>
