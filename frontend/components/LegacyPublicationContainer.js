@@ -115,6 +115,7 @@ const LegacyPublicationContainer = (props) => {
             }}
           />
         )}
+        <Footer />
       </article>
     </Layout>
   );
