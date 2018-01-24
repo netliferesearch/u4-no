@@ -139,18 +139,8 @@ const LongFormArticleContainer = (props) => {
         <p>
           {featuredImage.caption && featuredImage.caption.map(caption => caption.children[0].text)}{' '}
           {featuredImage && featuredImage.credit} {featuredImage.sourceUrl && featuredImage.sourceUrl} <br />
-          CIFOR CC BY-NC-SA
         </p>}
-        <h2>Creative commons</h2>
-        <p>
-          <CreativecommonsCC className="page2-ccimage" />
-          <CreativecommonsBY className="page2-ccimage" />
-          <CreativecommonsNC className="page2-ccimage" />
-          <CreativecommonsND className="page2-ccimage" />
-          <br />
-          CC BY-NC-ND 4.0
-        </p>
-        <h2>Online version</h2>
+        {props.relatedUrl && <h2>Online version</h2>}
         {props.relatedUrl && <p>{props.relatedUrl.url}</p>}
 
         <h2>Bibliographic reference</h2>
