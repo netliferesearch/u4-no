@@ -6,6 +6,8 @@ const Mosaic = ({ resources = [], alt = false }) => (
   <div className="c-mosaic">
 
     {resources
+      .filter(({ _id = '' }) => _id)
+      .reduce((x, y) => x.map(({_id}) => _id).includes(y._id) ? x : [...x, y], []) // loops through lists and return only a set with resources with unique ids
       .map(resource => (resource.target ? resource.target : resource))
       .map((
           {
@@ -19,7 +21,7 @@ const Mosaic = ({ resources = [], alt = false }) => (
           },
           index,
         ) => (
-          <Link key={_id} route={buildUrl({ _type, slug })}>
+          <Link key={_id + index} route={buildUrl({ _type, slug })}>
             <a
               className={`c-mosaic_item ${index % 4 === 0
                 ? 'c-mosaic_item--backgroundImage'
