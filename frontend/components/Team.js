@@ -33,7 +33,7 @@ const Team = ({
     <div {...classes('wrapper', null)}>
       {members
         .map(member => (member.target ? member.target : member))
-        .map(member => <Person light person={member} linkLabel={linkLabel} />)}
+        .map(member => <Person key={member._id} light person={member} linkLabel={linkLabel} />)}
     </div>
   </section>
 );
