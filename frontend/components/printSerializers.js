@@ -83,7 +83,7 @@ function printSerializers(blocks) {
           if (props.mark.href.match(/#_ftnref(\d+)/)) {
             return null
           }
-          return <a className="fn" href={props.mark.href}>{props.children}</a>;
+          return <span>{props.children}<a className="fn" href={props.mark.href}>{props.mark.href}</a></span>;
         }
         return null;
       },
