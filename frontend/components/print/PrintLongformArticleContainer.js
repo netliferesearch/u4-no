@@ -107,6 +107,7 @@ const LongFormArticleContainer = (props) => {
         {acknowledgements && <p>{acknowledgements}</p>}
         <h2>Publisher</h2>
         <p>U4 Anti-Corruption Resource Centre, Chr. Michelsen Institute, Bergen, Norway.</p>
+
         <h2>Disclaimer</h2>
         <p>
           All views in this text are the author(s)’, and may differ from the U4 partner agencies’

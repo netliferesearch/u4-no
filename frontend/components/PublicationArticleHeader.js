@@ -100,12 +100,12 @@ const PublicationArticleHeader = ({
 
         {partners.length ? <InstitutionList institutions={partners} /> : null}
         {publicationType._id === 'pubtype-3' ? (
-          <p className="c-article-header__institution">
-            The U4 Helpdesk is operated by{' '}
+          <div className="c-article-header__institution">
+            <p>The U4 Helpdesk is operated by{' '}</p>
             <div className="c-logo">
               <PartnerLogo8 />
             </div>
-          </p>
+          </div>
         ) : null}
       </div>
       {summary.length > 0 && (
