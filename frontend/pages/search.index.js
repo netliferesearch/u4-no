@@ -33,7 +33,7 @@ const Search = ({
     headComponentConfig={{
       title: 'Search',
       description: '',
-      url: url.asPath ? `beta.u4.no${url.asPath}` : '',
+      url: url.asPath ? `https://beta.u4.no${url.asPath}` : '',
     }}
   >
     <div className="o-layout o-layout--center c-search__wrapper">

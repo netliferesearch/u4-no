@@ -1,3 +1,4 @@
+import { createElement } from 'react'
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
@@ -171,15 +172,14 @@ const serializers = {
         </div>
       </section>
     ),
-    block: ({ node, children }) => {
+    block: (props) => {
+      const { node, children = [] } = props
       const style = node.style || 'normal';
-
       // Heading?
-      if (/^h\d/.test(style)) {
+      if (/^h\d/.test(style) && typeof children[0] === 'string') {
         const level = parseInt(style.slice(1), 10);
         const id = level === 2 || level === 3 ? slugify(children[0], { lower: true }) : undefined;
-
-        return React.createElement(style, { id, className: 'c-longform-grid__standard' }, children);
+        return createElement(style, { id, className: 'c-longform-grid__standard' }, children);
       }
 
       if (style === 'blockquote') {

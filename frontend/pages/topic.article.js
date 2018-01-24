@@ -29,7 +29,7 @@ const TopicArticleEntry = (props) => {
       headComponentConfigOverride={{
         title: firstTitleInContent(content),
         description: firstParagraphInContent(content),
-        url: url.asPath ? `beta.u4.no${url.asPath}` : '',
+        url: url.asPath ? `https://beta.u4.no${url.asPath}` : '',
       }}
     />
   );

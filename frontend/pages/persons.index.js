@@ -29,7 +29,7 @@ class Persons extends Component {
         headComponentConfig={{
           title: frontpage.title,
           description: frontpage.lead,
-          url: url.asPath ? `beta.u4.no${url.asPath}` : '',
+          url: url.asPath ? `https://beta.u4.no${url.asPath}` : '',
         }}
       >
         <BreadCrumb url={url} />
