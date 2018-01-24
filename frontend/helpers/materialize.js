@@ -6,7 +6,7 @@ function extractRefs(obj) {
     obj.forEach((sub) => {
       result = result.concat(extractRefs(sub));
     });
-  } else if (obj._ref) {
+  } else if (obj && obj._ref) {
     return [obj._ref];
   } else if (typeof obj === 'object') {
     Object.keys(obj).forEach((key) => {
