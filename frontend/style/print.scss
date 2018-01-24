@@ -64,11 +64,11 @@ body {
   page-break-before: always;
   display: block;
   page: page2;
+  font-family: $font-sans;
+  margin-bottom: $spacing-tiny;
 
   p {
-    font-family: $font-sans;
     margin: 0;
-    margin-bottom: $spacing-tiny;
     font-size: 10pt;
     line-height: 1.1;
   }
@@ -89,7 +89,6 @@ body {
     padding: 0;
   }
   li{
-    font-family: $font-sans;
     margin: 0;
     margin-bottom: $spacing-tiny;
     font-size: 10pt;

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Head from 'next/head';
 import BEMHelper from 'react-bem-helper';
+import bibliographicReference from '../../helpers/bibliographicReference';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
 import { PrintLongformArticle } from './';
 import {
@@ -151,6 +152,9 @@ const LongFormArticleContainer = (props) => {
         </p>
         <h2>Online version</h2>
         {props.relatedUrl && <p>{props.relatedUrl.url}</p>}
+
+        <h2>Bibliographic reference</h2>
+        <p>{bibliographicReference({ publicationType, publicationNumber, reference })}</p>
       </div>
       {_type === 'publication' && (
         <div className="c-longform-grid">
