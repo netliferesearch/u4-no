@@ -113,15 +113,18 @@ const LongFormArticleContainer = (props) => {
         </p>
         <h2>U4 partner agencies</h2>
         <p>
-          The U4 Anti-Corruption Resource Centre is an institutional partnership of bilateral
-          international development agencies/ministries of foreign affairs: Australian Government –
-          Department of Foreign Affairs and Trade, Danida – Ministry of Foreign Affairs of Denmark,
-          Ministry for Foreign Affairs of Finland, Germany – Federal Ministry for Economic
-          Cooperation and Development and GIZ, Norad – The Norwegian Agency for Development
-          Cooperation, Sida – Swedish International Development Cooperation Agency, Switzerland –
-          Swiss Agency for Development and Cooperation, UK Aid – Department for International
-          Development.
+          The U4 Anti-Corruption Resource Centre is an institutional partnership of bilateral international development agencies/ministries of foreign affairs:
         </p>
+        <ul>
+          <li>Australian Government – Department of Foreign Affairs and Trade – DFAT</li>
+          <li>Ministry of Foreign Affairs of Denmark – includes Danida</li>
+          <li>Ministry for Foreign Affairs of Finland</li>
+          <li>Germany: Federal Ministry for Economic Cooperation and Development – BMZ, including GIZ</li>
+          <li>The Norwegian Agency for Development Cooperation – Norad</li>
+          <li>Swedish International Development Cooperation Agency – Sida</li>
+          <li>Swiss Agency for Development Cooperation – SDC</li>
+          <li>UK Aid – Department for International Development</li>
+        </ul>
         <h2>About U4</h2>
         <p>
           At U4, we work to reduce the harmful impact of corruption on society. We share research

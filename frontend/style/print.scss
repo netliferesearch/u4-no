@@ -83,6 +83,18 @@ body {
     margin-right: 0.5cm;
     margin-top: 0.2cm;
   }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  li{
+    font-family: $font-sans;
+    margin: 0;
+    margin-bottom: $spacing-tiny;
+    font-size: 10pt;
+    line-height: 1.1;
+  }
 }
 @page page2 {
   @top {
