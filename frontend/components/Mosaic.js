@@ -7,7 +7,8 @@ const Mosaic = ({ resources = [], alt = false }) => (
 
     {resources
       .filter(({ _id = '' }) => _id)
-      .reduce((x, y) => x.map(({_id}) => _id).includes(y._id) ? x : [...x, y], []) // loops through lists and return only a set with resources with unique ids
+       // loops through lists and return only a set with resources with unique ids
+      .reduce((x, y) => x.map(({ _id }) => _id).includes(y._id) ? x : [...x, y], [])
       .map(resource => (resource.target ? resource.target : resource))
       .map((
           {
