@@ -30,7 +30,7 @@ function printSerializers(blocks) {
         <div {...classes('standard')}>
           <div {...classes('nugget')}>
             <h2 {...classes('nugget-title')}>{title}</h2>
-            <BlockContent blocks={text} />
+            <BlockContent blocks={text} serializers={serializers} />
           </div>
         </div>
       ),

@@ -1,7 +1,7 @@
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
-
+import serializers from '../components/serializers'
 import { Footer, Layout, Team, Mosaic, Newsletter, PartnerPromo, LinkList } from '../components';
 import { BasicGuide, ResearchAgenda, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
@@ -51,7 +51,7 @@ const TopicEntry = ({
             />
             {featuredImage.caption && (
               <span className="c-boxOnImage__caption">
-                <BlockContent blocks={featuredImage.caption} />
+                <BlockContent blocks={featuredImage.caption} serializers={serializers} />
               </span>
             )}
           </figure>

@@ -4,6 +4,7 @@ import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
+import serializers from '../components/serializers'
 
 import { BoxOnBox, Footer, Layout, Accordion, Newsletter, ServiceArticle } from '../components';
 import { Feature, Mosaic, LinkBox, LinkList } from '../components';
@@ -27,8 +28,8 @@ const ServicePage = ({ service = {} }) => (
           <img alt="" src={service.featuredImage} />
         </figure>
         <div className="c-boxOnImage__body">
-          <BlockContent blocks={service.lead} />
-          {service.leadLinks && <LinkList title="" content={service.leadLinks} />}
+           <BlockContent blocks={service.lead} serializers={serializers} />
+           {service.leadLinks && <LinkList title="" content={service.leadLinks} />}
         </div>
       </section>
     ) : null}
