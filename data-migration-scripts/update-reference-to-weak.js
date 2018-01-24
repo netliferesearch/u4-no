@@ -9,11 +9,14 @@ const client = sanityClient({
 
 
 (async () => {
-  const publications = await client.fetch('*[_type == "publication"][0..1000]');
+  const publications = await client.fetch('*[_type == "publication"][0..10000]');
   /* eslint-disable */
   for (publication of publications) {
     if (publication.hasOwnProperty('topics')) {
-      const topics = publication.topics.reduce((acc, curr) => [{...curr, _weak: true}, ...acc], [])
+      const topics = publication.topics
+        .filter(topic => topic)
+        .filter(({_ref = false}) => _ref)
+        .reduce((acc, curr) => [{...curr, _weak: true}, ...acc], [])
       console.log(topics)
       await client
         .patch(publication._id)
