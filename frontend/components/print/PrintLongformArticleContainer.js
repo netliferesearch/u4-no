@@ -79,7 +79,7 @@ const LongFormArticleContainer = (props) => {
               ) : null}
               {editors.length ? (
                 <span>
-                  <EditorList editors={editors.map(({ target }) => target)} />
+                  <EditorList editors={editors.map(({ target }) => target)} intro="Series editor" />
                   <br />
                 </span>
               ) : null}
