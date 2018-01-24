@@ -24,6 +24,9 @@
     margin-top: -$spacing;
     grid-column: 1 / 6;
   }
+  a {
+    color: $brand-lighter;
+  }
 }
 .c-boxOnBox__right {
   background: $brand-lightest;
