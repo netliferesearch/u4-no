@@ -1,5 +1,5 @@
 .c-article {
-  word-wrap: break-word;
+  /* word-wrap: break-word; */
   @include inuit-font-size(19px, $line-height-large );
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-normal, $line-height-large );
