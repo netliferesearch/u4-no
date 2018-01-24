@@ -155,9 +155,12 @@ p {
 .c-print__publication-type-and-number {
   string-set: publication-type-and-number content();
 }
-.body h2 {
+.body {
   page-break-before: always;
 }
+h2 {
+  page-break-after: avoid;
+ }
 a {
   border: none;
   color: black;
