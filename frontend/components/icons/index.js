@@ -14,6 +14,7 @@ export { default as BasicGuide } from './BasicGuide';
 export { default as ResearchAgenda } from './ResearchAgenda';
 export { default as Pin } from './Pin';
 export { default as U4LogoSquare } from './U4LogoSquare';
+export { default as LinkedIn } from './LinkedIn';
 export { default as MagnifyingGlass } from './MagnifyingGlass';
 export { default as MediumLogo } from './MediumLogo';
 export { default as TwitterLogo } from './TwitterLogo';
