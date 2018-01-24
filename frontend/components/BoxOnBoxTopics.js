@@ -3,6 +3,7 @@ import { Link } from '../routes';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import { OnlineTraining, Workshops, Helpdesk } from './icons';
+import serializers from './serializers'
 
 const classes = BEMHelper({
   name: 'boxOnBox-topics',
@@ -12,10 +13,10 @@ const classes = BEMHelper({
 const BoxOnBoxTopics = ({ left = '', right = '' }) => (
   <div {...classes()}>
     <div {...classes('left')}>
-      <BlockContent blocks={left} />
+      <BlockContent blocks={left}  serializers={serializers} />
     </div>
     <div {...classes('right')}>
-      <BlockContent blocks={right} />
+      <BlockContent blocks={right}  serializers={serializers} />
     </div>
   </div>
 );

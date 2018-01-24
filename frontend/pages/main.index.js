@@ -7,6 +7,7 @@ import { Footer } from '../components';
 import { PartnerAgencies, FrontpageFeature, Mosaic } from '../components';
 import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass, ArrowRight } from '../components/icons';
+import serializers from '../components/serializers'
 
 const Frontpage = ({ frontPage = {}, topics = {}, url }) => (
   <Layout
@@ -30,7 +31,7 @@ const Frontpage = ({ frontPage = {}, topics = {}, url }) => (
     </section>
     <section className="o-wrapper-medium u-margin-bottom-huge">
       <div className="c-introduction-text">
-        <BlockContent blocks={frontPage.sections} />
+        <BlockContent blocks={frontPage.sections}  serializers={serializers}  />
       </div>
     </section>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
+import serializers from './serializers'
 
 const classes = BEMHelper({
   name: 'article',
@@ -10,7 +11,7 @@ const classes = BEMHelper({
 const renderCaption = (caption) => {
   console.log(caption)
   if (Array.isArray(caption)) {
-    return <BlockContent blocks={caption} />
+    return <BlockContent blocks={caption}  serializers={serializers} />
   } else {
     return caption
   }

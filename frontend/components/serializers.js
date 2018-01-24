@@ -202,15 +202,18 @@ const serializers = {
     return <ol {...classes('standard', null, 'list-numbered')}>{children}</ol>;
   },
   marks: {
-    internalReferance: ({
-      children = [],
-      mark: {
-        target: {
-          slug = '',
-          _type = ''
+    internalReferance: (props) => {
+      const {
+        children = [],
+        mark: {
+          target: {
+            slug = '',
+            _type = ''
+          } = {}
         } = {}
-      } = {}
-    }) => <a href={buildUrl({_type, slug: slug.current})}>{children}</a>,
+      } = props
+    return <a href={buildUrl({_type, slug: slug.current})}>{children}</a>
+  },
     link: (props) => {
       if (props.mark.href) {
         if (props.mark.href.match(/#_ftn(\d+)/)) {

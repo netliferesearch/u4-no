@@ -4,6 +4,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import { Link } from '../routes';
 import { PartnerLogo8 } from './icons/';
 import buildUrl from '../helpers/buildUrl';
+import serializers from './serializers'
 
 const classes = BEMHelper({
   name: 'boxOnImage',
@@ -22,7 +23,7 @@ const BoxOnImage = ({
   <div {...classes()}>
     <figure {...classes('figure')}>{image && <img alt="" src={image.asset.url} />}</figure>
     <div {...classes('body', wide ? 'wide' : null)}>
-      <BlockContent blocks={text} />
+      <BlockContent blocks={text}  serializers={serializers} />
       {personsLeft.length ? (
         <div className="c-columns">
           <div className="c-columns__item c-columns--two__item c-columns__item--narrow">

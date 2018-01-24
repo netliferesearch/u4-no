@@ -6,6 +6,7 @@ import { MediumLogo, TwitterLogo } from '../components/icons/';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
+import serializers from '../components/serializers'
 
 const classes = BEMHelper({
   name: 'persons',
@@ -71,7 +72,7 @@ const Persons = ({
             </div>
           </div>
           {person.bio && <div {...classes('bio')}>
-            <BlockContent blocks={person.bio} />
+            <BlockContent blocks={person.bio} serializers={serializers} />
           </div>}
         </section>
       </div>
