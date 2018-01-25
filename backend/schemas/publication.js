@@ -328,7 +328,7 @@ export default {
       },
       {
         name: 'notes',
-        description: 'Optional',
+        description: 'Optional notes for PDFs and similiar',
         type: 'array',
         of: [
           {
