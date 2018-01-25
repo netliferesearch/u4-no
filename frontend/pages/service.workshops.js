@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '../routes';
+import slugify from 'slugify'
 import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
@@ -37,8 +38,8 @@ const ServicePage = ({ data: { service = {}, url = {} } }) => {
         ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
       }}
     >
-      <h2 className="c-topic-page_title">{title}</h2>
-      <h2 className="c-topic-page__longTitle">{longTitle}</h2>
+      <h2 id={slugify(title, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })} className="c-topic-page_title">{title}</h2>
+      <h2 id={slugify(longTitle, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })} className="c-topic-page__longTitle">{longTitle}</h2>
       {featuredImage ? (
         <section className="c-boxOnImage">
           <figure className="c-boxOnImage__figure">

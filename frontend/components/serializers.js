@@ -47,7 +47,7 @@ const serializers = {
       return <FunkyTable rows={rows} title={title} />;
     },
     heading: ({ node: { headingValue = '' } }) => (
-      <h2 className="c-topic-section__title u-margin-bottom-none">{headingValue}</h2>
+      <h2 id={slugify(headingValue, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })} className="c-topic-section__title u-margin-bottom-none">{headingValue}</h2>
     ),
     cta: ({ node: { ctaValue = '', ctaURL = '' } }) => (
       <h2 className="c-topic-section__cta">
@@ -178,7 +178,7 @@ const serializers = {
       // Heading?
       if (/^h\d/.test(style) && typeof children[0] === 'string') {
         const level = parseInt(style.slice(1), 10);
-        const id = level === 2 || level === 3 ? slugify(children[0], { lower: true }) : undefined;
+        const id = level === 2 || level === 3 ? slugify(children[0], { lower: true, remove: /[$*_+~.()'"!\-:@]/g }) : undefined;
         return createElement(style, { id, className: 'c-longform-grid__standard' }, children);
       }
 

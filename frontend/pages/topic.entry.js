@@ -39,8 +39,8 @@ const TopicEntry = ({
     )}
   >
     <div>
-      <h1 className="c-topic-page_title">{title}</h1>
-      <h2 className="c-topic-page__longTitle">{longTitle}</h2>
+      <h1 id={slugify(title, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })}  className="c-topic-page_title">{title}</h1>
+      <h2 id={slugify(longTitle, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })} className="c-topic-page__longTitle">{longTitle}</h2>
       <section className="c-boxOnImage u-margin-bottom-huge">
         {featuredImage ? (
           <figure className="c-boxOnImage__figure">
