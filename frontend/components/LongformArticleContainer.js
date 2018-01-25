@@ -15,7 +15,7 @@ import {
   ToggleBlock,
 } from './';
 
-const LongFormArticleContainer = (props) => {
+const LongFormArticleContainer = ({ data: props = {} }) => {
   const {
     toggleArticleMenu,
     toggleLoadingScreen,

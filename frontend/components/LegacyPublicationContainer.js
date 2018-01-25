@@ -16,7 +16,7 @@ import {
   PdfViewer,
 } from './';
 
-const LegacyPublicationContainer = (props) => {
+const LegacyPublicationContainer = ({data: props = []}) => {
   const {
     toggleArticleMenu,
     toggleLoadingScreen,
