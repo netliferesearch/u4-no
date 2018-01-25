@@ -9,12 +9,17 @@ const classes = BEMHelper({
 });
 
 const renderCaption = (caption) => {
-  console.log(caption)
   if (Array.isArray(caption)) {
     return <BlockContent blocks={caption}  serializers={serializers} />
   } else {
     return caption
   }
+}
+const renderLicensor = ({ license = '', licensor = '', sourceUrl = '' }) => {
+  if(sourceUrl) {
+    return <p className="c-longform-grid__standard">Photo by: <a href={sourceUrl}>{licensor}</a></p>
+  }
+  return <p className="c-longform-grid__standard">Photo by: {licensor}</p>
 }
 
 const figureOutFigureClass = (size) => {
@@ -32,12 +37,14 @@ const figureOutFigureClass = (size) => {
 };
 
 const Figure = ({
-  asset, caption = {}, license, licensor, size,
+  asset, caption = {}, license = '', licensor = '', size, sourceUrl
 }) => (
   <figure {...classes('figure', null, figureOutFigureClass(size))}>
     <img {...classes('figure-img')} src={asset.url} alt={asset.altText} />
     {caption.length > 0 && <figcaption {...classes('figure-figcaption')}>
-      {renderCaption(caption)} {licensor && `Photo by: ${licensor}`}{license && `, licensed under ${license}`}{(licensor || license) && '.'}
+      {renderCaption(caption)}
+      {console.log(renderLicensor({ license, licensor, sourceUrl }))}
+      {licensor &&  renderLicensor({ license, licensor, sourceUrl })}
     </figcaption>}
   </figure>
 );
