@@ -12,13 +12,19 @@ export default {
       name: 'altText',
       title: 'Alternative text',
       description: 'For users that can\'t see images',
-      type: 'string'
+      type: 'string',
+      options: {
+        isHighlighted: true
+      }
     },
     {
       name: 'caption',
       title: 'Caption text',
       description: 'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
       type: 'array',
+      options: {
+        isHighlighted: true
+      },
       of: [
         {
           type: 'block',
@@ -38,6 +44,7 @@ export default {
       description: 'Set size for image in frontend that supports it',
       type: 'string',
       options: {
+        isHighlighted: true,
         list: [
           { title: 'wide', value: 'wide' },
           { title: 'normal', value: 'normal' },
@@ -50,13 +57,19 @@ export default {
       name: 'credit',
       title: 'Credit',
       description: 'Photographer/publisher’s name.',
-      type: 'text'
+      type: 'text',
+      options: {
+        isHighlighted: true
+      }
     },
     {
       name: 'sourceUrl',
       title: 'Credit URL',
       type: 'url',
-      description: 'Enter link for source for the image or the originator'
+      description: 'Enter link for source for the image or the originator',
+      options: {
+        isHighlighted: true
+      }
     },
     license,
   ]
