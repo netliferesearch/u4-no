@@ -1,6 +1,7 @@
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
+import slugify from 'slugify'
 import serializers from '../components/serializers'
 import { Footer, Layout, Team, Mosaic, Newsletter, PartnerPromo, LinkList } from '../components';
 import { BasicGuide, ResearchAgenda, ArrowRight } from '../components/icons';
