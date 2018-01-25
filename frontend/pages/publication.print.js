@@ -4,7 +4,7 @@ import DataLoader from '../helpers/data-loader';
 
 const PublicationEntry = props => (
   <div>
-    {props.content && <PrintLongformArticleContainer {...props} />}
+    {props.data.content && <PrintLongformArticleContainer {...props.data} />}
   </div>
 );
 

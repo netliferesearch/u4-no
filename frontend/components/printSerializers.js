@@ -88,10 +88,8 @@ function printSerializers(blocks) {
         return null;
       },
       blockNote: ({children, markKey = '', mark = {}}) => {
-        console.log(children)
         if (!mark.content) return null;
         return <span>
-          {children}
           <span>
           {markKey && (<BlockContent blocks={footnotes[markKey]} serializers={printFootnoteSerializer(markKey)} />)}
         </span>
@@ -99,8 +97,6 @@ function printSerializers(blocks) {
       },
       footnote: ({ children, markKey = '' }) => (
         <span>
-        {console.log(children, footnotes[markKey])}
-         {children}
           <span>
             {markKey && (
               <BlockContent blocks={footnotes[markKey]} serializers={printFootnoteSerializer(markKey)} />
