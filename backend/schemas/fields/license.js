@@ -3,7 +3,9 @@ export default {
   title: "License",
   type: "string",
   options: {
+    isHighlighted: true,
     list: [
+      { title: 'Copyright', value: 'copy' },
       { title: 'CC0', value: 'cc0'},
       { title: 'Copyright', value: 'copyright'},
       { title: 'Attribution', value: 'by' },
@@ -13,7 +15,6 @@ export default {
       { title: 'Public Domain', value: 'pd' },
       { title: 'Public Domain Dedication', value: 'cc0' },
       { title: 'Creative Commons', value: 'cc' },
-      { title: 'Copyright', value: 'copy' },
     ], // <-- predefined values
   },
   layout: "dropdown"
