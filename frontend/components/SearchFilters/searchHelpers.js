@@ -124,14 +124,14 @@ export function sortResultsBySortCriteria({ searchString = '', results = [], sor
     const weightedResults = prioritize(searchString, results);
     return weightedResults;
   } else if (/^year-.*/.test(sortCriteria)) {
-    const docsWithoutDate = results.filter(({ date = { utc: '' }}) => !date.utc);
-    const docsWithDate = results.filter(({ date = { utc: '' }}) => date.utc);
     // sort the docs that have date and attach the rest at the end
-    const sortedDocs = sortBy(docsWithDate, ({ date }) => moment(date.utc).valueOf());
+    const sortedDocs = sortBy(results, ({ date = {}, _updatedAt = '' }) => {
+      return date.utc ? moment(date.utc).valueOf() : moment(_updatedAt).valueOf()
+    });
     if (sortCriteria === 'year-asc') {
-      return sortedDocs.concat(docsWithoutDate);
+      return sortedDocs
     } else if (sortCriteria === 'year-desc') {
-      return sortedDocs.reverse().concat(docsWithoutDate);
+      return sortedDocs.reverse()
     }
   }
   // sortCriteria did not match anything just return results as is.
