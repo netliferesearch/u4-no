@@ -7,7 +7,7 @@ export default ({ queryString = '', limit: { from = 0, to = 20 } = { from: 0, to
     : queryString;
   return `*[
       (title match [${matchString}]
-        || references(*[[firstName, lastName] match [${matchString}]]._id, false)
+        || references(*[[firstName, surname] match [${matchString}]]._id, false)
         || longTitle match [${matchString}]
         || explainerText match [${matchString}]
         || firstName match [${matchString}]
