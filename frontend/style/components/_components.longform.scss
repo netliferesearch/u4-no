@@ -6,6 +6,10 @@
   max-width: 620px;
   margin: 0 auto;
   padding: 0 $spacing-small;
+  @media print {
+    width: 20cm;
+    margin: 0 auto;
+  }
 }
 .c-longform-grid__standard {
 }

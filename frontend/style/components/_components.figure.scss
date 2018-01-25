@@ -6,6 +6,9 @@
   @include mq($from: tablet) {
     width: 50%;
   }
+  @media print {
+   width:25%;
+   }
   img {
     width: 100%;
     height: auto;
