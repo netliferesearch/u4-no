@@ -32,7 +32,9 @@ class LongformArticle extends PureComponent {
         <div className="contents">
           <ul className="contents__list">
             <h2>Table of contents</h2>
-            {buildTitleObjects(content).map(item => (
+            {buildTitleObjects(content)
+            .filter(({ children = []}) => children)
+            .map(item => (
               <li key={item.id} className="contents__list-item">
                 <a href={`#${item.id}`}>{item.title}</a>
                 {item.children && (

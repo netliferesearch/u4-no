@@ -13,19 +13,20 @@ const firstParagraphInContent = (content = []) =>
 
 const TopicArticleEntry = (props) => {
   const { url = {}, title } = props.data;
-  const { query = {} } = url;
+  const { query = {} } = props.url;
   const { topicPart = 'nopart', slug = '' } = query;
   const topicPartMap = {
     basics: 'introduction',
     agenda: 'agenda',
   };
-  const content = props[topicPartMap[topicPart]];
+  const content = props.data[topicPartMap[topicPart]];
+
   return (
     <LongformArticleContainer
       BreadCrumbComponent={
         <BreadCrumb data={{ _type: 'topics', slug: { current: slug }, title }} />
       }
-      content={content}
+      data={{content}}
       headComponentConfigOverride={{
         title: firstTitleInContent(content),
         description: firstParagraphInContent(content),

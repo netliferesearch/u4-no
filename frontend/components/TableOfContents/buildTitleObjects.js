@@ -1,11 +1,12 @@
 import slugify from 'slugify';
 
-const buildTitleObject = (elem) => {
+const buildTitleObject = (elem = {}) => {
+  if (!elem.children) return;
   const title = elem.children[0].text;
   return {
     style: elem.style,
     title,
-    id: slugify(title, { lower: true }),
+    id: elem.id || slugify(title, { lower: true, remove: /[$*_+~.()'"!\-:@]/g }),
   };
 };
 
