@@ -28,7 +28,7 @@ const writePDFBufferToFile = async ({ dataStream, filename = 'output.pdf' }) =>
 const uploadPDF = async ({ targetDocument, pdfFilename }) => {
   const client = getSanityClient();
   if (!fs.existsSync(pdfFilename)) {
-    throw Error('Could not find file to upload', pdfFilename);
+    throw Error(`Could not find file to upload: ${pdfFilename}`);
   }
   const document = await client.assets.upload('file', fs.createReadStream(pdfFilename), {
     filename: pdfFilename,
