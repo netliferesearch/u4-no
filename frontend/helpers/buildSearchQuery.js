@@ -46,9 +46,11 @@ export default ({ queryString = false, limit: { from = 0, to = 20 } = { from: 0,
         || agenda[].children[].text match [${matchString}]
         || timezone match [${matchString}]
       ) && defined(slug.current)
+       && _type != "term"
     ]
     [${from}...${to}]
     {_id,
+      _updatedAt,
       title,
       slug,
       date,

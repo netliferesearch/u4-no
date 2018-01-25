@@ -47,6 +47,7 @@ const SearchResults = (props) => {
         {results.map(({
             _id,
             _type,
+            _updatedAt,
             publicationType = false,
             date = {},
             slug = {},
@@ -67,7 +68,9 @@ const SearchResults = (props) => {
                 {!publicationType && <span>{_type}</span>}
               </span>
               <span {...classes('items-date')}>
-                {date && moment(date.utc).format('DD.MM.YYYY')}
+                {date &&
+                  date.utc ? moment(date.utc).format('DD.MM.YYYY') : moment(_updatedAt).format('DD.MM.YYYY')
+                }
               </span>
               <br />
               <Link to={buildUrl({ _type, slug })}>
