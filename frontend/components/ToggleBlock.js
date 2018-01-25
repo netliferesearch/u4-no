@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import autobind from 'react-autobind';
 
 import { Link } from '../routes';
@@ -31,7 +32,7 @@ class ToggleBlock extends Component {
     });
   }
   render() {
-    const { content, title } = this.props;
+    const { content = [], title = '' } = this.props;
 
     return (
       <div {...classes()}>
@@ -54,6 +55,11 @@ class ToggleBlock extends Component {
       </div>
     );
   }
+}
+
+ToggleBlock.propTypes = {
+  title: PropTypes.string,
+  content: PropTypes.shape(PropTypes.object)
 }
 
 export default ToggleBlock;
