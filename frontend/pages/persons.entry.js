@@ -25,9 +25,10 @@ const Persons = ({
     image = {},
     cv = '',
     medium = '',
-    twitter = '',
-    url,
-  }}) => (
+    twitter = ''
+  },
+  url = {}
+}) => (
   <Layout
     headComponentConfig={{
       title: `${person.firstName} ${person.surname}`,

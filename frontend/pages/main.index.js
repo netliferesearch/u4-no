@@ -9,8 +9,7 @@ import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass, ArrowRight } from '../components/icons';
 import serializers from '../components/serializers'
 
-
-const Frontpage = ({ data: { frontPage = {}, topics = {} } = {}, url }) => (
+const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
   <Layout
     hideLogo
     noSearch
@@ -88,5 +87,5 @@ export default DataLoader(Frontpage, {
       "topics": *[_type == "topics"] | order(title) {_id, title, slug,  "imageUrl": featuredImage.asset->url}
     }`,
   }),
-  materializeDepth: 4,
+  materializeDepth: 0,
 });

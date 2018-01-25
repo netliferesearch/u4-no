@@ -12,7 +12,7 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Glossary = ({ data: { terms = [], url }}) => (
+const Glossary = ({ data: { terms = [] }, url = {} }) => (
   <Layout
     className="o-wrapper"
     headComponentConfig={{

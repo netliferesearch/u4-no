@@ -35,12 +35,13 @@ export default (Child, { queryFunc = false, materializeDepth = false, query = {}
         console.warn('Sanity results was empty, nothing to materialize', sanityResults);
         // throw new Error('No content found');
       }
-
       if (!materializeDepth) {
-        return { data: sanityResults };
+        const data = Array.isArray(sanityResults) ? [...sanityResults] : { ...sanityResults }
+        return { data };
       }
-
-      return { data: materialize(sanityResults, materializeDepth) };
+      const materializedResults = await materialize(sanityResults, materializeDepth)
+      const data = Array.isArray(materializedResults) ? [...materializedResults] : { ...materializedResults }
+      return { data };
     }
     render() {
       return (

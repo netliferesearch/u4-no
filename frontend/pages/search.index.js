@@ -20,13 +20,13 @@ const classes = BEMHelper({
 });
 
 const Search = ({
-  data: results = [],
+  data = [],
   searchFilters = [],
   searchSorting = '',
   url = '',
   topic = {},
 }) => {
-  const washedResults = results.filter(doc => doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc)
+  const washedResults = data.filter(doc => doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc)
   return (
   <Layout
     noSearch
@@ -87,7 +87,7 @@ export default DataLoader(connect(mapStateToProps, mapDispatchToProps)(Search), 
     if (!query.search && query.topics) {
       return {
         sanityQuery: `{
-          "results": *[references("${query.topics}")][0..1000]{..., "authors": authors[]->{...}},
+          "data": *[references("${query.topics}")][0..1000]{..., "authors": authors[]->{...}},
           "topic": *[_id == "${query.topics}"][0]
         }`,
       };

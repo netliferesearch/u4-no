@@ -4,7 +4,7 @@ import { Layout, LongformArticleContainer } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
-const TopicArticleEntry = ({ data: { url = {}, title = '', summary = [] } }) => {
+const TopicArticleEntry = ({ data: { title = '', summary = [] }, url = {} }) => {
   const { query = {} } = url;
   const { slug = '' } = query;
   return (
