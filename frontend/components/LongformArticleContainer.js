@@ -1,4 +1,5 @@
 import React from 'react';
+import BlockToContent from '@sanity/block-content-to-react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
@@ -110,6 +111,18 @@ const LongFormArticleContainer = (props) => {
                 />
                 <div className="c-hero-bg" />
                 <div className="c-hero-sideText">
+                  {
+                    props.data.featuredImage &&
+                      props.data.featuredImage.caption &&
+                      <BlockToContent blocks={props.data.featuredImage.caption} serializers={{
+                        types: { block: (props) => <p style={{display: 'inline' }}>{props.children}</p>}
+                      }} />
+                  }
+                  {
+                    props.data.featuredImage &&
+                      !props.data.featuredImage.sourceUrl &&
+                        props.data.featuredImage.credit && <div style={{display: 'inline'}}>{props.data.featuredImage.credit}</div>
+                  }
                   {props.data.featuredImage &&
                     props.data.featuredImage.sourceUrl && (
                       <a href={props.data.featuredImage.sourceUrl}>
@@ -118,9 +131,6 @@ const LongFormArticleContainer = (props) => {
                           : props.data.featuredImage.sourceUrl}
                       </a>
                     )}
-                  {props.data.featuredImage &&
-                    !props.data.featuredImage.sourceUrl &&
-                    props.data.featuredImage.credit && <span>{props.data.featuredImage.credit}</span>}
                 </div>
                 <div className="c-hero-header">
                   <PublicationArticleHeader
