@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Head from 'next/head';
 import BEMHelper from 'react-bem-helper';
+import BlockContent from '@sanity/block-content-to-react';
+import serializers from '../serializers'
+import { get } from 'lodash'
 import bibliographicReference from '../../helpers/bibliographicReference';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
 import { PrintLongformArticle } from './';
@@ -19,6 +22,14 @@ const classes = BEMHelper({
   name: 'print',
   prefix: 'c-',
 });
+
+const renderCaption = (caption) => {
+  if (Array.isArray(caption)) {
+    return <BlockContent blocks={caption} />
+  } else {
+    return <em>{caption}</em>
+  }
+}
 
 const LongFormArticleContainer = (props) => {
   const {
@@ -43,11 +54,13 @@ const LongFormArticleContainer = (props) => {
     editors = [],
     shortVersion = [],
     pdfFile = {},
+    keywords = [],
     legacypdf = {},
     reference = '',
     publicationNumber = '',
     featuredImage = {},
     partners = [],
+    notes = [],
     acknowledgements = '',
   } = props;
   return (
@@ -93,59 +106,71 @@ const LongFormArticleContainer = (props) => {
       </div>
 
       <div className="page2">
-        {partners.length ? (
-          <h2>Partners in this publication</h2>
-        ) : null}
-
-        {partners &&
-          partners.map(({ _key = '', institution = {} }) =>
-              _key && <img key={_key} alt="Partner Logo" src={institution.logo.asset.url} />)
-        }
+      { partners &&
+        <div className="page2__partners">
+        <h2>
         {
-          acknowledgements && <h2>Acknowledgments</h2>
-        }
-        {acknowledgements && <p>{acknowledgements}</p>}
-        <h2>Publisher</h2>
-        <p>U4 Anti-Corruption Resource Centre, Chr. Michelsen Institute, Bergen, Norway.</p>
+          partners.map(({ _key = '', institution = {}, description = '' }, index) => (
+            <span key={_key+index}>
+            {description && <span>{description} </span>}
+            <span>{institution.name}</span>
+            {(partners.length === index + 1) ? '.' : (partners.length - 1 > index + 1) ? ', ' : ' and '}
+            </span>
+          ))
+          }
+          {
+            partners.map(({ _key = '', institution = {}, description = '' }, index) => {
+              return get(institution, 'logo.asset.url') && <img className="page2__partner-logo" alt="Partner Logo" src={institution.logo.asset.url} />
+            })
+          }
+          </h2>
+        </div>
+      }
+        <div className="page2__disclaimer">
+          <h2>Disclaimer</h2>
+          <p>
+            All views in this text are the author(s)’, and may differ from the U4 partner agencies’
+            policies.
+          </p>
 
-        <h2>Disclaimer</h2>
-        <p>
-          All views in this text are the author(s)’, and may differ from the U4 partner agencies’
-          policies.
-        </p>
-        <h2>U4 partner agencies</h2>
-        <p>
-          The U4 Anti-Corruption Resource Centre is an institutional partnership of bilateral international development agencies/ministries of foreign affairs:
-        </p>
-        <ul>
-          <li>Australian Government – Department of Foreign Affairs and Trade – DFAT</li>
-          <li>Ministry of Foreign Affairs of Denmark – includes Danida</li>
-          <li>Ministry for Foreign Affairs of Finland</li>
-          <li>Germany: Federal Ministry for Economic Cooperation and Development – BMZ, including GIZ</li>
-          <li>The Norwegian Agency for Development Cooperation – Norad</li>
-          <li>Swedish International Development Cooperation Agency – Sida</li>
-          <li>Swiss Agency for Development Cooperation – SDC</li>
-          <li>UK Aid – Department for International Development</li>
-        </ul>
-        <h2>About U4</h2>
-        <p>
-          At U4, we work to reduce the harmful impact of corruption on society. We share research
-          and evidence to help international development actors get sustainable results. U4 is a
-          permanent centre at the Chr. Michelsen Institute (CMI) in Norway. CMI is a non-profit,
-          multi-disciplinary research institute with social scientists specialising in development
-          studies.
-        </p>
-        <h2>Cover photo</h2>
-        {featuredImage &&
-        <p>
-          {featuredImage.caption && featuredImage.caption.map(caption => caption.children[0].text)}{' '}
-          {featuredImage && featuredImage.credit} {featuredImage.sourceUrl && featuredImage.sourceUrl} <br />
-        </p>}
-        {props.relatedUrl && <h2>Online version</h2>}
-        {props.relatedUrl && <p>{props.relatedUrl.url}</p>}
-
-        <h2>Bibliographic reference</h2>
-        <p>{bibliographicReference({ publicationType, publicationNumber, reference })}</p>
+        </div>
+        <div className="page2__funding-partners"></div>
+        <div className="page2__about-u4"></div>
+        { featuredImage &&
+        <div className="page2__coverphoto">
+          <h2>Cover photo</h2>
+          {featuredImage.caption && renderCaption(featuredImage.caption) }
+          <p>{featuredImage.credit && <span>{featuredImage.credit} {featuredImage.license && `(${featuredImage.license})`} </span>}
+          {featuredImage.sourceUrl && <a href={featuredImage.sourceUrl}>{featuredImage.sourceUrl}</a>}</p>
+        </div>
+      }
+        <div className="page2__bibliographic-reference"></div>
+      { keywords &&
+        <div className="page2__keywords">
+         <h2>Keywords</h2>
+         <p>
+          {
+            keywords.map(({ target: { _id = '',  keyword = '' } = {} }, index) => <span key={_id+index}>{keyword} {index + 1 < keywords.length && ' - '}</span>)
+          }
+         </p>
+        </div>
+      }
+      {
+        publicationType &&
+        <div className="page2__publication-type">
+          <h2>Publication type</h2>
+          <p>{publicationType.title}</p>
+          {publicationType.description && <BlockContent blocks={publicationType.description} serializers={serializers} />}
+        </div>
+      }
+      {
+        notes.length > 0 &&
+        <div className="page2__publication-notes">
+          <h2>Notes</h2>
+          {notes && <BlockContent blocks={notes} serializers={serializers} />}
+        </div>
+      }
+        <div className="page2__about-the-autors"></div>
       </div>
       {_type === 'publication' && (
         <div className="c-longform-grid">
