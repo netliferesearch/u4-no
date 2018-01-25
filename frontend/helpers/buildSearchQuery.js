@@ -1,4 +1,4 @@
-export default ({ queryString = false, limit: { from = 0, to = 20 } = { from: 0, to: 20 } }) => {
+export default ({ queryString = '', limit: { from = 0, to = 20 } = { from: 0, to: 20 } }) => {
   const matchString = queryString.length
     ? queryString
       .split(' ')
