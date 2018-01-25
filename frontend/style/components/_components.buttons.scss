@@ -85,6 +85,13 @@
 
 .c-btn--primary {
 
+  &:focus {
+    .c-btn--body {
+      color: $white;
+      background-color: $brand-main;
+    }
+  }
+
 }
 
 .c-btn--secondary {

@@ -74,6 +74,7 @@
   &:hover {
     .c-article-header__download-text {
       border: none;
+
     }
     .c-article-header__download-icon {
       transform: translateY(3px);
@@ -87,6 +88,14 @@
     border-bottom: 1px solid rgba(0, 121, 207, 0.5);
   }
   border: none;
+
+  &:hover {
+    border: none;
+
+    .c-article-header__download-icon {
+      transform: translateY(3px);
+    }
+  }
 }
 .c-article-header__download-icon {
   width: 20px;

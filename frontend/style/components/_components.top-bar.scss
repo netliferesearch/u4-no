@@ -54,6 +54,11 @@ a.c-top-bar__logo:visited {
     &:last-child {
       margin-right: 0;
     }
+    button {
+      &:focus {
+        outline: auto;
+      }
+    }
   }
   button {
     letter-spacing: 0.6px;
