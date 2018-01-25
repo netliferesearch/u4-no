@@ -12,7 +12,7 @@ const firstParagraphInContent = (content = []) =>
   find(content, ({ style = '' }) => style === 'normal').children[0].text;
 
 const TopicArticleEntry = (props) => {
-  const { url = {}, title } = props;
+  const { url = {}, title } = props.data;
   const { query = {} } = url;
   const { topicPart = 'nopart', slug = '' } = query;
   const topicPartMap = {

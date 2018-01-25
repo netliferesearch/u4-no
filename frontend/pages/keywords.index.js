@@ -8,7 +8,7 @@ import { DownArrowButton } from '../components/buttons';
 function sortItems(items, key) {
   return sortBy(items, ({ keyword = '' }) => keyword.toUpperCase());
 }
-const ListKeywords = ({ keywords = [], countries = [], regions = [] }) => (
+const ListKeywords = ({ data: { keywords = [], countries = [], regions = [] } }) => (
   <Layout
     headComponentConfig={{
       title: 'Keywords overview',

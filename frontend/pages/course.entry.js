@@ -18,7 +18,7 @@ import {
 } from '../components/icons';
 import languageName from '../helpers/languageName';
 
-const CoursePage = ({ course = {}, url = {} }) => {
+const CoursePage = ({ data: { course = {}, url = {} }}) => {
   const {
     title = '',
     language = '',

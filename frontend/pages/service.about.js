@@ -16,7 +16,7 @@ import {
   ArrowRight,
 } from '../components/icons';
 
-const About = ({ about = {}, url = {} }) => {
+const About = ({ data: { about = {}, url = {} } }) => {
   const {
     title = '',
     longTitle = '',

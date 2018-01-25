@@ -20,7 +20,7 @@ const classes = BEMHelper({
 });
 
 const Search = ({
-  results = [],
+  data: results = [],
   searchFilters = [],
   searchSorting = '',
   url = '',

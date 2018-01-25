@@ -18,7 +18,7 @@ import {
   ArrowRight,
 } from '../components/icons';
 
-const ServicePage = ({ service = {} }) => (
+const ServicePage = ({ data: { service = {} } }) => (
   <Layout>
     <h2 className="c-topic-page_title">{service.title}</h2>
     <h2 className="c-topic-page__longTitle">{service.longTitle}</h2>

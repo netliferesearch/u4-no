@@ -22,8 +22,7 @@ class Persons extends Component {
   }
 
   render() {
-    console.log(this.props);
-    const { frontpage, persons, helpdesk, affiliatedexperts, url } = this.props;
+    const { frontpage, persons, helpdesk, affiliatedexperts, url } = this.props.data;
     return (
       <Layout
         headComponentConfig={{

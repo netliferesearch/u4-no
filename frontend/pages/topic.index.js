@@ -8,7 +8,7 @@ import { DownArrowButton } from '../components/buttons';
 function sortTopics(items, key) {
   return sortBy(items, [key]);
 }
-const TopicOverview = ({ topics = [] }) => (
+const TopicOverview = ({ data: { topics = [] } }) => (
   <Layout
     topics={topics}
     headComponentConfig={{

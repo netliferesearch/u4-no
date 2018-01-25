@@ -5,10 +5,9 @@ export default ({ queryString = '', limit: { from = 0, to = 20 } = { from: 0, to
       .map(tkn => `"${tkn}*"`)
       .join(',')
     : queryString;
-  return `{
-    "results":
-    *[
+  return `*[
       (title match [${matchString}]
+        || references(*[[firstName, lastName] match [${matchString}]]._id, false)
         || longTitle match [${matchString}]
         || explainerText match [${matchString}]
         || firstName match [${matchString}]
@@ -65,7 +64,7 @@ export default ({ queryString = '', limit: { from = 0, to = 20 } = { from: 0, to
       year,
       firstName,
       surname
-    }}`.replace('\n', '');
+    }`.replace('\n', '');
 };
 
 /**

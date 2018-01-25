@@ -17,7 +17,7 @@ import {
   ArrowRight,
 } from '../components/icons';
 
-const ServicePage = ({ service = {}, url = {} }) => {
+const ServicePage = ({ data: { service = {}, url = {} } }) => {
   const {
     title = '',
     longTitle = '',

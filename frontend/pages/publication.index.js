@@ -16,7 +16,7 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Publications = ({ publications = [], url = {} }) => (
+const Publications = ({ data: { publications = [], url = {} } }) => (
   <Layout
     headComponentConfig={{
       title: 'Publications',

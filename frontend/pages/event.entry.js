@@ -17,7 +17,7 @@ import {
   ArrowRight,
 } from '../components/icons';
 
-const EventPage = ({ event = {}, url = {} }) => {
+const EventPage = ({data: { event = {}, url = {} }}) => {
   const {
     title = '',
     eventType = '',

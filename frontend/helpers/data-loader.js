@@ -37,10 +37,10 @@ export default (Child, { queryFunc = false, materializeDepth = false, query = {}
       }
 
       if (!materializeDepth) {
-        return sanityResults;
+        return { data: sanityResults };
       }
 
-      return materialize(sanityResults, materializeDepth);
+      return { data: materialize(sanityResults, materializeDepth) };
     }
     render() {
       return (

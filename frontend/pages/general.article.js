@@ -11,8 +11,7 @@ import {
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
-const GeneralArticle = (props) => {
-  const { url = '', explainerText = '', _type = '' } = props;
+const GeneralArticle = ({ data: { url = '', explainerText = '', _type = '' }}) => {
   if (_type === 'frontpage') {
     const {
       title = '',

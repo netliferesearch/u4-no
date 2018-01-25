@@ -5,6 +5,7 @@ import DataLoader from '../helpers/data-loader';
 import { Footer, Layout, Newsletter, ServiceArticle, SimpleHero } from '../components';
 
 const ServicePage = ({
+  data: {
   title = '',
   longTitle = '',
   featuredImage = {},
@@ -12,7 +13,7 @@ const ServicePage = ({
   sections = [],
   relatedUrl = {},
   url = ''
-}) => (
+} }) => (
     <Layout
       headComponentConfig={{
         title,

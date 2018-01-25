@@ -9,7 +9,8 @@ import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass, ArrowRight } from '../components/icons';
 import serializers from '../components/serializers'
 
-const Frontpage = ({ frontPage = {}, topics = {}, url }) => (
+
+const Frontpage = ({ data: { frontPage = {}, topics = {} } = {}, url }) => (
   <Layout
     hideLogo
     noSearch

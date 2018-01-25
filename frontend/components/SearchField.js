@@ -125,7 +125,7 @@ class SearchField extends Component {
                         debounce(
                           client
                             .fetch(buildQuery({ queryString: value, limit: { from: 0, to: 200 } }))
-                            .then(({ results }) => {
+                            .then((results) => {
                               const washedResults = results.filter(doc => doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc)
                               const items = prioritize(value, washedResults.map(item => item)); // Added ID to make it unique
                               this.setState({ items });

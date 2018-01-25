@@ -11,8 +11,7 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Asset = (props) => {
-  const { title = '', slug = {}, asset = {} } = props;
+const Asset = ({ data: { title = '', slug = {}, asset = {} }}) => {
   return (
     <Layout>
       <header>

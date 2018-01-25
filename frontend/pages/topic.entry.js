@@ -7,24 +7,25 @@ import { BasicGuide, ResearchAgenda, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
 
 const TopicEntry = ({
-  topic: {
-    title = '',
-    longTitle = '',
-    explainerText = '',
-    featuredImage,
-    linkListContent = false,
-    parent = {},
-    slug = {},
-    introduction = [],
-    agenda = [],
-    advisors = [],
-    resources = [],
-    relatedUrl = {},
-    _id = '',
-    _type = '',
-    url = {},
-  } = {},
-}) => (
+  data: {
+    topic: {
+      title = '',
+      longTitle = '',
+      explainerText = '',
+      featuredImage,
+      linkListContent = false,
+      parent = {},
+      slug = {},
+      introduction = [],
+      agenda = [],
+      advisors = [],
+      resources = [],
+      relatedUrl = {},
+      _id = '',
+      _type = '',
+      url = {},
+    } = {},
+}}) => (
   <Layout
     headComponentConfig={Object.assign(
       {

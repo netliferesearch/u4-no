@@ -14,19 +14,20 @@ const classes = BEMHelper({
 });
 
 const Persons = ({
-  slug = {},
-  firstName = '',
-  surname = '',
-  affiliations = false,
-  email = '',
-  phone = '',
-  person = {},
-  image = {},
-  cv = '',
-  medium = '',
-  twitter = '',
-  url,
-}) => (
+  data: {
+    slug = {},
+    firstName = '',
+    surname = '',
+    affiliations = false,
+    email = '',
+    phone = '',
+    person = {},
+    image = {},
+    cv = '',
+    medium = '',
+    twitter = '',
+    url,
+  }}) => (
   <Layout
     headComponentConfig={{
       title: `${person.firstName} ${person.surname}`,
