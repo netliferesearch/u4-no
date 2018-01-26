@@ -24,15 +24,15 @@ const Glossary = ({ data: { terms = [] }, url = {} }) => (
     <div className="o-wrapper-inner o-wrapper--padded">
       <section {...classes()}>
         <h1 {...classes('title')}>Glossary</h1>
-        {terms.map(
-          ({ term = '', definition = '' }) =>
+        {terms.map(({ term = '', definition = '', slug = {} }) =>
             definition.length > 0 && (
               <div {...classes('terms')}>
-                <h3 {...classes('terms-term')}>{term}</h3>
+                <h3 {...classes('terms-term')} id={slug.current ? slug.current : ''}>
+                  {term}
+                </h3>
                 <p {...classes('terms-definition')}>{definition}</p>
               </div>
-            ),
-        )}
+            ))}
       </section>
     </div>
     <Footer />
