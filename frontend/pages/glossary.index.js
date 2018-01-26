@@ -5,7 +5,7 @@ import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 import BEMHelper from 'react-bem-helper';
 
-import { Footer, Layout } from '../components';
+import { Footer, Layout, ServiceArticle } from '../components';
 
 const classes = BEMHelper({
   name: 'glossary',
@@ -24,13 +24,15 @@ const Glossary = ({ data: { terms = [] }, url = {} }) => (
     <div className="o-wrapper-inner o-wrapper--padded">
       <section {...classes()}>
         <h1 {...classes('title')}>Glossary</h1>
-        {terms.map(({ term = '', definition = '', slug = {} }) =>
+        {terms.map(({ term = '', definition = [], slug = {} }) =>
             definition.length > 0 && (
               <div {...classes('terms')}>
                 <h3 {...classes('terms-term')} id={slug.current ? slug.current : ''}>
                   {term}
                 </h3>
-                <p {...classes('terms-definition')}>{definition}</p>
+                <p {...classes('terms-definition')}>
+                  {definition ? <ServiceArticle blocks={definition} /> : null}
+                </p>
               </div>
             ))}
       </section>
@@ -42,7 +44,7 @@ const Glossary = ({ data: { terms = [] }, url = {} }) => (
 export default DataLoader(Glossary, {
   queryFunc: () => ({
     sanityQuery: `{
-      "terms": *[_type == "term"] | order(term)
+      "terms": *[_type == "term"][1..10000] | order(term)
     }`,
   }),
   materializeDepth: 2,
