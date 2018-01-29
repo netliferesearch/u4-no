@@ -17,26 +17,29 @@ import {
 } from './';
 
 const LegacyPublicationContainer = (props) => {
+  console.log(props)
   const {
+    data: {
+      lead = '',
+      abstract = '',
+      _type = '',
+      longTitle = '',
+      featuredImage = {},
+      mainPoints = [],
+      resources = [],
+      legacypdf = {},
+      date = {},
+      translation = {},
+      language = '',
+      publicationType = {},
+      title = '',
+    } = {},
+    BreadCrumbComponent = null,
+    isArticleMenuOpen,
+    isPublicationDrawerOpen,
     toggleArticleMenu,
     toggleLoadingScreen,
-    isArticleMenuOpen,
     showLoadingScreen,
-    lead = '',
-    abstract,
-    _type = '',
-    longTitle = '',
-    title = '',
-    featuredImage = {},
-    mainPoints = [],
-    isPublicationDrawerOpen,
-    resources = [],
-    BreadCrumbComponent = null,
-    legacypdf = {},
-    date = {},
-    translation = {},
-    language = '',
-    publicationType = {},
     url = { asPath }
   } = props;
   const pubyear = date && date.utc ? new Date(date.utc).getFullYear() : '';
@@ -56,30 +59,30 @@ const LegacyPublicationContainer = (props) => {
           <div
             className="c-hero-image"
             style={{
-              backgroundImage: `url(${props.featuredImage &&
-                props.featuredImage.asset &&
-                props.featuredImage.asset.url})`,
+              backgroundImage: `url(${featuredImage &&
+                featuredImage.asset &&
+                featuredImage.asset.url})`,
               backgroundColor: '#0079CF',
             }}
           />
           <div className="c-hero-bg" />
           <div className="c-hero-sideText">
-            {props.featuredImage &&
-              props.featuredImage.sourceUrl && (
-                <a href={props.featuredImage.sourceUrl}>
-                  {props.featuredImage.credit
-                    ? props.featuredImage.credit
-                    : props.featuredImage.sourceUrl}
+            {featuredImage &&
+              featuredImage.sourceUrl && (
+                <a href={featuredImage.sourceUrl}>
+                  {featuredImage.credit
+                    ? featuredImage.credit
+                    : featuredImage.sourceUrl}
                 </a>
               )}
-            {props.featuredImage &&
-              !props.featuredImage.sourceUrl &&
-              props.featuredImage.credit && <span>{props.featuredImage.credit}</span>}
+            {featuredImage &&
+              !featuredImage.sourceUrl &&
+              featuredImage.credit && <span>{featuredImage.credit}</span>}
           </div>
           <div className="c-hero-header">
             <PublicationArticleHeader
               className="c-hero__grid-container__content links-wrapper-dark-background"
-              {...props}
+              {...props.data}
             />
           </div>
         </div>
