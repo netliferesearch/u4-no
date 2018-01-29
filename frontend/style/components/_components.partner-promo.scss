@@ -56,6 +56,15 @@
     padding: $spacing 0;
   }
 }
+.c-partner-promo__statement-link > * {
+  display: inline-block;
+  color: $brand-lighter;
+
+  &:hover {
+    border-bottom: 1px solid currentColor;
+    margin-bottom: -1px;
+  }
+}
 
 .c-partner-promo__statement-icon {
   height: auto;
