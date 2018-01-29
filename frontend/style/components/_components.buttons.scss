@@ -67,7 +67,7 @@
     }
   }
 }
-.c-btn--body {
+.c-btn__body {
   font-family: $font-sans;
   margin-left: $spacing / 2;
   display: inline-block;
@@ -86,7 +86,7 @@
 .c-btn--primary {
 
   &:focus {
-    .c-btn--body {
+    .c-btn__body {
       color: $white;
       background-color: $brand-main;
     }

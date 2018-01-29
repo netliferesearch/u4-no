@@ -115,7 +115,7 @@ export default class PdfViewer extends Component {
           <div className="c-pdf-viewer__controls">
             <div className="u-padding">
               <button className="c-btn c-btn--primary" onClick={this.decrementPageNumber}>
-                <span className="c-btn--body">Previous</span>
+                <span className="c-btn__body">Previous</span>
               </button>
             </div>
             <div className="u-padding u-tc">
@@ -123,7 +123,7 @@ export default class PdfViewer extends Component {
             </div>
             <div className="u-padding">
               <button className="c-btn c-btn--primary" onClick={this.incrementPageNumber}>
-                <span className="c-btn--body">Next</span>
+                <span className="c-btn__body">Next</span>
               </button>
             </div>
           </div>
