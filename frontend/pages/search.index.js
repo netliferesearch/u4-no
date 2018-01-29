@@ -19,6 +19,15 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
+const dataResolver = data => {
+  console.log(data)
+  if (Array.isArray(data)) {
+    return data.filter(doc => doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc)
+  }
+  return data.data.filter(doc => doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc)
+
+}
+
 const Search = ({
   data = [],
   searchFilters = [],
@@ -26,7 +35,8 @@ const Search = ({
   url = '',
   topic = {},
 }) => {
-  const washedResults = data.filter(doc => doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc)
+  const washedResults = dataResolver(data)
+  if (!data) return <div></div>
   return (
   <Layout
     noSearch
@@ -78,7 +88,6 @@ const mapStateToProps = state => state;
 const mapDispatchToProps = () => ({});
 export default DataLoader(connect(mapStateToProps, mapDispatchToProps)(Search), {
   queryFunc: ({ query }) => {
-    console.log('query', query);
     if (!query.search && !query.topics) {
       return {
         sanityQuery: false,
@@ -92,7 +101,6 @@ export default DataLoader(connect(mapStateToProps, mapDispatchToProps)(Search), 
         }`,
       };
     }
-    console.log(buildSearchQuery({ queryString: query.search, limit: { from: 0, to: 1000 } }))
     return {
       sanityQuery: buildSearchQuery({ queryString: query.search, limit: { from: 0, to: 1000 } }),
       query: query.search,
