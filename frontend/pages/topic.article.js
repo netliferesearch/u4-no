@@ -5,11 +5,15 @@ import { LongformArticleContainer } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
-const firstTitleInContent = (content = []) =>
-  find(content, ({ style = '' }) => style === 'h1' || style === 'h2').children[0].text;
+const firstTitleInContent = (content = []) => {
+  const firstTitle = find(content, ({ style = '' }) => style === 'h1' || style === 'h2');
+  return firstTitle ? firstTitle.children[0].text : '';
+};
 
-const firstParagraphInContent = (content = []) =>
-  find(content, ({ style = '' }) => style === 'normal').children[0].text;
+const firstParagraphInContent = (content = []) => {
+  const firstParagraph = find(content, ({ style = '' }) => style === 'normal');
+  return firstParagraph ? firstParagraph.children[0].text : '';
+};
 
 const TopicArticleEntry = (props) => {
   const { url = {}, title } = props.data;
@@ -28,7 +32,7 @@ const TopicArticleEntry = (props) => {
       }
       data={{content}}
       headComponentConfigOverride={{
-        title: firstTitleInContent(content),
+        title: firstTitleInContent(content.filter(({ style = {} }) => style.children)),
         description: firstParagraphInContent(content),
         url: url.asPath ? `https://beta.u4.no${url.asPath}` : '',
       }}
