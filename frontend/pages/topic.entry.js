@@ -1,8 +1,8 @@
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
-import slugify from 'slugify'
-import serializers from '../components/serializers'
+import slugify from 'slugify';
+import serializers from '../components/serializers';
 import { Footer, Layout, Team, Mosaic, Newsletter, PartnerPromo, LinkList } from '../components';
 import { BasicGuide, ResearchAgenda, ArrowRight } from '../components/icons';
 import LinkBox from '../components/LinkBox';
@@ -26,7 +26,8 @@ const TopicEntry = ({
       _type = '',
       url = {},
     } = {},
-}}) => (
+  },
+}) => (
   <Layout
     headComponentConfig={Object.assign(
       {
@@ -40,8 +41,18 @@ const TopicEntry = ({
     )}
   >
     <div>
-      <h1 id={slugify(title, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })}  className="c-topic-page_title">{title}</h1>
-      <h2 id={slugify(longTitle, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })} className="c-topic-page__longTitle">{longTitle}</h2>
+      <h1
+        id={slugify(title, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })}
+        className="c-topic-page_title"
+      >
+        {title}
+      </h1>
+      <h2
+        id={slugify(longTitle, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })}
+        className="c-topic-page__longTitle"
+      >
+        {longTitle}
+      </h2>
       <section className="c-boxOnImage u-margin-bottom-huge">
         {featuredImage ? (
           <figure className="c-boxOnImage__figure">
@@ -51,11 +62,19 @@ const TopicEntry = ({
                 featuredImage.asset ? featuredImage.asset.url : ''
               }?w=1120&fit=crop&crop=focalpoint`}
             />
-            {featuredImage.caption && (
-              <span className="c-boxOnImage__caption">
+            <span className="c-boxOnImage__caption">
+              {featuredImage.caption && (
                 <BlockContent blocks={featuredImage.caption} serializers={serializers} />
-              </span>
-            )}
+              )}
+              {featuredImage.sourceUrl && (
+                <a href={featuredImage.sourceUrl}>
+                  {featuredImage.credit ? featuredImage.credit : 'Credit'}
+                </a>
+              )}
+              {!featuredImage.sourceUrl &&
+                featuredImage.credit && <span>{featuredImage.credit}</span>}
+              {featuredImage.license && <span>{featuredImage.license}</span>}
+            </span>
           </figure>
         ) : null}
         <div className="c-boxOnImage__body">
@@ -146,6 +165,9 @@ export default DataLoader(TopicEntry, {
         ...,
         "featuredImage": {
           "caption": featuredImage.caption,
+          "credit": featuredImage.credit,
+          "sourceUrl": featuredImage.sourceUrl,
+          "license": featuredImage.license,
           "asset": featuredImage.asset->{
             "altText": altText,
             "url": url
