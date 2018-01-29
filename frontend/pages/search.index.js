@@ -19,14 +19,12 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const dataResolver = data => {
-  console.log(data)
+const dataResolver = (data) => {
   if (Array.isArray(data)) {
-    return data.filter(doc => doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc)
+    return data.filter(doc => (doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc));
   }
-  return data.data.filter(doc => doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc)
-
-}
+  return data.data.filter(doc => (doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc));
+};
 
 const Search = ({
   data = [],
@@ -35,10 +33,10 @@ const Search = ({
   url = '',
   topic = {},
 }) => {
-  const washedResults = dataResolver(data)
-  if (!data) return <div></div>
+  const washedResults = dataResolver(data);
+  if (!data) return <div />;
   return (
-  <Layout
+    <Layout
     noSearch
     headComponentConfig={{
       title: 'Search',
@@ -81,7 +79,7 @@ const Search = ({
     </div>
     <Footer />
   </Layout>
-  )
+  );
 };
 
 const mapStateToProps = state => state;
