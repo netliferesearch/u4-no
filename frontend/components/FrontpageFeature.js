@@ -15,6 +15,7 @@ class FrontpageFeature extends Component {
     this.state = {
       active: false,
       image:
+        props.topics[0].imageUrl ||
         'https://cdn.sanity.io/images/1f1lcoov/production/YCZv9hQlTcNdiI1zYXLrIglw-1642x1087.jpg',
     };
     this.triggerToggle = this.triggerToggle.bind(this);
@@ -47,7 +48,7 @@ class FrontpageFeature extends Component {
           <div {...classes('right')}>
             <h3 {...classes('heading')}>Corruption by topic</h3>
             <ul {...classes('list')}>
-              {topics.slice(0, 5).map(topic => (
+              {topics.slice(0, 5).map((topic, index) => (
                 <li key={topic._id} {...classes('list-item')}>
                   <Link route="topic.entry" params={{ slug: topic.slug.current }}>
                     <a {...classes('link')} onMouseEnter={() => this.triggerImg(topic.imageUrl)}>
