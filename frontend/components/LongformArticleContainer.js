@@ -18,16 +18,18 @@ import {
 
 const LongFormArticleContainer = (props = {}) => {
   const {
-    lead = '',
-    _type = '',
-    longTitle = '',
-    title = '',
-    mainPoints = [],
-    resources = [],
-    references = [],
-    featuredImage = {},
-    relatedUrl = {},
-    publicationType = {},
+    data: {
+      lead = '',
+      _type = '',
+      longTitle = '',
+      title = '',
+      mainPoints = [],
+      resources = [],
+      references = [],
+      featuredImage = {},
+      relatedUrl = {},
+      publicationType = {},
+    } = {},
     headComponentConfigOverride,
     isArticleMenuOpen,
     showLoadingScreen,
@@ -63,7 +65,7 @@ const LongFormArticleContainer = (props = {}) => {
             isArticleMenuOpen ? 'c-article-nav-fullscreen c-article-nav-fullscreen--open' : ''
           }`}
         >
-          <TableOfContentsButton {...props} />
+          <TableOfContentsButton {...props.data} />
           <TableOfContentsContent
             showAllItems
             onItemSelected={(e) => {
@@ -80,7 +82,7 @@ const LongFormArticleContainer = (props = {}) => {
                 }, 1);
               }
             }}
-            {...props}
+            {...props.data}
           />
         </div>
       )}
@@ -88,8 +90,8 @@ const LongFormArticleContainer = (props = {}) => {
       {!isArticleMenuOpen && (
         <article>
           {_type === 'publication' &&
-            !isPublicationDrawerOpen && <TableOfContentsButton {...props} />}
-          <CustomScrollSpy {...props} />
+            !isPublicationDrawerOpen && <TableOfContentsButton {...props.data} />}
+          <CustomScrollSpy {...props.data} />
           <span id="js-top" />
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
@@ -102,39 +104,39 @@ const LongFormArticleContainer = (props = {}) => {
                 <div
                   className="c-hero-image"
                   style={{
-                    backgroundImage: `url(${props.featuredImage &&
-                      props.featuredImage.asset &&
-                      props.featuredImage.asset.url}?width=1120&crop=focalpoint&fit=scale)`,
+                    backgroundImage: `url(${props.data.featuredImage &&
+                      props.data.featuredImage.asset &&
+                      props.data.featuredImage.asset.url}?width=1120&crop=focalpoint&fit=scale)`,
                     backgroundColor: '#0079CF',
                   }}
                 />
                 <div className="c-hero-bg" />
                 <div className="c-hero-sideText">
                   {
-                    props.featuredImage &&
-                      props.featuredImage.caption &&
-                      <BlockToContent blocks={props.featuredImage.caption} serializers={{
+                    props.data.featuredImage &&
+                      props.data.featuredImage.caption &&
+                      <BlockToContent blocks={props.data.featuredImage.caption} serializers={{
                         types: { block: (props) => <p style={{display: 'inline' }}>{props.children}</p>}
                       }} />
                   }
                   {
-                    props.featuredImage &&
-                      !props.featuredImage.sourceUrl &&
-                        props.featuredImage.credit && <div style={{display: 'inline'}}>{props.featuredImage.credit}</div>
+                    props.data.featuredImage &&
+                      !props.data.featuredImage.sourceUrl &&
+                        props.data.featuredImage.credit && <div style={{display: 'inline'}}>{props.data.featuredImage.credit}</div>
                   }
-                  {props.featuredImage &&
-                    props.featuredImage.sourceUrl && (
-                      <a href={props.featuredImage.sourceUrl}>
-                        {props.featuredImage.credit
-                          ? props.featuredImage.credit
-                          : props.featuredImage.sourceUrl}
+                  {props.data.featuredImage &&
+                    props.data.featuredImage.sourceUrl && (
+                      <a href={props.data.featuredImage.sourceUrl}>
+                        {props.data.featuredImage.credit
+                          ? props.data.featuredImage.credit
+                          : props.data.featuredImage.sourceUrl}
                       </a>
                     )}
                 </div>
                 <div className="c-hero-header">
                   <PublicationArticleHeader
                     className="c-hero__grid-container__content links-wrapper-dark-background"
-                    {...props}
+                    {...props.data}
                   />
                 </div>
               </div>
@@ -185,40 +187,40 @@ const LongFormArticleContainer = (props = {}) => {
               <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
               {lead && <div className="c-article c-longform-grid__standard">{lead}</div>}
               <div className="c-longform-grid__sidebar-right">
-                <TableOfContentsSidebar alwaysFollow {...props} />
+                <TableOfContentsSidebar alwaysFollow {...props.data} />
               </div>
             </div>
           )}
-          <LongformArticle {...props} />
-          {props.references ? (
+          <LongformArticle {...props.data} />
+          {props.data.references ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                  <ToggleBlock title="References" active content={props.references} />
+                  <ToggleBlock title="References" active content={props.data.references} />
               </div>
             </div>
           ) : null}
-          {props.acknowledgements ? (
+          {props.data.acknowledgements ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                <ToggleBlock title="Acknowledgements" content={props.acknowledgements} />
+                <ToggleBlock title="Acknowledgements" content={props.data.acknowledgements} />
               </div>
             </div>
           ) : null}
-          {props.notes ? (
+          {props.data.notes ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                <ToggleBlock title="Notes" content={props.notes} />
+                <ToggleBlock title="Notes" content={props.data.notes} />
               </div>
             </div>
           ) : null}
-          {props.abstract ? (
+          {props.data.abstract ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                <ToggleBlock title="Abstract" content={props.abstract} />
+                <ToggleBlock title="Abstract" content={props.data.abstract} />
               </div>
             </div>
           ) : null}
-          {props._type === 'publication' && (
+          {props.data._type === 'publication' && (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock
@@ -228,10 +230,10 @@ const LongFormArticleContainer = (props = {}) => {
               </div>
             </div>
           )}
-          {props.relatedContent && (
+          {props.data.relatedContent && (
             <div className="o-wrapper">
               <h2>We also recommend</h2>
-              <RecommendedResources relatedContent={props.relatedContent} />
+              <RecommendedResources relatedContent={props.data.relatedContent} />
             </div>
           )}
           <span id="js-bottom" />

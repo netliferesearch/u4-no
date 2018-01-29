@@ -11,10 +11,6 @@ import {
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
-const GeneralArticleX = props => {
-  console.log(props)
-  return <div></div>
-}
 const GeneralArticle = ({ data, url = {} }) => {
   if (data._type === 'frontpage') {
     const {
@@ -47,7 +43,7 @@ const GeneralArticle = ({ data, url = {} }) => {
     <LongformArticleContainer
       BreadCrumbComponent={<BreadCrumb url={url} />}
       lead={data.explainerText}
-      {...data}
+      data={{ ...data }}
     />
   );
 };
