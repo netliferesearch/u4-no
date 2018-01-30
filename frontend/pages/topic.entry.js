@@ -196,6 +196,7 @@ export default DataLoader(TopicEntry, {
           _id,
           _type,
           "publicationType": publicationType->title,
+          "articleType": articleType[0]->title,
           title,
           "slug": slug.current,
           "titleColor": featuredImage.asset->metadata.palette.dominant.title,
