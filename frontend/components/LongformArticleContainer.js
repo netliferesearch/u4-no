@@ -126,12 +126,13 @@ const LongFormArticleContainer = (props = {}) => {
                   }
                   {props.data.featuredImage &&
                     props.data.featuredImage.sourceUrl && (
-                      <a href={props.data.featuredImage.sourceUrl}>
+                      <a className="u-margin-left-tiny" href={props.data.featuredImage.sourceUrl}>
                         {props.data.featuredImage.credit
                           ? props.data.featuredImage.credit
                           : props.data.featuredImage.sourceUrl}
                       </a>
                     )}
+                    { props.data.featuredImage.license && <span> {props.data.featuredImage.license.toUpperCase()}</span>}
                 </div>
                 <div className="c-hero-header">
                   <PublicationArticleHeader
