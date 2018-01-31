@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
 import sanityClient from '@sanity/client';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 import { Link } from '../routes';
 import { SearchField } from '../components';
 import { ArrowRight } from '../components/icons';
@@ -48,6 +49,13 @@ class Menu extends Component {
         data,
       });
     });
+    Router.onRouteChangeStart = () => {
+      this.setState({
+        activeMenu: false,
+        activeSearchMenu: false,
+        activeItem: 1,
+      });
+    };
   }
 
   triggerMenu(e) {
