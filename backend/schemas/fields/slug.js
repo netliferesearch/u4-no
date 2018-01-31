@@ -5,6 +5,7 @@ export default {
     source: 'title',
     slugify: input => input
                          .toLowerCase()
+                         .replace(/\./g, '-')
                          .replace(/\s+/g, '-')
                          .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
                          .replace(/\-\-+/g, '-')         // Replace multiple - with single -
