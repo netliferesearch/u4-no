@@ -73,7 +73,7 @@ const TopicEntry = ({
               )}
               {!featuredImage.sourceUrl &&
                 featuredImage.credit && <span>{featuredImage.credit}</span>}
-              {featuredImage.license && <span>{featuredImage.license}</span>}
+              {featuredImage.license && <span> {featuredImage.license.toUpperCase()}</span>}
             </span>
           </figure>
         ) : null}
