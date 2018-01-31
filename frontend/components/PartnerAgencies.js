@@ -28,6 +28,9 @@ const PartnerAgencies = ({ title }) => (
         <a href="https://www.giz.de/en/html/index.html" rel="noopener noreferrer" target="_blank"><PartnerLogo3 /></a>
       </div>
       <div {...classes('item')}>
+        <a href="https://www.bmz.de/en/" rel="noopener noreferrer" target="_blank"><PartnerLogo8 /></a>
+      </div>
+      <div {...classes('item')}>
         <a href="http://formin.finland.fi/public/default.aspx?culture=en-US&contentlan=2" rel="noopener noreferrer" target="_blank"><PartnerLogo4 /></a>
       </div>
       <div {...classes('item')}>
@@ -38,9 +41,6 @@ const PartnerAgencies = ({ title }) => (
       </div>
       <div {...classes('item')}>
         <a href="https://www.eda.admin.ch/sdc" rel="noopener noreferrer" target="_blank"><PartnerLogo7 /></a>
-      </div>
-      <div {...classes('item')}>
-        <a href="https://www.transparency.org/" rel="noopener noreferrer" target="_blank"><PartnerLogo8 /></a>
       </div>
       <div {...classes('item', 'small')}>
         <a href="https://www.ukaiddirect.org/" rel="noopener noreferrer" target="_blank"><PartnerLogo9 /></a>
