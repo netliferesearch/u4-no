@@ -4,7 +4,7 @@ import DataLoader from '../helpers/data-loader';
 
 const PublicationEntry = props => (
   <div>
-    {props.data.legacypdf ? <LegacyPublicationContainer {...props} /> : <LongformArticleContainer {...props} />}
+    {(props.data.legacypdf && !props.data.content) ? <LegacyPublicationContainer {...props} /> : <LongformArticleContainer {...props} />}
   </div>
 );
 
