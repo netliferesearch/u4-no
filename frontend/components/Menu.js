@@ -152,14 +152,14 @@ class Menu extends Component {
               </h4>
               <ul {...menuClasses('list')}>
                 <li {...menuClasses('list-item')}>
-                  <Link href="/search?filters=pub-type-0&search=*">
+                  <a href="/search?filters=pub-type-0&search=*">
                     <a {...menuClasses('link')}>Publications</a>
-                  </Link>
+                  </a>
                 </li>
                 <li {...menuClasses('list-item')}>
-                  <Link href="/search?filters=pub-type-pubtype-3&search=*">
+                  <a href="/search?filters=pub-type-pubtype-3&search=*">
                     <a {...menuClasses('link')}>Helpdesk answers</a>
-                  </Link>
+                  </a>
                 </li>
                 <li {...menuClasses('list-item')}>
                   <Link to="/terms">
