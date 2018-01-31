@@ -40,7 +40,7 @@ const Footer = ({ title }) => (
         </div>
         <div {...classes('item')}>
           <Link to="/privacy-policy">
-            <a>Privacy Policy</a>
+            <a>Privacy policy</a>
           </Link>
           <br />
           <Link to="/about-u4#open-access-policy">
