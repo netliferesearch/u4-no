@@ -159,7 +159,7 @@ const LongFormArticleContainer = (props) => {
         { reference &&
           <div className="page2__bibliographic-reference">
             <h2>Bibliographic reference</h2>
-            <p>{reference && <BlockContent blocks={reference} serializers={serializers} />}</p>
+            <p>{reference}</p>
           </div>
         }
 
