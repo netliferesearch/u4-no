@@ -1,5 +1,8 @@
-.c-toggle-block__item--active {
-
+.c-toggle-block__item {
+  margin-bottom: $spacing-small;
+}
+.c-toggle-block__title--print {
+  display: block;
 }
 .c-toggle-block__title {
   @include inuit-font-size($font-size-large, $font-size-larger);
