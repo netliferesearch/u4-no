@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import { Link } from '../routes';
 import { PartnerLogo8 } from './icons/';
 import buildUrl from '../helpers/buildUrl';
-import serializers from './serializers'
+import serializers from './serializers';
 
 const classes = BEMHelper({
   name: 'boxOnImage',

@@ -1,5 +1,4 @@
-const BarChart = (props) => (<div className="c-longform-grid__standard">
+const BarChart = () => (<div className="c-longform-grid__standard">BarChart</div>);
 
-</div>)
+export default BarChart;
 
-export default BarChart

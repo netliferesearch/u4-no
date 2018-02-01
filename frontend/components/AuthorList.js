@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import randomKey from '../helpers/randomKey';
 import buildUrl from '../helpers/buildUrl';
 
-const AuthorList = ({ authors = false }) => (
+const AuthorList = ({ authors = [] }) => (
   <span>
     By{' '}
     {authors &&
@@ -32,5 +33,23 @@ const AuthorList = ({ authors = false }) => (
         ))}
   </span>
 );
+AuthorList.propTypes = {
+  authors: PropTypes.arrayOf(PropTypes.shape({
+    firstName: PropTypes.string,
+    surname: PropTypes.string,
+    slug: PropTypes.shape({
+      current: PropTypes.string,
+    }),
+    affiliations: PropTypes.arrayOf(PropTypes.object),
+    target: PropTypes.shape({
+      firstName: PropTypes.string,
+      surname: PropTypes.string,
+      slug: PropTypes.shape({
+        current: PropTypes.string,
+      }),
+      affiliations: PropTypes.arrayOf(PropTypes.object)
+    }),
+  })).isRequired,
+};
 
 export default AuthorList;
