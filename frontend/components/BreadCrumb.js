@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import sanityClient from '@sanity/client';
-
+import PropTypes from 'prop-types';
+import buildUrl from '../helpers/buildUrl'
+import client from '../helpers/sanity-client-config'
 import { Link } from '../routes';
 
 /**
@@ -12,6 +13,15 @@ import { Link } from '../routes';
  * to build a breadcrumb without adding a reference query param.
  */
 class BreadCrumb extends Component {
+  static propTypes = {
+    data: PropTypes.shape({
+      title: PropTypes.string,
+    }).isRequired,
+    url: PropTypes.shape({
+      current: PropTypes.string,
+    }).isRequired
+  }
+
   constructor(props) {
     super(props);
     this.state = { data: props.data };
@@ -21,16 +31,14 @@ class BreadCrumb extends Component {
     if (this.state.data) {
       return; // no need to fetch data if we got link data passed in.
     }
-    const client = sanityClient({
-      projectId: '1f1lcoov',
-      dataset: 'production',
-      token: '',
-      useCdn: true,
-    });
     const sanityQuery = '*[slug.current == $ref][0]';
-    const { url = {} } = this.props;
-    const { query = {} } = url;
-    const { ref = '' } = query;
+    const {
+      url: {
+        query: {
+          ref: '',
+        } = {}
+      } = {},
+    } = this.props;
     const sanityParams = { ref };
     if (ref) {
       client.fetch(sanityQuery, sanityParams).then((data) => {
@@ -40,19 +48,13 @@ class BreadCrumb extends Component {
   }
 
   render() {
-    const buildUrl = ({ _type = 'notype', slug = {} }) => {
-      if (_type === 'publication') {
-        return `/publications/${slug.current}`;
-      } else if (_type === 'topics') {
-        return `/topics/${slug.current}`;
-      }
-      return slug.current;
-    };
+    const { data } = this.state
+    const { title } = data
     return (
       <div className="c-breadcrumb">
-        {this.state.data && (
-          <Link route={buildUrl(this.state.data)}>
-            <a className="c-breadcrumb__link">← {this.state.data.title}</a>
+        {data && (
+          <Link route={buildUrl(data)}>
+            <a className="c-breadcrumb__link">← {title}</a>
           </Link>
         )}
       </div>
