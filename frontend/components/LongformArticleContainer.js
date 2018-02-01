@@ -30,6 +30,7 @@ const LongFormArticleContainer = (props = {}) => {
       relatedUrl = {},
       publicationType = {},
     } = {},
+    shortversion = false,
     headComponentConfigOverride,
     isArticleMenuOpen,
     showLoadingScreen,
@@ -95,7 +96,7 @@ const LongFormArticleContainer = (props = {}) => {
           <span id="js-top" />
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
-            {_type === 'publication' && (
+            {_type === 'publication' && !shortversion && (
               <div
                 className={`c-hero u-bg-white u-z-index-x ${
                   publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''
@@ -115,9 +116,12 @@ const LongFormArticleContainer = (props = {}) => {
                   {
                     props.data.featuredImage &&
                       props.data.featuredImage.caption &&
-                      <BlockToContent blocks={props.data.featuredImage.caption} serializers={{
-                        types: { block: (props) => <p style={{display: 'inline' }}>{props.children}</p>}
-                      }} />
+                      <BlockToContent
+                        blocks={props.data.featuredImage.caption}
+                        serializers={{
+                          types: { block: (props) => <p style={{display: 'inline' }}>{props.children}</p>}
+                        }}
+                      />
                   }
                   {
                     props.data.featuredImage &&
@@ -132,7 +136,9 @@ const LongFormArticleContainer = (props = {}) => {
                           : props.data.featuredImage.sourceUrl}
                       </a>
                     )}
-                    { props.data.featuredImage.license && <span> {props.data.featuredImage.license.toUpperCase()}</span>}
+                    { props.data.featuredImage &&
+                      props.data.featuredImage.license && <span> {props.data.featuredImage.license.toUpperCase()}</span>
+                    }
                 </div>
                 <div className="c-hero-header">
                   <PublicationArticleHeader
@@ -192,7 +198,7 @@ const LongFormArticleContainer = (props = {}) => {
               </div>
             </div>
           )}
-          <LongformArticle {...props.data} />
+          <LongformArticle content={shortversion ? props.data.summary : ''} {...props.data} />
           {props.data.references ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
