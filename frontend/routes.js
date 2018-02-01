@@ -5,7 +5,6 @@ routes
   .add('publication.shortVersion', '/publications/:slug/shortversion')
   .add('publication.entry', '/publications/:slug')
   .add('publication.print', '/publications/:slug/print')
-  .add('publication.index', '/publications')
   .add('topic.article', '/topics/:slug/:topicPart')
   .add('topic.entry', '/topics/:slug')
   .add('topic.index', '/topics')

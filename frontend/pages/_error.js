@@ -6,6 +6,7 @@
 
 import React from 'react';
 import sanityClient from '@sanity/client';
+import { Layout, Footer } from '../components';
 
 /* send 301 Permanent redirect to path */
 function redirectPermanent(ctx, path) {
@@ -20,8 +21,15 @@ function redirectPermanent(ctx, path) {
 export default class Error extends React.Component {
   static async getInitialProps(ctx) {
     const redirects = [
-      { from: '/publications-2-fr-FR', to: '/publications' },
-      { from: '/publications-2-es-ES', to: '/publications' },
+      { from: '/publications', to: '/search?filters=pub-type-0&search=%2A' },
+      {
+        from: '/publications-2-fr-FR',
+        to: '/search?filters=pub-type-0%2Cpub-lang-fr_FR&search=%2A',
+      },
+      {
+        from: '/publications-2-es-ES',
+        to: '/search?filters=pub-type-0%2Cpub-lang-es_ES&search=%2A',
+      },
       { from: /\/publications\/([^/]+)\/downloadasset\/([^/]*)/i, to: '/publications/$1/pdf' },
       { from: '/themes/corruption-and-aid', to: '/topics/development-cooperation' },
       { from: '/themes/evaluation-and-measurement', to: '/topics/' },
@@ -52,15 +60,16 @@ export default class Error extends React.Component {
       { from: '/themes', to: '/topics' },
       { from: '/recommended-reading/', to: '/articles' },
       { from: '/info/', to: '/about' },
-      { from: '/training/', to: '/training' },
+      { from: '/training/', to: '/online-courses' },
       { from: '/articles/', to: '/' },
       { from: '/home/', to: '/' },
       { from: '/your-partner-profile/', to: '/' },
       { from: '/document/', to: '/' },
-      { from: '/glossaire', to: '/' },
+      { from: '/glossaire', to: '/terms' },
+      { from: '/glossary', to: '/terms' },
       { from: '/projects', to: '/' },
       { from: '/u4-centre-de-ressources-anti-corruption/', to: '/' },
-      { from: '/formation', to: '/' },
+      { from: '/formation', to: '/online-courses' },
       { from: '/helpdesk-help', to: '/helpdesk' },
       { from: '/articles-fr-FR', to: '/' },
       { from: '/themes-es-ES', to: '/topics' },
@@ -94,11 +103,33 @@ export default class Error extends React.Component {
 
   render() {
     return (
-      <p>
-        {this.props.statusCode
-          ? `Page not found: ${this.props.statusCode} occurred on server`
-          : 'Page not found error occurred on client'}
-      </p>
+      <Layout
+        headComponentConfig={{
+          title: 'Page not found',
+          description: '',
+          image: '',
+          url: '',
+          ogp: {},
+        }}
+      >
+        <div className="c-oneColumnBox c-oneColumnBox__darkOnWhite">
+          <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
+            <div>
+              <h2 className="c-longform-grid__standard">Page not found</h2>
+              <p className="c-longform-grid__standard">
+                Sorry about that! We have recently upgraded our website, so some content has been
+                discontinued.
+              </p>
+              <p>
+                {this.props.statusCode
+                  ? `Page not found: ${this.props.statusCode} occurred on server`
+                  : 'Page not found error occurred on client'}
+              </p>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </Layout>
     );
   }
 }
