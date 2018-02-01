@@ -159,7 +159,7 @@ const LongFormArticleContainer = (props) => {
         { reference &&
           <div className="page2__bibliographic-reference">
             <h2>Bibliographic reference</h2>
-            <p>{reference}</p>
+            <p>{Array.isArray(reference) && <BlockContent blocks={reference.filter(ref => ref)} serializers={serializers} />}</p>
           </div>
         }
 
