@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from '../routes';
-import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
-import BlockContent from '@sanity/block-content-to-react';
+import { Link } from '../routes';
 
 const classes = BEMHelper({
   name: 'person',
@@ -16,7 +14,7 @@ const Person = ({ person, linkLabel = 'Bio', light = true }) => (
         <Link to={`/the-team/${person.slug.current}`}>
           <a
             {...classes('item-body-img', person.image ? 'light' : 'noimg')}
-            style={{ backgroundImage: `url(${person.image && person.image.asset.url}?w=255)` }}
+            style={{ backgroundImage: `url(${person.image && person.image.asset.url}?w=400&q=100)` }}
           />
         </Link>
         ) : null}
