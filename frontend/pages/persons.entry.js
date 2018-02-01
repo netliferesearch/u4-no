@@ -6,7 +6,7 @@ import { MediumLogo, TwitterLogo } from '../components/icons/';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from '../components/serializers'
+import serializers from '../components/serializers';
 
 const classes = BEMHelper({
   name: 'persons',
@@ -25,9 +25,9 @@ const Persons = ({
     image = {},
     cv = '',
     medium = '',
-    twitter = ''
+    twitter = '',
   },
-  url = {}
+  url = {},
 }) => (
   <Layout
     headComponentConfig={{
@@ -45,7 +45,9 @@ const Persons = ({
               <br /> {person.surname}
             </h1>
             <p {...classes('profile-position')}>{person.position}</p>
-            {person.image && <img alt="x" src={`${person.image.asset.url}?w=400`} />}
+            {person.image &&
+              person.image.asset &&
+              person.image.asset.url && <img alt="x" src={`${person.image.asset.url}?w=400`} />}
             <div {...classes('profile-info')}>
               <a href={`mailto:${person.email}`}>{person.email}</a>
               <br />
@@ -55,11 +57,13 @@ const Persons = ({
                   <br />
                 </a>
               )}
-              {person.image && (
-                <a href={person.image.asset.url}>
-                  Hi-res image<br />
-                </a>
-              )}
+              {person.image &&
+                person.image.asset &&
+                person.image.asset.url && (
+                  <a href={person.image.asset.url}>
+                    Hi-res image<br />
+                  </a>
+                )}
               {person.medium && (
                 <a href={person.medium}>
                   <MediumLogo {...classes('some-icon')} />Medium
@@ -73,9 +77,11 @@ const Persons = ({
               )}
             </div>
           </div>
-          {person.bio && <div {...classes('bio')}>
-            <BlockContent blocks={person.bio} serializers={serializers} />
-          </div>}
+          {person.bio && (
+            <div {...classes('bio')}>
+              <BlockContent blocks={person.bio} serializers={serializers} />
+            </div>
+          )}
         </section>
       </div>
     </div>
