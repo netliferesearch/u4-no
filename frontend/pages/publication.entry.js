@@ -1,12 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { LongformArticleContainer, LegacyPublicationContainer } from '../components';
 import DataLoader from '../helpers/data-loader';
 
 const PublicationEntry = props => (
   <div>
-    {(props.data.legacypdf && !props.data.content) ? <LegacyPublicationContainer {...props} /> : <LongformArticleContainer {...props} />}
+    {
+    (props.data.legacypdf && !props.data.content) ?
+      <LegacyPublicationContainer {...props} /> :
+      <LongformArticleContainer {...props} />
+    }
   </div>
 );
+
+PublicationEntry.propTypes = {
+  data: PropTypes.shape({
+    legacypdf: PropTypes.string,
+    content: PropTypes.arrayOf(PropTypes.object),
+  }),
+};
+
+PublicationEntry.defaultProps = {
+  data: {
+    legacypdf: '',
+    content: [],
+  },
+};
 
 export default DataLoader(PublicationEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({

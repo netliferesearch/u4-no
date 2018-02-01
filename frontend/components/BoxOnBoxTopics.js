@@ -1,24 +1,28 @@
 import React from 'react';
-import { Link } from '../routes';
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
-import { OnlineTraining, Workshops, Helpdesk } from './icons';
-import serializers from './serializers'
+import serializers from './serializers';
 
 const classes = BEMHelper({
   name: 'boxOnBox-topics',
   prefix: 'c-',
 });
 
-const BoxOnBoxTopics = ({ left = '', right = '' }) => (
+const BoxOnBoxTopics = ({ left = [], right = [] }) => (
   <div {...classes()}>
     <div {...classes('left')}>
-      <BlockContent blocks={left}  serializers={serializers} />
+      <BlockContent blocks={left} serializers={serializers} />
     </div>
     <div {...classes('right')}>
-      <BlockContent blocks={right}  serializers={serializers} />
+      <BlockContent blocks={right} serializers={serializers} />
     </div>
   </div>
 );
+
+BoxOnBoxTopics.propTypes = {
+  left: PropTypes.arrayOf(PropTypes.object).isRequired,
+  right: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default BoxOnBoxTopics;

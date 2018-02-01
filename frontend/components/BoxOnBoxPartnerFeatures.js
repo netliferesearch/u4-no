@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from '../routes';
 import BEMHelper from 'react-bem-helper';
-import BlockContent from '@sanity/block-content-to-react';
 import { OnlineTraining, Workshops, Helpdesk } from './icons';
 
 const classes = BEMHelper({
