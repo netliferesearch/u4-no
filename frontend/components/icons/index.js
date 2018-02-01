@@ -28,6 +28,7 @@ export { default as PartnerLogo6 } from './PartnerLogo6';
 export { default as PartnerLogo7 } from './PartnerLogo7';
 export { default as PartnerLogo8 } from './PartnerLogo8';
 export { default as PartnerLogo9 } from './PartnerLogo9';
+export { default as PartnerLogo10 } from './PartnerLogo10';
 export { default as CreativecommonsCC } from './CreativecommonsCC';
 export { default as CreativecommonsBY } from './CreativecommonsBY';
 export { default as CreativecommonsNC } from './CreativecommonsNC';
