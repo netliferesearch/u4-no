@@ -22,7 +22,7 @@ const classes = BEMHelper({
 class LongformArticle extends PureComponent {
   render() {
     const { content = [] } = this.props;
-    const blocks = content.filter(block => !['reference'].includes(block._type));
+    const blocks = content.filter((block = {}) => block && !['reference'].includes(block._type));
     return (
       <main
         className={`c-article ${
@@ -33,7 +33,7 @@ class LongformArticle extends PureComponent {
           <ul className="contents__list">
             <h2>Table of contents</h2>
             {buildTitleObjects(content)
-            .filter(({ children = []}) => children)
+            .filter(({ children = [] }) => children)
             .map(item => (
               <li key={item.id} className="contents__list-item">
                 <a href={`#${item.id}`}>{item.title}</a>
