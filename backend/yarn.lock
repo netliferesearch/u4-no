@@ -175,12 +175,12 @@
     in-publish "^2.0.0"
     prop-types "^15.6.0"
 
-"@sanity/desk-tool@^0.125.1":
-  version "0.125.1"
-  resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-0.125.1.tgz#a1f3717a60a164d51450be5df539fa8b698d7527"
+"@sanity/desk-tool@^0.125.2":
+  version "0.125.2"
+  resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-0.125.2.tgz#5e0d6d0a9b3b8c1e21f4fa8e1ea5642c086ad9b5"
   dependencies:
     "@sanity/data-aspects" "0.125.0"
-    "@sanity/form-builder" "^0.125.1"
+    "@sanity/form-builder" "^0.125.2"
     "@sanity/mutator" "0.125.0"
     "@sanity/observable" "0.125.0"
     "@sanity/uuid" "0.125.0"
@@ -213,9 +213,9 @@
     eventsource "^1.0.5"
     eventsource-polyfill "^0.9.6"
 
-"@sanity/form-builder@^0.125.1":
-  version "0.125.1"
-  resolved "https://registry.yarnpkg.com/@sanity/form-builder/-/form-builder-0.125.1.tgz#8d48b355e43b0d183a962e3f0cff80b565e28358"
+"@sanity/form-builder@^0.125.2":
+  version "0.125.2"
+  resolved "https://registry.yarnpkg.com/@sanity/form-builder/-/form-builder-0.125.2.tgz#8415fb1ee50194d0abed1d2a4d7f095b30f54fd7"
   dependencies:
     "@sanity/block-tools" "0.125.0"
     "@sanity/generate-help-url" "0.125.0"
