@@ -45,7 +45,7 @@ export default ({ queryString = '', limit: { from = 0, to = 20 } = { from: 0, to
         || agenda[].children[].text match [${matchString}]
         || timezone match [${matchString}]
       ) && defined(slug.current)
-       && _type != "term"
+       &&  !(_type in ["term", "service"])
     ]
     [${from}...${to}]
     {_id,
@@ -56,8 +56,8 @@ export default ({ queryString = '', limit: { from = 0, to = 20 } = { from: 0, to
       _type,
       subtitle,
       "publicationType": publicationType->{...},
-      "authors": authors[]->{...},
-      "editors": editors[]->{...},
+      "authors": authors[]->{firstName, surname},
+      "editors": editors[]->{firstName, surname},
       topics[]->{_id, title, slug},
       "affiliations": affiliations[]->_id,
       language,
