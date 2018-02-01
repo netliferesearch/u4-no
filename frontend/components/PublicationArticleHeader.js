@@ -4,7 +4,7 @@ import randomKey from '../helpers/randomKey';
 import languageName from '../helpers/languageName';
 import bibliographicReference from '../helpers/bibliographicReference';
 import buildUrl from '../helpers/buildUrl';
-import { Download, ArrowRight, PartnerLogo8 } from './icons';
+import { Download, ArrowRight, PartnerLogo10 } from './icons';
 import { AuthorList, EditorList, InstitutionList } from '../components/';
 import BEMHelper from 'react-bem-helper';
 
@@ -103,7 +103,7 @@ const PublicationArticleHeader = ({
           <div className="c-article-header__institution">
             <p>The U4 Helpdesk is operated by{' '}</p>
             <div className="c-logo">
-              <PartnerLogo8 />
+              <PartnerLogo10 />
             </div>
           </div>
         ) : null}
