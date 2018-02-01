@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Layout, LongformArticleContainer, LongformArticle } from '../components';
+import { LongformArticleContainer } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
@@ -9,15 +10,36 @@ const TopicArticleEntry = (props) => {
   const { query = {} } = url;
   const { slug = '' } = query;
   return (
-     <LongformArticleContainer
-        BreadCrumbComponent={
-          <BreadCrumb data={{ _type: 'publication', slug: { current: slug }, title }} />
-        }
-        content={summary}
-        shortversion
-        {...props}
-      />
+    <LongformArticleContainer
+      BreadCrumbComponent={(
+        <BreadCrumb
+          data={{
+            _type: 'publication',
+            slug: { current: slug }, title }
+          }
+        />
+      )}
+      content={summary}
+      shortversion
+      {...props}
+    />
   );
+};
+
+TopicArticleEntry.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    summary: PropTypes.arrayOf(PropTypes.object),
+  }),
+  url: PropTypes.shape({
+    current: Proptypes.string,
+  }).isRequired,
+}
+TopicArticleEntry.defaultProps = {
+  data: {
+    title: 'No title',
+    summary: 'No summary'
+  },
 };
 
 export default DataLoader(TopicArticleEntry, {
