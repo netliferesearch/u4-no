@@ -14,7 +14,7 @@ const classes = BEMHelper({
 
 const BoxOnImage = ({
   text = '',
-  image,
+  image = {},
   wide = false,
   headingLeft = '',
   headingRight = '',
@@ -78,5 +78,23 @@ const BoxOnImage = ({
     </div>
   </div>
 );
+BoxOnImage.propTypes = {
+  text: PropTypes.string,
+  image: PropTypes.shape({
+    asset: PropTypes.shape({
+      url: PropTypes.string,
+    })
+  }).isRequired,
+  wide: PropTypes.bool,
+  headingLeft: PropTypes.string.isRequired,
+  headingRight: PropTypes.string.isRequired,
+  personsLeft: PropTypes.arrayOf(PropTypes.object).isRequired,
+  personsRight: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+BoxOnImage.defaultProps = {
+  text: 'No text',
+  wide: false,
+};
 
 export default BoxOnImage;

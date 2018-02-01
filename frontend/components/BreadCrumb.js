@@ -35,8 +35,8 @@ class BreadCrumb extends Component {
     const {
       url: {
         query: {
-          ref: '',
-        } = {}
+          ref = '',
+        } = {},
       } = {},
     } = this.props;
     const sanityParams = { ref };
@@ -48,8 +48,9 @@ class BreadCrumb extends Component {
   }
 
   render() {
-    const { data } = this.state
-    const { title } = data
+    if(!this.state.data) return <div></div>
+    const { data = { title: '' } } = this.state
+    const { title = '' } = data
     return (
       <div className="c-breadcrumb">
         {data && (

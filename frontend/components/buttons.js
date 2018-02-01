@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper({
@@ -34,6 +35,25 @@ const RightArrowButton = ({ onClick = () => null, text = '', modifier = 'primary
   </button>
 );
 
+DownArrowButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  modifier: PropTypes.string,
+};
+
+DownArrowButton.defaultProps = {
+  modifier: 'primary',
+};
+
+RightArrowButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  modifier: PropTypes.string,
+};
+
+RightArrowButton.defaultProps = {
+  modifier: 'primary',
+};
 
 export {
   DownArrowButton,
