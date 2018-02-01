@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import { Link } from '../routes';
-import { PartnerLogo8 } from './icons/';
+import { PartnerLogo10 } from './icons/';
 import buildUrl from '../helpers/buildUrl';
 import serializers from './serializers';
 
@@ -44,7 +44,7 @@ const BoxOnImage = ({
                   <br />
                   <br />
                   <div className="c-logo">
-                    <PartnerLogo8 />
+                    <PartnerLogo10 />
                   </div>
                 </div>
               )}
@@ -67,7 +67,7 @@ const BoxOnImage = ({
                     <br />
                     <br />
                     <div className="c-logo">
-                      <PartnerLogo8 />
+                      <PartnerLogo10 />
                     </div>
                   </div>
                 )}
