@@ -51,11 +51,12 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             </p>
             <h2 className="c-longform-grid__standard">{title}</h2>
             {lead && <p className="c-longform-grid__standard">{lead}</p>}
-            {startDate.utc && (
-              <p className="c-longform-grid__standard">
-                {startDate.utc.split('T')[0]} {endDate.utc && `${endDate.utc.split('T')[0]}`}
-              </p>
-            )}
+            {false &&
+              startDate.utc && (
+                <p className="c-longform-grid__standard">
+                  {startDate.utc.split('T')[0]} {endDate.utc && `${endDate.utc.split('T')[0]}`}
+                </p>
+              )}
             {language && (
               <p className="c-longform-grid__standard">
                 Language: {languageName({ langcode: language })}
@@ -63,21 +64,30 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             )}
           </div>
           {content ? <ServiceArticle blocks={content} /> : null}
+          <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
+            <div>
+              <p className="c-longform-grid__standard">
+                Send an email to <a href="mailto:course@u4.no">course@u4.no</a> if you wish to sign
+                up for the next course.
+              </p>
+            </div>
+          </div>
 
-          {topics.length > 0 && (
-            <p className="c-longform-grid__standard">
-              Related topics:{' '}
-              {topics.map(({ _ref = '', target = {} }) => (
-                <Link
-                  key={_ref}
-                  route="topic.entry"
-                  params={{ slug: target.slug ? target.slug.current : '' }}
-                >
-                  <a className="c-article-header__link-item">{target.title}</a>
-                </Link>
-              ))}
-            </p>
-          )}
+          {false &&
+            topics.length > 0 && (
+              <p className="c-longform-grid__standard">
+                Related topics:{' '}
+                {topics.map(({ _ref = '', target = {} }) => (
+                  <Link
+                    key={_ref}
+                    route="topic.entry"
+                    params={{ slug: target.slug ? target.slug.current : '' }}
+                  >
+                    <a className="c-article-header__link-item">{target.title}</a>
+                  </Link>
+                ))}
+              </p>
+            )}
         </div>
       </div>
       {contact.length > 0 && (
