@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 
 import { Link } from '../routes';
@@ -32,12 +32,12 @@ class ToggleBlock extends Component {
     });
   }
   render() {
-    const { content = [], title = '' } = this.props;
+    const { content = [], title = '', modifier = '' } = this.props;
 
     return (
-      <div {...classes()}>
+      <div {...classes(null, modifier)}>
         <div {...classes('item')}>
-          <div {...classes('title')} onClick={this.toggle}>
+          <div {...classes('title', modifier)} onClick={this.toggle}>
             <div {...classes(null, this.state.active ? this.state.activeClass : 'icon')}>
               <DownArrowButton modifier="icon" text="" />
             </div>
@@ -59,7 +59,8 @@ class ToggleBlock extends Component {
 
 ToggleBlock.propTypes = {
   title: PropTypes.string,
-  content: PropTypes.shape(PropTypes.object)
-}
+  content: PropTypes.shape(PropTypes.object),
+  modifier: PropTypes.string,
+};
 
 export default ToggleBlock;

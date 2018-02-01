@@ -10,6 +10,28 @@ export default {
       type: 'string',
     },
     {
+      name: 'about',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          lists: [],
+          styles: [],
+          marks: {
+            // Only allow these decorators
+            decorators: [
+              { title: 'Emphasis', value: 'em' }
+            ],
+          },
+        },
+      ],
+    },
+    {
+      name: 'funder',
+      title: 'Is a U4 partner agency (funder)',
+      type: 'boolean'
+    },
+    {
       name: 'logo',
       type: 'image',
       fields: [
