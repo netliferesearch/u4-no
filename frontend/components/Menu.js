@@ -121,17 +121,13 @@ class Menu extends Component {
                   <ul {...menuClasses('list')}>
                     {topics.slice(0, 5).map(topic => (
                       <li {...menuClasses('list-item')} key={topic._id}>
-                        <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                          <a {...menuClasses('link')}>{topic.title}</a>
-                        </Link>
+                        <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>{topic.title}</a>
                       </li>
                     ))}
                     {this.state.activeExpand &&
                       topics.slice(5, 50).map(topic => (
                         <li {...menuClasses('list-item')} key={topic._id}>
-                          <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                            <a {...menuClasses('link')}>{topic.title}</a>
-                          </Link>
+                          <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>{topic.title}</a>
                         </li>
                       ))}
                     {this.state.activeExpand ? (
@@ -152,19 +148,19 @@ class Menu extends Component {
               </h4>
               <ul {...menuClasses('list')}>
                 <li {...menuClasses('list-item')}>
-                  <a href="/search?filters=pub-type-0&search=*">
-                    <a {...menuClasses('link')}>Publications</a>
+                  <a {...menuClasses('link')} href="/search?filters=pub-type-0&search=*">
+                    Publications
                   </a>
                 </li>
                 <li {...menuClasses('list-item')}>
-                  <a href="/search?filters=pub-type-pubtype-3&search=*">
-                    <a {...menuClasses('link')}>Helpdesk answers</a>
+                  <a {...menuClasses('link')} href="/search?filters=pub-type-pubtype-3&search=*">
+                    Helpdesk answers
                   </a>
                 </li>
                 <li {...menuClasses('list-item')}>
-                  <Link to="/terms">
-                    <a {...menuClasses('link')}>Glossary</a>
-                  </Link>
+                  <a {...menuClasses('link')} href="/terms">
+                    Glossary
+                  </a>
                 </li>
               </ul>
 
@@ -173,19 +169,19 @@ class Menu extends Component {
               </h4>
               <ul {...menuClasses('list')}>
                 <li {...menuClasses('list-item')}>
-                  <Link to="/about-u4">
-                    <a {...menuClasses('link')}>About U4</a>
-                  </Link>
+                  <a {...menuClasses('link')} href="/about-u4">
+                    About U4
+                  </a>
                 </li>
                 <li {...menuClasses('list-item')}>
-                  <Link to="/the-team">
-                    <a {...menuClasses('link')}>People</a>
-                  </Link>
+                  <a {...menuClasses('link')} href="/the-team">
+                    People
+                  </a>
                 </li>
                 <li {...menuClasses('list-item')}>
-                  <Link to="/u4-partner-agencies">
-                    <a {...menuClasses('link')}>Partner agencies</a>
-                  </Link>
+                  <a {...menuClasses('link')} href="/u4-partner-agencies">
+                    Partner agencies
+                  </a>
                 </li>
               </ul>
 
@@ -194,30 +190,30 @@ class Menu extends Component {
               </h4>
               <ul {...menuClasses('list')}>
                 <li {...menuClasses('list-item')}>
-                  <Link to="/online-courses">
-                    <a {...menuClasses('link')}>Online courses</a>
-                  </Link>
+                  <a {...menuClasses('link')} href="/online-courses">
+                    Online courses
+                  </a>
                 </li>
                 <li {...menuClasses('list-item')}>
-                  <Link to="/workshops-and-events">
-                    <a {...menuClasses('link')}>Workshops and events</a>
-                  </Link>
+                  <a {...menuClasses('link')} href="/workshops-and-events">
+                    Workshops and events
+                  </a>
                 </li>
                 <li {...menuClasses('list-item')}>
-                  <Link to="/helpdesk">
-                    <a {...menuClasses('link')}>Anti-corruption helpdesk</a>
-                  </Link>
+                  <a {...menuClasses('link')} href="/helpdesk">
+                    Anti-corruption help
+                  </a>
                 </li>
               </ul>
 
               <div {...menuClasses('links--round')}>
-                <Link to="/helpdesk">
-                  <a {...menuClasses('link-round')}>Helpdesk</a>
-                </Link>
+                <a {...menuClasses('link-round')} href="/helpdesk">
+                  Helpdesk
+                </a>
 
-                <Link to="/the-team">
-                  <a {...menuClasses('link-round')}>Contact</a>
-                </Link>
+                <a {...menuClasses('link-round')} href="/the-team">
+                  Contact
+                </a>
               </div>
             </div>
           </div>
