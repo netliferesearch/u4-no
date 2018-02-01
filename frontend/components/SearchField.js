@@ -46,11 +46,16 @@ class SearchField extends Component {
   constructor(props) {
     super(props);
     autobind(this);
-    this.state = { items: [], loading: false, placeholder: 'topics', placeholderIndex: 0 };
+    this.state = {
+      items: [],
+      loading: false,
+      placeholder: 'topics',
+      placeholderIndex: 0,
+    };
   }
   componentDidMount() {
     const strings = ['publications', 'topics', 'people', 'services', 'articles'];
-    if (this.state.items.length === 0) return;
+    if (!this.state.items.length === 0) return;
     this.intervalTimer = setInterval(() => {
       this.setState({
         placeholderIndex: this.state.placeholderIndex < strings.length - 1 ? this.state.placeholderIndex + 1 : 0,

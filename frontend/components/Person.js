@@ -32,16 +32,13 @@ const Person = ({ person, linkLabel = 'Bio', light = true }) => (
             </Link>
             ) : null}
 
-
           <small {...classes('item-subtitle')}>{person.position && `${person.position}`}</small>
-
         </div>
         <div {...classes('item-meta')}>
           {person.email && <a href={`mailto:${person.email}`}>{person.email}</a>}
           <br />
           {person.phone && <a href={`tel:${person.phone}`}>+{person.phone}</a>}
         </div>
-
       </div>
     </div>
   </div>
