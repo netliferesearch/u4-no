@@ -24,6 +24,7 @@ class LongformArticle extends Component {
 
   render() {
     const { content = [] } = this.props;
+    if(!content) return <div></div>
     const blocks = content.filter(block => !['reference'].includes(block._type));
     const footnotes = findFootnotes(blocks);
     const footNotesKeys = Object.keys(footnotes);
