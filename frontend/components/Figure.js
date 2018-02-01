@@ -43,7 +43,6 @@ const Figure = ({
     <img {...classes('figure-img')} src={asset.url} alt={asset.altText} />
     {caption.length > 0 && <figcaption {...classes('figure-figcaption')}>
       {renderCaption(caption)}
-      {console.log(renderLicensor({ license, licensor, sourceUrl }))}
       {licensor &&  renderLicensor({ license, licensor, sourceUrl })}
     </figcaption>}
   </figure>

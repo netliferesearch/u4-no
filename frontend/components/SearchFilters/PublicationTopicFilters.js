@@ -23,13 +23,7 @@ export default class PublicationTopicFilters extends Component {
   render() {
     const { results = [] } = this.props;
     const publicationsInResult = findPublications(results);
-    const publicationTopicsInResults = uniqBy(
-      flatten(publicationsInResult.map(({ topics = [] }) => topics)).filter(
-        ({ _id = false }) => _id,
-      ),
-      ({ _id }) => _id,
-    );
-    console.log(publicationTopicsInResults);
+    const publicationTopicsInResults = uniqBy(flatten(publicationsInResult.map(({ topics = [] }) => topics)).filter(({ _id = false }) => _id), ({ _id }) => _id);
     return (
       <div {...classes('item')}>
         <h3 {...classes('title')}>Publication topics</h3>

@@ -17,7 +17,6 @@ import {
 } from './';
 
 const LegacyPublicationContainer = (props) => {
-  console.log(props)
   const {
     data: {
       lead = '',

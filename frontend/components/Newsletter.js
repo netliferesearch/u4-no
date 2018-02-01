@@ -17,7 +17,6 @@ class Newsletter extends Component {
 
   onFormSubmit(e) {
     e.preventDefault();
-    console.log(e.target);
     document.location.href = `http://u4.nationbuilder.com/?email=${e.target.email.value}`;
   }
 

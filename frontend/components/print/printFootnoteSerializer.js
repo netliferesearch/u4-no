@@ -1,7 +1,6 @@
 export default (key = false) => ({
   types: {
     span: ({ node, children }) => {
-      console.log(node, children);
       return null
     },
     block: ({ node, children }) => {

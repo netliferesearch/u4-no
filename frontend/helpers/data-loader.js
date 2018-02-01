@@ -27,8 +27,6 @@ export default (Child, { queryFunc = false, materializeDepth = false, query = {}
       }
       const { sanityQuery, param = {} } = queryFunc(nextContext);
 
-      console.log(sanityQuery);
-
       const sanityResults = await client.fetch(sanityQuery, param);
 
       if (!sanityResults) {
