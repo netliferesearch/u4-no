@@ -67,7 +67,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
           <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
             <div>
               <p className="c-longform-grid__standard">
-                Send an email to <a href="mailto:course@u4.no">course@u4.no</a> if you wish to sign
+                Send an e-mail to <a href="mailto:course@u4.no">course@u4.no</a> if you wish to sign
                 up for the next course.
               </p>
             </div>
