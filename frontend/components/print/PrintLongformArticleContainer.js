@@ -31,6 +31,7 @@ const renderCaption = (caption) => {
 };
 
 const LongFormArticleContainer = (props) => {
+  console.log('props', props);
   const {
     toggleArticleMenu,
     toggleLoadingScreen,
