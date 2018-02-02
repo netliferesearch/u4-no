@@ -6,7 +6,7 @@ import BEMHelper from 'react-bem-helper';
 import stylesheet from '../../style/print.scss';
 import serializers from '../printSerializers';
 import buildTitleObjects from '../TableOfContents/buildTitleObjects';
-
+import { EditorList } from '../';
 
 const classes = BEMHelper({
   name: 'longform-grid',
@@ -22,7 +22,7 @@ const classes = BEMHelper({
 class LongformArticle extends PureComponent {
   render() {
     const {
-      content = [], abstract = [], notes = [], authors = [], acknowledgements = [],
+      content = [], abstract = [], notes = [], authors = [], acknowledgements = [], editors = [],
     } = this.props;
     const blocks = content.filter((block = {}) => block && !['reference'].includes(block._type));
     return (
@@ -76,8 +76,7 @@ class LongformArticle extends PureComponent {
                     </p>))}
                 <br />
               </span>
-              ) : null}
-              {editors.length ? (
+              {editors ? (
                 <span>
                   <EditorList editors={editors.map(({ target }) => target)} intro="Series editor" />
                   <br />

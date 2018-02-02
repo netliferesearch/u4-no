@@ -92,7 +92,7 @@ const LongFormArticleContainer = (props) => {
                   <br />
                 </span>
               ) : null}
-              {editors.length ? (
+              {editors ? (
                 <span>
                   <EditorList editors={editors.map(({ target }) => target)} intro="Series editor" />
                   <br />
@@ -232,18 +232,6 @@ const LongFormArticleContainer = (props) => {
       )}
 
       <PrintLongformArticle {...props} />
-
-      {props.references ? (
-        <div className="c-longform-grid">
-          <div className="c-longform-grid__standard">
-            <h3>References</h3>
-            {typeof props.references === 'string' && <p>{props.references}</p>}
-            {typeof props.references !== 'string' && (
-              <BlockContent blocks={props.references} serializers={serializers} />
-            )}
-          </div>
-        </div>
-      ) : null}
 
       <span id="js-bottom" />
       <Footer />
