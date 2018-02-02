@@ -18,23 +18,44 @@ import {
   ArrowRight,
 } from '../components/icons';
 
-const ServicePage = ({ data: { service = {} } }) => (
-  <Layout>
-    <h2 className="c-topic-page_title">{service.title}</h2>
-    <h2 className="c-topic-page__longTitle">{service.longTitle}</h2>
-    {service.featuredImage ? (
+const ServicePage = ({
+  data: {
+    service: {
+      title = '',
+      longTitle = '',
+      featuredImage = '',
+      lead = [],
+      leadLinks = '',
+      sections = [],
+      relatedUrl = {}
+    }  = {},
+  } = {},
+  url = {},
+}) => (
+  <Layout
+  headComponentConfig={{
+    title,
+    description: lead,
+    image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
+    url: url.asPath ? `https://beta.u4.no${url.asPath}` : '',
+    ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
+  }}
+  >
+    <h2 className="c-topic-page_title">{title}</h2>
+    <h2 className="c-topic-page__longTitle">{longTitle}</h2>
+    {featuredImage ? (
       <section className="c-boxOnImage">
         <figure className="c-boxOnImage__figure">
-          <img alt="" src={service.featuredImage} />
+          <img alt="" src={featuredImage} />
         </figure>
         <div className="c-boxOnImage__body">
-           <BlockContent blocks={service.lead} serializers={serializers} />
-           {service.leadLinks && <LinkList title="" content={service.leadLinks} />}
+           <BlockContent blocks={lead} serializers={serializers} />
+           {leadLinks && <LinkList title="" content={leadLinks} />}
         </div>
       </section>
     ) : null}
 
-    <ServiceArticle blocks={service.sections} />
+    <ServiceArticle blocks={sections} />
 
     <Newsletter />
 
