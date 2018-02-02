@@ -108,7 +108,7 @@ class LongformArticle extends PureComponent {
               <h2 className="c-longform-grid__standard">Fotnoter</h2>
               <div className="footnotes">
                 <ol>
-                  <ToggleBlock title="References" active content={references} />
+                  <BlockContent blocks={references} serializers={serializers} />
                 </ol>
               </div>
             </div>
