@@ -19,11 +19,14 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const dataResolver = (data) => {
+const dataResolver = (data = []) => {
   if (Array.isArray(data)) {
     return data.filter(doc => (doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc));
   }
-  return data.data.filter(doc => (doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc));
+  if (data.data) {
+    return data.data.filter(doc => (doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc));
+  }
+  return []
 };
 
 const Search = ({
