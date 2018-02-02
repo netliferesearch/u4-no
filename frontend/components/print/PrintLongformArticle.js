@@ -105,7 +105,7 @@ class LongformArticle extends PureComponent {
         {references ? (
           <div className="c-longform-grid">
             <div className="c-longform-grid__standard">
-              <h2 className="c-longform-grid__standard">Fotnoter</h2>
+              <h2 className="c-longform-grid__standard">References</h2>
               <div className="footnotes">
                 <ol>
                   <BlockContent blocks={references} serializers={serializers} />
