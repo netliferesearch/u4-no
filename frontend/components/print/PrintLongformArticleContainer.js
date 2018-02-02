@@ -140,10 +140,8 @@ const LongFormArticleContainer = (props) => {
               <p>
                 {institutions.map((inst, index) =>
                   (<span>
-                    {` ${inst.name}`},
-                    {(inst.length === index + 1) ? '.' : (inst.length - 1 > index + 1) ? ' , ' : ''}
-                  </span>),
-                )}
+                    {` ${inst.name}`}<br />
+                  </span>))}
               </p>
             </div>)
         }
@@ -153,12 +151,13 @@ const LongFormArticleContainer = (props) => {
           <h2>Cover photo</h2>
           {featuredImage.caption && renderCaption(featuredImage.caption) }
           <p>{featuredImage.credit && <span>{featuredImage.credit} {featuredImage.license && `(${featuredImage.license})`} </span>}
-            {featuredImage.sourceUrl && <a href={featuredImage.sourceUrl}>{featuredImage.sourceUrl}</a>}</p>
+            {featuredImage.sourceUrl && <a href={featuredImage.sourceUrl}>{featuredImage.sourceUrl}</a>}
+          </p>
         </div>
         }
-        { reference &&
+        { Array.isArray(reference) &&
           <div className="page2__bibliographic-reference">
-            <h2>Bibliographic reference</h2>
+            <h2>Publisher and bibliographic reference</h2>
             <p>{Array.isArray(reference) && <BlockContent blocks={reference.filter(ref => ref)} serializers={serializers} />}</p>
           </div>
         }
@@ -188,28 +187,6 @@ const LongFormArticleContainer = (props) => {
             {notes && <BlockContent blocks={notes} serializers={serializers} />}
           </div>
         }
-        {props.notes ? (
-          <div className="c-longform-grid">
-            <div className="c-longform-grid__standard">
-              <h3>Notes</h3>
-              {typeof props.notes === 'string' && <p>{props.notes}</p>}
-              {typeof props.notes !== 'string' && (
-                <BlockContent blocks={props.notes} serializers={serializers} />
-              )}
-            </div>
-          </div>
-        ) : null}
-        {props.abstract ? (
-          <div className="c-longform-grid">
-            <div className="c-longform-grid__standard">
-              <h3>Abstract</h3>
-              {typeof props.abstract === 'string' && <p>{props.abstract}</p>}
-              {typeof props.abstract !== 'string' && (
-                <BlockContent blocks={props.abstract} serializers={serializers} />
-              )}
-            </div>
-          </div>
-        ) : null}
         <div className="page2__about-the-autors" />
       </div>
       {_type === 'publication' && (
@@ -267,42 +244,7 @@ const LongFormArticleContainer = (props) => {
           </div>
         </div>
       ) : null}
-      {props.authors ? (
-        <div className="c-longform-grid">
-          <div className="c-longform-grid__standard">
-            <h3>About the authors</h3>
-            {authors ? (
-              <span>
-                {authors.map(person =>
-                  (<p>
-                    { person.target.image && <img src={person.target.image.asset.url} />}
-                    {person.target.firstName} {person.target.surname} <br />
-                    {person.target.position && person.target.position}
-                  </p>),
-                )}
-                <br />
-              </span>
-            ) : null}
-            {editors.length ? (
-              <span>
-                <EditorList editors={editors.map(({ target }) => target)} intro="Series editor" />
-                <br />
-              </span>
-            ) : null}
-          </div>
-        </div>
-      ) : null}
-      {props.acknowledgements ? (
-        <div className="c-longform-grid">
-          <div className="c-longform-grid__standard">
-            <h3>Acknowledgements</h3>
-            {typeof props.acknowledgements === 'string' && <p>{props.acknowledgements}</p>}
-            {typeof props.acknowledgements !== 'string' && (
-              <BlockContent blocks={props.acknowledgements} serializers={serializers} />
-            )}
-          </div>
-        </div>
-      ) : null}
+
       <span id="js-bottom" />
       <Footer />
       <Head>

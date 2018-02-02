@@ -21,7 +21,9 @@ const classes = BEMHelper({
 
 class LongformArticle extends PureComponent {
   render() {
-    const { content = [] } = this.props;
+    const {
+      content = [], abstract = [], notes = [], authors = [], acknowledgements = [],
+    } = this.props;
     const blocks = content.filter((block = {}) => block && !['reference'].includes(block._type));
     return (
       <main
@@ -50,6 +52,53 @@ class LongformArticle extends PureComponent {
             ))}
           </ul>
         </div>
+        {abstract ? (
+          <div className="c-longform-grid">
+            <div className="c-longform-grid__standard">
+              <h3>Abstract</h3>
+              {typeof abstract === 'string' && <p>{abstract}</p>}
+              {typeof abstract !== 'string' && (
+                <BlockContent blocks={abstract} serializers={serializers} />
+              )}
+            </div>
+          </div>
+        ) : null}
+        {authors ? (
+          <div className="c-longform-grid">
+            <div className="c-longform-grid__standard">
+              <h3>About the authors</h3>
+              <span>
+                {authors.map(person =>
+                    (<p>
+                      { person.target.image && <img src={person.target.image.asset.url} />}
+                      {person.target.firstName} {person.target.surname} <br />
+                      {person.target.position && person.target.position}
+                    </p>))}
+                <br />
+              </span>
+              ) : null}
+              {editors.length ? (
+                <span>
+                  <EditorList editors={editors.map(({ target }) => target)} intro="Series editor" />
+                  <br />
+                </span>
+              ) : null }
+            </div>
+          </div>
+        ) : null}
+
+        {acknowledgements ? (
+          <div className="c-longform-grid">
+            <div className="c-longform-grid__standard">
+              <h3>Acknowledgements</h3>
+              {typeof acknowledgements === 'string' && <p>{acknowledgements}</p>}
+              {typeof acknowledgements !== 'string' && (
+                <BlockContent blocks={acknowledgements} serializers={serializers} />
+              )}
+            </div>
+          </div>
+        ) : null}
+
         <div className="body">
           <BlockContent blocks={blocks} serializers={serializers(blocks)} />
         </div>
