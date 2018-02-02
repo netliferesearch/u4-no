@@ -63,6 +63,7 @@ const LongFormArticleContainer = (props) => {
     notes = [],
     acknowledgements = '',
     institutions = [],
+    u4 = [],
   } = props;
   return (
     <article className="u-relative u-print-width o-wrapper-page">
@@ -145,7 +146,12 @@ const LongFormArticleContainer = (props) => {
               </p>
             </div>)
         }
-        <div className="page2__about-u4" />
+        <div className="page2__about-u4">
+          <h2>About U4</h2>
+          { u4.about &&
+            <BlockContent blocks={u4.about} serializers={serializers} />
+          }
+        </div>
         { featuredImage &&
         <div className="page2__coverphoto">
           <h2>Cover photo</h2>

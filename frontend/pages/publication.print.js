@@ -4,7 +4,7 @@ import DataLoader from '../helpers/data-loader';
 
 const PublicationEntry = props => (
   <div>
-    {props.data.current.content && <PrintLongformArticleContainer {...props.data.current} institutions={props.data.institutions} />}
+    {props.data.current.content && <PrintLongformArticleContainer {...props.data.current} institutions={props.data.institutions} u4={props.data.u4} />}
   </div>
 );
 
@@ -12,7 +12,8 @@ export default DataLoader(PublicationEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
       "current": *[slug.current == $slug && !(_id in path "drafts.**")][0],
-      "institutions": *[_type == 'institution' && funder == true && !(_id in path "drafts.**")] | order(name){name}
+      "institutions": *[_type == 'institution' && funder == true && !(_id in path "drafts.**")] | order(name){name},
+      "u4": *[_type == 'institution' && _id == '419c2497-8e24-4599-9028-b5023830c87f'][0]{name,about }
     }`,
     param: { slug },
   }),
