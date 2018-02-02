@@ -22,7 +22,7 @@ const classes = BEMHelper({
 class LongformArticle extends PureComponent {
   render() {
     const {
-      content = [], abstract = [], notes = [], authors = [], acknowledgements = [], editors = [],
+      content = [], abstract = [], notes = [], authors = [], acknowledgements = [], editors = [], references = [],
     } = this.props;
     const blocks = content.filter((block = {}) => block && !['reference'].includes(block._type));
     return (
@@ -101,6 +101,20 @@ class LongformArticle extends PureComponent {
         <div className="body">
           <BlockContent blocks={blocks} serializers={serializers(blocks)} />
         </div>
+
+        {references ? (
+          <div className="c-longform-grid">
+            <div className="c-longform-grid__standard">
+              <h2 className="c-longform-grid__standard">Fotnoter</h2>
+              <div className="footnotes">
+                <ol>
+                  <ToggleBlock title="References" active content={references} />
+                </ol>
+              </div>
+            </div>
+          </div>
+         ) : null}
+
         <Head>
           <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
         </Head>
