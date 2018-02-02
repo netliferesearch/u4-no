@@ -201,7 +201,7 @@ class Menu extends Component {
                 </li>
                 <li {...menuClasses('list-item')}>
                   <a {...menuClasses('link')} href="/helpdesk">
-                    Anti-corruption help
+                    Anti-corruption helpdesk
                   </a>
                 </li>
               </ul>
