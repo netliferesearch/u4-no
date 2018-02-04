@@ -78,7 +78,7 @@ export default class Error extends React.Component {
       { from: '/helpdesk-fr-FR/', to: '/helpdesk' },
     ];
     const redir = redirects.find(({ from }) => ctx.asPath.match(from));
-    if (redir) {
+    if (!process.env.DEV && redir) {
       return redirectPermanent(ctx, ctx.asPath.replace(redir.from, redir.to));
     }
     /* TODO: make some query based on requested url to display suggested content
