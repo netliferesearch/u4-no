@@ -35,11 +35,6 @@ export default {
       ],
     },
     {
-      name: 'link',
-      title: 'Link to registration/info',
-      type: 'string',
-    },
-    {
       name: 'startDate',
       title: 'Start date',
       type: 'richDate',
@@ -72,6 +67,16 @@ export default {
           ],
         },
       ],
+    },
+    {
+      name: 'courseType',
+      title: 'Course type',
+      type: 'reference',
+      to: [
+        {
+          type: 'courseType'
+        }
+      ]
     },
     {
       name: 'topics',
