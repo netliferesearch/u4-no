@@ -113,11 +113,11 @@ const LongFormArticleContainer = (props) => {
           <h2>
             {
               partners.map(({ _key = '', institution = {}, description = '' }, index) => (
-                <span key={_key + index}>
+                <div key={_key + index}>
                   {description && <span>{description} </span>}
                   <span>{institution.name}</span>
                   {(partners.length === index + 1) ? '.' : (partners.length - 1 > index + 1) ? ', ' : ' and '}
-                </span>
+                </div>
               ))
             }
             {
@@ -137,7 +137,7 @@ const LongFormArticleContainer = (props) => {
         {
           institutions.length && (
             <div className="page2__funding-partners">
-              <h2>Partner Agencies that fund U4</h2>
+              <h2>Partner agencies</h2>
               <p>
                 {institutions.map((inst, index) =>
                   (<span>

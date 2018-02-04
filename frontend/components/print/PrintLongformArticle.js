@@ -76,12 +76,6 @@ class LongformArticle extends PureComponent {
                     </p>))}
                 <br />
               </span>
-              {editors ? (
-                <span>
-                  <EditorList editors={editors.map(({ target }) => target)} intro="Series editor" />
-                  <br />
-                </span>
-              ) : null }
             </div>
           </div>
         ) : null}
