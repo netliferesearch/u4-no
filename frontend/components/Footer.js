@@ -14,16 +14,12 @@ const Footer = ({ title }) => (
     <div>
       <div {...classes('wrapper', null, 'o-wrapper')}>
         <div {...classes('item')}>
-          <Link to="http://www.cmi.no">
-            <a {...classes('link')}>
-              <CmiLogo {...classes('color-icon')} />
-            </a>
-          </Link>
-          <Link to="/">
-            <a {...classes('link')}>
-              <Logo {...classes('color-icon')} />
-            </a>
-          </Link>
+          <a href="https://www.cmi.no/" {...classes('link')}>
+            <CmiLogo {...classes('color-icon')} />
+          </a>
+          <a href="https://www.u4.no" {...classes('link')}>
+            <Logo {...classes('color-icon')} />
+          </a>
         </div>
         <div {...classes('item')}>
           <div {...classes('heading')}>Contact</div>
