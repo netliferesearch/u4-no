@@ -47,7 +47,7 @@ const LegacyPublicationContainer = (props) => {
     <Layout
       headComponentConfig={{
         title: title,
-        url: url.asPath ? `https://beta.u4.no${url.asPath}` : '',
+        url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
       }}
       showLoadingScreen={showLoadingScreen}
       showTopTab={!isArticleMenuOpen}

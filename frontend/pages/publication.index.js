@@ -20,7 +20,7 @@ const Publications = ({ data: { publications = [] }, url = {} }) => (
   <Layout
     headComponentConfig={{
       title: 'Publications',
-      url: url.asPath ? `https://beta.u4.no${url.asPath}` : '',
+      url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
     }}
   >
     <div className="o-wrapper-inner">

@@ -1,9 +1,9 @@
 import React from 'react';
 import buildUrl from '../helpers/buildUrl';
 
-const EditorList = ({ editors = [], intro = 'Editor', pluralize = true }) =>
+const EditorList = ({ _id, editors = [], intro = 'Editor', pluralize = true }, index) =>
   editors.length > 0 && (
-    <span>
+    <span key={_id + index}>
       {intro}
       {pluralize && editors.length > 1 ? 's' : ''}
       {': '}
@@ -11,8 +11,8 @@ const EditorList = ({ editors = [], intro = 'Editor', pluralize = true }) =>
         .map(editor => (editor.target ? editor.target : editor))
         .map(({
  _id = '', firstName = '', surname = '', slug = {},
-}) => (
-  <a key={_id} href={buildUrl({ _type: 'person', slug })}>
+}, index) => (
+  <a key={_id + index} href={buildUrl({ _type: 'person', slug })}>
     {firstName} {surname}{' '}
   </a>
         ))}

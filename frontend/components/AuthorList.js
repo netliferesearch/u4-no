@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import randomKey from '../helpers/randomKey';
 import buildUrl from '../helpers/buildUrl';
 
 const AuthorList = ({ authors = [] }) => (
@@ -11,9 +10,9 @@ const AuthorList = ({ authors = [] }) => (
         .filter(author => author)
         .map(author => (author.target ? author.target : author))
         .map(({
- firstName = '', surname = '', slug = false, affiliations = [],
+_id, firstName = '', surname = '', slug = false, affiliations = [],
 }, index) => (
-  <span key={randomKey()}>
+  <span key={_id + index}>
     {slug &&
             affiliations.length &&
             affiliations.some(({ _ref }) =>

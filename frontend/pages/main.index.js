@@ -13,7 +13,7 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
   <Layout
     hideLogo
     noSearch
-    headComponentConfig={{ url: url.asPath ? `https://beta.u4.no${url.asPath}` : '' }}
+    headComponentConfig={{ url: url.asPath ? `https://www.u4.no${url.asPath}` : '' }}
   >
     <section className="o-wrapper-inner o-wrapper--padded ">
       <div className="o-layout">

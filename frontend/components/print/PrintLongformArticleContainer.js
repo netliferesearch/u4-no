@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Head from 'next/head';
 import BEMHelper from 'react-bem-helper';
-import BlockContent from '@sanity/block-content-to-react';
-import serializers from '../serializers';
 import { get } from 'lodash';
-import bibliographicReference from '../../helpers/bibliographicReference';
+import BlockContent from '@sanity/block-content-to-react';
+import serializers from '../printSerializers';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
 import { PrintLongformArticle } from './';
 import {
@@ -16,7 +16,7 @@ import {
   CreativecommonsND,
   CmiLogo,
 } from '../icons';
-import { Footer, ToggleBlock, AuthorList, EditorList, Logo } from '../';
+import { Footer, AuthorList, EditorList, LongformArticleContainer, Logo } from '../';
 
 const classes = BEMHelper({
   name: 'print',
@@ -31,37 +31,22 @@ const renderCaption = (caption) => {
 };
 
 const LongFormArticleContainer = (props) => {
-  console.log('props', props);
   const {
-    toggleArticleMenu,
-    toggleLoadingScreen,
-    isArticleMenuOpen,
-    showLoadingScreen,
     lead = '',
     _type = '',
     longTitle = '',
     title = '',
     mainPoints = [],
-    isPublicationDrawerOpen,
-    resources = [],
-    BreadCrumbComponent = null,
     subtitle = '',
-    slug = {},
-    topics = [],
-    className = '',
     publicationType = {},
     authors = [],
     editors = [],
-    shortVersion = [],
-    pdfFile = {},
     keywords = [],
-    legacypdf = {},
     reference = '',
     publicationNumber = '',
     featuredImage = {},
     partners = [],
     notes = [],
-    acknowledgements = '',
     institutions = [],
     u4 = [],
   } = props;
@@ -112,8 +97,8 @@ const LongFormArticleContainer = (props) => {
         <div className="page2__partners">
           <h2>
             {
-              partners.map(({ _key = '', institution = {}, description = '' }, index) => (
-                <div key={_key + index}>
+              partners.map(({ _id = '', institution = {}, description = '' }, index) => (
+                <div key={_id + index}>
                   {description && <span>{description} </span>}
                   <span>{institution.name}</span>
                   {(partners.length === index + 1) ? '.' : (partners.length - 1 > index + 1) ? ', ' : ' and '}
@@ -121,7 +106,7 @@ const LongFormArticleContainer = (props) => {
               ))
             }
             {
-              partners.map(({ _key = '', institution = {}, description = '' }, index) => get(institution, 'logo.asset.url') && <img className="page2__partner-logo" alt="Partner Logo" src={institution.logo.asset.url} />)
+              partners.map(({ _id = '', institution = {}, description = '' }, index) => get(institution, 'logo.asset.url') && <img key={_id + index} className="page2__partner-logo" alt="Partner Logo" src={institution.logo.asset.url} />)
             }
           </h2>
         </div>
@@ -139,17 +124,14 @@ const LongFormArticleContainer = (props) => {
             <div className="page2__funding-partners">
               <h2>Partner agencies</h2>
               <p>
-                {institutions.map((inst, index) =>
-                  (<span>
-                    {` ${inst.name}`}<br />
-                  </span>))}
+                {institutions.map(({ _id, name}, index) => <span key={_id + index}>{` ${name}`}<br /></span>)}
               </p>
             </div>)
         }
         <div className="page2__about-u4">
           <h2>About U4</h2>
           { u4.about &&
-            <BlockContent blocks={u4.about} serializers={serializers} />
+            <BlockContent blocks={u4.about} serializers={serializers(u4.about)} />
           }
         </div>
         { featuredImage &&
@@ -164,7 +146,7 @@ const LongFormArticleContainer = (props) => {
         { Array.isArray(reference) &&
           <div className="page2__bibliographic-reference">
             <h2>Publisher and bibliographic reference</h2>
-            <p>{Array.isArray(reference) && <BlockContent blocks={reference.filter(ref => ref)} serializers={serializers} />}</p>
+            <p>{Array.isArray(reference) && <BlockContent blocks={reference.filter(ref => ref)} serializers={serializers(reference.filter(ref => ref))} />}</p>
           </div>
         }
 
@@ -183,14 +165,14 @@ const LongFormArticleContainer = (props) => {
           <div className="page2__publication-type">
             <h2>Publication type</h2>
             <p>{publicationType.title}</p>
-            {publicationType.description && <BlockContent blocks={publicationType.description} serializers={serializers} />}
+            {publicationType.description && <BlockContent blocks={publicationType.description} serializers={serializers(publicationType.description)} />}
           </div>
         }
         {
           notes.length > 0 &&
           <div className="page2__publication-notes">
             <h2>Notes</h2>
-            {notes && <BlockContent blocks={notes} serializers={serializers} />}
+            {notes && <BlockContent blocks={notes} serializers={serializers(notes)} />}
           </div>
         }
         <div className="page2__about-the-autors" />
@@ -246,6 +228,30 @@ const LongFormArticleContainer = (props) => {
       </Head>
     </article>
   );
+};
+
+LongformArticleContainer.propTypes = {
+  lead: PropTypes.string,
+  _type: PropTypes.string.isRequired,
+  longTitle: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  mainPoints: PropTypes.arrayOf(PropTypes.string),
+  subtitle: PropTypes.string,
+  publicationType: PropTypes.string.isRequired,
+  authors: PropTypes.arrayOf(PropTypes.object).isRequired,
+  editors: PropTypes.arrayOf(PropTypes.object),
+  keywords: PropTypes.arrayOf(PropTypes.object),
+  reference: PropTypes.arrayOf(PropTypes.object),
+  publicationNumber: PropTypes.number,
+  featuredImage: PropTypes.shape({
+    asset: PropTypes.shape({
+      url: PropTypes.string,
+    }),
+  }),
+  partners: PropTypes.arrayOf(PropTypes.object),
+  notes: PropTypes.arrayOf(PropTypes.object),
+  institutions: PropTypes.arrayOf(PropTypes.object),
+  u4: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default connect(
