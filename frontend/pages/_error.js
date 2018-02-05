@@ -5,7 +5,6 @@
 */
 
 import React from 'react';
-import sanityClient from '@sanity/client';
 import { Layout, Footer } from '../components';
 
 /* send 301 Permanent redirect to path */
