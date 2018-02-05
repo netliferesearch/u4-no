@@ -6,7 +6,7 @@ const buildTitleObject = (elem = {}) => {
   return {
     style: elem.style,
     title,
-    id: elem.id || slugify(title, { lower: true, remove: /[$*_+~.()'"!\-:@]/g }),
+    id: elem.id || slugify(title, { lower: true, remove: /[$*_+~.:()'"!\-:@]/g }),
   };
 };
 

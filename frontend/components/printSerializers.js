@@ -45,7 +45,7 @@ function printSerializers(blocks) {
         // Heading?
         if (/^h\d/.test(style)) {
           const level = parseInt(style.slice(1), 10);
-          const id = level === 2 || level === 3 ? slugify(children[0], { lower: true }) : undefined;
+          const id = level === 2 || level === 3 ? slugify(children[0], { lower: true, remove: /[$*_+~.:()'"!\-:@]/g }) : undefined;
 
           return React.createElement(
             style,
