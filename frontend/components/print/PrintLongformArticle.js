@@ -60,22 +60,22 @@ class LongformArticle extends PureComponent {
         {authors ? (
           <div className="c-longform-grid">
             <div className="c-longform-grid__standard">
-              <h3>About the authors</h3>
+              <h3>About the author{authors.length > 1 && 's'}</h3>
               {authors.map(({
                 target: {
                   image = { asset: { url: '' } },
                   firstName = '',
                   surname = '',
                   position = '',
-                  bio = [],
+                  bioShort = [],
                 } = {},
             }) => (
               <div>
                 {image.asset.url && <img alt={`${firstName} ${surname}`} src={image.asset.url} />}
                 <p>{firstName} {surname} <br />
                 {position && position}</p>
-                {bio &&
-                  <BlockContent blocks={bio} serializers={serializers(bio)} />
+                {bioShort &&
+                  <BlockContent blocks={bioShort} serializers={serializers(bioShort)} />
                 }
               </div>))}
             </div>
