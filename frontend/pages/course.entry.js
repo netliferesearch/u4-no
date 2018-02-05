@@ -32,6 +32,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
     relatedContent = [],
     topics = [],
     keywords = [],
+    courseType = 18,
   } = course;
   return (
     <Layout
@@ -66,10 +67,16 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
           {content ? <ServiceArticle blocks={content} /> : null}
           <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
             <div>
-              <p className="c-longform-grid__standard">
-                Send an e-mail to <a href="mailto:course@u4.no">course@u4.no</a> if you wish to sign
-                up for the next course.
-              </p>
+              <iframe
+                title="signup"
+                src={`https://partner.u4.no/signup/?course=${courseType}`}
+                width="100%"
+                height="400px"
+                style={{ border: 0 }}
+              >
+                Your browser seems to have problems with our sign-up form. Send an e-mail to
+                course@u4.no if you wish to sign up for this course.
+              </iframe>
             </div>
           </div>
 
@@ -114,6 +121,7 @@ export default DataLoader(CoursePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
        "course": *[_type=="course" && slug.current == $slug][0]{title, language, link, startDate, endDate, lead, content, slug,
+          "courseType": courseType->waitingListId,
           "contact": contact[]->{
           _id,
            title,
