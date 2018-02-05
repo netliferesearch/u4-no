@@ -4,7 +4,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import Head from 'next/head';
 import BEMHelper from 'react-bem-helper';
 import stylesheet from '../../style/print.scss';
-import serializers from '../printSerializers';
+import serializers from '../serializers';
 import buildTitleObjects from '../TableOfContents/buildTitleObjects';
 
 /**
@@ -72,10 +72,9 @@ class LongformArticle extends PureComponent {
             }) => (
               <div>
                 {image.asset.url && <img alt={`${firstName} ${surname}`} src={image.asset.url} />}
-                <p>{firstName} {surname} <br />
-                {position && position}</p>
+                <p>{firstName} {surname} <br />{position && position}</p>
                 {bioShort &&
-                  <BlockContent blocks={bioShort} serializers={serializers(bioShort)} />
+                  <BlockContent blocks={bioShort} serializers={serializers} />
                 }
               </div>))}
             </div>
@@ -88,14 +87,14 @@ class LongformArticle extends PureComponent {
               <h3>Acknowledgements</h3>
               {typeof acknowledgements === 'string' && <p>{acknowledgements}</p>}
               {typeof acknowledgements !== 'string' && (
-                <BlockContent blocks={acknowledgements} serializers={serializers(acknowledgements)} />
+                <BlockContent blocks={acknowledgements} serializers={serializers} />
               )}
             </div>
           </div>
         ) : null}
 
         <div className="body">
-          <BlockContent blocks={blocks} serializers={serializers(blocks)} />
+          <BlockContent blocks={blocks} serializers={serializers} />
         </div>
 
         {references ? (
