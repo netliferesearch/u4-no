@@ -6,12 +6,6 @@ import BEMHelper from 'react-bem-helper';
 import stylesheet from '../../style/print.scss';
 import serializers from '../printSerializers';
 import buildTitleObjects from '../TableOfContents/buildTitleObjects';
-import { EditorList } from '../';
-
-const classes = BEMHelper({
-  name: 'longform-grid',
-  prefix: 'c-',
-});
 
 /**
  * Here we replace Sanity's react components for rendering basic things like
@@ -67,15 +61,23 @@ class LongformArticle extends PureComponent {
           <div className="c-longform-grid">
             <div className="c-longform-grid__standard">
               <h3>About the authors</h3>
-              <span>
-                {authors.map(person =>
-                    (<p>
-                      { person.target.image && <img src={person.target.image.asset.url} />}
-                      {person.target.firstName} {person.target.surname} <br />
-                      {person.target.position && person.target.position}
-                    </p>))}
-                <br />
-              </span>
+              {authors.map(({
+                target: {
+                  image = { asset: { url: '' } },
+                  firstName = '',
+                  surname = '',
+                  position = '',
+                  bio = [],
+                } = {},
+            }) => (
+              <div>
+                {image.asset.url && <img alt={`${firstName} ${surname}`} src={image.asset.url} />}
+                <p>{firstName} {surname} <br />
+                {position && position}</p>
+                {bio &&
+                  <BlockContent blocks={bio} serializers={serializers(bio)} />
+                }
+              </div>))}
             </div>
           </div>
         ) : null}
@@ -86,7 +88,7 @@ class LongformArticle extends PureComponent {
               <h3>Acknowledgements</h3>
               {typeof acknowledgements === 'string' && <p>{acknowledgements}</p>}
               {typeof acknowledgements !== 'string' && (
-                <BlockContent blocks={acknowledgements} serializers={serializers} />
+                <BlockContent blocks={acknowledgements} serializers={serializers(acknowledgements)} />
               )}
             </div>
           </div>
