@@ -2,10 +2,9 @@
 import React, { PureComponent } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import Head from 'next/head';
-import BEMHelper from 'react-bem-helper';
-import stylesheet from '../../style/print.scss';
-import serializers from '../serializers';
+import serializers from '../printSerializers';
 import buildTitleObjects from '../TableOfContents/buildTitleObjects';
+import stylesheet from '../../style/print.scss';
 
 /**
  * Here we replace Sanity's react components for rendering basic things like
@@ -52,7 +51,7 @@ class LongformArticle extends PureComponent {
               <h3>Abstract</h3>
               {typeof abstract === 'string' && <p>{abstract}</p>}
               {typeof abstract !== 'string' && (
-                <BlockContent blocks={abstract} serializers={serializers} />
+                <BlockContent blocks={abstract} serializers={serializers(abstract)} />
               )}
             </div>
           </div>
@@ -74,7 +73,7 @@ class LongformArticle extends PureComponent {
                 {image.asset.url && <img alt={`${firstName} ${surname}`} src={image.asset.url} />}
                 <p>{firstName} {surname} <br />{position && position}</p>
                 {bioShort &&
-                  <BlockContent blocks={bioShort} serializers={serializers} />
+                  <BlockContent blocks={bioShort} serializers={serializers(bioShort)} />
                 }
               </div>))}
             </div>
@@ -87,14 +86,14 @@ class LongformArticle extends PureComponent {
               <h3>Acknowledgements</h3>
               {typeof acknowledgements === 'string' && <p>{acknowledgements}</p>}
               {typeof acknowledgements !== 'string' && (
-                <BlockContent blocks={acknowledgements} serializers={serializers} />
+                <BlockContent blocks={acknowledgements} serializers={serializers(acknowledgements)} />
               )}
             </div>
           </div>
         ) : null}
 
         <div className="body">
-          <BlockContent blocks={blocks} serializers={serializers} />
+          <BlockContent blocks={blocks} serializers={serializers(blocks)} />
         </div>
 
         {references ? (
@@ -103,7 +102,7 @@ class LongformArticle extends PureComponent {
               <h2 className="c-longform-grid__standard">References</h2>
               <div className="footnotes">
                 <ol>
-                  <BlockContent blocks={references} serializers={serializers} />
+                  <BlockContent blocks={references} serializers={serializers(references)} />
                 </ol>
               </div>
             </div>
