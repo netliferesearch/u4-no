@@ -4,6 +4,7 @@ import { LongformArticleContainer, LegacyPublicationContainer } from '../compone
 import DataLoader from '../helpers/data-loader';
 
 const PublicationEntry = props => (
+
   <div>
     {
     (props.data.legacypdf && !props.data.content) ?
@@ -15,7 +16,12 @@ const PublicationEntry = props => (
 
 PublicationEntry.propTypes = {
   data: PropTypes.shape({
-    legacypdf: PropTypes.string,
+    legacypdf: PropTypes.shape({
+      asset: PropTypes.shape({
+        url: PropTypes.string,
+      }),
+      _type: PropTypes.string
+    }),
     content: PropTypes.arrayOf(PropTypes.object),
   }),
 };
