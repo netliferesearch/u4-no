@@ -71,7 +71,7 @@
     "deploy-frontend--force": "git push heroku --force",
     "deploy-backend": "cd backend && sanity deploy && cd ..",
     "test": "NODE_ENV=testing jest",
-    "dev": "cd frontend && nodemon -w server.js -w routes.js -w pdf-generator.js server.js",
+    "dev": "NODE_ENV=dev && cd frontend && nodemon -w server.js -w routes.js -w pdf-generator.js server.js",
     "build": "cd frontend && next build",
     "start": "cd frontend && node server.js",
     "heroku-postbuild": "cd frontend && next build",
