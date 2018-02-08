@@ -45,7 +45,7 @@ class LongformArticle extends PureComponent {
             ))}
           </ul>
         </div>
-        {abstract ? (
+        {abstract.length ? (
           <div className="c-longform-grid">
             <div className="c-longform-grid__standard">
               <h3>Abstract</h3>
@@ -56,7 +56,7 @@ class LongformArticle extends PureComponent {
             </div>
           </div>
         ) : null}
-        {authors ? (
+        {authors.length ? (
           <div className="c-longform-grid">
             <div className="c-longform-grid__standard">
               <h3>About the author{authors.length > 1 && 's'}</h3>
@@ -80,7 +80,7 @@ class LongformArticle extends PureComponent {
           </div>
         ) : null}
 
-        {acknowledgements ? (
+        {acknowledgements.length ? (
           <div className="c-longform-grid">
             <div className="c-longform-grid__standard">
               <h3>Acknowledgements</h3>
