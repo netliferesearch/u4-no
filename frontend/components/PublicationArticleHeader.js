@@ -1,12 +1,11 @@
 import React from 'react';
+import BEMHelper from 'react-bem-helper';
 import { Link } from '../routes';
-import randomKey from '../helpers/randomKey';
 import languageName from '../helpers/languageName';
 import bibliographicReference from '../helpers/bibliographicReference';
 import buildUrl from '../helpers/buildUrl';
 import { Download, ArrowRight, PartnerLogo10 } from './icons';
 import { AuthorList, EditorList, InstitutionList } from '../components/';
-import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper({
   name: 'article-header',
@@ -37,7 +36,9 @@ const PublicationArticleHeader = ({
     {/* Wrap in standard grid width until we know better */}
     <div {...classes('meta')}>
       {publicationType.title && `${publicationType.title} | `}
-      {topics.map(({ _ref = '', target = {} }) => (
+      {topics
+      .filter(({ target }) => target)
+      .map(({ _ref = '', target = {} }) => (
         <Link
           key={_ref}
           route="topic.entry"
