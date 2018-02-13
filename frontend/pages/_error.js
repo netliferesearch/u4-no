@@ -63,9 +63,10 @@ export default class Error extends React.Component {
       { from: '/themes/aacc', to: '/topics' },
       { from: '/themes/procurement', to: '/topics/public-financial-management' },
       { from: '/themes', to: '/topics' },
-      { from: '/recommended-reading', to: '/articles' },
+      { from: '/recommended-reading', to: '/' },
       { from: '/info', to: '/about' },
       { from: '/training', to: '/online-courses' },
+      { from: '/articles/the-basics-of-anti-corruption', to: '/topics' },
       { from: '/articles', to: '/' },
       { from: '/home', to: '/' },
       { from: '/your-partner-profile', to: '/' },
@@ -83,9 +84,11 @@ export default class Error extends React.Component {
       { from: '/helpdesk-fr-FR', to: '/helpdesk' },
     ];
     const redir = redirects.find(({ from }) => ctx.asPath.match(from));
-
     if (redir && !(process.env.NODE_ENV === 'DEV')) {
-      return redirectPermanent(ctx, ctx.asPath.replace(redir.from, redir.to).replace(/\/$/, ''));
+      return redirectPermanent(
+        ctx,
+        ctx.asPath.replace(redir.from, redir.to).replace(/^(.+?)\/*?$/, '$1'),
+      );
     }
     /* TODO: make some query based on requested url to display suggested content
     const client = sanityClient({
