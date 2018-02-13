@@ -115,20 +115,22 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             )}
         </div>
       </div>
-      {contact.length > 0 && (
-        <div id="contacts" className="c-topic-section--lightblue o-wrapper-full-width">
-          <Team
-            title={
-              contact.length > 1
-                ? 'We’re the team responsible for this course'
-                : 'I’m responsible for this course'
-            }
-            sayHi
-            members={contact}
-            linkLabel="Read full bio"
-          />
-        </div>
-      )}
+
+      {courseType !== 15 &&
+        contact.length > 0 && (
+          <div id="contacts" className="c-topic-section--lightblue o-wrapper-full-width">
+            <Team
+              title={
+                contact.length > 1
+                  ? 'We’re the team responsible for this course'
+                  : 'I’m responsible for this course'
+              }
+              sayHi
+              members={contact}
+              linkLabel="Read full bio"
+            />
+          </div>
+        )}
       <Newsletter />
       <Footer />
     </Layout>
