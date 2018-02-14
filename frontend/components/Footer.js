@@ -9,7 +9,7 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Footer = ({ title }) => (
+const Footer = () => (
   <footer {...classes(null, null, 'o-wrapper-full-width')}>
     <div>
       <div {...classes('wrapper', null, 'o-wrapper')}>

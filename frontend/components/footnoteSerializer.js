@@ -1,11 +1,8 @@
 export default (key = '') => ({
   types: {
-    span: ({ node, children }) => {
-      return null
-    },
-    block: ({ node, children }) => {
+    span: () => null,
+    block: ({ children }) => {
       if (!key) return null;
-      const style = node.style || 'normal';
       return (
         <li className="footnote" id={`fn:${key}`}>
           {children}

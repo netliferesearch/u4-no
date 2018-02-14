@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from './serializers'
+import serializers from './serializers';
 
 const classes = BEMHelper({
   name: 'article',
@@ -10,17 +11,25 @@ const classes = BEMHelper({
 
 const renderCaption = (caption) => {
   if (Array.isArray(caption)) {
-    return <BlockContent blocks={caption}  serializers={serializers} />
-  } else {
-    return caption
+    return <BlockContent blocks={caption} serializers={serializers} />;
   }
-}
-const renderLicensor = ({ license = '', licensor = '', sourceUrl = '' }) => {
-  if(sourceUrl) {
-    return <p className="c-longform-grid__standard">Photo by: <a href={sourceUrl}>{licensor}</a></p>
+  return caption;
+};
+
+const renderLicensor = ({ licensor = '', sourceUrl = '' }) => {
+  if (sourceUrl) {
+    return (
+      <p className="c-longform-grid__standard">
+        Photo by: <a href={sourceUrl}>{licensor}</a>
+      </p>);
   }
-  return <p className="c-longform-grid__standard">Photo by: {licensor}</p>
-}
+  return <p className="c-longform-grid__standard">Photo by: {licensor}</p>;
+};
+
+renderLicensor.propTypes = {
+  licensor: PropTypes.string.isRequired,
+  sourceUrl: PropTypes.string.isRequired,
+};
 
 const figureOutFigureClass = (size) => {
   if (size === 'narrow') {
@@ -37,15 +46,38 @@ const figureOutFigureClass = (size) => {
 };
 
 const Figure = ({
-  asset, caption = {}, license = '', licensor = '', size, sourceUrl
+  asset = {}, caption = {}, licensor = '', size, sourceUrl,
 }) => (
   <figure {...classes('figure', null, figureOutFigureClass(size))}>
     <img {...classes('figure-img')} src={asset.url} alt={asset.altText} />
-    {caption.length > 0 && <figcaption {...classes('figure-figcaption')}>
+    {caption.length > 0 && (
+    <figcaption {...classes('figure-figcaption')}>
       {renderCaption(caption)}
-      {licensor &&  renderLicensor({ license, licensor, sourceUrl })}
-    </figcaption>}
+      {licensor && renderLicensor({ licensor, sourceUrl })}
+    </figcaption>)}
   </figure>
 );
+
+Figure.propTypes = {
+  asset: PropTypes.shape({
+    url: PropTypes.string,
+    altText: PropTypes.string,
+  }).isRequired,
+  caption: PropTypes.shape({
+    licensor: PropTypes.string,
+    sourceUrl: PropTypes.string,
+  }).isRequired,
+  license: PropTypes.string,
+  licensor: PropTypes.string,
+  size: PropTypes.string,
+  sourceUrl: PropTypes.string,
+};
+
+Figure.defaultProps = {
+  license: '',
+  licensor: '',
+  size: '',
+  sourceUrl: '',
+};
 
 export default Figure;

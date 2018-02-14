@@ -1,19 +1,23 @@
 import React from 'react';
-import randomKey from '../helpers/randomKey';
+import PropTypes from 'prop-types';
 
-const InstitutionList = ({ institutions = {} }) => (
+const InstitutionList = ({ institutions = [] }) => (
   <p className="c-article-header__institution">
     {institutions &&
       institutions
         .filter(inst => inst)
         .map(inst => (inst.target ? inst.target : inst))
-        .map(({ description = '', institution = {} }) => (
-          <span key={randomKey()}>
+        .map(({ _id, description = '', institution = {} }, index) => (
+          <span key={_id + index}>
             {description}
             {institution ? ` ${institution.name}` : ''}
           </span>
         ))}
   </p>
 );
+
+InstitutionList.propTypes = {
+  institutions: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default InstitutionList;

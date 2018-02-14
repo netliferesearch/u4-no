@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from '../routes';
-import { DownArrowButton } from '../components/buttons';
-import { ArrowRight } from '../components/icons';
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { Link } from '../routes';
+import { ArrowRight } from '../components/icons';
 
 const classes = BEMHelper({
   name: 'frontpage-feature',
@@ -10,6 +10,10 @@ const classes = BEMHelper({
 });
 
 class FrontpageFeature extends Component {
+  static propTypes = {
+    topics: PropTypes.arrayOf(PropTypes.object),
+
+  }
   constructor(props) {
     super(props);
     this.state = {

@@ -20,7 +20,7 @@ PublicationEntry.propTypes = {
       asset: PropTypes.shape({
         url: PropTypes.string,
       }),
-      _type: PropTypes.string
+      _type: PropTypes.string.isRequired,
     }),
     content: PropTypes.arrayOf(PropTypes.object),
   }),

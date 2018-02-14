@@ -1,18 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import {
   Footer,
   Layout,
-  LongformArticle,
   PublicationArticleHeader,
-  TableOfContentsButton,
-  TableOfContentsSidebar,
-  TableOfContentsContent,
-  CustomScrollSpy,
-  ToggleBlock,
-  PublicationDrawer,
   PdfViewer,
 } from './';
 
@@ -21,32 +15,23 @@ const LegacyPublicationContainer = (props) => {
     data: {
       lead = '',
       abstract = '',
-      _type = '',
-      longTitle = '',
       featuredImage = {},
-      mainPoints = [],
-      resources = [],
       legacypdf = {},
       date = {},
-      translation = {},
-      language = '',
       publicationType = {},
       title = '',
     } = {},
     BreadCrumbComponent = null,
     isArticleMenuOpen,
-    isPublicationDrawerOpen,
-    toggleArticleMenu,
-    toggleLoadingScreen,
     showLoadingScreen,
-    url = { asPath }
+    url = { asPath: '' },
   } = props;
   const pubyear = date && date.utc ? new Date(date.utc).getFullYear() : '';
 
   return (
     <Layout
       headComponentConfig={{
-        title: title,
+        title,
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
       }}
       showLoadingScreen={showLoadingScreen}
@@ -88,7 +73,7 @@ const LegacyPublicationContainer = (props) => {
         <div className="c-longform-grid">
           <div className="c-longform-grid__standard">
             {date &&
-              new Date().getFullYear() - pubyear > 5 && (
+              new Date().getFullYear() - Number(pubyear) > 5 && (
                 <div className="c-notification">
                   <p className="c-notification__body">
                     This publication is from {pubyear}. Some of the content may be outdated. Search
@@ -112,15 +97,34 @@ const LegacyPublicationContainer = (props) => {
         </div>
         {legacypdf.asset && (
           <PdfViewer
-            file={{
-              url: legacypdf.asset.url,
-            }}
+            file={{ url: legacypdf.asset.url }}
           />
         )}
         <Footer />
       </article>
     </Layout>
   );
+};
+
+LegacyPublicationContainer.propTypes = {
+  data: PropTypes.shape({
+    lead: PropTypes.string,
+    abstract: PropTypes.string,
+    _type: PropTypes.string,
+    longTitle: PropTypes.string,
+    featuredImage: PropTypes.string,
+    mainPoints: PropTypes.string,
+    resources: PropTypes.string,
+    legacypdf: PropTypes.string,
+    date: PropTypes.string,
+    translation: PropTypes.string,
+    language: PropTypes.string,
+    publicationType: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
+  url: PropTypes.shape({
+    asPath: PropTypes.string,
+  }).isRequired,
 };
 
 export default connect(

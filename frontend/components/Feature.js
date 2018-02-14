@@ -17,7 +17,7 @@ const Feature = ({ title = '', icon = () => null, iconUrl = '' }) => (
 
 Feature.propTypes = {
   title: PropTypes.string.isRequired,
-  icon: PropTypes.function,
+  icon: PropTypes.func,
   iconUrl: PropTypes.string,
 };
 

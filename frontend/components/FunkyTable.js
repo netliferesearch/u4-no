@@ -1,4 +1,7 @@
-const FunkyTable = ({ rows = [], title = false }) => (<div className="c-longform-grid__standard">
+import React from 'react';
+import PropTypes frmo 'prop-types';
+
+const FunkyTable = ({ rows = [], title = '' }) => (<div className="c-longform-grid__standard">
   <div className="c-table-container">
     {title && <h2 className="c-table-container__heading">{title}</h2>}
     <table className="c-table">
@@ -16,5 +19,18 @@ const FunkyTable = ({ rows = [], title = false }) => (<div className="c-longform
     </table>
   </div>
 </div>);
+
+FunkyTable.propTypes = {
+  rows: PropTypes.arrayOf(PropTypes.shape({
+    rows: PropTypes.arrayOf(PropTypes.shape({
+      columns: PropTypes.arrayOf(PropTypes.string),
+    })),
+  })).isRequired,
+  title: PropTypes.string,
+}
+
+FunkyTable.defaultProps = {
+  title: '',
+};
 
 export default FunkyTable;
