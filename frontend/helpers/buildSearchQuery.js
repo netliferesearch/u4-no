@@ -45,7 +45,7 @@ export default ({ queryString = '', limit: { from = 0, to = 20 } = { from: 0, to
         || agenda[].children[].text match [${matchString}]
         || timezone match [${matchString}]
       ) && defined(slug.current)
-       &&  !(_type in ["term", "service", "courseType"])
+       &&  !(_type in [ "service", "courseType"])
     ]
     [${from}...${to}]
     {_id,
@@ -63,7 +63,8 @@ export default ({ queryString = '', limit: { from = 0, to = 20 } = { from: 0, to
       language,
       year,
       firstName,
-      surname
+      surname,
+      term
     }`.replace('\n', '');
 };
 

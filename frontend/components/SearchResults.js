@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { updateSearchSorting } from '../helpers/redux-store';
 import { Link } from '../routes';
 import buildUrl from '../helpers/buildUrl';
+import itemTitle from '../helpers/itemTitle';
 
 import { AuthorList, EditorList } from '../components/';
 
@@ -57,6 +58,7 @@ const SearchResults = (props) => {
             editors = false,
             firstName = '',
             surname = '',
+            term = '',
           }) => (
             <li {...classes('items')} key={_id}>
               <span {...classes('items-type')}>
@@ -68,14 +70,20 @@ const SearchResults = (props) => {
                 {!publicationType && <span>{_type}</span>}
               </span>
               <span {...classes('items-date')}>
-                {date &&
-                  date.utc ? moment(date.utc).format('DD.MM.YYYY') : moment(_updatedAt).format('DD.MM.YYYY')
-                }
+                {date && date.utc
+                  ? moment(date.utc).format('DD.MM.YYYY')
+                  : moment(_updatedAt).format('DD.MM.YYYY')}
               </span>
               <br />
               <Link to={buildUrl({ _type, slug })}>
                 <a {...classes('items-title')}>
-                  {_type === 'person' ? `${firstName} ${surname}` : `${title}`}
+                  {itemTitle({
+                    _type,
+                    title,
+                    firstName,
+                    surname,
+                    term,
+                  })}
                 </a>
               </Link>
               <br />
