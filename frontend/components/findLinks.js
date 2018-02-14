@@ -1,9 +1,6 @@
 export default (blocks = []) => {
   /**
-   * First find markDefs that is footnotes.
-   * @todo: this doesn't work recursively, in case
-   * a footnote happens to have a footnotes (footnotes, should
-   * probably not have footnotes though)
+   * First find markDefs that is links.
    */
   const linkChecker = _type => _type === 'link' || _type === 'reference';
   const markDefinitions = blocks
