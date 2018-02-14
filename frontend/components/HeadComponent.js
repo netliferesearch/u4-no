@@ -20,6 +20,7 @@ const HeadComponent = ({
     <meta property="og:description" content={ogp.description ? ogp.description : description} />
     <meta property="og:site_name" content="U4 Anti-Corruption Resource Centre" />
     <meta property="og:locale" content="en_US" />
+    <meta name="google-site-verification" content="IuEUdfNVUT1nJ-DJUcrg99bbRIha348aLY0tC4tOIk0" />
 
     {/* Twitter will reuse OGP declarations for description and image */}
     <meta name="twitter:card" content="summary" />
@@ -27,14 +28,17 @@ const HeadComponent = ({
     <link rel="icon" type="image/png" href="/static/favicon.png" />
 
     <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-    {!process.env.DEV && <script dangerouslySetInnerHTML={{
-    __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    {!process.env.DEV && (
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-KVW5J96');`,
-  }}>
-  </script>}
+        }}
+      />
+    )}
   </Head>
 );
 
