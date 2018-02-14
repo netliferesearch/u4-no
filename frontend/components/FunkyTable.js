@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes frmo 'prop-types';
+import PropTypes from 'prop-types';
 
 const FunkyTable = ({ rows = [], title = '' }) => (<div className="c-longform-grid__standard">
   <div className="c-table-container">
