@@ -45,7 +45,7 @@ export default ({ queryString = '', limit: { from = 0, to = 20 } = { from: 0, to
         || agenda[].children[].text match [${matchString}]
         || timezone match [${matchString}]
       ) && defined(slug.current)
-       &&  !(_type in ["term", "service"])
+       &&  !(_type in ["term", "service", "courseType"])
     ]
     [${from}...${to}]
     {_id,

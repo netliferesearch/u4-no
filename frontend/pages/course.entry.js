@@ -58,27 +58,45 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
                   {startDate.utc.split('T')[0]} {endDate.utc && `${endDate.utc.split('T')[0]}`}
                 </p>
               )}
-            {language && (
-              <p className="c-longform-grid__standard">
-                Language: {languageName({ langcode: language })}
-              </p>
-            )}
+            {false &&
+              language && (
+                <p className="c-longform-grid__standard">
+                  Language: {languageName({ langcode: language })}
+                </p>
+              )}
           </div>
           {content ? <ServiceArticle blocks={content} /> : null}
-          <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
-            <div>
-              <iframe
-                title="signup"
-                src={`https://partner.u4.no/signup/?course=${courseType}`}
-                width="100%"
-                height="400px"
-                style={{ border: 0 }}
-              >
-                Your browser seems to have problems with our sign-up form. Send an e-mail to
-                course@u4.no if you wish to sign up for this course.
-              </iframe>
+
+          {courseType !== 15 && (
+            <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
+              <div>
+                <iframe
+                  title="signup"
+                  src={`https://partner.u4.no/signup/?course=${courseType}`}
+                  width="100%"
+                  height="400px"
+                  scrolling="no"
+                  style={{ border: 0, overflow: 'hidden' }}
+                >
+                  Your browser seems to have problems with our sign-up form. Send an e-mail to
+                  course@u4.no if you wish to sign up for this course.
+                </iframe>
+              </div>
             </div>
-          </div>
+          )}
+
+          {courseType === 15 && (
+            <iframe
+              title="Course"
+              src="https://partner.u4.no/course/brick1/"
+              width="100%"
+              height="600px"
+              scrolling="no"
+              style={{ border: 0, overflow: 'hidden' }}
+            >
+              Your browser seems to have problems with iframes. Please try a different browser!
+            </iframe>
+          )}
 
           {false &&
             topics.length > 0 && (
@@ -97,20 +115,22 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             )}
         </div>
       </div>
-      {contact.length > 0 && (
-        <div id="contacts" className="c-topic-section--lightblue o-wrapper-full-width">
-          <Team
-            title={
-              contact.length > 1
-                ? 'We’re the team responsible for this course'
-                : 'I’m responsible for this course'
-            }
-            sayHi
-            members={contact}
-            linkLabel="Read full bio"
-          />
-        </div>
-      )}
+
+      {courseType !== 15 &&
+        contact.length > 0 && (
+          <div id="contacts" className="c-topic-section--lightblue o-wrapper-full-width">
+            <Team
+              title={
+                contact.length > 1
+                  ? 'We’re the team responsible for this course'
+                  : 'I’m responsible for this course'
+              }
+              sayHi
+              members={contact}
+              linkLabel="Read full bio"
+            />
+          </div>
+        )}
       <Newsletter />
       <Footer />
     </Layout>
