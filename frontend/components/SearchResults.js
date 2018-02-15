@@ -7,6 +7,7 @@ import { updateSearchSorting } from '../helpers/redux-store';
 import { Link } from '../routes';
 import buildUrl from '../helpers/buildUrl';
 import itemTitle from '../helpers/itemTitle';
+import itemTypeAsHeading from '../helpers/itemTypeAsHeading';
 
 import { AuthorList, EditorList } from '../components/';
 
@@ -59,15 +60,11 @@ const SearchResults = (props) => {
             firstName = '',
             surname = '',
             term = '',
+            articleType = '',
           }) => (
             <li {...classes('items')} key={_id}>
               <span {...classes('items-type')}>
-                {publicationType && (
-                  <span>
-                    {_type}: {publicationType.title}
-                  </span>
-                )}
-                {!publicationType && <span>{_type}</span>}
+                {itemTypeAsHeading({ _type, publicationType, articleType })}
               </span>
               <span {...classes('items-date')}>
                 {date && date.utc

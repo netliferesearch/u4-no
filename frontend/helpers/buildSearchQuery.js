@@ -64,7 +64,8 @@ export default ({ queryString = '', limit: { from = 0, to = 20 } = { from: 0, to
       year,
       firstName,
       surname,
-      term
+      term,
+      "articleType": articleType[0]->title
     }`.replace('\n', '');
 };
 

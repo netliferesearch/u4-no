@@ -5,7 +5,8 @@ import BEMHelper from 'react-bem-helper';
 import autobind from 'react-autobind';
 import prioritize from './SearchFilters/searchWeighting';
 import buildQuery from '../helpers/buildSearchQuery';
-import buildUrl from '../helpers/buildUrl';
+import itemTitle from '../helpers/itemTitle';
+import itemTypeAsHeading from '../helpers/itemTypeAsHeading';
 import { Loader } from '../components';
 import { MagnifyingGlass } from '../components/icons';
 import { Router } from '../routes';
@@ -193,9 +194,9 @@ class SearchField extends Component {
                       onClick={() => this.handleItemClick(item)}
                       {...classes('items', highlightedIndex === index ? 'highlighted' : null)}
                     >
-                      <span className="c-search__items-type">{item._type}</span>
+                      <span className="c-search__items-type">{itemTypeAsHeading(item)}</span>
                       <br />
-                      {generateTitle(item)}
+                      {itemTitle(item)}
                     </button>
                   </div>
                 ))}
