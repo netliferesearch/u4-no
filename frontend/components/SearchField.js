@@ -161,6 +161,7 @@ class SearchField extends Component {
                       // the user has clicked enter in the search field but not
                       // selected something from the dropdown. So, we just try
                       // make a search for it
+                      clearSelection();
                       Router.pushRoute(`/search?search=${e.target.value}`);
                     } else if (typeof highlightedIndex === 'number') {
                       // user has selected some item, we find it from state and
