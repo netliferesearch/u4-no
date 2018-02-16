@@ -2,6 +2,7 @@ import { license } from './fields';
 
 export default {
   name: 'institution',
+  title: 'Institution',
   type: 'object',
   fields: [
     {
