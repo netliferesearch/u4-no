@@ -49,7 +49,7 @@ export default {
             // Support annotating text with a reference to an author
             annotations: [
               {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-              {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
+              {name: 'internalReferance', title: 'Author/ publication/ article/ asset', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'},{type: 'asset'}]},
             ]
           }
         },
@@ -141,7 +141,7 @@ export default {
             // Support annotating text with a reference to an author
             annotations: [
               {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-              {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
+              {name: 'internalReferance', title: 'Author/ publication/ article/ asset', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'},{type: 'asset'}]},
             ]
           }
         },
