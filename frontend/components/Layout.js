@@ -45,7 +45,7 @@ const Layout = ({
 Layout.propTypes = {
   showLoadingScreen: PropTypes.bool,
   showTopTab: PropTypes.bool,
-  children: PropTypes.arrayOf(PropTypes.object),
+  children: PropTypes.node,
   noSearch: PropTypes.bool,
   headComponentConfig: PropTypes.shape({
     title: PropTypes.string,
@@ -70,4 +70,4 @@ Layout.defaultProps = {
   hideLogo: false,
 };
 
-export default Layout
+export default Layout;
