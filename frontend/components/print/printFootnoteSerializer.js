@@ -1,4 +1,4 @@
-export default (key = false) => ({
+export default (key = '') => ({
   types: {
     span: ({ node, children }) => {
       return null
