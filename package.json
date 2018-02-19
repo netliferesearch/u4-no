@@ -87,6 +87,9 @@
     }
   },
   "babel": {
+    "plugins": [
+      ["transform-define", "./env-config.js"]
+    ],
     "presets": [
       [
         "env",

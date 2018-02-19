@@ -1,5 +1,5 @@
 require('dotenv').config({ path: './.env' });
-const prod = process.env.NODE_ENV === 'production';
+// const prod = process.env.NODE_ENV === 'production';
 const stage = process.env.STAGING === 'true';
 
 module.exports = {
