@@ -115,5 +115,8 @@
   "bugs": {
     "url": "https://github.com/netliferesearch/u4-no/issues"
   },
-  "homepage": "https://github.com/netliferesearch/u4-no#readme"
+  "homepage": "https://github.com/netliferesearch/u4-no#readme",
+  "devDependencies": {
+    "babel-plugin-transform-define": "^1.3.0"
+  }
 }
