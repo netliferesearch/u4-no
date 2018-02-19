@@ -17,7 +17,7 @@ export default (Child, { queryFunc = false, materializeDepth = false, query = {}
       const client = sanityClient({
         projectId: '1f1lcoov',
         dataset: 'production',
-        token: '',
+        token: process.env.SANITY_TOKEN,
         useCdn: true,
       });
 

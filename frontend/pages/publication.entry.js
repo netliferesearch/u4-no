@@ -35,7 +35,7 @@ PublicationEntry.defaultProps = {
 
 export default DataLoader(PublicationEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `*[slug.current == $slug && !(_id in path "drafts.**")]{...,
+    sanityQuery: `*[slug.current == $slug]{...,
       _id, title, subtitle, standfirst, pdfFile, slug, featuredImage, summary, summaryExternal, date, content,
       reference, bibliographicalOverride, abbreviations, blurbs, language,
       "translations": coalesce(
