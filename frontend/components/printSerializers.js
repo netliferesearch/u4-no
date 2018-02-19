@@ -1,3 +1,4 @@
+import React from 'react'
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
@@ -45,7 +46,8 @@ function printSerializers(blocks) {
         // Heading?
         if (/^h\d/.test(style)) {
           const level = parseInt(style.slice(1), 10);
-          const id = level === 2 || level === 3 ? slugify(children[0], { lower: true, remove: /[$*_+~.:()'"!\-:@]/g }) : undefined;
+          console.log(typeof children[0], children[0])
+          const id = typeof children[0] === 'string' && (level === 2 || level === 3) ? slugify(children[0], { lower: true, remove: /[$*_+~.:()'"!\-:@]/g }) : undefined;
 
           return React.createElement(
             style,
@@ -87,13 +89,9 @@ function printSerializers(blocks) {
         }
         return null;
       },
-      blockNote: ({children, markKey = '', mark = {}}) => {
+      blockNote: ({markKey = '', mark = {}}) => {
         if (!mark.content) return null;
-        return <span>
-          <span>
-          {markKey && (<BlockContent blocks={footnotes[markKey]} serializers={printFootnoteSerializer(markKey)} />)}
-        </span>
-        </span>;
+        return (<span>{markKey && <BlockContent blocks={footnotes[markKey]} serializers={printFootnoteSerializer(markKey)} />}</span>);
       },
       footnote: ({ children, markKey = '' }) => (
         <span>
