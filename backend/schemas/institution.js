@@ -11,23 +11,6 @@ export default {
     },
     {
       name: 'about',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          lists: [],
-          styles: [],
-          marks: {
-            // Only allow these decorators
-            decorators: [
-              { title: 'Emphasis', value: 'em' }
-            ],
-          },
-        },
-      ],
-    },
-    {
-      name: 'about',
       title: 'About this institution',
       type: 'array',
       of: [
