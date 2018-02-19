@@ -1,10 +1,10 @@
 require('dotenv').config();
 const sanityClient = require('@sanity/client');
-console.log(process.env.SANITY_TOKEN)
+
 const client = sanityClient({
   projectId: '1f1lcoov',
   dataset: 'production',
-  token: process.env.SANITY_TOKEN,
+  token: process.env.SANITY_TOKEN_GROUPS,
 });
 
 /**
@@ -17,6 +17,10 @@ const client = sanityClient({
  *
  * See https://www.sanity.io/docs/data-store/third-party-login#managing-groups-and-users
  * for more information on custom permissions and filters
+ *
+ * These permissions are _incremental_, which means that if the user
+ * is already in another group with broader permissions, narrower permissions
+ * here will have no effect.
  */
 
 const groupsDoc = {
@@ -32,7 +36,7 @@ const groupsDoc = {
       permissions: ['create', 'read', 'update'],
     },
   ],
-  members: ['pRcCB7kxI']
+  members: ['pRcCB7kxI'],
 };
 
-client.createOrReplace(groupsDoc).then(console.log).catch(console.error)
+client.createOrReplace(groupsDoc).then(console.log).catch(console.error);
