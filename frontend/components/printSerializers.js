@@ -46,7 +46,6 @@ function printSerializers(blocks) {
         // Heading?
         if (/^h\d/.test(style)) {
           const level = parseInt(style.slice(1), 10);
-          console.log(typeof children[0], children[0])
           const id = typeof children[0] === 'string' && (level === 2 || level === 3) ? slugify(children[0], { lower: true, remove: /[$*_+~.:()'"!\-:@]/g }) : undefined;
 
           return React.createElement(
