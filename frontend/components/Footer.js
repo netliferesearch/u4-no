@@ -32,7 +32,8 @@ const Footer = () => (
           <div {...classes('heading')}>Address</div>
           U4 - Chr. Michelsen Institute,<br />
           P.O. Box 6033,<br />
-          N-5892 Bergen, Norway
+          N-5892 Bergen, Norway<br />
+          Visiting address: Jekteviksbakken 31, Bergen
         </div>
         <div {...classes('item')}>
           <Link to="/privacy-policy">
