@@ -3,6 +3,7 @@ const routes = (module.exports = require('next-routes')());
 routes
   .add('main.index', '/')
   .add('publication.shortVersion', '/publications/:slug/shortversion')
+  .add('publication.pdf', '/publications/:slug/downloadasset/:legacyid')
   .add('publication.entry', '/publications/:slug')
   .add('publication.print', '/publications/:slug/print')
   .add('topic.article', '/topics/:slug/:topicPart')
