@@ -78,6 +78,12 @@ body {
     margin: 0;
     margin-top: $spacing-tiny;
   }
+  h2 {
+    font-weight: bold;
+    font-size: 10pt;
+    margin: 0;
+    margin-top: $spacing-tiny;
+  }
   img {
     height: 1cm;
     margin-right: 0.5cm;
@@ -152,6 +158,7 @@ p {
   footnote-style-position: inside;
   float: footnote;
 }
+/* .referencesLink { } */
 p {
   prince-footnote-policy: keep-with-block;
 }
@@ -161,9 +168,14 @@ p {
 .body {
   page-break-before: always;
 }
-h2 {
+h1, h2, h3, h4, h5, h6 {
   page-break-after: avoid;
- }
+  page-break-inside: avoid;
+}
+h3 {
+  font-weight: bold;
+  font-size: 12pt;
+}
 a {
   border: none;
   color: black;
@@ -333,6 +345,9 @@ figure {
 
 .c-toggle-block__title {
   display: none;
+}
+#references {
+  page-break-before: always;
 }
 @page main {
   @top {
