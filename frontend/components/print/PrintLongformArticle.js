@@ -43,6 +43,11 @@ class LongformArticle extends PureComponent {
                 )}
               </li>
             ))}
+            { references &&
+              <li key="references" className="contents__list-item">
+                <a href="#references">References</a>
+              </li>
+            }
           </ul>
         </div>
         {abstract.length ? (
@@ -94,20 +99,20 @@ class LongformArticle extends PureComponent {
 
         <div className="body">
           <BlockContent blocks={blocks} serializers={serializers(blocks)} />
-        </div>
-
-        {references ? (
-          <div className="c-longform-grid">
-            <div className="c-longform-grid__standard">
-              <h2 className="c-longform-grid__standard">References</h2>
-              <div className="footnotes">
-                <ol>
-                  <BlockContent blocks={references} serializers={serializers()} />
-                </ol>
-              </div>
+          {references ? (
+            <div>
+              <h2 id="references">References</h2>
+              <BlockContent
+                blocks={references}
+                serializers={{
+                  marks: {
+                    link: props => <span>{props.children}. <a className="referencesLink" href={props.mark.href}>{props.mark.href}</a></span>,
+                  },
+                }}
+              />
             </div>
-          </div>
-         ) : null}
+          ) : null}
+        </div>
 
         <Head>
           <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
