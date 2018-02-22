@@ -93,7 +93,15 @@ const SearchResults = (props) => {
               ) : null}
               {editors.length ? (
                 <div>
-                  <EditorList editors={editors} />
+                  <EditorList
+                    editors={editors}
+                    intro={
+                      publicationType && publicationType._id === 'pubtype-3'
+                        ? 'Reviewed by'
+                        : 'Series editor'
+                    }
+                    pluralize={false}
+                  />
                   <br />
                 </div>
               ) : null}

@@ -36,9 +36,7 @@ const PublicationArticleHeader = ({
     {/* Wrap in standard grid width until we know better */}
     <div {...classes('meta')}>
       {publicationType.title && `${publicationType.title} | `}
-      {topics
-      .filter(({ target }) => target)
-      .map(({ _ref = '', target = {} }) => (
+      {topics.filter(({ target }) => target).map(({ _ref = '', target = {} }) => (
         <Link
           key={_ref}
           route="topic.entry"
@@ -65,7 +63,7 @@ const PublicationArticleHeader = ({
             <span>
               <EditorList
                 editors={editors}
-                intro={publicationType._id === 'pubtype-3' ? 'Reviewed by' : 'Edited by'}
+                intro={publicationType._id === 'pubtype-3' ? 'Reviewed by' : 'Series editor'}
                 pluralize={false}
               />
               <br />
@@ -102,7 +100,7 @@ const PublicationArticleHeader = ({
         {partners.length ? <InstitutionList institutions={partners} /> : null}
         {publicationType._id === 'pubtype-3' ? (
           <div className="c-article-header__institution">
-            <p>The U4 Helpdesk is operated by{' '}</p>
+            <p>The U4 Helpdesk is operated by </p>
             <div className="c-logo">
               <PartnerLogo10 />
             </div>

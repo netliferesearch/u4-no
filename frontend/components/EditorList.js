@@ -1,7 +1,9 @@
 import React from 'react';
 import buildUrl from '../helpers/buildUrl';
 
-const EditorList = ({ _id, editors = [], intro = 'Editor', pluralize = true }, index) =>
+const EditorList = ({
+  _id, editors = [], intro = 'Series editor', pluralize = true,
+}, index) =>
   editors.length > 0 && (
     <span key={_id + index}>
       {intro}
