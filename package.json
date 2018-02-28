@@ -87,26 +87,6 @@
       "^.+\\.(css|less|scss)$": "babel-jest"
     }
   },
-  "babel": {
-    "plugins": [
-      ["transform-define", "./env-config.js"]
-    ],
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "browsers": [
-              "last 2 versions",
-              "ie >= 10"
-            ]
-          },
-          "debug": false
-        }
-      ],
-      "next/babel"
-    ]
-  },
   "engines": {
     "node": "8.4.0"
   },
