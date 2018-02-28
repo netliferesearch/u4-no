@@ -17,15 +17,15 @@ const arrayify = (content) => {
 const LinkList = ({ title = '', content = [], otherClasses = '' }) => (
   <ul {...classes(null, null, otherClasses)}>
     {title && <span>{title}</span>}
-    { arrayify(content).map(({ link = '', title = ''}, index) =>
-      (<li key={index + title.trim()} {...classes('item')}>
+    { arrayify(content).map(({ link = '', title: linkList = '' }, index) => (
+      <li key={index + linkList.trim()} {...classes('item')}>
         <Link to={link}>
           <a {...classes('link')}>
-            {title} <ArrowRight {...classes('icon')} />
+            {linkList} <ArrowRight {...classes('icon')} />
           </a>
         </Link>
-      </li>),
-    )}
+      </li>
+    ))}
   </ul>
 );
 
@@ -33,7 +33,7 @@ LinkList.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.object),
-    PropTypes.string,
+    PropTypes.object,
   ]).isRequired,
   otherClasses: PropTypes.oneOfType([
     PropTypes.object,

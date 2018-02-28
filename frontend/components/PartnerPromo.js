@@ -23,9 +23,7 @@ const PartnerPromo = ({
           <div {...classes('statement')}>
             <OnlineTraining {...classes('statement-icon')} />
             <div {...classes('statement-bodywrapper')}>
-              <a {...classes('statement-link')} href="/online-courses">
-                <h3 {...classes('statement-title')}>Online training</h3>
-              </a>
+              <h3 {...classes('statement-title')}>Online training</h3>
               <p {...classes('statement-body')}>
                 Be confident with anti-corruption initiatives in your work. We offer dynamic and
                 time-efficient online courses.
@@ -37,9 +35,7 @@ const PartnerPromo = ({
           <div {...classes('statement')}>
             <Workshops {...classes('statement-icon')} />
             <div {...classes('statement-bodywrapper')}>
-              <a {...classes('statement-link')} href="/workshops-and-events">
-                <h3 {...classes('statement-title')}>Workshops and events</h3>
-              </a>
+              <h3 {...classes('statement-title')}>Workshops and events</h3>
               <p {...classes('statement-body')}>
                 Our team can help bring momentum to processes. We gather different actors for
                 informed discussions.
@@ -51,9 +47,7 @@ const PartnerPromo = ({
           <div {...classes('statement')}>
             <Helpdesk {...classes('statement-icon')} />
             <div {...classes('statement-bodywrapper')}>
-              <a {...classes('statement-link')} href="/helpdesk">
-                <h3 {...classes('statement-title')}>Helpdesk for partners</h3>
-              </a>
+              <h3 {...classes('statement-title')}>Helpdesk for partners</h3>
               <p {...classes('statement-body')}>
                 Send in your corruption-related questions about development programmes, sectors, or
                 countries. A free research service.
