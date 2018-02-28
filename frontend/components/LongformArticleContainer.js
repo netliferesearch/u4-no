@@ -190,11 +190,15 @@ const LongFormArticleContainer = (props = {}) => {
             </div>
           )}
           {_type !== 'publication' && (
-            <div className="c-longform-grid">
-              <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
-              {lead && <div className="c-article c-longform-grid__standard">{lead}</div>}
-              <div className="c-longform-grid__sidebar-right">
-                <TableOfContentsSidebar alwaysFollow {...props.data} />
+            <div>
+              <div className="c-longform-grid u-bg-white u-z-index-x">
+                <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
+                {lead && <div className="c-article c-longform-grid__standard">{lead}</div>}
+              </div>
+              <div className="c-longform-grid">
+                <div className="c-longform-grid__sidebar-right">
+                  <TableOfContentsSidebar alwaysFollow {...props.data} />
+                </div>
               </div>
             </div>
           )}
