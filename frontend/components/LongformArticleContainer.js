@@ -184,7 +184,7 @@ const LongFormArticleContainer = (props = {}) => {
               {_type === 'publication' &&
                 !isPublicationDrawerOpen && (
                   <div className="c-longform-grid__sidebar-right">
-                    <TableOfContentsSidebar {...props} />
+                    <TableOfContentsSidebar {...props.data} />
                   </div>
                 )}
             </div>

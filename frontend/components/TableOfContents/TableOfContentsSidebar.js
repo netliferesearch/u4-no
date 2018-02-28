@@ -41,7 +41,7 @@ export default class extends Component {
   }
 
   render() {
-    const { content = [] } = this.props.data;
+    const { content = [] } = this.props;
     return (
       <div
         className={`c-article-nav-sidebar ${this.state.navFollowScreen
