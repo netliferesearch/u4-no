@@ -1,12 +1,15 @@
 .c-simple-mosaic {
   display: flex;
   justify-content: center;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   @include mq($from: tablet) {
     margin: $spacing-large auto $spacing-huge;
   }
 }
-.c-simple-mosaic__item {
+
+.c-simple-mosaic__item,
+a.c-simple-mosaic__item,
+  {
   max-width: 300px;
   width: 100%;
   margin: $spacing-small;
@@ -17,15 +20,14 @@
     border: none;
     color: $brand-dark;
   }
-
-  &:hover {
+  &:hover,
+  &:hover:visited,
+    {
     background: $brand-medium;
     color: $white;
-    a {
-      color: $white;
-    }
   }
 }
+
 .c-simple-mosaic__title {
   @include inuit-font-size($font-size-normal, $font-size-large);
   margin-bottom: $spacing;
