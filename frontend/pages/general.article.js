@@ -11,8 +11,8 @@ import {
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 
-const GeneralArticle = ({ data, url = {} }) => {
-  if (data._type === 'frontpage') {
+const GeneralArticle = (props) => {
+  if (props.data._type === 'frontpage') {
     const {
       title = '',
       longTitle = '',
@@ -20,7 +20,9 @@ const GeneralArticle = ({ data, url = {} }) => {
       lead = '',
       sections,
       relatedUrl = {},
-    } = data;
+      explainerText = '',
+    } = props.data;
+    const { url = {} } = props;
     return (
       <Layout
         headComponentConfig={{
@@ -39,11 +41,12 @@ const GeneralArticle = ({ data, url = {} }) => {
       </Layout>
     );
   }
+  console.log(props);
   return (
     <LongformArticleContainer
-      BreadCrumbComponent={<BreadCrumb url={url} />}
-      lead={data.explainerText}
-      data={{ ...data }}
+      BreadCrumbComponent={<BreadCrumb url={props.url} />}
+      lead={props.data.explainerText}
+      {...props}
     />
   );
 };
