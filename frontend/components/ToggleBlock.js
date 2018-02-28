@@ -59,7 +59,10 @@ class ToggleBlock extends Component {
 
 ToggleBlock.propTypes = {
   title: PropTypes.string,
-  content: PropTypes.shape(PropTypes.object),
+  content: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.string
+  ]),
   modifier: PropTypes.string,
 };
 
