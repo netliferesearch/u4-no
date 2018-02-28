@@ -1,55 +1,12 @@
-import React, { Component } from 'react';
-import throttle from 'lodash/throttle';
+import React from 'react';
 import TableOfContentsBase from './TableOfContentsBase';
 
-export default class extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      navFollowScreen: props.alwaysFollow ? props.alwaysFollow : false,
-      /**
-       * Lodash returns a throttled function which we need to save so that
-       * we can later call removeEventListener on that function reference.
-       */
-      scrollHandler: throttle(() => {
-        const elementTarget = document.getElementById('js-scroll-trigger');
-        if (!elementTarget) {
-          return; // do nothing
-        }
-        if (window.scrollY > elementTarget.offsetTop + elementTarget.offsetHeight) {
-          this.setState(() => ({ navFollowScreen: true }));
-        } else {
-          this.setState(() => ({ navFollowScreen: false }));
-        }
-      }, 1000),
-    };
-  }
+const TableOfContentsSidebar = ({alwaysFollow, content}) => (
+  <div
+    className={`c-article-nav-sidebar ${alwaysFollow ? 'c-article-nav-sidebar--fixed' : ''}`}
+  >
+    <TableOfContentsBase content={content} />
+  </div>
+)
 
-  componentDidMount() {
-    if (this.props.alwaysFollow) {
-      return; // do nothing
-    }
-    window.addEventListener('scroll', this.state.scrollHandler);
-    this.state.scrollHandler();
-  }
-
-  componentWillUnmount() {
-    if (this.props.alwaysFollow) {
-      return; // do nothing
-    }
-    window.removeEventListener('scroll', this.state.scrollHandler);
-  }
-
-  render() {
-    const { content = [] } = this.props;
-    return (
-      <div
-        className={`c-article-nav-sidebar ${this.state.navFollowScreen
-          ? 'c-article-nav-sidebar--fixed'
-          : ''}`}
-      >
-        <TableOfContentsBase onItemSelected={this.tocItemHandler} content={content} />
-      </div>
-    );
-  }
-}
+export default TableOfContentsSidebar
