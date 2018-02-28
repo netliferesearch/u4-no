@@ -19,11 +19,9 @@ const LinkList = ({ title = '', content = [], otherClasses = '' }) => (
     {title && <span>{title}</span>}
     { arrayify(content).map(({ link = '', title: linkList = '' }, index) => (
       <li key={index + linkList.trim()} {...classes('item')}>
-        <Link to={link}>
-          <a {...classes('link')}>
-            {linkList} <ArrowRight {...classes('icon')} />
-          </a>
-        </Link>
+        <a href={link} {...classes('link')}>
+          {linkList} <ArrowRight {...classes('icon')} />
+        </a>
       </li>
     ))}
   </ul>
