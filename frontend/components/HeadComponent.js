@@ -55,7 +55,7 @@ HeadComponent.propTypes = {
 };
 
 HeadComponent.defaultProps = {
-  title: '',
+  title: 'U4 Anti-Corruption Resource Centre',
   description:
     'U4 translates anti-corruption research into practical advice for international development actors. We offer publications, training, workshops, helpdesk, and policy advice to government agencies and the global anti-corruption community.',
   image: '',
