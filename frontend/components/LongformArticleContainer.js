@@ -1,5 +1,5 @@
 import React from 'react';
-import BlockToContent from '@sanity/block-content-to-react'
+import BlockToContent from '@sanity/block-content-to-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
@@ -96,58 +96,61 @@ const LongFormArticleContainer = (props = {}) => {
           <span id="js-top" />
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
-            {_type === 'publication' && !shortversion && (
-              <div
-                className={`c-hero u-bg-white u-z-index-x ${
-                  publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''
-                }`}
-              >
+            {_type === 'publication' &&
+              !shortversion && (
                 <div
-                  className="c-hero-image"
-                  style={{
-                    backgroundImage: `url(${props.data.featuredImage &&
-                      props.data.featuredImage.asset &&
-                      props.data.featuredImage.asset.url}?width=1120&crop=focalpoint&fit=scale)`,
-                    backgroundColor: '#0079CF',
-                  }}
-                />
-                <div className="c-hero-bg" />
-                <div className="c-hero-sideText">
-                  {
-                    props.data.featuredImage &&
-                      props.data.featuredImage.caption &&
-                      <BlockToContent
-                        blocks={props.data.featuredImage.caption}
-                        serializers={{
-                          types: { block: (props) => <p style={{display: 'inline' }}>{props.children}</p>}
-                        }}
-                      />
-                  }
-                  {
-                    props.data.featuredImage &&
-                      !props.data.featuredImage.sourceUrl &&
-                        props.data.featuredImage.credit && <div style={{display: 'inline'}}>{props.data.featuredImage.credit}</div>
-                  }
-                  {props.data.featuredImage &&
-                    props.data.featuredImage.sourceUrl && (
-                      <a className="u-margin-left-tiny" href={props.data.featuredImage.sourceUrl}>
-                        {props.data.featuredImage.credit
-                          ? props.data.featuredImage.credit
-                          : props.data.featuredImage.sourceUrl}
-                      </a>
-                    )}
-                    { props.data.featuredImage &&
-                      props.data.featuredImage.license && <span> {props.data.featuredImage.license.toUpperCase()}</span>
-                    }
-                </div>
-                <div className="c-hero-header">
-                  <PublicationArticleHeader
-                    className="c-hero__grid-container__content links-wrapper-dark-background"
-                    {...props.data}
+                  className={`c-hero u-bg-white u-z-index-x ${
+                    publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''
+                  }`}
+                >
+                  <div
+                    className="c-hero-image"
+                    style={{
+                      backgroundImage: `url(${props.data.featuredImage &&
+                        props.data.featuredImage.asset &&
+                        props.data.featuredImage.asset.url}?width=1120&crop=focalpoint&fit=scale)`,
+                      backgroundColor: '#0079CF',
+                    }}
                   />
+                  <div className="c-hero-bg" />
+                  <div className="c-hero-sideText">
+                    {props.data.featuredImage &&
+                      props.data.featuredImage.caption && (
+                        <BlockToContent
+                          blocks={props.data.featuredImage.caption}
+                          serializers={{
+                            types: {
+                              block: props => <p style={{ display: 'inline' }}>{props.children}</p>,
+                            },
+                          }}
+                        />
+                      )}
+                    {props.data.featuredImage &&
+                      !props.data.featuredImage.sourceUrl &&
+                      props.data.featuredImage.credit && (
+                        <div style={{ display: 'inline' }}>{props.data.featuredImage.credit}</div>
+                      )}
+                    {props.data.featuredImage &&
+                      props.data.featuredImage.sourceUrl && (
+                        <a className="u-margin-left-tiny" href={props.data.featuredImage.sourceUrl}>
+                          {props.data.featuredImage.credit
+                            ? props.data.featuredImage.credit
+                            : props.data.featuredImage.sourceUrl}
+                        </a>
+                      )}
+                    {props.data.featuredImage &&
+                      props.data.featuredImage.license && (
+                        <span> {props.data.featuredImage.license.toUpperCase()}</span>
+                      )}
+                  </div>
+                  <div className="c-hero-header">
+                    <PublicationArticleHeader
+                      className="c-hero__grid-container__content links-wrapper-dark-background"
+                      {...props.data}
+                    />
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
           </div>
           {_type === 'publication' && (
             <div className="c-longform-grid">
@@ -203,44 +206,45 @@ const LongFormArticleContainer = (props = {}) => {
             </div>
           )}
           <LongformArticle content={shortversion ? props.data.summary : ''} {...props.data} />
-          {props.data.references ? (
+          {!shortversion && props.data.references ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                  <ToggleBlock title="References" active content={props.data.references} />
+                <ToggleBlock title="References" active content={props.data.references} />
               </div>
             </div>
           ) : null}
-          {props.data.acknowledgements ? (
+          {!shortversion && props.data.acknowledgements ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="Acknowledgements" content={props.data.acknowledgements} />
               </div>
             </div>
           ) : null}
-          {props.data.notes ? (
+          {!shortversion && props.data.notes ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="Notes" content={props.data.notes} />
               </div>
             </div>
           ) : null}
-          {props.data.abstract ? (
+          {!shortversion && props.data.abstract ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="Abstract" content={props.data.abstract} />
               </div>
             </div>
           ) : null}
-          {props.data._type === 'publication' && (
-            <div className="c-longform-grid">
-              <div className="c-longform-grid__standard">
-                <ToggleBlock
-                  title="Disclaimer"
-                  content="All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies."
-                />
+          {!shortversion &&
+            props.data._type === 'publication' && (
+              <div className="c-longform-grid">
+                <div className="c-longform-grid__standard">
+                  <ToggleBlock
+                    title="Disclaimer"
+                    content="All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies."
+                  />
+                </div>
               </div>
-            </div>
-          )}
+            )}
           {props.data.relatedContent && (
             <div className="o-wrapper">
               <h2>We also recommend</h2>
