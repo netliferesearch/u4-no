@@ -34,12 +34,14 @@ export default (Child, { queryFunc = false, materializeDepth = false, query = {}
         // throw new Error('No content found');
       }
       if (!materializeDepth) {
-        const data = Array.isArray(sanityResults) ? [...sanityResults] : { ...sanityResults }
+        const data = Array.isArray(sanityResults) ? [...sanityResults] : { ...sanityResults };
         return { data };
       }
-      const materializedResults = await materialize(sanityResults, materializeDepth)
-      const data = Array.isArray(materializedResults) ? [...materializedResults] : { ...materializedResults }
-      return { data };
+      const materializedResults = await materialize(sanityResults, materializeDepth);
+      const data = Array.isArray(materializedResults)
+        ? [...materializedResults]
+        : { ...materializedResults };
+      return { data, ctx: nextContext };
     }
     render() {
       return (
