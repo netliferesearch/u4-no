@@ -5,23 +5,24 @@ import DataLoader from '../helpers/data-loader';
 
 /* send 302 Permanent redirect to path */
 function redirectTemp(ctx, path) {
+  console.log(ctx);
   if (ctx.res) {
     ctx.res.writeHead(302, { Location: path });
     ctx.res.end();
     ctx.res.finished = true;
   } else {
-    document.location = path;
+    Router.replace(path);
   }
 }
 
-const TopicArticleEntry = (props) => {
+const PublicationPdf = (props) => {
   if (
     props.data &&
     props.data.pdfFile &&
     props.data.pdfFile.asset &&
     props.data.pdfFile.asset.url
   ) {
-    return redirectTemp(props.url, props.data.pdfFile.asset.url);
+    return redirectTemp(props.ctx, props.data.pdfFile.asset.url);
   }
   if (
     props.data &&
@@ -29,12 +30,12 @@ const TopicArticleEntry = (props) => {
     props.data.legacypdf.asset &&
     props.data.legacypdf.asset.url
   ) {
-    return redirectTemp(props.url, props.data.legacypdf.asset.url);
+    return redirectTemp(props.ctx, props.data.legacypdf.asset.url);
   }
   return <div>pdf not found</div>;
 };
 
-export default DataLoader(TopicArticleEntry, {
+export default DataLoader(PublicationPdf, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: '*[slug.current == $slug][0]',
     param: { slug },
