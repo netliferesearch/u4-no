@@ -41,7 +41,7 @@ export default (Child, { queryFunc = false, materializeDepth = false, query = {}
       const data = Array.isArray(materializedResults)
         ? [...materializedResults]
         : { ...materializedResults };
-      return { data, ctx: nextContext };
+      return { data };
     }
     render() {
       return (
