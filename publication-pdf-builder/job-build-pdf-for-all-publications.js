@@ -9,7 +9,7 @@ async function main() {
   /* eslint-disable no-restricted-syntax, no-await-in-loop */
   for (const doc of docs) {
     const { slug, title } = doc;
-    const url = `https://beta.u4.no/publications/${slug.current}`;
+    const url = `https://www.u4.no/publications/${slug.current}`;
     console.log('Rendering pdf from', url);
     const pdfFilename = `${slug.current}.pdf`;
     try {

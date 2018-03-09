@@ -2,7 +2,7 @@ import FunkyEditor from '../components/FunkyEditor'
 
 const annotations = [
     {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-    {name: 'internalReferance', title: 'Find some internal resource', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article', },{type: 'event'},{type:'frontpage'},{type:'file'}]},
+    {name: 'internalReferance', title: 'Find some internal resource', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article', },{type: 'event'},{type:'frontpage'},{type:'file'},{type:'asset'}]},
     {
       type: 'object',
       name: 'blockNote',

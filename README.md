@@ -8,10 +8,13 @@ headless backend with [Sanity](https://sanity.io).
 For local development of frontend. Push changes to master branch to test them on
 [the staging environment](https://beta.u4.no).
 
+Pushes and Pull Requests to the production branch deploys the app on [www.u4.no](https://www.u4.no).
+
 You probably need access the heroku apps if you want to test services locally.
 The frontend layer should work out of the box.
 
 ```sh
+# The staging app on Heroku is u4-frontend-staging
 heroku config -s --app u4-frontend | tr -d "'" > .env # get env keys for API access
 npm install # install dependencies the first time
 npm run dev
