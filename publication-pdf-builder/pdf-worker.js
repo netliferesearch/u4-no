@@ -13,7 +13,7 @@ require('dotenv').config();
 async function startPdfWorker() {
   console.log('Start pdf worker');
   const client = getSanityClient();
-  const siteUrl = process.env.PUBLICATIONS_BASE_URL || 'https://beta.u4.no/publications';
+  const siteUrl = process.env.PUBLICATIONS_BASE_URL || 'https://www.u4.no/publications';
   const query = '*[_type in ["publication"]]';
   client.listen(query).subscribe(async (event) => {
     const { transition, result = {}, mutations = [] } = event;
