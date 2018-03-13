@@ -119,7 +119,7 @@ const PublicationArticleHeader = ({
       )}
       {pdfFile.asset && (
         <div {...classes('meta', null, 'c-article-header__download')}>
-          <a href={pdfFile.asset.url} {...classes('download-text')}>
+          <a href={`/publications/${slug.current}/pdf`} {...classes('download-text')}>
             <span>Download as PDF</span>
             <Download {...classes('download-icon')} />
           </a>
@@ -128,7 +128,7 @@ const PublicationArticleHeader = ({
       {!pdfFile.asset &&
         legacypdf.asset && (
           <div {...classes('meta', null, 'c-article-header__download')}>
-            <a href={legacypdf.asset.url} {...classes('download-text')}>
+            <a href={`/publications/${slug.current}/pdf`} {...classes('download-text')}>
               <span>Download PDF</span>
               <Download {...classes('download-icon')} />
             </a>
