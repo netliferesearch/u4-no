@@ -17,7 +17,7 @@ const Mosaic = ({ resources = [], alt = false }) => (
             publicationType = '',
             articleType = '',
             slug = '',
-            imageUrl,
+            imageUrl = false,
             titleColor = '#FFF',
           },
           index,
@@ -32,7 +32,7 @@ const Mosaic = ({ resources = [], alt = false }) => (
                   : ' '
               }`}
               style={{
-                backgroundImage: `url(${index % 4 === 0 ? `${imageUrl}?w=1200` : ''})`,
+                backgroundImage: `url(${imageUrl && index % 4 === 0 ? `${imageUrl}?w=1200` : ''})`,
               }}
             >
               <div
