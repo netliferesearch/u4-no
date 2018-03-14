@@ -16,6 +16,10 @@ app.prepare().then(() => {
   if (process.env.NODE_ENV === 'production') {
     server.use(forceSsl);
   }
+  server.get('/robots.txt', (req, res) => {
+    res.type('text/plain');
+    res.send('User-agent: *\nDisallow:');
+  });
   server.get('/pdf', pdfHandler);
   server.get('/publications/:slug/pdf', publicationPdfHandler);
   server.use(handler).listen(process.env.PORT || 3000);
