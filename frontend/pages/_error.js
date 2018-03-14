@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-import { Layout, Footer } from '../components';
+import { Error404 } from '../components';
 
 /* send 301 Permanent redirect to path */
 function redirectPermanent(ctx, path) {
@@ -17,7 +17,7 @@ function redirectPermanent(ctx, path) {
   }
 }
 
-export default class Error extends React.Component {
+export default class ErrorHandler extends React.Component {
   static async getInitialProps(ctx) {
     const redirects = [
       { from: '/articles/the-basics-of-anti-corruption', to: '/topics' },
@@ -64,7 +64,7 @@ export default class Error extends React.Component {
         from: '/publications-2-es-ES',
         to: '/search?filters=pub-type-0%2Cpub-lang-es_ES&search=%2A',
       },
-      { from: /\/publications\/([^/]+)\/downloadasset\/([^/]*)/i, to: '/publications/$1/pdf' },
+      { from: /\/publications\/([^/]+)\/downloadasset\/([^/]*)/i, to: '/pdf/$1' },
 
       {
         from:
@@ -121,7 +121,15 @@ export default class Error extends React.Component {
       { from: '/your-partner-profile', to: '/' },
     ];
     const redir = redirects.find(({ from }) => ctx.asPath.match(from));
+
     if (redir && !(process.env.NODE_ENV === 'DEV')) {
+      return redirectPermanent(
+        ctx,
+        ctx.asPath.replace(redir.from, redir.to).replace(/^(.+?)\/*?$/, '$1'),
+      );
+    }
+    if (redir) {
+      console.log(redir);
       return redirectPermanent(
         ctx,
         ctx.asPath.replace(redir.from, redir.to).replace(/^(.+?)\/*?$/, '$1'),
@@ -144,40 +152,13 @@ export default class Error extends React.Component {
 
     return { sanityResults };
   */
-    return {};
+    if (ctx.res) {
+      ctx.res.statusCode = 404;
+    }
+    return { error: 'No matching content found', statusCode: 404 };
   }
 
   render() {
-    return (
-      <Layout
-        headComponentConfig={{
-          title: 'Page not found',
-          description: '',
-          image: '',
-          url: '',
-          ogp: {},
-        }}
-      >
-        <div className="c-oneColumnBox c-oneColumnBox__darkOnWhite">
-          <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
-            <div>
-              <h2 className="c-longform-grid__standard">Page not found</h2>
-              <p className="c-longform-grid__standard">
-                Sorry about that! We have recently upgraded our website, so some content has been
-                discontinued.
-              </p>
-              {process.env.NODE_ENV === 'DEV' && (
-                <p>
-                  {this.props.statusCode
-                    ? `Page not found: ${this.props.statusCode} occurred on server`
-                    : 'Page not found error occurred on client'}
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-        <Footer />
-      </Layout>
-    );
+    return <Error404 {...this.props} />;
   }
 }
