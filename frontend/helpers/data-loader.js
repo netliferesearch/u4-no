@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import withRedux from 'next-redux-wrapper';
 import sanityClient from '@sanity/client';
 import { initStore, updateReadingProgress } from './redux-store';
-
+import { Error404 } from '../components';
 import materialize from '../helpers/materialize';
 
 const mapDispatchToProps = dispatch => ({
@@ -32,6 +32,10 @@ export default (Child, { queryFunc = false, materializeDepth = false, query = {}
       if (!sanityResults) {
         console.warn('Sanity results was empty, nothing to materialize', sanityResults);
         // throw new Error('No content found');
+        if (nextContext.res) {
+          nextContext.res.statusCode = 404;
+        }
+        return { error: 'No content found (dataLoader said this)' };
       }
       if (!materializeDepth) {
         const data = Array.isArray(sanityResults) ? [...sanityResults] : { ...sanityResults };
@@ -44,6 +48,12 @@ export default (Child, { queryFunc = false, materializeDepth = false, query = {}
       return { data };
     }
     render() {
+      // console.log('DataLoader rendering with these props:');
+      // console.log(this.props);
+      const { error } = this.props;
+      if (error) {
+        return <Error404 {...this.props} />;
+      }
       return (
         <div>
           <Child {...this.props} />
