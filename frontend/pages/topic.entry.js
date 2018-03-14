@@ -14,7 +14,7 @@ const TopicEntry = ({
       longTitle = '',
       explainerText = '',
       featuredImage,
-      linkListContent = [],
+      linkListContent = false,
       parent = {},
       slug = {},
       introduction = [],
