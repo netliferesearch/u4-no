@@ -5,6 +5,7 @@ import withRedux from 'next-redux-wrapper';
 import sanityClient from '@sanity/client';
 import { initStore, updateReadingProgress } from './redux-store';
 import { Error404 } from '../components';
+import { redirectPermanent, getRedirect } from '../helpers/redirect';
 import materialize from '../helpers/materialize';
 
 const mapDispatchToProps = dispatch => ({
@@ -33,6 +34,8 @@ export default (Child, { queryFunc = false, materializeDepth = false, query = {}
         console.warn('Sanity results was empty, nothing to materialize', sanityResults);
         // throw new Error('No content found');
         if (nextContext.res) {
+          const path = getRedirect(nextContext);
+          if (path) return redirectPermanent(nextContext, path);
           nextContext.res.statusCode = 404;
         }
         return { error: 'No content found (dataLoader said this)' };
