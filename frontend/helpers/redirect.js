@@ -55,14 +55,13 @@ export function getRedirect(ctx) {
       from: '/publications-2-es-ES',
       to: '/search?filters=pub-type-0%2Cpub-lang-es_ES&search=%2A',
     },
-    { from: /\/publications\/([^/]+)\/downloadasset\/([^/]*)/i, to: '/pdf/$1' },
-
     {
       from:
         '/recommended-reading/underground-banking-legitimate-remittance-network-or-money-laundering-system/',
       to: '/topics/international-drivers-of-corruption',
     },
 
+    { from: /\/TagController\?tag=/g, to: '/search?search=' },
     { from: '/themes/aacc', to: '/topics' },
     { from: '/themes/anti-corruption-agencies', to: '/topics' },
     { from: '/themes/anti-corruption-approaches-in-sector-work', to: '/topics' },
