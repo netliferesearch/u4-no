@@ -38,9 +38,10 @@ const Asset = ({ data: { title = '', slug = {}, asset = {} } }) => {
             className="c-pdf-viewer"
             title={title}
             src={`https://view.officeapps.live.com/op/embed.aspx?src=${asset.asset.url}`}
-            width="600px"
-            height="600px"
+            width="100%"
+            height="800"
             frameBorder="0"
+            style={{ maxWidth: 1000, maxHeight: '75vh' }}
           >
             Your browser does not allow embedding of word documents, please use the download link
             above
