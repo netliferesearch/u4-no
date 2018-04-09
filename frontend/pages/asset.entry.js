@@ -12,8 +12,8 @@ const classes = BEMHelper({
 });
 
 const Asset = ({ data: { title = '', slug = {}, asset = {} } }) => {
-  const isPdf = title.slice(-4) === '.pdf';
-  const isDoc = title.slice(-4) === '.doc' || title.slice(-5) === '.docx';
+  const isPdf = asset.asset.url.slice(-4) === '.pdf';
+  const isDoc = asset.asset.url.slice(-4) === '.doc' || asset.asset.url.slice(-5) === '.docx';
   return (
     <Layout>
       <header>
