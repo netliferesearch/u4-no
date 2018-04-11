@@ -1,6 +1,8 @@
 export default ({ queryString = '', limit: { from = 0, to = 20 } = { from: 0, to: 20 } }) => {
   const matchString = queryString.length
     ? queryString
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, ' ')
+      .replace(/\s{2,}/g, ' ')
       .split(' ')
       .map(tkn => `"${tkn}*"`)
       .join(',')
