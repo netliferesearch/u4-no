@@ -1,10 +1,13 @@
 export default ({ queryString = '', limit: { from = 0, to = 20 } = { from: 0, to: 20 } }) => {
   const matchString = queryString.length
     ? queryString
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, ' ')
+      .replace(/\s{2,}/g, ' ')
       .split(' ')
       .map(tkn => `"${tkn}*"`)
       .join(',')
     : queryString;
+  console.log(matchString);
   return `*[
       (title match [${matchString}]
         || references(*[[firstName, surname] match [${matchString}]]._id, false)
