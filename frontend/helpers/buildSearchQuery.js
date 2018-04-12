@@ -7,6 +7,7 @@ export default ({ queryString = '', limit: { from = 0, to = 20 } = { from: 0, to
       .map(tkn => `"${tkn}*"`)
       .join(',')
     : queryString;
+  console.log(matchString);
   return `*[
       (title match [${matchString}]
         || references(*[[firstName, surname] match [${matchString}]]._id, false)
