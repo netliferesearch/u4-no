@@ -29,6 +29,7 @@ const LongFormArticleContainer = (props = {}) => {
       featuredImage = {},
       relatedUrl = {},
       publicationType = {},
+      relatedContent = [],
     } = {},
     shortversion = false,
     headComponentConfigOverride,
@@ -245,7 +246,7 @@ const LongFormArticleContainer = (props = {}) => {
                 </div>
               </div>
             )}
-          {props.data.relatedContent && (
+          {props.data.relatedContent.length && (
             <div className="o-wrapper">
               <h2>We also recommend</h2>
               <RecommendedResources relatedContent={props.data.relatedContent} />
