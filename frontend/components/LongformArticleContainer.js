@@ -246,13 +246,12 @@ const LongFormArticleContainer = (props = {}) => {
                 </div>
               </div>
             )}
-          {props.data.relatedContent &&
-            props.data.relatedContent.length && (
-              <div className="o-wrapper">
-                <h2>We also recommend</h2>
-                <RecommendedResources relatedContent={props.data.relatedContent} />
-              </div>
-            )}
+          {props.data.relatedContent && props.data.relatedContent.length ? (
+            <div className="o-wrapper">
+              <h2>We also recommend</h2>
+              <RecommendedResources relatedContent={props.data.relatedContent} />
+            </div>
+          ) : null}
           <span id="js-bottom" />
           <Footer />
         </article>
