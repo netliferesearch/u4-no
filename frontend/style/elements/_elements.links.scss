@@ -20,13 +20,13 @@ a {
   hyphens: auto;
   */
 }
-
+/* a:visited used to be $brand-medium, robert changed this */
 a:visited {
-  color: $brand-medium;
+  color: $brand-main;
 }
 
 a:visited:hover {
-  color: $brand-medium;
+  color: $brand-main;
   border-bottom: 1px solid currentColor;
 }
 
@@ -48,12 +48,12 @@ a:active {
     color: $brand-lighter;
   }
   a:visited {
-    color: $grey;
-    border-bottom: 1px solid $grey;
+    color: $brand-lighter;
+    border-bottom: 1px solid $brand-lighter;
   }
   a:visited:hover {
-    color: $grey;
-    border-bottom: 1px solid $grey;
+    color: $brand-lighter;
+    border-bottom: 1px solid $brand-lighter;
   }
   a:hover {
     border-bottom: 1px solid currentColor;
