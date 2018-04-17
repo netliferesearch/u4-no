@@ -80,7 +80,11 @@ const LongFormArticleContainer = (props) => {
               ) : null}
               {editors ? (
                 <span>
-                  <EditorList editors={editors.map(({ target }) => target)} intro="Series editor" />
+                  <EditorList
+                    editors={editors.map(({ target }) => target)}
+                    intro={publicationType._id === 'pubtype-3' ? 'Reviewed by' : 'Series editor'}
+                    pluralize={false}
+                  />
                   <br />
                 </span>
               ) : null}
@@ -93,88 +97,114 @@ const LongFormArticleContainer = (props) => {
       </div>
 
       <div className="page2">
-        { partners &&
-        <div className="page2__partners">
-          <h2>
-            {
-              partners.map(({ _id = '', institution = {}, description = '' }, index) => (
+        {partners && (
+          <div className="page2__partners">
+            <h2>
+              {partners.map(({ _id = '', institution = {}, description = '' }, index) => (
                 <div key={_id + index}>
                   {description && <span>{description} </span>}
                   <span>{institution.name}</span>
-                  {(partners.length === index + 1) ? '.' : (partners.length - 1 > index + 1) ? ', ' : ' and '}
+                  {partners.length === index + 1
+                    ? '.'
+                    : partners.length - 1 > index + 1 ? ', ' : ' and '}
                 </div>
-              ))
-            }
-            {
-              partners.map(({ _id = '', institution = {}, description = '' }, index) => get(institution, 'logo.asset.url') && <img key={_id + index} className="page2__partner-logo" alt="Partner Logo" src={institution.logo.asset.url} />)
-            }
-          </h2>
-        </div>
-        }
+              ))}
+              {partners.map(({ _id = '', institution = {}, description = '' }, index) =>
+                  get(institution, 'logo.asset.url') && (
+                    <img
+                      key={_id + index}
+                      className="page2__partner-logo"
+                      alt="Partner Logo"
+                      src={institution.logo.asset.url}
+                    />
+                  ))}
+            </h2>
+          </div>
+        )}
         <div className="page2__disclaimer">
           <h2>Disclaimer</h2>
           <p>
             All views in this text are the author(s)’, and may differ from the U4 partner agencies’
             policies.
           </p>
-
         </div>
-        {
-          institutions.length && (
-            <div className="page2__funding-partners">
-              <h2>Partner agencies</h2>
-              <p>
-                {institutions.map(({ _id, name}, index) => <span key={_id + index}>{` ${name}`}<br /></span>)}
-              </p>
-            </div>)
-        }
+        {institutions.length && (
+          <div className="page2__funding-partners">
+            <h2>Partner agencies</h2>
+            <p>
+              {institutions.map(({ _id, name }, index) => (
+                <span key={_id + index}>
+                  {` ${name}`}
+                  <br />
+                </span>
+              ))}
+            </p>
+          </div>
+        )}
         <div className="page2__about-u4">
           <h2>About U4</h2>
-          { u4.about &&
-            <BlockContent blocks={u4.about} serializers={serializers(u4.about)} />
-          }
+          {u4.about && <BlockContent blocks={u4.about} serializers={serializers(u4.about)} />}
         </div>
-        { featuredImage &&
-        <div className="page2__coverphoto">
-          <h2>Cover photo</h2>
-          {featuredImage.caption && renderCaption(featuredImage.caption) }
-          <p>{featuredImage.credit && <span>{featuredImage.credit} {featuredImage.license && `(${featuredImage.license})`} </span>}
-            {featuredImage.sourceUrl && <a href={featuredImage.sourceUrl}>{featuredImage.sourceUrl}</a>}
-          </p>
-        </div>
-        }
-        { Array.isArray(reference) &&
+        {featuredImage && (
+          <div className="page2__coverphoto">
+            <h2>Cover photo</h2>
+            {featuredImage.caption && renderCaption(featuredImage.caption)}
+            <p>
+              {featuredImage.credit && (
+                <span>
+                  {featuredImage.credit} {featuredImage.license && `(${featuredImage.license})`}{' '}
+                </span>
+              )}
+              {featuredImage.sourceUrl && (
+                <a href={featuredImage.sourceUrl}>{featuredImage.sourceUrl}</a>
+              )}
+            </p>
+          </div>
+        )}
+        {Array.isArray(reference) && (
           <div className="page2__bibliographic-reference">
             <h2>Publisher and bibliographic reference</h2>
-            <p>{Array.isArray(reference) && <BlockContent blocks={reference.filter(ref => ref)} serializers={serializers(reference.filter(ref => ref))} />}</p>
+            <p>
+              {Array.isArray(reference) && (
+                <BlockContent
+                  blocks={reference.filter(ref => ref)}
+                  serializers={serializers(reference.filter(ref => ref))}
+                />
+              )}
+            </p>
           </div>
-        }
+        )}
 
-        { keywords &&
-        <div className="page2__keywords">
-          <h2>Keywords</h2>
-          <p>
-            {
-              keywords.map(({ target: { _id = '', keyword = '' } = {} }, index) => <span key={_id + index}>{keyword} {index + 1 < keywords.length && ' - '}</span>)
-            }
-          </p>
-        </div>
-        }
-        {
-          publicationType &&
+        {keywords && (
+          <div className="page2__keywords">
+            <h2>Keywords</h2>
+            <p>
+              {keywords.map(({ target: { _id = '', keyword = '' } = {} }, index) => (
+                <span key={_id + index}>
+                  {keyword} {index + 1 < keywords.length && ' - '}
+                </span>
+              ))}
+            </p>
+          </div>
+        )}
+        {publicationType && (
           <div className="page2__publication-type">
             <h2>Publication type</h2>
             <p>{publicationType.title}</p>
-            {publicationType.description && <BlockContent blocks={publicationType.description} serializers={serializers(publicationType.description)} />}
+            {publicationType.description && (
+              <BlockContent
+                blocks={publicationType.description}
+                serializers={serializers(publicationType.description)}
+              />
+            )}
           </div>
-        }
-        {
-          notes.length > 0 &&
+        )}
+        {notes.length > 0 && (
           <div className="page2__publication-notes">
             <h2>Notes</h2>
             {notes && <BlockContent blocks={notes} serializers={serializers(notes)} />}
           </div>
-        }
+        )}
         <div className="page2__about-the-autors" />
       </div>
       {_type === 'publication' && (

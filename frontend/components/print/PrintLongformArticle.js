@@ -15,7 +15,13 @@ import stylesheet from '../../style/print.scss';
 class LongformArticle extends PureComponent {
   render() {
     const {
-      content = [], abstract = [], notes = [], authors = [], acknowledgements = [], editors = [], references = [],
+      content = [],
+      abstract = [],
+      notes = [],
+      authors = [],
+      acknowledgements = [],
+      editors = [],
+      references = [],
     } = this.props;
     const blocks = content.filter((block = {}) => block && !['reference'].includes(block._type));
     return (
@@ -28,26 +34,26 @@ class LongformArticle extends PureComponent {
           <ul className="contents__list">
             <h2>Table of contents</h2>
             {buildTitleObjects(content)
-            .filter(({ children = [] }) => children)
-            .map(item => (
-              <li key={item.id} className="contents__list-item">
-                <a href={`#${item.id}`}>{item.title}</a>
-                {item.children && (
-                  <ul className="contents__list">
-                    {item.children.map(subitem => (
-                      <li key={subitem.id} className="contents__list-item contents__list-subitem">
-                        <a href={`#${subitem.id}`}>{subitem.title}</a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-            { references &&
+              .filter(({ children = [] }) => children)
+              .map(item => (
+                <li key={item.id} className="contents__list-item">
+                  <a href={`#${item.id}`}>{item.title}</a>
+                  {item.children && (
+                    <ul className="contents__list">
+                      {item.children.map(subitem => (
+                        <li key={subitem.id} className="contents__list-item contents__list-subitem">
+                          <a href={`#${subitem.id}`}>{subitem.title}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            {references && (
               <li key="references" className="contents__list-item">
                 <a href="#references">References</a>
               </li>
-            }
+            )}
           </ul>
         </div>
         {abstract.length ? (
@@ -66,21 +72,34 @@ class LongformArticle extends PureComponent {
             <div className="c-longform-grid__standard">
               <h3>About the author{authors.length > 1 && 's'}</h3>
               {authors.map(({
-                target: {
-                  image = { asset: { url: '' } },
-                  firstName = '',
-                  surname = '',
-                  position = '',
-                  bioShort = [],
-                } = {},
-            }) => (
-              <div>
-                {image.asset.url && <img alt={`${firstName} ${surname}`} src={image.asset.url} />}
-                <p>{firstName} {surname} <br />{position && position}</p>
-                {bioShort &&
-                  <BlockContent blocks={bioShort} serializers={serializers(bioShort)} />
-                }
-              </div>))}
+                  target: {
+                    image = { asset: { url: '' } },
+                    firstName = '',
+                    surname = '',
+                    position = '',
+                    bioShort = [],
+                  } = {},
+                }) => (
+                  <div>
+                    {image.asset.url && (
+                      <img alt={`${firstName} ${surname}`} src={image.asset.url} />
+                    )}
+                    <p>
+                      <b>
+                        {firstName} {surname}
+                      </b>
+                      {!bioShort.length && position ? (
+                        <span>
+                          <br />
+                          {position}
+                        </span>
+                      ) : null}
+                    </p>
+                    {bioShort && (
+                      <BlockContent blocks={bioShort} serializers={serializers(bioShort)} />
+                    )}
+                  </div>
+                ))}
             </div>
           </div>
         ) : null}
@@ -91,7 +110,10 @@ class LongformArticle extends PureComponent {
               <h3>Acknowledgements</h3>
               {typeof acknowledgements === 'string' && <p>{acknowledgements}</p>}
               {typeof acknowledgements !== 'string' && (
-                <BlockContent blocks={acknowledgements} serializers={serializers(acknowledgements)} />
+                <BlockContent
+                  blocks={acknowledgements}
+                  serializers={serializers(acknowledgements)}
+                />
               )}
             </div>
           </div>
@@ -106,7 +128,14 @@ class LongformArticle extends PureComponent {
                 blocks={references}
                 serializers={{
                   marks: {
-                    link: props => <span>{props.children}. <a className="referencesLink" href={props.mark.href}>{props.mark.href}</a></span>,
+                    link: props => (
+                      <span>
+                        {props.children}.{' '}
+                        <a className="referencesLink" href={props.mark.href}>
+                          {props.mark.href}
+                        </a>
+                      </span>
+                    ),
                   },
                 }}
               />
