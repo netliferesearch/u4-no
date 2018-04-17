@@ -6,29 +6,30 @@ import { Footer, Layout, Newsletter, ServiceArticle, SimpleHero } from '../compo
 
 const ServicePage = ({
   data: {
-  title = '',
-  longTitle = '',
-  featuredImage = {},
-  lead = '',
-  sections = [],
-  relatedUrl = {},
-  url = ''
-} }) => (
-    <Layout
-      headComponentConfig={{
-        title,
-        description: lead,
-        image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
-        url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
-        ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
-      }}
-    >
-      <SimpleHero title={title} content={longTitle} cta />
+    title = '',
+    longTitle = '',
+    featuredImage = {},
+    lead = '',
+    sections = [],
+    relatedUrl = {},
+    url = '',
+  },
+}) => (
+  <Layout
+    headComponentConfig={{
+      title,
+      description: lead,
+      image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
+      url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
+      ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
+    }}
+  >
+    <SimpleHero title={title} content={longTitle} cta="" />
 
-      <ServiceArticle blocks={sections} />
-      <Newsletter />
-      <Footer />
-    </Layout>
+    <ServiceArticle blocks={sections} />
+    <Newsletter />
+    <Footer />
+  </Layout>
 );
 
 ServicePage.propTypes = {
@@ -45,12 +46,11 @@ ServicePage.propTypes = {
   url: PropTypes.shape({
     asPAth: PropTypes.string,
   }).isRequired,
-}
+};
 
 export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery:
-      `*[_type == "frontpage" && slug.current == "helpdesk"][0]{
+    sanityQuery: `*[_type == "frontpage" && slug.current == "helpdesk"][0]{
         title,
             longTitle,
             slug,

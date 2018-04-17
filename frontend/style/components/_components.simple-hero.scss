@@ -45,6 +45,9 @@
 
   &:hover {
     border: 2px solid $white-on-blue;
-      color: $white-on-blue;
+    color: $white-on-blue;
   }
+}
+.c-simple-hero__mailto {
+  color: $white;
 }

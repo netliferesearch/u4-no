@@ -18,6 +18,17 @@ const SimpleHero = ({
       {isArray(content) && <BlockContent blocks={content} serializers={serializers} />}
       {!isArray(content) && content}
     </div>
+
+    {!cta && (
+      <div {...classes('content')}>
+        {'Ask our free helpdesk today – send your question to '}
+        <Link to="mailto:helpdesk@u4.no">
+          <a {...classes('mailto')} title="Send an e-mail to helpdesk@u4.no">
+            helpdesk@u4.no
+          </a>
+        </Link>{' '}
+      </div>
+    )}
     {cta && (
       <Link to="mailto:helpdesk@u4.no">
         <a {...classes('cta')}>
