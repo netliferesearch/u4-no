@@ -85,7 +85,7 @@ const TopicEntry = ({
       {introduction.length + agenda.length > 0 && (
         <div>
           <h2 className="c-topic-section__title c-topic-section__title--large">
-            From basic guides to indepth perspectives, all in one place.
+            From basic guides to in-depth perspectives, all in one place.
           </h2>
           <section className="c-linkbox-wrapper">
             {introduction.length > 0 && (
