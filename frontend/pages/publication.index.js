@@ -81,6 +81,6 @@ const Publications = ({ data: { publications = [] }, url = {} }) => (
 export default DataLoader(Publications, {
   queryFunc: () => ({
     sanityQuery:
-      '{ "publications": *[_type in ["publication"]][0..10000]{..., "authors": authors[]->{...}, "editors": editors[]->{...},publicationType->{...}}|order(date.utc desc) }',
+      '{ "publications": *[_type in ["publication"]][0..1000]{_id_type,slug,title,subtitle,publicationType,date,reference,publicationNumber, "authors": authors[]->{firstName, surname, slug}, "editors": editors[]->{firstName, surname, slug},publicationType->{title}}|order(date.utc desc) }',
   }),
 });
