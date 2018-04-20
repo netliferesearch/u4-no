@@ -136,7 +136,7 @@ class SearchField extends Component {
                       // Allow backspace
                       debounce(
                         client
-                          .fetch(buildQuery({ queryString: value, limit: { from: 0, to: 200 } }))
+                          .fetch(buildQuery({ queryString: value, limit: { from: 0, to: 5 } }))
                           .then((results) => {
                             const washedResults = results.filter(doc =>
                                 (doc._type === 'person'
