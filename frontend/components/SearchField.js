@@ -149,7 +149,7 @@ class SearchField extends Component {
                           .catch((error) => {
                             console.log(error);
                           }),
-                        300,
+                        600,
                       );
                     }
                   },
