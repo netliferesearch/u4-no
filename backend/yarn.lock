@@ -27,18 +27,18 @@
     ftp "~0.3.10"
     readable-stream "2"
 
-"@sanity/base@^0.128.12":
-  version "0.128.12"
-  resolved "https://registry.npmjs.org/@sanity/base/-/base-0.128.12.tgz#0040b3d4b733c9d9ba6c9440fdfb277308506601"
+"@sanity/base@^0.129.0":
+  version "0.129.0"
+  resolved "https://registry.npmjs.org/@sanity/base/-/base-0.129.0.tgz#7bb8839684233da06043e3997c42f6bb66a71fe9"
   dependencies:
     "@sanity/client" "0.128.3"
     "@sanity/document-store" "0.128.3"
     "@sanity/image-url" "0.128.12"
     "@sanity/observable" "0.128.3"
     "@sanity/preview" "0.128.12"
-    "@sanity/schema" "0.128.5"
+    "@sanity/schema" "0.129.0"
     "@sanity/state-router" "0.128.5"
-    "@sanity/validation" "0.128.12"
+    "@sanity/validation" "0.129.0"
     history "^4.6.3"
     in-publish "^2.0.0"
     lodash "^4.17.4"
@@ -50,9 +50,9 @@
     semver-compare "^1.0.0"
     shallow-equals "^1.0.0"
 
-"@sanity/block-tools@0.128.5":
-  version "0.128.5"
-  resolved "https://registry.npmjs.org/@sanity/block-tools/-/block-tools-0.128.5.tgz#d223b7d0847b02af3700c86a41018d729f3df86c"
+"@sanity/block-tools@0.129.0":
+  version "0.129.0"
+  resolved "https://registry.npmjs.org/@sanity/block-tools/-/block-tools-0.129.0.tgz#89baad849b5402f50916868eaf571969ae53bf58"
   dependencies:
     get-random-values "^1.2.0"
     lodash "^4.17.4"
@@ -68,9 +68,9 @@
     in-publish "^2.0.0"
     promise-props-recursive "^1.0.0"
 
-"@sanity/cli@^0.128.14":
-  version "0.128.14"
-  resolved "https://registry.npmjs.org/@sanity/cli/-/cli-0.128.14.tgz#16ab1446183ead064b31d79cf64e463abb3b6284"
+"@sanity/cli@^0.129.0":
+  version "0.129.0"
+  resolved "https://registry.npmjs.org/@sanity/cli/-/cli-0.129.0.tgz#b35b8d496171302dfcaf6f5e718bbf55992eafeb"
 
 "@sanity/client@0.128.3":
   version "0.128.3"
@@ -84,9 +84,9 @@
     make-error "^1.3.0"
     object-assign "^4.1.1"
 
-"@sanity/components@^0.128.12":
-  version "0.128.12"
-  resolved "https://registry.npmjs.org/@sanity/components/-/components-0.128.12.tgz#d50b988d73c2f36c1e3c3ad1e020d5d9fe438a9e"
+"@sanity/components@^0.129.0":
+  version "0.129.0"
+  resolved "https://registry.npmjs.org/@sanity/components/-/components-0.129.0.tgz#14ac12d0e0c7e2e42514acbf5032cf6895eeae1f"
   dependencies:
     "@bjoerge/react-popper" "^0.9.2"
     "@sanity/date-input" "0.128.12"
@@ -124,9 +124,9 @@
     react-split-pane "^0.1.63"
     scroll "^2.0.0"
 
-"@sanity/core@^0.128.12":
-  version "0.128.12"
-  resolved "https://registry.npmjs.org/@sanity/core/-/core-0.128.12.tgz#c05c17197c9782bdfd6ee1f89e8e246578670b36"
+"@sanity/core@^0.129.0":
+  version "0.129.0"
+  resolved "https://registry.npmjs.org/@sanity/core/-/core-0.129.0.tgz#fa1a856e5b713736b4b816291ea993d2796c33a9"
   dependencies:
     "@sanity/check" "0.128.3"
     "@sanity/export" "0.128.5"
@@ -140,6 +140,7 @@
     babel-preset-env "^1.6.1"
     babel-register "^6.26.0"
     batch-stream-operation "^1.0.2"
+    configstore "^3.0.0"
     debug "^3.1.0"
     deep-sort-object "^1.0.1"
     es6-promisify "^6.0.0"
@@ -176,9 +177,9 @@
     "@sanity/generate-help-url" "0.128.3"
     "@sanity/rich-date-input" "0.128.12"
 
-"@sanity/default-layout@^0.128.14":
-  version "0.128.14"
-  resolved "https://registry.npmjs.org/@sanity/default-layout/-/default-layout-0.128.14.tgz#4343352efb3130554b6821ab7776a2c71842b6a9"
+"@sanity/default-layout@^0.129.0":
+  version "0.129.0"
+  resolved "https://registry.npmjs.org/@sanity/default-layout/-/default-layout-0.129.0.tgz#cd851c86181155f8ba0d98d5ce8f495b1bba8798"
   dependencies:
     "@sanity/generate-help-url" "0.128.3"
     "@sanity/observable" "0.128.3"
@@ -194,17 +195,17 @@
     in-publish "^2.0.0"
     prop-types "^15.6.0"
 
-"@sanity/desk-tool@^0.128.14":
-  version "0.128.14"
-  resolved "https://registry.npmjs.org/@sanity/desk-tool/-/desk-tool-0.128.14.tgz#02b9751813b87a980a62cb538d8c08205bce13c9"
+"@sanity/desk-tool@^0.129.0":
+  version "0.129.0"
+  resolved "https://registry.npmjs.org/@sanity/desk-tool/-/desk-tool-0.129.0.tgz#866148a0e9151c0e60e31c255d0c374d989b9435"
   dependencies:
     "@sanity/data-aspects" "0.128.3"
-    "@sanity/form-builder" "0.128.14"
+    "@sanity/form-builder" "0.129.0"
     "@sanity/mutator" "0.128.3"
     "@sanity/observable" "0.128.3"
     "@sanity/react-tippy" "1.2.6"
     "@sanity/uuid" "0.128.3"
-    "@sanity/validation" "0.128.12"
+    "@sanity/validation" "0.129.0"
     classnames "^2.2.5"
     date-fns "^1.29.0"
     diff "^3.2.0"
@@ -248,17 +249,17 @@
     simple-get "^2.7.0"
     split2 "^2.1.1"
 
-"@sanity/form-builder@0.128.14", "@sanity/form-builder@^0.128.14":
-  version "0.128.14"
-  resolved "https://registry.npmjs.org/@sanity/form-builder/-/form-builder-0.128.14.tgz#413c95ebee6697507f0d7b75331d2ccd50b93df6"
+"@sanity/form-builder@0.129.0", "@sanity/form-builder@^0.129.0":
+  version "0.129.0"
+  resolved "https://registry.npmjs.org/@sanity/form-builder/-/form-builder-0.129.0.tgz#8cf2a2b07b6273765917a1308a5d8d216b369bec"
   dependencies:
-    "@sanity/block-tools" "0.128.5"
+    "@sanity/block-tools" "0.129.0"
     "@sanity/generate-help-url" "0.128.3"
     "@sanity/image-url" "0.128.12"
     "@sanity/imagetool" "0.128.5"
     "@sanity/mutator" "0.128.3"
     "@sanity/observable" "0.128.3"
-    "@sanity/schema" "0.128.5"
+    "@sanity/schema" "0.129.0"
     attr-accept "^1.1.0"
     canvas-to-blob "^0.0.0"
     classnames "^2.2.5"
@@ -293,9 +294,9 @@
   version "0.116.0"
   resolved "https://registry.npmjs.org/@sanity/generate-help-url/-/generate-help-url-0.116.0.tgz#58149c46c3b5b6e1b94ce777ce68dc6382c32e8a"
 
-"@sanity/google-maps-input@^0.128.14":
-  version "0.128.14"
-  resolved "https://registry.npmjs.org/@sanity/google-maps-input/-/google-maps-input-0.128.14.tgz#5796b92ff8412c201949eb72c0b51570fc01ff42"
+"@sanity/google-maps-input@^0.129.0":
+  version "0.129.0"
+  resolved "https://registry.npmjs.org/@sanity/google-maps-input/-/google-maps-input-0.129.0.tgz#6cc8141a29ae076d5c1927e3cb30c2ac3a018a20"
   dependencies:
     in-publish "^2.0.0"
 
@@ -395,9 +396,9 @@
     prop-types "^15.6.0"
     react-datepicker "^1.0.4"
 
-"@sanity/schema@0.128.5":
-  version "0.128.5"
-  resolved "https://registry.npmjs.org/@sanity/schema/-/schema-0.128.5.tgz#eb3434948380d16f276e6fd34468e31ee9dfa79b"
+"@sanity/schema@0.129.0":
+  version "0.129.0"
+  resolved "https://registry.npmjs.org/@sanity/schema/-/schema-0.129.0.tgz#316a6af9663f47abc21f00c4fba46eab57523e46"
   dependencies:
     "@sanity/generate-help-url" "0.128.3"
     arrify "^1.0.1"
@@ -476,18 +477,18 @@
   dependencies:
     uuid "3.1.0"
 
-"@sanity/validation@0.128.12":
-  version "0.128.12"
-  resolved "https://registry.npmjs.org/@sanity/validation/-/validation-0.128.12.tgz#4b7f96cfe717099510e6ce0008edc84261e82417"
+"@sanity/validation@0.129.0":
+  version "0.129.0"
+  resolved "https://registry.npmjs.org/@sanity/validation/-/validation-0.129.0.tgz#c565856efc58177e999ce29f3b4fa1e6e5394865"
   dependencies:
     clone-deep "^2.0.1"
     es6-error "^4.0.2"
     throat "^4.1.0"
     type-of-is "^3.5.1"
 
-"@sanity/vision@0.x", "@sanity/vision@^0.128.14":
-  version "0.128.14"
-  resolved "https://registry.npmjs.org/@sanity/vision/-/vision-0.128.14.tgz#3f4d918f820bc28481fbe5658f21b0d720884e44"
+"@sanity/vision@0.x", "@sanity/vision@^0.129.0":
+  version "0.129.0"
+  resolved "https://registry.npmjs.org/@sanity/vision/-/vision-0.129.0.tgz#82330680a7f6f96e3e0e8069dc60fbb0ebbb6127"
   dependencies:
     classnames "^2.2.5"
     json-lexer "^1.1.1"
@@ -2534,7 +2535,7 @@ concat-stream@^1.5.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-configstore@^3.1.0:
+configstore@^3.0.0, configstore@^3.1.0:
   version "3.1.2"
   resolved "https://registry.npmjs.org/configstore/-/configstore-3.1.2.tgz#c6f25defaeef26df12dd33414b001fe81a543f8f"
   dependencies:
@@ -3643,8 +3644,8 @@ fs.realpath@^1.0.0:
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
 fsevents@^1.1.2:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/fsevents/-/fsevents-1.2.0.tgz#e11a5ff285471e4cc43ab9cd09bb7986c565dcdc"
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/fsevents/-/fsevents-1.2.2.tgz#4f598f0f69b273188ef4a62ca4e9e08ace314bbf"
   dependencies:
     nan "^2.9.2"
     node-pre-gyp "^0.9.0"
@@ -6487,7 +6488,7 @@ react-intl@^2.2.2:
     intl-relativeformat "^2.0.0"
     invariant "^2.1.1"
 
-react-json-inspector@rexxars/react-json-inspector#react-15:
+"react-json-inspector@github:rexxars/react-json-inspector#react-15":
   version "7.0.1"
   resolved "https://codeload.github.com/rexxars/react-json-inspector/tar.gz/b5534e164b54e87b966da3ca0ef14003843cff92"
   dependencies:
