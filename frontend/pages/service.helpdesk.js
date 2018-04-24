@@ -24,7 +24,7 @@ const ServicePage = ({
       ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
     }}
   >
-    <SimpleHero title={title} content={longTitle} cta="" />
+    <SimpleHero title={title} content={longTitle} cta="" helpdesk="true" />
 
     <ServiceArticle blocks={sections} />
     <Newsletter />
