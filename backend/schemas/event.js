@@ -183,7 +183,7 @@ export default {
   preview: {
     select: {
       title: 'title',
-      date: 'startDate.utc',
+      date: 'startDate.local',
       location: 'location',
       image: 'image.asset.url',
     },

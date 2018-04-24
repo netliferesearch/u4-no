@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import dateToString from '../helpers/dateToString';
 import { Link } from '../routes';
 import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
@@ -17,7 +18,7 @@ import {
   ArrowRight,
 } from '../components/icons';
 
-const EventPage = ({data: { event = {} }, url = {} }) => {
+const EventPage = ({ data: { event = {} }, url = {} }) => {
   const {
     title = '',
     eventType = '',
@@ -54,9 +55,13 @@ const EventPage = ({data: { event = {} }, url = {} }) => {
             </p>
             <h2 className="c-longform-grid__standard">{title}</h2>
             {location && <p className="c-longform-grid__standard">{location}</p>}
-            {startDate.utc && (
+            {startDate.local && (
               <p className="c-longform-grid__standard">
-                {startDate.utc.split('T')[0]} {endDate.utc && `${endDate.utc.split('T')[0]}`}
+                {dateToString({
+                  start: startDate.local,
+                  end: endDate.local,
+                  format: 'D MMMM, YYYY',
+                })}
               </p>
             )}
             {organiser && <p className="c-longform-grid__standard">Organiser: {organiser}</p>}
