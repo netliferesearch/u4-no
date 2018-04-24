@@ -4,7 +4,7 @@ import BEMHelper from 'react-bem-helper';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateSearchSorting } from '../helpers/redux-store';
-import DataLoader from '../helpers/data-loader';
+import client from '../helpers/client';
 
 import { Link } from '../routes';
 import buildUrl from '../helpers/buildUrl';
@@ -25,6 +25,10 @@ class Publications extends Component {
       },
     };
   }
+  componentDidMount() {
+    const query = `*[_type in ["publication"]][0..1000]{_id_type,slug,title,subtitle,publicationType,date,reference,publicationNumber, "authors": authors[]->{firstName, surname, slug}, "editors": editors[]->{firstName, surname, slug},publicationType->{title}}|order(date.utc desc)`
+    client.fetch(query).then(publicactions => this.setState({ data: { publicactions }}))
+  }
 
   render() {
     const { url = {} } = this.props;
@@ -40,7 +44,7 @@ class Publications extends Component {
        <div className="o-wrapper-inner">
          <h1 className="c-topic-page_longTitle u-margin-bottom-huge">Publications</h1>
          <ul {...classes('content')}>
-           {publications.map(({
+           {publications && publications.map(({
                _id,
                _type,
                slug = {},
@@ -94,9 +98,4 @@ class Publications extends Component {
   }
 }
 
-export default DataLoader(Publications, {
-  queryFunc: () => ({
-    sanityQuery:
-      '{ "publications": *[_type in ["publication"]][0..1000]{_id_type,slug,title,subtitle,publicationType,date,reference,publicationNumber, "authors": authors[]->{firstName, surname, slug}, "editors": editors[]->{firstName, surname, slug},publicationType->{title}}|order(date.utc desc) }',
-  }),
-});
+export default Publications;
