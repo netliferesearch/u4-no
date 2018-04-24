@@ -1,3 +1,4 @@
+import ReferringDocumentsList from '../components/referring-documents/src/ReferringDocumentsList'
 import { title, longTitle, explainerText, featuredImage, slug, license } from './fields'
 
 export default {
@@ -244,6 +245,13 @@ export default {
           ]
         }
       ]
+    },
+    {
+      name: 'referencePortal',
+      title: 'Reference Portal',
+      type: 'string',
+      readOnly: true,
+      inputComponent: ReferringDocumentsList
     }
   ]
 }
