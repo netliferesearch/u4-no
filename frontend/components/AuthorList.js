@@ -10,7 +10,7 @@ const AuthorList = ({ authors = [] }) => (
         .filter(author => author)
         .map(author => (author.target ? author.target : author))
         .map(({
-_id, firstName = '', surname = '', slug = false, affiliations = [],
+_id = Math.random(), firstName = '', surname = '', slug = false, affiliations = [],
 }, index) => (
   <span key={_id + index}>
     {slug &&

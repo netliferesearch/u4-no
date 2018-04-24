@@ -38,9 +38,9 @@ export default class PublicationTopicFilters extends Component {
       <div {...classes('item')}>
         <h3 {...classes('title')}>Publication authors</h3>
         {this.state.allTopics.length === 0 && <span>Loading ...</span>}
-        {authorsInResults.map((author = {}) => (
+        {authorsInResults.map(((author) = {}, index) => (
           <FilterCheckBox
-            key={author._id}
+            key={author._id + index}
             id={slugify(`pub-author-${author.surname}-${author.firstName}`, { lower: true })}
             title={`${author.surname}, ${author.firstName}`}
             {...classes('checkbox')}
