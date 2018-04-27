@@ -74,8 +74,8 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
                   title="signup"
                   src={`https://partner.u4.no/signup/?course=${courseType}`}
                   width="100%"
-                  height="400px"
-                  scrolling="no"
+                  height="450px"
+                  scrolling="auto"
                   style={{ border: 0, overflow: 'hidden' }}
                 >
                   Your browser seems to have problems with our sign-up form. Send an e-mail to
