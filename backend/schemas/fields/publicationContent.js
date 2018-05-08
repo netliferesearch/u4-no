@@ -1,3 +1,4 @@
+import FunkyEditor from '../../components/FunkyEditor'
 import annotations from './annotations'
 import {
   title,
@@ -15,6 +16,7 @@ const content = {
   title: 'Publication content',
   description: 'The body text and graphic elements.',
   type: 'array',
+  inputComponent: FunkyEditor,
   of: [
     {
       name: 'box',
