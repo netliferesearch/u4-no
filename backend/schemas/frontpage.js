@@ -15,7 +15,7 @@ import {
 
 export default {
   name: 'frontpage',
-  type: 'object',
+  type: 'document',
   title: 'Frontpage',
   fields: [
     title,

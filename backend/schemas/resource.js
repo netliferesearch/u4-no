@@ -3,7 +3,7 @@ import { slug, language } from './fields'
 export default {
   name: 'resource',
   title: 'Resource',
-  type: 'object',
+  type: 'document',
   fields: [
     {
       name: 'title',

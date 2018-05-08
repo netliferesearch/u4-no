@@ -4,7 +4,7 @@ import { title, longTitle, explainerText, featuredImage, slug, license } from '.
 export default {
   name: 'topics',
   title: 'Topic',
-  type: 'object',
+  type: 'document',
   fields: [
     {
       name: 'title',

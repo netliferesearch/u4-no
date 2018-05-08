@@ -4,7 +4,7 @@ import { annotations, title, longTitle, image, explainerText, featuredImage, slu
 export default {
   name: 'article',
   title: 'Article',
-  type: 'object',
+  type: 'document',
   fields: [
     title,
     {

@@ -8,7 +8,7 @@ import {
 
 export default {
   name: 'nugget',
-  type: 'object',
+  type: 'document',
   fields: [
     title,
     {

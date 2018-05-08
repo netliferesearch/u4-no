@@ -1,7 +1,7 @@
 export default {
   name: 'articleType',
   title: 'Article type',
-  type: 'object',
+  type: 'document',
   fields: [
     {
       name: 'title',

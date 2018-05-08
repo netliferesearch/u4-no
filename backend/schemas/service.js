@@ -3,7 +3,7 @@ import { title, longTitle, image, leadText, featuredImage, slug, license } from 
 export default {
   name: 'service',
   title: 'Service',
-  type: 'object',
+  type: 'document',
   fields: [
     title,
     longTitle,
