@@ -17,7 +17,9 @@ class Newsletter extends Component {
 
   onFormSubmit(e) {
     e.preventDefault();
-    document.location.href = `http://u4.nationbuilder.com/?email=${e.target.email.value}`;
+    const mailchimpUrl =
+      'https://cmi.us16.list-manage.com/subscribe?u=e5ddae636e7550347b5fc48d3&id=387c25c3a9';
+    document.location.href = `${mailchimpUrl}&MERGE0=${e.target.email.value}`;
   }
 
   scrollToTop(e) {
@@ -28,7 +30,7 @@ class Newsletter extends Component {
     const {
       smallTitle = 'Keep up with us',
       title = 'Subscribe to our newsletter',
-      link = 'http://u4.nationbuilder.com/',
+      link = 'http://eepurl.com/dtV9Df',
     } = this.props;
 
     return (
