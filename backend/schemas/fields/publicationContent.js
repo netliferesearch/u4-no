@@ -16,7 +16,7 @@ const content = {
   title: 'Publication content',
   description: 'The body text and graphic elements.',
   type: 'array',
-  inputComponent: FunkyEditor,
+  //inputComponent: FunkyEditor,
   of: [
     {
       name: 'box',
