@@ -17,9 +17,9 @@ class Newsletter extends Component {
 
   onFormSubmit(e) {
     e.preventDefault();
-    document.location.href = `https://cmi.us16.list-manage.com/subscribe?u=e5ddae636e7550347b5fc48d3&id=387c25c3a9&MERGE0=${
-      e.target.email.value
-    }`;
+    const mailchimpUrl =
+      'https://cmi.us16.list-manage.com/subscribe?u=e5ddae636e7550347b5fc48d3&id=387c25c3a9';
+    document.location.href = `${mailchimpUrl}&MERGE0=${e.target.email.value}`;
   }
 
   scrollToTop(e) {
