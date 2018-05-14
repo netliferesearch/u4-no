@@ -315,6 +315,46 @@ export default {
           ]
         },
         {
+          name: 'mosaic',
+          title: 'Mosaic',
+          type: 'object',
+          fields: [
+            {
+              name: 'itemsRef',
+              title: 'Items in the Mosaic',
+              type: 'array',
+              of: [
+                {
+                  type: 'reference',
+                  to: [
+                    {
+                      type: 'asset'
+                    },
+                    {
+                      type: 'article'
+                    },
+                    {
+                      type: 'course'
+                    },
+                    {
+                      type: 'event'
+                    },
+                    {
+                      type: 'person'
+                    },
+                    {
+                      type: 'publication'
+                    },
+                    {
+                      type: 'topics'
+                    },
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
           name: 'courses',
           title: 'Courses list',
           type: 'object',
@@ -879,7 +919,7 @@ export default {
     },
     {
       name: 'resources',
-      description: 'Relevant resources for this topic page',
+      description: 'Relevant resources for this page',
       type: 'array',
       of: [
         {
