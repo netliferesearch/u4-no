@@ -2,7 +2,7 @@ import { slug } from './fields'
 
 export default {
   name: 'term',
-  type: 'object',
+  type: 'document',
   fields: [
     {
      name: 'term',

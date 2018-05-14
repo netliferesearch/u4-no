@@ -7,7 +7,7 @@ import {
 export default {
   title: 'Publication type',
   name: 'publicationType',
-  type: 'object',
+  type: 'document',
   fields: [
     title,
     {

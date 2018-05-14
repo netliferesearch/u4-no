@@ -2,7 +2,7 @@ import { slug, license } from './fields';
 
 export default {
   name: 'person',
-  type: 'object',
+  type: 'document',
   fields: [
     {
       name: 'firstName',

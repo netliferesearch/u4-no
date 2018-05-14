@@ -3,7 +3,7 @@ import { title, leadText, featuredImage, language, slug } from './fields'
 export default {
   title: 'Course Type',
   name: 'courseType',
-  type: 'object',
+  type: 'document',
   fields: [
     title,
     leadText,

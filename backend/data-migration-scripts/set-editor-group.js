@@ -4,7 +4,6 @@ const sanityClient = require('@sanity/client');
 const client = sanityClient({
   projectId: '1f1lcoov',
   dataset: 'production',
-  token: process.env.SANITY_TOKEN_GROUPS,
 });
 
 /**
@@ -21,6 +20,9 @@ const client = sanityClient({
  * These permissions are _incremental_, which means that if the user
  * is already in another group with broader permissions, narrower permissions
  * here will have no effect.
+ *
+ * To run this script you need to make an .env-file in the /backend-folder, and add EDITOR_GROUP=<comma separated ids of the editors>
+ * Run the script with sanity exec data-migration-scripts/set-editor-group.js --with-user-token
  */
 
 const groupsDoc = {
@@ -36,7 +38,7 @@ const groupsDoc = {
       permissions: ['create', 'read', 'update'],
     },
   ],
-  members: ['pRcCB7kxI'],
+  members: process.env.EDITOR_GROUP.split(',')
 };
 
 client.createOrReplace(groupsDoc).then(console.log).catch(console.error);

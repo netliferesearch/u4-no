@@ -19,7 +19,7 @@ import {
 export default {
     name: 'publication',
     title: 'Publication',
-    type: 'object',
+    type: 'document',
     fields: [
       title,
       subtitle,

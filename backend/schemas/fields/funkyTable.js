@@ -1,6 +1,26 @@
 import React from 'react';
 import FunkyTable from '../../components/FunkyTable'
 
+const TablePreview = (props = { value: {}}) => {
+  if(!props.value) return (<div></div>)
+  const {rows = [], title = 'Untitled'} = props.value
+  return(
+    <div style={{padding: '4px'}}>
+      <h2>{title}</h2>
+      <table style={{padding: '4px', borderCollapse: 'collapse' }}>
+        <tbody>{rows.map(({ columns = [] }, index) => (
+        <tr key={index} style={{ lineHeight: '1.4em'}}>
+          { columns && columns.map((col, index) => (
+            <td
+              key={index} style={{ padding: '4px', borderBottom: '1px solid black'}}>
+              {col}
+            </td>)
+            )}
+        </tr>)
+      )}</tbody></table>
+    </div>
+  )}
+
 export default {
   name: 'funkyTable',
   title: 'Data table',
@@ -50,12 +70,6 @@ export default {
       rows: 'rows',
       title: 'title'
     },
-    prepare({rows = false, title = 'No title'}) {
-      if(!rows) return { title: 'No data' }
-      return {
-        title,
-        subtitle: (<table style={{padding: '4px', borderCollapse: 'collapse' }}><tbody>{rows.map((row, index) => <tr key={index} style={{ lineHeight: '1.4em'}}>{row.columns && row.columns.map((col, index) => (<td key={index} style={{ padding: '4px', borderBottom: '1px solid black'}}>{col}</td>))}</tr>)}</tbody></table>),
-      }
-    }
-  }
+    component: TablePreview,
+  },
 }

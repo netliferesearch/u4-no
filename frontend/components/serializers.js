@@ -1,9 +1,9 @@
-import { createElement } from 'react'
+import { createElement } from 'react';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 import ReactPlayer from 'react-player';
-import buildUrl from '../helpers/buildUrl'
+import buildUrl from '../helpers/buildUrl';
 import FunkyTable from './FunkyTable';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
@@ -47,7 +47,12 @@ const serializers = {
       return <FunkyTable rows={rows} title={title} />;
     },
     heading: ({ node: { headingValue = '' } }) => (
-      <h2 id={slugify(headingValue, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })} className="c-topic-section__title u-margin-bottom-none">{headingValue}</h2>
+      <h2
+        id={slugify(headingValue, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })}
+        className="c-topic-section__title u-margin-bottom-none"
+      >
+        {headingValue}
+      </h2>
     ),
     cta: ({ node: { ctaValue = '', ctaURL = '' } }) => (
       <h2 className="c-topic-section__cta">
@@ -56,6 +61,13 @@ const serializers = {
         </a>
       </h2>
     ),
+    box: ({ node: { content = false } }) =>
+      content && (
+        <div className="c-longform-grid__standard c-textbox--longform">
+          <BlockContent blocks={content} serializers={serializers} />
+        </div>
+      ),
+
     textBlock: ({ node: { text = false } }) =>
       text && (
         <div className="o-wrapper-inner c-article u-margin-top u-margin-bottom-large">
@@ -136,6 +148,11 @@ const serializers = {
         <Mosaic resources={assetsRef} />
       </div>
     ),
+    mosaic: ({ node: { itemsRef } }) => (
+      <div className="o-wrapper u-margin-top u-margin-bottom-huge">
+        <Mosaic resources={itemsRef} />
+      </div>
+    ),
     courses: ({ node: { coursesRef } }) => (
       <div className="o-wrapper">
         <SimpleMosaic resources={coursesRef} cta="Register" />
@@ -173,12 +190,15 @@ const serializers = {
       </section>
     ),
     block: (props) => {
-      const { node, children = [] } = props
+      const { node, children = [] } = props;
       const style = node.style || 'normal';
       // Heading?
       if (/^h\d/.test(style) && typeof children[0] === 'string') {
         const level = parseInt(style.slice(1), 10);
-        const id = level === 2 || level === 3 ? slugify(children[0], { lower: true, remove: /[$*_+~.()'"!\-:@]/g }) : undefined;
+        const id =
+          level === 2 || level === 3
+            ? slugify(children[0], { lower: true, remove: /[$*_+~.()'"!\-:@]/g })
+            : undefined;
         return createElement(style, { id, className: 'c-longform-grid__standard' }, children);
       }
 
@@ -203,17 +223,9 @@ const serializers = {
   },
   marks: {
     internalReferance: (props) => {
-      const {
-        children = [],
-        mark: {
-          target: {
-            slug = '',
-            _type = ''
-          } = {}
-        } = {}
-      } = props
-    return <a href={buildUrl({_type, slug: slug.current})}>{children}</a>
-  },
+      const { children = [], mark: { target: { slug = '', _type = '' } = {} } = {} } = props;
+      return <a href={buildUrl({ _type, slug: slug.current })}>{children}</a>;
+    },
     link: (props) => {
       if (props.mark.href) {
         if (props.mark.href.match(/#_ftn(\d+)/)) {

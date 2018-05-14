@@ -5,7 +5,7 @@ import {
 
 export default {
   name: 'keyword',
-  type: 'object',
+  type: 'document',
   fields: [
     {
       name: 'keyword',

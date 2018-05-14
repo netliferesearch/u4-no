@@ -16,7 +16,7 @@ const content = {
   title: 'Publication content',
   description: 'The body text and graphic elements.',
   type: 'array',
-  inputComponent: FunkyEditor,
+  //inputComponent: FunkyEditor,
   of: [
     {
       name: 'box',
@@ -85,7 +85,23 @@ const content = {
             }
           ]
         }
-      ]
+      ],
+      preview: {
+        select: {
+          blocks: 'content'
+        },
+        prepare(value) {
+          const block = (value.blocks || []).find(block => block._type === 'block')
+          return {
+            title: block
+              ? block.children
+                .filter(child => child._type === 'span')
+                .map(span => span.text)
+                .join('')
+              : 'No title'
+          }
+        }
+      }
     },
     {
       type: 'block',

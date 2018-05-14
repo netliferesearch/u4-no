@@ -1,6 +1,6 @@
 import createSchema from 'part:@sanity/base/schema-creator';
+import schemaTypes from 'all:part:@sanity/base/schema-type'
 import richDate from 'part:@sanity/form-builder/input/rich-date/schema'
-import { schema as urlWithMetadata } from 'part:url-metadata-input/input';
 import funkyTable from './fields/funkyTable'
 import publication from './publication';
 import nugget from './nugget';
@@ -21,32 +21,33 @@ import resource from './resource';
 import frontpage from './frontpage';
 import file from './file';
 import articleType from './articleType';
-import event from './event';
-
+import u4Event from './event';
+const types = [
+  funkyTable,
+  publication,
+  nugget,
+  topics,
+  person,
+  term,
+  publicationType,
+  keyword,
+  blurb,
+  pullQuote,
+  article,
+  institution,
+  courseType,
+  course,
+  service,
+  boxOnBox,
+  resource,
+  frontpage,
+  file,
+  articleType,
+  u4Event,
+  richDate
+]
+debugger
 export default createSchema({
   name: 'default',
-  types: [
-    frontpage,
-    topics,
-    publication,
-    article,
-    event,
-    course,
-    person,
-    institution,
-    term,
-    nugget,
-    keyword,
-    resource,
-    publicationType,
-    blurb,
-    pullQuote,
-    urlWithMetadata,
-    courseType,
-    service,
-    richDate,
-    file,
-    articleType,
-    funkyTable,
-  ]
+  types: schemaTypes.concat(types)
 })

@@ -15,7 +15,7 @@ import {
 export default {
     name: 'page',
     title: 'Page',
-    type: 'object',
+    type: 'document',
     fields: [
       title,
       subtitle,

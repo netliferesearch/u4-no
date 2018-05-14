@@ -3,7 +3,7 @@ import { title, leadText, image, featuredImage, slug } from './fields'
 export default {
   name: 'workshop',
   title: 'Workshop',
-  type: 'object',
+  type: 'document',
   fields: [
     title,
     leadText,
