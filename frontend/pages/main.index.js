@@ -7,13 +7,15 @@ import { Footer } from '../components';
 import { PartnerAgencies, FrontpageFeature, Mosaic } from '../components';
 import { U4LogoSquare } from '../components/icons';
 import { MagnifyingGlass, ArrowRight } from '../components/icons';
-import serializers from '../components/serializers'
+import serializers from '../components/serializers';
 
 const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
   <Layout
     hideLogo
     noSearch
-    headComponentConfig={{ url: url.asPath ? `https://www.u4.no${url.asPath}` : '' }}
+    headComponentConfig={{
+      url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
+    }}
   >
     <section className="o-wrapper-inner o-wrapper--padded ">
       <div className="o-layout">
@@ -31,7 +33,7 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
     </section>
     <section className="o-wrapper-medium u-margin-bottom-huge">
       <div className="c-introduction-text">
-        <BlockContent blocks={frontPage.sections}  serializers={serializers}  />
+        <BlockContent blocks={frontPage.sections} serializers={serializers} />
       </div>
     </section>
 
@@ -44,7 +46,7 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
 
       <Mosaic resources={frontPage.resources} />
       <h2 className="c-topic-section__cta u-padding-bottom-huge">
-        <a href="/search">
+        <a href="/search?search=*">
           Explore all our resources &nbsp;<ArrowRight />
         </a>
       </h2>
