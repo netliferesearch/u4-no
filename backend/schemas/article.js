@@ -1,5 +1,6 @@
 import FunkyEditor from '../components/FunkyEditor'
-import { annotations, title, longTitle, image, explainerText, featuredImage, slug } from './fields'
+import { annotations, title, longTitle, standfirst,
+image, explainerText, featuredImage, slug } from './fields'
 
 export default {
   name: 'article',
@@ -7,6 +8,7 @@ export default {
   type: 'document',
   fields: [
     title,
+
     {
       name: 'articleType',
       type: 'array',
@@ -21,6 +23,7 @@ export default {
         },
       ],
     },
+    standfirst,
     featuredImage,
     {
       name: 'content',
