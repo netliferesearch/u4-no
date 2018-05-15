@@ -81,7 +81,7 @@ const PublicationArticleHeader = ({
               </Link>
             </p>
           )}
-        {translations.length &&
+        {translations.length > 0 &&
           translations.filter(item => item.language !== language).map((item = {}) =>
               item.slug &&
               item.language &&
@@ -96,7 +96,6 @@ const PublicationArticleHeader = ({
                   </a>
                 </p>
               ))}
-
         {partners.length ? <InstitutionList institutions={partners} /> : null}
         {publicationType._id === 'pubtype-3' ? (
           <div className="c-article-header__institution">
