@@ -140,6 +140,34 @@ export default {
       },
       publicationContent,
       {
+        name: 'methodology',
+        title: 'Methodology',
+        description: '(Optional and only for long texts): A clear statement of the research question and methodology explained.',
+        type: 'array',
+        of: [
+          {
+            type: 'block',
+            styles: [
+              {title: 'Normal', value: 'normal'},
+              {title: 'H2', value: 'h2'},
+              {title: 'H3', value: 'h3'},
+              {title: 'H4', value: 'h4'},
+              {title: 'H5', value: 'h5'},
+            ],
+            // Only allow numbered lists
+            marks: {
+              // Only allow these decorators
+              decorators: [
+                {title: 'Strong', value: 'strong'},
+                {title: 'Emphasis', value: 'em'}
+              ],
+              // Support annotating text with a reference to an author
+              annotations,
+            }
+          }
+        ]
+      },
+      {
         name: 'references',
         title: 'Publication references',
         description: 'A list of the sources used in this publication',
@@ -458,6 +486,7 @@ export default {
         title: 'title',
         authors: 'authors',
         publicationType: 'publicationType.title',
+        publicationNumber: 'publicationNumber',
         reference: 'reference',
         date: 'date',
         image: 'image.asset.url',
