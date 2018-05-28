@@ -15,7 +15,7 @@ class LongformArticle extends Component {
     this.littlefootActivator();
   }
   componentDidUpdate() {
-    this.littlefootActivator();
+    //this.littlefootActivator();
   }
   littlefootActivator() {
     const littlefoot = require('littlefoot').default;
