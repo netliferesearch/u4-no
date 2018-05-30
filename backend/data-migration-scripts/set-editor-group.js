@@ -4,6 +4,7 @@ const sanityClient = require('@sanity/client');
 const client = sanityClient({
   projectId: '1f1lcoov',
   dataset: 'production',
+  token: process.env.SANITY_TOKEN_GROUPS // token with manage rights
 });
 
 /**
@@ -29,10 +30,6 @@ const groupsDoc = {
   _id: '_.groups.writers', // "writers" is an arbitarly set name for this group
   _type: 'system.group',
   grants: [
-    {
-      path: '*',
-      permissions: ['read'],
-    },
     {
       path: 'drafts.**',
       permissions: ['create', 'read', 'update'],

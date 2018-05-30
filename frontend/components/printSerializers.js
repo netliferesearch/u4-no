@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
@@ -17,7 +17,7 @@ const classes = BEMHelper({
 
 function printSerializers(blocks) {
   const footnotes = findFootnotes(blocks);
-  const links = findLinks(blocks)
+  const links = findLinks(blocks);
 
   return {
     types: {
@@ -40,13 +40,23 @@ function printSerializers(blocks) {
         if (display === 'bar') return <BarChart rows={rows} title={title} />;
         return <FunkyTable rows={rows} title={title} />;
       },
+      box: ({ node: { content = false } }) =>
+        content && (
+          <div className="c-longform-grid__standard c-textbox--longform">
+            <BlockContent blocks={content} serializers={serializers} />
+          </div>
+        ),
+
       block: ({ node, children }) => {
         const style = node.style || 'normal';
 
         // Heading?
         if (/^h\d/.test(style)) {
           const level = parseInt(style.slice(1), 10);
-          const id = typeof children[0] === 'string' && (level === 2 || level === 3) ? slugify(children[0], { lower: true, remove: /[$*_+~.:()'"!\-:@]/g }) : undefined;
+          const id =
+            typeof children[0] === 'string' && (level === 2 || level === 3)
+              ? slugify(children[0], { lower: true, remove: /[$*_+~.:()'"!\-:@]/g })
+              : undefined;
 
           return React.createElement(
             style,
@@ -79,24 +89,43 @@ function printSerializers(blocks) {
       link: (props) => {
         if (props.mark.href) {
           if (props.mark.href.match(/#_ftn(\d+)/)) {
-            return null
+            return null;
           }
           if (props.mark.href.match(/#_ftnref(\d+)/)) {
-            return null
+            return null;
           }
-          return <span>{props.children}<a className="fn" href={props.mark.href}>{props.mark.href}</a></span>;
+          return (
+            <span>
+              {props.children}
+              <a className="fn" href={props.mark.href}>
+                {props.mark.href}
+              </a>
+            </span>
+          );
         }
         return null;
       },
-      blockNote: ({markKey = '', mark = {}}) => {
+      blockNote: ({ markKey = '', mark = {} }) => {
         if (!mark.content) return null;
-        return (<span>{markKey && <BlockContent blocks={footnotes[markKey]} serializers={printFootnoteSerializer(markKey)} />}</span>);
+        return (
+          <span>
+            {markKey && (
+              <BlockContent
+                blocks={footnotes[markKey]}
+                serializers={printFootnoteSerializer(markKey)}
+              />
+            )}
+          </span>
+        );
       },
       footnote: ({ children, markKey = '' }) => (
         <span>
           <span>
             {markKey && (
-              <BlockContent blocks={footnotes[markKey]} serializers={printFootnoteSerializer(markKey)} />
+              <BlockContent
+                blocks={footnotes[markKey]}
+                serializers={printFootnoteSerializer(markKey)}
+              />
             )}
           </span>
         </span>

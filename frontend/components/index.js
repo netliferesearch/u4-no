@@ -36,6 +36,7 @@ export { default as SimpleHero } from './SimpleHero';
 export { default as SimpleMosaic } from './SimpleMosaic';
 export { default as Team } from './Team';
 export { default as ToggleBlock } from './ToggleBlock';
+export { default as ToggleTextBox } from './ToggleTextBox';
 export { default as WorkshopMosaic } from './WorkshopMosaic';
 export {
   CustomScrollSpy,

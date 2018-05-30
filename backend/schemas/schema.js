@@ -46,7 +46,6 @@ const types = [
   u4Event,
   richDate
 ]
-debugger
 export default createSchema({
   name: 'default',
   types: schemaTypes.concat(types)
