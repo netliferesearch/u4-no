@@ -5,3 +5,87 @@
   color: $white;
   background: $brand-main;
 }
+.c-textbox__container {
+  position: relative;
+  padding: 0;
+  color: inherit;
+  background: $brand-lightest;
+  border: 1px solid $grey;
+  font-size: $font-size-small;
+}
+.c-textbox__container--collapsed {
+  .c-textbox__content {
+    max-height: 200px;
+    overflow: hidden;
+  }
+}
+.c-textbox__container--expanded {
+  .c-textbox__content {
+    max-height: none;
+  }
+  .c-textbox__expand {
+    background: none;
+    svg {
+      transform: rotate(-180deg);
+    }
+  }
+}
+
+.c-textbox__expand {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 0 !important;
+  background: linear-gradient(rgba(255, 255, 255, 0), $brand-lightest 100%);
+  height: 100px;
+  text-align: center;
+
+  .c-btn--icon {
+    margin: 74px auto 0;
+
+    svg {
+      stroke: $brand-main;
+      fill: $white;
+      circle {
+        stroke: $brand-main;
+        fill: $white;
+      }
+    }
+    &:hover,
+    &:active,
+    &:focus {
+      border: none;
+      outline: none;
+      svg {
+        stroke: $white;
+        fill: $brand-main;
+        circle {
+          stroke: $white;
+          fill: $brand-main;
+        }
+      }
+    }
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    border: none;
+    outline: none;
+  }
+  &:hover {
+    .c-btn--icon svg {
+      stroke: $white;
+      fill: $brand-main;
+      circle {
+        stroke: $white;
+        fill: $brand-main;
+      }
+    }
+  }
+}
+
+.c-textbox__container--expanded .c-textbox__expand {
+  background: none;
+}
