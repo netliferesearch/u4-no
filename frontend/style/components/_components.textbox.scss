@@ -5,6 +5,11 @@
   color: $white;
   background: $brand-main;
 }
+/* for print */
+.c-textbox--longform {
+  background: $brand-lightest;
+}
+/* for screen (togglable) */
 .c-textbox__container {
   position: relative;
   padding: 0;
