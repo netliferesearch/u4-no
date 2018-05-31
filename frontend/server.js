@@ -2,7 +2,6 @@ require('dotenv').config({ path: './.env' });
 const next = require('next');
 const routes = require('./routes');
 const forceSsl = require('force-ssl-heroku');
-const { pdfHandler } = require('../publication-pdf-builder/pdf-server-handler');
 const { publicationPdfHandler } = require('../publication-pdf-builder/publication.pdf');
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
@@ -20,7 +19,6 @@ app.prepare().then(() => {
     res.type('text/plain');
     res.send('User-agent: *\nDisallow:');
   });
-  server.get('/pdf', pdfHandler);
   server.get('/publications/:slug/pdf', publicationPdfHandler);
   server.use(handler).listen(process.env.PORT || 3000);
 });
