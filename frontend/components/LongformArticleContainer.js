@@ -25,6 +25,7 @@ const LongFormArticleContainer = (props = {}) => {
       title = '',
       mainPoints = [],
       resources = [],
+      methodology = [],
       references = [],
       featuredImage = {},
       relatedUrl = {},
@@ -207,10 +208,17 @@ const LongFormArticleContainer = (props = {}) => {
             </div>
           )}
           <LongformArticle content={shortversion ? props.data.summary : ''} {...props.data} />
+          {!shortversion && props.data.methodology ? (
+            <div className="c-longform-grid">
+              <div className="c-longform-grid__standard">
+                <ToggleBlock title="Methodology" content={props.data.methodology} />
+              </div>
+            </div>
+          ) : null}
           {!shortversion && props.data.references ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                <ToggleBlock title="References" active content={props.data.references} />
+                <ToggleBlock title="References" content={props.data.references} />
               </div>
             </div>
           ) : null}
