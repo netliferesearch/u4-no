@@ -43,7 +43,7 @@ function printSerializers(blocks) {
       box: ({ node: { content = false } }) =>
         content && (
           <div className="c-longform-grid__standard c-textbox--longform">
-            <BlockContent blocks={content} serializers={serializers} />
+            <BlockContent blocks={content} serializers={printSerializers(content)} />
           </div>
         ),
 

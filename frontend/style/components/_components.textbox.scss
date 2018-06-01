@@ -8,6 +8,7 @@
 /* for print */
 .c-textbox--longform {
   background: $brand-lightest;
+  font-family: $font-sans;
 }
 /* for screen (togglable) */
 .c-textbox__container {
@@ -17,6 +18,7 @@
   background: $brand-lightest;
   border: 1px solid $grey;
   font-size: $font-size-small;
+  font-family: $font-sans;
 }
 .c-textbox__container--collapsed {
   .c-textbox__content {
