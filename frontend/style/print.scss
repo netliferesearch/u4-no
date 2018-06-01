@@ -94,7 +94,7 @@ body {
     margin: 0;
     padding: 0;
   }
-  li{
+  li {
     margin: 0;
     margin-bottom: $spacing-tiny;
     font-size: 10pt;
@@ -143,7 +143,8 @@ body {
   font-size: 12pt;
   line-height: 1.5;
 }
-h2, h3 {
+h2,
+h3 {
   line-height: 1.2;
 }
 
@@ -168,7 +169,12 @@ p {
 .body {
   page-break-before: always;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   page-break-after: avoid;
   page-break-inside: avoid;
 }
@@ -182,7 +188,7 @@ a {
   text-decoration: none;
 }
 
-.c-article_mainPoints-item{
+.c-article_mainPoints-item {
   margin-bottom: $spacing-tiny;
 }
 .contents__list {
@@ -346,6 +352,13 @@ figure {
 .c-toggle-block__title {
   display: none;
 }
+
+.c-textbox--longform {
+  background: $brand-lightest;
+  padding: $spacing;
+  font-family: $font-sans;
+}
+
 #references {
   page-break-before: always;
 }

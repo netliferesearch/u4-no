@@ -13,10 +13,10 @@
 /* for screen (togglable) */
 .c-textbox__container {
   position: relative;
-  padding: 0;
+  padding: $spacing 0;
   color: inherit;
   background: $brand-lightest;
-  border: 1px solid $grey;
+  border: 0px solid $grey;
   font-size: $font-size-small;
   font-family: $font-sans;
 }
