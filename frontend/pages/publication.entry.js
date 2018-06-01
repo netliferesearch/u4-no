@@ -4,13 +4,12 @@ import { LongformArticleContainer, LegacyPublicationContainer } from '../compone
 import DataLoader from '../helpers/data-loader';
 
 const PublicationEntry = props => (
-
   <div>
-    {
-    (props.data.legacypdf && !props.data.content) ?
-      <LegacyPublicationContainer {...props} /> :
+    {props.data.legacypdf && !props.data.content ? (
+      <LegacyPublicationContainer {...props} />
+    ) : (
       <LongformArticleContainer {...props} />
-    }
+    )}
   </div>
 );
 
