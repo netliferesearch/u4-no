@@ -22,6 +22,7 @@ class LongformArticle extends PureComponent {
       acknowledgements = [],
       editors = [],
       references = [],
+      methodology = [],
     } = this.props;
     const blocks = content.filter((block = {}) => block && !['reference'].includes(block._type));
     return (
@@ -49,6 +50,11 @@ class LongformArticle extends PureComponent {
                   )}
                 </li>
               ))}
+            {methodology && (
+              <li key="references" className="contents__list-item">
+                <a href="#methodology">Methodology</a>
+              </li>
+            )}
             {references && (
               <li key="references" className="contents__list-item">
                 <a href="#references">References</a>
@@ -121,6 +127,26 @@ class LongformArticle extends PureComponent {
 
         <div className="body">
           <BlockContent blocks={blocks} serializers={serializers(blocks)} />
+          {methodology ? (
+            <div>
+              <h2 id="methodology">Methodology</h2>
+              <BlockContent
+                blocks={methodology}
+                serializers={{
+                  marks: {
+                    link: props => (
+                      <span>
+                        {props.children}.{' '}
+                        <a className="referencesLink" href={props.mark.href}>
+                          {props.mark.href}
+                        </a>
+                      </span>
+                    ),
+                  },
+                }}
+              />
+            </div>
+          ) : null}
           {references ? (
             <div>
               <h2 id="references">References</h2>
