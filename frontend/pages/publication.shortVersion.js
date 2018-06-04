@@ -11,17 +11,17 @@ const TopicArticleEntry = (props) => {
   const { slug = '' } = query;
   return (
     <LongformArticleContainer
-      BreadCrumbComponent={(
+      BreadCrumbComponent={
         <BreadCrumb
           data={{
             _type: 'publication',
-            slug: { current: slug }, title }
-          }
+            slug: { current: slug },
+            title,
+          }}
         />
-      )}
+      }
       content={summary}
       shortversion
-      {...props}
     />
   );
 };
@@ -32,13 +32,13 @@ TopicArticleEntry.propTypes = {
     summary: PropTypes.arrayOf(PropTypes.object),
   }),
   url: PropTypes.shape({
-    current: Proptypes.string,
+    current: PropTypes.string,
   }).isRequired,
-}
+};
 TopicArticleEntry.defaultProps = {
   data: {
     title: 'No title',
-    summary: 'No summary'
+    summary: 'No summary',
   },
 };
 
