@@ -50,11 +50,11 @@ class LongformArticle extends PureComponent {
                   )}
                 </li>
               ))}
-            {methodology && (
+            {methodology.length > 0 ? (
               <li key="references" className="contents__list-item">
                 <a href="#methodology">Methodology</a>
               </li>
-            )}
+            ) : null}
             {references && (
               <li key="references" className="contents__list-item">
                 <a href="#references">References</a>
@@ -127,7 +127,7 @@ class LongformArticle extends PureComponent {
 
         <div className="body">
           <BlockContent blocks={blocks} serializers={serializers(blocks)} />
-          {methodology ? (
+          {methodology.length > 0 ? (
             <div>
               <h2 id="methodology">Methodology</h2>
               <BlockContent
@@ -147,7 +147,7 @@ class LongformArticle extends PureComponent {
               />
             </div>
           ) : null}
-          {references ? (
+          {references.length > 0 ? (
             <div>
               <h2 id="references">References</h2>
               <BlockContent
