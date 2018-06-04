@@ -60,13 +60,14 @@
   font-family: $font-sans;
   float: left;
   text-align: right;
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
   a {
     border: none;
     color: grey;
   }
-  @include mq($from: desktop) {
+  @include mq($from: wide) {
     writing-mode: horizontal-tb;
+    max-width: 19%;
   }
 }
 
@@ -127,10 +128,15 @@
   }
 
   .c-hero-sideText {
-    grid-column: 7 / 8;
+    grid-column: 8 / 10;
     grid-row: 1 / 2;
+    writing-mode: vertical-rl;
     @include mq($from: desktop) {
-      writing-mode: vertical-lr;
+      writing-mode: vertical-rl;
+      grid-column: 7 / 8;
+    }
+    @include mq($from: wide) {
+      grid-column: 8 / 9;
     }
   }
 
