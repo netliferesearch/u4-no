@@ -207,7 +207,7 @@ const LongFormArticleContainer = (props = {}) => {
               </div>
             </div>
           )}
-          <LongformArticle content={shortversion ? props.data.summary : ''} {...props.data} />
+          <LongformArticle content={shortversion ? props.content : ''} {...props.data} />
           {!shortversion && props.data.methodology ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
@@ -254,7 +254,7 @@ const LongFormArticleContainer = (props = {}) => {
                 </div>
               </div>
             )}
-          {props.data.relatedContent && props.data.relatedContent.length ? (
+          {!shortversion && props.data.relatedContent && props.data.relatedContent.length ? (
             <div className="o-wrapper">
               <h2>We also recommend</h2>
               <RecommendedResources relatedContent={props.data.relatedContent} />
