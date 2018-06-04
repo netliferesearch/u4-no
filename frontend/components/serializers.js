@@ -28,7 +28,7 @@ const classes = BEMHelper({
 
 const getTextValue = (block = '') => {
   if (block.props && block.props.node && block.props.node.children) {
-    return block.props.node.children.map(getTitleText).join(' ');
+    return block.props.node.children.map(getTextValue).join(' ');
   }
   return block.toString();
 };
