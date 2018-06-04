@@ -367,7 +367,8 @@ figure {
     content: string(publication-type-and-number);
   }
   @bottom {
-    content: 'Page ' counter(page) ' of ' counter(pages);
+    content: 'Page ' counter(page);
+    // content: 'Page ' counter(page) ' of ' counter(pages);
   }
   @footnote {
     border-top: solid black thin;

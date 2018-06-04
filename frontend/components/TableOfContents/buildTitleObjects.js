@@ -2,11 +2,12 @@ import slugify from 'slugify';
 
 const buildTitleObject = (elem = {}) => {
   if (!elem.children) return;
-  const title = elem.children[0].text;
+  // const title = elem.children[0].text;
+  const title = elem.children.map(block => block.text).join(' ');
   return {
     style: elem.style,
     title,
-    id: elem.id || slugify(title, { lower: true, remove: /[$*_+~.:()'"!\-:@]/g }),
+    id: elem.id || slugify(title, { lower: true, remove: /[$*_+~.:()'"!:@]/g }),
   };
 };
 

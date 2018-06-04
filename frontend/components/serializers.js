@@ -26,6 +26,13 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
+const getTextValue = (block = '') => {
+  if (block.props && block.props.node && block.props.node.children) {
+    return block.props.node.children.map(getTextValue).join(' ');
+  }
+  return block.toString();
+};
+
 const serializers = {
   types: {
     image: ({ node }) => <Figure {...node} />,
@@ -194,11 +201,12 @@ const serializers = {
       const { node, children = [] } = props;
       const style = node.style || 'normal';
       // Heading?
-      if (/^h\d/.test(style) && typeof children[0] === 'string') {
+      if (/^h\d/.test(style)) {
         const level = parseInt(style.slice(1), 10);
+        const heading = children.map(getTextValue).join(' ');
         const id =
-          level === 2 || level === 3
-            ? slugify(children[0], { lower: true, remove: /[$*_+~.()'"!\-:@]/g })
+          typeof heading === 'string' && (level === 2 || level === 3)
+            ? slugify(heading, { lower: true, remove: /[$*_+~.:()'"!:@]/g })
             : undefined;
         return createElement(style, { id, className: 'c-longform-grid__standard' }, children);
       }
