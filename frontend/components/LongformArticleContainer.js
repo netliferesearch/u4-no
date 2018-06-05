@@ -56,6 +56,29 @@ const LongFormArticleContainer = (props = {}) => {
       },
       relatedUrl,
     );
+  const captionBlocks =
+    props.data.featuredImage && props.data.featuredImage.caption
+      ? [
+        {
+          _key: 'imagecaption',
+          _type: 'block',
+          children: [
+            {
+              _key: 'imagecaption0',
+              _type: 'span',
+              marks: ['strong'],
+              text: 'Header image caption:',
+            },
+          ],
+          markDefs: [],
+          style: 'normal',
+        },
+        ...props.data.featuredImage.caption,
+      ]
+      : [];
+
+  const notesAndCaption = props.data.notes ? props.data.notes.concat(captionBlocks) : captionBlocks;
+
   return (
     <Layout
       showLoadingScreen={showLoadingScreen}
@@ -116,17 +139,6 @@ const LongFormArticleContainer = (props = {}) => {
                   />
                   <div className="c-hero-bg" />
                   <div className="c-hero-sideText">
-                    {props.data.featuredImage &&
-                      props.data.featuredImage.caption && (
-                        <BlockToContent
-                          blocks={props.data.featuredImage.caption}
-                          serializers={{
-                            types: {
-                              block: props => <p style={{ display: 'inline' }}>{props.children}</p>,
-                            },
-                          }}
-                        />
-                      )}
                     {props.data.featuredImage &&
                       !props.data.featuredImage.sourceUrl &&
                       props.data.featuredImage.credit && (
@@ -229,10 +241,10 @@ const LongFormArticleContainer = (props = {}) => {
               </div>
             </div>
           ) : null}
-          {!shortversion && props.data.notes ? (
+          {!shortversion && notesAndCaption ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                <ToggleBlock title="Notes" content={props.data.notes} />
+                <ToggleBlock title="Notes" content={notesAndCaption} />
               </div>
             </div>
           ) : null}
