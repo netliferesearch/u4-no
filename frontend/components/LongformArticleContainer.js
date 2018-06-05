@@ -15,6 +15,12 @@ import {
   RecommendedResources,
   ToggleBlock,
 } from './';
+import {
+  CreativecommonsCC,
+  CreativecommonsBY,
+  CreativecommonsNC,
+  CreativecommonsND,
+} from './icons';
 
 const LongFormArticleContainer = (props = {}) => {
   const {
@@ -154,7 +160,7 @@ const LongFormArticleContainer = (props = {}) => {
                       )}
                     {props.data.featuredImage &&
                       props.data.featuredImage.license && (
-                        <span> {props.data.featuredImage.license.toUpperCase()}</span>
+                        <span> CC {props.data.featuredImage.license.toUpperCase()}</span>
                       )}
                   </div>
                   <div className="c-hero-header">
@@ -266,6 +272,19 @@ const LongFormArticleContainer = (props = {}) => {
                 </div>
               </div>
             )}
+          <div className="c-longform-grid">
+            <div className="c-longform-grid__standard">
+              <p>
+                <CreativecommonsCC className="page2-ccimage" />
+                <CreativecommonsBY className="page2-ccimage" />
+                <CreativecommonsNC className="page2-ccimage" />
+                <CreativecommonsND className="page2-ccimage" />
+                <br />
+                This work is licenced under a Creative Commons
+                Attribution-NonCommercial-NoDerivatives 4.0 International licence (CC BY-NC-ND 4.0)
+              </p>
+            </div>
+          </div>
           {!shortversion && props.data.relatedContent && props.data.relatedContent.length ? (
             <div className="o-wrapper">
               <h2>We also recommend</h2>
