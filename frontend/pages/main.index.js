@@ -14,7 +14,13 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
     hideLogo
     noSearch
     headComponentConfig={{
-      url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
+      title: 'U4 Anti-Corruption Resource Centre',
+      description:
+        'U4 translates anti-corruption research into practical advice for international development actors. We offer publications, training, workshops, helpdesk, and policy advice to government agencies and the global anti-corruption community.',
+      url: 'https://www.u4.no',
+      image:
+        frontPage.ImageUrl ||
+        'https://cdn.sanity.io/images/1f1lcoov/production/3e59eddc41cd02132774902dd229b24e55dbfcb5-1000x207.png',
     }}
   >
     <section className="o-wrapper-inner o-wrapper--padded ">
@@ -85,7 +91,7 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
 export default DataLoader(Frontpage, {
   queryFunc: () => ({
     sanityQuery: `{
-      "frontPage": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0]{id,title,sections,"resources": resources[]->{_id,_type, "publicationType": publicationType->title, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}},
+      "frontPage": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0]{id,title,sections,"imageUrl": featuredImage.asset->url,"resources": resources[]->{_id,_type, "publicationType": publicationType->title, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}},
       "topics": *[_type == "topics"] | order(title) {_id, title, slug,  "imageUrl": featuredImage.asset->url}
     }`,
   }),
