@@ -41,11 +41,10 @@ const GeneralArticle = (props) => {
       </Layout>
     );
   }
-  console.log(props);
   return (
     <LongformArticleContainer
       BreadCrumbComponent={<BreadCrumb url={props.url} />}
-      lead={props.data.explainerText}
+      lead={props.data.standfirst}
       {...props}
     />
   );
