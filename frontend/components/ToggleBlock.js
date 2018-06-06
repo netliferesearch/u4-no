@@ -49,6 +49,7 @@ class ToggleBlock extends Component {
               {typeof content !== 'string' && (
                 <BlockContent blocks={content} serializers={serializers} />
               )}
+              {this.props.children}
             </div>
           ) : null}
         </div>
@@ -59,10 +60,7 @@ class ToggleBlock extends Component {
 
 ToggleBlock.propTypes = {
   title: PropTypes.string,
-  content: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.string
-  ]),
+  content: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   modifier: PropTypes.string,
 };
 

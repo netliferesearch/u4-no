@@ -152,7 +152,7 @@ const LongFormArticleContainer = (props) => {
             <p>
               {featuredImage.credit && (
                 <span>
-                  {featuredImage.credit} {featuredImage.license && `(${featuredImage.license})`}{' '}
+                  {featuredImage.credit} {featuredImage.license && `(CC ${featuredImage.license})`}{' '}
                 </span>
               )}
               {featuredImage.sourceUrl && (
@@ -205,6 +205,18 @@ const LongFormArticleContainer = (props) => {
             {notes && <BlockContent blocks={notes} serializers={serializers(notes)} />}
           </div>
         )}
+        <div className="page2__cc">
+          <h2>Creative commons</h2>
+          <p>
+            <CreativecommonsCC className="page2-ccimage" />
+            <CreativecommonsBY className="page2-ccimage" />
+            <CreativecommonsNC className="page2-ccimage" />
+            <CreativecommonsND className="page2-ccimage" />
+            <br />
+            This work is licenced under a Creative Commons Attribution-NonCommercial-NoDerivatives
+            4.0 International licence (CC BY-NC-ND 4.0)
+          </p>
+        </div>
         <div className="page2__about-the-autors" />
       </div>
       {_type === 'publication' && (

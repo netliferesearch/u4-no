@@ -24,15 +24,15 @@ const TopicArticleEntry = (props) => {
     agenda: 'agenda',
   };
   const content = props.data[topicPartMap[topicPart]];
-
+  console.log(content.filter(({ style = {} }) => style.children));
   return (
     <LongformArticleContainer
       BreadCrumbComponent={
         <BreadCrumb data={{ _type: 'topics', slug: { current: slug }, title }} />
       }
-      data={{content}}
+      data={{ content }}
       headComponentConfigOverride={{
-        title: firstTitleInContent(content.filter(({ style = {} }) => style.children)),
+        title: firstTitleInContent(content),
         description: firstParagraphInContent(content),
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
       }}
