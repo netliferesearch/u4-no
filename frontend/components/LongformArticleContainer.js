@@ -3,6 +3,7 @@ import BlockToContent from '@sanity/block-content-to-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
+import dateToString from '../helpers/dateToString';
 import {
   Footer,
   Layout,
@@ -14,6 +15,7 @@ import {
   CustomScrollSpy,
   RecommendedResources,
   ToggleBlock,
+  AuthorList,
 } from './';
 import {
   CreativecommonsCC,
@@ -29,6 +31,9 @@ const LongFormArticleContainer = (props = {}) => {
       _type = '',
       longTitle = '',
       title = '',
+      authors = [],
+      date = {},
+      standfirst = '',
       mainPoints = [],
       resources = [],
       methodology = [],
@@ -55,36 +60,13 @@ const LongFormArticleContainer = (props = {}) => {
     Object.assign(
       {
         title,
-        description: lead,
+        description: lead || standfirst,
         image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
       },
       relatedUrl,
     );
-  const captionBlocks =
-    props.data.featuredImage && props.data.featuredImage.caption
-      ? [
-        {
-          _key: 'imagecaption',
-          _type: 'block',
-          children: [
-            {
-              _key: 'imagecaption0',
-              _type: 'span',
-              marks: ['strong'],
-              text: 'Header image caption:',
-            },
-          ],
-          markDefs: [],
-          style: 'normal',
-        },
-        ...props.data.featuredImage.caption,
-      ]
-      : [];
-
-  const notesAndCaption = props.data.notes ? props.data.notes.concat(captionBlocks) : captionBlocks;
-
   return (
     <Layout
       showLoadingScreen={showLoadingScreen}
@@ -216,6 +198,13 @@ const LongFormArticleContainer = (props = {}) => {
             <div>
               <div className="c-longform-grid u-bg-white u-z-index-x">
                 <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
+                {authors.length ? (
+                  <div className="c-article c-longform-grid__standard">
+                    <AuthorList authors={authors} />
+                    {date && <span> (last update: {dateToString({ start: date })})</span>}
+                  </div>
+                ) : null}
+
                 {lead && <div className="c-article c-longform-grid__standard">{lead}</div>}
               </div>
               <div className="c-longform-grid">
@@ -247,10 +236,71 @@ const LongFormArticleContainer = (props = {}) => {
               </div>
             </div>
           ) : null}
-          {!shortversion && notesAndCaption ? (
+          {!shortversion && (props.data.notes || true) ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                <ToggleBlock title="Notes" content={notesAndCaption} />
+                <ToggleBlock title="Notes" content={props.data.notes}>
+                  {props.data.featuredImage &&
+                    props.data.featuredImage.caption && (
+                      <div className="c-longform-grid__standard">
+                        <p>
+                          <b>Header image:</b>
+                        </p>
+                        <BlockToContent
+                          blocks={props.data.featuredImage.caption}
+                          serializers={{
+                            types: {
+                              block: props => <p style={{ display: 'inline' }}>{props.children}</p>,
+                            },
+                          }}
+                        />
+                      </div>
+                    )}
+                  <div className="c-longform-grid__standard">
+                    {props.data.featuredImage &&
+                      !props.data.featuredImage.sourceUrl &&
+                      props.data.featuredImage.credit && (
+                        <span>Credit: {props.data.featuredImage.credit} </span>
+                      )}
+
+                    {props.data.featuredImage &&
+                      props.data.featuredImage.sourceUrl && (
+                        <span>
+                          Credit:
+                          <a
+                            className="u-margin-left-tiny"
+                            href={props.data.featuredImage.sourceUrl}
+                          >
+                            {props.data.featuredImage.credit
+                              ? props.data.featuredImage.credit
+                              : props.data.featuredImage.sourceUrl}
+                          </a>
+                        </span>
+                      )}
+                    {props.data.featuredImage &&
+                      props.data.featuredImage.license && (
+                        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                          {' '}
+                          CC {props.data.featuredImage.license.toUpperCase()}
+                        </a>
+                      )}
+                  </div>
+                  <div className="c-longform-grid__standard">
+                    <p>
+                      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                        <CreativecommonsCC className="page2-ccimage" />
+                        <CreativecommonsBY className="page2-ccimage" />
+                        <CreativecommonsNC className="page2-ccimage" />
+                        <CreativecommonsND className="page2-ccimage" />
+                      </a>
+                      <br />
+                      This work is licenced under a Creative Commons
+                      Attribution-NonCommercial-NoDerivatives 4.0 International licence (<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                        CC BY-NC-ND 4.0
+                      </a>)
+                    </p>
+                  </div>
+                </ToggleBlock>
               </div>
             </div>
           ) : null}
@@ -272,19 +322,6 @@ const LongFormArticleContainer = (props = {}) => {
                 </div>
               </div>
             )}
-          <div className="c-longform-grid">
-            <div className="c-longform-grid__standard">
-              <p>
-                <CreativecommonsCC className="page2-ccimage" />
-                <CreativecommonsBY className="page2-ccimage" />
-                <CreativecommonsNC className="page2-ccimage" />
-                <CreativecommonsND className="page2-ccimage" />
-                <br />
-                This work is licenced under a Creative Commons
-                Attribution-NonCommercial-NoDerivatives 4.0 International licence (CC BY-NC-ND 4.0)
-              </p>
-            </div>
-          </div>
           {!shortversion && props.data.relatedContent && props.data.relatedContent.length ? (
             <div className="o-wrapper">
               <h2>We also recommend</h2>
