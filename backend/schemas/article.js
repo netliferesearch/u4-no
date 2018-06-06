@@ -1,6 +1,6 @@
 import FunkyEditor from '../components/FunkyEditor'
 import { annotations, title, longTitle, standfirst,
-image, explainerText, featuredImage, slug } from './fields'
+image, explainerText, featuredImage, slug, box } from './fields'
 
 export default {
   name: 'article',
@@ -25,6 +25,32 @@ export default {
     },
     standfirst,
     featuredImage,
+    {
+      name: 'date',
+      description: 'Date of publication/last update',
+      type: 'richDate',
+      options: {
+        inputUtc: true,
+        dateFormat: 'YYYY-MM-DD',
+        inputDate: true,
+        inputTime: false,
+      }
+    },
+    {
+      name: 'authors',
+      description: 'Place in order of appearance',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'person'
+            }
+          ]
+        }
+      ]
+    },
     {
       name: 'content',
       title: 'Article content',
@@ -88,6 +114,7 @@ export default {
             }
           ]
         },
+        box,
       ]
     },
     slug
