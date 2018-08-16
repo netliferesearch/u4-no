@@ -28,8 +28,8 @@ class Newsletter extends Component {
 
   render() {
     const {
-      smallTitle = 'Keep up with us',
-      title = 'Subscribe to our newsletter',
+      smallTitle = 'Subscribe to our newsletter:',
+      title = 'Your e-mail address',
       link = 'http://eepurl.com/dtV9Df',
     } = this.props;
 
