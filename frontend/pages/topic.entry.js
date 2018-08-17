@@ -79,7 +79,9 @@ const TopicEntry = ({
         ) : null}
         <div className="c-boxOnImage__body">
           <p>{explainerText}</p>
-          {linkListContent && <LinkList title="Related topics" content={linkListContent} />}
+          {linkListContent.length > 0 && (
+            <LinkList title="Related topics" content={linkListContent} />
+          )}
         </div>
       </section>
       {introduction.length + agenda.length > 0 && (
