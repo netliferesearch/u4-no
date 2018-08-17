@@ -14,14 +14,22 @@ const Person = ({ person, linkLabel = 'Bio', light = true }) => (
         <Link to={`/the-team/${person.slug.current}`}>
           <a
             {...classes('item-body-img', person.image ? 'light' : 'noimg')}
-            style={{ backgroundImage: `url(${person.image && person.image.asset.url}?w=400&q=100)` }}
+            style={{
+              backgroundImage: `url(${person.image && person.image.asset.url}?w=400&q=100)`,
+            }}
           />
         </Link>
-        ) : null}
+      ) : (
+        <a
+          {...classes('item-body-img', person.image ? 'light' : 'noimg')}
+          style={{
+            backgroundImage: `url(${person.image && person.image.asset.url}?w=400&q=100)`,
+          }}
+        />
+      )}
 
       <div {...classes('item-body-text')}>
         <div>
-
           {person.slug && person.bio ? (
             <Link to={`/the-team/${person.slug.current}`}>
               <a>
@@ -30,7 +38,11 @@ const Person = ({ person, linkLabel = 'Bio', light = true }) => (
                 </h3>
               </a>
             </Link>
-            ) : null}
+          ) : (
+            <h3 {...classes('item-title')}>
+              {person.firstName && person.firstName} {person.surname && person.surname}
+            </h3>
+          )}
 
           <small {...classes('item-subtitle')}>{person.position && `${person.position}`}</small>
         </div>
