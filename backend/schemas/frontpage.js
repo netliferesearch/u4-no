@@ -952,5 +952,24 @@ export default {
       type: 'urlWithMetadata',
       inputComponent: UrlWithMetadataInput
     }
-  ]
+  ],
+  orderings: [
+    {
+      title: 'Date',
+      name: 'dateDesc',
+      by: [{ field: 'date', direction: 'desc' }],
+    },
+    {
+      title: 'Title',
+      name: 'titleAsc',
+      by: [{ field: 'title', direction: 'asc' }],
+    },
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'longTitle',
+      imageUrl: 'featuredImage.asset.url',
+    }
+  }
 }

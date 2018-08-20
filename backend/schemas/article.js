@@ -119,9 +119,20 @@ export default {
     },
     slug
   ],
+  orderings: [
+    {
+      title: 'Title',
+      name: 'titleAsc',
+      by: [
+        { field: 'title', direction: 'asc'}
+        ]
+    }
+  ],
   preview: {
     select: {
-      title: 'title'
+      title: 'title',
+      subtitle: 'standfirst',
+      imageUrl: 'featuredImage.asset.url',
     }
   }
 }

@@ -2,6 +2,7 @@ import { slug, license } from './fields';
 
 export default {
   name: 'person',
+  title: 'Person',
   type: 'document',
   fields: [
     {
@@ -178,14 +179,14 @@ export default {
   ],
   orderings: [
     {
-      title: 'Last name',
-      name: 'surnameAsc',
-      by: [{ field: 'surname', direction: 'asc' }],
-    },
-    {
       title: 'First name',
       name: 'firstNameAsc',
       by: [{ field: 'firstName', direction: 'asc' }],
+    },
+    {
+      title: 'Last name',
+      name: 'surnameAsc',
+      by: [{ field: 'surname', direction: 'asc' }],
     },
   ],
   preview: {
@@ -193,17 +194,19 @@ export default {
       firstName: 'firstName',
       surname: 'surname',
       email: 'email',
-      image: 'image.asset.url',
+      imageUrl: 'image.asset.url',
+      description: 'position',
     },
-    prepare({ firstName = 'N.', surname = 'N', image, email = ''}, viewOptions = {}) {
+    prepare({ firstName = 'N.', surname = 'N', imageUrl, email = '', description = ''}, viewOptions = {}) {
       const previewtitle =
-        viewOptions.ordering && viewOptions.ordering.name === 'firstNameAsc'
+        viewOptions.ordering && ( viewOptions.ordering.name === 'firstNameAsc' )
           ? `${firstName} ${surname}`
           : `${surname}, ${firstName}`;
       return {
         title: previewtitle,
         subtitle: email,
-        image,
+        imageUrl: imageUrl,
+        description: description,
       };
     },
   },

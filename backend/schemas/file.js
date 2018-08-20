@@ -1,6 +1,7 @@
 export default {
   name: 'asset',
-  type: 'object',
+  title: 'Asset (file)',
+  type: 'document',
   fields: [
     {
       name: 'title',

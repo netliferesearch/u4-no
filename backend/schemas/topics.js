@@ -253,5 +253,19 @@ export default {
       readOnly: true,
       inputComponent: ReferringDocumentsList
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'longTitle',
+      imageUrl: 'featuredImage.asset.url',
+    },
+    prepare({title, subtitle, imageUrl}) {
+      return {
+        title: title,
+        subtitle: subtitle,
+        imageUrl: imageUrl
+      }
+    }
+  }
 }
