@@ -153,5 +153,29 @@ export default {
         },
       ],
     }
-  ]
+  ],
+  orderings: [
+    {
+      title: 'Partners first',
+      name: 'partnersFirst',
+      by: [
+        { field: 'funder', direction: 'asc' },
+        { field: 'name', direction: 'asc'}
+        ],
+    },
+    {
+      title: 'By name',
+      name: 'nameAsc',
+      by: [
+        { field: 'name', direction: 'asc'},
+        ],
+    },
+  ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'website',
+      imageUrl: 'logo.asset.url',
+    }
+  }
 }

@@ -90,14 +90,14 @@ export default {
   ],
   orderings: [
     {
-      title: 'Title',
-      name: 'titleAsc',
-      by: [{ field: 'title', direction: 'asc' }],
-    },
-    {
       title: 'Date',
       name: 'dateDesc',
       by: [{ field: 'date', direction: 'desc' }],
+    },
+    {
+      title: 'Title',
+      name: 'titleAsc',
+      by: [{ field: 'title', direction: 'asc' }],
     },
   ],
   preview: {
@@ -106,9 +106,9 @@ export default {
       author: 'author',
       reference: 'reference',
       date: 'date',
-      image: 'image.asset.url',
+      imageUrl: 'image.asset.url',
     },
-    prepare({ title = '(title missing)', author = '', reference = '', date = '', image }) {
+    prepare({ title = '(title missing)', author = '', reference = '', date = '', imageUrl }) {
       const subtitle =
         date === ''
           ? `${author} ${reference}`
@@ -116,7 +116,7 @@ export default {
       return {
         title: title,
         subtitle: subtitle,
-        image,
+        imageUrl,
       };
     },
   },

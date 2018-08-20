@@ -5,6 +5,7 @@ import {
 
 export default {
   name: 'keyword',
+  title: 'Keyword',
   type: 'document',
   fields: [
     {
@@ -44,22 +45,23 @@ export default {
       title: 'Keywords',
       name: 'keywordsAsc',
       by: [
-        { field: 'category', direction: 'desc' },
-        { field: 'keyword', direction: 'asc'}
-        ],
+        { field: 'keyword', direction: 'asc'},
+        { field: 'category', direction: 'asc' }
+        ]
     },
     {
-      title: 'Countries',
+      title: 'Countries first',
       name: 'firstNameAsc',
       by: [
         { field: 'category', direction: 'asc' },
         { field: 'keyword', direction: 'asc'}
-        ],
-    },
+        ]
+    }
   ],
   preview: {
     select: {
-      title: 'keyword'
+      title: 'keyword',
+      subtitle: 'category'
     }
   }
 }

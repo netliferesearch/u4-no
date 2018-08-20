@@ -185,9 +185,9 @@ export default {
       title: 'title',
       date: 'startDate.local',
       location: 'location',
-      image: 'image.asset.url',
+      imageUrl: 'image.asset.url',
     },
-    prepare({ title = '(title missing)', date = '', location = '', image }) {
+    prepare({ title = '(title missing)', date = '', location = '', imageUrl }) {
       const subtitle =
         date === ''
           ? `${location}`
@@ -195,7 +195,7 @@ export default {
       return {
         title: title,
         subtitle: subtitle,
-        image,
+        imageUrl: imageUrl
       };
     },
   },

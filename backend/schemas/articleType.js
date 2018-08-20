@@ -7,5 +7,14 @@ export default {
       name: 'title',
       type: 'string',
     }
+  ],
+  orderings: [
+    {
+      title: 'Title',
+      name: 'titleAsc',
+      by: [
+        { field: 'title', direction: 'asc' }
+      ]
+    }
   ]
 }

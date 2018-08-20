@@ -1,5 +1,6 @@
 export default {
   name: 'explainerText',
+  title: 'Explainer text',
   type: 'text',
-  description: 'Introduce the topic and what is on the page. 250-350 characters with spaces'
+  description: "Sentence(s) to trigger target readers' interest in this topic. What's in it for them? Google results show this description. Max 150-200 characters with spaces."
 }

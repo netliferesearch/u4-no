@@ -489,20 +489,22 @@ export default {
         publicationNumber: 'publicationNumber',
         reference: 'reference',
         date: 'date',
-        image: 'image.asset.url',
+        imageUrl: 'featuredImage.asset.url',
+        description: 'standfirst',
       },
-      prepare({ title = '(title missing)', authors = {}, publicationNumber = '', publicationType = '', reference = '', date = '', image }) {
-
-        const author = authors.length == 0 ? '(no authors)' : ''; // should have been authors.map(({ firstName = 'N', surname = 'N' }) => (`${firstName} ${surname}`));
+      prepare({ title = '(title missing)', authors = {}, publicationNumber = '', publicationType = '', reference = '', date = '', imageUrl, description = '' }) {
+        // const authornames = authors.map(author => (author.target ? author.target : author)).map(({ firstName = 'N', surname = 'N' }) => (`${firstName} ${surname}`));
+        const author = authors.length == 0 ? '(authors missing)' : '';
         const pubYear = (date != '' ) ? date.utc.split('-')[0] : '';
         const subtitle =
           publicationNumber != ''
             ? `${publicationType} ${publicationNumber} ${author}`
-            : `${publicationType} ${pubYear} ${reference}  ${author}`;
+            : `${publicationType} ${pubYear} ${reference} ${author}`;
         return {
           title: title,
           subtitle: subtitle,
-          image,
+          imageUrl: imageUrl,
+          description: description,
         };
       },
     },

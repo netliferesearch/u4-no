@@ -2,6 +2,7 @@ import license from './license';
 
 export default {
   name: 'featuredImage',
+  title: 'Featured image',
   type: 'image',
   options: {
     isHighlighted: true,

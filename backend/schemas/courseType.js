@@ -76,4 +76,13 @@ export default {
       type: 'number'
     }
   ],
+  orderings: [
+    {
+      title: 'Title',
+      name: 'titleAsc',
+      by: [
+        { field: 'title', direction: 'asc' }
+      ]
+    }
+  ]
 }
