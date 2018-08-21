@@ -19,6 +19,8 @@ const Mosaic = ({ resources = [], alt = false }) => (
             slug = '',
             imageUrl = false,
             titleColor = '#FFF',
+            firstName = '',
+            surname = '',
           },
           index,
         ) => (
@@ -43,10 +45,12 @@ const Mosaic = ({ resources = [], alt = false }) => (
               >
                 <div className="c-mosaic_item-content__meta">
                   {publicationType._ref ? '' : publicationType}
-                  {!publicationType && articleType._ref ? articleType._ref : ''}
+                  {!publicationType && articleType._ref ? articleType._ref : articleType}
                 </div>
                 <div>
-                  <h3 className="c-mosaic_item-title">{title}</h3>
+                  <h3 className="c-mosaic_item-title">
+                    {firstName && surname ? `${firstName} ${surname}` : title}
+                  </h3>
                 </div>
               </div>
             </a>

@@ -41,6 +41,7 @@ const LongFormArticleContainer = (props = {}) => {
       featuredImage = {},
       relatedUrl = {},
       publicationType = {},
+      articleType = [],
       relatedContent = [],
     } = {},
     shortversion = false,
@@ -197,6 +198,11 @@ const LongFormArticleContainer = (props = {}) => {
           {_type !== 'publication' && (
             <div>
               <div className="c-longform-grid u-bg-white u-z-index-x">
+                {articleType.length ? (
+                  <h2 className="c-longform-grid__standard c-article-header__meta c-article-header__meta-uppercase">
+                    {articleType[0].target.title}
+                  </h2>
+                ) : null}
                 <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
                 {authors.length ? (
                   <div className="c-article c-longform-grid__standard">
@@ -236,7 +242,7 @@ const LongFormArticleContainer = (props = {}) => {
               </div>
             </div>
           ) : null}
-          {!shortversion && (props.data.notes || true) ? (
+          {!shortversion && props.data.notes ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="Notes" content={props.data.notes}>
@@ -285,21 +291,6 @@ const LongFormArticleContainer = (props = {}) => {
                         </a>
                       )}
                   </div>
-                  <div className="c-longform-grid__standard">
-                    <p>
-                      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
-                        <CreativecommonsCC className="page2-ccimage" />
-                        <CreativecommonsBY className="page2-ccimage" />
-                        <CreativecommonsNC className="page2-ccimage" />
-                        <CreativecommonsND className="page2-ccimage" />
-                      </a>
-                      <br />
-                      This work is licenced under a Creative Commons
-                      Attribution-NonCommercial-NoDerivatives 4.0 International licence (<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
-                        CC BY-NC-ND 4.0
-                      </a>)
-                    </p>
-                  </div>
                 </ToggleBlock>
               </div>
             </div>
@@ -322,6 +313,26 @@ const LongFormArticleContainer = (props = {}) => {
                 </div>
               </div>
             )}
+          {_type === 'publication' && (
+            <div className="c-longform-grid">
+              <div className="c-longform-grid__standard">
+                <p>
+                  <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                    <CreativecommonsCC className="page2-ccimage" />
+                    <CreativecommonsBY className="page2-ccimage" />
+                    <CreativecommonsNC className="page2-ccimage" />
+                    <CreativecommonsND className="page2-ccimage" />
+                  </a>
+                  <br />
+                  This work is licenced under a Creative Commons
+                  Attribution-NonCommercial-NoDerivatives 4.0 International licence (<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                    CC BY-NC-ND 4.0
+                  </a>)
+                </p>
+              </div>
+            </div>
+          )}
+
           {!shortversion && props.data.relatedContent && props.data.relatedContent.length ? (
             <div className="o-wrapper">
               <h2>We also recommend</h2>
