@@ -45,7 +45,7 @@ const Mosaic = ({ resources = [], alt = false }) => (
               >
                 <div className="c-mosaic_item-content__meta">
                   {publicationType._ref ? '' : publicationType}
-                  {!publicationType && articleType._ref ? articleType._ref : articleType}
+                  {!publicationType && articleType._ref ? articleType._ref : ''}
                 </div>
                 <div>
                   <h3 className="c-mosaic_item-title">
