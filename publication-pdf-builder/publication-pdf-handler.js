@@ -7,11 +7,11 @@ const sanityClient = require('@sanity/client');
  */
 
 function getPdfUrl(data) {
-  if (data && data.pdfFile && data.pdfFile.asset && data.pdfFile.asset.url) {
-    return data.pdfFile.asset.url;
-  }
   if (data && data.legacypdf && data.legacypdf.asset && data.legacypdf.asset.url) {
     return data.legacypdf.asset.url;
+  }
+  if (data && data.pdfFile && data.pdfFile.asset && data.pdfFile.asset.url) {
+    return data.pdfFile.asset.url;
   }
   return false;
 }

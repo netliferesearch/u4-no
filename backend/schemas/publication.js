@@ -28,7 +28,13 @@ export default {
       leadText,
       {
         name: 'pdfFile',
-        title: 'Pdf file',
+        title: 'Pdf file (generated)',
+        type: 'file'
+      },
+      {
+        name: 'legacypdf',
+        title: 'Pdf file (uploaded)',
+        description: 'This file overrides the generated pdf',
         type: 'file'
       },
       {
