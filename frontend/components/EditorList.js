@@ -14,9 +14,13 @@ const EditorList = ({
         .map(({
  _id = '', firstName = '', surname = '', slug = {},
 }, index) => (
-  <a key={_id + index} href={buildUrl({ _type: 'person', slug })}>
-    {firstName} {surname}{' '}
-  </a>
+  <span>
+    <a key={_id + index} href={buildUrl({ _type: 'person', slug })}>
+      {firstName} {surname}{' '}
+    </a>{' '}
+    {editors.length > 1 && index + 2 < editors.length && <span>, </span>}
+    {editors.length > 1 && index + 2 === editors.length && <span> and </span>}
+  </span>
         ))}
     </span>
   );

@@ -64,7 +64,7 @@ const PublicationArticleHeader = ({
               <EditorList
                 editors={editors}
                 intro={publicationType._id === 'pubtype-3' ? 'Reviewed by' : 'Series editor'}
-                pluralize={false}
+                pluralize={publicationType._id !== 'pubtype-3'}
               />
               <br />
             </span>
