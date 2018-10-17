@@ -100,7 +100,7 @@ const SearchResults = (props) => {
                         ? 'Reviewed by'
                         : 'Series editor'
                     }
-                    pluralize={false}
+                    pluralize={publicationType._id !== 'pubtype-3'}
                   />
                   <br />
                 </div>
@@ -117,4 +117,7 @@ const mapDispatchToProps = dispatch => ({
   updateSearchSorting: bindActionCreators(updateSearchSorting, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SearchResults);
