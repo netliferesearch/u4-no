@@ -301,7 +301,7 @@ a {
 }
 
 .c-article__pullQuote {
-  @include inuit-font-size($font-size-normal, $line-height-large );
+  @include inuit-font-size($font-size-normal, $line-height-large);
   font-family: $font-sans;
   font-weight: 300;
   font-style: italic;
@@ -328,7 +328,7 @@ figure {
 
 .c-article__figure-img {
   margin: 0;
-  max-height: 10cm;
+  max-height: 23cm;
 }
 
 .footnotes {
