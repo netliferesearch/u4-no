@@ -54,8 +54,13 @@
 body {
   color: black;
 }
+/* hide divs containing next scripts to avoid trailing blank page */
+body > div + div,
+div#__next-error {
+  display: none;
+}
 @page {
-  size: A4;
+  size: A4 portrait;
   margin-top: 2cm;
   margin-bottom: 2cm;
   margin-inside: 4cm;
@@ -361,9 +366,15 @@ figure {
 @page main {
   @top {
     content: string(publication-type-and-number);
+    font-family: $font-sans;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
   }
   @bottom {
-    content: 'Page ' counter(page);
+    content: counter(page);
+    font-family: $font-sans;
+    font-size: 9pt;
     // content: 'Page ' counter(page) ' of ' counter(pages);
   }
   @footnote {
