@@ -155,6 +155,8 @@ p {
 .fn {
   font-size: 9pt;
   font-weight: normal !important;
+  font-style: normal !important;
+  font-family: $serif !important;
   counter-increment: footnote;
   display: prince-footnote;
   footnote-style-position: inside;
