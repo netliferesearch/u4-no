@@ -8,5 +8,6 @@ export default ({ langcode = '' }) => {
     ru_RU: 'Russian',
     uk_UA: 'Ukranian',
   };
-  return languageNames[langcode] ? languageNames[langcode] : 'another language';
+  if (langcode === '') return 'English';
+  return languageNames[langcode] ? languageNames[langcode] : 'an other language';
 };
