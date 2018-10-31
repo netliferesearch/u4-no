@@ -71,31 +71,28 @@ const PublicationArticleHeader = ({
           ) : null}
           {bibliographicReference({ publicationType, publicationNumber, reference })}
         </p>
-        {translation.language &&
-          translation.language !== language && (
-            <p>
-              <Link route="publication.entry" params={{ slug: translation.slug.current }}>
-                <a {...classes('language')} title={translation.title}>
-                  Also available in {languageName({ langcode: translation.language })}
-                </a>
-              </Link>
-            </p>
-          )}
-        {translations.length > 0 &&
-          translations.filter(item => item.language !== language).map((item = {}) =>
-              item.slug &&
-              item.language &&
-              item.title && (
-                <p>
-                  <a
-                    {...classes('language')}
-                    href={buildUrl({ _type: 'publication', slug: item.slug })}
-                    title={item.title}
-                  >
-                    Also available in {languageName({ langcode: item.language })}
-                  </a>
-                </p>
-              ))}
+
+        {translations.length > 0 && (
+          <p>
+            Also available in{' '}
+            {translations.map((item = {}, index) =>
+                item.slug &&
+                item.title && (
+                  <span>
+                    <a
+                      {...classes('language')}
+                      href={buildUrl({ _type: 'publication', slug: item.slug })}
+                      title={item.title}
+                    >
+                      {languageName({ langcode: item.language })}
+                    </a>
+                    {index + 2 < translations.length && <span>, </span>}
+                    {index + 2 === translations.length && <span> and </span>}
+                  </span>
+                ))}
+          </p>
+        )}
+
         {partners.length ? <InstitutionList institutions={partners} /> : null}
         {publicationType._id === 'pubtype-3' ? (
           <div className="c-article-header__institution">
