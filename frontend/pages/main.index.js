@@ -53,7 +53,7 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
       <Mosaic resources={frontPage.resources} />
       <h2 className="c-topic-section__cta u-padding-bottom-huge">
         <a href="/search?search=*">
-          Explore all our resources &nbsp;<ArrowRight />
+          Explore all resources &nbsp;<ArrowRight />
         </a>
       </h2>
     </section>
