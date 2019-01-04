@@ -14,6 +14,7 @@ routes
   .add('persons.index', '/the-team')
   .add('persons.entry', '/the-team/:slug')
   .add('search.index', '/search')
+  .add('search-v2.index', '/search-v2')
   .add('search.entry', '/search')
   .add('event.entry', '/events/:slug')
   .add('course.entry', '/courses/:slug')
