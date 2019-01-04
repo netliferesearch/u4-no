@@ -83,7 +83,7 @@ const LongFormArticleContainer = (props) => {
                   <EditorList
                     editors={editors.map(({ target }) => target)}
                     intro={publicationType._id === 'pubtype-3' ? 'Reviewed by' : 'Series editor'}
-                    pluralize={false}
+                    pluralize={(publicationType._id !== 'pubtype-3')}
                   />
                   <br />
                 </span>
