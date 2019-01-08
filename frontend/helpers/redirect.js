@@ -95,6 +95,10 @@ export function getRedirect(ctx) {
     { from: '/themes/un-convention-against-corruption', to: '/topics' },
     { from: '/themes-es-ES', to: '/topics' },
     { from: '/themes', to: '/topics' },
+
+    { from: '/topics/evaluation-and-measurement/', to: '/topics/measurement-and-evaluation/' },
+    { from: '/topics/basic-services/', to: '/topics/measurement-and-evaluation/' },
+
     {
       from: '/training/online-training/corruption-in-natural-resource-management',
       to: '/courses/addressing-corruption-in-natural-resources-and-renewable-energy-sectors',
