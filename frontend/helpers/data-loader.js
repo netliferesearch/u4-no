@@ -30,7 +30,7 @@ export default (Child, { queryFunc = false, materializeDepth = false, query = {}
 
       const sanityResults = await client.fetch(sanityQuery, param);
 
-      if (!sanityResults) {
+      if (!sanityResults || ( Object.keys( sanityResults ).length === 0 )) {
         console.warn('Sanity results was empty, nothing to materialize', sanityResults);
         // throw new Error('No content found');
         if (nextContext.res) {
