@@ -6,24 +6,30 @@ function processPublication({ document: doc, allDocuments }) {
   if (doc._type !== 'publication') {
     return doc;
   }
+  const expand = initExpand(allDocuments);
   return {
     // by default we add all Sanity fields to elasticsearch.
     ...doc,
     // then we override some of those fields with processed data.
     content: blocksToText(doc.content || []),
-    authors: expandReferences({ references: doc.authors || [], allDocuments }).map(({ _key, firstName, surname }) => ({
-      _key,
-      name: `${firstName} ${surname}`,
-    })),
-    editors: expandReferences({ references: doc.editors || [], allDocuments }).map(({ _key, firstName, surname }) => ({
-      _key,
-      name: `${firstName} ${surname}`,
-    })),
-    publicationType: expandReference({
-      reference: doc.publicationType,
-      allDocuments,
+    authors: expand({
+      references: doc.authors,
+      process: ({ _key, firstName, surname }) => ({
+        _key,
+        name: `${firstName} ${surname}`,
+      }),
     }),
-    keywords: expandReferences({ references: doc.keywords || [], allDocuments }),
+    editors: expand({
+      references: doc.editors,
+      process: ({ _key, firstName, surname }) => ({
+        _key,
+        name: `${firstName} ${surname}`,
+      }),
+    }),
+    publicationType: expand({
+      reference: doc.publicationType,
+    }),
+    keywords: expand({ references: doc.keywords || [] }),
   };
 }
 
@@ -35,16 +41,28 @@ function loadSanityDataFile(filePath = './data.ndjson') {
     .map(JSON.parse);
 }
 
-function expandReferences({ references = [], allDocuments = [] }) {
-  return references.map(reference => expandReference({ reference, allDocuments }));
-}
-
-function expandReference({ reference: { _key, _ref = '' }, allDocuments = [] }) {
-  const foundDoc = allDocuments.find(({ _id }) => _id === _ref);
-  if (foundDoc) {
-    return { ...foundDoc, ...(_key ? { _key } : {}) };
-  }
-  return null;
+/**
+ * Expand Sanity references into the referenced documents.
+ * Can optionally process document after being expanded
+ *
+ * Call initExpand with all Sanity documents, so that it can search for refences
+ * there. It will return a function which you can use to expand references.
+ */
+function initExpand(allDocuments = []) {
+  // returns a function ready to do work.
+  return function expand({ reference, references = [], process = doc => doc }) {
+    const expandAndProcessReference = ({ _key, _ref }) => {
+      const foundDoc = allDocuments.find(({ _id }) => _id === _ref);
+      if (foundDoc) {
+        return process({ ...foundDoc, ...(_key ? { _key } : {}) });
+      }
+      return null;
+    };
+    if (reference) {
+      return expandAndProcessReference(reference);
+    }
+    return references.map(expandAndProcessReference);
+  };
 }
 
 // Convert Sanity's portable text into plain string.
@@ -64,6 +82,6 @@ function blocksToText(blocks, opts = {}) {
 
 module.exports = {
   processPublication,
-  expandReferences,
+  initExpand,
   loadSanityDataFile,
 };
