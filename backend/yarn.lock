@@ -67,8 +67,9 @@
     promise-props-recursive "^1.0.0"
 
 "@sanity/cli@^0.132.0-next.f8f265d4":
-  version "0.132.0-next.f8f265d4"
-  resolved "https://registry.npmjs.org/@sanity/cli/-/cli-0.132.0-next.f8f265d4.tgz#df146703b33ca332dcbe4c8c4f2f85564a9ebc7f"
+  version "0.132.10"
+  resolved "https://registry.yarnpkg.com/@sanity/cli/-/cli-0.132.10.tgz#fa4d22bef2d3b0be06d775192558ae1b1a991ddc"
+  integrity sha512-bej0zZRed0SrprHMJmcUkvT30uTOEnR2akMKuGc0iFYT81huydh/FPS0Xb2rVmme8ZPUc35Lk3mUVfrjdO6sPA==
 
 "@sanity/client@0.132.0-next.f8f265d4":
   version "0.132.0-next.f8f265d4"
@@ -6557,7 +6558,7 @@ react-intl@^2.2.2:
     intl-relativeformat "^2.0.0"
     invariant "^2.1.1"
 
-"react-json-inspector@github:rexxars/react-json-inspector#react-15":
+react-json-inspector@rexxars/react-json-inspector#react-15:
   version "7.0.1"
   resolved "https://codeload.github.com/rexxars/react-json-inspector/tar.gz/b5534e164b54e87b966da3ca0ef14003843cff92"
   dependencies:
