@@ -28,7 +28,7 @@ const dataResolver = (data = []) => {
   if (data.data) {
     return data.data.filter(doc => (doc._type === 'person' ? (doc.affiliations && doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')) : doc));
   }
-  return []
+  return [];
 };
 
 const Search = ({
@@ -42,33 +42,21 @@ const Search = ({
   if (!data) return <div />;
   return (
     <Layout
-    noSearch
-    headComponentConfig={{
+      noSearch
+      headComponentConfig={{
       title: 'Search',
       description: '',
       url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
     }}
-  >
-    <div className="o-layout o-layout--center c-search__wrapper">
-      <div className="o-layout__item u-10/12  u-8/12@desktop u-6/12@wide">
-        <section {...classes({ block: 'search-input', element: 'content' })}>
-          <SearchField />
+    >
+      <div className="o-wrapper o-layout">
+        <section className=" o-layout__item u-12/12 u-3/12@desktop">
+          <SearchFiltersV2 />
         </section>
-        {topic &&
-          topic.slug && (
-            <div>
-              <h3>
-                Viewing all resources for{' '}
-                <a href={`/topics/${topic.slug.current}`}>{topic.title}</a>
-              </h3>
-            </div>
-          )}
-      </div>
-    </div>
-    <div className="o-layout">
-      <section className="o-layout__item u-10/12 u-push-1/12 u-6/12@desktop u-push-2/12@desktop u-6/12@wide u-push-3/12@wide">
-        <SearchResults
-          results={sortResultsBySortCriteria({
+
+        <section className="o-layout__item u-12/12 u-8/12@desktop u-push-1/12@desktop">
+          <SearchResultsV2
+            results={sortResultsBySortCriteria({
             searchString: url.query.search || '',
             results: filterResultsBySearchFilterList(
               washedResults.filter(item => item.slug),
@@ -76,14 +64,12 @@ const Search = ({
             ),
             sortCriteria: searchSorting,
           })}
-        />
-      </section>
-      <section className=" o-layout__item u-3/12 u-3/12@desktop u-push-3/12@desktop u-2/12@wide u-push-4/12@wide">
-        <SearchFilters results={washedResults} />
-      </section>
-    </div>
-    <Footer />
-  </Layout>
+          />
+        </section>
+
+      </div>
+      <Footer />
+    </Layout>
   );
 };
 
