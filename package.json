@@ -21,6 +21,7 @@
     "concurrently": "^3.5.0",
     "dotenv": "^4.0.0",
     "downshift": "^1.25.0",
+    "elasticsearch": "^15.2.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "eslint": "^4.16.0",
@@ -99,5 +100,8 @@
   "bugs": {
     "url": "https://github.com/netliferesearch/u4-no/issues"
   },
-  "homepage": "https://github.com/netliferesearch/u4-no#readme"
+  "homepage": "https://github.com/netliferesearch/u4-no#readme",
+  "devDependencies": {
+    "prettier": "1.15.3"
+  }
 }
