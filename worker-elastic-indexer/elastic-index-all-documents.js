@@ -1,55 +1,90 @@
 require('dotenv').config();
 const elasticsearch = require('elasticsearch');
+const axios = require('axios');
 const _ = require('lodash');
-const { loadSanityDataFile, processPublication } = require('./elastic-indexer.lib');
+const { loadSanityDataFile, parseNDJSON, processDocument } = require('./elastic-indexer.lib');
 
 const client = new elasticsearch.Client({
   host: process.env.ES_HOST,
   apiVersion: '6.5',
 });
 
-// get Sanity documents
+const buildValidIndexName = str => str.toLowerCase().replace(/_/gi, '-');
 
-// legacy publications: we need to download pdf and analyze it's contents before inserting as main content.
-
-// new publications: need to collapse down their main content
-
-// prepare the call with which Elasticsearch will be called.
-const prepareElasticSearchBulkInsert = (documents = []) => {
-  const _index = 'u4-test';
-  return _.flatten(documents.map((doc) => {
-    const { _type, _id, ...restOfDoc } = doc;
-    const metadata = { _index, _type, _id };
-    return [{ index: metadata }, { ...restOfDoc }];
+const prepareElasticSearchBulkInsert = (documents = []) =>
+  _.flatten(documents.map((doc) => {
+    const {
+      _type, _id, language = 'en_US', ...restOfDoc
+    } = doc;
+    const metadata = { _index: buildValidIndexName(`u4-${language}-${_type}`), _type, _id };
+    return [{ index: metadata }, { ...restOfDoc, language }];
   }));
-};
 
 const insertElasticSearchData = (documents = []) =>
-  new Promise((resolve, reject) => {
-    client.bulk(
-      {
-        body: prepareElasticSearchBulkInsert(documents),
-      },
-      (err, response) => {
-        if (err) {
-          return reject(err);
-        }
-        return resolve(response);
-      },
-    );
+  client.bulk({
+    body: prepareElasticSearchBulkInsert(documents),
   });
 
-async function main() {
-  const allDocuments = loadSanityDataFile('./test-data.ndjson');
-  const publications = allDocuments
-    .filter(({ _type }) => _type === 'publication')
-    .map(document => processPublication({ document, allDocuments }));
-  try {
-    const result = await insertElasticSearchData(publications);
-    console.log('Done with work! Api responded with', JSON.stringify(result, null, 2));
-  } catch (e) {
-    console.error('Failed to insert documents', e);
+const doBatchInsert = async (documents = []) => {
+  const batchSize = 1000;
+  const batches = _.chunk(documents, batchSize);
+  for (const batch of batches) {
+    try {
+      const result = await insertElasticSearchData(batch);
+      console.log('batch insert result:', {
+        ...result,
+        items: result.items.length,
+      });
+      if (result.errors) {
+        console.log(
+          'batch insert, additional error information:',
+          JSON.stringify(result.items.filter(({ index }) => index.status !== 200), null, 2),
+        );
+      }
+    } catch (e) {
+      console.error('Failed to insert documents', e);
+    }
   }
+};
+
+// filter out types we do not want to be searchable in elasticsearch
+const shouldIndex = ({ _type = '' }) => {
+  const typesToIgnore = ['sanity.fileAsset', 'sanity.imageAsset', 'frontpage'];
+  return !typesToIgnore.find(type => type === _type);
+};
+
+async function main() {
+  console.log('starting work');
+
+  // Uncomment if want to quickly index a local file.
+  // const allDocuments = loadSanityDataFile('./test-data.ndjson');
+
+  const { data } = await axios
+    .get('https://1f1lcoov.api.sanity.io/v1/data/export/production')
+    .catch((err) => {
+      console.log('Failed to get dataset', err);
+      process.exit(-1);
+    });
+
+  const allDocuments = parseNDJSON(data);
+
+  const types = {};
+  allDocuments.forEach(({ _type }) => (types[_type] = true));
+  console.log('Document types to process:\n', Object.keys(types), '\n');
+
+  const languages = {};
+  allDocuments
+    .filter(({ language }) => language)
+    .forEach(({ language }) => (languages[language] = true));
+  console.log('Document languages to process:\n', Object.keys(languages), '\n');
+
+  const processedDocuments = allDocuments
+    .map(document => processDocument({ document, allDocuments }))
+    .filter(shouldIndex);
+
+  console.log('How many documents to index:', processedDocuments.length);
+  await doBatchInsert(processedDocuments);
+  console.log('Done with work');
 }
 
 main();

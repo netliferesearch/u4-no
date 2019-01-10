@@ -33,9 +33,19 @@ function processPublication({ document: doc, allDocuments }) {
   };
 }
 
+function processDocument({ document, allDocuments }) {
+  if (document._type === 'publication') {
+    return processPublication({ document, allDocuments });
+  }
+  return document;
+}
+
 function loadSanityDataFile(filePath = './data.ndjson') {
-  return fs
-    .readFileSync(path.join(__dirname, filePath), { encoding: 'UTF-8' })
+  return parseNDJSON(fs.readFileSync(path.join(__dirname, filePath), { encoding: 'UTF-8' }));
+}
+
+function parseNDJSON(str) {
+  return str
     .split('\n')
     .filter(str => str)
     .map(JSON.parse);
@@ -84,4 +94,6 @@ module.exports = {
   processPublication,
   initExpand,
   loadSanityDataFile,
+  parseNDJSON,
+  processDocument,
 };
