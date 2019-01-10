@@ -51,6 +51,10 @@ function parseNDJSON(str) {
     .map(JSON.parse);
 }
 
+function getIndexName({ _type, language = 'en_US' }) {
+  return `u4-${language}-${_type}`.toLowerCase().replace(/_/gi, '-');
+}
+
 /**
  * Expand Sanity references into the referenced documents.
  * Can optionally process document after being expanded
@@ -96,4 +100,5 @@ module.exports = {
   loadSanityDataFile,
   parseNDJSON,
   processDocument,
+  getIndexName,
 };

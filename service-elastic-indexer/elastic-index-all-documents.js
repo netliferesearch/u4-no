@@ -2,21 +2,22 @@ require('dotenv').config();
 const elasticsearch = require('elasticsearch');
 const axios = require('axios');
 const _ = require('lodash');
-const { loadSanityDataFile, parseNDJSON, processDocument } = require('./elastic-indexer.lib');
+const {
+  loadSanityDataFile,
+  parseNDJSON,
+  processDocument,
+  getIndexName,
+} = require('./elastic-indexer.lib');
 
 const client = new elasticsearch.Client({
   host: process.env.ES_HOST,
   apiVersion: '6.5',
 });
 
-const buildValidIndexName = str => str.toLowerCase().replace(/_/gi, '-');
-
 const prepareElasticSearchBulkInsert = (documents = []) =>
   _.flatten(documents.map((doc) => {
-    const {
-      _type, _id, language = 'en_US', ...restOfDoc
-    } = doc;
-    const metadata = { _index: buildValidIndexName(`u4-${language}-${_type}`), _type, _id };
+    const { _type, _id, ...restOfDoc } = doc;
+    const metadata = { _index: getIndexName(doc), _type, _id };
     return [{ index: metadata }, { ...restOfDoc, language }];
   }));
 
