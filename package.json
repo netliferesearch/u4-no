@@ -66,6 +66,7 @@
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
     "slugify": "^1.2.9",
+    "textract": "^2.4.0",
     "victory": "^0.24.5"
   },
   "scripts": {
