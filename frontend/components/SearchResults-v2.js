@@ -143,7 +143,7 @@ const SearchResultsV2 = (props) => {
             </a>
           </Link>
           <br />
-          <p>18 March – 5 April</p>
+          <div>18 March – 5 April</div>
           <p>3 week, expert-led course. Learn how to integrate justice sector institutions in programming for judicial reform and rule of law. This course is for practitioners involved in the justice sector as well as general governance experts with a good understanding of the sector.</p>
         </li>
 
