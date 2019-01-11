@@ -1,17 +1,51 @@
 const fs = require('fs');
 const path = require('path');
+const { extractText } = require('./elastic-extract-text');
+
+/**
+ * Purpose: Find corresponding pdf file and load its contents
+ */
+let files = null;
+function findLegacyPdfContent({ document }) {
+  if (!document.legacypdf) {
+    return null;
+  }
+  const fileFolderPath = path.join(__dirname, 'sanity-export/files');
+  if (!files) {
+    files = fs.readdirSync(fileFolderPath);
+  }
+  try {
+    const fileId = /file-(.*)/gi.exec(document.legacypdf.asset._ref)[1];
+    let foundFile = files.find(fileName => fileName.indexOf(fileId) !== -1);
+    if (!foundFile.endsWith('.pdf')) {
+      fs.copyFileSync(
+        path.join(fileFolderPath, foundFile),
+        path.join(fileFolderPath, `${foundFile}.pdf`),
+      );
+      foundFile = `${foundFile}.pdf`;
+    }
+    if (foundFile) {
+      return extractText(path.join(fileFolderPath, foundFile));
+    }
+    return null;
+  } catch (err) {
+    console.log('Failed to load legacy pdf data', err);
+    return null;
+  }
+}
 
 // make sanity publication ready to be ingested by elasticsearch.
-function processPublication({ document: doc, allDocuments }) {
+async function processPublication({ document: doc, allDocuments }) {
   if (doc._type !== 'publication') {
     return doc;
   }
-  const expand = initExpand(allDocuments);
+  const expand = initExpand({ documents: allDocuments });
+  const legacyPDFContent = await findLegacyPdfContent({ document, allDocuments });
   return {
     // by default we add all Sanity fields to elasticsearch.
     ...doc,
     // then we override some of those fields with processed data.
-    content: blocksToText(doc.content || []),
+    content: legacyPDFContent || blocksToText(doc.content || []),
     authors: expand({
       references: doc.authors,
       process: ({ _key, firstName, surname }) => ({
@@ -33,15 +67,20 @@ function processPublication({ document: doc, allDocuments }) {
   };
 }
 
-function processDocument({ document, allDocuments }) {
+async function processDocument({ document, allDocuments }) {
   if (document._type === 'publication') {
     return processPublication({ document, allDocuments });
   }
   return document;
 }
 
-function loadSanityDataFile(filePath = './data.ndjson') {
-  return parseNDJSON(fs.readFileSync(path.join(__dirname, filePath), { encoding: 'UTF-8' }));
+function loadSanityDataFile(folderPath = 'sanity-export') {
+  if (!folderPath) {
+    throw new Error('loadSanityDataFile: Please provide a path.');
+  }
+  const documents = parseNDJSON(fs.readFileSync(path.join(__dirname, folderPath, 'data.ndjson'), { encoding: 'UTF-8' }));
+  const assets = parseNDJSON(fs.readFileSync(path.join(__dirname, folderPath, 'assets.json'), { encoding: 'UTF-8' }));
+  return { documents, assets };
 }
 
 function parseNDJSON(str) {
@@ -62,11 +101,11 @@ function getIndexName({ _type, language = 'en_US' }) {
  * Call initExpand with all Sanity documents, so that it can search for refences
  * there. It will return a function which you can use to expand references.
  */
-function initExpand(allDocuments = []) {
+function initExpand({ documents, assets }) {
   // returns a function ready to do work.
   return function expand({ reference, references = [], process = doc => doc }) {
-    const expandAndProcessReference = ({ _key, _ref }) => {
-      const foundDoc = allDocuments.find(({ _id }) => _id === _ref);
+    const expandAndProcessReference = ({ _key, _ref = '' }) => {
+      const foundDoc = documents.find(({ _id }) => _id === _ref);
       if (foundDoc) {
         return process({ ...foundDoc, ...(_key ? { _key } : {}) });
       }
@@ -91,7 +130,7 @@ function blocksToText(blocks, opts = {}) {
 
       return block.children.map(child => child.text).join('');
     })
-    .join('\n\n');
+    .join(' ');
 }
 
 module.exports = {
@@ -101,4 +140,5 @@ module.exports = {
   parseNDJSON,
   processDocument,
   getIndexName,
+  findLegacyPdfContent,
 };
