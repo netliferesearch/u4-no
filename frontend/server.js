@@ -2,7 +2,9 @@ require('dotenv').config({ path: './.env' });
 const next = require('next');
 const routes = require('./routes');
 const forceSsl = require('force-ssl-heroku');
-const { publicationPdfHandler } = require('../publication-pdf-builder/publication-pdf-handler');
+const {
+  publicationPdfHandler,
+} = require('../service-publication-pdf-builder/publication-pdf-handler');
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
 const handler = routes.getRequestHandler(app);
