@@ -3,23 +3,24 @@ const {
   loadSanityDataFile,
   initExpand,
   findLegacyPdfContent,
+  blocksToText,
 } = require('./elastic-indexer.lib');
 const publicationExample = require('./test-data-publication');
 const publicationExampleWithLegacyPdf = require('./test-data-publication-with-legacy-pdf');
 
-let sanityData = [];
+let allDocuments = [];
 beforeAll(() => {
-  sanityData = loadSanityDataFile('./sanity-export');
+  allDocuments = loadSanityDataFile('./sanity-export').documents;
 });
 
 afterAll(() => {
-  sanityData = null;
+  allDocuments = null;
 });
 
 test('elasticsearch: able to process publication', async () => {
   const result = await processPublication({
     document: publicationExample,
-    allDocuments: sanityData.documents,
+    allDocuments,
   });
   expect(result.publicationType).toMatchObject({
     _id: 'pubtype-2',
@@ -41,7 +42,7 @@ test('elasticsearch: able to process publication', async () => {
 });
 
 test('elasticsearch: is able to expand reference', async () => {
-  const expand = await initExpand(sanityData);
+  const expand = await initExpand(allDocuments);
   const result = expand({ references: publicationExample.authors });
   expect(result[0]).toMatchObject({
     _createdAt: '2018-12-17T10:39:20Z',
@@ -58,8 +59,12 @@ test('elasticsearch: is able to expand reference', async () => {
 test('elasticsearch: is able to retrieve legacy pdf text', async () => {
   const pdfText = await findLegacyPdfContent({
     document: publicationExampleWithLegacyPdf,
-    allDocuments: sanityData.documents,
-    assets: sanityData.assets,
+    allDocuments,
   });
   expect(typeof pdfText === 'string' && pdfText.length > 100).toBeTruthy();
+});
+
+test('elasticsearch: is able to convert text content', async () => {
+  const text = blocksToText(publicationExample.content);
+  expect(typeof text === 'string' && text.length > 100).toBeTruthy();
 });

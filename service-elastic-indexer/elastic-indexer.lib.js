@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const _ = require('lodash');
 const { extractText } = require('./elastic-extract-text');
 
 /**
@@ -7,7 +8,7 @@ const { extractText } = require('./elastic-extract-text');
  */
 let files = null;
 function findLegacyPdfContent({ document }) {
-  if (!document.legacypdf) {
+  if (_.isEmpty(document.legacypdf)) {
     return null;
   }
   const fileFolderPath = path.join(__dirname, 'sanity-export/files');
@@ -15,7 +16,11 @@ function findLegacyPdfContent({ document }) {
     files = fs.readdirSync(fileFolderPath);
   }
   try {
-    const fileId = /file-(.*)/gi.exec(document.legacypdf.asset._ref)[1];
+    const { _sanityAsset = '' } = document.legacypdf;
+    // first try getting asset from _sanityAsset, then try fileId
+    let fileId = _sanityAsset.replace('file@file://./files/', '');
+    // fallback to try and get file from .asset
+    fileId = fileId || /file-(.*)/gi.exec(document.legacypdf.asset._ref)[1];
     let foundFile = files.find(fileName => fileName.indexOf(fileId) !== -1);
     if (!foundFile.endsWith('.pdf')) {
       fs.copyFileSync(
@@ -29,7 +34,7 @@ function findLegacyPdfContent({ document }) {
     }
     return null;
   } catch (err) {
-    console.log('Failed to load legacy pdf data', err);
+    console.log('Failed to load legacy pdf data from:', document.legacypdf, err);
     return null;
   }
 }
@@ -39,8 +44,8 @@ async function processPublication({ document: doc, allDocuments }) {
   if (doc._type !== 'publication') {
     return doc;
   }
-  const expand = initExpand({ documents: allDocuments });
-  const legacyPDFContent = await findLegacyPdfContent({ document, allDocuments });
+  const expand = initExpand(allDocuments);
+  const legacyPDFContent = await findLegacyPdfContent({ document: doc });
   return {
     // by default we add all Sanity fields to elasticsearch.
     ...doc,
@@ -101,11 +106,11 @@ function getIndexName({ _type, language = 'en_US' }) {
  * Call initExpand with all Sanity documents, so that it can search for refences
  * there. It will return a function which you can use to expand references.
  */
-function initExpand({ documents, assets }) {
+function initExpand(allDocuments = []) {
   // returns a function ready to do work.
   return function expand({ reference, references = [], process = doc => doc }) {
     const expandAndProcessReference = ({ _key, _ref = '' }) => {
-      const foundDoc = documents.find(({ _id }) => _id === _ref);
+      const foundDoc = allDocuments.find(({ _id }) => _id === _ref);
       if (foundDoc) {
         return process({ ...foundDoc, ...(_key ? { _key } : {}) });
       }
@@ -141,4 +146,5 @@ module.exports = {
   processDocument,
   getIndexName,
   findLegacyPdfContent,
+  blocksToText,
 };
