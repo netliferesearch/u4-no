@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');
 const { extractText } = require('./elastic-extract-text');
+const htmlToText = require('html-to-text');
 
 /**
  * Purpose: Find corresponding pdf file and load its contents
@@ -51,6 +52,7 @@ async function processPublication({ document: doc, allDocuments }) {
     ...doc,
     // then we override some of those fields with processed data.
     content: legacyPDFContent || blocksToText(doc.content || []),
+    ...(doc.abstract ? { abstract: htmlToText.fromString(doc.abstract, { wordwrap: false }) } : {}),
     authors: expand({
       references: doc.authors,
       process: ({ _key, firstName, surname }) => ({
