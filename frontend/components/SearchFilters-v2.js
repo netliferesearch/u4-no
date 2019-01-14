@@ -15,8 +15,8 @@ function toggle() {
 
 const SearchFiltersV2 = () => (
   <div className="c-filters-v2">
-    <div className="c-search-results-v2__topbar">
-      <h3 className="c-search-results-v2__topbar-result">Results (10)</h3>
+    <div className="c-filters-v2__topbar">
+      <h3 className="c-filters-v2__topbar-result">Results (10)</h3>
       <button onClick={toggle} className="c-search-results-v2__topbar-filter">
         Update search
       </button>
