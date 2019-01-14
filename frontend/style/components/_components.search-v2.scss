@@ -9,7 +9,6 @@
     }
 }
 
-
 .c-search-v2__label {
   width: 100%;
   display: block;
@@ -49,7 +48,7 @@
 .c-search-v2__input {
   flex-grow: 2;
   background: $white;
-  width: 80%;
+  width: 100%;
   border: 0;
   display: block;
   color: $black;
@@ -57,7 +56,7 @@
   transition: border .2s ease-out;
   @include inuit-font-size($font-size-tiny, $line-height-tiny );
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-normal, $line-height-normal);
+    @include inuit-font-size($font-size-small, $line-height-small);
   }
 
   &:hover {
@@ -84,9 +83,6 @@
   transition: background-color .05s ease-out;
   border-left: none;
   cursor: pointer;
-  &:hover{
-    background-color: $brand-medium;
-  }
   &:focus {
     border: none;
     outline: none;
@@ -95,37 +91,6 @@
     width: 100%;
     height: 100%;
   }
-}
-
-.c-search-v2__results {
-  background: $white;
-  padding: $spacing;
-  border: none;
-  border-right: 1px solid $brand-main;
-  border-bottom: 1px solid $brand-main;
-  border-left: 1px solid $brand-main;
-}
-.c-search-v2__items {
-  border: none;
-  background: none;
-  display: block;
-  width: 100%;
-  text-align: left;
-  font-family: $font-sans;
-  @include inuit-font-size($font-size-normal, $line-height-small );
-  padding-left: $spacing;
-  padding-right: $spacing;
-  padding-bottom: $spacing-tiny;
-}
-.c-search-v2__items-type {
-  @include inuit-font-size($font-size-tiny/1.2, $line-height-tiny );
-  color: $grey;
-  text-transform: uppercase;
-}
-
-.c-search-v2__items--highlighted {
-  background-color: $brand-lightest;
-  font-weight: bold;
 }
 
 
