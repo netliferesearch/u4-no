@@ -6,8 +6,21 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
+function toggle() {
+  if (document) {
+    document.querySelector('.c-filters-v2').classList.toggle('c-filters-v2--open');
+    document.querySelector('html').classList.toggle('u-overflow-hidden');
+  }
+}
+
 const SearchFiltersV2 = () => (
   <div className="c-filters-v2">
+    <div className="c-search-results-v2__topbar">
+      <h3 className="c-search-results-v2__topbar-result">Results (10)</h3>
+      <button onClick={toggle} className="c-search-results-v2__topbar-filter">
+        Update search
+      </button>
+    </div>
     <div className="c-filters-v2__item">
       <div className="c-filters-v2__radio">
         <input type="radio" name="content" value="all-content" checked />

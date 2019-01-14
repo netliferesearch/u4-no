@@ -18,7 +18,7 @@ const classes = BEMHelper({
 
 const toggleFilterMenu = () => {
   if (document) {
-    document.querySelector('.c-filters').classList.toggle('c-filters--open');
+    document.querySelector('.c-filters-v2').classList.toggle('c-filters-v2--open');
     document.querySelector('html').classList.toggle('u-overflow-hidden');
   }
 };
