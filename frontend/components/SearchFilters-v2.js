@@ -122,20 +122,22 @@ const SearchFiltersV2 = () => (
         <h3 className="c-filters-v2__title">Year</h3>
         <p className="c-filters-v2__clear">Clear</p>
       </div>
-      <span>
-        <label htmlFor="from">From:</label>
-        <select id="from">
-          <option selected value="2000">2000</option>
-          <option value="2001">2001</option>
-        </select>
-
-        <label htmlFor="to">To:</label>
-        <select id="to">
-          <option selected value="2018">2018</option>
-          <option selected value="2019">2019</option>
-        </select>
-
-      </span>
+      <div className="c-filters-v2__select">
+        <div>
+          <label htmlFor="from">From:</label>
+          <select id="from">
+            <option selected value="2000">2000</option>
+            <option value="2001">2001</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="to">To:</label>
+          <select id="to">
+            <option selected value="2018">2018</option>
+            <option selected value="2019">2019</option>
+          </select>
+        </div>
+      </div>
     </div>
 
   </div>
