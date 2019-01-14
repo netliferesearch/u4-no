@@ -4,6 +4,7 @@ export { default as Publication } from './Publication';
 export { default as Resources } from './Resources';
 export { default as Download } from './Download';
 export { default as ArrowRight } from './ArrowRight';
+export { default as ArrowRightSmall } from './ArrowRightSmall';
 export { default as ArrowLarge } from './ArrowLarge';
 export { default as Helpdesk } from './Helpdesk';
 export { default as OnlineTraining } from './OnlineTraining';

@@ -172,9 +172,11 @@
   }
 }
 
-.c-search-results-v2__topic-content {
-  @include mq($from: tablet) {
-    padding-bottom: $spacing;
-    width: 70%;
+.c-search-results-v2__topic-point {
+  display: flex;
+  align-items: center;
+  padding: $spacing-tiny 0;
+  svg {
+    margin-right: $spacing-small;
   }
 }

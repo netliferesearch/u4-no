@@ -8,6 +8,7 @@ import { Link } from '../routes';
 import buildUrl from '../helpers/buildUrl';
 import itemTitle from '../helpers/itemTitle';
 import itemTypeAsHeading from '../helpers/itemTypeAsHeading';
+import { ArrowRightSmall } from '../components/icons';
 
 import { AuthorList, EditorList } from '../components/';
 
@@ -85,8 +86,8 @@ const SearchResultsV2 = (props) => {
               </div>
               <div {...classes('topic-content')}>
                 <p>Corruption affects all sides of public financial management. Revenues and tax collection, the budget process, public spending and procurement are at risk…</p>
-                <a>Basic guide</a> <br />
-                <a>Research and policy agenda</a>
+                <div {...classes('topic-point')}><ArrowRightSmall /><span> Basic guide</span></div>
+                <div {...classes('topic-point')}><ArrowRightSmall /><span> Research and policy agenda</span></div>
               </div>
             </div>
           </div>
