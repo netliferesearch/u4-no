@@ -30,6 +30,7 @@ export { default as PublicationArticleHeader } from './PublicationArticleHeader'
 export { default as PullQuote } from './PullQuote';
 export { default as RecommendedResources } from './RecommendedResources';
 export { default as SearchField } from './SearchField';
+export { default as SearchFieldV2 } from './SearchField-v2';
 export { default as SearchFiltersV2 } from './SearchFilters-v2';
 export { default as SearchResults } from './SearchResults';
 export { default as SearchResultsV2 } from './SearchResults-v2';

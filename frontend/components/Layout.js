@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Link } from '../routes';
-import { HeadComponent, Logo, Menu } from '../components';
+import { HeadComponent, Logo, Menu, SearchFieldV2 } from '../components';
 
 const classes = BEMHelper({
   name: 'top-bar',
@@ -14,6 +14,7 @@ const Layout = ({
   showTopTab = true,
   children = [],
   noSearch = false,
+  searchV2 = false,
   headComponentConfig = {},
   hideLogo = false,
 }) => (
@@ -34,6 +35,11 @@ const Layout = ({
             </a>
           </Link>
         )}
+
+        {searchV2 && (
+          <SearchFieldV2 />
+        )}
+
         {hideLogo && <div />}
         <Menu noSearch={noSearch} />
       </div>
@@ -47,6 +53,7 @@ Layout.propTypes = {
   showTopTab: PropTypes.bool,
   children: PropTypes.node,
   noSearch: PropTypes.bool,
+  searchV2: PropTypes.bool,
   headComponentConfig: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
@@ -66,6 +73,7 @@ Layout.defaultProps = {
   showTopTab: true,
   children: [],
   noSearch: false,
+  searchV2: false,
   headComponentConfig: {},
   hideLogo: false,
 };
