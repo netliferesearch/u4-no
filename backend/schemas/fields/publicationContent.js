@@ -3,6 +3,9 @@ import {
   image,
   box,
 } from './'
+import {FaTable} from 'react-icons/fa'
+import HtmlTableEditor from '../../components/HtmlTableEditor'
+
 
 const content = {
   name: 'content',
@@ -64,6 +67,22 @@ const content = {
         {
           name: 'title',
           title: 'Title',
+          type: 'string'
+        }
+      ]
+    },
+    {
+      name: 'table',
+      title: 'Table',
+      type: 'object',
+      inputComponent: HtmlTableEditor,
+      options: {
+        editModal: 'fullscreen'
+      },
+      fields: [
+        {
+          name: 'htmlStr',
+          readOnly: true,
           type: 'string'
         }
       ]

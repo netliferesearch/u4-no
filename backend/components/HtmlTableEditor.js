@@ -1,0 +1,61 @@
+import React from 'react';
+import { Editor } from '@tinymce/tinymce-react';
+import PatchEvent, {set, unset, setIfMissing} from 'part:@sanity/form-builder/patch-event'
+
+export default class WrappedDefaultInput extends React.Component {
+
+  constructor(props) {
+    super()
+    const {value = {}} = props
+    const {htmlStr = ''} = value
+    /**
+     * We need to use state and only flush content changes to Sanity when the
+     * component is about to unmount. This is because the component will abruptly
+     * reload and misplace the cursor if we call onChange while the user is editing.
+     */
+    this.state = {
+      content: htmlStr
+    }
+  }
+
+  handleEditorChange = value => {
+    this.setState({
+      content: value
+    })
+  };
+
+  componentWillUnmount() {
+    const {content: value} = this.state || {}
+    const patches = PatchEvent.from([
+      setIfMissing({}),
+      value ? set(value, ['htmlStr']) : unset(['htmlStr'])
+    ])
+    this.props.onChange(patches)
+  }
+
+  focus = () => {
+    // do nothing need, tinymce will focus itself after loading
+  }
+
+  render() {
+    const {content = ''} = this.state || {}
+    return (
+      <Editor
+      id="tinymce-editor"
+      onLoadContent={() => {
+        console.log('TinyMCE onLoadContent')
+        const textarea = document.getElementById('tinymce-editor')
+        if (textarea) {
+          textarea.focus()
+        }
+      }}
+      apiKey="ivxiggexqgnqeg3xjjiczxw06ed4btfaszkj8g8u2u64ifkt" init={{
+        plugins: 'print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount tinymcespellchecker a11ychecker imagetools mediaembed  linkchecker contextmenu colorpicker textpattern help',
+        toolbar: 'table | formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+      }}
+      value={content}
+       onEditorChange={this.handleEditorChange}
+      />
+    );
+  }
+}
