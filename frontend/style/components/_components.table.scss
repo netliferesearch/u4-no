@@ -1,15 +1,20 @@
 
 
 .c-table__scrollable {
-	overflow-x:auto;
+	//overflow-x:auto;
 }
+/*  --- Shadow ---
 
 .c-table__scrollable.c-table__has-scroll {
   @include mq($until: tablet) {
     position:relative;
-  	overflow:hidden; /* Clips the shadow created with the pseudo-element in the next rule. Not necessary for the actual scrolling. */
+  	overflow:hidden;
   }
-}
+
+} */
+
+/*  --- Shadow ---
+
 .c-table__scrollable.c-table__has-scroll:after {
   @include mq($until: tablet) {
 	position:absolute;
@@ -23,7 +28,7 @@
 }
 }
 
-/* This is the element whose content will be scrolled if necessary */
+
 .c-table__scrollable.c-table__has-scroll > div {
   @include mq($until: tablet) {
 	overflow-x:auto;
@@ -46,4 +51,4 @@
 	border-radius:6px;
 	background:#ccc;
 }
-}
+} */
