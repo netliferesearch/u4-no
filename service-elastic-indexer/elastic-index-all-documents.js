@@ -9,6 +9,7 @@ const {
   processDocument,
   getIndexName,
 } = require('./elastic-indexer.lib');
+const mappings = require('./elastic-mappings');
 
 const client = new elasticsearch.Client({
   host: process.env.ES_HOST,
@@ -54,6 +55,11 @@ const shouldIndex = ({ _type = '' }) => {
   const typesToIgnore = ['sanity.fileAsset', 'sanity.imageAsset', 'sanity.importmap', 'frontpage'];
   return !typesToIgnore.find(type => type === _type);
 };
+
+// setup mappings for each language and each type
+const setupMappings ({types = [], languages = []}) => {
+
+}
 
 async function main() {
   console.log('starting work');

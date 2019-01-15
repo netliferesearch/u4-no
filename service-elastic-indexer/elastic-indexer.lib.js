@@ -52,6 +52,8 @@ async function processPublication({ document: doc, allDocuments }) {
     ...doc,
     // then we override some of those fields with processed data.
     content: legacyPDFContent || blocksToText(doc.content || []),
+    abbreviations: blocksToText(doc.abbreviations || []),
+    methodology: blocksToText(doc.methodology || []),
     ...(doc.abstract ? { abstract: htmlToText.fromString(doc.abstract, { wordwrap: false }) } : {}),
     authors: expand({
       references: doc.authors,
@@ -70,7 +72,10 @@ async function processPublication({ document: doc, allDocuments }) {
     publicationType: expand({
       reference: doc.publicationType,
     }),
-    keywords: expand({ references: doc.keywords || [] }),
+    keywords: expand({
+      references: doc.keywords || [],
+      process: ({ keyword, _id, language }) => ({ keyword, _id, language }),
+    }),
   };
 }
 
@@ -134,7 +139,6 @@ function blocksToText(blocks, opts = {}) {
       if (block._type !== 'block' || !block.children) {
         return options.nonTextBehavior === 'remove' ? '' : `[${block._type} block]`;
       }
-
       return block.children.map(child => child.text).join('');
     })
     .join(' ');

@@ -5,6 +5,7 @@ const forceSsl = require('force-ssl-heroku');
 const {
   publicationPdfHandler,
 } = require('../service-publication-pdf-builder/publication-pdf-handler');
+const searchHandler = require('./server.elastic');
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
 const handler = routes.getRequestHandler(app);
@@ -23,5 +24,7 @@ app.prepare().then(() => {
   });
   server.get('/publications/:slug/pdf', publicationPdfHandler);
   server.get('/publications/:slug.pdf', publicationPdfHandler);
-  server.use(handler).listen(process.env.PORT || 3000);
+  server.use('/api/search', searchHandler);
+  server.use(handler);
+  server.listen(process.env.PORT || 3000);
 });
