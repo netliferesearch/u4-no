@@ -25,9 +25,5 @@ const Tables = () => (
 );
 
 export default DataLoader(Tables, {
-  queryFunc: () => ({
-    sanityQuery:
-      '{"tables": *[_type == "tables"]}',
-  }),
   materializeDepth: 0,
 });
