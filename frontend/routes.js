@@ -9,6 +9,7 @@ routes
   .add('topic.article', '/topics/:slug/:topicPart')
   .add('topic.entry', '/topics/:slug')
   .add('topic.index', '/topics')
+  .add('tables.index', '/tables')
   .add('glossary.index', '/terms')
   .add('keywords.index', '/keywords')
   .add('persons.index', '/the-team')
