@@ -1,14 +1,18 @@
 import React from 'react';
 
-function hasScrollBar() {
+function scrollBar() {
   if (document) {
-    document.querySelector('.scrollable').classList.toggle('has-scroll');
+    document.querySelector('.c-table__scrollable').classList.toggle('c-table__has-scroll');
   }
+}
+
+function isOverflown(element) {
+  return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
 }
 
 const Table = () => (
   <div>
-    <div onClick={hasScrollBar} id="scrollable1" className="scrollable">
+    <div className="c-table__scrollable c-table__has-scroll">
       <div>
         <table>
           <tr>
@@ -51,7 +55,7 @@ const Table = () => (
     </div>
     <br />
 
-    <div className="scrollable">
+    <div className="c-table__scrollable c-table__has-scroll">
       <div>
         <table>
           <caption>Data table 1</caption>
@@ -207,7 +211,7 @@ const Table = () => (
       </div>
     </div>
     <br />
-    <div className="scrollable">
+    <div className="c-table__scrollable c-table__has-scroll">
       <div>
         <table>
           <caption>A summary of the UK's most famous punk bands</caption>
