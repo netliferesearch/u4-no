@@ -1,4 +1,3 @@
-import FunkyEditor from '../../components/FunkyEditor'
 import annotations from './annotations'
 import {
   image,

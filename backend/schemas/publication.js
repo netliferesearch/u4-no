@@ -1,4 +1,3 @@
-import FunkyEditor from '../components/FunkyEditor'
 import publicationContent from './fields/publicationContent'
 import annotations from './fields/annotations'
 /**

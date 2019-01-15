@@ -26,10 +26,6 @@
       "path": "./schemas/schema.js"
     },
     {
-      "implements": "part:@sanity/form-builder/input-resolver",
-      "path": "./parts/inputResolver"
-    },
-    {
       "implements": "part:@sanity/base/brand-logo",
       "path": "./components/Logo.js"
     }
