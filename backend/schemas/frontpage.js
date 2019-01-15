@@ -956,7 +956,7 @@ export default {
     {
       title: 'Date',
       name: 'dateDesc',
-      by: [{ field: 'date', direction: 'desc' }],
+      by: [{ field: '_updatedAt', direction: 'desc' }],
     },
     {
       title: 'Title',
