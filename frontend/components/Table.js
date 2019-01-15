@@ -71,6 +71,8 @@ const Table = () => (
               <th scope="col">Column header 8</th>
               <th scope="col">Column header 9</th>
               <th scope="col">Column header 10</th>
+              <th scope="col">Column header 11</th>
+              <th scope="col">Column header 12</th>
             </tr>
           </thead>
           <tbody>
@@ -85,32 +87,12 @@ const Table = () => (
               <td>Table data</td>
               <td>Table data</td>
               <td>Table data</td>
-            </tr>
-            <tr>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
               <td>Table data</td>
               <td>Table data</td>
             </tr>
             <tr>
               <td>Table data</td>
               <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-            </tr>
-            <tr>
               <td>Table data</td>
               <td>Table data</td>
               <td>Table data</td>
@@ -133,32 +115,12 @@ const Table = () => (
               <td>Table data</td>
               <td>Table data</td>
               <td>Table data</td>
-            </tr>
-            <tr>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
               <td>Table data</td>
               <td>Table data</td>
             </tr>
             <tr>
               <td>Table data</td>
               <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-              <td>Table data</td>
-            </tr>
-            <tr>
               <td>Table data</td>
               <td>Table data</td>
               <td>Table data</td>
@@ -181,6 +143,22 @@ const Table = () => (
               <td>Table data</td>
               <td>Table data</td>
               <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+            </tr>
+            <tr>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
             </tr>
             <tr>
               <td>Table data</td>
@@ -193,8 +171,54 @@ const Table = () => (
               <td>Table data</td>
               <td>Table data</td>
               <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
             </tr>
             <tr>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+            </tr>
+            <tr>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+            </tr>
+            <tr>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+            </tr>
+            <tr>
+              <td>Table data</td>
+              <td>Table data</td>
               <td>Table data</td>
               <td>Table data</td>
               <td>Table data</td>

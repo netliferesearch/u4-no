@@ -1,7 +1,7 @@
 
 
 .c-table__scrollable {
-	//overflow-x:auto;
+	overflow-x:auto;
 }
 /*  --- Shadow ---
 
@@ -11,9 +11,7 @@
   	overflow:hidden;
   }
 
-} */
-
-/*  --- Shadow ---
+}
 
 .c-table__scrollable.c-table__has-scroll:after {
   @include mq($until: tablet) {
@@ -52,3 +50,9 @@
 	background:#ccc;
 }
 } */
+
+@media print  {
+	.c-table__scrollable {
+		overflow-x:visible;
+	}
+}

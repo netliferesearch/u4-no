@@ -17,3 +17,10 @@ th {
 tr:nth-child(even) {
   background-color: $lightGrey;
 }
+
+@media print  {
+  table {
+    table-layout: fixed;
+    font-size: 90%;
+  }
+}
