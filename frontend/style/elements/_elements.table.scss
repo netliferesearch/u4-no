@@ -1,7 +1,9 @@
 table {
   font-family: $font-sans;
-  width: 100%;
+  max-width: 100%;
   border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 th, td {
@@ -9,9 +11,9 @@ th, td {
   padding: $spacing-small;
 }
 
-th {
+thead, th {
   color: $brand-main;
-  text-align: left;
+  font-weight: bold;
 }
 
 tr:nth-child(even) {

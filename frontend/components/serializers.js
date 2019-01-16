@@ -192,7 +192,18 @@ const serializers = {
       </div>
     ),
     // We trust html content coming from Sanity and output it.
-    table: ({ node: { htmlStr = '' } }) => <div dangerouslySetInnerHTML={{ __html: htmlStr }} />,
+
+    workshops: ({ node: { workshopsRef } }) => (
+      <div className="o-wrapper">
+        <WorkshopMosaic resources={workshopsRef} />
+      </div>
+    ),
+
+    table: ({ node: { htmlStr = '' } }) => (
+      <div {...classes('larger')} >
+        <div className="c-table" dangerouslySetInnerHTML={{ __html: htmlStr }} />
+      </div>
+    ),
     features: ({ node: { featureArray } }) => (
       <section className="o-wrapper c-topic-section">
         <div className="c-features">

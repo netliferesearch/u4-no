@@ -1,58 +1,11 @@
-
-
-.c-table__scrollable {
+.c-table{
 	overflow-x:auto;
+	padding: $spacing-tiny;
+	@include inuit-font-size($font-size-tiny, $line-height-normal);
 }
-/*  --- Shadow ---
-
-.c-table__scrollable.c-table__has-scroll {
-  @include mq($until: tablet) {
-    position:relative;
-  	overflow:hidden;
-  }
-
-}
-
-.c-table__scrollable.c-table__has-scroll:after {
-  @include mq($until: tablet) {
-	position:absolute;
-	top:0;
-	left:100%;
-	width:50px;
-	height:100%;
-	border-radius:10px 0 0 10px / 50% 0 0 50%;
-	box-shadow:-5px 0 10px rgba(0, 0, 0, 0.25);
-	content:'';
-}
-}
-
-
-.c-table__scrollable.c-table__has-scroll > div {
-  @include mq($until: tablet) {
-	overflow-x:auto;
-}
-}
-
-.c-table__scrollable > div::-webkit-scrollbar {
-  @include mq($until: tablet) {
-	height:12px;
-}
-}
-.c-table__scrollable > div::-webkit-scrollbar-track {
-  @include mq($until: tablet) {
-	box-shadow:0 0 2px rgba(0,0,0,0.15) inset;
-	background:#f0f0f0;
-}
-}
-.c-table__scrollable > div::-webkit-scrollbar-thumb {
-  @include mq($until: tablet) {
-	border-radius:6px;
-	background:#ccc;
-}
-} */
 
 @media print  {
-	.c-table__scrollable {
+	.c-table {
 		overflow-x:visible;
 	}
 }
