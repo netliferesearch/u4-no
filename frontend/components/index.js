@@ -37,7 +37,6 @@ export { default as SearchResultsV2 } from './SearchResults-v2';
 export { default as ServiceArticle } from './ServiceArticle';
 export { default as SimpleHero } from './SimpleHero';
 export { default as SimpleMosaic } from './SimpleMosaic';
-export { default as Table } from './Table';
 export { default as Team } from './Team';
 export { default as ToggleBlock } from './ToggleBlock';
 export { default as ToggleTextBox } from './ToggleTextBox';
