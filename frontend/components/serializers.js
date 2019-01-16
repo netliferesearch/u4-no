@@ -65,7 +65,8 @@ const serializers = {
     cta: ({ node: { ctaValue = '', ctaURL = '' } }) => (
       <h2 className="c-topic-section__cta">
         <a href={ctaURL}>
-          {ctaValue} &nbsp;<ArrowRight />
+          {ctaValue} &nbsp;
+          <ArrowRight />
         </a>
       </h2>
     ),
@@ -190,6 +191,8 @@ const serializers = {
         </div>
       </div>
     ),
+    // We trust html content coming from Sanity and output it.
+    table: ({ node: { htmlStr = '' } }) => <div dangerouslySetInnerHTML={{ __html: htmlStr }} />,
     features: ({ node: { featureArray } }) => (
       <section className="o-wrapper c-topic-section">
         <div className="c-features">
