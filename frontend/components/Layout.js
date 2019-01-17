@@ -37,9 +37,6 @@ const Layout = ({
         )}
 
 
-        <SearchFieldV2 />
-
-
         {hideLogo && <div />}
         <Menu noSearch={noSearch} />
       </div>

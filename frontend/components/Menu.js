@@ -4,7 +4,7 @@ import sanityClient from '@sanity/client';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Link } from '../routes';
-import { SearchField } from '../components';
+import { SearchField, SearchFieldV2 } from '../components';
 import { ArrowRight } from '../components/icons';
 
 const classes = BEMHelper({
@@ -88,6 +88,10 @@ class Menu extends Component {
     const { noSearch } = this.props;
     return (
       <div>
+        {this.state.activeSearchMenu ? (
+          <SearchFieldV2 />
+        ) : null}
+
         <ul {...classes('menu')}>
           {!noSearch && (
             <li {...classes('menu-item')}>
@@ -107,11 +111,6 @@ class Menu extends Component {
                 <li {...classes('menu-item', this.state.activeItem === 1 && 'active')}>
                   <button onClick={this.triggerMenu}>Close</button>
                 </li>
-                {!noSearch && (
-                  <li {...classes('menu-item', this.state.activeItem === 3 && 'active')}>
-                    <button onClick={this.triggerSearchMenu}>Search</button>
-                  </li>
-                )}
               </ul>
 
               {topics && (
@@ -220,23 +219,7 @@ class Menu extends Component {
           </div>
         ) : null}
 
-        {this.state.activeSearchMenu ? (
-          <div>
-            <button onClick={this.triggerSearchMenu} {...menuClasses('backdrop')} />
-            <div {...menuClasses()}>
-              <ul {...classes('menu', 'active')}>
-                <li {...classes('menu-item', this.state.activeItem === 1 && 'active')}>
-                  <button onClick={this.triggerMenu}>Menu</button>
-                </li>
-                <li {...classes('menu-item', this.state.activeItem === 3 && 'active')}>
-                  <button onClick={this.triggerSearchMenu}>Close</button>
-                </li>
-              </ul>
 
-              <SearchField modifier="small" />
-            </div>
-          </div>
-        ) : null}
       </div>
     );
   }
