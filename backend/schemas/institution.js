@@ -1,4 +1,5 @@
 import { license } from './fields';
+import annotationsLinksOnly from './fields/annotationsLinksOnly'
 
 export default {
   name: 'institution',
@@ -29,10 +30,7 @@ export default {
               {title: 'Emphasis', value: 'em'}
             ],
             // Support annotating text with a reference to an author
-            annotations: [
-              {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-              {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-            ]
+            annotations: annotationsLinksOnly
           }
         },
       ],

@@ -1,4 +1,5 @@
 import { leadText, featuredImage, slug, image } from './fields'
+import annotationsLinksOnly from './fields/annotationsLinksOnly'
 
 export default {
   title: 'Event',
@@ -78,10 +79,7 @@ export default {
               {title: 'Emphasis', value: 'em'}
             ],
             // Support annotating text with a reference to an author
-            annotations: [
-              {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-              {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'}]},
-            ]
+            annotations: annotationsLinksOnly
           }
         },
         image,
