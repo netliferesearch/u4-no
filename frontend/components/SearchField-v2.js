@@ -56,9 +56,14 @@ class SearchFieldV2 extends Component {
       loading: false,
       placeholder: 'topics',
       placeholderIndex: 0,
+      shouldShow: false,
     };
   }
   componentDidMount() {
+    if (window.location.hostname === 'localhost') {
+      this.setState({ shouldShow: true });
+    }
+
     const strings = ['publications', 'topics', 'people', 'services', 'articles'];
     if (!this.state.items.length === 0) return;
     this.intervalTimer = setInterval(() => {
@@ -90,6 +95,12 @@ class SearchFieldV2 extends Component {
 
   render() {
     const { modifier } = this.props;
+    const { shouldShow = false } = this.state;
+
+    if (!shouldShow) {
+      return null;
+    }
+
     return (
       <Downshift id="autocomplete" onChange={this.props.onChange}>
         {({
