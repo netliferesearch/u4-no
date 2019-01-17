@@ -32,10 +32,10 @@ const SearchFiltersV2 = () => (
       </div>
     </div>
 
-    <div className="c-filters-v2__item">
+    <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
         <h3 className="c-filters-v2__title">Publication type</h3>
-        <p className="c-filters-v2__clear">Clear</p>
+        <input className="c-filters-v2__clear" type="reset" value="Clear" />
       </div>
       <span>
         <div className="c-filters-v2__checkbox">
@@ -60,12 +60,12 @@ const SearchFiltersV2 = () => (
         </div>
       </span>
       <p>See all</p>
-    </div>
+    </form>
 
-    <div className="c-filters-v2__item">
+    <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
         <h3 className="c-filters-v2__title">Publication topics</h3>
-        <p className="c-filters-v2__clear">Clear</p>
+        <input className="c-filters-v2__clear" type="reset" value="Clear" />
       </div>
       <span>
         <div className="c-filters-v2__checkbox">
@@ -90,12 +90,12 @@ const SearchFiltersV2 = () => (
         </div>
       </span>
       <p>See all</p>
-    </div>
+    </form>
 
-    <div className="c-filters-v2__item">
+    <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
         <h3 className="c-filters-v2__title">Languages</h3>
-        <p className="c-filters-v2__clear">Clear</p>
+        <input className="c-filters-v2__clear" type="reset" value="Clear" />
       </div>
       <span>
         <div className="c-filters-v2__checkbox">
@@ -115,12 +115,11 @@ const SearchFiltersV2 = () => (
           <label htmlFor="pub-type-pubtype-4" className="c-filters-v2__checkbox-label">Russian (1)</label>
         </div>
       </span>
-    </div>
+    </form>
 
     <div className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
         <h3 className="c-filters-v2__title">Year</h3>
-        <p className="c-filters-v2__clear">Clear</p>
       </div>
       <div className="c-filters-v2__select">
         <div>

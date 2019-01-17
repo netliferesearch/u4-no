@@ -44,11 +44,20 @@
   padding:0;
   margin: 20px 0;
   font-weight: bold;
-  @include inuit-font-size($font-size-tiny, $line-height-small);
+  @include inuit-font-size($font-size-small, $line-height-normal);
 }
 .c-filters-v2__clear {
   @include inuit-font-size($font-size-tiny, $line-height-small);
+  border: none;
+  padding: 0;
+  border-bottom: 1px solid transparent;
 }
+
+.c-filters-v2__clear:hover {
+  border-bottom: 1px solid currentColor;
+  cursor: pointer;
+}
+
 .c-filters-v2__checkbox {
   margin-bottom:14px;
   display: grid;
