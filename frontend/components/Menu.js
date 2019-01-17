@@ -89,14 +89,15 @@ class Menu extends Component {
     return (
       <div>
         <ul {...classes('menu')}>
-          <li {...classes('menu-item')}>
-            <button onClick={this.triggerMenu}>Menu</button>
-          </li>
           {!noSearch && (
             <li {...classes('menu-item')}>
               <button onClick={this.triggerSearchMenu}>Search</button>
             </li>
           )}
+          <li {...classes('menu-item')}>
+            <button onClick={this.triggerMenu}>Menu</button>
+          </li>
+
         </ul>
         {this.state.activeMenu ? (
           <div>
