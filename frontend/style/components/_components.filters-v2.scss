@@ -116,12 +116,13 @@
       border-color: $brand-dark;
 
       &:after {
-        content: '⬤';
-        font-size: 11px;
+        content: '';
         position: absolute;
-        top: 1.5px;
-        left: 1.5px;
-        color: $brand-dark;
+        height: 100%;
+        width: 100%;
+        border-radius: 9px;
+        border: 2px solid $white;
+        background-color: $brand-dark;
       }
     }
   }
