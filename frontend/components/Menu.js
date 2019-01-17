@@ -87,7 +87,7 @@ class Menu extends Component {
     const topics = this.state.data;
     const { noSearch } = this.props;
     return (
-      <div>
+      <div {...classes('wrapper')}>
         {this.state.activeSearchMenu ? (
           <SearchFieldV2 />
         ) : null}

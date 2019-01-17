@@ -21,6 +21,12 @@ a.c-top-bar__logo:visited {
   }
 }
 
+.c-top-bar__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .c-top-bar__menu {
   color: $brand-main;
   list-style: none;
