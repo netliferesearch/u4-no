@@ -30,7 +30,10 @@ const doSearch = async ({ searchQuery }) => {
         },
         highlight: {
           fields: {
-            content: {},
+            content: {
+              fragment_size: 250,
+              number_of_fragments: 1,
+            },
           },
         },
         _source: [

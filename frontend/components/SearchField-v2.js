@@ -53,7 +53,10 @@ class SearchFieldV2 extends Component {
     };
   }
   componentDidMount() {
-    if (window.location.hostname === 'localhost') {
+    if (
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === 'u4-frontend-staging.herokuapp.com'
+    ) {
       this.setState({ shouldShow: true });
     }
 
