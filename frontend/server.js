@@ -2,6 +2,7 @@ require('dotenv').config({ path: './.env' });
 const next = require('next');
 const routes = require('./routes');
 const forceSsl = require('force-ssl-heroku');
+const bodyParser = require('body-parser');
 const {
   publicationPdfHandler,
 } = require('../service-publication-pdf-builder/publication-pdf-handler');
@@ -15,6 +16,7 @@ const express = require('express');
 
 app.prepare().then(() => {
   const server = express();
+  server.use(bodyParser.json());
   if (process.env.NODE_ENV === 'production') {
     server.use(forceSsl);
   }

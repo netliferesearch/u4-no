@@ -19,6 +19,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "bluebird": "^3.5.3",
+    "body-parser": "^1.18.3",
     "concurrently": "^3.5.0",
     "dotenv": "^4.0.0",
     "downshift": "^1.25.0",

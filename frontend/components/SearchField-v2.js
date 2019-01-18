@@ -17,13 +17,6 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const client = sanityClient({
-  projectId: '1f1lcoov',
-  dataset: 'production',
-  token: '',
-  useCdn: true,
-});
-
 const generateTitle = ({
   title = false, firstName = false, surname = false, term = false,
 }) => {
@@ -64,18 +57,18 @@ class SearchFieldV2 extends Component {
       this.setState({ shouldShow: true });
     }
 
-    const strings = ['publications', 'topics', 'people', 'services', 'articles'];
-    if (!this.state.items.length === 0) return;
-    this.intervalTimer = setInterval(() => {
-      this.setState({
-        placeholderIndex:
-          this.state.placeholderIndex < strings.length - 1 ? this.state.placeholderIndex + 1 : 0,
-        placeholder: strings[this.state.placeholderIndex],
-      });
-    }, 3000);
+    // const strings = ['publications', 'topics', 'people', 'services', 'articles'];
+    // if (!this.state.items.length === 0) return;
+    // this.intervalTimer = setInterval(() => {
+    //   this.setState({
+    //     placeholderIndex:
+    //       this.state.placeholderIndex < strings.length - 1 ? this.state.placeholderIndex + 1 : 0,
+    //     placeholder: strings[this.state.placeholderIndex],
+    //   });
+    // }, 3000);
   }
   componentWillUnmount() {
-    clearInterval(this.intervalTimer);
+    // clearInterval(this.intervalTimer);
   }
 
   handleSubmit(e) {
@@ -83,14 +76,7 @@ class SearchFieldV2 extends Component {
     this.setState({
       loading: !this.state.loading,
     });
-    Router.pushRoute(`/search?search=${e.target.search.value}`);
-  }
-
-  handleItemClick({ _type = '', slug = {} }) {
-    this.setState({
-      loading: !this.state.loading,
-    });
-    Router.pushRoute(buildUrl({ _type, slug }));
+    Router.pushRoute(`/search-v2?search=${e.target.search.value}`);
   }
 
   render() {
@@ -133,14 +119,13 @@ class SearchFieldV2 extends Component {
                 {...classes('input', modifier)}
                 {...getInputProps({
                   id: 'search',
-                  tabIndex: '0',
                   name: 'search',
                   placeholder: `Search for ${this.state.placeholder}`,
                   type: 'search',
-                  value:
-                    selectedItem && typeof selectedItem === 'object'
-                      ? generateTitle(selectedItem)
-                      : undefined,
+                  // value:
+                  //   selectedItem && typeof selectedItem === 'object'
+                  //     ? generateTitle(selectedItem)
+                  //     : undefined,
                   onChange: (event) => {
                     const value = event.target.value;
                     if (!value) {
@@ -148,50 +133,40 @@ class SearchFieldV2 extends Component {
                     }
                     if (event.keyCode != 8) {
                       // Allow backspace
-                      debounce(
-                        client
-                          .fetch(buildQuery({ queryString: value, limit: { from: 0, to: 5 } }))
-                          .then((results) => {
-                            const washedResults = results.filter(doc =>
-                                (doc._type === 'person'
-                                  ? doc.affiliations &&
-                                    doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')
-                                  : doc));
-                            const items = prioritize(value, washedResults.map(item => item)); // Added ID to make it unique
-                            this.setState({ items });
-                          })
-                          .catch((error) => {
-                            console.log(error);
-                          }),
-                        600,
-                      );
+                      // debounce(
+                      //   client
+                      //     .fetch(buildQuery({ queryString: value, limit: { from: 0, to: 5 } }))
+                      //     .then((results) => {
+                      //       const washedResults = results.filter(doc =>
+                      //           (doc._type === 'person'
+                      //             ? doc.affiliations &&
+                      //               doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')
+                      //             : doc));
+                      //       const items = prioritize(value, washedResults.map(item => item)); // Added ID to make it unique
+                      //       this.setState({ items });
+                      //     })
+                      //     .catch((error) => {
+                      //       console.log(error);
+                      //     }),
+                      //   600,
+                      // );
                     }
                   },
                   onKeyDown: (e) => {
                     // if enter pressed we reload search page with search value
                     if (e.keyCode !== 13) {
-                      // if it's not enter do nothing
+                      Router.replaceRoute(`/search-v2?search=${e.target.value}`);
                     } else if (typeof highlightedIndex !== 'number') {
-                      // if highlightedIndex is not a number it tells us that
-                      // the user has clicked enter in the search field but not
-                      // selected something from the dropdown. So, we just try
-                      // make a search for it
-                      Router.pushRoute(`/search?search=${e.target.value}`);
-                    } else if (typeof highlightedIndex === 'number') {
-                      // user has selected some item, we find it from state and
-                      // visit it directly
-                      const item = this.state.items[highlightedIndex];
-                      this.handleItemClick(item);
+                      // do pushroute on enter to ensure that
+                      Router.pushRoute(`/search-v2?search=${e.target.value}`);
                     }
                   },
                 })}
               />
 
               <button {...classes('button')} type="button" onClick={clearSelection}>
-                  ✕
+                ✕
               </button>
-
-
             </div>
           </form>
         )}
