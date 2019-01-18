@@ -13,11 +13,17 @@ const classes = BEMHelper({
 class Layout extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       activeSearchMenu: false,
     };
     autobind(this);
+  }
+
+  triggerSearchMenu(e) {
+    e.preventDefault();
+    this.setState({
+      activeSearchMenu: !this.state.activeSearchMenu,
+    });
   }
 
   render() {
@@ -49,9 +55,9 @@ class Layout extends Component {
             </a>
           </Link>
               )}
-
+          {this.state.activeSearchMenu ? (<SearchFieldV2 />) : null}
           {hideLogo && <div />}
-          <Menu noSearch={noSearch} />
+          <Menu noSearch={noSearch} triggerSearchMenu={this.triggerSearchMenu} />
         </div>
           )}
         {children}

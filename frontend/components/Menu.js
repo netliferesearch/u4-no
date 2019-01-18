@@ -23,13 +23,11 @@ class Menu extends Component {
 
     this.state = {
       activeMenu: false,
-      activeSearchMenu: false,
       activeExpand: false,
       data: '',
       activeItem: 0,
     };
     this.triggerMenu = this.triggerMenu.bind(this);
-    this.triggerSearchMenu = this.triggerSearchMenu.bind(this);
     this.triggerExpand = this.triggerExpand.bind(this);
   }
 
@@ -52,7 +50,6 @@ class Menu extends Component {
     Router.onRouteChangeStart = () => {
       this.setState({
         activeMenu: false,
-        activeSearchMenu: false,
         activeItem: 1,
       });
     };
@@ -62,17 +59,7 @@ class Menu extends Component {
     e.preventDefault();
     this.setState({
       activeMenu: !this.state.activeMenu,
-      activeSearchMenu: false,
       activeItem: 1,
-    });
-  }
-
-  triggerSearchMenu(e) {
-    e.preventDefault();
-    this.setState({
-      activeSearchMenu: !this.state.activeSearchMenu,
-      activeMenu: false,
-      activeItem: 3,
     });
   }
 
@@ -85,17 +72,15 @@ class Menu extends Component {
 
   render() {
     const topics = this.state.data;
-    const { noSearch } = this.props;
+    const { noSearch, triggerSearchMenu } = this.props;
     return (
-      <div {...classes('wrapper')}>
-        {this.state.activeSearchMenu ? (
-          <SearchFieldV2 />
-        ) : null}
+      <div>
+
 
         <ul {...classes('menu')}>
           {!noSearch && (
             <li {...classes('menu-item')}>
-              <button onClick={this.triggerSearchMenu}>Search</button>
+              <button onClick={triggerSearchMenu}>Search</button>
             </li>
           )}
           <li {...classes('menu-item')}>
