@@ -102,8 +102,8 @@ function parseNDJSON(str) {
     .map(JSON.parse);
 }
 
-function getIndexName({ _type, language = 'en_US' }) {
-  return `u4-${language}-${_type}`.toLowerCase().replace(/_/gi, '-');
+function getIndexName({ language = 'en_US' }) {
+  return `u4-${language}`.toLowerCase().replace(/_/gi, '-');
 }
 
 /**

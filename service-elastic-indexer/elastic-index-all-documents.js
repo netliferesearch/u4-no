@@ -19,8 +19,9 @@ const client = new elasticsearch.Client({
 const prepareElasticSearchBulkInsert = (documents = []) =>
   _.flatten(documents.map((doc) => {
     const { _type, _id, ...restOfDoc } = doc;
-    const metadata = { _index: getIndexName(doc), _type, _id };
-    return [{ index: metadata }, { ...restOfDoc }];
+    const metadata = { _index: getIndexName(doc), _type: 'u4-searchable', _id };
+    // add plain type field to be used as a custom type field.
+    return [{ index: metadata }, { ...restOfDoc, type: _type }];
   }));
 
 const insertElasticSearchData = (documents = []) =>
@@ -56,10 +57,49 @@ const shouldIndex = ({ _type = '' }) => {
   return !typesToIgnore.find(type => type === _type);
 };
 
-// setup mappings for each language and each type
-const setupMappings ({types = [], languages = []}) => {
+const getMapping = ({ language }) => {};
 
-}
+// setup mappings for each language and each type
+const setupMappings = async ({ types = [], languages = [] }) => {
+  const indexes = languages
+    .map(language => getIndexName({ language }))
+    .filter(indexName => !/\s/.test(indexName));
+  console.log('Create indexes with mappings for', indexes);
+
+  const analyzers = {
+    'u4-en-us': 'english',
+    'u4-en-en': 'english',
+    'u4-fr-fr': 'french',
+    'u4-pt-pt': 'portuguese',
+    'u4-ru-ru': 'russian',
+    'u4-es-es': 'spanish',
+    'u4-uk-ua': 'english',
+  };
+
+  for (const index of indexes) {
+    try {
+      const analyzer = analyzers[index];
+      const result = await client.indices.create({
+        index,
+        body: {
+          mappings: {
+            'u4-searchable': {
+              properties: {
+                content: {
+                  type: 'text',
+                  analyzer,
+                },
+              },
+            },
+          },
+        },
+      });
+      console.log('Created index:', result);
+    } catch (e) {
+      console.error('Failed to create index', e);
+    }
+  }
+};
 
 async function main() {
   console.log('starting work');
@@ -85,8 +125,10 @@ async function main() {
     .forEach(({ language }) => (languages[language] = true));
   console.log('Document languages to process:\n', Object.keys(languages), '\n');
 
+  await setupMappings({ languages: Object.keys(languages) });
+
   const processedDocuments = await Promise.map(
-    allDocuments.filter(shouldIndex),
+    allDocuments.filter(shouldIndex).filter(({ _type }) => _type === 'publication'),
     document =>
       processDocument({ document, allDocuments })
         .then((doc) => {
