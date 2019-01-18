@@ -83,7 +83,7 @@ class SearchFieldV2 extends Component {
   }
 
   render() {
-    const { modifier } = this.props;
+    const { modifier, triggerSearchMenu } = this.props;
     const { shouldShow = false } = this.state;
 
     if (!shouldShow) {
@@ -167,7 +167,7 @@ class SearchFieldV2 extends Component {
                 })}
               />
 
-              <button {...classes('button')} type="button" onClick={clearSelection}>
+              <button {...classes('button')} type="button" onClick={triggerSearchMenu}>
                 ✕
               </button>
             </div>

@@ -2,10 +2,13 @@
     order: 3;
     width: 100%;
     margin-top: $spacing-small;
+    flex-grow: 2;
     @include mq($from: desktop) {
       order: 0;
       width: auto;
       margin-top: 0;
+      margin-left: $spacing-huge;
+      margin-right: $spacing;
     }
 }
 

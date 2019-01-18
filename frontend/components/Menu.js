@@ -72,13 +72,11 @@ class Menu extends Component {
 
   render() {
     const topics = this.state.data;
-    const { noSearch, triggerSearchMenu } = this.props;
+    const { noSearch, triggerSearchMenu, activeSearchMenu } = this.props;
     return (
       <div>
-
-
         <ul {...classes('menu')}>
-          {!noSearch && (
+          {!noSearch && !activeSearchMenu && (
             <li {...classes('menu-item')}>
               <button onClick={triggerSearchMenu}>Search</button>
             </li>

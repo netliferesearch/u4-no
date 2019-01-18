@@ -55,9 +55,9 @@ class Layout extends Component {
             </a>
           </Link>
               )}
-          {this.state.activeSearchMenu ? (<SearchFieldV2 />) : null}
+          {this.state.activeSearchMenu ? (<SearchFieldV2 triggerSearchMenu={this.triggerSearchMenu} />) : null}
           {hideLogo && <div />}
-          <Menu noSearch={noSearch} triggerSearchMenu={this.triggerSearchMenu} />
+          <Menu noSearch={noSearch} triggerSearchMenu={this.triggerSearchMenu} activeSearchMenu={this.state.activeSearchMenu} />
         </div>
           )}
         {children}

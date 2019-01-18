@@ -38,6 +38,7 @@ a.c-top-bar__logo:visited {
   @include mq($from: tablet) {
     justify-content: center;
     margin: 0;
+    margin-top: $spacing-tiny;
   }
 }
 .c-top-bar__menu--active {
