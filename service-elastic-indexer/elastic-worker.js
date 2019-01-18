@@ -31,16 +31,16 @@ async function startElasticWorker() {
     'event',
     'term',
     'asset',
-    'nugget',
     'course',
-    'courseType',
-    'service',
-    'contentType',
-    'blurb',
     'people',
     'nuggets',
-    'publicationType',
     'resource',
+    // 'nugget',
+    // 'courseType',
+    // 'service',
+    // 'contentType',
+    // 'blurb',
+    // 'publicationType',
   ];
   const query = '*[_type in $typesToWatch]';
   client
