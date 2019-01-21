@@ -96,12 +96,13 @@ const SearchResult = (props) => {
   return (
     <div>
       <span {...classes('items-type')}>{publicationTypeTitle}</span>
-      <span {...classes('items-date')}>{utcDate}</span>
+
       <br />
       <Link route={url}>
         <a {...classes('items-title')}>{title}</a>
       </Link>
       <br />
+      <span {...classes('items-date')}>{utcDate}</span>
       {content.map((htmlStr, index) => (
         <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
       ))}
