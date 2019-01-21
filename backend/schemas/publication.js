@@ -1,5 +1,6 @@
 import publicationContent from './fields/publicationContent'
 import annotations from './fields/annotations'
+import HighChartsEditor from '../components/HighChartsEditor'
 /**
  * A publication is a long form document
  */
@@ -21,6 +22,22 @@ export default {
     type: 'document',
     fields: [
       title,
+      {
+        name: 'chart',
+        title: 'Chart',
+        type: 'object',
+        inputComponent: HighChartsEditor,
+        options: {
+          editModal: 'fullscreen'
+        },
+        fields: [
+          {
+            name: 'htmlStr',
+            readOnly: true,
+            type: 'string'
+          }
+        ]
+      },
       subtitle,
       standfirst,
       slug,

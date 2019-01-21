@@ -4,7 +4,8 @@ import {
   box,
 } from './'
 import {FaTable} from 'react-icons/fa'
-import { HtmlTableEditor, HtmlTableEditorPreview } from '../../components/HtmlTableEditor'
+
+import { HtmlTableEditor, HtmlTableEditorPreview, HighChartsEditor } from '../../components'
 
 const content = {
   name: 'content',
@@ -102,6 +103,22 @@ const content = {
         },
         component: HtmlTableEditorPreview
       }
+    },
+    {
+      name: 'chart',
+      title: 'Chart',
+      type: 'object',
+      inputComponent: HighChartsEditor,
+      options: {
+        editModal: 'fullscreen'
+      },
+      fields: [
+        {
+          name: 'htmlStr',
+          readOnly: true,
+          type: 'string'
+        }
+      ]
     }
   ]
 }

@@ -4736,6 +4736,11 @@ hashlru@^2.1.0:
   version "2.3.0"
   resolved "https://registry.npmjs.org/hashlru/-/hashlru-2.3.0.tgz#5dc15928b3f6961a2056416bb3a4910216fdfb51"
 
+highcharts@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-7.0.2.tgz#18a59814d3ca61efa593e3141941147327e9eafb"
+  integrity sha512-0PnX/pzhpoZiLkQ3uN1FgXFM4Y5DFfN58mtTxh1me6sJ3eX+b0/asDgF17yOe4BfQat4xnE9TvgsJwYESTB3XA==
+
 history@^4.6.3:
   version "4.7.2"
   resolved "https://registry.npmjs.org/history/-/history-4.7.2.tgz#22b5c7f31633c5b8021c7f4a8a954ac139ee8d5b"
