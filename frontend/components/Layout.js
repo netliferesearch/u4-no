@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
 import { Link } from '../routes';
-import { HeadComponent, Logo, Menu, SearchFieldV2 } from '../components';
+import { HeadComponent, Logo, Menu, MenuV2, SearchFieldV2 } from '../components';
 
 const classes = BEMHelper({
   name: 'top-bar',
@@ -33,6 +33,7 @@ class Layout extends Component {
       children = [],
       noSearch = false,
       searchV2 = false,
+      isSearchPage = false,
       headComponentConfig = {},
       hideLogo = false,
     } = this.props;
@@ -47,19 +48,37 @@ class Layout extends Component {
       >
         <HeadComponent {...headComponentConfig} />
         {showTopTab && (
-        <div {...classes('', '', 'u-z-index-xx u-bg-white')}>
-          {!hideLogo && (
-          <Link route="/">
-            <a {...classes('logo')}>
-              <Logo />
-            </a>
-          </Link>
-              )}
-          {this.state.activeSearchMenu ? (<SearchFieldV2 triggerSearchMenu={this.triggerSearchMenu} />) : null}
-          {hideLogo && <div />}
-          <Menu noSearch={noSearch} triggerSearchMenu={this.triggerSearchMenu} activeSearchMenu={this.state.activeSearchMenu} />
-        </div>
-          )}
+          <div {...classes('', '', 'u-z-index-xx u-bg-white')}>
+            {!hideLogo && (
+              <Link route="/">
+                <a {...classes('logo')}>
+                  <Logo />
+                </a>
+              </Link>
+            )}
+
+            {searchV2 ? (
+              <Fragment>
+                <SearchFieldV2
+                  isOpen={this.state.activeSearchMenu}
+                  isAlwaysOpen={isSearchPage}
+                  triggerSearchMenu={this.triggerSearchMenu}
+                />
+                {hideLogo && <div />}
+                <MenuV2
+                  noSearch={noSearch}
+                  triggerSearchMenu={this.triggerSearchMenu}
+                  activeSearchMenu={this.state.activeSearchMenu}
+                />
+              </Fragment>
+            ) : (
+              <Fragment>
+                {hideLogo && <div />}
+                <Menu noSearch={noSearch} />
+              </Fragment>
+            )}
+          </div>
+        )}
         {children}
       </div>
     );

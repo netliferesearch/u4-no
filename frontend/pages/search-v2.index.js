@@ -29,6 +29,7 @@ const Search = ({
     <Layout
       noSearch
       searchV2
+      isSearchPage
       headComponentConfig={{
         title: 'Search',
         description: '',

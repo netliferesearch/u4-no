@@ -49,7 +49,6 @@ class SearchFieldV2 extends Component {
       loading: false,
       placeholder: 'topics',
       placeholderIndex: 0,
-      shouldShow: false,
     };
   }
   componentDidMount() {
@@ -83,10 +82,11 @@ class SearchFieldV2 extends Component {
   }
 
   render() {
-    const { modifier, triggerSearchMenu } = this.props;
-    const { shouldShow = false } = this.state;
+    const {
+      modifier, triggerSearchMenu, isOpen = false, isAlwaysOpen = false,
+    } = this.props;
 
-    if (!shouldShow) {
+    if (!isOpen && !isAlwaysOpen) {
       return null;
     }
 
@@ -167,9 +167,11 @@ class SearchFieldV2 extends Component {
                 })}
               />
 
-              <button {...classes('button')} type="button" onClick={triggerSearchMenu}>
-                ✕
-              </button>
+              {!isAlwaysOpen && (
+                <button {...classes('button')} type="button" onClick={triggerSearchMenu}>
+                  ✕
+                </button>
+              )}
             </div>
           </form>
         )}

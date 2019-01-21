@@ -20,6 +20,7 @@ export { default as Logo } from './Logo';
 export { default as LongformArticle } from './LongformArticle';
 export { default as LongformArticleContainer } from './LongformArticleContainer';
 export { default as Menu } from './Menu';
+export { default as MenuV2 } from './MenuV2';
 export { default as Mosaic } from './Mosaic';
 export { default as Newsletter } from './Newsletter';
 export { default as PartnerAgencies } from './PartnerAgencies';

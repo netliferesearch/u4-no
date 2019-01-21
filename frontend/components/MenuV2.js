@@ -4,7 +4,7 @@ import sanityClient from '@sanity/client';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Link } from '../routes';
-import { SearchField } from '../components';
+import { SearchField, SearchFieldV2 } from '../components';
 import { ArrowRight } from '../components/icons';
 
 const classes = BEMHelper({
@@ -17,19 +17,17 @@ const menuClasses = BEMHelper({
   prefix: 'c-',
 });
 
-class Menu extends Component {
+class MenuV2 extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       activeMenu: false,
-      activeSearchMenu: false,
       activeExpand: false,
       data: '',
       activeItem: 0,
     };
     this.triggerMenu = this.triggerMenu.bind(this);
-    this.triggerSearchMenu = this.triggerSearchMenu.bind(this);
     this.triggerExpand = this.triggerExpand.bind(this);
   }
 
@@ -52,7 +50,6 @@ class Menu extends Component {
     Router.onRouteChangeStart = () => {
       this.setState({
         activeMenu: false,
-        activeSearchMenu: false,
         activeItem: 1,
       });
     };
@@ -62,17 +59,7 @@ class Menu extends Component {
     e.preventDefault();
     this.setState({
       activeMenu: !this.state.activeMenu,
-      activeSearchMenu: false,
       activeItem: 1,
-    });
-  }
-
-  triggerSearchMenu(e) {
-    e.preventDefault();
-    this.setState({
-      activeSearchMenu: !this.state.activeSearchMenu,
-      activeMenu: false,
-      activeItem: 3,
     });
   }
 
@@ -85,18 +72,18 @@ class Menu extends Component {
 
   render() {
     const topics = this.state.data;
-    const { noSearch } = this.props;
+    const { noSearch, triggerSearchMenu, activeSearchMenu } = this.props;
     return (
       <div>
         <ul {...classes('menu')}>
+          {!noSearch && !activeSearchMenu && (
+            <li {...classes('menu-item')}>
+              <button onClick={triggerSearchMenu}>Search</button>
+            </li>
+          )}
           <li {...classes('menu-item')}>
             <button onClick={this.triggerMenu}>Menu</button>
           </li>
-          {!noSearch && (
-            <li {...classes('menu-item')}>
-              <button onClick={this.triggerSearchMenu}>Search</button>
-            </li>
-          )}
         </ul>
         {this.state.activeMenu ? (
           <div>
@@ -106,11 +93,6 @@ class Menu extends Component {
                 <li {...classes('menu-item', this.state.activeItem === 1 && 'active')}>
                   <button onClick={this.triggerMenu}>Close</button>
                 </li>
-                {!noSearch && (
-                  <li {...classes('menu-item', this.state.activeItem === 3 && 'active')}>
-                    <button onClick={this.triggerSearchMenu}>Search</button>
-                  </li>
-                )}
               </ul>
 
               {topics && (
@@ -222,34 +204,16 @@ class Menu extends Component {
             </div>
           </div>
         ) : null}
-
-        {this.state.activeSearchMenu ? (
-          <div>
-            <button onClick={this.triggerSearchMenu} {...menuClasses('backdrop')} />
-            <div {...menuClasses()}>
-              <ul {...classes('menu', 'active')}>
-                <li {...classes('menu-item', this.state.activeItem === 1 && 'active')}>
-                  <button onClick={this.triggerMenu}>Menu</button>
-                </li>
-                <li {...classes('menu-item', this.state.activeItem === 3 && 'active')}>
-                  <button onClick={this.triggerSearchMenu}>Close</button>
-                </li>
-              </ul>
-
-              <SearchField modifier="small" />
-            </div>
-          </div>
-        ) : null}
       </div>
     );
   }
 }
 
-Menu.defaultProps = {
+MenuV2.defaultProps = {
   noSearch: false,
 };
-Menu.propTypes = {
+MenuV2.propTypes = {
   noSearch: PropTypes.bool,
 };
 
-export default Menu;
+export default MenuV2;
