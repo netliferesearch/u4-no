@@ -9,7 +9,7 @@ import itemTitle from '../helpers/itemTitle';
 import itemTypeAsHeading from '../helpers/itemTypeAsHeading';
 import buildUrl from '../helpers/buildUrl';
 import { Loader } from '../components';
-import { MagnifyingGlassV2 } from '../components/icons';
+import { SearchIcon } from '../components/icons';
 import { Router } from '../routes';
 
 const classes = BEMHelper({
@@ -112,7 +112,7 @@ class SearchFieldV2 extends Component {
 
             <div className="c-search-v2__content">
               <button tabIndex="1" {...classes('button')} type="submit" value="Search">
-                {this.state.loading ? <Loader /> : <MagnifyingGlassV2 />}
+                {this.state.loading ? <Loader /> : <SearchIcon />}
               </button>
               <input
                 ref={(el) => {

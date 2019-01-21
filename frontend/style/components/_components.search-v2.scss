@@ -78,8 +78,6 @@
 
 .c-search-v2__button  {
   border-radius: 0;
-  max-height: 48px;
-  max-width: 48px;
   border: none;
   padding: $spacing-small;
   color: $brand-main;
@@ -89,10 +87,6 @@
   &:focus {
     border: none;
     outline: none;
-  }
-  svg {
-    width: 100%;
-    height: 100%;
   }
 }
 
