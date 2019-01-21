@@ -25,7 +25,16 @@ const doSearch = async ({ searchQuery }) => {
         query: {
           multi_match: {
             query: searchQuery,
-            fields: ['title', 'standfirst', 'keywords', 'lead', 'content', 'authors'],
+            fields: [
+              'title',
+              'standfirst',
+              'keywords',
+              'lead',
+              'content',
+              'authors',
+              'termTitle^3',
+              'termContent^3',
+            ],
           },
         },
         highlight: {
@@ -42,11 +51,14 @@ const doSearch = async ({ searchQuery }) => {
           'slug*',
           'standfirst',
           'lead',
+          'type',
           'date',
           'pubdate.*',
           'publicationType.title',
           'keywords.keyword',
           'keywords._id',
+          'termTitle',
+          'termContent',
         ],
       },
     });

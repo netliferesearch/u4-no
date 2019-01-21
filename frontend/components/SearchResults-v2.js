@@ -27,37 +27,20 @@ const toggleFilterMenu = () => {
 const SearchResult = (props) => {
   // // eslint-disable-next-line
   // debugger;
+  const { _source = {} } = props;
+  const { type = '' } = _source;
 
-  const { type, highlight: { content = [] } = {}, _source = {} } = props;
-
-  const {
-    authors = [],
-    title = '',
-    date: { utc: utcDate = '' } = {},
-    slug: { current = '' } = {},
-    keywords = [],
-    url = '',
-    publicationType: { title: publicationTypeTitle = '' } = {},
-  } = _source;
-
-  if (type === 'glossary') {
+  if (type === 'term') {
+    const { termTitle = '', termContent, slug: { current = '' } = {} } = _source;
     return (
       <div {...classes('glossary')}>
         <span {...classes('items-type')}>Glossary</span>
         <br />
         <Link>
-          <a {...classes('items-title')}>Corruption</a>
+          <a {...classes('items-title')}>{termTitle}</a>
         </Link>
         <br />
-        <p>
-          The abuse of entrusted power for private gain. Although this is the most common
-          definition, other definitions exist. The World Bank, for example, defines corruption more
-          narrowly as "abuse of public office for private gain". All expert/specialist variations
-          nevertheless include three common elements: abuse (misuse, violation) of entrusted power
-          (duty, office, etc.) and private benefit. In everyday language, the term is used more
-          broadly to deonte a wide variety of objectionable or immoral acts, and not onlly those
-          associate…
-        </p>
+        <p>{termContent}</p>
         <a>Read more</a>
       </div>
     );
@@ -93,6 +76,16 @@ const SearchResult = (props) => {
       </div>
     );
   }
+  const { highlight: { content = [] } = {} } = props;
+  const {
+    authors = [],
+    title = '',
+    date: { utc: utcDate = '' } = {},
+    slug: { current = '' } = {},
+    keywords = [],
+    url = '',
+    publicationType: { title: publicationTypeTitle = '' } = {},
+  } = _source;
   return (
     <div>
       <span {...classes('items-type')}>{publicationTypeTitle}</span>
@@ -105,12 +98,12 @@ const SearchResult = (props) => {
       <span {...classes('items-date')}>{utcDate}</span>
       {content.map((htmlStr, index) => (
         <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
-      ))}
+        ))}
       {keywords.map(({ keyword }, index) => (
         <div key={index} {...classes('items-tab')}>
           {keyword}
         </div>
-      ))}
+        ))}
     </div>
   );
 };

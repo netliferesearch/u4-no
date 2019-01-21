@@ -42,9 +42,6 @@ function findLegacyPdfContent({ document }) {
 
 // make sanity publication ready to be ingested by elasticsearch.
 async function processPublication({ document: doc, allDocuments }) {
-  if (doc._type !== 'publication') {
-    return doc;
-  }
   const expand = initExpand(allDocuments);
   const legacyPDFContent = await findLegacyPdfContent({ document: doc });
   return {
@@ -79,9 +76,42 @@ async function processPublication({ document: doc, allDocuments }) {
   };
 }
 
+async function processTerm({ document: doc }) {
+  const { term, definition = [], ...restOfDoc } = doc;
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...restOfDoc,
+    // then we override some of those fields with processed data.
+    termTitle: term,
+    termContent: blocksToText(definition),
+  };
+}
+
+async function processTopic({ document: doc }) {
+  const {
+    agenda = [],
+    explainerText,
+    introduction: basicGuide = [],
+    resources,
+    ...restOfDoc
+  } = doc;
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...restOfDoc,
+    // then we override some of those fields with processed data.
+    content: explainerText,
+    basicGuide: blocksToText(basicGuide),
+    agenda: blocksToText(agenda),
+  };
+}
+
 async function processDocument({ document, allDocuments }) {
   if (document._type === 'publication') {
     return processPublication({ document, allDocuments });
+  } else if (document._type === 'term') {
+    return processTerm({ document, allDocuments });
+  } else if (document._type === 'topics') {
+    return processTopic({ document, allDocuments });
   }
   return document;
 }

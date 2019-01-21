@@ -51,14 +51,6 @@ const doBatchInsert = async (documents = []) => {
   }
 };
 
-// filter out types we do not want to be searchable in elasticsearch
-const shouldIndex = ({ _type = '' }) => {
-  const typesToIgnore = ['sanity.fileAsset', 'sanity.imageAsset', 'sanity.importmap', 'frontpage'];
-  return !typesToIgnore.find(type => type === _type);
-};
-
-const getMapping = ({ language }) => {};
-
 // setup mappings for each language and each type
 const setupMappings = async ({ types = [], languages = [] }) => {
   const indexes = languages
@@ -86,6 +78,10 @@ const setupMappings = async ({ types = [], languages = [] }) => {
             'u4-searchable': {
               properties: {
                 content: {
+                  type: 'text',
+                  analyzer,
+                },
+                termContent: {
                   type: 'text',
                   analyzer,
                 },
@@ -117,7 +113,7 @@ async function main() {
 
   const types = {};
   allDocuments.forEach(({ _type }) => (types[_type] = true));
-  console.log('Document types to process:\n', Object.keys(types), '\n');
+  console.log('Document types found:\n', Object.keys(types), '\n');
 
   const languages = {};
   allDocuments
@@ -127,8 +123,21 @@ async function main() {
 
   await setupMappings({ languages: Object.keys(languages) });
 
+  const typesToProcess = [
+    'term', // glossary
+    'publication',
+    'topics',
+    // TODO: enable these types
+    // 'person',
+    // 'article',
+    // 'frontpage',
+    // 'event',
+    // 'course'
+  ];
+  console.log('Document types to process:\n', typesToProcess, '\n');
+
   const processedDocuments = await Promise.map(
-    allDocuments.filter(shouldIndex).filter(({ _type }) => _type === 'publication'),
+    allDocuments.filter(({ _type }) => typesToProcess.find(type => type === _type)),
     document =>
       processDocument({ document, allDocuments })
         .then((doc) => {
