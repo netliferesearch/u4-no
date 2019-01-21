@@ -51,6 +51,7 @@
   @include inuit-font-size($font-size-tiny, $line-height-small);
   border: none;
   padding: 0;
+  color: $brand-dark;
   border-bottom: 1px solid transparent;
 }
 
