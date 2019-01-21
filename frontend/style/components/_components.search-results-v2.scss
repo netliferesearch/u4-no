@@ -55,6 +55,30 @@
   }
 }
 
+.c-search-results-v2__topbar-active-filters {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing;
+  @include mq($from: desktop) {
+    display: none;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    padding-right: $spacing-small;
+  }
+  li:first-child {
+    padding-left: $spacing-small;
+  }
+  li {
+    display:inline-block;
+    padding-right: $spacing-small;
+  }
+}
+
+
 /* CAUTION: IE hackery ahead */
 .c-search-results-v2__topbar-select::-ms-expand {
     display: none; /* remove default arrow on ie10 and ie11 */

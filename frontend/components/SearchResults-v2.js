@@ -125,6 +125,25 @@ const SearchResultsV2 = (props) => {
         <button onClick={toggleFilterMenu} {...classes('topbar-filter')}>
           Filter search result
         </button>
+        <div {...classes('topbar-active-filters')}>
+          <div>
+            <ul>
+              Active filters:
+              <li>Filter1,</li>
+              <li>Filter2,</li>
+              <li>Filter3,</li>
+              <li>Filter4,</li>
+              <li>Filter5,</li>
+              <li>Filter6,</li>
+              <li>Filter7,</li>
+              <li>Filter8,</li>
+              <li>Filter9,</li>
+              <li>Filter10,</li>
+              <li>Filter11</li>
+            </ul>
+          </div>
+          <button className="c-filters-v2__clear">Clear all filters</button>
+        </div>
         <div {...classes('topbar-sortby')}>
           <label>Sort by </label>
           <select
