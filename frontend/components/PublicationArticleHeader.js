@@ -12,6 +12,36 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
+// file downloads are not normally tracked by GA, thus we fire of a page view
+// before downloading.
+const logPDFPageView = ({e, url}) => {
+  e.preventDefault()
+  if (window.ga) {
+    return ga('send', {
+      hitType: 'pageview',
+      page: url,
+      hitCallback: createFunctionWithTimeout({
+        callback: () => {
+          window.location.href = url
+        }
+      })
+    });
+  }
+  window.location.href = url
+}
+
+function createFunctionWithTimeout({callback, opt_timeout = 1000}) {
+  let called = false;
+  function fn() {
+    if (!called) {
+      called = true;
+      callback();
+    }
+  }
+  setTimeout(fn, opt_timeout);
+  return fn;
+}
+
 const PublicationArticleHeader = ({
   title = '',
   subtitle = '',
@@ -115,7 +145,8 @@ const PublicationArticleHeader = ({
       )}
       {pdfFile.asset && (
         <div {...classes('meta', null, 'c-article-header__download')}>
-          <a href={`/publications/${slug.current}.pdf`} {...classes('download-text')}>
+          <a onClick={event => logPDFPageView({e: event, url: `/publications/${slug.current}.pdf`})}
+            href={`/publications/${slug.current}.pdf`} {...classes('download-text')}>
             <span>Download as PDF</span>
             <Download {...classes('download-icon')} />
           </a>
@@ -124,7 +155,8 @@ const PublicationArticleHeader = ({
       {!pdfFile.asset &&
         legacypdf.asset && (
           <div {...classes('meta', null, 'c-article-header__download')}>
-            <a href={`/publications/${slug.current}.pdf`} {...classes('download-text')}>
+            <a onClick={event => logPDFPageView({e: event, url: `/publications/${slug.current}.pdf`})}
+              href={`/publications/${slug.current}.pdf`} {...classes('download-text')}>
               <span>Download PDF</span>
               <Download {...classes('download-icon')} />
             </a>

@@ -2,7 +2,11 @@ require('dotenv').config({ path: './.env' });
 const next = require('next');
 const routes = require('./routes');
 const forceSsl = require('force-ssl-heroku');
-const { publicationPdfHandler } = require('../publication-pdf-builder/publication-pdf-handler');
+const bodyParser = require('body-parser');
+const {
+  publicationPdfHandler,
+} = require('../service-publication-pdf-builder/publication-pdf-handler');
+const searchHandler = require('./server.elastic');
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
 const handler = routes.getRequestHandler(app);
@@ -12,6 +16,7 @@ const express = require('express');
 
 app.prepare().then(() => {
   const server = express();
+  server.use(bodyParser.json());
   if (process.env.NODE_ENV === 'production') {
     server.use(forceSsl);
   }
@@ -21,5 +26,7 @@ app.prepare().then(() => {
   });
   server.get('/publications/:slug/pdf', publicationPdfHandler);
   server.get('/publications/:slug.pdf', publicationPdfHandler);
-  server.use(handler).listen(process.env.PORT || 3000);
+  server.use('/api/search', searchHandler);
+  server.use(handler);
+  server.listen(process.env.PORT || 3000);
 });

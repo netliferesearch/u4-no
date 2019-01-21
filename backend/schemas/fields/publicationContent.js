@@ -1,23 +1,17 @@
-import FunkyEditor from '../../components/FunkyEditor'
 import annotations from './annotations'
 import {
-  title,
-  subtitle,
-  standfirst,
   image,
-  leadText,
-  slug,
-  language,
-  license,
   box,
 } from './'
+import {FaTable} from 'react-icons/fa'
+import HtmlTableEditor from '../../components/HtmlTableEditor'
+
 
 const content = {
   name: 'content',
   title: 'Publication content',
   description: 'The body text and graphic elements.',
   type: 'array',
-  //inputComponent: FunkyEditor,
   of: [
     box,
     {
@@ -73,6 +67,22 @@ const content = {
         {
           name: 'title',
           title: 'Title',
+          type: 'string'
+        }
+      ]
+    },
+    {
+      name: 'table',
+      title: 'Table',
+      type: 'object',
+      inputComponent: HtmlTableEditor,
+      options: {
+        editModal: 'fullscreen'
+      },
+      fields: [
+        {
+          name: 'htmlStr',
+          readOnly: true,
           type: 'string'
         }
       ]

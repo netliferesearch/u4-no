@@ -20,6 +20,16 @@
   padding-left: $inuit-global-spacing-unit;
 }
 
+.o-wrapper--padded-large {
+  padding-left: $spacing;
+  padding-right: $spacing;
+  @include mq($from: tablet) {
+    padding-left: $spacing-huge;
+    padding-right: $spacing-huge;
+  }
+}
+
+
 .o-wrapper-inner {
   @include inuit-clearfix();
   margin-right: auto;

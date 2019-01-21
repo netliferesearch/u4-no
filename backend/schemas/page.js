@@ -1,4 +1,3 @@
-import FunkyEditor from '../components/FunkyEditor'
 import license from './fields/license';
 /**
  * A publication is a long form document

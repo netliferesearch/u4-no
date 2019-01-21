@@ -1,4 +1,5 @@
 import { slug } from './fields'
+import annotationsLinksOnly from './fields/annotationsLinksOnly'
 
 export default {
   name: 'term',
@@ -24,10 +25,7 @@ export default {
               {title: 'Emphasis', value: 'em'}
             ],
             // Support annotating text with a reference to an author
-            annotations: [
-              {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-              {name: 'internalReferance', title: 'Glossary term, publication or article', type: 'reference', to: [{type: 'term'},{type: 'publication'},{type: 'article'}]},
-            ]
+            annotations: annotationsLinksOnly
           }
         },
       ]

@@ -1,0 +1,11 @@
+.c-table{
+	overflow-x:auto;
+	padding: $spacing-tiny;
+	@include inuit-font-size($font-size-tiny, $line-height-normal);
+}
+
+@media print  {
+	.c-table {
+		overflow-x:visible;
+	}
+}

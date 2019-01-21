@@ -7,20 +7,23 @@
     "@babel/polyfill": "^7.0.0-beta.38",
     "@sanity/block-content-to-react": "^1.3.9",
     "@sanity/block-content-to-tree": "^0.3.0",
-    "@sanity/client": "^0.128.3",
+    "@sanity/client": "^0.139.0",
     "@storybook/react": "^3.3.10",
     "autoprefixer": "^7.2.5",
     "axios": "^0.17.1",
     "babel-jest": "^21.2.0",
-    "babel-plugin-transform-define": "^1.3.0",
+    "babel-plugin-transform-define": "^1.3.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "bluebird": "^3.5.3",
+    "body-parser": "^1.18.3",
     "concurrently": "^3.5.0",
     "dotenv": "^4.0.0",
     "downshift": "^1.25.0",
+    "elasticsearch": "^15.2.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "eslint": "^4.16.0",
@@ -34,6 +37,7 @@
     "force-ssl-heroku": "^1.0.2",
     "get-random-values": "^1.2.0",
     "glob": "^7.1.2",
+    "html-to-text": "^4.0.0",
     "inuitcss": "^6.0.0-beta.5",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^22.1.4",
@@ -43,7 +47,7 @@
     "next": "^4.2.3",
     "next-redux-wrapper": "^1.3.5",
     "next-routes": "^1.2.0",
-    "node-sass": "^4.7.1",
+    "node-sass": "^4.11.0",
     "nodemon": "^1.14.11",
     "postcss-easy-import": "^3.0.0",
     "postcss-loader": "^2.0.10",
@@ -65,14 +69,15 @@
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
     "slugify": "^1.2.9",
+    "textract": "^2.4.0",
     "victory": "^0.24.5"
   },
   "scripts": {
     "deploy-frontend": "git push heroku",
     "deploy-frontend--force": "git push heroku --force",
     "deploy-backend": "cd backend && sanity deploy && cd ..",
-    "test": "NODE_ENV=testing cd frontend && jest",
-    "dev": "NODE_ENV=dev && cd frontend && nodemon -w server.js -w routes.js -w pdf-generator.js server.js",
+    "test": "jest",
+    "dev": "NODE_ENV=dev && cd frontend && nodemon -w server.js -w server.elastic.js -w routes.js -w pdf-generator.js server.js",
     "build": "cd frontend && next build",
     "start": "cd frontend && node server.js",
     "heroku-postbuild": "cd frontend && next build",
@@ -99,5 +104,8 @@
   "bugs": {
     "url": "https://github.com/netliferesearch/u4-no/issues"
   },
-  "homepage": "https://github.com/netliferesearch/u4-no#readme"
+  "homepage": "https://github.com/netliferesearch/u4-no#readme",
+  "devDependencies": {
+    "prettier": "1.15.3"
+  }
 }

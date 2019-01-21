@@ -1,0 +1,66 @@
+{
+  "_createdAt": "2017-08-31T13:30:03Z",
+  "_id": "pub-148",
+  "_rev": "Y9l41GwJay3zQBWIHn6udV",
+  "_type": "publication",
+  "_updatedAt": "2018-02-05T14:44:35Z",
+  "abstract": "<p>Corruption has gained significant attention in development discourse and practice. While anticorruption (AC) training is identified as a useful approach to fostering the development of broadbased alliances for demanding reform and addressing demand side AC issues (in the public and private sector and in civil society), AC training is still very much in its infancy: AC training has not yet been mainstreamed into traditional development assistance (e.g. technical assistance); and also within development agencies there is scope for increasing AC training and broadening the audience. This Brief examines the foundations, objectives and scope of AC training and defines its target groups. It also looks into the design and methods of proper AC training.</p>",
+  "authors": [
+    {
+      "_ref": "author-198",
+      "_type": "reference"
+    },
+    {
+      "_ref": "author-34",
+      "_type": "reference"
+    }
+  ],
+  "date": {
+    "_type": "richDate",
+    "utc": "2007-01-01T00:00:00Z"
+  },
+  "keywords": [
+    {
+      "_key": "ZcpAY5QS",
+      "_ref": "tag-21",
+      "_type": "reference"
+    },
+    {
+      "_key": "cjhfi6yX",
+      "_ref": "tag-344",
+      "_type": "reference"
+    }
+  ],
+  "lang": "en_US",
+  "language": "en_US",
+  "legacypdf": {
+    "_type": "file",
+    "asset": {
+      "_ref": "file-Dm2jKq5LKAfIpuEIOOjdgjyR",
+      "_type": "reference"
+    }
+  },
+  "pubdate": "{ts '2007-01-01 00:00:00'}",
+  "publicationType": {
+    "_ref": "pubtype-1",
+    "_type": "reference"
+  },
+  "reference": "Bergen: Chr. Michelsen Institute (U4 Brief 2007:13) 4 p.",
+  "related": [],
+  "slug": {
+    "current": "anti-corruption-training-and-education"
+  },
+  "title": "Anti-Corruption Training and Education",
+  "topics": [
+    {
+      "_key": "MhPtFmwL",
+      "_ref": "fe9002b9-a333-4461-aabc-cbe3c8dfb92f",
+      "_type": "reference",
+      "_weak": true
+    }
+  ],
+  "translation": {
+    "_ref": "pub-148",
+    "_type": "reference"
+  }
+}

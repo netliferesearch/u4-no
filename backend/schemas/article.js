@@ -1,4 +1,3 @@
-import FunkyEditor from '../components/FunkyEditor'
 import { annotations, title, longTitle, standfirst,
 image, explainerText, featuredImage, slug, box } from './fields'
 

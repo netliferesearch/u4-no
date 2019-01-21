@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { route } from 'part:@sanity/base/router'
 import client from 'part:@sanity/base/client'
 import Spinner from 'part:@sanity/components/loading/spinner'
-import Preview from 'part:@sanity/components/previews/default'
 import Icon from './components/Icon'
 
-
-
-const Pane = ({ data = false }) => {
-  return (<div>
+const Pane = ({ data = [] }) => {
+  return <Fragment>
     <ul>
     {
-        data && data.map(({_id, _type, title, workflow}, index) => <li key={index}>
+        data.map(({_id, _type, title, workflow = {}}, index) =>{
+          const {progress, assigned = []} = workflow
+          return <li key={index}>
           <h2><a href={`/desk/${_type}/edit/${_id}`}>{title}</a></h2>
-          <h3>Progress: {workflow.progress}</h3>
-          <h3>Assigned to: {workflow.assigned.map(({ firstName, surname, _type, _id }, index) => <a key={index} href={`/desk/${_type}/edit/${_id}`}>{firstName} {surname}</a>)}</h3>
-        </li>)
+          <h3>Progress: {progress}</h3>
+          <h3>Assigned to: {assigned.map(({ firstName, surname, _type, _id }, index) => <a key={index} href={`/desk/${_type}/edit/${_id}`}>{firstName} {surname}</a>)}</h3>
+        </li>}
+      )
     }
     </ul>
-  </div>)
+  </Fragment>
 }
 
 class FunkyWorkflow extends Component {

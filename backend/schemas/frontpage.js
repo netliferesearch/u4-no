@@ -1,5 +1,6 @@
-import FunkyEditor from '../components/FunkyEditor'
 import license from './fields/license';
+import annotationsLinksOnly from './fields/annotationsLinksOnly'
+
 /**
  * A publication is a long form document
  */
@@ -72,10 +73,7 @@ export default {
               {title: 'Emphasis', value: 'em'}
             ],
             // Support annotating text with a reference to an author
-            annotations: [
-              {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-              {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-            ]
+            annotations: annotationsLinksOnly
           }
         },
         {
@@ -113,10 +111,7 @@ export default {
                       {title: 'Emphasis', value: 'em'}
                     ],
                     // Support annotating text with a reference to an author
-                    annotations: [
-                      {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-                      {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-                    ]
+                    annotations: annotationsLinksOnly
                   }
                 }
               ]
@@ -165,10 +160,7 @@ export default {
                       {title: 'Emphasis', value: 'em'}
                     ],
                     // Support annotating text with a reference to an author
-                    annotations: [
-                      {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-                      {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-                    ]
+                    annotations: annotationsLinksOnly
                   }
                 }
               ]
@@ -434,10 +426,7 @@ export default {
                     {title: 'Emphasis', value: 'em'}
                   ],
                   // Support annotating text with a reference to an author
-                  annotations: [
-                    {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-                    {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-                  ]
+                  annotations: annotationsLinksOnly
                 },
               }],
             },
@@ -460,10 +449,7 @@ export default {
                     {title: 'Emphasis', value: 'em'}
                   ],
                   // Support annotating text with a reference to an author
-                  annotations: [
-                    {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-                    {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-                  ]
+                  annotations: annotationsLinksOnly
                 }
               }],
             },
@@ -517,10 +503,7 @@ export default {
                     {title: 'Emphasis', value: 'em'}
                   ],
                   // Support annotating text with a reference to an author
-                  annotations: [
-                    {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-                    {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-                  ]
+                  annotations: annotationsLinksOnly
                 },
               }],
             },
@@ -543,10 +526,7 @@ export default {
                     {title: 'Emphasis', value: 'em'}
                   ],
                   // Support annotating text with a reference to an author
-                  annotations: [
-                    {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-                    {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-                  ]
+                  annotations: annotationsLinksOnly
                 }
               }],
             },
@@ -600,10 +580,7 @@ export default {
                     {title: 'Emphasis', value: 'em'}
                   ],
                   // Support annotating text with a reference to an author
-                  annotations: [
-                    {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-                    {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-                  ]
+                  annotations: annotationsLinksOnly
                 },
               }],
             },
@@ -626,10 +603,7 @@ export default {
                     {title: 'Emphasis', value: 'em'}
                   ],
                   // Support annotating text with a reference to an author
-                  annotations: [
-                    {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-                    {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-                  ]
+                  annotations: annotationsLinksOnly
                 }
               }],
             },
@@ -741,10 +715,7 @@ export default {
                     {title: 'Emphasis', value: 'em'}
                   ],
                   // Support annotating text with a reference to an author
-                  annotations: [
-                    {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-                    {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-                  ]
+                  annotations: annotationsLinksOnly
                 }
               }],
             },
@@ -889,10 +860,7 @@ export default {
                       {title: 'Emphasis', value: 'em'}
                     ],
                     // Support annotating text with a reference to an author
-                    annotations: [
-                      {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-                      {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-                    ]
+                    annotations: annotationsLinksOnly
                   }
                 }
               ]
@@ -957,7 +925,7 @@ export default {
     {
       title: 'Date',
       name: 'dateDesc',
-      by: [{ field: 'date', direction: 'desc' }],
+      by: [{ field: '_updatedAt', direction: 'desc' }],
     },
     {
       title: 'Title',

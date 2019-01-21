@@ -121,13 +121,17 @@ class Menu extends Component {
                   <ul {...menuClasses('list')}>
                     {topics.slice(0, 5).map(topic => (
                       <li {...menuClasses('list-item')} key={topic._id}>
-                        <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>{topic.title}</a>
+                        <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
+                          {topic.title}
+                        </a>
                       </li>
                     ))}
                     {this.state.activeExpand &&
                       topics.slice(5, 50).map(topic => (
                         <li {...menuClasses('list-item')} key={topic._id}>
-                          <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>{topic.title}</a>
+                          <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
+                            {topic.title}
+                          </a>
                         </li>
                       ))}
                     {this.state.activeExpand ? (
