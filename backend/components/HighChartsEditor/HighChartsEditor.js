@@ -1,6 +1,23 @@
 import React from 'react';
-import * as highed from './highcharts-editor.complete.0.2.2'
-// import PatchEvent, {set, unset, setIfMissing} from 'part:@sanity/form-builder/patch-event'
+import PatchEvent, {set, unset, setIfMissing} from 'part:@sanity/form-builder/patch-event'
+
+const scriptsToLoad = [
+  'https://code.highcharts.com/stock/highstock.js',
+  'https://code.highcharts.com/highcharts-more.js',
+  'https://code.highcharts.com/highcharts-3d.js',
+  'https://code.highcharts.com/modules/data.js',
+  'https://code.highcharts.com/modules/exporting.js',
+  'https://code.highcharts.com/modules/funnel.js',
+  'https://code.highcharts.com/modules/solid-gauge.js',
+  'https://code.highcharts.com/modules/series-label.js',
+  '/static/highcharts-editor.min.js'
+]
+
+const stylesToLoad = [
+  '/static/highcharts-editor.min.css'
+]
+
+
 
 export default class HighChartsEditor extends React.Component {
 
@@ -15,7 +32,6 @@ export default class HighChartsEditor extends React.Component {
      */
     this.state = {
       content: htmlStr,
-      editor: null
     }
   }
 
@@ -26,13 +42,41 @@ export default class HighChartsEditor extends React.Component {
   };
 
   componentDidMount() {
-    console.log('highed', highed)
+    this.loadHighChartsEditor()
+  }
 
-    // const editor = highed.Editor('highcharts-editor')
-    // editor.on('ChartChange', this.handleEditorChange)
-    // this.setState({
-    //   editor
-    // })
+  loadHighChartsEditor = () => {
+    stylesToLoad.forEach(url => {
+      if (document.querySelector(`[href="${url}"]`)) {
+        return // css already added
+      }
+      const linkNode = document.createElement("link");
+      linkNode.type = "text/css";
+      linkNode.rel = "stylesheet";
+      linkNode.setAttribute('href', url);
+      document.head.appendChild(linkNode);
+    })
+
+    // TODO: Loop over highcharts nodes and add to DOM.
+    // alternatively use iframe to load the standalone example.
+
+  }
+
+  componentWillUnmount() {
+    this.state.editorScriptNodes.forEach(node => document.head.removeChild(node))
+    document.head.removeChild(this.state.editorCssNode)
+    window.highed = null
+    window.Highcharts = null
+  }
+
+  onHighEdLoaded = () => {
+    console.log('Highed was loaded', window.highed)
+    if (!window.highed) {
+      console.log('Failed to load highed editor')
+      return
+    }
+    const editor = window.highed.Editor('highcharts-editor');
+    editor.on('ChartChange', this.handleEditorChange);
   }
 
   handleEditorChange = () => {
@@ -41,15 +85,6 @@ export default class HighChartsEditor extends React.Component {
       console.log('Editor change', editor.getEmbeddableHTML())
       console.log('Editor change', editor.getEmbeddableJSON())
     }
-  }
-
-  componentWillUnmount() {
-    const {content: value} = this.state || {}
-    const patches = PatchEvent.from([
-      setIfMissing({}),
-      value ? set(value, ['htmlStr']) : unset(['htmlStr'])
-    ])
-    this.props.onChange(patches)
   }
 
   focus = () => {
