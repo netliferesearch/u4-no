@@ -35,7 +35,7 @@ const Search = ({
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
       }}
     >
-      <div className="o-wrapper o-wrapper--padded o-layout o-layout--flush">
+      <div className="o-wrapper o-wrapper--padded-large o-layout o-layout--flush">
         <section className=" o-layout__item u-12/12 u-3/12@desktop">
           <SearchFiltersV2 />
         </section>

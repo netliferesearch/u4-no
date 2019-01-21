@@ -4,6 +4,7 @@
   display: none;
   @include mq($from: desktop) {
     display: block;
+    padding: 0;
   }
 }
 
