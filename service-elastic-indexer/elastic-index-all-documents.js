@@ -72,6 +72,10 @@ const setupMappings = async ({ types = [], languages = [] }) => {
 
   for (const index of indexes) {
     try {
+      const indexExists = await client.indices.exists({ index });
+      if (indexExists) {
+        continue; // skip iteration
+      }
       const analyzer = analyzers[index];
       const result = await client.indices.create({
         index,

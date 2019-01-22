@@ -93,10 +93,10 @@ async function processPublication({ document: doc, allDocuments }) {
     publicationType: expand({
       reference: doc.publicationType,
     }),
-    keywords: expand({
+    keywords: _.uniq(expand({
       references: doc.keywords || [],
-      process: ({ keyword, _id, language }) => ({ keyword, _id, language }),
-    }),
+      process: ({ keyword }) => keyword,
+    })),
     topicIds: topics.map(({ _ref }) => _ref),
   };
 }

@@ -103,7 +103,7 @@ const SearchResult = (props) => {
       {content.map((htmlStr, index) => (
         <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
       ))}
-      {keywords.map(({ keyword }, index) => (
+      {keywords.map((keyword, index) => (
         <div key={index} {...classes('items-tab')}>
           {keyword}
         </div>
@@ -149,59 +149,6 @@ const SearchResultsV2 = (props) => {
             <SearchResult {...hit} />
           </li>
         ))}
-
-        <h1>Dummy results below here</h1>
-
-        <li {...classes('items')}>
-          <span {...classes('items-type')}>U4 Issue</span>
-          <span {...classes('items-date')}>27.11.2018</span>
-          <br />
-          <Link>
-            <a {...classes('items-title')}>Public financial management</a>
-          </Link>
-          <br />
-          <p>
-            … especially as these apply to country level studies. Addressing these weaknesses must
-            include recognition of <em>corruption’s</em> role in facilitating IFF generally. Donors
-            should focus on promoting country studies of IFF and broader anti-<em>corruption</em>{' '}
-            policies in order to have the greatest impact on curbing IFF.
-          </p>
-          <div {...classes('items-tab')}>International drivers of corruption</div>
-        </li>
-
-        <li {...classes('items')}>
-          <span {...classes('items-type')}>U4 Issue</span>
-          <span {...classes('items-date')}>04.06.2018</span>
-          <br />
-          <Link>
-            <a {...classes('items-title')}>The cognitive psychology of corruption</a>
-          </Link>
-          <br />
-          <p>
-            Traditional theories of <em>corruption</em> often make assumptions about motivations
-            that may not necessarily be valid. We explored the power of an alternative theoretical
-            paradigm to explain corrupt behaviour: cognitive psychology. We found evidence in the..{' '}
-          </p>
-          <div {...classes('items-tab')}>Informal contexts</div>
-          <div {...classes('items-tab')}>Anti-corruption basics</div>
-        </li>
-
-        <li {...classes('items')}>
-          <span {...classes('items-type')}>Online courses</span>
-          <span {...classes('items-date')}>dato</span>
-          <br />
-          <Link>
-            <a {...classes('items-title')}>Corruption in the justice sector</a>
-          </Link>
-          <br />
-          <div>18 March – 5 April</div>
-          <p>
-            3 week, expert-led course. Learn how to integrate justice sector institutions in
-            programming for judicial reform and rule of law. This course is for practitioners
-            involved in the justice sector as well as general governance experts with a good
-            understanding of the sector.
-          </p>
-        </li>
       </ul>
     </section>
   );
