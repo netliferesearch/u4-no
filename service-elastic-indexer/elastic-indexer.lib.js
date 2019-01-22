@@ -62,7 +62,7 @@ async function findLegacyPdfContent({ document }) {
 async function processPublication({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
   const legacyPDFContent = await findLegacyPdfContent({ document: doc });
-  const { slug: { current = '' } = {} } = doc;
+  const { slug: { current = '' } = {}, topics = [] } = doc;
   const url = `/publications/${current}`;
   return {
     // by default we add all Sanity fields to elasticsearch.
@@ -71,21 +71,24 @@ async function processPublication({ document: doc, allDocuments }) {
     url,
     content: legacyPDFContent || blocksToText(doc.content || []),
     abbreviations: blocksToText(doc.abbreviations || []),
+    references: blocksToText(doc.references || []),
     methodology: blocksToText(doc.methodology || []),
     ...(doc.abstract ? { abstract: htmlToText.fromString(doc.abstract, { wordwrap: false }) } : {}),
     authors: expand({
       references: doc.authors,
-      process: ({ _key, firstName, surname }) => ({
-        _key,
-        name: `${firstName} ${surname}`,
-      }),
+      process: ({ firstName, surname }) => `${firstName} ${surname}`,
+    }),
+    authorIds: expand({
+      references: doc.authors,
+      process: ({ _id }) => _id,
     }),
     editors: expand({
       references: doc.editors,
-      process: ({ _key, firstName, surname }) => ({
-        _key,
-        name: `${firstName} ${surname}`,
-      }),
+      process: ({ firstName, surname }) => `${firstName} ${surname}`,
+    }),
+    editorIds: expand({
+      references: doc.editors,
+      process: ({ _id }) => _id,
     }),
     publicationType: expand({
       reference: doc.publicationType,
@@ -94,6 +97,7 @@ async function processPublication({ document: doc, allDocuments }) {
       references: doc.keywords || [],
       process: ({ keyword, _id, language }) => ({ keyword, _id, language }),
     }),
+    topicIds: topics.map(({ _ref }) => _ref),
   };
 }
 
@@ -119,14 +123,18 @@ async function processTopic({ document: doc }) {
     resources,
     title: topicTitle,
     slug: { current = '' } = {},
+    featuredImage: { _sanityAsset = '' } = {},
     ...restOfDoc
   } = doc;
   const url = `/topics/${current}`;
+  const fileName = _sanityAsset.replace('image@file://./images/', '');
+  const featuredImageUrl = `https://cdn.sanity.io/images/1f1lcoov/production/${fileName}`;
   return {
     ...restOfDoc,
     // then we override some of those fields with processed data.
     topicTitle,
     url,
+    featuredImageUrl,
     topicContent: explainerText,
     basicGuide: blocksToText(basicGuide),
     agenda: blocksToText(agenda),

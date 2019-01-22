@@ -83,11 +83,35 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                   type: 'text',
                   analyzer,
                 },
+                lead: {
+                  type: 'text',
+                  analyzer,
+                },
+                mainPoints: {
+                  type: 'text',
+                  analyzer,
+                },
+                methodology: {
+                  type: 'text',
+                  analyzer,
+                },
                 termContent: {
                   type: 'text',
                   analyzer,
                 },
                 topicContent: {
+                  type: 'text',
+                  analyzer,
+                },
+                topicContent: {
+                  type: 'text',
+                  analyzer,
+                },
+                basicGuide: {
+                  type: 'text',
+                  analyzer,
+                },
+                agenda: {
                   type: 'text',
                   analyzer,
                 },
