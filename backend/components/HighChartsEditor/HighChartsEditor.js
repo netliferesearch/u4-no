@@ -25,34 +25,12 @@ export default class HighChartsEditor extends React.Component {
     })
   };
 
-  onEditorLoaded = () => {
-    const iframe = document.getElementById('highed-editor')
-    const intervalID = setInterval(() => {
-      console.log('Polling for editor')
-      const {highedEditor} = iframe.contentWindow
-      if (highedEditor) {
-        clearInterval(intervalID)
-        const { value = {}} = this.props
-        const {jsonStr = ''} = value
-        if (jsonStr) {
-          // load saved data into newly opened editor
-          highedEditor.chart.data.json(JSON.parse(jsonStr))
-        }
-        highedEditor.on('ChartChange', this.handleEditorChange)
-        this.setState({
-          intervalID: null,
-          editor: highedEditor
-        })
-      }
-    }, 200)
-    this.setState({intervalID})
-  }
-
   componentWillUnmount() {
-    const {intervalID, editor} = this.state
-    if (intervalID) {
-      clearInterval(intervalID)
+    const {editor} = this.state
+    if (!editor) {
+      return
     }
+    // when unloading we save the iframe data.
     const jsonStr = editor.getEmbeddableJSON()
     const htmlStr = editor.getEmbeddableHTML()
     const svgStr = editor.getEmbeddableSVG()
@@ -63,6 +41,34 @@ export default class HighChartsEditor extends React.Component {
       svgStr ? set(svgStr, ['svgStr']) : unset(['svgStr'])
     ])
     this.props.onChange(patches)
+  }
+
+  componentDidMount() {
+    const mountNode = document.getElementById('highed-mountpoint')
+    const iframe = document.createElement('iframe')
+    iframe.setAttribute('width', '100%')
+    iframe.setAttribute('height', '800px')
+    iframe.setAttribute('id', 'highed-editor')
+    iframe.setAttribute('src', '/static/standalone.html')
+    iframe.onload = () => this.onEditorIframeLoaded(iframe)
+    mountNode.appendChild(iframe)
+  }
+
+  onEditorIframeLoaded = (iframe) => {
+    const { value = {}} = this.props
+    const {jsonStr = ''} = value
+    const { data = {}, ...options } = JSON.parse(jsonStr) || {}
+    iframe.contentWindow.editorPayload = {
+      options: Object.keys(options) ? options : null,
+      csvData: data.csv,
+      cb: (highedEditor) => {
+        console.log('iframe callback was called', highedEditor)
+        highedEditor.on('ChartChange', this.handleEditorChange)
+        this.setState({
+          editor: highedEditor
+        })
+      }
+    }
   }
 
   handleEditorChange = () => {
@@ -82,7 +88,7 @@ export default class HighChartsEditor extends React.Component {
   render() {
     const {content = ''} = this.state || {}
     return (
-      <iframe id="highed-editor" width="100%" height="800px" onLoad={this.onEditorLoaded} src="/static/standalone.html"></iframe>
+      <div id="highed-mountpoint" />
     );
   }
 }

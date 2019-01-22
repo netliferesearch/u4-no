@@ -34,7 +34,24 @@
 <body>
 <script>
     highed.ready(function () {
-        window.highedEditor = highed.Editor(document.body);
+        var intervalID = setInterval(function () {
+          // This code waits for data to arrive from parent window.
+          // and then calls a callback.
+          if (window.editorPayload) {
+            clearInterval(intervalID)
+            var optionsToLoad = window.editorPayload.options
+            var csvDataToLoad = window.editorPayload.csvData
+            var editor
+            if (optionsToLoad && csvDataToLoad) {
+              editor = highed.Editor(document.body,
+                {defaultChartOptions: optionsToLoad});
+              editor.chart.data.csv(csvDataToLoad)
+            } else {
+              editor = highed.Editor(document.body);
+            }
+            window.editorPayload.cb(editor)
+          }
+        }, 200)
     });
 </script>
 </body>
