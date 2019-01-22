@@ -129,6 +129,10 @@ async function processTopic({ document: doc }) {
   const url = `/topics/${current}`;
   const fileName = _sanityAsset.replace('image@file://./images/', '');
   const featuredImageUrl = `https://cdn.sanity.io/images/1f1lcoov/production/${fileName}`;
+  // add helper flags to easier determine if we should show topic links in
+  // search result.
+  const isAgendaPresent = agenda.length > 0;
+  const isBasicGuidePresent = basicGuide.length > 0;
   return {
     ...restOfDoc,
     // then we override some of those fields with processed data.
@@ -138,6 +142,8 @@ async function processTopic({ document: doc }) {
     topicContent: explainerText,
     basicGuide: blocksToText(basicGuide),
     agenda: blocksToText(agenda),
+    isAgendaPresent,
+    isBasicGuidePresent,
   };
 }
 

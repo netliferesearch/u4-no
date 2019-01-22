@@ -38,32 +38,45 @@ const SearchResult = (props) => {
       </div>
     );
   } else if (type === 'topic') {
+    const {
+      url = '',
+      featuredImageUrl = '',
+      longTitle = '',
+      explainerText = '',
+      isAgendaPresent,
+      isBasicGuidePresent,
+      publicationType: { title: publicationTypeTitle = '' } = {},
+    } = _source;
     return (
       <div {...classes('topic')}>
         <span {...classes('items-type')}>Topic</span>
-        <span {...classes('items-date')}>dato</span>
         <br />
-        <Link>
-          <a {...classes('items-title')}>Public financial management</a>
+        <Link route={url}>
+          <a {...classes('items-title')}>{longTitle}</a>
         </Link>
         <br />
         <div {...classes('topic-wrapper')}>
           <div {...classes('topic-img')}>
-            <img src="https://cdn.sanity.io/images/1f1lcoov/production/CDwR6nTXrees_Amh4L1anCN3erSxJfuqlhKN9-3500x2333.jpg?w=1120&fit=crop&crop=focalpoint" />
+            {featuredImageUrl && <img src={`${featuredImageUrl}?w=500&fit=crop&crop=focalpoint`} />}
           </div>
           <div {...classes('topic-content')}>
-            <p>
-              Corruption affects all sides of public financial management. Revenues and tax
-              collection, the budget process, public spending and procurement are at risk…
-            </p>
-            <div {...classes('topic-point')}>
-              <ArrowRightSmall />
-              <span> Basic guide</span>
-            </div>
-            <div {...classes('topic-point')}>
-              <ArrowRightSmall />
-              <span> Research and policy agenda</span>
-            </div>
+            <p>{explainerText}</p>
+            {isAgendaPresent && (
+              <div {...classes('topic-point')}>
+                <ArrowRightSmall />
+                <Link route={`${url}/basics`}>
+                  <a> Basic guide</a>
+                </Link>
+              </div>
+            )}
+            {isBasicGuidePresent && (
+              <div {...classes('topic-point')}>
+                <ArrowRightSmall />
+                <Link route={`${url}/agenda`}>
+                  <a>Research and policy agenda</a>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

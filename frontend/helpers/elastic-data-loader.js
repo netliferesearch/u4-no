@@ -65,6 +65,11 @@ const doSearch = async ({ searchQuery }) => {
           'termTitle',
           'termContent',
           'url',
+          'featuredImageUrl',
+          'longTitle',
+          'explainerText',
+          'isAgendaPresent',
+          'isBasicGuidePresent',
         ],
       },
     });
