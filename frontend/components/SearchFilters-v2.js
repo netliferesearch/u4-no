@@ -22,11 +22,11 @@ const SearchFiltersV2 = () => (
       </button>
     </div>
     <div className="c-filters-v2__item">
-      <div className="c-filters-v2__radio">
+      <div className="c-input">
         <input type="radio" name="content" value="all-content" checked />
-        <label htmlFor="all-content" className="c-filters-v2__checkbox-label">All website content</label>
+        <label htmlFor="all-content">All website content</label>
       </div>
-      <div className="c-filters-v2__radio">
+      <div className="c-input">
         <input type="radio" name="content" value="publications-only" />
         <label htmlFor="publications-only" className="c-filters-v2__checkbox-label">Publications only</label>
       </div>
@@ -38,25 +38,25 @@ const SearchFiltersV2 = () => (
         <input className="c-filters-v2__clear" type="reset" value="Clear" />
       </div>
       <span>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-1" value="pub-type-pubtype-1" />
-          <label htmlFor="pub-type-pubtype-1" className="c-filters-v2__checkbox-label">U4 Brief (137)</label>
+          <label htmlFor="pub-type-pubtype-1">U4 Brief (137)</label>
         </div>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-2" value="pub-type-pubtype-2" />
-          <label htmlFor="pub-type-pubtype-2" className="c-filters-v2__checkbox-label">U4 Issue (119)</label>
+          <label htmlFor="pub-type-pubtype-2">U4 Issue (119)</label>
         </div>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-3" value="pub-type-pubtype-3" />
-          <label htmlFor="pub-type-pubtype-3" className="c-filters-v2__checkbox-label">U4 Helpdesk Answer (303)</label>
+          <label htmlFor="pub-type-pubtype-3">U4 Helpdesk Answer (303)</label>
         </div>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-4" value="pub-type-pubtype-4" />
-          <label htmlFor="pub-type-pubtype-4" className="c-filters-v2__checkbox-label">U4 Report (6)</label>
+          <label htmlFor="pub-type-pubtype-4">U4 Report (6)</label>
         </div>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-5" value="pub-type-pubtype-5" />
-          <label htmlFor="pub-type-pubtype-5" className="c-filters-v2__checkbox-label">Practice Insight (19)</label>
+          <label htmlFor="pub-type-pubtype-5">Practice Insight (19)</label>
         </div>
       </span>
       <p>See all</p>
@@ -68,25 +68,25 @@ const SearchFiltersV2 = () => (
         <input className="c-filters-v2__clear" type="reset" value="Clear" />
       </div>
       <span>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-1" value="pub-type-pubtype-1" />
-          <label htmlFor="pub-type-pubtype-1" className="c-filters-v2__checkbox-label">Natural resources and energy (117)</label>
+          <label htmlFor="pub-type-pubtype-1">Natural resources and energy (117)</label>
         </div>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-2" value="pub-type-pubtype-2" />
-          <label htmlFor="pub-type-pubtype-2" className="c-filters-v2__checkbox-label">Development cooperation (88)</label>
+          <label htmlFor="pub-type-pubtype-2">Development cooperation (88)</label>
         </div>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-3" value="pub-type-pubtype-3" />
-          <label htmlFor="pub-type-pubtype-3" className="c-filters-v2__checkbox-label">International drivers of corruption (44)</label>
+          <label htmlFor="pub-type-pubtype-3">International drivers of corruption (44)</label>
         </div>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-4" value="pub-type-pubtype-4" />
-          <label htmlFor="pub-type-pubtype-4" className="c-filters-v2__checkbox-label">Justice sector (43)</label>
+          <label htmlFor="pub-type-pubtype-4">Justice sector (43)</label>
         </div>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-5" value="pub-type-pubtype-5" />
-          <label htmlFor="pub-type-pubtype-5" className="c-filters-v2__checkbox-label">Public service delivery (41)</label>
+          <label htmlFor="pub-type-pubtype-5">Public service delivery (41)</label>
         </div>
       </span>
       <p>See all</p>
@@ -98,21 +98,21 @@ const SearchFiltersV2 = () => (
         <input className="c-filters-v2__clear" type="reset" value="Clear" />
       </div>
       <span>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-1" value="pub-type-pubtype-1" />
-          <label htmlFor="pub-type-pubtype-1" className="c-filters-v2__checkbox-label">English (522)</label>
+          <label htmlFor="pub-type-pubtype-1">English (522)</label>
         </div>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-2" value="pub-type-pubtype-2" />
-          <label htmlFor="pub-type-pubtype-2" className="c-filters-v2__checkbox-label">French (55)</label>
+          <label htmlFor="pub-type-pubtype-2">French (55)</label>
         </div>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-3" value="pub-type-pubtype-3" />
-          <label htmlFor="pub-type-pubtype-3" className="c-filters-v2__checkbox-label">Ukranian (1)</label>
+          <label htmlFor="pub-type-pubtype-3">Ukranian (1)</label>
         </div>
-        <div className="c-filters-v2__checkbox">
+        <div className="c-input">
           <input type="checkbox" id="pub-type-pubtype-4" value="pub-type-pubtype-4" />
-          <label htmlFor="pub-type-pubtype-4" className="c-filters-v2__checkbox-label">Russian (1)</label>
+          <label htmlFor="pub-type-pubtype-4">Russian (1)</label>
         </div>
       </span>
     </form>
@@ -124,14 +124,14 @@ const SearchFiltersV2 = () => (
       <div className="c-filters-v2__select">
         <div>
           <label htmlFor="from">From:</label>
-          <select id="from">
+          <select id="from" className="c-select">
             <option selected value="2000">2000</option>
             <option value="2001">2001</option>
           </select>
         </div>
         <div>
           <label htmlFor="to">To:</label>
-          <select id="to">
+          <select id="to" className="c-select">
             <option selected value="2018">2018</option>
             <option selected value="2019">2019</option>
           </select>

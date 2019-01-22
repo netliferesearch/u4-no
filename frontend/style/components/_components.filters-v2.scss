@@ -148,33 +148,16 @@
   flex-wrap: wrap;
 }
 
-.c-filters-v2__select label {
-  padding-right: $spacing-small;
+.c-filters-v2__select div {
+  margin-bottom: $spacing-small;
 }
 
-.c-filters-v2__select select {
-   background: transparent;
-   min-width: 80px;
-   padding: 5px;
-   font-size: 16px;
-   line-height: 1;
-   height: 34px;
-   border: 1px solid $brand-dark;
-   margin-bottom: $spacing-small;
+.c-filters-v2__select label {
+  padding-right: $spacing-tiny;
 }
 
 .c-filters-v2__select > :first-child {
   margin-right: $spacing;
-}
-
-
-
-.c-filters-v2__checkbox-label {
-  margin-left: 14px;
-}
-
-.c-filters-v2__radio {
-  margin-top:14px;
 }
 
 .c-filters-v2--open {

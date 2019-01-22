@@ -89,15 +89,3 @@
     outline: none;
   }
 }
-
-
-.c-search-v2__label--small {
-  color: $white;
-  margin-top: $spacing-large;
-}
-.c-search-v2__input--small {
-  @include inuit-font-size($font-size-small, $line-height-small );
-  @include mq($from: tablet) {
-    @include inuit-font-size($font-size-normal, $line-height-normal );
-  }
-}

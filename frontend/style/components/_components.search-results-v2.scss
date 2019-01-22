@@ -3,9 +3,6 @@
   overflow-y: auto;
 }
 
-
-
-
 .c-search-results-v2__topbar {
   color: $brand-dark;
   margin: $spacing 0 $spacing-large;
@@ -21,37 +18,10 @@
   }
 }
 
-.c-search-results-v2__topbar-result {
-  padding: 0;
-  margin: 0;
-  @include inuit-font-size($font-size-tiny, $line-height-small );
-  @include mq($from: tablet) {
-    @include inuit-font-size($font-size-tiny, $line-height-normal);
-  }
-}
 .c-search-results-v2__topbar-sortby{
   width: 100%;
   @include mq($from: desktop) {
     width: auto;
-  }
-}
-.c-search-results-v2__topbar-select {
-  background: url('/static/arrowdown.svg') no-repeat;
-  background-position: center right;
-  border: 1px solid $brand-dark;
-  border-radius: 0;
-  box-shadow: 1px 1px 1px 1px rgba($black, .1);
-  color: $brand-dark;
-  width: 100%;
-  padding: 5px 25px 5px 5px;
-  font-size: 16px;
-  height: 34px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  @include mq($from: desktop) {
-    width: 150px;
-    margin-left: $spacing-small;
   }
 }
 
@@ -78,11 +48,6 @@
   }
 }
 
-
-/* CAUTION: IE hackery ahead */
-.c-search-results-v2__topbar-select::-ms-expand {
-    display: none; /* remove default arrow on ie10 and ie11 */
-}
 .c-search-results-v2__topbar-filter{
   background: $brand-main;
   border-radius: 0;
@@ -101,14 +66,6 @@
   &:hover {
     background: $brand-medium;
   }
-}
-
-/* target Internet Explorer 9 to undo the custom arrow */
-@media screen and (min-width:0\0) {
-    .c-search-results-v2__topbar-select {
-        background:none\9;
-        padding: 5px\9;
-    }
 }
 
 

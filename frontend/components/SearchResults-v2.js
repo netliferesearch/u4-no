@@ -124,7 +124,7 @@ const SearchResultsV2 = (props) => {
   return (
     <section {...classes()}>
       <div {...classes('topbar')}>
-        <h3 {...classes('topbar-result')}>Results ({results.length})</h3>
+        <div>Results ({results.length})</div>
         <button onClick={toggleFilterMenu} {...classes('topbar-filter')}>
           Filter search result
         </button>
@@ -133,7 +133,7 @@ const SearchResultsV2 = (props) => {
           <select
             value={searchSorting}
             onChange={e => updateSearchSorting(e.target.value)}
-            {...classes('topbar-select')}
+            className="c-select c-select__full-width-mobile"
           >
             <option value="relevance">Relevance</option>
             <option value="year-desc">Year, new → old</option>
