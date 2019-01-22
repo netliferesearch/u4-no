@@ -8,7 +8,7 @@ import buildQuery from '../helpers/buildSearchQuery';
 import itemTitle from '../helpers/itemTitle';
 import itemTypeAsHeading from '../helpers/itemTypeAsHeading';
 import buildUrl from '../helpers/buildUrl';
-import { Loader } from '../components';
+import { LoaderV2 } from '../components';
 import { SearchIcon } from '../components/icons';
 import { Router } from '../routes';
 
@@ -112,7 +112,7 @@ class SearchFieldV2 extends Component {
 
             <div className="c-search-v2__content">
               <button tabIndex="1" {...classes('button')} type="submit" value="Search">
-                {this.state.loading ? <Loader /> : <SearchIcon />}
+                {this.state.loading ? <LoaderV2 /> : <SearchIcon />}
               </button>
               <input
                 ref={(el) => {
