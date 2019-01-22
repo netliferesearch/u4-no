@@ -20,8 +20,10 @@ const prepareElasticSearchBulkInsert = (documents = []) =>
   _.flatten(documents.map((doc) => {
     const { _type, _id, ...restOfDoc } = doc;
     const metadata = { _index: getIndexName(doc), _type: 'u4-searchable', _id };
-    // add plain type field to be used as a custom type field.
-    return [{ index: metadata }, { ...restOfDoc, type: _type }];
+    // Add plain type field to be used as a custom type field.
+    // Also try to make plural types into singular. Convert topics -> topic.
+    const type = _type.replace(/s$/gi, '');
+    return [{ index: metadata }, { ...restOfDoc, type }];
   }));
 
 const insertElasticSearchData = (documents = []) =>
@@ -82,6 +84,10 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                   analyzer,
                 },
                 termContent: {
+                  type: 'text',
+                  analyzer,
+                },
+                topicContent: {
                   type: 'text',
                   analyzer,
                 },

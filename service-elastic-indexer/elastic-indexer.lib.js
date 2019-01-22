@@ -117,13 +117,17 @@ async function processTopic({ document: doc }) {
     explainerText,
     introduction: basicGuide = [],
     resources,
+    title: topicTitle,
+    slug: { current = '' } = {},
     ...restOfDoc
   } = doc;
+  const url = `/topics/${current}`;
   return {
-    // by default we add all Sanity fields to elasticsearch.
     ...restOfDoc,
     // then we override some of those fields with processed data.
-    content: explainerText,
+    topicTitle,
+    url,
+    topicContent: explainerText,
     basicGuide: blocksToText(basicGuide),
     agenda: blocksToText(agenda),
   };
