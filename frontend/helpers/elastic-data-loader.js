@@ -59,7 +59,6 @@ const doSearch = async ({ searchQuery }) => {
           'type',
           'date',
           'pubdate.*',
-          'publicationType.title',
           'keywords',
           'termTitle',
           'termContent',
@@ -69,7 +68,25 @@ const doSearch = async ({ searchQuery }) => {
           'explainerText',
           'isAgendaPresent',
           'isBasicGuidePresent',
+          'publicationTypeTitle',
         ],
+        aggs: {
+          minPublicationDateMilliSeconds: {
+            min: {
+              field: 'date.utc',
+            },
+          },
+          maxPublicationDateMilliSeconds: {
+            max: {
+              field: 'date.utc',
+            },
+          },
+          publicationTypes: {
+            terms: {
+              field: 'publicationTypeTitle',
+            },
+          },
+        },
       },
     });
     console.log('Elastic data loader received data', { searchQuery, result });

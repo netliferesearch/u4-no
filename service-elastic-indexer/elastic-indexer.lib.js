@@ -64,6 +64,10 @@ async function processPublication({ document: doc, allDocuments }) {
   const legacyPDFContent = await findLegacyPdfContent({ document: doc });
   const { slug: { current = '' } = {}, topics = [] } = doc;
   const url = `/publications/${current}`;
+  const publicationType = expand({
+    reference: doc.publicationType,
+  });
+  const { title: publicationTypeTitle } = publicationType;
   return {
     // by default we add all Sanity fields to elasticsearch.
     ...doc,
@@ -90,14 +94,13 @@ async function processPublication({ document: doc, allDocuments }) {
       references: doc.editors,
       process: ({ _id }) => _id,
     }),
-    publicationType: expand({
-      reference: doc.publicationType,
-    }),
     keywords: _.uniq(expand({
       references: doc.keywords || [],
       process: ({ keyword }) => keyword,
     })),
     topicIds: topics.map(({ _ref }) => _ref),
+    publicationType,
+    publicationTypeTitle,
   };
 }
 

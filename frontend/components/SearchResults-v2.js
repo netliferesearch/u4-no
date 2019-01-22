@@ -45,7 +45,6 @@ const SearchResult = (props) => {
       explainerText = '',
       isAgendaPresent,
       isBasicGuidePresent,
-      publicationType: { title: publicationTypeTitle = '' } = {},
     } = _source;
     return (
       <div {...classes('topic')}>
