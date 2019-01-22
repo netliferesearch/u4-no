@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const util = require('util');
 const _ = require('lodash');
 const { extractText } = require('./elastic-extract-text');
 const htmlToText = require('html-to-text');
@@ -8,13 +9,20 @@ const htmlToText = require('html-to-text');
  * Purpose: Find corresponding pdf file and load its contents
  */
 let files = null;
-function findLegacyPdfContent({ document }) {
+const readdir = util.promisify(fs.readdir);
+const copyFile = util.promisify(fs.copyFile);
+async function findLegacyPdfContent({ document }) {
   if (_.isEmpty(document.legacypdf)) {
     return null;
   }
   const fileFolderPath = path.join(__dirname, 'sanity-export/files');
+  // store file list in variable outside function to avoid unecessary calls.
   if (!files) {
-    files = fs.readdirSync(fileFolderPath);
+    try {
+      files = await readdir(fileFolderPath);
+    } catch (e) {
+      console.error('Failed to read directory', e);
+    }
   }
   try {
     const { _sanityAsset = '' } = document.legacypdf;
@@ -22,16 +30,26 @@ function findLegacyPdfContent({ document }) {
     let fileId = _sanityAsset.replace('file@file://./files/', '');
     // fallback to try and get file from .asset
     fileId = fileId || /file-(.*)/gi.exec(document.legacypdf.asset._ref)[1];
-    let foundFile = files.find(fileName => fileName.indexOf(fileId) !== -1);
-    if (!foundFile.endsWith('.pdf')) {
-      fs.copyFileSync(
-        path.join(fileFolderPath, foundFile),
-        path.join(fileFolderPath, `${foundFile}.pdf`),
-      );
-      foundFile = `${foundFile}.pdf`;
-    }
-    if (foundFile) {
+    const foundFile = files.find(fileName => fileName.indexOf(fileId) !== -1);
+    if (foundFile.endsWith('.pdf')) {
       return extractText(path.join(fileFolderPath, foundFile));
+    }
+    // add this point we have a file that ends with .bin or otherwise
+    // we'll try to add a .pdf suffix before reading, but before that
+    // we need to check if it's already done from a previous run.
+    const suffixedFileName = `${foundFile}.pdf`;
+    const foundSuffixedFile = files.find(fileName => fileName.indexOf(suffixedFileName) !== -1);
+    if (foundSuffixedFile) {
+      return extractText(path.join(fileFolderPath, foundSuffixedFile));
+    }
+    try {
+      await copyFile(
+        path.join(fileFolderPath, foundFile),
+        path.join(fileFolderPath, suffixedFileName),
+      );
+      return extractText(path.join(fileFolderPath, suffixedFileName));
+    } catch (e) {
+      console.error('Failed to copy file', suffixedFileName, e);
     }
     return null;
   } catch (err) {
