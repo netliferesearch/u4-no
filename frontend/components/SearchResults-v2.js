@@ -31,17 +31,18 @@ const SearchResult = (props) => {
   const { type = '' } = _source;
 
   if (type === 'term') {
-    const { termTitle = '', termContent, slug: { current = '' } = {} } = _source;
+    const {
+      termTitle = '', url = '', termContent, slug: { current = '' } = {},
+    } = _source;
     return (
       <div {...classes('glossary')}>
         <span {...classes('items-type')}>Glossary</span>
         <br />
-        <Link>
+        <Link route={url}>
           <a {...classes('items-title')}>{termTitle}</a>
         </Link>
         <br />
         <p>{termContent}</p>
-        <a>Read more</a>
       </div>
     );
   } else if (type === 'topic') {
@@ -98,12 +99,12 @@ const SearchResult = (props) => {
       <span {...classes('items-date')}>{utcDate}</span>
       {content.map((htmlStr, index) => (
         <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
-        ))}
+      ))}
       {keywords.map(({ keyword }, index) => (
         <div key={index} {...classes('items-tab')}>
           {keyword}
         </div>
-        ))}
+      ))}
     </div>
   );
 };

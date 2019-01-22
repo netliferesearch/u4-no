@@ -62,10 +62,13 @@ async function findLegacyPdfContent({ document }) {
 async function processPublication({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
   const legacyPDFContent = await findLegacyPdfContent({ document: doc });
+  const { slug: { current = '' } = {} } = doc;
+  const url = `/publications/${current}`;
   return {
     // by default we add all Sanity fields to elasticsearch.
     ...doc,
     // then we override some of those fields with processed data.
+    url,
     content: legacyPDFContent || blocksToText(doc.content || []),
     abbreviations: blocksToText(doc.abbreviations || []),
     methodology: blocksToText(doc.methodology || []),
@@ -95,13 +98,16 @@ async function processPublication({ document: doc, allDocuments }) {
 }
 
 async function processTerm({ document: doc }) {
-  const { term, definition = [], ...restOfDoc } = doc;
+  const {
+    slug: { current = '' } = {}, term, definition = [], ...restOfDoc
+  } = doc;
   return {
     // by default we add all Sanity fields to elasticsearch.
     ...restOfDoc,
     // then we override some of those fields with processed data.
     termTitle: term,
     termContent: blocksToText(definition),
+    url: `/terms#${current}`,
   };
 }
 

@@ -34,6 +34,7 @@ const doSearch = async ({ searchQuery }) => {
               'authors',
               'termTitle^3',
               'termContent^3',
+              'type^10',
             ],
           },
         },
@@ -59,6 +60,7 @@ const doSearch = async ({ searchQuery }) => {
           'keywords._id',
           'termTitle',
           'termContent',
+          'url',
         ],
       },
     });

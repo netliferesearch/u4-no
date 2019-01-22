@@ -137,7 +137,9 @@ async function main() {
   console.log('Document types to process:\n', typesToProcess, '\n');
 
   const processedDocuments = await Promise.map(
-    allDocuments.filter(({ _type }) => typesToProcess.find(type => type === _type)),
+    allDocuments
+      .filter(({ _type }) => typesToProcess.find(type => type === _type))
+      .filter(({ _id }) => !_id.startsWith('drafts.')),
     document =>
       processDocument({ document, allDocuments })
         .then((doc) => {
