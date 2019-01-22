@@ -32,6 +32,12 @@ export default class HighChartsEditor extends React.Component {
       const {highedEditor} = iframe.contentWindow
       if (highedEditor) {
         clearInterval(intervalID)
+        const { value = {}} = this.props
+        const {jsonStr = ''} = value
+        if (jsonStr) {
+          // load saved data into newly opened editor
+          highedEditor.chart.data.json(JSON.parse(jsonStr))
+        }
         highedEditor.on('ChartChange', this.handleEditorChange)
         this.setState({
           intervalID: null,
@@ -43,10 +49,20 @@ export default class HighChartsEditor extends React.Component {
   }
 
   componentWillUnmount() {
-    const {intervalID} = this.state
+    const {intervalID, editor} = this.state
     if (intervalID) {
       clearInterval(intervalID)
     }
+    const jsonStr = editor.getEmbeddableJSON()
+    const htmlStr = editor.getEmbeddableHTML()
+    const svgStr = editor.getEmbeddableSVG()
+    const patches = PatchEvent.from([
+      setIfMissing({}),
+      jsonStr ? set(JSON.stringify(jsonStr), ['jsonStr']) : unset(['jsonStr']),
+      htmlStr ? set(htmlStr, ['htmlStr']) : unset(['htmlStr']),
+      svgStr ? set(svgStr, ['svgStr']) : unset(['svgStr'])
+    ])
+    this.props.onChange(patches)
   }
 
   handleEditorChange = () => {

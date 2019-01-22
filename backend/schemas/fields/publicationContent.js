@@ -113,11 +113,9 @@ const content = {
         editModal: 'fullscreen'
       },
       fields: [
-        {
-          name: 'htmlStr',
-          readOnly: true,
-          type: 'string'
-        }
+        { name: 'htmlStr', readOnly: true, type: 'string' },
+        { name: 'jsonStr', readOnly: true, type: 'string' },
+        { name: 'svgStr', readOnly: true, type: 'string' },
       ]
     }
   ]

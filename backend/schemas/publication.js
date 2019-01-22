@@ -22,22 +22,6 @@ export default {
     type: 'document',
     fields: [
       title,
-      {
-        name: 'chart',
-        title: 'Chart',
-        type: 'object',
-        inputComponent: HighChartsEditor,
-        options: {
-          editModal: 'fullscreen'
-        },
-        fields: [
-          {
-            name: 'htmlStr',
-            readOnly: true,
-            type: 'string'
-          }
-        ]
-      },
       subtitle,
       standfirst,
       slug,
