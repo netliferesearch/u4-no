@@ -67,7 +67,7 @@ const setupMappings = async ({ types = [], languages = [] }) => {
     'u4-pt-pt': 'portuguese',
     'u4-ru-ru': 'russian',
     'u4-es-es': 'spanish',
-    'u4-uk-ua': 'english',
+    'u4-uk-ua': 'russian',
   };
 
   for (const index of indexes) {
@@ -90,6 +90,12 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                 publicationTypeTitle: {
                   type: 'keyword',
                 },
+                topicTitles: {
+                  type: 'keyword',
+                },
+                languageName: {
+                  type: 'keyword',
+                },
                 lead: {
                   type: 'text',
                   analyzer,
@@ -103,10 +109,6 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                   analyzer,
                 },
                 termContent: {
-                  type: 'text',
-                  analyzer,
-                },
-                topicContent: {
                   type: 'text',
                   analyzer,
                 },

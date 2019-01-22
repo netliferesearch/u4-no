@@ -86,6 +86,16 @@ const doSearch = async ({ searchQuery }) => {
               field: 'publicationTypeTitle',
             },
           },
+          topicTitles: {
+            terms: {
+              field: 'topicTitles',
+            },
+          },
+          languages: {
+            terms: {
+              field: 'languageName',
+            },
+          },
         },
       },
     });

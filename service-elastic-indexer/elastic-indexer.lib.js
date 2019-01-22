@@ -62,12 +62,22 @@ async function findLegacyPdfContent({ document }) {
 async function processPublication({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
   const legacyPDFContent = await findLegacyPdfContent({ document: doc });
-  const { slug: { current = '' } = {}, topics = [] } = doc;
+  const { slug: { current = '' } = {}, topics = [], language: languageCode } = doc;
   const url = `/publications/${current}`;
   const publicationType = expand({
     reference: doc.publicationType,
   });
   const { title: publicationTypeTitle } = publicationType;
+  const languageMap = {
+    en_US: 'English',
+    fr_FR: 'French',
+    es_ES: 'Spanish',
+    de_DE: 'German',
+    pt_PT: 'Portuguese',
+    ru_RU: 'Russian',
+    uk_UA: 'Ukranian',
+  };
+  const languageName = languageMap[languageCode];
   return {
     // by default we add all Sanity fields to elasticsearch.
     ...doc,
@@ -98,9 +108,14 @@ async function processPublication({ document: doc, allDocuments }) {
       references: doc.keywords || [],
       process: ({ keyword }) => keyword,
     })),
+    topicTitles: expand({
+      references: topics,
+      process: ({ title }) => title,
+    }),
     topicIds: topics.map(({ _ref }) => _ref),
     publicationType,
     publicationTypeTitle,
+    languageName,
   };
 }
 
