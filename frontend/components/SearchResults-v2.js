@@ -1,16 +1,11 @@
 import React, { Fragment } from 'react';
-import moment from 'moment';
 import BEMHelper from 'react-bem-helper';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateSearchSorting } from '../helpers/redux-store';
 import { Link } from '../routes';
-import buildUrl from '../helpers/buildUrl';
-import itemTitle from '../helpers/itemTitle';
-import itemTypeAsHeading from '../helpers/itemTypeAsHeading';
 import { ArrowRightSmall } from '../components/icons';
-
-import { AuthorList, EditorList } from '../components/';
+import format from 'date-fns/format';
 
 const classes = BEMHelper({
   name: 'search-results-v2',
@@ -29,11 +24,8 @@ const SearchResult = (props) => {
   // debugger;
   const { _source = {} } = props;
   const { type = '' } = _source;
-
   if (type === 'term') {
-    const {
-      termTitle = '', url = '', termContent, slug: { current = '' } = {},
-    } = _source;
+    const { termTitle = '', url = '', termContent = {} } = _source;
     return (
       <div {...classes('glossary')}>
         <span {...classes('items-type')}>Glossary</span>
@@ -82,7 +74,6 @@ const SearchResult = (props) => {
     authors = [],
     title = '',
     date: { utc: utcDate = '' } = {},
-    slug: { current = '' } = {},
     keywords = [],
     url = '',
     publicationType: { title: publicationTypeTitle = '' } = {},
@@ -90,13 +81,12 @@ const SearchResult = (props) => {
   return (
     <div>
       <span {...classes('items-type')}>{publicationTypeTitle}</span>
-
       <br />
       <Link route={url}>
         <a {...classes('items-title')}>{title}</a>
       </Link>
       <br />
-      <span {...classes('items-date')}>{utcDate}</span>
+      {utcDate && <span {...classes('items-date')}>{format(utcDate, 'MM.DD.YYYY')}</span>}
       {content.map((htmlStr, index) => (
         <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
       ))}
@@ -126,25 +116,6 @@ const SearchResultsV2 = (props) => {
         <button onClick={toggleFilterMenu} {...classes('topbar-filter')}>
           Filter search result
         </button>
-        <div {...classes('topbar-active-filters')}>
-          <div>
-            <ul>
-              Active filters:
-              <li>Filter1,</li>
-              <li>Filter2,</li>
-              <li>Filter3,</li>
-              <li>Filter4,</li>
-              <li>Filter5,</li>
-              <li>Filter6,</li>
-              <li>Filter7,</li>
-              <li>Filter8,</li>
-              <li>Filter9,</li>
-              <li>Filter10,</li>
-              <li>Filter11</li>
-            </ul>
-          </div>
-          <button className="c-filters-v2__clear">Clear all filters</button>
-        </div>
         <div {...classes('topbar-sortby')}>
           <label>Sort by </label>
           <select
