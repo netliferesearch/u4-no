@@ -1,7 +1,10 @@
 .c-filters-v2 {
   color: $brand-dark;
-  padding: 0 $spacing-small;
+  padding: 0 $spacing;
   display: none;
+  @include mq($from: tablet) {
+    padding: 0 $spacing-huge;
+  }
   @include mq($from: desktop) {
     display: block;
     padding: 0;
