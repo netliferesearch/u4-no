@@ -78,8 +78,8 @@ async function main() {
     'publication',
     'topics',
     'article',
+    'person',
     // TODO: enable these types
-    // 'person',
     // 'frontpage',
     // 'event',
     // 'course'
@@ -89,7 +89,10 @@ async function main() {
   const processedDocuments = await Promise.map(
     allDocuments
       .filter(({ _type }) => typesToProcess.find(type => type === _type))
-      .filter(({ _id }) => !_id.startsWith('drafts.')),
+      .filter(({ _id }) => !_id.startsWith('drafts.'))
+      // Only persons with a slug should be searchable.
+      .filter(({ _type, slug: { current = '' } = {} }) =>
+        _type !== 'person' || (_type === 'person' && current)),
     document =>
       processDocument({ document, allDocuments })
         .then((doc) => {

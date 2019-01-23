@@ -1,3 +1,4 @@
+/* eslint no-debugger: off */
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
@@ -168,6 +169,21 @@ async function processTerm({ document: doc }) {
   };
 }
 
+async function processPerson({ document: doc }) {
+  const {
+    slug: { current = '' } = {}, firstName = '', surname = '', bio = [], ...restOfDoc
+  } = doc;
+  // TODO: Index person image with caption information.
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...restOfDoc,
+    // then we override some of those fields with processed data.
+    title: `${firstName} ${surname}`,
+    content: blocksToText(bio),
+    url: `/the-team/${current}`,
+  };
+}
+
 async function processTopic({ document: doc }) {
   const {
     agenda = [],
@@ -209,6 +225,8 @@ async function processDocument({ document, allDocuments }) {
     return processTopic({ document, allDocuments });
   } else if (document._type === 'article') {
     return processArticle({ document, allDocuments });
+  } else if (document._type === 'person') {
+    return processPerson({ document, allDocuments });
   }
   return document;
 }
