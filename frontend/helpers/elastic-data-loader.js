@@ -147,8 +147,6 @@ export default Child =>
     }
 
     render() {
-      // console.log('DataLoader rendering with these props:');
-      // console.log(this.props);
       const { error } = this.props;
       if (error) {
         return <Error404 {...this.props} />;

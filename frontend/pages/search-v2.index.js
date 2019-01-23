@@ -23,7 +23,6 @@ const Search = ({
         <section className="o-layout__item u-12/12 u-3/12@desktop">
           <SearchFiltersV2 />
         </section>
-
         <section className="o-layout__item u-12/12 u-8/12@desktop u-push-1/12@desktop">
           <SearchResultsV2 data={data} />
         </section>

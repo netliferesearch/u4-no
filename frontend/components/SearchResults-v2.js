@@ -81,7 +81,6 @@ const SearchResult = (props) => {
   } else if (type === 'publication') {
     const { highlight: { content = [] } = {} } = props;
     const {
-      authors = [],
       title = '',
       date: { utc: utcDate = '' } = {},
       keywords = [],
@@ -126,19 +125,12 @@ const SearchResult = (props) => {
 };
 
 const SearchResultsV2 = (props) => {
-  const {
-    data = {},
-    results = [],
-    searchSorting = 'relevance',
-    updateSearchSorting = () => {},
-  } = props;
-
-  const { hits = [] } = data.hits || {};
-
+  const { data = {}, searchSorting = 'relevance', updateSearchSorting = () => {} } = props;
+  const { hits = [], total = 0 } = data.hits || {};
   return (
     <section {...classes()}>
       <div {...classes('topbar')}>
-        <div>Results ({results.length})</div>
+        <div>Results ({total})</div>
         <button onClick={toggleFilterMenu} {...classes('topbar-filter')}>
           Filter search result
         </button>

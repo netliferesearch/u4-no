@@ -38,9 +38,10 @@ class SearchFieldV2 extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({
-      loading: !this.state.loading,
-    });
+    // TODO: Connect loading icon to whether or not query is running.
+    // this.setState({
+    //   loading: !this.state.loading,
+    // });
     Router.pushRoute(`/search-v2?search=${e.target.search.value}`);
   }
 
