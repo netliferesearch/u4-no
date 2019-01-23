@@ -1,3 +1,11 @@
+const { getIndexName } = require('./elastic-indexer.lib');
+const elasticsearch = require('elasticsearch');
+
+const client = new elasticsearch.Client({
+  host: process.env.ES_HOST,
+  apiVersion: '6.5',
+});
+
 // setup mappings for each language and each type
 const setupMappings = async ({ types = [], languages = [] }) => {
   const indexes = languages

@@ -58,7 +58,6 @@ async function findLegacyPdfContent({ document }) {
   }
 }
 
-// make sanity publication ready to be ingested by elasticsearch.
 async function processPublication({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
   const legacyPDFContent = await findLegacyPdfContent({ document: doc });
@@ -78,6 +77,8 @@ async function processPublication({ document: doc, allDocuments }) {
     uk_UA: 'Ukranian',
   };
   const languageName = languageMap[languageCode];
+  const filedUnderTopics = allDocuments.filter(({ _type = '', resources = [] }) =>
+    _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
   return {
     // by default we add all Sanity fields to elasticsearch.
     ...doc,
@@ -116,6 +117,40 @@ async function processPublication({ document: doc, allDocuments }) {
     publicationType,
     publicationTypeTitle,
     languageName,
+    filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
+    filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
+  };
+}
+
+async function processArticle({ document: doc, allDocuments }) {
+  const expand = initExpand(allDocuments);
+  const { slug: { current = '' } = {} } = doc;
+  const url = `/${current}`;
+  const articleTypes = expand({
+    references: doc.articleType,
+  });
+  const articleTypeTitles = articleTypes.map(({ title }) => title);
+  const articleTypeIds = articleTypes.map(({ _id }) => _id);
+  const filedUnderTopics = allDocuments.filter(({ _type = '', resources = [] }) =>
+    _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...doc,
+    // then we override some of those fields with processed data.
+    url,
+    content: blocksToText(doc.content || []),
+    authors: expand({
+      references: doc.authors,
+      process: ({ firstName, surname }) => `${firstName} ${surname}`,
+    }),
+    authorIds: expand({
+      references: doc.authors,
+      process: ({ _id }) => _id,
+    }),
+    filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
+    filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
+    articleTypeTitles,
+    articleTypeIds,
   };
 }
 
@@ -172,6 +207,8 @@ async function processDocument({ document, allDocuments }) {
     return processTerm({ document, allDocuments });
   } else if (document._type === 'topics') {
     return processTopic({ document, allDocuments });
+  } else if (document._type === 'article') {
+    return processArticle({ document, allDocuments });
   }
   return document;
 }

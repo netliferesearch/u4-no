@@ -77,9 +77,9 @@ async function main() {
     'term', // glossary
     'publication',
     'topics',
+    'article',
     // TODO: enable these types
     // 'person',
-    // 'article',
     // 'frontpage',
     // 'event',
     // 'course'
