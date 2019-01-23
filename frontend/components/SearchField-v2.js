@@ -7,8 +7,6 @@ import { SearchIcon } from '../components/icons';
 import { Router } from '../routes';
 import { withRouter } from 'next/router';
 
-const queryString = require('query-string');
-
 const classes = BEMHelper({
   name: 'search-v2',
   prefix: 'c-',
