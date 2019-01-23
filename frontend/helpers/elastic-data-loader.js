@@ -31,6 +31,15 @@ const doSearch = async ({ searchQuery }) => {
                     multi_match: {
                       query: searchQuery,
                       type: 'phrase',
+                      fields: ['title'],
+                      _name: 'Fuzzy search',
+                    },
+                  },
+                  {
+                    multi_match: {
+                      query: searchQuery,
+                      type: 'phrase',
+                      _name: 'Main query',
                       fields: [
                         'title',
                         'standfirst',

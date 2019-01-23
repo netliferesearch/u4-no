@@ -45,10 +45,10 @@ class SearchFieldV2 extends Component {
     Router.pushRoute(`/search-v2?search=${e.target.search.value}`);
   }
 
+  inputReference = React.createRef();
+
   render() {
-    const {
-      modifier, triggerSearchMenu, isOpen = false, isAlwaysOpen = false,
-    } = this.props;
+    const { modifier, triggerSearchMenu, isOpen = false, isAlwaysOpen = false } = this.props;
     if (!isOpen && !isAlwaysOpen) {
       return null;
     }
@@ -58,7 +58,13 @@ class SearchFieldV2 extends Component {
         id="autocomplete"
         onChange={this.props.onChange}
         defaultInputValue={searchValue}
-        onInputValueChange={(value) => {
+        onInputValueChange={value => {
+          if (!value) {
+            // also triggered when we click outside of the search field,
+            // so we must make sure to not update the search field in that
+            // case.
+            return;
+          }
           debounce(Router.pushRoute(`/search-v2?search=${value}`), 400);
         }}
       >
@@ -75,15 +81,16 @@ class SearchFieldV2 extends Component {
                 {this.state.loading ? <LoaderV2 /> : <SearchIcon />}
               </button>
               <input
-                ref={(el) => {
-                  this.el = el;
-                }}
+                ref={this.inputReference}
                 autoFocus
                 {...classes('input', modifier)}
                 {...getInputProps({
                   id: 'search',
                   name: 'search',
                   type: 'search',
+                  // prevents field from forgetting input
+                  defaultValue: searchValue,
+                  value: undefined,
                 })}
               />
               {!isAlwaysOpen && (
