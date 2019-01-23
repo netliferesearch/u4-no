@@ -5,6 +5,7 @@ import autobind from 'react-autobind';
 import { LoaderV2 } from '../components';
 import { SearchIcon } from '../components/icons';
 import { Router } from '../routes';
+import { withRouter } from 'next/router';
 
 const queryString = require('query-string');
 
@@ -35,7 +36,6 @@ class SearchFieldV2 extends Component {
       items: [],
       loading: false,
       placeholderIndex: 0,
-      searchValue: '',
     };
   }
 
@@ -47,15 +47,6 @@ class SearchFieldV2 extends Component {
     Router.pushRoute(`/search-v2?search=${e.target.search.value}`);
   }
 
-  handleInputUpdate(searchValue) {
-    this.setState({ searchValue });
-  }
-
-  componentDidMount() {
-    const { search: searchValue = '' } = queryString.parse(location.search);
-    this.setState({ searchValue });
-  }
-
   render() {
     const {
       modifier, triggerSearchMenu, isOpen = false, isAlwaysOpen = false,
@@ -63,7 +54,7 @@ class SearchFieldV2 extends Component {
     if (!isOpen && !isAlwaysOpen) {
       return null;
     }
-    const { searchValue } = this.state;
+    const { search: searchValue = '' } = this.props.router.query;
     return (
       <Downshift
         id="autocomplete"
@@ -110,4 +101,4 @@ class SearchFieldV2 extends Component {
   }
 }
 
-export default SearchFieldV2;
+export default withRouter(SearchFieldV2);

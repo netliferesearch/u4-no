@@ -20,8 +20,6 @@ const toggleFilterMenu = () => {
 };
 
 const SearchResult = (props) => {
-  // // eslint-disable-next-line
-  // debugger;
   const { _source = {} } = props;
   const { type = '' } = _source;
   if (type === 'term') {
@@ -80,32 +78,48 @@ const SearchResult = (props) => {
         </div>
       </div>
     );
+  } else if (type === 'publication') {
+    const { highlight: { content = [] } = {} } = props;
+    const {
+      authors = [],
+      title = '',
+      date: { utc: utcDate = '' } = {},
+      keywords = [],
+      url = '',
+      publicationType: { title: publicationTypeTitle = '' } = {},
+    } = _source;
+    return (
+      <div>
+        <span {...classes('items-type')}>{publicationTypeTitle}</span>
+        <br />
+        <Link route={url}>
+          <a {...classes('items-title')}>{title}</a>
+        </Link>
+        <br />
+        {utcDate && <span {...classes('items-date')}>{format(utcDate, 'MM.DD.YYYY')}</span>}
+        {content.map((htmlStr, index) => (
+          <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
+        ))}
+        {keywords.map((keyword, index) => (
+          <div key={index} {...classes('items-tab')}>
+            {keyword}
+          </div>
+        ))}
+      </div>
+    );
   }
   const { highlight: { content = [] } = {} } = props;
-  const {
-    authors = [],
-    title = '',
-    date: { utc: utcDate = '' } = {},
-    keywords = [],
-    url = '',
-    publicationType: { title: publicationTypeTitle = '' } = {},
-  } = _source;
+  const { title = '', url = '' } = _source;
   return (
     <div>
-      <span {...classes('items-type')}>{publicationTypeTitle}</span>
+      <span {...classes('items-type')}>{type}</span>
       <br />
       <Link route={url}>
         <a {...classes('items-title')}>{title}</a>
       </Link>
       <br />
-      {utcDate && <span {...classes('items-date')}>{format(utcDate, 'MM.DD.YYYY')}</span>}
       {content.map((htmlStr, index) => (
         <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
-      ))}
-      {keywords.map((keyword, index) => (
-        <div key={index} {...classes('items-tab')}>
-          {keyword}
-        </div>
       ))}
     </div>
   );
