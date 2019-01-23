@@ -79,8 +79,8 @@ async function main() {
     'topics',
     'article',
     'person',
+    'frontpage',
     // TODO: enable these types
-    // 'frontpage',
     // 'event',
     // 'course'
   ];
@@ -90,6 +90,8 @@ async function main() {
     allDocuments
       .filter(({ _type }) => typesToProcess.find(type => type === _type))
       .filter(({ _id }) => !_id.startsWith('drafts.'))
+      // remove frontpage from search results
+      .filter(({ _id }) => _id !== 'ea5779de-5896-44a9-8d9e-31da9ac1edb2')
       // Only persons with a slug should be searchable.
       .filter(({ _type, slug: { current = '' } = {} }) =>
         _type !== 'person' || (_type === 'person' && current)),

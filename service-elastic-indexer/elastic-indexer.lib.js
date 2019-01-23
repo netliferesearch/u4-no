@@ -216,6 +216,22 @@ async function processTopic({ document: doc }) {
   };
 }
 
+async function processFrontpage({ document: doc }) {
+  const {
+    slug: { current = '' } = {}, lead = [], sections = [], ...restOfDoc
+  } = doc;
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...restOfDoc,
+    frontpageTitle: doc.title,
+    // then we override some of those fields with processed data.
+    content: blocksToText(lead),
+    frontpageSections,
+    url: `/${current}`,
+    frontpageSections: blocksToText(sections),
+  };
+}
+
 async function processDocument({ document, allDocuments }) {
   if (document._type === 'publication') {
     return processPublication({ document, allDocuments });
@@ -227,6 +243,8 @@ async function processDocument({ document, allDocuments }) {
     return processArticle({ document, allDocuments });
   } else if (document._type === 'person') {
     return processPerson({ document, allDocuments });
+  } else if (document._type === 'frontpage') {
+    return processFrontpage({ document, allDocuments });
   }
   return document;
 }
@@ -281,7 +299,12 @@ function blocksToText(blocks, opts = {}) {
   const options = Object.assign({}, defaults, opts);
   return blocks
     .map((block) => {
-      if (block._type !== 'block' || !block.children) {
+      // TODO: Could make this even more general by letting it recursively
+      // go down a block tree in search for indexable content.
+      if (block._type === 'heading') {
+        const { headingValue = '' } = block;
+        return headingValue;
+      } else if (block._type !== 'block' || !block.children) {
         return options.nonTextBehavior === 'remove' ? '' : `[${block._type} block]`;
       }
       return block.children.map(child => child.text).join('');
