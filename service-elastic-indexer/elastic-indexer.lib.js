@@ -292,24 +292,21 @@ function getLeadText(lead = '') {
 }
 
 async function processDocument({ document, allDocuments }) {
-  if (document._type === 'publication') {
-    return processPublication({ document, allDocuments });
-  } else if (document._type === 'term') {
-    return processTerm({ document, allDocuments });
-  } else if (document._type === 'topics') {
-    return processTopic({ document, allDocuments });
-  } else if (document._type === 'article') {
-    return processArticle({ document, allDocuments });
-  } else if (document._type === 'person') {
-    return processPerson({ document, allDocuments });
-  } else if (document._type === 'frontpage') {
-    return processFrontpage({ document, allDocuments });
-  } else if (document._type === 'event') {
-    return processEvent({ document, allDocuments });
-  } else if (document._type === 'course') {
-    return processCourse({ document, allDocuments });
-  }
-  return document;
+  const processors = {
+    publication: processPublication,
+    term: processTerm,
+    topics: processTopic,
+    article: processArticle,
+    person: processPerson,
+    frontpage: processFrontpage,
+    event: processEvent,
+    course: processCourse,
+  };
+  // Do a lookup in the list of processors and use function if precent, otherwise
+  // just return an unprocessed document.
+  return processors[document._type]
+    ? processors[document._type]({ document, allDocuments })
+    : document;
 }
 
 function loadSanityDataFile(folderPath = 'sanity-export') {
