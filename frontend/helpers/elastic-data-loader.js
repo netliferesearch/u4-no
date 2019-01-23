@@ -27,6 +27,8 @@ const doSearch = async ({ searchQuery }) => {
             query: {
               bool: {
                 should: [
+                  // if no query use match_all query to show results
+                  ...(!searchQuery ? [{ match_all: {} }] : []),
                   {
                     multi_match: {
                       query: searchQuery,
@@ -139,8 +141,8 @@ export default Child =>
     static async getInitialProps(nextContext) {
       console.log('Elastic data loader fetching data');
       const { query } = nextContext;
-      const { search: searchQuery = '*' } = query;
-      const result = await doSearch({ searchQuery });
+      const { search = '' } = query;
+      const result = await doSearch({ searchQuery: search });
       return { data: result };
     }
 
