@@ -23,28 +23,39 @@ const doSearch = async ({ searchQuery }) => {
       index: 'u4-*',
       body: {
         query: {
-          bool: {
-            should: [
+          function_score: {
+            query: {
+              bool: {
+                should: [
+                  {
+                    multi_match: {
+                      query: searchQuery,
+                      type: 'phrase',
+                      fields: [
+                        'title',
+                        'standfirst',
+                        'keywords',
+                        'lead',
+                        'content',
+                        'authors',
+                        'termTitle^2',
+                        'termContent^2',
+                        'topicTitle^3',
+                        'topicContent^3',
+                        'basicGuide',
+                        'agenda',
+                        'type^10',
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
+            boost: 1,
+            functions: [
               {
-                multi_match: {
-                  query: searchQuery,
-                  type: 'phrase',
-                  fields: [
-                    'title',
-                    'standfirst',
-                    'keywords',
-                    'lead',
-                    'content',
-                    'authors',
-                    'termTitle^3',
-                    'termContent^3',
-                    'topicTitle^3',
-                    'topicContent^3',
-                    'basicGuide',
-                    'agenda',
-                    'type^10',
-                  ],
-                },
+                filter: [{ match: { type: 'topic' } }],
+                weight: 1.2,
               },
             ],
           },

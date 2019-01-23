@@ -1,25 +1,8 @@
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
 import { connect } from 'react-redux';
 
-import buildSearchQuery from '../helpers/buildSearchQuery';
 import ElasticDataLoader from '../helpers/elastic-data-loader';
-import {
-  Layout,
-  Footer,
-  SearchResults,
-  SearchResultsV2,
-  SearchField,
-  SearchFiltersV2,
-  SearchFilters,
-  filterResultsBySearchFilterList,
-  sortResultsBySortCriteria,
-} from '../components/';
-
-const classes = BEMHelper({
-  name: 'search',
-  prefix: 'c-',
-});
+import { Layout, Footer, SearchResultsV2, SearchFiltersV2 } from '../components/';
 
 const Search = ({
   data = [], searchFilters = [], searchSorting = '', url = '', topic = {},
