@@ -1,3 +1,4 @@
+/* eslint no-debugger: off */
 require('dotenv').config();
 const elasticsearch = require('elasticsearch');
 const Promise = require('bluebird');
@@ -80,9 +81,8 @@ async function main() {
     'article',
     'person',
     'frontpage',
-    // TODO: enable these types
-    // 'event',
-    // 'course'
+    'event',
+    'course',
   ];
   console.log('Document types to process:\n', typesToProcess, '\n');
 
@@ -99,6 +99,12 @@ async function main() {
       processDocument({ document, allDocuments })
         .then((doc) => {
           console.log('Prepared:', doc._id);
+          if (
+            doc._id === '0b516181-cd61-4329-875e-b79ea3221697' ||
+            doc._id === 'd92320ff-d312-45d5-88d6-800c3c00170a'
+          ) {
+            debugger;
+          }
           return doc;
         })
         .catch(err => console.error('Failed to process document', document, err)),

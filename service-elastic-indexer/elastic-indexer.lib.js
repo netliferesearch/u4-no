@@ -68,16 +68,7 @@ async function processPublication({ document: doc, allDocuments }) {
     reference: doc.publicationType,
   });
   const { title: publicationTypeTitle } = publicationType;
-  const languageMap = {
-    en_US: 'English',
-    fr_FR: 'French',
-    es_ES: 'Spanish',
-    de_DE: 'German',
-    pt_PT: 'Portuguese',
-    ru_RU: 'Russian',
-    uk_UA: 'Ukranian',
-  };
-  const languageName = languageMap[languageCode];
+  const languageName = getLanguageName(languageCode);
   const filedUnderTopics = allDocuments.filter(({ _type = '', resources = [] }) =>
     _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
   return {
@@ -225,11 +216,79 @@ async function processFrontpage({ document: doc }) {
     ...restOfDoc,
     frontpageTitle: doc.title,
     // then we override some of those fields with processed data.
-    content: blocksToText(lead),
-    frontpageSections,
+    content: getLeadText(lead),
     url: `/${current}`,
     frontpageSections: blocksToText(sections),
   };
+}
+
+async function processEvent({ document: doc, allDocuments = [] }) {
+  const {
+    slug: { current = '' } = {}, keywords = [], lead = '', ...restOfDoc
+  } = doc;
+  const expand = initExpand(allDocuments);
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...restOfDoc,
+    // then we override some of those fields with processed data.
+    content: getLeadText(lead),
+    url: `/events/${current}`,
+    keywords: _.uniq(expand({
+      references: doc.keywords || [],
+      process: ({ keyword }) => keyword,
+    })),
+  };
+}
+
+async function processCourse({ document: doc, allDocuments = [] }) {
+  const {
+    slug: { current = '' } = {},
+    language: languageCode = '',
+    lead = '',
+    content = [],
+    ...restOfDoc
+  } = doc;
+  const expand = initExpand(allDocuments);
+  const languageName = getLanguageName(languageCode);
+  const courseType = expand({
+    reference: doc.courseType,
+  });
+  const { title: courseTypeTitle } = courseType;
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...restOfDoc,
+    // then we override some of those fields with processed data.
+    content: `${getLeadText(lead)} ${blocksToText(content)}`,
+    url: `/events/${current}`,
+    languageName,
+    courseType,
+    courseTypeTitle,
+  };
+}
+
+function getLanguageName(languageCode) {
+  const languageMap = {
+    en_US: 'English',
+    fr_FR: 'French',
+    es_ES: 'Spanish',
+    de_DE: 'German',
+    pt_PT: 'Portuguese',
+    ru_RU: 'Russian',
+    uk_UA: 'Ukranian',
+  };
+  return languageMap[languageCode];
+}
+
+// The lead property has proven to sometimes be blocks and sometimes plain
+// text. So, we need to handle that.
+function getLeadText(lead = '') {
+  if (typeof lead === 'string') {
+    return lead;
+  } else if (Array.isArray(lead)) {
+    return blocksToText(lead);
+  }
+  console.error('Encountered weird lead value, exiting', { lead });
+  process.exit(1);
 }
 
 async function processDocument({ document, allDocuments }) {
@@ -245,6 +304,10 @@ async function processDocument({ document, allDocuments }) {
     return processPerson({ document, allDocuments });
   } else if (document._type === 'frontpage') {
     return processFrontpage({ document, allDocuments });
+  } else if (document._type === 'event') {
+    return processEvent({ document, allDocuments });
+  } else if (document._type === 'course') {
+    return processCourse({ document, allDocuments });
   }
   return document;
 }
