@@ -259,7 +259,7 @@ async function processCourse({ document: doc, allDocuments = [] }) {
     ...restOfDoc,
     // then we override some of those fields with processed data.
     content: `${getLeadText(lead)} ${blocksToText(content)}`,
-    url: `/events/${current}`,
+    url: `/courses/${current}`,
     languageName,
     courseType,
     courseTypeTitle,

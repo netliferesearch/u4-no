@@ -92,9 +92,9 @@ async function main() {
       .filter(({ _id }) => !_id.startsWith('drafts.'))
       // remove frontpage from search results
       .filter(({ _id }) => _id !== 'ea5779de-5896-44a9-8d9e-31da9ac1edb2')
-      // Only persons with a slug should be searchable.
-      .filter(({ _type, slug: { current = '' } = {} }) =>
-        _type !== 'person' || (_type === 'person' && current)),
+      // Only persons with a slug and at least one affiliation should be searchable.
+      .filter(({ _type, slug: { current = '' } = {}, affiliations = [] }) =>
+        _type !== 'person' || (_type === 'person' && current && affiliations.length > 0)),
     document =>
       processDocument({ document, allDocuments })
         .then((doc) => {
