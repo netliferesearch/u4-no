@@ -33,7 +33,6 @@ class SearchFieldV2 extends Component {
     this.state = {
       items: [],
       loading: false,
-      placeholderIndex: 0,
     };
   }
 
@@ -77,7 +76,7 @@ class SearchFieldV2 extends Component {
               Search to find topics, publications, people, services, and more:
             </label>
             <div className="c-search-v2__content">
-              <button tabIndex="1" {...classes('button')} type="submit" value="Search">
+              <button {...classes('button')} type="submit" value="Search">
                 {this.state.loading ? <LoaderV2 /> : <SearchIcon />}
               </button>
               <input
