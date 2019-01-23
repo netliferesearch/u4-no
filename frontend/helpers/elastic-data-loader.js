@@ -23,22 +23,29 @@ const doSearch = async ({ searchQuery }) => {
       index: 'u4-*',
       body: {
         query: {
-          multi_match: {
-            query: searchQuery,
-            fields: [
-              'title',
-              'standfirst',
-              'keywords',
-              'lead',
-              'content',
-              'authors',
-              'termTitle^3',
-              'termContent^3',
-              'topicTitle^3',
-              'topicContent^3',
-              'basicGuide',
-              'agenda',
-              'type^10',
+          bool: {
+            should: [
+              {
+                multi_match: {
+                  query: searchQuery,
+                  type: 'phrase',
+                  fields: [
+                    'title',
+                    'standfirst',
+                    'keywords',
+                    'lead',
+                    'content',
+                    'authors',
+                    'termTitle^3',
+                    'termContent^3',
+                    'topicTitle^3',
+                    'topicContent^3',
+                    'basicGuide',
+                    'agenda',
+                    'type^10',
+                  ],
+                },
+              },
             ],
           },
         },
