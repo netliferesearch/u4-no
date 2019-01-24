@@ -1,11 +1,9 @@
 import React, { Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { updateSearchSorting } from '../helpers/redux-store';
 import { Link } from '../routes';
 import { ArrowRightSmall } from '../components/icons';
 import format from 'date-fns/format';
+import { SearchResultsSortingSelect } from '../components';
 
 const classes = BEMHelper({
   name: 'search-results-v2',
@@ -125,7 +123,7 @@ const SearchResult = (props) => {
 };
 
 const SearchResultsV2 = (props) => {
-  const { data = {}, searchSorting = 'relevance', updateSearchSorting = () => {} } = props;
+  const { data = {} } = props;
   const { hits = [], total = 0 } = data.hits || {};
   return (
     <section {...classes()}>
@@ -135,19 +133,9 @@ const SearchResultsV2 = (props) => {
           Filter search result
         </button>
         <div {...classes('topbar-sortby')}>
-          <label>Sort by </label>
-          <select
-            value={searchSorting}
-            onChange={e => updateSearchSorting(e.target.value)}
-            className="c-select c-select__full-width-mobile"
-          >
-            <option value="relevance">Relevance</option>
-            <option value="year-desc">Year, new → old</option>
-            <option value="year-asc">Year, old → new</option>
-          </select>
+          <SearchResultsSortingSelect />
         </div>
       </div>
-
       <ul {...classes('content')}>
         {hits.map(hit => (
           <li key={hit._id} {...classes('items')}>
@@ -159,12 +147,4 @@ const SearchResultsV2 = (props) => {
   );
 };
 
-const mapStateToProps = state => state;
-const mapDispatchToProps = dispatch => ({
-  updateSearchSorting: bindActionCreators(updateSearchSorting, dispatch),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SearchResultsV2);
+export default SearchResultsV2;

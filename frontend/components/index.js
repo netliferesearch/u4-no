@@ -35,6 +35,7 @@ export { default as SearchField } from './SearchField';
 export { default as SearchFieldV2 } from './SearchField-v2';
 export { default as SearchFiltersV2 } from './SearchFilters-v2';
 export { default as SearchResults } from './SearchResults';
+export { default as SearchResultsSortingSelect } from './SearchResultsSortingSelect';
 export { default as SearchResultsV2 } from './SearchResults-v2';
 export { default as ServiceArticle } from './ServiceArticle';
 export { default as SimpleHero } from './SimpleHero';
