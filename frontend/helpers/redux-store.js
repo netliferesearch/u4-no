@@ -1,8 +1,11 @@
+/* eslint-disable */
+
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import uniq from 'lodash/uniq';
 import queryString from 'query-string';
+import { Router } from '../routes';
 
 // for when we need to reflect some redux state in the url
 const replaceWindowHash = (hashValue) => {
@@ -35,16 +38,10 @@ const addQueryParams = (queryParams) => {
     }, {});
   const currentParams = queryString.parse(location.search);
   const newQueryString = queryString.stringify(Object.assign(currentParams, nullifyFalsyValues(queryParams)));
-  // If it's a modern browser we can manipulate url without triggering reloading
-  // source: https://stackoverflow.com/a/19279428
-  if (history.replaceState) {
-    const newUrl = `${window.location.protocol}//${window.location.host}${
-      window.location.pathname
-    }?${newQueryString}`;
-    window.history.replaceState({ path: newUrl }, '', newUrl);
-  } else {
-    location.search = newQueryString;
-  }
+  const newUrl = `${window.location.protocol}//${window.location.host}${
+    window.location.pathname
+  }?${newQueryString}`;
+  Router.replaceRoute(newUrl)
 };
 
 const defaultState = {

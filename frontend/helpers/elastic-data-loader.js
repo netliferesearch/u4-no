@@ -17,7 +17,8 @@ const client = new elasticsearch.Client({
   apiVersion: '6.5',
 });
 
-const doSearch = async ({ searchQuery }) => {
+const doSearch = async (query) => {
+  const { search: searchQuery = '', sort = '' } = query;
   try {
     const result = await client.search({
       index: 'u4-*',
@@ -128,7 +129,7 @@ const doSearch = async ({ searchQuery }) => {
         },
       },
     });
-    console.log('Elastic data loader received data', { searchQuery, result });
+    console.log('Elastic data loader received data', { query, result });
     return result;
   } catch (e) {
     console.error('Elasticsearch query failed', e);
@@ -141,8 +142,7 @@ export default Child =>
     static async getInitialProps(nextContext) {
       console.log('Elastic data loader fetching data');
       const { query } = nextContext;
-      const { search = '' } = query;
-      const result = await doSearch({ searchQuery: search });
+      const result = await doSearch(query);
       return { data: result };
     }
 
