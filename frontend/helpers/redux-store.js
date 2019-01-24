@@ -92,10 +92,10 @@ export const reducer = (state = defaultState, action) => {
       });
     case actionTypes.SEARCH_REPLACE_FILTERS:
       addQueryParams({
-        filters: action.searchFilters,
+        filters: uniq(action.searchFilters).join(),
       });
       return Object.assign({}, state, {
-        searchFilters: action.searchFilters,
+        searchFilters: uniq(action.searchFilters),
       });
     case actionTypes.SEARCH_CLEAR_ALL_FILTERS:
       addQueryParams({ filters: false });

@@ -18,7 +18,13 @@ const client = new elasticsearch.Client({
 });
 
 const doSearch = async (query) => {
-  const { search: searchQuery = '', sort = '' } = query;
+  const { search: searchQuery = '', sort = '', filters: filterStr = '' } = query;
+  const activeFilterQueries = filterStr.split(',').reduce((acc, filter) => {
+    if (filter === 'publications-only') {
+      acc.push({ term: { type: 'publication' } });
+    }
+    return acc;
+  }, []);
   try {
     const result = await client.search({
       index: 'u4-*',
@@ -27,6 +33,7 @@ const doSearch = async (query) => {
           function_score: {
             query: {
               bool: {
+                ...(activeFilterQueries.length > 0 ? { filter: activeFilterQueries } : {}),
                 should: [
                   // if no query use match_all query to show results
                   ...(!searchQuery ? [{ match_all: {} }] : []),
