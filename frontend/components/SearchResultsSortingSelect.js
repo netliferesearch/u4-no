@@ -2,14 +2,7 @@ import React, { Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateSearchSorting } from '../helpers/redux-store';
-/*
 
-query paramenter
-
-1. on load figure out if sort parameter is set and put it in class state, so that right select option is activated
-2. when select element is selected, update state + url.
-
-*/
 class SearchResultsSortingSelect extends React.Component {
   render() {
     const { searchSorting = 'relevance', updateSearchSorting = () => {} } = this.props;
