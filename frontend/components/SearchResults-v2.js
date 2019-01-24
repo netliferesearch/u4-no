@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { Link } from '../routes';
 import { ArrowRightSmall } from '../components/icons';
@@ -56,15 +56,15 @@ const SearchResult = (props) => {
           </div>
           <div {...classes('topic-content')}>
             <p>{explainerText}</p>
-            {isAgendaPresent && (
+            {isBasicGuidePresent && (
               <div {...classes('topic-point')}>
                 <ArrowRightSmall />
                 <Link route={`${url}/basics`}>
-                  <a> Basic guide</a>
+                  <a>Basic guide</a>
                 </Link>
               </div>
             )}
-            {isBasicGuidePresent && (
+            {isAgendaPresent && (
               <div {...classes('topic-point')}>
                 <ArrowRightSmall />
                 <Link route={`${url}/agenda`}>
