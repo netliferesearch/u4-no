@@ -21,7 +21,7 @@ const Search = ({
     >
       <div className="o-wrapper o-wrapper--padded-large o-layout o-layout--flush">
         <section className="o-layout__item u-12/12 u-3/12@desktop">
-          <SearchFiltersV2 />
+          <SearchFiltersV2 data={data} />
         </section>
         <section className="o-layout__item u-12/12 u-8/12@desktop u-push-1/12@desktop">
           <SearchResultsV2 data={data} />

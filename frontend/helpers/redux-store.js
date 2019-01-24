@@ -8,7 +8,7 @@ import queryString from 'query-string';
 import { Router } from '../routes';
 
 // for when we need to reflect some redux state in the url
-const replaceWindowHash = (hashValue) => {
+const replaceWindowHash = hashValue => {
   if (typeof window === 'undefined') {
     // do nothing
   } else if (history.replaceState) {
@@ -23,7 +23,7 @@ const replaceWindowHash = (hashValue) => {
 };
 
 // for when we need to reflect some redux state in the url
-const addQueryParams = (queryParams) => {
+const addQueryParams = queryParams => {
   if (!window) {
     return; // do nothing
   }
@@ -37,11 +37,13 @@ const addQueryParams = (queryParams) => {
       return acc;
     }, {});
   const currentParams = queryString.parse(location.search);
-  const newQueryString = queryString.stringify(Object.assign(currentParams, nullifyFalsyValues(queryParams)));
+  const newQueryString = queryString.stringify(
+    Object.assign(currentParams, nullifyFalsyValues(queryParams)),
+  );
   const newUrl = `${window.location.protocol}//${window.location.host}${
     window.location.pathname
   }?${newQueryString}`;
-  Router.replaceRoute(newUrl)
+  Router.replaceRoute(newUrl);
 };
 
 const defaultState = {
@@ -62,6 +64,7 @@ export const actionTypes = {
   SEARCH_ADD_FILTER: 'SEARCH_ADD_FILTER',
   SEARCH_REMOVE_FILTER: 'SEARCH_REMOVE_FILTER',
   SEARCH_UPDATE_SORT: 'SEARCH_UPDATE_SORT',
+  SEARCH_REPLACE_FILTERS: 'SEARCH_REPLACE_FILTERS',
   SCROLL_POSITION_SAVE: 'SCROLL_POSITION_SAVE',
 };
 
@@ -86,6 +89,13 @@ export const reducer = (state = defaultState, action) => {
       });
       return Object.assign({}, state, {
         searchFilters: state.searchFilters.filter(name => name !== action.searchFilter),
+      });
+    case actionTypes.SEARCH_REPLACE_FILTERS:
+      addQueryParams({
+        filters: action.searchFilters,
+      });
+      return Object.assign({}, state, {
+        searchFilters: action.searchFilters,
       });
     case actionTypes.SEARCH_CLEAR_ALL_FILTERS:
       addQueryParams({ filters: false });
@@ -130,6 +140,9 @@ export const addSearchFilter = searchFilter => dispatch =>
 
 export const removeSearchFilter = searchFilter => dispatch =>
   dispatch({ type: actionTypes.SEARCH_REMOVE_FILTER, searchFilter });
+
+export const replaceSearchFilters = (searchFilters = []) => dispatch =>
+  dispatch({ type: actionTypes.SEARCH_REPLACE_FILTERS, searchFilters });
 
 export const clearAllSearchFilters = () => dispatch =>
   dispatch({ type: actionTypes.SEARCH_CLEAR_ALL_FILTERS });
