@@ -6,6 +6,7 @@ import { LoaderV2 } from '../components';
 import { SearchIcon } from '../components/icons';
 import { Router } from '../routes';
 import { withRouter } from 'next/router';
+import queryString from 'query-string';
 
 const classes = BEMHelper({
   name: 'search-v2',
@@ -38,11 +39,28 @@ class SearchFieldV2 extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // TODO: Connect loading icon to whether or not query is running.
-    // this.setState({
-    //   loading: !this.state.loading,
-    // });
-    Router.pushRoute(`/search-v2?search=${e.target.search.value}`);
+    this.updateSearch({ urlUpdateType: 'push', value: e.target.value });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { searchData: prevSearchData = {} } = prevProps;
+    const { searchData = {} } = this.props;
+    if (prevSearchData !== searchData) {
+      this.setState({ loading: false });
+    }
+  }
+
+  updateSearch({ urlUpdateType, value }) {
+    this.setState(
+      {
+        loading: true,
+      },
+      () => {
+        const queryParams = queryString.parse(location.search);
+        const updatedQueryString = queryString.stringify({ ...queryParams, search: value });
+        debounce(Router[`${urlUpdateType}Route`](`/search-v2?${updatedQueryString}`), 1000);
+      },
+    );
   }
 
   inputReference = React.createRef();
@@ -65,7 +83,6 @@ class SearchFieldV2 extends Component {
             // case.
             return;
           }
-          debounce(Router.pushRoute(`/search-v2?search=${value}`), 400);
         }}
       >
         {({ getInputProps, getLabelProps }) => (
@@ -91,6 +108,17 @@ class SearchFieldV2 extends Component {
                   // prevents field from forgetting input
                   defaultValue: searchValue,
                   value: undefined,
+                  onKeyDown: event => {
+                    // While onChange is called every time the input field
+                    // changes value, we need to also listen for the enter key
+                    // so that we can re-trigger query.
+                    if (event.keyCode === 13) {
+                      this.updateSearch({ urlUpdateType: 'push', value: event.target.value });
+                    }
+                  },
+                  onChange: event => {
+                    this.updateSearch({ urlUpdateType: 'replace', value: event.target.value });
+                  },
                 })}
               />
               {!isAlwaysOpen && (

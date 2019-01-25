@@ -18,6 +18,7 @@ const Search = ({
         description: '',
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
       }}
+      searchData={data}
     >
       <div className="o-wrapper o-wrapper--padded-large o-layout o-layout--flush">
         <section className="o-layout__item u-12/12 u-3/12@desktop">
