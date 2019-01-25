@@ -33,19 +33,38 @@ const setupMappings = async ({ types = [], languages = [] }) => {
       const result = await client.indices.create({
         index,
         body: {
+          settings: {
+            analysis: {
+              analyzer: {
+                standard_exact: {
+                  tokenizer: 'standard',
+                  filter: ['lowercase'],
+                },
+              },
+            },
+          },
           mappings: {
             'u4-searchable': {
               properties: {
+                title: {
+                  type: 'text',
+                  analyzer,
+                  fields: {
+                    exact: {
+                      type: 'text',
+                      analyzer: 'standard_exact',
+                    },
+                  },
+                },
                 content: {
                   type: 'text',
                   analyzer,
                 },
-
                 // publication
-                publicationTypeTitle: {
+                topicTitles: {
                   type: 'keyword',
                 },
-                topicTitles: {
+                publicationTypeTitle: {
                   type: 'keyword',
                 },
                 languageName: {
@@ -66,6 +85,16 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                 // publication end
 
                 // topic specific
+                topicTitle: {
+                  type: 'text',
+                  analyzer,
+                  fields: {
+                    exact: {
+                      type: 'text',
+                      analyzer: 'standard_exact',
+                    },
+                  },
+                },
                 topicContent: {
                   type: 'text',
                   analyzer,
@@ -81,6 +110,16 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                 // topic specific, end
 
                 // term specific
+                termTitle: {
+                  type: 'text',
+                  analyzer,
+                  fields: {
+                    exact: {
+                      type: 'text',
+                      analyzer: 'standard_exact',
+                    },
+                  },
+                },
                 termContent: {
                   type: 'text',
                   analyzer,
