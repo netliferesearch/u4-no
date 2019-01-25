@@ -37,7 +37,7 @@ const SearchResult = (props) => {
     const {
       url = '',
       featuredImageUrl = '',
-      longTitle = '',
+      topicTitle = '',
       explainerText = '',
       isAgendaPresent,
       isBasicGuidePresent,
@@ -47,7 +47,7 @@ const SearchResult = (props) => {
         <span {...classes('items-type')}>Topic</span>
         <br />
         <Link route={url}>
-          <a {...classes('items-title')}>{longTitle}</a>
+          <a {...classes('items-title')}>{topicTitle}</a>
         </Link>
         <br />
         <div {...classes('topic-wrapper')}>
