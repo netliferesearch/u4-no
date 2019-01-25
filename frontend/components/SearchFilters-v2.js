@@ -16,6 +16,43 @@ function toggle() {
   }
 }
 
+const PublicationTypes = props => {
+  const { publicationTypes, onChangeHandler } = props;
+  // eslint-disable-next-line
+  // debugger;
+  return (
+    <form className="c-filters-v2__item">
+      <div className="c-filters-v2__item-head">
+        <h3 className="c-filters-v2__title">Publication type</h3>
+        <input className="c-filters-v2__clear" type="reset" value="Clear" />
+      </div>
+      <span>
+        <div className="c-input">
+          <input type="checkbox" id="pub-type-pubtype-1" value="pub-type-pubtype-1" />
+          <label htmlFor="pub-type-pubtype-1">U4 Brief (137)</label>
+        </div>
+        <div className="c-input">
+          <input type="checkbox" id="pub-type-pubtype-2" value="pub-type-pubtype-2" />
+          <label htmlFor="pub-type-pubtype-2">U4 Issue (119)</label>
+        </div>
+        <div className="c-input">
+          <input type="checkbox" id="pub-type-pubtype-3" value="pub-type-pubtype-3" />
+          <label htmlFor="pub-type-pubtype-3">U4 Helpdesk Answer (303)</label>
+        </div>
+        <div className="c-input">
+          <input type="checkbox" id="pub-type-pubtype-4" value="pub-type-pubtype-4" />
+          <label htmlFor="pub-type-pubtype-4">U4 Report (6)</label>
+        </div>
+        <div className="c-input">
+          <input type="checkbox" id="pub-type-pubtype-5" value="pub-type-pubtype-5" />
+          <label htmlFor="pub-type-pubtype-5">Practice Insight (19)</label>
+        </div>
+      </span>
+      <p>See all</p>
+    </form>
+  );
+};
+
 class SearchFiltersV2 extends React.Component {
   onChangeHandler = event => {
     console.log('Filter change occured', event.target);
@@ -54,6 +91,14 @@ class SearchFiltersV2 extends React.Component {
       } = {},
     } = data;
 
+    console.log({
+      languages,
+      minPublicationDateMilliSeconds,
+      maxPublicationDateMilliSeconds,
+      publicationTypes,
+      topicTitles,
+    });
+
     return (
       <div className="c-filters-v2">
         <div className="c-filters-v2__topbar">
@@ -88,35 +133,12 @@ class SearchFiltersV2 extends React.Component {
           </div>
         </div>
 
-        <form className="c-filters-v2__item">
-          <div className="c-filters-v2__item-head">
-            <h3 className="c-filters-v2__title">Publication type</h3>
-            <input className="c-filters-v2__clear" type="reset" value="Clear" />
-          </div>
-          <span>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-1" value="pub-type-pubtype-1" />
-              <label htmlFor="pub-type-pubtype-1">U4 Brief (137)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-2" value="pub-type-pubtype-2" />
-              <label htmlFor="pub-type-pubtype-2">U4 Issue (119)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-3" value="pub-type-pubtype-3" />
-              <label htmlFor="pub-type-pubtype-3">U4 Helpdesk Answer (303)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-4" value="pub-type-pubtype-4" />
-              <label htmlFor="pub-type-pubtype-4">U4 Report (6)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-5" value="pub-type-pubtype-5" />
-              <label htmlFor="pub-type-pubtype-5">Practice Insight (19)</label>
-            </div>
-          </span>
-          <p>See all</p>
-        </form>
+        {publicationTypes && (
+          <PublicationTypes
+            publicationTypes={publicationTypes}
+            onChangeHandler={this.onChangeHandler}
+          />
+        )}
 
         <form className="c-filters-v2__item">
           <div className="c-filters-v2__item-head">
