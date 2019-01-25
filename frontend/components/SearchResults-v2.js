@@ -93,7 +93,7 @@ const SearchResult = (props) => {
           <a {...classes('items-title')}>{title}</a>
         </Link>
         <br />
-        {utcDate && <span {...classes('items-date')}>{format(utcDate, 'MM.DD.YYYY')}</span>}
+        {utcDate && <span {...classes('items-date')}>{format(utcDate, 'D MMM YYYY')}</span>}
         {content.map((htmlStr, index) => (
           <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
         ))}
