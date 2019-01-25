@@ -52,14 +52,19 @@ const doSearch = async (query) => {
                       _name: 'Main query',
                       fields: [
                         'title',
+                        'title.exact^6',
                         'standfirst',
                         'keywords',
                         'lead',
                         'content',
                         'authors',
+                        // term (glossary) related
                         'termTitle^2',
+                        'termTitle.exact^8',
                         'termContent^2',
+                        // topic related
                         'topicTitle^3',
+                        'topicTitle.exact^7',
                         'topicContent^3',
                         'basicGuide',
                         'agenda',
@@ -80,23 +85,21 @@ const doSearch = async (query) => {
           },
         },
 
-
         // example of spread syntax
         // docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals
         //
         // Elastic: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
         ...(false ? { hello: 'world' } : {}),
 
-        ...(sort === 'year-desc' ? {
-          sort: [
-            { 'date.utc': { order: 'desc' } },
-          ],
-        } : sort === 'year-asc' ? {
-          sort: [
-            { 'date.utc': { order: 'asc' } },
-          ],
-        } : {}),
-
+        ...(sort === 'year-desc'
+          ? {
+            sort: [{ 'date.utc': { order: 'desc' } }],
+          }
+          : sort === 'year-asc'
+            ? {
+              sort: [{ 'date.utc': { order: 'asc' } }],
+            }
+            : {}),
 
         highlight: {
           fields: {
