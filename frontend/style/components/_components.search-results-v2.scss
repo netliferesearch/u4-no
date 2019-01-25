@@ -78,14 +78,14 @@
   list-style-type: none;
   color: $brand-dark;
   font-family: $font-sans;
-  margin: $spacing-large 0;
+  margin: $spacing 0;
   border-bottom: none;
   em {
   background-color: $brand-lightest;
 
   }
   @include mq($from: tablet) {
-    margin: $spacing-huge 0;
+    margin: $spacing-large 0;
   }
 }
 
