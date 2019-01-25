@@ -122,6 +122,7 @@ const doSearch = async (query) => {
           'termTitle',
           'termContent',
           'topicTitle',
+          'topicContent',
           'url',
           'featuredImageUrl',
           'longTitle',
