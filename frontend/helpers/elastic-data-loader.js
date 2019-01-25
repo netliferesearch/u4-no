@@ -129,7 +129,7 @@ const doSearch = async (query) => {
           'explainerText',
           'isAgendaPresent',
           'isBasicGuidePresent',
-          'publicationTypeTitle',
+          'publicationType',
         ],
         aggs: {
           minPublicationDateMilliSeconds: {
