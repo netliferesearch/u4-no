@@ -19,12 +19,28 @@ const client = new elasticsearch.Client({
 
 const prepareElasticSearchBulkInsert = (documents = []) =>
   _.flatten(documents.map((doc) => {
-    const { _type, _id, ...restOfDoc } = doc;
+    const {
+      _type,
+      _id,
+      _rev: rev,
+      _createdAt: createdAt,
+      _updatedAt: updatedAt,
+      ...restOfDoc
+    } = doc;
     const metadata = { _index: getIndexName(doc), _type: 'u4-searchable', _id };
     // Add plain type field to be used as a custom type field.
     // Also try to make plural types into singular. Convert topics -> topic.
     const type = _type.replace(/s$/gi, '');
-    return [{ index: metadata }, { ...restOfDoc, type }];
+    return [
+      { index: metadata },
+      {
+        ...restOfDoc,
+        type,
+        rev,
+        createdAt,
+        updatedAt,
+      },
+    ];
   }));
 
 const insertElasticSearchData = (documents = []) =>
@@ -33,7 +49,7 @@ const insertElasticSearchData = (documents = []) =>
   });
 
 const doBatchInsert = async (documents = []) => {
-  const batchSize = 1000;
+  const batchSize = 50;
   const batches = _.chunk(documents, batchSize);
   for (const batch of batches) {
     try {
@@ -54,6 +70,42 @@ const doBatchInsert = async (documents = []) => {
   }
 };
 
+// code sourced from:
+// https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-scroll
+const getAllElasticsearchDocuments = async () => {
+  console.log('getAllElasticsearchDocuments()');
+  const allDocs = [];
+  const responseQueue = [
+    await client.search({
+      index: 'u4-*',
+      scroll: '30s', // keep the search results "scrollable" for 30 seconds
+      _source: ['createdAt', 'updatedAt'],
+      body: {
+        query: { match_all: {} },
+      },
+      size: 100,
+    }),
+  ];
+  while (responseQueue.length) {
+    const response = responseQueue.shift();
+    // collect the titles from this response
+    response.hits.hits.forEach((hit) => {
+      allDocs.push(hit);
+    });
+    // check to see if we have collected all of the titles
+    if (response.hits.total === allDocs.length) {
+      console.log('every "test" title', allDocs);
+      break;
+    }
+    console.log('Loading more elastic documents, already found:', allDocs.length);
+    responseQueue.push(await client.scroll({
+      scrollId: response._scroll_id,
+      scroll: '30s',
+    }));
+  }
+  return allDocs;
+};
+
 async function main() {
   console.log('starting work');
 
@@ -67,6 +119,21 @@ async function main() {
   //
   // const topics = allDocuments.filter(({ _type }) => _type === 'topics');
   // console.log(JSON.stringify(topics, null, 2));
+
+  // try {
+  //   // Shape of resulting documents
+  //   // { _index: 'u4-en-us',
+  //   //    _type: 'u4-searchable',
+  //   //    _id: '09b6af64-e99c-413d-b734-7b6446280289',
+  //   //    _score: 1,
+  //   //    _source: [Object] }
+  //   const allElasticDocs = await getAllElasticsearchDocuments();
+  //   console.log(JSON.stringify(allElasticDocs, null, 2));
+  // } catch (error) {
+  //   console.error(error);
+  // } finally {
+  //   process.exit(0);
+  // }
 
   // Uncomment if want to quickly index a local dataset.
   const { documents: allDocuments } = loadSanityDataFile('./sanity-export');
