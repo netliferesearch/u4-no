@@ -109,7 +109,7 @@ const SearchResult = (props) => {
   const { title = '', url = '' } = _source;
   return (
     <div>
-      <span {...classes('items-type')}>{type}</span>
+      <span {...classes('items-type')}>{ type === 'frontpage' ? 'Page' : type === 'person' ? 'Staff' : type === 'course' ? 'Online course' : type }</span>
       <br />
       <Link route={url}>
         <a {...classes('items-title')}>{title}</a>
