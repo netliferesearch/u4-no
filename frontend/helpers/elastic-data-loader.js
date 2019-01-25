@@ -48,7 +48,7 @@ const doSearch = async (query) => {
                   {
                     multi_match: {
                       query: searchQuery,
-                      type: 'phrase',
+                      type: 'phrase_prefix',
                       _name: 'Main query',
                       fields: [
                         'title',
