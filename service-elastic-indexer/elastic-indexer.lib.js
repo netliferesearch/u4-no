@@ -6,16 +6,11 @@ const _ = require('lodash');
 const { extractText } = require('./elastic-extract-text');
 const htmlToText = require('html-to-text');
 
-/**
- * Purpose: Find corresponding pdf file and load its contents
- */
+// Used when loading a dataset from 'sanity dataset export'
 let files = null;
 const readdir = util.promisify(fs.readdir);
 const copyFile = util.promisify(fs.copyFile);
-async function findLegacyPdfContent({ document }) {
-  if (_.isEmpty(document.legacypdf)) {
-    return null;
-  }
+const loadLegacyContentFromDisk = async ({ document }) => {
   const fileFolderPath = path.join(__dirname, 'sanity-export/files');
   // store file list in variable outside function to avoid unecessary calls.
   if (!files) {
@@ -57,12 +52,33 @@ async function findLegacyPdfContent({ document }) {
     console.log('Failed to load legacy pdf data from:', document.legacypdf, err);
     return null;
   }
+};
+
+/**
+ * Purpose: Find corresponding pdf file and load its contents
+ */
+async function findLegacyPdfContent({ document }) {
+  if (_.isEmpty(document.legacypdf)) {
+    return null;
+  } else if (document.legacypdf._sanityAsset) {
+    return loadLegacyContentFromDisk({ document });
+  }
+  /* TODO:
+    1. Check if we have the pdf locally, if not download it to /tmp
+    2. Index document.
+  */
 }
 
 async function processPublication({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
-  const legacyPDFContent = await findLegacyPdfContent({ document: doc });
-  const { slug: { current = '' } = {}, topics = [], language: languageCode } = doc;
+  const {
+    slug: { current = '' } = {},
+    abstract = '',
+    topics = [],
+    content = [],
+    language: languageCode,
+    ...restOfDoc
+  } = doc;
   const url = `/publications/${current}`;
   const publicationType = expand({
     reference: doc.publicationType,
@@ -71,16 +87,28 @@ async function processPublication({ document: doc, allDocuments }) {
   const languageName = getLanguageName(languageCode);
   const filedUnderTopics = allDocuments.filter(({ _type = '', resources = [] }) =>
     _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
+  const isLegacyPublication = content.length === 0;
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     // then we override some of those fields with processed data.
     url,
-    content: legacyPDFContent || blocksToText(doc.content || []),
+    // If it is a legacy publication without main content we index the pdf instead
+    // but since that pdf lops both content, frontpage, table of contents, reference,
+    // weird characters etc we index that content into a different property so
+    // it can be better scored.
+    content: isLegacyPublication
+      ? htmlToText.fromString(abstract, { wordwrap: false })
+      : blocksToText(doc.content || []),
+    ...(isLegacyPublication
+      ? { legacyPdfContent: await findLegacyPdfContent({ document: doc }) }
+      : {}),
+    ...(!isLegacyPublication && abstract
+      ? { abstract: htmlToText.fromString(abstract, { wordwrap: false }) }
+      : {}),
     abbreviations: blocksToText(doc.abbreviations || []),
     references: blocksToText(doc.references || []),
     methodology: blocksToText(doc.methodology || []),
-    ...(doc.abstract ? { abstract: htmlToText.fromString(doc.abstract, { wordwrap: false }) } : {}),
     authors: expand({
       references: doc.authors,
       process: ({ firstName, surname }) => `${firstName} ${surname}`,

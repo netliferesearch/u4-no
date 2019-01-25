@@ -2,8 +2,14 @@
 require('dotenv').config();
 const elasticsearch = require('elasticsearch');
 const Promise = require('bluebird');
+const axios = require('axios');
 const _ = require('lodash');
-const { loadSanityDataFile, processDocument, getIndexName } = require('./elastic-indexer.lib');
+const {
+  loadSanityDataFile,
+  processDocument,
+  getIndexName,
+  parseNDJSON,
+} = require('./elastic-indexer.lib');
 const { setupMappings } = require('./elastic-mappings');
 
 const client = new elasticsearch.Client({
@@ -58,6 +64,9 @@ async function main() {
   //     process.exit(-1);
   //   });
   // const allDocuments = parseNDJSON(data);
+  //
+  // const topics = allDocuments.filter(({ _type }) => _type === 'topics');
+  // console.log(JSON.stringify(topics, null, 2));
 
   // Uncomment if want to quickly index a local dataset.
   const { documents: allDocuments } = loadSanityDataFile('./sanity-export');

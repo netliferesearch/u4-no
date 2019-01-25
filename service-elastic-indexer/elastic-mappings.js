@@ -61,10 +61,18 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                   analyzer,
                 },
                 // publication
-                topicTitles: {
-                  type: 'keyword',
+                legacyPdfContent: {
+                  type: 'text',
+                  analyzer,
+                },
+                content: {
+                  type: 'text',
+                  analyzer,
                 },
                 publicationTypeTitle: {
+                  type: 'keyword',
+                },
+                topicTitles: {
                   type: 'keyword',
                 },
                 languageName: {
