@@ -24,6 +24,7 @@ app.prepare().then(() => {
     res.type('text/plain');
     res.send('User-agent: *\nDisallow:');
   });
+  server.get('//$', (req, res) => res.redirect(301, '/'));
   server.get('/publications/:slug/pdf', publicationPdfHandler);
   server.get('/publications/:slug.pdf', publicationPdfHandler);
   server.use('/api/search', searchHandler);
