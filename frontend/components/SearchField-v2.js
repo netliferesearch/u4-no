@@ -1,30 +1,17 @@
 import React, { Component } from 'react';
-import sanityClient from '@sanity/client';
 import Downshift from 'downshift';
 import BEMHelper from 'react-bem-helper';
 import autobind from 'react-autobind';
-import prioritize from './SearchFilters/searchWeighting';
-import buildQuery from '../helpers/buildSearchQuery';
-import itemTitle from '../helpers/itemTitle';
-import itemTypeAsHeading from '../helpers/itemTypeAsHeading';
-import buildUrl from '../helpers/buildUrl';
-import { Loader } from '../components';
-import { MagnifyingGlassV2 } from '../components/icons';
+import { LoaderV2 } from '../components';
+import { SearchIcon } from '../components/icons';
 import { Router } from '../routes';
+import { withRouter } from 'next/router';
+import queryString from 'query-string';
 
 const classes = BEMHelper({
   name: 'search-v2',
   prefix: 'c-',
 });
-
-const generateTitle = ({
-  title = false, firstName = false, surname = false, term = false,
-}) => {
-  if (title) return title;
-  if (firstName) return `${firstName} ${surname}`;
-  if (term) return term;
-  return 'no title';
-};
 
 function debounce(fn, time) {
   let timeoutId;
@@ -47,61 +34,58 @@ class SearchFieldV2 extends Component {
     this.state = {
       items: [],
       loading: false,
-      placeholder: 'topics',
-      placeholderIndex: 0,
     };
-  }
-  componentDidMount() {
-    if (
-      window.location.hostname === 'localhost' ||
-      window.location.hostname === 'u4-frontend-staging.herokuapp.com'
-    ) {
-      this.setState({ shouldShow: true });
-    }
-
-    // const strings = ['publications', 'topics', 'people', 'services', 'articles'];
-    // if (!this.state.items.length === 0) return;
-    // this.intervalTimer = setInterval(() => {
-    //   this.setState({
-    //     placeholderIndex:
-    //       this.state.placeholderIndex < strings.length - 1 ? this.state.placeholderIndex + 1 : 0,
-    //     placeholder: strings[this.state.placeholderIndex],
-    //   });
-    // }, 3000);
-  }
-  componentWillUnmount() {
-    // clearInterval(this.intervalTimer);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({
-      loading: !this.state.loading,
-    });
-    Router.pushRoute(`/search-v2?search=${e.target.search.value}`);
+    this.updateSearch({ urlUpdateType: 'push', value: e.target.value });
   }
 
-  render() {
-    const {
-      modifier, triggerSearchMenu, isOpen = false, isAlwaysOpen = false,
-    } = this.props;
+  componentDidUpdate(prevProps) {
+    const { searchData: prevSearchData = {} } = prevProps;
+    const { searchData = {} } = this.props;
+    if (prevSearchData !== searchData) {
+      this.setState({ loading: false });
+    }
+  }
 
+  updateSearch({ urlUpdateType, value }) {
+    this.setState(
+      {
+        loading: true,
+      },
+      () => {
+        const queryParams = queryString.parse(location.search);
+        const updatedQueryString = queryString.stringify({ ...queryParams, search: value });
+        debounce(Router[`${urlUpdateType}Route`](`/search-v2?${updatedQueryString}`), 1000);
+      },
+    );
+  }
+
+  inputReference = React.createRef();
+
+  render() {
+    const { modifier, triggerSearchMenu, isOpen = false, isAlwaysOpen = false } = this.props;
     if (!isOpen && !isAlwaysOpen) {
       return null;
     }
-
+    const { search: searchValue = '' } = this.props.router.query;
     return (
-      <Downshift id="autocomplete" onChange={this.props.onChange}>
-        {({
-          selectedItem,
-          getInputProps,
-          getItemProps,
-          highlightedIndex,
-          getLabelProps,
-          isOpen,
-          clearSelection,
-          inputValue,
-        }) => (
+      <Downshift
+        id="autocomplete"
+        onChange={this.props.onChange}
+        defaultInputValue={searchValue}
+        onInputValueChange={value => {
+          if (!value) {
+            // also triggered when we click outside of the search field,
+            // so we must make sure to not update the search field in that
+            // case.
+            return;
+          }
+        }}
+      >
+        {({ getInputProps, getLabelProps }) => (
           <form onSubmit={this.handleSubmit} {...classes()}>
             <label
               {...getLabelProps({ htmlFor: 'search' })}
@@ -109,64 +93,34 @@ class SearchFieldV2 extends Component {
             >
               Search to find topics, publications, people, services, and more:
             </label>
-
             <div className="c-search-v2__content">
-              <button tabIndex="1" {...classes('button')} type="submit" value="Search">
-                {this.state.loading ? <Loader /> : <MagnifyingGlassV2 />}
+              <button {...classes('button')} type="submit" value="Search">
+                {this.state.loading ? <LoaderV2 /> : <SearchIcon />}
               </button>
               <input
-                ref={(el) => {
-                  this.el = el;
-                }}
+                ref={this.inputReference}
                 autoFocus
                 {...classes('input', modifier)}
                 {...getInputProps({
                   id: 'search',
                   name: 'search',
-                  placeholder: `Search for ${this.state.placeholder}`,
                   type: 'search',
-                  // value:
-                  //   selectedItem && typeof selectedItem === 'object'
-                  //     ? generateTitle(selectedItem)
-                  //     : undefined,
-                  onChange: (event) => {
-                    const value = event.target.value;
-                    if (!value) {
-                      return;
-                    }
-                    if (event.keyCode != 8) {
-                      // Allow backspace
-                      // debounce(
-                      //   client
-                      //     .fetch(buildQuery({ queryString: value, limit: { from: 0, to: 5 } }))
-                      //     .then((results) => {
-                      //       const washedResults = results.filter(doc =>
-                      //           (doc._type === 'person'
-                      //             ? doc.affiliations &&
-                      //               doc.affiliations.includes('419c2497-8e24-4599-9028-b5023830c87f')
-                      //             : doc));
-                      //       const items = prioritize(value, washedResults.map(item => item)); // Added ID to make it unique
-                      //       this.setState({ items });
-                      //     })
-                      //     .catch((error) => {
-                      //       console.log(error);
-                      //     }),
-                      //   600,
-                      // );
+                  // prevents field from forgetting input
+                  defaultValue: searchValue,
+                  value: undefined,
+                  onKeyDown: event => {
+                    // While onChange is called every time the input field
+                    // changes value, we need to also listen for the enter key
+                    // so that we can re-trigger query.
+                    if (event.keyCode === 13) {
+                      this.updateSearch({ urlUpdateType: 'push', value: event.target.value });
                     }
                   },
-                  onKeyDown: (e) => {
-                    // if enter pressed we reload search page with search value
-                    if (e.keyCode !== 13) {
-                      Router.replaceRoute(`/search-v2?search=${e.target.value}`);
-                    } else if (typeof highlightedIndex !== 'number') {
-                      // do pushroute on enter to ensure that
-                      Router.pushRoute(`/search-v2?search=${e.target.value}`);
-                    }
+                  onChange: event => {
+                    this.updateSearch({ urlUpdateType: 'replace', value: event.target.value });
                   },
                 })}
               />
-
               {!isAlwaysOpen && (
                 <button {...classes('button')} type="button" onClick={triggerSearchMenu}>
                   ✕
@@ -180,4 +134,4 @@ class SearchFieldV2 extends Component {
   }
 }
 
-export default SearchFieldV2;
+export default withRouter(SearchFieldV2);

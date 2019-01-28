@@ -5,8 +5,16 @@
   justify-content: space-between;
   @include mq($from: tablet) {
     padding: $spacing-large $spacing-huge;
+    max-width: $site-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include mq($from: desktop) {
+    flex-wrap: nowrap;
   }
 }
+
+
 a.c-top-bar__logo,
 a.c-top-bar__logo:visited {
   height: 50px;
@@ -14,6 +22,9 @@ a.c-top-bar__logo:visited {
   border-bottom: 0;
   @include mq($from: tablet) {
     margin: 0;
+  }
+  @include mq($from: desktop) {
+    width: 25%;
   }
 
   &:hover  {
@@ -82,6 +93,7 @@ a.c-top-bar__logo:visited {
     font-family: $font-sans;
     font-weight: 700;
     color: inherit;
+    white-space: nowrap;
     @include mq($from: tablet) {
       padding: 0;
     }
@@ -92,4 +104,9 @@ a.c-top-bar__logo:visited {
   background: $brand-main;
   color: $white;
   //padding: $spacing-tiny;
+}
+
+.c-top-bar__menu-icon {
+  margin-right: $spacing-small;
+  vertical-align: middle;
 }

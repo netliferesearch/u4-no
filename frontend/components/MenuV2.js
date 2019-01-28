@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Link } from '../routes';
 import { SearchField, SearchFieldV2 } from '../components';
-import { ArrowRight } from '../components/icons';
+import { ArrowRight, SearchIcon, MenuIcon } from '../components/icons';
 
 const classes = BEMHelper({
   name: 'top-bar',
@@ -78,11 +78,11 @@ class MenuV2 extends Component {
         <ul {...classes('menu')}>
           {!noSearch && !activeSearchMenu && (
             <li {...classes('menu-item')}>
-              <button onClick={triggerSearchMenu}>Search</button>
+              <button onClick={triggerSearchMenu}><span {...classes('menu-icon')}><SearchIcon /></span>Search</button>
             </li>
           )}
           <li {...classes('menu-item')}>
-            <button onClick={this.triggerMenu}>Menu</button>
+            <button onClick={this.triggerMenu}><span {...classes('menu-icon')}><MenuIcon /></span>Menu</button>
           </li>
         </ul>
         {this.state.activeMenu ? (

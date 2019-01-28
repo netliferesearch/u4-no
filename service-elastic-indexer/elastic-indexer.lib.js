@@ -1,20 +1,24 @@
+/* eslint no-debugger: off */
 const fs = require('fs');
 const path = require('path');
+const util = require('util');
 const _ = require('lodash');
 const { extractText } = require('./elastic-extract-text');
 const htmlToText = require('html-to-text');
 
-/**
- * Purpose: Find corresponding pdf file and load its contents
- */
+// Used when loading a dataset from 'sanity dataset export'
 let files = null;
-function findLegacyPdfContent({ document }) {
-  if (_.isEmpty(document.legacypdf)) {
-    return null;
-  }
+const readdir = util.promisify(fs.readdir);
+const copyFile = util.promisify(fs.copyFile);
+const loadLegacyContentFromDisk = async ({ document }) => {
   const fileFolderPath = path.join(__dirname, 'sanity-export/files');
+  // store file list in variable outside function to avoid unecessary calls.
   if (!files) {
-    files = fs.readdirSync(fileFolderPath);
+    try {
+      files = await readdir(fileFolderPath);
+    } catch (e) {
+      console.error('Failed to read directory', e);
+    }
   }
   try {
     const { _sanityAsset = '' } = document.legacypdf;
@@ -22,68 +26,315 @@ function findLegacyPdfContent({ document }) {
     let fileId = _sanityAsset.replace('file@file://./files/', '');
     // fallback to try and get file from .asset
     fileId = fileId || /file-(.*)/gi.exec(document.legacypdf.asset._ref)[1];
-    let foundFile = files.find(fileName => fileName.indexOf(fileId) !== -1);
-    if (!foundFile.endsWith('.pdf')) {
-      fs.copyFileSync(
-        path.join(fileFolderPath, foundFile),
-        path.join(fileFolderPath, `${foundFile}.pdf`),
-      );
-      foundFile = `${foundFile}.pdf`;
-    }
-    if (foundFile) {
+    const foundFile = files.find(fileName => fileName.indexOf(fileId) !== -1);
+    if (foundFile.endsWith('.pdf')) {
       return extractText(path.join(fileFolderPath, foundFile));
+    }
+    // add this point we have a file that ends with .bin or otherwise
+    // we'll try to add a .pdf suffix before reading, but before that
+    // we need to check if it's already done from a previous run.
+    const suffixedFileName = `${foundFile}.pdf`;
+    const foundSuffixedFile = files.find(fileName => fileName.indexOf(suffixedFileName) !== -1);
+    if (foundSuffixedFile) {
+      return extractText(path.join(fileFolderPath, foundSuffixedFile));
+    }
+    try {
+      await copyFile(
+        path.join(fileFolderPath, foundFile),
+        path.join(fileFolderPath, suffixedFileName),
+      );
+      return extractText(path.join(fileFolderPath, suffixedFileName));
+    } catch (e) {
+      console.error('Failed to copy file', suffixedFileName, e);
     }
     return null;
   } catch (err) {
     console.log('Failed to load legacy pdf data from:', document.legacypdf, err);
     return null;
   }
+};
+
+/**
+ * Purpose: Find corresponding pdf file and load its contents
+ */
+async function findLegacyPdfContent({ document }) {
+  if (_.isEmpty(document.legacypdf)) {
+    return null;
+  } else if (document.legacypdf._sanityAsset) {
+    return loadLegacyContentFromDisk({ document });
+  }
+  /* TODO:
+    1. Check if we have the pdf locally, if not download it to /tmp
+    2. Index document.
+  */
 }
 
-// make sanity publication ready to be ingested by elasticsearch.
 async function processPublication({ document: doc, allDocuments }) {
-  if (doc._type !== 'publication') {
-    return doc;
-  }
   const expand = initExpand(allDocuments);
-  const legacyPDFContent = await findLegacyPdfContent({ document: doc });
+  const {
+    slug: { current = '' } = {},
+    abstract = '',
+    topics = [],
+    content = [],
+    language: languageCode,
+    ...restOfDoc
+  } = doc;
+  const url = `/publications/${current}`;
+  const publicationType = expand({
+    reference: doc.publicationType,
+  });
+  const { title: publicationTypeTitle } = publicationType;
+  const languageName = getLanguageName(languageCode);
+  const filedUnderTopics = allDocuments.filter(({ _type = '', resources = [] }) =>
+    _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
+  const isLegacyPublication = content.length === 0;
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...restOfDoc,
+    // then we override some of those fields with processed data.
+    url,
+    // If it is a legacy publication without main content we index the pdf instead
+    // but since that pdf lops both content, frontpage, table of contents, reference,
+    // weird characters etc we index that content into a different property so
+    // it can be better scored.
+    content: isLegacyPublication
+      ? htmlToText.fromString(abstract, { wordwrap: false })
+      : blocksToText(doc.content || []),
+    ...(isLegacyPublication
+      ? { legacyPdfContent: await findLegacyPdfContent({ document: doc }) }
+      : {}),
+    ...(!isLegacyPublication && abstract
+      ? { abstract: htmlToText.fromString(abstract, { wordwrap: false }) }
+      : {}),
+    abbreviations: blocksToText(doc.abbreviations || []),
+    references: blocksToText(doc.references || []),
+    methodology: blocksToText(doc.methodology || []),
+    authors: expand({
+      references: doc.authors,
+      process: ({ firstName, surname }) => `${firstName} ${surname}`,
+    }),
+    authorIds: expand({
+      references: doc.authors,
+      process: ({ _id }) => _id,
+    }),
+    editors: expand({
+      references: doc.editors,
+      process: ({ firstName, surname }) => `${firstName} ${surname}`,
+    }),
+    editorIds: expand({
+      references: doc.editors,
+      process: ({ _id }) => _id,
+    }),
+    keywords: _.uniq(expand({
+      references: doc.keywords || [],
+      process: ({ keyword }) => keyword,
+    })),
+    topicTitles: expand({
+      references: topics,
+      process: ({ title }) => title,
+    }),
+    topicIds: topics.map(({ _ref }) => _ref),
+    publicationType,
+    publicationTypeTitle,
+    languageName,
+    filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
+    filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
+  };
+}
+
+async function processArticle({ document: doc, allDocuments }) {
+  const expand = initExpand(allDocuments);
+  const { slug: { current = '' } = {} } = doc;
+  const url = `/${current}`;
+  const articleTypes = expand({
+    references: doc.articleType,
+  });
+  const articleTypeTitles = articleTypes.map(({ title }) => title);
+  const articleTypeIds = articleTypes.map(({ _id }) => _id);
+  const filedUnderTopics = allDocuments.filter(({ _type = '', resources = [] }) =>
+    _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
   return {
     // by default we add all Sanity fields to elasticsearch.
     ...doc,
     // then we override some of those fields with processed data.
-    content: legacyPDFContent || blocksToText(doc.content || []),
-    abbreviations: blocksToText(doc.abbreviations || []),
-    methodology: blocksToText(doc.methodology || []),
-    ...(doc.abstract ? { abstract: htmlToText.fromString(doc.abstract, { wordwrap: false }) } : {}),
+    url,
+    content: blocksToText(doc.content || []),
     authors: expand({
       references: doc.authors,
-      process: ({ _key, firstName, surname }) => ({
-        _key,
-        name: `${firstName} ${surname}`,
-      }),
+      process: ({ firstName, surname }) => `${firstName} ${surname}`,
     }),
-    editors: expand({
-      references: doc.editors,
-      process: ({ _key, firstName, surname }) => ({
-        _key,
-        name: `${firstName} ${surname}`,
-      }),
+    authorIds: expand({
+      references: doc.authors,
+      process: ({ _id }) => _id,
     }),
-    publicationType: expand({
-      reference: doc.publicationType,
-    }),
-    keywords: expand({
-      references: doc.keywords || [],
-      process: ({ keyword, _id, language }) => ({ keyword, _id, language }),
-    }),
+    filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
+    filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
+    articleTypeTitles,
+    articleTypeIds,
   };
 }
 
-async function processDocument({ document, allDocuments }) {
-  if (document._type === 'publication') {
-    return processPublication({ document, allDocuments });
+async function processTerm({ document: doc }) {
+  const {
+    slug: { current = '' } = {}, term, definition = [], ...restOfDoc
+  } = doc;
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...restOfDoc,
+    // then we override some of those fields with processed data.
+    termTitle: term,
+    termContent: blocksToText(definition),
+    url: `/terms#${current}`,
+  };
+}
+
+async function processPerson({ document: doc }) {
+  const {
+    slug: { current = '' } = {}, firstName = '', surname = '', bio = [], ...restOfDoc
+  } = doc;
+  // TODO: Index person image with caption information.
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...restOfDoc,
+    // then we override some of those fields with processed data.
+    title: `${firstName} ${surname}`,
+    content: blocksToText(bio),
+    url: `/the-team/${current}`,
+  };
+}
+
+async function processTopic({ document: doc }) {
+  const {
+    agenda = [],
+    explainerText,
+    introduction: basicGuide = [],
+    resources,
+    title: topicTitle,
+    slug: { current = '' } = {},
+    featuredImage: { _sanityAsset = '' } = {},
+    ...restOfDoc
+  } = doc;
+  const url = `/topics/${current}`;
+  const fileName = _sanityAsset.replace('image@file://./images/', '');
+  const featuredImageUrl = `https://cdn.sanity.io/images/1f1lcoov/production/${fileName}`;
+  // add helper flags to easier determine if we should show topic links in
+  // search result.
+  const isAgendaPresent = agenda.length > 0;
+  const isBasicGuidePresent = basicGuide.length > 0;
+  return {
+    ...restOfDoc,
+    // then we override some of those fields with processed data.
+    topicTitle,
+    url,
+    featuredImageUrl,
+    topicContent: explainerText,
+    basicGuide: blocksToText(basicGuide),
+    agenda: blocksToText(agenda),
+    isAgendaPresent,
+    isBasicGuidePresent,
+  };
+}
+
+async function processFrontpage({ document: doc }) {
+  const {
+    slug: { current = '' } = {}, lead = [], sections = [], ...restOfDoc
+  } = doc;
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...restOfDoc,
+    frontpageTitle: doc.title,
+    // then we override some of those fields with processed data.
+    content: getLeadText(lead),
+    url: `/${current}`,
+    frontpageSections: blocksToText(sections),
+  };
+}
+
+async function processEvent({ document: doc, allDocuments = [] }) {
+  const {
+    slug: { current = '' } = {}, keywords = [], lead = '', ...restOfDoc
+  } = doc;
+  const expand = initExpand(allDocuments);
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...restOfDoc,
+    // then we override some of those fields with processed data.
+    content: getLeadText(lead),
+    url: `/events/${current}`,
+    keywords: _.uniq(expand({
+      references: doc.keywords || [],
+      process: ({ keyword }) => keyword,
+    })),
+  };
+}
+
+async function processCourse({ document: doc, allDocuments = [] }) {
+  const {
+    slug: { current = '' } = {},
+    language: languageCode = '',
+    lead = '',
+    content = [],
+    ...restOfDoc
+  } = doc;
+  const expand = initExpand(allDocuments);
+  const languageName = getLanguageName(languageCode);
+  const courseType = expand({
+    reference: doc.courseType,
+  });
+  const { title: courseTypeTitle } = courseType;
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...restOfDoc,
+    // then we override some of those fields with processed data.
+    content: `${getLeadText(lead)} ${blocksToText(content)}`,
+    url: `/courses/${current}`,
+    languageName,
+    courseType,
+    courseTypeTitle,
+  };
+}
+
+function getLanguageName(languageCode) {
+  const languageMap = {
+    en_US: 'English',
+    fr_FR: 'French',
+    es_ES: 'Spanish',
+    de_DE: 'German',
+    pt_PT: 'Portuguese',
+    ru_RU: 'Russian',
+    uk_UA: 'Ukranian',
+  };
+  return languageMap[languageCode];
+}
+
+// The lead property has proven to sometimes be blocks and sometimes plain
+// text. So, we need to handle that.
+function getLeadText(lead = '') {
+  if (typeof lead === 'string') {
+    return lead;
+  } else if (Array.isArray(lead)) {
+    return blocksToText(lead);
   }
-  return document;
+  console.error('Encountered weird lead value, exiting', { lead });
+  process.exit(1);
+}
+
+async function processDocument({ document, allDocuments }) {
+  const processors = {
+    publication: processPublication,
+    term: processTerm,
+    topics: processTopic,
+    article: processArticle,
+    person: processPerson,
+    frontpage: processFrontpage,
+    event: processEvent,
+    course: processCourse,
+  };
+  // Do a lookup in the list of processors and use function if precent, otherwise
+  // just return an unprocessed document.
+  return processors[document._type]
+    ? processors[document._type]({ document, allDocuments })
+    : document;
 }
 
 function loadSanityDataFile(folderPath = 'sanity-export') {
@@ -136,7 +387,12 @@ function blocksToText(blocks, opts = {}) {
   const options = Object.assign({}, defaults, opts);
   return blocks
     .map((block) => {
-      if (block._type !== 'block' || !block.children) {
+      // TODO: Could make this even more general by letting it recursively
+      // go down a block tree in search for indexable content.
+      if (block._type === 'heading') {
+        const { headingValue = '' } = block;
+        return headingValue;
+      } else if (block._type !== 'block' || !block.children) {
         return options.nonTextBehavior === 'remove' ? '' : `[${block._type} block]`;
       }
       return block.children.map(child => child.text).join('');

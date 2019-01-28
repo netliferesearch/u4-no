@@ -33,6 +33,7 @@ class Layout extends Component {
       children = [],
       noSearch = false,
       searchV2 = false,
+      searchData = {},
       isSearchPage = false,
       headComponentConfig = {},
       hideLogo = false,
@@ -63,6 +64,7 @@ class Layout extends Component {
                   isOpen={this.state.activeSearchMenu}
                   isAlwaysOpen={isSearchPage}
                   triggerSearchMenu={this.triggerSearchMenu}
+                  searchData={searchData}
                 />
                 {hideLogo && <div />}
                 <MenuV2

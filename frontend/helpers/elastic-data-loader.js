@@ -17,17 +17,90 @@ const client = new elasticsearch.Client({
   apiVersion: '6.5',
 });
 
-const doSearch = async ({ searchQuery }) => {
+const doSearch = async (query) => {
+  const { search: searchQuery = '', sort = '', filters: filterStr = '' } = query;
+  const activeFilterQueries = filterStr.split(',').reduce((acc, filter) => {
+    if (filter === 'publications-only') {
+      acc.push({ term: { type: 'publication' } });
+    }
+    return acc;
+  }, []);
   try {
     const result = await client.search({
       index: 'u4-*',
       body: {
         query: {
-          multi_match: {
-            query: searchQuery,
-            fields: ['title', 'standfirst', 'keywords', 'lead', 'content', 'authors'],
+          function_score: {
+            query: {
+              bool: {
+                ...(activeFilterQueries.length > 0 ? { filter: activeFilterQueries } : {}),
+                should: [
+                  // if no query use match_all query to show results
+                  ...(!searchQuery ? [{ match_all: {} }] : []),
+                  {
+                    multi_match: {
+                      query: searchQuery,
+                      fields: ['title'],
+                      fuzziness: 'AUTO',
+                      _name: 'Fuzzy search',
+                    },
+                  },
+                  {
+                    multi_match: {
+                      query: searchQuery,
+                      type: 'phrase_prefix',
+                      _name: 'Main query',
+                      fields: [
+                        'title',
+                        'title.exact^6',
+                        'standfirst',
+                        'keywords',
+                        'lead',
+                        'content',
+                        'authors',
+                        // term (glossary) related
+                        'termTitle^2',
+                        'termTitle.exact^8',
+                        'termContent^2',
+                        // topic related
+                        'topicTitle^3',
+                        'topicTitle.exact^7',
+                        'topicContent^3',
+                        'basicGuide',
+                        'agenda',
+                        'type^10',
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
+            boost: 1,
+            functions: [
+              {
+                filter: [{ match: { type: 'topic' } }],
+                weight: 1.2,
+              },
+            ],
           },
         },
+
+        // example of spread syntax
+        // docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals
+        //
+        // Elastic: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
+        ...(false ? { hello: 'world' } : {}),
+
+        ...(sort === 'year-desc'
+          ? {
+            sort: [{ 'date.utc': { order: 'desc' } }],
+          }
+          : sort === 'year-asc'
+            ? {
+              sort: [{ 'date.utc': { order: 'asc' } }],
+            }
+            : {}),
+
         highlight: {
           fields: {
             content: {
@@ -42,15 +115,52 @@ const doSearch = async ({ searchQuery }) => {
           'slug*',
           'standfirst',
           'lead',
+          'type',
           'date',
           'pubdate.*',
-          'publicationType.title',
-          'keywords.keyword',
-          'keywords._id',
+          'keywords',
+          'termTitle',
+          'termContent',
+          'topicTitle',
+          'topicContent',
+          'url',
+          'featuredImageUrl',
+          'longTitle',
+          'explainerText',
+          'isAgendaPresent',
+          'isBasicGuidePresent',
+          'publicationType',
         ],
+        aggs: {
+          minPublicationDateMilliSeconds: {
+            min: {
+              field: 'date.utc',
+            },
+          },
+          maxPublicationDateMilliSeconds: {
+            max: {
+              field: 'date.utc',
+            },
+          },
+          publicationTypes: {
+            terms: {
+              field: 'publicationTypeTitle',
+            },
+          },
+          topicTitles: {
+            terms: {
+              field: 'topicTitles',
+            },
+          },
+          languages: {
+            terms: {
+              field: 'languageName',
+            },
+          },
+        },
       },
     });
-    console.log('Elastic data loader received data', { searchQuery, result });
+    console.log('Elastic data loader received data', { query, result });
     return result;
   } catch (e) {
     console.error('Elasticsearch query failed', e);
@@ -63,14 +173,11 @@ export default Child =>
     static async getInitialProps(nextContext) {
       console.log('Elastic data loader fetching data');
       const { query } = nextContext;
-      const { search: searchQuery = '*' } = query;
-      const result = await doSearch({ searchQuery });
+      const result = await doSearch(query);
       return { data: result };
     }
 
     render() {
-      // console.log('DataLoader rendering with these props:');
-      // console.log(this.props);
       const { error } = this.props;
       if (error) {
         return <Error404 {...this.props} />;
