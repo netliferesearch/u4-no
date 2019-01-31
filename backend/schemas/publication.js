@@ -426,6 +426,37 @@ export default {
         ]
       },
       {
+        name: 'updatedVersion',
+        title: 'Updated version',
+        description: 'If there is a more recent version of this publication',
+        type: 'reference',
+        to: [
+          {
+            type: 'publication'
+          }
+        ]
+      },
+      {
+        name: 'headsUp',
+        title: 'Heads up',
+        description: 'Important message to the reader, like "The content in this publication might be outdated"',
+        type: 'array',
+        of: [
+          {
+            type: 'block',
+            lists: [],
+            styles: [],
+            marks: {
+              // Only allow these decorators
+              decorators: [
+                {title: 'Strong', value: 'strong'},
+                { title: 'Emphasis', value: 'em' }
+              ],
+            },
+          },
+        ],
+      },
+      {
         name: 'workflow',
         type: 'object',
         title: 'Editorial workflow',
