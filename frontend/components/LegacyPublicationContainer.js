@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from '../routes';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
-import {
-  Footer,
-  Layout,
-  PublicationArticleHeader,
-  PdfViewer,
-} from './';
+import buildUrl from '../helpers/buildUrl';
+import bibliographicReference from '../helpers/bibliographicReference';
+import { Footer, Layout, PublicationArticleHeader, PdfViewer } from './';
 
 const LegacyPublicationContainer = (props) => {
   const {
@@ -20,6 +18,8 @@ const LegacyPublicationContainer = (props) => {
       date = {},
       publicationType = {},
       title = '',
+      updatedVersion = {},
+      headsUp = {},
     } = {},
     BreadCrumbComponent = null,
     isArticleMenuOpen,
@@ -51,17 +51,14 @@ const LegacyPublicationContainer = (props) => {
           />
           <div className="c-hero-bg" />
           <div className="c-hero-sideText">
-            {featuredImage &&
-              featuredImage.sourceUrl && (
-                <a href={featuredImage.sourceUrl}>
-                  {featuredImage.credit
-                    ? featuredImage.credit
-                    : featuredImage.sourceUrl}
-                </a>
-              )}
-            {featuredImage &&
-              !featuredImage.sourceUrl &&
-              featuredImage.credit && <span>{featuredImage.credit}</span>}
+            {featuredImage && featuredImage.sourceUrl && (
+              <a href={featuredImage.sourceUrl}>
+                {featuredImage.credit ? featuredImage.credit : featuredImage.sourceUrl}
+              </a>
+            )}
+            {featuredImage && !featuredImage.sourceUrl && featuredImage.credit && (
+              <span>{featuredImage.credit}</span>
+            )}
           </div>
           <div className="c-hero-header">
             <PublicationArticleHeader
@@ -72,15 +69,33 @@ const LegacyPublicationContainer = (props) => {
         </div>
         <div className="c-longform-grid">
           <div className="c-longform-grid__standard">
-            {date &&
-              new Date().getFullYear() - Number(pubyear) > 5 && (
-                <div className="c-notification">
-                  <p className="c-notification__body">
-                    This publication is from {pubyear}. Some of the content may be outdated. Search
-                    related topics to find more recent resources.
-                  </p>
-                </div>
-              )}
+            {updatedVersion && (
+              <div className="c-notification">
+                <p className="c-notification__body">A more recent publication is available:</p>
+                <p className="c-notification__body">
+                  <Link href={buildUrl({ _type: 'publication', slug: updatedVersion.slug })}>
+                    <a title={updatedVersion.title}>{updatedVersion.title}</a>
+                  </Link>
+                  <br />
+                  <span>
+                    {bibliographicReference({
+                      publicationType: updatedVersion.publicationType,
+                      publicationNumber: updatedVersion.publicationNumber,
+                      reference: updatedVersion.reference,
+                      shortVersion: true,
+                    })}
+                  </span>
+                </p>
+              </div>
+            )}
+            {!updatedVersion && date && new Date().getFullYear() - Number(pubyear) > 5 && (
+              <div className="c-notification">
+                <p className="c-notification__body">
+                  This publication is from {pubyear}. Some of the content may be outdated. Search
+                  related topics to find more recent resources.
+                </p>
+              </div>
+            )}
             {lead && (
               <div className="c-article">
                 <p>{lead}</p>
@@ -89,17 +104,12 @@ const LegacyPublicationContainer = (props) => {
             {/* Legacy publication abstracts come with html included
                 so we go and render it out.
                */}
-            {!lead &&
-              abstract && (
-                <div className="c-article" dangerouslySetInnerHTML={{ __html: abstract }} />
-              )}
+            {!lead && abstract && (
+              <div className="c-article" dangerouslySetInnerHTML={{ __html: abstract }} />
+            )}
           </div>
         </div>
-        {legacypdf.asset && (
-          <PdfViewer
-            file={{ url: legacypdf.asset.url }}
-          />
-        )}
+        {legacypdf.asset && <PdfViewer file={{ url: legacypdf.asset.url }} />}
         <Footer />
       </article>
     </Layout>
