@@ -26,9 +26,12 @@ const PublicationNotification = ({ headsUp = false, updatedVersion = false, date
         <div {...classes()}>
           <p {...classes('label')}>A more recent publication is available:</p>
           <p {...classes('body')}>
-            <Link href={buildUrl({ _type: 'publication', slug: updatedVersion.slug })}>
-              <a title={updatedVersion.title}>{updatedVersion.title}</a>
-            </Link>
+            <a
+              href={buildUrl({ _type: 'publication', slug: updatedVersion.slug })}
+              title={updatedVersion.title}
+            >
+              {updatedVersion.title}
+            </a>
             <br />
             <span>
               {bibliographicReference({
