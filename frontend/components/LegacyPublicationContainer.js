@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from '../routes';
 import { connect } from 'react-redux';
+import BlockContent from '@sanity/block-content-to-react';
+import serializers from './serializers';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import buildUrl from '../helpers/buildUrl';
 import bibliographicReference from '../helpers/bibliographicReference';
-import { Footer, Layout, PublicationArticleHeader, PdfViewer } from './';
+import { Footer, Layout, PublicationArticleHeader, PdfViewer, PublicationNotification } from './';
 
 const LegacyPublicationContainer = (props) => {
   const {
@@ -18,8 +20,8 @@ const LegacyPublicationContainer = (props) => {
       date = {},
       publicationType = {},
       title = '',
-      updatedVersion = {},
-      headsUp = {},
+      updatedVersion = false,
+      headsUp = false,
     } = {},
     BreadCrumbComponent = null,
     isArticleMenuOpen,
@@ -69,33 +71,12 @@ const LegacyPublicationContainer = (props) => {
         </div>
         <div className="c-longform-grid">
           <div className="c-longform-grid__standard">
-            {updatedVersion && (
-              <div className="c-notification">
-                <p className="c-notification__body">A more recent publication is available:</p>
-                <p className="c-notification__body">
-                  <Link href={buildUrl({ _type: 'publication', slug: updatedVersion.slug })}>
-                    <a title={updatedVersion.title}>{updatedVersion.title}</a>
-                  </Link>
-                  <br />
-                  <span>
-                    {bibliographicReference({
-                      publicationType: updatedVersion.publicationType,
-                      publicationNumber: updatedVersion.publicationNumber,
-                      reference: updatedVersion.reference,
-                      shortVersion: true,
-                    })}
-                  </span>
-                </p>
-              </div>
-            )}
-            {!updatedVersion && date && new Date().getFullYear() - Number(pubyear) > 5 && (
-              <div className="c-notification">
-                <p className="c-notification__body">
-                  This publication is from {pubyear}. Some of the content may be outdated. Search
-                  related topics to find more recent resources.
-                </p>
-              </div>
-            )}
+            <PublicationNotification
+              headsUp={headsUp}
+              updatedVersion={updatedVersion}
+              date={date}
+            />
+
             {lead && (
               <div className="c-article">
                 <p>{lead}</p>
@@ -125,8 +106,8 @@ LegacyPublicationContainer.propTypes = {
     featuredImage: PropTypes.string,
     mainPoints: PropTypes.string,
     resources: PropTypes.string,
-    legacypdf: PropTypes.string,
-    date: PropTypes.string,
+    legacypdf: PropTypes.object,
+    date: PropTypes.object,
     translation: PropTypes.string,
     language: PropTypes.string,
     publicationType: PropTypes.string,

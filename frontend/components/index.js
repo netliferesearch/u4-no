@@ -29,6 +29,7 @@ export { default as PartnerPromo } from './PartnerPromo';
 export { default as PdfViewer } from './PdfViewer';
 export { default as Person } from './Person';
 export { default as PublicationArticleHeader } from './PublicationArticleHeader';
+export { default as PublicationNotification } from './PublicationNotification';
 export { default as PullQuote } from './PullQuote';
 export { default as RecommendedResources } from './RecommendedResources';
 export { default as SearchField } from './SearchField';

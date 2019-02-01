@@ -1,12 +1,18 @@
 .c-notification {
   background-color: $brand-lightest;
-  padding: 0.5em 1em;
+  padding: $spacing-tiny 0;
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-tiny, $line-height-normal);
 }
 
 .c-notification__label {
-  @include inuit-font-size($font-size-small, $line-height-normal);
-  margin-bottom: $spacing-small;
+  @include inuit-font-size($font-size-tiny, $line-height-normal);
+  padding: 0 $spacing;
+  margin-bottom: $spacing-tiny;
+  font-weight: bold;
 }
 .c-notification__body {
-  @include inuit-font-size($font-size-small, $line-height-normal);
+  @include inuit-font-size($font-size-tiny, $line-height-normal);
+  padding: 0 $spacing;
+  margin-top: $spacing-tiny;
 }
