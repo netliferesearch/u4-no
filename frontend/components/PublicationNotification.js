@@ -23,9 +23,9 @@ const PublicationNotification = ({ headsUp = false, updatedVersion = false, date
         </div>
       )}
       {updatedVersion && (
-        <div className="c-notification">
-          <p className="c-notification__label">A more recent publication is available:</p>
-          <p className="c-notification__body">
+        <div {...classes()}>
+          <p {...classes('label')}>A more recent publication is available:</p>
+          <p {...classes('body')}>
             <Link href={buildUrl({ _type: 'publication', slug: updatedVersion.slug })}>
               <a title={updatedVersion.title}>{updatedVersion.title}</a>
             </Link>
@@ -40,10 +40,10 @@ const PublicationNotification = ({ headsUp = false, updatedVersion = false, date
             </span>
           </p>
         </div>
-      )}{' '}
+      )}
       {!headsUp && !updatedVersion && date && new Date().getFullYear() - Number(pubyear) > 5 && (
-        <div className="c-notification">
-          <p className="c-notification__body">
+        <div {...classes()}>
+          <p {...classes('body')}>
             This publication is from {pubyear}. Some of the content may be outdated. Search related
             topics to find more recent resources.
           </p>
