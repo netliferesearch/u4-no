@@ -8,7 +8,14 @@ import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import buildUrl from '../helpers/buildUrl';
 import bibliographicReference from '../helpers/bibliographicReference';
-import { Footer, Layout, PublicationArticleHeader, PdfViewer, PublicationNotification } from './';
+import {
+  Footer,
+  Layout,
+  PublicationArticleHeader,
+  PdfViewer,
+  PublicationNotification,
+  RecommendedResources,
+} from './';
 
 const LegacyPublicationContainer = (props) => {
   const {
@@ -20,6 +27,8 @@ const LegacyPublicationContainer = (props) => {
       date = {},
       publicationType = {},
       title = '',
+      relatedContent = [],
+      recommendedResources = false,
       updatedVersion = false,
       headsUp = false,
     } = {},
@@ -91,6 +100,13 @@ const LegacyPublicationContainer = (props) => {
           </div>
         </div>
         {legacypdf.asset && <PdfViewer file={{ url: legacypdf.asset.url }} />}
+        {props.data.recommendedResources && props.data.recommendedResources.length ? (
+          <div className="o-wrapper">
+            <h2>We also recommend</h2>
+            <RecommendedResources relatedContent={props.data.recommendedResources} />
+          </div>
+        ) : null}
+
         <Footer />
       </article>
     </Layout>
