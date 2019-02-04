@@ -13,11 +13,26 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
+// remove blocks with no text
+const trimEmptyBlocks = blocks =>
+  blocks.filter((block) => {
+    if (
+      block._type === 'block' &&
+      block.children.length === 1 &&
+      block.children[0].text.length === 0
+    ) {
+      return false;
+    }
+    return true;
+  });
+
 const PublicationNotification = ({ headsUp = false, updatedVersion = false, date = {} }) => {
   const pubyear = date && date.utc ? new Date(date.utc).getFullYear() : '';
+  const headsUpHasContent = headsUp && trimEmptyBlocks(headsUp).length > 0;
+
   return (
     <section>
-      {headsUp && (
+      {headsUpHasContent && (
         <div {...classes()}>
           <BlockContent blocks={headsUp} serializers={serializers} />
         </div>
@@ -44,14 +59,17 @@ const PublicationNotification = ({ headsUp = false, updatedVersion = false, date
           </p>
         </div>
       )}
-      {!headsUp && !updatedVersion && date && new Date().getFullYear() - Number(pubyear) > 5 && (
-        <div {...classes()}>
-          <p {...classes('body')}>
-            This publication is from {pubyear}. Some of the content may be outdated. Search related
-            topics to find more recent resources.
-          </p>
-        </div>
-      )}
+      {!headsUpHasContent &&
+        !updatedVersion &&
+        date &&
+        new Date().getFullYear() - Number(pubyear) > 5 && (
+          <div {...classes()}>
+            <p {...classes('body')}>
+              This publication is from {pubyear}. Some of the content may be outdated. Search
+              related topics to find more recent resources.
+            </p>
+          </div>
+        )}
     </section>
   );
 };
