@@ -16,6 +16,7 @@ import {
   RecommendedResources,
   ToggleBlock,
   AuthorList,
+  PublicationNotification,
 } from './';
 import {
   CreativecommonsCC,
@@ -43,6 +44,8 @@ const LongFormArticleContainer = (props = {}) => {
       publicationType = {},
       articleType = [],
       relatedContent = [],
+      headsUp = false,
+      updatedVersion = false,
     } = {},
     shortversion = false,
     headComponentConfigOverride,
@@ -104,60 +107,63 @@ const LongFormArticleContainer = (props = {}) => {
 
       {!isArticleMenuOpen && (
         <article>
-          {_type === 'publication' &&
-            !isPublicationDrawerOpen && <TableOfContentsButton {...props.data} />}
+          {_type === 'publication' && !isPublicationDrawerOpen && (
+            <TableOfContentsButton {...props.data} />
+          )}
           <CustomScrollSpy {...props.data} />
           <span id="js-top" />
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
-            {_type === 'publication' &&
-              !shortversion && (
+            {_type === 'publication' && !shortversion && (
+              <div
+                className={`c-hero u-bg-white u-z-index-x ${
+                  publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''
+                }`}
+              >
                 <div
-                  className={`c-hero u-bg-white u-z-index-x ${
-                    publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''
-                  }`}
-                >
-                  <div
-                    className="c-hero-image"
-                    style={{
-                      backgroundImage: `url(${props.data.featuredImage &&
-                        props.data.featuredImage.asset &&
-                        props.data.featuredImage.asset.url}?width=1120&crop=focalpoint&fit=scale)`,
-                      backgroundColor: '#0079CF',
-                    }}
-                  />
-                  <div className="c-hero-bg" />
-                  <div className="c-hero-sideText">
-                    {props.data.featuredImage &&
-                      !props.data.featuredImage.sourceUrl &&
-                      props.data.featuredImage.credit && (
-                        <div style={{ display: 'inline' }}>{props.data.featuredImage.credit}</div>
-                      )}
-                    {props.data.featuredImage &&
-                      props.data.featuredImage.sourceUrl && (
-                        <a className="u-margin-left-tiny" href={props.data.featuredImage.sourceUrl}>
-                          {props.data.featuredImage.credit
-                            ? props.data.featuredImage.credit
-                            : props.data.featuredImage.sourceUrl}
-                        </a>
-                      )}
-                    {props.data.featuredImage &&
-                      props.data.featuredImage.license && (
-                        <span> CC {props.data.featuredImage.license.toUpperCase()}</span>
-                      )}
-                  </div>
-                  <div className="c-hero-header">
-                    <PublicationArticleHeader
-                      className="c-hero__grid-container__content links-wrapper-dark-background"
-                      {...props.data}
-                    />
-                  </div>
+                  className="c-hero-image"
+                  style={{
+                    backgroundImage: `url(${props.data.featuredImage &&
+                      props.data.featuredImage.asset &&
+                      props.data.featuredImage.asset.url}?width=1120&crop=focalpoint&fit=scale)`,
+                    backgroundColor: '#0079CF',
+                  }}
+                />
+                <div className="c-hero-bg" />
+                <div className="c-hero-sideText">
+                  {props.data.featuredImage &&
+                    !props.data.featuredImage.sourceUrl &&
+                    props.data.featuredImage.credit && (
+                      <div style={{ display: 'inline' }}>{props.data.featuredImage.credit}</div>
+                    )}
+                  {props.data.featuredImage && props.data.featuredImage.sourceUrl && (
+                    <a className="u-margin-left-tiny" href={props.data.featuredImage.sourceUrl}>
+                      {props.data.featuredImage.credit
+                        ? props.data.featuredImage.credit
+                        : props.data.featuredImage.sourceUrl}
+                    </a>
+                  )}
+                  {props.data.featuredImage && props.data.featuredImage.license && (
+                    <span> CC {props.data.featuredImage.license.toUpperCase()}</span>
+                  )}
                 </div>
-              )}
+                <div className="c-hero-header">
+                  <PublicationArticleHeader
+                    className="c-hero__grid-container__content links-wrapper-dark-background"
+                    {...props.data}
+                  />
+                </div>
+              </div>
+            )}
           </div>
           {_type === 'publication' && (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
+                <PublicationNotification
+                  headsUp={headsUp}
+                  updatedVersion={updatedVersion}
+                  date={date}
+                />
                 {lead && (
                   <div className="c-article">
                     <p>{lead}</p>
@@ -187,12 +193,11 @@ const LongFormArticleContainer = (props = {}) => {
                   </div>
                 )}
               </div>
-              {_type === 'publication' &&
-                !isPublicationDrawerOpen && (
-                  <div className="c-longform-grid__sidebar-right">
-                    <TableOfContentsSidebar {...props.data} />
-                  </div>
-                )}
+              {_type === 'publication' && !isPublicationDrawerOpen && (
+                <div className="c-longform-grid__sidebar-right">
+                  <TableOfContentsSidebar {...props.data} />
+                </div>
+              )}
             </div>
           )}
           {_type !== 'publication' && (
@@ -246,50 +251,44 @@ const LongFormArticleContainer = (props = {}) => {
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="Notes" content={props.data.notes}>
-                  {props.data.featuredImage &&
-                    props.data.featuredImage.caption && (
-                      <div className="c-longform-grid__standard">
-                        <p>
-                          <b>Header image:</b>
-                        </p>
-                        <BlockToContent
-                          blocks={props.data.featuredImage.caption}
-                          serializers={{
-                            types: {
-                              block: props => <p style={{ display: 'inline' }}>{props.children}</p>,
-                            },
-                          }}
-                        />
-                      </div>
-                    )}
+                  {props.data.featuredImage && props.data.featuredImage.caption && (
+                    <div className="c-longform-grid__standard">
+                      <p>
+                        <b>Header image:</b>
+                      </p>
+                      <BlockToContent
+                        blocks={props.data.featuredImage.caption}
+                        serializers={{
+                          types: {
+                            block: props => <p style={{ display: 'inline' }}>{props.children}</p>,
+                          },
+                        }}
+                      />
+                    </div>
+                  )}
                   <div className="c-longform-grid__standard">
                     {props.data.featuredImage &&
                       !props.data.featuredImage.sourceUrl &&
                       props.data.featuredImage.credit && (
-                        <span>Credit: {props.data.featuredImage.credit} </span>
+                        <span>Photo: {props.data.featuredImage.credit} </span>
                       )}
 
-                    {props.data.featuredImage &&
-                      props.data.featuredImage.sourceUrl && (
-                        <span>
-                          Credit:
-                          <a
-                            className="u-margin-left-tiny"
-                            href={props.data.featuredImage.sourceUrl}
-                          >
-                            {props.data.featuredImage.credit
-                              ? props.data.featuredImage.credit
-                              : props.data.featuredImage.sourceUrl}
-                          </a>
-                        </span>
-                      )}
-                    {props.data.featuredImage &&
-                      props.data.featuredImage.license && (
-                        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
-                          {' '}
-                          CC {props.data.featuredImage.license.toUpperCase()}
+                    {props.data.featuredImage && props.data.featuredImage.sourceUrl && (
+                      <span>
+                        Photo:
+                        <a className="u-margin-left-tiny" href={props.data.featuredImage.sourceUrl}>
+                          {props.data.featuredImage.credit
+                            ? props.data.featuredImage.credit
+                            : props.data.featuredImage.sourceUrl}
                         </a>
-                      )}
+                      </span>
+                    )}
+                    {props.data.featuredImage && props.data.featuredImage.license && (
+                      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                        {' '}
+                        CC {props.data.featuredImage.license.toUpperCase()}
+                      </a>
+                    )}
                   </div>
                 </ToggleBlock>
               </div>
@@ -302,17 +301,16 @@ const LongFormArticleContainer = (props = {}) => {
               </div>
             </div>
           ) : null}
-          {!shortversion &&
-            props.data._type === 'publication' && (
-              <div className="c-longform-grid">
-                <div className="c-longform-grid__standard">
-                  <ToggleBlock
-                    title="Disclaimer"
-                    content="All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies."
-                  />
-                </div>
+          {!shortversion && props.data._type === 'publication' && (
+            <div className="c-longform-grid">
+              <div className="c-longform-grid__standard">
+                <ToggleBlock
+                  title="Disclaimer"
+                  content="All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies."
+                />
               </div>
-            )}
+            </div>
+          )}
           {_type === 'publication' && (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
@@ -325,9 +323,8 @@ const LongFormArticleContainer = (props = {}) => {
                   </a>
                   <br />
                   This work is licenced under a Creative Commons
-                  Attribution-NonCommercial-NoDerivatives 4.0 International licence (<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
-                    CC BY-NC-ND 4.0
-                  </a>)
+                  Attribution-NonCommercial-NoDerivatives 4.0 International licence (
+                  <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>)
                 </p>
               </div>
             </div>

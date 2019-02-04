@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from '../routes';
 import { connect } from 'react-redux';
+import BlockContent from '@sanity/block-content-to-react';
+import serializers from './serializers';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
-import {
-  Footer,
-  Layout,
-  PublicationArticleHeader,
-  PdfViewer,
-} from './';
+import buildUrl from '../helpers/buildUrl';
+import bibliographicReference from '../helpers/bibliographicReference';
+import { Footer, Layout, PublicationArticleHeader, PdfViewer, PublicationNotification } from './';
 
 const LegacyPublicationContainer = (props) => {
   const {
@@ -20,6 +20,8 @@ const LegacyPublicationContainer = (props) => {
       date = {},
       publicationType = {},
       title = '',
+      updatedVersion = false,
+      headsUp = false,
     } = {},
     BreadCrumbComponent = null,
     isArticleMenuOpen,
@@ -51,17 +53,14 @@ const LegacyPublicationContainer = (props) => {
           />
           <div className="c-hero-bg" />
           <div className="c-hero-sideText">
-            {featuredImage &&
-              featuredImage.sourceUrl && (
-                <a href={featuredImage.sourceUrl}>
-                  {featuredImage.credit
-                    ? featuredImage.credit
-                    : featuredImage.sourceUrl}
-                </a>
-              )}
-            {featuredImage &&
-              !featuredImage.sourceUrl &&
-              featuredImage.credit && <span>{featuredImage.credit}</span>}
+            {featuredImage && featuredImage.sourceUrl && (
+              <a href={featuredImage.sourceUrl}>
+                {featuredImage.credit ? featuredImage.credit : featuredImage.sourceUrl}
+              </a>
+            )}
+            {featuredImage && !featuredImage.sourceUrl && featuredImage.credit && (
+              <span>{featuredImage.credit}</span>
+            )}
           </div>
           <div className="c-hero-header">
             <PublicationArticleHeader
@@ -72,15 +71,12 @@ const LegacyPublicationContainer = (props) => {
         </div>
         <div className="c-longform-grid">
           <div className="c-longform-grid__standard">
-            {date &&
-              new Date().getFullYear() - Number(pubyear) > 5 && (
-                <div className="c-notification">
-                  <p className="c-notification__body">
-                    This publication is from {pubyear}. Some of the content may be outdated. Search
-                    related topics to find more recent resources.
-                  </p>
-                </div>
-              )}
+            <PublicationNotification
+              headsUp={headsUp}
+              updatedVersion={updatedVersion}
+              date={date}
+            />
+
             {lead && (
               <div className="c-article">
                 <p>{lead}</p>
@@ -89,17 +85,12 @@ const LegacyPublicationContainer = (props) => {
             {/* Legacy publication abstracts come with html included
                 so we go and render it out.
                */}
-            {!lead &&
-              abstract && (
-                <div className="c-article" dangerouslySetInnerHTML={{ __html: abstract }} />
-              )}
+            {!lead && abstract && (
+              <div className="c-article" dangerouslySetInnerHTML={{ __html: abstract }} />
+            )}
           </div>
         </div>
-        {legacypdf.asset && (
-          <PdfViewer
-            file={{ url: legacypdf.asset.url }}
-          />
-        )}
+        {legacypdf.asset && <PdfViewer file={{ url: legacypdf.asset.url }} />}
         <Footer />
       </article>
     </Layout>
@@ -115,8 +106,8 @@ LegacyPublicationContainer.propTypes = {
     featuredImage: PropTypes.string,
     mainPoints: PropTypes.string,
     resources: PropTypes.string,
-    legacypdf: PropTypes.string,
-    date: PropTypes.string,
+    legacypdf: PropTypes.object,
+    date: PropTypes.object,
     translation: PropTypes.string,
     language: PropTypes.string,
     publicationType: PropTypes.string,

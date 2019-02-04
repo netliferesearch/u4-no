@@ -43,6 +43,7 @@ export default DataLoader(PublicationEntry, {
                  "slug": slug.current,
                  language
                },
+      "updatedVersion": updatedVersion->{title,slug,publicationType,publicationNumber,date,reference,authors},
       "topics": topics->target,
       "references": references->target, mainPoints,
       "relatedContent": relatedContent->target, authors, notes, editors, partners, acknowledgements, abstract, keywords,
