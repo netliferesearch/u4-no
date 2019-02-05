@@ -12,7 +12,7 @@ const RecommendedResource = ({
 }) => (
   <Link route={buildUrl({ _type, slug })}>
     <a className="c-simple-mosaic__item">
-      <div style={{ textTransform: 'capitalize' }}>
+      <div className="c-simple-mosaic__meta">
         {publicationType ? publicationType.title : articleType.title}
       </div>
       <div className="c-simple-mosaic__title">{title}</div>

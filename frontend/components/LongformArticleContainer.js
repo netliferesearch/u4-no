@@ -45,6 +45,7 @@ const LongFormArticleContainer = (props = {}) => {
       articleType = [],
       relatedContent = [],
       recommendedResources = false,
+      relatedResources = false,
       headsUp = false,
       updatedVersion = false,
     } = {},
@@ -331,12 +332,14 @@ const LongFormArticleContainer = (props = {}) => {
             </div>
           )}
 
-          {!shortversion && props.data.recommendedResources ? (
+          {!shortversion && (props.data.recommendedResources || props.data.relatedResources) && (
             <div className="o-wrapper">
               <h2>We also recommend</h2>
-              <RecommendedResources relatedContent={props.data.recommendedResources} />
+              <RecommendedResources
+                relatedContent={props.data.recommendedResources || props.data.relatedResources}
+              />
             </div>
-          ) : null}
+          )}
           <span id="js-bottom" />
           <Footer />
         </article>

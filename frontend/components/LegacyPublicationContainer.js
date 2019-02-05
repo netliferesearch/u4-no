@@ -27,8 +27,8 @@ const LegacyPublicationContainer = (props) => {
       date = {},
       publicationType = {},
       title = '',
-      relatedContent = [],
       recommendedResources = false,
+      relatedResources = false,
       updatedVersion = false,
       headsUp = false,
     } = {},
@@ -100,12 +100,14 @@ const LegacyPublicationContainer = (props) => {
           </div>
         </div>
         {legacypdf.asset && <PdfViewer file={{ url: legacypdf.asset.url }} />}
-        {props.data.recommendedResources && props.data.recommendedResources.length ? (
+        {(props.data.recommendedResources || props.data.relatedResources) && (
           <div className="o-wrapper">
             <h2>We also recommend</h2>
-            <RecommendedResources relatedContent={props.data.recommendedResources} />
+            <RecommendedResources
+              relatedContent={props.data.recommendedResources || props.data.relatedResources}
+            />
           </div>
-        ) : null}
+        )}
 
         <Footer />
       </article>
