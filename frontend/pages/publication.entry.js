@@ -36,19 +36,19 @@ export default DataLoader(PublicationEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `*[slug.current == $slug]{ _type, _id,
       abbreviations, abstract, acknowledgements,
-      authors[]->{ affiliations, email, firstName, slug, surname },
+      authors[]->{ _id, affiliations, email, firstName, slug, surname },
       bibliographicalOverride, blurbs, content, date,
-      editors[]->{ affiliations, email, firstName, slug, surname },
+      editors[]->{ _id, affiliations, email, firstName, slug, surname },
       featuredImage, headsUp, keywords, language,
       lead, legacypdf, mainPoints, notes, partners, pdfFile, publicationNumber,
       publicationType->{ _id, title },
       reference, references,
       "recommendedResources":
-        relatedContent[]->{ _type, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage },
+        relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage },
       "relatedResources":
-          related[]->{ _type, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage },
+          related[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage },
       slug, standfirst, subtitle, summary, summaryExternal, title,
-      "topics": topics[]->{_id,title,slug},
+      topics[]->{ _id, title, slug },
       "translations":
               *[_type == 'publication' && _id != ^._id && (_id==coalesce(^.translation._ref,^._id) || (translation._ref == coalesce(^.translation._ref,^._id)))]{_id,
                  title, "slug": slug.current, language

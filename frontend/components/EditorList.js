@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '../routes';
 import buildUrl from '../helpers/buildUrl';
 
 const EditorList = ({
@@ -14,10 +15,12 @@ const EditorList = ({
         .map(({
  _id = '', firstName = '', surname = '', slug = {},
 }, index) => (
-  <span>
-    <a key={_id + index} href={buildUrl({ _type: 'person', slug })}>
-      {firstName} {surname}{' '}
-    </a>{' '}
+  <span key={_id}>
+    <Link href={buildUrl({ _type: 'person', slug })}>
+      <a>
+        {firstName} {surname}{' '}
+      </a>
+    </Link>{' '}
     {editors.length > 1 && index + 2 < editors.length && <span>, </span>}
     {editors.length > 1 && index + 2 === editors.length && <span> and </span>}
   </span>
