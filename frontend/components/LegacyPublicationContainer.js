@@ -27,8 +27,8 @@ const LegacyPublicationContainer = (props) => {
       date = {},
       publicationType = {},
       title = '',
-      recommendedResources = false,
-      relatedResources = false,
+      recommendedResources = [],
+      relatedResources = [],
       updatedVersion = false,
       headsUp = false,
     } = {},
@@ -100,14 +100,19 @@ const LegacyPublicationContainer = (props) => {
           </div>
         </div>
         {legacypdf.asset && <PdfViewer file={{ url: legacypdf.asset.url }} />}
-        {(props.data.recommendedResources || props.data.relatedResources) && (
-          <div className="o-wrapper">
-            <h2>We also recommend</h2>
-            <RecommendedResources
-              relatedContent={props.data.recommendedResources || props.data.relatedResources}
-            />
-          </div>
-        )}
+        {(props.data.recommendedResources && props.data.recommendedResources.length > 0) ||
+          (props.data.relatedResources && props.data.relatedResources.length > 0 && (
+            <div className="o-wrapper">
+              <h2>We also recommend</h2>
+              <RecommendedResources
+                relatedContent={
+                  props.data.recommendedResources && props.data.recommendedResources.length > 0
+                    ? props.data.recommendedResources
+                    : props.data.relatedResources
+                }
+              />
+            </div>
+          ))}
 
         <Footer />
       </article>
@@ -117,19 +122,21 @@ const LegacyPublicationContainer = (props) => {
 
 LegacyPublicationContainer.propTypes = {
   data: PropTypes.shape({
-    lead: PropTypes.string,
-    abstract: PropTypes.string,
     _type: PropTypes.string,
-    longTitle: PropTypes.string,
-    featuredImage: PropTypes.string,
-    mainPoints: PropTypes.string,
-    resources: PropTypes.string,
-    legacypdf: PropTypes.object,
+    abstract: PropTypes.string,
     date: PropTypes.object,
-    translation: PropTypes.string,
+    featuredImage: PropTypes.string,
     language: PropTypes.string,
+    lead: PropTypes.string,
+    legacypdf: PropTypes.object,
+    longTitle: PropTypes.string,
+    mainPoints: PropTypes.string,
     publicationType: PropTypes.string,
+    recommendedResources: PropTypes.array,
+    relatedResources: PropTypes.array,
+    resources: PropTypes.string,
     title: PropTypes.string,
+    translation: PropTypes.string,
   }).isRequired,
   url: PropTypes.shape({
     asPath: PropTypes.string,

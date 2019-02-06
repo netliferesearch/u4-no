@@ -70,6 +70,7 @@ const PublicationArticleHeader = ({
         .filter(value => Object.keys(value).length)
         .map(({ title = '', slug = {} }) => (
           <a
+            key={slug.current ? slug.current : ''}
             href={buildUrl({ _type: 'topics', slug: slug.current ? slug.current : '' })}
             {...classes('link-item')}
           >
