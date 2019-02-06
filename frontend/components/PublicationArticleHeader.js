@@ -14,23 +14,23 @@ const classes = BEMHelper({
 
 // file downloads are not normally tracked by GA, thus we fire of a page view
 // before downloading.
-const logPDFPageView = ({e, url}) => {
-  e.preventDefault()
+const logPDFPageView = ({ e, url }) => {
+  e.preventDefault();
   if (window.ga) {
     return ga('send', {
       hitType: 'pageview',
       page: url,
       hitCallback: createFunctionWithTimeout({
         callback: () => {
-          window.location.href = url
-        }
-      })
+          window.location.href = url;
+        },
+      }),
     });
   }
-  window.location.href = url
-}
+  window.location.href = url;
+};
 
-function createFunctionWithTimeout({callback, opt_timeout = 1000}) {
+function createFunctionWithTimeout({ callback, opt_timeout = 1000 }) {
   let called = false;
   function fn() {
     if (!called) {
@@ -66,15 +66,17 @@ const PublicationArticleHeader = ({
     {/* Wrap in standard grid width until we know better */}
     <div {...classes('meta')}>
       {publicationType.title && `${publicationType.title} | `}
-      {topics.filter(({ target }) => target).map(({ _ref = '', target = {} }) => (
-        <Link
-          key={_ref}
-          route="topic.entry"
-          params={{ slug: target.slug ? target.slug.current : '' }}
-        >
-          <a {...classes('link-item')}>{target.title}</a>
-        </Link>
-      ))}
+      {topics
+        .filter(value => Object.keys(value).length)
+        .map(({ title = '', slug = {} }) => (
+          <a
+            key={slug.current ? slug.current : ''}
+            href={buildUrl({ _type: 'topics', slug: slug.current ? slug.current : '' })}
+            {...classes('link-item')}
+          >
+            {title}
+          </a>
+        ))}
     </div>
     <div>
       <h1 {...classes('title')}>{title}</h1>
@@ -145,23 +147,32 @@ const PublicationArticleHeader = ({
       )}
       {pdfFile.asset && (
         <div {...classes('meta', null, 'c-article-header__download')}>
-          <a onClick={event => logPDFPageView({e: event, url: `/publications/${slug.current}.pdf`})}
-            href={`/publications/${slug.current}.pdf`} {...classes('download-text')}>
+          <a
+            onClick={event =>
+              logPDFPageView({ e: event, url: `/publications/${slug.current}.pdf` })
+            }
+            href={`/publications/${slug.current}.pdf`}
+            {...classes('download-text')}
+          >
             <span>Download as PDF</span>
             <Download {...classes('download-icon')} />
           </a>
         </div>
       )}
-      {!pdfFile.asset &&
-        legacypdf.asset && (
-          <div {...classes('meta', null, 'c-article-header__download')}>
-            <a onClick={event => logPDFPageView({e: event, url: `/publications/${slug.current}.pdf`})}
-              href={`/publications/${slug.current}.pdf`} {...classes('download-text')}>
-              <span>Download PDF</span>
-              <Download {...classes('download-icon')} />
-            </a>
-          </div>
-        )}
+      {!pdfFile.asset && legacypdf.asset && (
+        <div {...classes('meta', null, 'c-article-header__download')}>
+          <a
+            onClick={event =>
+              logPDFPageView({ e: event, url: `/publications/${slug.current}.pdf` })
+            }
+            href={`/publications/${slug.current}.pdf`}
+            {...classes('download-text')}
+          >
+            <span>Download PDF</span>
+            <Download {...classes('download-icon')} />
+          </a>
+        </div>
+      )}
     </div>
   </header>
 );
