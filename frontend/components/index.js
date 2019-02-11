@@ -15,6 +15,7 @@ export { default as InstitutionList } from './InstitutionList';
 export { default as Layout } from './Layout';
 export { default as LegacyPublicationContainer } from './LegacyPublicationContainer';
 export { default as LinkList } from './LinkList';
+export { default as LinkToItem } from './LinkToItem';
 export { default as Loader } from './Loader';
 export { default as LoaderV2 } from './LoaderV2';
 export { default as Logo } from './Logo';
