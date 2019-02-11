@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from '../routes';
-import buildUrl from '../helpers/buildUrl';
+import { LinkToItem } from './';
 
 const EditorList = ({
   _id, editors = [], intro = 'Series editor', pluralize = true,
@@ -16,11 +15,11 @@ const EditorList = ({
  _id = '', firstName = '', surname = '', slug = {},
 }, index) => (
   <span key={_id}>
-    <Link href={buildUrl({ _type: 'person', slug })}>
+    <LinkToItem type="person" slug={slug}>
       <a>
-        {firstName} {surname}{' '}
+        {firstName} {surname}
       </a>
-    </Link>{' '}
+    </LinkToItem>
     {editors.length > 1 && index + 2 < editors.length && <span>, </span>}
     {editors.length > 1 && index + 2 === editors.length && <span> and </span>}
   </span>
