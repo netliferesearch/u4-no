@@ -3,9 +3,8 @@ import BEMHelper from 'react-bem-helper';
 import { Link } from '../routes';
 import languageName from '../helpers/languageName';
 import bibliographicReference from '../helpers/bibliographicReference';
-import buildUrl from '../helpers/buildUrl';
 import { Download, ArrowRight, PartnerLogo10 } from './icons';
-import { AuthorList, EditorList, InstitutionList } from '../components/';
+import { AuthorList, EditorList, InstitutionList, LinkToItem } from './';
 
 const classes = BEMHelper({
   name: 'article-header',
@@ -69,13 +68,13 @@ const PublicationArticleHeader = ({
       {topics
         .filter(value => Object.keys(value).length)
         .map(({ title = '', slug = {} }) => (
-          <a
+          <LinkToItem
+            type="topics"
+            slug={slug.current ? slug.current : slug}
             key={slug.current ? slug.current : ''}
-            href={buildUrl({ _type: 'topics', slug: slug.current ? slug.current : '' })}
-            {...classes('link-item')}
           >
-            {title}
-          </a>
+            <a {...classes('link-item')}>{title}</a>
+          </LinkToItem>
         ))}
     </div>
     <div>
@@ -110,30 +109,24 @@ const PublicationArticleHeader = ({
             {translations.map((item = {}, index) =>
                 item.slug &&
                 item.title && (
-                  <span>
-                    <a
-                      {...classes('language')}
-                      href={buildUrl({ _type: 'publication', slug: item.slug })}
-                      title={item.title}
-                    >
-                      {languageName({ langcode: item.language })}
-                    </a>
+                  <LinkToItem type="publication" slug={item.slug} key={item._id}>
+                    <a {...classes('language')}>{languageName({ langcode: item.language })}</a>
                     {index + 2 < translations.length && <span>, </span>}
                     {index + 2 === translations.length && <span> and </span>}
-                  </span>
+                  </LinkToItem>
                 ))}
           </p>
         )}
 
-        {partners.length ? <InstitutionList institutions={partners} /> : null}
-        {publicationType._id === 'pubtype-3' ? (
+        {partners.length > 0 ? <InstitutionList institutions={partners} /> : null}
+        {publicationType._id === 'pubtype-3' && (
           <div className="c-article-header__institution">
             <p>The U4 Helpdesk is operated by </p>
             <div className="c-logo">
               <PartnerLogo10 />
             </div>
           </div>
-        ) : null}
+        )}
       </div>
       {summary.length > 0 && (
         <Link route="publication.shortVersion" params={{ slug: slug.current }}>
