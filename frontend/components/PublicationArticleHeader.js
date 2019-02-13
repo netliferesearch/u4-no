@@ -110,9 +110,11 @@ const PublicationArticleHeader = ({
                 item.slug &&
                 item.title && (
                   <LinkToItem type="publication" slug={item.slug} key={item._id}>
-                    <a {...classes('language')}>{languageName({ langcode: item.language })}</a>
-                    {index + 2 < translations.length && <span>, </span>}
-                    {index + 2 === translations.length && <span> and </span>}
+                    <span>
+                      <a {...classes('language')}>{languageName({ langcode: item.language })}</a>
+                      {index + 2 < translations.length && <span>, </span>}
+                      {index + 2 === translations.length && <span> and </span>}
+                    </span>
                   </LinkToItem>
                 ))}
           </p>
