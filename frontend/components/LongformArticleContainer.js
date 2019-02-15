@@ -110,7 +110,7 @@ const LongFormArticleContainer = (props = {}) => {
           {_type === 'publication' && !isPublicationDrawerOpen && (
             <TableOfContentsButton {...props.data} />
           )}
-          <CustomScrollSpy {...props.data} />
+          {/* <CustomScrollSpy {...props.data} /> */}
           <span id="js-top" />
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
