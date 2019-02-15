@@ -8,8 +8,7 @@
 }
 
 .c-simple-mosaic__item,
-a.c-simple-mosaic__item,
-  {
+a.c-simple-mosaic__item {
   max-width: 300px;
   width: 100%;
   margin: $spacing-small;
@@ -21,13 +20,16 @@ a.c-simple-mosaic__item,
     color: $brand-dark;
   }
   &:hover,
-  &:hover:visited,
-    {
+  &:hover:visited {
     background: $brand-medium;
     color: $white;
   }
 }
-
+.c-simple-mosaic__meta {
+  font-weight: 300;
+  text-transform: uppercase;
+  padding-bottom: $spacing;
+}
 .c-simple-mosaic__title {
   @include inuit-font-size($font-size-normal, $font-size-large);
   margin-bottom: $spacing;

@@ -1,6 +1,5 @@
 import React from 'react';
-import buildUrl from '../helpers/buildUrl';
-import { Link } from '../routes';
+import { LinkToItem } from './';
 
 const Mosaic = ({ resources = [], alt = false }) => (
   <div className="c-mosaic">
@@ -24,7 +23,7 @@ const Mosaic = ({ resources = [], alt = false }) => (
           },
           index,
         ) => (
-          <Link key={_id + index} route={buildUrl({ _type, slug })}>
+          <LinkToItem key={_id} type={_type} slug={slug}>
             <a
               className={`c-mosaic_item ${
                 index % 4 === 0 ? 'c-mosaic_item--backgroundImage' : ''
@@ -34,7 +33,7 @@ const Mosaic = ({ resources = [], alt = false }) => (
                   : ' '
               }`}
               style={{
-                backgroundImage: `url(${imageUrl && index % 4 === 0 ? `${imageUrl}?w=1200` : ''})`,
+                backgroundImage: imageUrl && index % 4 === 0 ? `url(${imageUrl}?w=1200)` : '',
               }}
             >
               <div
@@ -54,7 +53,7 @@ const Mosaic = ({ resources = [], alt = false }) => (
                 </div>
               </div>
             </a>
-          </Link>
+          </LinkToItem>
         ))}
   </div>
 );

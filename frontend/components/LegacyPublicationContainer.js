@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from '../routes';
 import { connect } from 'react-redux';
-import BlockContent from '@sanity/block-content-to-react';
-import serializers from './serializers';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
-import buildUrl from '../helpers/buildUrl';
-import bibliographicReference from '../helpers/bibliographicReference';
-import { Footer, Layout, PublicationArticleHeader, PdfViewer, PublicationNotification } from './';
+import {
+  Footer,
+  Layout,
+  PublicationArticleHeader,
+  PdfViewer,
+  PublicationNotification,
+  RecommendedResources,
+} from './';
 
 const LegacyPublicationContainer = (props) => {
   const {
@@ -20,6 +22,8 @@ const LegacyPublicationContainer = (props) => {
       date = {},
       publicationType = {},
       title = '',
+      recommendedResources = [],
+      relatedResources = [],
       updatedVersion = false,
       headsUp = false,
     } = {},
@@ -45,9 +49,10 @@ const LegacyPublicationContainer = (props) => {
           <div
             className="c-hero-image"
             style={{
-              backgroundImage: `url(${featuredImage &&
-                featuredImage.asset &&
-                featuredImage.asset.url})`,
+              backgroundImage:
+                featuredImage && featuredImage.asset && featuredImage.asset.url
+                  ? `url(${featuredImage.asset.url})`
+                  : '',
               backgroundColor: '#0079CF',
             }}
           />
@@ -91,6 +96,15 @@ const LegacyPublicationContainer = (props) => {
           </div>
         </div>
         {legacypdf.asset && <PdfViewer file={{ url: legacypdf.asset.url }} />}
+        {(recommendedResources.length > 0 || relatedResources.length > 0) && (
+          <div className="o-wrapper">
+            <h2>We also recommend</h2>
+            <RecommendedResources
+              resources={recommendedResources.length > 0 ? recommendedResources : relatedResources}
+            />
+          </div>
+        )}
+
         <Footer />
       </article>
     </Layout>
@@ -99,19 +113,21 @@ const LegacyPublicationContainer = (props) => {
 
 LegacyPublicationContainer.propTypes = {
   data: PropTypes.shape({
-    lead: PropTypes.string,
-    abstract: PropTypes.string,
     _type: PropTypes.string,
-    longTitle: PropTypes.string,
-    featuredImage: PropTypes.string,
-    mainPoints: PropTypes.string,
-    resources: PropTypes.string,
-    legacypdf: PropTypes.object,
+    abstract: PropTypes.string,
     date: PropTypes.object,
-    translation: PropTypes.string,
+    featuredImage: PropTypes.string,
     language: PropTypes.string,
-    publicationType: PropTypes.string,
+    lead: PropTypes.string,
+    legacypdf: PropTypes.object,
+    longTitle: PropTypes.string,
+    mainPoints: PropTypes.string,
+    publicationType: PropTypes.object,
+    recommendedResources: PropTypes.array,
+    relatedResources: PropTypes.array,
+    resources: PropTypes.string,
     title: PropTypes.string,
+    translation: PropTypes.string,
   }).isRequired,
   url: PropTypes.shape({
     asPath: PropTypes.string,

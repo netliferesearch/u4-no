@@ -1,5 +1,5 @@
 import React from 'react';
-import buildUrl from '../helpers/buildUrl';
+import { LinkToItem } from './';
 
 const EditorList = ({
   _id, editors = [], intro = 'Series editor', pluralize = true,
@@ -14,10 +14,12 @@ const EditorList = ({
         .map(({
  _id = '', firstName = '', surname = '', slug = {},
 }, index) => (
-  <span>
-    <a key={_id + index} href={buildUrl({ _type: 'person', slug })}>
-      {firstName} {surname}{' '}
-    </a>{' '}
+  <span key={_id}>
+    <LinkToItem type="person" slug={slug}>
+      <a>
+        {firstName} {surname}
+      </a>
+    </LinkToItem>
     {editors.length > 1 && index + 2 < editors.length && <span>, </span>}
     {editors.length > 1 && index + 2 === editors.length && <span> and </span>}
   </span>

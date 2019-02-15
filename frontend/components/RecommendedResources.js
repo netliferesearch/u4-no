@@ -1,29 +1,29 @@
-import buildUrl from '../helpers/buildUrl';
-import { Link } from '../routes';
+import LinkToItem from './LinkToItem';
 
 const RecommendedResource = ({
   _id = '',
   lead = '',
-  target: {
-    title,
-    _type,
-    slug,
-  } = {},
-  publicationType = {},
+  title = '',
+  _type = '',
+  slug = {},
+  publicationType = false,
+  articleType = false,
 }) => (
-  <Link route={buildUrl({ _type, slug })}>
+  <LinkToItem type={_type} slug={slug}>
     <a className="c-simple-mosaic__item">
-      <div style={{ textTransform: 'capitalize' }}>{_type}</div>
+      <div className="c-simple-mosaic__meta">
+        {publicationType ? publicationType.title : articleType.title}
+      </div>
       <div className="c-simple-mosaic__title">{title}</div>
     </a>
-  </Link>
+  </LinkToItem>
 );
 
-const RecommendedResources = ({ relatedContent = [] }) => (
+const RecommendedResources = ({ resources = [] }) => (
   <div className="c-simple-mosaic">
-    {relatedContent
-      .slice(0, 3)
-      .map(({ _id, ...rest }) => <RecommendedResource key={_id} {...rest} />)}
+    {resources.slice(0, 3).map(({ _id, ...rest }) => (
+      <RecommendedResource key={_id} {...rest} />
+    ))}
   </div>
 );
 

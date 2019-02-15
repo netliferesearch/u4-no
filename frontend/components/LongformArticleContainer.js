@@ -43,8 +43,9 @@ const LongFormArticleContainer = (props = {}) => {
       relatedUrl = {},
       publicationType = {},
       articleType = [],
-      relatedContent = [],
-      headsUp = false,
+      recommendedResources = [],
+      relatedResources = [],
+      headsUp = [],
       updatedVersion = false,
     } = {},
     shortversion = false,
@@ -59,6 +60,7 @@ const LongFormArticleContainer = (props = {}) => {
     translation = {},
     language = '',
   } = props;
+
   const headComponentConfig =
     headComponentConfigOverride ||
     Object.assign(
@@ -123,29 +125,24 @@ const LongFormArticleContainer = (props = {}) => {
                 <div
                   className="c-hero-image"
                   style={{
-                    backgroundImage: `url(${props.data.featuredImage &&
-                      props.data.featuredImage.asset &&
-                      props.data.featuredImage.asset.url}?width=1120&crop=focalpoint&fit=scale)`,
+                    backgroundImage:
+                      featuredImage.asset && featuredImage.asset.url
+                        ? `url(${featuredImage.asset.url}?width=1120&crop=focalpoint&fit=scale)`
+                        : '',
                     backgroundColor: '#0079CF',
                   }}
                 />
                 <div className="c-hero-bg" />
                 <div className="c-hero-sideText">
-                  {props.data.featuredImage &&
-                    !props.data.featuredImage.sourceUrl &&
-                    props.data.featuredImage.credit && (
-                      <div style={{ display: 'inline' }}>{props.data.featuredImage.credit}</div>
-                    )}
-                  {props.data.featuredImage && props.data.featuredImage.sourceUrl && (
-                    <a className="u-margin-left-tiny" href={props.data.featuredImage.sourceUrl}>
-                      {props.data.featuredImage.credit
-                        ? props.data.featuredImage.credit
-                        : props.data.featuredImage.sourceUrl}
+                  {!featuredImage.sourceUrl && featuredImage.credit && (
+                    <div style={{ display: 'inline' }}>{featuredImage.credit}</div>
+                  )}
+                  {featuredImage.sourceUrl && (
+                    <a className="u-margin-left-tiny" href={featuredImage.sourceUrl}>
+                      {featuredImage.credit ? featuredImage.credit : featuredImage.sourceUrl}
                     </a>
                   )}
-                  {props.data.featuredImage && props.data.featuredImage.license && (
-                    <span> CC {props.data.featuredImage.license.toUpperCase()}</span>
-                  )}
+                  {featuredImage.license && <span> CC {featuredImage.license.toUpperCase()}</span>}
                 </div>
                 <div className="c-hero-header">
                   <PublicationArticleHeader
@@ -251,13 +248,13 @@ const LongFormArticleContainer = (props = {}) => {
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
                 <ToggleBlock title="Notes" content={props.data.notes}>
-                  {props.data.featuredImage && props.data.featuredImage.caption && (
+                  {featuredImage.caption && (
                     <div className="c-longform-grid__standard">
                       <p>
                         <b>Header image:</b>
                       </p>
                       <BlockToContent
-                        blocks={props.data.featuredImage.caption}
+                        blocks={featuredImage.caption}
                         serializers={{
                           types: {
                             block: props => <p style={{ display: 'inline' }}>{props.children}</p>,
@@ -267,26 +264,22 @@ const LongFormArticleContainer = (props = {}) => {
                     </div>
                   )}
                   <div className="c-longform-grid__standard">
-                    {props.data.featuredImage &&
-                      !props.data.featuredImage.sourceUrl &&
-                      props.data.featuredImage.credit && (
-                        <span>Photo: {props.data.featuredImage.credit} </span>
-                      )}
+                    {!featuredImage.sourceUrl && featuredImage.credit && (
+                      <span>Photo: {featuredImage.credit} </span>
+                    )}
 
-                    {props.data.featuredImage && props.data.featuredImage.sourceUrl && (
+                    {featuredImage.sourceUrl && (
                       <span>
                         Photo:
-                        <a className="u-margin-left-tiny" href={props.data.featuredImage.sourceUrl}>
-                          {props.data.featuredImage.credit
-                            ? props.data.featuredImage.credit
-                            : props.data.featuredImage.sourceUrl}
+                        <a className="u-margin-left-tiny" href={featuredImage.sourceUrl}>
+                          {featuredImage.credit ? featuredImage.credit : featuredImage.sourceUrl}
                         </a>
                       </span>
                     )}
-                    {props.data.featuredImage && props.data.featuredImage.license && (
+                    {featuredImage.license && (
                       <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
                         {' '}
-                        CC {props.data.featuredImage.license.toUpperCase()}
+                        CC {featuredImage.license.toUpperCase()}
                       </a>
                     )}
                   </div>
@@ -330,12 +323,16 @@ const LongFormArticleContainer = (props = {}) => {
             </div>
           )}
 
-          {!shortversion && props.data.relatedContent && props.data.relatedContent.length ? (
+          {!shortversion && (recommendedResources.length > 0 || relatedResources.length > 0) && (
             <div className="o-wrapper">
               <h2>We also recommend</h2>
-              <RecommendedResources relatedContent={props.data.relatedContent} />
+              <RecommendedResources
+                resources={
+                  recommendedResources.length > 0 ? recommendedResources : relatedResources
+                }
+              />
             </div>
-          ) : null}
+          )}
           <span id="js-bottom" />
           <Footer />
         </article>
