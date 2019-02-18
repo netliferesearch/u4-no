@@ -1,13 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from '../routes';
 import { connect } from 'react-redux';
-import BlockContent from '@sanity/block-content-to-react';
-import serializers from './serializers';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
-import buildUrl from '../helpers/buildUrl';
-import bibliographicReference from '../helpers/bibliographicReference';
 import {
   Footer,
   Layout,
@@ -54,9 +49,10 @@ const LegacyPublicationContainer = (props) => {
           <div
             className="c-hero-image"
             style={{
-              backgroundImage: `url(${featuredImage &&
-                featuredImage.asset &&
-                featuredImage.asset.url})`,
+              backgroundImage:
+                featuredImage && featuredImage.asset && featuredImage.asset.url
+                  ? `url(${featuredImage.asset.url})`
+                  : '',
               backgroundColor: '#0079CF',
             }}
           />
@@ -100,19 +96,14 @@ const LegacyPublicationContainer = (props) => {
           </div>
         </div>
         {legacypdf.asset && <PdfViewer file={{ url: legacypdf.asset.url }} />}
-        {(props.data.recommendedResources && props.data.recommendedResources.length > 0) ||
-          (props.data.relatedResources && props.data.relatedResources.length > 0 && (
-            <div className="o-wrapper">
-              <h2>We also recommend</h2>
-              <RecommendedResources
-                relatedContent={
-                  props.data.recommendedResources && props.data.recommendedResources.length > 0
-                    ? props.data.recommendedResources
-                    : props.data.relatedResources
-                }
-              />
-            </div>
-          ))}
+        {(recommendedResources.length > 0 || relatedResources.length > 0) && (
+          <div className="o-wrapper">
+            <h2>We also recommend</h2>
+            <RecommendedResources
+              resources={recommendedResources.length > 0 ? recommendedResources : relatedResources}
+            />
+          </div>
+        )}
 
         <Footer />
       </article>
@@ -131,7 +122,7 @@ LegacyPublicationContainer.propTypes = {
     legacypdf: PropTypes.object,
     longTitle: PropTypes.string,
     mainPoints: PropTypes.string,
-    publicationType: PropTypes.string,
+    publicationType: PropTypes.object,
     recommendedResources: PropTypes.array,
     relatedResources: PropTypes.array,
     resources: PropTypes.string,

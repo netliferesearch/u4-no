@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Link } from '../routes';
+import { LinkToItem } from './';
 import { ArrowRight } from '../components/icons';
 
 const classes = BEMHelper({
@@ -17,26 +17,24 @@ const arrayify = (content) => {
 const LinkList = ({ title = '', content = [], otherClasses = '' }) => (
   <ul {...classes(null, null, otherClasses)}>
     {title && <span>{title}</span>}
-    { arrayify(content).map(({ link = '', title: linkList = '' }, index) => (
-      <li key={index + linkList.trim()} {...classes('item')}>
-        <a href={link} {...classes('link')}>
-          {linkList} <ArrowRight {...classes('icon')} />
-        </a>
-      </li>
+    {arrayify(content).map(({
+ _id = '', _type = '', slug = '', title = '',
+}, index) => (
+  <li key={_id} {...classes('item')}>
+    <LinkToItem type={_type} slug={slug}>
+      <a {...classes('link')}>
+        {title} <ArrowRight {...classes('icon')} />
+      </a>
+    </LinkToItem>
+  </li>
     ))}
   </ul>
 );
 
 LinkList.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.object),
-    PropTypes.object,
-  ]).isRequired,
-  otherClasses: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string,
-  ]),
+  content: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.object), PropTypes.object]).isRequired,
+  otherClasses: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
 LinkList.defaultProps = {

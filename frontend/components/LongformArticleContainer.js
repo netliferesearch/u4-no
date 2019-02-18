@@ -112,7 +112,7 @@ const LongFormArticleContainer = (props = {}) => {
           {_type === 'publication' && !isPublicationDrawerOpen && (
             <TableOfContentsButton {...props.data} />
           )}
-          <CustomScrollSpy {...props.data} />
+          {/* <CustomScrollSpy {...props.data} /> */}
           <span id="js-top" />
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
@@ -125,8 +125,10 @@ const LongFormArticleContainer = (props = {}) => {
                 <div
                   className="c-hero-image"
                   style={{
-                    backgroundImage: `url(${featuredImage.asset &&
-                      featuredImage.asset.url}?width=1120&crop=focalpoint&fit=scale)`,
+                    backgroundImage:
+                      featuredImage.asset && featuredImage.asset.url
+                        ? `url(${featuredImage.asset.url}?width=1120&crop=focalpoint&fit=scale)`
+                        : '',
                     backgroundColor: '#0079CF',
                   }}
                 />
@@ -325,7 +327,7 @@ const LongFormArticleContainer = (props = {}) => {
             <div className="o-wrapper">
               <h2>We also recommend</h2>
               <RecommendedResources
-                relatedContent={
+                resources={
                   recommendedResources.length > 0 ? recommendedResources : relatedResources
                 }
               />

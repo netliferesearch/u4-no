@@ -14,7 +14,7 @@ const TopicEntry = ({
       longTitle = '',
       explainerText = '',
       featuredImage,
-      linkListContent = false,
+      relatedTopics = [],
       parent = {},
       slug = {},
       introduction = [],
@@ -53,14 +53,21 @@ const TopicEntry = ({
       >
         {longTitle}
       </h2>
+
       <section className="c-boxOnImage u-margin-bottom-huge">
         {featuredImage ? (
           <figure className="c-boxOnImage__figure">
             <img
-              alt={featuredImage.asset ? featuredImage.asset.altText : ''}
-              src={`${
-                featuredImage.asset ? featuredImage.asset.url : ''
-              }?w=1120&fit=crop&crop=focalpoint`}
+              alt={
+                featuredImage.asset && featuredImage.asset.altText
+                  ? featuredImage.asset.altText
+                  : ''
+              }
+              src={
+                featuredImage.asset && featuredImage.asset.url
+                  ? `${featuredImage.asset.url}?w=1120&fit=crop&crop=focalpoint`
+                  : ''
+              }
             />
             <span className="c-boxOnImage__caption">
               {featuredImage.caption && (
@@ -71,19 +78,19 @@ const TopicEntry = ({
                   {featuredImage.credit ? featuredImage.credit : 'Credit'}
                 </a>
               )}
-              {!featuredImage.sourceUrl &&
-                featuredImage.credit && <span>{featuredImage.credit}</span>}
+              {!featuredImage.sourceUrl && featuredImage.credit && (
+                <span>{featuredImage.credit}</span>
+              )}
               {featuredImage.license && <span> {featuredImage.license.toUpperCase()}</span>}
             </span>
           </figure>
         ) : null}
         <div className="c-boxOnImage__body">
           <p>{explainerText}</p>
-          {linkListContent.length > 0 && (
-            <LinkList title="Related topics" content={linkListContent} />
-          )}
+          {relatedTopics.length > 0 && <LinkList title="Related topics" content={relatedTopics} />}
         </div>
       </section>
+
       {introduction.length + agenda.length > 0 && (
         <div>
           <h2 className="c-topic-section__title c-topic-section__title--large">
@@ -111,7 +118,7 @@ const TopicEntry = ({
           </section>
         </div>
       )}
-      {resources.length ? (
+      {resources.length > 0 && (
         <div>
           <h2 className="c-topic-section__title">
             Inform your anti-corruption work with handpicked topic related publications, insights
@@ -124,15 +131,16 @@ const TopicEntry = ({
             </div>
             <h2 className="c-topic-section__cta">
               <a href={`/search?topics=${_id}`}>
-                Explore all our resources &nbsp;<ArrowRight />
+                Explore all our resources &nbsp;
+                <ArrowRight />
               </a>
             </h2>
           </section>
         </div>
-      ) : null}
+      )}
     </div>
 
-    {advisors.length ? (
+    {advisors.length > 0 && (
       <div id="advisors" className="c-topic-section--lightblue o-wrapper-full-width">
         <Team
           title={
@@ -145,11 +153,12 @@ const TopicEntry = ({
         />
         <h2 className="c-topic-section__cta">
           <a href="/the-team">
-            The whole U4 team &nbsp;<ArrowRight />
+            The whole U4 team &nbsp;
+            <ArrowRight />
           </a>
         </h2>
       </div>
-    ) : null}
+    )}
 
     <div id="partners" className="c-topic-section">
       <PartnerPromo />
@@ -186,14 +195,13 @@ export default DataLoader(TopicEntry, {
           slug,
           bio
         },
-        "linkListContent": coalesce(*[_type == "topics" && references(^._id)]{
-          title,
-          "link": slug.current
-        },
-        parent->{
-          title,
-          "link": slug.current
-         }),
+        "relatedTopics":
+          *[_type == 'topics' && _id != ^._id && (_id==coalesce(^.parent._ref,^._id) || (parent._ref == coalesce(^.parent._ref,^._id)))]{
+            _id,
+            _type,
+            title,
+            "slug": slug.current,
+          },
         "resources": resources[]->{
           _id,
           _type,

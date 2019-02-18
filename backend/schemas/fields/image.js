@@ -9,6 +9,15 @@ export default {
   },
   fields: [
     {
+      name: 'heading',
+      title: 'Heading',
+      description: 'Heading (to appear above image)',
+      type: 'string',
+      options: {
+        isHighlighted: true
+      }
+    },
+    {
       name: 'altText',
       title: 'Alternative text',
       description: 'For users that can\'t see images',
