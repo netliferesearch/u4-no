@@ -2,10 +2,35 @@
 	overflow-x:auto;
 	padding: $spacing-tiny;
 	@include inuit-font-size($font-size-tiny, $line-height-normal);
+  table {
+    font-family: $font-sans;
+    max-width: 100%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  th, td {
+    border: 1px solid #E3E3E3;
+    padding: $spacing-small;
+  }
+
+  thead, th {
+    color: $brand-main;
+    font-weight: bold;
+  }
+
+  tr:nth-child(even) {
+    background-color: $lightGrey;
+  }
 }
 
 @media print  {
 	.c-table {
 		overflow-x:visible;
+    table {
+      table-layout: fixed;
+      font-size: 90%;
+    }
 	}
 }
