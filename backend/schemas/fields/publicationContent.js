@@ -80,6 +80,15 @@ const content = {
       },
       fields: [
         {
+          name: 'title',
+          type: 'string'
+        },
+        {
+          name: 'caption',
+          type: 'array',
+          of: [{type: 'block'}]
+        },
+        {
           name: 'htmlStr',
           readOnly: true,
           type: 'string'
@@ -87,7 +96,9 @@ const content = {
       ],
       preview: {
         select: {
-          htmlStr: 'htmlStr'
+          htmlStr: 'htmlStr',
+          title: 'title',
+          caption: 'caption',
         },
         component: HtmlTableEditorPreview
       }

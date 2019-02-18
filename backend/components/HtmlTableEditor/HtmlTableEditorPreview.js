@@ -14,7 +14,7 @@ export default class HtmlTableEditorPreview extends React.Component {
   }
 
   render() {
-    const {value: {htmlStr = ''} = {}} = this.props
+    const {value: {htmlStr = '', title = ''} = {}} = this.props
     const {isOpen = false} = this.state
     const activeClasses = [styles['c-table']]
     if (isOpen) {
@@ -24,6 +24,7 @@ export default class HtmlTableEditorPreview extends React.Component {
       <Button style={{margin: '12px'}} inverted onClick={this.onOpenHandler}>
         {isOpen ? 'Minimize' : 'Expand'}
       </Button>
+      {title && <p>{title}</p>}
       <div className={activeClasses.join(' ')} dangerouslySetInnerHTML={{ __html: htmlStr }}></div>
       <Button style={{margin: '12px'}} inverted onClick={this.onOpenHandler}>
         {isOpen ? 'Minimize' : 'Expand'}
