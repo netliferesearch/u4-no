@@ -2,7 +2,7 @@ import React from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import PatchEvent, {set, unset, setIfMissing} from 'part:@sanity/form-builder/patch-event'
 
-export default class WrappedDefaultInput extends React.Component {
+export default class HtmlTableEditor extends React.Component {
 
   constructor(props) {
     super()
@@ -46,6 +46,9 @@ export default class WrappedDefaultInput extends React.Component {
         plugins: 'print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help',
         toolbar: 'table | formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
         height: '800'
+      }}
+      init={{
+        content_css: 'static/HtmlTableEditor.css'
       }}
       value={content}
        onEditorChange={this.handleEditorChange}

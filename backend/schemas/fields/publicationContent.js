@@ -4,8 +4,7 @@ import {
   box,
 } from './'
 import {FaTable} from 'react-icons/fa'
-import HtmlTableEditor from '../../components/HtmlTableEditor'
-
+import { HtmlTableEditor, HtmlTableEditorPreview } from '../../components/HtmlTableEditor'
 
 const content = {
   name: 'content',
@@ -85,7 +84,13 @@ const content = {
           readOnly: true,
           type: 'string'
         }
-      ]
+      ],
+      preview: {
+        select: {
+          htmlStr: 'htmlStr'
+        },
+        component: HtmlTableEditorPreview
+      }
     }
   ]
 }
