@@ -93,7 +93,7 @@ const SearchResult = (props) => {
           <a {...classes('items-title')}>{title}</a>
         </Link>
         <br />
-        {utcDate && <span {...classes('items-date')}>{format(utcDate, 'D MMM YYYY')}</span>}
+        {utcDate && <p {...classes('items-date')}>{format(utcDate, 'D MMM YYYY')}</p>}
         {content.map((htmlStr, index) => (
           <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
         ))}
@@ -109,7 +109,15 @@ const SearchResult = (props) => {
   const { title = '', url = '' } = _source;
   return (
     <div>
-      <span {...classes('items-type')}>{ type === 'frontpage' ? 'Page' : type === 'person' ? 'Staff' : type === 'course' ? 'Online course' : type.charAt(0).toUpperCase() + type.slice(1) }</span>
+      <span {...classes('items-type')}>
+        {type === 'frontpage'
+          ? 'Page'
+          : type === 'person'
+          ? 'Staff'
+          : type === 'course'
+          ? 'Online course'
+          : type.charAt(0).toUpperCase() + type.slice(1)}
+      </span>
       <br />
       <Link route={url}>
         <a {...classes('items-title')}>{title}</a>
