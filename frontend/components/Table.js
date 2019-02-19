@@ -6,18 +6,18 @@ import serializers from './serializers';
 
 // We trust html content coming from Sanity and output htmlStr raw.
 const Table = ({ title, caption, htmlStr }) => (
-  <Fragment>
+  <div className="c-table">
     <h3
       id={slugify(title, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })}
-      className="u-margin-bottom-none"
+      className="c-table__title"
     >
       {title}
     </h3>
-    <div className="c-table" dangerouslySetInnerHTML={{ __html: htmlStr }} />
-    <div className="c-table-caption">
+    <span dangerouslySetInnerHTML={{ __html: htmlStr }} />
+    <div className="c-table__caption">
       <BlockContent blocks={caption} serializers={serializers} />
     </div>
-  </Fragment>
+  </div>
 );
 
 Table.propTypes = {
