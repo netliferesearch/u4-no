@@ -2,10 +2,8 @@ import React from 'react';
 import { PrintLongformArticleContainer } from '../components/print';
 import DataLoader from '../helpers/data-loader';
 
-const PublicationEntry = props => (
-  <div>
-    {props.data.current.content && <PrintLongformArticleContainer {...props.data.current} institutions={props.data.institutions} u4={props.data.u4} />}
-  </div>
+const PublicationEntry = ({ data: { current, institutions = [], u4 } = {} }) => (
+  <div>{current && <PrintLongformArticleContainer {...{ ...current, institutions, u4 }} />}</div>
 );
 
 export default DataLoader(PublicationEntry, {

@@ -1,7 +1,7 @@
-.c-table{
-	overflow-x:auto;
-	padding: $spacing-tiny;
-	@include inuit-font-size($font-size-tiny, $line-height-normal);
+.c-table {
+  overflow-x: auto;
+  padding: $spacing-tiny;
+  @include inuit-font-size($font-size-tiny, $line-height-normal);
   table {
     font-family: $font-sans;
     max-width: 100%;
@@ -10,12 +10,14 @@
     margin-right: auto;
   }
 
-  th, td {
-    border: 1px solid #E3E3E3;
+  th,
+  td {
+    border: 1px solid #e3e3e3;
     padding: $spacing-small;
   }
 
-  thead, th {
+  thead,
+  th {
     color: $brand-main;
     font-weight: bold;
   }
@@ -25,12 +27,19 @@
   }
 }
 
-@media print  {
-	.c-table {
-		overflow-x:visible;
+.c-table-caption {
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-small);
+  color: $black;
+  margin-left: 20px;
+}
+
+@media print {
+  .c-table {
+    overflow-x: visible;
     table {
       table-layout: fixed;
       font-size: 90%;
     }
-	}
+  }
 }

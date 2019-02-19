@@ -7,7 +7,7 @@ import LineChart from './LineChart';
 import BarChart from './BarChart';
 import findFootnotes from './findFootnotes';
 import findLinks from './findLinks';
-import { PullQuote, Figure } from './';
+import { PullQuote, Figure, Table } from './';
 import printFootnoteSerializer from './print/printFootnoteSerializer';
 
 const classes = BEMHelper({
@@ -53,7 +53,11 @@ function printSerializers(blocks) {
             <BlockContent blocks={content} serializers={printSerializers(content)} />
           </div>
         ),
-
+      table: ({ node }) => (
+        <div {...classes('full')}>
+          <Table {...node} />
+        </div>
+      ),
       block: ({ node, children }) => {
         const style = node.style || 'normal';
 
