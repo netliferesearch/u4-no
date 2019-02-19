@@ -4,8 +4,7 @@ import {
   box,
 } from './'
 import {FaTable} from 'react-icons/fa'
-import HtmlTableEditor from '../../components/HtmlTableEditor'
-
+import { HtmlTableEditor, HtmlTableEditorPreview } from '../../components/HtmlTableEditor'
 
 const content = {
   name: 'content',
@@ -81,11 +80,28 @@ const content = {
       },
       fields: [
         {
+          name: 'title',
+          type: 'string'
+        },
+        {
+          name: 'caption',
+          type: 'array',
+          of: [{type: 'block'}]
+        },
+        {
           name: 'htmlStr',
           readOnly: true,
           type: 'string'
         }
-      ]
+      ],
+      preview: {
+        select: {
+          htmlStr: 'htmlStr',
+          title: 'title',
+          caption: 'caption',
+        },
+        component: HtmlTableEditorPreview
+      }
     }
   ]
 }

@@ -1,0 +1,35 @@
+.c-table {
+	overflow-x:auto;
+  overflow-y:hidden;
+	font-size: 1rem;
+	line-height: 1.4;
+  max-height: 150px;
+  padding-bottom: 24px;
+  transition: max-height 0.5s ease-in;
+}
+
+.c-table table {
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  max-width: 100%;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c-table th, td {
+  border: 1px solid #E3E3E3;
+  padding: 12px;
+}
+
+.c-table thead, th {
+  color: #0079CF;
+  font-weight: bold;
+}
+
+.c-table tr:nth-child(even) {
+  background-color: #F2F2F2;
+}
+
+.c-table--is-open {
+  max-height: 3000px;
+}

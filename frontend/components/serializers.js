@@ -18,6 +18,7 @@ import {
   SimpleMosaic,
   Mosaic,
   ToggleTextBox,
+  Table,
 } from './';
 import { ArrowRight } from './icons';
 
@@ -196,10 +197,9 @@ const serializers = {
         <WorkshopMosaic resources={workshopsRef} />
       </div>
     ),
-    table: ({ node: { htmlStr = '' } }) => (
-      <div {...classes('larger')}>
-        // We trust html content coming from Sanity and output it.
-        <div className="c-table" dangerouslySetInnerHTML={{ __html: htmlStr }} />
+    table: ({ node }) => (
+      <div {...classes('full')}>
+        <Table {...node} />
       </div>
     ),
     chart: ({ node: { htmlStr = '' } }) => (
