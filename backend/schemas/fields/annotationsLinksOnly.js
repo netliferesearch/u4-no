@@ -20,6 +20,7 @@ const annotationsLinksOnly = [
       { type: 'person' },
       { type: 'publication' },
       { type: 'article' },
+      { type: 'course' },
       { type: 'event' },
       { type: 'frontpage' },
       { type: 'file' },
