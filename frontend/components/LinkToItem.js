@@ -22,9 +22,9 @@ const getRoute = (type = '') => {
 };
 
 const LinkToItem = ({
-  type = false, _type = '', slug = {}, children,
+  type = false, _type = '', slug = '', children,
 }) => (
-  <Link route={getRoute(type || _type)} params={{ slug: slug.current || slug }}>
+  <Link route={getRoute(type || _type)} params={{ slug: slug.current ? slug.current : slug }}>
     {children}
   </Link>
 );
