@@ -13,7 +13,7 @@ export default function ChartPrint({ title, caption, svgStr }) {
       >
         {title}
       </h3>
-      <div dangerouslySetInnerHTML={{ __html: svgStr }} />
+      <div className="c-chart__content" dangerouslySetInnerHTML={{ __html: svgStr }} />
       <div className="c-chart__caption">
         <BlockContent blocks={caption} serializers={serializers} />
       </div>

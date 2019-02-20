@@ -54,7 +54,9 @@ export default class Chart extends React.Component {
           >
             {title}
           </h3>
-          <HighchartsReact {...highChartsProps} callback={this.highchartsCallback} />
+          <div className="c-chart__content">
+            <HighchartsReact {...highChartsProps} callback={this.highchartsCallback} />
+          </div>
           <div className="c-chart__caption">
             <BlockContent blocks={caption} serializers={serializers} />
           </div>
