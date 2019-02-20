@@ -24,7 +24,7 @@ export default class HighChartsEditor extends React.Component {
     iframe.setAttribute('width', '100%')
     iframe.setAttribute('height', '800px')
     iframe.setAttribute('id', 'highed-editor')
-    iframe.setAttribute('src', '/static/standalone.html')
+    iframe.setAttribute('src', '/static/highcharts-iframe-content.html')
     iframe.onload = () => this.onEditorIframeLoaded(iframe)
     mountNode.appendChild(iframe)
   }
