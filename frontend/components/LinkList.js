@@ -21,11 +21,15 @@ const LinkList = ({ title = '', content = [], otherClasses = '' }) => (
  _id = '', _type = '', slug = '', title = '',
 }, index) => (
   <li key={_id} {...classes('item')}>
-    <LinkToItem type={_type} slug={slug}>
-      <a {...classes('link')}>
-        {title} <ArrowRight {...classes('icon')} />
-      </a>
-    </LinkToItem>
+    {slug ? (
+      <LinkToItem type={_type} slug={slug}>
+        <a {...classes('link')}>
+          {title} <ArrowRight {...classes('icon')} />
+        </a>
+      </LinkToItem>
+        ) : (
+          { title }
+        )}
   </li>
     ))}
   </ul>
