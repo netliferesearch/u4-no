@@ -16,19 +16,17 @@ const renderCaption = (caption) => {
   return caption;
 };
 
-const renderLicensor = ({ licensor = '', sourceUrl = '' }) => {
-  if (sourceUrl) {
-    return (
-      <p className="c-longform-grid__standard">
-        Photo by: <a href={sourceUrl}>{licensor}</a>
-      </p>);
-  }
-  return <p className="c-longform-grid__standard">Photo by: {licensor}</p>;
-};
+const renderCredit = ({ credit = '', sourceUrl = '', license = '' }) => (
+  <p className="c-longform-grid__standard">
+    {sourceUrl && credit && `Credit: <a href=${sourceUrl}>${credit}</a> ${license}`}
+    {!sourceUrl && credit && `Credit: ${credit} ${license}`}
+  </p>
+);
 
-renderLicensor.propTypes = {
-  licensor: PropTypes.string.isRequired,
+renderCredit.propTypes = {
+  credit: PropTypes.string.isRequired,
   sourceUrl: PropTypes.string.isRequired,
+  license: PropTypes.string.isRequired,
 };
 
 const figureOutFigureClass = (size) => {
@@ -46,15 +44,17 @@ const figureOutFigureClass = (size) => {
 };
 
 const Figure = ({
-  asset = {}, caption = {}, licensor = '', size, sourceUrl,
+  asset = {}, caption = [], heading, credit = '', size, sourceUrl, license,
 }) => (
   <figure {...classes('figure', null, figureOutFigureClass(size))}>
+    {heading && <p className="c-figure__heading">{heading}</p>}
     <img {...classes('figure-img')} src={asset.url} alt={asset.altText} />
-    {caption.length > 0 && (
-    <figcaption {...classes('figure-figcaption')}>
-      {renderCaption(caption)}
-      {licensor && renderLicensor({ licensor, sourceUrl })}
-    </figcaption>)}
+    {(caption.length > 0 || credit || sourceUrl || license) && (
+      <figcaption {...classes('figure-figcaption')}>
+        {renderCaption(caption)}
+        {renderCredit({ credit, sourceUrl, license })}
+      </figcaption>
+    )}
   </figure>
 );
 
@@ -63,19 +63,15 @@ Figure.propTypes = {
     url: PropTypes.string,
     altText: PropTypes.string,
   }).isRequired,
-  caption: PropTypes.shape({
-    licensor: PropTypes.string,
-    sourceUrl: PropTypes.string,
-  }).isRequired,
+  heading: PropTypes.string,
   license: PropTypes.string,
-  licensor: PropTypes.string,
   size: PropTypes.string,
   sourceUrl: PropTypes.string,
 };
 
 Figure.defaultProps = {
+  heading: '',
   license: '',
-  licensor: '',
   size: '',
   sourceUrl: '',
 };
