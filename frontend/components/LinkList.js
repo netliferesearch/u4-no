@@ -17,20 +17,12 @@ const arrayify = (content) => {
 const LinkList = ({ title = '', content = [], otherClasses = '' }) => (
   <ul {...classes(null, null, otherClasses)}>
     {title && <span>{title}</span>}
-    {arrayify(content).map(({
- _id = '', _type = '', slug = '', title = '',
-}, index) => (
-  <li key={_id} {...classes('item')}>
-    {slug ? (
-      <LinkToItem type={_type} slug={slug}>
-        <a {...classes('link')}>
-          {title} <ArrowRight {...classes('icon')} />
+    {arrayify(content).map(({ link = '', title: linkList = '' }, index) => (
+      <li key={index + linkList.trim()} {...classes('item')}>
+        <a href={link} {...classes('link')}>
+          {linkList} <ArrowRight {...classes('icon')} />
         </a>
-      </LinkToItem>
-        ) : (
-          { title }
-        )}
-  </li>
+      </li>
     ))}
   </ul>
 );
