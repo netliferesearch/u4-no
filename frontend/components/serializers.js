@@ -13,6 +13,7 @@ import {
   BoxOnBox,
   BoxOnBoxTopics,
   BoxOnImage,
+  Chart,
   WorkshopMosaic,
   Feature,
   SimpleMosaic,
@@ -202,9 +203,9 @@ const serializers = {
         <Table {...node} />
       </div>
     ),
-    chart: ({ node: { htmlStr = '' } }) => (
+    chart: ({ node }) => (
       <div {...classes('larger')}>
-        <div className="c-chart">Chart is not built yet.</div>
+        <Chart {...node} />
       </div>
     ),
     features: ({ node: { featureArray } }) => (
