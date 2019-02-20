@@ -123,10 +123,13 @@ const content = {
       preview: {
         select: {
           title: 'title',
+          caption: 'caption',
         },
-        prepare({title = 'No title given'}) {
+        prepare({title, caption = []}) {
+          const subtitle = blocksToText(caption)
           return {
-            title: `Highchart: ${title}`
+            title: `Highcharts: ${title || 'No title'}`,
+            subtitle
           }
         }
       }
@@ -135,3 +138,22 @@ const content = {
 }
 
 export default content
+
+// Convert Sanity's portable text into plain string.
+function blocksToText(blocks, opts = {}) {
+  const defaults = {};
+  const options = Object.assign({}, defaults, opts);
+  return blocks
+    .map((block) => {
+      // TODO: Could make this even more general by letting it recursively
+      // go down a block tree in search for indexable content.
+      if (block._type === 'heading') {
+        const { headingValue = '' } = block;
+        return headingValue;
+      } else if (block._type !== 'block' || !block.children) {
+        return options.nonTextBehavior === 'remove' ? '' : `[${block._type} block]`;
+      }
+      return block.children.map(child => child.text).join('');
+    })
+    .join(' ');
+}
