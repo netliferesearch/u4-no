@@ -54,14 +54,18 @@ export default class HighChartsEditor extends React.Component {
     if (!editor) {
       return
     }
-    const jsonStr = editor.getEmbeddableJSON()
+    const jsonStr = JSON.stringify(editor.chart.options.full)
+    // Saving this just in case.
     const htmlStr = editor.getEmbeddableHTML()
+    // TODO: Check why exported svg looks a bit malformed. Could it be because
+    // we export svg when the iframe is very small? Or is it the wrong function
+    // called?
     const svgStr = editor.getEmbeddableSVG()
     const editorConfigWithData = editor.chart.toProjectStr()
     const patches = PatchEvent.from([
       setIfMissing({}),
-      jsonStr ? set(JSON.stringify(jsonStr), ['jsonStr']) : unset(['jsonStr']),
-      editorConfigWithData ? set(JSON.stringify(editorConfigWithData), ['editorConfigWithData']) : unset(['editorConfigWithData']),
+      jsonStr ? set(jsonStr, ['jsonStr']) : unset(['jsonStr']),
+      editorConfigWithData ? set(editorConfigWithData, ['editorConfigWithData']) : unset(['editorConfigWithData']),
       htmlStr ? set(htmlStr, ['htmlStr']) : unset(['htmlStr']),
       svgStr ? set(svgStr, ['svgStr']) : unset(['svgStr'])
     ])
