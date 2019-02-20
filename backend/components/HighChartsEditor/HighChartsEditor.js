@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PatchEvent, {set, unset, setIfMissing} from 'part:@sanity/form-builder/patch-event'
+import { FormBuilderInput } from "part:@sanity/form-builder";
 
 export default class HighChartsEditor extends React.Component {
 
@@ -57,8 +58,6 @@ export default class HighChartsEditor extends React.Component {
     const htmlStr = editor.getEmbeddableHTML()
     const svgStr = editor.getEmbeddableSVG()
     const editorConfigWithData = editor.chart.toProjectStr()
-    // eslint-disable-next-line
-    debugger
     const patches = PatchEvent.from([
       setIfMissing({}),
       jsonStr ? set(JSON.stringify(jsonStr), ['jsonStr']) : unset(['jsonStr']),
@@ -73,9 +72,21 @@ export default class HighChartsEditor extends React.Component {
     // TODO: Focus editor
   }
 
+  formBuilderInputHandler = (prefix, patchEvent) => {
+    const {onChange} = this.props
+    onChange(patchEvent.prefixAll(prefix))
+  }
+
   render() {
+    const { type: { fields = [] } = {}, value: {title, caption} = {}, onFocus } = this.props
+    const titleField = fields.find(({name = ''}) => name === 'title')
+    const captionField = fields.find(({name = ''}) => name === 'caption')
     return (
-      <div id="highed-mountpoint" />
+      <Fragment>
+        <FormBuilderInput {...{...titleField, onChange: (event) => this.formBuilderInputHandler('title', event), value: title, onFocus}}></FormBuilderInput>
+        <FormBuilderInput {...{...captionField, onChange: (event) => this.formBuilderInputHandler('caption', event), value: caption, onFocus}}></FormBuilderInput>
+        <div id="highed-mountpoint" />
+      </Fragment>
     );
   }
 }

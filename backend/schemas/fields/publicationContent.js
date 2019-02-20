@@ -122,13 +122,13 @@ const content = {
       ],
       preview: {
         select: {
-          htmlStr: 'htmlStr',
-          svgStr: 'svgStr',
-          jsonStr: 'jsonStr',
           title: 'title',
-          caption: 'caption',
         },
-        component: HighChartsEditorPreview
+        prepare({title = 'No title given'}) {
+          return {
+            title: `Highchart: ${title}`
+          }
+        }
       }
     }
   ]
