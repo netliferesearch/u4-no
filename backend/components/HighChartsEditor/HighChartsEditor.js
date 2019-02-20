@@ -57,6 +57,8 @@ export default class HighChartsEditor extends React.Component {
     const htmlStr = editor.getEmbeddableHTML()
     const svgStr = editor.getEmbeddableSVG()
     const editorConfigWithData = editor.chart.toProjectStr()
+    // eslint-disable-next-line
+    debugger
     const patches = PatchEvent.from([
       setIfMissing({}),
       jsonStr ? set(JSON.stringify(jsonStr), ['jsonStr']) : unset(['jsonStr']),

@@ -1,0 +1,8 @@
+.c-wrapper {
+  max-height: 150px;
+  transition: max-height 0.5s ease-out;
+}
+
+.c-wrapper--is-open {
+  max-height: 3000px;
+}

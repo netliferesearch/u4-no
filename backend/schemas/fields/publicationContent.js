@@ -5,7 +5,7 @@ import {
 } from './'
 import {FaTable} from 'react-icons/fa'
 
-import { HtmlTableEditor, HtmlTableEditorPreview, HighChartsEditor } from '../../components'
+import { HtmlTableEditor, HtmlTableEditorPreview, HighChartsEditor, HighChartsEditorPreview } from '../../components'
 
 const content = {
   name: 'content',
@@ -113,11 +113,23 @@ const content = {
         editModal: 'fullscreen'
       },
       fields: [
+        { name: 'title', type: 'string' },
+        { name: 'caption', type: 'array', of: [{type: 'block'}] },
         { name: 'htmlStr', readOnly: true, type: 'string' },
         { name: 'jsonStr', readOnly: true, type: 'string' },
         { name: 'svgStr', readOnly: true, type: 'string' },
         { name: 'editorConfigWithData', readOnly: true, type: 'string' },
-      ]
+      ],
+      preview: {
+        select: {
+          htmlStr: 'htmlStr',
+          svgStr: 'svgStr',
+          jsonStr: 'jsonStr',
+          title: 'title',
+          caption: 'caption',
+        },
+        component: HighChartsEditorPreview
+      }
     }
   ]
 }
