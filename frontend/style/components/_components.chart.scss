@@ -3,6 +3,10 @@
 
 .c-chart__content {
   padding-top: $spacing;
+  svg {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .c-chart__caption {
