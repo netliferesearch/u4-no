@@ -3,8 +3,14 @@ import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 import serializers from './serializers';
-import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import Highcharts from 'highcharts';
+if (typeof window !== 'undefined') {
+  // See readme for docs on how to load more charting modules if need be.
+  // Can only be loaded client-side. Not on server.
+  // https://github.com/highcharts/highcharts-dist#load-highcharts-as-a-commonjs-module
+  require('highcharts/highcharts-more')(Highcharts);
+}
 
 const parseJson = jsonStr => {
   try {
