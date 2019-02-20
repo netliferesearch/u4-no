@@ -1,5 +1,4 @@
 import React from 'react';
-import throttle from 'lodash/throttle'
 import PatchEvent, {set, unset, setIfMissing} from 'part:@sanity/form-builder/patch-event'
 
 export default class HighChartsEditor extends React.Component {
@@ -30,12 +29,7 @@ export default class HighChartsEditor extends React.Component {
   }
 
   onEditorIframeLoaded = (iframe) => {
-    iframe.contentWindow.editorReadyCallback = (editor) => {
-      const duration = 10000 // 10 seconds
-      const throttledSaveProjectData = throttle(this.saveProjectData, duration)
-      editor.on('ChartChangedLately', throttledSaveProjectData)
-      this.setState({editor}, throttledSaveProjectData)
-    }
+    iframe.contentWindow.editorReadyCallback = (editor) => this.setState({editor}, this.loadProjectData)
   }
 
   loadProjectData = () => {
@@ -71,17 +65,6 @@ export default class HighChartsEditor extends React.Component {
       svgStr ? set(svgStr, ['svgStr']) : unset(['svgStr'])
     ])
     this.props.onChange(patches)
-    console.log('saved data', editorConfigWithData)
-  }
-
-  handleEditorChange = () => {
-    console.log('handleEditorChange()')
-    const {editor} = this.state
-    if (!editor) {
-      return // do nothing
-    }
-    console.log('Editor change', editor.getEmbeddableHTML())
-    console.log('Editor change', editor.getEmbeddableJSON())
   }
 
   focus = () => {
@@ -89,7 +72,6 @@ export default class HighChartsEditor extends React.Component {
   }
 
   render() {
-    const {content = ''} = this.state || {}
     return (
       <div id="highed-mountpoint" />
     );
