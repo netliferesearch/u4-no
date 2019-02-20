@@ -1,5 +1,6 @@
 import publicationContent from './fields/publicationContent'
 import annotations from './fields/annotations'
+import HighChartsEditor from '../components/HighChartsEditor'
 /**
  * A publication is a long form document
  */
