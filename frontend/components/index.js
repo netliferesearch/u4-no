@@ -5,6 +5,7 @@ export { default as BoxOnBoxPartnerFeatures } from './BoxOnBoxPartnerFeatures';
 export { default as BoxOnBoxTopics } from './BoxOnBoxTopics';
 export { default as BoxOnImage } from './BoxOnImage';
 export { default as Chart } from './Chart';
+export { default as ChartPrint } from './ChartPrint';
 export { default as EditorList } from './EditorList';
 export { default as Error404 } from './Error404';
 export { default as Feature } from './Feature';
