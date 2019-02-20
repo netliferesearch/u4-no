@@ -10,7 +10,9 @@ export default class HighChartsEditor extends React.Component {
    * reload and misplace the cursor if we call onChange while the user is editing.
    */
   state = {
-    editor: null
+    editor: null,
+    svgStr: '',
+    htmlStr: ''
   }
 
   componentWillUnmount() {
@@ -24,13 +26,28 @@ export default class HighChartsEditor extends React.Component {
     iframe.setAttribute('width', '100%')
     iframe.setAttribute('height', '800px')
     iframe.setAttribute('id', 'highed-editor')
-    iframe.setAttribute('src', '/static/standalone.html')
+    iframe.setAttribute('src', '/static/highcharts-iframe-content.html')
     iframe.onload = () => this.onEditorIframeLoaded(iframe)
     mountNode.appendChild(iframe)
   }
 
+  chartChangeHandler = () => {
+    const {editor} = this.state
+    if (!editor) {
+      return
+    }
+    this.setState({
+      svgStr: editor.getEmbeddableSVG(),
+      htmlStr: editor.getEmbeddableHTML()
+    })
+  }
+
   onEditorIframeLoaded = (iframe) => {
-    iframe.contentWindow.editorReadyCallback = (editor) => this.setState({editor}, this.loadProjectData)
+    iframe.contentWindow.editorReadyCallback = (editor) => {
+      window.highchartsEditorInstance = editor
+      editor.on('ChartChangedLately', this.chartChangeHandler)
+      this.setState({editor}, this.loadProjectData)
+    }
   }
 
   loadProjectData = () => {
@@ -50,17 +67,11 @@ export default class HighChartsEditor extends React.Component {
   }
 
   saveProjectData = () => {
-    const {editor} = this.state
+    const {editor, htmlStr, svgStr} = this.state
     if (!editor) {
       return
     }
     const jsonStr = JSON.stringify(editor.chart.options.full)
-    // Saving this just in case.
-    const htmlStr = editor.getEmbeddableHTML()
-    // TODO: Check why exported svg looks a bit malformed. Could it be because
-    // we export svg when the iframe is very small? Or is it the wrong function
-    // called?
-    const svgStr = editor.getEmbeddableSVG()
     const editorConfigWithData = editor.chart.toProjectStr()
     const patches = PatchEvent.from([
       setIfMissing({}),

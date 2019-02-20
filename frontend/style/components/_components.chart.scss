@@ -1,6 +1,19 @@
 .c-chart {
 }
 
+.c-chart__content {
+  padding-top: $spacing;
+}
+
+.c-chart__caption {
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-small);
+  color: $black;
+  & > .c-longform-grid__standard {
+    padding-left: 0;
+  }
+}
+
 .c-chart--is-loading {
   display: none;
 }

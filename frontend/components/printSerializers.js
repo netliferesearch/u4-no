@@ -7,7 +7,7 @@ import LineChart from './LineChart';
 import BarChart from './BarChart';
 import findFootnotes from './findFootnotes';
 import findLinks from './findLinks';
-import { PullQuote, Chart, Figure, Table } from './';
+import { PullQuote, ChartPrint, Figure, Table } from './';
 import printFootnoteSerializer from './print/printFootnoteSerializer';
 
 const classes = BEMHelper({
@@ -60,7 +60,7 @@ function printSerializers(blocks) {
       ),
       chart: ({ node }) => (
         <div {...classes('larger')}>
-          <Chart {...node} />
+          <ChartPrint {...node} />
         </div>
       ),
       block: ({ node, children }) => {
