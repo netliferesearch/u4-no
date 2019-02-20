@@ -126,7 +126,7 @@ export default {
         },
         {
           name: 'postalNumber',
-          type: 'number',
+          type: 'string',
         },
         {
           name: 'country',
