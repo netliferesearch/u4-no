@@ -33,23 +33,15 @@
 </head>
 <body>
 <script>
+    // Highcharts is loaded and ready to be instantiated
     highed.ready(function () {
         var intervalID = setInterval(function () {
-          // This code waits for data to arrive from parent window.
-          // and then calls a callback.
-          if (window.editorPayload) {
+          // we need to wait for our custom component to have added a callback
+          // before we can instantiate the editor and call the callback.
+          if (window.editorReadyCallback) {
             clearInterval(intervalID)
-            var optionsToLoad = window.editorPayload.options
-            var csvDataToLoad = window.editorPayload.csvData
-            var editor
-            if (optionsToLoad && csvDataToLoad) {
-              editor = highed.Editor(document.body,
-                {defaultChartOptions: optionsToLoad});
-              editor.chart.data.csv(csvDataToLoad)
-            } else {
-              editor = highed.Editor(document.body);
-            }
-            window.editorPayload.cb(editor)
+            var editorInstance = highed.Editor(document.body)
+            window.editorReadyCallback(editorInstance)
           }
         }, 200)
     });

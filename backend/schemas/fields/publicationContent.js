@@ -116,6 +116,7 @@ const content = {
         { name: 'htmlStr', readOnly: true, type: 'string' },
         { name: 'jsonStr', readOnly: true, type: 'string' },
         { name: 'svgStr', readOnly: true, type: 'string' },
+        { name: 'editorConfigWithData', readOnly: true, type: 'string' },
       ]
     }
   ]
