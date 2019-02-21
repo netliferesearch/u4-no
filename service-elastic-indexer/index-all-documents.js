@@ -2,6 +2,7 @@
 require('dotenv').config();
 const elasticsearch = require('elasticsearch');
 const Promise = require('bluebird');
+const path = require('path');
 const axios = require('axios');
 const _ = require('lodash');
 const {
@@ -9,8 +10,8 @@ const {
   processDocument,
   getIndexName,
   parseNDJSON,
-} = require('./elastic-indexer.lib');
-const { setupMappings } = require('./elastic-mappings');
+} = require('./lib/indexer.lib');
+const { setupMappings } = require('./lib/mappings.lib');
 
 const client = new elasticsearch.Client({
   host: process.env.ES_HOST,
@@ -70,6 +71,17 @@ const doBatchInsert = async (documents = []) => {
   }
 };
 
+const deleteDocuments = (documents = []) => {
+  if (documents.length === 0) {
+    return;
+  }
+  return client
+    .bulk({
+      body: documents.map(({ _id }) => ({ delete: { _index, _type: 'u4-searchable', _id } })),
+    })
+    .catch(err => console.log('Failed to delete elastic documents', err));
+};
+
 // code sourced from:
 // https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-scroll
 const getAllElasticsearchDocuments = async () => {
@@ -106,6 +118,21 @@ const getAllElasticsearchDocuments = async () => {
   return allDocs;
 };
 
+const generateChangelist = ({ elasticDocuments = [], sanityDocuments = [] }) => {
+  const docsToInsertOrUpdate = sanityDocuments.filter((sanDoc) => {
+    const foundEsDoc = elasticDocuments.find(esDoc => esDoc._id === sanDoc._id);
+    if (!foundEsDoc) {
+      // new document that should be inserted
+      return true;
+    }
+    return foundEsDoc._source.updatedAt !== sanDoc._updatedAt;
+  });
+  return {
+    docsToInsertOrUpdate,
+    docsToDelete: elasticDocuments.filter(esDoc => !sanityDocuments.find(({ _id }) => _id === esDoc._id)),
+  };
+};
+
 async function main() {
   console.log('starting work');
 
@@ -120,6 +147,7 @@ async function main() {
   // const topics = allDocuments.filter(({ _type }) => _type === 'topics');
   // console.log(JSON.stringify(topics, null, 2));
 
+  // find documents that have
   // try {
   //   // Shape of resulting documents
   //   // { _index: 'u4-en-us',
@@ -136,7 +164,19 @@ async function main() {
   // }
 
   // Uncomment if want to quickly index a local dataset.
-  const { documents: allDocuments } = loadSanityDataFile('./sanity-export');
+  const { documents: sanityDocuments } = loadSanityDataFile(path.join(__dirname, './sanity-export'));
+
+  let elasticDocuments = [];
+  try {
+    elasticDocuments = await getAllElasticsearchDocuments();
+  } catch (e) {
+    console.error('Failed to fetch allElasticDocs', e);
+  }
+
+  const { docsToInsertOrUpdate: allDocuments, docsToDelete } = generateChangelist({
+    sanityDocuments,
+    elasticDocuments,
+  });
 
   const types = {};
   allDocuments.forEach(({ _type }) => (types[_type] = true));
@@ -173,22 +213,23 @@ async function main() {
         _type !== 'person' || (_type === 'person' && current && affiliations.length > 0)),
     document =>
       processDocument({ document, allDocuments })
-        .then((doc) => {
-          console.log('Prepared:', doc._id);
-          if (
-            doc._id === '0b516181-cd61-4329-875e-b79ea3221697' ||
-            doc._id === 'd92320ff-d312-45d5-88d6-800c3c00170a'
-          ) {
-            debugger;
-          }
-          return doc;
-        })
+        // .then((doc) => {
+        //   return doc;
+        // })
         .catch(err => console.error('Failed to process document', document, err)),
     { concurrency: -1 },
   );
-  console.log('How many documents to index:', processedDocuments.length);
-  await doBatchInsert(processedDocuments);
+  console.log(`Found ${docsToDelete.length} to delete`);
+  console.log('How many documents to insert/update/index:', processedDocuments.length);
+  await Promise.all([doBatchInsert(processedDocuments), deleteDocuments(docsToDelete)]);
   console.log('Done with work');
 }
 
-main();
+// Calls main() if file is executed directly with node.
+if (require.main === module) {
+  main();
+} else {
+  module.exports = {
+    generateChangelist,
+  };
+}

@@ -1,4 +1,4 @@
-const { getIndexName } = require('./elastic-indexer.lib');
+const { getIndexName } = require('./indexer.lib');
 const elasticsearch = require('elasticsearch');
 
 const client = new elasticsearch.Client({

@@ -1,5 +1,5 @@
 import ReferringDocumentsList from '../components/referring-documents/src/ReferringDocumentsList'
-import { title, longTitle, explainerText, featuredImage, slug, license } from './fields'
+import { title, longTitle, explainerText, featuredImage, slug, license, standfirst } from './fields'
 import annotationsLinksOnly from './fields/annotationsLinksOnly'
 
 
@@ -15,6 +15,7 @@ export default {
       description: 'Keywords that people search. Not including "corruption". Max 5 words',
     },
     longTitle,
+    standfirst,
     explainerText,
     featuredImage,
     {

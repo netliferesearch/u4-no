@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 const _ = require('lodash');
-const { extractText } = require('./elastic-extract-text');
+const { extractText } = require('./extract-text');
 const htmlToText = require('html-to-text');
 
 // Used when loading a dataset from 'sanity dataset export'
@@ -11,7 +11,7 @@ let files = null;
 const readdir = util.promisify(fs.readdir);
 const copyFile = util.promisify(fs.copyFile);
 const loadLegacyContentFromDisk = async ({ document }) => {
-  const fileFolderPath = path.join(__dirname, 'sanity-export/files');
+  const fileFolderPath = path.join(__dirname, '../sanity-export/files');
   // store file list in variable outside function to avoid unecessary calls.
   if (!files) {
     try {
@@ -57,12 +57,11 @@ const loadLegacyContentFromDisk = async ({ document }) => {
 /**
  * Purpose: Find corresponding pdf file and load its contents
  */
-async function findLegacyPdfContent({ document }) {
+async function findLegacyPdfContent({ document = {} }) {
   if (_.isEmpty(document.legacypdf)) {
     return null;
-  } else if (document.legacypdf._sanityAsset) {
-    return loadLegacyContentFromDisk({ document });
   }
+  return loadLegacyContentFromDisk({ document });
   /* TODO:
     1. Check if we have the pdf locally, if not download it to /tmp
     2. Index document.
@@ -337,12 +336,12 @@ async function processDocument({ document, allDocuments }) {
     : document;
 }
 
-function loadSanityDataFile(folderPath = 'sanity-export') {
+function loadSanityDataFile(folderPath) {
   if (!folderPath) {
     throw new Error('loadSanityDataFile: Please provide a path.');
   }
-  const documents = parseNDJSON(fs.readFileSync(path.join(__dirname, folderPath, 'data.ndjson'), { encoding: 'UTF-8' }));
-  const assets = parseNDJSON(fs.readFileSync(path.join(__dirname, folderPath, 'assets.json'), { encoding: 'UTF-8' }));
+  const documents = parseNDJSON(fs.readFileSync(path.join(folderPath, 'data.ndjson'), { encoding: 'UTF-8' }));
+  const assets = parseNDJSON(fs.readFileSync(path.join(folderPath, 'assets.json'), { encoding: 'UTF-8' }));
   return { documents, assets };
 }
 
