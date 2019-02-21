@@ -27,6 +27,14 @@
 
 // COMPONENTS
 @import 'components/components.table';
+.c-table {
+  margin-left: -2cm;
+  margin-right: -2cm;
+  table {
+    margin: 0;
+    width: 100%;
+  }
+}
 @import 'components/components.chart';
 
 @import '../node_modules/inuitcss/utilities/utilities.widths';
