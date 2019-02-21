@@ -2,9 +2,12 @@
   overflow-x: auto;
   padding: $spacing;
   @include inuit-font-size($font-size-tiny, $line-height-normal);
+  position: relative;
+  background-color: $white;
+
   table {
     font-family: $font-sans;
-    max-width: 100%;
+    width: 100%;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
