@@ -2,6 +2,7 @@
 require('dotenv').config();
 const elasticsearch = require('elasticsearch');
 const Promise = require('bluebird');
+const path = require('path');
 const axios = require('axios');
 const _ = require('lodash');
 const {
@@ -136,7 +137,7 @@ async function main() {
   // }
 
   // Uncomment if want to quickly index a local dataset.
-  const { documents: allDocuments } = loadSanityDataFile('./sanity-export');
+  const { documents: allDocuments } = loadSanityDataFile(path.join(__dirname, './sanity-export'));
 
   const types = {};
   allDocuments.forEach(({ _type }) => (types[_type] = true));

@@ -1,3 +1,4 @@
+const path = require('path');
 const {
   processPublication,
   loadSanityDataFile,
@@ -5,12 +6,12 @@ const {
   findLegacyPdfContent,
   blocksToText,
 } = require('./indexer.lib');
-const publicationExample = require('./test-data-publication');
+const publicationExample = require('./test-data-publication.json');
 const publicationExampleWithLegacyPdf = require('./test-data-publication-with-legacy-pdf');
 
 let allDocuments = [];
 beforeAll(() => {
-  allDocuments = loadSanityDataFile('../sanity-export').documents;
+  allDocuments = loadSanityDataFile(path.join(__dirname, '../sanity-export')).documents;
 });
 
 afterAll(() => {
@@ -28,17 +29,7 @@ test('elasticsearch: able to process publication', async () => {
     _updatedAt: '2018-02-22T08:16:45Z',
     title: 'U4 Issue',
   });
-  expect(result.keywords[0]).toMatchObject({
-    _createdAt: '2018-12-17T10:46:43Z',
-    _id: '52ccb5a2-16c6-4f60-8ed5-b3a4632dd940',
-    _key: '53fa9ecf7f3b',
-    _rev: 'Sln1mToh8ZDMZr1ZTPD0px',
-    _type: 'keyword',
-    _updatedAt: '2018-12-17T10:46:43Z',
-    category: 'keyword',
-    keyword: 'anti-corruption reforms',
-    language: 'en_US',
-  });
+  expect(result.keywords[0]).toBe('anti-corruption reforms');
 });
 
 test('elasticsearch: is able to expand reference', async () => {
