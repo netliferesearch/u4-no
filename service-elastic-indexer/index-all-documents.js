@@ -9,8 +9,8 @@ const {
   processDocument,
   getIndexName,
   parseNDJSON,
-} = require('./elastic-indexer.lib');
-const { setupMappings } = require('./elastic-mappings');
+} = require('./lib/indexer.lib');
+const { setupMappings } = require('./lib/mappings.lib');
 
 const client = new elasticsearch.Client({
   host: process.env.ES_HOST,

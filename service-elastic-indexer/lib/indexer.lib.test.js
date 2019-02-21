@@ -4,13 +4,13 @@ const {
   initExpand,
   findLegacyPdfContent,
   blocksToText,
-} = require('./elastic-indexer.lib');
+} = require('./indexer.lib');
 const publicationExample = require('./test-data-publication');
 const publicationExampleWithLegacyPdf = require('./test-data-publication-with-legacy-pdf');
 
 let allDocuments = [];
 beforeAll(() => {
-  allDocuments = loadSanityDataFile('./sanity-export').documents;
+  allDocuments = loadSanityDataFile('../sanity-export').documents;
 });
 
 afterAll(() => {

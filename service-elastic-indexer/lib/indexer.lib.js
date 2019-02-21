@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 const _ = require('lodash');
-const { extractText } = require('./elastic-extract-text');
+const { extractText } = require('./extract-text');
 const htmlToText = require('html-to-text');
 
 // Used when loading a dataset from 'sanity dataset export'
