@@ -71,6 +71,17 @@ const doBatchInsert = async (documents = []) => {
   }
 };
 
+const deleteDocuments = (documents = []) => {
+  if (documents.length === 0) {
+    return;
+  }
+  return client
+    .bulk({
+      body: documents.map(({ _id }) => ({ delete: { _index, _type: 'u4-searchable', _id } })),
+    })
+    .catch(err => console.log('Failed to delete elastic documents', err));
+};
+
 // code sourced from:
 // https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-scroll
 const getAllElasticsearchDocuments = async () => {
@@ -153,33 +164,19 @@ async function main() {
   // }
 
   // Uncomment if want to quickly index a local dataset.
-  const { documents: allDocuments } = loadSanityDataFile(path.join(__dirname, './sanity-export'));
+  const { documents: sanityDocuments } = loadSanityDataFile(path.join(__dirname, './sanity-export'));
 
-  // const idsToFind = [
-  //   'pub-392',
-  //   'pub-425',
-  //   'b3c15eed-4dc6-4c0b-9602-f6b130015a41',
-  //   'c79b642b-3d61-4e1b-b648-a7bdae721479',
-  // ];
-  //
-  // const foundDocs = allDocuments.filter(({ _id }) => idsToFind.find(id => id === _id));
-  //
-  // console.log('foundDocs.length', foundDocs.length);
-  //
-  // console.log(JSON.stringify(
-  //   foundDocs.map(({
-  //     _id, _createdAt, _type, _updatedAt,
-  //   }) => ({
-  //     _id,
-  //     _createdAt,
-  //     _type,
-  //     _updatedAt,
-  //   })),
-  //   null,
-  //   2,
-  // ));
-  //
-  // process.exit(0);
+  let elasticDocuments = [];
+  try {
+    elasticDocuments = await getAllElasticsearchDocuments();
+  } catch (e) {
+    console.error('Failed to fetch allElasticDocs', e);
+  }
+
+  const { docsToInsertOrUpdate: allDocuments, docsToDelete } = generateChangelist({
+    sanityDocuments,
+    elasticDocuments,
+  });
 
   const types = {};
   allDocuments.forEach(({ _type }) => (types[_type] = true));
@@ -222,8 +219,9 @@ async function main() {
         .catch(err => console.error('Failed to process document', document, err)),
     { concurrency: -1 },
   );
-  console.log('How many documents to index:', processedDocuments.length);
-  await doBatchInsert(processedDocuments);
+  console.log(`Found ${docsToDelete.length} to delete`);
+  console.log('How many documents to insert/update/index:', processedDocuments.length);
+  await Promise.all([doBatchInsert(processedDocuments), deleteDocuments(docsToDelete)]);
   console.log('Done with work');
 }
 
