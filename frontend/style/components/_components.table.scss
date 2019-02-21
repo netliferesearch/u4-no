@@ -8,7 +8,7 @@
   table {
     font-family: $font-sans;
     max-width: 100%;
-    width: 100%;
+    // width: 100%;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -56,7 +56,9 @@
     table {
       table-layout: fixed;
       font-size: 90%;
-      width: auto;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
   .c-table__title,
