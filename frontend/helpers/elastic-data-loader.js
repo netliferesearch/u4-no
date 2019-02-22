@@ -27,7 +27,7 @@ const doSearch = async (query) => {
   }, []);
   try {
     const result = await client.search({
-      index: 'u4-*',
+      index: process.env.ES_INDEX || 'u4-*',
       body: {
         query: {
           function_score: {

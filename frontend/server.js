@@ -27,7 +27,6 @@ app.prepare().then(() => {
   server.get('//$', (req, res) => res.redirect(301, '/'));
   server.get('/publications/:slug/pdf', publicationPdfHandler);
   server.get('/publications/:slug.pdf', publicationPdfHandler);
-  server.use('/api/search', searchHandler);
   server.use(handler);
   server.listen(process.env.PORT || 3000);
 });
