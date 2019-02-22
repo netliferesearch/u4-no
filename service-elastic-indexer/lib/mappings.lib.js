@@ -59,6 +59,15 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                   type: 'text',
                   analyzer,
                 },
+                // Topics can add articles and publications as resources.
+                filedUnderTopicIds: {
+                  type: 'text',
+                  analyzer: 'keyword',
+                },
+                filedUnderTopicNames: {
+                  type: 'text',
+                  analyzer: 'keyword',
+                },
                 // publication
                 legacyPdfContent: {
                   type: 'text',
