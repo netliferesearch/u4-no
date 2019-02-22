@@ -18,7 +18,7 @@
   th,
   td {
     border: 1px solid #e3e3e3;
-    padding: $spacing-small;
+    padding: 0 $spacing-small;
   }
 
   thead,
@@ -50,16 +50,13 @@
 @media print {
   .c-table {
     overflow-x: visible;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
+    padding-bottom: $spacing;
+    margin-left: -3.5cm;
+    margin-right: -3.5cm;
     table {
-      table-layout: fixed;
       font-size: 90%;
-      width: initial;
+      width: 100%;
     }
-  }
-  .c-table__title,
-  .c-table__caption {
-    padding-left: 0;
   }
 }

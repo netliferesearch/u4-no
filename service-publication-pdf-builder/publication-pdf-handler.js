@@ -37,13 +37,15 @@ async function publicationPdfHandler(req, res) {
 
     if (!sanityResults) {
       console.warn('Sanity returned nothing', sanityResults);
-      throw new Error('No content found');
+      return req.status(404).send('Could not find pdf file');
     }
 
     const data = Array.isArray(sanityResults) ? [...sanityResults] : { ...sanityResults };
 
     const pdfUrl = getPdfUrl(data);
-    if (!pdfUrl) throw new Error('No pdf found');
+    if (!pdfUrl) {
+      return req.status(404).send('Could not find pdf file url');
+    }
 
     const response = await axios({
       method: 'get',
@@ -55,7 +57,7 @@ async function publicationPdfHandler(req, res) {
     stream.pipe(res);
   } catch (e) {
     console.error('Error', e);
-    res.send('Error: Was not able to load pdf');
+    res.status(500).send('Error: Was not able to load pdf');
   }
 }
 
