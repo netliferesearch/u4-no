@@ -2,6 +2,7 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import slugify from 'slugify';
 import {
   addSearchFilter,
   removeSearchFilter,
@@ -17,44 +18,36 @@ function toggle() {
 }
 
 const PublicationTypes = props => {
-  const { publicationTypes, onChangeHandler } = props;
+  const { publicationTypes = {}, onChangeHandler } = props;
+  const { buckets = [] } = publicationTypes;
   // eslint-disable-next-line
   // debugger;
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
         <h3 className="c-filters-v2__title">Publication type</h3>
-        <input className="c-filters-v2__clear" type="reset" value="Clear" />
       </div>
       <span>
-        <div className="c-input">
-          <input type="checkbox" id="pub-type-pubtype-1" value="pub-type-pubtype-1" />
-          <label htmlFor="pub-type-pubtype-1">U4 Brief (137)</label>
-        </div>
-        <div className="c-input">
-          <input type="checkbox" id="pub-type-pubtype-2" value="pub-type-pubtype-2" />
-          <label htmlFor="pub-type-pubtype-2">U4 Issue (119)</label>
-        </div>
-        <div className="c-input">
-          <input type="checkbox" id="pub-type-pubtype-3" value="pub-type-pubtype-3" />
-          <label htmlFor="pub-type-pubtype-3">U4 Helpdesk Answer (303)</label>
-        </div>
-        <div className="c-input">
-          <input type="checkbox" id="pub-type-pubtype-4" value="pub-type-pubtype-4" />
-          <label htmlFor="pub-type-pubtype-4">U4 Report (6)</label>
-        </div>
-        <div className="c-input">
-          <input type="checkbox" id="pub-type-pubtype-5" value="pub-type-pubtype-5" />
-          <label htmlFor="pub-type-pubtype-5">Practice Insight (19)</label>
-        </div>
+        {buckets.map(({ key, doc_count }) => (
+          <div key={slugify(key)} className="c-input">
+            <input
+              type="checkbox"
+              id={slugify(key)}
+              value={key}
+              onChange={event => onChangeHandler({ event, filterType: 'publicationType' })}
+            />
+            <label htmlFor={slugify(key)}>
+              {key} ({doc_count})
+            </label>
+          </div>
+        ))}
       </span>
-      <p>See all</p>
     </form>
   );
 };
 
 class SearchFiltersV2 extends React.Component {
-  onChangeHandler = event => {
+  onChangeHandler = ({ filterType, event }) => {
     console.log('Filter change occured', event.target);
     const {
       addSearchFilter,
@@ -63,9 +56,6 @@ class SearchFiltersV2 extends React.Component {
       searchFilters = [],
     } = this.props;
     const { value = '' } = event.target;
-    if (!value) {
-      return; // do nothing
-    }
     if (value === 'publications-only') {
       replaceSearchFilters([
         ...searchFilters.filter(name => name !== 'all-content'),
@@ -73,14 +63,20 @@ class SearchFiltersV2 extends React.Component {
       ]);
     } else if (value === 'all-content') {
       replaceSearchFilters([...searchFilters.filter(name => name !== 'publications-only')]);
+    } else if (filterType === 'publicationType' && event.target.checked) {
+      addSearchFilter(`pub-type-${event.target.value}`);
+    } else if (filterType === 'publicationType' && !event.target.checked) {
+      removeSearchFilter(`pub-type-${event.target.value}`);
     }
+
+    // //eslint-disable-next-line
+    // debugger;
+
+    console.log('event target', value);
   };
 
   render() {
     const { data = {} } = this.props;
-    // eslint-disable-next-line
-    // debugger;
-
     const {
       aggregations: {
         languages,
@@ -115,7 +111,7 @@ class SearchFiltersV2 extends React.Component {
               name="content"
               value="all-content"
               defaultChecked
-              onChange={this.onChangeHandler}
+              onChange={event => this.onChangeHandler({ event })}
             />
             <label htmlFor="all-content">All website content</label>
           </div>
@@ -125,7 +121,7 @@ class SearchFiltersV2 extends React.Component {
               type="radio"
               name="content"
               value="publications-only"
-              onChange={this.onChangeHandler}
+              onChange={event => this.onChangeHandler({ event })}
             />
             <label htmlFor="publications-only" className="c-filters-v2__checkbox-label">
               Publications only
