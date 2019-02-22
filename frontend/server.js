@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const {
   publicationPdfHandler,
 } = require('../service-publication-pdf-builder/publication-pdf-handler');
-const searchHandler = require('./server.elastic');
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
 const handler = routes.getRequestHandler(app);
