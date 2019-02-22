@@ -11,18 +11,17 @@ const setupMappings = async ({ types = [], languages = [] }) => {
   const indexes = languages
     .map(language => getIndexName({ language }))
     .filter(indexName => !/\s/.test(indexName));
-  console.log('Create indexes with mappings for', indexes);
-
+  console.log('Create indexes with mappings for\n', indexes);
+  const version = process.env.ES_ENV || 'staging';
   const analyzers = {
-    'u4-en-us': 'english',
-    'u4-en-en': 'english',
-    'u4-fr-fr': 'french',
-    'u4-pt-pt': 'portuguese',
-    'u4-ru-ru': 'russian',
-    'u4-es-es': 'spanish',
-    'u4-uk-ua': 'russian',
+    [`u4-${version}-en-us`]: 'english',
+    [`u4-${version}-en-en`]: 'english',
+    [`u4-${version}-fr-fr`]: 'french',
+    [`u4-${version}-pt-pt`]: 'portuguese',
+    [`u4-${version}-ru-ru`]: 'russian',
+    [`u4-${version}-es-es`]: 'spanish',
+    [`u4-${version}-uk-ua`]: 'russian',
   };
-
   for (const index of indexes) {
     try {
       const indexExists = await client.indices.exists({ index });

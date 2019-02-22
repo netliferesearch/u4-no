@@ -63,7 +63,13 @@ async function findLegacyPdfContent({ document = {}, allDocuments, isRetrying = 
   try {
     // make folder if not exists
     await mkdirp(destinationFolder);
-    const isFile = await fileExists(destinationFilePath);
+    let isFile = false;
+    if (process.env.CACHE_PDF) {
+      // Only re-use local file if cache flag is present.
+      // otherwise we always assume that we don't have the file and re-download
+      // it.
+      isFile = await fileExists(destinationFilePath);
+    }
     if (!isFile) {
       console.log('downloading file', destinationFilePath);
       await downloadFile({
@@ -73,6 +79,7 @@ async function findLegacyPdfContent({ document = {}, allDocuments, isRetrying = 
     }
     try {
       const pdfText = await extractText({ pathOrUrl: destinationFilePath, reThrowOnFail: true });
+      console.log('finished extracting text from', destinationFilePath);
       return pdfText;
     } catch (err) {
       if (isRetrying) {

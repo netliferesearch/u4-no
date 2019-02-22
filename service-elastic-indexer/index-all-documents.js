@@ -203,8 +203,9 @@ async function main() {
       processDocument({ document, allDocuments }).catch(err =>
         console.error('Failed to process document', document, err)),
     // add concurrency cap because we download legacy pdfs if not present locally.
-    { concurrency: 5 },
+    { concurrency: process.env.CACHE_PDF ? 20 : 5 },
   );
+
   console.log(`Found ${docsToDelete.length} to delete`);
   console.log('How many documents to insert/update/index:', processedDocuments.length);
 
