@@ -1,0 +1,3 @@
+ES_HOST=https://elastic:1ZfmXyyU3wuFeJnHZ74apZHP@34f28f12080e435795254ec8886248ba.eu-central-1.aws.cloud.es.io:9243/
+ES_ENV=staging
+#ES_ENV=production

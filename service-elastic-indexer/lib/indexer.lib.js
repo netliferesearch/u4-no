@@ -353,7 +353,8 @@ function parseNDJSON(str) {
 }
 
 function getIndexName({ language = 'en_US' }) {
-  return `u4-${language}`.toLowerCase().replace(/_/gi, '-');
+  const version = process.env.ES_ENV || 'staging';
+  return `u4-${version}-${language}`.toLowerCase().replace(/_/gi, '-');
 }
 
 /**

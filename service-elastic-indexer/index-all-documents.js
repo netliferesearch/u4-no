@@ -50,7 +50,7 @@ const insertElasticSearchData = (documents = []) =>
   });
 
 const doBatchInsert = async (documents = []) => {
-  const batchSize = 50;
+  const batchSize = process.env.ES_BATCH_SIZE || 500;
   const batches = _.chunk(documents, batchSize);
   for (const batch of batches) {
     try {
