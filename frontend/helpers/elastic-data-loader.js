@@ -221,6 +221,10 @@ export default Child =>
         });
       }
       const result = await doSearch(query);
+      store.dispatch({
+        type: 'SEARCH_UPDATE_RESULTS',
+        searchResults: result,
+      });
       return { data: result };
     }
     render() {

@@ -55,6 +55,7 @@ const defaultState = {
   searchSorting: 'relevance',
   searchFilters: [],
   searchPageNum: 0,
+  searchResults: {},
   defaultSearchAggs: [],
 };
 
@@ -68,6 +69,7 @@ export const actionTypes = {
   SEARCH_UPDATE_SORT: 'SEARCH_UPDATE_SORT',
   SEARCH_REPLACE_FILTERS: 'SEARCH_REPLACE_FILTERS',
   SEARCH_UPDATE_PAGE_NUM: 'SEARCH_UPDATE_PAGE_NUM',
+  SEARCH_UPDATE_RESULTS: 'SEARCH_UPDATE_RESULTS',
   SCROLL_POSITION_SAVE: 'SCROLL_POSITION_SAVE',
   SEARCH_UPDATE_DEFAULT_AGGS: 'SEARCH_UPDATE_DEFAULT_AGGS',
 };
@@ -114,6 +116,10 @@ export const reducer = (state = defaultState, action) => {
     case actionTypes.SEARCH_UPDATE_DEFAULT_AGGS:
       return Object.assign({}, state, {
         defaultSearchAggs: action.defaultSearchAggs,
+      });
+    case actionTypes.SEARCH_UPDATE_RESULTS:
+      return Object.assign({}, state, {
+        searchResults: action.searchResults,
       });
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
