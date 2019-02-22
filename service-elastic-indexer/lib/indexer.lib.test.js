@@ -47,14 +47,6 @@ test('elasticsearch: is able to expand reference', async () => {
   });
 });
 
-test('elasticsearch: is able to retrieve legacy pdf text', async () => {
-  const pdfText = await findLegacyPdfContent({
-    document: publicationExampleWithLegacyPdf,
-    allDocuments,
-  });
-  expect(typeof pdfText === 'string' && pdfText.length > 100).toBeTruthy();
-});
-
 test('elasticsearch: is able to convert text content', async () => {
   const text = blocksToText(publicationExample.content);
   expect(typeof text === 'string' && text.length > 100).toBeTruthy();

@@ -10,54 +10,6 @@ const unlink = util.promisify(fs.unlink);
 const mkdirp = util.promisify(require('mkdirp'));
 const { extractText } = require('./extract-text');
 
-// Used when loading a dataset from 'sanity dataset export'
-// let files = null;
-// const readdir = util.promisify(fs.readdir);
-// const copyFile = util.promisify(fs.copyFile);
-// const loadLegacyContentFromDisk = async ({ document }) => {
-//   const fileFolderPath = path.join(__dirname, '../sanity-export/files');
-//   // store file list in variable outside function to avoid unecessary calls.
-//   if (!files) {
-//     try {
-//       files = await readdir(fileFolderPath);
-//     } catch (e) {
-//       console.error('Failed to read directory', e);
-//     }
-//   }
-//   try {
-//     const { _sanityAsset = '' } = document.legacypdf;
-//     // first try getting asset from _sanityAsset, then try fileId
-//     let fileId = _sanityAsset.replace('file@file://./files/', '');
-//     // fallback to try and get file from .asset
-//     fileId = fileId || /file-(.*)/gi.exec(document.legacypdf.asset._ref)[1];
-//     const foundFile = files.find(fileName => fileName.indexOf(fileId) !== -1);
-//     if (foundFile.endsWith('.pdf')) {
-//       return extractText(path.join(fileFolderPath, foundFile));
-//     }
-//     // add this point we have a file that ends with .bin or otherwise
-//     // we'll try to add a .pdf suffix before reading, but before that
-//     // we need to check if it's already done from a previous run.
-//     const suffixedFileName = `${foundFile}.pdf`;
-//     const foundSuffixedFile = files.find(fileName => fileName.indexOf(suffixedFileName) !== -1);
-//     if (foundSuffixedFile) {
-//       return extractText(path.join(fileFolderPath, foundSuffixedFile));
-//     }
-//     try {
-//       await copyFile(
-//         path.join(fileFolderPath, foundFile),
-//         path.join(fileFolderPath, suffixedFileName),
-//       );
-//       return extractText(path.join(fileFolderPath, suffixedFileName));
-//     } catch (e) {
-//       console.error('Failed to copy file', suffixedFileName, e);
-//     }
-//     return null;
-//   } catch (err) {
-//     console.log('Failed to load legacy pdf data from:', document.legacypdf, err);
-//     return null;
-//   }
-// };
-
 async function downloadFile({ url, destinationFilePath }) {
   try {
     // delete file to avoid appending to existing file
