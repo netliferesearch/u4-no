@@ -230,7 +230,7 @@ async function processPerson({ document: doc }) {
   };
 }
 
-async function processTopic({ document: doc }) {
+async function processTopic({ document: doc, allDocuments }) {
   const {
     agenda = [],
     explainerText,
@@ -238,12 +238,15 @@ async function processTopic({ document: doc }) {
     resources,
     title: topicTitle,
     slug: { current = '' } = {},
-    featuredImage: { _sanityAsset = '' } = {},
+    featuredImage: { asset: featuredImageAsset } = {},
     ...restOfDoc
   } = doc;
+  const expand = initExpand(allDocuments);
+  const featuredImageUrl = expand({
+    reference: featuredImageAsset,
+    process: ({ url }) => url,
+  });
   const url = `/topics/${current}`;
-  const fileName = _sanityAsset.replace('image@file://./images/', '');
-  const featuredImageUrl = `https://cdn.sanity.io/images/1f1lcoov/production/${fileName}`;
   // add helper flags to easier determine if we should show topic links in
   // search result.
   const isAgendaPresent = agenda.length > 0;
