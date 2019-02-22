@@ -235,7 +235,7 @@ async function processTopic({ document: doc, allDocuments }) {
     agenda = [],
     explainerText,
     introduction: basicGuide = [],
-    resources,
+    resources = [],
     title: topicTitle,
     slug: { current = '' } = {},
     featuredImage: { asset: featuredImageAsset } = {},
@@ -256,6 +256,7 @@ async function processTopic({ document: doc, allDocuments }) {
     // then we override some of those fields with processed data.
     topicTitle,
     url,
+    numberOfTopicResources: resources.length,
     featuredImageUrl,
     topicContent: explainerText,
     basicGuide: blocksToText(basicGuide),

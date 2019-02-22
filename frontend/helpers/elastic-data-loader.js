@@ -123,6 +123,7 @@ const doSearch = async (query) => {
           'termContent',
           'topicTitle',
           'topicContent',
+          'numberOfTopicResources',
           'url',
           'featuredImageUrl',
           'longTitle',
