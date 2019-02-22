@@ -55,6 +55,7 @@ const defaultState = {
   searchSorting: 'relevance',
   searchFilters: [],
   searchPageNum: 0,
+  defaultSearchAggs: [],
 };
 
 export const actionTypes = {
@@ -68,6 +69,7 @@ export const actionTypes = {
   SEARCH_REPLACE_FILTERS: 'SEARCH_REPLACE_FILTERS',
   SEARCH_UPDATE_PAGE_NUM: 'SEARCH_UPDATE_PAGE_NUM',
   SCROLL_POSITION_SAVE: 'SCROLL_POSITION_SAVE',
+  SEARCH_UPDATE_DEFAULT_AGGS: 'SEARCH_UPDATE_DEFAULT_AGGS',
 };
 
 // REDUCERS
@@ -108,6 +110,10 @@ export const reducer = (state = defaultState, action) => {
       addQueryParams({ filters: false });
       return Object.assign({}, state, {
         searchFilters: [],
+      });
+    case actionTypes.SEARCH_UPDATE_DEFAULT_AGGS:
+      return Object.assign({}, state, {
+        defaultSearchAggs: action.defaultSearchAggs,
       });
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
@@ -162,17 +168,18 @@ export const initStore = (initialState = defaultState, options) => {
   const { query = {} } = options;
   const { filters = '', sort = '' } = query;
   let state = initialState;
+
   // if there are active filters in the url query params we need to split
   // and add them to the state.
   if (filters) {
-    state = Object.assign(initialState, {
+    state = Object.assign(state, {
       searchFilters: filters.split(','),
     });
   }
   // if there is an active query param sort configured we let it override
   // the default sorting in state
   if (sort) {
-    state = Object.assign(initialState, {
+    state = Object.assign(state, {
       searchSorting: sort,
     });
   }

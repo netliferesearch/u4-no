@@ -17,6 +17,34 @@ const client = new elasticsearch.Client({
   apiVersion: '6.5',
 });
 
+const aggregations = {
+  minPublicationDateMilliSeconds: {
+    min: {
+      field: 'date.utc',
+    },
+  },
+  maxPublicationDateMilliSeconds: {
+    max: {
+      field: 'date.utc',
+    },
+  },
+  publicationTypes: {
+    terms: {
+      field: 'publicationTypeTitle',
+    },
+  },
+  topicTitles: {
+    terms: {
+      field: 'topicTitles',
+    },
+  },
+  languages: {
+    terms: {
+      field: 'languageName',
+    },
+  },
+};
+
 const doSearch = async (query) => {
   const {
     search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0,
@@ -147,36 +175,28 @@ const doSearch = async (query) => {
           'isBasicGuidePresent',
           'publicationType',
         ],
-        aggs: {
-          minPublicationDateMilliSeconds: {
-            min: {
-              field: 'date.utc',
-            },
-          },
-          maxPublicationDateMilliSeconds: {
-            max: {
-              field: 'date.utc',
-            },
-          },
-          publicationTypes: {
-            terms: {
-              field: 'publicationTypeTitle',
-            },
-          },
-          topicTitles: {
-            terms: {
-              field: 'topicTitles',
-            },
-          },
-          languages: {
-            terms: {
-              field: 'languageName',
-            },
-          },
-        },
+        aggs: aggregations,
       },
     });
     console.log('Elastic data loader received data', { query, result });
+    return result;
+  } catch (e) {
+    console.error('Elasticsearch query failed', e);
+    return {};
+  }
+};
+
+const getSearchAggregations = async () => {
+  try {
+    const result = await client.search({
+      index: process.env.ES_INDEX || 'u4-staging-*',
+      body: {
+        query: { match_all: {} },
+        aggs: aggregations,
+        size: 1,
+      },
+    });
+    console.log('getSearchAggregations returned', result);
     return result;
   } catch (e) {
     console.error('Elasticsearch query failed', e);
@@ -188,11 +208,21 @@ export default Child =>
   withRedux(initStore, null, mapDispatchToProps)(class DataLoader extends Component {
     static async getInitialProps(nextContext) {
       console.log('Elastic data loader fetching data');
-      const { query } = nextContext;
+      const { query, store } = nextContext;
+      const { defaultSearchAggs = [] } = store.getState();
+      if (defaultSearchAggs.length === 0) {
+        // We do one search just to know how many possible aggregations
+        // we have. Filters needs this if they want to display unmatched filters.
+        getSearchAggregations().then(({ aggregations }) => {
+          store.dispatch({
+            type: 'SEARCH_UPDATE_DEFAULT_AGGS',
+            defaultSearchAggs: aggregations,
+          });
+        });
+      }
       const result = await doSearch(query);
       return { data: result };
     }
-
     render() {
       const { error } = this.props;
       if (error) {
