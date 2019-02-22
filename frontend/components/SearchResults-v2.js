@@ -77,7 +77,7 @@ const SearchResult = (props) => {
               <div {...classes('topic-point')}>
                 <ArrowRightSmall />
                 <Link route={`${url}#resources`}>
-                  <a>Explore all resources</a>
+                  <a>Publications and other resources</a>
                 </Link>
               </div>
             )}
