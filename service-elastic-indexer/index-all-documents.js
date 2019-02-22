@@ -3,6 +3,7 @@ require('dotenv').config();
 const elasticsearch = require('elasticsearch');
 const Promise = require('bluebird');
 const path = require('path');
+const fs = require('fs');
 const axios = require('axios');
 const _ = require('lodash');
 const {
@@ -212,12 +213,9 @@ async function main() {
       .filter(({ _type, slug: { current = '' } = {}, affiliations = [] }) =>
         _type !== 'person' || (_type === 'person' && current && affiliations.length > 0)),
     document =>
-      processDocument({ document, allDocuments })
-        // .then((doc) => {
-        //   return doc;
-        // })
-        .catch(err => console.error('Failed to process document', document, err)),
-    { concurrency: -1 },
+      processDocument({ document, allDocuments }).catch(err =>
+        console.error('Failed to process document', document, err)),
+    { concurrency: 5 },
   );
   console.log(`Found ${docsToDelete.length} to delete`);
   console.log('How many documents to insert/update/index:', processedDocuments.length);

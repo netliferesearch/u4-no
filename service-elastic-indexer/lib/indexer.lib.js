@@ -3,69 +3,138 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 const _ = require('lodash');
-const { extractText } = require('./extract-text');
+const axios = require('axios');
 const htmlToText = require('html-to-text');
 
+const unlink = util.promisify(fs.unlink);
+const mkdirp = util.promisify(require('mkdirp'));
+const { extractText } = require('./extract-text');
+
 // Used when loading a dataset from 'sanity dataset export'
-let files = null;
-const readdir = util.promisify(fs.readdir);
-const copyFile = util.promisify(fs.copyFile);
-const loadLegacyContentFromDisk = async ({ document }) => {
-  const fileFolderPath = path.join(__dirname, '../sanity-export/files');
-  // store file list in variable outside function to avoid unecessary calls.
-  if (!files) {
-    try {
-      files = await readdir(fileFolderPath);
-    } catch (e) {
-      console.error('Failed to read directory', e);
-    }
-  }
+// let files = null;
+// const readdir = util.promisify(fs.readdir);
+// const copyFile = util.promisify(fs.copyFile);
+// const loadLegacyContentFromDisk = async ({ document }) => {
+//   const fileFolderPath = path.join(__dirname, '../sanity-export/files');
+//   // store file list in variable outside function to avoid unecessary calls.
+//   if (!files) {
+//     try {
+//       files = await readdir(fileFolderPath);
+//     } catch (e) {
+//       console.error('Failed to read directory', e);
+//     }
+//   }
+//   try {
+//     const { _sanityAsset = '' } = document.legacypdf;
+//     // first try getting asset from _sanityAsset, then try fileId
+//     let fileId = _sanityAsset.replace('file@file://./files/', '');
+//     // fallback to try and get file from .asset
+//     fileId = fileId || /file-(.*)/gi.exec(document.legacypdf.asset._ref)[1];
+//     const foundFile = files.find(fileName => fileName.indexOf(fileId) !== -1);
+//     if (foundFile.endsWith('.pdf')) {
+//       return extractText(path.join(fileFolderPath, foundFile));
+//     }
+//     // add this point we have a file that ends with .bin or otherwise
+//     // we'll try to add a .pdf suffix before reading, but before that
+//     // we need to check if it's already done from a previous run.
+//     const suffixedFileName = `${foundFile}.pdf`;
+//     const foundSuffixedFile = files.find(fileName => fileName.indexOf(suffixedFileName) !== -1);
+//     if (foundSuffixedFile) {
+//       return extractText(path.join(fileFolderPath, foundSuffixedFile));
+//     }
+//     try {
+//       await copyFile(
+//         path.join(fileFolderPath, foundFile),
+//         path.join(fileFolderPath, suffixedFileName),
+//       );
+//       return extractText(path.join(fileFolderPath, suffixedFileName));
+//     } catch (e) {
+//       console.error('Failed to copy file', suffixedFileName, e);
+//     }
+//     return null;
+//   } catch (err) {
+//     console.log('Failed to load legacy pdf data from:', document.legacypdf, err);
+//     return null;
+//   }
+// };
+
+async function downloadFile({ url, destinationFilePath }) {
   try {
-    const { _sanityAsset = '' } = document.legacypdf;
-    // first try getting asset from _sanityAsset, then try fileId
-    let fileId = _sanityAsset.replace('file@file://./files/', '');
-    // fallback to try and get file from .asset
-    fileId = fileId || /file-(.*)/gi.exec(document.legacypdf.asset._ref)[1];
-    const foundFile = files.find(fileName => fileName.indexOf(fileId) !== -1);
-    if (foundFile.endsWith('.pdf')) {
-      return extractText(path.join(fileFolderPath, foundFile));
-    }
-    // add this point we have a file that ends with .bin or otherwise
-    // we'll try to add a .pdf suffix before reading, but before that
-    // we need to check if it's already done from a previous run.
-    const suffixedFileName = `${foundFile}.pdf`;
-    const foundSuffixedFile = files.find(fileName => fileName.indexOf(suffixedFileName) !== -1);
-    if (foundSuffixedFile) {
-      return extractText(path.join(fileFolderPath, foundSuffixedFile));
-    }
-    try {
-      await copyFile(
-        path.join(fileFolderPath, foundFile),
-        path.join(fileFolderPath, suffixedFileName),
-      );
-      return extractText(path.join(fileFolderPath, suffixedFileName));
-    } catch (e) {
-      console.error('Failed to copy file', suffixedFileName, e);
-    }
-    return null;
+    // delete file to avoid appending to existing file
+    fs.unlinkSync(destinationFilePath);
   } catch (err) {
-    console.log('Failed to load legacy pdf data from:', document.legacypdf, err);
-    return null;
+    // Expected to error if file not present, swallowing error to not flood log.
   }
-};
+  const writer = fs.createWriteStream(destinationFilePath);
+  const response = await axios({
+    url,
+    method: 'GET',
+    responseType: 'stream',
+  });
+  response.data.pipe(writer);
+  return new Promise((resolve, reject) => {
+    writer.on('finish', resolve);
+    writer.on('error', reject);
+  });
+}
+
+const access = util.promisify(fs.access);
+async function fileExists(filePath) {
+  try {
+    await access(filePath, fs.constants.F_OK);
+    return true; // no error is success
+  } catch (err) {
+    // interpret any error as file does not exist
+    return false;
+  }
+}
 
 /**
  * Purpose: Find corresponding pdf file and load its contents
  */
-async function findLegacyPdfContent({ document = {} }) {
+async function findLegacyPdfContent({ document = {}, allDocuments, isRetrying = false }) {
   if (_.isEmpty(document.legacypdf)) {
     return null;
   }
-  return loadLegacyContentFromDisk({ document });
-  /* TODO:
-    1. Check if we have the pdf locally, if not download it to /tmp
-    2. Index document.
-  */
+  const { asset: { _ref: fileId } = {} } = document.legacypdf;
+  const sanityAsset = allDocuments.find(({ _id }) => _id === fileId);
+  if (!sanityAsset) {
+    console.error('document had legacypdf defined, but we could not find sanity asset.', {
+      id: document._id,
+      legacypdf: JSON.stringify(document.legacypdf, null, 2),
+    });
+    return null;
+  }
+  const { url, originalFilename } = sanityAsset;
+  const destinationFolder = '/tmp/sanity';
+  const destinationFilePath = `${destinationFolder}/${originalFilename}`;
+  try {
+    // make folder if not exists
+    await mkdirp(destinationFolder);
+    const isFile = await fileExists(destinationFilePath);
+    if (!isFile) {
+      console.log('downloading file', destinationFilePath);
+      await downloadFile({
+        url,
+        destinationFilePath,
+      });
+    }
+    try {
+      const pdfText = await extractText({ pathOrUrl: destinationFilePath, reThrowOnFail: true });
+      return pdfText;
+    } catch (err) {
+      if (isRetrying) {
+        console.error('Already retried, failing hard. Tried to read', destinationFilePath);
+        process.exit(1);
+      }
+      console.log('Deleting file that we failed to read, and retrying once');
+      await unlink(destinationFilePath);
+      return findLegacyPdfContent({ document, allDocuments, isRetrying: true });
+    }
+  } catch (err) {
+    console.error('findLegacyPdfContent failed:', err);
+    return null;
+  }
 }
 
 async function processPublication({ document: doc, allDocuments }) {
@@ -100,7 +169,7 @@ async function processPublication({ document: doc, allDocuments }) {
       ? htmlToText.fromString(abstract, { wordwrap: false })
       : blocksToText(doc.content || []),
     ...(isLegacyPublication
-      ? { legacyPdfContent: await findLegacyPdfContent({ document: doc }) }
+      ? { legacyPdfContent: await findLegacyPdfContent({ document: doc, allDocuments }) }
       : {}),
     ...(!isLegacyPublication && abstract
       ? { abstract: htmlToText.fromString(abstract, { wordwrap: false }) }
