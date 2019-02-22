@@ -38,7 +38,7 @@ const SearchResult = (props) => {
       url = '',
       featuredImageUrl = '',
       topicTitle = '',
-      topicContent = '',
+      standfirst = '',
       isAgendaPresent,
       isBasicGuidePresent,
     } = _source;
@@ -55,7 +55,7 @@ const SearchResult = (props) => {
             {featuredImageUrl && <img src={`${featuredImageUrl}?w=500&fit=crop&crop=focalpoint`} />}
           </div>
           <div {...classes('topic-content')}>
-            <p>{topicContent}</p>
+            <p>{standfirst}</p>
             {isBasicGuidePresent && (
               <div {...classes('topic-point')}>
                 <ArrowRightSmall />
