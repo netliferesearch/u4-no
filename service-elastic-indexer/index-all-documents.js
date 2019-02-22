@@ -78,7 +78,9 @@ const deleteDocuments = (documents = []) => {
   }
   return client
     .bulk({
-      body: documents.map(({ _id }) => ({ delete: { _index, _type: 'u4-searchable', _id } })),
+      body: documents.map(({ _id, _index }) => ({
+        delete: { _index, _type: 'u4-searchable', _id },
+      })),
     })
     .catch(err => console.log('Failed to delete elastic documents', err));
 };
@@ -88,9 +90,10 @@ const deleteDocuments = (documents = []) => {
 const getAllElasticsearchDocuments = async () => {
   console.log('getAllElasticsearchDocuments()');
   const allDocs = [];
+  const version = process.env.ES_ENV || 'staging';
   const responseQueue = [
     await client.search({
-      index: 'u4-*',
+      index: `u4-${version}-*`,
       scroll: '30s', // keep the search results "scrollable" for 30 seconds
       _source: ['createdAt', 'updatedAt'],
       body: {
@@ -107,7 +110,7 @@ const getAllElasticsearchDocuments = async () => {
     });
     // check to see if we have collected all of the titles
     if (response.hits.total === allDocs.length) {
-      console.log('every "test" title', allDocs);
+      console.log('Number of ES docs found:', allDocs.length);
       break;
     }
     console.log('Loading more elastic documents, already found:', allDocs.length);
@@ -137,47 +140,18 @@ const generateChangelist = ({ elasticDocuments = [], sanityDocuments = [] }) => 
 async function main() {
   console.log('starting work');
 
-  // const { data } = await axios
-  //   .get('https://1f1lcoov.api.sanity.io/v1/data/export/production')
-  //   .catch((err) => {
-  //     console.log('Failed to get dataset', err);
-  //     process.exit(-1);
-  //   });
-  // const allDocuments = parseNDJSON(data);
-  //
-  // const topics = allDocuments.filter(({ _type }) => _type === 'topics');
-  // console.log(JSON.stringify(topics, null, 2));
+  console.log('Downloading sanity dataset');
+  const { data } = await axios
+    .get('https://1f1lcoov.api.sanity.io/v1/data/export/production')
+    .catch((err) => {
+      console.log('Failed to get dataset', err);
+      process.exit(-1);
+    });
+  console.log('Finished downloading dataset, proceeding with work');
 
-  // find documents that have
-  // try {
-  //   // Shape of resulting documents
-  //   // { _index: 'u4-en-us',
-  //   //    _type: 'u4-searchable',
-  //   //    _id: '09b6af64-e99c-413d-b734-7b6446280289',
-  //   //    _score: 1,
-  //   //    _source: [Object] }
-  //   const allElasticDocs = await getAllElasticsearchDocuments();
-  //   console.log(JSON.stringify(allElasticDocs, null, 2));
-  // } catch (error) {
-  //   console.error(error);
-  // } finally {
-  //   process.exit(0);
-  // }
-
-  // Uncomment if want to quickly index a local dataset.
-  const { documents: sanityDocuments } = loadSanityDataFile(path.join(__dirname, './sanity-export'));
-
-  let elasticDocuments = [];
-  try {
-    elasticDocuments = await getAllElasticsearchDocuments();
-  } catch (e) {
-    console.error('Failed to fetch allElasticDocs', e);
-  }
-
-  const { docsToInsertOrUpdate: allDocuments, docsToDelete } = generateChangelist({
-    sanityDocuments,
-    elasticDocuments,
-  });
+  // // Specify local file if you want speedy development
+  // const data = fs.readFileSync('./production.json', { encoding: 'UTF-8' });
+  const allDocuments = parseNDJSON(data);
 
   const types = {};
   allDocuments.forEach(({ _type }) => (types[_type] = true));
@@ -203,22 +177,37 @@ async function main() {
   ];
   console.log('Document types to process:\n', typesToProcess, '\n');
 
+  // Ensure that we don't index drafts documents, nor unecessary types.
+  const documentsToProcess = allDocuments
+    .filter(({ _type }) => typesToProcess.find(type => type === _type))
+    .filter(({ _id }) => !_id.startsWith('drafts.'))
+    // remove frontpage from search results
+    .filter(({ _id }) => _id !== 'ea5779de-5896-44a9-8d9e-31da9ac1edb2')
+    // Only persons with a slug and at least one affiliation should be searchable.
+    .filter(({ _type, slug: { current = '' } = {}, affiliations = [] }) =>
+      _type !== 'person' || (_type === 'person' && current && affiliations.length > 0));
+
+  const elasticDocuments = await getAllElasticsearchDocuments().catch((err) => {
+    console.error('Failed to fetch allElasticDocs', err);
+    process.exit(1);
+  });
+
+  const { docsToInsertOrUpdate, docsToDelete } = generateChangelist({
+    sanityDocuments: documentsToProcess,
+    elasticDocuments,
+  });
+
   const processedDocuments = await Promise.map(
-    allDocuments
-      .filter(({ _type }) => typesToProcess.find(type => type === _type))
-      .filter(({ _id }) => !_id.startsWith('drafts.'))
-      // remove frontpage from search results
-      .filter(({ _id }) => _id !== 'ea5779de-5896-44a9-8d9e-31da9ac1edb2')
-      // Only persons with a slug and at least one affiliation should be searchable.
-      .filter(({ _type, slug: { current = '' } = {}, affiliations = [] }) =>
-        _type !== 'person' || (_type === 'person' && current && affiliations.length > 0)),
+    docsToInsertOrUpdate,
     document =>
       processDocument({ document, allDocuments }).catch(err =>
         console.error('Failed to process document', document, err)),
+    // add concurrency cap because we download legacy pdfs if not present locally.
     { concurrency: 5 },
   );
   console.log(`Found ${docsToDelete.length} to delete`);
   console.log('How many documents to insert/update/index:', processedDocuments.length);
+
   await Promise.all([doBatchInsert(processedDocuments), deleteDocuments(docsToDelete)]);
   console.log('Done with work');
 }
