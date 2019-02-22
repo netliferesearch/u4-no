@@ -18,7 +18,9 @@ const client = new elasticsearch.Client({
 });
 
 const doSearch = async (query) => {
-  const { search: searchQuery = '', sort = '', filters: filterStr = '' } = query;
+  const {
+    search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0,
+  } = query;
   const activeFilterQueries = filterStr.split(',').reduce((acc, filter) => {
     if (filter === 'publications-only') {
       acc.push({ term: { type: 'publication' } });
@@ -100,6 +102,16 @@ const doSearch = async (query) => {
               sort: [{ 'date.utc': { order: 'asc' } }],
             }
             : {}),
+
+        ...(searchPageNum > 0
+          ? {
+            from: 0,
+            size: searchPageNum * 10,
+          }
+          : {
+            from: 0,
+            size: 10,
+          }),
 
         highlight: {
           fields: {

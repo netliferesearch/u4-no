@@ -24,7 +24,7 @@ const replaceWindowHash = hashValue => {
 
 // for when we need to reflect some redux state in the url
 const addQueryParams = queryParams => {
-  if (!window) {
+  if (typeof window === 'undefined') {
     return; // do nothing
   }
   // loops through object valued and sets any falsy values to undefined
@@ -54,6 +54,7 @@ const defaultState = {
   showLoadingScreen: false,
   searchSorting: 'relevance',
   searchFilters: [],
+  searchPageNum: 0,
 };
 
 export const actionTypes = {
@@ -65,6 +66,7 @@ export const actionTypes = {
   SEARCH_REMOVE_FILTER: 'SEARCH_REMOVE_FILTER',
   SEARCH_UPDATE_SORT: 'SEARCH_UPDATE_SORT',
   SEARCH_REPLACE_FILTERS: 'SEARCH_REPLACE_FILTERS',
+  SEARCH_UPDATE_PAGE_NUM: 'SEARCH_UPDATE_PAGE_NUM',
   SCROLL_POSITION_SAVE: 'SCROLL_POSITION_SAVE',
 };
 
@@ -97,6 +99,11 @@ export const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         searchFilters: uniq(action.searchFilters),
       });
+    case actionTypes.SEARCH_UPDATE_PAGE_NUM:
+      addQueryParams({
+        searchPageNum: `${action.searchPageNum}`,
+      });
+      return { ...state, searchPageNum: action.searchPageNum };
     case actionTypes.SEARCH_CLEAR_ALL_FILTERS:
       addQueryParams({ filters: false });
       return Object.assign({}, state, {
@@ -132,9 +139,6 @@ export const toggleLoadingScreen = () => dispatch =>
 export const updateSearchSorting = sortName => dispatch =>
   dispatch({ type: actionTypes.SEARCH_UPDATE_SORT, sortName });
 
-/**
- * @param {String} searchFilter name of filter to add
- */
 export const addSearchFilter = searchFilter => dispatch =>
   dispatch({ type: actionTypes.SEARCH_ADD_FILTER, searchFilter });
 
@@ -146,6 +150,10 @@ export const replaceSearchFilters = (searchFilters = []) => dispatch =>
 
 export const clearAllSearchFilters = () => dispatch =>
   dispatch({ type: actionTypes.SEARCH_CLEAR_ALL_FILTERS });
+
+export const updateSearchPageNum = searchPageNum => dispatch => {
+  return dispatch({ type: actionTypes.SEARCH_UPDATE_PAGE_NUM, searchPageNum });
+};
 
 export const saveScrollPosition = scrollPosition => dispatch =>
   dispatch({ type: actionTypes.SCROLL_POSITION_SAVE, scrollPosition });

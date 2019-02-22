@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Downshift from 'downshift';
 import BEMHelper from 'react-bem-helper';
 import autobind from 'react-autobind';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateSearchPageNum } from '../helpers/redux-store';
 import { LoaderV2 } from '../components';
 import { SearchIcon } from '../components/icons';
 import { Router } from '../routes';
@@ -56,9 +59,18 @@ class SearchFieldV2 extends Component {
         loading: true,
       },
       () => {
-        const queryParams = queryString.parse(location.search);
-        const updatedQueryString = queryString.stringify({ ...queryParams, search: value });
-        debounce(Router[`${urlUpdateType}Route`](`/search-v2?${updatedQueryString}`), 1000);
+        // whenever we do a new query we reset the search page, to avoid potentially
+        // fetching a lot of results per key stroke. We reset to the default.
+        this.props.updateSearchPageNum(1);
+        debounce(() => {
+          const queryParams = queryString.parse(location.search);
+          const updatedQueryString = queryString.stringify({
+            ...queryParams,
+            search: value,
+          });
+          Router[`${urlUpdateType}Route`](`/search-v2?${updatedQueryString}`);
+          console.log('debounce was called');
+        }, 100)();
       },
     );
   }
@@ -134,4 +146,13 @@ class SearchFieldV2 extends Component {
   }
 }
 
-export default withRouter(SearchFieldV2);
+const mapStateToProps = ({ searchPageNum }) => ({ searchPageNum });
+const mapDispatchToProps = dispatch => ({
+  updateSearchPageNum: bindActionCreators(updateSearchPageNum, dispatch),
+});
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(SearchFieldV2),
+);

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import ElasticDataLoader from '../helpers/elastic-data-loader';
 import { Layout, Footer, SearchResultsV2, SearchFiltersV2 } from '../components/';
 
