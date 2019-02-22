@@ -3,7 +3,7 @@ import BEMHelper from 'react-bem-helper';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import slugify from 'slugify';
-import SearchFilterPublicationTypes from './SearchFilterPublicationTypes';
+import { SearchFilterPublicationTypes, SearchFilterTopics } from './';
 import {
   addSearchFilter,
   removeSearchFilter,
@@ -59,14 +59,6 @@ class SearchFiltersV2 extends React.Component {
       } = {},
     } = data;
 
-    console.log({
-      languages,
-      minPublicationDateMilliSeconds,
-      maxPublicationDateMilliSeconds,
-      publicationTypes,
-      topicTitles,
-    });
-
     return (
       <div className="c-filters-v2">
         <div className="c-filters-v2__topbar">
@@ -103,35 +95,7 @@ class SearchFiltersV2 extends React.Component {
 
         <SearchFilterPublicationTypes />
 
-        <form className="c-filters-v2__item">
-          <div className="c-filters-v2__item-head">
-            <h3 className="c-filters-v2__title">Publication topics</h3>
-            <input className="c-filters-v2__clear" type="reset" value="Clear" />
-          </div>
-          <span>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-1" value="pub-type-pubtype-1" />
-              <label htmlFor="pub-type-pubtype-1">Natural resources and energy (117)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-2" value="pub-type-pubtype-2" />
-              <label htmlFor="pub-type-pubtype-2">Development cooperation (88)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-3" value="pub-type-pubtype-3" />
-              <label htmlFor="pub-type-pubtype-3">International drivers of corruption (44)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-4" value="pub-type-pubtype-4" />
-              <label htmlFor="pub-type-pubtype-4">Justice sector (43)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-5" value="pub-type-pubtype-5" />
-              <label htmlFor="pub-type-pubtype-5">Public service delivery (41)</label>
-            </div>
-          </span>
-          <p>See all</p>
-        </form>
+        <SearchFilterTopics />
 
         <form className="c-filters-v2__item">
           <div className="c-filters-v2__item-head">

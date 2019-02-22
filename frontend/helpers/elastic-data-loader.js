@@ -55,6 +55,9 @@ const doSearch = async (query) => {
     } else if (/^pub-type-/gi.test(filter)) {
       const pubTypeName = /pub-type-(.*)/gi.exec(filter)[1];
       acc.push({ term: { publicationTypeTitle: pubTypeName } });
+    } else if (/^topic-type-/gi.test(filter)) {
+      const topicTypeName = /topic-type-(.*)/gi.exec(filter)[1];
+      acc.push({ term: { filedUnderTopicNames: topicTypeName } });
     }
     return acc;
   }, []);
@@ -209,18 +212,24 @@ export default Child =>
     static async getInitialProps(nextContext) {
       console.log('Elastic data loader fetching data');
       const { query, store } = nextContext;
-      const { defaultSearchAggs = [] } = store.getState();
-      if (defaultSearchAggs.length === 0) {
-        // We do one search just to know how many possible aggregations
-        // we have. Filters needs this if they want to display unmatched filters.
-        getSearchAggregations().then(({ aggregations }) => {
+      // Use Promise.all so that we can fire off 1 or 2 two queries at once,
+      // without one waiting for the other.
+      const [result] = await Promise.all([
+        doSearch(query),
+        (async () => {
+          const { defaultSearchAggs = [] } = store.getState();
+          if (defaultSearchAggs.length > 0) {
+            return true;
+          }
+          // We do one search just to know how many possible aggregations
+          // we have. Filters needs this if they want to display unmatched filters.
+          const { aggregations } = await getSearchAggregations();
           store.dispatch({
             type: 'SEARCH_UPDATE_DEFAULT_AGGS',
             defaultSearchAggs: aggregations,
           });
-        });
-      }
-      const result = await doSearch(query);
+        })(),
+      ]);
       store.dispatch({
         type: 'SEARCH_UPDATE_RESULTS',
         searchResults: result,
