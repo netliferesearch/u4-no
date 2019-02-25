@@ -14,6 +14,8 @@ Enviroments:
 1. Run `heroku config -s --app u4-frontend-staging | tr -d "'" > .env` To get .env configuration.
 1. Run `npm run dev`
 
+**Tests:** Run `npx jest --watch` to start running [Jest tests](https://jestjs.io) locally.
+
 For local development of frontend. Push changes to master branch to test them on the staging environment. Pushes and Pull Requests to the production branch deploys the app on production.
 
 ## Develop Sanity backend
@@ -52,3 +54,26 @@ rm test.pdf || true && node cmd-pdf.js https://a7df9417.ngrok.io/publications/ad
 ```
 
 ## Develop elastic indexer service
+
+See our 1password for access to Elastic search admin, Kibana and the index itself.
+
+```sh
+# PDF extraction needs 'pdftotext' to be available on the command line.
+brew cask install pdftotext
+
+cd service-elastic-indexer/
+cp env-example .env # be sure to configure its credentials
+node index-all-documents.js
+```
+
+`index-all-documents.js` is built to be run periodically.
+
+1. It grabs all Sanity documents in one request.
+1. Then compares the Elastic index documents with the Sanity documents to find differences and then updates Elasticsearch based on that.
+1. When processing publications with legacy pdfs it will download them to `/tmp/sanity` as it needs to. Set `CACHE_PDF=true` to have this part reuse already downloaded pdfs for speed when developing locally. You can also tweak `.env` variable `ES_BATCH_SIZE=` for faster ES document insertion.
+
+Other relevant files:
+
+- `remove-indexes.js` useful for quickly resetting index setup. If you change index mapping you need to rebuild the index before you can add the new mapping.
+- `lib/mappings.js` how the ES mappings are configured.
+- `lib/indexer.lib.js` how the Sanity types are processed before being sent to ES.
