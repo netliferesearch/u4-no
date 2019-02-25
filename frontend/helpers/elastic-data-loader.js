@@ -17,11 +17,47 @@ const client = new elasticsearch.Client({
   apiVersion: '6.5',
 });
 
+const aggregations = {
+  minPublicationDateMilliSeconds: {
+    min: {
+      field: 'date.utc',
+    },
+  },
+  maxPublicationDateMilliSeconds: {
+    max: {
+      field: 'date.utc',
+    },
+  },
+  publicationTypes: {
+    terms: {
+      field: 'publicationTypeTitle',
+    },
+  },
+  topicTitles: {
+    terms: {
+      field: 'topicTitles',
+    },
+  },
+  languages: {
+    terms: {
+      field: 'languageName',
+    },
+  },
+};
+
 const doSearch = async (query) => {
-  const { search: searchQuery = '', sort = '', filters: filterStr = '' } = query;
+  const {
+    search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0,
+  } = query;
   const activeFilterQueries = filterStr.split(',').reduce((acc, filter) => {
     if (filter === 'publications-only') {
       acc.push({ term: { type: 'publication' } });
+    } else if (/^pub-type-/gi.test(filter)) {
+      const pubTypeName = /pub-type-(.*)/gi.exec(filter)[1];
+      acc.push({ term: { publicationTypeTitle: pubTypeName } });
+    } else if (/^topic-type-/gi.test(filter)) {
+      const topicTypeName = /topic-type-(.*)/gi.exec(filter)[1];
+      acc.push({ term: { filedUnderTopicNames: topicTypeName } });
     }
     return acc;
   }, []);
@@ -101,6 +137,16 @@ const doSearch = async (query) => {
             }
             : {}),
 
+        ...(searchPageNum > 0
+          ? {
+            from: 0,
+            size: searchPageNum * 10,
+          }
+          : {
+            from: 0,
+            size: 10,
+          }),
+
         highlight: {
           fields: {
             content: {
@@ -123,6 +169,7 @@ const doSearch = async (query) => {
           'termContent',
           'topicTitle',
           'topicContent',
+          'numberOfTopicResources',
           'url',
           'featuredImageUrl',
           'longTitle',
@@ -131,36 +178,28 @@ const doSearch = async (query) => {
           'isBasicGuidePresent',
           'publicationType',
         ],
-        aggs: {
-          minPublicationDateMilliSeconds: {
-            min: {
-              field: 'date.utc',
-            },
-          },
-          maxPublicationDateMilliSeconds: {
-            max: {
-              field: 'date.utc',
-            },
-          },
-          publicationTypes: {
-            terms: {
-              field: 'publicationTypeTitle',
-            },
-          },
-          topicTitles: {
-            terms: {
-              field: 'topicTitles',
-            },
-          },
-          languages: {
-            terms: {
-              field: 'languageName',
-            },
-          },
-        },
+        aggs: aggregations,
       },
     });
     console.log('Elastic data loader received data', { query, result });
+    return result;
+  } catch (e) {
+    console.error('Elasticsearch query failed', e);
+    return {};
+  }
+};
+
+const getSearchAggregations = async () => {
+  try {
+    const result = await client.search({
+      index: process.env.ES_INDEX || 'u4-staging-*',
+      body: {
+        query: { match_all: {} },
+        aggs: aggregations,
+        size: 1,
+      },
+    });
+    console.log('getSearchAggregations returned', result);
     return result;
   } catch (e) {
     console.error('Elasticsearch query failed', e);
@@ -172,11 +211,31 @@ export default Child =>
   withRedux(initStore, null, mapDispatchToProps)(class DataLoader extends Component {
     static async getInitialProps(nextContext) {
       console.log('Elastic data loader fetching data');
-      const { query } = nextContext;
-      const result = await doSearch(query);
+      const { query, store } = nextContext;
+      // Use Promise.all so that we can fire off 1 or 2 two queries at once,
+      // without one waiting for the other.
+      const [result] = await Promise.all([
+        doSearch(query),
+        (async () => {
+          const { defaultSearchAggs = [] } = store.getState();
+          if (defaultSearchAggs.length > 0) {
+            return true;
+          }
+          // We do one search just to know how many possible aggregations
+          // we have. Filters needs this if they want to display unmatched filters.
+          const { aggregations } = await getSearchAggregations();
+          store.dispatch({
+            type: 'SEARCH_UPDATE_DEFAULT_AGGS',
+            defaultSearchAggs: aggregations,
+          });
+        })(),
+      ]);
+      store.dispatch({
+        type: 'SEARCH_UPDATE_RESULTS',
+        searchResults: result,
+      });
       return { data: result };
     }
-
     render() {
       const { error } = this.props;
       if (error) {

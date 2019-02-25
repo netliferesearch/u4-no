@@ -24,7 +24,7 @@ const replaceWindowHash = hashValue => {
 
 // for when we need to reflect some redux state in the url
 const addQueryParams = queryParams => {
-  if (!window) {
+  if (typeof window === 'undefined') {
     return; // do nothing
   }
   // loops through object valued and sets any falsy values to undefined
@@ -54,6 +54,9 @@ const defaultState = {
   showLoadingScreen: false,
   searchSorting: 'relevance',
   searchFilters: [],
+  searchPageNum: 0,
+  searchResults: {},
+  defaultSearchAggs: [],
 };
 
 export const actionTypes = {
@@ -65,7 +68,10 @@ export const actionTypes = {
   SEARCH_REMOVE_FILTER: 'SEARCH_REMOVE_FILTER',
   SEARCH_UPDATE_SORT: 'SEARCH_UPDATE_SORT',
   SEARCH_REPLACE_FILTERS: 'SEARCH_REPLACE_FILTERS',
+  SEARCH_UPDATE_PAGE_NUM: 'SEARCH_UPDATE_PAGE_NUM',
+  SEARCH_UPDATE_RESULTS: 'SEARCH_UPDATE_RESULTS',
   SCROLL_POSITION_SAVE: 'SCROLL_POSITION_SAVE',
+  SEARCH_UPDATE_DEFAULT_AGGS: 'SEARCH_UPDATE_DEFAULT_AGGS',
 };
 
 // REDUCERS
@@ -97,10 +103,23 @@ export const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         searchFilters: uniq(action.searchFilters),
       });
+    case actionTypes.SEARCH_UPDATE_PAGE_NUM:
+      addQueryParams({
+        searchPageNum: `${action.searchPageNum}`,
+      });
+      return { ...state, searchPageNum: action.searchPageNum };
     case actionTypes.SEARCH_CLEAR_ALL_FILTERS:
       addQueryParams({ filters: false });
       return Object.assign({}, state, {
         searchFilters: [],
+      });
+    case actionTypes.SEARCH_UPDATE_DEFAULT_AGGS:
+      return Object.assign({}, state, {
+        defaultSearchAggs: action.defaultSearchAggs,
+      });
+    case actionTypes.SEARCH_UPDATE_RESULTS:
+      return Object.assign({}, state, {
+        searchResults: action.searchResults,
       });
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
@@ -132,9 +151,6 @@ export const toggleLoadingScreen = () => dispatch =>
 export const updateSearchSorting = sortName => dispatch =>
   dispatch({ type: actionTypes.SEARCH_UPDATE_SORT, sortName });
 
-/**
- * @param {String} searchFilter name of filter to add
- */
 export const addSearchFilter = searchFilter => dispatch =>
   dispatch({ type: actionTypes.SEARCH_ADD_FILTER, searchFilter });
 
@@ -147,6 +163,10 @@ export const replaceSearchFilters = (searchFilters = []) => dispatch =>
 export const clearAllSearchFilters = () => dispatch =>
   dispatch({ type: actionTypes.SEARCH_CLEAR_ALL_FILTERS });
 
+export const updateSearchPageNum = searchPageNum => dispatch => {
+  return dispatch({ type: actionTypes.SEARCH_UPDATE_PAGE_NUM, searchPageNum });
+};
+
 export const saveScrollPosition = scrollPosition => dispatch =>
   dispatch({ type: actionTypes.SCROLL_POSITION_SAVE, scrollPosition });
 
@@ -154,17 +174,18 @@ export const initStore = (initialState = defaultState, options) => {
   const { query = {} } = options;
   const { filters = '', sort = '' } = query;
   let state = initialState;
+
   // if there are active filters in the url query params we need to split
   // and add them to the state.
   if (filters) {
-    state = Object.assign(initialState, {
+    state = Object.assign(state, {
       searchFilters: filters.split(','),
     });
   }
   // if there is an active query param sort configured we let it override
   // the default sorting in state
   if (sort) {
-    state = Object.assign(initialState, {
+    state = Object.assign(state, {
       searchSorting: sort,
     });
   }

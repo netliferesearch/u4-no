@@ -9,7 +9,9 @@ const client = new elasticsearch.Client({
 const main = async () => {
   try {
     const result = await client.indices.delete({
-      index: 'u4-*',
+      // hardcoded for safety, if you want to change production index,
+      // rename this.
+      index: 'u4-staging-*',
     });
     console.log('Deleted indexes. Result: ', result);
   } catch (e) {
