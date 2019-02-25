@@ -33,7 +33,7 @@ changes to git as well.
 
 ## Develop pdf builder service
 
-The pdf service is a worker defined in the `Procfile`. When it starts up it listens for publication changes in Sanity. When documents are published it will contact the attached [DocRaptor service](https://elements.heroku.com/addons/docraptor) and make it go to www.u4.no/publication-slug**/print** to build a pdf. Once the worker has downloaded the built pdf it attaches it to the Sanity publication document. When you then go to www.u4.no/publication-slug**/pdf** a handler in `frontend/server.js` will give the pdf document attached to the Sanity document.
+The pdf service is a worker defined in the `Procfile`. When it starts up it listens for publication changes in Sanity. When documents are published it will contact the attached [DocRaptor service](https://elements.heroku.com/addons/docraptor) and make it go to www.u4.no/publication-slug + **/print** to build a pdf. Once the worker has downloaded the built pdf it attaches it to the Sanity publication document. When you then go to www.u4.no/publication-slug + **/pdf** a handler in `frontend/server.js` will give the pdf document attached to the Sanity document.
 
 Relevant files when working with this pdf functionality:
 
