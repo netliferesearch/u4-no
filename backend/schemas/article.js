@@ -1,5 +1,6 @@
-import { annotations, title, longTitle, standfirst,
-image, explainerText, featuredImage, slug, box } from './fields'
+import publicationContent from './fields/publicationContent';
+import annotations from './fields/annotations';
+import { title, longTitle, standfirst, image, leadText, featuredImage, slug } from './fields';
 
 export default {
   name: 'article',
@@ -7,7 +8,6 @@ export default {
   type: 'document',
   fields: [
     title,
-
     {
       name: 'articleType',
       type: 'array',
@@ -22,6 +22,8 @@ export default {
         },
       ],
     },
+    publicationContent,
+    leadText,
     standfirst,
     featuredImage,
     {
@@ -33,7 +35,7 @@ export default {
         dateFormat: 'YYYY-MM-DD',
         inputDate: true,
         inputTime: false,
-      }
+      },
     },
     {
       name: 'authors',
@@ -44,94 +46,65 @@ export default {
           type: 'reference',
           to: [
             {
-              type: 'person'
-            }
-          ]
-        }
-      ]
+              type: 'person',
+            },
+          ],
+        },
+      ],
     },
     {
-      name: 'content',
-      title: 'Article content',
-      description: 'The body text and graphic elements.',
+      name: 'relatedContent',
+      title: 'Recommended and related content',
+      description: 'Add related content, max 3 will be displayed in the frontend',
       type: 'array',
       of: [
         {
-          type: 'block',
-          styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'H2', value: 'h2'},
-            {title: 'H3', value: 'h3'},
-            {title: 'H4', value: 'h4'},
-            {title: 'H5', value: 'h5'},
-          ],
-          // Only allow numbered lists
-          marks: {
-            // Only allow these decorators
-            decorators: [
-              {title: 'Strong', value: 'strong'},
-              {title: 'Emphasis', value: 'em'}
-            ],
-            // Support annotating text with a reference to an author
-            annotations,
-          },
-        },
-
-        {
           type: 'reference',
-          tile: 'Nugget',
           to: [
             {
-              type: 'nugget'        },
-          ]
-        },
-        {
-          type: 'pullQuote'
-        },
-        {
-          type: 'funkyTable',
-          options: {
-            defaultNumRows: 3,
-            defaultNumColumns: 3
-          }
-        },
-        image,
-        {
-          name: 'vimeo',
-          title: 'Vimeo video',
-          type: 'object',
-          fields: [
-            {
-              name: 'src',
-              title: 'URL to the vimeo video (not the whole embed code)',
-              type: 'string',
+              type: 'publication',
             },
             {
-              name: 'title',
-              title: 'Title',
-              type: 'string',
-            }
-          ]
+              type: 'article',
+            },
+          ],
         },
-        box,
-      ]
+      ],
     },
-    slug
+    {
+      name: 'topics',
+      description: 'Select relevant U4 topics',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          weak: true,
+          to: [
+            {
+              type: 'topics',
+            },
+          ],
+        },
+      ],
+      preview: {
+        title: 'topics.title',
+      },
+    },
+
+    slug,
   ],
   orderings: [
     {
       title: 'Title',
       name: 'titleAsc',
-      by: [
-        { field: 'title', direction: 'asc'}
-        ]
-    }
+      by: [{ field: 'title', direction: 'asc' }],
+    },
   ],
   preview: {
     select: {
       title: 'title',
       subtitle: 'standfirst',
       imageUrl: 'featuredImage.asset.url',
-    }
-  }
-}
+    },
+  },
+};

@@ -9,9 +9,9 @@ export default {
   },
   fields: [
     {
-      name: 'heading',
-      title: 'Heading',
-      description: 'Heading (to appear above image)',
+      name: 'title',
+      title: 'Title',
+      description: '(displayed above image)',
       type: 'string',
       options: {
         isHighlighted: true
@@ -49,16 +49,17 @@ export default {
     },
     {
       name: 'size',
-      title: 'Image size',
-      description: 'Set size for image in frontend that supports it',
+      title: 'Size',
+      description: 'Set image display width',
       type: 'string',
       options: {
         isHighlighted: true,
         list: [
-          { title: 'wide', value: 'wide' },
-          { title: 'normal', value: 'normal' },
-          { title: 'small', value: 'small' },
-          { title: 'narrow', value: 'narrow' },
+          { title: 'Full width', value: 'fullwidth' },
+          { title: 'Wide', value: 'wide' },
+          { title: 'Normal', value: 'normal' },
+          { title: 'Small', value: 'small' },
+          { title: 'Narrow', value: 'narrow' },
         ],
       },
     },
