@@ -29,6 +29,7 @@ const annotations = [
       { type: 'frontpage' },
       { type: 'asset' },
       { type: 'topics' },
+      { type: 'course' },
     ],
   },
   {

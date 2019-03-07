@@ -29,6 +29,7 @@ const annotationsLinksOnly = [
       { type: 'frontpage' },
       { type: 'asset' },
       { type: 'topics' },
+      { type: 'course' },
     ],
   },
 ];
