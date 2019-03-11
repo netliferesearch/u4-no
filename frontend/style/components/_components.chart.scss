@@ -1,5 +1,12 @@
 .c-chart {
 }
+.c-chart__title {
+  font-weight: bold;
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-tiny);
+  color: $black;
+  margin-bottom: $spacing-small;
+}
 
 .c-chart__content {
   padding-top: $spacing;
@@ -11,13 +18,38 @@
 
 .c-chart__caption {
   font-family: $font-sans;
-  @include inuit-font-size($font-size-small);
+  @include inuit-font-size($font-size-tiny);
   color: $black;
   & > .c-longform-grid__standard {
     padding-left: 0;
+    padding-right: 0;
+    margin-top: $spacing-small;
   }
 }
 
 .c-chart--is-loading {
   display: none;
+}
+.c-chart--full {
+  @include mq($from: tablet) {
+    padding: 0 $spacing-small;
+  }
+}
+
+@media print {
+  .c-chart--full {
+    margin-left: -3.5cm;
+    margin-right: -3.5cm;
+  }
+  .c-chart--wide {
+    margin-left: -1.75cm;
+    margin-right: -1.75cm;
+  }
+  .c-chart__title {
+    page-break-after: avoid;
+  }
+  .c-chart__title,
+  .c-chart__caption {
+    font-size: 10pt;
+  }
 }

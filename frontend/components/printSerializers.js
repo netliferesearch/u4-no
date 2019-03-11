@@ -53,16 +53,8 @@ function printSerializers(blocks) {
             <BlockContent blocks={content} serializers={printSerializers(content)} />
           </div>
         ),
-      table: ({ node }) => (
-        <div {...classes('full')}>
-          <Table {...node} />
-        </div>
-      ),
-      chart: ({ node }) => (
-        <div {...classes('larger')}>
-          <ChartPrint {...node} />
-        </div>
-      ),
+      table: ({ node }) => <Table {...node} />,
+      chart: ({ node }) => <ChartPrint {...node} />,
       block: ({ node, children }) => {
         const style = node.style || 'normal';
 
