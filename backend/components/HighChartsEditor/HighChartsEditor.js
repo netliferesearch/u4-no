@@ -93,13 +93,15 @@ export default class HighChartsEditor extends React.Component {
   }
 
   render() {
-    const { type: { fields = [] } = {}, value: {title, caption} = {}, onFocus } = this.props
+    const { type: { fields = [] } = {}, value: {title, caption, size} = {}, onFocus } = this.props
     const titleField = fields.find(({name = ''}) => name === 'title')
     const captionField = fields.find(({name = ''}) => name === 'caption')
+    const sizeField = fields.find(({name = ''}) => name === 'size')
     return (
       <Fragment>
         <FormBuilderInput {...{...titleField, onChange: (event) => this.formBuilderInputHandler('title', event), value: title, onFocus}}></FormBuilderInput>
         <FormBuilderInput {...{...captionField, onChange: (event) => this.formBuilderInputHandler('caption', event), value: caption, onFocus}}></FormBuilderInput>
+        <FormBuilderInput {...{...sizeField, onChange: (event) => this.formBuilderInputHandler('size', event), value: size, onFocus}}></FormBuilderInput>
         <div id="highed-mountpoint" />
       </Fragment>
     );

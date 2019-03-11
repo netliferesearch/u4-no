@@ -1,3 +1,6 @@
-ES_HOST=https://elastic:1ZfmXyyU3wuFeJnHZ74apZHP@34f28f12080e435795254ec8886248ba.eu-central-1.aws.cloud.es.io:9243/
+ES_HOST=
+# staging, production or something else
 ES_ENV=staging
-#ES_ENV=production
+# Enable these if need be, or rely on defaults.
+#CACHE_PDF=true
+#ES_BATCH_SIZE=300

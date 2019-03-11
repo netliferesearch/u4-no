@@ -1,3 +1,5 @@
+import linkIcon from 'react-icons/lib/fa/paperclip';
+
 const annotationsLinksOnly = [
   {
     name: 'link',
@@ -14,17 +16,20 @@ const annotationsLinksOnly = [
   },
   {
     name: 'internalReferance',
-    title: 'Find some internal resource',
+    title: 'Link to internal resource',
+    blockEditor: {
+      icon: linkIcon,
+    },
     type: 'reference',
     to: [
       { type: 'person' },
       { type: 'publication' },
       { type: 'article' },
-      { type: 'course' },
       { type: 'event' },
       { type: 'frontpage' },
-      { type: 'file' },
       { type: 'asset' },
+      { type: 'topics' },
+      { type: 'course' },
     ],
   },
 ];

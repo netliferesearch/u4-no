@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { LinkToItem } from './';
 import { ArrowRight } from '../components/icons';
+import buildUrl from '../helpers/buildUrl';
 
 const classes = BEMHelper({
   name: 'link-list',
@@ -17,12 +18,15 @@ const arrayify = (content) => {
 const LinkList = ({ title = '', content = [], otherClasses = '' }) => (
   <ul {...classes(null, null, otherClasses)}>
     {title && <span>{title}</span>}
-    {arrayify(content).map(({ link = '', title: linkList = '' }, index) => (
-      <li key={index + linkList.trim()} {...classes('item')}>
-        <a href={link} {...classes('link')}>
-          {linkList} <ArrowRight {...classes('icon')} />
-        </a>
-      </li>
+    {arrayify(content).map(({
+ link = '', title: linkList = '', slug = '', _type = '',
+}, index) => (
+  <li key={index + linkList.trim()} {...classes('item')}>
+    <a href={link || buildUrl({ _type, slug })} {...classes('link')}>
+      {linkList}
+      <ArrowRight {...classes('icon')} />
+    </a>
+  </li>
     ))}
   </ul>
 );
