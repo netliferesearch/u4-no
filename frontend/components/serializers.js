@@ -198,16 +198,8 @@ const serializers = {
         <WorkshopMosaic resources={workshopsRef} />
       </div>
     ),
-    table: ({ node }) => (
-      <div {...classes('full')}>
-        <Table {...node} />
-      </div>
-    ),
-    chart: ({ node }) => (
-      <div {...classes('larger')}>
-        <Chart {...node} />
-      </div>
-    ),
+    table: ({ node }) => <Table {...node} />,
+    chart: ({ node }) => <Chart {...node} />,
     features: ({ node: { featureArray } }) => (
       <section className="o-wrapper c-topic-section">
         <div className="c-features">

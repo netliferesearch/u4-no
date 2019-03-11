@@ -33,17 +33,21 @@
 }
 
 .c-table__title {
-  margin: 0;
-  padding-left: $spacing-small;
+  font-weight: bold;
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-tiny);
+  color: $black;
+  margin-bottom: $spacing-small;
 }
 
 .c-table__caption {
   font-family: $font-sans;
-  @include inuit-font-size($font-size-small);
+  @include inuit-font-size($font-size-tiny);
   color: $black;
-  padding-left: $spacing-small;
   & > .c-longform-grid__standard {
     padding-left: 0;
+    padding-right: 0;
+    margin-top: $spacing-small;
   }
 }
 
@@ -52,11 +56,29 @@
     overflow-x: visible;
     padding: 0;
     padding-bottom: $spacing;
+    table {
+      font-size: 80%;
+      width: 100%;
+      tr td p,
+      tr th p {
+        padding: $spacing-tiny 0;
+        margin: 0;
+      }
+    }
+  }
+  .c-table--full {
     margin-left: -3.5cm;
     margin-right: -3.5cm;
-    table {
-      font-size: 90%;
-      width: 100%;
-    }
+  }
+  .c-table--wide {
+    margin-left: -1.75cm;
+    margin-right: -1.75cm;
+  }
+  .c-table__title {
+    page-break-after: avoid;
+  }
+  .c-table__title,
+  .c-table__caption {
+    font-size: 10pt;
   }
 }

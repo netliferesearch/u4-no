@@ -24,6 +24,22 @@ const parseJson = jsonStr => {
   }
 };
 
+const sizeClass = size => {
+  if (size === 'narrow') {
+    return 'c-chart--narrow c-longform-grid__standard ';
+  } else if (size === 'small') {
+    return 'c-chart--small c-longform-grid__standard ';
+  } else if (size === 'normal') {
+    return 'c-chart--normal c-longform-grid__large';
+  } else if (size === 'wide') {
+    return 'c-chart--wide c-longform-grid__larger';
+  } else if (size === 'fullwidth') {
+    return 'c-chart--full c-longform-grid__full';
+  }
+
+  return 'c-chart--normal c-longform-grid__large';
+};
+
 // It takes a while for Highcharts to load so we add a loading state with
 // this component
 export default class Chart extends React.Component {
@@ -34,7 +50,7 @@ export default class Chart extends React.Component {
   highchartsCallback = () => this.setState({ didChartLoad: true });
 
   render() {
-    const { title, caption, jsonStr } = this.props;
+    const { title, caption, size, jsonStr } = this.props;
     if (!jsonStr) {
       return null; // nothing to render
     }
@@ -47,13 +63,13 @@ export default class Chart extends React.Component {
     return (
       <Fragment>
         {!didChartLoad && <div>Loading chart ...</div>}
-        <div className={`c-chart ${!didChartLoad && 'c-chart--is-loading'}`}>
-          <h3
+        <div className={`c-chart ${sizeClass(size)} ${!didChartLoad && 'c-chart--is-loading'}`}>
+          <p
             id={slugify(title, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })}
             className="c-chart__title"
           >
             {title}
-          </h3>
+          </p>
           <div className="c-chart__content">
             <HighchartsReact {...highChartsProps} callback={this.highchartsCallback} />
           </div>

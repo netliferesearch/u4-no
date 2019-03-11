@@ -26,6 +26,7 @@
 @import 'elements/elements.input';
 
 // COMPONENTS
+@import 'components/components.figure';
 @import 'components/components.table';
 @import 'components/components.chart';
 
@@ -364,6 +365,7 @@ figure {
   background: $brand-lightest;
   padding: $spacing;
   font-family: $font-sans;
+  font-size: 80%;
 }
 
 #references {
