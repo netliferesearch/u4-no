@@ -24,45 +24,8 @@ function toggle() {
 }
 
 class SearchFiltersV2 extends React.Component {
-  onChangeHandler = ({ filterType, event }) => {
-    console.log('Filter change occured', event.target);
-    const {
-      addSearchFilter,
-      removeSearchFilter,
-      replaceSearchFilters,
-      searchFilters = [],
-    } = this.props;
-    const { value = '' } = event.target;
-    if (value === 'publications-only') {
-      replaceSearchFilters([
-        ...searchFilters.filter(name => name !== 'all-content'),
-        'publications-only',
-      ]);
-    } else if (value === 'all-content') {
-      replaceSearchFilters([...searchFilters.filter(name => name !== 'publications-only')]);
-    } else if (filterType === 'publicationType' && event.target.checked) {
-      addSearchFilter(`pub-type-${event.target.value}`);
-    } else if (filterType === 'publicationType' && !event.target.checked) {
-      removeSearchFilter(`pub-type-${event.target.value}`);
-    }
-
-    // //eslint-disable-next-line
-    // debugger;
-
-    console.log('event target', value);
-  };
-
   render() {
-    const { data = {} } = this.props;
-    const {
-      aggregations: {
-        languages,
-        minPublicationDateMilliSeconds,
-        maxPublicationDateMilliSeconds,
-        publicationTypes,
-        topicTitles,
-      } = {},
-    } = data;
+    const { searchFilters, replaceSearchFilters } = this.props;
 
     return (
       <div className="c-filters-v2">
@@ -79,8 +42,13 @@ class SearchFiltersV2 extends React.Component {
               type="radio"
               name="content"
               value="all-content"
-              defaultChecked
-              onChange={event => this.onChangeHandler({ event })}
+              defaultChecked={!searchFilters.find(name => name === 'publications-only')}
+              onChange={() =>
+                replaceSearchFilters([
+                  ...searchFilters.filter(name => name !== 'publications-only'),
+                  'all-content',
+                ])
+              }
             />
             <label htmlFor="all-content">All website content</label>
           </div>
@@ -90,7 +58,13 @@ class SearchFiltersV2 extends React.Component {
               type="radio"
               name="content"
               value="publications-only"
-              onChange={event => this.onChangeHandler({ event })}
+              defaultChecked={searchFilters.find(name => name === 'publications-only')}
+              onChange={() =>
+                replaceSearchFilters([
+                  ...searchFilters.filter(name => name !== 'all-content'),
+                  'publications-only',
+                ])
+              }
             />
             <label htmlFor="publications-only" className="c-filters-v2__checkbox-label">
               Publications only
