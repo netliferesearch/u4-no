@@ -20,7 +20,6 @@ const SearchFilterTopics = (props) => {
     addSearchFilter,
     removeSearchFilter,
   } = props;
-  // const inactiveBuckets = getSortedInactiveBuckets({ buckets, defaultBuckets });
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
@@ -28,8 +27,7 @@ const SearchFilterTopics = (props) => {
       </div>
       <span>
         {defaultBuckets.map((defaultBucket) => {
-          const { key = defaultBucket.key, doc_count = 0 } =
-            buckets.find(b => b.key === defaultBucket.key) || {};
+          const { key, doc_count } = defaultBucket;
           const filterName = `topic-type-${key}`;
           return (
             <div key={slugify(key)} className="c-input">

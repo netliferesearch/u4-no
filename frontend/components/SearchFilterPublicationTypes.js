@@ -28,8 +28,7 @@ const SearchFilterPublicationTypes = (props) => {
       </div>
       <span>
         {defaultBuckets.map((defaultBucket) => {
-          const { key = defaultBucket.key, doc_count = 0 } =
-            buckets.find(b => b.key === defaultBucket.key) || {};
+          const { key, doc_count } = defaultBucket;
           const filterName = `pub-${key}`;
           return (
             <div key={slugify(key)} className="c-input">
