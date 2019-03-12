@@ -38,6 +38,11 @@ const aggregations = {
       field: 'topicTitles',
     },
   },
+  filedUnderTopicNames: {
+    terms: {
+      field: 'filedUnderTopicNames',
+    },
+  },
   languages: {
     terms: {
       field: 'languageName',

@@ -58,8 +58,8 @@ const SearchFilterTopics = (props) => {
 };
 
 const mapStateToProps = ({
-  defaultSearchAggs: { topicTitles: { buckets: defaultBuckets = [] } = {} } = {},
-  searchResults: { aggregations: { topicTitles: { buckets = [] } = {} } = {} },
+  defaultSearchAggs: { filedUnderTopicNames: { buckets: defaultBuckets = [] } = {} } = {},
+  searchResults: { aggregations: { filedUnderTopicNames: { buckets = [] } = {} } = {} },
   searchFilters,
 }) => ({
   defaultBuckets,
