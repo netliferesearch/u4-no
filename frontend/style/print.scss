@@ -169,7 +169,7 @@ p {
 }
 /* .referencesLink { } */
 p {
-  prince-footnote-policy: keep-with-block;
+  prince-footnote-policy: keep-with-line;
 }
 .c-print__publication-type-and-number {
   string-set: publication-type-and-number content();
@@ -365,7 +365,9 @@ figure {
   background: $brand-lightest;
   padding: $spacing;
   font-family: $font-sans;
-  font-size: 80%;
+  font-size: 90%;
+  orphans: 3;
+  widows: 3;
 }
 
 #references {

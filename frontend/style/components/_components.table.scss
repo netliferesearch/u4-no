@@ -38,12 +38,15 @@
   @include inuit-font-size($font-size-tiny);
   color: $black;
   margin-bottom: $spacing-small;
+  page-break-after: avoid;
 }
 
 .c-table__caption {
   font-family: $font-sans;
   @include inuit-font-size($font-size-tiny);
   color: $black;
+  page-break-before: avoid;
+
   & > .c-longform-grid__standard {
     padding-left: 0;
     padding-right: 0;

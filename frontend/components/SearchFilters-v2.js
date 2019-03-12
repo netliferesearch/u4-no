@@ -3,7 +3,7 @@ import BEMHelper from 'react-bem-helper';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import slugify from 'slugify';
-import { SearchFilterPublicationTypes, SearchFilterTopics } from './';
+import { SearchFilterPublicationTypes, SearchFilterTopics, SearchFilterLanguages } from './';
 import {
   addSearchFilter,
   removeSearchFilter,
@@ -97,30 +97,7 @@ class SearchFiltersV2 extends React.Component {
 
         <SearchFilterTopics />
 
-        <form className="c-filters-v2__item">
-          <div className="c-filters-v2__item-head">
-            <h3 className="c-filters-v2__title">Languages</h3>
-            <input className="c-filters-v2__clear" type="reset" value="Clear" />
-          </div>
-          <span>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-1" value="pub-type-pubtype-1" />
-              <label htmlFor="pub-type-pubtype-1">English (522)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-2" value="pub-type-pubtype-2" />
-              <label htmlFor="pub-type-pubtype-2">French (55)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-3" value="pub-type-pubtype-3" />
-              <label htmlFor="pub-type-pubtype-3">Ukranian (1)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-4" value="pub-type-pubtype-4" />
-              <label htmlFor="pub-type-pubtype-4">Russian (1)</label>
-            </div>
-          </span>
-        </form>
+        <SearchFilterLanguages />
 
         <div className="c-filters-v2__item">
           <div className="c-filters-v2__item-head">

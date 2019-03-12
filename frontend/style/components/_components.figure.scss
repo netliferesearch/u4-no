@@ -6,7 +6,9 @@
   @include inuit-font-size($font-size-tiny);
   color: $black;
   margin-bottom: $spacing-small;
+  page-break-after: avoid;
 }
+
 .c-figure__caption {
   font-family: $font-sans;
   @include inuit-font-size($font-size-tiny);

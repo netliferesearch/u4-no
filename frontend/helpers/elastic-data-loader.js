@@ -58,6 +58,9 @@ const doSearch = async (query) => {
     } else if (/^topic-type-/gi.test(filter)) {
       const topicTypeName = /topic-type-(.*)/gi.exec(filter)[1];
       acc.push({ term: { filedUnderTopicNames: topicTypeName } });
+    } else if (/^lang-type-/gi.test(filter)) {
+      const languageName = /lang-type-(.*)/gi.exec(filter)[1];
+      acc.push({ term: { languageName } });
     }
     return acc;
   }, []);
