@@ -61,12 +61,10 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                 },
                 // Topics can add articles and publications as resources.
                 filedUnderTopicIds: {
-                  type: 'text',
-                  analyzer: 'keyword',
+                  type: 'keyword',
                 },
                 filedUnderTopicNames: {
-                  type: 'text',
-                  analyzer: 'keyword',
+                  type: 'keyword',
                 },
                 // publication
                 legacyPdfContent: {
@@ -80,8 +78,12 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                 publicationTypeTitle: {
                   type: 'keyword',
                 },
+                // publications can be filed under multiple topic titles.
                 topicTitles: {
                   type: 'keyword',
+                  // we copy this field so that we can aggregate on that
+                  // field, and display more accurate filter count.
+                  copy_to: 'filedUnderTopicNames',
                 },
                 languageName: {
                   type: 'keyword',
