@@ -61,6 +61,12 @@ const doSearch = async (query) => {
     } else if (/^lang-type-/gi.test(filter)) {
       const languageName = /lang-type-(.*)/gi.exec(filter)[1];
       acc.push({ term: { languageName } });
+    } else if (/^year-from-/gi.test(filter)) {
+      const yearFrom = /year-from-(.*)/gi.exec(filter)[1];
+      acc.push({ range: { 'date.utc': { gte: new Date(yearFrom, 0) } } });
+    } else if (/^year-to-/gi.test(filter)) {
+      const yearTo = /year-to-(.*)/gi.exec(filter)[1];
+      acc.push({ range: { 'date.utc': { lte: new Date(yearTo, 0) } } });
     }
     return acc;
   }, []);

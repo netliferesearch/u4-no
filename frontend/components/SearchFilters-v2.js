@@ -3,7 +3,12 @@ import BEMHelper from 'react-bem-helper';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import slugify from 'slugify';
-import { SearchFilterPublicationTypes, SearchFilterTopics, SearchFilterLanguages } from './';
+import {
+  SearchFilterPublicationTypes,
+  SearchFilterTopics,
+  SearchFilterLanguages,
+  SearchFilterYears,
+} from './';
 import {
   addSearchFilter,
   removeSearchFilter,
@@ -99,33 +104,7 @@ class SearchFiltersV2 extends React.Component {
 
         <SearchFilterLanguages />
 
-        <div className="c-filters-v2__item">
-          <div className="c-filters-v2__item-head">
-            <h3 className="c-filters-v2__title">Year</h3>
-          </div>
-          <div className="c-filters-v2__select">
-            <div>
-              <label htmlFor="from">From:</label>
-              <select id="from" className="c-select">
-                <option selected value="2000">
-                  2000
-                </option>
-                <option value="2001">2001</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="to">To:</label>
-              <select id="to" className="c-select">
-                <option selected value="2018">
-                  2018
-                </option>
-                <option selected value="2019">
-                  2019
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
+        <SearchFilterYears />
       </div>
     );
   }
