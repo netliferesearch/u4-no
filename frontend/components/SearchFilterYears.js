@@ -93,7 +93,7 @@ const SearchFilterYears = (props) => {
 const getYearAggregations = ({
   minPublicationDateMilliSeconds: { value: min = 0 } = {},
   maxPublicationDateMilliSeconds: { value: max = 0 } = {},
-}) => {
+} = {}) => {
   const minYear = new Date(min).getFullYear();
   const maxYear = new Date(max).getFullYear();
   const numberOfyears = maxYear - minYear + 1;
