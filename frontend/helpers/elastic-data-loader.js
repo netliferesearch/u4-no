@@ -52,8 +52,8 @@ const doSearch = async (query) => {
   const activeFilterQueries = filterStr.split(',').reduce((acc, filter) => {
     if (filter === 'publications-only') {
       acc.push({ term: { type: 'publication' } });
-    } else if (/^pub-type-/gi.test(filter)) {
-      const pubTypeName = /pub-type-(.*)/gi.exec(filter)[1];
+    } else if (/^pub-/gi.test(filter)) {
+      const pubTypeName = /pub-(.*)/gi.exec(filter)[1];
       acc.push({ term: { publicationTypeTitle: pubTypeName } });
     } else if (/^topic-type-/gi.test(filter)) {
       const topicTypeName = /topic-type-(.*)/gi.exec(filter)[1];

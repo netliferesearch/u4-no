@@ -36,7 +36,7 @@ const SearchFilterLanguages = (props) => {
               <input
                 type="checkbox"
                 id={slugify(key)}
-                checked={isFilterActive({ searchFilters, filterName })}
+                defaultChecked={isFilterActive({ searchFilters, filterName })}
                 value={key}
                 onChange={(event) => {
                   if (event.target.checked) {

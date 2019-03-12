@@ -24,6 +24,14 @@ function toggle() {
 }
 
 class SearchFiltersV2 extends React.Component {
+  componentDidMount() {
+    const { searchFilters, replaceSearchFilters } = this.props;
+    // These are old filters from V1 that we need to prevent from messing with the new search filters
+    const invalidFilters = ['pub-type', 'pub-topic', 'pub-year', 'pub-author', 'pub-lang'];
+    replaceSearchFilters(searchFilters.filter(filterName =>
+      !invalidFilters.find(invalidFilterName => filterName.startsWith(invalidFilterName))));
+  }
+
   render() {
     const { searchFilters, replaceSearchFilters } = this.props;
 
