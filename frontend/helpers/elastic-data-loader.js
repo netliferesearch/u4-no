@@ -78,7 +78,15 @@ const doSearch = async (query) => {
           function_score: {
             query: {
               bool: {
-                ...(activeFilterQueries.length > 0 ? { filter: activeFilterQueries } : {}),
+                ...(activeFilterQueries.length > 0
+                  ? {
+                    filter: {
+                      bool: {
+                        should: activeFilterQueries,
+                      },
+                    },
+                  }
+                  : {}),
                 should: [
                   // if no query use match_all query to show results
                   ...(!searchQuery ? [{ match_all: {} }] : []),
