@@ -119,7 +119,7 @@ const SearchResult = props => {
     );
   }
   const { highlight: { content = [] } = {} } = props;
-  const { title = '', url = '' } = _source;
+  const { title = '', url = '', standfirst = '' } = _source;
   return (
     <div>
       <span {...classes('items-type')}>
@@ -136,9 +136,13 @@ const SearchResult = props => {
         <a {...classes('items-title')}>{title}</a>
       </Link>
       <br />
-      {content.map((htmlStr, index) => (
-        <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
-      ))}
+      {content.length > 0 ? (
+        content.map((htmlStr, index) => (
+          <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
+        ))
+      ) : (
+        <p>{standfirst}</p>
+      )}
     </div>
   );
 };
