@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
+if (typeof window !== 'undefined') {
+  // Can only polyfill if window is present. Not when running on server side.
+  require('intersection-observer');
+}
 import { InView } from 'react-intersection-observer';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
