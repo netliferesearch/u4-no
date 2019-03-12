@@ -41,6 +41,7 @@ export { default as SearchFiltersV2 } from './SearchFilters-v2';
 export { default as SearchResults } from './SearchResults';
 export { default as SearchFilterTopics } from './SearchFilterTopics';
 export { default as SearchFilterPublicationTypes } from './SearchFilterPublicationTypes';
+export { default as SearchFilterLanguages } from './SearchFilterLanguages';
 export { default as SearchResultsSortingSelect } from './SearchResultsSortingSelect';
 export { default as SearchResultsV2 } from './SearchResults-v2';
 export { default as ServiceArticle } from './ServiceArticle';
