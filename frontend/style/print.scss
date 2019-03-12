@@ -363,11 +363,22 @@ figure {
 
 .c-textbox--longform {
   background: $brand-lightest;
-  padding: $spacing;
+  padding: $spacing-tiny $spacing;
   font-family: $font-sans;
   font-size: 90%;
   orphans: 3;
   widows: 3;
+  box-decoration-break: clone;
+
+  p:first-child,
+  h4:first-child {
+    margin-top: $spacing;
+    margin-block-start: $spacing;
+  }
+  p:last-child {
+    margin-bottom: $spacing;
+    margin-block-end: $spacing;
+  }
 }
 
 #references {
