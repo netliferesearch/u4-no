@@ -27,8 +27,18 @@
     font-weight: bold;
   }
 
+  thead p {
+    margin: $spacing-small 0;
+  }
+
   tr:nth-child(even) {
     background-color: $lightGrey;
+  }
+
+  td ul,
+  td ol {
+    margin-left: $spacing-tiny;
+    padding-left: $spacing-small;
   }
 }
 
