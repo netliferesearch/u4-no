@@ -3,7 +3,12 @@ import BEMHelper from 'react-bem-helper';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import slugify from 'slugify';
-import { SearchFilterPublicationTypes, SearchFilterTopics, SearchFilterLanguages } from './';
+import {
+  SearchFilterPublicationTypes,
+  SearchFilterTopics,
+  SearchFilterLanguages,
+  SearchFilterYears,
+} from './';
 import {
   addSearchFilter,
   removeSearchFilter,
@@ -19,45 +24,16 @@ function toggle() {
 }
 
 class SearchFiltersV2 extends React.Component {
-  onChangeHandler = ({ filterType, event }) => {
-    console.log('Filter change occured', event.target);
-    const {
-      addSearchFilter,
-      removeSearchFilter,
-      replaceSearchFilters,
-      searchFilters = [],
-    } = this.props;
-    const { value = '' } = event.target;
-    if (value === 'publications-only') {
-      replaceSearchFilters([
-        ...searchFilters.filter(name => name !== 'all-content'),
-        'publications-only',
-      ]);
-    } else if (value === 'all-content') {
-      replaceSearchFilters([...searchFilters.filter(name => name !== 'publications-only')]);
-    } else if (filterType === 'publicationType' && event.target.checked) {
-      addSearchFilter(`pub-type-${event.target.value}`);
-    } else if (filterType === 'publicationType' && !event.target.checked) {
-      removeSearchFilter(`pub-type-${event.target.value}`);
-    }
-
-    // //eslint-disable-next-line
-    // debugger;
-
-    console.log('event target', value);
-  };
+  componentDidMount() {
+    const { searchFilters, replaceSearchFilters } = this.props;
+    // These are old filters from V1 that we need to prevent from messing with the new search filters
+    const invalidFilters = ['pub-type', 'pub-topic', 'pub-year', 'pub-author', 'pub-lang'];
+    replaceSearchFilters(searchFilters.filter(filterName =>
+      !invalidFilters.find(invalidFilterName => filterName.startsWith(invalidFilterName))));
+  }
 
   render() {
-    const { data = {} } = this.props;
-    const {
-      aggregations: {
-        languages,
-        minPublicationDateMilliSeconds,
-        maxPublicationDateMilliSeconds,
-        publicationTypes,
-        topicTitles,
-      } = {},
-    } = data;
+    const { searchFilters, replaceSearchFilters } = this.props;
 
     return (
       <div className="c-filters-v2">
@@ -74,8 +50,13 @@ class SearchFiltersV2 extends React.Component {
               type="radio"
               name="content"
               value="all-content"
-              defaultChecked
-              onChange={event => this.onChangeHandler({ event })}
+              defaultChecked={!searchFilters.find(name => name === 'publications-only')}
+              onChange={() =>
+                replaceSearchFilters([
+                  ...searchFilters.filter(name => name !== 'publications-only'),
+                  'all-content',
+                ])
+              }
             />
             <label htmlFor="all-content">All website content</label>
           </div>
@@ -85,7 +66,13 @@ class SearchFiltersV2 extends React.Component {
               type="radio"
               name="content"
               value="publications-only"
-              onChange={event => this.onChangeHandler({ event })}
+              defaultChecked={searchFilters.find(name => name === 'publications-only')}
+              onChange={() =>
+                replaceSearchFilters([
+                  ...searchFilters.filter(name => name !== 'all-content'),
+                  'publications-only',
+                ])
+              }
             />
             <label htmlFor="publications-only" className="c-filters-v2__checkbox-label">
               Publications only
@@ -99,33 +86,7 @@ class SearchFiltersV2 extends React.Component {
 
         <SearchFilterLanguages />
 
-        <div className="c-filters-v2__item">
-          <div className="c-filters-v2__item-head">
-            <h3 className="c-filters-v2__title">Year</h3>
-          </div>
-          <div className="c-filters-v2__select">
-            <div>
-              <label htmlFor="from">From:</label>
-              <select id="from" className="c-select">
-                <option selected value="2000">
-                  2000
-                </option>
-                <option value="2001">2001</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="to">To:</label>
-              <select id="to" className="c-select">
-                <option selected value="2018">
-                  2018
-                </option>
-                <option selected value="2019">
-                  2019
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
+        <SearchFilterYears />
       </div>
     );
   }

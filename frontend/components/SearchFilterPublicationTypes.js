@@ -28,15 +28,14 @@ const SearchFilterPublicationTypes = (props) => {
       </div>
       <span>
         {defaultBuckets.map((defaultBucket) => {
-          const { key = defaultBucket.key, doc_count = 0 } =
-            buckets.find(b => b.key === defaultBucket.key) || {};
-          const filterName = `pub-type-${key}`;
+          const { key, doc_count } = defaultBucket;
+          const filterName = `pub-${key}`;
           return (
             <div key={slugify(key)} className="c-input">
               <input
                 type="checkbox"
                 id={slugify(key)}
-                checked={isFilterActive({ searchFilters, filterName })}
+                defaultChecked={isFilterActive({ searchFilters, filterName })}
                 value={key}
                 onChange={(event) => {
                   if (event.target.checked) {

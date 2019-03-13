@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
+if (typeof window !== 'undefined') {
+  // Can only polyfill if window is present. Not when running on server side.
+  require('intersection-observer');
+}
 import { InView } from 'react-intersection-observer';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -119,7 +123,7 @@ const SearchResult = props => {
     );
   }
   const { highlight: { content = [] } = {} } = props;
-  const { title = '', url = '' } = _source;
+  const { title = '', url = '', standfirst = '' } = _source;
   return (
     <div>
       <span {...classes('items-type')}>
@@ -136,9 +140,13 @@ const SearchResult = props => {
         <a {...classes('items-title')}>{title}</a>
       </Link>
       <br />
-      {content.map((htmlStr, index) => (
-        <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
-      ))}
+      {content.length > 0 ? (
+        content.map((htmlStr, index) => (
+          <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
+        ))
+      ) : (
+        <p>{standfirst}</p>
+      )}
     </div>
   );
 };

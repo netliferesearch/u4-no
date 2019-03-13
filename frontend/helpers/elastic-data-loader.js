@@ -38,6 +38,11 @@ const aggregations = {
       field: 'topicTitles',
     },
   },
+  filedUnderTopicNames: {
+    terms: {
+      field: 'filedUnderTopicNames',
+    },
+  },
   languages: {
     terms: {
       field: 'languageName',
@@ -52,8 +57,8 @@ const doSearch = async (query) => {
   const activeFilterQueries = filterStr.split(',').reduce((acc, filter) => {
     if (filter === 'publications-only') {
       acc.push({ term: { type: 'publication' } });
-    } else if (/^pub-type-/gi.test(filter)) {
-      const pubTypeName = /pub-type-(.*)/gi.exec(filter)[1];
+    } else if (/^pub-/gi.test(filter)) {
+      const pubTypeName = /pub-(.*)/gi.exec(filter)[1];
       acc.push({ term: { publicationTypeTitle: pubTypeName } });
     } else if (/^topic-type-/gi.test(filter)) {
       const topicTypeName = /topic-type-(.*)/gi.exec(filter)[1];
@@ -61,6 +66,12 @@ const doSearch = async (query) => {
     } else if (/^lang-type-/gi.test(filter)) {
       const languageName = /lang-type-(.*)/gi.exec(filter)[1];
       acc.push({ term: { languageName } });
+    } else if (/^year-from-/gi.test(filter)) {
+      const yearFrom = /year-from-(.*)/gi.exec(filter)[1];
+      acc.push({ range: { 'date.utc': { gte: new Date(yearFrom, 0) } } });
+    } else if (/^year-to-/gi.test(filter)) {
+      const yearTo = /year-to-(.*)/gi.exec(filter)[1];
+      acc.push({ range: { 'date.utc': { lte: new Date(yearTo, 0) } } });
     }
     return acc;
   }, []);
@@ -72,7 +83,15 @@ const doSearch = async (query) => {
           function_score: {
             query: {
               bool: {
-                ...(activeFilterQueries.length > 0 ? { filter: activeFilterQueries } : {}),
+                ...(activeFilterQueries.length > 0
+                  ? {
+                    filter: {
+                      bool: {
+                        should: activeFilterQueries,
+                      },
+                    },
+                  }
+                  : {}),
                 should: [
                   // if no query use match_all query to show results
                   ...(!searchQuery ? [{ match_all: {} }] : []),
