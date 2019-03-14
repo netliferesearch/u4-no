@@ -11,7 +11,7 @@
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
-    margin-top: $spacing;
+    margin-top: $spacing-tiny;
     margin-bottom: 0;
   }
 
@@ -37,6 +37,8 @@
 
   td ul,
   td ol {
+    margin-top: $spacing-tiny;
+    margin-bottom: $spacing-tiny;
     margin-left: $spacing-tiny;
     padding-left: $spacing-small;
   }
@@ -47,7 +49,7 @@
   font-family: $font-sans;
   @include inuit-font-size($font-size-tiny);
   color: $black;
-  margin-bottom: $spacing-small;
+  margin-bottom: 0;
   page-break-after: avoid;
 }
 
@@ -70,7 +72,7 @@
     padding: 0;
     padding-bottom: $spacing;
     table {
-      font-size: 80%;
+      font-size: 75%;
       width: 100%;
       tr td p,
       tr th p {
@@ -90,8 +92,14 @@
   .c-table__title {
     page-break-after: avoid;
   }
-  .c-table__title,
+  .c-table__title {
+    font-size: 10pt;
+  }
   .c-table__caption {
     font-size: 10pt;
+    p {
+      margin: $spacing-tiny 0;
+      line-height: 1.2em;
+    }
   }
 }
