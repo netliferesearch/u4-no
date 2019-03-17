@@ -2,13 +2,10 @@ const textract = require('textract');
 const util = require('util');
 
 async function extractText({ pathOrUrl, reThrowOnFail = false }) {
-  const fromUrl = util.promisify(textract.fromUrl);
-  const fromFileWithPath = util.promisify(textract.fromFileWithPath);
+  // create promisified extract function based on what function we need to use.
+  const extract = util.promisify(pathOrUrl.startsWith('http') ? textract.fromUrl : textract.fromFileWithPath);
   try {
-    if (pathOrUrl.startsWith('http')) {
-      return await fromUrl(pathOrUrl);
-    }
-    return await fromFileWithPath(pathOrUrl);
+    return cleanText(await extract(pathOrUrl));
   } catch (err) {
     console.error(`Failed to extract text from: ${pathOrUrl}`, err.message);
     if (reThrowOnFail) {
@@ -17,13 +14,17 @@ async function extractText({ pathOrUrl, reThrowOnFail = false }) {
   }
 }
 
+// Many pdfs have table of contents with multiple '......', we remove that.
+function cleanText(str = '') {
+  return str.replace(/\.{4,}/gi, '');
+}
+
 if (require.main === module) {
   const main = async () => {
-    const path =
-      './anti-corruption-policy-making-in-practice-what-can-be-learned-for-implementing-article-5-of-uncac.pdf';
-    const url =
-      'https://cdn.sanity.io/files/1f1lcoov/production/6910c3c878955f258619a6f5d4b8762e0aeb3374.pdf';
-    const text = await extractText({ pathOrUrl: url });
+    const path = './extract-text.test-data.pdf';
+    // const url =
+    //   'https://cdn.sanity.io/files/1f1lcoov/production/6910c3c878955f258619a6f5d4b8762e0aeb3374.pdf';
+    const text = await extractText({ pathOrUrl: path });
     console.log(text);
   };
   main();
