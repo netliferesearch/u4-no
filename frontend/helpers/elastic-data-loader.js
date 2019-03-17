@@ -171,6 +171,14 @@ const doSearch = async (query) => {
 
         highlight: {
           fields: {
+            title: {
+              fragment_size: 250,
+              number_of_fragments: 1,
+            },
+            topicTitle: {
+              fragment_size: 250,
+              number_of_fragments: 1,
+            },
             content: {
               fragment_size: 250,
               number_of_fragments: 1,

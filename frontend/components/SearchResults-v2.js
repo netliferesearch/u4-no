@@ -25,6 +25,14 @@ const toggleFilterMenu = () => {
   }
 };
 
+// If there is a highlight (list of html strings) show it, or instead show fallback.
+const Highlight = ({ highlight = [], fallback = '' }) => {
+  if (highlight.length > 0) {
+    return <span dangerouslySetInnerHTML={{ __html: highlight[0] }} />;
+  }
+  return fallback;
+};
+
 const SearchResult = props => {
   const { _source = {} } = props;
   const { type = '' } = _source;
@@ -42,6 +50,7 @@ const SearchResult = props => {
       </div>
     );
   } else if (type === 'topic') {
+    const { highlight: { topicTitle: topicTitleHighlight = [] } = {} } = props;
     const {
       url = '',
       featuredImageUrl = '',
@@ -56,7 +65,9 @@ const SearchResult = props => {
         <span {...classes('items-type')}>Topic</span>
         <br />
         <Link route={url}>
-          <a {...classes('items-title')}>{topicTitle}</a>
+          <a {...classes('items-title')}>
+            <Highlight highlight={topicTitleHighlight} fallback={topicTitle} />
+          </a>
         </Link>
         <br />
         <div {...classes('topic-wrapper')}>
@@ -94,7 +105,7 @@ const SearchResult = props => {
       </div>
     );
   } else if (type === 'publication') {
-    const { highlight: { content = [] } = {} } = props;
+    const { highlight: { content = [], title: titleHighlight = [] } = {} } = props;
     const {
       title = '',
       date: { utc: utcDate = '' } = {},
@@ -107,7 +118,9 @@ const SearchResult = props => {
         <span {...classes('items-type')}>{publicationTypeTitle}</span>
         <br />
         <Link route={url}>
-          <a {...classes('items-title')}>{title}</a>
+          <a {...classes('items-title')}>
+            <Highlight highlight={titleHighlight} fallback={title} />
+          </a>
         </Link>
         <br />
         {utcDate && <p {...classes('items-date')}>{format(utcDate, 'D MMM YYYY')}</p>}
@@ -122,7 +135,8 @@ const SearchResult = props => {
       </div>
     );
   }
-  const { highlight: { content = [] } = {} } = props;
+  // What to show if the search result did not match any of the items above.
+  const { highlight: { content = [], title: titleHighlight = [] } = {} } = props;
   const { title = '', url = '', standfirst = '' } = _source;
   return (
     <div>
@@ -137,7 +151,9 @@ const SearchResult = props => {
       </span>
       <br />
       <Link route={url}>
-        <a {...classes('items-title')}>{title}</a>
+        <a {...classes('items-title')}>
+          <Highlight highlight={titleHighlight} fallback={title} />
+        </a>
       </Link>
       <br />
       {content.length > 0 ? (
@@ -197,6 +213,9 @@ class SearchResultsV2 extends Component {
               }
             }}
           >
+            {searchPageNum * 10 >= total && !this.state.isLoading ? (
+              <p>No more search results to load</p>
+            ) : null}
             {this.state.isLoading && <p>Loading more search results</p>}
           </InView>
         </ul>
