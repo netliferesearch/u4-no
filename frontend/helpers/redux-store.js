@@ -54,7 +54,7 @@ const defaultState = {
   showLoadingScreen: false,
   searchSorting: 'relevance',
   searchFilters: [],
-  searchPageNum: 0,
+  searchPageNum: 1,
   searchResults: {},
   defaultSearchAggs: [],
 };
@@ -172,8 +172,15 @@ export const saveScrollPosition = scrollPosition => dispatch =>
 
 export const initStore = (initialState = defaultState, options) => {
   const { query = {} } = options;
-  const { filters = '', sort = '' } = query;
+  const { filters = '', sort = '', searchPageNum } = query;
   let state = initialState;
+
+  if (searchPageNum) {
+    state = {
+      ...state,
+      searchPageNum: parseInt(searchPageNum, 10),
+    };
+  }
 
   // if there are active filters in the url query params we need to split
   // and add them to the state.

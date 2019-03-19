@@ -176,7 +176,7 @@ class SearchResultsV2 extends Component {
   }
 
   render() {
-    const { data = {}, searchPageNum, updateSearchPageNum } = this.props;
+    const { data = {}, searchPageNum = 1, updateSearchPageNum } = this.props;
     const { hits = [], total = 0 } = data.hits || {};
     return (
       <section {...classes()}>
@@ -205,7 +205,7 @@ class SearchResultsV2 extends Component {
                   // no need to fetch more.
                   return;
                 }
-                const newSearchPage = (searchPageNum || 1) + 1;
+                const newSearchPage = searchPageNum + 1;
                 this.setState({ isLoading: true }, () => updateSearchPageNum(newSearchPage));
               }
             }}
@@ -214,8 +214,21 @@ class SearchResultsV2 extends Component {
               <p>
                 Showing {total} of {total} search results
               </p>
-            ) : null}
-            {this.state.isLoading && <p>Loading more search results</p>}
+            ) : this.state.isLoading ? (
+              <p>Loading more search results</p>
+            ) : (
+              <button
+                className="c-btn c-btn--primary"
+                onClick={() => {
+                  // Sometimes it takes time before the <InView /> component starts
+                  // watching. Thus we make it possible to manually initiate a search.
+                  const newSearchPage = searchPageNum + 1;
+                  this.setState({ isLoading: true }, () => updateSearchPageNum(newSearchPage));
+                }}
+              >
+                <span className="c-btn__body">Load more results</span>
+              </button>
+            )}
           </InView>
         </ul>
       </section>
