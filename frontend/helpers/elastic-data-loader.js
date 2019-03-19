@@ -109,11 +109,17 @@ const doSearch = async (query) => {
                   {
                     multi_match: {
                       query: searchQuery,
+                      _name: 'Exact title match',
+                      fields: ['title.exact^10', 'termTitle.exact^10', 'topicTitle.exact^10'],
+                    },
+                  },
+                  {
+                    multi_match: {
+                      query: searchQuery,
                       type: 'phrase_prefix',
                       _name: 'Main query',
                       fields: [
                         'title',
-                        'title.exact^6',
                         'standfirst',
                         'keywords',
                         'lead',
@@ -121,11 +127,9 @@ const doSearch = async (query) => {
                         'authors',
                         // term (glossary) related
                         'termTitle^2',
-                        'termTitle.exact^8',
                         'termContent^2',
                         // topic related
                         'topicTitle^3',
-                        'topicTitle.exact^7',
                         'topicContent^3',
                         'basicGuide',
                         'agenda',
