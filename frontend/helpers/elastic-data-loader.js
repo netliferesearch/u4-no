@@ -54,27 +54,43 @@ const doSearch = async (query) => {
   const {
     search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0,
   } = query;
-  const activeFilterQueries = filterStr.split(',').reduce((acc, filter) => {
+  const filters = filterStr.split(',');
+
+  const activeFilterQueries = [];
+
+  const topicNames = filters
+    .filter(filter => /^topic-type-/gi.test(filter))
+    .map(filter => /topic-type-(.*)/gi.exec(filter)[1]);
+  if (topicNames.length > 0) {
+    activeFilterQueries.push({ terms: { filedUnderTopicNames: topicNames } });
+  }
+
+  const publicationNames = filters
+    .filter(filter => /^pub-/gi.test(filter))
+    .map(filter => /pub-(.*)/gi.exec(filter)[1]);
+  if (publicationNames.length > 0) {
+    activeFilterQueries.push({ terms: { publicationTypeTitle: publicationNames } });
+  }
+
+  const languageNames = filters
+    .filter(filter => /^lang-type-/gi.test(filter))
+    .map(filter => /lang-type-(.*)/gi.exec(filter)[1]);
+  if (languageNames.length > 0) {
+    activeFilterQueries.push({ terms: { languageName: languageNames } });
+  }
+
+  filters.forEach((filter) => {
     if (filter === 'publications-only') {
-      acc.push({ term: { type: 'publication' } });
-    } else if (/^pub-/gi.test(filter)) {
-      const pubTypeName = /pub-(.*)/gi.exec(filter)[1];
-      acc.push({ term: { publicationTypeTitle: pubTypeName } });
-    } else if (/^topic-type-/gi.test(filter)) {
-      const topicTypeName = /topic-type-(.*)/gi.exec(filter)[1];
-      acc.push({ term: { filedUnderTopicNames: topicTypeName } });
-    } else if (/^lang-type-/gi.test(filter)) {
-      const languageName = /lang-type-(.*)/gi.exec(filter)[1];
-      acc.push({ term: { languageName } });
+      activeFilterQueries.push({ term: { type: 'publication' } });
     } else if (/^year-from-/gi.test(filter)) {
       const yearFrom = /year-from-(.*)/gi.exec(filter)[1];
-      acc.push({ range: { 'date.utc': { gte: new Date(yearFrom, 0) } } });
+      activeFilterQueries.push({ range: { 'date.utc': { gte: new Date(yearFrom, 0) } } });
     } else if (/^year-to-/gi.test(filter)) {
       const yearTo = /year-to-(.*)/gi.exec(filter)[1];
-      acc.push({ range: { 'date.utc': { lte: new Date(yearTo, 0) } } });
+      activeFilterQueries.push({ range: { 'date.utc': { lte: new Date(yearTo, 0) } } });
     }
-    return acc;
-  }, []);
+  });
+
   try {
     const result = await client.search({
       index: process.env.ES_INDEX || 'u4-staging-*',
@@ -85,11 +101,7 @@ const doSearch = async (query) => {
               bool: {
                 ...(activeFilterQueries.length > 0
                   ? {
-                    filter: {
-                      bool: {
-                        should: activeFilterQueries,
-                      },
-                    },
+                    filter: activeFilterQueries,
                   }
                   : {}),
                 // At least one search query should match. Need to have this
