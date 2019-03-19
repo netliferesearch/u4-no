@@ -14,11 +14,7 @@ const isFilterActive = ({ searchFilters = [], filterName }) =>
 
 const SearchFilterPublicationTypes = (props) => {
   const {
-    searchFilters,
-    buckets = [],
-    defaultBuckets = [],
-    addSearchFilter,
-    removeSearchFilter,
+    searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter,
   } = props;
   // const inactiveBuckets = getSortedInactiveBuckets({ buckets, defaultBuckets });
   return (
@@ -58,11 +54,9 @@ const SearchFilterPublicationTypes = (props) => {
 
 const mapStateToProps = ({
   defaultSearchAggs: { publicationTypes: { buckets: defaultBuckets = [] } = {} } = {},
-  searchResults: { aggregations: { publicationTypes: { buckets = [] } = {} } = {} },
   searchFilters,
 }) => ({
   defaultBuckets,
-  buckets,
   searchFilters,
 });
 

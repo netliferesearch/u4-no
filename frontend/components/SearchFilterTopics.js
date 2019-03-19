@@ -14,11 +14,7 @@ const isFilterActive = ({ searchFilters = [], filterName }) =>
 
 const SearchFilterTopics = (props) => {
   const {
-    searchFilters,
-    buckets = [],
-    defaultBuckets = [],
-    addSearchFilter,
-    removeSearchFilter,
+    searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter,
   } = props;
   return (
     <form className="c-filters-v2__item">
@@ -57,11 +53,9 @@ const SearchFilterTopics = (props) => {
 
 const mapStateToProps = ({
   defaultSearchAggs: { filedUnderTopicNames: { buckets: defaultBuckets = [] } = {} } = {},
-  searchResults: { aggregations: { filedUnderTopicNames: { buckets = [] } = {} } = {} },
   searchFilters,
 }) => ({
   defaultBuckets,
-  buckets,
   searchFilters,
 });
 

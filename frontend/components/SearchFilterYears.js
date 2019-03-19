@@ -103,13 +103,8 @@ const getYearAggregations = ({
   return [...Array(numberOfyears)].map((x, i) => minYear + i);
 };
 
-const mapStateToProps = ({
-  defaultSearchAggs,
-  // searchResults: { aggregations },
-  searchFilters,
-}) => ({
+const mapStateToProps = ({ defaultSearchAggs, searchFilters }) => ({
   years: getYearAggregations(defaultSearchAggs),
-  // buckets: getYearAggregations(aggregations),
   searchFilters,
 });
 
