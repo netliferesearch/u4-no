@@ -111,6 +111,7 @@ const SearchResult = props => {
       date: { utc: utcDate = '' } = {},
       keywords = [],
       url = '',
+      standfirst = '',
       publicationType: { title: publicationTypeTitle = '' } = {},
     } = _source;
     return (
@@ -124,9 +125,9 @@ const SearchResult = props => {
         </Link>
         <br />
         {utcDate && <p {...classes('items-date')}>{format(utcDate, 'D MMM YYYY')}</p>}
-        {content.map((htmlStr, index) => (
-          <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
-        ))}
+        <p>
+          <Highlight highlight={content} fallback={standfirst} />
+        </p>
         {keywords.map((keyword, index) => (
           <div key={index} {...classes('items-tab')}>
             {keyword}
@@ -156,13 +157,9 @@ const SearchResult = props => {
         </a>
       </Link>
       <br />
-      {content.length > 0 ? (
-        content.map((htmlStr, index) => (
-          <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
-        ))
-      ) : (
-        <p>{standfirst}</p>
-      )}
+      <p>
+        <Highlight highlight={content} fallback={standfirst} />
+      </p>
     </div>
   );
 };
@@ -214,7 +211,9 @@ class SearchResultsV2 extends Component {
             }}
           >
             {searchPageNum * 10 >= total && !this.state.isLoading ? (
-              <p>No more search results to load</p>
+              <p>
+                Showing {total} of {total} search results
+              </p>
             ) : null}
             {this.state.isLoading && <p>Loading more search results</p>}
           </InView>
