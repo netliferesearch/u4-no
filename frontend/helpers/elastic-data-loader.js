@@ -31,21 +31,25 @@ const aggregations = {
   publicationTypes: {
     terms: {
       field: 'publicationTypeTitle',
+      size: 100,
     },
   },
   topicTitles: {
     terms: {
       field: 'topicTitles',
+      size: 100,
     },
   },
   filedUnderTopicNames: {
     terms: {
       field: 'filedUnderTopicNames',
+      size: 100,
     },
   },
   languages: {
     terms: {
       field: 'languageName',
+      size: 100,
     },
   },
 };

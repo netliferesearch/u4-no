@@ -1,6 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import sortBy from 'lodash/sortBy';
 import slugify from 'slugify';
 import {
   addSearchFilter,
@@ -56,7 +57,7 @@ const mapStateToProps = ({
   defaultSearchAggs: { publicationTypes: { buckets: defaultBuckets = [] } = {} } = {},
   searchFilters,
 }) => ({
-  defaultBuckets,
+  defaultBuckets: sortBy(defaultBuckets, ['key']),
   searchFilters,
 });
 

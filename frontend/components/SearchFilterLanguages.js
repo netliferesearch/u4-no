@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import slugify from 'slugify';
+import sortBy from 'lodash/sortBy';
 import {
   addSearchFilter,
   removeSearchFilter,
@@ -55,7 +56,7 @@ const mapStateToProps = ({
   defaultSearchAggs: { languages: { buckets: defaultBuckets = [] } = {} } = {},
   searchFilters,
 }) => ({
-  defaultBuckets,
+  defaultBuckets: sortBy(defaultBuckets, ['key']),
   searchFilters,
 });
 
