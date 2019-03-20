@@ -77,3 +77,5 @@ Other relevant files:
 - `remove-indexes.js` useful for quickly resetting index setup. If you change index mapping you need to rebuild the index before you can add the new mapping.
 - `lib/mappings.js` how the ES mappings are configured.
 - `lib/indexer.lib.js` how the Sanity types are processed before being sent to ES.
+
+
