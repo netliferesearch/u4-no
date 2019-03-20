@@ -109,7 +109,7 @@ const SearchResult = props => {
     const {
       title = '',
       date: { utc: utcDate = '' } = {},
-      keywords = [],
+      filedUnderTopicNames = [],
       url = '',
       standfirst = '',
       publicationType: { title: publicationTypeTitle = '' } = {},
@@ -128,9 +128,9 @@ const SearchResult = props => {
         <p>
           <Highlight highlight={content} fallback={standfirst} />
         </p>
-        {keywords.map((keyword, index) => (
+        {filedUnderTopicNames.map((name, index) => (
           <div key={index} {...classes('items-tab')}>
-            {keyword}
+            {name}
           </div>
         ))}
       </div>
@@ -138,7 +138,7 @@ const SearchResult = props => {
   }
   // What to show if the search result did not match any of the items above.
   const { highlight: { content = [], title: titleHighlight = [] } = {} } = props;
-  const { title = '', url = '', standfirst = '' } = _source;
+  const { title = '', url = '', standfirst = '', filedUnderTopicNames = [] } = _source;
   return (
     <div>
       <span {...classes('items-type')}>
@@ -160,6 +160,11 @@ const SearchResult = props => {
       <p>
         <Highlight highlight={content} fallback={standfirst} />
       </p>
+      {filedUnderTopicNames.map((name, index) => (
+        <div key={index} {...classes('items-tab')}>
+          {name}
+        </div>
+      ))}
     </div>
   );
 };
@@ -178,6 +183,8 @@ class SearchResultsV2 extends Component {
   render() {
     const { data = {}, searchPageNum = 1, updateSearchPageNum } = this.props;
     const { hits = [], total = 0 } = data.hits || {};
+    const resultsPerPage = 10;
+    const isMoreResultsToLoad = searchPageNum * resultsPerPage < total;
     return (
       <section {...classes()}>
         <div {...classes('topbar')}>
@@ -197,20 +204,15 @@ class SearchResultsV2 extends Component {
           ))}
           <InView
             onChange={inView => {
-              // It gets heavier and heavier to search for each page added
-              // So we cap it at ten pages.
-              if (inView && !this.state.isLoading) {
-                if (searchPageNum * 10 >= total) {
-                  // We are already viewing all possible hits for current query
-                  // no need to fetch more.
-                  return;
-                }
+              // We are already viewing all possible hits for current query
+              // no need to fetch more.
+              if (inView && !this.state.isLoading && isMoreResultsToLoad) {
                 const newSearchPage = searchPageNum + 1;
                 this.setState({ isLoading: true }, () => updateSearchPageNum(newSearchPage));
               }
             }}
           >
-            {searchPageNum * 10 >= total && !this.state.isLoading ? (
+            {!isMoreResultsToLoad && !this.state.isLoading ? (
               <p>
                 Showing {total} of {total} search results
               </p>
