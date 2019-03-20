@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import slugify from 'slugify';
+import sortBy from 'lodash/sortBy';
 import {
   addSearchFilter,
   removeSearchFilter,
@@ -14,11 +15,7 @@ const isFilterActive = ({ searchFilters = [], filterName }) =>
 
 const SearchFilterLanguages = (props) => {
   const {
-    searchFilters,
-    buckets = [],
-    defaultBuckets = [],
-    addSearchFilter,
-    removeSearchFilter,
+    searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter,
   } = props;
   return (
     <form className="c-filters-v2__item">
@@ -57,11 +54,9 @@ const SearchFilterLanguages = (props) => {
 
 const mapStateToProps = ({
   defaultSearchAggs: { languages: { buckets: defaultBuckets = [] } = {} } = {},
-  searchResults: { aggregations: { languages: { buckets = [] } = {} } = {} },
   searchFilters,
 }) => ({
-  defaultBuckets,
-  buckets,
+  defaultBuckets: sortBy(defaultBuckets, ['key']),
   searchFilters,
 });
 

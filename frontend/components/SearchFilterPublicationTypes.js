@@ -1,6 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import sortBy from 'lodash/sortBy';
 import slugify from 'slugify';
 import {
   addSearchFilter,
@@ -14,11 +15,7 @@ const isFilterActive = ({ searchFilters = [], filterName }) =>
 
 const SearchFilterPublicationTypes = (props) => {
   const {
-    searchFilters,
-    buckets = [],
-    defaultBuckets = [],
-    addSearchFilter,
-    removeSearchFilter,
+    searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter,
   } = props;
   // const inactiveBuckets = getSortedInactiveBuckets({ buckets, defaultBuckets });
   return (
@@ -58,11 +55,9 @@ const SearchFilterPublicationTypes = (props) => {
 
 const mapStateToProps = ({
   defaultSearchAggs: { publicationTypes: { buckets: defaultBuckets = [] } = {} } = {},
-  searchResults: { aggregations: { publicationTypes: { buckets = [] } = {} } = {} },
   searchFilters,
 }) => ({
-  defaultBuckets,
-  buckets,
+  defaultBuckets: sortBy(defaultBuckets, ['key']),
   searchFilters,
 });
 

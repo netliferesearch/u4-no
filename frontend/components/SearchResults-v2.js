@@ -25,6 +25,14 @@ const toggleFilterMenu = () => {
   }
 };
 
+// If there is a highlight (list of html strings) show it, or instead show fallback.
+const Highlight = ({ highlight = [], fallback = '' }) => {
+  if (highlight.length > 0) {
+    return <span dangerouslySetInnerHTML={{ __html: highlight[0] }} />;
+  }
+  return fallback;
+};
+
 const SearchResult = props => {
   const { _source = {} } = props;
   const { type = '' } = _source;
@@ -42,6 +50,7 @@ const SearchResult = props => {
       </div>
     );
   } else if (type === 'topic') {
+    const { highlight: { topicTitle: topicTitleHighlight = [] } = {} } = props;
     const {
       url = '',
       featuredImageUrl = '',
@@ -56,7 +65,9 @@ const SearchResult = props => {
         <span {...classes('items-type')}>Topic</span>
         <br />
         <Link route={url}>
-          <a {...classes('items-title')}>{topicTitle}</a>
+          <a {...classes('items-title')}>
+            <Highlight highlight={topicTitleHighlight} fallback={topicTitle} />
+          </a>
         </Link>
         <br />
         <div {...classes('topic-wrapper')}>
@@ -94,12 +105,13 @@ const SearchResult = props => {
       </div>
     );
   } else if (type === 'publication') {
-    const { highlight: { content = [] } = {} } = props;
+    const { highlight: { content = [], title: titleHighlight = [] } = {} } = props;
     const {
       title = '',
       date: { utc: utcDate = '' } = {},
       keywords = [],
       url = '',
+      standfirst = '',
       publicationType: { title: publicationTypeTitle = '' } = {},
     } = _source;
     return (
@@ -107,13 +119,15 @@ const SearchResult = props => {
         <span {...classes('items-type')}>{publicationTypeTitle}</span>
         <br />
         <Link route={url}>
-          <a {...classes('items-title')}>{title}</a>
+          <a {...classes('items-title')}>
+            <Highlight highlight={titleHighlight} fallback={title} />
+          </a>
         </Link>
         <br />
         {utcDate && <p {...classes('items-date')}>{format(utcDate, 'D MMM YYYY')}</p>}
-        {content.map((htmlStr, index) => (
-          <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
-        ))}
+        <p>
+          <Highlight highlight={content} fallback={standfirst} />
+        </p>
         {keywords.map((keyword, index) => (
           <div key={index} {...classes('items-tab')}>
             {keyword}
@@ -122,7 +136,8 @@ const SearchResult = props => {
       </div>
     );
   }
-  const { highlight: { content = [] } = {} } = props;
+  // What to show if the search result did not match any of the items above.
+  const { highlight: { content = [], title: titleHighlight = [] } = {} } = props;
   const { title = '', url = '', standfirst = '' } = _source;
   return (
     <div>
@@ -137,16 +152,14 @@ const SearchResult = props => {
       </span>
       <br />
       <Link route={url}>
-        <a {...classes('items-title')}>{title}</a>
+        <a {...classes('items-title')}>
+          <Highlight highlight={titleHighlight} fallback={title} />
+        </a>
       </Link>
       <br />
-      {content.length > 0 ? (
-        content.map((htmlStr, index) => (
-          <p key={index} dangerouslySetInnerHTML={{ __html: htmlStr }} />
-        ))
-      ) : (
-        <p>{standfirst}</p>
-      )}
+      <p>
+        <Highlight highlight={content} fallback={standfirst} />
+      </p>
     </div>
   );
 };
@@ -163,7 +176,7 @@ class SearchResultsV2 extends Component {
   }
 
   render() {
-    const { data = {}, searchPageNum, updateSearchPageNum } = this.props;
+    const { data = {}, searchPageNum = 1, updateSearchPageNum } = this.props;
     const { hits = [], total = 0 } = data.hits || {};
     return (
       <section {...classes()}>
@@ -192,12 +205,30 @@ class SearchResultsV2 extends Component {
                   // no need to fetch more.
                   return;
                 }
-                const newSearchPage = (searchPageNum || 1) + 1;
+                const newSearchPage = searchPageNum + 1;
                 this.setState({ isLoading: true }, () => updateSearchPageNum(newSearchPage));
               }
             }}
           >
-            {this.state.isLoading && <p>Loading more search results</p>}
+            {searchPageNum * 10 >= total && !this.state.isLoading ? (
+              <p>
+                Showing {total} of {total} search results
+              </p>
+            ) : this.state.isLoading ? (
+              <p>Loading more search results</p>
+            ) : (
+              <button
+                className="c-btn c-btn--primary"
+                onClick={() => {
+                  // Sometimes it takes time before the <InView /> component starts
+                  // watching. Thus we make it possible to manually initiate a search.
+                  const newSearchPage = searchPageNum + 1;
+                  this.setState({ isLoading: true }, () => updateSearchPageNum(newSearchPage));
+                }}
+              >
+                <span className="c-btn__body">Load more results</span>
+              </button>
+            )}
           </InView>
         </ul>
       </section>
