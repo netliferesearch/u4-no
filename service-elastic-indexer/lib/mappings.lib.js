@@ -81,9 +81,6 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                 // publications can be filed under multiple topic titles.
                 topicTitles: {
                   type: 'keyword',
-                  // we copy this field so that we can aggregate on that
-                  // field, and display more accurate filter count.
-                  copy_to: 'filedUnderTopicNames',
                 },
                 languageName: {
                   type: 'keyword',
