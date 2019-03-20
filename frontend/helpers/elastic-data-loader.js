@@ -137,7 +137,6 @@ const doSearch = async (query) => {
                       fields: [
                         'title',
                         'standfirst',
-                        'keywords',
                         'lead',
                         'content',
                         'authors',
@@ -211,7 +210,6 @@ const doSearch = async (query) => {
           'type',
           'date',
           'pubdate.*',
-          'keywords',
           'termTitle',
           'termContent',
           'topicTitle',
@@ -224,6 +222,7 @@ const doSearch = async (query) => {
           'isAgendaPresent',
           'isBasicGuidePresent',
           'publicationType',
+          'filedUnderTopicNames',
         ],
       },
     });
