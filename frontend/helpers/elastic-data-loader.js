@@ -58,7 +58,7 @@ const doSearch = async (query) => {
   const {
     search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0,
   } = query;
-  const filters = filterStr.split(',');
+  const filters = filterStr.split(',').map(name => name.replace(/\|/g, ','));
 
   const activeFilterQueries = [];
 

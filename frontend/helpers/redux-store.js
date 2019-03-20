@@ -36,6 +36,7 @@ const addQueryParams = queryParams => {
       acc[key] = value || undefined;
       return acc;
     }, {});
+
   const currentParams = queryString.parse(location.search);
   const newQueryString = queryString.stringify(
     Object.assign(currentParams, nullifyFalsyValues(queryParams)),
@@ -45,6 +46,13 @@ const addQueryParams = queryParams => {
   }?${newQueryString}`;
   Router.replaceRoute(newUrl);
 };
+
+const updateFilterQueryParams = (filters = []) =>
+  addQueryParams({
+    filters: uniq(filters)
+      .map(name => name.replace(/,/g, '|'))
+      .join(),
+  });
 
 const defaultState = {
   readingProgressId: '',
@@ -83,23 +91,17 @@ export const reducer = (state = defaultState, action) => {
       });
       return Object.assign({}, state, { searchSorting: action.sortName });
     case actionTypes.SEARCH_ADD_FILTER:
-      addQueryParams({
-        filters: uniq(state.searchFilters.concat(action.searchFilter)).join(),
-      });
+      updateFilterQueryParams(state.searchFilters.concat(action.searchFilter));
       return Object.assign({}, state, {
         searchFilters: uniq(state.searchFilters.concat(action.searchFilter)),
       });
     case actionTypes.SEARCH_REMOVE_FILTER:
-      addQueryParams({
-        filters: state.searchFilters.filter(name => name !== action.searchFilter).join(),
-      });
+      updateFilterQueryParams(state.searchFilters.filter(name => name !== action.searchFilter));
       return Object.assign({}, state, {
         searchFilters: state.searchFilters.filter(name => name !== action.searchFilter),
       });
     case actionTypes.SEARCH_REPLACE_FILTERS:
-      addQueryParams({
-        filters: uniq(action.searchFilters).join(),
-      });
+      updateFilterQueryParams(action.searchFilters);
       return Object.assign({}, state, {
         searchFilters: uniq(action.searchFilters),
       });
