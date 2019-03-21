@@ -198,7 +198,7 @@ async function main() {
   });
 
   const processedDocuments = await Promise.map(
-    documentsToProcess,
+    docsToInsertOrUpdate,
     document =>
       processDocument({ document, allDocuments }).catch(err =>
         console.error('Failed to process document', document, err)),
