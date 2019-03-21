@@ -58,7 +58,7 @@ const doSearch = async (query) => {
   const {
     search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0,
   } = query;
-  const filters = filterStr.split(',');
+  const filters = filterStr.split(',').map(name => name.replace(/\|/g, ','));
 
   const activeFilterQueries = [];
 
@@ -137,7 +137,6 @@ const doSearch = async (query) => {
                       fields: [
                         'title',
                         'standfirst',
-                        'keywords',
                         'lead',
                         'content',
                         'authors',
@@ -211,7 +210,6 @@ const doSearch = async (query) => {
           'type',
           'date',
           'pubdate.*',
-          'keywords',
           'termTitle',
           'termContent',
           'topicTitle',
@@ -224,6 +222,7 @@ const doSearch = async (query) => {
           'isAgendaPresent',
           'isBasicGuidePresent',
           'publicationType',
+          'filedUnderTopicNames',
         ],
       },
     });

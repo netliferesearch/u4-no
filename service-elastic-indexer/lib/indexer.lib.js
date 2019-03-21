@@ -112,8 +112,14 @@ async function processPublication({ document: doc, allDocuments }) {
   });
   const { title: publicationTypeTitle } = publicationType;
   const languageName = getLanguageName(languageCode);
-  const filedUnderTopics = allDocuments.filter(({ _type = '', resources = [] }) =>
+  // Find topics that reference to this publication as a resource
+  const topicsThatRelateToPublication = allDocuments.filter(({ _type = '', resources = [] }) =>
     _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
+  // Find the topics that this publication says it relates to.
+  const publicationRelatesToTopics = expand({
+    references: topics,
+  });
+  const filedUnderTopics = topicsThatRelateToPublication.concat(publicationRelatesToTopics);
   const isLegacyPublication = content.length === 0;
   return {
     // by default we add all Sanity fields to elasticsearch.
@@ -194,10 +200,10 @@ async function processArticle({ document: doc, allDocuments }) {
       references: doc.authors,
       process: ({ _id }) => _id,
     }),
-    filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
-    filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
     articleTypeTitles,
     articleTypeIds,
+    filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
+    filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
   };
 }
 
@@ -409,7 +415,8 @@ function initExpand(allDocuments = []) {
     if (reference) {
       return expandAndProcessReference(reference);
     }
-    return references.map(expandAndProcessReference);
+    // Filter out any null references caused by removed weak references.
+    return references.map(expandAndProcessReference).filter(doc => doc);
   };
 }
 
