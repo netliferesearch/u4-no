@@ -6,7 +6,7 @@ import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
 
 import { BoxOnBox, Footer, Layout, Accordion, Newsletter, ServiceArticle } from '../components';
-import { Feature, Mosaic, LinkBox, LinkList, Team } from '../components';
+import { Feature, Mosaic, LinkBox, Team } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import {
   Basics,
@@ -52,22 +52,20 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             </p>
             <h2 className="c-longform-grid__standard">{title}</h2>
             {lead && <p className="c-longform-grid__standard">{lead}</p>}
-            {false &&
-              startDate.utc && (
-                <p className="c-longform-grid__standard">
-                  {startDate.utc.split('T')[0]} {endDate.utc && `${endDate.utc.split('T')[0]}`}
-                </p>
-              )}
-            {false &&
-              language && (
-                <p className="c-longform-grid__standard">
-                  Language: {languageName({ langcode: language })}
-                </p>
-              )}
+            {false && startDate.utc && (
+              <p className="c-longform-grid__standard">
+                {startDate.utc.split('T')[0]} {endDate.utc && `${endDate.utc.split('T')[0]}`}
+              </p>
+            )}
+            {false && language && (
+              <p className="c-longform-grid__standard">
+                Language: {languageName({ langcode: language })}
+              </p>
+            )}
           </div>
           {content ? <ServiceArticle blocks={content} /> : null}
 
-          {courseType !== 15 && (
+          {courseType !== 15 && courseType !== 16 && (
             <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
               <div>
                 <iframe
@@ -98,39 +96,50 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             </iframe>
           )}
 
-          {false &&
-            topics.length > 0 && (
-              <p className="c-longform-grid__standard">
-                Related topics:{' '}
-                {topics.map(({ _ref = '', target = {} }) => (
-                  <Link
-                    key={_ref}
-                    route="topic.entry"
-                    params={{ slug: target.slug ? target.slug.current : '' }}
-                  >
-                    <a className="c-article-header__link-item">{target.title}</a>
-                  </Link>
-                ))}
-              </p>
-            )}
+          {courseType === 16 && (
+            <iframe
+              title="Course"
+              src="https://partner.u4.no/course/brick1-fr/"
+              width="100%"
+              height="600px"
+              scrolling="no"
+              style={{ border: 0, overflow: 'hidden' }}
+            >
+              Your browser seems to have problems with iframes. Please try a different browser!
+            </iframe>
+          )}
+
+          {false && topics.length > 0 && (
+            <p className="c-longform-grid__standard">
+              Related topics:{' '}
+              {topics.map(({ _ref = '', target = {} }) => (
+                <Link
+                  key={_ref}
+                  route="topic.entry"
+                  params={{ slug: target.slug ? target.slug.current : '' }}
+                >
+                  <a className="c-article-header__link-item">{target.title}</a>
+                </Link>
+              ))}
+            </p>
+          )}
         </div>
       </div>
 
-      {courseType !== 15 &&
-        contact.length > 0 && (
-          <div id="contacts" className="c-topic-section--lightblue o-wrapper-full-width">
-            <Team
-              title={
-                contact.length > 1
-                  ? 'We’re the team responsible for this course'
-                  : 'I’m responsible for this course'
-              }
-              sayHi
-              members={contact}
-              linkLabel="Read full bio"
-            />
-          </div>
-        )}
+      {courseType !== 15 && courseType !== 16 && contact.length > 0 && (
+        <div id="contacts" className="c-topic-section--lightblue o-wrapper-full-width">
+          <Team
+            title={
+              contact.length > 1
+                ? 'We’re the team responsible for this course'
+                : 'I’m responsible for this course'
+            }
+            sayHi
+            members={contact}
+            linkLabel="Read full bio"
+          />
+        </div>
+      )}
       <Newsletter />
       <Footer />
     </Layout>
