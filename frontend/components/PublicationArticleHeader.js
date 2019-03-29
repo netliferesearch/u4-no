@@ -13,6 +13,8 @@ const classes = BEMHelper({
 
 // file downloads are not normally tracked by GA, thus we fire of a page view
 // before downloading.
+
+
 const logPDFPageView = ({ e, url }) => {
   e.preventDefault();
   if (window.ga) {
@@ -143,9 +145,6 @@ const PublicationArticleHeader = ({
       {pdfFile.asset && (
         <div {...classes('meta', null, 'c-article-header__download')}>
           <a
-            onClick={event =>
-              logPDFPageView({ e: event, url: `/publications/${slug.current}.pdf` })
-            }
             href={`/publications/${slug.current}.pdf`}
             {...classes('download-text')}
           >
@@ -157,9 +156,6 @@ const PublicationArticleHeader = ({
       {!pdfFile.asset && legacypdf.asset && (
         <div {...classes('meta', null, 'c-article-header__download')}>
           <a
-            onClick={event =>
-              logPDFPageView({ e: event, url: `/publications/${slug.current}.pdf` })
-            }
             href={`/publications/${slug.current}.pdf`}
             {...classes('download-text')}
           >
