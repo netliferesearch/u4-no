@@ -1,11 +1,105 @@
-.c-table{
-	overflow-x:auto;
-	padding: $spacing-tiny;
-	@include inuit-font-size($font-size-tiny, $line-height-normal);
+.c-table {
+  overflow-x: auto;
+  padding: $spacing;
+  @include inuit-font-size($font-size-tiny, $line-height-normal);
+  position: relative;
+  background-color: $white;
+
+  table {
+    font-family: $font-sans;
+    width: 100%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: $spacing-tiny;
+    margin-bottom: 0;
+  }
+
+  th,
+  td {
+    border: 1px solid #e3e3e3;
+    padding: 0 $spacing-small;
+  }
+
+  thead,
+  th {
+    color: $brand-main;
+    font-weight: bold;
+  }
+
+  thead p {
+    margin: $spacing-small 0;
+  }
+
+  tr:nth-child(even) {
+    background-color: $lightGrey;
+  }
+
+  td ul,
+  td ol {
+    margin-top: $spacing-tiny;
+    margin-bottom: $spacing-tiny;
+    margin-left: $spacing-tiny;
+    padding-left: $spacing-small;
+  }
 }
 
-@media print  {
-	.c-table {
-		overflow-x:visible;
-	}
+.c-table__title {
+  font-weight: bold;
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-tiny);
+  color: $black;
+  margin-bottom: 0;
+  page-break-after: avoid;
+}
+
+.c-table__caption {
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-tiny);
+  color: $black;
+  page-break-before: avoid;
+
+  & > .c-longform-grid__standard {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: $spacing-small;
+  }
+}
+
+@media print {
+  .c-table {
+    overflow-x: visible;
+    padding: 0;
+    padding-bottom: $spacing;
+    table {
+      font-size: 75%;
+      width: 100%;
+      tr td p,
+      tr th p {
+        padding: $spacing-tiny 0;
+        margin: 0;
+      }
+    }
+  }
+  .c-table--full {
+    margin-left: -3.5cm;
+    margin-right: -3.5cm;
+  }
+  .c-table--wide {
+    margin-left: -1.75cm;
+    margin-right: -1.75cm;
+  }
+  .c-table__title {
+    page-break-after: avoid;
+  }
+  .c-table__title {
+    font-size: 10pt;
+  }
+  .c-table__caption {
+    font-size: 10pt;
+    p {
+      margin: $spacing-tiny 0;
+      line-height: 1.2em;
+    }
+  }
 }

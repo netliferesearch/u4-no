@@ -1,4 +1,5 @@
 export { default as annotations } from './annotations';
+export { default as annotationsLinksOnly } from './annotationsLinksOnly';
 export { default as date } from './date';
 export { default as explainerText } from './explainerText';
 export { default as featuredImage } from './featuredImage';

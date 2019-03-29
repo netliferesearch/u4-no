@@ -2,6 +2,13 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import slugify from 'slugify';
+import {
+  SearchFilterPublicationTypes,
+  SearchFilterTopics,
+  SearchFilterLanguages,
+  SearchFilterYears,
+} from './';
 import {
   addSearchFilter,
   removeSearchFilter,
@@ -16,88 +23,17 @@ function toggle() {
   }
 }
 
-const PublicationTypes = props => {
-  const { publicationTypes, onChangeHandler } = props;
-  // eslint-disable-next-line
-  // debugger;
-  return (
-    <form className="c-filters-v2__item">
-      <div className="c-filters-v2__item-head">
-        <h3 className="c-filters-v2__title">Publication type</h3>
-        <input className="c-filters-v2__clear" type="reset" value="Clear" />
-      </div>
-      <span>
-        <div className="c-input">
-          <input type="checkbox" id="pub-type-pubtype-1" value="pub-type-pubtype-1" />
-          <label htmlFor="pub-type-pubtype-1">U4 Brief (137)</label>
-        </div>
-        <div className="c-input">
-          <input type="checkbox" id="pub-type-pubtype-2" value="pub-type-pubtype-2" />
-          <label htmlFor="pub-type-pubtype-2">U4 Issue (119)</label>
-        </div>
-        <div className="c-input">
-          <input type="checkbox" id="pub-type-pubtype-3" value="pub-type-pubtype-3" />
-          <label htmlFor="pub-type-pubtype-3">U4 Helpdesk Answer (303)</label>
-        </div>
-        <div className="c-input">
-          <input type="checkbox" id="pub-type-pubtype-4" value="pub-type-pubtype-4" />
-          <label htmlFor="pub-type-pubtype-4">U4 Report (6)</label>
-        </div>
-        <div className="c-input">
-          <input type="checkbox" id="pub-type-pubtype-5" value="pub-type-pubtype-5" />
-          <label htmlFor="pub-type-pubtype-5">Practice Insight (19)</label>
-        </div>
-      </span>
-      <p>See all</p>
-    </form>
-  );
-};
-
 class SearchFiltersV2 extends React.Component {
-  onChangeHandler = event => {
-    console.log('Filter change occured', event.target);
-    const {
-      addSearchFilter,
-      removeSearchFilter,
-      replaceSearchFilters,
-      searchFilters = [],
-    } = this.props;
-    const { value = '' } = event.target;
-    if (!value) {
-      return; // do nothing
-    }
-    if (value === 'publications-only') {
-      replaceSearchFilters([
-        ...searchFilters.filter(name => name !== 'all-content'),
-        'publications-only',
-      ]);
-    } else if (value === 'all-content') {
-      replaceSearchFilters([...searchFilters.filter(name => name !== 'publications-only')]);
-    }
-  };
+  componentDidMount() {
+    const { searchFilters, replaceSearchFilters } = this.props;
+    // These are old filters from V1 that we need to prevent from messing with the new search filters
+    const invalidFilters = ['pub-type', 'pub-topic', 'pub-year', 'pub-author', 'pub-lang'];
+    replaceSearchFilters(searchFilters.filter(filterName =>
+      !invalidFilters.find(invalidFilterName => filterName.startsWith(invalidFilterName))));
+  }
 
   render() {
-    const { data = {} } = this.props;
-    // eslint-disable-next-line
-    // debugger;
-
-    const {
-      aggregations: {
-        languages,
-        minPublicationDateMilliSeconds,
-        maxPublicationDateMilliSeconds,
-        publicationTypes,
-        topicTitles,
-      } = {},
-    } = data;
-
-    console.log({
-      languages,
-      minPublicationDateMilliSeconds,
-      maxPublicationDateMilliSeconds,
-      publicationTypes,
-      topicTitles,
-    });
+    const { searchFilters, replaceSearchFilters } = this.props;
 
     return (
       <div className="c-filters-v2">
@@ -114,8 +50,13 @@ class SearchFiltersV2 extends React.Component {
               type="radio"
               name="content"
               value="all-content"
-              defaultChecked
-              onChange={this.onChangeHandler}
+              defaultChecked={!searchFilters.find(name => name === 'publications-only')}
+              onChange={() =>
+                replaceSearchFilters([
+                  ...searchFilters.filter(name => name !== 'publications-only'),
+                  'all-content',
+                ])
+              }
             />
             <label htmlFor="all-content">All website content</label>
           </div>
@@ -125,7 +66,13 @@ class SearchFiltersV2 extends React.Component {
               type="radio"
               name="content"
               value="publications-only"
-              onChange={this.onChangeHandler}
+              defaultChecked={searchFilters.find(name => name === 'publications-only')}
+              onChange={() =>
+                replaceSearchFilters([
+                  ...searchFilters.filter(name => name !== 'all-content'),
+                  'publications-only',
+                ])
+              }
             />
             <label htmlFor="publications-only" className="c-filters-v2__checkbox-label">
               Publications only
@@ -133,95 +80,13 @@ class SearchFiltersV2 extends React.Component {
           </div>
         </div>
 
-        {publicationTypes && (
-          <PublicationTypes
-            publicationTypes={publicationTypes}
-            onChangeHandler={this.onChangeHandler}
-          />
-        )}
+        <SearchFilterPublicationTypes />
 
-        <form className="c-filters-v2__item">
-          <div className="c-filters-v2__item-head">
-            <h3 className="c-filters-v2__title">Publication topics</h3>
-            <input className="c-filters-v2__clear" type="reset" value="Clear" />
-          </div>
-          <span>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-1" value="pub-type-pubtype-1" />
-              <label htmlFor="pub-type-pubtype-1">Natural resources and energy (117)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-2" value="pub-type-pubtype-2" />
-              <label htmlFor="pub-type-pubtype-2">Development cooperation (88)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-3" value="pub-type-pubtype-3" />
-              <label htmlFor="pub-type-pubtype-3">International drivers of corruption (44)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-4" value="pub-type-pubtype-4" />
-              <label htmlFor="pub-type-pubtype-4">Justice sector (43)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-5" value="pub-type-pubtype-5" />
-              <label htmlFor="pub-type-pubtype-5">Public service delivery (41)</label>
-            </div>
-          </span>
-          <p>See all</p>
-        </form>
+        <SearchFilterTopics />
 
-        <form className="c-filters-v2__item">
-          <div className="c-filters-v2__item-head">
-            <h3 className="c-filters-v2__title">Languages</h3>
-            <input className="c-filters-v2__clear" type="reset" value="Clear" />
-          </div>
-          <span>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-1" value="pub-type-pubtype-1" />
-              <label htmlFor="pub-type-pubtype-1">English (522)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-2" value="pub-type-pubtype-2" />
-              <label htmlFor="pub-type-pubtype-2">French (55)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-3" value="pub-type-pubtype-3" />
-              <label htmlFor="pub-type-pubtype-3">Ukranian (1)</label>
-            </div>
-            <div className="c-input">
-              <input type="checkbox" id="pub-type-pubtype-4" value="pub-type-pubtype-4" />
-              <label htmlFor="pub-type-pubtype-4">Russian (1)</label>
-            </div>
-          </span>
-        </form>
+        <SearchFilterLanguages />
 
-        <div className="c-filters-v2__item">
-          <div className="c-filters-v2__item-head">
-            <h3 className="c-filters-v2__title">Year</h3>
-          </div>
-          <div className="c-filters-v2__select">
-            <div>
-              <label htmlFor="from">From:</label>
-              <select id="from" className="c-select">
-                <option selected value="2000">
-                  2000
-                </option>
-                <option value="2001">2001</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="to">To:</label>
-              <select id="to" className="c-select">
-                <option selected value="2018">
-                  2018
-                </option>
-                <option selected value="2019">
-                  2019
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
+        <SearchFilterYears />
       </div>
     );
   }

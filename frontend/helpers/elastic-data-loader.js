@@ -17,23 +17,100 @@ const client = new elasticsearch.Client({
   apiVersion: '6.5',
 });
 
+const aggregations = {
+  minPublicationDateMilliSeconds: {
+    min: {
+      field: 'date.utc',
+    },
+  },
+  maxPublicationDateMilliSeconds: {
+    max: {
+      field: 'date.utc',
+    },
+  },
+  publicationTypes: {
+    terms: {
+      field: 'publicationTypeTitle',
+      size: 100,
+    },
+  },
+  topicTitles: {
+    terms: {
+      field: 'topicTitles',
+      size: 100,
+    },
+  },
+  filedUnderTopicNames: {
+    terms: {
+      field: 'filedUnderTopicNames',
+      size: 100,
+    },
+  },
+  languages: {
+    terms: {
+      field: 'languageName',
+      size: 100,
+    },
+  },
+};
+
 const doSearch = async (query) => {
-  const { search: searchQuery = '', sort = '', filters: filterStr = '' } = query;
-  const activeFilterQueries = filterStr.split(',').reduce((acc, filter) => {
+  const {
+    search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0,
+  } = query;
+  const filters = filterStr.split(',').map(name => name.replace(/\|/g, ','));
+
+  const activeFilterQueries = [];
+
+  const topicNames = filters
+    .filter(filter => /^topic-type-/gi.test(filter))
+    .map(filter => /topic-type-(.*)/gi.exec(filter)[1]);
+  if (topicNames.length > 0) {
+    activeFilterQueries.push({ terms: { filedUnderTopicNames: topicNames } });
+  }
+
+  const publicationNames = filters
+    .filter(filter => /^pub-/gi.test(filter))
+    .map(filter => /pub-(.*)/gi.exec(filter)[1]);
+  if (publicationNames.length > 0) {
+    activeFilterQueries.push({ terms: { publicationTypeTitle: publicationNames } });
+  }
+
+  const languageNames = filters
+    .filter(filter => /^lang-type-/gi.test(filter))
+    .map(filter => /lang-type-(.*)/gi.exec(filter)[1]);
+  if (languageNames.length > 0) {
+    activeFilterQueries.push({ terms: { languageName: languageNames } });
+  }
+
+  filters.forEach((filter) => {
     if (filter === 'publications-only') {
-      acc.push({ term: { type: 'publication' } });
+      activeFilterQueries.push({ term: { type: 'publication' } });
+    } else if (/^year-from-/gi.test(filter)) {
+      const yearFrom = /year-from-(.*)/gi.exec(filter)[1];
+      activeFilterQueries.push({ range: { 'date.utc': { gte: new Date(yearFrom, 0) } } });
+    } else if (/^year-to-/gi.test(filter)) {
+      const yearTo = /year-to-(.*)/gi.exec(filter)[1];
+      activeFilterQueries.push({ range: { 'date.utc': { lte: new Date(yearTo, 0) } } });
     }
-    return acc;
-  }, []);
+  });
+
   try {
     const result = await client.search({
-      index: 'u4-*',
+      index: process.env.ES_INDEX || 'u4-staging-*',
       body: {
         query: {
           function_score: {
             query: {
               bool: {
-                ...(activeFilterQueries.length > 0 ? { filter: activeFilterQueries } : {}),
+                ...(activeFilterQueries.length > 0
+                  ? {
+                    filter: activeFilterQueries,
+                  }
+                  : {}),
+                // At least one search query should match. Need to have this
+                // to prevent weird results when using filters.
+                minimum_should_match: 1,
                 should: [
                   // if no query use match_all query to show results
                   ...(!searchQuery ? [{ match_all: {} }] : []),
@@ -48,23 +125,26 @@ const doSearch = async (query) => {
                   {
                     multi_match: {
                       query: searchQuery,
+                      _name: 'Exact title match',
+                      fields: ['title.exact^10', 'termTitle.exact^10', 'topicTitle.exact^10'],
+                    },
+                  },
+                  {
+                    multi_match: {
+                      query: searchQuery,
                       type: 'phrase_prefix',
                       _name: 'Main query',
                       fields: [
                         'title',
-                        'title.exact^6',
                         'standfirst',
-                        'keywords',
                         'lead',
                         'content',
                         'authors',
                         // term (glossary) related
                         'termTitle^2',
-                        'termTitle.exact^8',
                         'termContent^2',
                         // topic related
                         'topicTitle^3',
-                        'topicTitle.exact^7',
                         'topicContent^3',
                         'basicGuide',
                         'agenda',
@@ -85,12 +165,6 @@ const doSearch = async (query) => {
           },
         },
 
-        // example of spread syntax
-        // docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals
-        //
-        // Elastic: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
-        ...(false ? { hello: 'world' } : {}),
-
         ...(sort === 'year-desc'
           ? {
             sort: [{ 'date.utc': { order: 'desc' } }],
@@ -101,8 +175,26 @@ const doSearch = async (query) => {
             }
             : {}),
 
+        ...(searchPageNum > 0
+          ? {
+            from: 0,
+            size: searchPageNum * 10,
+          }
+          : {
+            from: 0,
+            size: 10,
+          }),
+
         highlight: {
           fields: {
+            title: {
+              fragment_size: 250,
+              number_of_fragments: 1,
+            },
+            topicTitle: {
+              fragment_size: 250,
+              number_of_fragments: 1,
+            },
             content: {
               fragment_size: 250,
               number_of_fragments: 1,
@@ -118,11 +210,11 @@ const doSearch = async (query) => {
           'type',
           'date',
           'pubdate.*',
-          'keywords',
           'termTitle',
           'termContent',
           'topicTitle',
           'topicContent',
+          'numberOfTopicResources',
           'url',
           'featuredImageUrl',
           'longTitle',
@@ -130,37 +222,29 @@ const doSearch = async (query) => {
           'isAgendaPresent',
           'isBasicGuidePresent',
           'publicationType',
+          'filedUnderTopicNames',
         ],
-        aggs: {
-          minPublicationDateMilliSeconds: {
-            min: {
-              field: 'date.utc',
-            },
-          },
-          maxPublicationDateMilliSeconds: {
-            max: {
-              field: 'date.utc',
-            },
-          },
-          publicationTypes: {
-            terms: {
-              field: 'publicationTypeTitle',
-            },
-          },
-          topicTitles: {
-            terms: {
-              field: 'topicTitles',
-            },
-          },
-          languages: {
-            terms: {
-              field: 'languageName',
-            },
-          },
-        },
       },
     });
     console.log('Elastic data loader received data', { query, result });
+    return result;
+  } catch (e) {
+    console.error('Elasticsearch query failed', e);
+    return {};
+  }
+};
+
+const getSearchAggregations = async () => {
+  try {
+    const result = await client.search({
+      index: process.env.ES_INDEX || 'u4-staging-*',
+      body: {
+        query: { match_all: {} },
+        aggs: aggregations,
+        size: 1,
+      },
+    });
+    console.log('getSearchAggregations returned', result);
     return result;
   } catch (e) {
     console.error('Elasticsearch query failed', e);
@@ -172,11 +256,31 @@ export default Child =>
   withRedux(initStore, null, mapDispatchToProps)(class DataLoader extends Component {
     static async getInitialProps(nextContext) {
       console.log('Elastic data loader fetching data');
-      const { query } = nextContext;
-      const result = await doSearch(query);
+      const { query, store } = nextContext;
+      // Use Promise.all so that we can fire off 1 or 2 two queries at once,
+      // without one waiting for the other.
+      const [result] = await Promise.all([
+        doSearch(query),
+        (async () => {
+          const { defaultSearchAggs = [] } = store.getState();
+          if (defaultSearchAggs.length > 0) {
+            return true;
+          }
+          // We do one search just to know how many possible aggregations
+          // we have. Filters needs this if they want to display unmatched filters.
+          const { aggregations } = await getSearchAggregations();
+          store.dispatch({
+            type: 'SEARCH_UPDATE_DEFAULT_AGGS',
+            defaultSearchAggs: aggregations,
+          });
+        })(),
+      ]);
+      store.dispatch({
+        type: 'SEARCH_UPDATE_RESULTS',
+        searchResults: result,
+      });
       return { data: result };
     }
-
     render() {
       const { error } = this.props;
       if (error) {

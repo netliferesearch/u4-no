@@ -1,5 +1,25 @@
 .c-figure {
 }
+.c-figure__title {
+  font-weight: bold;
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-tiny);
+  color: $black;
+  margin-bottom: $spacing-small;
+  page-break-after: avoid;
+}
+
+.c-figure__caption {
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-tiny);
+  color: $black;
+
+  & > .c-longform-grid__standard {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: $spacing-small;
+  }
+}
 
 .c-figure--narrow {
   width: 100%;
@@ -7,15 +27,15 @@
     width: 50%;
   }
   @media print {
-   width:25%;
-   }
+    width: 25%;
+  }
   img {
     width: 100%;
     height: auto;
   }
 }
 
-.c-figure--small{
+.c-figure--small {
   img {
     width: 100%;
     height: auto;
@@ -26,5 +46,31 @@
   img {
     width: 100%;
     height: auto;
+  }
+}
+.c-figure--wide {
+  img {
+    width: 100%;
+    height: auto;
+  }
+  @include mq($from: tablet) {
+    padding: 0 $spacing-small;
+  }
+}
+@media print {
+  .c-figure--full {
+    margin-left: -3.5cm;
+    margin-right: -3.5cm;
+  }
+  .c-figure--wide {
+    margin-left: -1.75cm;
+    margin-right: -1.75cm;
+  }
+  .c-figure__title {
+    page-break-after: avoid;
+  }
+  .c-figure__title,
+  .c-figure__caption {
+    font-size: 10pt;
   }
 }

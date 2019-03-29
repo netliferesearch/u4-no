@@ -25,6 +25,11 @@
 @import 'elements/elements.links';
 @import 'elements/elements.input';
 
+// COMPONENTS
+@import 'components/components.figure';
+@import 'components/components.table';
+@import 'components/components.chart';
+
 @import '../node_modules/inuitcss/utilities/utilities.widths';
 @import '../node_modules/inuitcss/utilities/utilities.headings';
 @import '../node_modules/inuitcss/utilities/utilities.spacings';
@@ -164,7 +169,7 @@ p {
 }
 /* .referencesLink { } */
 p {
-  prince-footnote-policy: keep-with-block;
+  prince-footnote-policy: keep-with-line;
 }
 .c-print__publication-type-and-number {
   string-set: publication-type-and-number content();
@@ -358,8 +363,22 @@ figure {
 
 .c-textbox--longform {
   background: $brand-lightest;
-  padding: $spacing;
+  padding: $spacing-tiny $spacing;
   font-family: $font-sans;
+  font-size: 90%;
+  orphans: 3;
+  widows: 3;
+  box-decoration-break: clone;
+
+  p:first-child,
+  h4:first-child {
+    margin-top: $spacing;
+    margin-block-start: $spacing;
+  }
+  p:last-child {
+    margin-bottom: $spacing;
+    margin-block-end: $spacing;
+  }
 }
 
 #references {

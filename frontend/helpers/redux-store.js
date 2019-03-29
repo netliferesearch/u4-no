@@ -24,7 +24,7 @@ const replaceWindowHash = hashValue => {
 
 // for when we need to reflect some redux state in the url
 const addQueryParams = queryParams => {
-  if (!window) {
+  if (typeof window === 'undefined') {
     return; // do nothing
   }
   // loops through object valued and sets any falsy values to undefined
@@ -36,6 +36,7 @@ const addQueryParams = queryParams => {
       acc[key] = value || undefined;
       return acc;
     }, {});
+
   const currentParams = queryString.parse(location.search);
   const newQueryString = queryString.stringify(
     Object.assign(currentParams, nullifyFalsyValues(queryParams)),
@@ -46,6 +47,13 @@ const addQueryParams = queryParams => {
   Router.replaceRoute(newUrl);
 };
 
+const updateFilterQueryParams = (filters = []) =>
+  addQueryParams({
+    filters: uniq(filters)
+      .map(name => name.replace(/,/g, '|'))
+      .join(),
+  });
+
 const defaultState = {
   readingProgressId: '',
   isArticleMenuOpen: false,
@@ -54,6 +62,9 @@ const defaultState = {
   showLoadingScreen: false,
   searchSorting: 'relevance',
   searchFilters: [],
+  searchPageNum: 1,
+  searchResults: {},
+  defaultSearchAggs: [],
 };
 
 export const actionTypes = {
@@ -65,7 +76,10 @@ export const actionTypes = {
   SEARCH_REMOVE_FILTER: 'SEARCH_REMOVE_FILTER',
   SEARCH_UPDATE_SORT: 'SEARCH_UPDATE_SORT',
   SEARCH_REPLACE_FILTERS: 'SEARCH_REPLACE_FILTERS',
+  SEARCH_UPDATE_PAGE_NUM: 'SEARCH_UPDATE_PAGE_NUM',
+  SEARCH_UPDATE_RESULTS: 'SEARCH_UPDATE_RESULTS',
   SCROLL_POSITION_SAVE: 'SCROLL_POSITION_SAVE',
+  SEARCH_UPDATE_DEFAULT_AGGS: 'SEARCH_UPDATE_DEFAULT_AGGS',
 };
 
 // REDUCERS
@@ -77,30 +91,37 @@ export const reducer = (state = defaultState, action) => {
       });
       return Object.assign({}, state, { searchSorting: action.sortName });
     case actionTypes.SEARCH_ADD_FILTER:
-      addQueryParams({
-        filters: uniq(state.searchFilters.concat(action.searchFilter)).join(),
-      });
+      updateFilterQueryParams(state.searchFilters.concat(action.searchFilter));
       return Object.assign({}, state, {
         searchFilters: uniq(state.searchFilters.concat(action.searchFilter)),
       });
     case actionTypes.SEARCH_REMOVE_FILTER:
-      addQueryParams({
-        filters: state.searchFilters.filter(name => name !== action.searchFilter).join(),
-      });
+      updateFilterQueryParams(state.searchFilters.filter(name => name !== action.searchFilter));
       return Object.assign({}, state, {
         searchFilters: state.searchFilters.filter(name => name !== action.searchFilter),
       });
     case actionTypes.SEARCH_REPLACE_FILTERS:
-      addQueryParams({
-        filters: uniq(action.searchFilters).join(),
-      });
+      updateFilterQueryParams(action.searchFilters);
       return Object.assign({}, state, {
         searchFilters: uniq(action.searchFilters),
       });
+    case actionTypes.SEARCH_UPDATE_PAGE_NUM:
+      addQueryParams({
+        searchPageNum: `${action.searchPageNum}`,
+      });
+      return { ...state, searchPageNum: action.searchPageNum };
     case actionTypes.SEARCH_CLEAR_ALL_FILTERS:
       addQueryParams({ filters: false });
       return Object.assign({}, state, {
         searchFilters: [],
+      });
+    case actionTypes.SEARCH_UPDATE_DEFAULT_AGGS:
+      return Object.assign({}, state, {
+        defaultSearchAggs: action.defaultSearchAggs,
+      });
+    case actionTypes.SEARCH_UPDATE_RESULTS:
+      return Object.assign({}, state, {
+        searchResults: action.searchResults,
       });
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
@@ -132,9 +153,6 @@ export const toggleLoadingScreen = () => dispatch =>
 export const updateSearchSorting = sortName => dispatch =>
   dispatch({ type: actionTypes.SEARCH_UPDATE_SORT, sortName });
 
-/**
- * @param {String} searchFilter name of filter to add
- */
 export const addSearchFilter = searchFilter => dispatch =>
   dispatch({ type: actionTypes.SEARCH_ADD_FILTER, searchFilter });
 
@@ -147,24 +165,36 @@ export const replaceSearchFilters = (searchFilters = []) => dispatch =>
 export const clearAllSearchFilters = () => dispatch =>
   dispatch({ type: actionTypes.SEARCH_CLEAR_ALL_FILTERS });
 
+export const updateSearchPageNum = searchPageNum => dispatch => {
+  return dispatch({ type: actionTypes.SEARCH_UPDATE_PAGE_NUM, searchPageNum });
+};
+
 export const saveScrollPosition = scrollPosition => dispatch =>
   dispatch({ type: actionTypes.SCROLL_POSITION_SAVE, scrollPosition });
 
 export const initStore = (initialState = defaultState, options) => {
   const { query = {} } = options;
-  const { filters = '', sort = '' } = query;
+  const { filters = '', sort = '', searchPageNum } = query;
   let state = initialState;
+
+  if (searchPageNum) {
+    state = {
+      ...state,
+      searchPageNum: parseInt(searchPageNum, 10),
+    };
+  }
+
   // if there are active filters in the url query params we need to split
   // and add them to the state.
   if (filters) {
-    state = Object.assign(initialState, {
+    state = Object.assign(state, {
       searchFilters: filters.split(','),
     });
   }
   // if there is an active query param sort configured we let it override
   // the default sorting in state
   if (sort) {
-    state = Object.assign(initialState, {
+    state = Object.assign(state, {
       searchSorting: sort,
     });
   }

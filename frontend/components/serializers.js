@@ -13,11 +13,13 @@ import {
   BoxOnBox,
   BoxOnBoxTopics,
   BoxOnImage,
+  Chart,
   WorkshopMosaic,
   Feature,
   SimpleMosaic,
   Mosaic,
   ToggleTextBox,
+  Table,
 } from './';
 import { ArrowRight } from './icons';
 
@@ -196,17 +198,8 @@ const serializers = {
         <WorkshopMosaic resources={workshopsRef} />
       </div>
     ),
-    table: ({ node: { htmlStr = '' } }) => (
-      <div {...classes('larger')}>
-        // We trust html content coming from Sanity and output it.
-        <div className="c-table" dangerouslySetInnerHTML={{ __html: htmlStr }} />
-      </div>
-    ),
-    chart: ({ node: { htmlStr = '' } }) => (
-      <div {...classes('larger')}>
-        <div className="c-chart">Chart is not built yet.</div>
-      </div>
-    ),
+    table: ({ node }) => <Table {...node} />,
+    chart: ({ node }) => <Chart {...node} />,
     features: ({ node: { featureArray } }) => (
       <section className="o-wrapper c-topic-section">
         <div className="c-features">
