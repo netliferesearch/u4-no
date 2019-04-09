@@ -20,6 +20,7 @@ class LongformArticle extends PureComponent {
       notes = [],
       authors = [],
       acknowledgements = [],
+      abbreviations = [],
       editors = [],
       references = [],
       methodology = [],
@@ -120,6 +121,18 @@ class LongformArticle extends PureComponent {
                   blocks={acknowledgements}
                   serializers={serializers(acknowledgements)}
                 />
+              )}
+            </div>
+          </div>
+        ) : null}
+
+        {abbreviations.length ? (
+          <div className="c-longform-grid">
+            <div className="c-longform-grid__standard">
+              <h3>Abbreviations</h3>
+              {typeof abbreviations === 'string' && <p>{abbreviations}</p>}
+              {typeof abbreviations !== 'string' && (
+                <BlockContent blocks={abbreviations} serializers={serializers(abbreviations)} />
               )}
             </div>
           </div>
