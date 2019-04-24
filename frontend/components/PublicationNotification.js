@@ -47,14 +47,15 @@ const PublicationNotification = ({ headsUp = false, updatedVersion = false, date
             >
               {updatedVersion.title}
             </a>
-            <br />
             <span>
+              &nbsp;(
               {bibliographicReference({
                 publicationType: updatedVersion.publicationType,
                 publicationNumber: updatedVersion.publicationNumber,
                 reference: updatedVersion.reference,
                 shortVersion: true,
               })}
+              )
             </span>
           </p>
         </div>
