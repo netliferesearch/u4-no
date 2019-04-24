@@ -5,7 +5,7 @@ export default ({
   shortVersion = false,
 }) => {
   if (shortVersion && publicationType.title && publicationNumber) {
-    return `${publicationType.title} ${publicationNumber})`;
+    return `${publicationType.title} ${publicationNumber}`;
   } else if (shortVersion && publicationNumber) return publicationNumber;
   else if (reference) return reference;
   else if (publicationType.title && publicationNumber) {

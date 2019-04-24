@@ -14,7 +14,6 @@ const classes = BEMHelper({
 // file downloads are not normally tracked by GA, thus we fire of a page view
 // before downloading.
 
-
 const logPDFPageView = ({ e, url }) => {
   e.preventDefault();
   if (window.ga) {
@@ -66,7 +65,8 @@ const PublicationArticleHeader = ({
   <header {...classes('', null, className)}>
     {/* Wrap in standard grid width until we know better */}
     <div {...classes('meta')}>
-      {publicationType.title && `${publicationType.title} | `}
+      {publicationType.title && `${publicationType.title}`}
+      {topics.length > 0 && ' | '}
       {topics
         .filter(value => Object.keys(value).length)
         .map(({ title = '', slug = {} }) => (
@@ -144,10 +144,7 @@ const PublicationArticleHeader = ({
       )}
       {pdfFile.asset && (
         <div {...classes('meta', null, 'c-article-header__download')}>
-          <a
-            href={`/publications/${slug.current}.pdf`}
-            {...classes('download-text')}
-          >
+          <a href={`/publications/${slug.current}.pdf`} {...classes('download-text')}>
             <span>Download as PDF</span>
             <Download {...classes('download-icon')} />
           </a>
@@ -155,10 +152,7 @@ const PublicationArticleHeader = ({
       )}
       {!pdfFile.asset && legacypdf.asset && (
         <div {...classes('meta', null, 'c-article-header__download')}>
-          <a
-            href={`/publications/${slug.current}.pdf`}
-            {...classes('download-text')}
-          >
+          <a href={`/publications/${slug.current}.pdf`} {...classes('download-text')}>
             <span>Download PDF</span>
             <Download {...classes('download-icon')} />
           </a>
