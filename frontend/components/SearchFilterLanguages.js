@@ -13,17 +13,15 @@ import {
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   searchFilters.find(name => name === filterName);
 
-const SearchFilterLanguages = (props) => {
-  const {
-    searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter,
-  } = props;
+const SearchFilterLanguages = props => {
+  const { searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter } = props;
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
-        <h3 className="c-filters-v2__title">Languages</h3>
+        <h3 className="c-filters-v2__title">Language</h3>
       </div>
       <span>
-        {defaultBuckets.map((defaultBucket) => {
+        {defaultBuckets.map(defaultBucket => {
           const { key, doc_count } = defaultBucket;
           const filterName = `lang-type-${key}`;
           return (
@@ -33,7 +31,7 @@ const SearchFilterLanguages = (props) => {
                 id={slugify(key)}
                 defaultChecked={isFilterActive({ searchFilters, filterName })}
                 value={key}
-                onChange={(event) => {
+                onChange={event => {
                   if (event.target.checked) {
                     addSearchFilter(filterName);
                   } else {
@@ -69,5 +67,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(SearchFilterLanguages);
