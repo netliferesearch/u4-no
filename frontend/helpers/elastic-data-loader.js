@@ -54,9 +54,12 @@ const aggregations = {
   },
 };
 
-const doSearch = async (query) => {
+const doSearch = async query => {
   const {
-    search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0,
+    search: searchQuery = '',
+    sort = '',
+    filters: filterStr = '',
+    searchPageNum = 0,
   } = query;
   const filters = filterStr.split(',').map(name => name.replace(/\|/g, ','));
 
@@ -73,7 +76,9 @@ const doSearch = async (query) => {
     .filter(filter => /^pub-/gi.test(filter))
     .map(filter => /pub-(.*)/gi.exec(filter)[1]);
   if (publicationNames.length > 0) {
-    activeFilterQueries.push({ terms: { publicationTypeTitle: publicationNames } });
+    activeFilterQueries.push({
+      terms: { publicationTypeTitle: publicationNames },
+    });
   }
 
   const languageNames = filters
@@ -83,15 +88,19 @@ const doSearch = async (query) => {
     activeFilterQueries.push({ terms: { languageName: languageNames } });
   }
 
-  filters.forEach((filter) => {
+  filters.forEach(filter => {
     if (filter === 'publications-only') {
       activeFilterQueries.push({ term: { type: 'publication' } });
     } else if (/^year-from-/gi.test(filter)) {
       const yearFrom = /year-from-(.*)/gi.exec(filter)[1];
-      activeFilterQueries.push({ range: { 'date.utc': { gte: `${yearFrom}-01-01` } } });
+      activeFilterQueries.push({
+        range: { 'date.utc': { gte: `${yearFrom}-01-01` } },
+      });
     } else if (/^year-to-/gi.test(filter)) {
       const yearTo = /year-to-(.*)/gi.exec(filter)[1];
-      activeFilterQueries.push({ range: { 'date.utc': { lte: `${yearTo}-12-31` } } });
+      activeFilterQueries.push({
+        range: { 'date.utc': { lte: `${yearTo}-12-31` } },
+      });
     }
   });
 
@@ -105,13 +114,17 @@ const doSearch = async (query) => {
               bool: {
                 ...(activeFilterQueries.length > 0
                   ? {
-                    filter: activeFilterQueries,
-                  }
+                      filter: activeFilterQueries,
+                    }
                   : {}),
                 // At least one search query should match. Need to have this
                 // to prevent weird results when using filters.
                 minimum_should_match: 1,
                 should: [
+                  // if no query, yet active filters use match_all query to show results
+                  ...(!searchQuery && activeFilterQueries.length > 0
+                    ? [{ match_all: {} }]
+                    : []),
                   {
                     multi_match: {
                       query: searchQuery,
@@ -124,7 +137,11 @@ const doSearch = async (query) => {
                     multi_match: {
                       query: searchQuery,
                       _name: 'Exact title match',
-                      fields: ['title.exact^10', 'termTitle.exact^10', 'topicTitle.exact^10'],
+                      fields: [
+                        'title.exact^10',
+                        'termTitle.exact^10',
+                        'topicTitle.exact^10',
+                      ],
                     },
                   },
                   {
@@ -163,25 +180,26 @@ const doSearch = async (query) => {
           },
         },
 
+        /* eslint-disable no-nested-ternary */
         ...(sort === 'year-desc'
           ? {
-            sort: [{ 'date.utc': { order: 'desc' } }],
-          }
+              sort: [{ 'date.utc': { order: 'desc' } }],
+            }
           : sort === 'year-asc'
-            ? {
+          ? {
               sort: [{ 'date.utc': { order: 'asc' } }],
             }
-            : {}),
+          : {}),
 
         ...(searchPageNum > 0
           ? {
-            from: 0,
-            size: searchPageNum * 10,
-          }
+              from: 0,
+              size: searchPageNum * 10,
+            }
           : {
-            from: 0,
-            size: 10,
-          }),
+              from: 0,
+              size: 10,
+            }),
 
         highlight: {
           fields: {
@@ -251,43 +269,45 @@ const getSearchAggregations = async () => {
 };
 
 export default Child =>
-  withRedux(initStore, null, mapDispatchToProps)(class DataLoader extends Component {
-    static async getInitialProps(nextContext) {
-      console.log('Elastic data loader fetching data');
-      const { query, store } = nextContext;
-      // Use Promise.all so that we can fire off 1 or 2 two queries at once,
-      // without one waiting for the other.
-      const [result] = await Promise.all([
-        doSearch(query),
-        (async () => {
-          const { defaultSearchAggs = [] } = store.getState();
-          if (defaultSearchAggs.length > 0) {
-            return true;
-          }
-          // We do one search just to know how many possible aggregations
-          // we have. Filters needs this if they want to display unmatched filters.
-          const { aggregations } = await getSearchAggregations();
-          store.dispatch({
-            type: 'SEARCH_UPDATE_DEFAULT_AGGS',
-            defaultSearchAggs: aggregations,
-          });
-        })(),
-      ]);
-      store.dispatch({
-        type: 'SEARCH_UPDATE_RESULTS',
-        searchResults: result,
-      });
-      return { data: result };
-    }
-    render() {
-      const { error } = this.props;
-      if (error) {
-        return <Error404 {...this.props} />;
+  withRedux(initStore, null, mapDispatchToProps)(
+    class DataLoader extends Component {
+      static async getInitialProps(nextContext) {
+        console.log('Elastic data loader fetching data');
+        const { query, store } = nextContext;
+        // Use Promise.all so that we can fire off 1 or 2 two queries at once,
+        // without one waiting for the other.
+        const [result] = await Promise.all([
+          doSearch(query),
+          (async () => {
+            const { defaultSearchAggs = [] } = store.getState();
+            if (defaultSearchAggs.length > 0) {
+              return true;
+            }
+            // We do one search just to know how many possible aggregations
+            // we have. Filters needs this if they want to display unmatched filters.
+            const { aggregations } = await getSearchAggregations();
+            return store.dispatch({
+              type: 'SEARCH_UPDATE_DEFAULT_AGGS',
+              defaultSearchAggs: aggregations,
+            });
+          })(),
+        ]);
+        store.dispatch({
+          type: 'SEARCH_UPDATE_RESULTS',
+          searchResults: result,
+        });
+        return { data: result };
       }
-      return (
-        <div>
-          <Child {...this.props} />
-        </div>
-      );
+      render() {
+        const { error } = this.props;
+        if (error) {
+          return <Error404 {...this.props} />;
+        }
+        return (
+          <div>
+            <Child {...this.props} />
+          </div>
+        );
+      }
     }
-  });
+  );
