@@ -74,7 +74,7 @@ const SearchFilterPublicationTypes = props => {
                 }}
               />
               <label htmlFor={slugify(key)}>
-                {key} ({searchQuery ? docCount : defaultDocCount})
+                {key} ({searchQuery.length > 2 ? docCount : defaultDocCount})
               </label>
             </div>
           );
@@ -95,7 +95,8 @@ const SearchFilterPublicationTypes = props => {
               }}
             />
             <label htmlFor="pub-other">
-              Other ({searchQuery ? otherBucketsResultCount : otherBucketsDefaultResultCount})
+              Other (
+              {searchQuery.length > 2 ? otherBucketsResultCount : otherBucketsDefaultResultCount})
             </label>
           </div>
         )}

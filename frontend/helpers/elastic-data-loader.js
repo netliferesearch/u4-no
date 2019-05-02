@@ -115,6 +115,10 @@ const doSearch = async ({
     }
   });
 
+  if (searchQuery.length <= 2) {
+    return;
+  }
+
   try {
     const result = await client.search({
       index: process.env.ES_INDEX || 'u4-staging-*',
