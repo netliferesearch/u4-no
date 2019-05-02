@@ -112,8 +112,6 @@ const doSearch = async (query) => {
                 // to prevent weird results when using filters.
                 minimum_should_match: 1,
                 should: [
-                  // if no query use match_all query to show results
-                  ...(!searchQuery ? [{ match_all: {} }] : []),
                   {
                     multi_match: {
                       query: searchQuery,
