@@ -26,12 +26,12 @@ const getToYear = ({ searchFilters = [] }) => {
   return parseInt(toYear, 10);
 };
 
-const SearchFilterYears = (props) => {
+const SearchFilterYears = props => {
   const { searchFilters, years = [], replaceSearchFilters } = props;
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
-        <h3 className="c-filters-v2__title">Years</h3>
+        <h3 className="c-filters-v2__title">Year</h3>
       </div>
       <span>
         <div className="c-filters-v2__select">
@@ -40,7 +40,7 @@ const SearchFilterYears = (props) => {
             <select
               id="from"
               className="c-select"
-              onChange={(event) => {
+              onChange={event => {
                 const value = event.target.value;
                 const newFilters = [...searchFilters.filter(name => !name.startsWith('year-from'))];
                 if (!value) {
@@ -63,7 +63,7 @@ const SearchFilterYears = (props) => {
             <select
               id="to"
               className="c-select"
-              onChange={(event) => {
+              onChange={event => {
                 const value = event.target.value;
                 const newFilters = [...searchFilters.filter(name => !name.startsWith('year-to'))];
                 if (!value) {
@@ -117,5 +117,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(SearchFilterYears);
