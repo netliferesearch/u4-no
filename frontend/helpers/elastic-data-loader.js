@@ -55,12 +55,7 @@ const aggregations = {
 };
 
 const doSearch = async query => {
-  const {
-    search: searchQuery = '',
-    sort = '',
-    filters: filterStr = '',
-    searchPageNum = 0,
-  } = query;
+  const { search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0 } = query;
   const filters = filterStr.split(',').map(name => name.replace(/\|/g, ','));
 
   const activeFilterQueries = [];
@@ -122,9 +117,7 @@ const doSearch = async query => {
                 minimum_should_match: 1,
                 should: [
                   // if no query, yet active filters use match_all query to show results
-                  ...(!searchQuery && activeFilterQueries.length > 0
-                    ? [{ match_all: {} }]
-                    : []),
+                  ...(!searchQuery && activeFilterQueries.length > 0 ? [{ match_all: {} }] : []),
                   {
                     multi_match: {
                       query: searchQuery,
@@ -137,11 +130,7 @@ const doSearch = async query => {
                     multi_match: {
                       query: searchQuery,
                       _name: 'Exact title match',
-                      fields: [
-                        'title.exact^10',
-                        'termTitle.exact^10',
-                        'topicTitle.exact^10',
-                      ],
+                      fields: ['title.exact^10', 'termTitle.exact^10', 'topicTitle.exact^10'],
                     },
                   },
                   {
@@ -174,7 +163,7 @@ const doSearch = async query => {
             functions: [
               {
                 filter: [{ match: { type: 'topic' } }],
-                weight: 1.2,
+                weight: 5,
               },
             ],
           },
