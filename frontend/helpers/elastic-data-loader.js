@@ -88,10 +88,10 @@ const doSearch = async (query) => {
       activeFilterQueries.push({ term: { type: 'publication' } });
     } else if (/^year-from-/gi.test(filter)) {
       const yearFrom = /year-from-(.*)/gi.exec(filter)[1];
-      activeFilterQueries.push({ range: { 'date.utc': { gte: new Date(yearFrom, 0) } } });
+      activeFilterQueries.push({ range: { 'date.utc': { gte: `${yearFrom}-01-01` } } });
     } else if (/^year-to-/gi.test(filter)) {
       const yearTo = /year-to-(.*)/gi.exec(filter)[1];
-      activeFilterQueries.push({ range: { 'date.utc': { lte: new Date(yearTo, 0) } } });
+      activeFilterQueries.push({ range: { 'date.utc': { lte: `${yearTo}-12-31` } } });
     }
   });
 
