@@ -20,7 +20,7 @@ const SearchFilterTopics = (props) => {
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
-        <h3 className="c-filters-v2__title">Publication topics</h3>
+        <h3 className="c-filters-v2__title">Topics</h3>
       </div>
       <span>
         {defaultBuckets.map((defaultBucket) => {
