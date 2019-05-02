@@ -11,9 +11,10 @@ import {
   replaceSearchFilters,
 } from '../helpers/redux-store';
 import { publicationTypesToShow } from '../helpers/elastic-data-loader';
+import { SearchFilterReset } from './';
 
 const isFilterActive = ({ searchFilters = [], filterName }) =>
-  searchFilters.find(name => name === filterName);
+  !!searchFilters.find(name => name === filterName);
 
 const SearchFilterPublicationTypes = props => {
   const {
@@ -53,6 +54,9 @@ const SearchFilterPublicationTypes = props => {
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
         <h3 className="c-filters-v2__title">Publication type</h3>
+        <span className="c-filters-v2__clear">
+          <SearchFilterReset filterPrefix="pub-" />
+        </span>
       </div>
       <span>
         {bucketsToShow.map(bucket => {
@@ -63,7 +67,7 @@ const SearchFilterPublicationTypes = props => {
               <input
                 type="checkbox"
                 id={slugify(key)}
-                defaultChecked={isFilterActive({ searchFilters, filterName })}
+                checked={isFilterActive({ searchFilters, filterName })}
                 value={key}
                 onChange={event => {
                   if (event.target.checked) {
@@ -84,7 +88,7 @@ const SearchFilterPublicationTypes = props => {
             <input
               type="checkbox"
               id="pub-other"
-              defaultChecked={isFilterActive({ searchFilters, filterName: 'pub-other' })}
+              checked={isFilterActive({ searchFilters, filterName: 'pub-other' })}
               value="pub-other"
               onChange={event => {
                 if (event.target.checked) {

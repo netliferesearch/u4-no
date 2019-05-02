@@ -11,12 +11,18 @@
   }
 }
 
+.c-filters-v2__clear-all {
+  padding-bottom: $spacing;
+  min-height: 45px;
+  text-align: right;
+}
+
 .c-filters-v2--standalone {
   margin-left: auto;
   margin-right: auto;
   font-family: $font-sans;
   text-align: center;
-  margin-top: $spacing-huge*1.5;
+  margin-top: $spacing-huge * 1.5;
   color: $brand-dark;
   margin-bottom: $spacing-large;
   @include inuit-font-size($font-size-small, $line-height-small);
@@ -24,19 +30,19 @@
 
 .c-filters-v2__item {
   font-family: $font-sans;
-  padding:0;
+  padding: 0;
   margin: $spacing-large 0;
   @include inuit-font-size($font-size-tiny, $line-height-tiny);
 }
+
 .c-filters-v2__item--standalone {
   background: none;
   border: none;
 }
+
 .c-filters-v2__main-title {
   @include inuit-font-size($font-size-normal, $line-height-normal);
   font-weight: bold;
-  //border-bottom: 1px solid $brand-dark;
-  //padding-bottom: $spacing-small;
 }
 
 .c-filters-v2__item-head {
@@ -44,28 +50,16 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .c-filters-v2__title {
-  padding:0;
+  padding: 0;
   margin: 20px 0;
   font-weight: bold;
   @include inuit-font-size($font-size-small, $line-height-normal);
 }
-.c-filters-v2__clear {
-  @include inuit-font-size($font-size-tiny, $line-height-small);
-  border: none;
-  padding: 0;
-  color: $brand-dark;
-  border-bottom: 1px solid transparent;
-  white-space: nowrap;
-}
-
-.c-filters-v2__clear:hover {
-  border-bottom: 1px solid currentColor;
-  cursor: pointer;
-}
 
 .c-filters-v2__checkbox {
-  margin-bottom:14px;
+  margin-bottom: 14px;
   display: grid;
   grid-template-columns: 16px auto;
   input {
@@ -104,7 +98,7 @@
 }
 
 .c-filters-v2__radio {
-  margin-bottom:14px;
+  margin-bottom: 14px;
   display: grid;
   grid-template-columns: 16px auto;
   input {
@@ -220,7 +214,7 @@
 .c-filters-v2__topbar-result {
   padding: 0;
   margin: 0;
-  @include inuit-font-size($font-size-tiny, $line-height-small );
+  @include inuit-font-size($font-size-tiny, $line-height-small);
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-tiny, $line-height-normal);
   }

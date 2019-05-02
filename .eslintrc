@@ -1,26 +1,16 @@
 {
-  "extends": [
-    "airbnb",
-    "plugin:jest/recommended",
-    "prettier",
-    "prettier/react"
-  ],
+  "extends": ["airbnb", "plugin:jest/recommended", "prettier", "prettier/react"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": 0,
-    "no-underscore-dangle": [
-      "error",
-      { "allow": ["_id", "_type", "_ref", "_key", "_rawJson"] }
-    ],
+    "no-underscore-dangle": ["error", { "allow": ["_id", "_type", "_ref", "_key", "_rawJson"] }],
     "jsx-a11y/href-no-hash": "off",
     "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
     "linebreak-style": ["error", "unix"],
     "no-shadow": "off",
     "no-console": "off",
-    "no-unused-vars": [
-      "error",
-      { "vars": "all", "args": "none", "ignoreRestSiblings": false }
-    ]
+    "no-unused-vars": ["error", { "vars": "all", "args": "none", "ignoreRestSiblings": false }],
+    "react/forbid-prop-types": "off"
   },
   "plugins": ["jest"],
   "env": {

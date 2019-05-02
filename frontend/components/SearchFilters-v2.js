@@ -8,6 +8,7 @@ import {
   SearchFilterTopics,
   SearchFilterLanguages,
   SearchFilterYears,
+  SearchFilterReset,
 } from './';
 import {
   addSearchFilter,
@@ -28,8 +29,12 @@ class SearchFiltersV2 extends React.Component {
     const { searchFilters, replaceSearchFilters } = this.props;
     // These are old filters from V1 that we need to prevent from messing with the new search filters
     const invalidFilters = ['pub-type', 'pub-topic', 'pub-year', 'pub-author', 'pub-lang'];
-    replaceSearchFilters(searchFilters.filter(filterName =>
-      !invalidFilters.find(invalidFilterName => filterName.startsWith(invalidFilterName))));
+    replaceSearchFilters(
+      searchFilters.filter(
+        filterName =>
+          !invalidFilters.find(invalidFilterName => filterName.startsWith(invalidFilterName))
+      )
+    );
   }
 
   render() {
@@ -44,13 +49,16 @@ class SearchFiltersV2 extends React.Component {
           </button>
         </div>
         <div className="c-filters-v2__item">
+          <div className="c-filters-v2__clear-all">
+            <SearchFilterReset>Clear all filters</SearchFilterReset>
+          </div>
           <div className="c-input">
             <input
               id="all-content"
               type="radio"
               name="content"
               value="all-content"
-              defaultChecked={!searchFilters.find(name => name === 'publications-only')}
+              checked={!searchFilters.find(name => name === 'publications-only')}
               onChange={() =>
                 replaceSearchFilters([
                   ...searchFilters.filter(name => name !== 'publications-only'),
@@ -66,7 +74,7 @@ class SearchFiltersV2 extends React.Component {
               type="radio"
               name="content"
               value="publications-only"
-              defaultChecked={searchFilters.find(name => name === 'publications-only')}
+              checked={!!searchFilters.find(name => name === 'publications-only')}
               onChange={() =>
                 replaceSearchFilters([
                   ...searchFilters.filter(name => name !== 'all-content'),
@@ -102,5 +110,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(SearchFiltersV2);

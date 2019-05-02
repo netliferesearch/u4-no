@@ -84,14 +84,12 @@
    ========================================================================== */
 
 .c-btn--primary {
-
   &:focus {
     .c-btn__body {
       color: $white;
       background-color: $brand-main;
     }
   }
-
 }
 
 .c-btn--secondary {
@@ -166,9 +164,7 @@ $btn-ghost-border-width: 2px;
 .c-btn--ghost {
   border: $btn-ghost-border-width solid currentColor;
   padding: ($inuit-global-spacing-unit-small - $btn-ghost-border-width)
-    (
-      $inuit-global-spacing-unit - $btn-ghost-border-width
-    );
+    ($inuit-global-spacing-unit - $btn-ghost-border-width);
 
   &,
   &:hover,
@@ -179,16 +175,12 @@ $btn-ghost-border-width: 2px;
 
   &.c-btn--small {
     padding: ($inuit-global-spacing-unit-tiny - $btn-ghost-border-width)
-      (
-        $inuit-global-spacing-unit-small - $btn-ghost-border-width
-      );
+      ($inuit-global-spacing-unit-small - $btn-ghost-border-width);
   }
 
   &.c-btn--large {
     padding: ($inuit-global-spacing-unit - $btn-ghost-border-width)
-      (
-        $inuit-global-spacing-unit-large - $btn-ghost-border-width
-      );
+      ($inuit-global-spacing-unit-large - $btn-ghost-border-width);
   }
 
   &.c-btn--primary {

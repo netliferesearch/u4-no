@@ -9,9 +9,10 @@ import {
   clearAllSearchFilters,
   replaceSearchFilters,
 } from '../helpers/redux-store';
+import { SearchFilterReset } from './';
 
 const isFilterActive = ({ searchFilters = [], filterName }) =>
-  searchFilters.find(name => name === filterName);
+  !!searchFilters.find(name => name === filterName);
 
 const SearchFilterLanguages = props => {
   const { searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter } = props;
@@ -19,6 +20,9 @@ const SearchFilterLanguages = props => {
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
         <h3 className="c-filters-v2__title">Language</h3>
+        <span className="c-filters-v2__clear">
+          <SearchFilterReset filterPrefix="lang-type-" />
+        </span>
       </div>
       <span>
         {defaultBuckets.map(defaultBucket => {
@@ -29,7 +33,7 @@ const SearchFilterLanguages = props => {
               <input
                 type="checkbox"
                 id={slugify(key)}
-                defaultChecked={isFilterActive({ searchFilters, filterName })}
+                checked={isFilterActive({ searchFilters, filterName })}
                 value={key}
                 onChange={event => {
                   if (event.target.checked) {

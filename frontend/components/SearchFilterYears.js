@@ -7,6 +7,7 @@ import {
   clearAllSearchFilters,
   replaceSearchFilters,
 } from '../helpers/redux-store';
+import { SearchFilterReset } from './';
 
 const getFromYear = ({ searchFilters = [] }) => {
   const yearFilter = searchFilters.find(name => name.startsWith('year-from'));
@@ -32,6 +33,9 @@ const SearchFilterYears = props => {
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
         <h3 className="c-filters-v2__title">Year</h3>
+        <span className="c-filters-v2__clear">
+          <SearchFilterReset filterPrefix="year-" />
+        </span>
       </div>
       <span>
         <div className="c-filters-v2__select">
@@ -49,7 +53,7 @@ const SearchFilterYears = props => {
                 newFilters.push(`year-from-${value}`);
                 replaceSearchFilters(newFilters);
               }}
-              defaultValue={getFromYear({ searchFilters })}
+              value={getFromYear({ searchFilters })}
             >
               {years.map((year, i) => (
                 <option key={year} value={i === 0 ? '' : year}>
@@ -72,7 +76,7 @@ const SearchFilterYears = props => {
                 newFilters.push(`year-to-${value}`);
                 replaceSearchFilters(newFilters);
               }}
-              defaultValue={getToYear({ searchFilters })}
+              value={getToYear({ searchFilters })}
             >
               {years
                 .slice()
