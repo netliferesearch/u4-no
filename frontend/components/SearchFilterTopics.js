@@ -13,17 +13,15 @@ import {
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   searchFilters.find(name => name === filterName);
 
-const SearchFilterTopics = (props) => {
-  const {
-    searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter,
-  } = props;
+const SearchFilterTopics = props => {
+  const { searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter } = props;
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
-        <h3 className="c-filters-v2__title">Topics</h3>
+        <h3 className="c-filters-v2__title">Topic</h3>
       </div>
       <span>
-        {defaultBuckets.map((defaultBucket) => {
+        {defaultBuckets.map(defaultBucket => {
           const { key, doc_count } = defaultBucket;
           const filterName = `topic-type-${key}`;
           return (
@@ -33,7 +31,7 @@ const SearchFilterTopics = (props) => {
                 id={slugify(key)}
                 defaultChecked={isFilterActive({ searchFilters, filterName })}
                 value={key}
-                onChange={(event) => {
+                onChange={event => {
                   if (event.target.checked) {
                     addSearchFilter(filterName);
                   } else {
@@ -69,5 +67,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(SearchFilterTopics);

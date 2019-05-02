@@ -54,7 +54,13 @@ const aggregations = {
   },
 };
 
-const doSearch = async query => {
+// Controls what publication type filters to show. The rest will be displayed as Other.
+export const publicationTypesToShow = ['U4 Brief', 'U4 Issue', 'U4 Helpdesk Answer'];
+
+const doSearch = async ({
+  query,
+  defaultSearchAggs: { publicationTypes: defaultPublicationTypes = {} } = [],
+}) => {
   const { search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0 } = query;
   const filters = filterStr.split(',').map(name => name.replace(/\|/g, ','));
 
@@ -69,7 +75,17 @@ const doSearch = async query => {
 
   const publicationNames = filters
     .filter(filter => /^pub-/gi.test(filter))
-    .map(filter => /pub-(.*)/gi.exec(filter)[1]);
+    .map(filter => /pub-(.*)/gi.exec(filter)[1])
+    .reduce((acc, name) => {
+      if (name === 'other') {
+        const restOfPubTypes = defaultPublicationTypes.buckets.filter(
+          ({ key }) => !publicationTypesToShow.find(name => name === key)
+        );
+        return [...acc, ...restOfPubTypes];
+      }
+      acc.push(name);
+      return acc;
+    }, []);
   if (publicationNames.length > 0) {
     activeFilterQueries.push({
       terms: { publicationTypeTitle: publicationNames },
@@ -169,6 +185,8 @@ const doSearch = async query => {
           },
         },
 
+        aggs: aggregations,
+
         /* eslint-disable no-nested-ternary */
         ...(sort === 'year-desc'
           ? {
@@ -263,12 +281,12 @@ export default Child =>
       static async getInitialProps(nextContext) {
         console.log('Elastic data loader fetching data');
         const { query, store } = nextContext;
+        const { defaultSearchAggs = {} } = store.getState();
         // Use Promise.all so that we can fire off 1 or 2 two queries at once,
         // without one waiting for the other.
         const [result] = await Promise.all([
-          doSearch(query),
+          doSearch({ query, defaultSearchAggs }),
           (async () => {
-            const { defaultSearchAggs = [] } = store.getState();
             if (defaultSearchAggs.length > 0) {
               return true;
             }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'next/router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import sortBy from 'lodash/sortBy';
@@ -9,23 +10,53 @@ import {
   clearAllSearchFilters,
   replaceSearchFilters,
 } from '../helpers/redux-store';
+import { publicationTypesToShow } from '../helpers/elastic-data-loader';
 
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   searchFilters.find(name => name === filterName);
 
-const SearchFilterPublicationTypes = (props) => {
+const SearchFilterPublicationTypes = props => {
   const {
-    searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter,
+    searchFilters,
+    buckets = [],
+    defaultBuckets = [],
+    addSearchFilter,
+    removeSearchFilter,
+    router,
   } = props;
-  // const inactiveBuckets = getSortedInactiveBuckets({ buckets, defaultBuckets });
+  const { search: searchQuery = '' } = router.query;
+  /**
+   * We jump through hoops calculating docCount hits using the default aggregations because
+   * if a search result returns with 0 docCount hits on a certain aggregation we still want
+   * to display that filter option in the list of filters.
+   */
+  const bucketsToShow = defaultBuckets
+    .filter(({ key }) => publicationTypesToShow.find(name => name === key))
+    .map(({ key, doc_count: defaultDocCount }) => {
+      const { doc_count: docCount = 0 } = buckets.find(bucket => bucket.key === key) || {};
+      return {
+        key,
+        docCount,
+        defaultDocCount,
+      };
+    });
+  const otherBuckets = defaultBuckets.filter(
+    ({ key }) => !publicationTypesToShow.find(name => name === key)
+  );
+  const otherBucketsDefaultResultCount = defaultBuckets
+    .filter(({ key }) => !publicationTypesToShow.find(name => name === key))
+    .reduce((acc, { doc_count: docCount = 0 }) => acc + docCount, 0);
+  const otherBucketsResultCount = buckets
+    .filter(({ key }) => !publicationTypesToShow.find(name => name === key))
+    .reduce((acc, { doc_count: docCount = 0 }) => acc + docCount, 0);
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
         <h3 className="c-filters-v2__title">Publication type</h3>
       </div>
       <span>
-        {defaultBuckets.map((defaultBucket) => {
-          const { key, doc_count } = defaultBucket;
+        {bucketsToShow.map(bucket => {
+          const { key, docCount, defaultDocCount } = bucket;
           const filterName = `pub-${key}`;
           return (
             <div key={slugify(key)} className="c-input">
@@ -34,7 +65,7 @@ const SearchFilterPublicationTypes = (props) => {
                 id={slugify(key)}
                 defaultChecked={isFilterActive({ searchFilters, filterName })}
                 value={key}
-                onChange={(event) => {
+                onChange={event => {
                   if (event.target.checked) {
                     addSearchFilter(filterName);
                   } else {
@@ -43,11 +74,31 @@ const SearchFilterPublicationTypes = (props) => {
                 }}
               />
               <label htmlFor={slugify(key)}>
-                {key} ({doc_count})
+                {key} ({searchQuery ? docCount : defaultDocCount})
               </label>
             </div>
           );
         })}
+        {otherBuckets.length > 0 && (
+          <div className="c-input">
+            <input
+              type="checkbox"
+              id="pub-other"
+              defaultChecked={isFilterActive({ searchFilters, filterName: 'pub-other' })}
+              value="pub-other"
+              onChange={event => {
+                if (event.target.checked) {
+                  addSearchFilter('pub-other');
+                } else {
+                  removeSearchFilter('pub-other');
+                }
+              }}
+            />
+            <label htmlFor="pub-other">
+              Other ({searchQuery ? otherBucketsResultCount : otherBucketsDefaultResultCount})
+            </label>
+          </div>
+        )}
       </span>
     </form>
   );
@@ -55,9 +106,11 @@ const SearchFilterPublicationTypes = (props) => {
 
 const mapStateToProps = ({
   defaultSearchAggs: { publicationTypes: { buckets: defaultBuckets = [] } = {} } = {},
+  searchResults: { aggregations: { publicationTypes: { buckets = [] } = {} } = {} } = {},
   searchFilters,
 }) => ({
   defaultBuckets: sortBy(defaultBuckets, ['key']),
+  buckets: sortBy(buckets, ['key']),
   searchFilters,
 });
 
@@ -68,7 +121,9 @@ const mapDispatchToProps = dispatch => ({
   replaceSearchFilters: bindActionCreators(replaceSearchFilters, dispatch),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SearchFilterPublicationTypes);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SearchFilterPublicationTypes)
+);
