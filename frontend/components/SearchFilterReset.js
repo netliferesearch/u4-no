@@ -10,7 +10,7 @@ import {
 } from '../helpers/redux-store';
 
 const SearchFilterReset = props => {
-  const { children, searchFilters = [], replaceSearchFilters, filterPrefix = '' } = props;
+  const { buttonText, searchFilters = [], replaceSearchFilters, filterPrefix = '' } = props;
   const activeFilters = searchFilters.filter(name => name.indexOf(filterPrefix) !== -1);
   if (activeFilters.length === 0) {
     return null;
@@ -23,7 +23,7 @@ const SearchFilterReset = props => {
         replaceSearchFilters(searchFilters.filter(name => name.indexOf(filterPrefix) === -1));
       }}
     >
-      {children}
+      {buttonText}
     </button>
   );
 };
@@ -32,12 +32,12 @@ SearchFilterReset.propTypes = {
   searchFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
   replaceSearchFilters: PropTypes.func.isRequired,
   filterPrefix: PropTypes.string,
-  children: PropTypes.any,
+  buttonText: PropTypes.string,
 };
 
 SearchFilterReset.defaultProps = {
   filterPrefix: '',
-  children: 'Clear',
+  buttonText: 'Clear',
 };
 
 const mapStateToProps = ({ searchFilters }) => ({

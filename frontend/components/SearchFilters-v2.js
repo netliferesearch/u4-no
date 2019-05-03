@@ -50,7 +50,7 @@ class SearchFiltersV2 extends React.Component {
         </div>
         <div className="c-filters-v2__item">
           <div className="c-filters-v2__clear-all">
-            <SearchFilterReset>Clear all filters</SearchFilterReset>
+            <SearchFilterReset buttonText="Clear all filters" />
           </div>
           <div className="c-input">
             <input
