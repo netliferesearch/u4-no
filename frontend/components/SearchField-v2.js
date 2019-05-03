@@ -68,10 +68,10 @@ class SearchFieldV2 extends Component {
             ...queryParams,
             search: value,
           });
-          Router[`${urlUpdateType}Route`](`/search-v2?${updatedQueryString}`);
+          Router[`${urlUpdateType}Route`](`/search?${updatedQueryString}`);
           console.log('debounce was called');
         }, 100)();
-      },
+      }
     );
   }
 
@@ -153,6 +153,6 @@ const mapDispatchToProps = dispatch => ({
 export default withRouter(
   connect(
     mapStateToProps,
-    mapDispatchToProps,
-  )(SearchFieldV2),
+    mapDispatchToProps
+  )(SearchFieldV2)
 );
