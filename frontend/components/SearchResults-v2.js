@@ -72,7 +72,9 @@ const SearchResult = props => {
         <br />
         <div {...classes('topic-wrapper')}>
           <div {...classes('topic-img')}>
-            {featuredImageUrl && <img src={`${featuredImageUrl}?w=500&fit=crop&crop=focalpoint`} />}
+            {featuredImageUrl && (
+              <img src={`${featuredImageUrl}?w=500&h=500&fit=crop&crop=focalpoint`} />
+            )}
           </div>
           <div {...classes('topic-content')}>
             <p>{standfirst}</p>
@@ -244,5 +246,5 @@ const mapDispatchToProps = dispatch => ({
 });
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(SearchResultsV2);
