@@ -1,2 +1,4 @@
 frontend/build
 backend/
+service-elastic-indexer/
+service-publication-pdf-builder/

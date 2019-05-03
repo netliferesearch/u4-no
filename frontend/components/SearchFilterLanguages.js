@@ -9,31 +9,33 @@ import {
   clearAllSearchFilters,
   replaceSearchFilters,
 } from '../helpers/redux-store';
+import { SearchFilterReset } from './';
 
 const isFilterActive = ({ searchFilters = [], filterName }) =>
-  searchFilters.find(name => name === filterName);
+  !!searchFilters.find(name => name === filterName);
 
-const SearchFilterLanguages = (props) => {
-  const {
-    searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter,
-  } = props;
+const SearchFilterLanguages = props => {
+  const { searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter } = props;
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
-        <h3 className="c-filters-v2__title">Languages</h3>
+        <h3 className="c-filters-v2__title">Language</h3>
+        <span className="c-filters-v2__clear">
+          <SearchFilterReset filterPrefix="lang-type-" />
+        </span>
       </div>
       <span>
-        {defaultBuckets.map((defaultBucket) => {
-          const { key, doc_count } = defaultBucket;
+        {defaultBuckets.map(defaultBucket => {
+          const { key } = defaultBucket;
           const filterName = `lang-type-${key}`;
           return (
             <div key={slugify(key)} className="c-input">
               <input
                 type="checkbox"
                 id={slugify(key)}
-                defaultChecked={isFilterActive({ searchFilters, filterName })}
+                checked={isFilterActive({ searchFilters, filterName })}
                 value={key}
-                onChange={(event) => {
+                onChange={event => {
                   if (event.target.checked) {
                     addSearchFilter(filterName);
                   } else {
@@ -41,9 +43,7 @@ const SearchFilterLanguages = (props) => {
                   }
                 }}
               />
-              <label htmlFor={slugify(key)}>
-                {key} ({doc_count})
-              </label>
+              <label htmlFor={slugify(key)}>{key}</label>
             </div>
           );
         })}
@@ -69,5 +69,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(SearchFilterLanguages);

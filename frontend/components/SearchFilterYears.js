@@ -7,6 +7,7 @@ import {
   clearAllSearchFilters,
   replaceSearchFilters,
 } from '../helpers/redux-store';
+import { SearchFilterReset } from './';
 
 const getFromYear = ({ searchFilters = [] }) => {
   const yearFilter = searchFilters.find(name => name.startsWith('year-from'));
@@ -26,12 +27,15 @@ const getToYear = ({ searchFilters = [] }) => {
   return parseInt(toYear, 10);
 };
 
-const SearchFilterYears = (props) => {
+const SearchFilterYears = props => {
   const { searchFilters, years = [], replaceSearchFilters } = props;
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
-        <h3 className="c-filters-v2__title">Years</h3>
+        <h3 className="c-filters-v2__title">Year</h3>
+        <span className="c-filters-v2__clear">
+          <SearchFilterReset filterPrefix="year-" />
+        </span>
       </div>
       <span>
         <div className="c-filters-v2__select">
@@ -40,7 +44,7 @@ const SearchFilterYears = (props) => {
             <select
               id="from"
               className="c-select"
-              onChange={(event) => {
+              onChange={event => {
                 const value = event.target.value;
                 const newFilters = [...searchFilters.filter(name => !name.startsWith('year-from'))];
                 if (!value) {
@@ -49,7 +53,7 @@ const SearchFilterYears = (props) => {
                 newFilters.push(`year-from-${value}`);
                 replaceSearchFilters(newFilters);
               }}
-              defaultValue={getFromYear({ searchFilters })}
+              value={getFromYear({ searchFilters })}
             >
               {years.map((year, i) => (
                 <option key={year} value={i === 0 ? '' : year}>
@@ -63,7 +67,7 @@ const SearchFilterYears = (props) => {
             <select
               id="to"
               className="c-select"
-              onChange={(event) => {
+              onChange={event => {
                 const value = event.target.value;
                 const newFilters = [...searchFilters.filter(name => !name.startsWith('year-to'))];
                 if (!value) {
@@ -72,7 +76,7 @@ const SearchFilterYears = (props) => {
                 newFilters.push(`year-to-${value}`);
                 replaceSearchFilters(newFilters);
               }}
-              defaultValue={getToYear({ searchFilters })}
+              value={getToYear({ searchFilters })}
             >
               {years
                 .slice()
@@ -117,5 +121,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(SearchFilterYears);

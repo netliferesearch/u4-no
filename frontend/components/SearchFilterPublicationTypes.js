@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'next/router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import sortBy from 'lodash/sortBy';
@@ -9,32 +10,40 @@ import {
   clearAllSearchFilters,
   replaceSearchFilters,
 } from '../helpers/redux-store';
+import { publicationTypesToShow } from '../helpers/elastic-data-loader';
+import { SearchFilterReset } from './';
 
 const isFilterActive = ({ searchFilters = [], filterName }) =>
-  searchFilters.find(name => name === filterName);
+  !!searchFilters.find(name => name === filterName);
 
-const SearchFilterPublicationTypes = (props) => {
-  const {
-    searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter,
-  } = props;
-  // const inactiveBuckets = getSortedInactiveBuckets({ buckets, defaultBuckets });
+const SearchFilterPublicationTypes = props => {
+  const { searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter } = props;
+  const bucketsToShow = defaultBuckets.filter(({ key }) =>
+    publicationTypesToShow.find(name => name === key)
+  );
+  const otherBuckets = defaultBuckets.filter(
+    ({ key }) => !publicationTypesToShow.find(name => name === key)
+  );
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
         <h3 className="c-filters-v2__title">Publication type</h3>
+        <span className="c-filters-v2__clear">
+          <SearchFilterReset filterPrefix="pub-" />
+        </span>
       </div>
       <span>
-        {defaultBuckets.map((defaultBucket) => {
-          const { key, doc_count } = defaultBucket;
+        {bucketsToShow.map(bucket => {
+          const { key } = bucket;
           const filterName = `pub-${key}`;
           return (
             <div key={slugify(key)} className="c-input">
               <input
                 type="checkbox"
                 id={slugify(key)}
-                defaultChecked={isFilterActive({ searchFilters, filterName })}
+                checked={isFilterActive({ searchFilters, filterName })}
                 value={key}
-                onChange={(event) => {
+                onChange={event => {
                   if (event.target.checked) {
                     addSearchFilter(filterName);
                   } else {
@@ -42,12 +51,28 @@ const SearchFilterPublicationTypes = (props) => {
                   }
                 }}
               />
-              <label htmlFor={slugify(key)}>
-                {key} ({doc_count})
-              </label>
+              <label htmlFor={slugify(key)}>{key}</label>
             </div>
           );
         })}
+        {otherBuckets.length > 0 && (
+          <div className="c-input">
+            <input
+              type="checkbox"
+              id="pub-other"
+              checked={isFilterActive({ searchFilters, filterName: 'pub-other' })}
+              value="pub-other"
+              onChange={event => {
+                if (event.target.checked) {
+                  addSearchFilter('pub-other');
+                } else {
+                  removeSearchFilter('pub-other');
+                }
+              }}
+            />
+            <label htmlFor="pub-other">Other</label>
+          </div>
+        )}
       </span>
     </form>
   );
@@ -70,5 +95,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(SearchFilterPublicationTypes);
