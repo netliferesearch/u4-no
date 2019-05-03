@@ -75,6 +75,7 @@
     "sass-loader": "^6.0.6",
     "slugify": "^1.2.9",
     "textract": "^2.4.0",
+    "typewriter-effect": "^2.5.3",
     "victory": "^0.24.5"
   },
   "scripts": {

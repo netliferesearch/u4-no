@@ -36,11 +36,11 @@ export { default as PublicationNotification } from './PublicationNotification';
 export { default as PullQuote } from './PullQuote';
 export { default as RecommendedResources } from './RecommendedResources';
 export { default as SearchField } from './SearchField';
+export { default as SearchFieldRedirector } from './SearchFieldRedirector';
 export { default as SearchFieldV2 } from './SearchField-v2';
 export { default as SearchFiltersV2 } from './SearchFilters-v2';
 export { default as SearchFilterToggle } from './SearchFilterToggle';
 export { default as SearchFilterReset } from './SearchFilterReset';
-export { default as SearchResults } from './SearchResults';
 export { default as SearchFilterTopics } from './SearchFilterTopics';
 export { default as SearchFilterPublicationTypes } from './SearchFilterPublicationTypes';
 export { default as SearchFilterYears } from './SearchFilterYears';
@@ -61,8 +61,3 @@ export {
   TableOfContentsContent,
   TableOfContentsSidebar,
 } from './TableOfContents';
-export {
-  SearchFilters,
-  filterResultsBySearchFilterList,
-  sortResultsBySortCriteria,
-} from './SearchFilters';
