@@ -12,6 +12,9 @@ import {
 const SearchFilterReset = props => {
   const { children, searchFilters = [], replaceSearchFilters, filterPrefix = '' } = props;
   const activeFilters = searchFilters.filter(name => name.indexOf(filterPrefix) !== -1);
+  if (activeFilters.length === 0) {
+    return null;
+  }
   return (
     <button
       className="c-filters-v2-btn"
@@ -19,9 +22,8 @@ const SearchFilterReset = props => {
         event.preventDefault();
         replaceSearchFilters(searchFilters.filter(name => name.indexOf(filterPrefix) === -1));
       }}
-      disabled={activeFilters.length === 0}
     >
-      {activeFilters.length > 0 ? children : null}
+      {children}
     </button>
   );
 };
