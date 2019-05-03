@@ -9,7 +9,7 @@ import {
   clearAllSearchFilters,
   replaceSearchFilters,
 } from '../helpers/redux-store';
-import { SearchFilterReset } from './';
+import { SearchFilterReset, SearchFilterToggle } from './';
 
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   !!searchFilters.find(name => name === filterName);
@@ -25,30 +25,34 @@ const SearchFilterTopics = props => {
         </span>
       </div>
       <span>
-        {defaultBuckets.map(defaultBucket => {
-          const { key, doc_count } = defaultBucket;
-          const filterName = `topic-type-${key}`;
-          return (
-            <div key={slugify(key)} className="c-input">
-              <input
-                type="checkbox"
-                id={slugify(key)}
-                checked={isFilterActive({ searchFilters, filterName })}
-                value={key}
-                onChange={event => {
-                  if (event.target.checked) {
-                    addSearchFilter(filterName);
-                  } else {
-                    removeSearchFilter(filterName);
-                  }
-                }}
-              />
-              <label htmlFor={slugify(key)}>
-                {key} ({doc_count})
-              </label>
-            </div>
-          );
-        })}
+        <SearchFilterToggle bucketsToToggle={defaultBuckets}>
+          {({ toggledBuckets }) =>
+            toggledBuckets.map(bucket => {
+              const { key, doc_count } = bucket;
+              const filterName = `topic-type-${key}`;
+              return (
+                <div key={slugify(key)} className="c-input">
+                  <input
+                    type="checkbox"
+                    id={slugify(key)}
+                    checked={isFilterActive({ searchFilters, filterName })}
+                    value={key}
+                    onChange={event => {
+                      if (event.target.checked) {
+                        addSearchFilter(filterName);
+                      } else {
+                        removeSearchFilter(filterName);
+                      }
+                    }}
+                  />
+                  <label htmlFor={slugify(key)}>
+                    {key} ({doc_count})
+                  </label>
+                </div>
+              );
+            })
+          }
+        </SearchFilterToggle>
       </span>
     </form>
   );

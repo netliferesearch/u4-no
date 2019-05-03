@@ -219,3 +219,18 @@
     @include inuit-font-size($font-size-tiny, $line-height-normal);
   }
 }
+
+.c-filters-v2-btn {
+  border-color: transparent;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c-filters-v2-btn--list-item {
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+.c-filters-v2-btn:hover {
+  border-bottom: 1px solid currentColor;
+}

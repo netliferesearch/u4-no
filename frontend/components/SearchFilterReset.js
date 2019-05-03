@@ -14,7 +14,7 @@ const SearchFilterReset = props => {
   const activeFilters = searchFilters.filter(name => name.indexOf(filterPrefix) !== -1);
   return (
     <button
-      className="c-search-filter-reset"
+      className="c-filters-v2-btn"
       onClick={event => {
         event.preventDefault();
         replaceSearchFilters(searchFilters.filter(name => name.indexOf(filterPrefix) === -1));
