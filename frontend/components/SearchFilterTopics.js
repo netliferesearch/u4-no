@@ -28,7 +28,7 @@ const SearchFilterTopics = props => {
         <SearchFilterToggle bucketsToToggle={defaultBuckets}>
           {({ toggledBuckets }) =>
             toggledBuckets.map(bucket => {
-              const { key, doc_count } = bucket;
+              const { key } = bucket;
               const filterName = `topic-type-${key}`;
               return (
                 <div key={slugify(key)} className="c-input">
@@ -45,9 +45,7 @@ const SearchFilterTopics = props => {
                       }
                     }}
                   />
-                  <label htmlFor={slugify(key)}>
-                    {key} ({doc_count})
-                  </label>
+                  <label htmlFor={slugify(key)}>{key}</label>
                 </div>
               );
             })

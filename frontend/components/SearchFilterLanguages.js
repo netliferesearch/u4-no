@@ -26,7 +26,7 @@ const SearchFilterLanguages = props => {
       </div>
       <span>
         {defaultBuckets.map(defaultBucket => {
-          const { key, doc_count } = defaultBucket;
+          const { key } = defaultBucket;
           const filterName = `lang-type-${key}`;
           return (
             <div key={slugify(key)} className="c-input">
@@ -43,9 +43,7 @@ const SearchFilterLanguages = props => {
                   }
                 }}
               />
-              <label htmlFor={slugify(key)}>
-                {key} ({doc_count})
-              </label>
+              <label htmlFor={slugify(key)}>{key}</label>
             </div>
           );
         })}

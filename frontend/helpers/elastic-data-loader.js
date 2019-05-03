@@ -115,7 +115,9 @@ const doSearch = async ({
     }
   });
 
-  if (searchQuery.length <= 2) {
+  // Need to have selected at least one filter, or started typing at least two
+  // characters.
+  if (activeFilterQueries.length === 0 && searchQuery.length <= 2) {
     return;
   }
 
