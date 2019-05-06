@@ -13,7 +13,7 @@ const SearchResultsSortingSelect = ({ searchSorting = '', updateSearchSorting = 
         onChange={e => updateSearchSorting(e.target.value)}
         className="c-select c-select__full-width-mobile"
       >
-        <option value="">Relevance</option>
+        <option value="relevance">Relevance</option>
         <option value="year-desc">Year, new → old</option>
         <option value="year-asc">Year, old → new</option>
       </select>

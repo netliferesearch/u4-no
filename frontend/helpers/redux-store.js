@@ -39,7 +39,7 @@ const addQueryParams = queryParams => {
 
   const currentParams = queryString.parse(location.search);
   const newQueryString = queryString.stringify(
-    Object.assign(currentParams, nullifyFalsyValues(queryParams)),
+    Object.assign(currentParams, nullifyFalsyValues(queryParams))
   );
   const newUrl = `${window.location.protocol}//${window.location.host}${
     window.location.pathname
