@@ -68,7 +68,8 @@ class SearchFieldV2 extends Component {
   updateSearch({ urlUpdateType, value }) {
     this.setState(
       {
-        loading: true,
+        // Prevent loading indicator from showing before search has been made.
+        loading: value.length > 2,
       },
       () => {
         // whenever we do a new query we reset the search page, to avoid potentially
