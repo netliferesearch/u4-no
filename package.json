@@ -112,7 +112,9 @@
   },
   "homepage": "https://github.com/netliferesearch/u4-no#readme",
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-babel": "^5.3.0",
     "prettier": "1.15.3"
   }
 }

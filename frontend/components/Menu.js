@@ -44,7 +44,7 @@ class Menu extends Component {
       useCdn: true,
     });
     const sanityQuery = '*[_type == "topics"] | order(title){_id, title, slug}';
-    client.fetch(sanityQuery, {}).then((data) => {
+    client.fetch(sanityQuery, {}).then(data => {
       this.setState({
         data,
       });
