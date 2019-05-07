@@ -24,6 +24,9 @@ app.prepare().then(() => {
     res.send('User-agent: *\nDisallow:');
   });
   server.get('//$', (req, res) => res.redirect(301, '/'));
+  // /search-v2 was a temporary test url, that we want to remove from any
+  // browsers by telling them that the page has been moved to /search.
+  server.get('/search-v2', (req, res) => res.redirect(301, '/search'));
   server.get('/publications/:slug/pdf', publicationPdfHandler);
   server.get('/publications/:slug.pdf', publicationPdfHandler);
   server.use(handler);
