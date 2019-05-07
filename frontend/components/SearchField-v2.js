@@ -40,19 +40,6 @@ class SearchFieldV2 extends Component {
     };
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.updateSearch({ urlUpdateType: 'push', value: e.target.value });
-  }
-
-  componentDidUpdate(prevProps) {
-    const { searchData: prevSearchData = {} } = prevProps;
-    const { searchData = {} } = this.props;
-    if (prevSearchData !== searchData) {
-      this.setState({ loading: false });
-    }
-  }
-
   componentDidMount() {
     const { search: searchValue = '' } = this.props.router.query;
     const { current: input } = this.inputReference;
@@ -62,6 +49,23 @@ class SearchFieldV2 extends Component {
       input.focus();
       input.value = '';
       input.value = searchValue;
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    this.updateLoadingState({ prevProps });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.updateSearch({ urlUpdateType: 'push', value: e.target.value });
+  }
+
+  updateLoadingState({ prevProps }) {
+    const { searchData: prevSearchData = {} } = prevProps;
+    const { searchData = {} } = this.props;
+    if (prevSearchData !== searchData) {
+      this.setState({ loading: false });
     }
   }
 
