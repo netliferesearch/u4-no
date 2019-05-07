@@ -177,6 +177,10 @@ class SearchResultsV2 extends Component {
   };
 
   componentDidUpdate(prevProps) {
+    this.updateLoadingState({ prevProps });
+  }
+
+  updateLoadingState({ prevProps }) {
     if (this.props.data !== prevProps.data) {
       this.setState({ isLoading: false });
     }
@@ -189,8 +193,14 @@ class SearchResultsV2 extends Component {
     const isMoreResultsToLoad = searchPageNum * resultsPerPage < total;
     return (
       <section {...classes()}>
+        {!total && <span />}
         <div {...classes('topbar')}>
-          <div>Results ({total})</div>
+          <div {...classes('topbar__results')}>
+            {total > 0
+              ? `Results (${total})`
+              : `Search our publication, courses and more. Enter a query above, and the results will be
+          displayed as you type.`}
+          </div>
           <button onClick={toggleFilterMenu} {...classes('topbar-filter')}>
             Filter search result
           </button>
@@ -214,7 +224,7 @@ class SearchResultsV2 extends Component {
               }
             }}
           >
-            {!isMoreResultsToLoad && !this.state.isLoading ? (
+            {total === 0 ? null : !isMoreResultsToLoad && !this.state.isLoading ? (
               <p>
                 Showing {total} of {total} search results
               </p>

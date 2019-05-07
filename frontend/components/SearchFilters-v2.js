@@ -1,8 +1,6 @@
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import slugify from 'slugify';
 import {
   SearchFilterPublicationTypes,
   SearchFilterTopics,
@@ -38,12 +36,12 @@ class SearchFiltersV2 extends React.Component {
   }
 
   render() {
-    const { searchFilters, replaceSearchFilters } = this.props;
+    const { searchFilters, replaceSearchFilters, searchTotal } = this.props;
 
     return (
       <div className="c-filters-v2">
         <div className="c-filters-v2__topbar">
-          <h3 className="c-filters-v2__topbar-result">Results (10)</h3>
+          <h3 className="c-filters-v2__topbar-result">Results ({searchTotal})</h3>
           <button onClick={toggle} className="c-search-results-v2__topbar-filter">
             Update search
           </button>
@@ -100,7 +98,11 @@ class SearchFiltersV2 extends React.Component {
   }
 }
 
-const mapStateToProps = ({ searchFilters = [] }) => ({ searchFilters });
+const mapStateToProps = ({
+  searchFilters = [],
+  searchResults: { hits: { total: searchTotal = 0 } = {} } = {},
+}) => ({ searchFilters, searchTotal });
+
 const mapDispatchToProps = dispatch => ({
   addSearchFilter: bindActionCreators(addSearchFilter, dispatch),
   removeSearchFilter: bindActionCreators(removeSearchFilter, dispatch),
