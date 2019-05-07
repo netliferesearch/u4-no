@@ -5,6 +5,7 @@
     "no-debugger": "off",
     "global-require": "off",
     "no-nested-ternary": "off",
+    "import/newline-after-import": "off",
     "import/first": "off"
   }
 }
