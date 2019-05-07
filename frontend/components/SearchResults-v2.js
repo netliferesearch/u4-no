@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
+import uniq from 'lodash/uniq';
 if (typeof window !== 'undefined') {
   // Can only polyfill if window is present. Not when running on server side.
   require('intersection-observer');
@@ -130,8 +131,8 @@ const SearchResult = props => {
         <p>
           <Highlight highlight={content} fallback={standfirst} />
         </p>
-        {filedUnderTopicNames.map((name, index) => (
-          <div key={index} {...classes('items-tab')}>
+        {uniq(filedUnderTopicNames).map(name => (
+          <div key={name} {...classes('items-tab')}>
             {name}
           </div>
         ))}
@@ -162,8 +163,8 @@ const SearchResult = props => {
       <p>
         <Highlight highlight={content} fallback={standfirst} />
       </p>
-      {filedUnderTopicNames.map((name, index) => (
-        <div key={index} {...classes('items-tab')}>
+      {uniq(filedUnderTopicNames).map(name => (
+        <div key={name} {...classes('items-tab')}>
           {name}
         </div>
       ))}
