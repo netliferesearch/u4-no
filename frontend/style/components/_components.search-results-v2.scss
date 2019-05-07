@@ -1,6 +1,10 @@
-.c-search__results {
-  max-height: 600px;
-  overflow-y: auto;
+.c-search-results-v2 {
+  font-family: $font-sans;
+  @include inuit-font-size($font-size-tiny, $line-height-normal);
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-tiny, $line-height-normal);
+    margin: $spacing-large 0;
+  }
 }
 
 .c-search-results-v2__topbar {
@@ -9,13 +13,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: baseline;
-  font-family: $font-sans;
-  @include inuit-font-size($font-size-tiny, $line-height-normal);
-  @include mq($from: tablet) {
-    @include inuit-font-size($font-size-tiny, $line-height-normal);
-    margin: $spacing-large 0;
-  }
+  align-items: center;
+}
+
+.c-search-results-v2__topbar__results {
+  flex: 0 0 50%;
 }
 
 .c-search-results-v2__topbar-sortby {
