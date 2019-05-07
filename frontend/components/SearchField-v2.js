@@ -53,6 +53,18 @@ class SearchFieldV2 extends Component {
     }
   }
 
+  componentDidMount() {
+    const { search: searchValue = '' } = this.props.router.query;
+    const { current: input } = this.inputReference;
+    if (input) {
+      // Trick to put caret after word in input field.
+      // Source: https://stackoverflow.com/a/2345915
+      input.focus();
+      input.value = '';
+      input.value = searchValue;
+    }
+  }
+
   updateSearch({ urlUpdateType, value }) {
     this.setState(
       {
@@ -111,7 +123,6 @@ class SearchFieldV2 extends Component {
               </button>
               <input
                 ref={this.inputReference}
-                autoFocus
                 {...classes('input', modifier)}
                 {...getInputProps({
                   id: 'search',
