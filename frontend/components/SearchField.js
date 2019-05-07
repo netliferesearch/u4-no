@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import autobind from 'react-autobind';
-import buildUrl from '../helpers/buildUrl';
 import { Loader } from '../components';
 import { MagnifyingGlass } from '../components/icons';
 import { Router } from '../routes';
@@ -16,7 +16,6 @@ class SearchField extends Component {
     super(props);
     autobind(this);
     this.state = {
-      items: [],
       loading: false,
       placeholder: 'topics',
       placeholderIndex: 0,
@@ -40,17 +39,13 @@ class SearchField extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    if (this.state.loading) {
+      return;
+    }
     this.setState({
       loading: !this.state.loading,
     });
     Router.pushRoute(`/search?search=${e.target.search.value}`);
-  }
-
-  handleItemClick({ _type = '', slug = {} }) {
-    this.setState({
-      loading: !this.state.loading,
-    });
-    Router.pushRoute(buildUrl({ _type, slug }));
   }
 
   render() {
@@ -77,7 +72,16 @@ class SearchField extends Component {
             value={this.state.searchQuery}
             onChange={event => {
               const { value = '' } = event.target;
-              this.setState({ searchQuery: value });
+              if (!this.state.loading && value.length > 2) {
+                return this.setState(
+                  {
+                    searchQuery: value,
+                    loading: true,
+                  },
+                  () => Router.pushRoute(`/search?search=${value}`)
+                );
+              }
+              return this.setState({ searchQuery: value });
             }}
           />
           {this.state.searchQuery && (
@@ -97,5 +101,13 @@ class SearchField extends Component {
     );
   }
 }
+
+SearchField.propTypes = {
+  modifier: PropTypes.string,
+};
+
+SearchField.defaultProps = {
+  modifier: '',
+};
 
 export default SearchField;
