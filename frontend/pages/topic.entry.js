@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
 import slugify from 'slugify';
@@ -37,7 +38,7 @@ const TopicEntry = ({
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
       },
-      relatedUrl,
+      relatedUrl
     )}
   >
     <div>
@@ -130,7 +131,7 @@ const TopicEntry = ({
               <Mosaic resources={resources} />
             </div>
             <h2 className="c-topic-section__cta">
-              <a href={`/search?topics=${_id}`}>
+              <a href={`/search?filters=topic-type-${encodeURI(title)}&search=`}>
                 Explore all our resources &nbsp;
                 <ArrowRight />
               </a>
@@ -169,6 +170,11 @@ const TopicEntry = ({
     <Footer />
   </Layout>
 );
+
+TopicEntry.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
