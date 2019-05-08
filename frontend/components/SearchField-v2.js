@@ -76,9 +76,11 @@ class SearchFieldV2 extends Component {
         loading: value.length > 2,
       },
       () => {
-        // whenever we do a new query we reset the search page, to avoid potentially
-        // fetching a lot of results per key stroke. We reset to the default.
-        this.props.updateSearchPageNum(1);
+        if (window.location.pathname === '/search') {
+          // whenever we do a new query we reset the search page, to avoid potentially
+          // fetching a lot of results per key stroke. We reset to the default.
+          this.props.updateSearchPageNum(1);
+        }
         debounce(() => {
           const queryParams = queryString.parse(location.search);
           const updatedQueryString = queryString.stringify({
@@ -145,7 +147,19 @@ class SearchFieldV2 extends Component {
                     }
                   },
                   onChange: event => {
-                    this.updateSearch({ urlUpdateType: 'replace', value: event.target.value });
+                    const { value = '' } = event.target;
+                    if (value.length <= 2) {
+                      return null; // Do nothing.
+                    } else if (window.location.pathname !== '/search') {
+                      return this.updateSearch({
+                        urlUpdateType: 'push',
+                        value,
+                      });
+                    }
+                    return this.updateSearch({
+                      urlUpdateType: 'replace',
+                      value: event.target.value,
+                    });
                   },
                 })}
               />
