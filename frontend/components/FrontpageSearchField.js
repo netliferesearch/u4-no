@@ -59,7 +59,7 @@ class FrontpageSearchField extends Component {
           Search to find topics, publications, people, services, and more:
         </label>
 
-        <div className="c-search__content">
+        <div className="c-frontpage-search__content">
           <input
             ref={el => {
               this.el = el;
@@ -102,12 +102,12 @@ class FrontpageSearchField extends Component {
   }
 }
 
-SearchFieldFrontpage.propTypes = {
+FrontpageSearchField.propTypes = {
   modifier: PropTypes.string,
 };
 
-SearchFieldFrontpage.defaultProps = {
+FrontpageSearchField.defaultProps = {
   modifier: '',
 };
 
-export default SearchFieldFrontpage;
+export default FrontpageSearchField;
