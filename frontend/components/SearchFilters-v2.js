@@ -1,6 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 import {
   SearchFilterPublicationTypes,
   SearchFilterTopics,
@@ -24,7 +25,12 @@ function toggle() {
 
 class SearchFiltersV2 extends React.Component {
   componentDidMount() {
-    const { searchFilters, replaceSearchFilters } = this.props;
+    const {
+      replaceSearchFilters,
+      router: { query: { filters: filterStr = '' } = {} } = {},
+    } = this.props;
+    // Purpose: Overwrite any filter state in Redux with the actual state in the url.
+    const searchFilters = filterStr.split(',').filter(value => value);
     // These are old filters from V1 that we need to prevent from messing with the new search filters
     const invalidFilters = ['pub-type', 'pub-topic', 'pub-year', 'pub-author', 'pub-lang'];
     replaceSearchFilters(
@@ -110,7 +116,9 @@ const mapDispatchToProps = dispatch => ({
   replaceSearchFilters: bindActionCreators(replaceSearchFilters, dispatch),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchFiltersV2);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SearchFiltersV2)
+);
