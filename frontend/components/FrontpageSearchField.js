@@ -7,11 +7,11 @@ import { MagnifyingGlass } from '../components/icons';
 import { Router } from '../routes';
 
 const classes = BEMHelper({
-  name: 'search',
+  name: 'frontpage-search',
   prefix: 'c-',
 });
 
-class SearchField extends Component {
+class FrontpageSearchField extends Component {
   constructor(props) {
     super(props);
     autobind(this);
@@ -102,12 +102,12 @@ class SearchField extends Component {
   }
 }
 
-SearchField.propTypes = {
+SearchFieldFrontpage.propTypes = {
   modifier: PropTypes.string,
 };
 
-SearchField.defaultProps = {
+SearchFieldFrontpage.defaultProps = {
   modifier: '',
 };
 
-export default SearchField;
+export default SearchFieldFrontpage;

@@ -23,7 +23,6 @@ export { default as LoaderV2 } from './LoaderV2';
 export { default as Logo } from './Logo';
 export { default as LongformArticle } from './LongformArticle';
 export { default as LongformArticleContainer } from './LongformArticleContainer';
-export { default as Menu } from './Menu';
 export { default as MenuV2 } from './MenuV2';
 export { default as Mosaic } from './Mosaic';
 export { default as Newsletter } from './Newsletter';
@@ -35,7 +34,7 @@ export { default as PublicationArticleHeader } from './PublicationArticleHeader'
 export { default as PublicationNotification } from './PublicationNotification';
 export { default as PullQuote } from './PullQuote';
 export { default as RecommendedResources } from './RecommendedResources';
-export { default as SearchField } from './SearchField';
+export { default as FrontpageSearchField } from './FrontpageSearchField';
 export { default as SearchFieldRedirector } from './SearchFieldRedirector';
 export { default as SearchFieldV2 } from './SearchField-v2';
 export { default as SearchFiltersV2 } from './SearchFilters-v2';

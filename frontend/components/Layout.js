@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
 import { Link } from '../routes';
-import { HeadComponent, Logo, Menu, MenuV2, SearchFieldV2 } from '../components';
+import { HeadComponent, Logo, MenuV2, SearchFieldV2 } from '../components';
 
 const classes = BEMHelper({
   name: 'top-bar',
@@ -57,28 +57,20 @@ class Layout extends Component {
                 </a>
               </Link>
             )}
-
-            {searchV2 ? (
-              <Fragment>
-                <SearchFieldV2
-                  isOpen={this.state.activeSearchMenu}
-                  isAlwaysOpen={isSearchPage}
-                  triggerSearchMenu={this.triggerSearchMenu}
-                  searchData={searchData}
-                />
-                {hideLogo && <div />}
-                <MenuV2
-                  noSearch={noSearch}
-                  triggerSearchMenu={this.triggerSearchMenu}
-                  activeSearchMenu={this.state.activeSearchMenu}
-                />
-              </Fragment>
-            ) : (
-              <Fragment>
-                {hideLogo && <div />}
-                <Menu noSearch={noSearch} />
-              </Fragment>
+            {(this.state.activeSearchMenu || isSearchPage) && (
+              <SearchFieldV2
+                isOpen={this.state.activeSearchMenu}
+                isAlwaysOpen={isSearchPage}
+                triggerSearchMenu={this.triggerSearchMenu}
+                searchData={searchData}
+              />
             )}
+            {hideLogo && <div />}
+            <MenuV2
+              noSearch={noSearch}
+              triggerSearchMenu={this.triggerSearchMenu}
+              activeSearchMenu={this.state.activeSearchMenu}
+            />
           </div>
         )}
         {children}

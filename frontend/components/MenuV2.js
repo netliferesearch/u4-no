@@ -42,7 +42,7 @@ class MenuV2 extends Component {
       useCdn: true,
     });
     const sanityQuery = '*[_type == "topics"] | order(title){_id, title, slug}';
-    client.fetch(sanityQuery, {}).then((data) => {
+    client.fetch(sanityQuery, {}).then(data => {
       this.setState({
         data,
       });
@@ -78,11 +78,21 @@ class MenuV2 extends Component {
         <ul {...classes('menu')}>
           {!noSearch && !activeSearchMenu && (
             <li {...classes('menu-item')}>
-              <button onClick={triggerSearchMenu}><span {...classes('menu-icon')}><SearchIcon /></span>Search</button>
+              <button onClick={triggerSearchMenu}>
+                <span {...classes('menu-icon')}>
+                  <SearchIcon />
+                </span>
+                Search
+              </button>
             </li>
           )}
           <li {...classes('menu-item')}>
-            <button onClick={this.triggerMenu}><span {...classes('menu-icon')}><MenuIcon /></span>Menu</button>
+            <button onClick={this.triggerMenu}>
+              <span {...classes('menu-icon')}>
+                <MenuIcon />
+              </span>
+              Menu
+            </button>
           </li>
         </ul>
         {this.state.activeMenu ? (

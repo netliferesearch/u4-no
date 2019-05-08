@@ -1,15 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
 import { Link } from '../routes';
-import { Layout, SearchField, BoxOnBoxPartnerFeatures, Newsletter } from '../components';
-import { Footer } from '../components';
-import { PartnerAgencies, FrontpageFeature, Mosaic } from '../components';
-import { U4LogoSquare } from '../components/icons';
-import { ArrowRight } from '../components/icons';
+import {
+  Layout,
+  FrontpageSearchField,
+  BoxOnBoxPartnerFeatures,
+  Newsletter,
+  Footer,
+  PartnerAgencies,
+  FrontpageFeature,
+  Mosaic,
+} from '../components';
+import { U4LogoSquare, ArrowRight } from '../components/icons';
 import serializers from '../components/serializers';
 
-const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
+const Frontpage = ({ data: { frontPage = {}, topics = {} } }) => (
   <Layout
     hideLogo
     noSearch
@@ -34,7 +41,7 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
         </div>
       </div>
       <div className="c-search__clean-wrapper">
-        <SearchField />
+        <FrontpageSearchField />
       </div>
     </section>
     <section className="o-wrapper-medium u-margin-bottom-huge">
@@ -91,6 +98,13 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
     <PartnerAgencies />
   </Layout>
 );
+
+Frontpage.propTypes = {
+  data: PropTypes.shape({
+    frontPage: PropTypes.object,
+    topics: PropTypes.object,
+  }).isRequired,
+};
 
 export default DataLoader(Frontpage, {
   queryFunc: () => ({
