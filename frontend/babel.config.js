@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = function () {
+module.exports = function configureBabel() {
   return {
     plugins: [['transform-define', path.join(__dirname, './env-config.js')]],
     presets: [
