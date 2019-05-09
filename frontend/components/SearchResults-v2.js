@@ -188,7 +188,7 @@ class SearchResultsV2 extends Component {
   }
 
   render() {
-    const { data = {}, searchPageNum = 1, updateSearchPageNum } = this.props;
+    const { data = {}, searchPageNum = 1, updateSearchPageNum, searchFilters = [] } = this.props;
     const { hits = [], total = 0 } = data.hits || {};
     const resultsPerPage = 10;
     const isMoreResultsToLoad = searchPageNum * resultsPerPage < total;
@@ -197,7 +197,7 @@ class SearchResultsV2 extends Component {
         {!total && <span />}
         <div {...classes('topbar')}>
           <div {...classes('topbar__results')}>
-            {total > 0
+            {searchFilters.length > 0 || total > 0
               ? `Results (${total})`
               : `Search our publication, courses and more. Enter a query above, and the results will be
           displayed as you type.`}
@@ -251,7 +251,7 @@ class SearchResultsV2 extends Component {
   }
 }
 
-const mapStateToProps = ({ searchPageNum }) => ({ searchPageNum });
+const mapStateToProps = ({ searchPageNum, searchFilters }) => ({ searchPageNum, searchFilters });
 const mapDispatchToProps = dispatch => ({
   updateSearchPageNum: bindActionCreators(updateSearchPageNum, dispatch),
 });
