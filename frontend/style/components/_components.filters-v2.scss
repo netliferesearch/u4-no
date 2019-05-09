@@ -167,6 +167,7 @@
   background: $white;
   z-index: 9;
   animation: slideUp 0.2s ease-out;
+  -webkit-overflow-scrolling: touch;
 }
 
 @keyframes slideUp {

@@ -35,9 +35,24 @@ class SearchFieldV2 extends Component {
     super(props);
     autobind(this);
     this.state = {
-      items: [],
       loading: false,
     };
+  }
+
+  componentDidMount() {
+    const { search: searchValue = '' } = this.props.router.query;
+    const { current: input } = this.inputReference;
+    if (input) {
+      // Trick to put caret after word in input field.
+      // Source: https://stackoverflow.com/a/2345915
+      input.focus();
+      input.value = '';
+      input.value = searchValue;
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    this.updateLoadingState({ prevProps });
   }
 
   handleSubmit(e) {
@@ -45,7 +60,7 @@ class SearchFieldV2 extends Component {
     this.updateSearch({ urlUpdateType: 'push', value: e.target.value });
   }
 
-  componentDidUpdate(prevProps) {
+  updateLoadingState({ prevProps }) {
     const { searchData: prevSearchData = {} } = prevProps;
     const { searchData = {} } = this.props;
     if (prevSearchData !== searchData) {
@@ -56,33 +71,41 @@ class SearchFieldV2 extends Component {
   updateSearch({ urlUpdateType, value }) {
     this.setState(
       {
-        loading: true,
+        // Prevent loading indicator from showing before search has been made.
+        loading: value.length > 2,
       },
       () => {
-        // whenever we do a new query we reset the search page, to avoid potentially
-        // fetching a lot of results per key stroke. We reset to the default.
-        this.props.updateSearchPageNum(1);
+        if (window.location.pathname === '/search') {
+          // whenever we do a new query we reset the search page, to avoid potentially
+          // fetching a lot of results per key stroke. We reset to the default.
+          this.props.updateSearchPageNum(1);
+        }
         debounce(() => {
           const queryParams = queryString.parse(location.search);
           const updatedQueryString = queryString.stringify({
             ...queryParams,
             search: value,
           });
-          Router[`${urlUpdateType}Route`](`/search-v2?${updatedQueryString}`);
+          Router[`${urlUpdateType}Route`](`/search?${updatedQueryString}`);
           console.log('debounce was called');
         }, 100)();
-      },
+      }
     );
   }
 
   inputReference = React.createRef();
 
   render() {
-    const { modifier, triggerSearchMenu, isOpen = false, isAlwaysOpen = false } = this.props;
+    const {
+      modifier,
+      triggerSearchMenu,
+      isOpen = false,
+      isAlwaysOpen = false,
+      router: { query: { search: searchValue = '' } = {} } = {},
+    } = this.props;
     if (!isOpen && !isAlwaysOpen) {
       return null;
     }
-    const { search: searchValue = '' } = this.props.router.query;
     return (
       <Downshift
         id="autocomplete"
@@ -111,7 +134,6 @@ class SearchFieldV2 extends Component {
               </button>
               <input
                 ref={this.inputReference}
-                autoFocus
                 {...classes('input', modifier)}
                 {...getInputProps({
                   id: 'search',
@@ -121,6 +143,13 @@ class SearchFieldV2 extends Component {
                   defaultValue: searchValue,
                   value: undefined,
                   onKeyDown: event => {
+                    // Prevent the user from typing more if search is initiated on
+                    // page different from the search page.
+                    if (window.location.pathname !== '/search' && this.state.loading) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      return;
+                    }
                     // While onChange is called every time the input field
                     // changes value, we need to also listen for the enter key
                     // so that we can re-trigger query.
@@ -129,7 +158,19 @@ class SearchFieldV2 extends Component {
                     }
                   },
                   onChange: event => {
-                    this.updateSearch({ urlUpdateType: 'replace', value: event.target.value });
+                    const { value = '' } = event.target;
+                    if (value.length <= 2) {
+                      return null; // Do nothing.
+                    } else if (window.location.pathname !== '/search') {
+                      return this.updateSearch({
+                        urlUpdateType: 'push',
+                        value,
+                      });
+                    }
+                    return this.updateSearch({
+                      urlUpdateType: 'replace',
+                      value: event.target.value,
+                    });
                   },
                 })}
               />
@@ -153,6 +194,6 @@ const mapDispatchToProps = dispatch => ({
 export default withRouter(
   connect(
     mapStateToProps,
-    mapDispatchToProps,
-  )(SearchFieldV2),
+    mapDispatchToProps
+  )(SearchFieldV2)
 );

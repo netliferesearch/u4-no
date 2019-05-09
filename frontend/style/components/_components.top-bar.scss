@@ -3,6 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  //align-items: center;
   @include mq($from: tablet) {
     padding: $spacing-large $spacing-huge;
     max-width: $site-width;
@@ -14,9 +15,9 @@
   }
 }
 
-
 a.c-top-bar__logo,
 a.c-top-bar__logo:visited {
+  width: 50px;
   height: 50px;
   display: inline-block;
   border-bottom: 0;
@@ -26,7 +27,6 @@ a.c-top-bar__logo:visited {
   @include mq($from: desktop) {
     width: 25%;
   }
-
   &:hover  {
     border: 0;
   }
@@ -43,7 +43,7 @@ a.c-top-bar__logo:visited {
   list-style: none;
   display: flex;
   font-family: $font-sans;
-  margin: $spacing-small*0.8 0 0 0;
+  margin: $spacing-small * 0.8 0 0 0;
   padding: 0;
   justify-content: flex-end;
   @include mq($from: tablet) {
@@ -59,7 +59,7 @@ a.c-top-bar__logo:visited {
     position: absolute;
     top: $spacing-large;
     right: ($spacing-huge)-8px;
-    margin-left: $spacing-huge+24px;
+    margin-left: $spacing-huge + 24px;
   }
 }
 .c-top-bar__menu-item {

@@ -1,15 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
 import { Link } from '../routes';
-import { Layout, SearchField, BoxOnBoxPartnerFeatures, Newsletter } from '../components';
-import { Footer } from '../components';
-import { PartnerAgencies, FrontpageFeature, Mosaic } from '../components';
-import { U4LogoSquare } from '../components/icons';
-import { MagnifyingGlass, ArrowRight } from '../components/icons';
+import {
+  Layout,
+  FrontpageSearchField,
+  BoxOnBoxPartnerFeatures,
+  Newsletter,
+  Footer,
+  PartnerAgencies,
+  FrontpageFeature,
+  Mosaic,
+} from '../components';
+import { U4LogoSquare, ArrowRight } from '../components/icons';
 import serializers from '../components/serializers';
 
-const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
+const Frontpage = ({ data: { frontPage = {}, topics = {} } }) => (
   <Layout
     hideLogo
     noSearch
@@ -34,7 +41,7 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
         </div>
       </div>
       <div className="c-search__clean-wrapper">
-        <SearchField />
+        <FrontpageSearchField />
       </div>
     </section>
     <section className="o-wrapper-medium u-margin-bottom-huge">
@@ -53,7 +60,8 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
       <Mosaic resources={frontPage.resources} />
       <h2 className="c-topic-section__cta u-padding-bottom-huge">
         <a href="/search?search=*">
-          Explore all resources &nbsp;<ArrowRight />
+          Explore all resources &nbsp;
+          <ArrowRight />
         </a>
       </h2>
     </section>
@@ -62,7 +70,8 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
       <BoxOnBoxPartnerFeatures />
       <h2 className="c-topic-section__cta u-padding-bottom">
         <a href="/u4-partner-agencies">
-          See all our partners &nbsp;<ArrowRight />
+          See all our partners &nbsp;
+          <ArrowRight />
         </a>
       </h2>
     </section>
@@ -71,9 +80,11 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
       <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
         <div className="c-introduction-text">
           <h2>
-            Looking for someone?<br />
+            Looking for someone?
+            <br />
             <a href="/the-team">
-              The whole U4 team &nbsp;<ArrowRight />
+              The whole U4 team &nbsp;
+              <ArrowRight />
             </a>
           </h2>
         </div>
@@ -87,6 +98,13 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} }, url = {} }) => (
     <PartnerAgencies />
   </Layout>
 );
+
+Frontpage.propTypes = {
+  data: PropTypes.shape({
+    frontPage: PropTypes.object,
+    topics: PropTypes.object,
+  }).isRequired,
+};
 
 export default DataLoader(Frontpage, {
   queryFunc: () => ({

@@ -1,8 +1,7 @@
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import slugify from 'slugify';
+import { withRouter } from 'next/router';
 import {
   SearchFilterPublicationTypes,
   SearchFilterTopics,
@@ -15,6 +14,7 @@ import {
   removeSearchFilter,
   clearAllSearchFilters,
   replaceSearchFilters,
+  updateSearchSorting,
 } from '../helpers/redux-store';
 
 function toggle() {
@@ -26,7 +26,21 @@ function toggle() {
 
 class SearchFiltersV2 extends React.Component {
   componentDidMount() {
-    const { searchFilters, replaceSearchFilters } = this.props;
+    this.resetFilters();
+    this.resetSorting();
+  }
+
+  resetFilters() {
+    const {
+      replaceSearchFilters,
+      router: { query: { filters: filterStr = '' } = {} } = {},
+    } = this.props;
+    // Purpose: Overwrite any filter state in Redux with the actual state in the url.
+    const searchFilters = filterStr
+      .split(',')
+      .filter(value => value)
+      // unescape filters with commas in them.
+      .map(str => str.replace(/\|/g, ','));
     // These are old filters from V1 that we need to prevent from messing with the new search filters
     const invalidFilters = ['pub-type', 'pub-topic', 'pub-year', 'pub-author', 'pub-lang'];
     replaceSearchFilters(
@@ -37,13 +51,18 @@ class SearchFiltersV2 extends React.Component {
     );
   }
 
+  resetSorting() {
+    const { updateSearchSorting, router: { query: { sort = '' } = {} } = {} } = this.props;
+    updateSearchSorting(sort);
+  }
+
   render() {
-    const { searchFilters, replaceSearchFilters } = this.props;
+    const { searchFilters, replaceSearchFilters, searchTotal } = this.props;
 
     return (
       <div className="c-filters-v2">
         <div className="c-filters-v2__topbar">
-          <h3 className="c-filters-v2__topbar-result">Results (10)</h3>
+          <h3 className="c-filters-v2__topbar-result">Results ({searchTotal})</h3>
           <button onClick={toggle} className="c-search-results-v2__topbar-filter">
             Update search
           </button>
@@ -100,15 +119,22 @@ class SearchFiltersV2 extends React.Component {
   }
 }
 
-const mapStateToProps = ({ searchFilters = [] }) => ({ searchFilters });
+const mapStateToProps = ({
+  searchFilters = [],
+  searchResults: { hits: { total: searchTotal = 0 } = {} } = {},
+}) => ({ searchFilters, searchTotal });
+
 const mapDispatchToProps = dispatch => ({
   addSearchFilter: bindActionCreators(addSearchFilter, dispatch),
   removeSearchFilter: bindActionCreators(removeSearchFilter, dispatch),
   clearAllSearchFilters: bindActionCreators(clearAllSearchFilters, dispatch),
   replaceSearchFilters: bindActionCreators(replaceSearchFilters, dispatch),
+  updateSearchSorting: bindActionCreators(updateSearchSorting, dispatch),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchFiltersV2);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SearchFiltersV2)
+);

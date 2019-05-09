@@ -39,7 +39,7 @@ const addQueryParams = queryParams => {
 
   const currentParams = queryString.parse(location.search);
   const newQueryString = queryString.stringify(
-    Object.assign(currentParams, nullifyFalsyValues(queryParams)),
+    Object.assign(currentParams, nullifyFalsyValues(queryParams))
   );
   const newUrl = `${window.location.protocol}//${window.location.host}${
     window.location.pathname
@@ -174,7 +174,7 @@ export const saveScrollPosition = scrollPosition => dispatch =>
 
 export const initStore = (initialState = defaultState, options) => {
   const { query = {} } = options;
-  const { filters = '', sort = '', searchPageNum } = query;
+  const { searchPageNum } = query;
   let state = initialState;
 
   if (searchPageNum) {
@@ -184,19 +184,5 @@ export const initStore = (initialState = defaultState, options) => {
     };
   }
 
-  // if there are active filters in the url query params we need to split
-  // and add them to the state.
-  if (filters) {
-    state = Object.assign(state, {
-      searchFilters: filters.split(','),
-    });
-  }
-  // if there is an active query param sort configured we let it override
-  // the default sorting in state
-  if (sort) {
-    state = Object.assign(state, {
-      searchSorting: sort,
-    });
-  }
   return createStore(reducer, state, composeWithDevTools(applyMiddleware(thunkMiddleware)));
 };

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
+import uniq from 'lodash/uniq';
 if (typeof window !== 'undefined') {
   // Can only polyfill if window is present. Not when running on server side.
   require('intersection-observer');
@@ -130,8 +131,8 @@ const SearchResult = props => {
         <p>
           <Highlight highlight={content} fallback={standfirst} />
         </p>
-        {filedUnderTopicNames.map((name, index) => (
-          <div key={index} {...classes('items-tab')}>
+        {uniq(filedUnderTopicNames).map(name => (
+          <div key={name} {...classes('items-tab')}>
             {name}
           </div>
         ))}
@@ -162,8 +163,8 @@ const SearchResult = props => {
       <p>
         <Highlight highlight={content} fallback={standfirst} />
       </p>
-      {filedUnderTopicNames.map((name, index) => (
-        <div key={index} {...classes('items-tab')}>
+      {uniq(filedUnderTopicNames).map(name => (
+        <div key={name} {...classes('items-tab')}>
           {name}
         </div>
       ))}
@@ -177,20 +178,30 @@ class SearchResultsV2 extends Component {
   };
 
   componentDidUpdate(prevProps) {
+    this.updateLoadingState({ prevProps });
+  }
+
+  updateLoadingState({ prevProps }) {
     if (this.props.data !== prevProps.data) {
       this.setState({ isLoading: false });
     }
   }
 
   render() {
-    const { data = {}, searchPageNum = 1, updateSearchPageNum } = this.props;
+    const { data = {}, searchPageNum = 1, updateSearchPageNum, searchFilters = [] } = this.props;
     const { hits = [], total = 0 } = data.hits || {};
     const resultsPerPage = 10;
     const isMoreResultsToLoad = searchPageNum * resultsPerPage < total;
     return (
       <section {...classes()}>
+        {!total && <span />}
         <div {...classes('topbar')}>
-          <div>Results ({total})</div>
+          <div {...classes('topbar__results')}>
+            {searchFilters.length > 0 || total > 0
+              ? `Results (${total})`
+              : `Search our publication, courses and more. Enter a query above, and the results will be
+          displayed as you type.`}
+          </div>
           <button onClick={toggleFilterMenu} {...classes('topbar-filter')}>
             Filter search result
           </button>
@@ -214,7 +225,7 @@ class SearchResultsV2 extends Component {
               }
             }}
           >
-            {!isMoreResultsToLoad && !this.state.isLoading ? (
+            {total === 0 ? null : !isMoreResultsToLoad && !this.state.isLoading ? (
               <p>
                 Showing {total} of {total} search results
               </p>
@@ -240,7 +251,7 @@ class SearchResultsV2 extends Component {
   }
 }
 
-const mapStateToProps = ({ searchPageNum }) => ({ searchPageNum });
+const mapStateToProps = ({ searchPageNum, searchFilters }) => ({ searchPageNum, searchFilters });
 const mapDispatchToProps = dispatch => ({
   updateSearchPageNum: bindActionCreators(updateSearchPageNum, dispatch),
 });
