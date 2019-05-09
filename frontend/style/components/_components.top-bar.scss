@@ -3,7 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  //align-items: center;
   @include mq($from: tablet) {
     padding: $spacing-large $spacing-huge;
     max-width: $site-width;
