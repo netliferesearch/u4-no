@@ -96,11 +96,16 @@ class SearchFieldV2 extends Component {
   inputReference = React.createRef();
 
   render() {
-    const { modifier, triggerSearchMenu, isOpen = false, isAlwaysOpen = false } = this.props;
+    const {
+      modifier,
+      triggerSearchMenu,
+      isOpen = false,
+      isAlwaysOpen = false,
+      router: { query: { search: searchValue = '' } = {} } = {},
+    } = this.props;
     if (!isOpen && !isAlwaysOpen) {
       return null;
     }
-    const { search: searchValue = '' } = this.props.router.query;
     return (
       <Downshift
         id="autocomplete"
@@ -138,6 +143,13 @@ class SearchFieldV2 extends Component {
                   defaultValue: searchValue,
                   value: undefined,
                   onKeyDown: event => {
+                    // Prevent the user from typing more if search is initiated on
+                    // page different from the search page.
+                    if (window.location.pathname !== '/search' && this.state.loading) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      return;
+                    }
                     // While onChange is called every time the input field
                     // changes value, we need to also listen for the enter key
                     // so that we can re-trigger query.

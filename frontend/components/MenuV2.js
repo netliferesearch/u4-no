@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
 import sanityClient from '@sanity/client';
 import PropTypes from 'prop-types';
@@ -74,7 +74,7 @@ class MenuV2 extends Component {
     const topics = this.state.data;
     const { noSearch, triggerSearchMenu, activeSearchMenu } = this.props;
     return (
-      <div>
+      <Fragment>
         <ul {...classes('menu')}>
           {!noSearch && !activeSearchMenu && (
             <li {...classes('menu-item')}>
@@ -214,7 +214,7 @@ class MenuV2 extends Component {
             </div>
           </div>
         ) : null}
-      </div>
+      </Fragment>
     );
   }
 }

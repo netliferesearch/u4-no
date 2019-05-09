@@ -14,7 +14,6 @@
   }
 }
 
-
 a.c-top-bar__logo,
 a.c-top-bar__logo:visited {
   height: 50px;
@@ -43,7 +42,7 @@ a.c-top-bar__logo:visited {
   list-style: none;
   display: flex;
   font-family: $font-sans;
-  margin: $spacing-small*0.8 0 0 0;
+  margin: $spacing-small * 0.8 0 0 0;
   padding: 0;
   justify-content: flex-end;
   @include mq($from: tablet) {
@@ -59,7 +58,7 @@ a.c-top-bar__logo:visited {
     position: absolute;
     top: $spacing-large;
     right: ($spacing-huge)-8px;
-    margin-left: $spacing-huge+24px;
+    margin-left: $spacing-huge + 24px;
   }
 }
 .c-top-bar__menu-item {
