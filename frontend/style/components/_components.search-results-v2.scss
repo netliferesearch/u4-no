@@ -17,7 +17,12 @@
 }
 
 .c-search-results-v2__topbar__results {
-  flex: 0 0 50%;
+  flex: 1 0 50%;
+  margin-right: $spacing-large;
+  margin-bottom: $spacing;
+  @include mq($from: tablet) {
+    margin-bottom: 0;
+  }
 }
 
 .c-search-results-v2__topbar-sortby {
