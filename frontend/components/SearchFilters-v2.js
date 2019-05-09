@@ -14,6 +14,7 @@ import {
   removeSearchFilter,
   clearAllSearchFilters,
   replaceSearchFilters,
+  updateSearchSorting,
 } from '../helpers/redux-store';
 
 function toggle() {
@@ -25,12 +26,21 @@ function toggle() {
 
 class SearchFiltersV2 extends React.Component {
   componentDidMount() {
+    this.resetFilters();
+    this.resetSorting();
+  }
+
+  resetFilters() {
     const {
       replaceSearchFilters,
       router: { query: { filters: filterStr = '' } = {} } = {},
     } = this.props;
     // Purpose: Overwrite any filter state in Redux with the actual state in the url.
-    const searchFilters = filterStr.split(',').filter(value => value);
+    const searchFilters = filterStr
+      .split(',')
+      .filter(value => value)
+      // unescape filters with commas in them.
+      .map(str => str.replace(/\|/g, ','));
     // These are old filters from V1 that we need to prevent from messing with the new search filters
     const invalidFilters = ['pub-type', 'pub-topic', 'pub-year', 'pub-author', 'pub-lang'];
     replaceSearchFilters(
@@ -39,6 +49,11 @@ class SearchFiltersV2 extends React.Component {
           !invalidFilters.find(invalidFilterName => filterName.startsWith(invalidFilterName))
       )
     );
+  }
+
+  resetSorting() {
+    const { updateSearchSorting, router: { query: { sort = '' } = {} } = {} } = this.props;
+    updateSearchSorting(sort);
   }
 
   render() {
@@ -114,6 +129,7 @@ const mapDispatchToProps = dispatch => ({
   removeSearchFilter: bindActionCreators(removeSearchFilter, dispatch),
   clearAllSearchFilters: bindActionCreators(clearAllSearchFilters, dispatch),
   replaceSearchFilters: bindActionCreators(replaceSearchFilters, dispatch),
+  updateSearchSorting: bindActionCreators(updateSearchSorting, dispatch),
 });
 
 export default withRouter(

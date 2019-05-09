@@ -35,7 +35,6 @@ class SearchFieldV2 extends Component {
     super(props);
     autobind(this);
     this.state = {
-      items: [],
       loading: false,
     };
   }
