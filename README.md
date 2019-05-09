@@ -57,20 +57,22 @@ rm test.pdf || true && node cmd-pdf.js https://a7df9417.ngrok.io/publications/ad
 
 See our 1password for access to Elastic search admin, Kibana and the index itself.
 
-```sh
-# PDF extraction needs 'pdftotext' to be available on the command line.
-brew cask install pdftotext
+Prerequisite: We use [Textract package](https://www.npmjs.com/package/textract) to extract text from pdf, and it requires [pdftotext](http://www.xpdfreader.com/download.html) to be installed.
 
+```sh
 cd service-elastic-indexer/
 cp env-example .env # be sure to configure its credentials
 node index-all-documents.js
+
+# For tests you can run.
+npx jest
 ```
 
 `index-all-documents.js` is built to be run periodically.
 
 1. It grabs all Sanity documents in one request.
 1. Then compares the Elastic index documents with the Sanity documents to find differences and then updates Elasticsearch based on that.
-1. When processing publications with legacy pdfs it will download them to `/tmp/sanity` as it needs to. Set `CACHE_PDF=true` to have this part reuse already downloaded pdfs for speed when developing locally. You can also tweak `.env` variable `ES_BATCH_SIZE=` for faster ES document insertion.
+1. When processing publications with legacy pdfs it will download them as it needs to. Set `CACHE_PDF=true` to have this part reuse already downloaded pdfs for speed when developing locally. You can also tweak `.env` variable `ES_BATCH_SIZE=` for faster ES document insertion.
 
 Other relevant files:
 
@@ -78,4 +80,7 @@ Other relevant files:
 - `lib/mappings.js` how the ES mappings are configured.
 - `lib/indexer.lib.js` how the Sanity types are processed before being sent to ES.
 
+### Things worth knowing regarding search
 
+- [The Kibana dashboard is great for debugging](https://af344fe248e84d9d83970ac229bf57da.eu-central-1.aws.cloud.es.io:9243/login) the various Elasticsearch indexes.
+- Adjusting the search weights is done in: `/frontend/helpers/elastic-data-loader.js`.

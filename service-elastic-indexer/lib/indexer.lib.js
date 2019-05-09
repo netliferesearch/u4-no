@@ -5,6 +5,7 @@ const util = require('util');
 const _ = require('lodash');
 const axios = require('axios');
 const htmlToText = require('html-to-text');
+const os = require('os')
 
 const unlink = util.promisify(fs.unlink);
 const mkdirp = util.promisify(require('mkdirp'));
@@ -58,7 +59,7 @@ async function findLegacyPdfContent({ document = {}, allDocuments, isRetrying = 
     return null;
   }
   const { url, originalFilename } = sanityAsset;
-  const destinationFolder = '/tmp/sanity';
+  const destinationFolder = `${os.tmpdir()}/sanity-pdf-downloads`;
   const destinationFilePath = `${destinationFolder}/${originalFilename}`;
   try {
     // make folder if not exists
