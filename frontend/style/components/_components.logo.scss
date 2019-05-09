@@ -1,5 +1,4 @@
 .c-logo {
-  width: 50px;
   max-width: 80px;
   @include mq($from: tablet) {
     width: auto;
