@@ -1,15 +1,15 @@
 .c-search-v2 {
-    order: 3;
-    width: 100%;
-    margin-top: $spacing-small;
-    flex-grow: 2;
-    @include mq($from: desktop) {
-      order: 0;
-      width: auto;
-      margin-top: 0;
-      margin-left: 8.33333%;
-      margin-right: $spacing;
-    }
+  order: 3;
+  width: 100%;
+  margin-top: $spacing-small;
+  flex-grow: 2;
+  @include mq($from: desktop) {
+    order: 0;
+    width: auto;
+    margin-top: 0;
+    margin-left: 8.33333%;
+    margin-right: $spacing;
+  }
 }
 
 .c-search-v2__label {
@@ -17,7 +17,7 @@
   display: block;
   height: 0;
   overflow: hidden;
-  @include inuit-font-size($font-size-small, $line-height-normal );
+  @include inuit-font-size($font-size-small, $line-height-normal);
   color: $brand-dark;
   margin: 0;
   font-family: $font-sans;
@@ -56,8 +56,8 @@
   display: block;
   color: $black;
   margin: 0 0;
-  transition: border .2s ease-out;
-  @include inuit-font-size($font-size-tiny, $line-height-tiny );
+  transition: border 0.2s ease-out;
+  @include inuit-font-size($font-size-tiny, $line-height-tiny);
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-small, $line-height-small);
   }
@@ -76,12 +76,12 @@
   }
 }
 
-.c-search-v2__button  {
+.c-search-v2__button {
   border-radius: 0;
   border: none;
   padding: $spacing-small;
   color: $brand-main;
-  transition: background-color .05s ease-out;
+  background-color: transparent;
   border-left: none;
   cursor: pointer;
   &:focus {
