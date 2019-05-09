@@ -3,6 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   @include mq($from: tablet) {
     padding: $spacing-large $spacing-huge;
     max-width: $site-width;
@@ -16,6 +17,7 @@
 
 a.c-top-bar__logo,
 a.c-top-bar__logo:visited {
+  width: 50px;
   height: 50px;
   display: inline-block;
   border-bottom: 0;
@@ -25,7 +27,6 @@ a.c-top-bar__logo:visited {
   @include mq($from: desktop) {
     width: 25%;
   }
-
   &:hover  {
     border: 0;
   }
