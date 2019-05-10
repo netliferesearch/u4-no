@@ -1,6 +1,7 @@
 export default {
   name: 'slug',
   type: 'slug',
+  validation: Rule => Rule.required(),
   options: {
     source: 'title',
     slugify: input => input
