@@ -178,7 +178,7 @@ TopicEntry.propTypes = {
 export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-      "topic": *[slug.current == $slug]{
+      "topic": *[slug.current == $slug && _type=='topics']{
         ...,
         "featuredImage": {
           "caption": featuredImage.caption,
