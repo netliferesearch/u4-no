@@ -15,7 +15,7 @@ const firstParagraphInContent = (content = []) => {
   return firstParagraph ? firstParagraph.children[0].text : '';
 };
 
-const TopicArticleEntry = (props) => {
+const TopicArticleEntry = props => {
   const { url = {}, title } = props.data;
   const { query = {} } = props.url;
   const { topicPart = 'nopart', slug = '' } = query;
@@ -24,7 +24,7 @@ const TopicArticleEntry = (props) => {
     agenda: 'agenda',
   };
   const content = props.data[topicPartMap[topicPart]];
-  console.log(content.filter(({ style = {} }) => style.children));
+  // console.log(content.filter(({ style = {} }) => style.children));
   return (
     <LongformArticleContainer
       BreadCrumbComponent={
@@ -42,7 +42,7 @@ const TopicArticleEntry = (props) => {
 
 export default DataLoader(TopicArticleEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '*[slug.current == $slug][0]',
+    sanityQuery: '*[slug.current == $slug && _type == "topics"][0]',
     param: { slug },
   }),
   materializeDepth: 1,
