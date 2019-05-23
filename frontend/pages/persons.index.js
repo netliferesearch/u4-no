@@ -22,7 +22,10 @@ class Persons extends Component {
   }
 
   render() {
-    const { data: { frontpage, persons, helpdesk, affiliatedexperts}, url = {} } = this.props;
+    const {
+      data: { frontpage, persons, helpdesk, affiliatedexperts },
+      url = {},
+    } = this.props;
     return (
       <Layout
         headComponentConfig={{
@@ -44,16 +47,16 @@ class Persons extends Component {
           </div>
         </div>
 
-        <div className="c-filters--standalone ">
-          <div className="c-filters__label--standalone">
+        <div className="c-filters-v2--standalone ">
+          <div className="c-filters-v2__label--standalone">
             Filter people by:
-            <button className="c-filters__item--standalone" onClick={() => this.changeGroup(1)}>
+            <button className="c-filters-v2__item--standalone" onClick={() => this.changeGroup(1)}>
               <a>U4 Team</a>
             </button>
-            <button className="c-filters__item--standalone" onClick={() => this.changeGroup(2)}>
+            <button className="c-filters-v2__item--standalone" onClick={() => this.changeGroup(2)}>
               <a>U4 Helpdesk</a>
             </button>
-            <button className="c-filters__item--standalone" onClick={() => this.changeGroup(3)}>
+            <button className="c-filters-v2__item--standalone" onClick={() => this.changeGroup(3)}>
               <a>Affiliated Experts</a>
             </button>
           </div>
