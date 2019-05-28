@@ -144,12 +144,18 @@ class MenuV2 extends Component {
               </h4>
               <ul {...menuClasses('list')}>
                 <li {...menuClasses('list-item')}>
-                  <a {...menuClasses('link')} href="/search?filters=pub-type-0&search=*">
+                  <a
+                    {...menuClasses('link')}
+                    href="/search?filters=publications-only&sort=year-desc"
+                  >
                     Publications
                   </a>
                 </li>
                 <li {...menuClasses('list-item')}>
-                  <a {...menuClasses('link')} href="/search?filters=pub-type-pubtype-3&search=*">
+                  <a
+                    {...menuClasses('link')}
+                    href="/search?filters=publications-only%2Cpub-U4%20Helpdesk%20Answer&sort=year-desc"
+                  >
                     Helpdesk answers
                   </a>
                 </li>
