@@ -167,6 +167,19 @@ p {
   footnote-style-position: inside;
   float: footnote;
 }
+
+/* footnote markers */
+.fn::footnote-call {
+  content: counter(footnote);
+  font-size: 83%;
+  vertical-align: super;
+  line-height: none;
+  margin-right: 0.3em;
+}
+.fn:last-child::footnote-call {
+  margin-right: 0.3em;
+}
+
 /* .referencesLink { } */
 p {
   prince-footnote-policy: keep-with-line;
@@ -189,6 +202,25 @@ h6 {
 h3 {
   font-weight: bold;
   font-size: 16pt;
+}
+h4 {
+  font-weight: bold;
+  font-family: $font-sans;
+  font-size: 12pt !important;
+  margin-top: 1.5em;
+}
+h4 + p {
+  margin-top: 0.2em;
+  margin-block-start: 0.2em;
+}
+h5 {
+  font-weight: bold;
+  font-size: 10pt;
+  margin-top: 1.5em;
+}
+h5 + p {
+  margin-top: 0.2em;
+  margin-block-start: 0.2em;
 }
 a {
   border: none;
