@@ -19,6 +19,9 @@ const getTextValue = (block = '') => {
   if (block.props && block.props.node && block.props.node.children) {
     return block.props.node.children.map(getTextValue).join(' ');
   }
+  if (block.props && block.props.children) {
+    return block.props.children.toString();
+  }
   return block.toString();
 };
 
@@ -105,9 +108,8 @@ function printSerializers(blocks) {
           }
           return (
             <React.Fragment>
-              <span>{props.children}</span>
-              <a className="fn" href={props.mark.href}>
-                {props.mark.href}
+              <a className="inlineLink" href={props.mark.href}>
+                {props.children}
               </a>
             </React.Fragment>
           );
@@ -147,7 +149,7 @@ function printSerializers(blocks) {
       ),
     },
     text: props => {
-      if (!props.children.trim()) return props.children;
+      if (true || !props.children.trim()) return props.children;
       return <span>{props.children}</span>;
     },
   };
