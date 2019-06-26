@@ -174,10 +174,10 @@ p {
   font-size: 83%;
   vertical-align: super;
   line-height: none;
-  margin-right: 0.3em;
 }
-.fn:last-child::footnote-call {
-  margin-right: 0.3em;
+/* consecutive footnote markers separated by comma */
+.fn + .fn::footnote-call {
+  content: ', ' counter(footnote);
 }
 
 /* .referencesLink { } */

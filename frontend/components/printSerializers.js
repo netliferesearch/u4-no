@@ -70,7 +70,7 @@ function printSerializers(blocks) {
           return React.createElement(
             style,
             { id, className: 'c-longform-grid__standard' },
-            children,
+            children
           );
         }
 
@@ -95,7 +95,7 @@ function printSerializers(blocks) {
     },
     marks: {
       internalReferance: props => <a href={props.mark.href}>{props.children}</a>,
-      link: (props) => {
+      link: props => {
         if (props.mark.href) {
           if (props.mark.href.match(/#_ftn(\d+)/)) {
             return null;
@@ -104,12 +104,12 @@ function printSerializers(blocks) {
             return null;
           }
           return (
-            <span>
-              {props.children}
+            <React.Fragment>
+              <span>{props.children}</span>
               <a className="fn" href={props.mark.href}>
                 {props.mark.href}
               </a>
-            </span>
+            </React.Fragment>
           );
         }
         return null;
@@ -117,28 +117,38 @@ function printSerializers(blocks) {
       blockNote: ({ markKey = '', mark = {} }) => {
         if (!mark.content) return null;
         return (
-          <span>
+          <React.Fragment>
             {markKey && (
               <BlockContent
                 blocks={footnotes[markKey]}
                 serializers={printFootnoteSerializer(markKey)}
               />
             )}
-          </span>
+          </React.Fragment>
         );
       },
       footnote: ({ children, markKey = '' }) => (
-        <span>
-          <span>
+        <React.Fragment>
+          {children &&
+            children[0] &&
+            children[0].props &&
+            children[0].props.children &&
+            children[0].props.children !== '*' &&
+            children}
+          <React.Fragment>
             {markKey && (
               <BlockContent
                 blocks={footnotes[markKey]}
                 serializers={printFootnoteSerializer(markKey)}
               />
             )}
-          </span>
-        </span>
+          </React.Fragment>
+        </React.Fragment>
       ),
+    },
+    text: props => {
+      if (!props.children.trim()) return props.children;
+      return <span>{props.children}</span>;
     },
   };
 }
