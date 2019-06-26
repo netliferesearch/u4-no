@@ -179,6 +179,10 @@ p {
 .fn + .fn::footnote-call {
   content: ', ' counter(footnote);
 }
+/* format links as links instead of footnotes */
+a.inlineLink {
+  border-bottom: 0.2pt solid #ccc;
+}
 
 /* .referencesLink { } */
 p {
@@ -244,7 +248,7 @@ a {
 .contents__list-item {
   margin: 0.3cm 0;
   padding: 0;
-  font-size: 12pt;
+  font-size: 10pt;
   line-height: 1.2;
   font-weight: bold;
 

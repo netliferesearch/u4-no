@@ -78,7 +78,8 @@ class LongformArticle extends PureComponent {
           <div className="c-longform-grid">
             <div className="c-longform-grid__standard">
               <h3>About the author{authors.length > 1 && 's'}</h3>
-              {authors.map(({
+              {authors.map(
+                ({
                   target: {
                     image = { asset: { url: '' } },
                     firstName = '',
@@ -106,7 +107,8 @@ class LongformArticle extends PureComponent {
                       <BlockContent blocks={bioShort} serializers={serializers(bioShort)} />
                     )}
                   </div>
-                ))}
+                )
+              )}
             </div>
           </div>
         ) : null}
@@ -139,7 +141,11 @@ class LongformArticle extends PureComponent {
         ) : null}
 
         <div className="body">
-          <BlockContent blocks={blocks} serializers={serializers(blocks)} />
+          <BlockContent
+            blocks={blocks}
+            serializers={serializers(blocks)}
+            renderContainerOnSingleChild={false}
+          />
           {methodology.length > 0 ? (
             <div>
               <h2 id="methodology">Methodology</h2>
@@ -169,9 +175,8 @@ class LongformArticle extends PureComponent {
                   marks: {
                     link: props => (
                       <span>
-                        {props.children}.{' '}
-                        <a className="referencesLink" href={props.mark.href}>
-                          {props.mark.href}
+                        <a className="referencesLink inlineLink" href={props.mark.href}>
+                          {props.children}
                         </a>
                       </span>
                     ),
