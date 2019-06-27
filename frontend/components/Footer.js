@@ -30,12 +30,22 @@ const Footer = () => (
         </div>
         <div {...classes('item')}>
           <div {...classes('heading')}>Address</div>
-          U4 - Chr. Michelsen Institute<br />
-          P.O. Box 6033<br />
-          N-5892 Bergen, Norway<br />
+          U4 - Chr. Michelsen Institute
+          <br />
+          P.O. Box 6033
+          <br />
+          N-5892 Bergen, Norway
+          <br />
           Visiting address: Jekteviksbakken 31, Bergen
         </div>
         <div {...classes('item')}>
+          <a
+            href="https://cmi.us16.list-manage.com/subscribe?u=e5ddae636e7550347b5fc48d3&id=387c25c3a9"
+            title="Sign up for our newsletter"
+          >
+            Newsletter
+          </a>
+          <br />
           <Link to="/privacy-policy">
             <a>Privacy policy</a>
           </Link>
@@ -52,19 +62,23 @@ const Footer = () => (
         <div {...classes('item')}>
           <div {...classes('heading')}>Follow us</div>
           <a href="https://www.linkedin.com/showcase/u4-anti-corruption-resource-centre/">
-            <LinkedIn {...classes('some-icon')} />LinkedIn
+            <LinkedIn {...classes('some-icon')} />
+            LinkedIn
           </a>
           <br />
           <a href="https://medium.com/u4-anti-corruption-resource-centre">
-            <MediumLogo {...classes('some-icon')} />Medium
+            <MediumLogo {...classes('some-icon')} />
+            Medium
           </a>
           <br />
           <a href="https://twitter.com/U4_ACRC">
-            <TwitterLogo {...classes('some-icon')} />Twitter
+            <TwitterLogo {...classes('some-icon')} />
+            Twitter
           </a>
           <br />
           <a href="https://www.facebook.com/U4anticorruption/">
-            <FacebookLogo {...classes('some-icon')} />Facebook
+            <FacebookLogo {...classes('some-icon')} />
+            Facebook
           </a>
         </div>
       </div>
