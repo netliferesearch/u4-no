@@ -63,14 +63,7 @@ const SearchResult = props => {
     } = _source;
     return (
       <div {...classes('topic')}>
-        <span {...classes('items-type')}>Topic</span>
-        <br />
-        <Link route={url}>
-          <a {...classes('items-title')}>
-            <Highlight highlight={topicTitleHighlight} fallback={topicTitle} />
-          </a>
-        </Link>
-        <br />
+
         <div {...classes('topic-wrapper')}>
           <div {...classes('topic-img')}>
             {featuredImageUrl && (
@@ -78,7 +71,15 @@ const SearchResult = props => {
             )}
           </div>
           <div {...classes('topic-content')}>
-            <p>{standfirst}</p>
+            <span {...classes('items-type')}>Topic</span>
+            <br />
+            <Link route={url}>
+              <a {...classes('items-title')}>
+                <Highlight highlight={topicTitleHighlight} fallback={topicTitle} />
+              </a>
+            </Link>
+            <br />
+            <p {...classes('lead-text')}>{standfirst}</p>
             {isBasicGuidePresent && (
               <div {...classes('topic-point')}>
                 <ArrowRightSmall />
@@ -119,7 +120,7 @@ const SearchResult = props => {
     } = _source;
     return (
       <div>
-        <span {...classes('items-type')}>{publicationTypeTitle}</span>
+        <span {...classes('items-type')}>Publication<span {...classes('pipe')}>|</span>{`${publicationTypeTitle}`}</span>
         <br />
         <Link route={url}>
           <a {...classes('items-title')}>
@@ -128,10 +129,10 @@ const SearchResult = props => {
         </Link>
         <br />
         {utcDate && <p {...classes('items-date')}>{format(utcDate, 'D MMM YYYY')}</p>}
-        <p>
+        <p {...classes('lead-text')}>
           <Highlight highlight={content} fallback={standfirst} />
         </p>
-        {uniq(filedUnderTopicNames).map(name => (
+        {uniq(filedUnderTopicNames).slice(0,1).map(name => (
           <div key={name} {...classes('items-tab')}>
             {name}
           </div>
@@ -160,7 +161,7 @@ const SearchResult = props => {
         </a>
       </Link>
       <br />
-      <p>
+      <p {...classes('lead-text')}>
         <Highlight highlight={content} fallback={standfirst} />
       </p>
       {uniq(filedUnderTopicNames).map(name => (
