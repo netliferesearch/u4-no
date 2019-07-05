@@ -5,8 +5,6 @@ export default function CreativecommonsCC(props) {
     <svg
       version="1.0"
       xmlns="http://www.w3.org/2000/svg"
-      x="0px"
-      y="0px"
       width="64px"
       height="64px"
       viewBox="5.5 -3.5 64 64"
