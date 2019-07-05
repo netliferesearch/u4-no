@@ -71,7 +71,7 @@ const LongFormArticleContainer = (props = {}) => {
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
       },
-      relatedUrl,
+      relatedUrl
     );
   return (
     <Layout
@@ -88,7 +88,7 @@ const LongFormArticleContainer = (props = {}) => {
           <TableOfContentsButton {...props.data} />
           <TableOfContentsContent
             showAllItems
-            onItemSelected={(e) => {
+            onItemSelected={e => {
               const linkThatWasClicked = e.target;
               // prevent this from triggering multiple times
               if (!showLoadingScreen) {
@@ -209,7 +209,9 @@ const LongFormArticleContainer = (props = {}) => {
                 {authors.length ? (
                   <div className="c-article c-longform-grid__standard">
                     <AuthorList authors={authors} />
-                    {date && <span> (last update: {dateToString({ start: date })})</span>}
+                    {date && date.utc && (
+                      <span> (last update: {dateToString({ start: date.utc })})</span>
+                    )}
                   </div>
                 ) : null}
 
@@ -346,5 +348,5 @@ export default connect(
   dispatch => ({
     toggleArticleMenu: bindActionCreators(toggleArticleMenu, dispatch),
     toggleLoadingScreen: bindActionCreators(toggleLoadingScreen, dispatch),
-  }),
+  })
 )(LongFormArticleContainer);
