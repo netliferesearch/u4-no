@@ -92,10 +92,30 @@
   @include mq($from: tablet) {
     margin: $spacing-large 0;
   }
+  &:after {
+    content:"";
+    display: block;
+    background:$lightGrey;
+    width:100%;
+    height:1px;
+    margin-top:$spacing-large;
+  }
 }
 
 .c-search-results-v2__items-type {
-  @include inuit-font-size($font-size-tiny, $line-height-tiny);
+  @include inuit-font-size($font-size-micro, $line-height-tiny);
+  text-transform:uppercase;
+  font-weight: 700;
+}
+
+.c-search-results-v2__pipe {
+  display:inline-block;
+  margin:0 $spacing-tiny;
+}
+
+.c-search-results-v2__lead-text {
+  @include inuit-font-size($font-size-small, $line-height-small);
+  font-family: $font-serif;
 }
 
 .c-search-results-v2__items-date {
@@ -104,7 +124,7 @@
 
 .c-search-results-v2__items-title {
   hyphens: none;
-  font-weight: bold;
+  font-weight: 400;
   @include inuit-font-size($font-size-normal, $line-height-normal);
   border-bottom: none;
 }
@@ -113,12 +133,14 @@
   font-family: $font-serif;
 }
 .c-search-results-v2__items-tab {
-  @include inuit-font-size($font-size-tiny, $line-height-tiny);
-  background-color: $lightGrey;
+  @include inuit-font-size($font-size-nano, $line-height-tiny);
+  background-color: $brand-dark;
+  color:$white;
+  font-weight:400;
+  text-transform:uppercase;
   display: inline-block;
   padding: $spacing-tiny $spacing-small;
   margin-right: $spacing-small;
-  margin-bottom: $spacing-small;
   border-radius: 4px;
 }
 
@@ -130,10 +152,7 @@
   }
 }
 .c-search-results-v2__topic {
-  padding-left: $spacing-small;
-  border-left: $spacing-small solid $brand-lightest;
   @include mq($from: tablet) {
-    padding-left: $spacing;
     border-left-width: $spacing;
   }
 }
@@ -147,7 +166,6 @@
     display: block;
     width: 30%;
     padding-right: $spacing;
-    padding-top: $spacing-small;
     img {
       width: 100%;
       height: 100%;
