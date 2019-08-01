@@ -40,7 +40,7 @@ export default DataLoader(PublicationEntry, {
       bibliographicalOverride, blurbs, content, date,
       editors[]->{ _id, affiliations, email, firstName, slug, surname },
       featuredImage, headsUp, keywords, language,
-      lead, legacypdf, mainPoints, notes, partners, pdfFile, publicationNumber,
+      lead, legacypdf, mainPoints, methodology, notes, partners, pdfFile, publicationNumber,
       publicationType->{ _id, title },
       reference, references,
       "recommendedResources":
