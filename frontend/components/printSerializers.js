@@ -149,7 +149,7 @@ function printSerializers(blocks) {
       ),
     },
     text: props => {
-      if (true || !props.children.trim()) return props.children;
+      if (!props.children.trim()) return props.children;
       return <span>{props.children}</span>;
     },
   };
