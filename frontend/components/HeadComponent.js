@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import stylesheet from '../style/main.scss';
 
-const HeadComponent = ({
-  title, description, image, url, ogp,
-}) => (
+const HeadComponent = ({ title, description, image, url, ogp }) => (
   <Head>
     <meta charSet="utf-8" />
     <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -14,7 +12,7 @@ const HeadComponent = ({
     <meta name="description" content={description} />
 
     <meta property="og:url" content={ogp.url ? ogp.url : url} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="article" />
     <meta property="og:title" content={ogp.title ? ogp.title : title} />
     <meta property="og:image" content={ogp.image ? ogp.image : image} />
     <meta property="og:description" content={ogp.description ? ogp.description : description} />

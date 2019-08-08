@@ -67,7 +67,10 @@ const LongFormArticleContainer = (props = {}) => {
       {
         title,
         description: lead || standfirst,
-        image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
+        image:
+          featuredImage.asset && featuredImage.asset.url
+            ? `${featuredImage.asset.url}?w=1200&h=630&fit=min`
+            : '',
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
       },
