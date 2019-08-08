@@ -14,10 +14,7 @@ const HeadComponent = ({ title, description, image, url, ogp }) => (
     <meta property="og:url" content={ogp.url ? ogp.url : url} />
     <meta property="og:type" content="article" />
     <meta property="og:title" content={ogp.title ? ogp.title : title} />
-    <meta
-      property="og:image"
-      content={(ogp.image ? ogp.image : image) + '?w=1200&h=630&fit=crop&crop=entropy'}
-    />
+    <meta property="og:image" content={ogp.image ? ogp.image : image} />
     <meta property="og:description" content={ogp.description ? ogp.description : description} />
     <meta property="og:site_name" content="U4 Anti-Corruption Resource Centre" />
     <meta property="og:locale" content="en_US" />
