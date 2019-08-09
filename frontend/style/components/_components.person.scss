@@ -6,13 +6,22 @@
   }
   @include mq($from: wide) {
     width: 33%;
-
   }
 }
 .c-person__item--light {
 }
-
-
+.c-persons__topics .c-search-results-v2__items:after {
+  background: transparent;
+}
+.c-persons__courses .c-search-results-v2__items {
+  margin: 24px 0;
+}
+.c-persons__courses .c-search-results-v2__items:after, .c-persons__recent-work .c-search-results-v2__items:after {
+  margin-top: 24px;
+}
+.c-persons__courses .c-search-results-v2__topic-content, .c-persons__recent-work .c-search-results-v2__topic-content {
+  padding-bottom: 0;
+}
 .c-person__item-body {
   padding: $spacing-small;
   font-family: $font-sans;
@@ -33,7 +42,7 @@
   width: 40%;
   min-height: 180px;
   background-size: cover;
-  background-position:top center;
+  background-position: top center;
   margin-right: $spacing;
   @include mq($from: tablet) {
     width: 50%;
@@ -45,7 +54,6 @@
 }
 
 .c-person__item-body-img--noimg {
-
 }
 
 .c-person__item-body-text {
@@ -54,8 +62,6 @@
     width: 50%;
   }
 }
-
-
 
 .c-person__item-body--small {
   @include mq($from: desktop) {
@@ -82,12 +88,12 @@
   }
 }
 .c-person__item-title {
-  margin:  0;
+  margin: 0;
   color: $brand-dark;
   font-weight: bold;
-  @include inuit-font-size($font-size-normal, $line-height-small );
+  @include inuit-font-size($font-size-normal, $line-height-small);
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-large, $line-height-small );
+    @include inuit-font-size($font-size-large, $line-height-small);
   }
 }
 
@@ -102,7 +108,6 @@
   text-transform: uppercase;
   color: $brand-main;
   margin-bottom: $spacing;
-
 }
 .c-person__item-meta {
   margin-bottom: $spacing;
@@ -119,7 +124,6 @@
     padding-top: 2px;
   }
   svg path {
-
     fill: currentColor;
   }
   &:hover {
@@ -140,9 +144,9 @@
   text-align: center;
 }
 .c-person__team-arrow {
-  svg path{
-  fill: $brand-light;}
+  svg path {
+    fill: $brand-light;
+  }
   text-align: center;
   transform: rotate(90deg) translateX(30px);
-
 }
