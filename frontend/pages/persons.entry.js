@@ -30,7 +30,7 @@ const Topics = ({ topics }) => (
             <div {...classesSearch('topic-wrapper')}>
               <div {...classesSearch('topic-img')}>
                 {topic.featuredImage && (
-                  <img
+                  <img alt={topic.featuredImage.asset.altText}
                     src={`${topic.featuredImage.asset.url}?w=500&h=500&fit=crop&crop=focalpoint`}
                   />
                 )}
@@ -43,7 +43,7 @@ const Topics = ({ topics }) => (
                 </Link>
                 <br />
                 <p {...classesSearch('lead-text')}>{topic.standfirst}</p>
-                {topic.introduction && topic.introduction.length > 0 && (
+                {topic.introductions > 0 && (
                   <div {...classesSearch('topic-point')}>
                     <ArrowRightSmall />
                     <Link
@@ -54,7 +54,7 @@ const Topics = ({ topics }) => (
                     </Link>
                   </div>
                 )}
-                {topic.agenda && topic.agenda.length > 0 && (
+                {topic.agenda > 0 && (
                   <div {...classesSearch('topic-point')}>
                     <ArrowRightSmall />
                     <Link
@@ -65,7 +65,7 @@ const Topics = ({ topics }) => (
                     </Link>
                   </div>
                 )}
-                {topic.resources && topic.resources.length > 0 && (
+                {topic.resources > 0 && (
                   <div {...classesSearch('topic-point')}>
                     <ArrowRightSmall />
                     <Link
@@ -160,7 +160,7 @@ const RecentWork = ({ articles }) => (
                       </p>
                     )}
                     <p {...classesSearch('lead-text')}>
-                      {article.lead ? article.lead : article.standfirst}
+                      {article.standfirst ? article.standfirst : article.lead.substring(0, 200) + '...'}
                     </p>
                     {uniq(article.topicsTitles)
                       .slice(0, 1)
@@ -262,26 +262,26 @@ const Persons = ({ data: { person = {} }, url = '' }) =>
       <Footer />
     </Layout>
   );
-
 export default DataLoader(Persons, {
   queryFunc: ({ query: { slug = '' } }) => {
     return {
       sanityQuery: `{
       "person": *[slug.current == $slug][0]{..., 
-      "topics": *[_type == "topics" && references(^._id)]{...,  "featuredImage": {
-          "caption": featuredImage.caption,
-          "credit": featuredImage.credit,
-          "sourceUrl": featuredImage.sourceUrl,
-          "license": featuredImage.license,
+      "topics": *[_type == "topics" && references(^._id)]{_id, slug, title, standfirst,
+       "introductions": count(introduction),
+       "resources": count(resources),
+       "agenda": count(agenda),
+       "featuredImage": {
           "asset": featuredImage.asset->{
             "altText": altText,
             "url": url
           }
         }},
-      "courses": *[(_type == "course" || _type=="event") && references(^._id) && defined(startDate) && (endDate.utc > $now)]  | order(startDate.utc asc),
-      "recentWork": *[((_type == "publication" || _type == "article") && defined(date)) && references(^._id)] | order(date.utc desc)[0...5]{..., "topicsTitles": topics[]->{title}, "publicationTypeTitle": publicationType->title, "articleTypeTitle": articleType[0]->title},
+      "courses": *[(_type == "course" || _type=="event") && references(^._id) && defined(startDate) && (endDate.utc > $now)]  | order(startDate.utc asc) {_id, _type, slug, title, startDate, lead},
+      "recentWork": *[((_type == "publication" || _type == "article") && defined(date)) && references(^._id)] | order(date.utc desc)[0...5]{_id, _type, slug, standfirst, title, date, lead, "topicsTitles": topics[]->{title}, "publicationTypeTitle": publicationType->title, "articleTypeTitle": articleType[0]->title},
          "affiliations": affiliations[]->name,
-      "image": { "asset": { "url": image.asset->url}}},
+      "image": { "asset": { "url": image.asset->url}}
+      },
     }`,
       param: {
         slug,
