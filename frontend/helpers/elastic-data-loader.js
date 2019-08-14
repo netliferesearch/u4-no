@@ -61,7 +61,7 @@ const doSearch = async ({
   query,
   defaultSearchAggs: { publicationTypes: defaultPublicationTypes = {} } = [],
 }) => {
-  const { search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0 } = query;
+  const { search: searchQuery = '', sort = '', person: personSlug = '', filters: filterStr = '', searchPageNum = 0 } = query;
   const filters = filterStr.split(',').map(name => name.replace(/\|/g, ','));
 
   const activeFilterQueries = [];
@@ -72,7 +72,7 @@ const doSearch = async ({
   if (topicNames.length > 0) {
     activeFilterQueries.push({ terms: { filedUnderTopicNames: topicNames } });
   }
-
+  activeFilterQueries.push({ terms: { relatedPersons: [personSlug] } })
   const publicationNames = filters
     .filter(filter => /^pub-/gi.test(filter))
     .map(filter => /pub-(.*)/gi.exec(filter)[1])

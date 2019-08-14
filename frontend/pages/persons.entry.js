@@ -160,7 +160,7 @@ const RecentWork = ({ articles }) => (
                       </p>
                     )}
                     <p {...classesSearch('lead-text')}>
-                      {article.standfirst ? article.standfirst : article.lead.substring(0, 200) + '...'}
+                      {article.standfirst ? article.standfirst : article.lead ? article.lead.substring(0, 200) + '...' : ''}
                     </p>
                     {uniq(article.topicsTitles)
                       .slice(0, 1)
@@ -249,7 +249,7 @@ const Persons = ({ data: { person = {} }, url = '' }) =>
             <RecentWork articles={person.recentWork} />
           </section>
           <h2 className="c-topic-section__cta">
-            <Link to={`/search?search=author%3A${person.firstName}%20${person.surname}`}>
+            <Link to={`/search?person=${person.slug.current}`}>
               <a>
                 View all content by {`${person.firstName} ${person.surname}`} &nbsp;
                 <ArrowRight />

@@ -104,9 +104,12 @@ async function processPublication({ document: doc, allDocuments }) {
     abstract = '',
     topics = [],
     content = [],
+    authors = [],
+    editors = [],
     language: languageCode,
     ...restOfDoc
   } = doc;
+  console.log(doc.title);
   const url = `/publications/${current}`;
   const publicationType = expand({
     reference: doc.publicationType,
@@ -120,6 +123,13 @@ async function processPublication({ document: doc, allDocuments }) {
   const publicationRelatesToTopics = expand({
     references: topics,
   });
+  const relatedEditors = expand({
+    references: editors,
+  });
+  const relatedAuthors = expand({
+    references: authors,
+  });
+  const relatedPersons = relatedAuthors.concat(relatedEditors);
   const filedUnderTopics = topicsThatRelateToPublication.concat(publicationRelatesToTopics);
   const isLegacyPublication = content.length === 0;
   return {
@@ -173,15 +183,19 @@ async function processPublication({ document: doc, allDocuments }) {
     languageName,
     filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
     filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
+    relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
   };
 }
 
 async function processArticle({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
-  const { slug: { current = '' } = {} } = doc;
+  const { slug: { current = '' } = {}, authors = [] } = doc;
   const url = `/${current}`;
   const articleTypes = expand({
     references: doc.articleType,
+  });
+  const relatedPersons = expand({
+    references: authors,
   });
   const articleTypeTitles = articleTypes.map(({ title }) => title);
   const articleTypeIds = articleTypes.map(({ _id }) => _id);
@@ -205,6 +219,7 @@ async function processArticle({ document: doc, allDocuments }) {
     articleTypeIds,
     filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
     filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
+    relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
   };
 }
 
@@ -243,15 +258,20 @@ async function processTopic({ document: doc, allDocuments }) {
     explainerText,
     introduction: basicGuide = [],
     resources = [],
+    advisors = [],
     title: topicTitle,
     slug: { current = '' } = {},
     featuredImage: { asset: featuredImageAsset } = {},
     ...restOfDoc
   } = doc;
+
   const expand = initExpand(allDocuments);
   const featuredImageUrl = expand({
     reference: featuredImageAsset,
     process: ({ url }) => url,
+  });
+  const relatedPersons = expand({
+    references: advisors,
   });
   const url = `/topics/${current}`;
   // add helper flags to easier determine if we should show topic links in
@@ -270,6 +290,7 @@ async function processTopic({ document: doc, allDocuments }) {
     agenda: blocksToText(agenda),
     isAgendaPresent,
     isBasicGuidePresent,
+    relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
   };
 }
 
@@ -290,9 +311,12 @@ async function processFrontpage({ document: doc }) {
 
 async function processEvent({ document: doc, allDocuments = [] }) {
   const {
-    slug: { current = '' } = {}, keywords = [], lead = '', ...restOfDoc
+    slug: { current = '' } = {}, keywords = [], contact= [], lead = '', ...restOfDoc
   } = doc;
   const expand = initExpand(allDocuments);
+  const relatedPersons = expand({
+    references: contact,
+  });
   return {
     // by default we add all Sanity fields to elasticsearch.
     ...restOfDoc,
@@ -303,6 +327,7 @@ async function processEvent({ document: doc, allDocuments = [] }) {
       references: doc.keywords || [],
       process: ({ keyword }) => keyword,
     })),
+    relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
   };
 }
 
@@ -312,9 +337,13 @@ async function processCourse({ document: doc, allDocuments = [] }) {
     language: languageCode = '',
     lead = '',
     content = [],
+    contact = [],
     ...restOfDoc
   } = doc;
   const expand = initExpand(allDocuments);
+  const relatedPersons = expand({
+    references: contact,
+  });
   const languageName = getLanguageName(languageCode);
   const courseType = expand({
     reference: doc.courseType,
@@ -329,6 +358,7 @@ async function processCourse({ document: doc, allDocuments = [] }) {
     languageName,
     courseType,
     courseTypeTitle,
+    relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
   };
 }
 
