@@ -191,7 +191,7 @@ const Persons = ({ data: { person = {} }, url = '' }) =>
           url={url}
           data={{ _type: 'people', slug: { current: url.query.slug }, title: 'People' }}
         />
-        <div className="o-wrapper-medium">
+        <div className="o-wrapper-medium person-wrapper">
           <section {...classes()}>
             <div {...classes('profile')}>
               <h1 {...classes('profile-name')}>
@@ -238,14 +238,14 @@ const Persons = ({ data: { person = {} }, url = '' }) =>
               </div>
             )}
           </section>
-          <section>
+          <section className="extra-person-content">
             <Topics topics={person.topics} />
           </section>
-          <section>
+          <section className="extra-person-content">
             <CoursesAndWorkshops courses={person.courses} workshops={person.workshops} />
           </section>
 
-          <section>
+          <section className="extra-person-content">
             <RecentWork articles={person.recentWork} />
           </section>
           <h2 className="c-topic-section__cta">
