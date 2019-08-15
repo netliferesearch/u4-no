@@ -83,6 +83,7 @@ const doSearch = async ({
     }
   });
   searchQueryWithoutFilters = searchQueryWithoutFilters.trim();
+  console.log('searchQueryWithoutFilters', searchQueryWithoutFilters)
   const publicationNames = filters
     .filter(filter => /^pub-/gi.test(filter))
     .map(filter => /pub-(.*)/gi.exec(filter)[1])
@@ -127,7 +128,7 @@ const doSearch = async ({
 
   // Need to have selected at least one filter, or started typing at least two
   // characters.
-  if (activeFilterQueries.length === 0 && activeFilterQueries.length <= 2) {
+  if (activeFilterQueries.length === 0 && searchQueryWithoutFilters.length <= 2) {
     return;
   }
 
