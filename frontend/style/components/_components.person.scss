@@ -13,6 +13,12 @@
 .c-persons__topics .c-search-results-v2__items:after {
   background: transparent;
 }
+.c-persons__topics .c-search-results-v2__topic,
+.c-persons__courses .c-search-results-v2__topic-content,
+.c-persons__recent-work .c-search-results-v2__topic-content {
+  width:85%;
+}
+
 .c-persons__courses .c-search-results-v2__items {
   margin: 24px 0;
 }

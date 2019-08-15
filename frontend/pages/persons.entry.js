@@ -86,7 +86,7 @@ const Topics = ({ topics }) => (
 );
 const CoursesAndWorkshops = ({ courses }) => (
   <div {...classes('courses')}>
-    {courses && courses.length > 0 && <h1>Online training and workshop</h1> }
+    {courses && courses.length > 0 && <h1>Online training and workshops</h1> }
     <ul {...classesSearch('content')}>
       {courses &&
         courses.map(course => (
