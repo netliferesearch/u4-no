@@ -61,8 +61,9 @@ const doSearch = async ({
   query,
   defaultSearchAggs: { publicationTypes: defaultPublicationTypes = {} } = [],
 }) => {
-  const { search: searchQuery = '', sort = '', person: personSlug = '', filters: filterStr = '', searchPageNum = 0 } = query;
+  const { search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0 } = query;
   const filters = filterStr.split(',').map(name => name.replace(/\|/g, ','));
+  const searchQueryFilters = searchQuery.split(' ');
 
   const activeFilterQueries = [];
 
@@ -72,9 +73,16 @@ const doSearch = async ({
   if (topicNames.length > 0) {
     activeFilterQueries.push({ terms: { filedUnderTopicNames: topicNames } });
   }
-  if(personSlug.length > 0) {
-    activeFilterQueries.push({ terms: { relatedPersons: [personSlug] } })
-  }
+  let searchQueryWithoutFilters = searchQuery;
+
+  searchQueryFilters.forEach(part => {
+    if(part.indexOf('author:') !== -1) {
+      const personSlug = part.replace(/^author:/gi, "");
+      searchQueryWithoutFilters = searchQueryWithoutFilters.replace(part, "");
+      activeFilterQueries.push({ terms: { relatedPersons: [personSlug] } })
+    }
+  });
+  searchQueryWithoutFilters = searchQueryWithoutFilters.trim();
   const publicationNames = filters
     .filter(filter => /^pub-/gi.test(filter))
     .map(filter => /pub-(.*)/gi.exec(filter)[1])
@@ -119,7 +127,7 @@ const doSearch = async ({
 
   // Need to have selected at least one filter, or started typing at least two
   // characters.
-  if (activeFilterQueries.length === 0 && searchQuery.length <= 2) {
+  if (activeFilterQueries.length === 0 && activeFilterQueries.length <= 2) {
     return;
   }
 
@@ -141,10 +149,10 @@ const doSearch = async ({
                 minimum_should_match: 1,
                 should: [
                   // if no query, yet active filters use match_all query to show results
-                  ...(!searchQuery && activeFilterQueries.length > 0 ? [{ match_all: {} }] : []),
+                  ...(!searchQueryWithoutFilters && activeFilterQueries.length > 0 ? [{ match_all: {} }] : []),
                   {
                     multi_match: {
-                      query: searchQuery,
+                      query: searchQueryWithoutFilters,
                       fields: ['title'],
                       fuzziness: 'AUTO',
                       _name: 'Fuzzy search',
@@ -152,14 +160,14 @@ const doSearch = async ({
                   },
                   {
                     multi_match: {
-                      query: searchQuery,
+                      query: searchQueryWithoutFilters,
                       _name: 'Exact title match',
                       fields: ['title.exact^10', 'termTitle.exact^10', 'topicTitle.exact^10'],
                     },
                   },
                   {
                     multi_match: {
-                      query: searchQuery,
+                      query: searchQueryWithoutFilters,
                       type: 'phrase_prefix',
                       _name: 'Main query',
                       fields: [

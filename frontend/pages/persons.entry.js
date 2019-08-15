@@ -24,7 +24,7 @@ const Topics = ({ topics }) => (
   <div {...classes('topics')}>
     {topics && topics.length > 0 &&  <h1>Topics</h1>}
     <ul {...classesSearch('content')}>
-      {topics.map(topic => (
+      {topics && topics.length > 0 && topics.map(topic => (
         <li key={topic._id} {...classesSearch('items')}>
           <div {...classesSearch('topic')}>
             <div {...classesSearch('topic-wrapper')}>
@@ -249,8 +249,8 @@ const Persons = ({ data: { person = {} }, url = '' }) =>
             <RecentWork articles={person.recentWork} />
           </section>
           <h2 className="c-topic-section__cta">
-            <Link to={`/search?person=${person.slug.current}`}>
-              <a>
+            <Link to={`/search?search=author%3A${person.slug.current}`}>
+            <a>
                 View all content by {`${person.firstName} ${person.surname}`} &nbsp;
                 <ArrowRight />
               </a>
