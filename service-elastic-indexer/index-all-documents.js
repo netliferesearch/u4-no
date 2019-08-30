@@ -29,6 +29,7 @@ const prepareElasticSearchBulkInsert = (documents = []) =>
       _updatedAt: updatedAt,
       ...restOfDoc
     } = doc;
+
     const metadata = { _index: getIndexName(doc), _type: 'u4-searchable', _id };
     // Add plain type field to be used as a custom type field.
     // Also try to make plural types into singular. Convert topics -> topic.
@@ -175,6 +176,8 @@ async function main() {
     'event',
     'course',
   ];
+
+
   console.log('Document types to process:\n', typesToProcess, '\n');
 
   // Ensure that we don't index drafts documents, nor unecessary types.
