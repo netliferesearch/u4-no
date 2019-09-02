@@ -29,7 +29,7 @@ async function startPdfWorker() {
        */
       return;
     }
-    if (result.legacypdf) {
+    if (result.legacypdf && result.legacypdf.asset) {
       console.log('Publication has legacypdf attached. Skipping build pdf for it');
       return;
     }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import buildUrl from '../helpers/buildUrl'
 import client from '../helpers/sanity-client-config'
 import { Link } from '../routes';
+import ArrowRightSmall from './icons/ArrowRightSmall';
 
 /**
  * The purpose of the BreadCrumb class is to mostly figure out by itself what
@@ -53,11 +54,13 @@ class BreadCrumb extends Component {
     const { title = '' } = data
     return (
       <div className="c-breadcrumb">
+        <div className="c-breadcrumb-inner o-wrapper o-wrapper--padded">
         {data && (
           <Link route={buildUrl(data)}>
-            <a className="c-breadcrumb__link">← {title}</a>
+            <a className="c-breadcrumb__link"><ArrowRightSmall /> {title}</a>
           </Link>
         )}
+      </div>
       </div>
     );
   }

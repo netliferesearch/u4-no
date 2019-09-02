@@ -2,7 +2,7 @@
   margin: $spacing 0;
   @include mq($from: tablet) {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: $spacing-huge 0;
   }
 }
@@ -10,7 +10,7 @@
 .c-persons__profile {
     margin: 0;
     @include mq($from: tablet) {
-      width: 35%;
+      width: 40%;
     }
     img {
       width: 100%;
@@ -23,7 +23,7 @@
     margin: 0;
     @include inuit-font-size($font-size-small, $line-height-large )
     @include mq($from: tablet) {
-      width: 45%;
+      width: 52%;
     }
 }
 

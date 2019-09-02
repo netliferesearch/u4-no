@@ -75,6 +75,10 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                   type: 'text',
                   analyzer,
                 },
+
+                relatedPersons: {
+                  type: 'keyword',
+                },
                 publicationTypeTitle: {
                   type: 'keyword',
                 },
