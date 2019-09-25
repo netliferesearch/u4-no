@@ -23,7 +23,7 @@ export { default as MediumLogo } from './MediumLogo';
 export { default as MenuIcon } from './MenuIcon';
 export { default as TwitterLogo } from './TwitterLogo';
 export { default as FacebookLogo } from './FacebookLogo';
-export { default as PartnerLogo1 } from './PartnerLogo1';
+export { default as PartnerLogoDanida } from './PartnerLogoDanida';
 export { default as PartnerLogo2 } from './PartnerLogo2';
 export { default as PartnerLogo3 } from './PartnerLogo3';
 export { default as PartnerLogo4 } from './PartnerLogo4';
