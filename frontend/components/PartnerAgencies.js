@@ -3,7 +3,7 @@ import BEMHelper from 'react-bem-helper';
 import { Logo } from './';
 import {
   CmiLogo,
-  PartnerLogo1,
+  PartnerLogoDanida,
   PartnerLogo2,
   PartnerLogo3,
   PartnerLogo4,
@@ -32,7 +32,7 @@ const PartnerAgencies = ({ title }) => (
     <section {...classes('wrapper', null, 'o-wrapper')}>
       <div {...classes('item')}>
         <a href="http://um.dk/en/danida-en/" rel="noopener noreferrer" target="_blank">
-          <PartnerLogo1 />
+          <PartnerLogoDanida />
         </a>
       </div>
       <div {...classes('item')}>
