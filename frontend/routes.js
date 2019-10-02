@@ -21,4 +21,5 @@ routes
   .add('service.helpdesk', '/helpdesk')
   .add('service.about', '/about-u4')
   .add('asset.entry', '/assets/:slug')
-  .add('general.article', '/:slug');
+  .add('general.article', '/:slug')
+  .add('preview', '/preview/:type/:id');
