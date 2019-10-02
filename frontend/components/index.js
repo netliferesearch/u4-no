@@ -53,6 +53,8 @@ export { default as Table } from './Table';
 export { default as Team } from './Team';
 export { default as ToggleBlock } from './ToggleBlock';
 export { default as ToggleTextBox } from './ToggleTextBox';
+export { default as TnrcFooter } from './TnrcFooter';
+export { default as TnrcHeader } from './TnrcHeader';
 export { default as WorkshopMosaic } from './WorkshopMosaic';
 export {
   CustomScrollSpy,
