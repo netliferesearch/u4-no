@@ -17,6 +17,8 @@ import {
   ToggleBlock,
   AuthorList,
   PublicationNotification,
+  TnrcHeader,
+  TnrcFooter,
 } from './';
 import {
   CreativecommonsCC,
@@ -164,6 +166,7 @@ const LongFormArticleContainer = (props = {}) => {
                   updatedVersion={updatedVersion}
                   date={date}
                 />
+                <TnrcHeader publicationTypeId={publicationType._id} />
                 {lead && (
                   <div className="c-article">
                     <p>{lead}</p>
@@ -228,6 +231,9 @@ const LongFormArticleContainer = (props = {}) => {
             </div>
           )}
           <LongformArticle content={shortversion ? props.content : ''} {...props.data} />
+
+          <TnrcFooter publicationTypeId={publicationType._id} />
+
           {!shortversion && props.data.methodology ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">

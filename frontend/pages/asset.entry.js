@@ -54,7 +54,7 @@ const Asset = ({ data: { title = '', slug = {}, asset = {} } }) => {
 
 export default DataLoader(Asset, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '*[slug.current == $slug][0]',
+    sanityQuery: '*[_type=="asset" && slug.current == $slug][0]',
     param: { slug },
   }),
   materializeDepth: 1,
