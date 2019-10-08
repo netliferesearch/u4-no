@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 const {
   publicationPdfHandler,
 } = require('../service-publication-pdf-builder/publication-pdf-handler');
+const {
+  publicationPdfPreviewHandler,
+} = require('../service-publication-pdf-builder/publication-pdf-preview-handler');
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
 const handler = routes.getRequestHandler(app);
@@ -29,6 +32,7 @@ app.prepare().then(() => {
   server.get('/search-v2', (req, res) => res.redirect(301, '/search'));
   server.get('/publications/:slug/pdf', publicationPdfHandler);
   server.get('/publications/:slug.pdf', publicationPdfHandler);
+  server.get('/previewpdf/:type/:id', publicationPdfPreviewHandler);
   server.use(handler);
   server.listen(process.env.PORT || 3000);
 });

@@ -22,4 +22,5 @@ routes
   .add('service.about', '/about-u4')
   .add('asset.entry', '/assets/:slug')
   .add('general.article', '/:slug')
-  .add('preview', '/preview/:type/:id');
+  .add('preview', '/preview/:type/:id')
+  .add('publication.print.preview', '/printpreview/:id');
