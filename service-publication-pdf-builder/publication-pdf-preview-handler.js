@@ -17,7 +17,7 @@ const axios = require('axios');
      data: {
        doc: {
          user_credentials: token,
-         document_url: `https://beta.u4.no/printpreview/${id}`,
+         document_url: `https://u4-frontend-staging.herokuapp.com/printpreview/${id}`,
          type: 'pdf',
          name: title,
          test: true,
