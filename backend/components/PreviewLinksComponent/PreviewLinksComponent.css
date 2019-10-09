@@ -1,0 +1,9 @@
+.buttonLink {
+  composes: textInput from "part:@sanity/base/theme/forms/text-input-style";
+  border: 1px solid red;
+}
+
+.buttonGroup {
+  text-align: right;
+  font-size: small;
+}
