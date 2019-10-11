@@ -5,6 +5,7 @@ import Head from 'next/head';
 import serializers from '../printSerializers';
 import buildTitleObjects from '../TableOfContents/buildTitleObjects';
 import stylesheet from '../../style/print.scss';
+import translate from '../../helpers/translate';
 
 /**
  * Here we replace Sanity's react components for rendering basic things like
@@ -24,7 +25,11 @@ class LongformArticle extends PureComponent {
       editors = [],
       references = [],
       methodology = [],
+      language = 'en',
     } = this.props;
+
+    const __ = translate(language);
+
     const blocks = content.filter((block = {}) => block && !['reference'].includes(block._type));
     return (
       <main
@@ -53,12 +58,12 @@ class LongformArticle extends PureComponent {
               ))}
             {methodology.length > 0 ? (
               <li key="references" className="contents__list-item">
-                <a href="#methodology">Methodology</a>
+                <a href="#methodology">{__('methodology')}</a>
               </li>
             ) : null}
             {references && (
               <li key="references" className="contents__list-item">
-                <a href="#references">References</a>
+                <a href="#references">{__('references')}</a>
               </li>
             )}
           </ul>
@@ -66,7 +71,7 @@ class LongformArticle extends PureComponent {
         {abstract.length ? (
           <div className="c-longform-grid">
             <div className="c-longform-grid__standard">
-              <h3>Abstract</h3>
+              <h3>{__('abstract')}</h3>
               {typeof abstract === 'string' && <p>{abstract}</p>}
               {typeof abstract !== 'string' && (
                 <BlockContent blocks={abstract} serializers={serializers(abstract)} />
@@ -77,7 +82,7 @@ class LongformArticle extends PureComponent {
         {authors.length ? (
           <div className="c-longform-grid">
             <div className="c-longform-grid__standard">
-              <h3>About the author{authors.length > 1 && 's'}</h3>
+              <h3>{authors.length > 1 ? __('about_the_authors') : __('about_the_author')}</h3>
               {authors.map(
                 ({
                   target: {
@@ -116,7 +121,7 @@ class LongformArticle extends PureComponent {
         {acknowledgements.length ? (
           <div className="c-longform-grid">
             <div className="c-longform-grid__standard">
-              <h3>Acknowledgements</h3>
+              <h3>{__('acknowledgements')}</h3>
               {typeof acknowledgements === 'string' && <p>{acknowledgements}</p>}
               {typeof acknowledgements !== 'string' && (
                 <BlockContent
@@ -131,7 +136,7 @@ class LongformArticle extends PureComponent {
         {abbreviations.length ? (
           <div className="c-longform-grid">
             <div className="c-longform-grid__standard">
-              <h3>Abbreviations</h3>
+              <h3>{__('abbreviations')}</h3>
               {typeof abbreviations === 'string' && <p>{abbreviations}</p>}
               {typeof abbreviations !== 'string' && (
                 <BlockContent blocks={abbreviations} serializers={serializers(abbreviations)} />
@@ -148,7 +153,7 @@ class LongformArticle extends PureComponent {
           />
           {methodology.length > 0 ? (
             <div>
-              <h2 id="methodology">Methodology</h2>
+              <h2 id="methodology">{__('methodology')}</h2>
               <BlockContent
                 blocks={methodology}
                 serializers={{
@@ -168,7 +173,7 @@ class LongformArticle extends PureComponent {
           ) : null}
           {references.length > 0 ? (
             <div>
-              <h2 id="references">References</h2>
+              <h2 id="references">{__('references')}</h2>
               <BlockContent
                 blocks={references}
                 serializers={{
