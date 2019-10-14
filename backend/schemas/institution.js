@@ -1,39 +1,34 @@
 import { license } from './fields';
-import annotationsLinksOnly from './fields/annotationsLinksOnly'
+import augmentSchema from './fields/augmentSchema'
 
-export default {
+export default augmentSchema({
   name: 'institution',
   title: 'Institution',
   type: 'document',
+  fieldsets: [
+    {
+      name: 'aboutTranslations',
+      title: 'Translations',
+      options: { collapsible: true, collapsed: true}
+    },
+    {
+      name: 'nameTranslations',
+      title: 'Translations',
+      options: { collapsible: true, collapsed: true}
+    },
+  ],
   fields: [
     {
       name: 'name',
       title: 'Name of institution',
       type: 'string',
+      localize: true,
     },
     {
       name: 'about',
       title: 'About this institution',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'H2', value: 'h2'},
-            {title: 'H3', value: 'h3'},
-          ],
-          // Only allow numbered lists
-          marks: {
-            // Only allow these decorators
-            decorators: [
-              {title: 'Emphasis', value: 'em'}
-            ],
-            // Support annotating text with a reference to an author
-            annotations: annotationsLinksOnly
-          }
-        },
-      ],
+      type: 'defaultText',
+      localize: true,
     },
     {
       name: 'funder',
@@ -176,4 +171,4 @@ export default {
       imageUrl: 'logo.asset.url',
     }
   }
-}
+})
