@@ -17,20 +17,21 @@ import {
   CmiLogo,
 } from '../icons';
 import { Footer, AuthorList, EditorList, LongformArticleContainer, Logo } from '../';
+import { translate, translateField, langCode } from '../../helpers/translate';
 
 const classes = BEMHelper({
   name: 'print',
   prefix: 'c-',
 });
 
-const renderCaption = (caption) => {
+const renderCaption = caption => {
   if (Array.isArray(caption)) {
     return <BlockContent blocks={caption} />;
   }
   return <em>{caption}</em>;
 };
 
-const LongFormArticleContainer = (props) => {
+const LongFormArticleContainer = props => {
   const {
     lead = '',
     _type = '',
@@ -49,7 +50,13 @@ const LongFormArticleContainer = (props) => {
     notes = [],
     institutions = [],
     u4 = [],
+    language = 'en',
   } = props;
+
+  const lang = langCode(language);
+  const trans = translate(language);
+  const transField = translateField(language);
+
   return (
     <article className="u-relative u-print-width o-wrapper-page">
       <div {...classes('front')}>
@@ -74,7 +81,7 @@ const LongFormArticleContainer = (props) => {
             <p {...classes('float-left')}>
               {authors ? (
                 <span>
-                  <AuthorList authors={authors.map(({ target }) => target)} />
+                  <AuthorList authors={authors.map(({ target }) => target)} intro={trans('by')} />
                   <br />
                 </span>
               ) : null}
@@ -82,8 +89,17 @@ const LongFormArticleContainer = (props) => {
                 <span>
                   <EditorList
                     editors={editors.map(({ target }) => target)}
-                    intro={publicationType._id === 'pubtype-3' ? 'Reviewed by' : 'Series editor'}
-                    pluralize={(publicationType._id !== 'pubtype-3')}
+                    intro={
+                      publicationType._id === 'pubtype-3'
+                        ? trans('reviewed_by')
+                        : trans('series_editor')
+                    }
+                    introplural={
+                      publicationType._id === 'pubtype-3'
+                        ? trans('reviewed_by')
+                        : trans('series_editors')
+                    }
+                    pluralize={publicationType._id !== 'pubtype-3'}
                   />
                   <br />
                 </span>
@@ -106,10 +122,13 @@ const LongFormArticleContainer = (props) => {
                   <span>{institution.name}</span>
                   {partners.length === index + 1
                     ? '.'
-                    : partners.length - 1 > index + 1 ? ', ' : ' and '}
+                    : partners.length - 1 > index + 1
+                    ? ', '
+                    : ' ' + trans('and') + ' '}
                 </div>
               ))}
-              {partners.map(({ _id = '', institution = {}, description = '' }, index) =>
+              {partners.map(
+                ({ _id = '', institution = {}, description = '' }, index) =>
                   get(institution, 'logo.asset.url') && (
                     <img
                       key={_id + index}
@@ -117,24 +136,22 @@ const LongFormArticleContainer = (props) => {
                       alt="Partner Logo"
                       src={institution.logo.asset.url}
                     />
-                  ))}
+                  )
+              )}
             </h2>
           </div>
         )}
         <div className="page2__disclaimer">
-          <h2>Disclaimer</h2>
-          <p>
-            All views in this text are the author(s)’, and may differ from the U4 partner agencies’
-            policies.
-          </p>
+          <h2>{trans('disclaimer')}</h2>
+          <p>{trans('disclaimer_text')}</p>
         </div>
         {institutions.length && (
           <div className="page2__funding-partners">
-            <h2>Partner agencies</h2>
+            <h2>{trans('partner_agencies')}</h2>
             <p>
-              {institutions.map(({ _id, name }, index) => (
-                <span key={_id + index}>
-                  {` ${name}`}
+              {institutions.map((inst, index) => (
+                <span key={inst._id + index}>
+                  {lang === 'en' ? `${inst.name}` : `${transField(inst, 'name')} (${inst.name})`}
                   <br />
                 </span>
               ))}
@@ -142,12 +159,30 @@ const LongFormArticleContainer = (props) => {
           </div>
         )}
         <div className="page2__about-u4">
-          <h2>About U4</h2>
-          {u4.about && <BlockContent blocks={u4.about} serializers={serializers(u4.about)} />}
+          <h2>{trans('about_u4')}</h2>
+          {lang === 'en' && u4.about && (
+            <BlockContent
+              blocks={transField(u4, 'about')}
+              serializers={serializers(transField(u4, 'about'))}
+            />
+          )}
+
+          {lang === 'fr' && (
+            <BlockContent
+              blocks={transField(u4, 'about')}
+              serializers={serializers(transField(u4, 'about'))}
+            />
+          )}
+          {lang === 'es' && (
+            <BlockContent
+              blocks={transField(u4, 'about')}
+              serializers={serializers(transField(u4, 'about'))}
+            />
+          )}
         </div>
         {featuredImage && (
           <div className="page2__coverphoto">
-            <h2>Cover photo</h2>
+            <h2>{trans('cover_photo')}</h2>
             {featuredImage.caption && renderCaption(featuredImage.caption)}
             <p>
               {featuredImage.credit && (
@@ -163,7 +198,7 @@ const LongFormArticleContainer = (props) => {
         )}
         {Array.isArray(reference) && (
           <div className="page2__bibliographic-reference">
-            <h2>Publisher and bibliographic reference</h2>
+            <h2>{trans('publisher_and_bibliographic_reference')}</h2>
             <p>
               {Array.isArray(reference) && (
                 <BlockContent
@@ -177,7 +212,7 @@ const LongFormArticleContainer = (props) => {
 
         {keywords && (
           <div className="page2__keywords">
-            <h2>Keywords</h2>
+            <h2>{trans('keywords')}</h2>
             <p>
               {keywords.map(({ target: { _id = '', keyword = '' } = {} }, index) => (
                 <span key={_id + index}>
@@ -189,7 +224,7 @@ const LongFormArticleContainer = (props) => {
         )}
         {publicationType && (
           <div className="page2__publication-type">
-            <h2>Publication type</h2>
+            <h2>{trans('publication_type')}</h2>
             <p>{publicationType.title}</p>
             {publicationType.description && (
               <BlockContent
@@ -201,20 +236,19 @@ const LongFormArticleContainer = (props) => {
         )}
         {notes.length > 0 && (
           <div className="page2__publication-notes">
-            <h2>Notes</h2>
+            <h2>{trans('notes')}</h2>
             {notes && <BlockContent blocks={notes} serializers={serializers(notes)} />}
           </div>
         )}
         <div className="page2__cc">
-          <h2>Creative commons</h2>
+          <h2>{trans('creative_commons')}</h2>
           <p>
             <CreativecommonsCC className="page2-ccimage" />
             <CreativecommonsBY className="page2-ccimage" />
             <CreativecommonsNC className="page2-ccimage" />
             <CreativecommonsND className="page2-ccimage" />
             <br />
-            This work is licenced under a Creative Commons Attribution-NonCommercial-NoDerivatives
-            4.0 International licence (CC BY-NC-ND 4.0)
+            {trans('creative_commons_text')}
           </p>
         </div>
         <div className="page2__about-the-autors" />
@@ -229,7 +263,7 @@ const LongFormArticleContainer = (props) => {
             )}
             {mainPoints.length > 0 && (
               <div className="c-article c-article_mainPoints">
-                <h2>Main points</h2>
+                <h2>{trans('main_points')}</h2>
                 <ul className="c-article_mainPoints-list">
                   {mainPoints.map((mainPoint, index) => (
                     <li key={index} className="c-article_mainPoints-item">
@@ -290,6 +324,7 @@ LongformArticleContainer.propTypes = {
       url: PropTypes.string,
     }),
   }),
+  language: PropTypes.string,
   partners: PropTypes.arrayOf(PropTypes.object),
   notes: PropTypes.arrayOf(PropTypes.object),
   institutions: PropTypes.arrayOf(PropTypes.object),
@@ -301,5 +336,5 @@ export default connect(
   dispatch => ({
     toggleArticleMenu: bindActionCreators(toggleArticleMenu, dispatch),
     toggleLoadingScreen: bindActionCreators(toggleLoadingScreen, dispatch),
-  }),
+  })
 )(LongFormArticleContainer);

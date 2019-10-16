@@ -1,49 +1,51 @@
 import { slug, license } from './fields';
-import annotationsLinksOnly from './fields/annotationsLinksOnly'
+import augmentSchema from './fields/augmentSchema';
 
-export default {
+export default augmentSchema({
   name: 'person',
   title: 'Person',
   type: 'document',
+
   fields: [
     {
       name: 'firstName',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'surname',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'position',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'email',
-      type: 'email'
+      type: 'email',
     },
     {
       name: 'phone',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'twitter',
-      type: 'url'
+      type: 'url',
     },
     {
       name: 'medium',
-      type: 'url'
+      type: 'url',
     },
     {
       name: 'slug',
       type: 'slug',
       options: {
         source: 'surname',
-        slugify: input => input
-                             .toLowerCase()
-                             .replace(/\s+/g, '-')
-                             .slice(0, 200)
-      }
+        slugify: input =>
+          input
+            .toLowerCase()
+            .replace(/\s+/g, '-')
+            .slice(0, 200),
+      },
     },
     {
       name: 'affiliations',
@@ -63,89 +65,21 @@ export default {
     {
       name: 'cv',
       title: 'CV',
-      type: 'url'
+      type: 'url',
     },
     {
       name: 'bio',
       title: 'Full biography',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'H2', value: 'h2'},
-            {title: 'H3', value: 'h3'},
-          ],
-          // Only allow numbered lists
-          marks: {
-            // Only allow these decorators
-            decorators: [
-              {title: 'Emphasis', value: 'em'}
-            ],
-            // Support annotating text with a reference to an author
-            annotations: annotationsLinksOnly
-          }
-        },
-      ],
+      type: 'defaultText',
+      localize: true,
     },
     {
       name: 'bioShort',
       title: 'Short biography',
+      type: 'defaultText',
       description: 'For publications on pdfs etc. Typically just one paragraph.',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'H2', value: 'h2'},
-            {title: 'H3', value: 'h3'},
-          ],
-          // Only allow numbered lists
-          marks: {
-            // Only allow these decorators
-            decorators: [
-              {title: 'Emphasis', value: 'em'}
-            ],
-            // Support annotating text with a reference to an author
-            annotations: [
-              {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-              {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-            ]
-          }
-        },
-      ],
+      localize: true,
     },
-    {
-      name: 'bioShort_fr',
-      title: 'Short biography (French)',
-      description: 'For publications on pdfs etc. Typically just one paragraph.',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'H2', value: 'h2'},
-            {title: 'H3', value: 'h3'},
-          ],
-          // Only allow numbered lists
-          marks: {
-            // Only allow these decorators
-            decorators: [
-              {title: 'Emphasis', value: 'em'}
-            ],
-            // Support annotating text with a reference to an author
-            annotations: [
-              {name: 'link', title: 'External Link', type: 'object', fields: [{ name: 'href', title: 'URL', type: 'url'}] },
-              {name: 'internalReferance', title: 'Author or publication', type: 'reference', to: [{type: 'person'},{type: 'publication'},{type: 'article'}]},
-            ]
-          }
-        },
-      ],
-    },
-
     {
       name: 'image',
       type: 'image',
@@ -157,13 +91,14 @@ export default {
         {
           name: 'altText',
           title: 'Alternative text',
-          description: 'For users that can\'t see images',
-          type: 'string'
+          description: "For users that can't see images",
+          type: 'string',
         },
         {
           name: 'caption',
           title: 'Caption text',
-          description: 'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
+          description:
+            'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
           type: 'array',
           of: [
             {
@@ -171,9 +106,7 @@ export default {
               styles: [],
               marks: {
                 // Only allow these decorators
-                decorators: [
-                  { title: 'Emphasis', value: 'em' }
-                ],
+                decorators: [{ title: 'Emphasis', value: 'em' }],
               },
             },
           ],
@@ -196,17 +129,17 @@ export default {
           name: 'credit',
           title: 'Credit',
           description: 'Photographer/publisher’s name.',
-          type: 'text'
+          type: 'text',
         },
         {
           name: 'sourceUrl',
           title: 'Credit URL',
           type: 'url',
-          description: 'Enter link for source for the image or the originator'
+          description: 'Enter link for source for the image or the originator',
         },
         license,
-      ]
-    }
+      ],
+    },
   ],
   orderings: [
     {
@@ -228,9 +161,12 @@ export default {
       imageUrl: 'image.asset.url',
       description: 'position',
     },
-    prepare({ firstName = 'N.', surname = 'N', imageUrl, email = '', description = ''}, viewOptions = {}) {
+    prepare(
+      { firstName = 'N.', surname = 'N', imageUrl, email = '', description = '' },
+      viewOptions = {}
+    ) {
       const previewtitle =
-        viewOptions.ordering && ( viewOptions.ordering.name === 'firstNameAsc' )
+        viewOptions.ordering && viewOptions.ordering.name === 'firstNameAsc'
           ? `${firstName} ${surname}`
           : `${surname}, ${firstName}`;
       return {
@@ -241,4 +177,4 @@ export default {
       };
     },
   },
- }
+});
