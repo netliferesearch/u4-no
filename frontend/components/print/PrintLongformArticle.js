@@ -5,7 +5,7 @@ import Head from 'next/head';
 import serializers from '../printSerializers';
 import buildTitleObjects from '../TableOfContents/buildTitleObjects';
 import stylesheet from '../../style/print.scss';
-import { translate } from '../../helpers/translate';
+import { translate, translateField, langCode } from '../../helpers/translate';
 
 /**
  * Here we replace Sanity's react components for rendering basic things like
