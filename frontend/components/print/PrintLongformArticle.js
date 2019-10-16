@@ -5,7 +5,7 @@ import Head from 'next/head';
 import serializers from '../printSerializers';
 import buildTitleObjects from '../TableOfContents/buildTitleObjects';
 import stylesheet from '../../style/print.scss';
-import translate from '../../helpers/translate';
+import { translate } from '../../helpers/translate';
 
 /**
  * Here we replace Sanity's react components for rendering basic things like
@@ -39,7 +39,7 @@ class LongformArticle extends PureComponent {
       >
         <div className="contents">
           <ul className="contents__list">
-            <h2>Table of contents</h2>
+            <h2>{__('table_of_contents')}</h2>
             {buildTitleObjects(content)
               .filter(({ children = [] }) => children)
               .map(item => (

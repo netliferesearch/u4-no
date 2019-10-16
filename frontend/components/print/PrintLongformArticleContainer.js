@@ -17,7 +17,7 @@ import {
   CmiLogo,
 } from '../icons';
 import { Footer, AuthorList, EditorList, LongformArticleContainer, Logo } from '../';
-import translate from '../../helpers/translate';
+import { translate, translateField, langCode } from '../../helpers/translate';
 
 const classes = BEMHelper({
   name: 'print',
@@ -50,10 +50,12 @@ const LongFormArticleContainer = props => {
     notes = [],
     institutions = [],
     u4 = [],
-    language = 'en_US',
+    language = 'en',
   } = props;
 
-  const __ = translate(language);
+  const lang = langCode(language);
+  const trans = translate(language);
+  const transField = translateField(language);
 
   return (
     <article className="u-relative u-print-width o-wrapper-page">
@@ -79,7 +81,7 @@ const LongFormArticleContainer = props => {
             <p {...classes('float-left')}>
               {authors ? (
                 <span>
-                  <AuthorList authors={authors.map(({ target }) => target)} intro={__('by')} />
+                  <AuthorList authors={authors.map(({ target }) => target)} intro={trans('by')} />
                   <br />
                 </span>
               ) : null}
@@ -88,7 +90,14 @@ const LongFormArticleContainer = props => {
                   <EditorList
                     editors={editors.map(({ target }) => target)}
                     intro={
-                      publicationType._id === 'pubtype-3' ? __('reviewed_by') : __('series_editor')
+                      publicationType._id === 'pubtype-3'
+                        ? trans('reviewed_by')
+                        : trans('series_editor')
+                    }
+                    introplural={
+                      publicationType._id === 'pubtype-3'
+                        ? trans('reviewed_by')
+                        : trans('series_editors')
                     }
                     pluralize={publicationType._id !== 'pubtype-3'}
                   />
@@ -115,7 +124,7 @@ const LongFormArticleContainer = props => {
                     ? '.'
                     : partners.length - 1 > index + 1
                     ? ', '
-                    : ' ' + __('and') + ' '}
+                    : ' ' + trans('and') + ' '}
                 </div>
               ))}
               {partners.map(
@@ -133,16 +142,16 @@ const LongFormArticleContainer = props => {
           </div>
         )}
         <div className="page2__disclaimer">
-          <h2>{__('disclaimer')}</h2>
-          <p>{__('disclaimer_text')}</p>
+          <h2>{trans('disclaimer')}</h2>
+          <p>{trans('disclaimer_text')}</p>
         </div>
         {institutions.length && (
           <div className="page2__funding-partners">
-            <h2>{__('partner_agencies')}</h2>
+            <h2>{trans('partner_agencies')}</h2>
             <p>
-              {institutions.map(({ _id, name }, index) => (
-                <span key={_id + index}>
-                  {` ${name}`}
+              {institutions.map((inst, index) => (
+                <span key={inst._id + index}>
+                  {lang === 'en' ? `${inst.name}` : `${transField(inst, 'name')} (${inst.name})`}
                   <br />
                 </span>
               ))}
@@ -150,12 +159,30 @@ const LongFormArticleContainer = props => {
           </div>
         )}
         <div className="page2__about-u4">
-          <h2>{__('about_u4')}</h2>
-          {u4.about && <BlockContent blocks={u4.about} serializers={serializers(u4.about)} />}
+          <h2>{trans('about_u4')}</h2>
+          {lang === 'en' && u4.about && (
+            <BlockContent
+              blocks={transField(u4, 'about')}
+              serializers={serializers(transField(u4, 'about'))}
+            />
+          )}
+
+          {lang === 'fr' && (
+            <BlockContent
+              blocks={transField(u4, 'about')}
+              serializers={serializers(transField(u4, 'about'))}
+            />
+          )}
+          {lang === 'es' && (
+            <BlockContent
+              blocks={transField(u4, 'about')}
+              serializers={serializers(transField(u4, 'about'))}
+            />
+          )}
         </div>
         {featuredImage && (
           <div className="page2__coverphoto">
-            <h2>{__('cover_photo')}</h2>
+            <h2>{trans('cover_photo')}</h2>
             {featuredImage.caption && renderCaption(featuredImage.caption)}
             <p>
               {featuredImage.credit && (
@@ -171,7 +198,7 @@ const LongFormArticleContainer = props => {
         )}
         {Array.isArray(reference) && (
           <div className="page2__bibliographic-reference">
-            <h2>{__('publisher_and_bibliographic_reference')}</h2>
+            <h2>{trans('publisher_and_bibliographic_reference')}</h2>
             <p>
               {Array.isArray(reference) && (
                 <BlockContent
@@ -185,7 +212,7 @@ const LongFormArticleContainer = props => {
 
         {keywords && (
           <div className="page2__keywords">
-            <h2>{__('keywords')}</h2>
+            <h2>{trans('keywords')}</h2>
             <p>
               {keywords.map(({ target: { _id = '', keyword = '' } = {} }, index) => (
                 <span key={_id + index}>
@@ -197,7 +224,7 @@ const LongFormArticleContainer = props => {
         )}
         {publicationType && (
           <div className="page2__publication-type">
-            <h2>{__('publication_type')}</h2>
+            <h2>{trans('publication_type')}</h2>
             <p>{publicationType.title}</p>
             {publicationType.description && (
               <BlockContent
@@ -209,19 +236,19 @@ const LongFormArticleContainer = props => {
         )}
         {notes.length > 0 && (
           <div className="page2__publication-notes">
-            <h2>{__('notes')}</h2>
+            <h2>{trans('notes')}</h2>
             {notes && <BlockContent blocks={notes} serializers={serializers(notes)} />}
           </div>
         )}
         <div className="page2__cc">
-          <h2>{__('creative_commons')}</h2>
+          <h2>{trans('creative_commons')}</h2>
           <p>
             <CreativecommonsCC className="page2-ccimage" />
             <CreativecommonsBY className="page2-ccimage" />
             <CreativecommonsNC className="page2-ccimage" />
             <CreativecommonsND className="page2-ccimage" />
             <br />
-            {__('creative_commons_text')}
+            {trans('creative_commons_text')}
           </p>
         </div>
         <div className="page2__about-the-autors" />
@@ -236,7 +263,7 @@ const LongFormArticleContainer = props => {
             )}
             {mainPoints.length > 0 && (
               <div className="c-article c-article_mainPoints">
-                <h2>{__('main_points')}</h2>
+                <h2>{trans('main_points')}</h2>
                 <ul className="c-article_mainPoints-list">
                   {mainPoints.map((mainPoint, index) => (
                     <li key={index} className="c-article_mainPoints-item">
