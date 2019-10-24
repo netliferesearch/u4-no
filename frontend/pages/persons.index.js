@@ -5,6 +5,8 @@ import { Layout, Footer, Team } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 import { ArrowLarge } from '../components/icons';
+import BlockContent from '@sanity/block-content-to-react';
+import serializers from '../components/serializers';
 
 class Persons extends Component {
   constructor(props) {
@@ -37,7 +39,7 @@ class Persons extends Component {
         <BreadCrumb url={url} />
         <div className="u-bg-dark-blue o-wrapper-full-width">
           <div className="c-article__lead c-article__lead--big-light   c-article__lead--center">
-            {frontpage.lead}
+            <BlockContent blocks={frontpage.lead} serializers={serializers} />
           </div>
           <div className="c-person__team">
             <h1 className="c-person__team-text ">{frontpage.title}</h1>
