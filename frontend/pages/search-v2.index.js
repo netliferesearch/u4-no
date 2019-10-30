@@ -4,7 +4,7 @@ import ElasticDataLoader from '../helpers/elastic-data-loader';
 import { Layout, Footer, SearchResultsV2, SearchFiltersV2 } from '../components/';
 
 const Search = ({
-  data = {}, searchFilters = [], searchSorting = '', url = '', topic = {},
+  data = {}, url = ''
 }) => {
   if (!data) return <div />;
   return (
