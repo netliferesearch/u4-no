@@ -13,8 +13,9 @@ const mapDispatchToProps = dispatch => ({
 
 const client = new elasticsearch.Client({
   host:
-    'https://u4frontend:u4frontend@34f28f12080e435795254ec8886248ba.eu-central-1.aws.cloud.es.io/',
-  apiVersion: '6.5',
+    'https://34f28f12080e435795254ec8886248ba.eu-central-1.aws.cloud.es.io/',
+  httpAuth: 'u4frontend:u4frontend',
+  apiVersion: '7.2',
 });
 
 const aggregations = {
@@ -83,7 +84,6 @@ const doSearch = async ({
     }
   });
   searchQueryWithoutFilters = searchQueryWithoutFilters.trim();
-  console.log('searchQueryWithoutFilters', searchQueryWithoutFilters)
   const publicationNames = filters
     .filter(filter => /^pub-/gi.test(filter))
     .map(filter => /pub-(.*)/gi.exec(filter)[1])

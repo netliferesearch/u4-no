@@ -75,16 +75,17 @@ class SearchFieldV2 extends Component {
         loading: value.length > 2,
       },
       () => {
-        if (window.location.pathname === '/search') {
-          // whenever we do a new query we reset the search page, to avoid potentially
-          // fetching a lot of results per key stroke. We reset to the default.
-          this.props.updateSearchPageNum(1);
-        }
+        // if (window.location.pathname === '/search') {
+        //   // whenever we do a new query we reset the search page, to avoid potentially
+        //   // fetching a lot of results per key stroke. We reset to the default.
+        //   this.props.updateSearchPageNum(1);
+        // }
         debounce(() => {
           const queryParams = queryString.parse(location.search);
           const updatedQueryString = queryString.stringify({
             ...queryParams,
             search: value,
+            searchPageNum: 1
           });
           Router[`${urlUpdateType}Route`](`/search?${updatedQueryString}`);
           console.log('debounce was called');

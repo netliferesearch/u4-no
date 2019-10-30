@@ -84,6 +84,7 @@ export const actionTypes = {
 
 // REDUCERS
 export const reducer = (state = defaultState, action) => {
+  console.log('reducer', action, state);
   switch (action.type) {
     case actionTypes.SEARCH_UPDATE_SORT:
       addQueryParams({
@@ -106,10 +107,13 @@ export const reducer = (state = defaultState, action) => {
         searchFilters: uniq(action.searchFilters),
       });
     case actionTypes.SEARCH_UPDATE_PAGE_NUM:
-      addQueryParams({
-        searchPageNum: `${action.searchPageNum}`,
-      });
-      return { ...state, searchPageNum: action.searchPageNum };
+      if(state.searchPageNum !== action.searchPageNum) {
+        addQueryParams({
+          searchPageNum: `${action.searchPageNum}`,
+        });
+        return { ...state, searchPageNum: action.searchPageNum };
+      }
+      return state;
     case actionTypes.SEARCH_CLEAR_ALL_FILTERS:
       addQueryParams({ filters: false });
       return Object.assign({}, state, {
@@ -120,9 +124,7 @@ export const reducer = (state = defaultState, action) => {
         defaultSearchAggs: action.defaultSearchAggs,
       });
     case actionTypes.SEARCH_UPDATE_RESULTS:
-      return Object.assign({}, state, {
-        searchResults: action.searchResults,
-      });
+      return {...state, searchResults: action.searchResults};
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
     case actionTypes.TOGGLE_LOADING_SCREEN:
