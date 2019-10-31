@@ -22,71 +22,74 @@ const classesSearch = BEMHelper({
 });
 const Topics = ({ topics }) => (
   <div {...classes('topics')}>
-    {topics && topics.length > 0 &&  <h1>Topics</h1>}
+    {topics && topics.length > 0 && <h1>Topics</h1>}
     <ul {...classesSearch('content')}>
-      {topics && topics.length > 0 && topics.map(topic => (
-        <li key={topic._id} {...classesSearch('items')}>
-          <div {...classesSearch('topic')}>
-            <div {...classesSearch('topic-wrapper')}>
-              <div {...classesSearch('topic-img')}>
-                {topic.featuredImage && (
-                  <img alt={topic.featuredImage.asset.altText}
-                    src={`${topic.featuredImage.asset.url}?w=500&h=500&fit=crop&crop=focalpoint`}
-                  />
-                )}
-              </div>
-              <div {...classesSearch('topic-content')}>
-                <span {...classesSearch('items-type')}>Topic</span>
-                <br />
-                <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                  <a {...classesSearch('items-title')}>{topic.title}</a>
-                </Link>
-                <br />
-                <p {...classesSearch('lead-text')}>{topic.standfirst}</p>
-                {topic.introductions > 0 && (
-                  <div {...classesSearch('topic-point')}>
-                    <ArrowRightSmall />
-                    <Link
-                      route="topic.article"
-                      params={{ slug: topic.slug.current, topicPart: 'basics' }}
-                    >
-                      <a>Basic guide</a>
-                    </Link>
-                  </div>
-                )}
-                {topic.agenda > 0 && (
-                  <div {...classesSearch('topic-point')}>
-                    <ArrowRightSmall />
-                    <Link
-                      route="topic.article"
-                      params={{ slug: topic.slug.current, topicPart: 'agenda' }}
-                    >
-                      <a>Research and policy agenda</a>
-                    </Link>
-                  </div>
-                )}
-                {topic.resources > 0 && (
-                  <div {...classesSearch('topic-point')}>
-                    <ArrowRightSmall />
-                    <Link
-                      route="topic.article"
-                      params={{ slug: topic.slug.current, topicPart: 'resources' }}
-                    >
-                      <a>Publications and other resources</a>
-                    </Link>
-                  </div>
-                )}
+      {topics &&
+        topics.length > 0 &&
+        topics.map(topic => (
+          <li key={topic._id} {...classesSearch('items')}>
+            <div {...classesSearch('topic')}>
+              <div {...classesSearch('topic-wrapper')}>
+                <div {...classesSearch('topic-img')}>
+                  {topic.featuredImage && (
+                    <img
+                      alt={topic.featuredImage.asset.altText}
+                      src={`${topic.featuredImage.asset.url}?w=500&h=500&fit=crop&crop=focalpoint`}
+                    />
+                  )}
+                </div>
+                <div {...classesSearch('topic-content')}>
+                  <span {...classesSearch('items-type')}>Topic</span>
+                  <br />
+                  <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                    <a {...classesSearch('items-title')}>{topic.title}</a>
+                  </Link>
+                  <br />
+                  <p {...classesSearch('lead-text')}>{topic.standfirst}</p>
+                  {topic.introductions > 0 && (
+                    <div {...classesSearch('topic-point')}>
+                      <ArrowRightSmall />
+                      <Link
+                        route="topic.article"
+                        params={{ slug: topic.slug.current, topicPart: 'basics' }}
+                      >
+                        <a>Basic guide</a>
+                      </Link>
+                    </div>
+                  )}
+                  {topic.agenda > 0 && (
+                    <div {...classesSearch('topic-point')}>
+                      <ArrowRightSmall />
+                      <Link
+                        route="topic.article"
+                        params={{ slug: topic.slug.current, topicPart: 'agenda' }}
+                      >
+                        <a>Research and policy agenda</a>
+                      </Link>
+                    </div>
+                  )}
+                  {topic.resources > 0 && (
+                    <div {...classesSearch('topic-point')}>
+                      <ArrowRightSmall />
+                      <Link
+                        route="topic.article"
+                        params={{ slug: topic.slug.current, topicPart: 'resources' }}
+                      >
+                        <a>Publications and other resources</a>
+                      </Link>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-      ))}
+          </li>
+        ))}
     </ul>
   </div>
 );
 const CoursesAndWorkshops = ({ courses }) => (
   <div {...classes('courses')}>
-    {courses && courses.length > 0 && <h1>Online training and workshops</h1> }
+    {courses && courses.length > 0 && <h1>Online training and workshops</h1>}
     <ul {...classesSearch('content')}>
       {courses &&
         courses.map(course => (
@@ -121,7 +124,7 @@ const CoursesAndWorkshops = ({ courses }) => (
 
 const RecentWork = ({ articles }) => (
   <div {...classes('recent-work')}>
-    {articles && articles.length > 0 &&  <h1>Recent work</h1>}
+    {articles && articles.length > 0 && <h1>Recent work</h1>}
     <ul {...classesSearch('content')}>
       {articles.map(
         article =>
@@ -160,7 +163,11 @@ const RecentWork = ({ articles }) => (
                       </p>
                     )}
                     <p {...classesSearch('lead-text')}>
-                      {article.standfirst ? article.standfirst : article.lead ? article.lead.substring(0, 200) + '...' : ''}
+                      {article.standfirst
+                        ? article.standfirst
+                        : article.lead
+                        ? article.lead.substring(0, 200) + '...'
+                        : ''}
                     </p>
                     {uniq(article.topicsTitles)
                       .slice(0, 1)
@@ -250,7 +257,7 @@ const Persons = ({ data: { person = {} }, url = '' }) =>
           </section>
           <h2 className="c-topic-section__cta">
             <Link to={`/search?search=author%3A${person.slug.current}`}>
-            <a>
+              <a>
                 View all content by {`${person.firstName} ${person.surname}`} &nbsp;
                 <ArrowRight />
               </a>
@@ -266,23 +273,23 @@ export default DataLoader(Persons, {
   queryFunc: ({ query: { slug = '' } }) => {
     return {
       sanityQuery: `{
-      "person": *[slug.current == $slug][0]{..., 
-      "topics": *[_type == "topics" && references(^._id)]{_id, slug, title, standfirst,
-       "introductions": count(introduction),
-       "resources": count(resources),
-       "agenda": count(agenda),
-       "featuredImage": {
-          "asset": featuredImage.asset->{
-            "altText": altText,
-            "url": url
-          }
-        }},
-      "courses": *[(_type == "course" || _type=="event") && references(^._id) && defined(startDate) && (endDate.utc > $now)]  | order(startDate.utc asc) {_id, _type, slug, title, startDate, lead},
-      "recentWork": *[((_type == "publication" || _type == "article") && defined(date)) && references(^._id)] | order(date.utc desc)[0...5]{_id, _type, slug, standfirst, title, date, lead, "topicsTitles": topics[]->{title}, "publicationTypeTitle": publicationType->title, "articleTypeTitle": articleType[0]->title},
-         "affiliations": affiliations[]->name,
-      "image": { "asset": { "url": image.asset->url}}
-      },
-    }`,
+      "person": *[slug.current == $slug][0]{...,
+        "topics": *[_type == "topics" && references(^._id)]{_id, slug, title, standfirst,
+         "introductions": count(introduction),
+         "resources": count(resources),
+         "agenda": count(agenda),
+         "featuredImage": {
+            "asset": featuredImage.asset->{
+              "altText": altText,
+              "url": url
+            }
+          }},
+        "courses": *[(_type == "course" || _type=="event") && references(^._id) && defined(startDate) && (endDate.utc > $now)]  | order(startDate.utc asc) {_id, _type, slug, title, startDate, lead},
+        "recentWork": *[((_type == "publication" && (^._id in authors[]._ref)) || (_type == "article" && references(^._id) )) && defined(date)] | order(date.utc desc)[0...5]{_id, _type, slug, standfirst, title, date, lead, "topicsTitles": topics[]->{title}, "publicationTypeTitle": publicationType->title, "articleTypeTitle": articleType[0]->title},
+           "affiliations": affiliations[]->name,
+        "image": { "asset": { "url": image.asset->url}}
+        },
+      }`,
       param: {
         slug,
         now: moment()
