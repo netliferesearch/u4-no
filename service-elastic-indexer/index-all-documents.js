@@ -16,7 +16,7 @@ const { setupMappings } = require('./lib/mappings.lib');
 
 const client = new elasticsearch.Client({
   host: process.env.ES_HOST,
-  apiVersion: '6.5',
+  apiVersion: '7.2',
 });
 
 const prepareElasticSearchBulkInsert = (documents = []) =>
