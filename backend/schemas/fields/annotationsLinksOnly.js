@@ -1,4 +1,4 @@
-import linkIcon from 'react-icons/lib/fa/paperclip';
+import { FaPaperclip as linkIcon } from 'react-icons/fa'
 
 const annotationsLinksOnly = [
   {
