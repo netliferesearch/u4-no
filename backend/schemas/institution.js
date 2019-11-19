@@ -5,18 +5,6 @@ export default augmentSchema({
   name: 'institution',
   title: 'Institution',
   type: 'document',
-  fieldsets: [
-    {
-      name: 'aboutTranslations',
-      title: 'Translations',
-      options: { collapsible: true, collapsed: true}
-    },
-    {
-      name: 'nameTranslations',
-      title: 'Translations',
-      options: { collapsible: true, collapsed: true}
-    },
-  ],
   fields: [
     {
       name: 'name',
@@ -27,7 +15,7 @@ export default augmentSchema({
     {
       name: 'about',
       title: 'About this institution',
-      type: 'defaultText',
+      type: 'defaultBlocks',
       localize: true,
     },
     {
