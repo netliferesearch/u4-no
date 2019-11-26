@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from './serializers';
+import imageUrl from '../helpers/imageUrl';
 
 const classes = BEMHelper({
   name: 'article',
@@ -47,6 +48,8 @@ const figureOutFigureClass = (size) => {
 
 const Figure = ({
   asset = {},
+  crop,
+  hotspot,
   caption = [],
   title,
   heading = '',
@@ -57,6 +60,7 @@ const Figure = ({
 }) => (
   <figure {...classes('figure', null, figureOutFigureClass(size))}>
     {(title || heading) && <p className="c-figure__title">{title || heading}</p>}
+    <img src={imageUrl(asset)} alt={asset.altText} />
     <img src={asset.url} alt={asset.altText} />
     {(caption.length > 0 || credit || sourceUrl || license) && (
       <figcaption className="c-figure__caption">

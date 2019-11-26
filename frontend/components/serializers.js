@@ -35,6 +35,11 @@ const getTextValue = (block = '') => {
   return block.toString();
 };
 
+const displayFootnoteContent = children => {
+  const ignoredContent = /\*|\[[0-9]+\]/;
+  return children && children[0] && !ignoredContent.test(children[0]) ? children : '';
+};
+
 const serializers = {
   types: {
     image: ({ node }) => <Figure {...node} />,
@@ -118,9 +123,7 @@ const serializers = {
       </section>
     ),
     HelpdeskTeam: ({
-      node: {
-        textRight, img, headingLeft, headingRight, personLeft, personRight,
-      },
+      node: { textRight, img, headingLeft, headingRight, personLeft, personRight },
     }) => (
       <section className="c-topic-section">
         <BoxOnImage
@@ -209,7 +212,7 @@ const serializers = {
         </div>
       </section>
     ),
-    block: (props) => {
+    block: props => {
       const { node, children = [] } = props;
       const style = node.style || 'normal';
       // Heading?
@@ -243,11 +246,11 @@ const serializers = {
     return <ol {...classes('standard', null, 'list-numbered')}>{children}</ol>;
   },
   marks: {
-    internalReferance: (props) => {
+    internalReferance: props => {
       const { children = [], mark: { target: { slug = '', _type = '' } = {} } = {} } = props;
       return <a href={buildUrl({ _type, slug: slug.current })}>{children}</a>;
     },
-    link: (props) => {
+    link: props => {
       if (props.mark.href) {
         if (props.mark.href.match(/#_ftn(\d+)/)) {
           const ref = props.mark.href.match(/#_ftn(\d+)/)[1];
@@ -280,6 +283,7 @@ const serializers = {
       if (!mark.content) return <span />;
       return (
         <span>
+          {children && children[0] !== '*' && children}
           <span id={`fnref:${markKey}`}>
             <a href={`#fn:${markKey}`} rel="footnote">
               {markKey}
@@ -292,7 +296,7 @@ const serializers = {
       if (!mark.content) return <span />;
       return (
         <span>
-          {children}
+          {displayFootnoteContent(children)}
           <span id={`fnref:${markKey}`}>
             <a href={`#fn:${markKey}`} rel="footnote">
               {markKey}
