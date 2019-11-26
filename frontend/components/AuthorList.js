@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { LinkToItem } from './';
 
-const AuthorList = ({ authors = [], intro = 'By' }) => {
+const AuthorList = ({ authors = [], intro = 'By', and = 'and' }) => {
   return (
     <span>
-      {intro + ' '}
+      {`${intro} `}
       {authors &&
         authors
           .filter(author => author)
@@ -38,7 +38,7 @@ const AuthorList = ({ authors = [], intro = 'By' }) => {
                 )}
                 {/* Add delimiters between the authors. */}
                 {authors.length > 1 && index + 2 < authors.length && <span>, </span>}
-                {authors.length > 1 && index + 2 === authors.length && <span> and </span>}
+                {authors.length > 1 && index + 2 === authors.length && <span> {`${and}`} </span>}
               </span>
             )
           )}

@@ -70,13 +70,13 @@ export default augmentSchema({
     {
       name: 'bio',
       title: 'Full biography',
-      type: 'defaultText',
+      type: 'defaultBlocks',
       localize: true,
     },
     {
       name: 'bioShort',
       title: 'Short biography',
-      type: 'defaultText',
+      type: 'defaultBlocks',
       description: 'For publications on pdfs etc. Typically just one paragraph.',
       localize: true,
     },

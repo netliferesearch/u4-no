@@ -22,6 +22,9 @@ import frontpage from './frontpage';
 import file from './file';
 import articleType from './articleType';
 import u4Event from './event';
+import localeString from './fields/localeString'
+import defaultBlocks from './fields/defaultBlocks'
+
 const types = [
   article,
   file,
@@ -43,7 +46,9 @@ const types = [
   funkyTable,
   nugget,
   pullQuote,
-  richDate
+  richDate,
+  localeString,
+  defaultBlocks,
 ]
 export default createSchema({
   name: 'default',

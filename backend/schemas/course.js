@@ -1,8 +1,8 @@
-import { title, leadText, featuredImage, language, slug } from './fields'
-import annotationsLinksOnly from './fields/annotationsLinksOnly'
+import { title, leadText, featuredImage, language, slug } from './fields';
+import annotationsLinksOnly from './fields/annotationsLinksOnly';
+import augmentSchema from './fields/augmentSchema';
 
-
-export default {
+export default augmentSchema({
   title: 'Course',
   name: 'course',
   type: 'document',
@@ -12,27 +12,7 @@ export default {
     {
       name: 'content',
       title: 'Description',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'H2', value: 'h2'},
-            {title: 'H3', value: 'h3'},
-          ],
-          // Only allow numbered lists
-          marks: {
-            // Only allow these decorators
-            decorators: [
-              {title: 'Strong', value: 'strong'},
-              {title: 'Emphasis', value: 'em'}
-            ],
-            // Support annotating text with a reference to an author
-            annotations: annotationsLinksOnly
-          }
-        },
-      ],
+      type: 'defaultBlocks',
     },
     {
       name: 'startDate',
@@ -41,7 +21,7 @@ export default {
       options: {
         inputDate: true,
         inputTime: false,
-      }
+      },
     },
     {
       name: 'endDate',
@@ -50,7 +30,7 @@ export default {
       options: {
         inputDate: true,
         inputTime: false,
-      }
+      },
     },
     language,
     {
@@ -74,9 +54,9 @@ export default {
       type: 'reference',
       to: [
         {
-          type: 'courseType'
-        }
-      ]
+          type: 'courseType',
+        },
+      ],
     },
     {
       name: 'topics',
@@ -88,15 +68,15 @@ export default {
           weak: true,
           to: [
             {
-              type: 'topics'
-            }
-          ]
-        }
+              type: 'topics',
+            },
+          ],
+        },
       ],
       preview: {
-        title: 'topics.title'
-      }
+        title: 'topics.title',
+      },
     },
-    slug
+    slug,
   ],
-}
+});
