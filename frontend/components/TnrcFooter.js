@@ -22,6 +22,10 @@ const TnrcFooter = ({ publicationTypeId = '' }) => {
                 <img src="/static/tnrc/TNRC.png" alt="Targeting Natural Resource Corruption" />
               </a>
             </div>
+          </div>
+        </div>
+        <div className="c-longform-grid__full">
+          <div>
             <div {...classes('logos')}>
               <a
                 style={{
@@ -34,7 +38,7 @@ const TnrcFooter = ({ publicationTypeId = '' }) => {
                 href="https://www.usaid.gov/biodiversity"
                 title="USAID"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
               >
                 &nbsp;
               </a>{' '}
@@ -99,15 +103,18 @@ const TnrcFooter = ({ publicationTypeId = '' }) => {
                 &nbsp;
               </a>
             </div>
+          </div>
+        </div>
+        <div className="c-longform-grid__standard">
+          <div>
             <p {...classes('body')}>
               This content is made possible by the generous support of the American people through
               the{' '}
               <a href="https://www.usaid.gov/biodiversity" target="_blank" rel="noopener">
                 United States Agency for International Development
               </a>{' '}
-              (USAID). The contents are the responsibility of World Wildlife Fund (WWF) and do not
-              necessarily reflect the views of USAID, the United States Government, or individual
-              TNRC consortium members.
+              (USAID). The contents are the responsibility of U4 and do not necessarily reflect the
+              views of USAID, the United States Government, or individual TNRC consortium members.
             </p>
           </div>
         </div>

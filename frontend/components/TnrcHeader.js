@@ -17,16 +17,17 @@ const TnrcHeader = ({ publicationTypeId = '' }) => {
             <a
               href="https://www.worldwildlife.org/initiatives/targeting-natural-resource-corruption"
               target="_blank"
+              rel="noopener noreferrer"
               title="Targeting Natural Resource Corruption"
             >
-              TNRC consortium
+              Targeting Natural Resource Corruption (TNRC)
             </a>{' '}
-            and produced with support from USAID.
+            project and produced with support from USAID.
           </p>
         </div>
         <div {...classes('logo')}>
           <a
-            href="https://www.worldwildlife.org/initiatives/targeting-natural-resource-corruption"
+            href="https://www.worldwildlife.org/pages/tnrc-targeting-natural-resource-corruption"
             target="_blank"
             title="Targeting Natural Resource Corruption"
           >
