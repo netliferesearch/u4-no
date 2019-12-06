@@ -15,7 +15,7 @@ function redirectTemp(ctx, path) {
   }
 }
 
-const PublicationPdf = (props) => {
+const PublicationPdf = props => {
   if (
     props.data &&
     props.data.pdfFile &&
@@ -37,7 +37,7 @@ const PublicationPdf = (props) => {
 
 export default DataLoader(PublicationPdf, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '*[slug.current == $slug][0]',
+    sanityQuery: "*[_type == 'publication' && slug.current == $slug][0]",
     param: { slug },
   }),
   materializeDepth: 1,
