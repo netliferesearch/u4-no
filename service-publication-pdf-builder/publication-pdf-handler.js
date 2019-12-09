@@ -28,7 +28,7 @@ async function publicationPdfHandler(req, res) {
     });
     const queryFunc = slug => ({
       sanityQuery:
-        '*[slug.current == $slug][0]{title,pdfFile{asset->{url}},legacypdf{asset->{url}}}',
+        '*[_type == 'publication' && slug.current == $slug][0]{title,pdfFile{asset->{url}},legacypdf{asset->{url}}}',
       param: { slug },
     });
 
