@@ -3,17 +3,27 @@
   width: 100%;
   margin-top: $spacing-small;
   flex-grow: 2;
+  @include mq($from: tablet) {
+    margin-left: $spacing;
+  }
   @include mq($from: desktop) {
     order: 0;
     width: auto;
     margin-top: 0;
-    margin-left: 8.33333%;
+    margin-left: 38px;
     margin-right: $spacing;
+    .c-search-v2__content {
+      flex-grow: 0;
+    }
+  }
+
+  &__header-search {
+    display: flex;
   }
 }
 
 .c-search-v2__label {
-  width: 100%;
+  width: 0;
   display: block;
   height: 0;
   overflow: hidden;
@@ -42,10 +52,11 @@
 }
 
 .c-search-v2__content {
-  border: 1px solid $brand-main;
+  border: 2px solid $brand-main;
   position: relative;
   display: flex;
   flex-wrap: nowrap;
+  flex-grow: 1;
 }
 
 .c-search-v2__input {
@@ -57,11 +68,16 @@
   color: $black;
   margin: 0 0;
   transition: border 0.2s ease-out;
+  padding-left: $spacing-small;
   @include inuit-font-size($font-size-tiny, $line-height-tiny);
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-small, $line-height-small);
   }
-
+  &::placeholder {
+    color: $grey;
+    font-weight: 300;
+    @include inuit-font-size($font-size-tiny, $line-height-tiny);
+  }
   &:hover {
     outline: none;
     &::placeholder {

@@ -20,6 +20,7 @@ class FrontpageSearchField extends Component {
       placeholder: 'topics',
       placeholderIndex: 0,
       searchQuery: '',
+      typingTimeout: 0,
     };
   }
   componentDidMount() {
@@ -71,15 +72,20 @@ class FrontpageSearchField extends Component {
             type="search"
             value={this.state.searchQuery}
             onChange={event => {
+              //event.persist();
               const { value = '' } = event.target;
+
               if (!this.state.loading && value.length > 2) {
-                return this.setState(
-                  {
-                    searchQuery: value,
-                    loading: true,
-                  },
-                  () => Router.pushRoute(`/search?search=${value}`)
-                );
+                if (this.typingTimeout) clearTimeout(this.typingTimeout);
+                this.typingTimeout = setTimeout(() => {
+                  return this.setState(
+                    {
+                      searchQuery: value,
+                      loading: true,
+                    },
+                    () => Router.pushRoute(`/search?search=${value}`)
+                  );
+                }, 400);
               }
               return this.setState({ searchQuery: value });
             }}
