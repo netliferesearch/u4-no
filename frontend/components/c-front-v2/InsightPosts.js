@@ -34,13 +34,14 @@ const InsightPosts = ({ insights }) => {
               <p {...classes('publication-intro')}>{post.standfirst}</p>
               <p {...classes('date')}>{dateToString({ start: post.date.utc })}</p>
               <div {...classes('topic')}>
-                {post.topics.map((topic, index) => {
-                  return (
-                    <span className="topic" key={index}>
-                      {topic.title}
-                    </span>
-                  );
-                })}
+                {post.topics &&
+                  post.topics.map((topic, index) => {
+                    return (
+                      <span className="topic" key={index}>
+                        {topic.title}
+                      </span>
+                    );
+                  })}
               </div>
             </div>
             <hr className="u-section-underline" />

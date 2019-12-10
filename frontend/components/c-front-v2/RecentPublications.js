@@ -48,13 +48,14 @@ const RecentPublications = ({ resources = [], alt = false }) => {
               <p {...classes('publication-intro')}>{standfirst}</p>
               <p {...classes('date')}>{dateToString({ start: date.utc })}</p>
               <div {...classes('topic')}>
-                {topics.map((topic, index) => {
-                  return (
-                    <span className="topic" key={index}>
-                      {topic.title}
-                    </span>
-                  );
-                })}
+                {topics &&
+                  topics.map((topic, index) => {
+                    return (
+                      <span className="topic" key={index}>
+                        {topic.title}
+                      </span>
+                    );
+                  })}
               </div>
               <hr className="u-section-underline" />
             </div>

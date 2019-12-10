@@ -9,7 +9,7 @@ import InsightPosts from '../components/c-front-v2/InsightPosts';
 import RecentPublications from '../components/c-front-v2/RecentPublications';
 import NewsAndEvents from '../components/c-front-v2/NewsAndEvents';
 const FrontpageV2 = ({
-  data: { frontPage = {}, topics = {}, featured = {}, insights = {}, events = {} },
+  data: { frontPage = {}, topics = {}, featured = {}, insights = [], events = [] },
 }) => (
   <LayoutV2
     hideLogo={false}

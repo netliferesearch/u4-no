@@ -50,15 +50,16 @@ const PostPage = ({ data: { post = {} }, url = {} }) => {
           {topics.length > 0 && (
             <p className="c-longform-grid__standard">
               Related topics:{' '}
-              {topics.map(({ _ref = '', target = {} }) => (
-                <Link
-                  key={_ref}
-                  route="topic.entry"
-                  params={{ slug: target.slug ? target.slug.current : '' }}
-                >
-                  <a className="c-article-header__link-item">{target.title}</a>
-                </Link>
-              ))}
+              {topics &&
+                topics.map(({ _ref = '', target = {} }) => (
+                  <Link
+                    key={_ref}
+                    route="topic.entry"
+                    params={{ slug: target.slug ? target.slug.current : '' }}
+                  >
+                    <a className="c-article-header__link-item">{target.title}</a>
+                  </Link>
+                ))}
             </p>
           )}
         </div>

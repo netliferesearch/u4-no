@@ -22,13 +22,14 @@ const NewsAndEvents = ({ events }) => {
               <div className="bottom-content">
                 <p {...classes('date')}>{dateToString({ start: event.startDate.utc })}</p>
                 <div {...classes('topic')}>
-                  {event.topics.map((topic, index) => {
-                    return (
-                      <span className="topic" key={index}>
-                        {topic.title}
-                      </span>
-                    );
-                  })}
+                  {event.topics &&
+                    event.topics.map((topic, index) => {
+                      return (
+                        <span className="topic" key={index}>
+                          {topic.title}
+                        </span>
+                      );
+                    })}
                 </div>
               </div>
             </div>

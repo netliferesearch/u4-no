@@ -24,13 +24,14 @@ const FeaturedPosts = ({ featured }) => {
             <p {...classes('publication-intro')}>{blog.standfirst}</p>
             <p {...classes('date')}>{dateToString({ start: blog.date.utc })}</p>
             <div {...classes('topic')}>
-              {blog.topics.map((topic, index) => {
-                return (
-                  <span className="topic" key={index}>
-                    {topic.title}
-                  </span>
-                );
-              })}
+              {blog.topics &&
+                blog.topics.map((topic, index) => {
+                  return (
+                    <span className="topic" key={index}>
+                      {topic.title}
+                    </span>
+                  );
+                })}
             </div>
           </div>
           <hr className="u-section-underline" />
@@ -50,13 +51,14 @@ const FeaturedPosts = ({ featured }) => {
             <p {...classes('publication-intro')}>{publication.standfirst}</p>
             <p {...classes('date')}>{dateToString({ start: publication.date.utc })}</p>
             <div {...classes('topic')}>
-              {publication.topics.map((topic, index) => {
-                return (
-                  <span className="topic" key={index}>
-                    {topic.title}
-                  </span>
-                );
-              })}
+              {publication.topics &&
+                publication.topics.map((topic, index) => {
+                  return (
+                    <span className="topic" key={index}>
+                      {topic.title}
+                    </span>
+                  );
+                })}
             </div>
           </div>
           <hr className="u-section-underline" />
@@ -75,13 +77,14 @@ const FeaturedPosts = ({ featured }) => {
           <p {...classes('publication-intro')}>{blogLarge.standfirst}</p>
           <p {...classes('date')}>{dateToString({ start: blogLarge.date.utc })}</p>
           <div {...classes('topic')}>
-            {blogLarge.topics.map((topic, index) => {
-              return (
-                <span className="topic" key={index}>
-                  {topic.title}
-                </span>
-              );
-            })}
+            {blogLarge.topics &&
+              blogLarge.topics.map((topic, index) => {
+                return (
+                  <span className="topic" key={index}>
+                    {topic.title}
+                  </span>
+                );
+              })}
           </div>
         </div>
         <hr className="u-section-underline" />
