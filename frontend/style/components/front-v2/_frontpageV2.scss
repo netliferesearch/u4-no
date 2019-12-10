@@ -291,6 +291,9 @@
         }
       }
     }
+    @include mq($from: tablet) {
+      padding: 0;
+    }
     @include mq($from: desktop) {
       padding-bottom: $spacing-huge;
       .cols {
