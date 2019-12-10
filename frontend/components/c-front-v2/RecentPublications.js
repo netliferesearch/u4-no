@@ -1,6 +1,5 @@
 import React from 'react';
 import { LinkToItem } from '../';
-import { ArrowRight } from '../icons';
 import BEMHelper from 'react-bem-helper';
 import dateToString from '../../helpers/dateToString';
 
