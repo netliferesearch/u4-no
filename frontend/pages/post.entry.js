@@ -9,7 +9,6 @@ import serializers from '../components/serializers';
 const PostPage = ({ data: { post = {} }, url = {} }) => {
   const {
     title = '',
-    eventType = '',
     date = {},
     featuredImage = {},
     lead = '',
