@@ -34,7 +34,7 @@ PublicationEntry.defaultProps = {
 
 export default DataLoader(PublicationEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `*[slug.current == $slug]{ _type, _id,
+    sanityQuery: `*[_type == 'publication' && slug.current == $slug]{ _type, _id,
       abbreviations, abstract, acknowledgements,
       authors[]->{ _id, affiliations, email, firstName, slug, surname },
       bibliographicalOverride, blurbs, content, date,

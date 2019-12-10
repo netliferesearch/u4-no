@@ -81,7 +81,11 @@ const LongFormArticleContainer = props => {
             <p {...classes('float-left')}>
               {authors ? (
                 <span>
-                  <AuthorList authors={authors.map(({ target }) => target)} intro={trans('by')} />
+                  <AuthorList
+                    authors={authors.map(({ target }) => target)}
+                    intro={trans('by')}
+                    and={trans('and')}
+                  />
                   <br />
                 </span>
               ) : null}
@@ -100,6 +104,7 @@ const LongFormArticleContainer = props => {
                         : trans('series_editors')
                     }
                     pluralize={publicationType._id !== 'pubtype-3'}
+                    and={trans('and')}
                   />
                   <br />
                 </span>
@@ -124,7 +129,7 @@ const LongFormArticleContainer = props => {
                     ? '.'
                     : partners.length - 1 > index + 1
                     ? ', '
-                    : ' ' + trans('and') + ' '}
+                    : ` ${  trans('and')  } `}
                 </div>
               ))}
               {partners.map(

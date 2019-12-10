@@ -18,8 +18,9 @@
   img {
     max-width: 100%;
   }
+  a,
   a:hover {
-    border-bottom-color: $white;
+    border-bottom-color: transparent;
   }
 }
 

@@ -25,6 +25,17 @@ const getTextValue = (block = '') => {
   return block.toString();
 };
 
+const displayFootnoteContent = children => {
+  const ignoredContent = /\*|\[[0-9]+\]/;
+  return children &&
+    children[0] &&
+    children[0].props &&
+    children[0].props.children &&
+    !ignoredContent.test(children[0].props.children)
+    ? children
+    : '';
+};
+
 function printSerializers(blocks) {
   const footnotes = findFootnotes(blocks);
   const links = findLinks(blocks);
@@ -131,12 +142,7 @@ function printSerializers(blocks) {
       },
       footnote: ({ children, markKey = '' }) => (
         <React.Fragment>
-          {children &&
-            children[0] &&
-            children[0].props &&
-            children[0].props.children &&
-            children[0].props.children !== '*' &&
-            children}
+          {displayFootnoteContent(children)}
           <React.Fragment>
             {markKey && (
               <BlockContent

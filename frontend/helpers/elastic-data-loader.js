@@ -11,10 +11,9 @@ const mapDispatchToProps = dispatch => ({
   updateReadingProgress: bindActionCreators(updateReadingProgress, dispatch),
 });
 
+// anonymous has read access to elasticsearch index so this works
 const client = new elasticsearch.Client({
-  host:
-    'https://34f28f12080e435795254ec8886248ba.eu-central-1.aws.cloud.es.io/',
-  httpAuth: 'u4frontend:u4frontend',
+  host: 'https://34f28f12080e435795254ec8886248ba.eu-central-1.aws.cloud.es.io/',
   apiVersion: '7.2',
 });
 
@@ -77,10 +76,10 @@ const doSearch = async ({
   let searchQueryWithoutFilters = searchQuery;
 
   searchQueryFilters.forEach(part => {
-    if(part.indexOf('author:') !== -1) {
-      const personSlug = part.replace(/^author:/gi, "");
-      searchQueryWithoutFilters = searchQueryWithoutFilters.replace(part, "");
-      activeFilterQueries.push({ terms: { relatedPersons: [personSlug] } })
+    if (part.indexOf('author:') !== -1) {
+      const personSlug = part.replace(/^author:/gi, '');
+      searchQueryWithoutFilters = searchQueryWithoutFilters.replace(part, '');
+      activeFilterQueries.push({ terms: { relatedPersons: [personSlug] } });
     }
   });
   searchQueryWithoutFilters = searchQueryWithoutFilters.trim();
@@ -150,7 +149,9 @@ const doSearch = async ({
                 minimum_should_match: 1,
                 should: [
                   // if no query, yet active filters use match_all query to show results
-                  ...(!searchQueryWithoutFilters && activeFilterQueries.length > 0 ? [{ match_all: {} }] : []),
+                  ...(!searchQueryWithoutFilters && activeFilterQueries.length > 0
+                    ? [{ match_all: {} }]
+                    : []),
                   {
                     multi_match: {
                       query: searchQueryWithoutFilters,
