@@ -12,13 +12,15 @@ const NewsAndEvents = ({ events }) => {
         {events.map((event, index) => (
           <div className="col" key={index}>
             <div className="text">
-              <h6 {...classes('publication-type')}>
-                {event._type === 'course' ? 'Online course' : 'Workshop'}
-              </h6>
-              <a href={event.slug} {...classes('publication-headline')}>
-                <h3>{event.title}</h3>
-              </a>
-              <p {...classes('publication-intro')}>{event.lead}</p>
+              <div className="top-content">
+                <h6 {...classes('publication-type')}>
+                  {event._type === 'course' ? 'Online course' : 'Workshop'}
+                </h6>
+                <a href={event.slug} {...classes('publication-headline')}>
+                  <h3 {...classes('publication-headline')}>{event.title}</h3>
+                </a>
+                <p {...classes('publication-intro')}>{event.lead}</p>
+              </div>
               <div className="bottom-content">
                 <p {...classes('date')}>{dateToString({ start: event.startDate.utc })}</p>
                 <div {...classes('topic')}>

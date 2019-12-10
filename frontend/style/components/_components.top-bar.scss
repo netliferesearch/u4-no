@@ -14,37 +14,77 @@
     flex-wrap: nowrap;
   }
   &--fixed {
-    padding: 0;
     align-items: center;
     position: fixed;
     z-index: 10;
     top: 0;
     left: 0;
     right: 0;
-
-    padding-left: $spacing;
-    padding-top: $spacing;
-    padding-right: $inuit-global-spacing-unit;
-    .c-top-bar__logo-cmi {
-      display: none;
-      background-color: $brand-dark;
-      height: 93px;
-      width: 93px;
+    padding: 0;
+    .fixed-header-content {
+      width: 100%;
       align-items: center;
-      justify-content: center;
-      margin-right: $inuit-global-spacing-unit;
-      @include mq($from: tablet) {
-        display: flex;
-      }
+      background-color: $white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: $spacing;
+      height: 150px;
+    }
+    .c-top-bar__logo {
+      padding-left: 0;
     }
     @include mq($from: tablet) {
-      padding-left: 0;
-      padding-top: 0;
-      max-width: 1920px;
+      padding: 0;
+      max-width: 100%;
+      .fixed-header-content {
+        padding-right: $spacing;
+        height: 170px;
+      }
+      .c-top-bar__logo {
+        margin-left: 117px;
+        height: 93;
+        display: flex;
+        align-items: center;
+        .c-logo {
+          margin: 0;
+        }
+      }
     }
     @include mq($from: desktop) {
-      padding-right: 178px;
+      .fixed-header-content {
+        height: 93px;
+        //padding: 0;
+        //padding-left: $spacing;
+      }
     }
+    @include mq($from: wide) {
+      .fixed-header-content {
+        padding-right: 178px;
+        height: 93px;
+        padding-left: 117px;
+      }
+      .c-top-bar__logo {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.c-top-bar__logo-cmi {
+  display: none;
+  background-color: $brand-dark;
+  height: 93px;
+  width: 93px;
+  align-items: center;
+  justify-content: center;
+  margin-right: $inuit-global-spacing-unit;
+  @include mq($from: tablet) {
+    display: flex;
+    position: absolute;
+    z-index: 11;
+    top: 0;
+    left: 0;
   }
 }
 

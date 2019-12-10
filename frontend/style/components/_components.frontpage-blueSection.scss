@@ -5,6 +5,11 @@
   font-family: $font-sans;
   color: $brand-dark;
   &__content {
+    .col {
+      p {
+        font-weight: 300;
+      }
+    }
     a {
       color: $brand-dark;
       border: none;

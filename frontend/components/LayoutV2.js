@@ -52,25 +52,27 @@ class LayoutV2 extends Component {
             <a href="#" {...classes('logo-cmi')}>
               <LogoCMI />
             </a>
-            {!hideLogo && (
-              <Link route="/">
-                <a {...classes('logo', 'fixed')}>
-                  <Logo />
-                </a>
-              </Link>
-            )}
-            <SearchFieldV3
-              isOpen={this.state.activeSearchMenu}
-              isAlwaysOpen={true}
-              triggerSearchMenu={this.triggerSearchMenu}
-              searchData={searchData}
-            />
-            {hideLogo && <div />}
-            <MenuV3
-              noSearch={noSearch}
-              triggerSearchMenu={this.triggerSearchMenu}
-              activeSearchMenu={this.state.activeSearchMenu}
-            />
+            <div className="fixed-header-content">
+              {!hideLogo && (
+                <Link route="/">
+                  <a {...classes('logo', 'fixed')}>
+                    <Logo />
+                  </a>
+                </Link>
+              )}
+              <SearchFieldV3
+                isOpen={this.state.activeSearchMenu}
+                isAlwaysOpen={true}
+                triggerSearchMenu={this.triggerSearchMenu}
+                searchData={searchData}
+              />
+              {hideLogo && <div />}
+              <MenuV3
+                noSearch={noSearch}
+                triggerSearchMenu={this.triggerSearchMenu}
+                activeSearchMenu={this.state.activeSearchMenu}
+              />
+            </div>
           </div>
         )}
         {children}

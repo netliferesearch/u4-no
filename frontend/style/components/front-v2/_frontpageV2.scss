@@ -301,12 +301,11 @@
         .col {
           width: 30%;
           margin-right: 3.33%;
+          margin-bottom: 0;
           .text {
             display: flex;
             height: 100%;
             flex-wrap: wrap;
-            align-content: flex-start;
-            align-items: flex-start;
             .bottom-content {
               width: 100%;
               align-self: flex-end;

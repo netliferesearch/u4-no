@@ -37,7 +37,7 @@
     overflow-y: scroll;
     @include mq($from: tablet) {
       padding: $spacing-large $spacing-large;
-      top: 200px;
+      top: 170px;
       height: auto;
       overflow: auto;
     }

@@ -29,7 +29,7 @@ const InsightPosts = ({ insights }) => {
             <div className="text">
               <h6 {...classes('publication-type')}>Blog post</h6>
               <a href={`posts/${post.slug}`} {...classes('publication-headline')}>
-                <h3>{post.title}</h3>
+                <h3 {...classes('publication-headline')}>{post.title}</h3>
               </a>
               <p {...classes('publication-intro')}>{post.standfirst}</p>
               <p {...classes('date')}>{dateToString({ start: post.date.utc })}</p>
