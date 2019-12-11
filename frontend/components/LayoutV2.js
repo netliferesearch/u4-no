@@ -57,6 +57,7 @@ class LayoutV2 extends Component {
                 <Link route="/">
                   <a {...classes('logo', 'fixed')}>
                     <Logo />
+                    <img className="logo-mobile" src="/static/logo_mobile.svg" alt="Logo mobile" />
                   </a>
                 </Link>
               )}

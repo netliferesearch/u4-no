@@ -23,20 +23,30 @@
     }
   }
   &__publication-type {
+    font-size: 12px;
+    line-height: 32px;
     font-family: $font-sans;
     text-transform: uppercase;
     font-weight: 900;
     margin: 0;
+    @include mq($from: tablet) {
+      font-size: 14px;
+    }
   }
   &__publication-headline {
+    font-size: 16px;
+    line-height: 19px;
     font-family: $font-sans;
-    font-size: 22px;
-    line-height: 30px;
+
     letter-spacing: 0.03em;
     font-weight: bold;
     color: $brand-main;
     margin: 9px 0 10px 0;
     display: block;
+    @include mq($from: tablet) {
+      font-size: 22px;
+      line-height: 30px;
+    }
     &:hover {
       border-color: transparent;
     }
@@ -264,6 +274,7 @@
     .text {
       .u-section-underline {
         margin-top: $spacing;
+        width: 100%;
       }
       &:last-of-type {
         .u-section-underline {
@@ -271,12 +282,33 @@
         }
       }
     }
+    .pdf-preview {
+      display: none;
+    }
     .c-frontpage-section__cta {
       margin: 0 auto;
       text-align: center;
     }
     @include mq($from: tablet) {
       padding: 0;
+      .text {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .left-side {
+          width: calc(100% - 131px);
+          max-width: 800px;
+          padding-right: $spacing;
+        }
+        .pdf-preview {
+          display: block;
+          width: 131px;
+          .ReactPDF__Page__canvas {
+            width: 100% !important;
+            height: auto !important;
+          }
+        }
+      }
     }
   }
   &__events {

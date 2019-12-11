@@ -43,6 +43,20 @@ export default augmentSchema({
               title: 'Title',
               type: 'string',
             },
+            {
+              name: 'size',
+              title: 'Video size',
+              description: 'Set size for the video player.',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'wide', value: 'wide' },
+                  { title: 'normal', value: 'normal' },
+                  { title: 'small', value: 'small' },
+                  { title: 'narrow', value: 'narrow' },
+                ],
+              },
+            },
           ],
         },
       ],

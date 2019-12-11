@@ -4,6 +4,9 @@
   flex-wrap: wrap;
   justify-content: space-between;
   //align-items: center;
+  .logo-mobile {
+    display: none;
+  }
   @include mq($from: tablet) {
     padding: $spacing-large $spacing-huge;
     max-width: $site-width;
@@ -21,37 +24,51 @@
     left: 0;
     right: 0;
     padding: 0;
+    .logo-mobile {
+      display: inline-block;
+      vertical-align: top;
+    }
+    .c-logo {
+      display: none;
+    }
     .fixed-header-content {
       width: 100%;
-      align-items: center;
+      align-items: flex-start;
       background-color: $white;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      padding: $spacing;
-      height: 150px;
+      padding: 0 0 $spacing $spacing;
+      height: 130px;
     }
-    .c-top-bar__logo {
+    .c-top-bar__logo,
+    .c-top-bar__logo:visited {
       padding-left: 0;
+      display: flex;
+      align-items: center;
     }
     @include mq($from: tablet) {
       padding: 0;
       max-width: 100%;
       .fixed-header-content {
-        padding-right: $spacing;
-        padding-left: 0;
+        padding: 0 $spacing 0 0;
         height: 180px;
       }
       .c-search-v2 {
-        align-self: flex-end;
+        align-self: center;
+      }
+      .logo-mobile {
+        display: none;
       }
       .c-top-bar__logo {
         margin-left: 117px;
-        height: 93;
         display: flex;
         align-items: center;
+        width: auto;
+        height: 93px;
         .c-logo {
           margin: 0;
+          display: block;
         }
       }
     }
@@ -195,9 +212,10 @@ a.c-top-bar__logo {
       padding: 0;
     }
     button {
-      padding: $spacing-tiny $spacing-tiny;
+      //padding: $spacing-tiny $spacing-tiny;
       &.c-top-bar__menu-button {
-        border: 2px solid $brand-main;
+        height: 49px;
+        width: 108px;
         color: $brand-main;
         transition: background-color 0.2s ease-out, color 0.2s ease-out;
         &.c-top-bar__menu-button--active {
@@ -215,7 +233,9 @@ a.c-top-bar__logo {
       @include mq($from: tablet) {
         padding: $spacing-small $spacing-small;
         &.c-top-bar__menu-button {
-          height: 49px;
+          margin-top: $spacing;
+          border: 2px solid $brand-main;
+          //height: 49px;
         }
       }
     }
