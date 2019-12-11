@@ -16,7 +16,10 @@ const NewsAndEvents = ({ events }) => {
                 <h6 {...classes('publication-type')}>
                   {event._type === 'course' ? 'Online course' : 'Workshop'}
                 </h6>
-                <a href={event.slug} {...classes('publication-headline')}>
+                <a
+                  href={`${event._type === 'course' ? 'courses/' : ''}${event.slug}`}
+                  {...classes('publication-headline')}
+                >
                   <h3 {...classes('publication-headline')}>{event.title}</h3>
                 </a>
                 <p {...classes('publication-intro')}>{event.lead}</p>
