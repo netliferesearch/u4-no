@@ -2,7 +2,7 @@ import React from 'react';
 import { LinkToItem } from '../';
 import BEMHelper from 'react-bem-helper';
 import dateToString from '../../helpers/dateToString';
-import { Document, Page } from 'react-pdf';
+import { Document, Page } from 'react-pdf/build/entry.noworker';
 import useMediaQuery from '../../helpers/useMediaQuery';
 
 const RecentPublications = ({ resources = [], alt = false }) => {
