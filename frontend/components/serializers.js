@@ -36,7 +36,7 @@ const getTextValue = (block = '') => {
 };
 
 const displayFootnoteContent = children => {
-  const ignoredContent = /\*|\[[0-9]+\]/;
+  const ignoredContent = /\*|\[[0-9]+\]|[0-9]+/;
   return children && children[0] && !ignoredContent.test(children[0]) ? children : '';
 };
 
@@ -283,7 +283,7 @@ const serializers = {
       if (!mark.content) return <span />;
       return (
         <span>
-          {children && children[0] !== '*' && children}
+          {displayFootnoteContent(children)}
           <span id={`fnref:${markKey}`}>
             <a href={`#fn:${markKey}`} rel="footnote">
               {markKey}
