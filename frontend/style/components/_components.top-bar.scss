@@ -4,6 +4,9 @@
   flex-wrap: wrap;
   justify-content: space-between;
   //align-items: center;
+  .logo-mobile {
+    display: none;
+  }
   @include mq($from: tablet) {
     padding: $spacing-large $spacing-huge;
     max-width: $site-width;
@@ -12,6 +15,95 @@
   }
   @include mq($from: desktop) {
     flex-wrap: nowrap;
+  }
+  &--fixed {
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    .logo-mobile {
+      display: inline-block;
+      vertical-align: top;
+    }
+    .c-logo {
+      display: none;
+    }
+    .fixed-header-content {
+      width: 100%;
+      align-items: flex-start;
+      background-color: $white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 0 0 $spacing $spacing;
+      height: 130px;
+    }
+    .c-top-bar__logo,
+    .c-top-bar__logo:visited {
+      padding-left: 0;
+      display: flex;
+      align-items: center;
+    }
+    @include mq($from: tablet) {
+      padding: 0;
+      max-width: 100%;
+      .fixed-header-content {
+        padding: 0 $spacing 0 0;
+        height: 180px;
+      }
+      .c-search-v2 {
+        align-self: center;
+      }
+      .logo-mobile {
+        display: none;
+      }
+      .c-top-bar__logo {
+        margin-left: 117px;
+        display: flex;
+        align-items: center;
+        width: auto;
+        height: 93px;
+        .c-logo {
+          margin: 0;
+          display: block;
+        }
+      }
+    }
+    @include mq($from: desktop) {
+      .fixed-header-content {
+        height: 93px;
+      }
+    }
+    @include mq($from: wide) {
+      .fixed-header-content {
+        padding-right: 178px;
+        height: 93px;
+        padding-left: 117px;
+      }
+      .c-top-bar__logo {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.c-top-bar__logo-cmi {
+  display: none;
+  background-color: $brand-dark;
+  height: 93px;
+  width: 93px;
+  align-items: center;
+  justify-content: center;
+  margin-right: $inuit-global-spacing-unit;
+  @include mq($from: tablet) {
+    display: flex;
+    position: absolute;
+    z-index: 11;
+    top: 0;
+    left: 0;
   }
 }
 
@@ -29,6 +121,19 @@ a.c-top-bar__logo:visited {
   }
   &:hover  {
     border: 0;
+  }
+}
+
+a.c-top-bar__logo {
+  &--fixed {
+    @include mq($from: desktop) {
+      width: auto;
+    }
+    &:visited {
+      @include mq($from: desktop) {
+        width: auto;
+      }
+    }
   }
 }
 
@@ -50,6 +155,10 @@ a.c-top-bar__logo:visited {
     justify-content: center;
     margin: 0;
     margin-top: $spacing-tiny;
+  }
+  &--fixed {
+    margin: 0;
+    margin-top: 0;
   }
 }
 .c-top-bar__menu--active {
@@ -98,6 +207,39 @@ a.c-top-bar__logo:visited {
       padding: 0;
     }
   }
+  &--fixed {
+    @include mq($from: tablet) {
+      padding: 0;
+    }
+    button {
+      //padding: $spacing-tiny $spacing-tiny;
+      &.c-top-bar__menu-button {
+        height: 49px;
+        width: 108px;
+        color: $brand-main;
+        transition: background-color 0.2s ease-out, color 0.2s ease-out;
+        &.c-top-bar__menu-button--active {
+          background-color: $brand-main;
+          color: $white;
+          .c-top-bar__menu-icon {
+            img {
+              width: 23px;
+              max-width: 100%;
+              vertical-align: top;
+            }
+          }
+        }
+      }
+      @include mq($from: tablet) {
+        padding: $spacing-small $spacing-small;
+        &.c-top-bar__menu-button {
+          margin-top: $spacing;
+          border: 2px solid $brand-main;
+          //height: 49px;
+        }
+      }
+    }
+  }
 }
 
 .c-top-bar__menu-item--active {
@@ -109,4 +251,7 @@ a.c-top-bar__logo:visited {
 .c-top-bar__menu-icon {
   margin-right: $spacing-small;
   vertical-align: middle;
+  &--fixed {
+    margin-left: $spacing-small;
+  }
 }

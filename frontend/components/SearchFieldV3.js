@@ -5,8 +5,8 @@ import autobind from 'react-autobind';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateSearchPageNum } from '../helpers/redux-store';
-import { LoaderV2 } from '../components';
-import { SearchIcon } from '../components/icons';
+import { LoaderV2 } from '.';
+import { SearchIcon } from './icons';
 import { Router } from '../routes';
 import { withRouter } from 'next/router';
 import queryString from 'query-string';
@@ -30,11 +30,13 @@ function debounce(fn, time) {
   return wrapper;
 }
 
-class SearchFieldV2 extends Component {
+class SearchFieldV3 extends Component {
   constructor(props) {
     super(props);
     autobind(this);
-    this.state = { loading: false, typingTimeout: 0 };
+    this.state = {
+      loading: false,
+    };
   }
 
   componentDidMount() {
@@ -142,48 +144,56 @@ class SearchFieldV2 extends Component {
         {({ getInputProps, getLabelProps }) => (
           <form onSubmit={this.handleSubmit} {...classes()}>
             <label
-              {...getLabelProps({ htmlFor: 'search' })}
+              {...getLabelProps({
+                htmlFor: 'search',
+              })}
               {...classes('label', modifier, 'u-visually-hidden')}
             >
               Search to find topics, publications, people, services, and more:
             </label>
-            <div className="c-search-v2__content">
+            <div {...classes('header-search')}>
+              <div className="c-search-v2__content">
+                <input
+                  ref={this.inputReference}
+                  {...classes('input', modifier)}
+                  placeholder="Search the entire site"
+                  {...getInputProps({
+                    id: 'search',
+                    name: 'search',
+                    type: 'search',
+                    // prevents field from forgetting input
+                    defaultValue: searchValue,
+                    value: undefined,
+                    onKeyDown: event => {
+                      // Prevent the user from typing more if search is initiated on
+                      // page different from the search page.
+                      if (window.location.pathname !== '/search' && this.state.loading) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        return;
+                      }
+                      // While onChange is called every time the input field
+                      // changes value, we need to also listen for the enter key
+                      // so that we can re-trigger query.
+                      if (event.keyCode === 13) {
+                        this.updateSearch({
+                          urlUpdateType: 'push',
+                          value: event.target.value,
+                        });
+                      }
+                    },
+                    onChange: e => this.handleInputChange(e),
+                  })}
+                />
+                {!isAlwaysOpen && (
+                  <button {...classes('button')} type="button" onClick={triggerSearchMenu}>
+                    ✕
+                  </button>
+                )}
+              </div>
               <button {...classes('button')} type="submit" value="Search">
                 {this.state.loading ? <LoaderV2 /> : <SearchIcon />}
               </button>
-              <input
-                ref={this.inputReference}
-                {...classes('input', modifier)}
-                {...getInputProps({
-                  id: 'search',
-                  name: 'search',
-                  type: 'search',
-                  // prevents field from forgetting input
-                  defaultValue: searchValue,
-                  value: undefined,
-                  onKeyDown: event => {
-                    // Prevent the user from typing more if search is initiated on
-                    // page different from the search page.
-                    if (window.location.pathname !== '/search' && this.state.loading) {
-                      event.preventDefault();
-                      event.stopPropagation();
-                      return;
-                    }
-                    // While onChange is called every time the input field
-                    // changes value, we need to also listen for the enter key
-                    // so that we can re-trigger query.
-                    if (event.keyCode === 13) {
-                      this.updateSearch({ urlUpdateType: 'push', value: event.target.value });
-                    }
-                  },
-                  onChange: e => this.handleInputChange(e),
-                })}
-              />
-              {!isAlwaysOpen && (
-                <button {...classes('button')} type="button" onClick={triggerSearchMenu}>
-                  ✕
-                </button>
-              )}
             </div>
           </form>
         )}
@@ -200,5 +210,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(SearchFieldV2)
+  )(SearchFieldV3)
 );

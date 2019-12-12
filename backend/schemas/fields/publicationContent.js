@@ -68,6 +68,20 @@ const content = {
           title: 'Title',
           type: 'string',
         },
+        {
+          name: 'size',
+          title: 'Video size',
+          description: 'Set size for the video player.',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'wide', value: 'wide' },
+              { title: 'normal', value: 'normal' },
+              { title: 'small', value: 'small' },
+              { title: 'narrow', value: 'narrow' },
+            ],
+          },
+        },
       ],
     },
     {
@@ -149,7 +163,7 @@ const content = {
               { title: 'Narrow', value: 'narrow' },
             ],
           },
-        },        
+        },
       ],
       preview: {
         select: {
@@ -175,7 +189,7 @@ function blocksToText(blocks, opts = {}) {
   const defaults = {};
   const options = Object.assign({}, defaults, opts);
   return blocks
-    .map((block) => {
+    .map(block => {
       // TODO: Could make this even more general by letting it recursively
       // go down a block tree in search for indexable content.
       if (block._type === 'heading') {
