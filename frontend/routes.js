@@ -2,6 +2,7 @@ const routes = (module.exports = require('next-routes')());
 
 routes
   .add('main.index', '/')
+  .add('main.index-v2', '/v2')
   .add('publication.shortVersion', '/publications/:slug/shortversion')
   .add('publication.file', '/publications/:slug/downloadasset/:legacyid')
   .add('publication.entry', '/publications/:slug')
@@ -23,4 +24,5 @@ routes
   .add('asset.entry', '/assets/:slug')
   .add('general.article', '/:slug')
   .add('preview', '/preview/:type/:id')
-  .add('publication.print.preview', '/printpreview/:id');
+  .add('publication.print.preview', '/printpreview/:id')
+  .add('post.entry', '/posts/:slug');
