@@ -34,13 +34,15 @@ class SearchFieldV2 extends Component {
   constructor(props) {
     super(props);
     autobind(this);
-    this.state = { loading: false, typingTimeout: 0 };
+    this.state = {
+      loading: false,
+    };
   }
 
   componentDidMount() {
     const { search: searchValue = '' } = this.props.router.query;
     const { current: input } = this.inputReference;
-    if (input.value) {
+    if (input) {
       // Trick to put caret after word in input field.
       // Source: https://stackoverflow.com/a/2345915
       input.focus();
@@ -56,26 +58,6 @@ class SearchFieldV2 extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.updateSearch({ urlUpdateType: 'push', value: e.target.value });
-  }
-
-  handleInputChange(e) {
-    e.persist();
-    const { value = '' } = e.target;
-    if (this.typingTimeout) clearTimeout(this.typingTimeout);
-    this.typingTimeout = setTimeout(() => {
-      if (value.length <= 2) {
-        return null; // Do nothing.
-      } else if (window.location.pathname !== '/search') {
-        return this.updateSearch({
-          urlUpdateType: 'push',
-          value,
-        });
-      }
-      return this.updateSearch({
-        urlUpdateType: 'replace',
-        value: e.target.value,
-      });
-    }, 400);
   }
 
   updateLoadingState({ prevProps }) {
@@ -103,7 +85,7 @@ class SearchFieldV2 extends Component {
           const updatedQueryString = queryString.stringify({
             ...queryParams,
             search: value,
-            searchPageNum: 1,
+            searchPageNum: 1
           });
           Router[`${urlUpdateType}Route`](`/search?${updatedQueryString}`);
           console.log('debounce was called');
@@ -176,7 +158,21 @@ class SearchFieldV2 extends Component {
                       this.updateSearch({ urlUpdateType: 'push', value: event.target.value });
                     }
                   },
-                  onChange: e => this.handleInputChange(e),
+                  onChange: event => {
+                    const { value = '' } = event.target;
+                    if (value.length <= 2) {
+                      return null; // Do nothing.
+                    } else if (window.location.pathname !== '/search') {
+                      return this.updateSearch({
+                        urlUpdateType: 'push',
+                        value,
+                      });
+                    }
+                    return this.updateSearch({
+                      urlUpdateType: 'replace',
+                      value: event.target.value,
+                    });
+                  },
                 })}
               />
               {!isAlwaysOpen && (

@@ -1,11 +1,18 @@
 import license from './fields/license';
-import annotationsLinksOnly from './fields/annotationsLinksOnly';
+import annotationsLinksOnly from './fields/annotationsLinksOnly'
 
 /**
  * A publication is a long form document
  */
 import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
-import { title, longTitle, date, image, leadText, featuredImage } from './fields';
+import {
+  title,
+  longTitle,
+  date,
+  image,
+  leadText,
+  featuredImage,
+} from './fields';
 
 export default {
   name: 'frontpage',
@@ -20,11 +27,9 @@ export default {
       description: `One or two main points to highlight importance, relevance, and benefit for development professionals.
       (Aim for 400–500 characters with spaces)`,
       type: 'array',
-      of: [
-        {
-          type: 'block',
-        },
-      ],
+      of: [{
+        type: 'block'
+      }]
     },
     {
       name: 'leadLinks',
@@ -44,9 +49,9 @@ export default {
               title: 'Link URL',
               type: 'string',
             },
-          ],
-        },
-      ],
+          ]
+        }
+      ]
     },
     featuredImage,
     {
@@ -56,17 +61,20 @@ export default {
         {
           type: 'block',
           styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'H2', value: 'h2' },
-            { title: 'H3', value: 'h3' },
+            {title: 'Normal', value: 'normal'},
+            {title: 'H2', value: 'h2'},
+            {title: 'H3', value: 'h3'},
           ],
           // Only allow numbered lists
           marks: {
             // Only allow these decorators
-            decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
+            decorators: [
+              {title: 'Strong', value: 'strong'},
+              {title: 'Emphasis', value: 'em'}
+            ],
             // Support annotating text with a reference to an author
-            annotations: annotationsLinksOnly,
-          },
+            annotations: annotationsLinksOnly
+          }
         },
         {
           name: 'heading',
@@ -76,8 +84,8 @@ export default {
             {
               name: 'headingValue',
               type: 'string',
-            },
-          ],
+            }
+          ]
         },
         {
           name: 'textBlock',
@@ -91,38 +99,38 @@ export default {
                 {
                   type: 'block',
                   styles: [
-                    { title: 'Normal', value: 'normal' },
-                    { title: 'H2', value: 'h2' },
-                    { title: 'H3', value: 'h3' },
+                    {title: 'Normal', value: 'normal'},
+                    {title: 'H2', value: 'h2'},
+                    {title: 'H3', value: 'h3'},
                   ],
                   // Only allow numbered lists
                   marks: {
                     // Only allow these decorators
                     decorators: [
-                      { title: 'Strong', value: 'strong' },
-                      { title: 'Emphasis', value: 'em' },
+                      {title: 'Strong', value: 'strong'},
+                      {title: 'Emphasis', value: 'em'}
                     ],
                     // Support annotating text with a reference to an author
-                    annotations: annotationsLinksOnly,
-                  },
-                },
-              ],
-            },
+                    annotations: annotationsLinksOnly
+                  }
+                }
+              ]
+            }
           ],
           preview: {
             select: {
               blocks: 'text',
             },
             prepare({ blocks }) {
-              const block = (blocks || []).find(block => block._type === 'block');
-              return {
-                title: block
-                  ? block.children
+                const block = (blocks || []).find(block => block._type === 'block')
+                return {
+                  title: block
+                    ? block.children
                       .filter(child => child._type === 'span')
                       .map(span => span.text)
                       .join('')
-                  : 'No title',
-              };
+                    : 'No title'
+                }
             },
           },
         },
@@ -140,22 +148,22 @@ export default {
                 {
                   type: 'block',
                   styles: [
-                    { title: 'Normal', value: 'normal' },
-                    { title: 'H2', value: 'h2' },
-                    { title: 'H3', value: 'h3' },
+                    {title: 'Normal', value: 'normal'},
+                    {title: 'H2', value: 'h2'},
+                    {title: 'H3', value: 'h3'},
                   ],
                   // Only allow numbered lists
                   marks: {
                     // Only allow these decorators
                     decorators: [
-                      { title: 'Strong', value: 'strong' },
-                      { title: 'Emphasis', value: 'em' },
+                      {title: 'Strong', value: 'strong'},
+                      {title: 'Emphasis', value: 'em'}
                     ],
                     // Support annotating text with a reference to an author
-                    annotations: annotationsLinksOnly,
-                  },
-                },
-              ],
+                    annotations: annotationsLinksOnly
+                  }
+                }
+              ]
             },
             {
               name: 'colorScheme',
@@ -163,13 +171,13 @@ export default {
               type: 'string',
               options: {
                 list: [
-                  { title: 'Dark on white', value: 'darkOnWhite' },
-                  { title: 'Dark on light blue', value: 'darkOnLightBlue' },
-                  { title: 'White on blue', value: 'whiteOnBlue' },
-                  { title: 'White on dark blue', value: 'whiteOnDarkBlue' },
+                  { title: 'Dark on white', value: 'darkOnWhite'},
+                  { title: 'Dark on light blue', value: 'darkOnLightBlue'},
+                  { title: 'White on blue', value: 'whiteOnBlue'},
+                  { title: 'White on dark blue', value: 'whiteOnDarkBlue'},
                 ],
               },
-              layout: 'dropdown',
+              layout: "dropdown"
             },
           ],
           preview: {
@@ -177,17 +185,18 @@ export default {
               blocks: 'text',
             },
             prepare({ blocks }) {
-              const block = (blocks || []).find(block => block._type === 'block');
-              return {
-                title: block
-                  ? block.children
+                const block = (blocks || []).find(block => block._type === 'block')
+                return {
+                  title: block
+                    ? block.children
                       .filter(child => child._type === 'span')
                       .map(span => span.text)
                       .join('')
-                  : 'No title',
-              };
+                    : 'No title'
+                }
             },
           },
+
         },
 
         {
@@ -207,10 +216,10 @@ export default {
                       name: 'featureText',
                       type: 'text',
                     },
-                  ],
-                },
-              ],
-            },
+                  ]
+                }
+              ]
+            }
           ],
         },
         {
@@ -226,13 +235,13 @@ export default {
                   type: 'reference',
                   to: [
                     {
-                      type: 'event',
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
+                      type: 'event'
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           name: 'expertAnswers',
@@ -247,13 +256,13 @@ export default {
                   type: 'reference',
                   to: [
                     {
-                      type: 'publication',
+                      type: 'publication'
                     },
-                  ],
-                },
-              ],
-            },
-          ],
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           name: 'resources',
@@ -268,13 +277,13 @@ export default {
                   type: 'reference',
                   to: [
                     {
-                      type: 'resource',
+                      type: 'resource'
                     },
-                  ],
-                },
-              ],
-            },
-          ],
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           name: 'assets',
@@ -289,13 +298,13 @@ export default {
                   type: 'reference',
                   to: [
                     {
-                      type: 'asset',
+                      type: 'asset'
                     },
-                  ],
-                },
-              ],
-            },
-          ],
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           name: 'mosaic',
@@ -311,31 +320,31 @@ export default {
                   type: 'reference',
                   to: [
                     {
-                      type: 'asset',
+                      type: 'asset'
                     },
                     {
-                      type: 'article',
+                      type: 'article'
                     },
                     {
-                      type: 'course',
+                      type: 'course'
                     },
                     {
-                      type: 'event',
+                      type: 'event'
                     },
                     {
-                      type: 'person',
+                      type: 'person'
                     },
                     {
-                      type: 'publication',
+                      type: 'publication'
                     },
                     {
-                      type: 'topics',
+                      type: 'topics'
                     },
-                  ],
-                },
-              ],
-            },
-          ],
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           name: 'courses',
@@ -350,13 +359,13 @@ export default {
                   type: 'reference',
                   to: [
                     {
-                      type: 'course',
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
+                      type: 'course'
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           name: 'vimeo',
@@ -373,22 +382,8 @@ export default {
               name: 'title',
               title: 'Title',
               type: 'string',
-            },
-            {
-              name: 'size',
-              title: 'Video size',
-              description: 'Set size for the video player.',
-              type: 'string',
-              options: {
-                list: [
-                  { title: 'wide', value: 'wide' },
-                  { title: 'normal', value: 'normal' },
-                  { title: 'small', value: 'small' },
-                  { title: 'narrow', value: 'narrow' },
-                ],
-              },
-            },
-          ],
+            }
+          ]
         },
         {
           name: 'cta',
@@ -404,8 +399,8 @@ export default {
               name: 'ctaURL',
               title: 'URL',
               type: 'string',
-            },
-          ],
+            }
+          ]
         },
         {
           name: 'twoColumns',
@@ -416,51 +411,47 @@ export default {
               name: 'textLeft',
               title: 'Text in left hand box',
               type: 'array',
-              of: [
-                {
-                  type: 'block',
-                  styles: [
-                    { title: 'Normal', value: 'normal' },
-                    { title: 'H2', value: 'h2' },
-                    { title: 'H3', value: 'h3' },
+              of: [{
+                type: 'block',
+                styles: [
+                  {title: 'Normal', value: 'normal'},
+                  {title: 'H2', value: 'h2'},
+                  {title: 'H3', value: 'h3'},
+                ],
+                // Only allow numbered lists
+                marks: {
+                  // Only allow these decorators
+                  decorators: [
+                    {title: 'Strong', value: 'strong'},
+                    {title: 'Emphasis', value: 'em'}
                   ],
-                  // Only allow numbered lists
-                  marks: {
-                    // Only allow these decorators
-                    decorators: [
-                      { title: 'Strong', value: 'strong' },
-                      { title: 'Emphasis', value: 'em' },
-                    ],
-                    // Support annotating text with a reference to an author
-                    annotations: annotationsLinksOnly,
-                  },
+                  // Support annotating text with a reference to an author
+                  annotations: annotationsLinksOnly
                 },
-              ],
+              }],
             },
             {
               name: 'textRight',
               title: 'Text in right hand box',
               type: 'array',
-              of: [
-                {
-                  type: 'block',
-                  styles: [
-                    { title: 'Normal', value: 'normal' },
-                    { title: 'H2', value: 'h2' },
-                    { title: 'H3', value: 'h3' },
+              of: [{
+                type: 'block',
+                styles: [
+                  {title: 'Normal', value: 'normal'},
+                  {title: 'H2', value: 'h2'},
+                  {title: 'H3', value: 'h3'},
+                ],
+                // Only allow numbered lists
+                marks: {
+                  // Only allow these decorators
+                  decorators: [
+                    {title: 'Strong', value: 'strong'},
+                    {title: 'Emphasis', value: 'em'}
                   ],
-                  // Only allow numbered lists
-                  marks: {
-                    // Only allow these decorators
-                    decorators: [
-                      { title: 'Strong', value: 'strong' },
-                      { title: 'Emphasis', value: 'em' },
-                    ],
-                    // Support annotating text with a reference to an author
-                    annotations: annotationsLinksOnly,
-                  },
-                },
-              ],
+                  // Support annotating text with a reference to an author
+                  annotations: annotationsLinksOnly
+                }
+              }],
             },
           ],
           preview: {
@@ -469,24 +460,24 @@ export default {
               blocks2: 'textRight',
             },
             prepare({ blocks, blocks2 }) {
-              const block = (blocks || []).find(block => block._type === 'block');
-              const block2 = (blocks2 || []).find(block => block._type === 'block');
-              return {
-                title: block
-                  ? block.children
+                const block = (blocks || []).find(block => block._type === 'block')
+                const block2 = (blocks2 || []).find(block => block._type === 'block')
+                return {
+                  title: block
+                    ? block.children
                       .filter(child => child._type === 'span')
                       .map(span => span.text)
                       .join('')
-                  : 'No title',
-                subtitle: block2
-                  ? block2.children
+                    : 'No title',
+                  subtitle: block2
+                    ? block2.children
                       .filter(child => child._type === 'span')
                       .map(span => span.text)
                       .join('')
-                  : 'No title',
-              };
+                    : 'No title'
+                }
             },
-          },
+          }
         },
         {
           name: 'boxOnBoxRef',
@@ -497,51 +488,47 @@ export default {
               name: 'textLeft',
               title: 'Text in left hand box',
               type: 'array',
-              of: [
-                {
-                  type: 'block',
-                  styles: [
-                    { title: 'Normal', value: 'normal' },
-                    { title: 'H2', value: 'h2' },
-                    { title: 'H3', value: 'h3' },
+              of: [{
+                type: 'block',
+                styles: [
+                  {title: 'Normal', value: 'normal'},
+                  {title: 'H2', value: 'h2'},
+                  {title: 'H3', value: 'h3'},
+                ],
+                // Only allow numbered lists
+                marks: {
+                  // Only allow these decorators
+                  decorators: [
+                    {title: 'Strong', value: 'strong'},
+                    {title: 'Emphasis', value: 'em'}
                   ],
-                  // Only allow numbered lists
-                  marks: {
-                    // Only allow these decorators
-                    decorators: [
-                      { title: 'Strong', value: 'strong' },
-                      { title: 'Emphasis', value: 'em' },
-                    ],
-                    // Support annotating text with a reference to an author
-                    annotations: annotationsLinksOnly,
-                  },
+                  // Support annotating text with a reference to an author
+                  annotations: annotationsLinksOnly
                 },
-              ],
+              }],
             },
             {
               name: 'textRight',
               title: 'Text in right hand box',
               type: 'array',
-              of: [
-                {
-                  type: 'block',
-                  styles: [
-                    { title: 'Normal', value: 'normal' },
-                    { title: 'H2', value: 'h2' },
-                    { title: 'H3', value: 'h3' },
+              of: [{
+                type: 'block',
+                styles: [
+                  {title: 'Normal', value: 'normal'},
+                  {title: 'H2', value: 'h2'},
+                  {title: 'H3', value: 'h3'},
+                ],
+                // Only allow numbered lists
+                marks: {
+                  // Only allow these decorators
+                  decorators: [
+                    {title: 'Strong', value: 'strong'},
+                    {title: 'Emphasis', value: 'em'}
                   ],
-                  // Only allow numbered lists
-                  marks: {
-                    // Only allow these decorators
-                    decorators: [
-                      { title: 'Strong', value: 'strong' },
-                      { title: 'Emphasis', value: 'em' },
-                    ],
-                    // Support annotating text with a reference to an author
-                    annotations: annotationsLinksOnly,
-                  },
-                },
-              ],
+                  // Support annotating text with a reference to an author
+                  annotations: annotationsLinksOnly
+                }
+              }],
             },
           ],
           preview: {
@@ -550,24 +537,24 @@ export default {
               blocks2: 'textRight',
             },
             prepare({ blocks, blocks2 }) {
-              const block = (blocks || []).find(block => block._type === 'block');
-              const block2 = (blocks2 || []).find(block => block._type === 'block');
-              return {
-                title: block
-                  ? block.children
+                const block = (blocks || []).find(block => block._type === 'block')
+                const block2 = (blocks2 || []).find(block => block._type === 'block')
+                return {
+                  title: block
+                    ? block.children
                       .filter(child => child._type === 'span')
                       .map(span => span.text)
                       .join('')
-                  : 'No title',
-                subtitle: block2
-                  ? block2.children
+                    : 'No title',
+                  subtitle: block2
+                    ? block2.children
                       .filter(child => child._type === 'span')
                       .map(span => span.text)
                       .join('')
-                  : 'No title',
-              };
+                    : 'No title'
+                }
             },
-          },
+          }
         },
         {
           name: 'boxOnBoxTopics',
@@ -578,51 +565,47 @@ export default {
               name: 'textLeft',
               title: 'Text in left hand box',
               type: 'array',
-              of: [
-                {
-                  type: 'block',
-                  styles: [
-                    { title: 'Normal', value: 'normal' },
-                    { title: 'H2', value: 'h2' },
-                    { title: 'H3', value: 'h3' },
+              of: [{
+                type: 'block',
+                styles: [
+                  {title: 'Normal', value: 'normal'},
+                  {title: 'H2', value: 'h2'},
+                  {title: 'H3', value: 'h3'},
+                ],
+                // Only allow numbered lists
+                marks: {
+                  // Only allow these decorators
+                  decorators: [
+                    {title: 'Strong', value: 'strong'},
+                    {title: 'Emphasis', value: 'em'}
                   ],
-                  // Only allow numbered lists
-                  marks: {
-                    // Only allow these decorators
-                    decorators: [
-                      { title: 'Strong', value: 'strong' },
-                      { title: 'Emphasis', value: 'em' },
-                    ],
-                    // Support annotating text with a reference to an author
-                    annotations: annotationsLinksOnly,
-                  },
+                  // Support annotating text with a reference to an author
+                  annotations: annotationsLinksOnly
                 },
-              ],
+              }],
             },
             {
               name: 'textRight',
               title: 'Text in right hand box',
               type: 'array',
-              of: [
-                {
-                  type: 'block',
-                  styles: [
-                    { title: 'Normal', value: 'normal' },
-                    { title: 'H2', value: 'h2' },
-                    { title: 'H3', value: 'h3' },
+              of: [{
+                type: 'block',
+                styles: [
+                  {title: 'Normal', value: 'normal'},
+                  {title: 'H2', value: 'h2'},
+                  {title: 'H3', value: 'h3'},
+                ],
+                // Only allow numbered lists
+                marks: {
+                  // Only allow these decorators
+                  decorators: [
+                    {title: 'Strong', value: 'strong'},
+                    {title: 'Emphasis', value: 'em'}
                   ],
-                  // Only allow numbered lists
-                  marks: {
-                    // Only allow these decorators
-                    decorators: [
-                      { title: 'Strong', value: 'strong' },
-                      { title: 'Emphasis', value: 'em' },
-                    ],
-                    // Support annotating text with a reference to an author
-                    annotations: annotationsLinksOnly,
-                  },
-                },
-              ],
+                  // Support annotating text with a reference to an author
+                  annotations: annotationsLinksOnly
+                }
+              }],
             },
           ],
           preview: {
@@ -631,24 +614,24 @@ export default {
               blocks2: 'textRight',
             },
             prepare({ blocks, blocks2 }) {
-              const block = (blocks || []).find(block => block._type === 'block');
-              const block2 = (blocks2 || []).find(block => block._type === 'block');
-              return {
-                title: block
-                  ? block.children
+                const block = (blocks || []).find(block => block._type === 'block')
+                const block2 = (blocks2 || []).find(block => block._type === 'block')
+                return {
+                  title: block
+                    ? block.children
                       .filter(child => child._type === 'span')
                       .map(span => span.text)
                       .join('')
-                  : 'No title',
-                subtitle: block2
-                  ? block2.children
+                    : 'No title',
+                  subtitle: block2
+                    ? block2.children
                       .filter(child => child._type === 'span')
                       .map(span => span.text)
                       .join('')
-                  : 'No title',
-              };
+                    : 'No title'
+                }
             },
-          },
+          }
         },
         {
           name: 'HelpdeskTeam',
@@ -663,14 +646,13 @@ export default {
                 {
                   name: 'altText',
                   title: 'Alternative text',
-                  description: "For users that can't see images",
-                  type: 'string',
+                  description: 'For users that can\'t see images',
+                  type: 'string'
                 },
                 {
                   name: 'caption',
                   title: 'Caption text',
-                  description:
-                    'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
+                  description: 'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
                   type: 'array',
                   of: [
                     {
@@ -678,7 +660,9 @@ export default {
                       styles: [],
                       marks: {
                         // Only allow these decorators
-                        decorators: [{ title: 'Emphasis', value: 'em' }],
+                        decorators: [
+                          { title: 'Emphasis', value: 'em' }
+                        ],
                       },
                     },
                   ],
@@ -701,46 +685,44 @@ export default {
                   name: 'credit',
                   title: 'Credit',
                   description: 'Photographer/publisher’s name.',
-                  type: 'text',
+                  type: 'text'
                 },
                 {
                   name: 'sourceUrl',
                   title: 'Credit URL',
                   type: 'url',
-                  description: 'Enter link for source for the image or the originator',
+                  description: 'Enter link for source for the image or the originator'
                 },
                 license,
-              ],
+              ]
             },
             {
               name: 'textRight',
               title: 'Text in right hand box',
               type: 'array',
-              of: [
-                {
-                  type: 'block',
-                  styles: [
-                    { title: 'Normal', value: 'normal' },
-                    { title: 'H2', value: 'h2' },
-                    { title: 'H3', value: 'h3' },
+              of: [{
+                type: 'block',
+                styles: [
+                  {title: 'Normal', value: 'normal'},
+                  {title: 'H2', value: 'h2'},
+                  {title: 'H3', value: 'h3'},
+                ],
+                // Only allow numbered lists
+                marks: {
+                  // Only allow these decorators
+                  decorators: [
+                    {title: 'Strong', value: 'strong'},
+                    {title: 'Emphasis', value: 'em'}
                   ],
-                  // Only allow numbered lists
-                  marks: {
-                    // Only allow these decorators
-                    decorators: [
-                      { title: 'Strong', value: 'strong' },
-                      { title: 'Emphasis', value: 'em' },
-                    ],
-                    // Support annotating text with a reference to an author
-                    annotations: annotationsLinksOnly,
-                  },
-                },
-              ],
+                  // Support annotating text with a reference to an author
+                  annotations: annotationsLinksOnly
+                }
+              }],
             },
             {
               name: 'headingLeft',
               title: 'Heading for left column contacts',
-              type: 'string',
+              type: 'string'
             },
             {
               name: 'personLeft',
@@ -751,16 +733,16 @@ export default {
                   type: 'reference',
                   to: [
                     {
-                      type: 'person',
+                      type: 'person'
                     },
-                  ],
-                },
-              ],
+                  ]
+                }
+              ]
             },
             {
               name: 'headingRight',
               title: 'Heading for right column contacts',
-              type: 'string',
+              type: 'string'
             },
             {
               name: 'personRight',
@@ -771,11 +753,11 @@ export default {
                   type: 'reference',
                   to: [
                     {
-                      type: 'person',
+                      type: 'person'
                     },
-                  ],
-                },
-              ],
+                  ]
+                }
+              ]
             },
           ],
           preview: {
@@ -783,15 +765,15 @@ export default {
               blocks: 'textRight',
             },
             prepare({ blocks }) {
-              const block = (blocks || []).find(block => block._type === 'block');
-              return {
-                title: block
-                  ? block.children
+                const block = (blocks || []).find(block => block._type === 'block')
+                return {
+                  title: block
+                    ? block.children
                       .filter(child => child._type === 'span')
                       .map(span => span.text)
                       .join('')
-                  : 'No title',
-              };
+                    : 'No title'
+                }
             },
           },
         },
@@ -808,14 +790,13 @@ export default {
                 {
                   name: 'altText',
                   title: 'Alternative text',
-                  description: "For users that can't see images",
-                  type: 'string',
+                  description: 'For users that can\'t see images',
+                  type: 'string'
                 },
                 {
                   name: 'caption',
                   title: 'Caption text',
-                  description:
-                    'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
+                  description: 'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
                   type: 'array',
                   of: [
                     {
@@ -823,7 +804,9 @@ export default {
                       styles: [],
                       marks: {
                         // Only allow these decorators
-                        decorators: [{ title: 'Emphasis', value: 'em' }],
+                        decorators: [
+                          { title: 'Emphasis', value: 'em' }
+                        ],
                       },
                     },
                   ],
@@ -846,16 +829,16 @@ export default {
                   name: 'credit',
                   title: 'Credit',
                   description: 'Photographer/publisher’s name.',
-                  type: 'text',
+                  type: 'text'
                 },
                 {
                   name: 'sourceUrl',
                   title: 'Credit URL',
                   type: 'url',
-                  description: 'Enter link for source for the image or the originator',
+                  description: 'Enter link for source for the image or the originator'
                 },
                 license,
-              ],
+              ]
             },
             {
               name: 'block',
@@ -865,22 +848,22 @@ export default {
                 {
                   type: 'block',
                   styles: [
-                    { title: 'Normal', value: 'normal' },
-                    { title: 'H2', value: 'h2' },
-                    { title: 'H3', value: 'h3' },
+                    {title: 'Normal', value: 'normal'},
+                    {title: 'H2', value: 'h2'},
+                    {title: 'H3', value: 'h3'},
                   ],
                   // Only allow numbered lists
                   marks: {
                     // Only allow these decorators
                     decorators: [
-                      { title: 'Strong', value: 'strong' },
-                      { title: 'Emphasis', value: 'em' },
+                      {title: 'Strong', value: 'strong'},
+                      {title: 'Emphasis', value: 'em'}
                     ],
                     // Support annotating text with a reference to an author
-                    annotations: annotationsLinksOnly,
-                  },
-                },
-              ],
+                    annotations: annotationsLinksOnly
+                  }
+                }
+              ]
             },
           ],
           preview: {
@@ -888,15 +871,15 @@ export default {
               blocks: 'block',
             },
             prepare({ blocks }) {
-              const block = (blocks || []).find(block => block._type === 'block');
-              return {
-                title: block
-                  ? block.children
+                const block = (blocks || []).find(block => block._type === 'block')
+                return {
+                  title: block
+                    ? block.children
                       .filter(child => child._type === 'span')
                       .map(span => span.text)
                       .join('')
-                  : 'No title',
-              };
+                    : 'No title'
+                }
             },
           },
         },
@@ -911,33 +894,32 @@ export default {
           type: 'reference',
           to: [
             {
-              type: 'article',
+              type: 'article'
             },
             {
-              type: 'publication',
-            },
-          ],
-        },
-      ],
+              type: 'publication'
+            }
+          ]
+        }
+      ]
     },
     {
       name: 'slug',
       type: 'slug',
       options: {
         source: 'title',
-        slugify: input =>
-          input
-            .toLowerCase()
-            .replace(/\s+/g, '-')
-            .slice(0, 200),
-      },
+        slugify: input => input
+                             .toLowerCase()
+                             .replace(/\s+/g, '-')
+                             .slice(0, 200)
+      }
     },
     {
       name: 'relatedUrl',
       title: 'Related URL',
       type: 'urlWithMetadata',
-      inputComponent: UrlWithMetadataInput,
-    },
+      inputComponent: UrlWithMetadataInput
+    }
   ],
   orderings: [
     {
@@ -956,6 +938,6 @@ export default {
       title: 'title',
       subtitle: 'longTitle',
       imageUrl: 'featuredImage.asset.url',
-    },
-  },
-};
+    }
+  }
+}

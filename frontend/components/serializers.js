@@ -172,18 +172,17 @@ const serializers = {
         <SimpleMosaic resources={coursesRef} cta="Register" />
       </div>
     ),
-    vimeo: ({ node: { src, title, size } }) => (
+    vimeo: ({ node: { src, title } }) => (
       <div {...classes('full')}>
         <div className="u-bg-light-blue o-wrapper-full-width">
           <div className="o-wrapper o-wrapper-medium ">
             <h2 className="c-topic-section__title u-margin-top-large u-margin-bottom-huge">
               {title}
             </h2>
-            <div className={`u-video u-margin-bottom-huge ${size ? size : ''}`}>
+            <div className="u-video u-margin-bottom-huge">
               <ReactPlayer
                 controls
                 width="100%"
-                height="0"
                 vimeoConfig={{
                   preload: true,
                 }}
