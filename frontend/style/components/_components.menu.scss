@@ -22,30 +22,6 @@
   @include mq($from: wide) {
     padding: $spacing-large $spacing-huge;
   }
-  &--fixed {
-    animation: toggleFromTop 0.3s ease-out;
-    position: absolute;
-    left: 0;
-    margin: 0 auto;
-    top: 130px;
-    z-index: -1;
-    background: $white;
-    width: auto;
-    height: auto;
-    max-width: 1435px;
-    height: calc(100vh - 150px);
-    overflow-y: scroll;
-    @include mq($from: tablet) {
-      padding: $spacing-large $spacing-large;
-      top: 170px;
-      height: auto;
-      overflow: auto;
-    }
-    @include mq($from: desktop) {
-      padding: $spacing-large $spacing-huge;
-      top: 93px;
-    }
-  }
 }
 
 .c-menu__backdrop {
@@ -59,57 +35,6 @@
   border: 0;
   background: rgba($brand-dark, 0.5);
   animation: fadeIn 0.2s ease-out;
-  &--fixed {
-    z-index: -2;
-  }
-}
-
-.c-menu {
-  &__section {
-    @include mq($from: tablet) {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-  &__resources {
-    @include mq($from: tablet) {
-      width: 66%;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      .c-menu__list {
-        width: 40%;
-      }
-    }
-  }
-  &__about {
-    @include mq($from: tablet) {
-      width: 25%;
-    }
-  }
-  &__topics {
-    @include mq($from: tablet) {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      border-left: 5px solid $brand-main;
-      background-color: $brand-lightest;
-      margin-right: -$spacing-large;
-      margin-left: -$spacing-large;
-      padding: 0 $spacing-large;
-      .c-menu__list {
-        width: 30%;
-      }
-    }
-    @include mq($from: desktop) {
-      margin-right: -$spacing-huge;
-      margin-left: -$spacing-huge;
-      padding: 0 $spacing-huge;
-    }
-  }
-  &__contact {
-    margin-top: $spacing-large;
-  }
 }
 
 .c-menu__heading {
@@ -128,18 +53,6 @@
     height: 1px;
     background: rgba($white, 0.7);
   }
-  &--fixed {
-    @include inuit-font-size(18px, 24px);
-    letter-spacing: normal;
-    font-weight: bold;
-    color: $brand-main;
-    width: 100%;
-    padding-bottom: $spacing-small;
-    &:before {
-      bottom: 0;
-      background: rgba($grey, 0.7);
-    }
-  }
 }
 
 .c-menu__heading-bg {
@@ -148,9 +61,6 @@
   z-index: 1;
   position: relative;
   padding-right: $spacing-small;
-  &--fixed {
-    background: inherit;
-  }
 }
 
 .c-menu__list {
@@ -158,9 +68,6 @@
   margin: $spacing-small 0 0;
   padding: 0;
   @include inuit-font-size(16px, $line-height-large);
-  &--fixed {
-    margin: $spacing-tiny 0 0;
-  }
 }
 
 @keyframes toggle {
@@ -169,15 +76,6 @@
   }
   100% {
     transform: translateX(0vw);
-  }
-}
-
-@keyframes toggleFromTop {
-  0% {
-    transform: translateY(-100vw);
-  }
-  100% {
-    transform: translateY(0vw);
   }
 }
 
@@ -216,26 +114,6 @@
 
   &:hover {
     color: $brand-lighter;
-  }
-}
-.c-menu__link {
-  &--fixed {
-    color: $brand-dark;
-    font-size: 18px;
-    line-height: 40px;
-    border-bottom: 1px solid transparent;
-    &:hover {
-      color: $brand-dark;
-    }
-    &:visited {
-      color: $brand-dark;
-      font-size: 18px;
-      line-height: 40px;
-      border-bottom: 1px solid transparent;
-      &:hover {
-        color: $brand-dark;
-      }
-    }
   }
 }
 

@@ -1,4 +1,8 @@
-import { annotations, title, image } from './fields';
+import {
+  annotations,
+  title,
+  image
+} from './fields';
 
 export default {
   title: 'Publication type',
@@ -13,16 +17,19 @@ export default {
         {
           type: 'block',
           styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'H2', value: 'h2' },
-            { title: 'H3', value: 'h3' },
-            { title: 'H4', value: 'h4' },
-            { title: 'H5', value: 'h5' },
+            {title: 'Normal', value: 'normal'},
+            {title: 'H2', value: 'h2'},
+            {title: 'H3', value: 'h3'},
+            {title: 'H4', value: 'h4'},
+            {title: 'H5', value: 'h5'},
           ],
           // Only allow numbered lists
           marks: {
             // Only allow these decorators
-            decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
+            decorators: [
+              {title: 'Strong', value: 'strong'},
+              {title: 'Emphasis', value: 'em'}
+            ],
             // Support annotating text with a reference to an author
             annotations,
           },
@@ -33,19 +40,18 @@ export default {
           tile: 'Nugget',
           to: [
             {
-              type: 'nugget',
-            },
-          ],
+              type: 'nugget'        },
+          ]
         },
         {
-          type: 'pullQuote',
+          type: 'pullQuote'
         },
         {
           type: 'funkyTable',
           options: {
             defaultNumRows: 3,
-            defaultNumColumns: 3,
-          },
+            defaultNumColumns: 3
+          }
         },
         image,
         {
@@ -62,31 +68,19 @@ export default {
               name: 'title',
               title: 'Title',
               type: 'string',
-            },
-            {
-              name: 'size',
-              title: 'Video size',
-              description: 'Set size for the video player.',
-              type: 'string',
-              options: {
-                list: [
-                  { title: 'wide', value: 'wide' },
-                  { title: 'normal', value: 'normal' },
-                  { title: 'small', value: 'small' },
-                  { title: 'narrow', value: 'narrow' },
-                ],
-              },
-            },
-          ],
+            }
+          ]
         },
-      ],
+      ]
     },
   ],
   orderings: [
     {
       title: 'Title',
       name: 'titleAsc',
-      by: [{ field: 'title', direction: 'asc' }],
-    },
-  ],
-};
+      by: [
+        { field: 'title', direction: 'asc' }
+      ]
+    }
+  ]
+}
