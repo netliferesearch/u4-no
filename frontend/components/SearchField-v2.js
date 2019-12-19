@@ -34,9 +34,7 @@ class SearchFieldV2 extends Component {
   constructor(props) {
     super(props);
     autobind(this);
-    this.state = {
-      loading: false,
-    };
+    this.state = { loading: false, typingTimeout: 0 };
   }
 
   componentDidMount() {
@@ -85,7 +83,7 @@ class SearchFieldV2 extends Component {
           const updatedQueryString = queryString.stringify({
             ...queryParams,
             search: value,
-            searchPageNum: 1
+            searchPageNum: 1,
           });
           Router[`${urlUpdateType}Route`](`/search?${updatedQueryString}`);
           console.log('debounce was called');
@@ -159,19 +157,20 @@ class SearchFieldV2 extends Component {
                     }
                   },
                   onChange: event => {
+                    event.persist();
                     const { value = '' } = event.target;
-                    if (value.length <= 2) {
-                      return null; // Do nothing.
-                    } else if (window.location.pathname !== '/search') {
+                    if (this.typingTimeout) clearTimeout(this.typingTimeout);
+                    this.typingTimeout = setTimeout(() => {
+                      if (value.length <= 2) {
+                        return null; // Do nothing.
+                      } else if (window.location.pathname !== '/search') {
+                        return this.updateSearch({ urlUpdateType: 'push', value });
+                      }
                       return this.updateSearch({
-                        urlUpdateType: 'push',
-                        value,
+                        urlUpdateType: 'replace',
+                        value: event.target.value,
                       });
-                    }
-                    return this.updateSearch({
-                      urlUpdateType: 'replace',
-                      value: event.target.value,
-                    });
+                    }, 500);
                   },
                 })}
               />
