@@ -16,3 +16,4 @@ export { default as grid } from './grid';
 export { default as license } from './license';
 export { default as box } from './box';
 export { default as previewLinks } from './previewLinks';
+export { default as vimeoVideo } from './vimeoVideo';
