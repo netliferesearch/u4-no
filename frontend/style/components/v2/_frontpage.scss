@@ -173,6 +173,9 @@
         .post-image {
           height: 456px;
         }
+        .text {
+          padding-left: 0;
+        }
       }
     }
   }
@@ -284,6 +287,7 @@
     }
     .pdf-preview {
       display: none;
+      pointer-events: none;
       .ReactPDF__Page__canvas {
         border: 1px solid $border-grey;
       }
@@ -299,13 +303,14 @@
         justify-content: space-between;
         flex-wrap: wrap;
         .left-side {
-          width: calc(100% - 131px);
+          width: calc(100% - 227px);
           max-width: 800px;
           padding-right: $spacing;
         }
         .pdf-preview {
           display: block;
           width: 131px;
+          margin-right: $spacing-huge;
           .ReactPDF__Page__canvas {
             width: 100% !important;
             height: auto !important;
