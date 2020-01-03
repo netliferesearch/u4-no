@@ -1,0 +1,101 @@
+.c-search-v3 {
+  order: 3;
+  width: 100%;
+  margin-top: $spacing-small;
+  margin-right: $spacing;
+  display: flex;
+  @include mq($from: tablet) {
+    order: 0;
+    max-width: 200px;
+    margin: auto;
+    margin-right: auto;
+    margin-left: $spacing-large;
+  }
+  @include mq($from: desktop) {
+    max-width: 300px;
+  }
+}
+
+.c-search-v3__label {
+  width: 0;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  @include inuit-font-size($font-size-small, $line-height-normal);
+  color: $brand-dark;
+  margin: 0;
+  font-family: $font-sans;
+  font-weight: 400;
+}
+
+.c-search-v3__wrapper {
+  background-color: $brand-lightest;
+  padding-top: $spacing-huge;
+  padding-bottom: $spacing;
+  @include mq($from: desktop) {
+    padding-bottom: $spacing-huge;
+  }
+}
+
+.c-search-v3__clean-wrapper {
+  padding-top: $spacing;
+  padding-bottom: $spacing;
+  @include mq($from: desktop) {
+    padding-bottom: $spacing-large;
+  }
+}
+
+.c-search-v3__content {
+  border: 2px solid $brand-main;
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+}
+
+.c-search-v3__input {
+  flex-grow: 2;
+  background: $white;
+  width: 100%;
+  border: 0;
+  display: block;
+  color: $black;
+  margin: 0 0;
+  transition: border 0.2s ease-out;
+  padding-left: $spacing-small;
+  @include inuit-font-size($font-size-tiny, $line-height-tiny);
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-small, $line-height-small);
+  }
+  &::placeholder {
+    color: $grey;
+    font-weight: 300;
+    @include inuit-font-size($font-size-tiny, $line-height-tiny);
+  }
+  &:hover {
+    outline: none;
+    &::placeholder {
+      color: transparent;
+    }
+  }
+  &:focus {
+    outline: none;
+    &::placeholder {
+      color: transparent;
+    }
+  }
+}
+
+.c-search-v3__button {
+  border-radius: 0;
+  border: none;
+  padding: 13px;
+  color: $brand-main;
+  background-color: transparent;
+  border-left: none;
+  cursor: pointer;
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}

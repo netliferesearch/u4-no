@@ -148,7 +148,9 @@
 @import 'components/components.oneColumnBox';
 @import 'components/components.overview-page';
 @import 'components/components.menu';
+@import 'components/v2/components.menu';
 @import 'components/components.top-bar';
+@import 'components/v2/components.top-bar';
 @import 'components/components.headroom';
 @import 'components/components.boxOnImage';
 @import 'components/components.lead';
@@ -176,7 +178,9 @@
 // @import "components/components.ads";
 // @import "components/components.promo";
 @import 'components/_components.frontpageSearch';
+@import 'components/v2/_components.frontpage-blue-section';
 @import 'components/_components.search-v2';
+@import 'components/v2/components.search';
 @import 'components/_components.introduction-text';
 @import 'components/_components.partner-agencies';
 @import 'components/_components.search-results-v2';
@@ -184,6 +188,8 @@
 @import 'components/_components.pdf-viewer';
 @import 'components/littlefoot/littlefoot';
 @import 'components/components.tnrc';
+
+@import 'components/v2/frontpage';
 
 // UTILITIES
 @import '../node_modules/inuitcss/utilities/utilities.widths';
