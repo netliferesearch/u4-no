@@ -1,0 +1,232 @@
+.c-menu-v2 {
+  right: 0;
+  box-shadow: 0 0 30px 0 rgba(black, 0.3);
+  color: $white;
+  font-family: $font-sans;
+  font-weight: 300;
+  padding: $spacing;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  animation: toggleFromTop 0.3s ease-out;
+  position: absolute;
+  left: 0;
+  margin: 0 auto;
+  top: 130px;
+  z-index: -1;
+  background: $white;
+  max-width: 1435px;
+  height: calc(100vh - 130px);
+  overflow-y: scroll;
+  @include mq($from: tablet) {
+    padding: $spacing-large $spacing-large;
+    top: 93px;
+    height: auto;
+    overflow: auto;
+  }
+  @include mq($from: wide) {
+    padding: $spacing-small $spacing-huge $spacing-large $spacing-huge;
+    top: 93px;
+  }
+}
+
+.c-menu-v2__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  width: 100vw;
+  height: 100%;
+  z-index: -2;
+  border: 0;
+  background: rgba($brand-dark, 0.5);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.c-menu-v2 {
+  &__section {
+    @include mq($from: tablet) {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: $spacing;
+    }
+  }
+  &__resources {
+    @include mq($from: tablet) {
+      width: 60%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .c-menu-v2__list {
+        width: 37.5%;
+      }
+    }
+  }
+  &__about {
+    @include mq($from: tablet) {
+      width: 25%;
+    }
+  }
+  &__topics {
+    .c-menu-v2__heading {
+      &:before {
+        display: none;
+      }
+    }
+    @include mq($from: tablet) {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-left: 5px solid $brand-main;
+      background-color: $brand-lightest;
+      margin-right: -$spacing-large;
+      margin-left: -$spacing-large;
+      padding: 0 $spacing-large;
+      padding-left: $spacing-large - 5px;
+      padding-bottom: $spacing;
+      .c-menu-v2__list {
+        width: 25%;
+        // &:last-child {
+        //   width: 25%;
+        //   margin-left: auto;
+        // }
+      }
+    }
+    @include mq($from: wide) {
+      margin-right: -$spacing-huge;
+      margin-left: -$spacing-huge;
+      padding: 0 $spacing-huge;
+      padding-left: $spacing-huge - 5px;
+      padding-bottom: $spacing;
+    }
+  }
+  &__contact {
+    margin-top: $spacing-large;
+  }
+}
+
+.c-menu-v2__heading {
+  @include inuit-font-size(18px, 24px);
+  position: relative;
+  margin-top: $spacing-large;
+  letter-spacing: normal;
+  font-weight: bold;
+  color: $brand-main;
+  width: 100%;
+  padding-bottom: $spacing-small;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    background: rgba($grey, 0.7);
+    left: 0;
+    width: 100%;
+    height: 1px;
+  }
+}
+
+.c-menu-v2__heading-bg {
+  display: inline-block;
+  z-index: 1;
+  position: relative;
+  padding-right: $spacing-small;
+}
+
+.c-menu-v2__list {
+  list-style: none;
+  margin: $spacing-tiny 0 0;
+  padding: 0;
+  @include inuit-font-size(16px, $line-height-large);
+}
+
+@keyframes toggleFromTop {
+  0% {
+    transform: translateY(-100vw);
+  }
+  100% {
+    transform: translateY(0vw);
+  }
+}
+
+.c-menu-v2__list-item {
+  margin-bottom: $spacing-tiny;
+}
+
+.c-menu-v2__clean-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $brand-lighter;
+  padding: 0;
+  font-size: inherit;
+  @include inuit-font-size(16px, $line-height-large);
+  font-weight: 300;
+  font-family: $font-sans;
+}
+
+.c-menu-v2__arrowdown {
+  transform: rotate(90deg);
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c-menu-v2__arrowdown--flipped {
+  transform: rotate(-90deg);
+}
+
+.c-menu-v2__link {
+  color: $brand-dark;
+  font-size: 18px;
+  line-height: 40px;
+  border-bottom: 1px solid transparent;
+  &:hover {
+    color: $brand-dark;
+  }
+  &:visited {
+    color: $brand-dark;
+    font-size: 18px;
+    line-height: 40px;
+    border-bottom: 1px solid transparent;
+    &:hover {
+      color: $brand-dark;
+    }
+  }
+}
+
+.c-menu-v2__links--round {
+  display: flex;
+  margin-top: $spacing-large;
+  justify-content: space-around;
+  &:first-child {
+    margin-right: $spacing;
+  }
+}
+.c-menu-v2__link-round,
+.c-menu-v2__link-round:visited {
+  margin: $spacing-tiny;
+  border: 1px solid $white;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-self: center;
+  @include inuit-font-size(14px, $line-height-tiny);
+  color: $white;
+  font-weight: 700;
+  text-transform: uppercase;
+  width: 100px;
+  height: 100px;
+  @include mq($from: wide) {
+    width: 180px;
+    height: 180px;
+  }
+
+  &:hover {
+    border: 1px solid $brand-light;
+    color: $brand-lighter;
+  }
+}

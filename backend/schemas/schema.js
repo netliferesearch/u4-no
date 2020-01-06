@@ -1,7 +1,7 @@
 import createSchema from 'part:@sanity/base/schema-creator';
-import schemaTypes from 'all:part:@sanity/base/schema-type'
-import richDate from 'part:@sanity/form-builder/input/rich-date/schema'
-import funkyTable from './fields/funkyTable'
+import schemaTypes from 'all:part:@sanity/base/schema-type';
+import richDate from 'part:@sanity/form-builder/input/rich-date/schema';
+import funkyTable from './fields/funkyTable';
 import publication from './publication';
 import nugget from './nugget';
 import topics from './topics';
@@ -22,8 +22,8 @@ import frontpage from './frontpage';
 import file from './file';
 import articleType from './articleType';
 import u4Event from './event';
-import localeString from './fields/localeString'
-import defaultBlocks from './fields/defaultBlocks'
+//import localeString from './fields/localeString'
+import defaultBlocks from './fields/defaultBlocks';
 
 const types = [
   article,
@@ -47,10 +47,10 @@ const types = [
   nugget,
   pullQuote,
   richDate,
-  localeString,
+  //localeString,
   defaultBlocks,
-]
+];
 export default createSchema({
   name: 'default',
-  types: schemaTypes.concat(types)
-})
+  types: schemaTypes.concat(types),
+});

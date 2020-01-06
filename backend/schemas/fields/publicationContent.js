@@ -1,5 +1,5 @@
 import annotations from './annotations';
-import { image, box } from './';
+import { image, box, vimeoVideo } from './';
 import { FaTable } from 'react-icons/fa';
 
 import {
@@ -53,23 +53,7 @@ const content = {
       },
     },
     image,
-    {
-      name: 'vimeo',
-      title: 'Vimeo video',
-      type: 'object',
-      fields: [
-        {
-          name: 'src',
-          title: 'URL to the vimeo video (not the whole embed code)',
-          type: 'string',
-        },
-        {
-          name: 'title',
-          title: 'Title',
-          type: 'string',
-        },
-      ],
-    },
+    vimeoVideo,
     {
       name: 'table',
       title: 'Table',
@@ -149,7 +133,7 @@ const content = {
               { title: 'Narrow', value: 'narrow' },
             ],
           },
-        },        
+        },
       ],
       preview: {
         select: {
@@ -175,7 +159,7 @@ function blocksToText(blocks, opts = {}) {
   const defaults = {};
   const options = Object.assign({}, defaults, opts);
   return blocks
-    .map((block) => {
+    .map(block => {
       // TODO: Could make this even more general by letting it recursively
       // go down a block tree in search for indexable content.
       if (block._type === 'heading') {

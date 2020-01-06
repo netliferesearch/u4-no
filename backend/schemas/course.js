@@ -1,4 +1,4 @@
-import { title, leadText, featuredImage, language, slug } from './fields';
+import { title, leadText, featuredImage, language, slug, vimeoVideo } from './fields';
 import annotationsLinksOnly from './fields/annotationsLinksOnly';
 import augmentSchema from './fields/augmentSchema';
 
@@ -12,7 +12,24 @@ export default augmentSchema({
     {
       name: 'content',
       title: 'Description',
-      type: 'defaultBlocks',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+          ],
+          lists: [{ title: 'Bullet', value: 'bullet' }, { title: 'Numbered', value: 'number' }],
+          marks: {
+            decorators: [{ title: 'Emphasis', value: 'em' }],
+            // Support annotating text with internal and external links
+            annotations: annotationsLinksOnly,
+          },
+        },
+        vimeoVideo,
+      ],
     },
     {
       name: 'startDate',

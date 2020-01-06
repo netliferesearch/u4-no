@@ -4,6 +4,14 @@
   margin-right: auto;
 }
 
+.o-wrapper-fixed-header {
+  max-width: 100%;
+  padding-top: 130px;
+  @include mq($from: tablet) {
+    padding-top: 93px;
+  }
+}
+
 .o-wrapper {
   @include inuit-clearfix();
   margin-right: auto;
@@ -29,6 +37,11 @@
   }
 }
 
+.o-wrapper-section {
+  max-width: 1264px;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 .o-wrapper-inner {
   @include inuit-clearfix();
@@ -50,7 +63,7 @@
   }
 }
 
-.o-wrapper-full-width{
+.o-wrapper-full-width {
   width: 100vw;
   position: relative;
   left: 50%;

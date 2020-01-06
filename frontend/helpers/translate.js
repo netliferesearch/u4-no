@@ -14,10 +14,10 @@ export const translateField = (language = 'en') => {
       return obj[key] || '';
     }
 
-    if (!obj[key + '_' + lang]) {
+    if (!obj[`${key}_${lang}`]) {
       console.warn(`Translation of '${key}' for '${lang}' in  obj not found.`);
     }
-    return obj[key + '_' + lang] || obj[key] || '';
+    return obj[`${key}_${lang}`] || obj[key] || '';
   };
 };
 
@@ -82,7 +82,7 @@ const strings = {
     reviewed_by: 'Revu par',
     series_editor: 'Directeur de la collection',
     series_editors: 'Directeurs de la collection',
-    main_points: 'Élements clés',
+    main_points: 'Points principaux',
     table_of_contents: 'Table de matières',
     abstract: 'Resumé',
     about_the_author: 'A propos de l´auteur',
