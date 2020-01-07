@@ -26,6 +26,7 @@ import {
   CreativecommonsNC,
   CreativecommonsND,
 } from './icons';
+import { translate } from '../helpers/translate';
 
 const LongFormArticleContainer = (props = {}) => {
   const {
@@ -49,6 +50,7 @@ const LongFormArticleContainer = (props = {}) => {
       relatedResources = [],
       headsUp = [],
       updatedVersion = false,
+      language = '',
     } = {},
     shortversion = false,
     headComponentConfigOverride,
@@ -60,8 +62,9 @@ const LongFormArticleContainer = (props = {}) => {
     BreadCrumbComponent = null,
     url = {},
     translation = {},
-    language = '',
   } = props;
+
+  const trans = translate(props.data.language);
 
   const headComponentConfig =
     headComponentConfigOverride ||
@@ -174,7 +177,7 @@ const LongFormArticleContainer = (props = {}) => {
                 )}
                 {mainPoints.length > 0 && (
                   <div className="c-article c-article_mainPoints">
-                    <h2>Main points</h2>
+                    <h2>{trans('main_points')}</h2>
                     <ul className="c-article_mainPoints-list">
                       {mainPoints.map((mainPoint, index) => (
                         <li key={index} className="c-article_mainPoints-item">
@@ -214,7 +217,7 @@ const LongFormArticleContainer = (props = {}) => {
                 <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
                 {authors.length ? (
                   <div className="c-article c-longform-grid__standard">
-                    <AuthorList authors={authors} />
+                    <AuthorList authors={authors} language={language} />
                     {date && date.utc && (
                       <span> (last update: {dateToString({ start: date.utc })})</span>
                     )}
@@ -237,28 +240,31 @@ const LongFormArticleContainer = (props = {}) => {
           {!shortversion && props.data.methodology ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                <ToggleBlock title="Methodology" content={props.data.methodology} />
+                <ToggleBlock title={trans('methodology')} content={props.data.methodology} />
               </div>
             </div>
           ) : null}
           {!shortversion && props.data.references ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                <ToggleBlock title="References" content={props.data.references} />
+                <ToggleBlock title={trans('references')} content={props.data.references} />
               </div>
             </div>
           ) : null}
           {!shortversion && props.data.acknowledgements ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                <ToggleBlock title="Acknowledgements" content={props.data.acknowledgements} />
+                <ToggleBlock
+                  title={trans('acknowledgements')}
+                  content={props.data.acknowledgements}
+                />
               </div>
             </div>
           ) : null}
           {!shortversion && props.data.notes ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                <ToggleBlock title="Notes" content={props.data.notes}>
+                <ToggleBlock title={trans('notes')} content={props.data.notes}>
                   {featuredImage.caption && (
                     <div className="c-longform-grid__standard">
                       <p>
@@ -301,17 +307,14 @@ const LongFormArticleContainer = (props = {}) => {
           {!shortversion && props.data.abstract ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                <ToggleBlock title="Abstract" content={props.data.abstract} />
+                <ToggleBlock title={trans('abstract')} content={props.data.abstract} />
               </div>
             </div>
           ) : null}
           {!shortversion && props.data._type === 'publication' && (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
-                <ToggleBlock
-                  title="Disclaimer"
-                  content="All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies."
-                />
+                <ToggleBlock title={trans('disclaimer')} content={trans('disclaimer_text')} />
               </div>
             </div>
           )}
@@ -326,9 +329,11 @@ const LongFormArticleContainer = (props = {}) => {
                     <CreativecommonsND className="page2-ccimage" />
                   </a>
                   <br />
-                  This work is licenced under a Creative Commons
-                  Attribution-NonCommercial-NoDerivatives 4.0 International licence (
-                  <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>)
+                  {trans('creative_commons_text')} (
+                  <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                    {trans('creative_commons_licenses')}
+                  </a>
+                  )
                 </p>
               </div>
             </div>

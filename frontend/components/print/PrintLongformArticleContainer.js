@@ -81,11 +81,7 @@ const LongFormArticleContainer = props => {
             <p {...classes('float-left')}>
               {authors ? (
                 <span>
-                  <AuthorList
-                    authors={authors.map(({ target }) => target)}
-                    intro={trans('by')}
-                    and={trans('and')}
-                  />
+                  <AuthorList authors={authors.map(({ target }) => target)} language={language} />
                   <br />
                 </span>
               ) : null}
@@ -93,18 +89,8 @@ const LongFormArticleContainer = props => {
                 <span>
                   <EditorList
                     editors={editors.map(({ target }) => target)}
-                    intro={
-                      publicationType._id === 'pubtype-3'
-                        ? trans('reviewed_by')
-                        : trans('series_editor')
-                    }
-                    introplural={
-                      publicationType._id === 'pubtype-3'
-                        ? trans('reviewed_by')
-                        : trans('series_editors')
-                    }
-                    pluralize={publicationType._id !== 'pubtype-3'}
-                    and={trans('and')}
+                    language={language}
+                    pubtype={publicationType._id}
                   />
                   <br />
                 </span>
@@ -129,7 +115,7 @@ const LongFormArticleContainer = props => {
                     ? '.'
                     : partners.length - 1 > index + 1
                     ? ', '
-                    : ` ${  trans('and')  } `}
+                    : ` ${trans('and')} `}
                 </div>
               ))}
               {partners.map(
@@ -253,7 +239,7 @@ const LongFormArticleContainer = props => {
             <CreativecommonsNC className="page2-ccimage" />
             <CreativecommonsND className="page2-ccimage" />
             <br />
-            {trans('creative_commons_text')}
+            {trans('creative_commons_text')} ({trans('creative_commons_licenses')})
           </p>
         </div>
         <div className="page2__about-the-autors" />

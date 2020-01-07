@@ -1,11 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { LinkToItem } from './';
+import { translate } from '../helpers/translate';
 
-const AuthorList = ({ authors = [], intro = 'By', and = 'and' }) => {
+const AuthorList = ({
+  authors = [],
+  language = '',
+  introkey = 'by',
+  intro = 'By',
+  and = 'and',
+}) => {
+  const trans = translate(language);
+
   return (
     <span>
-      {`${intro} `}
+      {`${trans(introkey)} `}
       {authors &&
         authors
           .filter(author => author)
@@ -38,7 +47,9 @@ const AuthorList = ({ authors = [], intro = 'By', and = 'and' }) => {
                 )}
                 {/* Add delimiters between the authors. */}
                 {authors.length > 1 && index + 2 < authors.length && <span>, </span>}
-                {authors.length > 1 && index + 2 === authors.length && <span> {`${and}`} </span>}
+                {authors.length > 1 && index + 2 === authors.length && (
+                  <span> {`${trans('and')}`} </span>
+                )}
               </span>
             )
           )}
