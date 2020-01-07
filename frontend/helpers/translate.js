@@ -25,7 +25,6 @@ export const translate = (language = 'en') => {
   return key => {
     const defaultlang = 'en';
     const lang = langCode(language);
-
     if (!strings[lang][key]) {
       console.warn(`Translation of '${key}' for '${lang}' not found.`);
     }
@@ -47,7 +46,8 @@ const strings = {
     notes: 'Notes',
     creative_commons: 'Creative commons',
     creative_commons_text:
-      'This work is licenced under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International licence (CC BY-NC-ND 4.0)',
+      'This work is licenced under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International licence',
+    creative_commons_licenses: 'CC BY-NC-ND 4.0',
     by: 'By',
     reviewed_by: 'Reviewed by',
     series_editor: 'Series editor',
@@ -77,7 +77,8 @@ const strings = {
     notes: 'Notes',
     creative_commons: 'Licence Creative commons',
     creative_commons_text:
-      'Ce travail est distribué sous licence Creative Commons Attribution – Pas d’utilisation commerciale – Pas de modification 4.0 Licence internationale (CC BY-NC-ND 4.0)',
+      'Ce travail est distribué sous licence Creative Commons Attribution – Pas d’utilisation commerciale – Pas de modification 4.0 Licence internationale',
+    creative_commons_licenses: 'CC BY-NC-ND 4.0',
     by: 'Par',
     reviewed_by: 'Revu par',
     series_editor: 'Directeur de la collection',
@@ -106,7 +107,8 @@ const strings = {
     notes: 'Notas',
     creative_commons: 'Licencia',
     creative_commons_text:
-      'Este trabajo tiene una licencia Internacional de Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 (CC BY-NC-ND 4.0)',
+      'Este trabajo tiene una licencia Internacional de Creative Commons Attribution-NonCommercial-NoDerivatives 4.0',
+    creative_commons_licenses: 'CC BY-NC-ND 4.0',
     by: 'Par',
     reviewed_by: 'Revu par',
     series_editor: 'Editor de la serie',
