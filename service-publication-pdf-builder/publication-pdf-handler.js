@@ -18,11 +18,14 @@ function getPdfUrl(data) {
 
 async function publicationPdfHandler(req, res) {
   const { slug = '' } = req.params;
-
+  const dataset =
+    process.env.REACT_APP_DATASET === 'staging' || process.env.APP_DATASET === 'staging'
+      ? 'staging'
+      : 'production';
   try {
     const client = sanityClient({
       projectId: '1f1lcoov',
-      dataset: 'production',
+      dataset: dataset,
       token: process.env.SANITY_TOKEN,
       useCdn: true,
     });

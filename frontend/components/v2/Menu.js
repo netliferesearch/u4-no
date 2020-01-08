@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
-import sanityClient from '@sanity/client';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { SearchIcon, MenuIcon } from '../icons';

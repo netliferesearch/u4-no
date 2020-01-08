@@ -1,2 +1,4 @@
 PDF_TEST=
 DOCRAPTOR_API_KEY=
+# Select staging dataset for local development
+# APP_DATASET=staging

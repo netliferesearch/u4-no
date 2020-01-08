@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
-import sanityClient from '@sanity/client';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Link } from '../routes';
 import { SearchField, SearchFieldV2 } from '../components';
 import { ArrowRight, SearchIcon, MenuIcon } from '../components/icons';
+import client from '../helpers/sanity-client-config';
 
 const classes = BEMHelper({
   name: 'top-bar',
@@ -35,12 +35,6 @@ class MenuV2 extends Component {
     if (this.state.data) {
       return; // no need to fetch data if we got link data passed in.
     }
-    const client = sanityClient({
-      projectId: '1f1lcoov',
-      dataset: 'production',
-      token: '',
-      useCdn: true,
-    });
     const sanityQuery = '*[_type == "topics"] | order(title){_id, title, slug}';
     client.fetch(sanityQuery, {}).then(data => {
       this.setState({

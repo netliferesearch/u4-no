@@ -4,11 +4,14 @@ const axios = require('axios');
 const sanityClient = require('@sanity/client');
 const fs = require('fs');
 const pdfConfig = require('./pdfConfig');
-
+const dataset =
+  process.env.REACT_APP_DATASET === 'staging' || process.env.APP_DATASET === 'staging'
+    ? 'staging'
+    : 'production';
 const getSanityClient = () =>
   sanityClient({
     projectId: '1f1lcoov',
-    dataset: 'production',
+    dataset: dataset,
     token: process.env.PDF_WORKER_SANITY_TOKEN,
   });
 

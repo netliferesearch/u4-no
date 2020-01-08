@@ -20,31 +20,33 @@ const client = new elasticsearch.Client({
 });
 
 const prepareElasticSearchBulkInsert = (documents = []) =>
-  _.flatten(documents.map((doc) => {
-    const {
-      _type,
-      _id,
-      _rev: rev,
-      _createdAt: createdAt,
-      _updatedAt: updatedAt,
-      ...restOfDoc
-    } = doc;
+  _.flatten(
+    documents.map(doc => {
+      const {
+        _type,
+        _id,
+        _rev: rev,
+        _createdAt: createdAt,
+        _updatedAt: updatedAt,
+        ...restOfDoc
+      } = doc;
 
-    const metadata = { _index: getIndexName(doc), _type: 'u4-searchable', _id };
-    // Add plain type field to be used as a custom type field.
-    // Also try to make plural types into singular. Convert topics -> topic.
-    const type = _type.replace(/s$/gi, '');
-    return [
-      { index: metadata },
-      {
-        ...restOfDoc,
-        type,
-        rev,
-        createdAt,
-        updatedAt,
-      },
-    ];
-  }));
+      const metadata = { _index: getIndexName(doc), _type: 'u4-searchable', _id };
+      // Add plain type field to be used as a custom type field.
+      // Also try to make plural types into singular. Convert topics -> topic.
+      const type = _type.replace(/s$/gi, '');
+      return [
+        { index: metadata },
+        {
+          ...restOfDoc,
+          type,
+          rev,
+          createdAt,
+          updatedAt,
+        },
+      ];
+    })
+  );
 
 const insertElasticSearchData = (documents = []) =>
   client.bulk({
@@ -64,7 +66,7 @@ const doBatchInsert = async (documents = []) => {
       if (result.errors) {
         console.log(
           'batch insert, additional error information:',
-          JSON.stringify(result.items.filter(({ index }) => index.status > 201), null, 2),
+          JSON.stringify(result.items.filter(({ index }) => index.status > 201), null, 2)
         );
       }
     } catch (e) {
@@ -106,7 +108,7 @@ const getAllElasticsearchDocuments = async () => {
   while (responseQueue.length) {
     const response = responseQueue.shift();
     // collect the titles from this response
-    response.hits.hits.forEach((hit) => {
+    response.hits.hits.forEach(hit => {
       allDocs.push(hit);
     });
     // check to see if we have collected all of the titles
@@ -115,16 +117,18 @@ const getAllElasticsearchDocuments = async () => {
       break;
     }
     console.log('Loading more elastic documents, already found:', allDocs.length);
-    responseQueue.push(await client.scroll({
-      scrollId: response._scroll_id,
-      scroll: '30s',
-    }));
+    responseQueue.push(
+      await client.scroll({
+        scrollId: response._scroll_id,
+        scroll: '30s',
+      })
+    );
   }
   return allDocs;
 };
 
 const generateChangelist = ({ elasticDocuments = [], sanityDocuments = [] }) => {
-  const docsToInsertOrUpdate = sanityDocuments.filter((sanDoc) => {
+  const docsToInsertOrUpdate = sanityDocuments.filter(sanDoc => {
     const foundEsDoc = elasticDocuments.find(esDoc => esDoc._id === sanDoc._id);
     if (!foundEsDoc) {
       // new document that should be inserted
@@ -134,17 +138,22 @@ const generateChangelist = ({ elasticDocuments = [], sanityDocuments = [] }) => 
   });
   return {
     docsToInsertOrUpdate,
-    docsToDelete: elasticDocuments.filter(esDoc => !sanityDocuments.find(({ _id }) => _id === esDoc._id)),
+    docsToDelete: elasticDocuments.filter(
+      esDoc => !sanityDocuments.find(({ _id }) => _id === esDoc._id)
+    ),
   };
 };
 
 async function main() {
   console.log('starting work');
-
+  const dataset =
+    process.env.REACT_APP_DATASET === 'staging' || process.env.APP_DATASET === 'staging'
+      ? 'staging'
+      : 'production';
   console.log('Downloading sanity dataset');
   const { data } = await axios
-    .get('https://1f1lcoov.api.sanity.io/v1/data/export/production')
-    .catch((err) => {
+    .get('https://1f1lcoov.api.sanity.io/v1/data/export/' + dataset)
+    .catch(err => {
       console.log('Failed to get dataset', err);
       process.exit(-1);
     });
@@ -177,7 +186,6 @@ async function main() {
     'course',
   ];
 
-
   console.log('Document types to process:\n', typesToProcess, '\n');
 
   // Ensure that we don't index drafts documents, nor unecessary types.
@@ -187,10 +195,12 @@ async function main() {
     // remove frontpage from search results
     .filter(({ _id }) => _id !== 'ea5779de-5896-44a9-8d9e-31da9ac1edb2')
     // Only persons with a slug and at least one affiliation should be searchable.
-    .filter(({ _type, slug: { current = '' } = {}, affiliations = [] }) =>
-      _type !== 'person' || (_type === 'person' && current && affiliations.length > 0));
+    .filter(
+      ({ _type, slug: { current = '' } = {}, affiliations = [] }) =>
+        _type !== 'person' || (_type === 'person' && current && affiliations.length > 0)
+    );
 
-  const elasticDocuments = await getAllElasticsearchDocuments().catch((err) => {
+  const elasticDocuments = await getAllElasticsearchDocuments().catch(err => {
     console.error('Failed to fetch allElasticDocs', err);
     process.exit(1);
   });
@@ -204,9 +214,10 @@ async function main() {
     docsToInsertOrUpdate,
     document =>
       processDocument({ document, allDocuments }).catch(err =>
-        console.error('Failed to process document', document, err)),
+        console.error('Failed to process document', document, err)
+      ),
     // add concurrency cap because we download legacy pdfs if not present locally.
-    { concurrency: process.env.CACHE_PDF ? -1 : 5 },
+    { concurrency: process.env.CACHE_PDF ? -1 : 5 }
   );
 
   console.log(`Found ${docsToDelete.length} to delete`);
