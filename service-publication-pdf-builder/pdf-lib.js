@@ -11,7 +11,7 @@ const dataset =
 const getSanityClient = () =>
   sanityClient({
     projectId: '1f1lcoov',
-    dataset: dataset,
+    dataset: 'production',
     token: process.env.PDF_WORKER_SANITY_TOKEN,
   });
 

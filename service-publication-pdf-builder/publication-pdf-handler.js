@@ -25,7 +25,7 @@ async function publicationPdfHandler(req, res) {
   try {
     const client = sanityClient({
       projectId: '1f1lcoov',
-      dataset: dataset,
+      dataset: 'production',
       token: process.env.SANITY_TOKEN,
       useCdn: true,
     });
