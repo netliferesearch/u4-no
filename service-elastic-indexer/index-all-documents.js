@@ -152,7 +152,7 @@ async function main() {
       : 'production';
   console.log('Downloading sanity dataset');
   const { data } = await axios
-    .get('https://1f1lcoov.api.sanity.io/v1/data/export/' + dataset)
+    .get('https://1f1lcoov.api.sanity.io/v1/data/export/production')
     .catch(err => {
       console.log('Failed to get dataset', err);
       process.exit(-1);
