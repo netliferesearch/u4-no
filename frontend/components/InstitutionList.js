@@ -10,7 +10,7 @@ const InstitutionList = ({ institutions = [] }) => (
         .map(({ _id, description = '', institution = {} }, index) => (
           <span key={_id + index}>
             {description}
-            {institution ? ` ${institution.name}` : ''}
+            {institution && institution.name ? ` ${institution.name}` : ''}
           </span>
         ))}
   </p>
