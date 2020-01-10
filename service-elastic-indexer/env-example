@@ -5,5 +5,3 @@ ES_ENV=staging
 # Enable these if need be, or rely on defaults.
 #CACHE_PDF=true
 #ES_BATCH_SIZE=300
-# Select staging dataset for local development
-# APP_DATASET=staging

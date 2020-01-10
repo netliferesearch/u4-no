@@ -146,10 +146,6 @@ const generateChangelist = ({ elasticDocuments = [], sanityDocuments = [] }) => 
 
 async function main() {
   console.log('starting work');
-  const dataset =
-    process.env.REACT_APP_DATASET === 'staging' || process.env.APP_DATASET === 'staging'
-      ? 'staging'
-      : 'production';
   console.log('Downloading sanity dataset');
   const { data } = await axios
     .get('https://1f1lcoov.api.sanity.io/v1/data/export/production')
