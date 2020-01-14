@@ -64,7 +64,7 @@ const LongFormArticleContainer = (props = {}) => {
     translation = {},
   } = props;
 
-  const trans = translate(props.data.language);
+  const trans = translate(language);
 
   const headComponentConfig =
     headComponentConfigOverride ||
