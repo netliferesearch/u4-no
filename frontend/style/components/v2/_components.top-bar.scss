@@ -1,6 +1,6 @@
 .c-top-bar-v2 {
   display: flex;
-  flex-wrap: wrap;
+  //flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   position: fixed;
@@ -19,13 +19,19 @@
   .fixed-header-content {
     width: 100%;
     align-items: flex-start;
-    background-color: $white;
+    //background-color: $white;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0 0 $spacing $spacing;
-    height: 130px;
+    padding: 0 0 0 $spacing;
+    height: 80px;
   }
+  .logo-white {
+    path, polygon {
+      fill: $white;
+    }
+  }
+
   .c-top-bar-v2__logo,
   .c-top-bar-v2__logo:visited {
     padding-left: 0;
@@ -35,8 +41,8 @@
   @include mq($from: tablet) {
     margin-left: auto;
     margin-right: auto;
-    padding: 0;
-    max-width: 100%;
+    padding: 11px 0 11px $spacing;
+    max-width: 1548px;
     .fixed-header-content {
       padding: 0 $spacing 0 0;
       height: 93px;
@@ -49,7 +55,7 @@
       display: none;
     }
     .c-top-bar-v2__logo {
-      margin-left: 117px;
+      //margin-left: 117px;
       display: flex;
       align-items: center;
       width: auto;
@@ -69,9 +75,9 @@
   }
   @include mq($from: wide) {
     .fixed-header-content {
-      padding-right: 178px;
+      //padding-right: 178px;
       height: 93px;
-      padding-left: 117px;
+      //padding-left: 117px;
     }
     .c-top-bar-v2__logo {
       margin-left: 0;
@@ -84,15 +90,17 @@
   background-color: $brand-dark;
   height: 93px;
   width: 93px;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   margin-right: $inuit-global-spacing-unit;
+  border: none !important;
   @include mq($from: tablet) {
     display: flex;
-    position: absolute;
-    z-index: 11;
-    top: 0;
-    left: 0;
+    //position: absolute;
+    //z-index: 11;
+    //top: 0;
+    //left: 0;
   }
 }
 
@@ -194,8 +202,9 @@ a.c-top-bar-v2__logo:visited {
       color: $brand-main;
       transition: background-color 0.2s ease-out, color 0.2s ease-out;
       &.c-top-bar-v2__menu-button--active {
-        background-color: $brand-main;
+        background-color: $brand-dark;
         color: $white;
+        border-color: $brand-dark;
         .c-top-bar-v2__menu-icon {
           img {
             width: 23px;

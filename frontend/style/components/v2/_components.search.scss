@@ -8,8 +8,9 @@
     order: 0;
     max-width: 200px;
     margin: auto;
-    margin-right: auto;
-    margin-left: $spacing-large;
+    margin-left: auto;
+    padding-left: $spacing;
+    margin-right: $spacing;
   }
   @include mq($from: desktop) {
     max-width: 300px;

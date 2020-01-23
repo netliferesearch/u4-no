@@ -39,3 +39,7 @@ export { default as CreativecommonsCC } from './CreativecommonsCC';
 export { default as CreativecommonsBY } from './CreativecommonsBY';
 export { default as CreativecommonsNC } from './CreativecommonsNC';
 export { default as CreativecommonsND } from './CreativecommonsND';
+
+export { default as FbRound } from './FbRound';
+export { default as TwitterRound } from './TwitterRound';
+export { default as LinkedInRound } from './LinkedInRound';

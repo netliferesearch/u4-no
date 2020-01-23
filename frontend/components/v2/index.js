@@ -8,3 +8,4 @@ export { default as NewsAndEvents } from './NewsAndEvents';
 export { default as RecentPublications } from './RecentPublications';
 export { default as LogoCMI } from './LogoCMI';
 export { default as SearchField } from './SearchField';
+export { default as LogoMobile } from './LogoMobile';
