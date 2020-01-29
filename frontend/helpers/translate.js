@@ -140,8 +140,8 @@ const strings = {
     creative_commons_text:
       'Karya ini dilisensikan dengan Atribusi Creative Commons-NonCommercial-Lisensi Internasional NoDerivatives 4.0',
     creative_commons_licenses: 'CC BY-NC-ND 4.0',
-    by: 'By',
-    reviewed_by: 'Reviewed by',
+    by: 'Oleh',
+    reviewed_by: 'Ditinjau oleh',
     series_editor: 'Editor seri',
     series_editors: 'Editor seri',
     main_points: 'Main points',
@@ -151,8 +151,8 @@ const strings = {
     about_the_authors: 'Tentang penulis',
     acknowledgements: 'Ucapan terima kasih',
     references: 'Referensi',
-    and: 'and',
-    methodology: 'Methodology',
+    and: 'dan',
+    methodology: 'Metodologi',
     abbreviations: 'Singkatan',
   },
 };
