@@ -11,7 +11,6 @@ const AuthorList = ({
   and = 'and',
 }) => {
   const trans = translate(language);
-
   return (
     <span>
       {`${trans(introkey)} `}
