@@ -7,7 +7,7 @@
     fieldsets = array of added fieldsets (none at the moment)
 */
 
-const languages = [{ code: 'fr', name: 'French' }, { code: 'es', name: 'Spanish' }];
+const languages = [{ code: 'fr', name: 'French' }, { code: 'es', name: 'Spanish' }, { code: 'in', name: 'Indonesian' }];
 
 export default ({ name, title, localize, ...restAttributes }) => {
   const originalFields = [{ name, title, ...restAttributes }];
