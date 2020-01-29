@@ -4,7 +4,7 @@ import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
 import { Link } from '../../routes';
 import { HeadComponent, Logo } from '../';
-import { LogoCMI, Menu, SearchField } from '.';
+import { LogoCMI, Menu, SearchField, LogoMobile } from '.';
 const classes = BEMHelper({
   name: 'top-bar-v2',
   prefix: 'c-',
@@ -15,6 +15,7 @@ class Layout extends Component {
     super(props);
     this.state = {
       activeSearchMenu: true,
+      searchOpen: true,
     };
     autobind(this);
   }
@@ -23,6 +24,12 @@ class Layout extends Component {
     e.preventDefault();
     this.setState({
       activeSearchMenu: !this.state.activeSearchMenu,
+    });
+  }
+
+  setSearchOpen(status) {
+    this.setState({
+      searchOpen: status,
     });
   }
 
@@ -53,22 +60,24 @@ class Layout extends Component {
             <div className="fixed-header-content">
               {!hideLogo && (
                 <Link route="/">
-                  <a {...classes('logo', 'fixed')}>
+                  <a {...classes('logo', 'fixed', this.state.searchOpen ? '' : 'logo-white')}>
                     <Logo />
-                    <img className="logo-mobile" src="/static/logo_mobile.svg" alt="Logo mobile" />
+                    <LogoMobile />
                   </a>
                 </Link>
               )}
-              <SearchField
-                isOpen={this.state.activeSearchMenu}
-                isAlwaysOpen={true}
-                triggerSearchMenu={this.triggerSearchMenu}
-                searchData={searchData}
-              />
+              {this.state.searchOpen &&
+                <SearchField
+                  isOpen={this.state.activeSearchMenu}
+                  isAlwaysOpen={true}
+                  triggerSearchMenu={this.triggerSearchMenu}
+                  searchData={searchData}
+                />}
               {hideLogo && <div />}
               <Menu
                 noSearch={noSearch}
                 triggerSearchMenu={this.triggerSearchMenu}
+                setSearchOpen={this.setSearchOpen}
                 activeSearchMenu={this.state.activeSearchMenu}
               />
             </div>

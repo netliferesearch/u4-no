@@ -1,5 +1,6 @@
 figure {
   position: relative;
+  page-break-inside: avoid;
   & img {
     display: block;
     max-width: 100%;

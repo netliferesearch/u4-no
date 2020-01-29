@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
-import sanityClient from '@sanity/client';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
-import { SearchIcon, MenuIcon } from '../icons';
+import { SearchIcon, MenuIcon, FbRound, TwitterRound, LinkedInRound } from '../icons';
 import client from '../../helpers/sanity-client-config';
 
 const classes = BEMHelper({
@@ -45,6 +44,7 @@ class Menu extends Component {
         activeMenu: false,
         activeItem: 1,
       });
+      this.props.setSearchOpen(true);
     };
   }
 
@@ -54,6 +54,7 @@ class Menu extends Component {
       activeMenu: !this.state.activeMenu,
       activeItem: 1,
     });
+    this.props.setSearchOpen(this.state.activeMenu ? true : false);
   }
 
   triggerExpand(e) {
@@ -65,7 +66,7 @@ class Menu extends Component {
 
   render() {
     const topics = this.state.data;
-    const { noSearch, triggerSearchMenu, activeSearchMenu } = this.props;
+    const { noSearch, triggerSearchMenu, setSearchOpen, activeSearchMenu } = this.props;
     return (
       <div>
         <ul {...classes('menu')}>
@@ -100,109 +101,125 @@ class Menu extends Component {
             <button onClick={this.triggerMenu} {...menuClasses('backdrop')} />
             <div {...menuClasses('')}>
               <div {...menuClasses('section')}>
+                {topics && (
+                  <div {...menuClasses('topics')}>
+                    
+                    <h4 {...menuClasses('heading', 'border-left')}>
+                      Corruption by topic
+                    </h4>
+                    <div {...menuClasses('border-left')}>
+                    <ul {...menuClasses('list')}>
+                      {topics.slice(0, 14).map(topic => (
+                        <li {...menuClasses('list-item')} key={topic._id}>
+                          <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
+                            {topic.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    </div>
+                    <ul {...menuClasses('list','', 'rest-topics')}>
+                      {topics.slice(14, 22).map(topic => (
+                        <li {...menuClasses('list-item')} key={topic._id}>
+                          <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
+                            {topic.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 <div {...menuClasses('resources')}>
-                  <h4 {...menuClasses('heading')}>
-                    <span {...menuClasses('heading-bg')}>Resources &amp; learning</span>
-                  </h4>
-                  <ul {...menuClasses('list')}>
-                    <li {...menuClasses('list-item')}>
-                      <a
-                        {...menuClasses('link')}
-                        href="/search?filters=publications-only&sort=year-desc"
-                      >
-                        All publications &amp; resources
-                      </a>
-                    </li>
-                    <li {...menuClasses('list-item')}>
-                      <a
-                        {...menuClasses('link')}
-                        href="/search?filters=publications-only%2Cpub-U4%20Blog&sort=year-desc"
-                      >
-                        Blog
-                      </a>
-                    </li>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/terms">
-                        Glossary
-                      </a>
-                    </li>
-                  </ul>
-                  <ul {...menuClasses('list')}>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/helpdesk">
-                        Helpdesk - Ask your question
-                      </a>
-                    </li>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/online-courses">
-                        Online courses
-                      </a>
-                    </li>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/workshops-and-events">
-                        Workshops and events
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div {...menuClasses('about')}>
-                  <h4 {...menuClasses('heading')}>
-                    <span {...menuClasses('heading-bg')}>About</span>
-                  </h4>
-                  <ul {...menuClasses('list')}>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/about-u4">
-                        About U4
-                      </a>
-                    </li>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/u4-partner-agencies">
-                        Partner agencies
-                      </a>
-                    </li>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/the-team">
-                        People
-                      </a>
-                    </li>
-                  </ul>
+                  <div {...menuClasses('border-left')}>
+                    <h4 {...menuClasses('heading')}>
+                      Resources
+                    </h4>
+                    <ul {...menuClasses('list')}>
+                      <li {...menuClasses('list-item')}>
+                        <a
+                          {...menuClasses('link')}
+                          href="/search?filters=publications-only&sort=year-desc"
+                        >
+                          All publications &amp; resources
+                        </a>
+                      </li>
+                      <li {...menuClasses('list-item')}>
+                        <a
+                          {...menuClasses('link')}
+                          href="/search?filters=publications-only%2Cpub-U4%20Blog&sort=year-desc"
+                        >
+                          Blog
+                        </a>
+                      </li>
+                      <li {...menuClasses('list-item')}>
+                        <a {...menuClasses('link')} href="/terms">
+                          Glossary
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div {...menuClasses('border-left')}>
+                    <h4 {...menuClasses('heading')}>
+                      Learning &amp; events
+                    </h4>
+                    <ul {...menuClasses('list')}>
+                      <li {...menuClasses('list-item')}>
+                        <a {...menuClasses('link')} href="/online-courses">
+                          Online courses
+                        </a>
+                      </li>
+                      <li {...menuClasses('list-item')}>
+                        <a {...menuClasses('link')} href="/helpdesk">
+                          Helpdesk - Ask your question
+                        </a>
+                      </li>
+                      <li {...menuClasses('list-item')}>
+                        <a {...menuClasses('link')} href="/workshops-and-events">
+                          Events
+                        </a>
+                      </li>
+                      <li {...menuClasses('list-item')}>
+                        <a {...menuClasses('link')} href="/u4-in-country-workshop-topics">
+                          Workshops
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div {...menuClasses('border-left')}>
+                    <h4 {...menuClasses('heading')}>
+                      About
+                    </h4>
+                    <ul {...menuClasses('list')}>
+                      <li {...menuClasses('list-item')}>
+                        <a {...menuClasses('link')} href="/about-u4">
+                          About us
+                        </a>
+                      </li>
+                      <li {...menuClasses('list-item')}>
+                        <a {...menuClasses('link')} href="/the-team">
+                          Staff
+                        </a>
+                      </li>
+                      <li {...menuClasses('list-item')}>
+                        <a {...menuClasses('link')} href="/u4-partner-agencies">
+                          Partner Information
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-              {topics && (
-                <div {...menuClasses('topics')}>
-                  <h4 {...menuClasses('heading')}>
-                    <span {...menuClasses('heading-bg')}>Corruption by topic</span>
-                  </h4>
-                  <ul {...menuClasses('list')}>
-                    {topics.slice(0, 6).map(topic => (
-                      <li {...menuClasses('list-item')} key={topic._id}>
-                        <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
-                          {topic.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                  <ul {...menuClasses('list')}>
-                    {topics.slice(6, 12).map(topic => (
-                      <li {...menuClasses('list-item')} key={topic._id}>
-                        <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
-                          {topic.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                  <ul {...menuClasses('list')}>
-                    {topics.slice(12, 18).map(topic => (
-                      <li {...menuClasses('list-item')} key={topic._id}>
-                        <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
-                          {topic.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+
               <div {...menuClasses('contact')}>
+                <a href="https://www.linkedin.com/showcase/u4-anti-corruption-resource-centre/">
+                  <LinkedInRound {...classes('some-icon')} />
+                </a>
+                <a href="https://twitter.com/U4_ACRC">
+                  <TwitterRound {...classes('some-icon')} />
+                </a>
+                <a href="https://www.facebook.com/U4anticorruption/">
+                  <FbRound {...classes('some-icon')} />
+                </a>
                 <a {...menuClasses('link')} href="/the-team">
                   Contact
                 </a>
