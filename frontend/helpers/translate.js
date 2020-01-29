@@ -144,7 +144,7 @@ const strings = {
     reviewed_by: 'Ditinjau oleh',
     series_editor: 'Editor seri',
     series_editors: 'Editor seri',
-    main_points: 'Main points',
+    main_points: 'Poin utama',
     table_of_contents: 'Daftar isi',
     abstract: 'Abstract',
     about_the_author: 'Tentang penulis',
