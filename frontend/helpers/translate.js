@@ -109,8 +109,8 @@ const strings = {
     creative_commons_text:
       'Este trabajo tiene una licencia Internacional de Creative Commons Attribution-NonCommercial-NoDerivatives 4.0',
     creative_commons_licenses: 'CC BY-NC-ND 4.0',
-    by: 'Par',
-    reviewed_by: 'Revu par',
+    by: 'Por',
+    reviewed_by: 'Revisado por',
     series_editor: 'Editor de la serie',
     series_editors: 'Editores de la serie',
     main_points: 'Puntos principales',
