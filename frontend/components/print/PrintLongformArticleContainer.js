@@ -170,6 +170,12 @@ const LongFormArticleContainer = props => {
               serializers={serializers(transField(u4, 'about'))}
             />
           )}
+          {lang === 'in' && (
+            <BlockContent
+              blocks={transField(u4, 'about')}
+              serializers={serializers(transField(u4, 'about'))}
+            />
+          )}
         </div>
         {featuredImage && (
           <div className="page2__coverphoto">
