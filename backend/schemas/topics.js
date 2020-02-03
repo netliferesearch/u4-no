@@ -1,5 +1,5 @@
 import ReferringDocumentsList from '../components/referring-documents/src/ReferringDocumentsList'
-import { title, longTitle, explainerText, featuredImage, slug, license, standfirst, box } from './fields'
+import { title, longTitle, explainerText, featuredImage, slug, license, standfirst, box, vimeoVideo } from './fields'
 import annotationsLinksOnly from './fields/annotationsLinksOnly'
 
 
@@ -55,6 +55,7 @@ export default {
           }
         },
         box,
+        vimeoVideo,
         {
           type: 'image',
           fields: [
