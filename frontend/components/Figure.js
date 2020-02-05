@@ -10,7 +10,7 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const renderCaption = (caption) => {
+const renderCaption = caption => {
   if (Array.isArray(caption)) {
     return <BlockContent blocks={caption} serializers={serializers} />;
   }
@@ -30,7 +30,7 @@ renderCredit.propTypes = {
   license: PropTypes.string.isRequired,
 };
 
-const figureOutFigureClass = (size) => {
+const figureOutFigureClass = size => {
   if (size === 'narrow') {
     return 'c-figure--narrow c-longform-grid__standard ';
   } else if (size === 'small') {
@@ -48,6 +48,7 @@ const figureOutFigureClass = (size) => {
 
 const Figure = ({
   asset = {},
+  altText = '',
   crop,
   hotspot,
   caption = [],
@@ -60,8 +61,7 @@ const Figure = ({
 }) => (
   <figure {...classes('figure', null, figureOutFigureClass(size))}>
     {(title || heading) && <p className="c-figure__title">{title || heading}</p>}
-    <img src={imageUrl(asset)} alt={asset.altText} />
-    <img src={asset.url} alt={asset.altText} />
+    <img src={imageUrl({ asset })} alt={altText} />
     {(caption.length > 0 || credit || sourceUrl || license) && (
       <figcaption className="c-figure__caption">
         {renderCaption(caption)}
