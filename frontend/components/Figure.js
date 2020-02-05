@@ -61,7 +61,7 @@ const Figure = ({
 }) => (
   <figure {...classes('figure', null, figureOutFigureClass(size))}>
     {(title || heading) && <p className="c-figure__title">{title || heading}</p>}
-    <img src={imageUrl({ asset })} alt={altText} />
+    <img src={asset.url} alt={altText} />
     {(caption.length > 0 || credit || sourceUrl || license) && (
       <figcaption className="c-figure__caption">
         {renderCaption(caption)}
