@@ -1,1 +1,114 @@
- 
+.c-blog-single {
+  font-family: $font-sans;
+  padding: $spacing;
+  background-color: $brand-lightest;
+  color: $brand-dark;
+  .download {
+    display: block;
+    .button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid $brand-main;
+      background-color: $white;
+      line-height: 30px;
+      padding: $spacing-tiny $spacing-small;
+      color: $brand-main;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      max-width: 200px;
+      &.read-online {
+        margin-top: $spacing;
+      }
+    }
+    .dropdown-select {
+      position: relative;
+      width: 100%;
+      max-width: 200px;
+      .button {
+        color: $white;
+        background-color: $brand-main;
+      }
+      .other-links {
+        position: absolute;
+        overflow: hidden;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 3;
+        border: 1px solid $brand-main;
+        max-height: 0px;
+        transition: max-height 0.2s ease-out 0s;
+        .button {
+          background-color: $white;
+          border: none;
+          border-bottom: 1px solid $border-grey;
+          color: $brand-dark;
+          font-weight: normal;
+          &:hover {
+            background-color: $brand-main;
+            color: $white;
+          }
+          &:last-child {
+            border: none;
+          }
+        }
+      }
+      &.open {
+        .other-links {
+          transition: max-height 0.2s ease-in 0s;
+          max-height: 999px;
+        }
+      }
+    }
+  }
+  .blog-accordion {
+    border-top: 1px solid $border-grey;
+    margin-top: $spacing;
+    .c-accordion {
+      &__block {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $border-grey;
+      }
+      &__container {
+        width: 90%;
+        max-width: calc(100% - 100px);
+        padding: $spacing 0;
+        .title {
+          margin: 0;
+        }
+      }
+      &__content {
+        max-height: 0;
+        position: relative;
+        overflow: hidden;
+        transition: max-height 0.2s;
+        &.open {
+          max-height: 500px;
+          transition: max-height 1s;
+        }
+      }
+      &__arrow {
+        cursor: pointer;
+        padding: $spacing;
+        width: 10%;
+        min-width: 100px;
+        text-align: center;
+      }
+    }
+  }
+  @include mq($from: tablet) {
+    padding: $spacing-huge $spacing;
+    .download {
+      display: flex;
+      .button {
+        &.read-online {
+          margin-top: 0;
+          margin-left: $spacing;
+        }
+      }
+    }
+  }
+}
