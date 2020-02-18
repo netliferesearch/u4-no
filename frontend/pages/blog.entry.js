@@ -4,8 +4,8 @@ import { Link } from '../routes';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
-
-import { BoxOnBox, Footer, Layout, Accordion, Newsletter, ServiceArticle } from '../components';
+import { BreadCrumb } from '../components/BreadCrumb';
+import { BoxOnBox, Footer, Accordion, Newsletter, ServiceArticle } from '../components';
 import { Feature, Mosaic, LinkBox, LinkList, Team } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import {
@@ -16,17 +16,23 @@ import {
   ResearchAgenda,
   ArrowRight,
 } from '../components/icons';
-import { NewsAndEvents } from '../components/v2';
-import { DownloadPdf } from '../components/v2/blog/DownloadDropdown';
-import BlogAccordion from '../components/v2/blog/BlogAccordion';
+import { NewsAndEvents, Layout } from '../components/v2';
+import { BlogAccordion } from '../components/v2/blog/BlogAccordion';
+import { BlogSidebar } from '../components/v2/blog/BlogSidebar';
 
-const BlogSinglePage = ({ data: { blogEntry = {} }, url = {} }) => {
+const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
+  console.log('blogEntry', blogEntry);
   const {
     title = '',
+    authors = [],
+    date = '',
+    _updatedAt = '',
     featuredImage = {},
+    imageUrl = null,
     leadText = '',
     content = [],
     pdfFile = {},
+    legacypdf = {},
     relatedContent = [],
     topics = [],
     keywords = [],
@@ -36,38 +42,42 @@ const BlogSinglePage = ({ data: { blogEntry = {} }, url = {} }) => {
       headComponentConfig={{
         title,
         description: leadText,
-        image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
+        image: imageUrl ? imageUrl : '',
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: {},
       }}
     >
-      <div className="c-blog-single">
-        <DownloadPdf pdfFile={pdfFile} />
-        <div className="c-oneColumnBox c-oneColumnBox__darkOnWhite">
+      {console.log(blogEntry)}
+      <div className="o-wrapper c-post">
+      <BlogSidebar data={blogEntry} />
+      <div className="c-post__post ">
+        {/* <div className="c-oneColumnBox c-oneColumnBox__darkOnWhite"> */}
           <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
-
-            <h2 className="c-longform-grid__standard">{title}</h2>
-            {content ? <ServiceArticle blocks={content} /> : null}
+            <h2>{title}</h2>
+            {content ? <BlockContent blocks={content} /> : null}
             <BlogAccordion />
           </div>
-        </div>
-      
-    
+        {/* </div> */}
+        {/* {...classes('publication-type')} */}
+
         {/* Reuse this component since it's identical, might need to adap the headline */}
-        <NewsAndEvents events={relatedContent} />
+        {/* <NewsAndEvents events={relatedContent} /> */}
       </div>
+      </div>
+      
     </Layout>
   );
 };
 
-export default DataLoader(BlogSinglePage, {
+export default DataLoader(BlogEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-       "blogEntry": *[_type=="blog" && slug.current == $slug][0]{title, date, leadText, content, slug, relatedContent, topics, keywords, pdfFile, _id, "featuredImage": featuredImage.asset->url},
-       "relatedContent":
-       relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage, topics, standfirst },
-      }`,
+      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, standfirst, topics[]->{title}, keywords, "imageUrl": featuredImage.asset->url, "slug": slug.current, pdfFile, legacypdf},
+    }`,
     param: { slug },
   }),
   materializeDepth: 2,
 });
+//"relatedContent":
+// relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage, topics, standfirst },
+//authors[]->{_id, affiliations, email, firstName, slug, surname}

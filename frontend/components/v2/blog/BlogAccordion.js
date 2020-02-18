@@ -1,12 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   CreativecommonsCC,
   CreativecommonsBY,
   CreativecommonsNC,
   CreativecommonsND,
-} from '../icons';
+} from '../../icons';
 
-const BlogAccordion = () => {
+export const BlogAccordion = () => {
   const [activeAccordion, setActiveAccordion] = useState(-1);
   const toggleAccordion = index => {
     const newIndex = index === activeAccordion ? -1 : index;
