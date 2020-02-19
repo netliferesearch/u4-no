@@ -8,7 +8,6 @@ import {
   Layout,
   InsightPosts,
   RecentPublications,
-  NewsAndEvents,
 } from '../components/v2';
 import BEMHelper from 'react-bem-helper';
 import dateToString from '../helpers/dateToString';
@@ -84,7 +83,8 @@ BlogPage.propTypes = {
 
 export default DataLoader(BlogPage, {
   queryFunc: () => ({
-    sanityQuery: `{"blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {_id, title, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}}`,
+    sanityQuery: `{
+      "blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {_id, title, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}}`,
   }),
   materializeDepth: 0,
 });

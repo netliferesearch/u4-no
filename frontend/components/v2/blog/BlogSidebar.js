@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { BlogAuthorsList } from './BlogAuthorsList';
 import dateToString from '../../../helpers/dateToString';
-import { DownloadPdf } from './DownloadDropdown';
-import { ShareOnSocialMedia } from './ShareOnSocialMedia'
+import { DownloadPdf } from '../DownloadDropdown';
+import { ShareOnSocialMedia } from '../ShareOnSocialMedia'
 /**
  * V2 - Sidebar component to be used in BlogEntry component
  * @param {object} data
  */
 
 export const BlogSidebar = ({ data }) => {
-  const { authors = [], date = {}, _updatedAt = '', pdfFile = {}, legacypdf = {} } = data;
+  const { authors = [], date = {}, _updatedAt = '', pdfFile = {}, legacypdf = {}, title = '', slug = '' } = data;
   return (
     data && (
       <section className="c-blog-sidebar">
@@ -27,8 +27,9 @@ export const BlogSidebar = ({ data }) => {
             />
           ) : null}
         </div>
-        <ShareOnSocialMedia />
-        <DownloadPdf pdfFile={legacypdf ? legacypdf : pdfFile} />
+        <ShareOnSocialMedia title={title}/>
+        {/* Legacy PDF overrides pdfFile */}
+        <DownloadPdf pdfFile={legacypdf ? legacypdf : pdfFile} slug={slug} />
       </section>
     )
   )}

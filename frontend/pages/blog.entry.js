@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
-import dateToString from '../helpers/dateToString';
-import { Link } from '../routes';
+import serializers from '../components/serializers';
 import DataLoader from '../helpers/data-loader';
-import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
-import { BreadCrumb } from '../components/BreadCrumb';
-import { BoxOnBox, Footer, Accordion, Newsletter, ServiceArticle } from '../components';
-import { Feature, Mosaic, LinkBox, LinkList, Team } from '../components';
-import { DownArrowButton, RightArrowButton } from '../components/buttons';
-import {
-  Basics,
-  Picture,
-  Publication,
-  Resources,
-  ResearchAgenda,
-  ArrowRight,
-} from '../components/icons';
 import { NewsAndEvents, Layout } from '../components/v2';
 import { BlogAccordion } from '../components/v2/blog/BlogAccordion';
 import { BlogSidebar } from '../components/v2/blog/BlogSidebar';
+import { TagsSection } from '../components/v2/TagsSection';
+import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2'
+// import dateToString from '../helpers/dateToString';
+// import { Link } from '../routes';
+// import Head from 'next/head';
+// import { BoxOnBox, Footer, Accordion, Newsletter, ServiceArticle } from '../components';
+// import { Feature, Mosaic, LinkBox, LinkList, Team } from '../components';
+// import { DownArrowButton, RightArrowButton } from '../components/buttons';
+// import {
+//   Basics,
+//   Picture,
+//   Publication,
+//   Resources,
+//   ResearchAgenda,
+//   ArrowRight,
+// } from '../components/icons';
 
 const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
   console.log('blogEntry', blogEntry);
@@ -29,7 +31,8 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     _updatedAt = '',
     featuredImage = {},
     imageUrl = null,
-    leadText = '',
+    standfirst = '',
+    lead = '',
     content = [],
     pdfFile = {},
     legacypdf = {},
@@ -41,30 +44,36 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     <Layout
       headComponentConfig={{
         title,
-        description: leadText,
+        description: lead || standfirst,
         image: imageUrl ? imageUrl : '',
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: {},
       }}
     >
-      {console.log(blogEntry)}
-      <div className="o-wrapper c-post">
-      <BlogSidebar data={blogEntry} />
-      <div className="c-post__post ">
-        {/* <div className="c-oneColumnBox c-oneColumnBox__darkOnWhite"> */}
+      {console.log('relatedContent', relatedContent)}
+      <BreadCrumbV2 title={'Blog'} parentSlug={'blog'}/>
+      <div className="o-wrapper c-blog-post">
+        <BlogSidebar data={blogEntry} />
+        <div className="c-blog-post__post ">
+          {/* <div className="c-oneColumnBox c-oneColumnBox__darkOnWhite"> */}
           <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
-            <h2>{title}</h2>
-            {content ? <BlockContent blocks={content} /> : null}
+            <div>
+              <h2>{title}</h2>
+              {lead && <p>{lead}</p>}
+              {topics &&
+                topics.map((topic, index) => (
+                  <span className="topic" key={index}>
+                    {topic.title}
+                  </span>
+                ))}
+            </div>
+            {content ? <BlockContent blocks={content} serializers={serializers} /> : null}
+            {topics || keywords ? <TagsSection topics={topics} keywords={keywords} /> : null}
             <BlogAccordion />
           </div>
-        {/* </div> */}
-        {/* {...classes('publication-type')} */}
-
-        {/* Reuse this component since it's identical, might need to adap the headline */}
-        {/* <NewsAndEvents events={relatedContent} /> */}
+          {relatedContent ? <NewsAndEvents events={relatedContent} /> : null}
+        </div>
       </div>
-      </div>
-      
     </Layout>
   );
 };
@@ -72,12 +81,10 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
 export default DataLoader(BlogEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, standfirst, topics[]->{title}, keywords, "imageUrl": featuredImage.asset->url, "slug": slug.current, pdfFile, legacypdf},
+      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, topics[]->{title}, keywords[]->{category, keyword}, "imageUrl": featuredImage.asset->url, "slug": slug.current, pdfFile, legacypdf,
+      "relatedContent": relatedContent[]->{_type, title, startDate, lead, "slug": slug.current, topics[]->{title}}[0..2]}
     }`,
     param: { slug },
   }),
   materializeDepth: 2,
 });
-//"relatedContent":
-// relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage, topics, standfirst },
-//authors[]->{_id, affiliations, email, firstName, slug, surname}

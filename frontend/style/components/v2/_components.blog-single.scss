@@ -1,4 +1,4 @@
-.c-post {
+.c-blog-post {
   font-family: $font-sans;
   padding: $spacing;
   background-color: $white;
@@ -110,5 +110,21 @@
         }
       }
     }
+  }
+}
+
+.c-blog-post {
+  .topic {
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    color: #0079cf;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal;
+    border: 1px solid #0079cf;
+    border-radius: 3px;
+    padding: 3px 5px 4px 6px;
+    display: inline-block;
+    margin-right: 11px;
+    margin-bottom: 11px;
   }
 }

@@ -9,7 +9,7 @@ const NewsAndEvents = ({ events }) => {
       <h2 className="u-blue-underline">News &amp; events</h2>
       <hr className="u-section-underline" />
       <div className="cols">
-        {events.map((event, index) => (
+        {events ? events.map((event, index) => (
           <div className="col" key={index}>
             <div className="text">
               <div className="top-content">
@@ -17,7 +17,7 @@ const NewsAndEvents = ({ events }) => {
                   {event._type === 'course' ? 'Online course' : 'Workshop'}
                 </h6>
                 <a
-                  href={`${event._type === 'course' ? 'courses/' : ''}${event.slug}`}
+                  href={`/${event._type === 'course' ? 'courses/' : ''}${event.slug}`}
                   {...classes('publication-headline')}
                 >
                   <h3 {...classes('publication-headline')}>{event.title}</h3>
@@ -25,7 +25,7 @@ const NewsAndEvents = ({ events }) => {
                 <p {...classes('publication-intro')}>{event.lead}</p>
               </div>
               <div className="bottom-content">
-                <p {...classes('date')}>{dateToString({ start: event.startDate.utc })}</p>
+                {event.startDate && <p {...classes('date')}>{dateToString({ start: event.startDate.utc })}</p>}
                 <div {...classes('topic')}>
                   {event.topics &&
                     event.topics.map((topic, index) => {
@@ -39,7 +39,7 @@ const NewsAndEvents = ({ events }) => {
               </div>
             </div>
           </div>
-        ))}
+        )) : null}
       </div>
     </div>
   );

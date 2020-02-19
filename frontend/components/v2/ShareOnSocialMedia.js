@@ -8,7 +8,9 @@ import {
   EmailIcon,
 } from 'react-share';
 
-export const ShareOnSocialMedia = ({ url = '', title = '' }) => {
+export const ShareOnSocialMedia = ({ title = '' }) => {
+  let url = typeof window === 'undefined' ? '' : window.location.href;
+
   return (
     <div className="c-share-buttons">
       <FacebookShareButton className="c-share-buttons__fb" url={url} quote={title}>
@@ -36,5 +38,5 @@ export const ShareOnSocialMedia = ({ url = '', title = '' }) => {
         />
       </EmailShareButton>
     </div>
-  )
-}
+  );
+};
