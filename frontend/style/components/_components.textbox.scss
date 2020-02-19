@@ -95,4 +95,9 @@
 
 .c-textbox__container--expanded .c-textbox__expand {
   background: none;
+  height: 50px;
+
+  .c-btn--icon {
+    margin-top: 24px;
+  }
 }
