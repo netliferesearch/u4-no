@@ -150,7 +150,13 @@ const LongFormArticleContainer = (props = {}) => {
                       {featuredImage.credit ? featuredImage.credit : featuredImage.sourceUrl}
                     </a>
                   )}
-                  {featuredImage.license && <span> CC {featuredImage.license.toUpperCase()}</span>}
+                  {featuredImage.license && (
+                    <span>
+                      {' '}
+                      {featuredImage.license.startsWith('copyrighted') || 'CC'}{' '}
+                      {featuredImage.license.toUpperCase()}
+                    </span>
+                  )}
                 </div>
                 <div className="c-hero-header">
                   <PublicationArticleHeader
@@ -296,7 +302,8 @@ const LongFormArticleContainer = (props = {}) => {
                     {featuredImage.license && (
                       <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
                         {' '}
-                        CC {featuredImage.license.toUpperCase()}
+                        {featuredImage.license.startsWith('copyrighted') || 'CC'}{' '}
+                        {featuredImage.license.toUpperCase()}
                       </a>
                     )}
                   </div>
