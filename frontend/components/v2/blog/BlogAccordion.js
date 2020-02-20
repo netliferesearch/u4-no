@@ -5,6 +5,7 @@ import {
   CreativecommonsNC,
   CreativecommonsND,
 } from '../../icons';
+import { ArrowDark } from '../../icons/ArrowDark';
 
 export const BlogAccordion = () => {
   const [activeAccordion, setActiveAccordion] = useState(-1);
@@ -33,7 +34,7 @@ export const BlogAccordion = () => {
           </div>
         </div>
         <div className="c-accordion__arrow">
-          <img src="/static/arrow-right-slim.svg" alt="Accordion arrow" />
+          <ArrowDark />
         </div>
       </div>
       <div className="c-accordion__block" onClick={e => toggleAccordion(1)}>
@@ -47,7 +48,7 @@ export const BlogAccordion = () => {
           </div>
         </div>
         <div className="c-accordion__arrow">
-          <img src="/static/arrow-right-slim.svg" alt="Accordion arrow" />
+          <ArrowDark />
         </div>
       </div>
     </div>

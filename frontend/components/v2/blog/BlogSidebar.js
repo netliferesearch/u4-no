@@ -12,24 +12,27 @@ export const BlogSidebar = ({ data }) => {
   const { authors = [], date = {}, _updatedAt = '', pdfFile = {}, legacypdf = {}, title = '', slug = '' } = data;
   return (
     data && (
-      <section className="c-blog-sidebar">
-        <div>
+      <div className="c-blog-sidebar">
+        <div className="c-blog-sidebar__date">
           {date && date.utc && (
-            <span className="c-blog-sidebar__bold">{dateToString({ start: date.utc })}</span>
+            <span className="c-blog-sidebar__row--bold">{dateToString({ start: date.utc })}</span>
           )}
           {_updatedAt && (
-            <span className="c-blog-sidebar__regular">{dateToString({ start: _updatedAt })}</span>
+            <span className="c-blog-sidebar__row--regular">Updated {dateToString({ start: _updatedAt })}</span>
           )}
-          {authors.length ? (
+        </div>
+        {authors.length ? (
             <BlogAuthorsList
               authors={authors}
               //language={language}
             />
           ) : null}
-        </div>
         <ShareOnSocialMedia title={title}/>
         {/* Legacy PDF overrides pdfFile */}
-        <DownloadPdf pdfFile={legacypdf ? legacypdf : pdfFile} slug={slug} />
-      </section>
+        {/* {console.log(pdfFile.asset ? pdfFile.asset : null)}
+        {console.log(legacypdf.asset ? legacypdf.asset : null)}
+        {legacypdf && legacypdf.asset || pdfFile && pdfFile.asset ? (<DownloadPdf pdfFile={legacypdf.asset ? legacypdf.asset.url : pdfFile.asset.url} />) : null} */}
+        
+      </div>
     )
   )}

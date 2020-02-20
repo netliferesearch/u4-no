@@ -13,9 +13,9 @@ import ArrowRightSmall from '../icons/ArrowRightSmall';
 
 export const BreadCrumbV2 = ({ parentSlug = '', title = '' }) => {
   return (
-    <div className="c-breadcrumb c-breadcrumb--v2">
+    <div className="c-breadcrumb--v2">
       {parentSlug && (
-        <div className="c-breadcrumb-inner o-wrapper o-wrapper--padded">
+        <div className="c-breadcrumb-inner o-wrapper-section">
           <Link route={'/'}>
             <a className="c-breadcrumb__link">Home</a>
           </Link>

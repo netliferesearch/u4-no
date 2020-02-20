@@ -6,24 +6,10 @@ import { NewsAndEvents, Layout } from '../components/v2';
 import { BlogAccordion } from '../components/v2/blog/BlogAccordion';
 import { BlogSidebar } from '../components/v2/blog/BlogSidebar';
 import { TagsSection } from '../components/v2/TagsSection';
-import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2'
-// import dateToString from '../helpers/dateToString';
-// import { Link } from '../routes';
-// import Head from 'next/head';
-// import { BoxOnBox, Footer, Accordion, Newsletter, ServiceArticle } from '../components';
-// import { Feature, Mosaic, LinkBox, LinkList, Team } from '../components';
-// import { DownArrowButton, RightArrowButton } from '../components/buttons';
-// import {
-//   Basics,
-//   Picture,
-//   Publication,
-//   Resources,
-//   ResearchAgenda,
-//   ArrowRight,
-// } from '../components/icons';
+import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
+
 
 const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
-  console.log('blogEntry', blogEntry);
   const {
     title = '',
     authors = [],
@@ -34,12 +20,14 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     standfirst = '',
     lead = '',
     content = [],
+    headsUp = '',
     pdfFile = {},
     legacypdf = {},
-    relatedContent = [],
-    topics = [],
-    keywords = [],
+    relatedContent = '',
+    topics = '',
+    keywords = '',
   } = blogEntry;
+
   return (
     <Layout
       headComponentConfig={{
@@ -50,17 +38,16 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
         ogp: {},
       }}
     >
-      {console.log('relatedContent', relatedContent)}
-      <BreadCrumbV2 title={'Blog'} parentSlug={'blog'}/>
-      <div className="o-wrapper c-blog-post">
-        <BlogSidebar data={blogEntry} />
-        <div className="c-blog-post__post ">
-          {/* <div className="c-oneColumnBox c-oneColumnBox__darkOnWhite"> */}
-          <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
-            <div>
+      <hr className="u-section-underline--no-margins" />
+      <div className="o-wrapper c-blog-entry">
+        <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} />
+        <section className="o-wrapper-section c-blog-entry__post">
+          <BlogSidebar data={blogEntry} />
+          <div className="c-blog-entry__content">
+            <div className="c-blog-entry__head">
               <h2>{title}</h2>
-              {lead && <p>{lead}</p>}
-              {topics &&
+              {lead && <p className="c-blog-entry__lead">{lead}</p>}
+              {topics && 
                 topics.map((topic, index) => (
                   <span className="topic" key={index}>
                     {topic.title}
@@ -68,12 +55,21 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
                 ))}
             </div>
             {content ? <BlockContent blocks={content} serializers={serializers} /> : null}
+            {headsUp && (
+              <div className="c-blog-entry__heads-up">
+                <BlockContent blocks={headsUp} serializers={serializers} />
+              </div>
+            )}
             {topics || keywords ? <TagsSection topics={topics} keywords={keywords} /> : null}
             <BlogAccordion />
           </div>
-          {relatedContent ? <NewsAndEvents events={relatedContent} /> : null}
-        </div>
+        </section>
       </div>
+      <section className="o-wrapper">
+        <div className="o-wrapper-section">
+          {relatedContent ? <NewsAndEvents events={relatedContent} title={'Related'} /> : null}
+        </div>
+      </section>
     </Layout>
   );
 };
@@ -81,7 +77,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
 export default DataLoader(BlogEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, topics[]->{title}, keywords[]->{category, keyword}, "imageUrl": featuredImage.asset->url, "slug": slug.current, pdfFile, legacypdf,
+      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title}, keywords[]->{category, keyword}, "imageUrl": featuredImage.asset->url, "slug": slug.current, pdfFile, legacypdf,
       "relatedContent": relatedContent[]->{_type, title, startDate, lead, "slug": slug.current, topics[]->{title}}[0..2]}
     }`,
     param: { slug },

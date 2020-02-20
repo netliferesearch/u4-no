@@ -1,45 +1,53 @@
 import React from 'react';
 
 /**
- * TagsSection component to list topics and keywords (keyword categories "regions" and "keywords")
+ * TagsSection component to list topics and keywords (keyword categories: "regions" and "keywords")
  * Used in BlogEntry component, blog page
- * 
+ *
  * @param {array} topics
- * @param {keywords} topics
+ * @param {keywords} keywords
  */
 
 export const TagsSection = ({ topics = [], keywords = [] }) => {
-
   return (
     <div className="tags-section">
       <h3 className="title">Tags</h3>
-      <div className="tags-section__row">
-        {topics &&
-          topics.map((topic, index) => (
+      {topics && (
+        <div className="tags-section__row">
+          <h6>Topics</h6>
+          {topics.map((topic, index) => (
             <span className="topic" key={index}>
               {topic.title}
             </span>
           ))}
-      </div>
-      <div className="tags-section__row">
-        {keywords && keywords
+        </div>
+      )}
+
+      {keywords && (
+        <div className="tags-section__row">
+          <h6>Region</h6>
+          {keywords
             .filter(keyword => keyword.category === 'region')
             .map((keyword, index) => (
               <span className="keyword" key={index}>
                 {keyword.keyword}
               </span>
             ))}
-      </div>
-      <div className="tags-section__row">
-        {keywords && 
-        keywords
-          .filter(keyword => keyword.category === 'keyword')
-          .map((keyword, index) => (
-            <span className="keyword" key={index}>
-              {keyword.keyword}
-            </span>
-          ))}
-      </div>
+        </div>
+      )}
+
+      {keywords && (
+        <div className="tags-section__row">
+          <h6>Keywords</h6>
+          {keywords
+            .filter(keyword => keyword.category === 'keyword')
+            .map((keyword, index) => (
+              <span className="keyword" key={index}>
+                {keyword.keyword}
+              </span>
+            ))}
+        </div>
+      )}
     </div>
   );
 };

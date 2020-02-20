@@ -1,0 +1,28 @@
+.c-breadcrumb--v2 {
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  margin: $spacing-large 0;
+
+  &.c-breadcrumb:after {
+    display: none;
+  }
+  .c-breadcrumb-inner {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    svg {
+      margin: 0 15px 0 0;
+    }
+  }
+  .c-breadcrumb__link {
+    text-transform: uppercase;
+    margin: 0 15px 0 0;
+  }
+}
+
+@media (min-width: 46.25em) {
+  .c-breadcrumb--v2 .c-breadcrumb__link {
+    //margin: 0 15px;
+  }
+}

@@ -58,7 +58,7 @@ const Frontpage = ({
 
     <section className="o-wrapper">
       <div className="o-wrapper-section">
-        <NewsAndEvents events={events} />
+        <NewsAndEvents events={events} title={'News & events'}/>
       </div>
     </section>
   </Layout>

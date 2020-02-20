@@ -52,7 +52,7 @@ const BlogPage = ({
                   <h3 {...classes('publication-headline')}>{post.title}</h3>
                 </a>
                 <p {...classes('publication-intro')}>{post.standfirst}</p>
-                <p {...classes('date')}>{dateToString({ start: post.date.utc })}</p>
+                <p {...classes('date')}>{post.date ? dateToString({ start: post.date.utc }) : null}</p>
                 <div {...classes('topic')}>
                   {post.topics &&
                     post.topics.map((topic, index) => {

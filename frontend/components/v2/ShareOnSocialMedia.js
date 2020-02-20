@@ -13,25 +13,25 @@ export const ShareOnSocialMedia = ({ title = '' }) => {
 
   return (
     <div className="c-share-buttons">
-      <FacebookShareButton className="c-share-buttons__fb" url={url} quote={title}>
+      <FacebookShareButton className="c-share-buttons__facebook" url={url} quote={title}>
         <FacebookIcon
-          size={40}
+          size={52}
           round={true}
           bgStyle={{ fill: 'transparent' }}
           iconFillColor={'#1E2051'}
         />
       </FacebookShareButton>
-      <TwitterShareButton className="c-share-buttons__fb" url={url} title={title}>
+      <TwitterShareButton className="c-share-buttons__twitter" url={url} title={title}>
         <TwitterIcon
-          size={40}
+          size={52}
           round={true}
           bgStyle={{ fill: 'transparent' }}
           iconFillColor={'#1E2051'}
         />
       </TwitterShareButton>
-      <EmailShareButton className="c-share-buttons__fb" url={url} subject={title}>
+      <EmailShareButton className="c-share-buttons__email" url={url} subject={title}>
         <EmailIcon
-          size={40}
+          size={52}
           round={true}
           bgStyle={{ fill: 'transparent' }}
           iconFillColor={'#1E2051'}
