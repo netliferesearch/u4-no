@@ -32,7 +32,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
       headComponentConfig={{
         title,
         description: lead || standfirst,
-        // image: imageUrl ? imageUrl : '',
+        image: featuredImage.asset ? featuredImage.asset.url : '',
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: {},
       }}
@@ -112,17 +112,3 @@ export default DataLoader(BlogEntry, {
   }),
   materializeDepth: 2,
 });
-
-//<img src={`${featuredImageUrl}?w=500&h=500&fit=crop&crop=focalpoint`} />
-
-// {featuredImage.caption && (
-//     <BlockToContent
-//       blocks={featuredImage.caption}
-//       serializers={{
-//         types: {
-//           block: props => <p style={{ display: 'inline' }}>{props.children}</p>,
-//         },
-//       }}
-//     />
-//
-// )}

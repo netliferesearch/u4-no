@@ -27,7 +27,7 @@
     font-size: 12px;
     line-height: 32px;
     font-family: $font-sans;
-    text-transform: uppercase;
+    -transform: uppercase;
     font-weight: 900;
     margin: 0;
     @include mq($from: tablet) {

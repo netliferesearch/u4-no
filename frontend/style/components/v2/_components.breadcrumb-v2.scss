@@ -1,6 +1,8 @@
 .c-breadcrumb--v2 {
+  font-size: $font-size-tiny;
+  line-height: 1.5;
   font-family: 'Lato', Helvetica, Arial, sans-serif;
-  font-weight: 600;
+  font-weight: 900;
   margin: $spacing-large 0;
 
   &.c-breadcrumb:after {
@@ -18,11 +20,5 @@
   .c-breadcrumb__link {
     text-transform: uppercase;
     margin: 0 15px 0 0;
-  }
-}
-
-@media (min-width: 46.25em) {
-  .c-breadcrumb--v2 .c-breadcrumb__link {
-    //margin: 0 15px;
   }
 }
