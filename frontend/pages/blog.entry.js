@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import serializers from '../components/serializers';
 import DataLoader from '../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
+import BlockToContent from '@sanity/block-content-to-react';
 import { NewsAndEvents, Layout } from '../components/v2';
 import { BlogAccordion } from '../components/v2/blog/BlogAccordion';
 import { BlogSidebar } from '../components/v2/blog/BlogSidebar';
 import { TagsSection } from '../components/v2/TagsSection';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
-
 
 const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
   const {
@@ -16,7 +16,6 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     date = '',
     _updatedAt = '',
     featuredImage = {},
-    imageUrl = null,
     standfirst = '',
     lead = '',
     content = [],
@@ -33,7 +32,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
       headComponentConfig={{
         title,
         description: lead || standfirst,
-        image: imageUrl ? imageUrl : '',
+        // image: imageUrl ? imageUrl : '',
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: {},
       }}
@@ -47,14 +46,33 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
             <div className="c-blog-entry__head">
               <h2>{title}</h2>
               {lead && <p className="c-blog-entry__lead">{lead}</p>}
-              {topics && 
+              {topics &&
                 topics.map((topic, index) => (
                   <span className="topic" key={index}>
                     {topic.title}
                   </span>
                 ))}
             </div>
-            {content ? <BlockContent blocks={content} serializers={serializers} /> : null}
+
+            {featuredImage.asset && (
+              <figure className="c-blog-entry__featured-image">
+                <img
+                  src={`${featuredImage.asset.url}?w=800`}
+                  alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
+                />
+                {featuredImage.caption && (
+                  <BlockToContent
+                    blocks={featuredImage.caption}
+                    serializers={{
+                      types: {
+                        block: props => <p className="c-blog-entry__caption" style={{ display: 'inline' }}>{props.children}</p>,
+                      },
+                    }}
+                  />
+                )}
+              </figure>
+            )}
+            {content ? <div className="c-blog-entry__main-text"><BlockContent blocks={content} serializers={serializers} /></div> : null}
             {headsUp && (
               <div className="c-blog-entry__heads-up">
                 <BlockContent blocks={headsUp} serializers={serializers} />
@@ -77,10 +95,34 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
 export default DataLoader(BlogEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title}, keywords[]->{category, keyword}, "imageUrl": featuredImage.asset->url, "slug": slug.current, pdfFile, legacypdf,
+      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title}, keywords[]->{category, keyword}, "slug": slug.current, pdfFile, legacypdf,
+      "featuredImage": {
+        "caption": featuredImage.caption,
+        "credit": featuredImage.credit,
+        "sourceUrl": featuredImage.sourceUrl,
+        "license": featuredImage.license,
+        "asset": featuredImage.asset->{
+          "altText": altText,
+          "url": url
+        }
+      },
       "relatedContent": relatedContent[]->{_type, title, startDate, lead, "slug": slug.current, topics[]->{title}}[0..2]}
     }`,
     param: { slug },
   }),
   materializeDepth: 2,
 });
+
+//<img src={`${featuredImageUrl}?w=500&h=500&fit=crop&crop=focalpoint`} />
+
+// {featuredImage.caption && (
+//     <BlockToContent
+//       blocks={featuredImage.caption}
+//       serializers={{
+//         types: {
+//           block: props => <p style={{ display: 'inline' }}>{props.children}</p>,
+//         },
+//       }}
+//     />
+//
+// )}

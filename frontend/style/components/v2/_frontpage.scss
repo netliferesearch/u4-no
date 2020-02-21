@@ -23,6 +23,7 @@
     }
   }
   &__publication-type {
+    color: $brand-dark;
     font-size: 12px;
     line-height: 32px;
     font-family: $font-sans;
@@ -274,6 +275,9 @@
   &__publications {
     font-family: $font-sans;
     padding: 0 $spacing;
+    h2 {
+      color: $brand-dark;
+    }
     .text {
       .u-section-underline {
         margin-top: $spacing;
@@ -330,6 +334,9 @@
           margin-bottom: 0;
         }
       }
+    }
+    h2 {
+      color: $brand-dark;
     }
     @include mq($from: tablet) {
       padding: 0;
