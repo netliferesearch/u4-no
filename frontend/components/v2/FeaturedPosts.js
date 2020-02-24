@@ -18,7 +18,7 @@ const FeaturedPosts = ({ featured }) => {
           />
           <div className="text">
             <h6 {...classes('publication-type')}>Featured blog post</h6>
-            <a href={`posts/${blog.slug}`} {...classes('publication-headline')}>
+            <a href={`blog/${blog.slug}`} {...classes('publication-headline')}>
               <h3 {...classes('publication-headline')}>{blog.title}</h3>
             </a>
             <p {...classes('publication-intro')}>{blog.standfirst}</p>
@@ -71,7 +71,7 @@ const FeaturedPosts = ({ featured }) => {
         />
         <div className="text">
           <h6 {...classes('publication-type')}>Featured blog post</h6>
-          <a href={`posts/${blogLarge.slug}`} {...classes('publication-headline')}>
+          <a href={`blog/${blogLarge.slug}`} {...classes('publication-headline')}>
             <h3 {...classes('publication-headline')}>{blogLarge.title}</h3>
           </a>
           <p {...classes('publication-intro')}>{blogLarge.standfirst}</p>

@@ -190,6 +190,12 @@
 @import 'components/components.tnrc';
 
 @import 'components/v2/frontpage';
+@import 'components/v2/components.blog-list';
+@import 'components/v2/components.blog-single';
+@import 'components/v2/components.breadcrumb-v2';
+@import 'components/v2/components.share';
+@import 'components/v2/components.tags-section';
+
 
 // UTILITIES
 @import '../node_modules/inuitcss/utilities/utilities.widths';

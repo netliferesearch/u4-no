@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LogoCMI = props => {
+export const LogoCMI = props => {
   return (
     <svg
       className="cmi-logo"
@@ -33,4 +33,3 @@ const LogoCMI = props => {
     </svg>
   );
 };
-export default LogoCMI;

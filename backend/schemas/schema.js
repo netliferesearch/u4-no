@@ -22,6 +22,7 @@ import frontpage from './frontpage';
 import file from './file';
 import articleType from './articleType';
 import u4Event from './event';
+import blogPost from './blogPost';
 //import localeString from './fields/localeString'
 import defaultBlocks from './fields/defaultBlocks';
 
@@ -47,6 +48,7 @@ const types = [
   nugget,
   pullQuote,
   richDate,
+  blogPost,
   //localeString,
   defaultBlocks,
 ];

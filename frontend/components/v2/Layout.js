@@ -4,7 +4,10 @@ import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
 import { Link } from '../../routes';
 import { HeadComponent, Logo } from '../';
-import { LogoCMI, Menu, SearchField, LogoMobile } from '.';
+import {  Menu, SearchField } from '.';
+import { LogoCMI } from './icons/LogoCMI'
+import { LogoMobile } from './icons/LogoMobile'
+
 const classes = BEMHelper({
   name: 'top-bar-v2',
   prefix: 'c-',
