@@ -174,42 +174,7 @@
       }
     }
   }
-  .blog-accordion {
-    border-top: 1px solid $border-grey;
-    margin-top: $spacing;
-    .c-accordion {
-      &__block {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid $border-grey;
-      }
-      &__container {
-        width: 90%;
-        max-width: calc(100% - 100px);
-        padding: $spacing 0;
-        .title {
-          margin: 0;
-        }
-      }
-      &__content {
-        max-height: 0;
-        position: relative;
-        overflow: hidden;
-        transition: max-height 0.2s;
-        &.open {
-          max-height: 500px;
-          transition: max-height 1s;
-        }
-      }
-      &__arrow {
-        cursor: pointer;
-        padding: $spacing;
-        width: 10%;
-        min-width: 100px;
-        text-align: center;
-      }
-    }
-  }
+
   @include mq($from: tablet) {
     padding: 0 $spacing $spacing-huge $spacing;
     .download {
@@ -230,6 +195,56 @@
   }
 }
 
+.blog-accordion {
+  border-top: 1px solid $border-grey;
+  margin-top: $spacing;
+  .c-accordion {
+    &__block {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid $border-grey;
+    }
+    &__container {
+      width: 90%;
+      max-width: calc(100% - 100px);
+      padding: $spacing 0;
+      .title {
+        margin: 0;
+      }
+    }
+    &__content {
+      max-height: 0;
+      position: relative;
+      overflow: hidden;
+      transition: max-height 0.2s;
+      &.open {
+        max-height: 100%;
+        transition: max-height 1s;
+        @include mq($from: tablet) {
+          max-height: 500px;
+        }
+      }
+    }
+    &__arrow {
+      cursor: pointer;
+      padding: $spacing;
+      width: 10%;
+      min-width: 100px;
+      text-align: center;
+      transition: $global-transition;
+      svg {
+        transform: rotate(0deg);
+        transition: transform 0.2s ease-in-out;
+      }
+      &.open {
+        svg {
+          transform: rotate(180deg);
+          transition: transform 0.2s ease-in-out;
+        }
+      }
+    }
+  }
+}
 .c-blog-sidebar {
   padding: 40px 0;
   width: 100%;

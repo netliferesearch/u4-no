@@ -33,7 +33,7 @@ export const BlogAccordion = () => {
             </p>
           </div>
         </div>
-        <div className="c-accordion__arrow">
+        <div className={`c-accordion__arrow${activeAccordion === 0 ? ' open' : ''}`}>
           <ArrowDark />
         </div>
       </div>
@@ -47,7 +47,7 @@ export const BlogAccordion = () => {
             </p>
           </div>
         </div>
-        <div className="c-accordion__arrow">
+        <div className={`c-accordion__arrow${activeAccordion === 1 ? ' open' : ''}`}>
           <ArrowDark />
         </div>
       </div>
