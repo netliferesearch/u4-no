@@ -110,6 +110,7 @@
   }
 }
 .c-blog-index__paginator-list {
+  
   padding: 0;
   margin: $spacing-huge auto 0 auto;
   align-items: center;
@@ -126,6 +127,7 @@
     }
   }
   .pagination-item {
+    font-family: $font-sans;
     border: none;
     background-color: transparent;
     color: $brand-main;
@@ -136,17 +138,16 @@
     text-decoration: none;
     transition: all 0.2s;
     cursor: pointer;
+    &.text-button {
+      margin: 0 $spacing;
+    }
+    &.disabled {
+      color: $grey;
+      cursor: default;
+      pointer-events: none;
+    }
     &:hover {
       border-bottom: 1px solid $brand-main;
     }
-&.text-button {
-  margin: 0 $spacing;
-}
-&.disabled {
-  opacity: 0.65;
-  cursor: default;
-  pointer-events: none;
-}
-
   }
 }

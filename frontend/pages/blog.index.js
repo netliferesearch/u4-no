@@ -36,37 +36,42 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
   //console.log('pageCount', pageCount);
   //console.log('currentResults', currentResults);
 
-  //To do delete react-hooks-paginator, delete react-sanity-pagination
+  //TO DO delete react-hooks-paginator, delete react-sanity-pagination
+  // Make active class.
 
   const handlePageChange = (page, e) => {
     setCurrentPage(page);
-    console.log('page', page);
+    //console.log('page', page);
   };
 
   useEffect(
     () => {
       setFilterResults(applyFliters(filter, blogEntries));
+      setCurrentPage(1);
     },
     [filter]
   );
 
   useEffect(
     () => {
-      //console.log('filterResults in current results hook', filterResults);
+      console.log('filterResults in current results hook', filterResults);
       setCurrentResults(filterResults.slice(offset, offset + limit));
-      console.log('currentResults length', currentResults.length);
+      //console.log('currentResults length', currentResults.length);
     },
     [filterResults, offset]
   );
 
   useEffect(
     () => {
-      //d = currentResults.length < limit ? 1 : currentResults.length;
       setPageCount(
-        Math.ceil(filterResults.length / d) > maxPagesListed ? maxPagesListed : Math.ceil(filterResults.length / d)
+        Math.ceil(filterResults.length / d) > maxPagesListed
+          ? maxPagesListed
+          : Math.ceil(filterResults.length / d)
       );
-      console.log("(filterResults.length / d) > maxPagesListed = ", Math.ceil(filterResults.length / d) > maxPagesListed)
-      console.log("pageCount", pageCount)
+      // console.log(
+      //   '(filterResults.length / d) > maxPagesListed = ',
+      //   Math.ceil(filterResults.length / d) > maxPagesListed
+      // );
     },
     [currentResults, filterResults]
   );
@@ -170,7 +175,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                   </button> */}
                     <li>
                       <button
-                        className={`pagination-item text-button ${previousPage ? '' : 'desabled'}`}
+                        className={`pagination-item text-button ${currentPage <= 1 ? 'disabled' : ''}`}
                         {...getPageItemProps({
                           pageValue: previousPage,
                           onPageChange: handlePageChange,
@@ -214,23 +219,17 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                         </button>
                       </li>
                     ) : null}
-                    
-                    {
-                      
-                      hasNextPage && (pageCount > maxPagesListed) && (
-                      <li>
-                        <button
-                          className={`pagination-item text-button ${hasNextPage ? '' : 'desabled'}`}
-                          {...getPageItemProps({
-                            pageValue: nextPage,
-                            onPageChange: handlePageChange,
-                          })}
-                        >
-                          Next
-                        </button>
-                      </li>
-                      )
-                    }
+                    <li>
+                      <button
+                        className={`pagination-item text-button ${totalPages - 1 >= currentPage ? '' : 'disabled'}`}
+                        {...getPageItemProps({
+                          pageValue: nextPage,
+                          onPageChange: handlePageChange,
+                        })}
+                      >
+                        Next
+                      </button>
+                    </li>
                   </ul>
                 )}
               </Pagination>
