@@ -100,20 +100,6 @@
     margin: 0;
   }
 
-  .topic {
-    font-family: 'Lato', Helvetica, Arial, sans-serif;
-    color: #0079cf;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: normal;
-    border: 1px solid #0079cf;
-    border-radius: 3px;
-    padding: 3px 5px 4px 6px;
-    display: inline-block;
-    margin-right: 11px;
-    margin-bottom: 11px;
-  }
-
   .download {
     display: block;
     .button {
@@ -233,12 +219,12 @@
       text-align: center;
       transition: $global-transition;
       svg {
-        transform: rotate(0deg);
+        transform: rotate(0deg) translateY(0);
         transition: transform 0.2s ease-in-out;
       }
       &.open {
         svg {
-          transform: rotate(180deg);
+          transform: rotate(180deg) translateY(-6px);
           transition: transform 0.2s ease-in-out;
         }
       }
@@ -291,4 +277,18 @@
   width: 100%;
   -ms-flex-item-align: end;
   align-self: flex-end;
+}
+
+.topic {
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  color: #0079cf;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: normal;
+  border: 1px solid #0079cf;
+  border-radius: 3px;
+  padding: 3px 5px 4px 6px;
+  display: inline-block;
+  margin-right: 11px;
+  margin-bottom: 11px;
 }

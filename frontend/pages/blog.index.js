@@ -1,42 +1,74 @@
 import React, { useState, useEffect } from 'react';
+import Pagination from 'react-paginating';
 import PropTypes from 'prop-types';
 import DataLoader from '../helpers/data-loader';
-import {
-  CorruptionByTopic,
-  Guidance,
-  FeaturedPosts,
-  Layout,
-  InsightPosts,
-  RecentPublications,
-} from '../components/v2';
-import BEMHelper from 'react-bem-helper';
+import { Layout } from '../components/v2';
 import dateToString from '../helpers/dateToString';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
 import { BlogEntriesFilter } from '../components/v2/blog/BlogEntriesFilter';
 
-const applayFliters = (filter, blogEntries) => {
+const applyFliters = (filter, elements) => {
   if (filter) {
-    let filtered = blogEntries.filter(blogEntry => {
-      if (blogEntry.topics) {
-        return blogEntry.topics.find(topic => topic.title === filter.title) ? true : false;
+    let filtered = elements.filter(elements => {
+      if (elements.topics) {
+        return elements.topics.find(topic => topic.title === filter.title) ? true : false;
       }
-    })
-    return filtered
+    });
+    console.log('filters applied', filtered);
+    return filtered;
   } else {
-    return blogEntries;
+    return elements;
   }
-}
+};
 
 const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
   const [filter, setFilter] = useState(null);
-  const [filterResults, setFilterResults] = useState();
+  const [filterResults, setFilterResults] = useState([]);
+  const [currentResults, setCurrentResults] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageCount, setPageCount] = useState(1);
+  const limit = 2;
+  const maxPagesListed = 5;
+  const offset = (currentPage - 1) * limit;
+  const total = filterResults.length ? filterResults.length : currentResults.length * limit;
+  let d = currentResults.length < limit ? 1 : currentResults.length;
+  //console.log('offset', offset);
+  //console.log('pageCount', pageCount);
+  //console.log('currentResults', currentResults);
+
+  //To do delete react-hooks-paginator, delete react-sanity-pagination
+
+  const handlePageChange = (page, e) => {
+    setCurrentPage(page);
+    console.log('page', page);
+  };
 
   useEffect(
     () => {
-      setFilterResults(applayFliters(filter, blogEntries));
-      //console.log("filter",filter)
+      setFilterResults(applyFliters(filter, blogEntries));
     },
     [filter]
+  );
+
+  useEffect(
+    () => {
+      //console.log('filterResults in current results hook', filterResults);
+      setCurrentResults(filterResults.slice(offset, offset + limit));
+      console.log('currentResults length', currentResults.length);
+    },
+    [filterResults, offset]
+  );
+
+  useEffect(
+    () => {
+      //d = currentResults.length < limit ? 1 : currentResults.length;
+      setPageCount(
+        Math.ceil(filterResults.length / d) > maxPagesListed ? maxPagesListed : Math.ceil(filterResults.length / d)
+      );
+      console.log("(filterResults.length / d) > maxPagesListed = ", Math.ceil(filterResults.length / d) > maxPagesListed)
+      console.log("pageCount", pageCount)
+    },
+    [currentResults, filterResults]
   );
 
   return (
@@ -69,51 +101,142 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
         </section>
         <section className="o-wrapper">
           <div className="o-wrapper-section">
-            {filterResults && filterResults.map((post, index) => (
-              <div key={index}>
-                <div className="c-blog-index__item--row">
-                  <div className="text">
-                    <h6 className="publication-type">Blog</h6>
-                    <a href={`blog/${post.slug}`} className="publication-headline">
-                      <h3 className="publication-headline">{post.title}</h3>
-                    </a>
-                    <p className="publication-intro">{post.standfirst}</p>
-                    <p className="date">
-                      {post.date ? dateToString({ start: post.date.utc }) : null}
-                    </p>
-                    <div className="topics">
-                      {post.topics &&
-                        post.topics.map((topic, index) => {
-                          return (
-                            <span className="topic" key={index}>
-                              {topic.title}
-                            </span>
-                          );
-                        })}
+            {currentResults &&
+              currentResults.map((post, index) => (
+                <div key={index}>
+                  <div className="c-blog-index__item--row">
+                    <div className="text">
+                      <h6 className="publication-type">Blog</h6>
+                      <a href={`blog/${post.slug}`} className="publication-headline">
+                        <h3 className="publication-headline">{post.title}</h3>
+                      </a>
+                      <p className="publication-intro">{post.standfirst}</p>
+                      <p className="date">
+                        {post.date ? dateToString({ start: post.date.utc }) : null}
+                      </p>
+                      <div className="topics">
+                        {post.topics &&
+                          post.topics.map((topic, index) => {
+                            return (
+                              <span className="topic" key={index}>
+                                {topic.title}
+                              </span>
+                            );
+                          })}
+                      </div>
                     </div>
+                    {post.imageUrl ? (
+                      <div
+                        className="c-blog-index__featured-image"
+                        style={{
+                          backgroundImage: `url('${
+                            post.imageUrl
+                          }?w=470&h=470&fit=crop&crop=focalpoint')`,
+                        }}
+                      />
+                    ) : null}
                   </div>
-                  {post.imageUrl ? (
-                    <div
-                      className="c-blog-index__featured-image"
-                      style={{
-                        backgroundImage: `url('${
-                          post.imageUrl
-                        }?w=470&h=470&fit=crop&crop=focalpoint')`,
-                      }}
-                    />
-                  ) : null}
+                  <hr className="u-section-underline" />
                 </div>
-                <hr className="u-section-underline" />
-              </div>
-            ))}
-            {console.log("filterResults",filterResults)}
+              ))}
             {filterResults && filterResults.length === 0 && filter !== null ? (
               <div>Results(0)</div>
-            ) : null}
+            ) : (
+              <Pagination
+                className="c-blog-index__paginator"
+                total={total}
+                limit={limit}
+                pageCount={pageCount}
+                currentPage={currentPage}
+              >
+                {({
+                  pages,
+                  currentPage,
+                  hasNextPage,
+                  hasPreviousPage,
+                  previousPage,
+                  nextPage,
+                  totalPages,
+                  getPageItemProps,
+                }) => (
+                  <ul className="c-blog-index__paginator-list">
+                    {/* <button className="pagination-item"
+                    {...getPageItemProps({
+                      pageValue: 1,
+                      onPageChange: handlePageChange
+                    })}
+                  >
+                    First
+                  </button> */}
+                    <li>
+                      <button
+                        className={`pagination-item text-button ${previousPage ? '' : 'desabled'}`}
+                        {...getPageItemProps({
+                          pageValue: previousPage,
+                          onPageChange: handlePageChange,
+                        })}
+                      >
+                        Prev
+                      </button>
+                    </li>
+                    {pages.map(page => {
+                      let activePage = null;
+                      if (currentPage === page) {
+                        activePage = { color: '$brand-dark' };
+                      }
+                      return (
+                        <li key={page}>
+                          <button
+                            className="pagination-item"
+                            {...getPageItemProps({
+                              pageValue: page,
+                              key: page,
+                              style: activePage,
+                              onPageChange: handlePageChange,
+                            })}
+                          >
+                            {page}
+                          </button>
+                        </li>
+                      );
+                    })}
+                    {totalPages > pageCount ? '...' : null}
+                    {totalPages > pageCount ? (
+                      <li>
+                        <button
+                          className="pagination-item"
+                          {...getPageItemProps({
+                            pageValue: totalPages,
+                            onPageChange: handlePageChange,
+                          })}
+                        >
+                          {totalPages}
+                        </button>
+                      </li>
+                    ) : null}
+                    
+                    {
+                      
+                      hasNextPage && (pageCount > maxPagesListed) && (
+                      <li>
+                        <button
+                          className={`pagination-item text-button ${hasNextPage ? '' : 'desabled'}`}
+                          {...getPageItemProps({
+                            pageValue: nextPage,
+                            onPageChange: handlePageChange,
+                          })}
+                        >
+                          Next
+                        </button>
+                      </li>
+                      )
+                    }
+                  </ul>
+                )}
+              </Pagination>
+            )}
           </div>
         </section>
-        {/* Pagination: save current page, pages count in component state, paginate locally */}
-        {/* TODO check if `react-sanity-pagination` package is any good for us */}
       </div>
     </Layout>
   );

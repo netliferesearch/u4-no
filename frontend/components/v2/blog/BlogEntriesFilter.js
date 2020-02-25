@@ -13,11 +13,9 @@ export const BlogEntriesFilter = ({ topics, setFilter, filter }) => {
     setActiveAccordion(newIndex);
   };
   const handleClick = (e, filter, topic) => {
-    console.log('filter in handle click', filter);
     e.preventDefault();
     if (filter) {
       filter.title === topic.title ? setFilter(null) : setFilter(topic);
-      console.log('filter in handle click after setting', filter);
     } else {
       setFilter(topic);
     }
@@ -29,7 +27,7 @@ export const BlogEntriesFilter = ({ topics, setFilter, filter }) => {
         <div className="c-accordion">
           <div className="c-accordion__block" onClick={e => toggleAccordion(1)}>
             <div className="c-accordion__container">
-              <h3 className="title">Filter by topic</h3>
+              <h3 className="title">{filter ? filter.title : 'Filter by topic'} </h3>
               <div className={`c-accordion__content${activeAccordion === 1 ? ' open' : ''}`}>
                 <div className="c-accordion__list">
                   <a href="#\" onClick={e => handleClick(e, filter, '')} className="main">
