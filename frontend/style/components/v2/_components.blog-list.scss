@@ -6,10 +6,10 @@
 
   h2 {
     margin-top: $spacing;
-    font-size: 47px;
-    font-weight: 900;
-    line-height: 60px;
-    color: $brand-dark;
+    // font-size: 47px;
+    // font-weight: 900;
+    // line-height: 60px;
+    // color: $brand-dark;
   }
 
   h6 {
@@ -21,6 +21,7 @@
   }
 
   .u-blue-underline {
+    padding-bottom: 36px;
     margin-bottom: $spacing;
   }
   .u-section-underline {

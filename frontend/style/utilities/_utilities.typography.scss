@@ -10,7 +10,7 @@
 .u-blue-underline {
   position: relative;
   display: block;
-  padding-bottom: 35px;
+  padding-bottom: 50px;
   margin-bottom: 58px;
   font-weight: 700;
   &:after {
@@ -30,4 +30,10 @@
   margin-bottom: 40px;
   width: 100%;
   align-self: flex-end;
+}
+.u-navy-big-headline {
+  font-size: 47px;
+  line-height: 60px;
+  font-weight: 900;
+  color: $brand-dark
 }

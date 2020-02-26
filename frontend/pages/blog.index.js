@@ -26,7 +26,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
   const [currentResults, setCurrentResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
-  const limit = 10;
+  const limit = 6;
   const maxPagesListed = 5;
   const offset = (currentPage - 1) * limit;
   const total = filterResults.length ? filterResults.length : currentResults.length * limit;
@@ -81,8 +81,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
         <section className="o-wrapper">
           <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} />
           <div className="o-wrapper-section">
-            <h2 className="u-blue-underline">Insights from our blog</h2>
-            {/* Filters go to component state, filter locally, one filter active at a time */}
+            <h2 className="u-blue-underline u-navy-big-headline">Insights from our blog</h2>
             <p className="c-blog-index__intro">
               Practitioners, policymakers, activists, and academics share insights on how to build a
               sustainable and inclusive future by curbing corruption.

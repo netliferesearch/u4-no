@@ -9,7 +9,7 @@ const RecentPublications = ({ resources = [], alt = false }) => {
   const classes = BEMHelper({ name: 'frontpage-section', prefix: 'c-' });
   return (
     <div {...classes('publications')}>
-      <h2 className="u-blue-underline">Recent publications</h2>
+      <h2 className="u-blue-underline u-navy-big-headline">Recent publications</h2>
       {resources
         .map(resource => (resource.target ? resource.target : resource))
         .filter(({ _id = '' }) => _id)
