@@ -31,7 +31,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
   const offset = (currentPage - 1) * limit;
   const total = filterResults.length ? filterResults.length : currentResults.length * limit;
   let d = currentResults.length < limit ? 1 : currentResults.length;
- 
+
   const handlePageChange = (page, e) => {
     setCurrentPage(page);
   };
@@ -132,7 +132,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
               ))}
             {filterResults && filterResults.length === 0 && filter !== null && (
               <div>Results(0)</div>
-            )} 
+            )}
             {filterResults && filterResults.length > 0 && (
               <Pagination
                 className="c-blog-index__paginator"
@@ -152,17 +152,22 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                   getPageItemProps,
                 }) => (
                   <ul className="c-blog-index__paginator-list">
-                    <li>
-                      <button
-                        className={`pagination-item text-button ${currentPage <= 1 ? 'disabled' : ''}`}
-                        {...getPageItemProps({
-                          pageValue: previousPage,
-                          onPageChange: handlePageChange,
-                        })}
-                      >
-                        Prev
-                      </button>
-                    </li>
+                    {totalPages > pageCount ? (
+                      <li>
+                        <button
+                          className={`pagination-item text-button ${
+                            currentPage <= 1 ? 'disabled' : ''
+                          }`}
+                          {...getPageItemProps({
+                            pageValue: previousPage,
+                            onPageChange: handlePageChange,
+                          })}
+                        >
+                          Prev
+                        </button>
+                      </li>
+                    ) : null}
+
                     {pages.map(page => {
                       let activePage = null;
                       if (currentPage === page) {
@@ -200,7 +205,9 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                     ) : null}
                     <li>
                       <button
-                        className={`pagination-item text-button ${totalPages - 1 >= currentPage ? '' : 'disabled'}`}
+                        className={`pagination-item text-button ${
+                          totalPages - 1 >= currentPage ? '' : 'disabled'
+                        }`}
                         {...getPageItemProps({
                           pageValue: nextPage,
                           onPageChange: handlePageChange,
