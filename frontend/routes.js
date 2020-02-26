@@ -7,6 +7,7 @@ routes
   .add('publication.file', '/publications/:slug/downloadasset/:legacyid')
   .add('publication.entry', '/publications/:slug')
   .add('publication.print', '/publications/:slug/print')
+  .add('publication.entry-v2', '/publication/:slug')
   .add('blog.index', '/blog')
   .add('blog.entry', '/blog/:slug')
   .add('topic.article', '/topics/:slug/:topicPart')

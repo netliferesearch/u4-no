@@ -9,3 +9,15 @@ export { default as RecentPublications } from './RecentPublications';
 export { default as LogoCMI } from './icons/LogoCMI';
 export { default as SearchField } from './SearchField';
 export { default as LogoMobile } from './icons/LogoMobile';
+export { default as CopyToClipboardButton } from './CopyToClipboardButton';
+export { default as RelatedResources } from './RelatedResources';
+export { default as PublicationSidebar } from './PublicationSidebar';
+export { default as PublicationNotifications } from './PublicationNotifications';
+export { default as PublicationContent } from './PublicationContent';
+export { default as PublicationArticleHeader } from './PublicationArticleHeader';
+export { default as LongArticle } from './LongArticle';
+export { default as LongformArticleContainer } from './LongformArticleContainer';
+export { default as PublicationAccordion } from './PublicationAccordion';
+export { default as EditorList } from './EditorList';
+export { default as AuthorList } from './AuthorList';
+

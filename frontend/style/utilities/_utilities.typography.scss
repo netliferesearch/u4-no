@@ -37,3 +37,14 @@
   font-weight: 900;
   color: $brand-dark
 }
+.u-button-copy {
+  border: none;
+  background-color: $brand-lightest;
+  color: $brand-main;
+  border-radius: 2px;
+  padding: $spacing-tiny $spacing-small;
+  cursor: pointer;
+  &:active {
+    outline: none;
+  }
+}
