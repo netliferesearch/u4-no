@@ -26,7 +26,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
   const [currentResults, setCurrentResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
-  const limit = 6;
+  const limit = 10;
   const maxPagesListed = 5;
   const offset = (currentPage - 1) * limit;
   const total = filterResults.length ? filterResults.length : currentResults.length * limit;
