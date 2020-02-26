@@ -14,7 +14,6 @@ const applyFliters = (filter, elements) => {
         return elements.topics.find(topic => topic.title === filter.title) ? true : false;
       }
     });
-    console.log('filters applied', filtered);
     return filtered;
   } else {
     return elements;
@@ -27,21 +26,14 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
   const [currentResults, setCurrentResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
-  const limit = 2;
+  const limit = 10;
   const maxPagesListed = 5;
   const offset = (currentPage - 1) * limit;
   const total = filterResults.length ? filterResults.length : currentResults.length * limit;
   let d = currentResults.length < limit ? 1 : currentResults.length;
-  //console.log('offset', offset);
-  //console.log('pageCount', pageCount);
-  //console.log('currentResults', currentResults);
-
-  //TO DO delete react-hooks-paginator, delete react-sanity-pagination
-  // Make active class.
-
+ 
   const handlePageChange = (page, e) => {
     setCurrentPage(page);
-    //console.log('page', page);
   };
 
   useEffect(
@@ -54,9 +46,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
 
   useEffect(
     () => {
-      console.log('filterResults in current results hook', filterResults);
       setCurrentResults(filterResults.slice(offset, offset + limit));
-      //console.log('currentResults length', currentResults.length);
     },
     [filterResults, offset]
   );
@@ -68,10 +58,6 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
           ? maxPagesListed
           : Math.ceil(filterResults.length / d)
       );
-      // console.log(
-      //   '(filterResults.length / d) > maxPagesListed = ',
-      //   Math.ceil(filterResults.length / d) > maxPagesListed
-      // );
     },
     [currentResults, filterResults]
   );
@@ -111,12 +97,12 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                 <div key={index}>
                   <div className="c-blog-index__item--row">
                     <div className="text">
-                      <h6 className="publication-type">Blog</h6>
+                      <h6 className="c-blog-index__type">Blog</h6>
                       <a href={`blog/${post.slug}`} className="publication-headline">
                         <h3 className="publication-headline">{post.title}</h3>
                       </a>
-                      <p className="publication-intro">{post.standfirst}</p>
-                      <p className="date">
+                      <p className="c-blog-index-item__intro">{post.lead}</p>
+                      <p className="c-blog-index__date">
                         {post.date ? dateToString({ start: post.date.utc }) : null}
                       </p>
                       <div className="topics">
@@ -144,9 +130,10 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                   <hr className="u-section-underline" />
                 </div>
               ))}
-            {filterResults && filterResults.length === 0 && filter !== null ? (
+            {filterResults && filterResults.length === 0 && filter !== null && (
               <div>Results(0)</div>
-            ) : (
+            )} 
+            {filterResults && filterResults.length > 0 && (
               <Pagination
                 className="c-blog-index__paginator"
                 total={total}
@@ -165,14 +152,6 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                   getPageItemProps,
                 }) => (
                   <ul className="c-blog-index__paginator-list">
-                    {/* <button className="pagination-item"
-                    {...getPageItemProps({
-                      pageValue: 1,
-                      onPageChange: handlePageChange
-                    })}
-                  >
-                    First
-                  </button> */}
                     <li>
                       <button
                         className={`pagination-item text-button ${currentPage <= 1 ? 'disabled' : ''}`}
@@ -192,7 +171,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                       return (
                         <li key={page}>
                           <button
-                            className="pagination-item"
+                            className={`pagination-item ${currentPage === page ? 'active' : ''}`}
                             {...getPageItemProps({
                               pageValue: page,
                               key: page,
@@ -244,13 +223,14 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
 BlogPage.propTypes = {
   data: PropTypes.shape({
     blogEntries: PropTypes.array,
+    topics: PropTypes.array,
   }).isRequired,
 };
 
 export default DataLoader(BlogPage, {
   queryFunc: () => ({
     sanityQuery: `{
-      "blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {_id, title, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current},
+      "blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {_id, title, date, standfirst, lead, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current},
       "topics": *[_type == "topics"] | order(title){_id, title, slug},
     }`,
   }),

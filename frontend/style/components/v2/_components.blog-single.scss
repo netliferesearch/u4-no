@@ -109,9 +109,9 @@
       border: 1px solid $brand-main;
       background-color: $white;
       line-height: 30px;
-      padding: $spacing-tiny $spacing-small;
+      padding: 8px $spacing-small;
       color: $brand-main;
-      font-weight: bold;
+      font-weight: 900;
       cursor: pointer;
       width: 100%;
       max-width: 240px;
@@ -123,6 +123,7 @@
       position: relative;
       width: 100%;
       max-width: 240px;
+      font-weight: bold;
       .button {
         color: $white;
         background-color: $brand-main;

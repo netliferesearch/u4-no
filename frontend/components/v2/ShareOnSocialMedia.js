@@ -15,7 +15,7 @@ export const ShareOnSocialMedia = ({ title = '' }) => {
     <div className="c-share-buttons">
       <FacebookShareButton className="c-share-buttons__facebook" url={url} quote={title}>
         <FacebookIcon
-          size={52}
+          size={40}
           round={true}
           bgStyle={{ fill: 'transparent' }}
           iconFillColor={'#1E2051'}
@@ -23,7 +23,7 @@ export const ShareOnSocialMedia = ({ title = '' }) => {
       </FacebookShareButton>
       <TwitterShareButton className="c-share-buttons__twitter" url={url} title={title}>
         <TwitterIcon
-          size={52}
+          size={40}
           round={true}
           bgStyle={{ fill: 'transparent' }}
           iconFillColor={'#1E2051'}
@@ -31,7 +31,7 @@ export const ShareOnSocialMedia = ({ title = '' }) => {
       </TwitterShareButton>
       <EmailShareButton className="c-share-buttons__email" url={url} subject={title}>
         <EmailIcon
-          size={52}
+          size={40}
           round={true}
           bgStyle={{ fill: 'transparent' }}
           iconFillColor={'#1E2051'}

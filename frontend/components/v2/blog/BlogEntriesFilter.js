@@ -23,11 +23,11 @@ export const BlogEntriesFilter = ({ topics, setFilter, filter }) => {
 
   return (
     topics && (
-      <div className="blog-accordion">
+      <div className="blog-accordion c-blog-filter">
         <div className="c-accordion">
           <div className="c-accordion__block" onClick={e => toggleAccordion(1)}>
             <div className="c-accordion__container">
-              <h3 className="title">{filter ? filter.title : 'Filter by topic'} </h3>
+              <h3 className="c-blog-filter__title">{filter ? filter.title : 'Filter by topic'} </h3>
               <div className={`c-accordion__content${activeAccordion === 1 ? ' open' : ''}`}>
                 <div className="c-accordion__list">
                   <a href="#\" onClick={e => handleClick(e, filter, '')} className="main">
