@@ -64,6 +64,7 @@
     "react-bem-helper": "^1.4.1",
     "react-dom": "^16.8.6",
     "react-intersection-observer": "^8.0.5",
+    "react-paginating": "^1.4.0",
     "react-pdf": "2.1.7",
     "react-player": "^0.25.3",
     "react-redux": "^5.0.6",

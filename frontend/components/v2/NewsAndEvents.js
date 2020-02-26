@@ -6,7 +6,7 @@ const NewsAndEvents = ({ events, title }) => {
   const classes = BEMHelper({ name: 'frontpage-section', prefix: 'c-' });
   return (
     <div className="c-frontpage-section__content c-frontpage-section__events">
-      <h2 className="u-blue-underline">{title}</h2>
+      <h2 className="u-blue-underline u-navy-big-headline">{title}</h2>
       <hr className="u-section-underline" />
       <div className="cols">
         {events ? events.map((event, index) => (

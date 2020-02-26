@@ -31,7 +31,6 @@ export const BlogAuthorsList = ({ authors = [], introkey = 'by', language = 'en'
               <div className="c-blog-authors-list__item" key={_id}>
                 <div className="c-blog-authors-list__name">
                   <span>
-                    {`${trans(introkey)} `}
                     <span>
                       {slug &&
                       affiliations.length &&

@@ -100,20 +100,6 @@
     margin: 0;
   }
 
-  .topic {
-    font-family: 'Lato', Helvetica, Arial, sans-serif;
-    color: #0079cf;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: normal;
-    border: 1px solid #0079cf;
-    border-radius: 3px;
-    padding: 3px 5px 4px 6px;
-    display: inline-block;
-    margin-right: 11px;
-    margin-bottom: 11px;
-  }
-
   .download {
     display: block;
     .button {
@@ -123,9 +109,9 @@
       border: 1px solid $brand-main;
       background-color: $white;
       line-height: 30px;
-      padding: $spacing-tiny $spacing-small;
+      padding: 8px $spacing-small;
       color: $brand-main;
-      font-weight: bold;
+      font-weight: 900;
       cursor: pointer;
       width: 100%;
       max-width: 240px;
@@ -137,6 +123,7 @@
       position: relative;
       width: 100%;
       max-width: 240px;
+      font-weight: bold;
       .button {
         color: $white;
         background-color: $brand-main;
@@ -174,42 +161,7 @@
       }
     }
   }
-  .blog-accordion {
-    border-top: 1px solid $border-grey;
-    margin-top: $spacing;
-    .c-accordion {
-      &__block {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid $border-grey;
-      }
-      &__container {
-        width: 90%;
-        max-width: calc(100% - 100px);
-        padding: $spacing 0;
-        .title {
-          margin: 0;
-        }
-      }
-      &__content {
-        max-height: 0;
-        position: relative;
-        overflow: hidden;
-        transition: max-height 0.2s;
-        &.open {
-          max-height: 500px;
-          transition: max-height 1s;
-        }
-      }
-      &__arrow {
-        cursor: pointer;
-        padding: $spacing;
-        width: 10%;
-        min-width: 100px;
-        text-align: center;
-      }
-    }
-  }
+
   @include mq($from: tablet) {
     padding: 0 $spacing $spacing-huge $spacing;
     .download {
@@ -230,6 +182,56 @@
   }
 }
 
+.blog-accordion {
+  border-top: 1px solid $border-grey;
+  margin-top: $spacing;
+  .c-accordion {
+    &__block {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid $border-grey;
+    }
+    &__container {
+      width: 90%;
+      max-width: calc(100% - 100px);
+      padding: $spacing 0;
+      .title {
+        margin: 0;
+      }
+    }
+    &__content {
+      max-height: 0;
+      position: relative;
+      overflow: hidden;
+      transition: max-height 0.2s;
+      &.open {
+        max-height: 100%;
+        transition: max-height 1s;
+        @include mq($from: tablet) {
+          max-height: 500px;
+        }
+      }
+    }
+    &__arrow {
+      cursor: pointer;
+      padding: $spacing;
+      width: 10%;
+      min-width: 100px;
+      text-align: center;
+      transition: $global-transition;
+      svg {
+        transform: rotate(0deg) translateY(0);
+        transition: transform 0.2s ease-in-out;
+      }
+      &.open {
+        svg {
+          transform: rotate(180deg) translateY(-6px);
+          transition: transform 0.2s ease-in-out;
+        }
+      }
+    }
+  }
+}
 .c-blog-sidebar {
   padding: 40px 0;
   width: 100%;
@@ -276,4 +278,18 @@
   width: 100%;
   -ms-flex-item-align: end;
   align-self: flex-end;
+}
+
+.topic {
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  color: #0079cf;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: normal;
+  border: 1px solid #0079cf;
+  border-radius: 3px;
+  padding: 3px 5px 4px 6px;
+  display: inline-block;
+  margin-right: 11px;
+  margin-bottom: 11px;
 }

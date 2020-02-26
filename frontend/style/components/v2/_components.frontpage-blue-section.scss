@@ -8,6 +8,8 @@
     .col {
       p {
         font-weight: 300;
+        line-height: 26px;
+        margin: 36px 0 $spacing-large;
       }
     }
     a {
@@ -45,7 +47,7 @@
       ul {
         margin-bottom: 0;
         li {
-          margin-bottom: $spacing;
+          margin-bottom: $spacing-small;
         }
       }
       .col {
@@ -80,9 +82,21 @@
     }
   }
   &__guidance {
+    .col-1 {
+      width: 46%;
+    }
+    a {
+      font-weight: 700;
+    }
     @include mq($from: tablet) {
+      ul {
+        li {
+          margin-bottom: 32px;
+        }
+      }
       h2 {
-        font-weight: bold;
+        font-weight: 900;
+        line-height: 50px;
       }
     }
   }

@@ -70,7 +70,7 @@
   &__view-all {
     font-family: $font-sans;
     @include inuit-font-size(16px, 28px);
-    font-weight: 500;
+    font-weight: 600;
     color: $brand-dark;
     img {
       padding-left: 5px;
@@ -201,6 +201,9 @@
       p {
         @include inuit-font-size(18px, 26px);
         font-weight: 300;
+      }
+      .bottom {
+        width: 80%;
       }
     }
     .col {

@@ -4,8 +4,8 @@ import React from 'react';
  * TagsSection component to list topics and keywords (keyword categories: "regions" and "keywords")
  * Used in BlogEntry component, blog page
  *
- * @param {array} topics
- * @param {keywords} keywords
+ * @param {Array} topics
+ * @param {Array} keywords
  */
 
 export const TagsSection = ({ topics = [], keywords = [] }) => {

@@ -4,7 +4,7 @@ import { Link } from '../../routes';
 const CorruptionByTopic = ({ topics }) => {
   return (
     <div className="c-frontpage-blue-section__content c-frontpage-blue-section__by-topic">
-      <h2 className="u-blue-underline">Corruption by topic</h2>
+      <h2 className="u-blue-underline u-navy-big-headline">Corruption by topic</h2>
 
       <div className="cols">
         <div className="col">
