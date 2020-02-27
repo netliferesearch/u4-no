@@ -1,0 +1,118 @@
+.c-related-items-list {
+  //padding: 0 $spacing;
+  padding: 0 $spacing;
+  padding-bottom: $spacing-large;
+  .cols {
+    font-family: $font-sans;
+    width: 100%;
+    .col {
+      margin-bottom: $spacing-large;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    // @include mq($from: tablet) {
+    //   .col {
+    //     width: 30%;
+    //     max-width: 600px;
+    //     margin-bottom: 0;
+    //     margin-left: 2.5%;
+    //     margin-right: 2.5%;
+    //     &:first-child {
+    //       margin-left: 0;
+    //     }
+    //     &:last-child {
+    //       margin-right: 0;
+    //     }
+    //   }
+    // }
+  }
+  @include mq($from: desktop) {
+    padding-bottom: $spacing-huge;
+    .cols {
+      display: flex;
+      justify-content: space-between;
+      .col {
+        width: 28%;
+        margin-right: 4%;
+        margin-bottom: 0;
+
+        .text {
+          display: flex;
+          height: 100%;
+          flex-wrap: wrap;
+
+          .bottom-content {
+            width: 100%;
+            align-self: flex-end;
+            margin-top: auto;
+          }
+        }
+      }
+    }
+  }
+
+  &__date {
+    color: $brand-dark;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal;
+    margin: 0 0 $spacing 0;
+  }
+  &__topic {
+    color: $brand-main;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal;
+    border: 1px solid $brand-main;
+    border-radius: 3px;
+    padding: 3px 5px 4px 6px;
+    display: inline-block;
+    margin-right: 11px;
+    margin-bottom: 11px;
+  }
+  &__publication-type {
+    color: $brand-dark;
+    font-family: $font-sans;
+    font-size: 12px;
+    line-height: 32px;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: 0;
+    @include mq($from: tablet) {
+      font-size: 14px;
+    }
+  }
+  &__publication-headline {
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.03em;
+    font-weight: bold;
+    color: $brand-main;
+    margin: 9px 0 $spacing 0;
+    display: block;
+    @include mq($from: tablet) {
+      font-size: 22px;
+      line-height: 30px;
+    }
+    &:hover,
+    &:focus {
+      border-color: transparent;
+    }
+    &:visited {
+      &:hover {
+        border-color: transparent;
+      }
+    }
+    > * {
+      margin: 0;
+    }
+  }
+  &__publication-intro {
+    color: $brand-dark;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 26px;
+    margin: 0 0 $spacing 0;
+  }
+}

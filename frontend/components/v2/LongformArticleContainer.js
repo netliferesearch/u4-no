@@ -4,15 +4,20 @@ import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
 import dateToString from '../../helpers/dateToString';
 import {
-  Footer,
   TableOfContentsButton,
   TableOfContentsSidebar,
   TableOfContentsContent,
   AuthorList,
 } from '../';
 import { useState } from 'react';
-import { RelatedResources, PublicationSidebar, PublicationContent, Layout, PublicationArticleHeader, PublicationAccordion } from './';
-
+import {
+  PublicationSidebar,
+  PublicationContent,
+  Layout,
+  PublicationArticleHeader,
+  PublicationAccordion,
+  NewsAndEvents,
+} from './';
 const LongFormArticleContainer = (props = {}) => {
   const {
     data: {
@@ -48,6 +53,7 @@ const LongFormArticleContainer = (props = {}) => {
     translation = {},
     language = '',
   } = props;
+
   const headComponentConfig =
     headComponentConfigOverride ||
     Object.assign(
@@ -221,13 +227,17 @@ const LongFormArticleContainer = (props = {}) => {
             </div>
           ) : null} */}
 
-          {!shortversion && (recommendedResources.length > 0 || relatedResources.length > 0) && (
-            <RelatedResources
-              resources={recommendedResources.length > 0 ? recommendedResources : relatedResources}
-            />
-          )}
+          <section className="o-wrapper c-blog-entry__bottom">
+            <div className="o-wrapper-section">
+            {/* {recommendedResources.length || relatedResources.length &&  */}
+            <NewsAndEvents
+                items={recommendedResources.length > 0 ? recommendedResources : relatedResources}
+                title={'Related'}
+              />
+              {/* } */}
+            </div>
+          </section>
           <span id="js-bottom" />
-          <Footer />
         </article>
       )}
     </Layout>

@@ -24,7 +24,7 @@ const InsightPosts = ({ insights }) => {
           <div className="col row" key={index}>
             <div
               className="post-image"
-              style={{ backgroundImage: `url('${post.imageUrl}?w=800')` }}
+              style={{ backgroundImage: `url('${post.imageUrl ? post.imageUrl : ''}?w=800')` }}
             />
             <div className="text">
               <h6 {...classes('publication-type')}>Blog post</h6>

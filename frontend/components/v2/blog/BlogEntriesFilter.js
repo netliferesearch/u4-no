@@ -4,6 +4,7 @@ import { ArrowDark } from '../../icons/ArrowDark';
  * V2 - Blog filter component to be used in BlogPage component
  * @param {Array} topics
  * @param {function} setFilter
+ * @param {Object} filter
  */
 
 export const BlogEntriesFilter = ({ topics, setFilter, filter }) => {

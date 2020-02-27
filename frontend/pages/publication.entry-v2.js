@@ -5,7 +5,7 @@ import LongformArticleContainer from '../components/v2/LongformArticleContainer'
 
 const PublicationEntry = props => (
   <div>
-    {console.error('hello')}
+    {console.log('PublicationEntry loaded')}
     <LongformArticleContainer {...props} />
   </div>
 );
@@ -36,14 +36,14 @@ export default DataLoader(PublicationEntry, {
       authors[]->{ _id, affiliations, email, firstName, slug, surname },
       bibliographicalOverride, blurbs, content, date,
       editors[]->{ _id, affiliations, email, firstName, slug, surname },
-      featuredImage, headsUp, keywords, language,
+      featuredImage, headsUp, keywords[]->{category, keyword}, language,
       lead, legacypdf, mainPoints, methodology, notes, partners, pdfFile, publicationNumber,
       publicationType->{ _id, title },
       reference, references,
       "recommendedResources":
-        relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage, topics, standfirst },
+        relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage, topics[]->{title}, standfirst, lead },
       "relatedResources":
-          related[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage, topics, standfirst },
+          related[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage, topics[]->{title}, standfirst, lead },
       slug, standfirst, subtitle, summary, summaryExternal, title,
       topics[]->{ _id, title, slug },
       "translations":

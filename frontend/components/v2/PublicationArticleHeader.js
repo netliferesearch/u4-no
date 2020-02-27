@@ -22,7 +22,7 @@ const PublicationArticleHeader = ({
   pdfFile = {},
   legacypdf = {},
   shortversion = false,
-  content = '',
+  content = [],
 }) => {
   const [isReading, setReading] = useState(false);
   const [downloadsOpen, setDownloadsOpen] = useState(false);
@@ -32,7 +32,9 @@ const PublicationArticleHeader = ({
     medium: '16px',
     large: '20px',
   };
+  console.log("content", content)
   const titleObjects = buildTitleObjects(content);
+  
   return (
     <header {...classes('', null, className)}>
       <div className="o-wrapper-section">

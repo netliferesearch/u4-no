@@ -97,7 +97,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                   <div className="c-blog-index__item--row">
                     <div className="text">
                       <h6 className="c-blog-index__type">Blog</h6>
-                      <a href={`blog/${post.slug}`} className="publication-headline">
+                      <a href={`blog/${post.slug}`}>
                         <h3 className="publication-headline">{post.title}</h3>
                       </a>
                       <p className="c-blog-index-item__intro">{post.lead}</p>

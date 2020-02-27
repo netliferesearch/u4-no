@@ -11,7 +11,7 @@
   position: relative;
   display: block;
   padding-bottom: 50px;
-  margin-bottom: 58px;
+  margin-bottom: $spacing-large;
   font-weight: 700;
   &:after {
     content: '';

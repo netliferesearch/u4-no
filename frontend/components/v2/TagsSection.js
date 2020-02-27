@@ -9,6 +9,9 @@ import React from 'react';
  */
 
 export const TagsSection = ({ topics = [], keywords = [] }) => {
+  console.log("keywords:",keywords ? keywords : "now kw")
+  console.log("topics:", topics ? topics: "no topics")
+
   return (
     <div className="tags-section">
       <h3 className="title">Tags</h3>
@@ -16,18 +19,17 @@ export const TagsSection = ({ topics = [], keywords = [] }) => {
         <div className="tags-section__row">
           <h6>Topics</h6>
           {topics.map((topic, index) => (
-            <span className="topic" key={index}>
+            topic.title && <span className="topic" key={index}>
               {topic.title}
             </span>
           ))}
         </div>
       )}
-
       {keywords && (
         <div className="tags-section__row">
           <h6>Region</h6>
           {keywords
-            .filter(keyword => keyword.category === 'region')
+            .filter(keyword => keyword.category === 'region' || keyword.category === 'country')
             .map((keyword, index) => (
               <span className="keyword" key={index}>
                 {keyword.keyword}
@@ -35,7 +37,6 @@ export const TagsSection = ({ topics = [], keywords = [] }) => {
             ))}
         </div>
       )}
-
       {keywords && (
         <div className="tags-section__row">
           <h6>Keywords</h6>
@@ -51,19 +52,3 @@ export const TagsSection = ({ topics = [], keywords = [] }) => {
     </div>
   );
 };
-
-// link:
-// {topics.length > 0 && (
-//   <p className="c-longform-grid__standard">
-//     Related topics:{' '}
-//     {topics.map(({ _ref = '', target = {} }) => (
-//       <Link
-//         key={_ref}
-//         route="topic.entry"
-//         params={{ slug: target.slug ? target.slug.current : '' }}
-//       >
-//         <a className="c-article-header__link-item">{target.title}</a>
-//       </Link>
-//     ))}
-//   </p>
-// )}

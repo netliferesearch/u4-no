@@ -1,6 +1,7 @@
 import React from 'react';
 import dateToString from '../../helpers/dateToString';
 import BEMHelper from 'react-bem-helper';
+
 const RelatedResources = ({ resources }) => {
   const classes = BEMHelper({ name: 'publication-section', prefix: 'c-' });
   return (
@@ -10,7 +11,7 @@ const RelatedResources = ({ resources }) => {
       <div {...classes('cols')}>
         {resources.map((resource, index) => (
           <div className="col" key={index}>
-            {console.log(resource)}
+            {console.log("resource",resource)}
             <div className="text">
               <div className="top-content">
                 <h6 {...classes('publication-type')}>

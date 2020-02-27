@@ -83,9 +83,9 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
           </div>
         </section>
       </div>
-      <section className="o-wrapper">
+      <section className="o-wrapper c-blog-entry__bottom">
         <div className="o-wrapper-section">
-          {relatedContent ? <NewsAndEvents events={relatedContent} title={'Related'} /> : null}
+          {relatedContent ? <NewsAndEvents items={relatedContent} title={'Related'} /> : null}
         </div>
       </section>
     </Layout>

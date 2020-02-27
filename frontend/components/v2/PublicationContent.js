@@ -5,6 +5,7 @@ import { PartnerLogo10 } from '../icons';
 import { InstitutionList } from '../';
 import serializers from '../serializers';
 import { PublicationNotifications, CopyToClipboardButton } from './';
+import { TagsSection } from './TagsSection'
 
 const classes = BEMHelper({
   name: 'article-content',
@@ -101,43 +102,7 @@ const PublicationContent = ({
           </div>
         )}
       </div>
-      <h3>Tags</h3>
-      <div {...classes('meta')}>
-        {topics.length && (
-          <div className="meta-row">
-            <span className="tag-label">TOPICS</span>
-            {topics
-              .filter(value => Object.keys(value).length)
-              .map(({ title = '', slug = {} }) => (
-                <span className="topic">{title}</span>
-              ))}
-          </div>
-        )}
-        {keywords.filter(keyword => keyword.target._type === 'country').length ? (
-          <div className="meta-row">
-            <span className="tag-label">REGIONS</span>
-            <div className="keywords">
-              {keywords
-                .filter(keyword => keyword.target._type === 'country')
-                .map(({ keyword = '' }) => (
-                  <span>{keyword}</span>
-                ))}
-            </div>
-          </div>
-        ) : null}
-        {keywords.filter(keyword => keyword.target._type !== 'country').length ? (
-          <div className="meta-row">
-            <span className="tag-label">KEYWORDS</span>
-            <div className="keywords">
-              {keywords
-                .filter(keyword => keyword.target._type !== 'country')
-                .map((keyword = {}) => (
-                  <span className="keyword">{keyword.target.keyword}</span>
-                ))}
-            </div>
-          </div>
-        ) : null}
-      </div>
+      {topics || keywords ? <TagsSection topics={topics} keywords={keywords} /> : null}
     </div>
   );
 };
