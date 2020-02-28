@@ -5,7 +5,7 @@ import { LinkToItem } from '../';
 const AuthorList = ({ authors = [], intro = 'Authors' }) => {
   return (
     <div>
-      <h2>{intro}</h2>
+      <h2 className="u-black-mid-headline">{intro}</h2>
       {authors &&
         authors
           .filter(author => author)

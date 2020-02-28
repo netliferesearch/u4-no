@@ -5,7 +5,14 @@ import { PartnerLogo10 } from '../icons';
 import { InstitutionList } from '../';
 import serializers from '../serializers';
 import { PublicationNotifications, CopyToClipboardButton } from './';
-import { TagsSection } from './TagsSection'
+import { TagsSection } from './TagsSection';
+import findFootnotes from '../findFootnotes';
+import footnoteSerializer from '../footnoteSerializer';
+
+const littlefootActivator = () => {
+  const littlefoot = require('littlefoot').default;
+  littlefoot();
+};
 
 const classes = BEMHelper({
   name: 'article-content',
@@ -27,11 +34,16 @@ const PublicationContent = ({
 }) => {
   const [activeTab, setActiveTab] = useState('main-points');
   const mainPointsRef = useRef(null);
+  const blocks = summary.filter(block => !['reference'].includes(block._type));
+  const footnotes = findFootnotes(blocks);
+  const footNotesKeys = Object.keys(footnotes);
+
+  useEffect(() => littlefootActivator(), []);
 
   return (
     <div {...classes('', null, className)}>
       {lead && (
-        <div className="c-article">
+        <div className="c-article c-article__lead">
           <p>{lead}</p>
         </div>
       )}
@@ -86,6 +98,15 @@ const PublicationContent = ({
           {summary.length > 0 && (
             <div className={`tab${activeTab === 'summary' ? ' active' : ''}`}>
               <BlockContent blocks={summary} serializers={serializers} />
+              <div className="footnotes">
+                <ol>
+                  {footNotesKeys.map(key => (
+                    <div key={key}>
+                      <BlockContent blocks={footnotes[key]} serializers={footnoteSerializer(key)} />
+                    </div>
+                  ))}
+                </ol>
+              </div>
             </div>
           )}
         </div>

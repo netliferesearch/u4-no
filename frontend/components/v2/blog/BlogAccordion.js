@@ -20,16 +20,17 @@ export const BlogAccordion = () => {
           <h3 className="title">Licence</h3>
           <div className={`c-accordion__content${activeAccordion === 0 ? ' open' : ''}`}>
             <p>
+              This work is licenced under a Creative Commons Attribution-NonCommercial-NoDerivatives
+              4.0 International licence (
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>)
+            </p>
+            <p>
               <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
                 <CreativecommonsCC className="page2-ccimage" />
                 <CreativecommonsBY className="page2-ccimage" />
                 <CreativecommonsNC className="page2-ccimage" />
                 <CreativecommonsND className="page2-ccimage" />
               </a>
-              <br />
-              This work is licenced under a Creative Commons Attribution-NonCommercial-NoDerivatives
-              4.0 International licence (
-              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>)
             </p>
           </div>
         </div>

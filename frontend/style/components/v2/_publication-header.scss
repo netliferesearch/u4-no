@@ -3,6 +3,11 @@
   padding: $spacing;
   background-color: $brand-lightest;
   color: $brand-dark;
+
+  .c-article-header__container {
+    padding: 0 $spacing-large;
+  }
+
   .pdf-preview {
     display: none;
     pointer-events: none;
@@ -17,13 +22,10 @@
   }
   &__meta {
     width: 100%;
-    font-weight: bold;
-  }
-  &__title {
-    font-weight: bold;
   }
   &__intro {
     font-weight: 300;
+    margin-bottom: 48px;
   }
   &__download {
     display: block;
@@ -42,6 +44,11 @@
       max-width: 200px;
       &.read-online {
         margin-top: $spacing;
+        svg {
+          path {
+            fill: $brand-main;
+          }
+        }
       }
     }
     .dropdown-select {
@@ -86,14 +93,14 @@
     }
   }
   @include mq($from: tablet) {
-    padding: $spacing-huge $spacing;
+    padding: 72px $spacing 72px $spacing;
     .o-wrapper-section {
       display: flex;
       flex-wrap: wrap;
     }
     &__left {
       flex-grow: 1;
-      padding-right: 10%;
+      padding-right: 15%;
       width: 70%;
     }
     &__download {
@@ -108,7 +115,8 @@
     .pdf-preview {
       display: block;
       width: 20%;
-      margin-top: $spacing-large;
+      max-width: 240px;
+      margin-top: $spacing;
     }
   }
   &__fullscreen-article {

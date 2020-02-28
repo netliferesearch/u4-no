@@ -4,7 +4,7 @@ import { LinkToItem } from '../';
 const EditorList = ({ editors = [], intro = 'Series editor', pluralize = true }) =>
   editors.length > 0 && (
     <div>
-      <h2>
+      <h2 className="u-black-mid-headline">
         {intro}
         {pluralize && editors.length > 1 ? 's' : ''}
       </h2>

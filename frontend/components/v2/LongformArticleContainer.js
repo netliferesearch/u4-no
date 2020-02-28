@@ -18,6 +18,7 @@ import {
   PublicationAccordion,
   NewsAndEvents,
 } from './';
+
 const LongFormArticleContainer = (props = {}) => {
   const {
     data: {
@@ -69,6 +70,7 @@ const LongFormArticleContainer = (props = {}) => {
       },
       relatedUrl
     );
+
   return (
     <Layout
       showLoadingScreen={showLoadingScreen}
@@ -229,8 +231,8 @@ const LongFormArticleContainer = (props = {}) => {
 
           <section className="o-wrapper c-blog-entry__bottom">
             <div className="o-wrapper-section">
-            {/* {recommendedResources.length || relatedResources.length &&  */}
-            <NewsAndEvents
+              {/* {recommendedResources.length || relatedResources.length &&  */}
+              <NewsAndEvents
                 items={recommendedResources.length > 0 ? recommendedResources : relatedResources}
                 title={'Related'}
               />

@@ -8,6 +8,7 @@ const FeaturedPosts = ({ featured }) => {
   const { publication } = featured;
   const blog = featured.blog[0];
   const blogLarge = featured.blog[1];
+  console.log(publication.slug)
   return (
     <div className="c-frontpage-section__content c-frontpage-section__featured">
       {blog && (
@@ -45,7 +46,7 @@ const FeaturedPosts = ({ featured }) => {
           />
           <div className="text">
             <h6 {...classes('publication-type')}>Featured publication</h6>
-            <a href={publication.slug} {...classes('publication-headline')}>
+            <a href={`publication/${publication.slug}`} {...classes('publication-headline')}>
               <h3 {...classes('publication-headline')}>{publication.title}</h3>
             </a>
             <p {...classes('publication-intro')}>{publication.standfirst}</p>

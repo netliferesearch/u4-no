@@ -10,7 +10,6 @@ export { default as LogoCMI } from './icons/LogoCMI';
 export { default as SearchField } from './SearchField';
 export { default as LogoMobile } from './icons/LogoMobile';
 export { default as CopyToClipboardButton } from './CopyToClipboardButton';
-export { default as RelatedResources } from './RelatedResources';
 export { default as PublicationSidebar } from './PublicationSidebar';
 export { default as PublicationNotifications } from './PublicationNotifications';
 export { default as PublicationContent } from './PublicationContent';

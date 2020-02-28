@@ -1,16 +1,14 @@
 import React from 'react';
 
 /**
- * TagsSection component to list topics and keywords (keyword categories: "regions" and "keywords")
- * Used in BlogEntry component, blog page
+ * TagsSection component to list topics and keywords (keyword categories: "regions" + "countries" and "keywords")
+ * Used in BlogEntry component - blog page, LongFormArticle component - publication/:slug page.
  *
  * @param {Array} topics
  * @param {Array} keywords
  */
 
 export const TagsSection = ({ topics = [], keywords = [] }) => {
-  console.log("keywords:",keywords ? keywords : "now kw")
-  console.log("topics:", topics ? topics: "no topics")
 
   return (
     <div className="tags-section">

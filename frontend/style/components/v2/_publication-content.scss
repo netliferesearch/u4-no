@@ -1,18 +1,41 @@
 .c-article {
+  &.c-article__lead {
+    color: $black;
+    //max-width: 950px;
+    //margin-top: 0;
+    margin-bottom: $spacing-large;
+    //@include inuit-font-size($font-size-normal, $line-height-large );
+    padding: 0;
+
+    @include mq($from: tablet) {
+      padding-left: 0;
+    }
+    @include mq($from: tablet) {
+      //@include inuit-font-size($font-size-large, $line-height-large );
+    }
+  }
   &__container {
     font-family: $font-sans;
-    padding: $spacing;
+    padding: $spacing $spacing-large;
+    p {
+      font-size: $font-size-small;
+      line-height: 30px;
+    }
     .c-article-sidebar {
+      margin: $spacing 0;
       &__item {
         border-bottom: 1px solid $border-grey;
-        margin-bottom: $spacing;
+        margin-bottom: 36px;
         padding-bottom: $spacing;
         h2 {
-          margin: 0 0 $spacing-small 0;
+          margin: 0 0 16px 0;
         }
-        p {
+        p,
+        strong {
+          font-size: $font-size-tiny;
+          line-height: 1.5;
+
           margin: 0;
-          line-height: 1.2;
         }
         .author {
           margin-bottom: $spacing;
@@ -20,8 +43,9 @@
       }
     }
     .publication-preview {
-      padding: $spacing;
+      padding: 32px;
       border: 1px solid $brand-main;
+      margin-bottom: $spacing-huge;
       .tabs {
         display: flex;
         border-bottom: 1px solid $border-grey;
@@ -29,7 +53,7 @@
           color: $black;
           font-weight: bold;
           border-bottom: 4px solid transparent;
-          margin-right: $spacing-small;
+          margin-right: $spacing;
           padding-bottom: $spacing-small;
           transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
           cursor: pointer;
@@ -46,24 +70,47 @@
         &.active {
           display: block;
         }
-        .c-article_mainPoints-list {
-          padding-left: $spacing;
-        }
-        .c-article_mainPoints-item {
-          &:before {
-            width: 10px;
-            left: -20px;
-            height: 2px;
-          }
-        }
         .c-longform-grid__standard {
           padding: 0;
-          &:first-child {
-            margin-top: $spacing;
-          }
+          // &:first-child {
+          //   margin-top: $spacing;
+          // }
+        }
+        h2 {
+          font-size: $font-size-small;
+          font-weight: 700;
+          line-height: 30px;
+          margin: $spacing-large 0 $spacing-small 0;
+        }
+        p.c-longform-grid__standard {
+          margin: $spacing-small 0 $spacing 0;
         }
       }
     }
+
+    .c-article_mainPoints-list {
+      list-style: none;
+      font-size: $font-size-small;
+      line-height: 30px;
+      padding-left: $spacing;
+      margin: $spacing-large 0;
+      li {
+        margin-bottom: $spacing;
+      }
+    }
+
+    .c-article_mainPoints-firstWords {
+      font-weight: 700;
+    }
+
+    .c-article_mainPoints-item {
+      &:before {
+        width: 10px;
+        left: -20px;
+        height: 2px;
+      }
+    }
+
     .c-notifications {
       &__label {
         position: relative;
@@ -121,9 +168,7 @@
       display: flex;
       justify-content: space-between;
       .c-article-sidebar {
-        width: 300px;
-        &__item {
-        }
+        width: 240px;
       }
       .content {
         width: calc(90% - 300px);
@@ -131,9 +176,14 @@
     }
   }
 }
+
 .publication-accordion {
   border-top: 1px solid $border-grey;
   margin-top: $spacing;
+  p {
+    font-size: $font-size-tiny;
+    line-height: 26px;
+  }
   .c-accordion {
     &__block {
       display: flex;
@@ -144,9 +194,12 @@
       width: 90%;
       max-width: calc(100% - 100px);
       padding: $spacing 0;
-      .title {
-        margin: 0;
-      }
+    }
+    &__title {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.5;
+      margin: 0;
     }
     &__content {
       max-height: 0;
@@ -164,6 +217,17 @@
       width: 10%;
       min-width: 100px;
       text-align: center;
+      transition: $global-transition;
+      svg {
+        transform: rotate(0deg) translateY(0);
+        transition: transform 0.2s ease-in-out;
+      }
+      &.open {
+        svg {
+          transform: rotate(180deg) translateY(-6px);
+          transition: transform 0.2s ease-in-out;
+        }
+      }
     }
   }
 }
