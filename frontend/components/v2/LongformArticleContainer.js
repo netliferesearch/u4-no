@@ -229,14 +229,14 @@ const LongFormArticleContainer = (props = {}) => {
             </div>
           ) : null} */}
 
-          <section className="o-wrapper c-blog-entry__bottom">
+          <section className="o-wrapper">
             <div className="o-wrapper-section">
-              {/* {recommendedResources.length || relatedResources.length &&  */}
-              <NewsAndEvents
-                items={recommendedResources.length > 0 ? recommendedResources : relatedResources}
-                title={'Related'}
-              />
-              {/* } */}
+              {recommendedResources.length || relatedResources.length ? (
+                  <NewsAndEvents
+                    items={recommendedResources.length > 0 ? recommendedResources : relatedResources}
+                    title={'Related'}
+                  />
+                ) : null}
             </div>
           </section>
           <span id="js-bottom" />

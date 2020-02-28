@@ -25,6 +25,7 @@ const PublicationArticleHeader = ({
 }) => {
   const [isReading, setReading] = useState(false);
   const [downloadsOpen, setDownloadsOpen] = useState(false);
+  const pdfAsset = legacypdf.asset ? legacypdf.asset : pdfFile.asset
 
   return (
     <header {...classes('', null, className)}>
@@ -37,7 +38,7 @@ const PublicationArticleHeader = ({
         <div {...classes('left')}>
           <h1 className="u-navy-mid-headline">{title}</h1>
           <p {...classes('intro')}>{standfirst}</p>
-          {pdfFile.asset && (
+          {pdfAsset && (
             <div {...classes('download')}>
               <div className={`dropdown-select${downloadsOpen ? ' open' : ''}`}>
                 <a
@@ -74,10 +75,11 @@ const PublicationArticleHeader = ({
                   </a>
                 </div>
               </div>
+              {content.length > 0 &&
               <button className="read-online button" onClick={() => setReading(true)}>
                 Read online
                 <ArrowRight />
-              </button>
+              </button>}
             </div>
           )}
         </div>

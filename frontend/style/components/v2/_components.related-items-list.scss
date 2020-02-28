@@ -1,5 +1,5 @@
 .c-related-items-list {
-  padding-bottom: $spacing-large;
+  padding: 0 $spacing $spacing-large $spacing;
   .cols {
     font-family: $font-sans;
     width: 100%;
@@ -9,7 +9,10 @@
         margin-bottom: 0;
       }
     }
-    // @include mq($from: tablet) {
+  }
+  @include mq($from: tablet) {
+    padding: 0 0 $spacing-large 0;
+
     //   .col {
     //     width: 30%;
     //     max-width: 600px;
@@ -23,7 +26,6 @@
     //       margin-right: 0;
     //     }
     //   }
-    // }
   }
   @include mq($from: desktop) {
     padding-bottom: $spacing-huge;
