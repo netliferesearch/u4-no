@@ -53,7 +53,9 @@ export const BlogSidebar = ({ data }) => {
             //language={language}
           />
         ) : null}
-        <ShareOnSocialMedia title={title} />
+        <div className="u-grey-container c-blog-sidebar__share-container">
+          <ShareOnSocialMedia title={title} />
+        </div>
 
         <DownloadPdf url={getFileUrl()} />
       </div>

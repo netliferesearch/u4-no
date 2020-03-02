@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import BEMHelper from 'react-bem-helper';
-
+import { Note } from '../icons/Note';
 import serializers from '../serializers';
 import buildUrl from '../../helpers/buildUrl';
 
@@ -34,14 +34,18 @@ const PublicationNotifications = ({
   const headsUpHasContent = headsUp && trimEmptyBlocks(headsUp).length > 0;
 
   return (
-    <section>
+    <section {...classes()}>
       {headsUpHasContent && (
-        <div {...classes('label')}>
-          <BlockContent blocks={headsUp} serializers={serializers} />
+        <div {...classes('note-item')}>
+          <Note />
+          <div {...classes('label')}>
+            <BlockContent blocks={headsUp} serializers={serializers} />
+          </div>
         </div>
       )}
       {updatedVersion && (
-        <div {...classes()}>
+        <div {...classes('note-item')}>
+          <Note />
           <p {...classes('label')}>
             This publication is from {pubyear}.A more recent version has been published,{' '}
             <a
@@ -58,21 +62,25 @@ const PublicationNotifications = ({
         </div>
       )}
       {publicationType._id == '080dc28c-9d5e-4c14-972f-73f83a206b92' && (
-        <p {...classes('label')}>
-          This publication is part of the TNRC consortium and produced with support from USAID.
-        </p>
+        <div {...classes('note-item')}>
+          <Note />
+          <p {...classes('label')}>
+            This publication is part of the TNRC consortium and produced with support from USAID.
+          </p>
+        </div>
       )}
-      {/* {!headsUpHasContent &&
+      {!headsUpHasContent &&
         !updatedVersion &&
         date &&
         new Date().getFullYear() - Number(pubyear) > 5 && (
-          <div {...classes()}>
-            <p {...classes('body')}>
+          <div {...classes('note-item')}>
+            <Note />
+            <p {...classes('label')}>
               This publication is from {pubyear}. Some of the content may be outdated. Search
               related topics to find more recent resources.
             </p>
           </div>
-        )} */}
+        )}
     </section>
   );
 };

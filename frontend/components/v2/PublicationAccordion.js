@@ -16,8 +16,7 @@ const PublicationAccordion = ({ standfirst = '', date = {}, title = '', publicat
     setActiveAccordion(newIndex);
   };
   const citeRef = useRef(null);
-
-  console.log(publicationType);
+  
   return (
     <div className="publication-accordion">
       <div className="c-accordion__block" onClick={e => toggleAccordion(0)}>

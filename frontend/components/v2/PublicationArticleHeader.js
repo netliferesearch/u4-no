@@ -37,10 +37,10 @@ const PublicationArticleHeader = ({
         </div>
         <div {...classes('left')}>
           <h1 className="u-navy-mid-headline">{title}</h1>
-          <p {...classes('intro')}>{standfirst}</p>
-          {pdfAsset && (
+          {standfirst ? <p {...classes('intro')}>{standfirst}</p> : null}
+          
             <div {...classes('download')}>
-              <div className={`dropdown-select${downloadsOpen ? ' open' : ''}`}>
+            {pdfAsset && (<div className={`dropdown-select${downloadsOpen ? ' open' : ''}`}>
                 <a
                   onClick={() => setDownloadsOpen(!downloadsOpen)}
                   {...classes('download-text button')}
@@ -74,14 +74,14 @@ const PublicationArticleHeader = ({
                     <span>Full report</span>
                   </a>
                 </div>
-              </div>
-              {content.length > 0 &&
+              </div>          )}
+              {(content.length > 0 || legacypdf.asset) &&
               <button className="read-online button" onClick={() => setReading(true)}>
                 Read online
                 <ArrowRight />
               </button>}
             </div>
-          )}
+
         </div>
         <div {...classes('right pdf-preview')}>
           {/* {useMediaQuery('tablet') && ( */}
@@ -91,7 +91,7 @@ const PublicationArticleHeader = ({
           {/* )} */}
         </div>
       </div>
-      {isReading && <Reader title={title} content={content} setReading={setReading} />}
+      {isReading && <Reader title={title} content={content} setReading={setReading} legacypdf={legacypdf}/>}
     </header>
   );
 };

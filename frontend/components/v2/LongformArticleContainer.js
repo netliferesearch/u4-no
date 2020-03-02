@@ -22,13 +22,14 @@ import {
 const LongFormArticleContainer = (props = {}) => {
   const {
     data: {
-      lead = '',
       _type = '',
       longTitle = '',
       title = '',
       authors = [],
       date = {},
+      lead = '',
       standfirst = '',
+      abstract = '',
       mainPoints = [],
       resources = [],
       methodology = [],

@@ -112,22 +112,34 @@
     }
 
     .c-notifications {
-      &__label {
-        position: relative;
-        padding-left: 30px;
-        font-weight: 300;
-        &:before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          background-image: url('/static/arrowright.svg');
-          width: 20px;
-          height: 20px;
-          background-size: contain;
-          background-position: center;
-          background-repeat: no-repeat;
+      margin: $spacing-large 0;
+      //border-top: 1px solid $border-grey;
+
+      &__note-item {
+        display: flex;
+        margin: 32px 0;
+        svg {
+          margin: 5px $spacing-small 5px 0px;
         }
+      }
+
+      &__label {
+        //position: relative;
+        //padding-left: 10px;
+        font-weight: 300;
+        margin: 0;
+        // &:before {
+        //   content: '';
+        //   position: absolute;
+        //   top: 0;
+        //   left: 0;
+        //   background-image: url('/static/arrowright.svg');
+        //   width: 20px;
+        //   height: 20px;
+        //   background-size: contain;
+        //   background-position: center;
+        //   background-repeat: no-repeat;
+        // }
         .c-longform-grid__standard {
           padding: 0;
         }

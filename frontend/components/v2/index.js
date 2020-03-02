@@ -14,7 +14,7 @@ export { default as PublicationSidebar } from './PublicationSidebar';
 export { default as PublicationNotifications } from './PublicationNotifications';
 export { default as PublicationContent } from './PublicationContent';
 export { default as PublicationArticleHeader } from './PublicationArticleHeader';
-export { default as LongArticle } from './LongArticle';
+export { default as LongArticle } from './LongformArticle';
 export { default as LongformArticleContainer } from './LongformArticleContainer';
 export { default as PublicationAccordion } from './PublicationAccordion';
 export { default as EditorList } from './EditorList';

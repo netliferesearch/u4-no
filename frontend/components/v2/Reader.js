@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { ArrowRight } from '../icons';
-import { ArrowWhite } from '../icons/ArrowWhite';
-import { Document, Page } from 'react-pdf/build/entry.noworker';
+import { ArrowRightSlim } from '../icons/ArrowRightSlim';
 import buildTitleObjects from '../TableOfContents/buildTitleObjects';
 import Scrollchor from 'react-scrollchor';
-import { useMediaQuery } from './';
-import LongformArticle from '../LongformArticle';
+import LongformArticle from './LongformArticle';
+import { ShareOnSocialMedia } from './ShareOnSocialMedia';
+import PdfViewer from '../PdfViewer';
 
 const classes = BEMHelper({
   name: 'article-header-v2',
@@ -18,17 +17,12 @@ const classes1 = BEMHelper({
   prefix: 'c-',
 });
 
-export const Reader = ({
-  title = '',
-  content = [],
-  setReading = false,
-}) => {
-
+export const Reader = ({ title = '', content = [], setReading = false, legacypdf = {} }) => {
   const [readingFontSize, setReadingFontSize] = useState('normal'); // 'normal' | 'medium' | 'large'
   const FONT_SIZES = {
-    normal: '10px',
-    medium: '16px',
-    large: '20px',
+    normal: '16px',
+    medium: '22px',
+    large: '26px',
   };
   const titleObjects = buildTitleObjects(content);
 
@@ -41,34 +35,37 @@ export const Reader = ({
             e.preventDefault();
             setReading(false);
           }}
+          {...classes1('back-button')}
         >
-          <img alt="Back icon" src="/static/arrow-right-slim.svg" className="u-reverse-arrow" />
+          <span className="u-reverse-arrow">
+            <ArrowRightSlim />
+          </span>
           Exit publication
         </a>
         <div className="socials">
-          <div className="share">
-            <a href="">fb</a>
-          </div>
-          <div className="fonts">
-            <button
-              className={`normal${readingFontSize === 'normal' ? ' active' : ''}`}
-              onClick={() => setReadingFontSize('normal')}
-            >
-              A
-            </button>
-            <button
-              className={`medium${readingFontSize === 'medium' ? ' active' : ''}`}
-              onClick={() => setReadingFontSize('medium')}
-            >
-              A
-            </button>
-            <button
-              className={`large${readingFontSize === 'large' ? ' active' : ''}`}
-              onClick={() => setReadingFontSize('large')}
-            >
-              A
-            </button>
-          </div>
+          <ShareOnSocialMedia title={title} />
+          {content.length > 0 && (
+            <div className="fonts">
+              <button
+                className={`normal${readingFontSize === 'normal' ? ' active' : ''}`}
+                onClick={() => setReadingFontSize('normal')}
+              >
+                A
+              </button>
+              <button
+                className={`medium${readingFontSize === 'medium' ? ' active' : ''}`}
+                onClick={() => setReadingFontSize('medium')}
+              >
+                A
+              </button>
+              <button
+                className={`large${readingFontSize === 'large' ? ' active' : ''}`}
+                onClick={() => setReadingFontSize('large')}
+              >
+                A
+              </button>
+            </div>
+          )}
         </div>
         {titleObjects.length ? (
           <div>
@@ -109,6 +106,7 @@ export const Reader = ({
         ) : null}
       </div>
       {content && <LongformArticle content={content} title={title} />}
+      {legacypdf.asset && <PdfViewer file={{ url: legacypdf.asset.url }} />}
     </div>
   );
 };

@@ -21,6 +21,7 @@ const classes = BEMHelper({
 
 const PublicationContent = ({
   lead = '',
+  abstract = '',
   topics = [],
   className = '',
   publicationType = {},
@@ -42,11 +43,17 @@ const PublicationContent = ({
 
   return (
     <div {...classes('', null, className)}>
-      {lead && (
+      {lead || abstract ? (
         <div className="c-article c-article__lead">
           <p>{lead}</p>
+          {/* Legacy publication abstracts come with html included
+                so we go and render it out.
+          */}
+            {!lead && abstract && (
+              <p dangerouslySetInnerHTML={{ __html: abstract }} />
+            )}
         </div>
-      )}
+      ) : null}
       <PublicationNotifications
         headsUp={headsUp}
         updatedVersion={updatedVersion}
@@ -111,7 +118,6 @@ const PublicationContent = ({
           )}
         </div>
       )}
-
       <div {...classes('meta')}>
         {partners.length > 0 ? <InstitutionList institutions={partners} /> : null}
         {publicationType._id === 'pubtype-3' && (
