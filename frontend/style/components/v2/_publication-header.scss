@@ -220,6 +220,11 @@
       margin-bottom: $spacing-huge;
       width: calc(100% - 400px);
       color: $black;
+
+      .c-longform-grid__standard {
+        margin-bottom: 45px;
+      }
+
       .title {
         line-height: 1.6;
         text-align: center;
@@ -250,7 +255,7 @@
         margin-bottom: 25%;
 
         .c-pdf-viewer {
-          margin-top: $spacing-large
+          margin-top: $spacing-large;
         }
 
         .c-pdf-viewer__pdf {

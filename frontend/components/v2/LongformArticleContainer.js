@@ -240,7 +240,7 @@ const LongFormArticleContainer = (props = {}) => {
                 ) : null}
             </div>
           </section>
-          <span id="js-bottom" />
+          {/* <span id="js-bottom" /> */}
         </article>
       )}
     </Layout>

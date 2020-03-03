@@ -77,7 +77,7 @@ const PublicationArticleHeader = ({
                 </div>
               </div>          )}
               {(content.length > 0 || legacypdf.asset) &&
-              <button className="read-online button" onClick={() => setReading(true)}>
+              <button className="read-online button" onClick={() => {setReading(true), setDownloadsOpen(false)}}>
                 Read online
                 <ArrowRight />
               </button>}

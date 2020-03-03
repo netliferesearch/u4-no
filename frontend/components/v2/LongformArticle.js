@@ -37,6 +37,7 @@ const LongformArticle = ({ content = [], title = '' }) => {
           </ol>
         </div>
       </div>
+      <span id="js-bottom" />
     </main>
   );
 };
