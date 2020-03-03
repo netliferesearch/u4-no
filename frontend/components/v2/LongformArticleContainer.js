@@ -78,7 +78,7 @@ const LongFormArticleContainer = (props = {}) => {
       showTopTab={!isArticleMenuOpen}
       headComponentConfig={headComponentConfig}
     >
-      {isArticleMenuOpen && (
+      {/* {isArticleMenuOpen && (
         <div
           className={`c-article-nav-fullscreen ${
             isArticleMenuOpen ? 'c-article-nav-fullscreen c-article-nav-fullscreen--open' : ''
@@ -104,13 +104,13 @@ const LongFormArticleContainer = (props = {}) => {
             {...props.data}
           />
         </div>
-      )}
+      )} */}
 
       {!isArticleMenuOpen && (
         <article>
-          {_type === 'publication' && !isPublicationDrawerOpen && (
+          {/* {_type === 'publication' && !isPublicationDrawerOpen && (
             <TableOfContentsButton {...props.data} />
-          )}
+          )} */}
           <span id="js-top" />
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
