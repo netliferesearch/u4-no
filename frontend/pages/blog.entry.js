@@ -78,7 +78,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
                 <BlockContent blocks={headsUp} serializers={serializers} />
               </div>
             )}
-            {topics || keywords ? <TagsSection topics={topics} keywords={keywords} /> : null}
+            {topics.length > 0 || keywords.length > 0 ? <TagsSection topics={topics} keywords={keywords} /> : null}
             <BlogAccordion />
           </div>
         </section>

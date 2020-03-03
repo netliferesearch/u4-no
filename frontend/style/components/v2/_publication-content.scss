@@ -6,6 +6,7 @@
     margin-bottom: $spacing-large;
     //@include inuit-font-size($font-size-normal, $line-height-large );
     padding: 0;
+    font-size: $font-size-small;
 
     @include mq($from: tablet) {
       padding-left: 0;
@@ -142,6 +143,7 @@
         // }
         .c-longform-grid__standard {
           padding: 0;
+          margin: 0;
         }
       }
     }
@@ -179,6 +181,7 @@
     @include mq($from: tablet) {
       display: flex;
       justify-content: space-between;
+      margin-bottom: $spacing-huge;
       .c-article-sidebar {
         width: 240px;
       }

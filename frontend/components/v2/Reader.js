@@ -105,8 +105,13 @@ export const Reader = ({ title = '', content = [], setReading = false, legacypdf
           </div>
         ) : null}
       </div>
-      {content && <LongformArticle content={content} title={title} />}
-      {legacypdf.asset && <PdfViewer file={{ url: legacypdf.asset.url }} />}
+      {content.length > 0 && <LongformArticle content={content} title={title} />}
+      {!content.length && legacypdf.asset && (
+        <div className="c-article-v2 c-article-v2__pdf-viewer o-wrapper-section">
+          <h1 className="title">{title}</h1>
+          <PdfViewer file={{ url: legacypdf.asset.url }} />
+        </div>
+      )}
     </div>
   );
 };

@@ -10,6 +10,7 @@ const RecentPublications = ({ resources = [], alt = false }) => {
   return (
     <div {...classes('publications')}>
       <h2 className="u-blue-underline u-navy-big-headline">Recent publications</h2>
+      <hr class="u-section-underline"></hr>
       {resources
         .map(resource => (resource.target ? resource.target : resource))
         .filter(({ _id = '' }) => _id)

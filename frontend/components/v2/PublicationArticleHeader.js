@@ -22,6 +22,8 @@ const PublicationArticleHeader = ({
   legacypdf = {},
   shortversion = false,
   content = [],
+  summary = [],
+  mainPoints = [],
 }) => {
   const [isReading, setReading] = useState(false);
   const [downloadsOpen, setDownloadsOpen] = useState(false);
@@ -38,7 +40,6 @@ const PublicationArticleHeader = ({
         <div {...classes('left')}>
           <h1 className="u-navy-mid-headline">{title}</h1>
           {standfirst ? <p {...classes('intro')}>{standfirst}</p> : null}
-          
             <div {...classes('download')}>
             {pdfAsset && (<div className={`dropdown-select${downloadsOpen ? ' open' : ''}`}>
                 <a
@@ -49,25 +50,25 @@ const PublicationArticleHeader = ({
                   <ArrowWhite />
                 </a>
                 <div className="other-links">
-                  <a
+                  {mainPoints.length > 0 && <a
                     href={`/publication/${slug.current}.pdf`}
-                    download={`/publication/${slug.current}.pdf`}
+                    //download={`/publication/${slug.current}.pdf`}
                     {...classes('download-text button')}
                     target="_blank"
                   >
                     <span>Main points</span>
-                  </a>
-                  <a
+                  </a>}
+                  {mainPoints.length > 0 && summary.length > 0 && <a
                     href={`/publication/${slug.current}.pdf`}
-                    download={`/publication/${slug.current}.pdf`}
+                    //download={`/publication/${slug.current}.pdf`}
                     {...classes('download-text button')}
                     target="_blank"
                   >
                     <span>Main points + summary</span>
-                  </a>
+                  </a>}
                   <a
                     href={`/publication/${slug.current}.pdf`}
-                    download={`/publication/${slug.current}.pdf`}
+                    //download={`/publication/${slug.current}.pdf`}
                     {...classes('download-text button')}
                     target="_blank"
                   >

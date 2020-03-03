@@ -1,4 +1,4 @@
-.tags-section {
+.c-tags-section {
   border-top: 1px solid #e6e6e6;
   margin-bottom: $spacing-large;
 
@@ -9,8 +9,11 @@
     margin: 35px 0 24px 0;
 }
 
-  .tags-section__row {
+  .c-tags-section__row {
     margin-bottom: $spacing;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
 
     .topic {
       margin-bottom: 0;
@@ -27,6 +30,12 @@
       font-weight: 700;
       display: inline-block;
     }
+  }
+
+  .c-tags-section__col {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
   .keyword {

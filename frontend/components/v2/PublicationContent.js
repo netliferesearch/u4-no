@@ -20,6 +20,7 @@ const classes = BEMHelper({
 });
 
 const PublicationContent = ({
+  standfirst = '',
   lead = '',
   abstract = '',
   topics = [],
@@ -41,6 +42,10 @@ const PublicationContent = ({
 
   useEffect(() => littlefootActivator(), []);
 
+  console.log('standfirst', standfirst ? standfirst : 'no standfirst');
+  console.log('lead', lead);
+  console.log('abstract', abstract);
+
   return (
     <div {...classes('', null, className)}>
       {lead || abstract ? (
@@ -49,9 +54,7 @@ const PublicationContent = ({
           {/* Legacy publication abstracts come with html included
                 so we go and render it out.
           */}
-            {!lead && abstract && (
-              <p dangerouslySetInnerHTML={{ __html: abstract }} />
-            )}
+          {!lead && abstract && <div dangerouslySetInnerHTML={{ __html: abstract }} />}
         </div>
       ) : null}
       <PublicationNotifications
@@ -60,7 +63,6 @@ const PublicationContent = ({
         date={date}
         publicationType={publicationType}
       />
-
       {(mainPoints.length > 0 || summary.length > 0) && (
         <div className="publication-preview">
           <div className="tabs">
@@ -72,12 +74,12 @@ const PublicationContent = ({
                 Main points
               </div>
             )}
-            <div
+            {summary.length > 0 && (<div
               className={`tab-header${activeTab === 'summary' ? ' active' : ''}`}
               onClick={() => setActiveTab('summary')}
             >
               Summary
-            </div>
+            </div>)}
           </div>
           {mainPoints.length > 0 && (
             <div className={`tab${activeTab === 'main-points' ? ' active' : ''}`}>
@@ -129,7 +131,7 @@ const PublicationContent = ({
           </div>
         )}
       </div>
-      {topics || keywords ? <TagsSection topics={topics} keywords={keywords} /> : null}
+      {topics.length > 0 || keywords.length > 0 ? <TagsSection topics={topics} keywords={keywords} /> : null}
     </div>
   );
 };

@@ -9,42 +9,50 @@ import React from 'react';
  */
 
 export const TagsSection = ({ topics = [], keywords = [] }) => {
-
   return (
-    <div className="tags-section">
+    <div className="c-tags-section">
       <h3 className="title">Tags</h3>
       {topics && (
-        <div className="tags-section__row">
+        <div className="c-tags-section__row">
           <h6>Topics</h6>
-          {topics.map((topic, index) => (
-            topic.title && <span className="topic" key={index}>
-              {topic.title}
-            </span>
-          ))}
+          <div className="c-tags-section__col">
+            {topics.map(
+              (topic, index) =>
+                topic.title && (
+                  <span className="topic" key={index}>
+                    {topic.title}
+                  </span>
+                )
+            )}
+          </div>
         </div>
       )}
       {keywords && (
-        <div className="tags-section__row">
+        <div className="c-tags-section__row">
           <h6>Region</h6>
-          {keywords
-            .filter(keyword => keyword.category === 'region' || keyword.category === 'country')
-            .map((keyword, index) => (
-              <span className="keyword" key={index}>
-                {keyword.keyword}
-              </span>
-            ))}
+          <div className="c-tags-section__col">
+            {keywords
+              .filter(keyword => keyword.category === 'region' || keyword.category === 'country')
+              .map((keyword, index) => (
+                <span className="keyword" key={index}>
+                  {keyword.keyword}
+                </span>
+              ))}
+          </div>
         </div>
       )}
       {keywords && (
-        <div className="tags-section__row">
+        <div className="c-tags-section__row">
           <h6>Keywords</h6>
-          {keywords
-            .filter(keyword => keyword.category === 'keyword')
-            .map((keyword, index) => (
-              <span className="keyword" key={index}>
-                {keyword.keyword}
-              </span>
-            ))}
+          <div className="c-tags-section__col">
+            {keywords
+              .filter(keyword => keyword.category === 'keyword')
+              .map((keyword, index) => (
+                <span className="keyword" key={index}>
+                  {keyword.keyword}
+                </span>
+              ))}
+          </div>
         </div>
       )}
     </div>

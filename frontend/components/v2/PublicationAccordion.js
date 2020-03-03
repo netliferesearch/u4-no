@@ -54,7 +54,7 @@ const PublicationAccordion = ({ standfirst = '', date = {}, title = '', publicat
             </p>
           </div>
         </div>
-        <div className={`c-accordion__arrow${activeAccordion === 0 ? ' open' : ''}`}>
+        <div className={`c-accordion__arrow${activeAccordion === 1 ? ' open' : ''}`}>
           <ArrowDark />
         </div>
       </div>
@@ -68,7 +68,7 @@ const PublicationAccordion = ({ standfirst = '', date = {}, title = '', publicat
             </p>
           </div>
         </div>
-        <div className={`c-accordion__arrow${activeAccordion === 0 ? ' open' : ''}`}>
+        <div className={`c-accordion__arrow${activeAccordion === 2 ? ' open' : ''}`}>
           <ArrowDark />
         </div>
       </div>

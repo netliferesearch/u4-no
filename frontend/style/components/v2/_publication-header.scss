@@ -138,7 +138,7 @@
     background-color: $white;
     display: flex;
     justify-content: space-between;
-    font-size: 10px;
+    font-size: 16px;
     .sidebar {
       position: fixed;
       top: 0;
@@ -228,8 +228,7 @@
         font-size: 1.64em;
         font-weight: bold;
         padding-bottom: $spacing;
-        margin-top: $spacing-huge;
-        margin-bottom: $spacing-large;
+        margin: $spacing-huge auto $spacing-large auto;
         &:after {
           content: '';
           position: absolute;
@@ -245,6 +244,18 @@
       .list-bullets,
       .list-numbered {
         font-family: $font-serif;
+      }
+      &.c-article-v2__pdf-viewer {
+        padding-left: 262px;
+        margin-bottom: 25%;
+
+        .c-pdf-viewer {
+          margin-top: $spacing-large
+        }
+
+        .c-pdf-viewer__pdf {
+          margin-top: $spacing;
+        }
       }
     }
     .c-textbox__container .c-longform-grid__standard {
