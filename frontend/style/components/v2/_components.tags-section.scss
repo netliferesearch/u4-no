@@ -20,8 +20,9 @@
     }
     .keyword {
       font-size: $font-size-micro;
-      line-height: 20px;
+      line-height: initial;
       border-bottom: 1px solid $black;
+      margin-bottom: $spacing-tiny;
     }
     h6 {
       margin: 0 $spacing 0 0;

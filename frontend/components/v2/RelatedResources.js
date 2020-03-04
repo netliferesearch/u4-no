@@ -11,7 +11,7 @@ const RelatedResources = ({ resources }) => {
       <div {...classes('cols')}>
         {resources.map((resource, index) => (
           <div className="col" key={index}>
-            {console.log("resource",resource)}
+            {/* {console.log("resource",resource)} */}
             <div className="text">
               <div className="top-content">
                 <h6 {...classes('publication-type')}>

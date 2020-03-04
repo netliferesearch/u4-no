@@ -42,10 +42,6 @@ const PublicationContent = ({
 
   useEffect(() => littlefootActivator(), []);
 
-  console.log('standfirst', standfirst ? standfirst : 'no standfirst');
-  console.log('lead', lead);
-  console.log('abstract', abstract);
-
   return (
     <div {...classes('', null, className)}>
       {lead || abstract ? (

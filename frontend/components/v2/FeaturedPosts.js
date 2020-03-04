@@ -8,7 +8,7 @@ const FeaturedPosts = ({ featured }) => {
   const { publication } = featured;
   const blog = featured.blog[0];
   const blogLarge = featured.blog[1];
-  console.log(publication.slug)
+  //console.log(publication.slug)
   return (
     <div className="c-frontpage-section__content c-frontpage-section__featured">
       {blog && (

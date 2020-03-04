@@ -68,6 +68,7 @@
       .tab {
         display: none;
         animation: 0.5s fadeIn;
+        margin: $spacing-large 0 0 0;
         &.active {
           display: block;
         }
@@ -94,7 +95,7 @@
       font-size: $font-size-small;
       line-height: 30px;
       padding-left: $spacing;
-      margin: $spacing-large 0;
+      margin: 0 0 $spacing-large 0;
       li {
         margin-bottom: $spacing;
       }
