@@ -2,6 +2,8 @@ import React from 'react';
 import dateToString from '../../helpers/dateToString';
 import BEMHelper from 'react-bem-helper';
 
+//Consider deleting this component as NewsAndEvents is doing the some and more advanced
+
 const RelatedResources = ({ resources }) => {
   const classes = BEMHelper({ name: 'publication-section', prefix: 'c-' });
   return (

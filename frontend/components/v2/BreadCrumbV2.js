@@ -7,7 +7,7 @@ import ArrowRightSmall from '../icons/ArrowRightSmall';
 
 /**
  * This is a functional BreadCrumb component based on original BreadCrmb class
- * Used in v2 pages for providing "home > parent" type breadcrumbs.
+ * Used in v2 pages for providing "home > parent/current" type breadcrumbs.
  * It is a simplified version of the original BreadCrumb, which has more capabilities.
  */
 

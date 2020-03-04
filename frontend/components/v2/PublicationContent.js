@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import { PartnerLogo10 } from '../icons';
-import { InstitutionList } from '../';
+import { PartnersList } from './PartnersList';
 import serializers from '../serializers';
 import { PublicationNotifications, CopyToClipboardButton } from './';
 import { TagsSection } from './TagsSection';
@@ -70,12 +70,14 @@ const PublicationContent = ({
                 Main points
               </div>
             )}
-            {summary.length > 0 && (<div
-              className={`tab-header${activeTab === 'summary' ? ' active' : ''}`}
-              onClick={() => setActiveTab('summary')}
-            >
-              Summary
-            </div>)}
+            {summary.length > 0 && (
+              <div
+                className={`tab-header${activeTab === 'summary' ? ' active' : ''}`}
+                onClick={() => setActiveTab('summary')}
+              >
+                Summary
+              </div>
+            )}
           </div>
           {mainPoints.length > 0 && (
             <div className={`tab${activeTab === 'main-points' ? ' active' : ''}`}>
@@ -116,8 +118,13 @@ const PublicationContent = ({
           )}
         </div>
       )}
+
+      {partners.length > 0 || publicationType._id === 'pubtype-3' ? (
       <div {...classes('meta')}>
-        {partners.length > 0 ? <InstitutionList institutions={partners} /> : null}
+      <h3 className="u-black-mid-headline">Partners</h3>
+        {partners.length > 0 ? (
+            <PartnersList institutions={partners} />
+        ) : null}
         {publicationType._id === 'pubtype-3' && (
           <div className="c-article-header__institution">
             <p>The U4 Helpdesk is operated by </p>
@@ -127,7 +134,11 @@ const PublicationContent = ({
           </div>
         )}
       </div>
-      {topics.length > 0 || keywords.length > 0 ? <TagsSection topics={topics} keywords={keywords} /> : null}
+      ) : null}
+
+      {topics.length > 0 || keywords.length > 0 ? (
+        <TagsSection topics={topics} keywords={keywords} />
+      ) : null}
     </div>
   );
 };

@@ -148,6 +148,7 @@
         }
       }
     }
+
     .topic {
       color: $brand-main;
       font-size: 14px;
@@ -191,6 +192,7 @@
       }
     }
   }
+
 }
 
 .publication-accordion {
@@ -245,5 +247,14 @@
         }
       }
     }
+  }
+
+}
+.c-article-content__meta {
+  border-top: 1px solid #e6e6e6;
+  //margin-bottom: $spacing-large;
+
+  h3 {
+    margin: 35px 0 24px 0;
   }
 }

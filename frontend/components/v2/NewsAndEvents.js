@@ -13,7 +13,7 @@ const getStringsByType = item => {
       typeTitle = 'Publication | ';
       typeSubTitle =
         typeof item.publicationType.title === 'string'
-          ? item.publicationType.title.substring(3)
+          ? item.publicationType.title
           : '';
       slugOfType = 'publication/';
       break;

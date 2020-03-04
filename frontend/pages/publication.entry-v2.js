@@ -5,7 +5,6 @@ import LongformArticleContainer from '../components/v2/LongformArticleContainer'
 
 const PublicationEntry = props => (
   <div>
-        {console.log('PublicationEntry loaded', props)}
     <LongformArticleContainer {...props} />
   </div>
 );
