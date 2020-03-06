@@ -109,22 +109,25 @@ const SearchResult = props => {
       </div>
     );
   } else if (type === 'publication') {
-    const { highlight: { content = [], title: titleHighlight = [] } = {} } = props;
+    const { highlight: { content = [], title: titleHighlight = [], subtitle: subTitleHighlight = [] } = {} } = props;
+    
     const {
       title = '',
+      subtitle = '',
       date: { utc: utcDate = '' } = {},
       filedUnderTopicNames = [],
       url = '',
       standfirst = '',
       publicationType: { title: publicationTypeTitle = '' } = {},
     } = _source;
+
     return (
       <div>
         <span {...classes('items-type')}>Publication<span {...classes('pipe')}>|</span>{`${publicationTypeTitle}`}</span>
         <br />
         <Link route={url}>
           <a {...classes('items-title')}>
-            <Highlight highlight={titleHighlight} fallback={title} />
+            <Highlight highlight={titleHighlight} fallback={title} />{`${subtitle ? ': ' : ''}`}<Highlight highlight={subTitleHighlight} fallback={subtitle} />
           </a>
         </Link>
         <br />

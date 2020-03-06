@@ -174,6 +174,7 @@ const doSearch = async ({
                       _name: 'Main query',
                       fields: [
                         'title',
+                        'subtitle',
                         'standfirst',
                         'lead',
                         'content',
@@ -246,6 +247,7 @@ const doSearch = async ({
           'title',
           'authors*',
           'slug*',
+          'subtitle',
           'standfirst',
           'lead',
           'type',
