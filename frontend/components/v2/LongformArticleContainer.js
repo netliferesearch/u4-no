@@ -118,6 +118,7 @@ const LongFormArticleContainer = (props = {}) => {
               <PublicationArticleHeader {...props.data} shortversion={shortversion} />
             )}
           </div>
+          <section className="o-wrapper u-side-padding">
           {_type === 'publication' && (
             <div className="o-wrapper-section c-article__container">
               <PublicationSidebar {...props.data} />
@@ -154,6 +155,8 @@ const LongFormArticleContainer = (props = {}) => {
               </div>
             </div>
           )}
+          </section>
+
           {/* <LongformArticle content={shortversion ? props.content : ''} {...props.data} /> */}
 
           {/* <TnrcFooter publicationTypeId={publicationType._id} /> */}

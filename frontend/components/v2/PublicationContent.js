@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
-import { PartnerLogo10 } from '../icons';
 import { PartnersList } from './PartnersList';
 import serializers from '../serializers';
 import { PublicationNotifications, CopyToClipboardButton } from './';
 import { TagsSection } from './TagsSection';
 import findFootnotes from '../findFootnotes';
 import footnoteSerializer from '../footnoteSerializer';
+import { PartnerLogo10Blue } from '../icons/PartnerLogo10Blue';
 
 const littlefootActivator = () => {
   const littlefoot = require('littlefoot').default;
@@ -120,20 +120,18 @@ const PublicationContent = ({
       )}
 
       {partners.length > 0 || publicationType._id === 'pubtype-3' ? (
-      <div {...classes('meta')}>
-      <h3 className="u-black-mid-headline">Partners</h3>
-        {partners.length > 0 ? (
-            <PartnersList institutions={partners} />
-        ) : null}
-        {publicationType._id === 'pubtype-3' && (
-          <div className="c-article-header__institution">
-            <p>The U4 Helpdesk is operated by </p>
-            <div className="c-logo">
-              <PartnerLogo10 />
+        <div {...classes('meta')}>
+          <h3 className="u-black-mid-headline">Partners</h3>
+          {partners.length > 0 ? <PartnersList institutions={partners} /> : null}
+          {publicationType._id === 'pubtype-3' && (
+            <div className="c-article-header__institution">
+              <p>The U4 Helpdesk is operated by </p>
+              <div className="c-logo">
+                <PartnerLogo10Blue />
+              </div>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
       ) : null}
 
       {topics.length > 0 || keywords.length > 0 ? (

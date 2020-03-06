@@ -17,7 +17,12 @@
   }
   &__container {
     font-family: $font-sans;
-    padding: $spacing $spacing-large;
+    padding: $spacing 0;
+
+    @include mq($from: tablet) {
+      padding: $spacing $spacing-huge $spacing 0;
+    }
+
     p {
       font-size: $font-size-small;
       line-height: 30px;
@@ -252,9 +257,12 @@
 }
 .c-article-content__meta {
   border-top: 1px solid #e6e6e6;
-  //margin-bottom: $spacing-large;
+  margin-bottom: 35px;
 
   h3 {
     margin: 35px 0 24px 0;
   }
+}
+.u-side-padding {
+  padding: 0 $spacing;
 }

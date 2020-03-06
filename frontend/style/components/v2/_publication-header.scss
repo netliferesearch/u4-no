@@ -5,7 +5,10 @@
   color: $brand-dark;
 
   .c-article-header__container {
-    padding: 0 $spacing-large;
+    padding: 0;
+    @include mq($from: tablet) {
+      padding: 0 $spacing-huge 0 0;
+    }
   }
 
   .pdf-preview {
@@ -66,9 +69,9 @@
         left: 0;
         width: 100%;
         z-index: 3;
-        border: 1px solid $brand-main;
+        border: none;
         max-height: 0px;
-        transition: max-height 0.2s ease-out 0s;
+        transition: max-height 0.2s ease-out 0s border 0.3s ease-in 0s;
         .button {
           background-color: $white;
           border: none;
@@ -88,6 +91,7 @@
         .other-links {
           transition: max-height 0.2s ease-in 0s;
           max-height: 999px;
+          border: 1px solid $brand-main;
         }
       }
     }

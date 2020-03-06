@@ -75,10 +75,13 @@
     font-weight: 300;
     color: $brand-dark;
     width: 100%;
-    width: calc(100% - 227px);
+    
     max-width: 660px;
     padding-right: $spacing;
     margin: 0;
+    @include mq($from: tablet) {
+      width: calc(100% - 227px);
+    }
   }
   .c-blog-index-item__intro {
     font-family: $font-sans;
