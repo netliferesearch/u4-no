@@ -12,9 +12,7 @@ const getStringsByType = item => {
     case 'publication':
       typeTitle = 'Publication | ';
       typeSubTitle =
-        typeof item.publicationType.title === 'string'
-          ? item.publicationType.title
-          : '';
+      item.publicationType && (typeof item.publicationType.title === 'string') ? item.publicationType.title : '';
       slugOfType = 'publication/';
       break;
     case 'course':
@@ -26,6 +24,11 @@ const getStringsByType = item => {
       typeTitle = 'Workshop';
       typeSubTitle = '';
       slugOfType = '';
+      break;
+    case 'blog-post':
+      typeTitle = 'Blog post';
+      typeSubTitle = '';
+      slugOfType = 'blog/';
       break;
     case 'article':
       typeTitle = 'Article';

@@ -201,7 +201,7 @@ export default {
     // },
     {
       name: 'relatedContent',
-      title: 'Related courses and events',
+      title: 'Related blog articles and publications',
       description: 'Add related content, max 3 will be displayed in the frontend',
       type: 'array',
       of: [
@@ -212,7 +212,10 @@ export default {
               type: 'course',
             },
             {
-              type: 'event',
+              type: 'publication',
+            },
+            {
+              type: 'blog-post',
             },
           ],
         },

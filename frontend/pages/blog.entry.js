@@ -106,7 +106,7 @@ export default DataLoader(BlogEntry, {
           "url": url
         }
       },
-      "relatedContent": relatedContent[]->{_type, title, startDate, lead, "slug": slug.current, topics[]->{title}}[0..2]}
+      "relatedContent": relatedContent[]->{_type, _id, title, publicationType->{ title }, articleType[0]->{ title }, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..2]}
     }`,
     param: { slug },
   }),
