@@ -10,7 +10,7 @@ const RecentPublications = ({ resources = [], alt = false }) => {
   return (
     <div {...classes('publications')}>
       <h2 className="u-blue-underline u-navy-big-headline">Recent publications</h2>
-      <hr className="u-section-underline"></hr>
+      <hr className="u-section-underline" />
       {resources
         .map(resource => (resource.target ? resource.target : resource))
         .filter(({ _id = '' }) => _id)
@@ -56,15 +56,18 @@ const RecentPublications = ({ resources = [], alt = false }) => {
                     })}
                 </div>
               </div>
-              <div className="pdf-preview">
-                {
-                  //useMediaQuery('tablet') && (
-                  <Document file={pdfFile}>
-                    <Page pageNumber={1} />
-                  </Document>
-                  //)
-                }
-              </div>
+              {pdfFile && (
+                <div className="pdf-preview">
+                  {
+                    //useMediaQuery('tablet') && (
+                    <Document file={pdfFile}>
+                      <Page pageNumber={1} />
+                    </Document>
+                    //)
+                  }
+                </div>
+              )}
+
               <hr className="u-section-underline" />
             </div>
           )

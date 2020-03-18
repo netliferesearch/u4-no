@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
+import { ToggleBlock } from '../';
 import { PartnersList } from './PartnersList';
 import serializers from '../serializers';
 import { PublicationNotifications, CopyToClipboardButton } from './';
@@ -33,6 +34,11 @@ const PublicationContent = ({
   updatedVersion = false,
   date = {},
   keywords = [],
+  references = [],
+  acknowledgements = '',
+  methodology = [],
+  notes = '',
+  featuredImage = {},
 }) => {
   const [activeTab, setActiveTab] = useState('main-points');
   const mainPointsRef = useRef(null);
@@ -119,6 +125,97 @@ const PublicationContent = ({
         </div>
       )}
 
+      {/* {methodology.length > 0 ? (
+        <div {...classes('meta')}>
+          <h3 className="u-black-mid-headline">Methodology</h3>
+          <div {...classes('content')}>
+            {typeof methodology === 'string' && <p>{methodology}</p>}
+            {typeof methodology !== 'string' && (
+              <BlockContent blocks={methodology} serializers={serializers} />
+            )}
+          </div>
+        </div>
+      ) : null} */}
+      {/* {references.length > 0 ? (
+        <div {...classes('meta')}>
+          <h3 className="u-black-mid-headline">References</h3>
+          <div {...classes('content')}>
+            {typeof references === 'string' && <p>{references}</p>}
+            {typeof references !== 'string' && (
+              <BlockContent blocks={references} serializers={serializers} />
+            )}
+          </div>
+        </div>
+      ) : null} */}
+      {/* {acknowledgements ? (
+        <div {...classes('meta')}>
+          <h3 className="u-black-mid-headline">Acknowledgements</h3>
+          <div {...classes('content')}>
+            {typeof acknowledgements === 'string' && <p>{acknowledgements}</p>}
+            {typeof acknowledgements !== 'string' && (
+              <BlockContent blocks={acknowledgements} serializers={serializers} />
+            )}
+          </div>
+        </div>
+      ) : null} */}
+      {/* {notes ? (
+        <div {...classes('meta')}>
+          <h3 className="u-black-mid-headline">Notes</h3>
+          <div {...classes('content')}>
+            {typeof notes === 'string' && <p>{notes}</p>}
+            {typeof notes !== 'string' && (
+              <BlockContent blocks={notes} serializers={serializers}>
+                {featuredImage.caption && (
+                  <div className="c-longform-grid__standard">
+                    <p>
+                      <b>Header image:</b>
+                    </p>
+                    <BlockToContent
+                      blocks={featuredImage.caption}
+                      serializers={{
+                        types: {
+                          block: props => <p style={{ display: 'inline' }}>{children}</p>,
+                        },
+                      }}
+                    />
+                  </div>
+                )}
+              </BlockContent>
+            )}
+            <div className="c-longform-grid__standard">
+              {!featuredImage.sourceUrl && featuredImage.credit && (
+                <span>Photo: {featuredImage.credit} </span>
+              )}
+
+              {featuredImage.sourceUrl && (
+                <span>
+                  Photo:
+                  <a className="u-margin-left-tiny" href={featuredImage.sourceUrl}>
+                    {featuredImage.credit ? featuredImage.credit : featuredImage.sourceUrl}
+                  </a>
+                </span>
+              )}
+              {featuredImage.license && (
+                <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                  {' '}
+                  CC {featuredImage.license.toUpperCase()}
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      ) : null} */}
+      {/* {lead && abstract ? (
+        <div {...classes('meta')}>
+          <h3 className="u-black-mid-headline">Abstract</h3>
+          <div {...classes('content')}>
+            {typeof abstract === 'string' && <p>{abstract}</p>}
+            {typeof abstract !== 'string' && (
+              <BlockContent blocks={abstract} serializers={serializers} />
+            )}
+          </div>
+        </div>
+      ) : null} */}
       {partners.length > 0 || publicationType._id === 'pubtype-3' ? (
         <div {...classes('meta')}>
           <h3 className="u-black-mid-headline">Partners</h3>
@@ -133,7 +230,6 @@ const PublicationContent = ({
           )}
         </div>
       ) : null}
-
       {topics.length > 0 || keywords.length > 0 ? (
         <TagsSection topics={topics} keywords={keywords} />
       ) : null}

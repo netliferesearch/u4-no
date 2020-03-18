@@ -136,7 +136,8 @@ const SearchResult = props => {
           <Highlight highlight={content} fallback={standfirst} />
         </p>
         {uniq(filedUnderTopicNames).slice(0,1).map(name => (
-          <div key={name} {...classes('items-tab')}>
+          //<div key={name} {...classes('items-tab')}>
+          <div key={name} className='topic'>
             {name}
           </div>
         ))}
@@ -168,7 +169,8 @@ const SearchResult = props => {
         <Highlight highlight={content} fallback={standfirst} />
       </p>
       {uniq(filedUnderTopicNames).map(name => (
-        <div key={name} {...classes('items-tab')}>
+        //<div key={name} {...classes('items-tab')}>
+        <div key={name} className='topic'>
           {name}
         </div>
       ))}

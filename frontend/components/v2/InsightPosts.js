@@ -22,10 +22,7 @@ const InsightPosts = ({ insights }) => {
       <div className="col">
         {insights.map((post, index) => (
           <div className="col row" key={index}>
-            <div
-              className="post-image"
-              style={{ backgroundImage: `url('${post.imageUrl ? post.imageUrl : ''}?w=800')` }}
-            />
+
             <div className="text">
               <h6 {...classes('publication-type')}>Blog post</h6>
               <a href={`blog/${post.slug}`} {...classes('publication-headline')}>
@@ -44,6 +41,12 @@ const InsightPosts = ({ insights }) => {
                   })}
               </div>
             </div>
+
+            <div
+              className="post-image"
+              style={{ backgroundImage: `url('${post.imageUrl ? post.imageUrl : ''}?w=800')` }}
+            />
+            
             <hr className="u-section-underline" />
           </div>
         ))}

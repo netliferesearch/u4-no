@@ -18,7 +18,7 @@ const classes1 = BEMHelper({
 });
 
 export const Reader = ({ title = '', content = [], setReading = false, legacypdf = {} }) => {
-  const [readingFontSize, setReadingFontSize] = useState('normal'); // 'normal' | 'medium' | 'large'
+  const [readingFontSize, setReadingFontSize] = useState('medium'); // 'normal' | 'medium' | 'large'
   const FONT_SIZES = {
     normal: '16px',
     medium: '22px',
@@ -27,7 +27,7 @@ export const Reader = ({ title = '', content = [], setReading = false, legacypdf
   const titleObjects = buildTitleObjects(content);
 
   return (
-    <div {...classes('fullscreen-article')} style={{ fontSize: FONT_SIZES[readingFontSize] }}>
+    <div {...classes('fullscreen-article')}>
       <div className="sidebar">
         <a
           href=""
@@ -104,8 +104,21 @@ export const Reader = ({ title = '', content = [], setReading = false, legacypdf
             </ul>
           </div>
         ) : null}
+        <div>
+        <ul className="c-article-nav-list c-article-nav-list--2">
+          <li className={`c-article-nav-list__item`}><a href='#'>References</a></li>
+          <li className={`c-article-nav-list__item`}><a href='#'>About the author</a></li>
+          <li className={`c-article-nav-list__item`}><a href='#'>Acknowledgements</a></li>
+          <li className={`c-article-nav-list__item`}><a href='#'>Methodology</a></li>
+          <li className={`c-article-nav-list__item`}><a href='#'>Notes</a></li>
+          <li className={`c-article-nav-list__item`}><a href='#'>Annex</a></li>
+        </ul>
+        </div>
+
       </div>
-      {content.length > 0 && <LongformArticle content={content} title={title} />}
+      {content.length > 0 && (
+        <LongformArticle content={content} title={title} fontSize={FONT_SIZES[readingFontSize]} />
+      )}
       {!content.length && legacypdf.asset && (
         <div className="c-article-v2 c-article-v2__pdf-viewer o-wrapper-section">
           <h1 className="title">{title}</h1>

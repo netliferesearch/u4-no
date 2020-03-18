@@ -4,7 +4,7 @@ import { ArrowRight } from '../icons';
 import { ArrowWhite } from '../icons/ArrowWhite';
 import { Document, Page } from 'react-pdf/build/entry.noworker';
 import { useMediaQuery } from './';
-import { Reader } from './Reader'
+import { Reader } from './Reader';
 const classes = BEMHelper({
   name: 'article-header-v2',
   prefix: 'c-',
@@ -27,7 +27,7 @@ const PublicationArticleHeader = ({
 }) => {
   const [isReading, setReading] = useState(false);
   const [downloadsOpen, setDownloadsOpen] = useState(false);
-  const pdfAsset = legacypdf.asset ? legacypdf.asset : pdfFile.asset
+  const pdfAsset = legacypdf.asset ? legacypdf.asset : pdfFile.asset;
 
   return (
     <header {...classes('', null, className)}>
@@ -40,8 +40,9 @@ const PublicationArticleHeader = ({
         <div {...classes('left')}>
           <h1 className="u-navy-mid-headline">{title}</h1>
           {standfirst ? <p {...classes('intro')}>{standfirst}</p> : null}
-            <div {...classes('download')}>
-            {pdfAsset && (<div className={`dropdown-select${downloadsOpen ? ' open' : ''}`}>
+          <div {...classes('download')}>
+            {pdfAsset && (
+              <div className={`dropdown-select${downloadsOpen ? ' open' : ''}`}>
                 <a
                   onClick={() => setDownloadsOpen(!downloadsOpen)}
                   {...classes('download-text button')}
@@ -50,22 +51,26 @@ const PublicationArticleHeader = ({
                   <ArrowWhite />
                 </a>
                 <div className="other-links">
-                  {mainPoints.length > 0 && <a
-                    href={`/publication/${slug.current}.pdf`}
-                    //download={`/publication/${slug.current}.pdf`}
-                    {...classes('download-text button')}
-                    target="_blank"
-                  >
-                    <span>Main points</span>
-                  </a>}
-                  {mainPoints.length > 0 && summary.length > 0 && <a
-                    href={`/publication/${slug.current}.pdf`}
-                    //download={`/publication/${slug.current}.pdf`}
-                    {...classes('download-text button')}
-                    target="_blank"
-                  >
-                    <span>Main points + summary</span>
-                  </a>}
+                  {mainPoints.length > 0 && (
+                    <a
+                      href={`/publication/${slug.current}.pdf`}
+                      //download={`/publication/${slug.current}.pdf`}
+                      {...classes('download-text button')}
+                      target="_blank"
+                    >
+                      <span>Main points</span>
+                    </a>
+                  )}
+                  {mainPoints.length > 0 && summary.length > 0 && (
+                    <a
+                      href={`/publication/${slug.current}.pdf`}
+                      //download={`/publication/${slug.current}.pdf`}
+                      {...classes('download-text button')}
+                      target="_blank"
+                    >
+                      <span>Main points + summary</span>
+                    </a>
+                  )}
                   <a
                     href={`/publication/${slug.current}.pdf`}
                     //download={`/publication/${slug.current}.pdf`}
@@ -75,24 +80,34 @@ const PublicationArticleHeader = ({
                     <span>Full report</span>
                   </a>
                 </div>
-              </div>          )}
-              {(content.length > 0 || legacypdf.asset) &&
-              <button className="read-online button" onClick={() => {setReading(true), setDownloadsOpen(false)}}>
+              </div>
+            )}
+            {(content.length > 0 || legacypdf.asset) && (
+              <button
+                className="read-online button"
+                onClick={() => {
+                  setReading(true), setDownloadsOpen(false);
+                }}
+              >
                 Read online
                 <ArrowRight />
-              </button>}
-            </div>
-
+              </button>
+            )}
+          </div>
         </div>
-        <div {...classes('right pdf-preview')}>
-          {/* {useMediaQuery('tablet') && ( */}
-          <Document file={pdfFile.asset ? pdfFile.asset : legacypdf.asset}>
-            <Page pageNumber={1} />
-          </Document>
-          {/* )} */}
-        </div>
+        {(pdfFile.asset || legacypdf.asset) && (
+          <div {...classes('right pdf-preview')}>
+            {/* {useMediaQuery('tablet') && ( */}
+            <Document file={pdfFile.asset ? pdfFile.asset : legacypdf.asset}>
+              <Page pageNumber={1} />
+            </Document>
+            {/* )} */}
+          </div>
+        )}
       </div>
-      {isReading && <Reader title={title} content={content} setReading={setReading} legacypdf={legacypdf}/>}
+      {isReading && (
+        <Reader title={title} content={content} setReading={setReading} legacypdf={legacypdf} />
+      )}
     </header>
   );
 };

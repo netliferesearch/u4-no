@@ -33,6 +33,7 @@
   &__download {
     display: block;
     .button {
+      font-family: $font-sans;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -41,10 +42,10 @@
       line-height: 30px;
       padding: $spacing-tiny $spacing-small;
       color: $brand-main;
-      font-weight: bold;
+      font-weight: 900;
       cursor: pointer;
       width: 100%;
-      max-width: 200px;
+      max-width: 240px;
       &.read-online {
         margin-top: $spacing;
         svg {
@@ -57,7 +58,7 @@
     .dropdown-select {
       position: relative;
       width: 100%;
-      max-width: 200px;
+      max-width: 240px;
       .button {
         color: $white;
         background-color: $brand-main;
@@ -106,6 +107,7 @@
       flex-grow: 1;
       padding-right: 15%;
       width: 70%;
+      max-width: 1000px;
     }
     &__download {
       display: flex;
@@ -211,6 +213,7 @@
         padding-right: 0;
         transition: none;
       }
+
       .c-article-nav-list__item {
         font-weight: 700;
         border: none;
@@ -219,6 +222,15 @@
         transition: none;
       }
     }
+    .c-article-nav-list--2 {
+      .c-article-nav-list__item {
+        font-weight: 400;
+        color: $black;
+        padding-top: 0;
+        padding-bottom: $spacing-tiny;
+      }
+    }
+     
     .c-article-v2 {
       padding-left: 424px;
       margin-bottom: $spacing-huge;

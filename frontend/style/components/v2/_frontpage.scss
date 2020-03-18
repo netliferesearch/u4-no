@@ -237,6 +237,9 @@
             margin-bottom: 0;
           }
         }
+        .post-image {
+          margin-bottom: $spacing-tiny;
+        }
       }
     }
     @include mq($from: tablet) {
@@ -265,12 +268,13 @@
       .col {
         width: calc(100% - 388px);
         .text {
-          padding: 0 22px 0 49px;
+          padding: 0 $spacing-large 0 0;
         }
         &.row {
           width: 100%;
           padding: 0 $spacing;
           padding-left: 57px;
+          padding-right: 0;
           justify-content: space-between;
           display: flex;
         }

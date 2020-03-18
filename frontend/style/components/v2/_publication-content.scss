@@ -214,6 +214,7 @@
       border-bottom: 1px solid $border-grey;
     }
     &__container {
+      cursor: pointer;
       width: 90%;
       max-width: calc(100% - 100px);
       padding: $spacing 0;
@@ -261,6 +262,10 @@
 
   h3 {
     margin: 35px 0 24px 0;
+  }
+
+  .c-longform-grid__standard {
+    padding: 0;
   }
 }
 .u-side-padding {

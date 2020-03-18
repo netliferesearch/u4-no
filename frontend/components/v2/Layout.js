@@ -7,6 +7,7 @@ import { HeadComponent, Logo } from '../';
 import {  Menu, SearchField } from '.';
 import { LogoCMI } from './icons/LogoCMI'
 import { LogoMobile } from './icons/LogoMobile'
+import LogoU4 from '../icons/LogoU4';
 
 const classes = BEMHelper({
   name: 'top-bar-v2',
@@ -64,7 +65,7 @@ class Layout extends Component {
               {!hideLogo && (
                 <Link route="/">
                   <a {...classes('logo', 'fixed', this.state.searchOpen ? '' : 'logo-white')}>
-                    <Logo />
+                    <LogoU4 />
                     <LogoMobile />
                   </a>
                 </Link>

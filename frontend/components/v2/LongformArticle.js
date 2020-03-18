@@ -10,7 +10,7 @@ import footnoteSerializer from '../footnoteSerializer';
  * @type {Object}
  */
 
-const LongformArticle = ({ content = [], title = '' }) => {
+const LongformArticle = ({ content = [], title = '', fontSize = '' }) => {
   useEffect(() => {
     const littlefoot = require('littlefoot').default;
     littlefoot();
@@ -21,7 +21,7 @@ const LongformArticle = ({ content = [], title = '' }) => {
   const footnotes = findFootnotes(blocks);
   const footNotesKeys = Object.keys(footnotes);
   return (
-    <main className={'c-article-v2 o-wrapper-section'}>
+    <main className={'c-article-v2 o-wrapper-section'} style={{ fontSize: fontSize }}>
       <h1 className="title">{title}</h1>
       <BlockContent blocks={blocks} serializers={serializers} />
       <div>
