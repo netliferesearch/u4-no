@@ -24,8 +24,9 @@ const PublicationArticleHeader = ({
   content = [],
   summary = [],
   mainPoints = [],
+  setReaderOpen = null,
+  readerOpen = false
 }) => {
-  const [isReading, setReading] = useState(false);
   const [downloadsOpen, setDownloadsOpen] = useState(false);
   const pdfAsset = legacypdf.asset ? legacypdf.asset : pdfFile.asset;
 
@@ -86,7 +87,8 @@ const PublicationArticleHeader = ({
               <button
                 className="read-online button"
                 onClick={() => {
-                  setReading(true), setDownloadsOpen(false);
+                  setReaderOpen(true)
+                  setDownloadsOpen(false);
                 }}
               >
                 Read online
@@ -105,8 +107,8 @@ const PublicationArticleHeader = ({
           </div>
         )}
       </div>
-      {isReading && (
-        <Reader title={title} content={content} setReading={setReading} legacypdf={legacypdf} />
+      {readerOpen && (
+        <Reader title={title} content={content} setReaderOpen={setReaderOpen} legacypdf={legacypdf} />
       )}
     </header>
   );

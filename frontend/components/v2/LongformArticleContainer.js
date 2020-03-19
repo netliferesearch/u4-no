@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
@@ -9,7 +9,6 @@ import {
   TableOfContentsContent,
   AuthorList,
 } from '../';
-import { useState } from 'react';
 import {
   PublicationSidebar,
   PublicationContent,
@@ -74,6 +73,8 @@ const LongFormArticleContainer = (props = {}) => {
       relatedUrl
     );
 
+  const [readerOpen, setReaderOpen] = useState(false);
+
   return (
     <Layout
       showLoadingScreen={showLoadingScreen}
@@ -117,46 +118,51 @@ const LongFormArticleContainer = (props = {}) => {
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
             {_type === 'publication' && !shortversion && (
-              <PublicationArticleHeader {...props.data} shortversion={shortversion} />
+              <PublicationArticleHeader
+                {...props.data}
+                shortversion={shortversion}
+                readerOpen={readerOpen}
+                setReaderOpen={setReaderOpen}
+              />
             )}
           </div>
-          <section className="o-wrapper u-side-padding">
-          {_type === 'publication' && (
-            <div className="o-wrapper-section c-article__container">
-              <PublicationSidebar {...props.data} />
-              <div className="content">
-                <PublicationContent {...props.data} />
-                <PublicationAccordion {...props.data} />
-              </div>
-            </div>
-          )}
-          {_type !== 'publication' && (
-            <div>
-              <div className="c-longform-grid u-bg-white u-z-index-x">
-                {articleType.length ? (
-                  <h2 className="c-longform-grid__standard c-article-header__meta c-article-header__meta-uppercase">
-                    {articleType[0].target.title}
-                  </h2>
-                ) : null}
-                <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
-                {authors.length ? (
-                  <div className="c-article c-longform-grid__standard">
-                    <AuthorList authors={authors} />
-                    {date && date.utc && (
-                      <span> (last update: {dateToString({ start: date.utc })})</span>
-                    )}
-                  </div>
-                ) : null}
-
-                {lead && <div className="c-article c-longform-grid__standard">{lead}</div>}
-              </div>
-              <div className="c-longform-grid">
-                <div className="c-longform-grid__sidebar-right">
-                  <TableOfContentsSidebar alwaysFollow {...props.data} />
+          <section className="o-wrapper u-side-padding" style={{ display: readerOpen ? 'none' : 'block'}}>
+            {_type === 'publication' && (
+              <div className="o-wrapper-section c-article__container">
+                <PublicationSidebar {...props.data} />
+                <div className="content">
+                  <PublicationContent {...props.data} />
+                  <PublicationAccordion {...props.data} />
                 </div>
               </div>
-            </div>
-          )}
+            )}
+            {_type !== 'publication' && (
+              <div>
+                <div className="c-longform-grid u-bg-white u-z-index-x">
+                  {articleType.length ? (
+                    <h2 className="c-longform-grid__standard c-article-header__meta c-article-header__meta-uppercase">
+                      {articleType[0].target.title}
+                    </h2>
+                  ) : null}
+                  <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
+                  {authors.length ? (
+                    <div className="c-article c-longform-grid__standard">
+                      <AuthorList authors={authors} />
+                      {date && date.utc && (
+                        <span> (last update: {dateToString({ start: date.utc })})</span>
+                      )}
+                    </div>
+                  ) : null}
+
+                  {lead && <div className="c-article c-longform-grid__standard">{lead}</div>}
+                </div>
+                <div className="c-longform-grid">
+                  <div className="c-longform-grid__sidebar-right">
+                    <TableOfContentsSidebar alwaysFollow {...props.data} />
+                  </div>
+                </div>
+              </div>
+            )}
           </section>
 
           {/* <LongformArticle content={shortversion ? props.content : ''} {...props.data} /> */}
@@ -235,14 +241,14 @@ const LongFormArticleContainer = (props = {}) => {
             </div>
           ) : null} */}
 
-          <section className="o-wrapper">
+          <section className="o-wrapper" style={{ display: readerOpen ? 'none' : 'block'}}>
             <div className="o-wrapper-section">
               {recommendedResources.length || relatedResources.length ? (
-                  <NewsAndEvents
-                    items={recommendedResources.length > 0 ? recommendedResources : relatedResources}
-                    title={'Related'}
-                  />
-                ) : null}
+                <NewsAndEvents
+                  items={recommendedResources.length > 0 ? recommendedResources : relatedResources}
+                  title={'Related'}
+                />
+              ) : null}
             </div>
           </section>
           {/* <span id="js-bottom" /> */}

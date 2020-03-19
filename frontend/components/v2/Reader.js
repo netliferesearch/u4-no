@@ -17,7 +17,7 @@ const classes1 = BEMHelper({
   prefix: 'c-',
 });
 
-export const Reader = ({ title = '', content = [], setReading = false, legacypdf = {} }) => {
+export const Reader = ({ title = '', content = [], setReaderOpen = false, legacypdf = {} }) => {
   const [readingFontSize, setReadingFontSize] = useState('medium'); // 'normal' | 'medium' | 'large'
   const FONT_SIZES = {
     normal: '16px',
@@ -33,7 +33,7 @@ export const Reader = ({ title = '', content = [], setReading = false, legacypdf
           href=""
           onClick={e => {
             e.preventDefault();
-            setReading(false);
+            setReaderOpen(false);
           }}
           {...classes1('back-button')}
         >
