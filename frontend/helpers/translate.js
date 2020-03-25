@@ -27,8 +27,9 @@ export const translate = (language = 'en') => {
     const lang = langCode(language);
     if (!strings[lang][key]) {
       console.warn(`Translation of '${key}' for '${lang}' not found.`);
+      return strings[defaultlang][key] || '';
     }
-    return strings[lang][key] || strings[defaultlang][key] || '';
+    return strings[lang][key];
   };
 };
 
