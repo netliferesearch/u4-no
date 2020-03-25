@@ -27,8 +27,9 @@ export const translate = (language = 'en') => {
     const lang = langCode(language);
     if (!strings[lang][key]) {
       console.warn(`Translation of '${key}' for '${lang}' not found.`);
+      return strings[defaultlang][key] || '';
     }
-    return strings[lang][key] || strings[defaultlang][key] || '';
+    return strings[lang][key];
   };
 };
 
@@ -109,8 +110,8 @@ const strings = {
     creative_commons_text:
       'Este trabajo tiene una licencia Internacional de Creative Commons Attribution-NonCommercial-NoDerivatives 4.0',
     creative_commons_licenses: 'CC BY-NC-ND 4.0',
-    by: 'Par',
-    reviewed_by: 'Revu par',
+    by: 'Por',
+    reviewed_by: 'Revisado por',
     series_editor: 'Editor de la serie',
     series_editors: 'Editores de la serie',
     main_points: 'Puntos principales',
@@ -123,5 +124,66 @@ const strings = {
     and: 'y',
     methodology: 'Metodología',
     abbreviations: 'Abreviaturas',
+  },
+
+  in: {
+    disclaimer: 'Pernyataan Penyangkalan',
+    disclaimer_text:
+      'Semua pandangan dalam teks ini adalah milik penulis dan bisa berbeda dengan lembaga mitra U4.',
+    partner_agencies: 'Lembaga Mitra',
+    about_u4: 'Tentang U4',
+    cover_photo: 'Foto sampul',
+    publisher_and_bibliographic_reference: 'Publisher and bibliographic reference',
+    keywords: 'Kata Kunci',
+    publication_type: 'Jenis Publikasi',
+    notes: 'Catatan',
+    creative_commons: 'Creative commons',
+    creative_commons_text:
+      'Karya ini dilisensikan dengan Atribusi Creative Commons-NonCommercial-Lisensi Internasional NoDerivatives 4.0',
+    creative_commons_licenses: 'CC BY-NC-ND 4.0',
+    by: 'Oleh',
+    reviewed_by: 'Ditinjau oleh',
+    series_editor: 'Editor seri',
+    series_editors: 'Editor seri',
+    main_points: 'Poin utama',
+    table_of_contents: 'Daftar isi',
+    abstract: 'Abstract',
+    about_the_author: 'Tentang penulis',
+    about_the_authors: 'Tentang penulis',
+    acknowledgements: 'Ucapan terima kasih',
+    references: 'Referensi',
+    and: 'dan',
+    methodology: 'Metodologi',
+    abbreviations: 'Singkatan',
+  },
+  uk: {
+    disclaimer: 'Disclaimer',
+    disclaimer_text:
+      'All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies.',
+    partner_agencies: 'Partner agencies',
+    about_u4: 'About U4',
+    cover_photo: 'Cover photo',
+    publisher_and_bibliographic_reference: 'Publisher and bibliographic reference',
+    keywords: 'Keywords',
+    publication_type: 'Publication type',
+    notes: 'Notes',
+    creative_commons: 'Creative commons',
+    creative_commons_text:
+      'This work is licenced under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International licence',
+    creative_commons_licenses: 'CC BY-NC-ND 4.0',
+    by: 'Автори:',
+    reviewed_by: 'Reviewed by',
+    series_editor: 'Series editor',
+    series_editors: 'Series editors',
+    main_points: 'Main points',
+    table_of_contents: 'Table of contents',
+    abstract: 'Abstract',
+    about_the_author: 'About the author',
+    about_the_authors: 'About the authors',
+    acknowledgements: 'Acknowledgements',
+    references: 'References',
+    and: 'and',
+    methodology: 'Methodology',
+    abbreviations: 'Abbreviations',
   },
 };
