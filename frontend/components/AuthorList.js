@@ -12,10 +12,10 @@ const AuthorList = ({
 }) => {
   const trans = translate(language);
   return (
-    <span>
-      {`${trans(introkey)} `}
-      {authors &&
-        authors
+    authors && (
+      <span>
+        {authors.length > 1 ? trans('by_plural') : trans('by')}{' '}
+        {authors
           .filter(author => author)
           .map(author => (author.target ? author.target : author))
           .map(
@@ -52,7 +52,8 @@ const AuthorList = ({
               </span>
             )
           )}
-    </span>
+      </span>
+    )
   );
 };
 AuthorList.propTypes = {
