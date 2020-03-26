@@ -10,14 +10,17 @@ export default augmentSchema({
     {
       name: 'firstName',
       type: 'string',
+      localize: true,
     },
     {
       name: 'surname',
       type: 'string',
+      localize: true,
     },
     {
       name: 'position',
       type: 'string',
+      localize: true,
     },
     {
       name: 'email',

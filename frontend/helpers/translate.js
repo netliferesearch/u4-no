@@ -1,11 +1,25 @@
 /*
-  translation strings for publication print
+  translation functions and strings for publication print
 */
 
+// currently translated languages
+const languageCodes = ['fr', 'es', 'in', 'uk'];
+
+// 2 letter code from language code
 export const langCode = (language = 'en') => {
   return language.length >= 2 ? language.substr(0, 2) : 'en';
 };
 
+// for sanity queries: list of localised field names
+// ex: localize(title) = title, title_fr, title_es, ..
+export const localize = fieldName => {
+  return languageCodes.reduce(
+    (fieldnames, lang) => `${fieldnames},${fieldName}_${lang}`,
+    fieldName
+  );
+};
+
+// language version of field if any, else default
 export const translateField = (language = 'en') => {
   return (obj, key) => {
     const defaultlang = 'en';
@@ -21,6 +35,7 @@ export const translateField = (language = 'en') => {
   };
 };
 
+// function translating term to language
 export const translate = (language = 'en') => {
   return key => {
     const defaultlang = 'en';
@@ -33,6 +48,7 @@ export const translate = (language = 'en') => {
   };
 };
 
+// translated versions of same set of terms for all languages
 const strings = {
   en: {
     disclaimer: 'Disclaimer',
@@ -177,8 +193,8 @@ const strings = {
     creative_commons_text:
       'Ця праця ліцензована згідно з Міжнародною ліцензією Creative Commons «Із зазначенням авторства – некомерційна – без похідних» 4.0',
     creative_commons_licenses: 'CC BY-NC-ND 4.0',
-    by: 'Автори',
-    by_plural: 'Автор',
+    by: 'Автор',
+    by_plural: 'Автори',
     reviewed_by: 'Reviewed by',
     series_editor: 'Редактор серії',
     series_editors: 'Series editors',
