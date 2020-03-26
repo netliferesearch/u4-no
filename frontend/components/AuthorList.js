@@ -23,7 +23,7 @@ const AuthorList = ({
             return (
               <span key={person._id}>
                 {person.slug &&
-                person.affiliations.length &&
+                person.affiliations &&
                 person.affiliations.some(
                   ({ _ref }) =>
                     _ref === '419c2497-8e24-4599-9028-b5023830c87f' ||
