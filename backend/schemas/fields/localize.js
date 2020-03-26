@@ -7,16 +7,25 @@
     fieldsets = array of added fieldsets (none at the moment)
 */
 
-const languages = [{ code: 'fr', name: 'French' }, { code: 'es', name: 'Spanish' }, { code: 'in', name: 'Indonesian' }];
+const languages = [
+  { code: 'fr', name: 'French' },
+  { code: 'es', name: 'Spanish' },
+  { code: 'in', name: 'Indonesian' },
+  { code: 'uk', name: 'Ukranian' },
+];
+
+const camelToTitle = (camelCase) => camelCase
+  .replace(/([A-Z])/g, (match) => ` ${match}`)
+  .replace(/^./, (match) => match.toUpperCase());
 
 export default ({ name, title, localize, ...restAttributes }) => {
   const originalFields = [{ name, title, ...restAttributes }];
 
   if (localize) {
     const translatedFields = languages.map(lang => ({
-      title: title + ' (' + lang.name + ')',
-      name: name + '_' + lang.code,
-      fieldset: name + '_translations',
+      title: `${( title || camelToTitle( name ))  } (${  lang.name  })`,
+      name: `${name}_${lang.code}`,
+      fieldset: `${name  }_translations`,
       ...restAttributes,
     }));
     return {
@@ -24,7 +33,7 @@ export default ({ name, title, localize, ...restAttributes }) => {
       fieldsets: [
         {
           title: 'Translations',
-          name: name + '_translations',
+          name: `${name  }_translations`,
           options: { collapsible: true, collapsed: true },
         },
       ],
