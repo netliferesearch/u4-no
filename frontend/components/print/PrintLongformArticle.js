@@ -85,45 +85,33 @@ class LongformArticle extends PureComponent {
           <div className="c-longform-grid">
             <div className="c-longform-grid__standard">
               <h3>{authors.length > 1 ? trans('about_the_authors') : trans('about_the_author')}</h3>
-              {authors.map(
-                ({
-                  target: {
-                    image = { asset: { url: '' } },
-                    firstName = '',
-                    surname = '',
-                    position = '',
-                    bioShort = [],
-                    bioShort_fr = [],
-                    bioShort_es = [],
-                  } = {},
-                }) => (
+              {authors
+                .map(author => (author.target ? author.target : author))
+                .map((person, index) => (
                   <div>
-                    {image.asset.url && (
-                      <img alt={`${firstName} ${surname}`} src={image.asset.url} />
+                    {person.image && person.image.asset && person.image.asset.url && (
+                      <img
+                        alt={`${transField(person, 'firstName')} ${transField(person, 'surname')}`}
+                        src={person.image.asset.url}
+                      />
                     )}
                     <p>
                       <b>
-                        {firstName} {surname}
+                        {transField(person, 'firstName')} {transField(person, 'surname')}
                       </b>
-                      {!bioShort.length && position ? (
+                      {!person.bioShort.length && person.position ? (
                         <span>
                           <br />
-                          {position}
+                          {transField(person, 'position')}
                         </span>
                       ) : null}
                     </p>
-                    {lang === 'en' && bioShort && (
-                      <BlockContent blocks={bioShort} serializers={serializers(bioShort)} />
-                    )}
-                    {lang === 'fr' && bioShort_fr && (
-                      <BlockContent blocks={bioShort_fr} serializers={serializers(bioShort_fr)} />
-                    )}
-                    {lang === 'es' && bioShort_es && (
-                      <BlockContent blocks={bioShort_es} serializers={serializers(bioShort_es)} />
-                    )}
+                    <BlockContent
+                      blocks={transField(person, 'bioShort')}
+                      serializers={serializers(transField(person, 'bioShort'))}
+                    />
                   </div>
-                )
-              )}
+                ))}
             </div>
           </div>
         ) : null}
