@@ -68,8 +68,8 @@ div#__next-error {
   size: A4 portrait;
   margin-top: 2cm;
   margin-bottom: 2cm;
-  margin-inside: 4cm;
-  margin-outside: 4cm;
+  margin-inside: 3cm;
+  margin-outside: 3cm;
 }
 .page2 {
   page-break-before: always;
@@ -345,14 +345,16 @@ a {
 }
 
 .c-article__pullQuote {
-  @include inuit-font-size($font-size-normal, $line-height-large);
+  @include inuit-font-size($font-size-normal, $line-height-normal);
   font-family: $font-sans;
   font-weight: 300;
   font-style: italic;
   text-align: left;
   letter-spacing: 0.02em;
-  margin-bottom: $spacing-large;
-  margin-top: $spacing-large;
+  padding-left: $spacing-large;
+  padding-right: $spacing-large;
+  margin-bottom: $spacing-small;
+  margin-top: $spacing-small;
   page-break-inside: avoid;
 }
 
