@@ -58,12 +58,12 @@ class LongformArticle extends PureComponent {
                   )}
                 </li>
               ))}
-            {methodology.length > 0 ? (
+            {methodology.length > 0 && (
               <li key="references" className="contents__list-item">
                 <a href="#methodology">{trans('methodology')}</a>
               </li>
-            ) : null}
-            {references && (
+            )}
+            {references.length > 0 && (
               <li key="references" className="contents__list-item">
                 <a href="#references">{trans('references')}</a>
               </li>
