@@ -1,8 +1,8 @@
 .c-article {
   /* word-wrap: break-word; */
-  @include inuit-font-size(19px, $line-height-large );
+  @include inuit-font-size(19px, $line-height-large);
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-normal, $line-height-large );
+    @include inuit-font-size($font-size-normal, $line-height-large);
   }
   @media print {
     width: 20cm;
@@ -15,19 +15,16 @@
   max-width: 950px;
   margin-top: 0;
   margin-bottom: $spacing;
-  @include inuit-font-size($font-size-normal, $line-height-large );
+  @include inuit-font-size($font-size-normal, $line-height-large);
   padding-left: $spacing;
   padding-right: $spacing;
   @include mq($from: tablet) {
     padding-left: $spacing-huge;
   }
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-large, $line-height-large );
+    @include inuit-font-size($font-size-large, $line-height-large);
   }
 }
-
-
-
 
 .c-article__lead--center {
   text-align: center;
@@ -40,11 +37,11 @@
 .c-article__lead--big-light {
   color: $white;
   font-weight: 300;
-  margin:  $spacing-large auto;
+  margin: $spacing-large auto;
   padding: 0 $spacing-small;
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-larger, $line-height-large );
-      margin:  $spacing-huge auto;
+    @include inuit-font-size($font-size-larger, $line-height-large);
+    margin: $spacing-huge auto;
   }
 }
 
@@ -55,7 +52,7 @@
   padding-right: $spacing;
   @include mq($from: tablet) {
     padding-left: $spacing-huge;
-    @include inuit-font-size($font-size-largest, $line-height-large );
+    @include inuit-font-size($font-size-largest, $line-height-large);
   }
 }
 .c-article__title--center {
@@ -140,9 +137,9 @@
 }
 
 .c-article__pullQuote {
-  @include inuit-font-size($font-size-normal, $line-height-large );
+  @include inuit-font-size($font-size-normal, $line-height-normal);
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-large, $line-height-large );
+    @include inuit-font-size($font-size-large, $line-height-normal);
   }
   font-family: $font-sans;
   font-weight: 300;
@@ -150,12 +147,12 @@
   font-style: italic;
   text-align: left;
   letter-spacing: 0.02em;
-  padding: $spacing 0;
+  padding: 0 $spacing-large;
   @include mq($from: tablet) {
-    padding: $spacing 0;
+    padding: 0 $spacing-large;
   }
-  margin-bottom: $spacing-large;
-  margin-top: $spacing-large;
+  margin-bottom: $spacing-small;
+  margin-top: $spacing-small;
 }
 
 blockquote {

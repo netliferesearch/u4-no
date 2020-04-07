@@ -36,6 +36,12 @@
 }
 
 .c-figure--small {
+  @include mq($from: tablet) {
+    width: 50%;
+  }
+  @media print {
+    width: 50%;
+  }
   img {
     width: 100%;
     height: auto;
