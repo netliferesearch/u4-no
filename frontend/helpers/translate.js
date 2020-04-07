@@ -193,8 +193,8 @@ const strings = {
     creative_commons_text:
       'Ця праця ліцензована згідно з Міжнародною ліцензією Creative Commons «Із зазначенням авторства – некомерційна – без похідних» 4.0',
     creative_commons_licenses: 'CC BY-NC-ND 4.0',
-    by: 'Автор',
-    by_plural: 'Автори',
+    by: 'Автор:',
+    by_plural: 'Автори:',
     reviewed_by: 'Reviewed by',
     series_editor: 'Редактор серії',
     series_editors: 'Series editors',
