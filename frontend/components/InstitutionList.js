@@ -16,7 +16,11 @@ const InstitutionList = ({ institutions = [] }) => (
               institution.logo.asset &&
               institution.logo.asset.url && (
                 <div>
-                  <img className="c-logo" src={institution.logo.asset.url} alt={institution.name} />
+                  <img
+                    className="c-logo--larger"
+                    src={institution.logo.asset.url}
+                    alt={institution.name}
+                  />
                 </div>
               )}
           </span>
