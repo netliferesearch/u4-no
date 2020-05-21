@@ -62,7 +62,7 @@ class SearchFiltersV2 extends React.Component {
     return (
       <div className="c-filters-v2">
         <div className="c-filters-v2__topbar">
-          <h3 className="c-filters-v2__topbar-result">Results ({searchTotal})</h3>
+          <h3 className="c-filters-v2__topbar-result">Results ({`${searchTotal.value}`})</h3>
           <button onClick={toggle} className="c-search-results-v2__topbar-filter">
             Update search
           </button>
