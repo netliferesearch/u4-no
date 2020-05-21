@@ -11,10 +11,11 @@ const mapDispatchToProps = dispatch => ({
   updateReadingProgress: bindActionCreators(updateReadingProgress, dispatch),
 });
 
+
 // anonymous has read access to elasticsearch index so this works
 const client = new elasticsearch.Client({
   host: 'https://34f28f12080e435795254ec8886248ba.eu-central-1.aws.cloud.es.io/',
-  apiVersion: '7.2',
+  apiVersion: '7.7',
 });
 
 const aggregations = {
