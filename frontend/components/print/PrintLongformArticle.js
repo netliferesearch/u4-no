@@ -99,7 +99,7 @@ class LongformArticle extends PureComponent {
                       <b>
                         {transField(person, 'firstName')} {transField(person, 'surname')}
                       </b>
-                      {!person.bioShort.length && person.position ? (
+                      {!(person.bioShort && person.bioShort.length) && person.position ? (
                         <span>
                           <br />
                           {transField(person, 'position')}
