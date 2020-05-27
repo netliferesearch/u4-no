@@ -109,22 +109,25 @@ const SearchResult = props => {
       </div>
     );
   } else if (type === 'publication') {
-    const { highlight: { content = [], title: titleHighlight = [] } = {} } = props;
+    const { highlight: { content = [], title: titleHighlight = [], subtitle: subTitleHighlight = [] } = {} } = props;
+
     const {
       title = '',
+      subtitle = '',
       date: { utc: utcDate = '' } = {},
       filedUnderTopicNames = [],
       url = '',
       standfirst = '',
       publicationType: { title: publicationTypeTitle = '' } = {},
     } = _source;
+
     return (
       <div>
         <span {...classes('items-type')}>Publication<span {...classes('pipe')}>|</span>{`${publicationTypeTitle}`}</span>
         <br />
         <Link route={url}>
           <a {...classes('items-title')}>
-            <Highlight highlight={titleHighlight} fallback={title} />
+            <Highlight highlight={titleHighlight} fallback={title} />{`${subtitle ? ': ' : ''}`}<Highlight highlight={subTitleHighlight} fallback={subtitle} />
           </a>
         </Link>
         <br />
@@ -133,7 +136,8 @@ const SearchResult = props => {
           <Highlight highlight={content} fallback={standfirst} />
         </p>
         {uniq(filedUnderTopicNames).slice(0,1).map(name => (
-          <div key={name} {...classes('items-tab')}>
+          //<div key={name} {...classes('items-tab')}>
+          <div key={name} className='topic'>
             {name}
           </div>
         ))}
@@ -165,7 +169,8 @@ const SearchResult = props => {
         <Highlight highlight={content} fallback={standfirst} />
       </p>
       {uniq(filedUnderTopicNames).map(name => (
-        <div key={name} {...classes('items-tab')}>
+        //<div key={name} {...classes('items-tab')}>
+        <div key={name} className='topic'>
           {name}
         </div>
       ))}
@@ -187,19 +192,19 @@ class SearchResultsV2 extends Component {
       this.setState({ isLoading: false });
     }
   }
-
   render() {
     const { data = {}, searchPageNum = 1, updateSearchPageNum, searchFilters = [] } = this.props;
-    const { hits = [], total = 0 } = data.hits || {};
+    const { hits = [], total:{value = 0} } = data.hits || {};
+
     const resultsPerPage = 10;
-    const isMoreResultsToLoad = searchPageNum * resultsPerPage < total;
+    const isMoreResultsToLoad = searchPageNum * resultsPerPage < value;
     return (
       <section {...classes()}>
-        {!total && <span />}
+        {!value && <span />}
         <div {...classes('topbar')}>
           <div {...classes('topbar__results')}>
-            {searchFilters.length > 0 || total > 0
-              ? `Results (${total})`
+            {searchFilters.length > 0 || value > 0
+              ? `Results (${value})`
               : `Search our publication, courses and more. Enter a query above, and the results will be
           displayed as you type.`}
           </div>
@@ -226,9 +231,9 @@ class SearchResultsV2 extends Component {
               }
             }}
           >
-            {total === 0 ? null : !isMoreResultsToLoad && !this.state.isLoading ? (
+            {value === 0 ? null : !isMoreResultsToLoad && !this.state.isLoading ? (
               <p>
-                Showing {total} of {total} search results
+                Showing {value} of {value} search results
               </p>
             ) : this.state.isLoading ? (
               <p>Loading more search results</p>

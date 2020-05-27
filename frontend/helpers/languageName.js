@@ -4,6 +4,7 @@ export default ({ langcode = '' }) => {
     fr_FR: 'French',
     es_ES: 'Spanish',
     de_DE: 'German',
+    in_IN: 'Indonesian',
     pt_PT: 'Portuguese',
     ru_RU: 'Russian',
     uk_UA: 'Ukranian',

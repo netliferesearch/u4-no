@@ -11,6 +11,18 @@ const InstitutionList = ({ institutions = [] }) => (
           <span key={_id + index}>
             {description}
             {institution && institution.name ? ` ${institution.name}` : ''}
+            {institution &&
+              institution.logo &&
+              institution.logo.asset &&
+              institution.logo.asset.url && (
+                <div>
+                  <img
+                    className="c-logo--larger"
+                    src={institution.logo.asset.url}
+                    alt={institution.name}
+                  />
+                </div>
+              )}
           </span>
         ))}
   </p>

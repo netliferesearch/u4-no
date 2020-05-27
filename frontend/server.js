@@ -32,6 +32,7 @@ app.prepare().then(() => {
   server.get('/search-v2', (req, res) => res.redirect(301, '/search'));
   server.get('/publications/:slug/pdf', publicationPdfHandler);
   server.get('/publications/:slug.pdf', publicationPdfHandler);
+  server.get('/publication/:slug.pdf', publicationPdfHandler);
   server.get('/previewpdf/:type/:id', publicationPdfPreviewHandler);
   server.use(handler);
   server.listen(process.env.PORT || 3000);

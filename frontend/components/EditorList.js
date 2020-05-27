@@ -1,6 +1,6 @@
 import React from 'react';
 import { LinkToItem } from './';
-import { translate } from '../helpers/translate';
+import { translate, translateField } from '../helpers/translate';
 
 const EditorList = (
   {
@@ -16,6 +16,7 @@ const EditorList = (
   index
 ) => {
   const trans = translate(language);
+  const transField = translateField(language);
   return (
     editors.length > 0 && (
       <span>
@@ -27,17 +28,17 @@ const EditorList = (
         {': '}
         {editors
           .map(editor => (editor.target ? editor.target : editor))
-          .map(({ _id = '', firstName = '', surname = '', slug = {} }, index) => (
+          .map((person, index) => (
             <span key={_id}>
               {_id ? (
-                <LinkToItem type="person" slug={slug}>
+                <LinkToItem type="person" slug={person.slug}>
                   <a>
-                    {firstName} {surname}
+                    {transField(person, 'firstName')} {transField(person, 'surname')}
                   </a>
                 </LinkToItem>
               ) : (
                 <span>
-                  {firstName} {surname}
+                  {transField(person, 'firstName')} {transField(person, 'surname')}
                 </span>
               )}
               {editors.length > 1 && index + 2 < editors.length && <span>, </span>}

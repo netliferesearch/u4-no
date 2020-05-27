@@ -93,7 +93,7 @@ const PublicationArticleHeader = ({
           <p>
             {authors.length ? (
               <span>
-                <AuthorList authors={authors} language={language} />
+                <AuthorList authors={authors} language={language} introkey="by" />
                 <br />
               </span>
             ) : null}

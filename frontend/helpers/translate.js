@@ -1,11 +1,25 @@
 /*
-  translation strings for publication print
+  translation functions and strings for publication print
 */
 
+// currently translated languages
+const languageCodes = ['fr', 'es', 'in', 'uk'];
+
+// 2 letter code from language code
 export const langCode = (language = 'en') => {
   return language.length >= 2 ? language.substr(0, 2) : 'en';
 };
 
+// for sanity queries: list of localised field names
+// ex: localize(title) = title, title_fr, title_es, ..
+export const localize = fieldName => {
+  return languageCodes.reduce(
+    (fieldnames, lang) => `${fieldnames},${fieldName}_${lang}`,
+    fieldName
+  );
+};
+
+// language version of field if any, else default
 export const translateField = (language = 'en') => {
   return (obj, key) => {
     const defaultlang = 'en';
@@ -21,11 +35,12 @@ export const translateField = (language = 'en') => {
   };
 };
 
+// function translating term to language
 export const translate = (language = 'en') => {
   return key => {
     const defaultlang = 'en';
     const lang = langCode(language);
-    if (!strings[lang][key]) {
+    if (!(strings[lang] && strings[lang][key])) {
       console.warn(`Translation of '${key}' for '${lang}' not found.`);
       return strings[defaultlang][key] || '';
     }
@@ -33,6 +48,7 @@ export const translate = (language = 'en') => {
   };
 };
 
+// translated versions of same set of terms for all languages
 const strings = {
   en: {
     disclaimer: 'Disclaimer',
@@ -44,12 +60,14 @@ const strings = {
     publisher_and_bibliographic_reference: 'Publisher and bibliographic reference',
     keywords: 'Keywords',
     publication_type: 'Publication type',
+    u4_issue: 'U4 Issue',
     notes: 'Notes',
     creative_commons: 'Creative commons',
     creative_commons_text:
       'This work is licenced under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International licence',
     creative_commons_licenses: 'CC BY-NC-ND 4.0',
     by: 'By',
+    by_plural: 'By',
     reviewed_by: 'Reviewed by',
     series_editor: 'Series editor',
     series_editors: 'Series editors',
@@ -81,6 +99,7 @@ const strings = {
       'Ce travail est distribué sous licence Creative Commons Attribution – Pas d’utilisation commerciale – Pas de modification 4.0 Licence internationale',
     creative_commons_licenses: 'CC BY-NC-ND 4.0',
     by: 'Par',
+    by_plural: 'Par',
     reviewed_by: 'Revu par',
     series_editor: 'Directeur de la collection',
     series_editors: 'Directeurs de la collection',
@@ -111,6 +130,7 @@ const strings = {
       'Este trabajo tiene una licencia Internacional de Creative Commons Attribution-NonCommercial-NoDerivatives 4.0',
     creative_commons_licenses: 'CC BY-NC-ND 4.0',
     by: 'Por',
+    by_plural: 'Por',
     reviewed_by: 'Revisado por',
     series_editor: 'Editor de la serie',
     series_editors: 'Editores de la serie',
@@ -142,6 +162,7 @@ const strings = {
       'Karya ini dilisensikan dengan Atribusi Creative Commons-NonCommercial-Lisensi Internasional NoDerivatives 4.0',
     creative_commons_licenses: 'CC BY-NC-ND 4.0',
     by: 'Oleh',
+    by_plural: 'Oleh',
     reviewed_by: 'Ditinjau oleh',
     series_editor: 'Editor seri',
     series_editors: 'Editor seri',
@@ -157,32 +178,34 @@ const strings = {
     abbreviations: 'Singkatan',
   },
   uk: {
-    disclaimer: 'Disclaimer',
+    disclaimer: 'Застереження',
     disclaimer_text:
-      'All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies.',
-    partner_agencies: 'Partner agencies',
-    about_u4: 'About U4',
-    cover_photo: 'Cover photo',
+      'Усі погляди авторів, висловлені в цьому тексті, не обов’язково відображають погляди партнерів U4.',
+    partner_agencies: 'Партнери',
+    about_u4: 'Про U4',
+    cover_photo: 'Фото на обкладинці',
     publisher_and_bibliographic_reference: 'Publisher and bibliographic reference',
-    keywords: 'Keywords',
-    publication_type: 'Publication type',
+    keywords: 'Ключові слова',
+    publication_type: 'Тип публікації',
+    u4_issue: 'Зведення U4',
     notes: 'Notes',
-    creative_commons: 'Creative commons',
+    creative_commons: 'Організація Creative commons',
     creative_commons_text:
-      'This work is licenced under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International licence',
+      'Ця праця ліцензована згідно з Міжнародною ліцензією Creative Commons «Із зазначенням авторства – некомерційна – без похідних» 4.0',
     creative_commons_licenses: 'CC BY-NC-ND 4.0',
-    by: 'Автори:',
+    by: 'Автор:',
+    by_plural: 'Автори:',
     reviewed_by: 'Reviewed by',
-    series_editor: 'Series editor',
+    series_editor: 'Редактор серії',
     series_editors: 'Series editors',
-    main_points: 'Main points',
-    table_of_contents: 'Table of contents',
+    main_points: 'Основні моменти',
+    table_of_contents: 'Зміст',
     abstract: 'Abstract',
-    about_the_author: 'About the author',
-    about_the_authors: 'About the authors',
-    acknowledgements: 'Acknowledgements',
-    references: 'References',
-    and: 'and',
+    about_the_author: 'Про автора',
+    about_the_authors: 'Про авторів',
+    acknowledgements: 'Подяки',
+    references: 'Список джерел',
+    and: 'і',
     methodology: 'Methodology',
     abbreviations: 'Abbreviations',
   },

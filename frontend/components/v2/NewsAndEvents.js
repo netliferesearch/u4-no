@@ -2,44 +2,100 @@ import React from 'react';
 import dateToString from '../../helpers/dateToString';
 import BEMHelper from 'react-bem-helper';
 
-const NewsAndEvents = ({ events }) => {
-  const classes = BEMHelper({ name: 'frontpage-section', prefix: 'c-' });
+const getStringsByType = item => {
+  const itemType = item._type;
+  let typeTitle = '';
+  let typeSubTitle = '';
+  let slugOfType = '';
+
+  switch (itemType) {
+    case 'publication':
+      typeTitle = 'Publication | ';
+      typeSubTitle =
+      item.publicationType && (typeof item.publicationType.title === 'string') ? item.publicationType.title : '';
+      slugOfType = 'publication/';
+      break;
+    case 'course':
+      typeTitle = 'Online course';
+      typeSubTitle = '';
+      slugOfType = 'courses/';
+      break;
+    case 'event':
+      typeTitle = 'Workshop';
+      typeSubTitle = '';
+      slugOfType = '';
+      break;
+    case 'blog-post':
+      typeTitle = 'Blog post';
+      typeSubTitle = '';
+      slugOfType = 'blog/';
+      break;
+    case 'article':
+      typeTitle = 'Article';
+      // typeSubTitle = typeof item.articleType.title === 'string' ? ' | '+item.articleType.title : '';
+      typeSubTitle = '';
+      slugOfType = '';
+      break;
+    default:
+      typeTitle = '';
+      typeSubTitle = '';
+      slugOfType = '';
+  }
+
+  return { typeTitle, typeSubTitle, slugOfType };
+};
+
+const NewsAndEvents = ({ items, title }) => {
+  const classes = BEMHelper({ name: 'related-items-list', prefix: 'c-' });
+  //console.log('Related items', items);
   return (
-    <div className="c-frontpage-section__content c-frontpage-section__events">
-      <h2 className="u-blue-underline">News &amp; events</h2>
+    <div className="c-related-items-list">
+      <h2 className="u-blue-underline u-navy-big-headline">{title}</h2>
       <hr className="u-section-underline" />
       <div className="cols">
-        {events.map((event, index) => (
-          <div className="col" key={index}>
-            <div className="text">
-              <div className="top-content">
-                <h6 {...classes('publication-type')}>
-                  {event._type === 'course' ? 'Online course' : 'Workshop'}
-                </h6>
-                <a
-                  href={`${event._type === 'course' ? 'courses/' : ''}${event.slug}`}
-                  {...classes('publication-headline')}
-                >
-                  <h3 {...classes('publication-headline')}>{event.title}</h3>
-                </a>
-                <p {...classes('publication-intro')}>{event.lead}</p>
-              </div>
-              <div className="bottom-content">
-                <p {...classes('date')}>{dateToString({ start: event.startDate.utc })}</p>
-                <div {...classes('topic')}>
-                  {event.topics &&
-                    event.topics.map((topic, index) => {
-                      return (
-                        <span className="topic" key={index}>
-                          {topic.title}
-                        </span>
-                      );
-                    })}
+        {items
+          ? items.map((item, index) => (
+              <div className="col" key={index}>
+                <div className="text">
+                  <div className="top-content">
+                    <h6 {...classes('publication-type')}>
+                      {getStringsByType(item).typeTitle}
+                      {getStringsByType(item).typeSubTitle}
+                    </h6>
+                    <a
+                      href={`/${getStringsByType(item).slugOfType}${
+                        typeof item.slug === 'string' ? item.slug : item.slug.current
+                      }`}
+                      {...classes('publication-headline')}
+                    >
+                      <h3 {...classes('publication-headline')}>{item.title}</h3>
+                    </a>
+                    {item.standfirst && <p {...classes('publication-intro')}>{item.standfirst}</p>}
+                  </div>
+                  <div className="bottom-content">
+                    {item.startDate && (
+                      <p {...classes('date')}>{dateToString({ start: item.startDate.utc })}</p>
+                    )}
+                    {item.date && (
+                      <p {...classes('date')}>{dateToString({ start: item.date.utc })}</p>
+                    )}
+                    <div {...classes('topics')}>
+                      {item.topics &&
+                        item.topics.map((topic, index) => {
+                          return (
+                            topic.title && (
+                              <span className="topic" key={index}>
+                                {topic.title}
+                              </span>
+                            )
+                          );
+                        })}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        ))}
+            ))
+          : null}
       </div>
     </div>
   );

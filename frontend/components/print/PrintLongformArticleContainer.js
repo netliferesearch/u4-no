@@ -81,17 +81,13 @@ const LongFormArticleContainer = props => {
             <p {...classes('float-left')}>
               {authors ? (
                 <span>
-                  <AuthorList authors={authors.map(({ target }) => target)} language={language} />
+                  <AuthorList authors={authors} language={language} />
                   <br />
                 </span>
               ) : null}
               {editors ? (
                 <span>
-                  <EditorList
-                    editors={editors.map(({ target }) => target)}
-                    language={language}
-                    pubtype={publicationType._id}
-                  />
+                  <EditorList editors={editors} language={language} pubtype={publicationType._id} />
                   <br />
                 </span>
               ) : null}
@@ -141,8 +137,9 @@ const LongFormArticleContainer = props => {
             <h2>{trans('partner_agencies')}</h2>
             <p>
               {institutions.map((inst, index) => (
-                <span key={inst._id + index}>
-                  {lang === 'en' ? `${inst.name}` : `${transField(inst, 'name')} (${inst.name})`}
+                <span key={inst._id}>
+                  {transField(inst, 'name')}
+                  {lang !== 'en' && inst[`name_${lang}`] && `(${inst.name})`}
                   <br />
                 </span>
               ))}
@@ -151,25 +148,10 @@ const LongFormArticleContainer = props => {
         )}
         <div className="page2__about-u4">
           <h2>{trans('about_u4')}</h2>
-          {lang === 'en' && u4.about && (
-            <BlockContent
-              blocks={transField(u4, 'about')}
-              serializers={serializers(transField(u4, 'about'))}
-            />
-          )}
-
-          {lang === 'fr' && (
-            <BlockContent
-              blocks={transField(u4, 'about')}
-              serializers={serializers(transField(u4, 'about'))}
-            />
-          )}
-          {lang === 'es' && (
-            <BlockContent
-              blocks={transField(u4, 'about')}
-              serializers={serializers(transField(u4, 'about'))}
-            />
-          )}
+          <BlockContent
+            blocks={transField(u4, 'about')}
+            serializers={serializers(transField(u4, 'about'))}
+          />
         </div>
         {featuredImage && (
           <div className="page2__coverphoto">

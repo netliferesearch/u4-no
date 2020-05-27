@@ -44,7 +44,7 @@ const serializers = {
   types: {
     image: ({ node }) => <Figure {...node} />,
     pullQuote: ({ node: { text } }) => (
-      <div {...classes('medium')}>
+      <div {...classes('standard')}>
         <PullQuote>{text}</PullQuote>
       </div>
     ),
@@ -179,7 +179,7 @@ const serializers = {
             <h2 className="c-topic-section__title u-margin-top-large u-margin-bottom-huge">
               {title}
             </h2>
-            <div className={`u-video u-margin-bottom-huge ${size ? size : ''}`}>
+            <div className={`u-video u-margin-bottom-huge ${size || ''}`}>
               <ReactPlayer
                 controls
                 width="100%"
