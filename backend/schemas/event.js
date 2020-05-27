@@ -1,5 +1,6 @@
 import { leadText, featuredImage, slug, image } from './fields'
 import annotationsLinksOnly from './fields/annotationsLinksOnly'
+import defaultBlock from './fields/defaultBlock';
 
 export default {
   title: 'Event',
@@ -65,23 +66,7 @@ export default {
       title: 'Content',
       type: 'array',
       of: [
-        {
-          type: 'block',
-          styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'H2', value: 'h2'},
-            {title: 'H3', value: 'h3'},
-          ],
-          // Only allow numbered lists
-          marks: {
-            // Only allow these decorators
-            decorators: [
-              {title: 'Emphasis', value: 'em'}
-            ],
-            // Support annotating text with a reference to an author
-            annotations: annotationsLinksOnly
-          }
-        },
+        defaultBlock,
         image,
       ]
     },
