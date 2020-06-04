@@ -5,7 +5,7 @@ import HighChartsEditor from '../components/HighChartsEditor';
  * A publication is a long form document
  */
 import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
-import { title, subtitle, standfirst, image, leadText, slug, language, license, previewLinks } from './fields';
+import { title, subtitle, standfirst, image, leadText, slug, language, license, previewLinks, shortSlug } from './fields';
 
 export default {
   name: 'publication',
@@ -481,6 +481,7 @@ export default {
       inputComponent: UrlWithMetadataInput,
     },
     slug,
+    shortSlug,
   ],
   orderings: [
     {

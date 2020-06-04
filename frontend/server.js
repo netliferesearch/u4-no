@@ -10,6 +10,8 @@ const {
   publicationPdfPreviewHandler,
 } = require('../service-publication-pdf-builder/publication-pdf-preview-handler');
 
+const { shortUrlHandler } = require('./pages/_shorturl');
+
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
 const handler = routes.getRequestHandler(app);
 
@@ -33,6 +35,7 @@ app.prepare().then(() => {
   server.get('/publications/:slug/pdf', publicationPdfHandler);
   server.get('/publications/:slug.pdf', publicationPdfHandler);
   server.get('/previewpdf/:type/:id', publicationPdfPreviewHandler);
+  server.get('/r/:shortSlug', shortUrlHandler);
   server.use(handler);
   server.listen(process.env.PORT || 3000);
 });
