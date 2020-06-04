@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const sanityClient = require('@sanity/client');
 
 // return url from type and slug
