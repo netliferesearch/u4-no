@@ -106,10 +106,12 @@ class LongformArticle extends PureComponent {
                         </span>
                       ) : null}
                     </p>
-                    <BlockContent
-                      blocks={transField(person, 'bioShort')}
-                      serializers={serializers(transField(person, 'bioShort'))}
-                    />
+                    {person.bioShort && person.bioShort.length && (
+                      <BlockContent
+                        blocks={transField(person, 'bioShort')}
+                        serializers={serializers(transField(person, 'bioShort'))}
+                      />
+                    )}
                   </div>
                 ))}
             </div>
