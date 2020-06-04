@@ -110,7 +110,7 @@ const getAllElasticsearchDocuments = async () => {
       allDocs.push(hit);
     });
     // check to see if we have collected all of the titles
-    if (response.hits.total === allDocs.length) {
+    if (response.hits.total.value === allDocs.length) {
       console.log('Number of ES docs found:', allDocs.length);
       break;
     }
