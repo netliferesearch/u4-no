@@ -146,7 +146,7 @@ class Menu extends Component {
                       <li {...menuClasses('list-item')}>
                         <a
                           {...menuClasses('link')}
-                          href="/search?filters=publications-only%2Cpub-U4%20Blog&sort=year-desc"
+                          href="/blog"
                         >
                           Blog
                         </a>

@@ -1,5 +1,7 @@
+
 import { leadText, featuredImage, slug, image } from './fields';
 import annotationsLinksOnly from './fields/annotationsLinksOnly';
+
 import defaultBlock from './fields/defaultBlock';
 
 export default {

@@ -55,3 +55,16 @@ iframe {
 .u-visually-hidden {
   visibility: hidden;
 }
+
+.u-reverse-arrow {
+  transform: rotate(180deg);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

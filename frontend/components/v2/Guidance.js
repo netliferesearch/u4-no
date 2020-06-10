@@ -4,7 +4,7 @@ import { ArrowRight } from '../icons';
 const Guidance = () => {
   return (
     <div className="c-frontpage-blue-section__content c-frontpage-blue-section__guidance">
-      <div className="col">
+      <div className="col col-1">
         <h2>Inform your work with U4’s quality research and practical guidance.</h2>
         <p>
           The U4 Anti-Corruption Resource Centre works to reduce the harmful impact of corruption on
