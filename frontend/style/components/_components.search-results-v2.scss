@@ -115,7 +115,7 @@
 
 .c-search-results-v2__lead-text {
   @include inuit-font-size($font-size-small, $line-height-small);
-  font-family: $font-serif;
+  font-family: $font-sans;
 }
 
 .c-search-results-v2__items-date {

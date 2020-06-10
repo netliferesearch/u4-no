@@ -8,7 +8,7 @@ export default function CreativecommonsCC(props) {
       width="64px"
       height="64px"
       viewBox="5.5 -3.5 64 64"
-      enable-background="new 5.5 -3.5 64 64"
+      enableBackground="new 5.5 -3.5 64 64"
       {...props}
     >
       <g>

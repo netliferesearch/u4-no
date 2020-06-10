@@ -23,6 +23,7 @@
     }
   }
   &__publication-type {
+    color: $brand-dark;
     font-size: 12px;
     line-height: 32px;
     font-family: $font-sans;
@@ -47,7 +48,8 @@
       font-size: 22px;
       line-height: 30px;
     }
-    &:hover {
+    &:hover,
+    &:focus {
       border-color: transparent;
     }
     &:visited {
@@ -60,6 +62,7 @@
     }
   }
   &__publication-intro {
+    color: $brand-dark;
     font-weight: 300;
     font-family: $font-sans;
     font-size: 18px;
@@ -69,7 +72,7 @@
   &__view-all {
     font-family: $font-sans;
     @include inuit-font-size(16px, 28px);
-    font-weight: 500;
+    font-weight: 600;
     color: $brand-dark;
     img {
       padding-left: 5px;
@@ -201,6 +204,9 @@
         @include inuit-font-size(18px, 26px);
         font-weight: 300;
       }
+      .bottom {
+        width: 80%;
+      }
     }
     .col {
       flex-grow: 1;
@@ -231,6 +237,9 @@
             margin-bottom: 0;
           }
         }
+        .post-image {
+          margin-bottom: $spacing-tiny;
+        }
       }
     }
     @include mq($from: tablet) {
@@ -259,12 +268,13 @@
       .col {
         width: calc(100% - 388px);
         .text {
-          padding: 0 22px 0 49px;
+          padding: 0 $spacing-large 0 0;
         }
         &.row {
           width: 100%;
           padding: 0 $spacing;
           padding-left: 57px;
+          padding-right: 0;
           justify-content: space-between;
           display: flex;
         }
@@ -274,6 +284,9 @@
   &__publications {
     font-family: $font-sans;
     padding: 0 $spacing;
+    h2 {
+      color: $brand-dark;
+    }
     .text {
       .u-section-underline {
         margin-top: $spacing;
@@ -320,40 +333,43 @@
     }
   }
   &__events {
-    padding: 0 $spacing;
-    padding-bottom: $spacing-large;
-    .cols {
-      width: 100%;
-      .col {
-        margin-bottom: $spacing-large;
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
-    @include mq($from: tablet) {
-      padding: 0;
-    }
-    @include mq($from: desktop) {
-      padding-bottom: $spacing-huge;
-      .cols {
-        display: flex;
-        .col {
-          width: 30%;
-          margin-right: 3.33%;
-          margin-bottom: 0;
-          .text {
-            display: flex;
-            height: 100%;
-            flex-wrap: wrap;
-            .bottom-content {
-              width: 100%;
-              align-self: flex-end;
-              margin-top: auto;
-            }
-          }
-        }
-      }
-    }
+    // padding: 0 $spacing;
+    // padding-bottom: $spacing-large;
+    // .cols {
+    //   width: 100%;
+    //   .col {
+    //     margin-bottom: $spacing-large;
+    //     &:last-child {
+    //       margin-bottom: 0;
+    //     }
+    //   }
+    // }
+    // h2 {
+    //   color: $brand-dark;
+    // }
+    // @include mq($from: tablet) {
+    //   padding: 0;
+    // }
+    // @include mq($from: desktop) {
+    //   padding-bottom: $spacing-huge;
+    //   .cols {
+    //     display: flex;
+    //     .col {
+    //       width: 30%;
+    //       margin-right: 3.33%;
+    //       margin-bottom: 0;
+    //       .text {
+    //         display: flex;
+    //         height: 100%;
+    //         flex-wrap: wrap;
+    //         .bottom-content {
+    //           width: 100%;
+    //           align-self: flex-end;
+    //           margin-top: auto;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
   }
 }
