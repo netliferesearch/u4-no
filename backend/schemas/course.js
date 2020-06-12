@@ -1,5 +1,6 @@
 import { title, leadText, featuredImage, language, slug, vimeoVideo } from './fields';
 import annotationsLinksOnly from './fields/annotationsLinksOnly';
+import augmentSchema from './fields/augmentSchema';
 import defaultBlock from './fields/defaultBlock';
 
 export default augmentSchema({
