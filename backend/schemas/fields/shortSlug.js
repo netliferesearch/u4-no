@@ -1,4 +1,5 @@
 import client from 'part:@sanity/base/client';
+import ShortSlugInput from '../../components/ShortSlug';
 
 const getRandomString = () => {
   const length = 3;
@@ -35,16 +36,17 @@ const isUnique = (slug, options) => {
 };
 
 const shortSlug = {
-  title: 'Short slug',
+  title: 'Short URL',
   name: 'shortSlug',
-  description:
-    'To create a short url like u4.no/r/xyz. Type a custom value or generate a random one',
   type: 'slug',
   options: {
     source: '_id', // slugify uses this to verify uniqueness
-    slugify: getRandomString,
+    slugify: slugify,
     isUnique,
+    urlPrefix: 'https://www.u4.no/r/',
+    placeholder: 'Enter a custom value or generate random'
   },
+  inputComponent: ShortSlugInput,
 };
 
 export default shortSlug;
