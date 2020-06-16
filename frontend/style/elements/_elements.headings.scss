@@ -27,3 +27,16 @@ h4 {
   margin-bottom: 0;
   font-weight: bold;
 }
+
+h5 {
+  @include inuit-font-size($font-size-normal, $line-height-large);
+  @include mq($from: desktop) {
+    @include inuit-font-size($font-size-normal, $line-height-large);
+  }
+  margin-top: $spacing-small;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+h5 + p.c-longform-grid__standard {
+  margin-top: 0;
+}
