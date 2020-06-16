@@ -1,4 +1,4 @@
-import { leadText, featuredImage, slug, shortSlug, image } from './fields'
+import { leadText, featuredImage, slug, image } from './fields'
 import annotationsLinksOnly from './fields/annotationsLinksOnly'
 import defaultBlock from './fields/defaultBlock';
 
@@ -148,7 +148,6 @@ export default {
       ],
     },
     slug,
-    shortSlug
   ],
 
   orderings: [
