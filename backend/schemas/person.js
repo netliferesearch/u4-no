@@ -42,13 +42,14 @@ export default augmentSchema({
       name: 'slug',
       type: 'slug',
       options: {
-        source: 'surname',
+        source: doc => `${doc.firstName}-${doc.surname}`,
         slugify: input =>
           input
             .toLowerCase()
             .replace(/\s+/g, '-')
             .slice(0, 200),
       },
+      validation: Rule => Rule.custom( slug => {return typeof slug === 'undefined' ? 'Slug cannot be empty' : true})
     },
     {
       name: 'affiliations',
