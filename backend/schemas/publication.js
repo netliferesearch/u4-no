@@ -16,18 +16,31 @@ export default {
     title,
     subtitle,
     publicationContent,
-    leadText,
-    standfirst,
     {
-      name: 'mainPoints',
-      title: 'Main points',
+      name: 'summary',
+      title: 'Short version',
       description:
-        'List 2–10 implications/recommendations/must-knows for development professionals. 1-2 sentences per point.',
+        'One-pager, blog-like, light narrative. Bite-sized chunks with descriptive sub-headings. Explain: 1. the main recommendations and/or implications and findings, and  2. why this is important. Max 1000 words.',
       type: 'array',
       of: [
         {
-          type: 'string',
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+            { title: 'H4', value: 'h4' },
+            { title: 'H5', value: 'h5' },
+          ],
+          // Only allow numbered lists
+          marks: {
+            // Only allow these decorators
+            decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
+            // Support annotating text with a reference to an author
+            annotations,
+          },
         },
+        image,
       ],
     },
     {
@@ -62,15 +75,70 @@ export default {
       ],
     },
     {
-      name: 'date',
-      description: 'Date of publication',
-      type: 'richDate',
-      options: {
-        inputUtc: true,
-        dateFormat: 'YYYY-MM-DD',
-        inputDate: true,
-        inputTime: false,
+      name: 'topics',
+      description: 'Select relevant U4 topics',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          weak: true,
+          to: [
+            {
+              type: 'topics',
+            },
+          ],
+        },
+      ],
+      preview: {
+        title: 'topics.title',
       },
+    },
+    {
+      name: 'keywords',
+      description: 'Chose from drop-down menu of the available U4 keywords.',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'keyword',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'mainPoints',
+      title: 'Main points',
+      description:
+        'List 2–10 implications/recommendations/must-knows for development professionals. 1-2 sentences per point.',
+      type: 'array',
+      of: [
+        {
+          type: 'string',
+        },
+      ],
+    },
+    standfirst,
+    leadText,
+    {
+      name: 'references',
+      title: 'Publication references',
+      description: 'A list of the sources used in this publication',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          lists: [],
+          styles: [],
+          marks: {
+            // Only allow these decorators
+            decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
+            annotations,
+          },
+        },
+      ],
     },
     {
       name: 'publicationType',
@@ -89,22 +157,15 @@ export default {
       type: 'string',
     },
     {
-      name: 'references',
-      title: 'Publication references',
-      description: 'A list of the sources used in this publication',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          lists: [],
-          styles: [],
-          marks: {
-            // Only allow these decorators
-            decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
-            annotations,
-          },
-        },
-      ],
+      name: 'date',
+      description: 'Date of publication',
+      type: 'richDate',
+      options: {
+        inputUtc: true,
+        dateFormat: 'YYYY-MM-DD',
+        inputDate: true,
+        inputTime: false,
+      },
     },
     {
       name: 'featuredImage',
@@ -167,40 +228,6 @@ export default {
           description: 'Enter link for source for the image or the originator',
         },
         license,
-      ],
-    },
-    {
-      name: 'topics',
-      description: 'Select relevant U4 topics',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          weak: true,
-          to: [
-            {
-              type: 'topics',
-            },
-          ],
-        },
-      ],
-      preview: {
-        title: 'topics.title',
-      },
-    },
-    {
-      name: 'keywords',
-      description: 'Chose from drop-down menu of the available U4 keywords.',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {
-              type: 'keyword',
-            },
-          ],
-        },
       ],
     },
     {
@@ -364,33 +391,6 @@ export default {
       type: 'text',
     },
     {
-      name: 'summary',
-      title: 'Short version',
-      description:
-        'One-pager, blog-like, light narrative. Bite-sized chunks with descriptive sub-headings. Explain: 1. the main recommendations and/or implications and findings, and  2. why this is important. Max 1000 words.',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'H2', value: 'h2' },
-            { title: 'H3', value: 'h3' },
-            { title: 'H4', value: 'h4' },
-            { title: 'H5', value: 'h5' },
-          ],
-          // Only allow numbered lists
-          marks: {
-            // Only allow these decorators
-            decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
-            // Support annotating text with a reference to an author
-            annotations,
-          },
-        },
-        image,
-      ],
-    },
-    {
       name: 'summaryExternal',
       title: 'Link to external short version',
       description: 'Most probably a medium link',
@@ -432,19 +432,11 @@ export default {
       ],
     },
     {
-      name: 'blurbs',
-      type: 'array',
-      of: [
-        {
-          type: 'blurb',
-        },
-      ],
-    },
-    {
       name: 'workflow',
       type: 'object',
       title: 'Editorial workflow',
       description: 'Keep track',
+      hidden: true,
       fields: [
         {
           name: 'assigned',
