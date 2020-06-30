@@ -23,10 +23,12 @@ import file from './file';
 import articleType from './articleType';
 import u4Event from './event';
 //import localeString from './fields/localeString'
+import blogPost from './blogPost';
 import defaultBlocks from './fields/defaultBlocks';
 
 const types = [
   article,
+  blogPost,
   file,
   course,
   u4Event,
