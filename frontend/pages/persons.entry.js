@@ -166,7 +166,7 @@ const RecentWork = ({ articles }) => (
                       {article.standfirst
                         ? article.standfirst
                         : article.lead
-                        ? article.lead.substring(0, 200) + '...'
+                        ? `${article.lead.substring(0, 200)}...`
                         : ''}
                     </p>
                     {uniq(article.topicsTitles)
@@ -198,72 +198,85 @@ const Persons = ({ data: { person = {} }, url = '' }) =>
           url={url}
           data={{ _type: 'people', slug: { current: url.query.slug }, title: 'People' }}
         />
-        <div className="o-wrapper-medium person-wrapper">
-          <section {...classes()}>
-            <div {...classes('profile')}>
-              <h1 {...classes('profile-name')}>
-                {person.firstName}
-                <br /> {person.surname}
-              </h1>
-              <p {...classes('profile-position')}>{person.position}</p>
-              {person.image && person.image.asset && person.image.asset.url && (
-                <img alt="x" src={`${person.image.asset.url}?w=400`} />
-              )}
-              <div {...classes('profile-info')}>
-                <a href={`mailto:${person.email}`}>{person.email}</a>
-                <br />
-                {person.phone && (
-                  <a href={`tel:${person.phone}`}>
-                    +{person.phone}
-                    <br />
-                  </a>
-                )}
-                {person.image && person.image.asset && person.image.asset.url && (
-                  <a href={person.image.asset.url}>
-                    Hi-res image
-                    <br />
-                  </a>
-                )}
-                {person.medium && (
-                  <a href={person.medium}>
-                    <MediumLogo {...classes('some-icon')} />
-                    Medium
-                  </a>
-                )}
-                <br />
-                {person.twitter && (
-                  <a href={person.twitter}>
-                    <TwitterLogo {...classes('some-icon')} />
-                    Twitter
-                  </a>
-                )}
-              </div>
-            </div>
-            {person.bio && (
-              <div {...classes('bio')}>
-                <BlockContent blocks={person.bio} serializers={serializers} />
-              </div>
-            )}
-          </section>
-          <section className="extra-person-content">
-            <Topics topics={person.topics} />
-          </section>
-          <section className="extra-person-content">
-            <CoursesAndWorkshops courses={person.courses} workshops={person.workshops} />
-          </section>
 
-          <section className="extra-person-content">
-            <RecentWork articles={person.recentWork} />
-          </section>
-          <h2 className="c-topic-section__cta">
+        {person.affiliations && person.affiliations.length > 0 ? (
+          <div className="o-wrapper-medium person-wrapper">
+            <section {...classes()}>
+              <div {...classes('profile')}>
+                <h1 {...classes('profile-name')}>
+                  {person.firstName}
+                  <br /> {person.surname}
+                </h1>
+                <p {...classes('profile-position')}>{person.position}</p>
+                {person.image && person.image.asset && person.image.asset.url && (
+                  <img alt="x" src={`${person.image.asset.url}?w=400`} />
+                )}
+                <div {...classes('profile-info')}>
+                  <a href={`mailto:${person.email}`}>{person.email}</a>
+                  <br />
+                  {person.phone && (
+                    <a href={`tel:${person.phone}`}>
+                      +{person.phone}
+                      <br />
+                    </a>
+                  )}
+                  {person.image && person.image.asset && person.image.asset.url && (
+                    <a href={person.image.asset.url}>
+                      Hi-res image
+                      <br />
+                    </a>
+                  )}
+                  {person.medium && (
+                    <a href={person.medium}>
+                      <MediumLogo {...classes('some-icon')} />
+                      Medium
+                    </a>
+                  )}
+                  <br />
+                  {person.twitter && (
+                    <a href={person.twitter}>
+                      <TwitterLogo {...classes('some-icon')} />
+                      Twitter
+                    </a>
+                  )}
+                </div>
+              </div>
+              {person.bio && (
+                <div {...classes('bio')}>
+                  <BlockContent blocks={person.bio} serializers={serializers} />
+                </div>
+              )}
+            </section>
+            <section className="extra-person-content">
+              <Topics topics={person.topics} />
+            </section>
+            <section className="extra-person-content">
+              <CoursesAndWorkshops courses={person.courses} workshops={person.workshops} />
+            </section>
+
+            <section className="extra-person-content">
+              <RecentWork articles={person.recentWork} />
+            </section>
+            <h2 className="c-topic-section__cta">
+              <Link to={`/search?search=author%3A${person.slug.current}`}>
+                <a>
+                  View all content by {`${person.firstName} ${person.surname}`} &nbsp;
+                  <ArrowRight />
+                </a>
+              </Link>
+            </h2>
+          </div>
+        ) : (
+          <div className="o-wrapper-medium person-wrapper">
+            <p>{`${person.firstName} ${person.surname}`} is no longer affiliated with U4.</p>
             <Link to={`/search?search=author%3A${person.slug.current}`}>
               <a>
-                View all content by {`${person.firstName} ${person.surname}`} &nbsp;
+                Search for content by {`${person.firstName} ${person.surname}`} &nbsp;
                 <ArrowRight />
               </a>
             </Link>
-          </h2>
-        </div>
+          </div>
+        )}
       </div>
 
       <Footer />
