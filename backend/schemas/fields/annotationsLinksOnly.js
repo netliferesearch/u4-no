@@ -30,6 +30,7 @@ const annotationsLinksOnly = [
       { type: 'asset' },
       { type: 'topics' },
       { type: 'course' },
+      { type: 'blog-post' },
     ],
   },
 ];
