@@ -885,6 +885,9 @@ export default {
             {
               type: 'publication',
             },
+            {
+              type: 'blog-post',
+            },
           ],
         },
       ],
