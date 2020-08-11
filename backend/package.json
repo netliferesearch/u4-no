@@ -41,7 +41,7 @@
     "react-icons": "^3.3.0",
     "sanity-plugin-url-metadata-input": "^1.0.0",
     "sanity-plugin-vision": "^2.0.7",
-    "tinymce": "^4.9.2"
+    "tinymce": "^4.9.11"
   },
   "devDependencies": {},
   "repository": {
