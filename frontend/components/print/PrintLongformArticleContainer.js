@@ -106,7 +106,7 @@ const LongFormArticleContainer = props => {
               {partners.map(({ _id = '', institution = {}, description = '' }, index) => (
                 <div key={_id + index}>
                   {description && <span>{description} </span>}
-                  {institution.name && <span>{institution.name}</span>}
+                  {!description && institution.name && <span>{institution.name}</span>}
                   {partners.length === index + 1
                     ? ''
                     : partners.length - 1 > index + 1
