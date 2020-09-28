@@ -9,6 +9,15 @@ import {
   HighChartsEditorPreview,
 } from '../../components';
 
+import React from 'react'
+
+const subscriptIcon = () => (
+  <span>X<sub>y</sub></span>
+  )
+const subscriptRender = props => (
+  <sub>{props.children}</sub>
+)
+
 const content = {
   name: 'content',
   title: 'Content',
@@ -28,7 +37,19 @@ const content = {
       // Only allow numbered lists
       marks: {
         // Only allow these decorators
-        decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
+        decorators: [
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
+          {
+            title: 'Subscript',
+            value: 'sub',
+            blockEditor: {
+              icon: subscriptIcon,
+              render: subscriptRender,
+            }
+          }
+        ],
+
         // Support annotating text with a reference to an author
         annotations,
       },
