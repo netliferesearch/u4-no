@@ -306,6 +306,9 @@ const serializers = {
         </span>
       );
     },
+    sub: ({ children }) => {
+      return <sub>{children}</sub>;
+    },
   },
 };
 export default serializers;

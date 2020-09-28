@@ -153,6 +153,9 @@ function printSerializers(blocks) {
           </React.Fragment>
         </React.Fragment>
       ),
+      sub: ({ children }) => {
+        return <sub>{children}</sub>;
+      },
     },
     text: props => {
       if (!props.children.trim()) return props.children;
