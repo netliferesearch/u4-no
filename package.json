@@ -64,10 +64,12 @@
     "react-bem-helper": "^1.4.1",
     "react-dom": "^16.13.1",
     "react-intersection-observer": "^8.0.5",
+    "react-paginating": "^1.4.0",
     "react-pdf": "2.1.7",
     "react-player": "^0.25.3",
     "react-redux": "^5.0.6",
     "react-scrollchor": "^4.2.1",
+    "react-share": "^4.0.1",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
@@ -75,6 +77,7 @@
     "slugify": "^1.2.9",
     "textract": "^2.5.0",
     "typewriter-effect": "^2.5.3",
+    "uglifyjs-webpack-plugin": "^1.3.0",
     "victory": "^0.24.5"
   },
   "scripts": {

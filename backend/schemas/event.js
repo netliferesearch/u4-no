@@ -14,17 +14,17 @@ export default {
       type: 'string',
     },
     {
-      name: "eventType",
-      title: "Event type",
-      type: "string",
+      name: 'eventType',
+      title: 'Event type',
+      type: 'string',
       options: {
         list: [
-          { title: 'In-country workshop', value: 'incountryworkshop'},
-          { title: 'HQ workshop', value: 'hqworkshop'},
-          { title: 'Other', value: 'other'},
+          { title: 'In-country workshop', value: 'incountryworkshop' },
+          { title: 'HQ workshop', value: 'hqworkshop' },
+          { title: 'Other', value: 'other' },
         ],
       },
-      layout: "dropdown",
+      layout: 'dropdown',
     },
 
     {
@@ -40,7 +40,7 @@ export default {
       options: {
         inputDate: true,
         inputTime: true,
-      }
+      },
     },
     {
       name: 'endDate',
@@ -49,7 +49,7 @@ export default {
       options: {
         inputDate: true,
         inputTime: true,
-      }
+      },
     },
     {
       name: 'organiser',
@@ -65,16 +65,13 @@ export default {
       name: 'content',
       title: 'Content',
       type: 'array',
-      of: [
-        defaultBlock,
-        image,
-      ]
+      of: [defaultBlock, image],
     },
 
     {
       name: 'eventLink',
       title: 'URL to external event page (if any)',
-      type: 'url'
+      type: 'url',
     },
 
     {
@@ -122,14 +119,14 @@ export default {
           type: 'reference',
           to: [
             {
-              type: 'topics'
-            }
-          ]
-        }
+              type: 'topics',
+            },
+          ],
+        },
       ],
       preview: {
-        title: 'topics.title'
-      }
+        title: 'topics.title',
+      },
     },
 
     {
@@ -141,10 +138,10 @@ export default {
           type: 'reference',
           to: [
             {
-              type: 'keyword'
-            }
-          ]
-        }
+              type: 'keyword',
+            },
+          ],
+        },
       ],
     },
     slug,
@@ -171,16 +168,12 @@ export default {
       imageUrl: 'image.asset.url',
     },
     prepare({ title = '(title missing)', date = '', location = '', imageUrl }) {
-      const subtitle =
-        date === ''
-          ? `${location}`
-          : `${date.split('T')[0]}, ${location}`;
+      const subtitle = date === '' ? `${location}` : `${date.split('T')[0]}, ${location}`;
       return {
-        title: title,
-        subtitle: subtitle,
-        imageUrl: imageUrl
+        title,
+        subtitle,
+        imageUrl,
       };
     },
   },
-
-}
+};

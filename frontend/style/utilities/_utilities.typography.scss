@@ -10,9 +10,9 @@
 .u-blue-underline {
   position: relative;
   display: block;
-  padding-bottom: 35px;
-  margin-bottom: 58px;
-  font-weight: 900;
+  padding-bottom: 50px;
+  margin-bottom: $spacing-large;
+  font-weight: 700;
   &:after {
     content: '';
     position: absolute;
@@ -30,4 +30,59 @@
   margin-bottom: 40px;
   width: 100%;
   align-self: flex-end;
+}
+.u-navy-big-headline {
+  font-family: $font-sans;
+  font-size: 47px;
+  line-height: 60px;
+  font-weight: 900;
+  color: $brand-dark;
+}
+.u-navy-mid-headline {
+  font-family: $font-sans;
+  font-size: 36px;
+  line-height: 50px;
+  font-weight: 700;
+  color: $brand-dark;
+  margin: 32px 0;
+}
+.u-navy-small-headline {
+  color: $brand-dark;
+  font-size: 12px;
+  line-height: 32px;
+  font-family: $font-sans;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin: 0;
+  @include mq($from: tablet) {
+    font-size: 14px;
+  }
+}
+.u-black-mid-headline {
+  font-family: $font-sans;
+  font-size: 22px;
+  line-height: 24px;
+  font-weight: 700;
+  color: $black;
+  margin: 0;
+}
+.u-button-copy {
+  font-family: $font-sans;
+  font-size: $font-size-tiny;
+  font-weight: 700;
+  border: none;
+  background-color: $brand-lightest;
+  color: $brand-main;
+  border-radius: 2px;
+  padding: $spacing-small $spacing;
+  margin: $spacing-tiny 0;
+  cursor: pointer;
+  &:active {
+    outline: none;
+  }
+}
+
+.u-grey-container {
+  border-bottom: 1px solid #e6e6e6;
+  border-top:  1px solid #e6e6e6;
 }

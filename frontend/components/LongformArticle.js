@@ -15,7 +15,7 @@ class LongformArticle extends Component {
     this.littlefootActivator();
   }
   componentDidUpdate() {
-    //this.littlefootActivator();
+    // this.littlefootActivator();
   }
   littlefootActivator() {
     const littlefoot = require('littlefoot').default;
@@ -24,7 +24,7 @@ class LongformArticle extends Component {
 
   render() {
     const { content = [] } = this.props;
-    if(!content) return <div></div>
+    if (!content) return <div />;
     const blocks = content.filter(block => !['reference'].includes(block._type));
     const footnotes = findFootnotes(blocks);
     const footNotesKeys = Object.keys(footnotes);
