@@ -5,11 +5,8 @@
   font-size: $font-size-small;
 
   h2 {
-    margin-top: $spacing;
-    // font-size: 47px;
-    // font-weight: 900;
-    // line-height: 60px;
-    // color: $brand-dark;
+    margin-top: 72px;
+    margin-bottom: $spacing-small;
   }
 
   h6 {
@@ -70,15 +67,16 @@
   }
 
   .c-blog-index__intro {
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: 300;
-    color: $brand-dark;
-    width: 100%;
+    font-family: $font-serif;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+    color: $v2-grey;
+    width: 100%;     
     
-    max-width: 660px;
+    max-width: 530px;
     padding-right: $spacing;
-    margin: 0;
+    margin: 0 0 72px 0;
     @include mq($from: tablet) {
       width: calc(100% - 227px);
     }
@@ -185,6 +183,9 @@
       }
     }
   }
+}
+.c-blog-index__filters {
+  
 }
 .c-blog-index__paginator-list {
   padding: 0;

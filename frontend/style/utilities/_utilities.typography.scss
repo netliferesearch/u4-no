@@ -31,6 +31,7 @@
   width: 100%;
   align-self: flex-end;
 }
+
 .u-navy-big-headline {
   font-family: $font-sans;
   font-size: 47px;
@@ -85,4 +86,20 @@
 .u-grey-container {
   border-bottom: 1px solid #e6e6e6;
   border-top:  1px solid #e6e6e6;
+}
+
+.u-black-44-headline {
+  font-family: $font-sans;
+  font-size: 44px;
+  line-height: 53px;
+  font-weight: 700;
+  color: $v2-black;
+}
+
+.u-black-32-headline {                                      
+  font-family: $font-sans-header;
+  font-size: 32px;
+  line-height: 39px;
+  font-weight: 700;
+  color: $v2-black;
 }

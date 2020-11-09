@@ -7,11 +7,15 @@ import dateToString from '../helpers/dateToString';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
 import { BlogEntriesFilter } from '../components/v2/blog/BlogEntriesFilter';
 
-const applyFliters = (filter, elements) => {
-  if (filter) {
-    let filtered = elements.filter(elements => {
-      if (elements.topics) {
-        return elements.topics.find(topic => topic.title === filter.title) ? true : false;
+const applyFliters = (filters, elements) => {  
+  if (filters.length) {
+    let filtered = elements.filter(element => {
+      if (element.topics) {
+        return element.topics.find(topic => 
+          filters.find(item => item.title === topic.title)
+        )
+          ? true
+          : false;
       }
     });
     return filtered;
@@ -21,45 +25,44 @@ const applyFliters = (filter, elements) => {
 };
 
 const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
-  const [filter, setFilter] = useState(null);
-  const [filterResults, setFilterResults] = useState([]);
+  const [filters, setFilters] = useState([]);
+  const [filtersResults, setFiltersResults] = useState([]);
   const [currentResults, setCurrentResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
   const limit = 10;
   const maxPagesListed = 5;
   const offset = (currentPage - 1) * limit;
-  const total = filterResults.length ? filterResults.length : currentResults.length * limit;
+  const total = filtersResults.length ? filtersResults.length : currentResults.length * limit;
   let d = currentResults.length < limit ? 1 : currentResults.length;
-
   const handlePageChange = (page, e) => {
     setCurrentPage(page);
   };
 
   useEffect(
     () => {
-      setFilterResults(applyFliters(filter, blogEntries));
+      setFiltersResults(applyFliters(filters, blogEntries));
       setCurrentPage(1);
     },
-    [filter]
+    [filters]
   );
 
   useEffect(
     () => {
-      setCurrentResults(filterResults.slice(offset, offset + limit));
+      setCurrentResults(filtersResults.slice(offset, offset + limit));
     },
-    [filterResults, offset]
+    [filtersResults, offset]
   );
 
   useEffect(
     () => {
       setPageCount(
-        Math.ceil(filterResults.length / d) > maxPagesListed
+        Math.ceil(filtersResults.length / d) > maxPagesListed
           ? maxPagesListed
-          : Math.ceil(filterResults.length / d)
+          : Math.ceil(filtersResults.length / d)
       );
     },
-    [currentResults, filterResults]
+    [currentResults, filtersResults]
   );
 
   return (
@@ -79,18 +82,29 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
       <hr className="u-section-underline--no-margins" />
       <div className="c-blog-index">
         <section className="o-wrapper">
-          <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} />
           <div className="o-wrapper-section">
-            <h2 className="u-blue-underline u-navy-big-headline">Insights from our blog</h2>
+            <h2 className="u-black-32-headline">Insights from our blog</h2>
             <p className="c-blog-index__intro">
               Practitioners, policymakers, activists, and academics share insights on how to build a
               sustainable and inclusive future by curbing corruption.
             </p>
-            <BlogEntriesFilter topics={topics} setFilter={setFilter} filter={filter} />
           </div>
         </section>
+        <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper">
           <div className="o-wrapper-section">
+            <BreadCrumbV2 />
+            <div className="c-blog-index__filters">
+              {filters.length ? (
+                <div>
+                  <p>{`${filtersResults.length} Blog articles filtered by: `}</p>
+                  <p>{filters.map(f => f.title).join(', ')}</p>
+                </div>
+              ) : (
+                <span>{`All ${blogEntries.length} Blog articles`}</span>
+              )}
+            </div>
+            <BlogEntriesFilter topics={topics} setFilters={setFilters} filters={filters} />
             {currentResults &&
               currentResults.map((post, index) => (
                 <div key={index}>
@@ -129,10 +143,10 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                   <hr className="u-section-underline" />
                 </div>
               ))}
-            {filterResults && filterResults.length === 0 && filter !== null && (
+            {filtersResults && filtersResults.length === 0 && filters.length > 0 && (
               <div>Results(0)</div>
             )}
-            {filterResults && filterResults.length > 0 && (
+            {filtersResults && filtersResults.length > 0 && (
               <Pagination
                 className="c-blog-index__paginator"
                 total={total}
@@ -222,6 +236,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
           </div>
         </section>
       </div>
+      <div id="modal" />
     </Layout>
   );
 };

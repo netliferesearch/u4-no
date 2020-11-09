@@ -1,0 +1,28 @@
+.c-modal {
+  
+    .c-modal__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-content: space-between;
+        flex-wrap: wrap;
+        max-height: 100%;
+        margin: $spacing-large 0 $spacing-tiny 0;
+        a {
+          margin: 0 $spacing-large $spacing-tiny 0;
+          display: inline-block;
+          &:hover,
+          &:active,
+          &:focus {
+            display: inline-block;
+          }
+          &.main {
+            margin-bottom: 41px;
+          }
+        }
+        @include mq($from: tablet) {
+          max-height: 360px;
+        }
+      }
+}
