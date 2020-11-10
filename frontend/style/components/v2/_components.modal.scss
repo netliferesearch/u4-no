@@ -1,28 +1,93 @@
 .c-modal {
-  
-    .c-modal__list {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-start;
-        align-content: space-between;
-        flex-wrap: wrap;
-        max-height: 100%;
-        margin: $spacing-large 0 $spacing-tiny 0;
-        a {
-          margin: 0 $spacing-large $spacing-tiny 0;
-          display: inline-block;
-          &:hover,
-          &:active,
-          &:focus {
-            display: inline-block;
-          }
-          &.main {
-            margin-bottom: 41px;
-          }
-        }
-        @include mq($from: tablet) {
-          max-height: 360px;
-        }
-      }
+
+}
+.c-modal__cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($color: #000000, $alpha: 0.7);
+  transition: opacity 0.2s ease-out;
+  z-index: 10;
+}
+.c-modal__area {
+  width: 888px;
+  position: relative;
+  margin: 0px auto;
+  background-color: #fff;
+  border-radius: 20px;
+  transform: translateY(288px);
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 8px 3px;
+}
+.c-modal__top {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  padding: 16px 20px 20px 20px;
+  .c-btn--close {
+    position: absolute;
+    top: $spacing;
+    right: 16px;
+  }
+}
+.c-modal__bottom {
+  padding: 0 $spacing-large 20px $spacing-large;
+}
+.c-modal__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 0 0 0;
+}
+.c-modal__title {
+  font-weight: 700;
+  color: $v2-dark-grey;
+  font-size: $font-size-small;
+  line-height: 1.3;
+  letter-spacing: 0.2px;
+  margin: 0;
+}
+.c-modal__content {
+  //padding: 0 $spacing-large;
+}
+.c-modal__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: space-between;
+  flex-wrap: wrap;
+  max-height: 100%;
+  margin: $spacing $spacing-large $spacing $spacing-large;
+
+  @include mq($from: tablet) {
+    max-height: 400px;
+  }
+}
+
+.c-modal__label {
+  cursor: pointer;
+  color: $v2-black;
+  font-family: $font-sans;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 42px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  //margin: 0 $spacing-large $spacing-tiny 0;
+  &:hover,
+  &:active,
+  &:focus {
+    
+  }
+}
+
+.c-modal__input {
+  height: 20px;
+  width: 20px;
+  margin-right: $spacing-small;
 }

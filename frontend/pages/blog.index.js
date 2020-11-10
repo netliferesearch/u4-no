@@ -6,14 +6,14 @@ import { Layout } from '../components/v2';
 import dateToString from '../helpers/dateToString';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
 import { BlogEntriesFilter } from '../components/v2/blog/BlogEntriesFilter';
+import { TextButton } from '../components/v2/buttons';
+import { BlogAuthorsShortList } from '../components/v2/blog/BlogAuthorsShortList';
 
-const applyFliters = (filters, elements) => {  
+const applyFliters = (filters, elements) => {
   if (filters.length) {
     let filtered = elements.filter(element => {
       if (element.topics) {
-        return element.topics.find(topic => 
-          filters.find(item => item.title === topic.title)
-        )
+        return element.topics.find(topic => filters.find(item => item.title === topic.title))
           ? true
           : false;
       }
@@ -30,7 +30,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
   const [currentResults, setCurrentResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
-  const limit = 10;
+  const limit = filters.length === 0 ? 7 : 9;
   const maxPagesListed = 5;
   const offset = (currentPage - 1) * limit;
   const total = filtersResults.length ? filtersResults.length : currentResults.length * limit;
@@ -38,7 +38,6 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
   const handlePageChange = (page, e) => {
     setCurrentPage(page);
   };
-
   useEffect(
     () => {
       setFiltersResults(applyFliters(filters, blogEntries));
@@ -96,56 +95,80 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
             <BreadCrumbV2 />
             <div className="c-blog-index__filters">
               {filters.length ? (
-                <div>
-                  <p>{`${filtersResults.length} Blog articles filtered by: `}</p>
-                  <p>{filters.map(f => f.title).join(', ')}</p>
+                <div className="c-blog-index__filters-info">
+                  <h5>{`${filtersResults.length} Blog articles filtered by: `}</h5>
+                  <div className="c-blog-index__filters-set">
+                    <span>{filters.map(f => f.title).join(', ')}</span>
+                    <TextButton
+                      onClick={e => setFilters([])}
+                      text="Remove All"
+                      modifier="text-underline"
+                    />
+                  </div>
                 </div>
               ) : (
-                <span>{`All ${blogEntries.length} Blog articles`}</span>
+                <div className="c-blog-index__filters--none">
+                  <h5>{`All ${blogEntries.length} Blog articles`}</h5>
+                </div>
               )}
+              <BlogEntriesFilter topics={topics} setFilters={setFilters} filters={filters} />
             </div>
-            <BlogEntriesFilter topics={topics} setFilters={setFilters} filters={filters} />
-            {currentResults &&
-              currentResults.map((post, index) => (
-                <div key={index}>
-                  <div className="c-blog-index__item--row">
-                    <div className="text">
-                      <h6 className="c-blog-index__type">Blog</h6>
-                      <a href={`blog/${post.slug}`}>
-                        <h3 className="publication-headline">{post.title}</h3>
-                      </a>
-                      <p className="c-blog-index-item__intro">{post.lead}</p>
-                      <p className="c-blog-index__date">
-                        {post.date ? dateToString({ start: post.date.utc }) : null}
-                      </p>
-                      <div className="topics">
-                        {post.topics &&
-                          post.topics.map((topic, index) => {
-                            return (
-                              <span className="topic" key={index}>
-                                {topic.title}
-                              </span>
-                            );
-                          })}
-                      </div>
-                    </div>
+            {currentResults ? (
+              <div className="c-blog-index__list">
+                {currentResults.map((post, index) => (
+                  <div
+                    key={index}
+                    className={`c-blog-index__item c-blog-index__item${
+                      filters.length === 0 && index === 0 ? '--full-width' : ''
+                    }`}
+                  >
                     {post.imageUrl ? (
                       <div
                         className="c-blog-index__featured-image"
                         style={{
-                          backgroundImage: `url('${
-                            post.imageUrl
-                          }?w=470&h=470&fit=crop&crop=focalpoint')`,
+                          backgroundImage: `url('${post.imageUrl}${
+                            filters.length === 0 && index === 0
+                              ? '?w=541&h=362&fit=crop&crop=focalpoint'
+                              : '?w=330&h=175&fit=crop&crop=focalpoint'
+                          }')`,
                         }}
                       />
                     ) : null}
+                    <div className="text">
+                      <div>
+                        <a href={`blog/${post.slug}`}>
+                          <h3 className="publication-headline">{post.title}</h3>
+                        </a>
+                        <p className="c-blog-index-item__intro">{post.standfirst}</p>
+                      </div>
+                      <div>
+                        <p className="c-blog-index__name">
+                          {post.authors.length > 0 ? (
+                            <BlogAuthorsShortList authors={post.authors} />
+                          ) : null}
+                        </p>
+                        <p className="c-blog-index__date">
+                          {post.date ? dateToString({ start: post.date.utc }) : null}
+                        </p>
+                      </div>
+                      {/* <div className="topics">
+                      {post.topics &&
+                        post.topics.map((topic, index) => {
+                          return (
+                            <span className="topic" key={index}>
+                              {topic.title}
+                            </span>
+                          );
+                        })}
+                    </div> */}
+                    </div>
                   </div>
-                  <hr className="u-section-underline" />
-                </div>
-              ))}
-            {filtersResults && filtersResults.length === 0 && filters.length > 0 && (
+                ))}
+              </div>
+            ) : null}
+            {/* {filtersResults && filtersResults.length === 0 && filters.length > 0 && (
               <div>Results(0)</div>
-            )}
+            )} */}
             {filtersResults && filtersResults.length > 0 && (
               <Pagination
                 className="c-blog-index__paginator"
@@ -168,7 +191,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                     {totalPages > pageCount ? (
                       <li>
                         <button
-                          className={`pagination-item text-button ${
+                          className={`pagination-item prev-button ${
                             currentPage <= 1 ? 'disabled' : ''
                           }`}
                           {...getPageItemProps({
@@ -176,7 +199,18 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                             onPageChange: handlePageChange,
                           })}
                         >
-                          Prev
+                          <svg
+                            width="10"
+                            height="14"
+                            viewBox="0 0 10 14"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M1.0625 6.5C0.78125 6.78125 0.78125 7.25 1.0625 7.53125L7.125 13.625C7.4375 13.9062 7.90625 13.9062 8.1875 13.625L8.90625 12.9062C9.1875 12.625 9.1875 12.1562 8.90625 11.8438L4.09375 7L8.90625 2.1875C9.1875 1.875 9.1875 1.40625 8.90625 1.125L8.1875 0.40625C7.90625 0.125 7.4375 0.125 7.125 0.40625L1.0625 6.5Z"
+                              fill="#BDBDBD"
+                            />
+                          </svg>
                         </button>
                       </li>
                     ) : null}
@@ -218,7 +252,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                     ) : null}
                     <li>
                       <button
-                        className={`pagination-item text-button ${
+                        className={`pagination-item next-button ${
                           totalPages - 1 >= currentPage ? '' : 'disabled'
                         }`}
                         {...getPageItemProps({
@@ -226,7 +260,18 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                           onPageChange: handlePageChange,
                         })}
                       >
-                        Next
+                        <svg
+                          width="10"
+                          height="14"
+                          viewBox="0 0 10 14"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M8.90625 7.53125C9.1875 7.25 9.1875 6.78125 8.90625 6.5L2.84375 0.40625C2.53125 0.125 2.0625 0.125 1.78125 0.40625L1.0625 1.125C0.78125 1.40625 0.78125 1.875 1.0625 2.1875L5.875 7L1.0625 11.8438C0.78125 12.1562 0.78125 12.625 1.0625 12.9062L1.78125 13.625C2.0625 13.9062 2.53125 13.9062 2.84375 13.625L8.90625 7.53125Z"
+                            fill="#BDBDBD"
+                          />
+                        </svg>
                       </button>
                     </li>
                   </ul>
@@ -251,9 +296,9 @@ BlogPage.propTypes = {
 export default DataLoader(BlogPage, {
   queryFunc: () => ({
     sanityQuery: `{
-      "blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {_id, title, date, standfirst, lead, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current},
+      "blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {_id, title, date, content, authors, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current},
       "topics": *[_type == "topics"] | order(title){_id, title, slug},
     }`,
   }),
-  materializeDepth: 0,
+  materializeDepth: 1,
 });

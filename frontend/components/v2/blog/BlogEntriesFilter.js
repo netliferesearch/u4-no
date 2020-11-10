@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import ClientOnlyPortal from '../ClinetOnlyPortal';
 import { CloseButton, TextButton } from '../buttons';
 
@@ -11,14 +11,32 @@ import { CloseButton, TextButton } from '../buttons';
 
 export const BlogEntriesFilter = ({ topics, setFilters, filters }) => {
   const [open, setOpen] = useState();
-  const [selectedItems, setSelectedItems] = useState([]);
-  // const toggleModal = index => {
-  //   const newIndex = index === activeModal ? -1 : index;
-  //   setOpen(newIndex);
-  // };
-  // console.log("rerender")
+  return (
+    <div className={`c-modal${open ? ' open' : ''}`}>
+      <TextButton onClick={() => setOpen(true)} text="Filter by topic" modifier="round" />
+      {open && (
+        <MultiselectModal
+          title="Filter by topic"
+          options={topics}
+          setOpen={setOpen}
+          setFilters={setFilters}
+          filters={filters}
+        />
+      )}
+    </div>
+  );
+};
 
-  const handleClick = () => {
+export const MultiselectModal = ({ title = '', options, setOpen, setFilters, filters }) => {
+  const [selectedItems, setSelectedItems] = useState(filters);
+  // ref that we add to the element for which we want to detect outside clicks
+  const ref = useRef();
+  //hook passing in the ref and a function to call on outside click
+  useOnClickOutside(ref, () => setOpen(false));
+  //hook to lock body scroll
+  useLockBodyScroll();
+
+  const handleApplyClick = () => {
     setFilters(selectedItems);
     setOpen(false);
   };
@@ -33,55 +51,104 @@ export const BlogEntriesFilter = ({ topics, setFilters, filters }) => {
     setSelectedItems(currentItems);
   };
 
-  // onKeyDown = event => {
-  //   if (event.keyCode === 27) {
-  //     setOpen(false);
-  //   }
-  // };
-
-  // onClickOutside = event => {
-  //   if (this.modal && this.modal.contains(event.target)) return;
-  //   setOpen(false);
-  // };
+  const onKeyDown = event => {
+    if (event.keyCode === 27) {
+      setOpen(false);
+    }
+  };
 
   return (
-    <div className={`c-modal${open ? ' open' : ''}`}>
-      <TextButton onClick={() => setOpen(true)} text="Filter by topic" modifier="round"/>
-      {open && (
-        <ClientOnlyPortal selector="#modal">
-          <div className="c-modal__container">
-            <div className="c-modal__top">
-              <h3 className="c-modal__title">Filter by topic</h3>
-              <CloseButton onClick={e => setOpen(false)}/>
-            </div>
-            <div className="c-modal__content">
-              <div className="c-modal__list">
-                {topics &&
-                  topics.map((topic, index) => {
-                    return (
-                      <label key={index}>
-                        <input
-                          onChange={e => handleChange(e, topic)}
-                          type="checkbox"
-                          checked={selectedItems.some(filter => filter.title === topic.title)}
-                          name={topic.title}
-                        />
-                        {topic.title}
-                      </label>
-                    );
-                  })}
-              </div>
-            </div>
-            <div className="c-modal__bottom">
-              <button onClick={e => setSelectedItems([])}>Deselect All</button>
-              <button onClick={handleClick}>Apply</button>
+    <ClientOnlyPortal selector="#modal">
+      <aside
+        className="c-modal__cover"
+        aria-modal="true"
+        tabIndex="-1"
+        role="dialog"
+        onKeyDown={onKeyDown}
+      >
+        <div className="c-modal__area" ref={ref}>
+          <div className="c-modal__top">
+            <h3 className="c-modal__title">{title}</h3>
+            <CloseButton onClick={e => setOpen(false)} />
+          </div>
+          <hr className="u-section-underline--no-margins" />
+          <div className="c-modal__content">
+            <div className="c-modal__list">
+              {options &&
+                options.map((option, index) => {
+                  return (
+                    <label key={index} className="c-modal__label">
+                      {console.log(filters.some(filter => filter.title === option.title))}
+                      <input
+                        className="c-modal__input"
+                        onChange={e => handleChange(e, option)}
+                        type="checkbox"
+                        checked={selectedItems.some(filter => filter.title === option.title)}
+                        name={option.title}
+                      />
+                      <span>{option.title}</span>
+                    </label>
+                  );
+                })}
             </div>
           </div>
-        </ClientOnlyPortal>
-      )}
-    </div>
+          <div className="c-modal__bottom">
+            <hr className="u-section-underline--no-margins" />
+            <div className="c-modal__controls">
+              <TextButton onClick={e => setSelectedItems([])} text="Deselect All" modifier="text" />
+              <TextButton onClick={handleApplyClick} text="Apply" modifier="square" />
+            </div>
+          </div>
+        </div>
+      </aside>
+    </ClientOnlyPortal>
   );
 };
+
+// Hook
+function useLockBodyScroll() {
+  useLayoutEffect(() => {
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      // Get original body overflow
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      // Prevent scrolling on mount
+      document.body.style.overflow = 'hidden';
+      // Re-enable scrolling when component unmounts
+      return () => (document.body.style.overflow = originalStyle);
+    }
+  }, []); // Empty array ensures effect is only run on mount and unmount
+}
+
+// Hook
+function useOnClickOutside(ref, handler) {
+  useEffect(
+    () => {
+      const listener = event => {
+        // Do nothing if clicking ref's element or descendent elements
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+
+        handler(event);
+      };
+
+      document.addEventListener('mousedown', listener);
+      document.addEventListener('touchstart', listener);
+
+      return () => {
+        document.removeEventListener('mousedown', listener);
+        document.removeEventListener('touchstart', listener);
+      };
+    },
+    // Add ref and handler to effect dependencies
+    // It's worth noting that because passed in handler is a new ...
+    // ... function on every render that will cause this effect ...
+    // ... callback/cleanup to run every render. It's not a big deal ...
+    // ... but to optimize you can wrap handler in useCallback before ...
+    // ... passing it into this hook.
+    [ref, handler]
+  );
+}
 
 // export const BlogEntriesFilter = ({ topics, setFilter, filter }) => {
 //   const [activeModal, setActiveModal] = useState(-1);

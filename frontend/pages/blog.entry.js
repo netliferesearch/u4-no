@@ -26,7 +26,6 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     topics = '',
     keywords = '',
   } = blogEntry;
-
   return (
     <Layout
       headComponentConfig={{
