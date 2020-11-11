@@ -8,6 +8,8 @@ import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
 import { BlogEntriesFilter } from '../components/v2/blog/BlogEntriesFilter';
 import { TextButton } from '../components/v2/buttons';
 import { BlogAuthorsShortList } from '../components/v2/blog/BlogAuthorsShortList';
+import { ArrowPrev } from '../components/v2/icons/ArrowPrev';
+import { ArrowNext } from '../components/v2/icons/ArrowNext';
 
 const applyFliters = (filters, elements) => {
   if (filters.length) {
@@ -35,8 +37,12 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
   const offset = (currentPage - 1) * limit;
   const total = filtersResults.length ? filtersResults.length : currentResults.length * limit;
   let d = currentResults.length < limit ? 1 : currentResults.length;
+
   const handlePageChange = (page, e) => {
     setCurrentPage(page);
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
   };
   useEffect(
     () => {
@@ -128,8 +134,8 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                         style={{
                           backgroundImage: `url('${post.imageUrl}${
                             filters.length === 0 && index === 0
-                              ? '?w=541&h=362&fit=crop&crop=focalpoint'
-                              : '?w=330&h=175&fit=crop&crop=focalpoint'
+                              ? '?w=544&h=362&fit=crop&crop=focalpoint'
+                              : '?w=332&h=175&fit=crop&crop=focalpoint'
                           }')`,
                         }}
                       />
@@ -188,7 +194,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                   getPageItemProps,
                 }) => (
                   <ul className="c-blog-index__paginator-list">
-                    {totalPages > pageCount ? (
+                    {/* {totalPages > pageCount ? ( */}
                       <li>
                         <button
                           className={`pagination-item prev-button ${
@@ -199,21 +205,10 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                             onPageChange: handlePageChange,
                           })}
                         >
-                          <svg
-                            width="10"
-                            height="14"
-                            viewBox="0 0 10 14"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M1.0625 6.5C0.78125 6.78125 0.78125 7.25 1.0625 7.53125L7.125 13.625C7.4375 13.9062 7.90625 13.9062 8.1875 13.625L8.90625 12.9062C9.1875 12.625 9.1875 12.1562 8.90625 11.8438L4.09375 7L8.90625 2.1875C9.1875 1.875 9.1875 1.40625 8.90625 1.125L8.1875 0.40625C7.90625 0.125 7.4375 0.125 7.125 0.40625L1.0625 6.5Z"
-                              fill="#BDBDBD"
-                            />
-                          </svg>
+                          <ArrowPrev />
                         </button>
                       </li>
-                    ) : null}
+                    {/* ) : null} */}
 
                     {pages.map(page => {
                       let activePage = null;
@@ -260,18 +255,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                           onPageChange: handlePageChange,
                         })}
                       >
-                        <svg
-                          width="10"
-                          height="14"
-                          viewBox="0 0 10 14"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M8.90625 7.53125C9.1875 7.25 9.1875 6.78125 8.90625 6.5L2.84375 0.40625C2.53125 0.125 2.0625 0.125 1.78125 0.40625L1.0625 1.125C0.78125 1.40625 0.78125 1.875 1.0625 2.1875L5.875 7L1.0625 11.8438C0.78125 12.1562 0.78125 12.625 1.0625 12.9062L1.78125 13.625C2.0625 13.9062 2.53125 13.9062 2.84375 13.625L8.90625 7.53125Z"
-                            fill="#BDBDBD"
-                          />
-                        </svg>
+                        <ArrowNext />
                       </button>
                     </li>
                   </ul>

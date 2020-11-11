@@ -1,0 +1,180 @@
+.c-newsletter-v2 {
+  .c-newsletter {
+    margin: $spacing-large auto;
+    max-width: 600px;
+  }
+
+  .c-newsletter__content {
+    font-family: $font-sans;
+    //flex-grow: 10;
+    border: 1px solid $v2-light-green;
+    background: $white;
+    padding: $spacing;
+    @include mq($from: tablet) {
+      //margin-left: -$spacing;
+      padding: 32px $spacing-large;
+    }
+  }
+  .c-newsletter__title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $v2-light-grey;
+    margin:  0 0 32px 0;
+    padding: 4px;
+    &:hover {
+      .c-newsletter__title {
+        color: $v2-black;
+      }
+      .c-newsletter__input::placeholder {
+        color: $v2-black;
+      }
+      .c-newsletter__title-arrow {
+        svg path {
+          fill: $v2-black;
+        }
+      }
+    }
+
+  }
+  .c-btn--submit {
+    background-color: $v2-green;
+    font-family: $font-sans;
+    font-size: $font-size-micro;
+    line-height: 1.7;
+    letter-spacing: 0.1px;
+    color: $white;
+    padding: 8px 16px;
+    &:hover {
+      text-decoration: none;
+    }
+    &:focus {
+      text-decoration: none;
+      outline: none;
+    }
+  }
+
+  .c-newsletter__title {
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: $v2-grey;
+    margin:  0 0 32px 0;
+    padding-bottom: $spacing-tiny;
+    transition: border 0.2s ease-out;
+  }
+  .c-newsletter__cta {
+    font-weight: 900;
+    font-size: $font-size-small;
+    line-height: 1.33;
+    /* identical to box height, or 133% */
+    text-align: center;
+    letter-spacing: 0.02em;
+    margin:  0 0 32px 0;
+  }
+
+  .c-newsletter__input {
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: $v2-black;
+    background-color: $white;
+    margin: 0;
+    padding: 8px;
+    transition: border 0.2s ease-out;
+    @include mq($from: tablet) {
+    }
+    @include mq($from: desktop) {
+    }
+    border-style: none;
+    width: 100%;
+  }
+  ::placeholder {
+    color: $v2-grey;
+    opacity: 1;
+  }
+
+  .c-newsletter__text {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: center;
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+
+  .c-newsletter__title-arrow {
+    padding: 0 $spacing-small $spacing-small;
+    svg path {
+      fill: $v2-black;
+    }
+  }
+
+//   .c-newsletter__small-title {
+//     display: inline-block;
+//     @include inuit-font-size($font-size-tiny, $line-height-normal);
+//     padding-bottom: $spacing-small;
+//     color: $v2-black;
+//     margin: 0;
+//     font-family: $font-sans;
+//     font-weight: 400;
+//     @include mq($from: tablet) {
+//       @include inuit-font-size($font-size-small, $line-height-normal);
+//     }
+//   }
+  .c-newsletter__to-top {
+    display: none;
+    // width: 70px;
+    // padding: 0 $spacing;
+    // writing-mode: vertical-lr;
+    // text-align: right;
+    // font-family: $font-sans;
+    // transition: all 0.3s ease-out;
+    // @include mq($from: tablet) {
+    // }
+
+    // a {
+    //   border: 0;
+    //   color: $v2-black;
+    //   cursor: pointer;
+    // }
+  }
+  //   .c-newsletter__to-top-arrow {
+  //     path {
+  //       fill: $v2-black;
+  //     }
+  //     writing-mode: vertical-lr;
+  //     transform: translateY(-5px) rotate(-270deg);
+  //     margin-bottom: $spacing-small;
+  //     transition: transform 0.15s ease-out;
+  //   }
+
+  @supports (display: grid) {
+    .c-newsletter {
+      //display: grid;
+      //grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    }
+
+    .c-newsletter__content {
+      //grid-column: 1 / 9;
+      @include mq($from: tablet) {
+        //grid-column: 1 / 10;
+      }
+    }
+    // .c-newsletter__to-top {
+    //   //grid-column: 9 / 11;
+    //   @include mq($from: tablet) {
+    //     //grid-column: 10 / 11;
+    //   }
+    //   &:hover {
+    //     .c-newsletter__to-top-arrow {
+    //       transform: translateY(-10px) rotate(-90deg);
+    //     }
+    //   }
+    // }
+    // .c-newsletter__to-top-arrow {
+    //   transform: rotate(-90deg);
+    //   transition: transform 0.15s ease-out;
+    // }
+  }
+}

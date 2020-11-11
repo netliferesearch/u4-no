@@ -62,10 +62,6 @@ BlogAuthorsShortList.propTypes = {
           current: PropTypes.string,
         }),
         affiliations: PropTypes.arrayOf(PropTypes.object),
-        position: PropTypes.string,
-        bioShort: PropTypes.arrayOf(PropTypes.object),
-        bioShort_fr: PropTypes.arrayOf(PropTypes.object),
-        bioShort_es: PropTypes.arrayOf(PropTypes.object),
       }),
     })
   ).isRequired,

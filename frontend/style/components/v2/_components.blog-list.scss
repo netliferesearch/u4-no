@@ -1,21 +1,23 @@
 .c-blog-index {
-  font-family: $font-sans;
-  padding: $spacing;
+  font-family: $font-sans;  
   background-color: $white;
   font-size: $font-size-small;
 
   .o-wrapper-section {
     max-width: 1032px;
   }
+  .o-wrapper {
+    padding: 0 $spacing;
+  }
 
   h2 {
     margin-top: 72px;
-    margin-bottom: $spacing-small;
+    margin-bottom: 16px;
   }
 
   h6 {
     font-family: $font-sans;
-    text-transform: uppercase;
+    text-transform: uppercase; 
     font-weight: 700;
     margin: 0;
     display: inline-block;
@@ -50,11 +52,11 @@
     font-weight: 400;
     color: $v2-grey;
     width: 100%;
-    max-width: 540px;
+    max-width: 536px;
     padding-right: $spacing;
     margin: 0 0 72px 0;
     @include mq($from: tablet) {
-      width: calc(100% - 227px);
+      width: calc(100% - 216px);
     }
   }
 
@@ -85,7 +87,7 @@
     color: $v2-black;
     font-size: 15px;
     line-height: 1.6;
-    font-weight: 500;
+    font-weight: 400;
     margin: 0;
   }
 
@@ -123,7 +125,7 @@
   }
 
   @include mq($from: tablet) {
-    padding: 0 $spacing $spacing-huge $spacing;
+    //padding: 0 $spacing $spacing-huge $spacing;
     .download {
       display: flex;
       .button {
@@ -146,23 +148,26 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin-bottom: 80px;
 
   .c-blog-index__featured-image {
     width: 100%;
     height: 175px;
-    max-width: 330px;
+    max-width: 332px;
     //height: 100px;
     background-size: cover;
     margin: 0;
     pointer-events: none;
   }
   @include mq($from: tablet) {
-    width: 32%;
+    width: 31.8%;
     .text {
-      // max-width: 800px;
-      // padding-right: $spacing;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1 0 auto;
     }
     .c-blog-index__featured-image {
       //margin-top: $spacing-large;
@@ -200,8 +205,6 @@
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  //align-items: stretch;
-  margin-bottom: 80px;
 
   .text {
     width: 100%;
@@ -209,15 +212,16 @@
     flex-direction: column;
     justify-content: space-between;
     @include mq($from: tablet) {
-      width: calc(45% - 25px);
+      width: calc(45% - 24px);
+      flex: 0 0 auto;
     }
   }
   .c-blog-index__featured-image {
     width: 100%;
     height: 362px;
-    max-width: 541px;
+    max-width: 544px;
     @include mq($from: tablet) {
-      width: calc(55% - 25px);
+      width: calc(55% - 24px);
     }
   }
   .publication-headline {
@@ -268,7 +272,7 @@
 }
 
 .c-blog-index__filters-info {
-  max-width: 70%;
+  max-width: 72%;
 }
 
 .c-blog-index__paginator-list {

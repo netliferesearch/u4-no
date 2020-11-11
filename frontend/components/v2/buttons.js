@@ -48,3 +48,15 @@ export const PrevButton = ({ onClick = () => null, modifier = 'prev' }) => (
     <span className="u-visually-hidden">Previous</span>
   </button>
 );
+
+export const SubmitButton = ({ onClick = () => null, modifier = 'submit', text = 'Submit' }) => (
+  <button
+    {...classes({ modifier })}
+    onClick={onClick}
+    aria-label="submit"
+    type="submit"
+    value="Subscribe"
+  >
+    {text}
+  </button>
+);

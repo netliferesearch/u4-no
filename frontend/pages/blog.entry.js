@@ -8,6 +8,12 @@ import { BlogAccordion } from '../components/v2/blog/BlogAccordion';
 import { BlogSidebar } from '../components/v2/blog/BlogSidebar';
 import { TagsSection } from '../components/v2/TagsSection';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
+import { ArrowPrev } from '../components/v2/icons/ArrowPrev';
+import { ShareOnSocialMedia } from '../components/v2/ShareOnSocialMedia';
+import { DownloadPdf } from '../components/v2/DownloadDropdown';
+import { BlogHeader } from '../components/v2/blog/BlogHeader';
+import { Keywords } from '../components/v2/Keywords';
+import Newsletter from '../components/v2/Newsletter';
 
 const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
   const {
@@ -37,56 +43,58 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
       }}
     >
       <hr className="u-section-underline--no-margins" />
-      <div className="o-wrapper c-blog-entry">
-        <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} />
-        <section className="o-wrapper-section c-blog-entry__post">
-          <BlogSidebar data={blogEntry} />
-          <div className="c-blog-entry__content">
-            <div className="c-blog-entry__head">
-              <h2>{title}</h2>
-              {lead && <p className="c-blog-entry__lead">{lead}</p>}
-              {topics &&
-                topics.map((topic, index) => (
-                  <span className="topic" key={index}>
-                    {topic.title}
-                  </span>
-                ))}
+      <div className="c-blog-entry">
+        <section className="o-wrapper--no-padding">
+          <BlogHeader data={blogEntry} />
+        </section>
+        <hr className="u-section-underline--no-margins" />
+        <section className="o-wrapper c-blog-entry__main">
+          <div className="o-wrapper-section c-blog-entry__row">
+            <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} />
+            {featuredImage.caption && (
+              <BlockToContent
+                blocks={featuredImage.caption}
+                serializers={{
+                  types: {
+                    block: props => (
+                      <p className="c-blog-entry__caption" style={{ display: 'inline' }}>
+                        {props.children}
+                      </p>
+                    ),
+                  },
+                }}
+              />
+            )}
+          </div>
+          <div className="o-wrapper-section c-blog-entry__row">
+            <div className="c-blog-entry__side c-blog-entry__col">
+              <BlogSidebar data={blogEntry} side={'left'} />
             </div>
-
-            {featuredImage.asset && (
-              <figure className="c-blog-entry__featured-image">
-                <img
-                  src={`${featuredImage.asset.url}?w=800`}
-                  alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
-                />
-                {featuredImage.caption && (
-                  <BlockToContent
-                    blocks={featuredImage.caption}
-                    serializers={{
-                      types: {
-                        block: props => <p className="c-blog-entry__caption" style={{ display: 'inline' }}>{props.children}</p>,
-                      },
-                    }}
-                  />
+            <div className="c-blog-entry__col c-blog-entry__center">
+              <div className="c-blog-entry__content">
+                {content ? (
+                  <div className="c-blog-entry__main-text">
+                    <BlockContent blocks={content} serializers={serializers} />
+                  </div>
+                ) : null}
+                <div className="c-newsletter-v2">
+                  <Newsletter />
+                </div>
+                {headsUp && (
+                  <div className="c-blog-entry__heads-up">
+                    <BlockContent blocks={headsUp} serializers={serializers} />
+                  </div>
                 )}
-              </figure>
-            )}
-            {content ? <div className="c-blog-entry__main-text"><BlockContent blocks={content} serializers={serializers} /></div> : null}
-            {headsUp && (
-              <div className="c-blog-entry__heads-up">
-                <BlockContent blocks={headsUp} serializers={serializers} />
+                {keywords.length > 0 ? <Keywords title={false} keywords={keywords} /> : null}
+                <BlogAccordion />
               </div>
-            )}
-            {topics.length > 0 || keywords.length > 0 ? <TagsSection topics={topics} keywords={keywords} /> : null}
-            <BlogAccordion />
+            </div>
+            <div className="c-blog-entry__side c-blog-entry__col">
+              <BlogSidebar data={blogEntry} side={'right'} />
+            </div>
           </div>
         </section>
       </div>
-      <section className="o-wrapper c-blog-entry__bottom">
-        <div className="o-wrapper-section">
-          {relatedContent ? <NewsAndEvents items={relatedContent} title={'Related'} /> : null}
-        </div>
-      </section>
     </Layout>
   );
 };
