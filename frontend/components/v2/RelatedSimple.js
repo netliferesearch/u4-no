@@ -56,6 +56,7 @@ export const RelatedSimple = ({ items, title }) => {
         {items
           ? items.map((item, index) => (
               <div key={index} className="c-related-simple__item">
+                <hr className="u-section-underline--no-margins" />
                 {/* <h6 {...classes('publication-type')}>
                       {getStringsByType(item).typeTitle}
                       {getStringsByType(item).typeSubTitle}
@@ -64,7 +65,6 @@ export const RelatedSimple = ({ items, title }) => {
                   href={`/${getStringsByType(item).slugOfType}${
                     typeof item.slug === 'string' ? item.slug : item.slug.current
                   }`}
-                  {...classes('publication-headline')}
                 >
                   <h3 {...classes('publication-headline')}>{item.title}</h3>
                 </a>

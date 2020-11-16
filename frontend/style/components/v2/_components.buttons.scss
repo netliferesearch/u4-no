@@ -113,3 +113,26 @@
     clip: rect(0 0 0 0);
   }
 }
+
+
+.c-btn--select {
+  background-color: $white;
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  font-size: $font-size-nano;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.1px;
+  color: #111111;
+  padding: 8px 16px;
+  //background: url(images/downarrow_blue.png) no-repeat right white;
+  &:hover {
+    border: 1px solid $v2-light-grey;
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+    outline: none;
+    border: 1px solid $v2-light-grey;
+  }
+}

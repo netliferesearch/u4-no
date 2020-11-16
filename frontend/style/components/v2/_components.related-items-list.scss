@@ -117,3 +117,24 @@
     margin: 0 0 $spacing 0;
   }
 }
+
+.c-related-simple {
+  margin-bottom: 48px;
+  h6 {
+    font-size: $font-size-nano;
+    line-height: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .c-related-items-list__publication-headline {
+    font-family: $font-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    color: $v2-dark-grey;
+    margin: 16px 0;
+  }
+}

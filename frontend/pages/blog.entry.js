@@ -3,17 +3,14 @@ import serializers from '../components/serializers';
 import DataLoader from '../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import BlockToContent from '@sanity/block-content-to-react';
-import { NewsAndEvents, Layout } from '../components/v2';
-import { BlogAccordion } from '../components/v2/blog/BlogAccordion';
+import { Layout } from '../components/v2';
 import { BlogSidebar } from '../components/v2/blog/BlogSidebar';
-import { TagsSection } from '../components/v2/TagsSection';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
-import { ArrowPrev } from '../components/v2/icons/ArrowPrev';
-import { ShareOnSocialMedia } from '../components/v2/ShareOnSocialMedia';
-import { DownloadPdf } from '../components/v2/DownloadDropdown';
 import { BlogHeader } from '../components/v2/blog/BlogHeader';
 import { Keywords } from '../components/v2/Keywords';
 import Newsletter from '../components/v2/Newsletter';
+import { AboutAuthor } from '../components/v2/AboutAuthor';
+import { Disclaimers } from '../components/v2/Disclaimers';
 
 const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
   const {
@@ -31,6 +28,8 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     relatedContent = '',
     topics = '',
     keywords = '',
+    language = '',
+    translation = '',
   } = blogEntry;
   return (
     <Layout
@@ -72,21 +71,29 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
             </div>
             <div className="c-blog-entry__col c-blog-entry__center">
               <div className="c-blog-entry__content">
-                {content ? (
-                  <div className="c-blog-entry__main-text">
-                    <BlockContent blocks={content} serializers={serializers} />
+                {lead ? (
+                  <div className="c-blog-entry__main-text c-blog-entry__lead u-drop-cap">
+                    <p>{lead}</p>
                   </div>
                 ) : null}
                 <div className="c-newsletter-v2">
                   <Newsletter />
                 </div>
-                {headsUp && (
-                  <div className="c-blog-entry__heads-up">
-                    <BlockContent blocks={headsUp} serializers={serializers} />
+                {content ? (
+                  <div className="c-blog-entry__main-text">
+                    <BlockContent blocks={content} serializers={serializers} />
                   </div>
-                )}
-                {keywords.length > 0 ? <Keywords title={false} keywords={keywords} /> : null}
-                <BlogAccordion />
+                ) : null}
+                <div className="c-blog-entry__additional-content">
+                  {keywords.length > 0 ? <Keywords title={false} keywords={keywords} /> : null}
+                  <AboutAuthor authors={authors} />
+                  <Disclaimers />
+                  {headsUp && (
+                    <div className="c-blog-entry__heads-up">
+                      <BlockContent blocks={headsUp} serializers={serializers} />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
             <div className="c-blog-entry__side c-blog-entry__col">
@@ -102,7 +109,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
 export default DataLoader(BlogEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title}, keywords[]->{category, keyword}, "slug": slug.current, pdfFile, legacypdf,
+      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title}, keywords[]->{category, keyword}, "slug": slug.current, pdfFile, legacypdf, language, translation, 
       "featuredImage": {
         "caption": featuredImage.caption,
         "credit": featuredImage.credit,

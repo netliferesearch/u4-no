@@ -85,7 +85,7 @@
 
 .u-grey-container {
   border-bottom: 1px solid #e6e6e6;
-  border-top:  1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
 }
 
 .u-black-44-headline {
@@ -96,10 +96,19 @@
   color: $v2-black;
 }
 
-.u-black-32-headline {                                      
+.u-black-32-headline {
   font-family: $font-sans-header;
   font-size: 32px;
   line-height: 39px;
   font-weight: 700;
   color: $v2-black;
+}
+
+.u-drop-cap p:first-child::first-letter {
+  font-size: 144px;
+  line-height: 0.8;
+  padding: 0 20px 20px 0;
+  //margin: 0 20px 0 0;
+  //margin: 0 0.3rem 0 0;
+  float: left;
 }

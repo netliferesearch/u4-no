@@ -13,6 +13,7 @@ export const Keywords = ({ title = true, keywords = [] }) => {
       keywords && (
         <div className="c-keywords">
           {title ? <h6>Keywords</h6> : null }
+          {title ? <hr className="u-section-underline--no-margins" /> : null }
           <div className="c-keywords__list">
             {keywords
               .filter(keyword => keyword.category === 'keyword')
