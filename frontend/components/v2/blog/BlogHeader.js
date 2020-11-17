@@ -1,60 +1,37 @@
-import React, { useState } from 'react';
-import { BlogAuthorsList } from './BlogAuthorsList';
-import dateToString from '../../../helpers/dateToString';
-import { DownloadPdf } from '../DownloadDropdown';
-import { ShareOnSocialMedia } from '../ShareOnSocialMedia';
-/**
- * V2 - Sidebar component to be used in BlogEntry component
- * @param {object} data
- */
-
-const getFileUrl = (pdfFile, legacypdf) => {
-  //Legacy PDF overrides pdfFile
-  if (legacypdf && legacypdf.asset) {
-    return legacypdf.asset.url;
-  }
-  if (!legacypdf || !legacypdf.asset) {
-    if (pdfFile && pdfFile.asset) {
-      return pdfFile.asset.url;
-    } else {
-      return null;
-    }
-  }
-  return null;
-};
+import React from 'react';
+import { Share } from '../ShareOnSocialMedia';
+import { Link } from '../../../routes';
 
 export const BlogHeader = ({ data }) => {
-  const {
-    pdfFile = {},
-    legacypdf = {},
-    title = '',
-    standfirst = '',
-    featuredImage = {},
-    topics = [],
-  } = data;
-
+  const { title = '', standfirst = '', featuredImage = {}, topics = [] } = data;
   return data ? (
     <div className="o-wrapper-section-desktop c-blog-entry__header">
-      <div className="c-blog-entry__intro">
+      <div
+        className={`c-blog-entry__intro ${
+          featuredImage.asset ? '' : 'c-blog-entry__intro--no-img'
+        }`}
+      >
         <div>
           <h6>Blog</h6>
           <h2>{title}</h2>
           {standfirst && <p className="c-blog-entry__standfirst">{standfirst}</p>}
-          <DownloadPdf url={getFileUrl(pdfFile, legacypdf)} />
+          {/* <DownloadPdf url={getFileUrl(pdfFile, legacypdf)} /> */}
         </div>
         <div className="c-blog-entry__header-row">
           {topics ? (
             <div className="c-blog-entry__topics">
               {topics.map((topic, index) => (
                 <span className="topic" key={index}>
-                  {`${topic.title}${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}
+                  <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                    <a className="c-btn--ter"><span>{topic.title}</span></a>
+                  </Link>{`${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}
                 </span>
               ))}
             </div>
           ) : null}
-          {/* <div className="u-grey-container c-blog-sidebar__share-container">
-            <ShareOnSocialMedia title={title} />
-          </div> */}
+          <div className="c-blog-sidebar__share-container">
+            <Share text={title} />
+          </div>
         </div>
       </div>
       {featuredImage.asset && (

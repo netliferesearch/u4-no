@@ -12,7 +12,7 @@
   z-index: 10;
 }
 .c-modal__area {
-  width: 888px;
+  max-width: 888px;
   position: relative;
   margin: 0px auto;
   background-color: #fff;
@@ -90,4 +90,34 @@
   height: 20px;
   width: 20px;
   margin-right: $spacing-small;
+}
+
+.c-modal__text {
+  font-family: $font-sans;
+  font-weight: 700;
+  font-size: $font-size-tiny;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+.c-modal--share {
+  &.c-modal__area {
+    max-width: 420px;
+  }
+  .c-modal__top {
+    padding: 21px;
+  }
+  .c-modal__title {
+    font-size: $font-size-normal;
+    font-weight: 900;
+  }
+  .c-modal__content {
+    padding: 24px 32px 32px 32px;
+  }
+  .c-share-buttons {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

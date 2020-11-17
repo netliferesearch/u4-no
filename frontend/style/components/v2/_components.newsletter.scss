@@ -47,10 +47,15 @@
     padding: 8px 16px;
     &:hover {
       text-decoration: none;
+      background-color: $v2-dark-green;
     }
     &:focus {
       text-decoration: none;
-      outline: none;
+      //outline: none;
+    }
+    &:active {
+      padding-top: 10px;
+      padding-bottom: 6px;
     }
   }
 

@@ -1,9 +1,5 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
-//import buildUrl from '../../helpers/buildUrl';
-//import client from '../helpers/sanity-client-config'
 import { Link } from '../../routes';
-import ArrowRightSmall from '../icons/ArrowRightSmall';
 import ChevronGrey from '../icons/ChevronGrey';
 
 /**
@@ -12,23 +8,23 @@ import ChevronGrey from '../icons/ChevronGrey';
  * It is a simplified version of the original BreadCrumb, which has more capabilities.
  */
 
-export const BreadCrumbV2 = ({ parentSlug = '', title = '' }) => {
+export const BreadCrumbV2 = ({ parentSlug = '', title = '', home = true }) => {
   return (
     <div className="c-breadcrumb--v2">
       <div className="c-breadcrumb-inner o-wrapper-section">
-        <ChevronGrey />
-        <Link route={'/'}>
-          <a className="c-breadcrumb__link u-no-underline">Home</a>
-        </Link>
-        {/* <ArrowRightSmall /> */}
-
+        {home ? <div className="c-breadcrumb-item">
+          <ChevronGrey />
+          <Link route={'/'}>
+            <a className="c-breadcrumb__link u-no-underline">Home</a>
+          </Link>
+        </div> : null}
         {parentSlug && title ? (
-          <span>
+          <div className="c-breadcrumb-item">
             <ChevronGrey />
             <Link route={parentSlug}>
               <a className="c-breadcrumb__link u-no-underline"> {title}</a>
             </Link>
-          </span>
+          </div>
         ) : null}
       </div>
     </div>

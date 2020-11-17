@@ -48,7 +48,7 @@ export const BlogAuthorsList = ({ authors = [], introkey = 'by', language = 'en'
                   </span>
                 </div>
                 {position && (
-                  <div classname="c-blog-authors-list__position">
+                  <div className="c-blog-authors-list__position">
                     <span>{position}</span>
                   </div>
                 )}

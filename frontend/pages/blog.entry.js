@@ -23,8 +23,6 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     lead = '',
     content = [],
     headsUp = '',
-    pdfFile = {},
-    legacypdf = {},
     relatedContent = '',
     topics = '',
     keywords = '',
@@ -49,7 +47,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper c-blog-entry__main">
           <div className="o-wrapper-section c-blog-entry__row">
-            <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} />
+            <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} home={false}/>
             {featuredImage.caption && (
               <BlockToContent
                 blocks={featuredImage.caption}
@@ -102,6 +100,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
           </div>
         </section>
       </div>
+      <div id="modal" />
     </Layout>
   );
 };
@@ -109,7 +108,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
 export default DataLoader(BlogEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title}, keywords[]->{category, keyword}, "slug": slug.current, pdfFile, legacypdf, language, translation, 
+      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title, slug}, keywords[]->{category, keyword}, "slug": slug.current, language, translation, 
       "featuredImage": {
         "caption": featuredImage.caption,
         "credit": featuredImage.credit,

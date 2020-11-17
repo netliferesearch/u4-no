@@ -13,16 +13,25 @@
     justify-content: flex-start;
     align-items: center;
     padding: 0;
-    svg {
-      margin: 0 8px 0 0;
+  }
+  .c-breadcrumb-item {
+    &:hover,
+    &:active {
+      svg {
+        fill: $v2-black;
+        path {
+          fill: $v2-black;
+        }
+      }
     }
   }
   .c-breadcrumb__link {
-    color: $v2-grey;
+    color: $v2-dark-grey;
     //text-transform: uppercase;
-    margin: 0 8px 0 0;
-    &:hover {
-      color: $v2-grey;
+    margin: 0 8px 0 6px;
+    &:hover,
+    &:visited {
+      color: $v2-dark-grey;
     }
   }
 }

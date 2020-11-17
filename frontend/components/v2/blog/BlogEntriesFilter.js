@@ -13,7 +13,7 @@ export const BlogEntriesFilter = ({ topics, setFilters, filters }) => {
   const [open, setOpen] = useState();
   return (
     <div className={`c-modal${open ? ' open' : ''}`}>
-      <TextButton onClick={() => setOpen(true)} text="Filter by topic" modifier="round" />
+      <TextButton onClick={() => setOpen(true)} text="Filter by topic" modifier="sec" />
       {open && (
         <MultiselectModal
           title="Filter by topic"
@@ -95,8 +95,8 @@ export const MultiselectModal = ({ title = '', options, setOpen, setFilters, fil
           <div className="c-modal__bottom">
             <hr className="u-section-underline--no-margins" />
             <div className="c-modal__controls">
-              <TextButton onClick={e => setSelectedItems([])} text="Deselect All" modifier="text" />
-              <TextButton onClick={handleApplyClick} text="Apply" modifier="square" />
+              <TextButton onClick={e => setSelectedItems([])} text="Deselect All" modifier="qua" />
+              <TextButton onClick={handleApplyClick} text="Apply" modifier="pri" />
             </div>
           </div>
         </div>
