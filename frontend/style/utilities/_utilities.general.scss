@@ -61,6 +61,34 @@ iframe {
   transform: rotate(180deg);
 }
 
+.u-hidden--tablet {
+  display: none;
+  @include mq($from: tablet) {
+    display: block;
+  }
+}
+
+.u-hidden--tablet-flex {
+  display: none;
+  @include mq($from: tablet) {
+    display: flex;
+  }
+}
+
+.u-hidden--desktop {
+  display: block;
+  @include mq($from: tablet) {
+    display: none;
+  }
+}
+
+.u-hidden--desktop-flex {
+  display: flex;
+  @include mq($from: tablet) {
+    display: none;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

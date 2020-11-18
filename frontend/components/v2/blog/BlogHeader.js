@@ -1,6 +1,7 @@
 import React from 'react';
 import { Share } from '../ShareOnSocialMedia';
 import { Link } from '../../../routes';
+import { PhotoCaptionCredit } from '../PhotoCaptionCredit';
 
 export const BlogHeader = ({ data }) => {
   const { title = '', standfirst = '', featuredImage = {}, topics = [] } = data;
@@ -23,13 +24,16 @@ export const BlogHeader = ({ data }) => {
               {topics.map((topic, index) => (
                 <span className="topic" key={index}>
                   <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                    <a className="c-btn--ter"><span>{topic.title}</span></a>
-                  </Link>{`${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}
+                    <a className="c-btn--ter">
+                      <div>{topic.title}</div>
+                    </a>
+                  </Link>
+                  <span>{`${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}</span>
                 </span>
               ))}
             </div>
           ) : null}
-          <div className="c-blog-sidebar__share-container">
+          <div className="c-blog-sidebar__share-container u-hidden--tablet">
             <Share text={title} />
           </div>
         </div>
@@ -40,6 +44,9 @@ export const BlogHeader = ({ data }) => {
             src={`${featuredImage.asset.url}?w=800`}
             alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
           />
+          <figcaption className="u-hidden--desktop">
+            <PhotoCaptionCredit featuredImage={featuredImage} />
+          </figcaption>
         </figure>
       )}
     </div>

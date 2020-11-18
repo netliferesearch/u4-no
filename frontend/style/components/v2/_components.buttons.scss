@@ -62,29 +62,78 @@
   padding: $spacing-tiny;
   text-decoration: underline;
   transition: all 100ms ease-out;
+  border-bottom: none;
   span {
     position: relative;
   }
   &:hover {
     color: $v2-dark-grey;
     text-decoration: none;
-    border: none;
+    border-bottom: none;
   }
   &:visited {
     text-decoration: none;
     color: $v2-dark-grey;
+    border-bottom: none;
   }
   &:visited:hover {
     color: $v2-dark-grey;
+    border-bottom: none;
+  }
+  &:focus {
+    border: none;
   }
   &:active {
-    padding-top: 8px;
-    padding-bottom: 4px;
-    span {
-      transform: translateY(-2px);
+    //padding-top: 8px;
+    //padding-bottom: 4px;
+    border-bottom: none;
+    div {
+      transform: translateY(2px);
     }
   }
 }
+.c-btn--small {
+  display: inline-block;
+  font-family: $font-sans;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.1px;
+  color: $v2-dark-grey;
+  padding: 2px;
+  text-decoration: underline;
+  transition: all 100ms ease-out;
+  border-bottom: none;
+  span {
+    position: relative;
+  }
+  &:hover {
+    color: $v2-dark-grey;
+    text-decoration: none;
+    border-bottom: none;
+  }
+  &:visited {
+    text-decoration: none;
+    color: $v2-dark-grey;
+    border-bottom: none;
+  }
+  &:visited:hover {
+    color: $v2-dark-grey;
+    border-bottom: none;
+  }
+  &:focus {
+    border: none;
+  }
+  &:active {
+    //padding-top: 8px;
+    //padding-bottom: 4px;
+    border-bottom: none;
+    div {
+      transform: translateY(2px);
+    }
+  }
+}
+
 .c-btn--qua {
   font-family: $font-sans;
   font-weight: 700;
@@ -112,6 +161,10 @@
   }
 }
 
+.c-btn--link {
+ padding: 0;
+}
+
 .c-btn--text {
   font-family: $font-sans;
   font-size: $font-size-micro;
@@ -132,66 +185,66 @@
   }
 }
 
-.c-btn--text-underline {
-  font-family: $font-sans;
-  font-size: 15px;
-  line-height: 1.7;
-  letter-spacing: 0.1px;
-  color: $v2-black;
-  //opacity: 0.5;
-  //padding: 4px $spacing-tiny;
-  //margin: 0 0 0 -6px;
-  text-decoration: underline;
-  &:hover {
-    //opacity: 1;
-    //text-decoration: none;
-  }
-  &:focus {
-    //text-decoration: none;
-    outline: none;
-    //opacity: 1;
-  }
-}
+// .c-btn--text-underline {
+//   font-family: $font-sans;
+//   font-size: 15px;
+//   line-height: 1.7;
+//   letter-spacing: 0.1px;
+//   color: $v2-black;
+//   //opacity: 0.5;
+//   //padding: 4px $spacing-tiny;
+//   //margin: 0 0 0 -6px;
+//   text-decoration: underline;
+//   &:hover {
+//     //opacity: 1;
+//     //text-decoration: none;
+//   }
+//   &:focus {
+//     //text-decoration: none;
+//     outline: none;
+//     //opacity: 1;
+//   }
+// }
 
-.c-btn--round {
-  font-family: $font-sans;
-  background-color: $white;
-  border: 1px solid #e5e5e5;
-  border-radius: 20px;
-  font-size: $font-size-nano;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.1px;
-  color: #111111;
-  padding: 8px 16px;
-  &:hover {
-    border: 1px solid $v2-light-grey;
-    text-decoration: none;
-  }
-  &:focus {
-    text-decoration: none;
-    outline: none;
-    border: 1px solid $v2-light-grey;
-  }
-}
+// .c-btn--round {
+//   font-family: $font-sans;
+//   background-color: $white;
+//   border: 1px solid #e5e5e5;
+//   border-radius: 20px;
+//   font-size: $font-size-nano;
+//   font-weight: 700;
+//   line-height: 1.2;
+//   letter-spacing: 0.1px;
+//   color: #111111;
+//   padding: 8px 16px;
+//   &:hover {
+//     border: 1px solid $v2-light-grey;
+//     text-decoration: none;
+//   }
+//   &:focus {
+//     text-decoration: none;
+//     outline: none;
+//     border: 1px solid $v2-light-grey;
+//   }
+// }
 
-.c-btn--square {
-  background-color: $v2-blue;
-  border-radius: 10px;
-  font-family: $font-sans;
-  font-size: $font-size-micro;
-  line-height: 1.7;
-  letter-spacing: 0.1px;
-  color: $white;
-  padding: 8px 16px;
-  &:hover {
-    text-decoration: none;
-  }
-  &:focus {
-    text-decoration: none;
-    outline: none;
-  }
-}
+// .c-btn--square {
+//   background-color: $v2-blue;
+//   border-radius: 10px;
+//   font-family: $font-sans;
+//   font-size: $font-size-micro;
+//   line-height: 1.7;
+//   letter-spacing: 0.1px;
+//   color: $white;
+//   padding: 8px 16px;
+//   &:hover {
+//     text-decoration: none;
+//   }
+//   &:focus {
+//     text-decoration: none;
+//     outline: none;
+//   }
+// }
 
 .c-btn--close {
   & svg g {

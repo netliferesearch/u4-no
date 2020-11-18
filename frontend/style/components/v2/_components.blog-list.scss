@@ -1,5 +1,5 @@
 .c-blog-index {
-  font-family: $font-sans;  
+  font-family: $font-sans;
   background-color: $white;
   font-size: $font-size-small;
   margin-bottom: 96px;
@@ -18,7 +18,7 @@
 
   h6 {
     font-family: $font-sans;
-    text-transform: uppercase; 
+    text-transform: uppercase;
     font-weight: 700;
     margin: 0;
     display: inline-block;
@@ -288,21 +288,19 @@
   }
   .pagination-item {
     font-family: $font-sans;
-    font-size: $font-size-micro;
-    line-height: 1.43;
-    border: 1px solid $v2-lighter-grey;
-    background-color: transparent;
-    color: $v2-blue;
+    font-size: 15px;
+    line-height: 1.2;
+    background-color: $v2-lighter-grey;
+    color: $v2-black;
+    border: none;
     outline: none;
-    padding: 4px $spacing-small;
+    padding: 16px 21px;
     text-decoration: none;
     transition: all 0.2s;
     cursor: pointer;
     &.next-button {
-      border-radius: 0 3px 3px 0;
     }
     &.prev-button {
-      border-radius: 3px 0 0 3px;
     }
     svg {
       vertical-align: middle;
@@ -313,14 +311,11 @@
       pointer-events: none;
     }
     &:hover {
-      color: white;
-      background-color: $v2-blue;
-      border: 1px solid $v2-blue;
+      background-color: $v2-light-blue;
     }
     &.active {
       color: white;
-      background-color: $v2-blue;
-      border: 1px solid $v2-blue;
+      background-color: $v2-dark-blue;
       cursor: default;
       pointer-events: none;
     }

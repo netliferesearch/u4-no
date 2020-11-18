@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BlogAuthorsList } from './BlogAuthorsList';
 import dateToString from '../../../helpers/dateToString';
 import { DownloadPdf } from '../DownloadDropdown';
-import { ShareOnSocialMedia } from '../ShareOnSocialMedia';
+import { Share, ShareOnSocialMedia } from '../ShareOnSocialMedia';
 import { TagsSection } from '../TagsSection';
 import { RelatedSimple } from '../RelatedSimple';
 import { Keywords } from '../Keywords';
@@ -15,6 +15,7 @@ import { Translations } from '../Translations';
 
 export const BlogSidebar = ({ data, side }) => {
   const {
+    title = '',
     authors = [],
     date = {},
     _updatedAt = '',
@@ -48,19 +49,24 @@ export const BlogSidebar = ({ data, side }) => {
             />
           ) : null}
           {translations.length > 0 && (
-            <Translations translations={translations} language={language} />
+            <div className="u-hidden--tablet">
+              <Translations translations={translations} language={language} />
+            </div>
           )}
-          {/* <div className="u-grey-container c-blog-sidebar__share-container">
-        <ShareOnSocialMedia title={title} />
-      </div>
-
-      <DownloadPdf url={getFileUrl()} /> */}
+          <div className="u-hidden--desktop">
+            <Share text={title} />
+            {translations.length > 0 && (
+              <Translations translations={translations} language={language} />
+            )}
+          </div>
         </div>
       ) : null}
       {side === 'right' ? (
         <div className="c-blog-sidebar--right">
           {keywords.length > 0 ? <Keywords title={true} keywords={keywords} /> : null}
-          {relatedContent ? <RelatedSimple items={relatedContent} title={'Related'} /> : null}
+          {relatedContent.length > 0 ? (
+            <RelatedSimple items={relatedContent} title={'Related'} />
+          ) : null}
         </div>
       ) : null}
     </div>

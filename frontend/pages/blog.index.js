@@ -108,7 +108,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                     <TextButton
                       onClick={e => setFilters([])}
                       text="Remove All"
-                      modifier="text-underline"
+                      modifier="ter"
                     />
                   </div>
                 </div>

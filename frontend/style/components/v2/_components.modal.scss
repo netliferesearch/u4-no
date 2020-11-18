@@ -119,5 +119,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    button:not(.c-btn) {
+      padding: 2px 6px 4px 6px !important;
+    }
   }
 }

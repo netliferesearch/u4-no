@@ -6,7 +6,7 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-export const TextButton = ({ onClick = () => null, text = '', modifier = 'round' }) => (
+export const TextButton = ({ onClick = () => null, text = '', modifier = 'qua' }) => (
   <button {...classes({ modifier })} onClick={onClick}>
     {text && <div>{text}</div>}
   </button>

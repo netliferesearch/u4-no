@@ -11,6 +11,8 @@ import { Keywords } from '../components/v2/Keywords';
 import Newsletter from '../components/v2/Newsletter';
 import { AboutAuthor } from '../components/v2/AboutAuthor';
 import { Disclaimers } from '../components/v2/Disclaimers';
+import { Share } from '../components/v2/ShareOnSocialMedia';
+import { PhotoCaptionCredit } from '../components/v2/PhotoCaptionCredit';
 
 const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
   const {
@@ -40,28 +42,15 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
       }}
     >
       <hr className="u-section-underline--no-margins" />
-      <div className="c-blog-entry">
+      <div className={`c-blog-entry ${featuredImage.asset ? '' : 'c-blog-entry--no-img'}`}>
         <section className="o-wrapper--no-padding">
           <BlogHeader data={blogEntry} />
         </section>
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper c-blog-entry__main">
-          <div className="o-wrapper-section c-blog-entry__row">
-            <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} home={false}/>
-            {featuredImage.caption && (
-              <BlockToContent
-                blocks={featuredImage.caption}
-                serializers={{
-                  types: {
-                    block: props => (
-                      <p className="c-blog-entry__caption" style={{ display: 'inline' }}>
-                        {props.children}
-                      </p>
-                    ),
-                  },
-                }}
-              />
-            )}
+          <div className="o-wrapper-section c-blog-entry__row u-hidden--tablet-flex">
+            <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} home={false} />
+            <PhotoCaptionCredit featuredImage={featuredImage} />
           </div>
           <div className="o-wrapper-section c-blog-entry__row">
             <div className="c-blog-entry__side c-blog-entry__col">
@@ -84,6 +73,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
                 ) : null}
                 <div className="c-blog-entry__additional-content">
                   {keywords.length > 0 ? <Keywords title={false} keywords={keywords} /> : null}
+                  <Share text={title} />
                   <AboutAuthor authors={authors} />
                   <Disclaimers />
                   {headsUp && (
@@ -94,7 +84,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
                 </div>
               </div>
             </div>
-            <div className="c-blog-entry__side c-blog-entry__col">
+            <div className="c-blog-entry__side c-blog-entry__col u-hidden--tablet">
               <BlogSidebar data={blogEntry} side={'right'} />
             </div>
           </div>
