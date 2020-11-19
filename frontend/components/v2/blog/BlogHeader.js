@@ -39,7 +39,7 @@ export const BlogHeader = ({ data }) => {
         </div>
       </div>
       {featuredImage.asset && (
-        <figure className="c-blog-entry__featured-image">
+        <figure className="c-blog-entry__featured-image u-hidden--tablet">
           <img
             src={`${featuredImage.asset.url}?w=800`}
             alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}

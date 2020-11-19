@@ -103,6 +103,7 @@
 .c-modal--share {
   &.c-modal__area {
     max-width: 420px;
+    width: calc(100% - 48px);
   }
   .c-modal__top {
     padding: 21px;

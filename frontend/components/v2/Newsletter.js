@@ -30,7 +30,8 @@ class Newsletter extends Component {
     const {
       cta = 'Never miss U4 news again. Sign up',
       title = 'Your email address',
-      text = 'We share research and evidence to help international development actors get sustainable results',
+      text1 = 'We share research and evidence to help international development actors get sustainable results',
+      text2 = 'Ground breaking reports, news and opinons to fight corrupution worldwide',
       button = 'Submit',
       link = 'http://eepurl.com/dtV9Df',
     } = this.props;
@@ -39,6 +40,7 @@ class Newsletter extends Component {
       <div {...classes(null, null)}>
         <div {...classes('content')}>
           <h4 {...classes('cta')}>{cta}</h4>
+          <p className="c-newsletter__text u-hidden--desktop">{text2}</p>
           <form onSubmit={this.onFormSubmit}>
             <div {...classes('title-wrapper')}>
               <input {...classes('input')} type="email" name="email" placeholder={title} />
@@ -56,7 +58,7 @@ class Newsletter extends Component {
               </a>
             </Link>
           )}
-          <p {...classes('text')}>{text}</p>
+          <p className="c-newsletter__text u-hidden--tablet">{text1}</p>
         </div>
       </div>
     );

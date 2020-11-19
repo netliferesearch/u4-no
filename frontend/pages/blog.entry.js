@@ -48,6 +48,17 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
         </section>
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper c-blog-entry__main">
+        {featuredImage.asset && (
+        <figure className="c-blog-entry__featured-image u-hidden--desktop">
+          <img
+            src={`${featuredImage.asset.url}?w=800`}
+            alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
+          />
+          <figcaption className="u-hidden--desktop">
+            <PhotoCaptionCredit featuredImage={featuredImage} />
+          </figcaption>
+        </figure>
+      )}
           <div className="o-wrapper-section c-blog-entry__row u-hidden--tablet-flex">
             <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} home={false} />
             <PhotoCaptionCredit featuredImage={featuredImage} />
