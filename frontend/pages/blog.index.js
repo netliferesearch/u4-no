@@ -10,6 +10,7 @@ import { TextButton } from '../components/v2/buttons';
 import { BlogAuthorsShortList } from '../components/v2/blog/BlogAuthorsShortList';
 import { ArrowPrev } from '../components/v2/icons/ArrowPrev';
 import { ArrowNext } from '../components/v2/icons/ArrowNext';
+import { DoubleChevron } from '../components/v2/icons/DoubleChevron';
 
 const applyFliters = (filters, elements) => {
   if (filters.length) {
@@ -105,11 +106,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                   <h5>{`${filtersResults.length} Blog articles filtered by: `}</h5>
                   <div className="c-blog-index__filters-set">
                     <span>{filters.map(f => f.title).join(', ')}</span>
-                    <TextButton
-                      onClick={e => setFilters([])}
-                      text="Remove All"
-                      modifier="ter"
-                    />
+                    <TextButton onClick={e => setFilters([])} text="Remove All" modifier="ter" />
                   </div>
                 </div>
               ) : (
@@ -157,24 +154,11 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                           {post.date ? dateToString({ start: post.date.utc }) : null}
                         </p>
                       </div>
-                      {/* <div className="topics">
-                      {post.topics &&
-                        post.topics.map((topic, index) => {
-                          return (
-                            <span className="topic" key={index}>
-                              {topic.title}
-                            </span>
-                          );
-                        })}
-                    </div> */}
                     </div>
                   </div>
                 ))}
               </div>
             ) : null}
-            {/* {filtersResults && filtersResults.length === 0 && filters.length > 0 && (
-              <div>Results(0)</div>
-            )} */}
             {filtersResults && filtersResults.length > 0 && (
               <Pagination
                 className="c-blog-index__paginator"
@@ -194,22 +178,34 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                   getPageItemProps,
                 }) => (
                   <ul className="c-blog-index__paginator-list">
+                    <li>
+                      <button
+                        className={`pagination-item first-button ${
+                          currentPage <= 1 ? 'disabled' : ''
+                        }`}
+                        {...getPageItemProps({
+                          pageValue: 1,
+                          onPageChange: handlePageChange,
+                        })}
+                      >
+                        <DoubleChevron />
+                      </button>
+                    </li>
                     {/* {totalPages > pageCount ? ( */}
-                      <li>
-                        <button
-                          className={`pagination-item prev-button ${
-                            currentPage <= 1 ? 'disabled' : ''
-                          }`}
-                          {...getPageItemProps({
-                            pageValue: previousPage,
-                            onPageChange: handlePageChange,
-                          })}
-                        >
-                          <ArrowPrev />
-                        </button>
-                      </li>
+                    <li>
+                      <button
+                        className={`pagination-item prev-button ${
+                          currentPage <= 1 ? 'disabled' : ''
+                        }`}
+                        {...getPageItemProps({
+                          pageValue: previousPage,
+                          onPageChange: handlePageChange,
+                        })}
+                      >
+                        <ArrowPrev />
+                      </button>
+                    </li>
                     {/* ) : null} */}
-
                     {pages.map(page => {
                       let activePage = null;
                       if (currentPage === page) {
@@ -256,6 +252,19 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                         })}
                       >
                         <ArrowNext />
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className={`pagination-item last-button ${
+                          currentPage >= totalPages ? 'disabled' : ''
+                        }`}
+                        {...getPageItemProps({
+                          pageValue: totalPages,
+                          onPageChange: handlePageChange,
+                        })}
+                      >
+                        <DoubleChevron />
                       </button>
                     </li>
                   </ul>

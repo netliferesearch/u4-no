@@ -302,9 +302,10 @@
     text-decoration: none;
     transition: all 0.2s;
     cursor: pointer;
-    &.next-button {
-    }
-    &.prev-button {
+    &.last-button {
+      svg {
+        transform: rotate(180deg);
+      }
     }
     svg {
       vertical-align: middle;
