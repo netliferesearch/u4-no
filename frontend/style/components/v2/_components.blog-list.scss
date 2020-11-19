@@ -187,9 +187,13 @@
       font-size: $font-size-small;
       line-height: 1.2;
     }
-    &:hover,
+    &:hover {
+      border-color: transparent;
+      text-decoration: underline;
+    }
     &:focus {
       border-color: transparent;
+      text-decoration: underline;
     }
     &:visited {
       &:hover {

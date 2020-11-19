@@ -23,14 +23,14 @@ export const PhotoCaptionCredit = ({ featuredImage }) => {
       {sourceUrl && (
         <span className="c-blog-entry__caption">
           Photo:
-          <a className="u-margin-left-tiny c-btn--small" href={sourceUrl}>
+          <a className="u-margin-left-tiny c-btn--sep" href={sourceUrl}>
             <div>{credit ? credit : sourceUrl}</div>
           </a>
         </span>
       )}
       {license && (
         <a
-          className="c-blog-entry__caption  c-btn--small"
+          className="c-blog-entry__caption  c-btn--sep"
           href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
         >
           <div>

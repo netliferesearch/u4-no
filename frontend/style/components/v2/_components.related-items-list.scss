@@ -12,20 +12,6 @@
   }
   @include mq($from: tablet) {
     padding: 0 0 $spacing-large 0;
-
-    //   .col {
-    //     width: 30%;
-    //     max-width: 600px;
-    //     margin-bottom: 0;
-    //     margin-left: 2.5%;
-    //     margin-right: 2.5%;
-    //     &:first-child {
-    //       margin-left: 0;
-    //     }
-    //     &:last-child {
-    //       margin-right: 0;
-    //     }
-    //   }
   }
   @include mq($from: desktop) {
     padding-bottom: $spacing-huge;
@@ -129,12 +115,31 @@
     margin-bottom: 12px;
   }
   .c-related-items-list__publication-headline {
-    font-family: $font-serif;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 1.5;
-    letter-spacing: 0.01em;
-    color: $v2-dark-grey;
-    margin: 16px 0;
+    margin: 0;
+    h3 {
+      font-family: $font-serif;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+      color: $v2-dark-grey;
+      margin: 16px 0;
+    }
+    &:hover {
+      h3 {
+        text-decoration: underline;
+      }
+    }
+    &:visited {
+      h3 {
+        text-decoration: underline;
+      }
+    }
+    &:active {
+      border-bottom: none;
+      h3 {
+        transform: translateY(2px);
+      }
+    }
   }
 }

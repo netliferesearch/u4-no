@@ -31,6 +31,10 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     language = '',
     translation = '',
   } = blogEntry;
+
+const firstPar = content[0]
+const furtherPar = content.slice(1)
+  
   return (
     <Layout
       headComponentConfig={{
@@ -48,17 +52,17 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
         </section>
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper c-blog-entry__main">
-        {featuredImage.asset && (
-        <figure className="c-blog-entry__featured-image u-hidden--desktop">
-          <img
-            src={`${featuredImage.asset.url}?w=800`}
-            alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
-          />
-          <figcaption className="u-hidden--desktop">
-            <PhotoCaptionCredit featuredImage={featuredImage} />
-          </figcaption>
-        </figure>
-      )}
+          {featuredImage.asset && (
+            <figure className="c-blog-entry__featured-image u-hidden--desktop">
+              <img
+                src={`${featuredImage.asset.url}?w=800`}
+                alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
+              />
+              <figcaption className="u-hidden--desktop">
+                <PhotoCaptionCredit featuredImage={featuredImage} />
+              </figcaption>
+            </figure>
+          )}
           <div className="o-wrapper-section c-blog-entry__row u-hidden--tablet-flex">
             <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} home={false} />
             <PhotoCaptionCredit featuredImage={featuredImage} />
@@ -74,12 +78,17 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
                     <p>{lead}</p>
                   </div>
                 ) : null}
+                {firstPar ? (
+                  <div className="c-blog-entry__main-text">
+                    <BlockContent blocks={firstPar} serializers={serializers} />
+                  </div>
+                ) : null}
                 <div className="c-newsletter-v2">
                   <Newsletter />
                 </div>
-                {content ? (
+                {furtherPar ? (
                   <div className="c-blog-entry__main-text">
-                    <BlockContent blocks={content} serializers={serializers} />
+                    <BlockContent blocks={furtherPar} serializers={serializers} />
                   </div>
                 ) : null}
                 <div className="c-blog-entry__additional-content">

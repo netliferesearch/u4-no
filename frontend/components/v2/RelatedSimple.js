@@ -62,11 +62,12 @@ export const RelatedSimple = ({ items, title }) => {
                       {getStringsByType(item).typeSubTitle}
                     </h6> */}
                 <a
+                  {...classes('publication-headline')}
                   href={`/${getStringsByType(item).slugOfType}${
                     typeof item.slug === 'string' ? item.slug : item.slug.current
                   }`}
                 >
-                  <h3 {...classes('publication-headline')}>{item.title}</h3>
+                  <h3>{item.title}</h3>
                 </a>
               </div>
             ))

@@ -1,3 +1,4 @@
+
 .c-btn--pri {
   background-color: $v2-blue;
   border-radius: 20px;
@@ -6,7 +7,7 @@
   line-height: 1.7;
   letter-spacing: 0.1px;
   color: $white;
-  padding: 10px 16px;
+  padding: 8px 16px;
   transition: all 100ms ease-out;
   &:hover {
     text-decoration: none;
@@ -16,11 +17,16 @@
     text-decoration: none;
   }
   &:active {
-    padding-top: 12px;
-    padding-bottom: 8px;
+    padding-top: 10px;
+    padding-bottom: 6px;
     border: 1px solid $v2-dark-yellow;
     box-shadow: 0 0 0 1px $v2-dark-yellow;
     outline: none;
+  }
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.4;
   }
 }
 .c-btn--sec {
@@ -92,7 +98,7 @@
     }
   }
 }
-.c-btn--small {
+.c-btn--sep {
   display: inline-block;
   font-family: $font-sans;
   font-weight: 700;
@@ -147,7 +153,6 @@
   &:hover {
     border: none;
     color: $v2-dark-grey;
-    opacity: 1;
     text-decoration: underline;
   }
   &:focus,
@@ -155,96 +160,54 @@
     text-decoration: none;
     color: $v2-dark-grey;
   }
+  &:visited:hover {
+    text-decoration: none;
+    color: $v2-dark-grey;
+  }
   &:active {
-    padding-top: 8px;
-    padding-bottom: 4px;
+    text-decoration: underline;
+    div {
+      transform: translateY(2px);
+    }
+  }
+}
+
+.c-btn--sen {
+  // font-family: $font-sans;
+  // font-weight: 900;
+  // font-size: 12px;
+  // line-height: 14px;
+  // letter-spacing: 0.08em;
+  // color: $v2-black;
+  padding-bottom: 2px;
+  border-bottom: 1px solid $v2-lighter-grey;
+  &:hover {
+    border: none;
+    color: $v2-black;
+    border-bottom: 1px solid transparent;
+  }
+  &:focus,
+  &:visited {
+    color: $v2-black;
+    text-decoration: none;
+    border-bottom: 1px solid $v2-lighter-grey;
+  }
+  &:visited:hover {
+    color: $v2-black;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  &:active {
+    border-bottom: 1px solid transparent;
+    div, h6 {
+      transform: translateY(2px);
+    }
   }
 }
 
 .c-btn--link {
  padding: 0;
 }
-
-.c-btn--text {
-  font-family: $font-sans;
-  font-size: $font-size-micro;
-  line-height: 1.7;
-  letter-spacing: 0.1px;
-  color: $v2-black;
-  opacity: 0.5;
-  padding: $spacing-tiny;
-  margin: 0 0 0 -6px;
-  &:hover {
-    opacity: 1;
-    text-decoration: none;
-  }
-  &:focus {
-    text-decoration: none;
-    outline: none;
-    opacity: 1;
-  }
-}
-
-// .c-btn--text-underline {
-//   font-family: $font-sans;
-//   font-size: 15px;
-//   line-height: 1.7;
-//   letter-spacing: 0.1px;
-//   color: $v2-black;
-//   //opacity: 0.5;
-//   //padding: 4px $spacing-tiny;
-//   //margin: 0 0 0 -6px;
-//   text-decoration: underline;
-//   &:hover {
-//     //opacity: 1;
-//     //text-decoration: none;
-//   }
-//   &:focus {
-//     //text-decoration: none;
-//     outline: none;
-//     //opacity: 1;
-//   }
-// }
-
-// .c-btn--round {
-//   font-family: $font-sans;
-//   background-color: $white;
-//   border: 1px solid #e5e5e5;
-//   border-radius: 20px;
-//   font-size: $font-size-nano;
-//   font-weight: 700;
-//   line-height: 1.2;
-//   letter-spacing: 0.1px;
-//   color: #111111;
-//   padding: 8px 16px;
-//   &:hover {
-//     border: 1px solid $v2-light-grey;
-//     text-decoration: none;
-//   }
-//   &:focus {
-//     text-decoration: none;
-//     outline: none;
-//     border: 1px solid $v2-light-grey;
-//   }
-// }
-
-// .c-btn--square {
-//   background-color: $v2-blue;
-//   border-radius: 10px;
-//   font-family: $font-sans;
-//   font-size: $font-size-micro;
-//   line-height: 1.7;
-//   letter-spacing: 0.1px;
-//   color: $white;
-//   padding: 8px 16px;
-//   &:hover {
-//     text-decoration: none;
-//   }
-//   &:focus {
-//     text-decoration: none;
-//     outline: none;
-//   }
-// }
 
 .c-btn--close {
   & svg g {
@@ -283,16 +246,17 @@
 }
 
 .c-btn--select {
+  font-family: $font-sans;
   background-color: $white;
-  border: 1px solid #e5e5e5;
+  border: 1px solid $v2-lighter-grey;
   border-radius: 20px;
   font-size: $font-size-nano;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.1px;
-  color: #111111;
+  color: $v2-black;
   padding: 8px 16px;
-  //background: url(images/downarrow_blue.png) no-repeat right white;
+  transition: all 100ms ease-out;
   &:hover {
     border: 1px solid $v2-light-grey;
     text-decoration: none;
@@ -303,3 +267,5 @@
     border: 1px solid $v2-light-grey;
   }
 }
+
+

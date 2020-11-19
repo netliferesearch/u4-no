@@ -78,7 +78,6 @@ export const MultiselectModal = ({ title = '', options, setOpen, setFilters, fil
                 options.map((option, index) => {
                   return (
                     <label key={index} className="c-modal__label">
-                      {console.log(filters.some(filter => filter.title === option.title))}
                       <input
                         className="c-modal__input"
                         onChange={e => handleChange(e, option)}

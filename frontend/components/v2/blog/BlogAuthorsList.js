@@ -40,7 +40,7 @@ export const BlogAuthorsList = ({ authors = [], introkey = 'by', language = 'en'
                         _ref === '3babc8f1-9e38-4493-9823-a9352b46585b'
                     ) ? (
                       <LinkToItem type="person" slug={slug.current}>
-                        <a className="c-btn--ter c-btn--link"><div>{`${firstName} ${surname}`}</div></a>
+                        <a className="c-btn--qua c-btn--link"><div>{`${firstName} ${surname}`}</div></a>
                       </LinkToItem>
                     ) : (
                       `${firstName} ${surname}`

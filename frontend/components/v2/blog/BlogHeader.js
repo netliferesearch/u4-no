@@ -13,7 +13,12 @@ export const BlogHeader = ({ data }) => {
         }`}
       >
         <div>
-          <h6>Blog</h6>
+          <Link route={'/blog'}>
+            <a className="c-btn--sen">
+              <h6>Blog</h6>
+            </a>
+          </Link>
+
           <h2>{title}</h2>
           {standfirst && <p className="c-blog-entry__standfirst">{standfirst}</p>}
           {/* <DownloadPdf url={getFileUrl(pdfFile, legacypdf)} /> */}

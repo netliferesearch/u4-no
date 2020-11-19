@@ -108,11 +108,11 @@
   font-size: 72px;
   line-height: 0.62;
   padding: 8px 8px 0 0;
-  //margin: 0 20px 0 0;
-  //margin: 0 0.3rem 0 0;
+
   float: left;
   @include mq($from: tablet) {
     font-size: 144px;
-    padding: 0 20px 20px 0
+    padding: 0 20px 20px 0;
+    line-height: 0.8;
   }
 }
