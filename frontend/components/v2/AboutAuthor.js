@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
-import { LinkToItem } from '../../';
-import { translate, langCode } from '../../../helpers/translate';
+import { LinkToItem } from '../';
+import { translate, langCode } from '../../helpers/translate';
 
-export const BlogAuthorsList = ({ authors = [], introkey = 'by', language = 'en' }) => {
+export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) => {
   const trans = translate(language);
   const lang = langCode(language);
   return (
@@ -29,7 +28,16 @@ export const BlogAuthorsList = ({ authors = [], introkey = 'by', language = 'en'
               index
             ) => (
               <div className="c-blog-authors-list__item" key={_id}>
-                <div className="c-blog-authors-list__name">
+                {index === 0 &&
+                ((lang === 'en' && bioShort.length) ||
+                  (lang === 'fr' && bioShort_fr.lenth) ||
+                  (lang === 'es' && bioShort_es.length)) ? (
+                  <div>
+                    <hr className="u-section-underline--no-margins" />
+                    <h3 className="c-blog-authors-list__h">About the author</h3>
+                  </div>
+                ) : null}
+                {/* <div className="c-blog-authors-list__name">
                   <span>
                     {slug &&
                     affiliations.length &&
@@ -40,52 +48,26 @@ export const BlogAuthorsList = ({ authors = [], introkey = 'by', language = 'en'
                         _ref === '3babc8f1-9e38-4493-9823-a9352b46585b'
                     ) ? (
                       <LinkToItem type="person" slug={slug.current}>
-                        <a className="c-btn--qua c-btn--link"><div>{`${firstName} ${surname}`}</div></a>
+                        <a>{`${firstName} ${surname}`}</a>
                       </LinkToItem>
                     ) : (
                       `${firstName} ${surname}`
                     )}
                   </span>
-                </div>
-                {position && (
-                  <div className="c-blog-authors-list__position">
+                </div> */}
+                {/* {position && (
+                  <div classname="c-blog-authors-list__position">
                     <span>{position}</span>
                   </div>
-                )}
-
-                {/* <div className="c-blog-authors-list__text-block">
+                )} */}
+                <div className="c-blog-authors-list__text-block c-blog-entry__main-text">
                   {lang === 'en' && bioShort && <BlockContent blocks={bioShort} />}
                   {lang === 'fr' && bioShort_fr && <BlockContent blocks={bioShort_fr} />}
                   {lang === 'es' && bioShort_es && <BlockContent blocks={bioShort_es} />}
-                </div> */}
+                </div>
               </div>
             )
           )}
     </div>
   );
-};
-
-BlogAuthorsList.propTypes = {
-  authors: PropTypes.arrayOf(
-    PropTypes.shape({
-      firstName: PropTypes.string,
-      surname: PropTypes.string,
-      slug: PropTypes.shape({
-        current: PropTypes.string,
-      }),
-      affiliations: PropTypes.arrayOf(PropTypes.object),
-      target: PropTypes.shape({
-        firstName: PropTypes.string,
-        surname: PropTypes.string,
-        slug: PropTypes.shape({
-          current: PropTypes.string,
-        }),
-        affiliations: PropTypes.arrayOf(PropTypes.object),
-        position: PropTypes.string,
-        bioShort: PropTypes.arrayOf(PropTypes.object),
-        bioShort_fr: PropTypes.arrayOf(PropTypes.object),
-        bioShort_es: PropTypes.arrayOf(PropTypes.object),
-      }),
-    })
-  ).isRequired,
 };

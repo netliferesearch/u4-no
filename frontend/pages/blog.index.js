@@ -6,12 +6,19 @@ import { Layout } from '../components/v2';
 import dateToString from '../helpers/dateToString';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
 import { BlogEntriesFilter } from '../components/v2/blog/BlogEntriesFilter';
+import { TextButton } from '../components/v2/buttons';
+import { BlogAuthorsShortList } from '../components/v2/blog/BlogAuthorsShortList';
+import { ArrowPrev } from '../components/v2/icons/ArrowPrev';
+import { ArrowNext } from '../components/v2/icons/ArrowNext';
+import { DoubleChevron } from '../components/v2/icons/DoubleChevron';
 
-const applyFliters = (filter, elements) => {
-  if (filter) {
-    let filtered = elements.filter(elements => {
-      if (elements.topics) {
-        return elements.topics.find(topic => topic.title === filter.title) ? true : false;
+const applyFliters = (filters, elements) => {
+  if (filters.length) {
+    let filtered = elements.filter(element => {
+      if (element.topics) {
+        return element.topics.find(topic => filters.find(item => item.title === topic.title))
+          ? true
+          : false;
       }
     });
     return filtered;
@@ -21,45 +28,47 @@ const applyFliters = (filter, elements) => {
 };
 
 const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
-  const [filter, setFilter] = useState(null);
-  const [filterResults, setFilterResults] = useState([]);
+  const [filters, setFilters] = useState([]);
+  const [filtersResults, setFiltersResults] = useState([]);
   const [currentResults, setCurrentResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
-  const limit = 10;
+  const limit = filters.length === 0 ? 7 : 9;
   const maxPagesListed = 5;
   const offset = (currentPage - 1) * limit;
-  const total = filterResults.length ? filterResults.length : currentResults.length * limit;
+  const total = filtersResults.length ? filtersResults.length : currentResults.length * limit;
   let d = currentResults.length < limit ? 1 : currentResults.length;
 
   const handlePageChange = (page, e) => {
     setCurrentPage(page);
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
   };
-
   useEffect(
     () => {
-      setFilterResults(applyFliters(filter, blogEntries));
+      setFiltersResults(applyFliters(filters, blogEntries));
       setCurrentPage(1);
     },
-    [filter]
+    [filters]
   );
 
   useEffect(
     () => {
-      setCurrentResults(filterResults.slice(offset, offset + limit));
+      setCurrentResults(filtersResults.slice(offset, offset + limit));
     },
-    [filterResults, offset]
+    [filtersResults, offset]
   );
 
   useEffect(
     () => {
       setPageCount(
-        Math.ceil(filterResults.length / d) > maxPagesListed
+        Math.ceil(filtersResults.length / d) > maxPagesListed
           ? maxPagesListed
-          : Math.ceil(filterResults.length / d)
+          : Math.ceil(filtersResults.length / d)
       );
     },
-    [currentResults, filterResults]
+    [currentResults, filtersResults]
   );
 
   return (
@@ -79,60 +88,78 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
       <hr className="u-section-underline--no-margins" />
       <div className="c-blog-index">
         <section className="o-wrapper">
-          <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} />
           <div className="o-wrapper-section">
-            <h2 className="u-blue-underline u-navy-big-headline">Insights from our blog</h2>
+            <h2 className="u-black-32-headline">Insights from our blog</h2>
             <p className="c-blog-index__intro">
               Practitioners, policymakers, activists, and academics share insights on how to build a
               sustainable and inclusive future by curbing corruption.
             </p>
-            <BlogEntriesFilter topics={topics} setFilter={setFilter} filter={filter} />
           </div>
         </section>
+        <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper">
           <div className="o-wrapper-section">
-            {currentResults &&
-              currentResults.map((post, index) => (
-                <div key={index}>
-                  <div className="c-blog-index__item--row">
-                    <div className="text">
-                      <h6 className="c-blog-index__type">Blog</h6>
-                      <a href={`blog/${post.slug}`}>
-                        <h3 className="publication-headline">{post.title}</h3>
-                      </a>
-                      <p className="c-blog-index-item__intro">{post.lead}</p>
-                      <p className="c-blog-index__date">
-                        {post.date ? dateToString({ start: post.date.utc }) : null}
-                      </p>
-                      <div className="topics">
-                        {post.topics &&
-                          post.topics.map((topic, index) => {
-                            return (
-                              <span className="topic" key={index}>
-                                {topic.title}
-                              </span>
-                            );
-                          })}
-                      </div>
-                    </div>
+            <BreadCrumbV2 />
+            <div className="c-blog-index__filters">
+              {filters.length ? (
+                <div className="c-blog-index__filters-info">
+                  <h5>{`${filtersResults.length} Blog articles filtered by: `}</h5>
+                  <div className="c-blog-index__filters-set">
+                    <span>{filters.map(f => f.title).join(', ')}</span>
+                    <TextButton onClick={e => setFilters([])} text="Remove All" modifier="ter" />
+                  </div>
+                </div>
+              ) : (
+                <div className="c-blog-index__filters--none">
+                  <h5>{`All ${blogEntries.length} Blog articles`}</h5>
+                </div>
+              )}
+              <BlogEntriesFilter topics={topics} setFilters={setFilters} filters={filters} />
+            </div>
+            {currentResults ? (
+              <div className="c-blog-index__list">
+                {currentResults.map((post, index) => (
+                  <div
+                    key={index}
+                    className={`c-blog-index__item c-blog-index__item${
+                      filters.length === 0 && index === 0 ? '--full-width' : ''
+                    }`}
+                  >
                     {post.imageUrl ? (
                       <div
                         className="c-blog-index__featured-image"
                         style={{
-                          backgroundImage: `url('${
-                            post.imageUrl
-                          }?w=470&h=470&fit=crop&crop=focalpoint')`,
+                          backgroundImage: `url('${post.imageUrl}${
+                            filters.length === 0 && index === 0
+                              ? '?w=544&h=362&fit=crop&crop=focalpoint'
+                              : '?w=332&h=175&fit=crop&crop=focalpoint'
+                          }')`,
                         }}
                       />
                     ) : null}
+                    <div className="text">
+                      <div>
+                        <a href={`blog/${post.slug}`}>
+                          <h3 className="publication-headline">{post.title}</h3>
+                        </a>
+                        <p className="c-blog-index-item__intro">{post.standfirst}</p>
+                      </div>
+                      <div>
+                        <p className="c-blog-index__name">
+                          {post.authors.length > 0 ? (
+                            <BlogAuthorsShortList authors={post.authors} />
+                          ) : null}
+                        </p>
+                        <p className="c-blog-index__date">
+                          {post.date ? dateToString({ start: post.date.utc }) : null}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <hr className="u-section-underline" />
-                </div>
-              ))}
-            {filterResults && filterResults.length === 0 && filter !== null && (
-              <div>Results(0)</div>
-            )}
-            {filterResults && filterResults.length > 0 && (
+                ))}
+              </div>
+            ) : null}
+            {filtersResults && filtersResults.length > 0 && (
               <Pagination
                 className="c-blog-index__paginator"
                 total={total}
@@ -151,22 +178,34 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                   getPageItemProps,
                 }) => (
                   <ul className="c-blog-index__paginator-list">
-                    {totalPages > pageCount ? (
-                      <li>
-                        <button
-                          className={`pagination-item text-button ${
-                            currentPage <= 1 ? 'disabled' : ''
-                          }`}
-                          {...getPageItemProps({
-                            pageValue: previousPage,
-                            onPageChange: handlePageChange,
-                          })}
-                        >
-                          Prev
-                        </button>
-                      </li>
-                    ) : null}
-
+                    <li>
+                      <button
+                        className={`pagination-item first-button ${
+                          currentPage <= 1 ? 'disabled' : ''
+                        }`}
+                        {...getPageItemProps({
+                          pageValue: 1,
+                          onPageChange: handlePageChange,
+                        })}
+                      >
+                        <DoubleChevron />
+                      </button>
+                    </li>
+                    {/* {totalPages > pageCount ? ( */}
+                    <li>
+                      <button
+                        className={`pagination-item prev-button ${
+                          currentPage <= 1 ? 'disabled' : ''
+                        }`}
+                        {...getPageItemProps({
+                          pageValue: previousPage,
+                          onPageChange: handlePageChange,
+                        })}
+                      >
+                        <ArrowPrev />
+                      </button>
+                    </li>
+                    {/* ) : null} */}
                     {pages.map(page => {
                       let activePage = null;
                       if (currentPage === page) {
@@ -204,7 +243,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                     ) : null}
                     <li>
                       <button
-                        className={`pagination-item text-button ${
+                        className={`pagination-item next-button ${
                           totalPages - 1 >= currentPage ? '' : 'disabled'
                         }`}
                         {...getPageItemProps({
@@ -212,7 +251,20 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                           onPageChange: handlePageChange,
                         })}
                       >
-                        Next
+                        <ArrowNext />
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className={`pagination-item last-button ${
+                          currentPage >= totalPages ? 'disabled' : ''
+                        }`}
+                        {...getPageItemProps({
+                          pageValue: totalPages,
+                          onPageChange: handlePageChange,
+                        })}
+                      >
+                        <DoubleChevron />
                       </button>
                     </li>
                   </ul>
@@ -222,6 +274,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
           </div>
         </section>
       </div>
+      <div id="modal" />
     </Layout>
   );
 };
@@ -236,9 +289,9 @@ BlogPage.propTypes = {
 export default DataLoader(BlogPage, {
   queryFunc: () => ({
     sanityQuery: `{
-      "blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {_id, title, date, standfirst, lead, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current},
+      "blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {_id, title, date, content, authors, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current},
       "topics": *[_type == "topics"] | order(title){_id, title, slug},
     }`,
   }),
-  materializeDepth: 0,
+  materializeDepth: 1,
 });

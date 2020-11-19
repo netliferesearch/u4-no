@@ -1,9 +1,9 @@
 .c-breadcrumb--v2 {
-  font-size: $font-size-tiny;
-  line-height: 1.5;
+  font-size: $font-size-nano;
+  line-height: 1.2;
   font-family: 'Lato', Helvetica, Arial, sans-serif;
-  font-weight: 900;
-  margin: $spacing-large 0;
+  font-weight: 400;
+  margin: 32px 0;
 
   &.c-breadcrumb:after {
     display: none;
@@ -13,12 +13,25 @@
     justify-content: flex-start;
     align-items: center;
     padding: 0;
-    svg {
-      margin: 0 15px 0 0;
+  }
+  .c-breadcrumb-item {
+    &:hover,
+    &:active {
+      svg {
+        fill: $v2-black;
+        path {
+          fill: $v2-black;
+        }
+      }
     }
   }
   .c-breadcrumb__link {
-    text-transform: uppercase;
-    margin: 0 15px 0 0;
+    color: $v2-dark-grey;
+    //text-transform: uppercase;
+    margin: 0 8px 0 6px;
+    &:hover,
+    &:visited {
+      color: $v2-dark-grey;
+    }
   }
 }
