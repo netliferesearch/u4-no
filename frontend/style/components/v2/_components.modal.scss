@@ -38,10 +38,9 @@ input[type='radio'].c-modal__input {
 .c-modal__area {
   max-width: 888px;
   position: relative;
-  margin: 0px auto;
+  margin: 10vh auto 0 auto;
   background-color: #fff;
   border-radius: 20px;
-  transform: translateY(288px);
   transition: transform 0.2s ease;
   //box-shadow: 0 2px 8px 3px;
 }
@@ -50,10 +49,10 @@ input[type='radio'].c-modal__input {
   justify-content: center;
   align-items: flex-start;
   position: relative;
-  padding: 16px 20px;
+  padding: 20px 16px;
   .c-btn--close {
     position: absolute;
-    top: $spacing;
+    top: 20px;
     right: 16px;
   }
 }
@@ -62,9 +61,16 @@ input[type='radio'].c-modal__input {
 }
 .c-modal__controls {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: flex-start;
   padding: 16px 0 0 0;
+  .c-btn--pri {
+    margin-left: 16px;
+  }
+  .c-btn--qua {
+    padding: 8px 16px;
+    line-height: 1.2;
+  }
 }
 .c-modal__title {
   font-weight: 700;
@@ -125,9 +131,9 @@ input[type='radio'].c-modal__input {
     max-width: 420px;
     width: calc(100% - 48px);
   }
-  .c-modal__top {
-    padding: 21px;
-  }
+  // .c-modal__top {
+  //   padding: 21px;
+  // }
   .c-modal__title {
     font-size: $font-size-normal;
     font-weight: 900;
@@ -158,6 +164,7 @@ input[type='radio'].c-modal__input {
     .c-btn--ter {
       color: $v2-grey;
       padding: 8px 16px;
+      font-size: 14px;
     }
   }
   .c-modal__controls {
