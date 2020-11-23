@@ -22,7 +22,7 @@ export const BreadCrumbV2 = ({ parentSlug = '', title = '', home = true }) => {
           <div className="c-breadcrumb-item">
             <ChevronGrey />
             <Link route={parentSlug}>
-              <a className="c-breadcrumb__link u-no-underline"> {title}</a>
+              <a className="c-breadcrumb__link u-no-underline"><span>{title}</span></a>
             </Link>
           </div>
         ) : null}

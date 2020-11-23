@@ -125,19 +125,19 @@
       color: $v2-dark-grey;
       margin: 16px 0;
     }
-    &:hover {
+    &:hover,
+    &:visited:hover {
       h3 {
-        text-decoration: underline;
-      }
-    }
-    &:visited {
-      h3 {
+        color: $v2-blue;
         text-decoration: underline;
       }
     }
     &:active {
+      color: $v2-blue;
+      text-decoration: underline;
       border-bottom: none;
-      h3 {
+      & > * {
+        display: inline-block;
         transform: translateY(2px);
       }
     }

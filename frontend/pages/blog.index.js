@@ -11,6 +11,7 @@ import { BlogAuthorsShortList } from '../components/v2/blog/BlogAuthorsShortList
 import { ArrowPrev } from '../components/v2/icons/ArrowPrev';
 import { ArrowNext } from '../components/v2/icons/ArrowNext';
 import { DoubleChevron } from '../components/v2/icons/DoubleChevron';
+import { LinkToItem } from '../components';
 
 const applyFliters = (filters, elements) => {
   if (filters.length) {
@@ -105,8 +106,16 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                 <div className="c-blog-index__filters-info">
                   <h5>{`${filtersResults.length} Blog articles filtered by: `}</h5>
                   <div className="c-blog-index__filters-set">
-                    <span>{filters.map(f => f.title).join(', ')}</span>
-                    <TextButton onClick={e => setFilters([])} text="Remove All" modifier="ter" />
+                    {filters.map((f, index) => (
+                      <span key={index}>
+                        {f.title}
+                        <span>, </span>
+                        {/* <span>{`${
+                          filters.length > 1 && index + 1 < filters.length ? ', ' : '. '
+                        }`}</span> */}
+                      </span>
+                    ))}
+                    <TextButton onClick={e => setFilters([])} text="Remove all" modifier="ter" />
                   </div>
                 </div>
               ) : (
@@ -119,43 +128,42 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
             {currentResults ? (
               <div className="c-blog-index__list">
                 {currentResults.map((post, index) => (
-                  <div
-                    key={index}
-                    className={`c-blog-index__item c-blog-index__item${
-                      filters.length === 0 && index === 0 ? '--full-width' : ''
-                    }`}
-                  >
-                    {post.imageUrl ? (
-                      <div
-                        className="c-blog-index__featured-image"
-                        style={{
-                          backgroundImage: `url('${post.imageUrl}${
-                            filters.length === 0 && index === 0
-                              ? '?w=544&h=362&fit=crop&crop=focalpoint'
-                              : '?w=332&h=175&fit=crop&crop=focalpoint'
-                          }')`,
-                        }}
-                      />
-                    ) : null}
-                    <div className="text">
-                      <div>
-                        <a href={`blog/${post.slug}`}>
+                  <LinkToItem type={post._type} slug={post.slug} key={index}>
+                    <a
+                      className={`c-blog-index__item c-blog-index__item${
+                        filters.length === 0 && index === 0 ? '--full-width' : ''
+                      }`}
+                    >
+                      {post.imageUrl ? (
+                        <div
+                          className="c-blog-index__featured-image"
+                          style={{
+                            backgroundImage: `url('${post.imageUrl}${
+                              filters.length === 0 && index === 0
+                                ? '?w=544&h=362&fit=crop&crop=focalpoint'
+                                : '?w=332&h=175&fit=crop&crop=focalpoint'
+                            }')`,
+                          }}
+                        />
+                      ) : null}
+                      <div className="text">
+                        <div>
                           <h3 className="publication-headline">{post.title}</h3>
-                        </a>
-                        <p className="c-blog-index-item__intro">{post.standfirst}</p>
+                          <p className="c-blog-index-item__intro">{post.standfirst}</p>
+                        </div>
+                        <div>
+                          <p className="c-blog-index__name">
+                            {post.authors.length > 0 ? (
+                              <BlogAuthorsShortList authors={post.authors} />
+                            ) : null}
+                          </p>
+                          <p className="c-blog-index__date">
+                            {post.date ? dateToString({ start: post.date.utc }) : null}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="c-blog-index__name">
-                          {post.authors.length > 0 ? (
-                            <BlogAuthorsShortList authors={post.authors} />
-                          ) : null}
-                        </p>
-                        <p className="c-blog-index__date">
-                          {post.date ? dateToString({ start: post.date.utc }) : null}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                    </a>
+                  </LinkToItem>
                 ))}
               </div>
             ) : null}
@@ -178,34 +186,36 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                   getPageItemProps,
                 }) => (
                   <ul className="c-blog-index__paginator-list">
-                    <li>
-                      <button
-                        className={`pagination-item first-button ${
-                          currentPage <= 1 ? 'disabled' : ''
-                        }`}
-                        {...getPageItemProps({
-                          pageValue: 1,
-                          onPageChange: handlePageChange,
-                        })}
-                      >
-                        <DoubleChevron />
-                      </button>
-                    </li>
-                    {/* {totalPages > pageCount ? ( */}
-                    <li>
-                      <button
-                        className={`pagination-item prev-button ${
-                          currentPage <= 1 ? 'disabled' : ''
-                        }`}
-                        {...getPageItemProps({
-                          pageValue: previousPage,
-                          onPageChange: handlePageChange,
-                        })}
-                      >
-                        <ArrowPrev />
-                      </button>
-                    </li>
-                    {/* ) : null} */}
+                    {currentPage > 2 ? (
+                      <li>
+                        <button
+                          className={`pagination-item first-button ${
+                            currentPage <= 1 ? 'disabled' : ''
+                          }`}
+                          {...getPageItemProps({
+                            pageValue: 1,
+                            onPageChange: handlePageChange,
+                          })}
+                        >
+                          <DoubleChevron />
+                        </button>
+                      </li>
+                    ) : null}
+                    {currentPage > 1 ? (
+                      <li>
+                        <button
+                          className={`pagination-item prev-button ${
+                            currentPage <= 1 ? 'disabled' : ''
+                          }`}
+                          {...getPageItemProps({
+                            pageValue: previousPage,
+                            onPageChange: handlePageChange,
+                          })}
+                        >
+                          <ArrowPrev />
+                        </button>
+                      </li>
+                    ) : null}
                     {pages.map(page => {
                       let activePage = null;
                       if (currentPage === page) {
@@ -241,32 +251,36 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
                         </button>
                       </li>
                     ) : null}
-                    <li>
-                      <button
-                        className={`pagination-item next-button ${
-                          totalPages - 1 >= currentPage ? '' : 'disabled'
-                        }`}
-                        {...getPageItemProps({
-                          pageValue: nextPage,
-                          onPageChange: handlePageChange,
-                        })}
-                      >
-                        <ArrowNext />
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        className={`pagination-item last-button ${
-                          currentPage >= totalPages ? 'disabled' : ''
-                        }`}
-                        {...getPageItemProps({
-                          pageValue: totalPages,
-                          onPageChange: handlePageChange,
-                        })}
-                      >
-                        <DoubleChevron />
-                      </button>
-                    </li>
+                    {currentPage < totalPages ? (
+                      <li>
+                        <button
+                          className={`pagination-item next-button ${
+                            totalPages - 1 >= currentPage ? '' : 'disabled'
+                          }`}
+                          {...getPageItemProps({
+                            pageValue: nextPage,
+                            onPageChange: handlePageChange,
+                          })}
+                        >
+                          <ArrowNext />
+                        </button>
+                      </li>
+                    ) : null}
+                    {currentPage < totalPages - 1 ? (
+                      <li>
+                        <button
+                          className={`pagination-item last-button ${
+                            currentPage >= totalPages ? 'disabled' : ''
+                          }`}
+                          {...getPageItemProps({
+                            pageValue: totalPages,
+                            onPageChange: handlePageChange,
+                          })}
+                        >
+                          <DoubleChevron />
+                        </button>
+                      </li>
+                    ) : null}
                   </ul>
                 )}
               </Pagination>
@@ -289,7 +303,7 @@ BlogPage.propTypes = {
 export default DataLoader(BlogPage, {
   queryFunc: () => ({
     sanityQuery: `{
-      "blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {_id, title, date, content, authors, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current},
+      "blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {_id, _type, title, date, content, authors, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current},
       "topics": *[_type == "topics"] | order(title){_id, title, slug},
     }`,
   }),

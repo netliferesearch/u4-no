@@ -18,9 +18,9 @@
     &:hover,
     &:active {
       svg {
-        fill: $v2-black;
+        fill: $v2-blue;
         path {
-          fill: $v2-black;
+          fill: $v2-blue;
         }
       }
     }
@@ -29,9 +29,17 @@
     color: $v2-dark-grey;
     //text-transform: uppercase;
     margin: 0 8px 0 6px;
-    &:hover,
-    &:visited {
-      color: $v2-dark-grey;
+    &:hover {
+      color: $v2-blue;
+      text-decoration: underline;
+    }
+    &:active {
+      color: $v2-blue;
+      text-decoration: none;
+     // & > * {
+     //   display: inline-block;
+     //   transform: translateY(2px);
+     // }
     }
   }
 }

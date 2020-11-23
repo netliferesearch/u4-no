@@ -30,7 +30,6 @@ export const BlogAuthorsList = ({ authors = [], introkey = 'by', language = 'en'
             ) => (
               <div className="c-blog-authors-list__item" key={_id}>
                 <div className="c-blog-authors-list__name">
-                  <span>
                     {slug &&
                     affiliations.length &&
                     affiliations.some(
@@ -40,12 +39,11 @@ export const BlogAuthorsList = ({ authors = [], introkey = 'by', language = 'en'
                         _ref === '3babc8f1-9e38-4493-9823-a9352b46585b'
                     ) ? (
                       <LinkToItem type="person" slug={slug.current}>
-                        <a className="c-btn--qua c-btn--link"><div>{`${firstName} ${surname}`}</div></a>
+                        <a className="c-btn--qua"><span>{`${firstName} ${surname}`}</span></a>
                       </LinkToItem>
                     ) : (
                       `${firstName} ${surname}`
                     )}
-                  </span>
                 </div>
                 {position && (
                   <div className="c-blog-authors-list__position">

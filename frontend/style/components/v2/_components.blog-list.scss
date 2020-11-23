@@ -151,8 +151,36 @@
   flex-direction: column;
   justify-content: flex-start;
   flex-wrap: wrap;
-  margin-bottom: 80px;
-
+  margin-bottom: 72px;
+  border-color: transparent;
+  h3 {
+    font-size: $font-size-small;
+    line-height: 1.22;
+    font-family: $font-sans;
+    letter-spacing: 0.1px;
+    font-weight: 700;
+    color: $v2-black;
+    margin: 16px 0 $spacing 0;
+    display: block;
+    > * {
+      margin: 0;
+    }
+    @include mq($from: tablet) {
+      font-size: $font-size-small;
+      line-height: 1.2;
+    }
+  }
+  &:hover,
+  &:visited:hover {
+    border-color: transparent;
+    h3 {
+      border-color: transparent;
+      text-decoration: underline;
+    }
+  }
+  &:focus {
+    border-color: transparent;
+  }     
   .c-blog-index__featured-image {
     width: 100%;
     height: 175px;
@@ -172,36 +200,6 @@
     }
     .c-blog-index__featured-image {
       //margin-top: $spacing-large;
-    }
-  }
-  .publication-headline {
-    font-size: $font-size-small;
-    line-height: 1.22;
-    font-family: $font-sans;
-    letter-spacing: 0.1px;
-    font-weight: 700;
-    color: $v2-black;
-    margin: 16px 0 $spacing 0;
-    display: block;
-    @include mq($from: tablet) {
-      font-size: $font-size-small;
-      line-height: 1.2;
-    }
-    &:hover {
-      border-color: transparent;
-      text-decoration: underline;
-    }
-    &:focus {
-      border-color: transparent;
-      text-decoration: underline;
-    }
-    &:visited {
-      &:hover {
-        border-color: transparent;
-      }
-    }
-    > * {
-      margin: 0;
     }
   }
 }
@@ -238,18 +236,6 @@
       font-size: 32px;
       line-height: 39px;
     }
-    &:hover,
-    &:focus {
-      border-color: transparent;
-    }
-    &:visited {
-      &:hover {
-        border-color: transparent;
-      }
-    }
-    > * {
-      margin: 0;
-    }
   }
   .c-blog-index-item__intro {
     font-size: $font-size-small;
@@ -260,7 +246,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: $spacing-large;
+  margin-bottom: 32px;
   h5,
   span {
     font-weight: 400;
@@ -270,9 +256,17 @@
     letter-spacing: 0.1px;
     margin: 0;
   }
+  h5 {
+    padding: 4px 0 0 0;
+  }
   span {
-    font-weight: 700;
+    //font-weight: 700;
     margin: 0;
+    white-space: pre;
+    display: inline-block;
+  }
+  .c-btn--ter {
+    padding: 0;
   }
 }
 

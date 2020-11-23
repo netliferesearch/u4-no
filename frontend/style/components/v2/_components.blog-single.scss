@@ -51,22 +51,52 @@
       margin: 32px 0;
     }
   }
+
   .c-blog-entry__caption,
   .c-blog-entry__caption > a {
+    display: inline-block;
     font-family: $font-sans;
     font-size: $font-size-nano;
     line-height: 14px;
     text-align: right;
-    //margin: 24px 0 48px 0;
+    padding: 2px;
     color: #8f8f8f;
-    &:visited,
-    &:hover:visited {
-      color: #8f8f8f;
-    }
     @include mq($from: tablet) {
       color: $v2-dark-grey;
-      &:visited,
-      &:hover:visited {
+    }
+  }
+
+  .c-blog-entry__caption > a {
+    text-decoration: underline;
+    transition: all 100ms ease-out;
+    border-bottom: none;
+    span {
+      position: relative;
+    }
+    &:hover,
+    &:visited:hover {
+      color: $v2-blue;
+      text-decoration: none;
+      border-bottom: none;
+    }
+    &:visited {
+      text-decoration: none;
+      color: #8f8f8f;
+      border-bottom: none;
+    }
+    &:active {
+      color: $v2-blue;
+      border-bottom: none;
+      & > * {
+        display: inline-block;
+        transform: translateY(2px);
+      }
+    }
+    &:focus {
+      border: none;
+    }
+    @include mq($from: tablet) {
+      &:visited {
         color: $v2-dark-grey;
       }
     }
@@ -89,12 +119,12 @@
     .c-longform-grid__standard {
       max-width: 600px;
     }
-    h2 {
+    h2.c-longform-grid__standard {
       color: $black;
       font-weight: 700;
       font-size: 22px;
       line-height: 1.3;
-      margin: 0 0 32px 0;
+      margin: 68px auto 32px auto;
     }
     .list-bullets {
       li::marker {
@@ -145,7 +175,11 @@
       border-bottom: 1px solid $v2-dark-grey;
     }
     a:hover {
-      color: $v2-dark-grey;
+      color: $v2-blue;
+      border-bottom: 1px solid transparent;
+    }
+    a:active {
+      color: $v2-blue;
       border-bottom: 1px solid transparent;
     }
     a:visited {
@@ -267,7 +301,6 @@
     font-size: 12px;
     line-height: 14px;
     letter-spacing: 0.08em;
-    padding-bottom: 2px;
     margin-top: $spacing-large;
     margin-bottom: 8px;
     @include mq($from: tablet) {
