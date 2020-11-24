@@ -25,6 +25,13 @@ input[type='radio'].c-modal__input {
   }
 }
 
+.c-modal__input {
+  height: 20px;
+  width: 20px;
+  min-width: 20px;
+  margin-right: $spacing-small;
+}
+
 .c-modal__cover {
   position: fixed;
   top: 0;
@@ -89,7 +96,7 @@ input[type='radio'].c-modal__input {
   align-content: space-between;
   flex-wrap: wrap;
   max-height: 100%;
-  margin: $spacing $spacing-large $spacing $spacing-large;
+  margin: 32px $spacing-large;
 
   @include mq($from: tablet) {
     max-height: 400px;
@@ -102,7 +109,8 @@ input[type='radio'].c-modal__input {
   font-family: $font-sans;
   font-weight: 400;
   font-size: 15px;
-  line-height: 42px;
+  line-height: 1.5;
+  margin-bottom: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -110,12 +118,6 @@ input[type='radio'].c-modal__input {
   &:active,
   &:focus {
   }
-}
-
-.c-modal__input {
-  height: 20px;
-  width: 20px;
-  margin-right: $spacing-small;
 }
 
 .c-modal__text {
@@ -176,5 +178,47 @@ input[type='radio'].c-modal__input {
   }
   .c-modal__bottom {
     padding: 0 16px 24px 16px;
+  }
+}
+
+.c-modal--filters {
+  &.c-modal__area {
+    margin: 0 0 0 auto;
+    border-radius: 0;
+    max-width: 264px;
+    //height: 100vh;
+    .c-modal__list {
+      padding: 32px 16px;
+      margin: 0;
+      flex-wrap: nowrap;
+      max-height: calc(100vh - 130px);
+      overflow-y: scroll;
+      @include mq($from: tablet) {
+        padding: 0;
+        max-height: 400px;
+        margin: 32px $spacing-large;
+        flex-wrap: wrap;
+        overflow-y: auto;
+      }
+    }
+    .c-modal__bottom {
+      padding: 0;
+
+      @include mq($from: tablet) {
+        padding: 0 $spacing-large 20px $spacing-large;
+      }
+    }
+    .c-modal__controls {
+      padding: 16px 24px;
+      @include mq($from: tablet) {
+        padding: 16px 0 0 0;
+      }
+    }
+
+    @include mq($from: tablet) {
+      max-width: 888px;
+      margin: 10vh auto 0 auto;
+      border-radius: 20px;
+    }
   }
 }

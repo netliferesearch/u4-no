@@ -2,7 +2,7 @@
   font-family: $font-sans;
   background-color: $white;
   font-size: $font-size-small;
-  margin-bottom: 96px;
+  margin-bottom: 64px;
 
   .o-wrapper-section {
     max-width: 1032px;
@@ -12,8 +12,12 @@
   }
 
   h2 {
-    margin-top: 72px;
-    margin-bottom: 16px;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    @include mq($from: tablet) {
+      margin-top: 72px;
+      margin-bottom: 16px;
+    }
   }
 
   h6 {
@@ -25,26 +29,13 @@
   }
 
   .u-section-underline--no-margins {
-    width: 110%;
-    margin: 0 -24px;
+    width: 100%;
+    margin: 0;
+    @include mq($from: tablet) {
+      width: 110%;
+      margin: 0 -24px;
+    }
   }
-
-  // .u-blue-underline {
-  //   padding-bottom: 36px;
-  //   margin-bottom: $spacing;
-  // }
-  // .c-blog-index__type {
-  //   color: $brand-dark;
-  //   font-size: 12px;
-  //   line-height: 32px;
-  //   font-family: $font-sans;
-  //   text-transform: uppercase;
-  //   font-weight: 900;
-  //   margin: 0;
-  //   @include mq($from: tablet) {
-  //     font-size: 14px;
-  //   }
-  // }
 
   .c-blog-index__intro {
     font-family: $font-serif;
@@ -55,9 +46,10 @@
     width: 100%;
     max-width: 536px;
     padding-right: $spacing;
-    margin: 0 0 72px 0;
+    margin: 0 0 64px 0;
     @include mq($from: tablet) {
       width: calc(100% - 216px);
+      margin: 0 0 72px 0;
     }
   }
 
@@ -68,10 +60,6 @@
     font-weight: 400;
     color: $v2-grey;
     margin-bottom: $spacing;
-    //width: 100%;
-    //max-width: 800px;
-    //padding-right: $spacing;
-    //margin: 0;
   }
 
   .c-blog-index__date {
@@ -126,7 +114,7 @@
   }
 
   @include mq($from: tablet) {
-    //padding: 0 $spacing $spacing-huge $spacing;
+    margin-bottom: 96px;
     .download {
       display: flex;
       .button {
@@ -142,7 +130,8 @@
 .c-blog-index__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  margin: 0 -12px;
 }
 
 .c-blog-index__item {
@@ -151,7 +140,9 @@
   flex-direction: column;
   justify-content: flex-start;
   flex-wrap: wrap;
-  margin-bottom: 72px;
+  margin-bottom: 64px;
+  margin-left: 12px;
+  margin-right: 12px;
   border-color: transparent;
   h3 {
     font-size: $font-size-small;
@@ -160,7 +151,7 @@
     letter-spacing: 0.1px;
     font-weight: 700;
     color: $v2-black;
-    margin: 16px 0 $spacing 0;
+    margin: $spacing 0;
     display: block;
     > * {
       margin: 0;
@@ -174,24 +165,29 @@
   &:visited:hover {
     border-color: transparent;
     h3 {
+      color: $v2-blue;
       border-color: transparent;
       text-decoration: underline;
     }
   }
   &:focus {
     border-color: transparent;
-  }     
+  }
   .c-blog-index__featured-image {
     width: 100%;
     height: 175px;
-    max-width: 332px;
-    //height: 100px;
+    //max-width: 332px;
     background-size: cover;
     margin: 0;
     pointer-events: none;
+    @include mq($from: tablet) {
+      max-width: 332px;
+    }
   }
+
   @include mq($from: tablet) {
-    width: 31.8%;
+    width: calc(33.3% - 24px);
+    margin-bottom: 72px;
     .text {
       display: flex;
       flex-direction: column;
@@ -221,31 +217,35 @@
   }
   .c-blog-index__featured-image {
     width: 100%;
-    height: 362px;
-    max-width: 544px;
+
     @include mq($from: tablet) {
       width: calc(55% - 24px);
+      height: 362px;
+      max-width: 544px;
     }
   }
   .publication-headline {
-    font-family: $font-sans-header;
-    font-size: 32px;
-    line-height: 39px;
-    margin: $spacing 0 $spacing 0;
     @include mq($from: tablet) {
+      font-family: $font-sans-header;
       font-size: 32px;
       line-height: 39px;
+      font-size: 32px;
+      line-height: 39px;
+      margin: $spacing 0 $spacing 0;
     }
   }
   .c-blog-index-item__intro {
-    font-size: $font-size-small;
-    line-height: 1.33;
+    @include mq($from: tablet) {
+      font-size: $font-size-small;
+      line-height: 1.33;
+    }
   }
 }
 .c-blog-index__filters {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
   margin-bottom: 32px;
   h5,
   span {
@@ -268,6 +268,21 @@
   .c-btn--ter {
     padding: 0;
   }
+  &.c-blog-index__filters--active {
+    .c-blog-index__filters-info {
+      max-width: 100%;
+      @include mq($from: tablet) {
+        max-width: 72%;
+      }
+    }
+  }
+}
+
+.c-blog-index__filters-set {
+  margin-bottom: 32px;
+  @include mq($from: tablet) {
+    margin-bottom: 0;
+  }
 }
 
 .c-blog-index__filters-info {
@@ -276,7 +291,7 @@
 
 .c-blog-index__paginator-list {
   padding: 0;
-  margin: $spacing auto 0 auto;
+  margin: 0 auto;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -319,16 +334,7 @@
       pointer-events: none;
     }
   }
+  @include mq($from: tablet) {
+    margin: $spacing auto 0 auto;
+  }
 }
-
-// .c-blog-filter {
-//   margin-bottom: $spacing-huge;
-//   cursor: pointer;
-// }
-
-// .c-blog-filter__title {
-//   font-size: $font-size-normal;
-//   line-height: 24px;
-//   font-weight: 700;
-//   margin: $spacing-tiny 0 0 0;
-// }
