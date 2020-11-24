@@ -3,7 +3,7 @@
   line-height: 1.2;
   font-family: 'Lato', Helvetica, Arial, sans-serif;
   font-weight: 400;
-  margin: 32px 0;
+  margin: 24px 0 32px 0;
 
   &.c-breadcrumb:after {
     display: none;
@@ -18,9 +18,9 @@
     &:hover,
     &:active {
       svg {
-        fill: $v2-black;
+        fill: $v2-blue;
         path {
-          fill: $v2-black;
+          fill: $v2-blue;
         }
       }
     }
@@ -29,9 +29,20 @@
     color: $v2-dark-grey;
     //text-transform: uppercase;
     margin: 0 8px 0 6px;
-    &:hover,
-    &:visited {
-      color: $v2-dark-grey;
+    &:hover {
+      color: $v2-blue;
+      text-decoration: underline;
     }
+    &:active {
+      color: $v2-blue;
+      text-decoration: none;
+      // & > * {
+      //   display: inline-block;
+      //   transform: translateY(2px);
+      // }
+    }
+  }
+  @include mq($from: tablet) {
+    margin: 32px 0;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import ClientOnlyPortal from '../ClinetOnlyPortal';
+import ClientOnlyPortal from '../ClientOnlyPortal';
 import { CloseButton, TextButton } from '../buttons';
 import { useOnClickOutside, useLockBodyScroll } from '../../../helpers/hooks'
 /**
@@ -66,7 +66,7 @@ export const MultiselectModal = ({ title = '', options, setOpen, setFilters, fil
         role="dialog"
         onKeyDown={onKeyDown}
       >
-        <div className="c-modal__area" ref={ref}>
+        <div className="c-modal__area c-modal--filters" ref={ref}>
           <div className="c-modal__top">
             <h3 className="c-modal__title">{title}</h3>
             <CloseButton onClick={e => setOpen(false)} />
