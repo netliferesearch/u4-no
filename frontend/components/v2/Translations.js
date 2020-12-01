@@ -36,13 +36,11 @@ export const RadioModal = ({ title = '', options, setOpen, currentSlug }) => {
   useLockBodyScroll();
 
   const handleApplyClick = () => {
-    console.log(selectedItem)
     setOpen(false);
     router.push(`/blog/${selectedItem}`);  
   };
 
   const handleChange = e => {
-    console.log(options.find(o => o.language === e.target.value).slug);
     setSelectedItem(options.find(o => o.language === e.target.value).slug);
   };
 

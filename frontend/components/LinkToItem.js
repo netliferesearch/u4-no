@@ -19,6 +19,8 @@ const getRoute = (type = '') => {
     return 'glossary.index';
   } else if (type === 'blog-post') {
     return 'blog.entry';
+  } else if (type === 'blog.index') {
+    return 'blog';
   }
   return 'general.article';
 };

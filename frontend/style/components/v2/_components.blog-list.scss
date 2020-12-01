@@ -252,15 +252,15 @@
     font-weight: 400;
     font-size: 15px;
     line-height: 1.6;
-    color: $v2-black;
     letter-spacing: 0.1px;
     margin: 0;
   }
   h5 {
     padding: 4px 0 0 0;
+    color: $v2-black;
   }
   span {
-    //font-weight: 700;
+    color: $v2-grey-2;
     margin: 0;
     white-space: pre;
     display: inline-block;

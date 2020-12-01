@@ -11,6 +11,7 @@ import LinkToItem from '../../LinkToItem';
 import { clearBlogFilters, updateBlogFilters } from '../../../helpers/redux-store';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import router from 'next/router';
 
 const applyFliters = (filters, elements) => {
   if (filters.length) {
@@ -41,11 +42,28 @@ const BlogFilteredList = (props) => {
   let d = currentResults.length < limit ? 1 : currentResults.length;
 
   const handlePageChange = (page, e) => {
+
+  //   const currentPath = "/blog";
+  //   const currentQuery = {...router.query}; //Copy current query to avoid its removing
+  //   currentQuery.page = page; 
+  //   router.push({
+  //     pathname: currentPath,
+  //     query: currentQuery,
+  // }, { shallow: true });
+
     setCurrentPage(page);
     if (typeof window !== 'undefined') {
       window.scrollTo(0, 0);
     }
   };
+
+  // useEffect(
+  //   () => {
+  //     setCurrentResults(filtersResults.slice(offset, offset + limit));
+  //   },
+  //   [filtersResults, offset]
+  // );
+
   useEffect(
     () => {
       setFiltersResults(applyFliters(blogFilters, blogEntries));
@@ -95,7 +113,7 @@ const BlogFilteredList = (props) => {
           </div>
         ) : (
           <div className="c-blog-index__filters--none">
-            <h5>{`All ${blogEntries.length} Blog articles`}</h5>
+            <h5>{`${blogEntries.length} Blog articles`}</h5>
           </div>
         )}
         <BlogEntriesFilter topics={topics} setFilters={updateBlogFilters} filters={blogFilters} />

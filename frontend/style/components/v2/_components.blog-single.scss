@@ -126,6 +126,14 @@
       line-height: 1.3;
       margin: 68px auto 32px auto;
     }
+    h3.c-longform-grid__standard {
+      color: $black;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.22;
+      margin: 68px auto 32px auto;
+    }
+
     .list-bullets {
       li::marker {
       }
@@ -164,27 +172,37 @@
       // }
     }
 
-    .c-figure__caption > .c-longform-grid__standard {
+    .c-figure__caption {
+      margin: 24px 0;
+    }
+
+    .c-figure__caption > .c-longform-grid__standard,
+    .c-table__caption > .c-longform-grid__standard {
+      font-size: 15px;
+      line-height: 1.33;
       padding-left: 0;
       padding-right: 0;
-      margin-top: 12px;
+      margin: 0 auto;
+    }
+    .c-table table {
+      margin-bottom: 24px;
     }
 
     a {
-      color: $v2-dark-grey;
-      border-bottom: 1px solid $v2-dark-grey;
+      color: $v2-black;
+      border-bottom: 1px solid $black;
     }
     a:hover {
-      color: $v2-blue;
-      border-bottom: 1px solid transparent;
+      color: $brand-main;
+      border-bottom: 1px solid $brand-main;
     }
     a:active {
-      color: $v2-blue;
-      border-bottom: 1px solid transparent;
+      color: $brand-main;
+      border-bottom: 1px solid $brand-main;
     }
     a:visited {
-      color: $v2-dark-grey;
-      border-bottom: 1px solid transparent;
+      //color: $brand-main;
+      //border-bottom: 1px solid $brand-main;
     }
 
     @include mq($from: tablet) {
@@ -194,10 +212,11 @@
     }
   }
 
-  .c-blog-entry__lead {
+  .c-blog-entry__lead,
+  .c-blog-entry__first-p {
     margin: 0 auto 32px auto;
     max-width: 600px;
-    p {
+    .c-longform-grid__standard {
       margin-top: 0;
     }
     @include mq($from: tablet) {
@@ -246,10 +265,15 @@
   flex-direction: column;
   position: relative;
   padding-bottom: 104px;
+
   @include mq($from: tablet) {
     flex-direction: row;
     position: relative;
     padding-bottom: 0;
+
+    // background-repeat: no-repeat;
+    // background-position: right top;
+    // background-size: cover;
   }
 }
 
@@ -315,6 +339,13 @@
   @include mq($from: tablet) {
     margin: 0;
     width: calc(50% - 8px);
+  }
+  img {
+    @include mq($from: tablet) {
+      width: auto;
+      min-width: 100%;
+      object-fit: cover;
+    }
   }
 }
 

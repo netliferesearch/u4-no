@@ -6,7 +6,10 @@ import { PhotoCaptionCredit } from '../PhotoCaptionCredit';
 export const BlogHeader = ({ data }) => {
   const { title = '', standfirst = '', featuredImage = {}, topics = [] } = data;
   return data ? (
-    <div className="o-wrapper-section-desktop c-blog-entry__header">
+    <div
+      className="o-wrapper-section-desktop--full c-blog-entry__header"
+      //style={{ backgroundImage: `url('${featuredImage.asset.url}?w=700')` }}
+    >
       <div
         className={`c-blog-entry__intro ${
           featuredImage.asset ? '' : 'c-blog-entry__intro--no-img'

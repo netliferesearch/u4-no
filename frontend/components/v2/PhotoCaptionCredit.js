@@ -19,7 +19,12 @@ export const PhotoCaptionCredit = ({ featuredImage }) => {
           }}
         />
       )}{' '}
-      {!sourceUrl && credit && <span className="c-blog-entry__caption">Photo: {credit} </span>}
+      {credit && (
+        <span className="c-blog-entry__caption">
+          Photo:<span className="u-margin-left-tiny">{credit}</span>
+        </span>
+      )}
+      {/* {!sourceUrl && credit && <span className="c-blog-entry__caption">Photo: {credit} </span>}
       {sourceUrl && (
         <span className="c-blog-entry__caption">
           Photo:
@@ -27,8 +32,13 @@ export const PhotoCaptionCredit = ({ featuredImage }) => {
             <div>{credit ? credit : sourceUrl}</div>
           </a>
         </span>
-      )}
+      )} */}
       {license && (
+        <span className="c-blog-entry__caption">
+          {license.startsWith('copyrighted') || 'CC'} {license.toUpperCase()}
+        </span>
+      )}
+      {/* {license && (
         <span className="c-blog-entry__caption">
           <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
             <div>
@@ -37,7 +47,7 @@ export const PhotoCaptionCredit = ({ featuredImage }) => {
             </div>
           </a>
         </span>
-      )}
+      )} */}
     </div>
   );
 };
