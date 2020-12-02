@@ -67,7 +67,7 @@
   }
 
   .c-blog-entry__caption > a {
-    text-decoration: underline;
+    //text-decoration: underline;
     transition: all 100ms ease-out;
     border-bottom: none;
     span {
@@ -76,11 +76,11 @@
     &:hover,
     &:visited:hover {
       color: $v2-blue;
-      text-decoration: none;
+      //text-decoration: none;
       border-bottom: none;
     }
     &:visited {
-      text-decoration: none;
+      //text-decoration: none;
       color: #8f8f8f;
       border-bottom: none;
     }
@@ -129,8 +129,10 @@
     h3.c-longform-grid__standard {
       color: $black;
       font-weight: 700;
-      font-size: 18px;
-      line-height: 1.22;
+      font-size: 22px;
+      line-height: 1.3;
+      // font-size: 18px;
+      // line-height: 1.22;
       margin: 68px auto 32px auto;
     }
 
@@ -271,9 +273,7 @@
     position: relative;
     padding-bottom: 0;
 
-    // background-repeat: no-repeat;
-    // background-position: right top;
-    // background-size: cover;
+
   }
 }
 
@@ -346,6 +346,16 @@
       min-width: 100%;
       object-fit: cover;
     }
+  }
+}
+
+
+.c-blog-entry__featured-image--bg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  @include mq($from: tablet) {
+    height: 521px;
   }
 }
 

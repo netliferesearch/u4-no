@@ -47,15 +47,19 @@ export const BlogHeader = ({ data }) => {
         </div>
       </div>
       {featuredImage.asset && (
-        <figure className="c-blog-entry__featured-image u-hidden--tablet">
-          <img
-            src={`${featuredImage.asset.url}?w=800`}
-            alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
-          />
-          <figcaption className="u-hidden--desktop">
-            <PhotoCaptionCredit featuredImage={featuredImage} />
-          </figcaption>
-        </figure>
+        <div
+          className="c-blog-entry__featured-image c-blog-entry__featured-image--bg u-hidden--tablet"
+          style={{ backgroundImage: `url('${featuredImage.asset.url}?w=1000')` }}
+        />
+        // <figure className="c-blog-entry__featured-image u-hidden--tablet">
+        //   <img
+        //     src={`${featuredImage.asset.url}?w=800`}
+        //     alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
+        //   />
+        //   <figcaption className="u-hidden--desktop">
+        //     <PhotoCaptionCredit featuredImage={featuredImage} />
+        //   </figcaption>
+        // </figure>
       )}
     </div>
   ) : null;
