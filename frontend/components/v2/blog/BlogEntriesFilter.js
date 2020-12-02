@@ -84,7 +84,8 @@ export const MultiselectModal = ({ title = '', options, setOpen, setFilters, fil
                         type="checkbox"
                         checked={selectedItems.some(filter => filter.title === option.title)}
                         name={option.title}
-                      />
+                      ></input>
+                      <span className="custom-checkbox"></span>
                       <span>{option.title}</span>
                     </label>
                   );

@@ -20,7 +20,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
           'https://cdn.sanity.io/images/1f1lcoov/production/3e59eddc41cd02132774902dd229b24e55dbfcb5-1000x207.png',
       }}
     >
-      <hr className="u-section-underline--no-margins" />
+      {/* <hr className="u-section-underline--no-margins" /> */}
       <div className="c-blog-index">
         <section className="o-wrapper">
           <div className="o-wrapper-section">

@@ -30,6 +30,11 @@ export const PhotoCaptionCredit = ({ featuredImage }) => {
       )}
       {license && (
         <span className="c-blog-entry__caption">
+          {license.startsWith('copyrighted') || 'CC'} {license.toUpperCase()}
+        </span>
+      )}
+      {/* {license && (
+        <span className="c-blog-entry__caption">
           <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
             <div>
               {' '}
@@ -37,7 +42,7 @@ export const PhotoCaptionCredit = ({ featuredImage }) => {
             </div>
           </a>
         </span>
-      )}
+      )} */}
     </div>
   );
 };

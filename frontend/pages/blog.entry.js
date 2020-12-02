@@ -32,14 +32,15 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     translation = '',
   } = blogEntry;
 
-const firstPar = content[0]
-const furtherPar = content.slice(1)
-  
+  const firstPar = content[0];
+  const secondPar = content[1];
+  const furtherPar = content.slice(1);
+
   return (
     <Layout
       headComponentConfig={{
         title,
-        description: lead || standfirst,
+        description: standfirst || lead,
         image: featuredImage.asset ? featuredImage.asset.url : '',
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: {},
@@ -73,14 +74,19 @@ const furtherPar = content.slice(1)
             </div>
             <div className="c-blog-entry__col c-blog-entry__center">
               <div className="c-blog-entry__content">
-                {lead ? (
-                  <div className="c-blog-entry__main-text c-blog-entry__lead u-drop-cap">
+                {/* {lead ? (
+                  <div className="c-blog-entry__main-text c-blog-entry__lead">
                     <p>{lead}</p>
                   </div>
-                ) : null}
+                ) : null} */}
                 {firstPar ? (
-                  <div className="c-blog-entry__main-text">
+                  <div className="c-blog-entry__main-text u-drop-cap c-blog-entry__first-p">
                     <BlockContent blocks={firstPar} serializers={serializers} />
+                  </div>
+                ) : null}
+                {secondPar ? (
+                  <div className="c-blog-entry__main-text">
+                    <BlockContent blocks={secondPar} serializers={serializers} />
                   </div>
                 ) : null}
                 <div className="c-newsletter-v2">

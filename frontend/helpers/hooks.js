@@ -6,9 +6,10 @@ export function useLockBodyScroll() {
       // Get original body overflow
       const originalStyle = window.getComputedStyle(document.body).overflow;
       const originalPadding = window.getComputedStyle(document.body).paddingRight;
+      const scrollbarWidth = (window.innerWidth - document.body.clientWidth) + 'px';
       // Prevent scrolling on mount
       document.body.style.overflow = 'hidden';
-      document.body.style.paddingRight = '15px';
+      document.body.style.paddingRight = scrollbarWidth;
       // Re-enable scrolling when component unmounts
       return () => {
         document.body.style.overflow = originalStyle;
