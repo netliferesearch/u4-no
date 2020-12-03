@@ -8,10 +8,13 @@ import { ArrowPrev } from '../icons/ArrowPrev';
 import { ArrowNext } from '../icons/ArrowNext';
 import { DoubleChevron } from '../icons/DoubleChevron';
 import LinkToItem from '../../LinkToItem';
-import { clearBlogFilters, updateBlogFilters } from '../../../helpers/redux-store';
+import {
+  clearBlogFilters,
+  updateBlogFilters,
+  updateBlogPageNum,
+} from '../../../helpers/redux-store';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import router from 'next/router';
 
 const applyFliters = (filters, elements) => {
   if (filters.length) {
@@ -28,46 +31,49 @@ const applyFliters = (filters, elements) => {
   }
 };
 
-const BlogFilteredList = (props) => {
-  const { blogFilters, updateBlogFilters, clearBlogFilters, blogEntries = [], topics = [] } = props
+const BlogFilteredList = props => {
+  const {
+    blogFilters,
+    updateBlogFilters,
+    blogPageNum,
+    updateBlogPageNum,
+    clearBlogFilters,
+    blogEntries = [],
+    topics = [],
+  } = props;
 
   const [filtersResults, setFiltersResults] = useState([]);
   const [currentResults, setCurrentResults] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
   const limit = blogFilters.length === 0 ? 7 : 9;
   const maxPagesListed = 5;
-  const offset = (currentPage - 1) * limit;
+  const offset = (blogPageNum - 1) * limit;
   const total = filtersResults.length ? filtersResults.length : currentResults.length * limit;
   let d = currentResults.length < limit ? 1 : currentResults.length;
 
   const handlePageChange = (page, e) => {
-
-  //   const currentPath = "/blog";
-  //   const currentQuery = {...router.query}; //Copy current query to avoid its removing
-  //   currentQuery.page = page; 
-  //   router.push({
-  //     pathname: currentPath,
-  //     query: currentQuery,
-  // }, { shallow: true });
-
-    setCurrentPage(page);
+    updateBlogPageNum(page);
     if (typeof window !== 'undefined') {
       window.scrollTo(0, 0);
     }
   };
 
-  // useEffect(
-  //   () => {
-  //     setCurrentResults(filtersResults.slice(offset, offset + limit));
-  //   },
-  //   [filtersResults, offset]
-  // );
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (window.location.search.indexOf('blogPageNum') === -1) {
+        updateBlogPageNum(1);
+      }
+    }
+  }, []);
+
+  const handleRemove = () => {
+    clearBlogFilters();
+    updateBlogPageNum(1);
+  };
 
   useEffect(
     () => {
       setFiltersResults(applyFliters(blogFilters, blogEntries));
-      setCurrentPage(1);
     },
     [blogFilters]
   );
@@ -93,7 +99,9 @@ const BlogFilteredList = (props) => {
   return (
     <div>
       <div
-        className={`c-blog-index__filters ${blogFilters.length ? 'c-blog-index__filters--active' : ''}`}
+        className={`c-blog-index__filters ${
+          blogFilters.length ? 'c-blog-index__filters--active' : ''
+        }`}
       >
         {blogFilters.length ? (
           <div className="c-blog-index__filters-info">
@@ -108,7 +116,7 @@ const BlogFilteredList = (props) => {
                         }`}</span> */}
                 </span>
               ))}
-              <TextButton onClick={e => clearBlogFilters()} text="Remove all" modifier="ter" />
+              <TextButton onClick={handleRemove} text="Remove all" modifier="ter" />
             </div>
           </div>
         ) : (
@@ -116,7 +124,12 @@ const BlogFilteredList = (props) => {
             <h5>{`${blogEntries.length} Blog articles`}</h5>
           </div>
         )}
-        <BlogEntriesFilter topics={topics} setFilters={updateBlogFilters} filters={blogFilters} />
+        <BlogEntriesFilter
+          topics={topics}
+          setFilters={updateBlogFilters}
+          filters={blogFilters}
+          updateBlogPageNum={updateBlogPageNum}
+        />
       </div>
       {currentResults ? (
         <div className="c-blog-index__list">
@@ -124,7 +137,7 @@ const BlogFilteredList = (props) => {
             <LinkToItem type={post._type} slug={post.slug} key={index}>
               <a
                 className={`c-blog-index__item c-blog-index__item${
-                    blogFilters.length === 0 && index === 0 ? '--full-width' : ''
+                  blogFilters.length === 0 && index === 0 ? '--full-width' : ''
                 }`}
               >
                 {post.imageUrl ? (
@@ -166,7 +179,7 @@ const BlogFilteredList = (props) => {
           total={total}
           limit={limit}
           pageCount={pageCount}
-          currentPage={currentPage}
+          currentPage={blogPageNum}
         >
           {({
             pages,
@@ -278,11 +291,12 @@ const BlogFilteredList = (props) => {
   );
 };
 
-const mapStateToProps = ({ blogFilters = [] }) => ({ blogFilters });
+const mapStateToProps = ({ blogFilters = [], blogPageNum = 1 }) => ({ blogFilters, blogPageNum });
 
 const mapDispatchToProps = dispatch => ({
   updateBlogFilters: bindActionCreators(updateBlogFilters, dispatch),
   clearBlogFilters: bindActionCreators(clearBlogFilters, dispatch),
+  updateBlogPageNum: bindActionCreators(updateBlogPageNum, dispatch),
 });
 
 export default connect(

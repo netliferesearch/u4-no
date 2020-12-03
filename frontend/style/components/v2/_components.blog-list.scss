@@ -302,12 +302,14 @@
   .pagination-item {
     font-family: $font-sans;
     font-size: 15px;
-    line-height: 1.2;
+    line-height: 1;
     background-color: $v2-lighter-grey;
     color: $v2-black;
     border: none;
     outline: none;
-    padding: 16px 21px;
+    width: 50px;
+    height: 50px;
+    padding: 16px 20px;
     text-decoration: none;
     transition: all 0.2s;
     cursor: pointer;

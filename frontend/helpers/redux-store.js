@@ -66,6 +66,7 @@ const defaultState = {
   searchResults: {},
   defaultSearchAggs: [],
   blogFilters: [],
+  blogPageNum: 1,
 };
 
 export const actionTypes = {
@@ -83,6 +84,7 @@ export const actionTypes = {
   SEARCH_UPDATE_DEFAULT_AGGS: 'SEARCH_UPDATE_DEFAULT_AGGS',
   BLOG_UPDATE_FILTERS: 'BLOG_UPDATE_FILTERS',
   BLOG_CLEAR_FILTERS: 'BLOG_CLEAR_FILTERS',
+  BLOG_UPDATE_PAGE_NUM: 'BLOG_UPDATE_PAGE_NUM',
 };
 
 // REDUCERS
@@ -151,6 +153,15 @@ export const reducer = (state = defaultState, action) => {
         blogFilters: [],
       });
 
+    case actionTypes.BLOG_UPDATE_PAGE_NUM:
+      if (state.blogPageNum !== action.blogPageNum) {
+        addQueryParams({
+          blogPageNum: `${action.blogPageNum}`,
+        });
+        return { ...state, blogPageNum: action.blogPageNum };
+      }
+      return state;
+
     default:
       return state;
   }
@@ -194,15 +205,25 @@ export const updateBlogFilters = (blogFilters = []) => dispatch =>
 export const clearBlogFilters = () => dispatch =>
   dispatch({ type: actionTypes.BLOG_CLEAR_FILTERS });
 
+export const updateBlogPageNum = blogPageNum => dispatch => {
+    return dispatch({ type: actionTypes.BLOG_UPDATE_PAGE_NUM, blogPageNum });
+  };
+
 export const initStore = (initialState = defaultState, options) => {
   const { query = {} } = options;
-  const { searchPageNum } = query;
+  const { searchPageNum, blogPageNum } = query;
   let state = initialState;
 
   if (searchPageNum) {
     state = {
       ...state,
       searchPageNum: parseInt(searchPageNum, 10),
+    };
+  }
+  if (blogPageNum) {
+    state = {
+      ...state,
+      blogPageNum: parseInt(blogPageNum, 10),
     };
   }
 

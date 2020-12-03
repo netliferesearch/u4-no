@@ -1,7 +1,11 @@
 import React, { useRef, useState } from 'react';
 import ClientOnlyPortal from '../ClientOnlyPortal';
 import { CloseButton, TextButton } from '../buttons';
-import { useOnClickOutside, useLockBodyScroll } from '../../../helpers/hooks'
+import { useOnClickOutside, useLockBodyScroll } from '../../../helpers/hooks';
+import { updateBlogPageNum } from '../../../helpers/redux-store';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 /**
  * V2 - Blog filter component to be used in BlogPage component
  * @param {Array} topics
@@ -9,7 +13,7 @@ import { useOnClickOutside, useLockBodyScroll } from '../../../helpers/hooks'
  * @param {Array} filters
  */
 
-export const BlogEntriesFilter = ({ topics, setFilters, filters }) => {
+export const BlogEntriesFilter = ({ topics, setFilters, filters, updateBlogPageNum }) => {
   const [open, setOpen] = useState();
   return (
     <div className={`c-modal${open ? ' open' : ''}`}>
@@ -21,13 +25,15 @@ export const BlogEntriesFilter = ({ topics, setFilters, filters }) => {
           setOpen={setOpen}
           setFilters={setFilters}
           filters={filters}
+          updateBlogPageNum={updateBlogPageNum}
         />
       )}
     </div>
   );
 };
 
-export const MultiselectModal = ({ title = '', options, setOpen, setFilters, filters }) => {
+export const MultiselectModal = props => {
+  const { title = '', options, setOpen, setFilters, filters, updateBlogPageNum } = props;
   const [selectedItems, setSelectedItems] = useState(filters);
   // ref that we add to the element for which we want to detect outside clicks
   const ref = useRef();
@@ -38,6 +44,7 @@ export const MultiselectModal = ({ title = '', options, setOpen, setFilters, fil
 
   const handleApplyClick = () => {
     setFilters(selectedItems);
+    updateBlogPageNum(1);
     setOpen(false);
   };
 
@@ -84,8 +91,8 @@ export const MultiselectModal = ({ title = '', options, setOpen, setFilters, fil
                         type="checkbox"
                         checked={selectedItems.some(filter => filter.title === option.title)}
                         name={option.title}
-                      ></input>
-                      <span className="custom-checkbox"></span>
+                      />
+                      <span className="custom-checkbox" />
                       <span>{option.title}</span>
                     </label>
                   );
@@ -105,50 +112,14 @@ export const MultiselectModal = ({ title = '', options, setOpen, setFilters, fil
   );
 };
 
-// export const BlogEntriesFilter = ({ topics, setFilter, filter }) => {
-//   const [activeModal, setActiveModal] = useState(-1);
-//   const toggleModal = index => {
-//     const newIndex = index === activeModal ? -1 : index;
-//     setActiveModal(newIndex);
-//   };
-//   const handleClick = (e, filter, topic) => {
-//     e.preventDefault();
-//     if (filter) {
-//       filter.title === topic.title ? setFilter(null) : setFilter(topic);
-//     } else {
-//       setFilter(topic);
-//     }
-//   };
+// const mapStateToProps = ({ blogFilters = [], blogPageNum = 1 }) => ({ blogFilters, blogPageNum });
 
-//   return (
-//     topics && (
-//       <div className="blog-accordion c-blog-filter">
-//         <div className="c-accordion">
-//           <div className="c-accordion__block" onClick={e => toggleModal(1)}>
-//             <div className="c-accordion__container">
-//               <h3 className="c-blog-filter__title">{filter ? filter.title : 'Filter by topic'} </h3>
-//               <div className={`c-accordion__content${activeModal === 1 ? ' open' : ''}`}>
-//                 <div className="c-accordion__list">
-//                   <a href="#\" onClick={e => handleClick(e, filter, '')} className="main">
-//                     All Topics
-//                   </a>
-//                   {topics &&
-//                     topics.map((topic, index) => {
-//                       return (
-//                         <a href="#\" key={index} onClick={e => handleClick(e, filter, topic)}>
-//                           {topic.title}
-//                         </a>
-//                       );
-//                     })}
-//                 </div>
-//               </div>
-//             </div>
-//             <div className={`c-accordion__arrow${activeModal === 1 ? ' open' : ''}`}>
-//               <ArrowDark />
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     )
-//   );
-// };
+// const mapDispatchToProps = dispatch => ({
+//   updateBlogFilters: bindActionCreators(updateBlogFilters, dispatch),
+//   updateBlogPageNum: bindActionCreators(updateBlogPageNum, dispatch),
+// });
+
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(BlogEntriesFilter);

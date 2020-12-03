@@ -14,6 +14,24 @@ import { Disclaimers } from '../components/v2/Disclaimers';
 import { Share } from '../components/v2/ShareOnSocialMedia';
 import { PhotoCaptionCredit } from '../components/v2/PhotoCaptionCredit';
 
+const isPar = p => (p.children && p.style === 'normal' ? true : false);
+
+const getFirstPart = content => {
+  const firstPart = [];
+  const countPar = [];
+  content.forEach(b => {
+    if (countPar.length < 2) {
+      firstPart.push(b);
+      if (isPar(b) === true) {
+        countPar.push(b);
+      }
+    } else {
+      return firstPart;
+    }
+  });
+  return firstPart;
+};
+
 const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
   const {
     title = '',
@@ -32,9 +50,11 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     translation = '',
   } = blogEntry;
 
-  const firstPar = content[0];
-  const secondPar = content[1];
-  const furtherPar = content.slice(1);
+  //console.log(content);
+  const topBlocks = getFirstPart(content);
+  //console.log(topBlocks.length);
+  const belowBlocks = content.slice(topBlocks.length);
+  //console.log(belowBlocks.length);
 
   return (
     <Layout
@@ -79,22 +99,17 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
                     <p>{lead}</p>
                   </div>
                 ) : null} */}
-                {firstPar ? (
+                {topBlocks ? (
                   <div className="c-blog-entry__main-text u-drop-cap c-blog-entry__first-p">
-                    <BlockContent blocks={firstPar} serializers={serializers} />
-                  </div>
-                ) : null}
-                {secondPar ? (
-                  <div className="c-blog-entry__main-text">
-                    <BlockContent blocks={secondPar} serializers={serializers} />
+                    <BlockContent blocks={topBlocks} serializers={serializers} />
                   </div>
                 ) : null}
                 <div className="c-newsletter-v2">
                   <Newsletter />
                 </div>
-                {furtherPar ? (
+                {belowBlocks ? (
                   <div className="c-blog-entry__main-text">
-                    <BlockContent blocks={furtherPar} serializers={serializers} />
+                    <BlockContent blocks={belowBlocks} serializers={serializers} />
                   </div>
                 ) : null}
                 <div className="c-blog-entry__additional-content">

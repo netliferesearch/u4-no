@@ -60,10 +60,7 @@
     line-height: 14px;
     text-align: right;
     padding: 2px;
-    color: #8f8f8f;
-    @include mq($from: tablet) {
-      color: $v2-dark-grey;
-    }
+    color: $v2-dark-grey;
   }
 
   .c-blog-entry__caption > a {
@@ -81,7 +78,7 @@
     }
     &:visited {
       //text-decoration: none;
-      color: #8f8f8f;
+      //color: #8f8f8f;
       border-bottom: none;
     }
     &:active {
