@@ -64,7 +64,7 @@ export const BlogSidebar = ({ data, side }) => {
       ) : null}
       {side === 'right' ? (
         <div className="c-blog-sidebar--right">
-          {keywords.length > 0 ? <Keywords title={true} keywords={keywords} /> : null}
+          {keywords.length > 0 ? <Keywords title={true} keywords={keywords} hr={true} /> : null}
           {relatedContent.length > 0 ? (
             <RelatedSimple items={relatedContent} title={'Related'} />
           ) : null}

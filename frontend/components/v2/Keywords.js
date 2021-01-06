@@ -6,14 +6,15 @@ import React from 'react';
  *
  * @param {Boolean} title
  * @param {Array} keywords
+ * @param {Boolean} hr
  */
 
-export const Keywords = ({ title = true, keywords = [] }) => {
+export const Keywords = ({ title = true, keywords = [], hr = false }) => {
   return (
       keywords && (
         <div className="c-keywords">
           {title ? <h6>Keywords</h6> : null }
-          {title ? <hr className="u-section-underline--no-margins" /> : null }
+          {hr ? <hr className="u-section-underline--no-margins" /> : null }
           <div className="c-keywords__list">
             {keywords
               .filter(keyword => keyword.category === 'keyword')

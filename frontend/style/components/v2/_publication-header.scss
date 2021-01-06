@@ -1,14 +1,20 @@
 .c-article-header-v2 {
   font-family: $font-sans;
-  padding: $spacing;
-  background-color: $brand-lightest;
+  //padding: $spacing;
+  //background-color: $brand-lightest;
   color: $brand-dark;
 
   .c-article-header__container {
     padding: 0;
     @include mq($from: tablet) {
-      padding: 0 $spacing-huge 0 0;
+      //padding: 0 $spacing-huge 0 0;
     }
+  }
+
+  .c-article-header-v2__content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
   }
 
   .pdf-preview {
@@ -98,11 +104,15 @@
     }
   }
   @include mq($from: tablet) {
-    padding: 72px $spacing 72px $spacing;
+    //padding: 72px $spacing 72px $spacing;
     .o-wrapper-section {
       display: flex;
       flex-wrap: wrap;
     }
+    // &__content {
+    //   max-width: 600px;
+    //   margin: 0 auto;
+    // }
     &__left {
       flex-grow: 1;
       padding-right: 15%;

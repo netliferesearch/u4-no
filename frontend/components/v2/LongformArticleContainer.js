@@ -9,14 +9,15 @@ import {
   TableOfContentsContent,
   AuthorList,
 } from '../';
-import {
-  PublicationSidebar,
-  PublicationContent,
-  Layout,
-  PublicationArticleHeader,
-  PublicationAccordion,
-  NewsAndEvents,
-} from './';
+import { PublicationContent, Layout, PublicationArticleHeader, PublicationAccordion } from './';
+import { RelatedSimple } from './RelatedSimple';
+import { PublicationSidebar } from './PublicationSidebar';
+import { AboutAuthor } from './AboutAuthor';
+import { Disclaimers } from './Disclaimers';
+import { Cite } from './Cite';
+import { Keywords } from './Keywords';
+import { TagsSection } from './TagsSection';
+import { Topics } from './Topics';
 
 const LongFormArticleContainer = (props = {}) => {
   const {
@@ -39,10 +40,13 @@ const LongFormArticleContainer = (props = {}) => {
       relatedUrl = {},
       publicationType = {},
       articleType = [],
+      keywords = [],
+      topics = [],
       recommendedResources = [],
       relatedResources = [],
       headsUp = [],
       updatedVersion = false,
+      summary = []
     } = {},
     shortversion = false,
     headComponentConfigOverride,
@@ -116,7 +120,7 @@ const LongFormArticleContainer = (props = {}) => {
           )} */}
           <span id="js-top" />
           <div id="js-scroll-trigger">
-            {BreadCrumbComponent && BreadCrumbComponent}
+            {/* {BreadCrumbComponent && BreadCrumbComponent} */}
             {_type === 'publication' && !shortversion && (
               <PublicationArticleHeader
                 {...props.data}
@@ -126,16 +130,35 @@ const LongFormArticleContainer = (props = {}) => {
               />
             )}
           </div>
-          <section className="o-wrapper u-side-padding" style={{ display: readerOpen ? 'none' : 'block'}}>
+          <section
+            className="o-wrapper u-side-padding"
+            style={{ display: readerOpen ? 'none' : 'block' }}
+          >
             {_type === 'publication' && (
               <div className="o-wrapper-section c-article__container">
-                <PublicationSidebar {...props.data} />
-                <div className="content">
+                <div className="c-article__side c-article__col">
+                  <PublicationSidebar data={props.data} side={'left'} />
+                </div>
+                <div className="content c-article__col">
                   <PublicationContent {...props.data} />
-                  <PublicationAccordion {...props.data} />
+                  <h3 className="title">Tags</h3>
+                  {topics.length > 0 || keywords.length > 0 ? (
+                    <Topics title={true} topics={topics} hr={false} />
+                  ) : null}
+                  {keywords.length > 0 ? (
+                    <Keywords title={true} keywords={keywords} hr={false} />
+                  ) : null}
+                  <AboutAuthor authors={authors} />
+                  <Cite {...props.data} />
+                  <Disclaimers />
+                  {/* <PublicationAccordion {...props.data} /> */}
+                </div>
+                <div className="c-article__side c-article__col">
+                  <PublicationSidebar data={props.data} side={'right'} />
                 </div>
               </div>
             )}
+
             {_type !== 'publication' && (
               <div>
                 <div className="c-longform-grid u-bg-white u-z-index-x">
@@ -153,7 +176,6 @@ const LongFormArticleContainer = (props = {}) => {
                       )}
                     </div>
                   ) : null}
-
                   {lead && <div className="c-article c-longform-grid__standard">{lead}</div>}
                 </div>
                 <div className="c-longform-grid">
@@ -241,16 +263,16 @@ const LongFormArticleContainer = (props = {}) => {
             </div>
           ) : null} */}
 
-          <section className="o-wrapper" style={{ display: readerOpen ? 'none' : 'block'}}>
+          {/* <section className="o-wrapper" style={{ display: readerOpen ? 'none' : 'block' }}>
             <div className="o-wrapper-section">
               {recommendedResources.length || relatedResources.length ? (
-                <NewsAndEvents
+                <RelatedSimple
                   items={recommendedResources.length > 0 ? recommendedResources : relatedResources}
-                  title={'Related'}
+                  title={'We also recommend'}
                 />
               ) : null}
             </div>
-          </section>
+          </section> */}
           {/* <span id="js-bottom" /> */}
         </article>
       )}
