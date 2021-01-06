@@ -188,6 +188,7 @@
 @import 'components/_components.pdf-viewer';
 @import 'components/littlefoot/littlefoot';
 @import 'components/components.tnrc';
+@import 'components/components.pagebreak';
 
 @import 'components/v2/frontpage';
 @import 'components/v2/components.blog-list';
@@ -201,7 +202,6 @@
 @import 'components/v2/components.modal';
 @import 'components/v2/components.buttons';
 @import 'components/v2/components.newsletter';
-
 
 // UTILITIES
 @import '../node_modules/inuitcss/utilities/utilities.widths';
