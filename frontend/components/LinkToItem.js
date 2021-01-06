@@ -17,6 +17,10 @@ const getRoute = (type = '') => {
     return 'asset.entry';
   } else if (type === 'term') {
     return 'glossary.index';
+  } else if (type === 'blog-post') {
+    return 'blog.entry';
+  } else if (type === 'blog.index') {
+    return 'blog';
   }
   return 'general.article';
 };

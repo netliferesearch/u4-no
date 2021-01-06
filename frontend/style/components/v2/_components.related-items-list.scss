@@ -12,20 +12,6 @@
   }
   @include mq($from: tablet) {
     padding: 0 0 $spacing-large 0;
-
-    //   .col {
-    //     width: 30%;
-    //     max-width: 600px;
-    //     margin-bottom: 0;
-    //     margin-left: 2.5%;
-    //     margin-right: 2.5%;
-    //     &:first-child {
-    //       margin-left: 0;
-    //     }
-    //     &:last-child {
-    //       margin-right: 0;
-    //     }
-    //   }
   }
   @include mq($from: desktop) {
     padding-bottom: $spacing-huge;
@@ -115,5 +101,45 @@
     font-size: 18px;
     line-height: 26px;
     margin: 0 0 $spacing 0;
+  }
+}
+
+.c-related-simple {
+  margin-bottom: 48px;
+  h6 {
+    font-size: $font-size-nano;
+    line-height: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .c-related-items-list__publication-headline {
+    margin: 0;
+    h3 {
+      font-family: $font-serif;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+      color: $v2-dark-grey;
+      margin: 16px 0;
+    }
+    &:hover,
+    &:visited:hover {
+      h3 {
+        color: $v2-blue;
+        text-decoration: underline;
+      }
+    }
+    &:active {
+      color: $v2-blue;
+      text-decoration: underline;
+      border-bottom: none;
+      & > * {
+        display: inline-block;
+        transform: translateY(2px);
+      }
+    }
   }
 }
