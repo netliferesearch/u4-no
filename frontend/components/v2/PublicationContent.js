@@ -9,7 +9,7 @@ const littlefootActivator = () => {
 };
 
 const classes = BEMHelper({
-  name: 'article-content',
+  name: 'article__content',
   prefix: 'c-',
 });
 
@@ -52,18 +52,18 @@ const PublicationContent = ({
       />
 
       {lead || abstract ? (
-        <div className="c-article c-article__lead">
+        <div className="c-article c-article__lead u-drop-cap">
           <p>{lead}</p>
           {/* Legacy publication abstracts come with html included
                 so we go and render it out.
           */}
-          {!lead && abstract && <div dangerouslySetInnerHTML={{ __html: abstract }} />}
+          {!lead && abstract && <div className="c-article__lead--abstract" dangerouslySetInnerHTML={{ __html: abstract }} />}
         </div>
       ) : null}
 
       {mainPoints.length > 0 && (
         <div className="publication-preview">
-          <h3 className="title">Main points</h3>
+          <h3 className="u-headline--sec">Main points</h3>
           <ul className="c-article_mainPoints-list">
             {mainPoints.map((mainPoint, index) => (
               <li key={index} className="c-article_mainPoints-item">

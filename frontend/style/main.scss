@@ -195,13 +195,14 @@
 @import 'components/v2/components.breadcrumb-v2';
 @import 'components/v2/components.share';
 @import 'components/v2/components.tags-section';
-@import 'components/v2/publication-header';
+@import 'components/v2/components.publication-header';
 @import 'components/v2/publication-content';
 @import 'components/v2/components.related-items-list';
 @import 'components/v2/components.modal';
 @import 'components/v2/components.buttons';
 @import 'components/v2/components.newsletter';
-
+@import 'components/v2/components.disclaimers';
+@import 'components/v2/components.article-sidebar';
 
 // UTILITIES
 @import '../node_modules/inuitcss/utilities/utilities.widths';

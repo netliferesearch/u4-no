@@ -33,21 +33,20 @@ const PublicationArticleHeader = ({
     <header {...classes('', null, className)}>
       <div className="o-wrapper-section c-article-header__container">
         <div {...classes('content')}>
-          <div {...classes('meta')}>
-            <Link route={getRouteByType(publicationType.title)}>
-              <a className="c-btn--sen">
-                <h6>
-                  {' '}
-                  {/* {publicationType.title && `Publication | ${publicationType.title}`} */}
-                  {publicationType.title && `${publicationType.title}`}
-                </h6>
-              </a>
-            </Link>
-          </div>
+          <Link route={getRouteByType(publicationType.title)}>
+            <a className="c-btn--sen">
+              <h6>
+                {' '}
+                {/* {publicationType.title && `Publication | ${publicationType.title}`} */}
+                {publicationType.title && `${publicationType.title}`}
+              </h6>
+            </a>
+          </Link>
+
           <h2 className="u-headline--black--44">{title}</h2>
           {subtitle ? <p {...classes('subtitle')}>{subtitle}</p> : null}
           {/* {standfirst ? <p {...classes('intro')}>{standfirst}</p> : null} */}
-          <div {...classes('download')}>
+          <div {...classes('actions')}>
             {(content.length > 0 || legacypdf.asset) && (
               <button
                 className="c-btn c-btn--sec"
@@ -79,8 +78,9 @@ const PublicationArticleHeader = ({
               </Link>
             )}
           </div>
-          <hr className="u-section-underline--no-margins" />
+          
         </div>
+        <hr className="u-section-underline--no-margins" />
       </div>
       {readerOpen && (
         <Reader

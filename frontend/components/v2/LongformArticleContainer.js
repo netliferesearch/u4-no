@@ -18,6 +18,8 @@ import { Cite } from './Cite';
 import { Keywords } from './Keywords';
 import { TagsSection } from './TagsSection';
 import { Topics } from './Topics';
+import { BreadCrumbV2 } from './BreadCrumbV2';
+import { getRouteByType } from '../../helpers/getRouteByType';
 
 const LongFormArticleContainer = (props = {}) => {
   const {
@@ -46,7 +48,7 @@ const LongFormArticleContainer = (props = {}) => {
       relatedResources = [],
       headsUp = [],
       updatedVersion = false,
-      summary = []
+      summary = [],
     } = {},
     shortversion = false,
     headComponentConfigOverride,
@@ -114,12 +116,12 @@ const LongFormArticleContainer = (props = {}) => {
       )} */}
 
       {!isArticleMenuOpen && (
-        <article>
+        <article className="c-article-v2">
           {/* {_type === 'publication' && !isPublicationDrawerOpen && (
             <TableOfContentsButton {...props.data} />
           )} */}
           <span id="js-top" />
-          <div id="js-scroll-trigger">
+          <div id="js-scroll-trigger" className="o-wrapper u-side-padding">
             {/* {BreadCrumbComponent && BreadCrumbComponent} */}
             {_type === 'publication' && !shortversion && (
               <PublicationArticleHeader
@@ -134,24 +136,31 @@ const LongFormArticleContainer = (props = {}) => {
             className="o-wrapper u-side-padding"
             style={{ display: readerOpen ? 'none' : 'block' }}
           >
+            <div className="o-wrapper-section c-article__row">
+              <BreadCrumbV2
+                title={`All ${publicationType.title}s`}
+                parentSlug={getRouteByType(publicationType.title)}
+                home={false}
+              />
+            </div>
             {_type === 'publication' && (
-              <div className="o-wrapper-section c-article__container">
+              <div className="o-wrapper-section c-article__row">
                 <div className="c-article__side c-article__col">
                   <PublicationSidebar data={props.data} side={'left'} />
                 </div>
-                <div className="content c-article__col">
+                <div className="content c-article__col c-article__center">
                   <PublicationContent {...props.data} />
-                  <h3 className="title">Tags</h3>
-                  {topics.length > 0 || keywords.length > 0 ? (
-                    <Topics title={true} topics={topics} hr={false} />
-                  ) : null}
-                  {keywords.length > 0 ? (
-                    <Keywords title={true} keywords={keywords} hr={false} />
-                  ) : null}
-                  <AboutAuthor authors={authors} />
-                  <Cite {...props.data} />
-                  <Disclaimers />
-                  {/* <PublicationAccordion {...props.data} /> */}
+                  <div className="c-article__additional-content">
+                    {topics.length > 0 ? <h3 className="u-headline--sec">Tags</h3> : null}
+                    {topics.length > 0 ? <Topics title={true} topics={topics} hr={false} /> : null}
+                    {keywords.length > 0 ? (
+                      <Keywords title={true} keywords={keywords} hr={false} />
+                    ) : null}
+                    <AboutAuthor authors={authors} />
+                    <Cite {...props.data} />
+                    <Disclaimers />
+                    {/* <PublicationAccordion {...props.data} /> */}
+                  </div>
                 </div>
                 <div className="c-article__side c-article__col">
                   <PublicationSidebar data={props.data} side={'right'} />

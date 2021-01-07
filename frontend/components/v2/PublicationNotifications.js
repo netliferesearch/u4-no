@@ -36,16 +36,16 @@ const PublicationNotifications = ({
   return (
     <section {...classes()}>
       {headsUpHasContent && (
-        <div {...classes('note-item')}>
-          <Note />
+        <div className="c-notifications__note-item c-notifications__headsUp">
+          {/* <Note /> */}
           <div {...classes('label')}>
             <BlockContent blocks={headsUp} serializers={serializers} />
           </div>
         </div>
       )}
       {updatedVersion && (
-        <div {...classes('note-item')}>
-          <Note />
+        <div className="c-notifications__note-item c-notifications__updatedVersion">
+          {/* <Note /> */}
           <p {...classes('label')}>
             This publication is from {pubyear}.A more recent version has been published,{' '}
             <a
@@ -54,6 +54,7 @@ const PublicationNotifications = ({
                 slug: updatedVersion.slug,
               })}
               title={updatedVersion.title}
+              className="c-btn--qua"
             >
               {updatedVersion.title}
             </a>
@@ -62,8 +63,8 @@ const PublicationNotifications = ({
         </div>
       )}
       {publicationType._id == '080dc28c-9d5e-4c14-972f-73f83a206b92' && (
-        <div {...classes('note-item')}>
-          <Note />
+        <div className="c-notifications__note-item c-notifications__partner">
+          {/* <Note /> */}
           <p {...classes('label')}>
             This publication is part of the TNRC consortium and produced with support from USAID.
           </p>
@@ -73,8 +74,8 @@ const PublicationNotifications = ({
         !updatedVersion &&
         date &&
         new Date().getFullYear() - Number(pubyear) > 5 && (
-          <div {...classes('note-item')}>
-            <Note />
+          <div className="c-notifications__note-item c-notifications__old">
+            {/* <Note /> */}
             <p {...classes('label')}>
               This publication is from {pubyear}. Some of the content may be outdated. Search
               related topics to find more recent resources.

@@ -1,20 +1,24 @@
 .c-article-header-v2 {
   font-family: $font-sans;
-  //padding: $spacing;
-  //background-color: $brand-lightest;
   color: $v2-black;
 
   .c-article-header__container {
-    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
     @include mq($from: tablet) {
-      //padding: 0 $spacing-huge 0 0;
     }
   }
 
   .c-article-header-v2__content {
-    max-width: 600px;
-    margin: 0 auto;
+    margin: 72px auto 24px auto;
     text-align: center;
+  }
+
+  h2 {
+    margin-top: 32px;
+  }
+  h6 {
+    margin-bottom: 0;
   }
 
   .c-article-header-v2__subtitle {
@@ -22,20 +26,23 @@
     font-size: 22px;
     line-height: 1.45;
     letter-spacing: 0.02em;
+    margin: 32px 0 0 0;
   }
 
-  .pdf-preview {
-    display: none;
-    pointer-events: none;
-    .ReactPDF__Page__canvas {
-      border: 1px solid $brand-main;
-      max-width: 100%;
-      height: auto !important;
+  .c-article-header-v2__actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 32px 0 0 0;
+
+    a, button {
+      margin: 0 16px;
+      font-size: 12px;
+      font-weight: 400;
     }
-    .ReactPDF__Page__textContent {
-      visibility: hidden;
-    }
+
   }
+
   &__meta {
     width: 100%;
   }
@@ -126,25 +133,7 @@
       width: 70%;
       max-width: 1000px;
     }
-    &__download {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      .dropdown-select {
-        margin-right: $spacing;
-      }
-      .button {
-        &.read-online {
-          margin-top: 0;
-        }
-      }
-    }
-    .pdf-preview {
-      display: block;
-      width: 20%;
-      max-width: 240px;
-      margin-top: $spacing;
-    }
+
   }
 
   .c-reader__back-button {

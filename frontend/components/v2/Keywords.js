@@ -13,7 +13,7 @@ export const Keywords = ({ title = true, keywords = [], hr = false }) => {
   return (
       keywords && (
         <div className="c-keywords">
-          {title ? <h6>Keywords</h6> : null }
+          {title ? <h5 className="u-headline--qua">Keywords</h5> : null }
           {hr ? <hr className="u-section-underline--no-margins" /> : null }
           <div className="c-keywords__list">
             {keywords

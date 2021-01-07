@@ -105,15 +105,48 @@
   color: $v2-black;
 }
 
-.u-drop-cap p:first-child::first-letter {
-  font-size: 72px;
-  line-height: 0.62;
-  padding: 8px 8px 0 0;
+.u-headline--sec {
+  font-family: $font-sans;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.27;
+  letter-spacing: 0.02em;
+  color: $v2-black;
+}
+.u-headline--ter {
+  font-family: $font-sans;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  color: $v2-black;
+}
 
-  float: left;
-  @include mq($from: tablet) {
-    font-size: 144px;
-    padding: 0 20px 20px 0;
-    line-height: 0.8;
+.u-headline--qua {
+  font-family: $font-sans;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: $v2-black;
+}
+
+.u-drop-cap {
+  p:first-child::first-letter,
+  .c-article__lead--abstract::first-letter {
+    font-size: 72px;
+    line-height: 0.62;
+    padding: 8px 8px 0 0;
+
+    float: left;
+    @include mq($from: tablet) {
+      font-size: 144px;
+      padding: 0 20px 20px 0;
+      line-height: 0.8;
+    }
   }
 }

@@ -32,9 +32,9 @@ export default DataLoader(PublicationEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `*[_type == 'publication' && slug.current == $slug]{ _type, _id,
       abbreviations, abstract, acknowledgements,
-      authors[]->{_id, affiliations, email, firstName, slug, surname, bioShort, bioShort_fr, bioShort_es },
+      authors[]->{_id, affiliations, email, firstName, slug, surname, position, bioShort, bioShort_fr, bioShort_es },
       bibliographicalOverride, blurbs, content, date,
-      editors[]->{ _id, affiliations, email, firstName, slug, surname },
+      editors[]->{ _id, affiliations, email, firstName, position, slug, surname },
       featuredImage, headsUp, keywords[]->{category, keyword}, language,
       lead, legacypdf, mainPoints, methodology, notes, partners, pdfFile, publicationNumber,
       publicationType->{ _id, title },

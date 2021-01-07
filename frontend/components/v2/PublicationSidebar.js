@@ -36,24 +36,23 @@ export const PublicationSidebar = ({ data, side }) => {
     pdfFile = {},
     legacypdf = {},
     partners = [],
-    slug='',
+    slug = '',
   } = data;
 
   return data ? (
     <div {...classes('', null, className)}>
       {side === 'left' ? (
-        <div {...classes('right')}>
-          <BreadCrumbV2
-            title={`All ${publicationType.title}s`}
-            parentSlug={getRouteByType(publicationType.title)}
-            home={false}
-          />
-          <div>
-            <p>
-              <strong>{dateToString({ start: date.utc })}</strong>
-            </p>
+        <div {...classes('left')}>
+          <div className="c-article-sidebar__date">
+            {date && date.utc && (
+              <span className="c-article-sidebar__row--regular">
+                {dateToString({ start: date.utc })}
+              </span>
+            )}
             {updatedVersion ? (
-              <p>Updated {dateToString({ start: updatedVersion.date.utc })}</p>
+              <span className="c-article-sidebar__row--regular">
+                Updated {dateToString({ start: updatedVersion.date.utc })}
+              </span>
             ) : null}
           </div>
           {authors.length ? <AuthorList authors={authors} /> : null}
@@ -64,9 +63,16 @@ export const PublicationSidebar = ({ data, side }) => {
               pluralize={publicationType._id !== 'pubtype-3'}
             />
           ) : null}
-          {bibliographicReference({ publicationType, publicationNumber, reference })}
+          <p className="c-article-sidebar__row--regular">
+            {bibliographicReference({ publicationType, publicationNumber, reference })}
+          </p>
           {translations.length > 0 && (
-            <Translations translations={translations} language={language} route={'/publications'} currentSlug={slug} />
+            <Translations
+              translations={translations}
+              language={language}
+              route={'/publications'}
+              currentSlug={slug}
+            />
           )}
         </div>
       ) : null}
@@ -74,42 +80,46 @@ export const PublicationSidebar = ({ data, side }) => {
       {side === 'right' ? (
         <div {...classes('right')}>
           {(pdfFile.asset || legacypdf.asset) && (
-            <div {...classes('right pdf-preview')}>
-              {/* {useMediaQuery('tablet') && ( */}
-              <Document file={pdfFile.asset ? pdfFile.asset : legacypdf.asset}>
-                <Page pageNumber={1} />
-              </Document>
-              {/* )} */}
-            </div>
-          )}
-          {acknowledgements || partners.length > 0 || publicationType._id === 'pubtype-3' ? (
-            <h3 className="u-black-mid-headline">In collaboration with</h3>
-          ) : null}
-          {acknowledgements ? (
-            <div {...classes('meta')}>
-              {/* <h3 className="u-black-mid-headline">Acknowledgements</h3> */}
-              <div {...classes('content')}>
-                {typeof acknowledgements === 'string' && <p>{acknowledgements}</p>}
-                {typeof acknowledgements !== 'string' && (
-                  <BlockContent blocks={acknowledgements} serializers={serializers} />
-                )}
+            <div className="c-article-sidebar__row--regular">
+              <div {...classes('right pdf-preview')}>
+                {/* {useMediaQuery('tablet') && ( */}
+                <Document file={pdfFile.asset ? pdfFile.asset : legacypdf.asset}>
+                  <Page pageNumber={1} />
+                </Document>
+                {/* )} */}
               </div>
             </div>
-          ) : null}
-          {partners.length > 0 || publicationType._id === 'pubtype-3' ? (
-            <div {...classes('meta')}>
-              {/* <h3 className="u-black-mid-headline">Partners</h3> */}
-              {partners.length > 0 ? <PartnersList institutions={partners} /> : null}
-              {publicationType._id === 'pubtype-3' && (
-                <div className="c-article-header__institution">
-                  {/* <p>The U4 Helpdesk is operated by </p> */}
-                  <div className="c-logo">
-                    <PartnerLogo10Blue />
-                  </div>
+          )}
+          <div className="c-article-sidebar__row--regular">
+            {acknowledgements || partners.length > 0 || publicationType._id === 'pubtype-3' ? (
+              <h5 className="u-headline--qua">In collaboration with</h5>
+            ) : null}
+            {acknowledgements ? (
+              <div {...classes('meta')}>
+                {/* <h3 className="u-black-mid-headline">Acknowledgements</h3> */}
+                <div {...classes('content')}>
+                  {typeof acknowledgements === 'string' && <p>{acknowledgements}</p>}
+                  {typeof acknowledgements !== 'string' && (
+                    <BlockContent blocks={acknowledgements} serializers={serializers} />
+                  )}
                 </div>
-              )}
-            </div>
-          ) : null}
+              </div>
+            ) : null}
+            {partners.length > 0 || publicationType._id === 'pubtype-3' ? (
+              <div {...classes('meta')}>
+                {/* <h3 className="u-black-mid-headline">Partners</h3> */}
+                {partners.length > 0 ? <PartnersList institutions={partners} /> : null}
+                {publicationType._id === 'pubtype-3' && (
+                  <div className="c-article-header__institution">
+                    {/* <p>The U4 Helpdesk is operated by </p> */}
+                    <div className="c-logo">
+                      <PartnerLogo10Blue />
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : null}
+          </div>
           {/* {keywords.length > 0 ? <Keywords title={true} keywords={keywords} hr={false}/> : null} */}
           {recommendedResources.length || relatedResources.length ? (
             <RelatedSimple
