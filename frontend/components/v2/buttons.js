@@ -1,6 +1,6 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-
+import { ArrowDown } from './icons/ArrowDown'
 const classes = BEMHelper({
   name: 'btn',
   prefix: 'c-',
@@ -9,6 +9,13 @@ const classes = BEMHelper({
 export const TextButton = ({ onClick = () => null, text = '', modifier = 'qua', disabled=false }) => (
   <button {...classes({ modifier })} onClick={onClick} disabled={disabled}>
     {text && <div>{text}</div>}
+  </button>
+);
+
+export const TextIconButton = ({ onClick = () => null, text = '', modifier = 'qua', disabled=false }) => (
+  <button {...classes(null, modifier, 'c-btn--chevron')} onClick={onClick} disabled={disabled}>
+    {text && <div>{text}</div>}
+    <ArrowDown />
   </button>
 );
 

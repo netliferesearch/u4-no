@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { ArrowRight } from '../icons';
-import { ArrowWhite } from '../icons/ArrowWhite';
-import { Document, Page } from 'react-pdf/build/entry.noworker';
-import { useMediaQuery } from './';
+import { getRouteByType } from '../../helpers/getRouteByType';
 import { Link } from '../../routes';
 import { Reader } from './Reader';
+
 const classes = BEMHelper({
   name: 'article-header-v2',
   prefix: 'c-',
@@ -36,17 +34,23 @@ const PublicationArticleHeader = ({
       <div className="o-wrapper-section c-article-header__container">
         <div {...classes('content')}>
           <div {...classes('meta')}>
-            <h6 className="u-navy-small-headline">
-              {publicationType.title && `Publication | ${publicationType.title}`}
-            </h6>
+            <Link route={getRouteByType(publicationType.title)}>
+              <a className="c-btn--sen">
+                <h6>
+                  {' '}
+                  {/* {publicationType.title && `Publication | ${publicationType.title}`} */}
+                  {publicationType.title && `${publicationType.title}`}
+                </h6>
+              </a>
+            </Link>
           </div>
-          <h1 className="u-navy-mid-headline">{title}</h1>
+          <h2 className="u-headline--black--44">{title}</h2>
           {subtitle ? <p {...classes('subtitle')}>{subtitle}</p> : null}
           {/* {standfirst ? <p {...classes('intro')}>{standfirst}</p> : null} */}
           <div {...classes('download')}>
             {(content.length > 0 || legacypdf.asset) && (
               <button
-                className="read-online button"
+                className="c-btn c-btn--sec"
                 onClick={() => {
                   setReaderOpen(true);
                   setDownloadsOpen(false);
@@ -56,21 +60,19 @@ const PublicationArticleHeader = ({
               </button>
             )}
             {pdfAsset && (
-              <div className="other-links">
-                <a
-                  href={`/publication/${slug.current}.pdf`}
-                  //download={`/publication/${slug.current}.pdf`}
-                  {...classes('download-text button')}
-                  target="_blank"
-                >
-                  <span>Download as PDF</span>
-                </a>
-              </div>
+              <a
+                href={`/publication/${slug.current}.pdf`}
+                //download={`/publication/${slug.current}.pdf`}
+                target="_blank"
+                className="c-btn c-btn--qua"
+              >
+                <span>Download as PDF</span>
+              </a>
             )}
 
             {summary.length > 0 && (
               <Link route="publication.shortVersion" params={{ slug: slug.current }}>
-                <a {...classes('button')}>
+                <a className="c-btn c-btn--qua">
                   <div {...classes('button-text')}>Read short version</div>
                   <div {...classes('button-icon')} />
                 </a>

@@ -276,6 +276,7 @@ const LongFormArticleContainer = (props = {}) => {
           {/* <span id="js-bottom" /> */}
         </article>
       )}
+      <div id="modal" />
     </Layout>
   );
 };

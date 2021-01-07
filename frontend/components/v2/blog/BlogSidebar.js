@@ -51,13 +51,13 @@ export const BlogSidebar = ({ data, side }) => {
           ) : null}
           {translations.length > 0 && (
             <div className="u-hidden--tablet">
-              <Translations translations={translations} language={language} currentSlug={slug}/>
+              <Translations translations={translations} language={language} route={'/blog'} currentSlug={slug}/>
             </div>
           )}
           <div className="u-hidden--desktop">
             <Share text={title} />
             {translations.length > 0 && (
-              <Translations translations={translations} language={language} currentSlug={slug}/>
+              <Translations translations={translations} language={language} route={'/blog'} currentSlug={slug}/>
             )}
           </div>
         </div>

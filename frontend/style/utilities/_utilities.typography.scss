@@ -88,12 +88,13 @@
   border-top: 1px solid #e6e6e6;
 }
 
-.u-black-44-headline {
+.u-headline--black--44 {
   font-family: $font-sans;
   font-size: 44px;
   line-height: 53px;
-  font-weight: 700;
+  font-weight: 900;
   color: $v2-black;
+  letter-spacing: 0.01em;
 }
 
 .u-black-32-headline {

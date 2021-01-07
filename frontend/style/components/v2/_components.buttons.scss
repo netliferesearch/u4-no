@@ -194,6 +194,15 @@
       border-bottom: none;
     }
   }
+  h6 {
+    display: inline;
+    text-transform: uppercase;
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.08em;
+  }
 }
 // .c-btn--sep {
 //   //display: inline-block;
@@ -290,5 +299,14 @@
     text-decoration: none;
     outline: none;
     border: 1px solid $v2-light-grey;
+  }
+}
+
+.c-btn--chevron {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  div {
+    margin-right: 12px;
   }
 }

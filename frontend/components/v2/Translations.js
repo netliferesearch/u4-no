@@ -1,15 +1,15 @@
 import React, { useRef, useState } from 'react';
-import { TextButton } from './buttons';
+import { TextButton, TextIconButton } from './buttons';
 import ClientOnlyPortal from './ClientOnlyPortal';
 import languageName from '../../helpers/languageName';
 import { useLockBodyScroll, useOnClickOutside } from '../../helpers/hooks';
 import router from 'next/router';
 
-export const Translations = ({ translations, language, currentSlug }) => {
+export const Translations = ({ translations, language, route, currentSlug }) => {
   const [open, setOpen] = useState(false);
   return (
     <div className={`c-modal${open ? ' open' : ''}`}>
-      <TextButton
+      <TextIconButton
         onClick={() => setOpen(true)}
         text={languageName({ langcode: language })}
         modifier="sec"
@@ -19,6 +19,7 @@ export const Translations = ({ translations, language, currentSlug }) => {
           title="Language settings"
           options={translations}
           setOpen={setOpen}
+          route={route}
           currentSlug={currentSlug}
         />
       )}
@@ -26,7 +27,7 @@ export const Translations = ({ translations, language, currentSlug }) => {
   );
 };
 
-export const RadioModal = ({ title = '', options, setOpen, currentSlug }) => {
+export const RadioModal = ({ title = '', options, setOpen, route, currentSlug }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   // ref that we add to the element for which we want to detect outside clicks
   const ref = useRef();
@@ -37,7 +38,7 @@ export const RadioModal = ({ title = '', options, setOpen, currentSlug }) => {
 
   const handleApplyClick = () => {
     setOpen(false);
-    router.push(`/blog/${selectedItem}`);  
+    router.push(`${route}/${selectedItem}`);  
   };
 
   const handleChange = e => {

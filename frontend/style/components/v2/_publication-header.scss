@@ -2,7 +2,7 @@
   font-family: $font-sans;
   //padding: $spacing;
   //background-color: $brand-lightest;
-  color: $brand-dark;
+  color: $v2-black;
 
   .c-article-header__container {
     padding: 0;
@@ -15,6 +15,13 @@
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
+  }
+
+  .c-article-header-v2__subtitle {
+    font-family: $font-serif;
+    font-size: 22px;
+    line-height: 1.45;
+    letter-spacing: 0.02em;
   }
 
   .pdf-preview {
@@ -121,6 +128,8 @@
     }
     &__download {
       display: flex;
+      justify-content: center;
+      align-items: flex-start;
       .dropdown-select {
         margin-right: $spacing;
       }
@@ -240,7 +249,7 @@
         padding-bottom: $spacing-tiny;
       }
     }
-     
+
     .c-article-v2 {
       padding-left: 424px;
       margin-bottom: $spacing-huge;

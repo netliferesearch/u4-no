@@ -10,6 +10,8 @@ import { BreadCrumbV2 } from './BreadCrumbV2';
 import { PartnersList } from './PartnersList';
 import { PartnerLogo10Blue } from '../icons/PartnerLogo10Blue';
 import bibliographicReference from '../../helpers/bibliographicReference';
+import { getRouteByType } from '../../helpers/getRouteByType';
+import { Translations } from './Translations';
 
 const classes = BEMHelper({
   name: 'article-sidebar',
@@ -18,6 +20,7 @@ const classes = BEMHelper({
 
 export const PublicationSidebar = ({ data, side }) => {
   const {
+    language = '',
     className = '',
     publicationType = {},
     publicationNumber = '',
@@ -33,13 +36,18 @@ export const PublicationSidebar = ({ data, side }) => {
     pdfFile = {},
     legacypdf = {},
     partners = [],
+    slug='',
   } = data;
 
   return data ? (
     <div {...classes('', null, className)}>
       {side === 'left' ? (
         <div {...classes('right')}>
-          <BreadCrumbV2 title={`All Publications`} parentSlug={"/search?filters=publications-only&sort=year-desc"} home={false} />
+          <BreadCrumbV2
+            title={`All ${publicationType.title}s`}
+            parentSlug={getRouteByType(publicationType.title)}
+            home={false}
+          />
           <div>
             <p>
               <strong>{dateToString({ start: date.utc })}</strong>
@@ -57,25 +65,8 @@ export const PublicationSidebar = ({ data, side }) => {
             />
           ) : null}
           {bibliographicReference({ publicationType, publicationNumber, reference })}
-
           {translations.length > 0 && (
-            <p>
-              Available in{' '}
-              {translations.map(
-                (item = {}, index) =>
-                  item.slug &&
-                  item.title && (
-                    <LinkToItem type="publication" slug={item.slug} key={item._id}>
-                      <span>
-                        <a {...classes('language')}>{languageName({ langcode: item.language })}</a>
-                        {index + 2 < translations.length && <span>, </span>}
-                        {index + 2 === translations.length && <span> and </span>}
-                      </span>
-                    </LinkToItem>
-                  )
-              )}
-              {'.'}
-            </p>
+            <Translations translations={translations} language={language} route={'/publications'} currentSlug={slug} />
           )}
         </div>
       ) : null}
