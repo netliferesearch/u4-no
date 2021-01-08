@@ -12,6 +12,7 @@ import { PartnerLogo10Blue } from '../icons/PartnerLogo10Blue';
 import bibliographicReference from '../../helpers/bibliographicReference';
 import { getRouteByType } from '../../helpers/getRouteByType';
 import { Translations } from './Translations';
+import { AcknowledgementsPartners } from './AknowledgementsPartners';
 
 const classes = BEMHelper({
   name: 'article-sidebar',
@@ -91,34 +92,9 @@ export const PublicationSidebar = ({ data, side }) => {
             </div>
           )}
           <div className="c-article-sidebar__row--regular">
-            {acknowledgements || partners.length > 0 || publicationType._id === 'pubtype-3' ? (
-              <h5 className="u-headline--qua">In collaboration with</h5>
-            ) : null}
-            {acknowledgements ? (
-              <div {...classes('meta')}>
-                {/* <h3 className="u-black-mid-headline">Acknowledgements</h3> */}
-                <div {...classes('content')}>
-                  {typeof acknowledgements === 'string' && <p>{acknowledgements}</p>}
-                  {typeof acknowledgements !== 'string' && (
-                    <BlockContent blocks={acknowledgements} serializers={serializers} />
-                  )}
-                </div>
-              </div>
-            ) : null}
-            {partners.length > 0 || publicationType._id === 'pubtype-3' ? (
-              <div {...classes('meta')}>
-                {/* <h3 className="u-black-mid-headline">Partners</h3> */}
-                {partners.length > 0 ? <PartnersList institutions={partners} /> : null}
-                {publicationType._id === 'pubtype-3' && (
-                  <div className="c-article-header__institution">
-                    {/* <p>The U4 Helpdesk is operated by </p> */}
-                    <div className="c-logo">
-                      <PartnerLogo10Blue />
-                    </div>
-                  </div>
-                )}
-              </div>
-            ) : null}
+            <div className="u-hidden--tablet">
+              <AcknowledgementsPartners data={data} />
+            </div>
           </div>
           {/* {keywords.length > 0 ? <Keywords title={true} keywords={keywords} hr={false}/> : null} */}
           {recommendedResources.length || relatedResources.length ? (

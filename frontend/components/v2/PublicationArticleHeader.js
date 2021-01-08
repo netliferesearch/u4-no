@@ -72,8 +72,8 @@ const PublicationArticleHeader = ({
             {summary.length > 0 && (
               <Link route="publication.shortVersion" params={{ slug: slug.current }}>
                 <a className="c-btn c-btn--qua">
-                  <div {...classes('button-text')}>Read short version</div>
-                  <div {...classes('button-icon')} />
+                  <span {...classes('button-text')}>Read short version</span>
+                  {/* <div {...classes('button-icon')} /> */}
                 </a>
               </Link>
             )}

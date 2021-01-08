@@ -11,6 +11,12 @@
 
   .c-article-sidebar__date {
     margin-top: 24px;
+    .c-article-sidebar__row--regular {
+      margin-bottom: 0;
+      @include mq($from: tablet) {
+        margin-bottom: 32px;
+      }
+    }
   }
   .c-article-sidebar__row--regular {
     display: block;
@@ -24,7 +30,7 @@
     margin-bottom: 32px;
   }
   @include mq($from: tablet) {
-    max-width: 240px;
+    width: 240px;
     padding-bottom: 48px;
     margin-bottom: $spacing-large;
   }
@@ -46,13 +52,28 @@
     }
   }
   .c-related-simple {
-    margin-top: 64px;
+    margin-top: 32px;
+    @include mq($from: tablet) {
+      margin-top: 64px;
+    }
+    .u-headline--qua {
+      font-size: 22px;
+      line-height: 1.27;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      @include mq($from: tablet) {
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+    }
   }
 }
 
 .c-authors-list,
 .c-editors-list {
-  margin: 24px 0;
+  margin: 0;
 
   .c-authors-list__title {
     margin: 0;
@@ -83,7 +104,34 @@
   .c-authors-list__h {
     margin: $spacing 0 0 0;
   }
+
   @include mq($from: tablet) {
     margin: 24px 0;
+  }
+}
+
+.c-acknowledgements {
+  font-family: $font-sans;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: $v2-black;
+  margin-bottom: 32px;
+  .c-logo {
+    max-width: 240px;
+  }
+  h3 {
+    margin-bottom: 12px;
+  }
+  @include mq($from: tablet) {
+    h3 {
+      font-family: $font-sans;
+      font-size: 12px;
+      line-height: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
   }
 }

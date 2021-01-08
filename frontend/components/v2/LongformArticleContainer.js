@@ -20,6 +20,7 @@ import { TagsSection } from './TagsSection';
 import { Topics } from './Topics';
 import { BreadCrumbV2 } from './BreadCrumbV2';
 import { getRouteByType } from '../../helpers/getRouteByType';
+import { AcknowledgementsPartners } from './AknowledgementsPartners';
 
 const LongFormArticleContainer = (props = {}) => {
   const {
@@ -136,7 +137,7 @@ const LongFormArticleContainer = (props = {}) => {
             className="o-wrapper u-side-padding"
             style={{ display: readerOpen ? 'none' : 'block' }}
           >
-            <div className="o-wrapper-section c-article__row">
+            <div className="o-wrapper-section c-article__row u-hidden--tablet">
               <BreadCrumbV2
                 title={`All ${publicationType.title}s`}
                 parentSlug={getRouteByType(publicationType.title)}
@@ -151,7 +152,15 @@ const LongFormArticleContainer = (props = {}) => {
                 <div className="content c-article__col c-article__center">
                   <PublicationContent {...props.data} />
                   <div className="c-article__additional-content">
-                    {topics.length > 0 ? <h3 className="u-headline--sec">Tags</h3> : null}
+                    <div className="u-hidden--desktop">
+                      <AcknowledgementsPartners data={props.data} />
+                    </div>
+                    {topics.length > 0 || keywords.length > 0 ? (
+                      <hr className="u-section-underline--no-margins u-hidden--desktop" />
+                    ) : null}
+                    {topics.length > 0 || keywords.length > 0 ? (
+                      <h3 className="u-headline--sec tags">Tags</h3>
+                    ) : null}
                     {topics.length > 0 ? <Topics title={true} topics={topics} hr={false} /> : null}
                     {keywords.length > 0 ? (
                       <Keywords title={true} keywords={keywords} hr={false} />
