@@ -65,6 +65,8 @@ const defaultState = {
   searchPageNum: 1,
   searchResults: {},
   defaultSearchAggs: [],
+  blogFilters: [],
+  blogPageNum: 1,
 };
 
 export const actionTypes = {
@@ -80,6 +82,9 @@ export const actionTypes = {
   SEARCH_UPDATE_RESULTS: 'SEARCH_UPDATE_RESULTS',
   SCROLL_POSITION_SAVE: 'SCROLL_POSITION_SAVE',
   SEARCH_UPDATE_DEFAULT_AGGS: 'SEARCH_UPDATE_DEFAULT_AGGS',
+  BLOG_UPDATE_FILTERS: 'BLOG_UPDATE_FILTERS',
+  BLOG_CLEAR_FILTERS: 'BLOG_CLEAR_FILTERS',
+  BLOG_UPDATE_PAGE_NUM: 'BLOG_UPDATE_PAGE_NUM',
 };
 
 // REDUCERS
@@ -107,7 +112,7 @@ export const reducer = (state = defaultState, action) => {
         searchFilters: uniq(action.searchFilters),
       });
     case actionTypes.SEARCH_UPDATE_PAGE_NUM:
-      if(state.searchPageNum !== action.searchPageNum) {
+      if (state.searchPageNum !== action.searchPageNum) {
         addQueryParams({
           searchPageNum: `${action.searchPageNum}`,
         });
@@ -124,7 +129,7 @@ export const reducer = (state = defaultState, action) => {
         defaultSearchAggs: action.defaultSearchAggs,
       });
     case actionTypes.SEARCH_UPDATE_RESULTS:
-      return {...state, searchResults: action.searchResults};
+      return { ...state, searchResults: action.searchResults };
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
     case actionTypes.TOGGLE_LOADING_SCREEN:
@@ -137,6 +142,26 @@ export const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, { readingProgressId: action.readingProgressId });
     case actionTypes.SCROLL_POSITION_SAVE:
       return Object.assign({}, state, { storedScrollPosition: action.scrollPosition });
+
+    case actionTypes.BLOG_UPDATE_FILTERS:
+      return Object.assign({}, state, {
+        blogFilters: uniq(action.blogFilters),
+      });
+
+    case actionTypes.BLOG_CLEAR_FILTERS:
+      return Object.assign({}, state, {
+        blogFilters: [],
+      });
+
+    case actionTypes.BLOG_UPDATE_PAGE_NUM:
+      if (state.blogPageNum !== action.blogPageNum) {
+        addQueryParams({
+          blogPageNum: `${action.blogPageNum}`,
+        });
+        return { ...state, blogPageNum: action.blogPageNum };
+      }
+      return state;
+
     default:
       return state;
   }
@@ -174,15 +199,31 @@ export const updateSearchPageNum = searchPageNum => dispatch => {
 export const saveScrollPosition = scrollPosition => dispatch =>
   dispatch({ type: actionTypes.SCROLL_POSITION_SAVE, scrollPosition });
 
+export const updateBlogFilters = (blogFilters = []) => dispatch =>
+  dispatch({ type: actionTypes.BLOG_UPDATE_FILTERS, blogFilters });
+
+export const clearBlogFilters = () => dispatch =>
+  dispatch({ type: actionTypes.BLOG_CLEAR_FILTERS });
+
+export const updateBlogPageNum = blogPageNum => dispatch => {
+    return dispatch({ type: actionTypes.BLOG_UPDATE_PAGE_NUM, blogPageNum });
+  };
+
 export const initStore = (initialState = defaultState, options) => {
   const { query = {} } = options;
-  const { searchPageNum } = query;
+  const { searchPageNum, blogPageNum } = query;
   let state = initialState;
 
   if (searchPageNum) {
     state = {
       ...state,
       searchPageNum: parseInt(searchPageNum, 10),
+    };
+  }
+  if (blogPageNum) {
+    state = {
+      ...state,
+      blogPageNum: parseInt(blogPageNum, 10),
     };
   }
 

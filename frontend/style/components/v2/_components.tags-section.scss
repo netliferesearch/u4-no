@@ -7,7 +7,7 @@
     font-weight: 700;
     line-height: 1.5;
     margin: 35px 0 24px 0;
-}
+  }
 
   .c-tags-section__row {
     margin-bottom: $spacing;
@@ -21,7 +21,7 @@
     .keyword {
       font-size: $font-size-micro;
       line-height: initial;
-      border-bottom: 1px solid $black;
+      background-color: $v2-yellow;
       margin-bottom: $spacing-tiny;
     }
     h6 {
@@ -43,5 +43,37 @@
 
   .keyword {
     margin: 0 11px 0 0;
+  }
+}
+
+.c-keywords {
+  margin-bottom: 32px;
+  h6 {
+    font-size: $font-size-nano;
+    line-height: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+}
+
+.c-keywords__list {
+  margin-top: 18px;
+  .keyword {
+    font-family: $font-sans;
+    color: $v2-brown;
+    font-size: $font-size-nano;
+    line-height: 14px;
+    background-color: $v2-yellow;
+    padding: 10px 16px;
+    margin: 0 2px 3px 0;
+    display: inline-block;
+    &:first-letter {
+      text-transform: capitalize;
+    }
+    .keyword:first-letter {
+      text-transform: capitalize;
+    }
   }
 }

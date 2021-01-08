@@ -71,3 +71,24 @@
   margin-left: -50vw;
   margin-right: -50vw;
 }
+
+.o-wrapper-section-desktop {
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 24px;
+  @include mq($from: tablet) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.o-wrapper-section-desktop--full {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 24px;
+  @include mq($from: tablet) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
