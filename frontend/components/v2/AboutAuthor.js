@@ -7,7 +7,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
   const trans = translate(language);
   const lang = langCode(language);
   return (
-    <div className="c-blog-authors-list">
+    <div className="c-blog-authors-list c-about-author">
       {authors &&
         authors
           .filter(author => author)
@@ -34,7 +34,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                   (lang === 'es' && bioShort_es.length)) ? (
                   <div>
                     <hr className="u-section-underline--no-margins" />
-                    <h3 className="c-blog-authors-list__h">About the author</h3>
+                    <h3 className="u-headline--sec">About the author</h3>
                   </div>
                 ) : null}
                 {/* <div className="c-blog-authors-list__name">

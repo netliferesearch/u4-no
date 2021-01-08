@@ -158,7 +158,7 @@ const LongFormArticleContainer = (props = {}) => {
                     ) : null}
                     <AboutAuthor authors={authors} />
                     <Cite {...props.data} />
-                    <Disclaimers />
+                    <Disclaimers title={true} />
                     {/* <PublicationAccordion {...props.data} /> */}
                   </div>
                 </div>

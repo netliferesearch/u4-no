@@ -6,13 +6,14 @@ import {
   CreativecommonsND,
 } from '../icons';
 
-export const Disclaimers = () => {
+export const Disclaimers = ({ title = false }) => {
   return (
     <div className="c-disclaimers">
       <div className="c-disclaimers__container">
         <div className="c-disclaimers__content c-disclaimers__disclaimer">
           <hr className="u-section-underline--no-margins" />
-          <p>
+          {title ? <h3 className="u-headline--sec">Disclaimer</h3> : null}
+          <p> 
             All views in this text are the author(s)’, and may differ from the U4 partner agencies’
             policies.
           </p>

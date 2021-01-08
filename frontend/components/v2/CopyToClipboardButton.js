@@ -26,7 +26,7 @@ const CopyToClipboardButton = ({
   }, []);
 
   return documentLoaded && document.queryCommandSupported('copy') ? (
-    <button onClick={copyToClipboard} className="u-button-copy">
+    <button onClick={copyToClipboard} className="c-btn--copy">
       {/* {copyText} */}
       <Copy />
     </button>

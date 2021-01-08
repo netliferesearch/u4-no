@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import BEMHelper from 'react-bem-helper';
-import { Note } from '../icons/Note';
 import serializers from '../serializers';
 import buildUrl from '../../helpers/buildUrl';
 
@@ -33,7 +32,13 @@ const PublicationNotifications = ({
   const pubyear = date && date.utc ? new Date(date.utc).getFullYear() : '';
   const headsUpHasContent = headsUp && trimEmptyBlocks(headsUp).length > 0;
 
-  return (
+  return headsUpHasContent ||
+    updatedVersion ||
+    publicationType._id == '080dc28c-9d5e-4c14-972f-73f83a206b92' ||
+    (!headsUpHasContent &&
+      !updatedVersion &&
+      date &&
+      new Date().getFullYear() - Number(pubyear) > 5) ? (
     <section {...classes()}>
       {headsUpHasContent && (
         <div className="c-notifications__note-item c-notifications__headsUp">
@@ -83,7 +88,7 @@ const PublicationNotifications = ({
           </div>
         )}
     </section>
-  );
+  ) : null;
 };
 
 PublicationNotifications.propTypes = {};

@@ -431,35 +431,6 @@
   }
 }
 
-.c-blog-authors-list {
-  margin-top: 32px;
-  margin-bottom: 20px;
-  .c-blog-authors-list__name {
-    font-weight: 700;
-    a {
-      font-weight: 700;
-    }
-  }
-  .c-blog-authors-list__position {
-    font-weight: 400;
-  }
-  .c-blog-authors-list__text-block {
-    margin: 16px auto 24px auto;
-    p {
-      margin: 0;
-    }
-    @include mq($from: tablet) {
-      margin: 16px auto $spacing-large auto;
-    }
-  }
-  .c-blog-authors-list__h {
-    margin: $spacing 0 0 0;
-  }
-  @include mq($from: tablet) {
-    margin-bottom: $spacing-large;
-  }
-}
-
 .c-blog-entry__additional-content {
   max-width: 600px;
   margin: 0 auto;
@@ -483,56 +454,3 @@
     }
   }
 }
-
-.blog-accordion {
-  border-top: 1px solid $border-grey;
-  margin-top: $spacing;
-  .c-accordion {
-    &__block {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid $border-grey;
-    }
-    &__container {
-      cursor: pointer;
-      width: 90%;
-      max-width: calc(100% - 100px);
-      padding: $spacing 0;
-      .title {
-        margin: 0;
-      }
-    }
-    &__content {
-      max-height: 0;
-      position: relative;
-      overflow: hidden;
-      transition: max-height 0.2s;
-      &.open {
-        max-height: 100%;
-        transition: max-height 1s;
-        @include mq($from: tablet) {
-          max-height: 500px;
-        }
-      }
-    }
-    &__arrow {
-      cursor: pointer;
-      padding: $spacing;
-      width: 10%;
-      min-width: 100px;
-      text-align: center;
-      transition: $global-transition;
-      svg {
-        transform: rotate(0deg) translateY(0);
-        transition: transform 0.2s ease-in-out;
-      }
-      &.open {
-        svg {
-          transform: rotate(180deg) translateY(-6px);
-          transition: transform 0.2s ease-in-out;
-        }
-      }
-    }
-  }
-}
-

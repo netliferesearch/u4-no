@@ -3,7 +3,7 @@ import { Link } from '../../routes';
 import ChevronGrey from '../icons/ChevronGrey';
 
 /**
- * This is a functional BreadCrumb component based on original BreadCrmb class
+ * Functional BreadCrumb component based on original BreadCrmb class
  * Used in v2 pages for providing "home > parent" type breadcrumbs.
  * It is a simplified version of the original BreadCrumb, which has more capabilities.
  */

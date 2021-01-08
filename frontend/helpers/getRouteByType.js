@@ -2,11 +2,15 @@ import {
   PUBLICATION,
   SEARCH_PUBLICATIONS,
   SEARCH_U4_BRIEF,
+  SEARCH_U4_GUIDE,
   SEARCH_U4_HELPDESK,
   SEARCH_U4_ISSUE,
+  SEARCH_U4_REPORT,
   U4_BRIEF,
+  U4_GUIDE,
   U4_HELPDESK,
   U4_ISSUE,
+  U4_REPORT,
 } from './constants';
 
 export const getRouteByType = publicationType => {
@@ -24,6 +28,12 @@ export const getRouteByType = publicationType => {
       break;
     case U4_HELPDESK:
       href = SEARCH_U4_HELPDESK;
+      break;
+    case U4_GUIDE:
+      href = SEARCH_U4_GUIDE;
+      break;
+    case U4_REPORT:
+      href = SEARCH_U4_REPORT;
       break;
     default:
       href = SEARCH_PUBLICATIONS;

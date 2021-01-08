@@ -1,0 +1,37 @@
+.c-about-author {
+  font-size: 20px;
+  line-height: 1.5;
+  color: $v2-black;
+  h3 {
+    margin-top: 24px;
+  }
+}
+
+.c-blog-authors-list {
+  margin-top: 32px;
+  margin-bottom: 20px;
+  .c-blog-authors-list__name {
+    font-weight: 700;
+    a {
+      font-weight: 700;
+    }
+  }
+  .c-blog-authors-list__position {
+    font-weight: 400;
+  }
+  .c-blog-authors-list__text-block {
+    margin: 16px auto 24px auto;
+    p {
+      margin: 0;
+    }
+    @include mq($from: tablet) {
+      margin: 16px auto $spacing-large auto;
+    }
+  }
+  .c-blog-authors-list__h {
+    margin: $spacing 0 0 0;
+  }
+  @include mq($from: tablet) {
+    margin-bottom: $spacing-large;
+  }
+}

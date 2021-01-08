@@ -101,6 +101,10 @@
       margin: 0 0 72px 0;
     }
   }
+
+  @include mq($from: tablet) {
+    margin-bottom: 160px;
+  }
 }
 
 .publication-preview {
@@ -145,6 +149,7 @@
   margin: 0 auto;
   clear: both;
   .c-keywords {
+    margin-bottom: 64px;
     .c-keywords__list {
       margin-top: 12px;
     }

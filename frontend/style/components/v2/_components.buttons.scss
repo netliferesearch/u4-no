@@ -310,3 +310,21 @@
     margin-right: 12px;
   }
 }
+
+.c-btn--copy {
+  background-color: $white;
+  cursor: pointer;
+  border: none;
+  padding: 8px 8px 0 8px;
+  margin: 0 8px;
+  // font-family: $font-sans;
+  // font-size: $font-size-tiny;
+  // font-weight: 700;
+  // border: none;
+  // background-color: $brand-lightest;
+  // color: $brand-main;
+  
+  &:active {
+    outline: none;
+  }
+}
