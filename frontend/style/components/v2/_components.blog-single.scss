@@ -45,60 +45,6 @@
     margin: 0 auto;
   }
 
-  .c-credit {
-    margin: 8px 0;
-    @include mq($from: tablet) {
-      margin: 32px 0;
-    }
-  }
-
-  .c-blog-entry__caption,
-  .c-blog-entry__caption > a {
-    display: inline-block;
-    font-family: $font-sans;
-    font-size: $font-size-nano;
-    line-height: 14px;
-    text-align: right;
-    padding: 2px;
-    color: $v2-dark-grey;
-  }
-
-  .c-blog-entry__caption > a {
-    //text-decoration: underline;
-    transition: all 100ms ease-out;
-    border-bottom: none;
-    span {
-      position: relative;
-    }
-    &:hover,
-    &:visited:hover {
-      color: $v2-blue;
-      //text-decoration: none;
-      border-bottom: none;
-    }
-    &:visited {
-      //text-decoration: none;
-      //color: #8f8f8f;
-      border-bottom: none;
-    }
-    &:active {
-      color: $v2-blue;
-      border-bottom: none;
-      & > * {
-        display: inline-block;
-        transform: translateY(2px);
-      }
-    }
-    &:focus {
-      border: none;
-    }
-    @include mq($from: tablet) {
-      &:visited {
-        color: $v2-dark-grey;
-      }
-    }
-  }
-
   .c-blog-entry__main-text {
     font-family: $font-serif;
     font-size: 18px;
@@ -451,6 +397,60 @@
     h2.u-navy-big-headline {
       font-size: 36px;
       line-height: 40px;
+    }
+  }
+}
+
+.c-credit {
+  margin: 8px 0;
+  @include mq($from: tablet) {
+    margin: 32px 0;
+  }
+}
+
+.c-credit__caption,
+.c-credit__caption > a {
+  display: inline-block;
+  font-family: $font-sans;
+  font-size: $font-size-nano;
+  line-height: 14px;
+  text-align: right;
+  padding: 2px;
+  color: $v2-dark-grey;
+}
+
+.c-credit__caption > a {
+  //text-decoration: underline;
+  transition: all 100ms ease-out;
+  border-bottom: none;
+  span {
+    position: relative;
+  }
+  &:hover,
+  &:visited:hover {
+    color: $v2-blue;
+    //text-decoration: none;
+    border-bottom: none;
+  }
+  &:visited {
+    //text-decoration: none;
+    //color: #8f8f8f;
+    border-bottom: none;
+  }
+  &:active {
+    color: $v2-blue;
+    border-bottom: none;
+    & > * {
+      display: inline-block;
+      transform: translateY(2px);
+    }
+  }
+  &:focus {
+    border: none;
+  }
+  @include mq($from: tablet) {
+    &:visited {
+      color: $v2-dark-grey;
     }
   }
 }

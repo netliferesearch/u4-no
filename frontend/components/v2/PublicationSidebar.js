@@ -33,10 +33,8 @@ export const PublicationSidebar = ({ data, side }) => {
     updatedVersion = false,
     recommendedResources = [],
     relatedResources = [],
-    acknowledgements = '',
     pdfFile = {},
     legacypdf = {},
-    partners = [],
     slug = '',
   } = data;
 

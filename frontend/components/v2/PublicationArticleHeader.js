@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { getRouteByType } from '../../helpers/getRouteByType';
 import { Link } from '../../routes';
@@ -12,21 +12,17 @@ const classes = BEMHelper({
 const PublicationArticleHeader = ({
   title = '',
   subtitle = '',
-  lead = '',
   slug = {},
   className = '',
   publicationType = {},
-  standfirst = '',
   pdfFile = {},
   legacypdf = {},
   shortversion = false,
   content = [],
   summary = [],
-  mainPoints = [],
   setReaderOpen = null,
   readerOpen = false,
 }) => {
-  const [downloadsOpen, setDownloadsOpen] = useState(false);
   const pdfAsset = legacypdf.asset ? legacypdf.asset : pdfFile.asset;
 
   return (
@@ -52,7 +48,6 @@ const PublicationArticleHeader = ({
                 className="c-btn c-btn--sec"
                 onClick={() => {
                   setReaderOpen(true);
-                  setDownloadsOpen(false);
                 }}
               >
                 Read online
@@ -78,18 +73,9 @@ const PublicationArticleHeader = ({
               </Link>
             )}
           </div>
-          
         </div>
         <hr className="u-section-underline--no-margins" />
       </div>
-      {readerOpen && (
-        <Reader
-          title={title}
-          content={content}
-          setReaderOpen={setReaderOpen}
-          legacypdf={legacypdf}
-        />
-      )}
     </header>
   );
 };

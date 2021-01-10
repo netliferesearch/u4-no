@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
@@ -9,18 +9,17 @@ import {
   TableOfContentsContent,
   AuthorList,
 } from '../';
-import { PublicationContent, Layout, PublicationArticleHeader, PublicationAccordion } from './';
-import { RelatedSimple } from './RelatedSimple';
+import { PublicationContent, Layout, PublicationArticleHeader } from './';
 import { PublicationSidebar } from './PublicationSidebar';
 import { AboutAuthor } from './AboutAuthor';
 import { Disclaimers } from './Disclaimers';
 import { Cite } from './Cite';
 import { Keywords } from './Keywords';
-import { TagsSection } from './TagsSection';
 import { Topics } from './Topics';
 import { BreadCrumbV2 } from './BreadCrumbV2';
 import { getRouteByType } from '../../helpers/getRouteByType';
 import { AcknowledgementsPartners } from './AknowledgementsPartners';
+import { Reader } from './Reader';
 
 const LongFormArticleContainer = (props = {}) => {
   const {
@@ -28,6 +27,7 @@ const LongFormArticleContainer = (props = {}) => {
       _type = '',
       longTitle = '',
       title = '',
+      content = '',
       authors = [],
       date = {},
       lead = '',
@@ -45,6 +45,8 @@ const LongFormArticleContainer = (props = {}) => {
       articleType = [],
       keywords = [],
       topics = [],
+      pdfFile = {},
+      legacypdf = {},
       recommendedResources = [],
       relatedResources = [],
       headsUp = [],
@@ -123,7 +125,6 @@ const LongFormArticleContainer = (props = {}) => {
           )} */}
           <span id="js-top" />
           <div id="js-scroll-trigger" className="o-wrapper u-side-padding">
-            {/* {BreadCrumbComponent && BreadCrumbComponent} */}
             {_type === 'publication' && !shortversion && (
               <PublicationArticleHeader
                 {...props.data}
@@ -168,7 +169,6 @@ const LongFormArticleContainer = (props = {}) => {
                     <AboutAuthor authors={authors} />
                     <Cite {...props.data} />
                     <Disclaimers title={true} />
-                    {/* <PublicationAccordion {...props.data} /> */}
                   </div>
                 </div>
                 <div className="c-article__side c-article__col">
@@ -293,6 +293,9 @@ const LongFormArticleContainer = (props = {}) => {
           </section> */}
           {/* <span id="js-bottom" /> */}
         </article>
+      )}
+      {readerOpen && (
+        <Reader data={props.data} setReaderOpen={setReaderOpen} legacypdf={legacypdf} />
       )}
       <div id="modal" />
     </Layout>

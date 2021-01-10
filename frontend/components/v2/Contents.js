@@ -6,23 +6,22 @@ import { CloseButton, TextButton } from './buttons';
 import { useOnClickOutside, useLockBodyScroll } from '../../helpers/hooks';
 
 /**
- * V2 - ReaderSidebar component to be used in Reader component
+ * V2 - Contents component to be used in Reader component
  */
 
-export const ReaderSidebar = ({ title = '', content = [] }) => {
+export const Contents = ({ title = '', content = [] }) => {
   const [open, setOpen] = useState();
 
   return (
     <div className={`c-modal${open ? ' open' : ''}`}>
       <TextButton onClick={() => setOpen(true)} text="Contents" modifier="sec" />
-      {open && <ContentsModal title="Close Reader" setOpen={setOpen} content={content}/>}
+      {open && <ContentsModal title={title} setOpen={setOpen} content={content}/>}
     </div>
   );
 };
 
 export const ContentsModal = props => {
   const { title = '', setOpen, content } = props;
-  const [readingFontSize, setReadingFontSize] = useState('medium'); // 'normal' | 'medium' | 'large'
   const titleObjects = buildTitleObjects(content);
   // ref that we add to the element for which we want to detect outside clicks
   const ref = useRef();
@@ -46,15 +45,15 @@ export const ContentsModal = props => {
         role="dialog"
         onKeyDown={onKeyDown}
       >
-        <div className="c-modal__area c-modal--filters" ref={ref}>
+        <div className="c-modal__area c-modal--contents" ref={ref}>
           <div className="c-modal__top">
             <h3 className="c-modal__title">{title}</h3>
-            <CloseButton onClick={e => setOpen(false)} />
+            {/* <CloseButton onClick={e => setOpen(false)} /> */}
           </div>
           <hr className="u-section-underline--no-margins" />
           <div className="c-modal__content">
             <div className="sidebar c-reader-sidebar">
-              <div>
+              {/* <div>
                 {content.length > 0 && (
                   <div className="fonts">
                     <button
@@ -77,7 +76,7 @@ export const ContentsModal = props => {
                     </button>
                   </div>
                 )}
-              </div>
+              </div> */}
               {titleObjects.length ? (
                 <div>
                   <ul className="c-article-nav-list">
@@ -104,6 +103,7 @@ export const ContentsModal = props => {
                               ))}
                             </ul>
                           )}
+                          <hr className="u-section-underline--no-margins" />
                         </li>
                       );
                     })}

@@ -9,6 +9,13 @@
   position: relative;
   margin-bottom: 40px;
 
+  p {
+    font-family: $font-sans;
+    font-size: 15px;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+
   .c-article-sidebar__date {
     margin-top: 24px;
     .c-article-sidebar__row--regular {
