@@ -69,6 +69,7 @@ function printSerializers(blocks) {
         ),
       table: ({ node }) => <Table {...node} />,
       chart: ({ node }) => <ChartPrint {...node} />,
+      pagebreak: props => <div className="c-pagebreak" />,
       block: ({ node, children }) => {
         const style = node.style || 'normal';
 

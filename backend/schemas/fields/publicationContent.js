@@ -170,6 +170,26 @@ const content = {
         },
       },
     },
+    {
+      name: 'pagebreak',
+      title: 'Page break',
+      type: 'object',
+      fields: [
+        {
+          name: 'enabled',
+          title: 'Page break',
+          type: 'boolean',
+          description: 'Insert a page break here in the generated pdf',
+        },
+      ],
+      preview: {
+        prepare() {
+          return {
+            title: 'Insert a page break here in the generated pdf'
+          }
+        }
+      }
+    },    
   ],
 };
 

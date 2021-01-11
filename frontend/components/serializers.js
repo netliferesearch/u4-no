@@ -213,6 +213,7 @@ const serializers = {
         </div>
       </section>
     ),
+    pagebreak: props => <div className="c-pagebreak" />,
     block: props => {
       const { node, children = [] } = props;
       const style = node.style || 'normal';
