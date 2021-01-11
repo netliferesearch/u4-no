@@ -1,5 +1,9 @@
 .c-article-v2 {
   margin-bottom: 100px;
+  
+  .o-wrapper-section {
+    max-width: 1312px;
+  }
   .c-breadcrumb--v2 {
     @include mq($from: tablet) {
       margin: 16px 0;
@@ -7,7 +11,7 @@
   }
 
   .c-article__row {
-    max-width: 1312px;
+    //max-width: 1312px;
     @include mq($from: tablet) {
       display: flex;
       justify-content: space-between;
@@ -156,7 +160,7 @@
   max-width: 600px;
   margin: 0 auto;
   clear: both;
-  .u-headline--sec.tags {
+  .u-headline--2.tags {
     margin-top: 24px;
   }
   .c-topics {
@@ -190,103 +194,7 @@
   }
 }
 
-.c-article {
-  &__container {
-
-    .topic {
-      color: $brand-main;
-      font-size: 14px;
-      line-height: 20px;
-      font-weight: normal;
-      border: 1px solid $brand-main;
-      border-radius: 3px;
-      padding: 3px 5px 4px 6px;
-      display: inline-block;
-      margin-right: 11px;
-      margin-bottom: 11px;
-    }
-    .meta-row {
-      display: flex;
-      align-items: flex-start;
-      margin-top: $spacing-small;
-      .tag-label {
-        padding-right: $spacing-small;
-        width: 100px;
-      }
-      .keywords {
-        width: calc(100% - 100px);
-      }
-      .keyword {
-        display: inline-block;
-        margin: 0 $spacing-tiny;
-        &::first-letter {
-          text-transform: uppercase;
-        }
-      }
-    }
-    @include mq($from: tablet) {
-      .c-article-sidebar {
-        width: 240px;
-      }
-    }
-  }
-}
-
-.publication-accordion {
-  border-top: 1px solid $border-grey;
-  margin-top: $spacing;
-  p {
-    font-size: $font-size-tiny;
-    line-height: 26px;
-  }
-  .c-accordion {
-    &__block {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid $border-grey;
-    }
-    &__container {
-      cursor: pointer;
-      width: 90%;
-      max-width: calc(100% - 100px);
-      padding: $spacing 0;
-    }
-    &__title {
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 1.5;
-      margin: 0;
-    }
-    &__content {
-      max-height: 0;
-      position: relative;
-      overflow: hidden;
-      transition: max-height 0.2s;
-      &.open {
-        max-height: 500px;
-        transition: max-height 1s;
-      }
-    }
-    &__arrow {
-      cursor: pointer;
-      padding: $spacing;
-      width: 10%;
-      min-width: 100px;
-      text-align: center;
-      transition: $global-transition;
-      svg {
-        transform: rotate(0deg) translateY(0);
-        transition: transform 0.2s ease-in-out;
-      }
-      &.open {
-        svg {
-          transform: rotate(180deg) translateY(-6px);
-          transition: transform 0.2s ease-in-out;
-        }
-      }
-    }
-  }
-}
+//acknowledgements etc
 .c-article-content__meta {
   border-top: 1px solid #e6e6e6;
   margin-bottom: 35px;
@@ -302,3 +210,59 @@
 .u-side-padding {
   padding: 0 $spacing;
 }
+
+// .publication-accordion {
+//   border-top: 1px solid $border-grey;
+//   margin-top: $spacing;
+//   p {
+//     font-size: $font-size-tiny;
+//     line-height: 26px;
+//   }
+//   .c-accordion {
+//     &__block {
+//       display: flex;
+//       justify-content: space-between;
+//       border-bottom: 1px solid $border-grey;
+//     }
+//     &__container {
+//       cursor: pointer;
+//       width: 90%;
+//       max-width: calc(100% - 100px);
+//       padding: $spacing 0;
+//     }
+//     &__title {
+//       font-size: 22px;
+//       font-weight: 700;
+//       line-height: 1.5;
+//       margin: 0;
+//     }
+//     &__content {
+//       max-height: 0;
+//       position: relative;
+//       overflow: hidden;
+//       transition: max-height 0.2s;
+//       &.open {
+//         max-height: 500px;
+//         transition: max-height 1s;
+//       }
+//     }
+//     &__arrow {
+//       cursor: pointer;
+//       padding: $spacing;
+//       width: 10%;
+//       min-width: 100px;
+//       text-align: center;
+//       transition: $global-transition;
+//       svg {
+//         transform: rotate(0deg) translateY(0);
+//         transition: transform 0.2s ease-in-out;
+//       }
+//       &.open {
+//         svg {
+//           transform: rotate(180deg) translateY(-6px);
+//           transition: transform 0.2s ease-in-out;
+//         }
+//       }
+//     }
+//   }
+// }

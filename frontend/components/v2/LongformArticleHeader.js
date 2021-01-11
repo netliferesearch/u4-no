@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { getRouteByType } from '../../helpers/getRouteByType';
 import { Link } from '../../routes';
@@ -8,7 +8,7 @@ import { Contents } from './Contents';
 import { PhotoCaptionCredit } from './PhotoCaptionCredit';
 
 const classes = BEMHelper({
-  name: 'article-header-v2',
+  name: 'publicationHeader',
   prefix: 'c-',
 });
 
@@ -28,15 +28,19 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, readerO
   const pdfAsset = legacypdf.asset ? legacypdf.asset : pdfFile.asset;
 
   return (
-    <header {...classes('', null, className)}>
-      <div className="c-header--reader__top">
-        <div className="c-header--reader__top">
+    <header className="c-publicationHeader c-lAHader">
+      <div className="c-lAHader__top">
+        <div className="c-lAHeader__top-content">
           <LogoU4 />
-          <CloseButton onClick={e => setReaderOpen(false)} />
+          <div className="c-lAHeader__close">
+            <CloseButton onClick={e => setReaderOpen(false)}>
+              <span className="u-headline--5 c-btn__label">Close Publication</span>
+            </CloseButton>
+          </div>
         </div>
         <hr className="u-section-underline--no-margins" />
       </div>
-      <div className="o-wrapper-section c-article-header__container">
+      <div className="c-article-header__container">
         <div {...classes('content')}>
           <Link route={getRouteByType(publicationType.title)}>
             <a className="c-btn--sen">
@@ -46,24 +50,28 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, readerO
 
           <h2 className="u-headline--black--44">{title}</h2>
           {subtitle ? <p {...classes('subtitle')}>{subtitle}</p> : null}
-          {console.log(featuredImage)}
-          {featuredImage.asset && (
-            <img
-              className=""
-              src={`${featuredImage.asset.url}?w=1072`}
-              alt={featuredImage.credit}
-            />
-            //   <div
-            //   className="c-blog-entry__featured-image c-blog-entry__featured-image--bg u-hidden--tablet"
-            //   style={{ backgroundImage: `url('${featuredImage.asset.url}?w=1072')` }}
-            // />
-          )}
-          <figcaption className="">
-            <PhotoCaptionCredit featuredImage={featuredImage} />
-          </figcaption>
+        </div>
+        {featuredImage.asset && (
+          <div className="c-lAHader__featured-image">
+            <figure
+              className="c-lAHader__featured-image--bg"
+              style={{ backgroundImage: `url('${featuredImage.asset.url}?w=1072')` }}
+            >
+              <img
+                className="u-visually-hidden-v2"
+                src={`${featuredImage.asset.url}?w=1072`}
+                alt={featuredImage.altText}
+              />
+            </figure>
+            {/* <figcaption className="">
+              <PhotoCaptionCredit featuredImage={featuredImage} />
+            </figcaption> */}
+          </div>
+        )}
+        <div className="u-sticky">
           <hr className="u-section-underline--no-margins" />
 
-          <div {...classes('actions')}>
+          <div className="c-publicationHeader__actions o-wrapper-section">
             <Contents title={title} content={content} setReaderOpen={setReaderOpen} />
             {pdfAsset && (
               <a
@@ -75,7 +83,6 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, readerO
                 <span>Download as PDF</span>
               </a>
             )}
-
             {summary.length > 0 && (
               <Link route="publication.shortVersion" params={{ slug: slug.current }}>
                 <a className="c-btn c-btn--qua">
@@ -85,8 +92,9 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, readerO
               </Link>
             )}
           </div>
+
+          <hr className="u-section-underline--no-margins" />
         </div>
-        <hr className="u-section-underline--no-margins" />
       </div>
     </header>
   );

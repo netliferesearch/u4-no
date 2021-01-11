@@ -57,6 +57,14 @@ iframe {
   visibility: hidden;
 }
 
+.u-visually-hidden-v2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
 .u-reverse-arrow {
   transform: rotate(180deg);
 }
@@ -87,6 +95,13 @@ iframe {
   @include mq($from: tablet) {
     display: none;
   }
+}
+
+.u-sticky {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 99999;
 }
 
 @keyframes fadeIn {

@@ -1,4 +1,4 @@
-.c-article-header-v2 {
+.c-publicationHeader {
   font-family: $font-sans;
   color: $v2-black;
 
@@ -9,7 +9,7 @@
     }
   }
 
-  .c-article-header-v2__content {
+  .c-publicationHeader__content {
     margin: 32px auto 24px auto;
     text-align: center;
     @include mq($from: tablet) {
@@ -25,7 +25,7 @@
     margin-bottom: 0;
   }
 
-  .c-article-header-v2__subtitle {
+  .c-publicationHeader__subtitle {
     font-family: $font-serif;
     font-size: 18px;
     line-height: 1.56;
@@ -37,7 +37,7 @@
     }
   }
 
-  .c-article-header-v2__actions {
+  .c-publicationHeader__actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,7 +47,7 @@
       justify-content: center;
     }
     a,
-    button {
+    .c-btn--qua {
       margin: 0;
       font-size: 12px;
       font-weight: 400;
@@ -133,10 +133,10 @@
   }
   @include mq($from: tablet) {
     //padding: 72px $spacing 72px $spacing;
-    .o-wrapper-section {
-      display: flex;
-      flex-wrap: wrap;
-    }
+    // .o-wrapper-section {
+    //   display: flex;
+    //   flex-wrap: wrap;
+    // }
     // &__content {
     //   max-width: 600px;
     //   margin: 0 auto;
@@ -148,5 +148,4 @@
       max-width: 1000px;
     }
   }
-
 }

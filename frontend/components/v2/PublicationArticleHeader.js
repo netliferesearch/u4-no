@@ -5,7 +5,7 @@ import { Link } from '../../routes';
 import { Reader } from './Reader';
 
 const classes = BEMHelper({
-  name: 'article-header-v2',
+  name: 'publicationHeader',
   prefix: 'c-',
 });
 
@@ -27,7 +27,7 @@ const PublicationArticleHeader = ({
 
   return (
     <header {...classes('', null, className)}>
-      <div className="o-wrapper-section c-article-header__container">
+      <div className="c-article-header__container">
         <div {...classes('content')}>
           <Link route={getRouteByType(publicationType.title)}>
             <a className="c-btn--sen">

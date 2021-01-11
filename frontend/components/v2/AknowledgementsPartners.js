@@ -14,7 +14,7 @@ export const AcknowledgementsPartners = ({ data }) => {
   return data ? (
     <div className="c-acknowledgements">
       {acknowledgements || partners.length > 0 || publicationType._id === 'pubtype-3' ? (
-        <h3 className="u-headline--sec">In collaboration with</h3>
+        <h3 className="u-headline--2">In collaboration with</h3>
       ) : null}
       {acknowledgements ? (
         <div {...classes('item')}>

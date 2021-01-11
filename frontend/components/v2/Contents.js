@@ -2,8 +2,9 @@ import React, { useState, useRef } from 'react';
 import buildTitleObjects from '../TableOfContents/buildTitleObjects';
 import Scrollchor from 'react-scrollchor';
 import ClientOnlyPortal from './ClientOnlyPortal';
-import { CloseButton, TextButton } from './buttons';
+import { TextIconButton } from './buttons';
 import { useOnClickOutside, useLockBodyScroll } from '../../helpers/hooks';
+import { ContentsIcon } from './icons/ContentsIcon';
 
 /**
  * V2 - Contents component to be used in Reader component
@@ -13,8 +14,9 @@ export const Contents = ({ title = '', content = [] }) => {
   const [open, setOpen] = useState();
 
   return (
-    <div className={`c-modal${open ? ' open' : ''}`}>
-      <TextButton onClick={() => setOpen(true)} text="Contents" modifier="sec" />
+    <div className={`c-contents c-modal${open ? ' open' : ''}`}>
+      <ContentsIcon/>
+      <TextIconButton onClick={() => setOpen(true)} text="Contents" modifier="qui" />
       {open && <ContentsModal title={title} setOpen={setOpen} content={content}/>}
     </div>
   );
@@ -39,7 +41,7 @@ export const ContentsModal = props => {
   return (
     <ClientOnlyPortal selector="#modal">
       <aside
-        className="c-modal__cover"
+        className="c-modal__cover c-modal__cover--contents"
         aria-modal="true"
         tabIndex="-1"
         role="dialog"
@@ -52,7 +54,7 @@ export const ContentsModal = props => {
           </div>
           <hr className="u-section-underline--no-margins" />
           <div className="c-modal__content">
-            <div className="sidebar c-reader-sidebar">
+            <div>
               {/* <div>
                 {content.length > 0 && (
                   <div className="fonts">

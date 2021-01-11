@@ -21,7 +21,7 @@ const LongformArticle = ({ content = [] }) => {
   const footnotes = findFootnotes(blocks);
   const footNotesKeys = Object.keys(footnotes);
   return (
-    <main className={'c-article-v2 o-wrapper-section'}>
+    <div className={'c-article-v2 o-wrapper-section c-article-v2__main-text'}>
       <BlockContent blocks={blocks} serializers={serializers} />
       <div>
         <div className="footnotes">
@@ -37,7 +37,7 @@ const LongformArticle = ({ content = [] }) => {
         </div>
       </div>
       <span id="js-bottom" />
-    </main>
+    </div>
   );
 };
 
