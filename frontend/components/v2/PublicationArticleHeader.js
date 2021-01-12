@@ -5,7 +5,7 @@ import { Link } from '../../routes';
 import { Reader } from './Reader';
 
 const classes = BEMHelper({
-  name: 'publicationHeader',
+  name: 'pubHeader',
   prefix: 'c-',
 });
 

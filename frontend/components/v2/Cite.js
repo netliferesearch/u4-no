@@ -1,14 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { CopyToClipboardButton } from './';
 import dateToString from '../../helpers/dateToString';
-import { Copy } from './icons/Copy';
 
 export const Cite = ({ date = {}, title = '', publicationType = {}, header = 'publication' }) => {
-  // const [activeAccordion, setActiveAccordion] = useState(-1);
-  // const toggleAccordion = index => {
-  //   const newIndex = index === activeAccordion ? -1 : index;
-  //   setActiveAccordion(newIndex);
-  // };
   const citeRef = useRef(null);
 
   return (

@@ -18,8 +18,10 @@ import { Keywords } from './Keywords';
 import { Topics } from './Topics';
 import { BreadCrumbV2 } from './BreadCrumbV2';
 import { getRouteByType } from '../../helpers/getRouteByType';
-import { AcknowledgementsPartners } from './AknowledgementsPartners';
+import { Partners } from './Partners';
 import { Reader } from './Reader';
+import LongformArticle from '../LongformArticle';
+import TnrcFooter from '../TnrcFooter';
 
 const LongFormArticleContainer = (props = {}) => {
   const {
@@ -154,7 +156,7 @@ const LongFormArticleContainer = (props = {}) => {
                   <PublicationContent {...props.data} />
                   <div className="c-article__additional-content">
                     <div className="u-hidden--desktop">
-                      <AcknowledgementsPartners data={props.data} />
+                      <Partners data={props.data} />
                     </div>
                     {topics.length > 0 || keywords.length > 0 ? (
                       <hr className="u-section-underline--no-margins u-hidden--desktop" />
@@ -207,95 +209,13 @@ const LongFormArticleContainer = (props = {}) => {
 
           {/* <LongformArticle content={shortversion ? props.content : ''} {...props.data} /> */}
 
-          {/* <TnrcFooter publicationTypeId={publicationType._id} /> */}
+          <TnrcFooter publicationTypeId={publicationType._id} />
 
-          {/* {!shortversion && props.data.methodology ? (
-            <div className="c-longform-grid">
-              <div className="c-longform-grid__standard">
-                <ToggleBlock title="Methodology" content={props.data.methodology} />
-              </div>
-            </div>
-          ) : null}
-          {!shortversion && props.data.references ? (
-            <div className="c-longform-grid">
-              <div className="c-longform-grid__standard">
-                <ToggleBlock title="References" content={props.data.references} />
-              </div>
-            </div>
-          ) : null}
-          {!shortversion && props.data.acknowledgements ? (
-            <div className="c-longform-grid">
-              <div className="c-longform-grid__standard">
-                <ToggleBlock title="Acknowledgements" content={props.data.acknowledgements} />
-              </div>
-            </div>
-          ) : null}
-          {!shortversion && props.data.notes ? (
-            <div className="c-longform-grid">
-              <div className="c-longform-grid__standard">
-                <ToggleBlock title="Notes" content={props.data.notes}>
-                  {featuredImage.caption && (
-                    <div className="c-longform-grid__standard">
-                      <p>
-                        <b>Header image:</b>
-                      </p>
-                      <BlockToContent
-                        blocks={featuredImage.caption}
-                        serializers={{
-                          types: {
-                            block: props => <p style={{ display: 'inline' }}>{props.children}</p>,
-                          },
-                        }}
-                      />
-                    </div>
-                  )}
-                  <div className="c-longform-grid__standard">
-                    {!featuredImage.sourceUrl && featuredImage.credit && (
-                      <span>Photo: {featuredImage.credit} </span>
-                    )}
-
-                    {featuredImage.sourceUrl && (
-                      <span>
-                        Photo:
-                        <a className="u-margin-left-tiny" href={featuredImage.sourceUrl}>
-                          {featuredImage.credit ? featuredImage.credit : featuredImage.sourceUrl}
-                        </a>
-                      </span>
-                    )}
-                    {featuredImage.license && (
-                      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
-                        {' '}
-                        CC {featuredImage.license.toUpperCase()}
-                      </a>
-                    )}
-                  </div>
-                </ToggleBlock>
-              </div>
-            </div>
-          ) : null}
-          {!shortversion && props.data.abstract ? (
-            <div className="c-longform-grid">
-              <div className="c-longform-grid__standard">
-                <ToggleBlock title="Abstract" content={props.data.abstract} />
-              </div>
-            </div>
-          ) : null} */}
-
-          {/* <section className="o-wrapper" style={{ display: readerOpen ? 'none' : 'block' }}>
-            <div className="o-wrapper-section">
-              {recommendedResources.length || relatedResources.length ? (
-                <RelatedSimple
-                  items={recommendedResources.length > 0 ? recommendedResources : relatedResources}
-                  title={'We also recommend'}
-                />
-              ) : null}
-            </div>
-          </section> */}
           {/* <span id="js-bottom" /> */}
         </article>
       )}
       {readerOpen && (
-        <Reader data={props.data} setReaderOpen={setReaderOpen} legacypdf={legacypdf} />
+        <Reader data={props.data} setReaderOpen={setReaderOpen} legacypdf={legacypdf} shortversion={shortversion}/>
       )}
       <div id="modal" />
     </Layout>

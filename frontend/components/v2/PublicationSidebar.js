@@ -1,18 +1,12 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import languageName from '../../helpers/languageName';
-import { LinkToItem } from '../';
 import { AuthorList, EditorList } from './';
 import dateToString from '../../helpers/dateToString';
 import { RelatedSimple } from './RelatedSimple';
 import { Document, Page } from 'react-pdf/build/entry.noworker';
-import { BreadCrumbV2 } from './BreadCrumbV2';
-import { PartnersList } from './PartnersList';
-import { PartnerLogo10Blue } from '../icons/PartnerLogo10Blue';
 import bibliographicReference from '../../helpers/bibliographicReference';
-import { getRouteByType } from '../../helpers/getRouteByType';
 import { Translations } from './Translations';
-import { AcknowledgementsPartners } from './AknowledgementsPartners';
+import { Partners } from './Partners';
 
 const classes = BEMHelper({
   name: 'article-sidebar',
@@ -91,7 +85,7 @@ export const PublicationSidebar = ({ data, side }) => {
           )}
           <div className="c-article-sidebar__row--regular">
             <div className="u-hidden--tablet">
-              <AcknowledgementsPartners data={data} />
+              <Partners data={data} />
             </div>
           </div>
           {/* {keywords.length > 0 ? <Keywords title={true} keywords={keywords} hr={false}/> : null} */}

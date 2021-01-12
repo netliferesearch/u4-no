@@ -23,6 +23,9 @@
   .c-article-sidebar {
     margin-top: 32px;
   }
+  .c-article__additional-content {
+    margin-bottom: 160px;
+  }
 }
 
 .c-article-v2__main-text {
@@ -278,11 +281,11 @@
   }
 }
 
-.c-lAHader {
-  .c-publicationHeader__content {
+.c-pubHeader--LA {
+  .c-pubHeader__content {
     max-width: 600px;
   }
-  .c-publicationHeader__actions {
+  .c-pubHeader__actions {
     justify-content: space-between;
     margin: 0 auto;
     padding: 24px;
@@ -321,7 +324,7 @@
   }
 }
 
-.c-lAHader__featured-image {
+.c-pubHeader--LA__featured-image {
   margin: 40px auto;
   max-width: 1072px;
   @include mq($from: tablet) {
@@ -337,7 +340,7 @@
   // }
 }
 
-.c-lAHader__featured-image--bg {
+.c-pubHeader--LA__featured-image--bg {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

@@ -97,10 +97,9 @@ iframe {
   }
 }
 
-.u-sticky {
-  display: block;
-  position: sticky;
+.u-fixed {
   top: 0;
+  position: fixed;
   z-index: 99999;
 }
 

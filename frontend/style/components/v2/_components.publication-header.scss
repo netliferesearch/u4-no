@@ -1,4 +1,4 @@
-.c-publicationHeader {
+.c-pubHeader {
   font-family: $font-sans;
   color: $v2-black;
 
@@ -9,7 +9,7 @@
     }
   }
 
-  .c-publicationHeader__content {
+  .c-pubHeader__content {
     margin: 32px auto 24px auto;
     text-align: center;
     @include mq($from: tablet) {
@@ -25,7 +25,7 @@
     margin-bottom: 0;
   }
 
-  .c-publicationHeader__subtitle {
+  .c-pubHeader__subtitle {
     font-family: $font-serif;
     font-size: 18px;
     line-height: 1.56;
@@ -37,7 +37,15 @@
     }
   }
 
-  .c-publicationHeader__actions {
+  .c-pubHeader--LA__actions-container {
+    width: 100%;
+  }
+
+  .c-pubHeader--LA__actions-content {
+    background-color: white;
+  }
+
+  .c-pubHeader__actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,6 +63,12 @@
         margin: 0 16px;
       }
     }
+  }
+
+  .c-pubHeader__row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   &__meta {
@@ -148,4 +162,9 @@
       max-width: 1000px;
     }
   }
+}
+
+.c-progress-bar {
+  height: 3px;
+  background-color: $v2-teal;
 }

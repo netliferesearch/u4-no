@@ -60,7 +60,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                     <span>{position}</span>
                   </div>
                 )} */}
-                <div className="c-blog-authors-list__text-block c-blog-entry__main-text">
+                <div className="c-blog-authors-list__text-block c-article-v2__main-text">
                   {lang === 'en' && bioShort && <BlockContent blocks={bioShort} />}
                   {lang === 'fr' && bioShort_fr && <BlockContent blocks={bioShort_fr} />}
                   {lang === 'es' && bioShort_es && <BlockContent blocks={bioShort_es} />}
