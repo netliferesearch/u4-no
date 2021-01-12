@@ -1,11 +1,11 @@
 import React from 'react';
 import BlockToContent from '@sanity/block-content-to-react';
 
-export const PhotoCaptionCredit = ({ featuredImage }) => {
+export const PhotoCaptionCredit = ({ featuredImage, showCaption = true }) => {
   const { license = '', credit = '', sourceUrl = '', caption } = featuredImage;
   return (
     <div className="c-credit">
-      {caption && (
+      {caption && showCaption && (
         <BlockToContent
           blocks={caption}
           serializers={{

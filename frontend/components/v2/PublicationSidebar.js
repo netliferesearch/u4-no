@@ -56,7 +56,7 @@ export const PublicationSidebar = ({ data, side }) => {
               pluralize={publicationType._id !== 'pubtype-3'}
             />
           ) : null}
-          <p className="c-article-sidebar__row--regular">
+          <p className="c-article-sidebar__row--regular u-grey-text">
             {bibliographicReference({ publicationType, publicationNumber, reference })}
           </p>
           {translations.length > 0 && (

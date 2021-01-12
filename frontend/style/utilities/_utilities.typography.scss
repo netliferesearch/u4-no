@@ -130,7 +130,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 12px;
-  color: $v2-black;
+  color: $v2-dark-grey;
 }
 
 .u-headline--5 {
@@ -156,4 +156,8 @@
       line-height: 0.8;
     }
   }
+}
+
+.u-grey-text {
+ color: $v2-grey-2;
 }

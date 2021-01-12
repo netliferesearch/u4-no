@@ -25,6 +25,7 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
     methodology = [],
     notes = '',
     featuredImage = {},
+    abbreviations = [],
   } = data;
   const readerRef = useRef();
 
@@ -56,51 +57,41 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
         {abbreviations.length ? (
           <ToggleBlock title="Abbreviation list" content={abbreviations} />
         ) : null}
-        <Acknowledgements data={data} />
-        <Partners data={data} />
+        <Acknowledgements data={data} bottom={true}/>
+        <Partners data={data} bottom={true}/>
         {!shortversion && methodology && methodology.length > 0 ? (
           <ToggleBlock title="Methodology" content={methodology} />
         ) : null}
         {!shortversion && notes ? (
-          <ToggleBlock title="Notes" content={notes}>
-            {featuredImage.caption && (
-              <div className="c-longform-grid__standard">
-                <p>
-                  <b>Header image:</b>
-                </p>
-                <BlockToContent
-                  blocks={featuredImage.caption}
-                  serializers={{
-                    types: {
-                      block: props => <p style={{ display: 'inline' }}>{props.children}</p>,
-                    },
-                  }}
-                />
-              </div>
-            )}
-            <div className="c-longform-grid__standard">
-              {!featuredImage.sourceUrl && featuredImage.credit && (
-                <span>Photo: {featuredImage.credit} </span>
-              )}
-
-              {featuredImage.sourceUrl && (
-                <span>
-                  Photo:
-                  <a className="u-margin-left-tiny" href={featuredImage.sourceUrl}>
-                    {featuredImage.credit ? featuredImage.credit : featuredImage.sourceUrl}
-                  </a>
-                </span>
-              )}
-              {featuredImage.license && (
-                <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
-                  {' '}
-                  CC {featuredImage.license.toUpperCase()}
-                </a>
-              )}
+          <div className="c-meta">
+            <hr className="u-section-underline--no-margins" />
+            <div className="c-meta__title">
+              <h3 className="u-headline--2">Notes</h3>
             </div>
-          </ToggleBlock>
+            <div className="c-meta__content">
+              {typeof notes === 'string' && <p>{notes}</p>}
+              {typeof notes !== 'string' && (
+                <BlockContent blocks={notes} serializers={serializers} />
+              )}
+              {featuredImage.caption && (
+                <div className="c-credit__caption">
+                  <p>
+                    <b>Header image:</b>
+                  </p>
+                  <BlockToContent
+                    blocks={featuredImage.caption}
+                    serializers={{
+                      types: {
+                        block: props => <p style={{ display: 'inline' }}>{props.children}</p>,
+                      },
+                    }}
+                  />
+                </div>
+              )}
+              <PhotoCaptionCredit featuredImage={featuredImage} showCaption={false} />
+            </div>
+          </div>
         ) : null}
-        <PhotoCaptionCredit featuredImage={featuredImage} />
         <Disclaimers title={false} />
         {/*             
           {!shortversion && props.data.abstract ? (

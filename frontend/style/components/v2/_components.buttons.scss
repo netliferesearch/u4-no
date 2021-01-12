@@ -208,59 +208,11 @@
     letter-spacing: 0.08em;
   }
 }
-// .c-btn--sep {
-//   //display: inline-block;
-//   //font-family: $font-sans;
-//   //font-weight: 700;
-//   //font-size: 12px;
-//   //line-height: 14px;
-//   letter-spacing: 0.1px;
-//   color: $v2-dark-grey;
-//   padding: 2px;
-//   text-decoration: underline;
-//   transition: all 100ms ease-out;
-//   border-bottom: none;
-//   span {
-//     position: relative;
-//   }
-//   &:hover,
-//   &:visited:hover {
-//     color: $v2-blue;
-//     text-decoration: none;
-//     border-bottom: none;
-//   }
-//   &:visited {
-//     text-decoration: none;
-//     color: $v2-dark-grey;
-//     border-bottom: none;
-//   }
-//   &:active {
-//     color: $v2-blue;
-//     border-bottom: none;
-//     & > * {
-//       display: inline-block;
-//       transform: translateY(2px);
-//     }
-//   }
-//   &:focus {
-//     border: none;
-//   }
-// }
 
 .c-btn--close {
   .c-btn__label {
     display: inline-block;
     margin-right: 16px;
-  }
-  & svg g {
-    // color: transparent;
-  }
-  & svg path {
-    // color: $white;
-  }
-  & svg circle {
-    //   stroke: $white;
-    //   fill: transparent;
   }
 
   &:hover,
@@ -268,15 +220,10 @@
     border: none;
     outline: none;
     text-decoration: none;
-
     svg g,
     svg path {
       //stroke: $v2-dark-grey;
       fill: $v2-dark-grey;
-    }
-    svg circle {
-      //stroke: $brand-main;
-      //fill: $white;
     }
     .c-btn__label {
       text-decoration: none;
@@ -329,14 +276,12 @@
   border: none;
   padding: 8px 8px 0 8px;
   margin: 0 8px;
-  // font-family: $font-sans;
-  // font-size: $font-size-tiny;
-  // font-weight: 700;
-  // border: none;
-  // background-color: $brand-lightest;
-  // color: $brand-main;
 
   &:active {
     outline: none;
+    & > * {
+      transform: translateY(2px);
+      border-bottom: none;
+    }
   }
 }
