@@ -1,21 +1,18 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
+import Scrollchor from 'react-scrollchor';
 import serializers from '../serializers';
 import LongformArticle from './LongformArticle';
 import PdfViewer from '../PdfViewer';
 import { LongformArticleHeader } from './LongformArticleHeader';
 import { PublicationSidebar } from './PublicationSidebar';
-import BEMHelper from 'react-bem-helper';
 import { ToggleBlock } from './ToggleBlock';
 import { Acknowledgements } from './Aknowledgements';
 import { Partners } from './Partners';
 import { Disclaimers } from './Disclaimers';
 import { PhotoCaptionCredit } from './PhotoCaptionCredit';
-
-const classes = BEMHelper({
-  name: 'article__content',
-  prefix: 'c-',
-});
+import { ToTop } from './icons/ToTop';
+import { useScrollInfo } from '../../helpers/useScrollInfo';
 
 export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversion = false }) => {
   const {
@@ -28,12 +25,27 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
     abbreviations = [],
   } = data;
   const readerRef = useRef();
+  const [scrolled, setScrolled] = useState(false);
+
+  useScrollInfo(
+    ({ currPos }) => {
+      const isScrolled = currPos.y < -200;
+      if (scrolled !== isScrolled) {
+        setScrolled(isScrolled);
+      }
+    },
+    [scrolled],
+    readerRef,
+    false,
+    0
+  );
 
   return (
-    <div className="c-reader" ref={readerRef}>
+    <div id="c-reader" className="c-reader" ref={readerRef}>
+      <span id="js-top-reader" />
       <LongformArticleHeader data={data} setReaderOpen={setReaderOpen} targetRef={readerRef} />
       {content.length > 0 && (
-        <main className="c-reader__main o-wrapper-section c-article__row">
+        <main className="c-reader__main o-wrapper-section u-side-padding c-article__row">
           <div className="c-article__side c-article__col">
             <PublicationSidebar data={data} side={'left'} />
           </div>
@@ -50,15 +62,15 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
           <PdfViewer file={{ url: legacypdf.asset.url }} />
         </div>
       )}
-      <div className="c-article__additional-content">
+      <div id="additional-info" className="c-article__additional-content o-wrapper-section u-side-padding">
         {!shortversion && references ? (
           <ToggleBlock title="References" content={references} />
         ) : null}
         {abbreviations.length ? (
           <ToggleBlock title="Abbreviation list" content={abbreviations} />
         ) : null}
-        <Acknowledgements data={data} bottom={true}/>
-        <Partners data={data} bottom={true}/>
+        <Acknowledgements data={data} bottom={true} />
+        <Partners data={data} bottom={true} />
         {!shortversion && methodology && methodology.length > 0 ? (
           <ToggleBlock title="Methodology" content={methodology} />
         ) : null}
@@ -102,6 +114,13 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
             </div>
           ) : null} */}
       </div>
+      {scrolled ? (
+        <div className="c-scroll-top">
+          <Scrollchor to="#js-top-reader" disableHistory>
+            <ToTop />
+          </Scrollchor>
+        </div>
+      ) : null}
     </div>
   );
 };

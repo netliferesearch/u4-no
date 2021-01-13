@@ -15,9 +15,9 @@ export const Contents = ({ title = '', content = [] }) => {
 
   return (
     <div className={`c-contents c-modal${open ? ' open' : ''}`}>
-      <ContentsIcon/>
+      <ContentsIcon />
       <TextIconButton onClick={() => setOpen(true)} text="Contents" modifier="qui" />
-      {open && <ContentsModal title={title} setOpen={setOpen} content={content}/>}
+      {open && <ContentsModal title={title} setOpen={setOpen} content={content} />}
     </div>
   );
 };
@@ -54,8 +54,8 @@ export const ContentsModal = props => {
           </div>
           <hr className="u-section-underline--no-margins" />
           <div className="c-modal__content">
-            <div>
-              {/* <div>
+          <h3 className="c-modal__title">In this Publication</h3>
+            {/* <div>
                 {content.length > 0 && (
                   <div className="fonts">
                     <button
@@ -79,67 +79,45 @@ export const ContentsModal = props => {
                   </div>
                 )}
               </div> */}
-              {titleObjects.length ? (
-                <div>
-                  <ul className="c-article-nav-list">
-                    <li key="top" className={`c-article-nav-list__item`}>
+            {titleObjects.length ? (
+              <div>
+                <ul className="c-article-nav-list">
+                  {/* <li key="top" className={`c-article-nav-list__item`}>
                       <Scrollchor to="#js-top" disableHistory>
                         Top
                       </Scrollchor>
-                    </li>
-                    {titleObjects.map(titleObject => {
-                      const { title, id, children = [] } = titleObject;
-                      return (
-                        <li key={id} className={`c-article-nav-list__item`}>
-                          <Scrollchor to={`#${id}`} disableHistory>
-                            {title}
-                          </Scrollchor>
-                          {titleObject.selected && (
-                            <ul className="c-article-nav-list c-article-nav-list--inner">
-                              {children.map(({ title, id }) => (
-                                <li key={id} className={`c-article-nav-list__item`}>
-                                  <Scrollchor to={`#${id}`} disableHistory>
-                                    {title}
-                                  </Scrollchor>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                          <hr className="u-section-underline--no-margins" />
-                        </li>
-                      );
-                    })}
-                    <li key="bottom" className="c-article-nav-list__item">
-                      <Scrollchor to="#js-bottom" disableHistory>
-                        Bottom
-                      </Scrollchor>
-                    </li>
-                  </ul>
-                </div>
-              ) : null}
-              <div>
-                <ul className="c-article-nav-list c-article-nav-list--2">
-                  <li className={`c-article-nav-list__item`}>
-                    <a href="#">References</a>
-                  </li>
-                  <li className={`c-article-nav-list__item`}>
-                    <a href="#">About the author</a>
-                  </li>
-                  <li className={`c-article-nav-list__item`}>
-                    <a href="#">Acknowledgements</a>
-                  </li>
-                  <li className={`c-article-nav-list__item`}>
-                    <a href="#">Methodology</a>
-                  </li>
-                  <li className={`c-article-nav-list__item`}>
-                    <a href="#">Notes</a>
-                  </li>
-                  <li className={`c-article-nav-list__item`}>
-                    <a href="#">Annex</a>
+                    </li> */}
+                  {titleObjects.map(titleObject => {
+                    const { title, id, children = [] } = titleObject;
+                    return (
+                      <li key={id} className={`c-article-nav-list__item`} onClick={e => setOpen(false)}>
+                        <Scrollchor to={`#${id}`} disableHistory>
+                          {title}
+                        </Scrollchor>
+                        {titleObject.selected && (
+                          <ul className="c-article-nav-list c-article-nav-list--inner">
+                            {children.map(({ title, id }) => (
+                              <li key={id} className={`c-article-nav-list__item`}>
+                                <Scrollchor to={`#${id}`} disableHistory>
+                                  {title}
+                                </Scrollchor>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        <hr className="u-section-underline--no-margins" />
+                      </li>
+                    );
+                  })}
+                  <li key="bottom" className="c-article-nav-list__item" onClick={e => setOpen(false)}>
+                    <Scrollchor to="#additional-info" disableHistory>
+                      Additional Information
+                    </Scrollchor>
                   </li>
                 </ul>
               </div>
-            </div>
+            ) : null}
+            <div />
           </div>
         </div>
       </aside>

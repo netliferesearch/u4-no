@@ -9,7 +9,7 @@ const classes = BEMHelper({
 export const Acknowledgements = ({ data, bottom = false }) => {
   const { acknowledgements = '' } = data;
 
-  return data ? (
+  return acknowledgements ? (
     <div className={`c-acknowledgements ${bottom ? 'c-acknowledgements--bottom c-meta' : ''}`}>
       {bottom ? <hr className="u-section-underline--no-margins" /> : null }
       {acknowledgements ? (

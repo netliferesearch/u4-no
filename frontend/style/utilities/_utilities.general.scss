@@ -99,8 +99,13 @@ iframe {
 
 .u-fixed {
   top: 0;
+  left: 0;
+  right: 0;
   position: fixed;
   z-index: 99999;
+  .c-pubHeader--LA__actions-content {
+  margin-left: calc(100vw - 100%);
+}
 }
 
 @keyframes fadeIn {

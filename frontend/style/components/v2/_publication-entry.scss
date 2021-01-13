@@ -11,15 +11,6 @@
     }
   }
 
-  .c-article__row {
-    //max-width: 1312px;
-    @include mq($from: tablet) {
-      display: flex;
-      justify-content: space-between;
-      //margin-bottom: $spacing-huge;
-    }
-  }
-
   .c-article__center {
     @include mq($from: tablet) {
       padding: 0 24px;
@@ -54,7 +45,7 @@
       font-size: 20px;
       line-height: 1.5;
       //overriding:
-      padding: 0 24px;
+      //padding: 0 24px;
     }
   }
 
@@ -125,6 +116,17 @@
 
   @include mq($from: tablet) {
     margin-bottom: 160px;
+  }
+}
+.c-article-v2,
+.c-reader {
+  .c-article__row {
+    //max-width: 1312px;
+    @include mq($from: tablet) {
+      display: flex;
+      justify-content: space-between;
+      //margin-bottom: $spacing-huge;
+    }
   }
 }
 
@@ -262,7 +264,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin: 24px 0;
+  padding: 24px 0;
 }
 
 .c-toggle-block__icon {

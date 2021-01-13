@@ -6,7 +6,6 @@ import { Link } from '../../routes';
 import LogoU4 from '../icons/LogoU4';
 import { CloseButton } from './buttons';
 import { Contents } from './Contents';
-import { PhotoCaptionCredit } from './PhotoCaptionCredit';
 
 const classes = BEMHelper({
   name: 'pubHeader',
@@ -20,7 +19,6 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
     featuredImage = {},
     summary = '',
     content = '',
-    className = '',
     publicationType = {},
     pdfFile = {},
     legacypdf = {},
@@ -29,6 +27,13 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
   const pdfAsset = legacypdf.asset ? legacypdf.asset : pdfFile.asset;
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef(null);
+
+  const handleClick = () => {
+    setReaderOpen(false);
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
+  };
 
   useScrollInfo(
     ({ currPos }) => {
@@ -44,10 +49,10 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
   );
 
   return (
-    <header className="c-pubHeader c-pubHeader--LA">
+    <header className={`c-pubHeader c-pubHeader--LA ${scrolled ? 'c-pubHeader--scrolled' : ''}`}>
       <div className="c-pubHeader--LA__top">
         <div className="c-lAHeader__top-content">
-          <LogoU4 />
+        <Link route="/"><a className="u-no-underline"><LogoU4 /></a></Link>
           <div className="c-lAHeader__close">
             <CloseButton onClick={e => setReaderOpen(false)}>
               <span className="u-headline--5 c-btn__label">Close Publication</span>
@@ -57,14 +62,14 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
         <hr className="u-section-underline--no-margins" />
       </div>
       <div className="c-article-header__container">
-        <div {...classes('content')}>
+        <div className="c-pubHeader__content o-wrapper u-side-padding">
           <Link route={getRouteByType(publicationType.title)}>
             <a className="c-btn--sen">
               <h6>{publicationType.title && `${publicationType.title}`}</h6>
             </a>
           </Link>
 
-          <h2 className="u-headline--black--44">{title}</h2>
+          <h2 className="u-headline--black--44I">{title}</h2>
           {subtitle ? <p {...classes('subtitle')}>{subtitle}</p> : null}
         </div>
         {featuredImage.asset && (
@@ -85,22 +90,14 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
           </div>
         )}
         <div className={`c-pubHeader--LA__actions-container ${scrolled ? 'u-fixed' : ''}`}>
-          <div className="c-pubHeader--LA__actions-content">
-            <hr className="u-section-underline--no-margins" />
+          
+        <hr className="u-section-underline--no-margins" />
+        <div className="c-pubHeader--LA__actions-content">
+            
 
             <div className="c-pubHeader__actions o-wrapper-section">
               <Contents title={title} content={content} setReaderOpen={setReaderOpen} />
               <div className="c-pubHeader__row">
-                {pdfAsset && (
-                  <a
-                    href={`/publication/${slug.current}.pdf`}
-                    //download={`/publication/${slug.current}.pdf`}
-                    target="_blank"
-                    className="c-btn c-btn--qua"
-                  >
-                    <span>Download as PDF</span>
-                  </a>
-                )}
                 {summary.length > 0 && (
                   <Link route="publication.shortVersion" params={{ slug: slug.current }}>
                     <a className="c-btn c-btn--qua">
@@ -109,16 +106,27 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
                     </a>
                   </Link>
                 )}
+                {pdfAsset && (
+                  <a
+                    href={`/publication/${slug.current}.pdf`}
+                    //download={`/publication/${slug.current}.pdf`}
+                    target="_blank"
+                    className="c-btn c-btn--qua"
+                  >
+                    <span>Download PDF</span>
+                  </a>
+                )}
                 {scrolled ? (
                   <div className="c-lAHeader__close">
-                    <CloseButton onClick={e => setReaderOpen(false)} />
+                    <CloseButton onClick={handleClick} />
                   </div>
                 ) : null}
               </div>
             </div>
 
-            <hr className="u-section-underline--no-margins" />
+            
           </div>
+          <hr className="u-section-underline--no-margins" />
           <ReadingProgress targetRef={targetRef} />
         </div>
       </div>
