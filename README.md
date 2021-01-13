@@ -5,6 +5,7 @@ headless backend with [Sanity](https://sanity.io).
 
 Enviroments:
 
+- Develop: https://u4-frontend-test.herokuapp.com/
 - Staging: https://u4-frontend-staging.herokuapp.com
 - Production: https://www.u4.no
 
@@ -16,7 +17,7 @@ Enviroments:
 
 **Tests:** Run `npx jest --watch` to start running [Jest tests](https://jestjs.io) locally.
 
-For local development of frontend. Push changes to master branch to test them on the staging environment. Pushes and Pull Requests to the production branch deploys the app on production.
+For local development of frontend. Pull from master-new branch, which is copy of production. Develop on your-feature-branch. You can test uncertain features at development environment [test](https://u4-frontend-test.herokuapp.com/) by merging to develop branch. When ready push your changes(branch) to master-new branch to test them on the [staging environment](https://u4-frontend-staging.herokuapp.com). Pushes and Pull Requests to the production branch deploys the app on production.
 
 ## Develop Sanity backend
 
