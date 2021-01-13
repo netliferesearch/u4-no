@@ -28,7 +28,7 @@
     "@sanity/storybook": "^0.144.0",
     "@sanity/vision": "^0.144.2",
     "@tinymce/tinymce-react": "^2.4.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bluebird": "^3.5.3",
     "highcharts": "^7.0.2",
     "lodash": "^4.17.10",
