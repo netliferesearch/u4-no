@@ -56,6 +56,11 @@
     box-shadow: 0 0 0 1px $v2-dark-yellow;
     outline: none;
   }
+  &:visited,
+  &:visited:hover {
+    color: $v2-black;
+    border: 1px solid $v2-lighter-grey;
+  }
 }
 .c-btn--ter {
   display: inline-block;
@@ -263,10 +268,12 @@
 }
 
 .c-btn--chevron {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  span {
     margin-right: 12px;
   }
 }

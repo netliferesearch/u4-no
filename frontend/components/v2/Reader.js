@@ -60,9 +60,11 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
         )}
 
         {!content.length && legacypdf.asset && (
-          <div className="c-article-v2 c-article-v2__pdf-viewer o-wrapper-section">
-            <PdfViewer file={{ url: legacypdf.asset.url }} />
-          </div>
+          <main className="c-reader__main o-wrapper-section u-side-padding c-article__row">
+            <div className="c-article-v2 c-article-v2__pdf-viewer o-wrapper-section">
+              <PdfViewer file={{ url: legacypdf.asset.url }} />
+            </div>
+          </main>
         )}
 
         <div
@@ -70,7 +72,7 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
           className="c-article__additional-info-container o-wrapper-section u-side-padding"
         >
           <div className="c-article__additional-info-content">
-            {!shortversion && references ? (
+            {!shortversion && references && references.length ? (
               <ToggleBlock title="References" content={references} />
             ) : null}
             {abbreviations.length ? (
@@ -78,8 +80,22 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
             ) : null}
             <Acknowledgements data={data} bottom={true} />
             <Partners data={data} bottom={true} />
-            {!shortversion && methodology && methodology.length > 0 ? (
+            {/* {!shortversion && methodology && methodology.length > 0 ? (
               <ToggleBlock title="Methodology" content={methodology} />
+            ) : null} */}
+            {!shortversion && methodology && methodology.length > 0 ? (
+              <div className="c-meta">
+                <hr className="u-section-underline--no-margins" />
+                <div className="c-meta__title">
+                  <h3 className="u-headline--2">Methodology</h3>
+                </div>
+                <div className="c-meta__content">
+                  {typeof methodology === 'string' && <p>{methodology}</p>}
+                  {typeof methodology !== 'string' && (
+                    <BlockContent blocks={methodology} serializers={serializers} />
+                  )}
+                </div>
+              </div>
             ) : null}
             {!shortversion && notes ? (
               <div className="c-meta">

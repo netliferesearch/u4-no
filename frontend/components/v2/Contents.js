@@ -23,7 +23,7 @@ export const Contents = ({ title = '', content = [] }) => {
 };
 
 export const ContentsModal = props => {
-  const { title = '', setOpen, content } = props;
+  const { title = '', setOpen, content = [] } = props;
   const titleObjects = buildTitleObjects(content);
   // ref that we add to the element for which we want to detect outside clicks
   const ref = useRef();
@@ -54,7 +54,7 @@ export const ContentsModal = props => {
           </div>
           <hr className="u-section-underline--no-margins" />
           <div className="c-modal__content">
-          <h3 className="c-modal__title">In this Publication</h3>
+            <h3 className="c-modal__title">In this Publication</h3>
             {/* <div>
                 {content.length > 0 && (
                   <div className="fonts">
@@ -79,44 +79,49 @@ export const ContentsModal = props => {
                   </div>
                 )}
               </div> */}
-            {titleObjects.length ? (
-              <div>
-                <ul className="c-article-nav-list">
-                  {/* <li key="top" className={`c-article-nav-list__item`}>
+
+            <div>
+              <ul className="c-article-nav-list">
+                {/* <li key="top" className={`c-article-nav-list__item`}>
                       <Scrollchor to="#js-top" disableHistory>
                         Top
                       </Scrollchor>
                     </li> */}
-                  {titleObjects.map(titleObject => {
-                    const { title, id, children = [] } = titleObject;
-                    return (
-                      <li key={id} className={`c-article-nav-list__item`} onClick={e => setOpen(false)}>
-                        <Scrollchor to={`#${id}`} disableHistory>
-                          {title}
-                        </Scrollchor>
-                        {titleObject.selected && (
-                          <ul className="c-article-nav-list c-article-nav-list--inner">
-                            {children.map(({ title, id }) => (
-                              <li key={id} className={`c-article-nav-list__item`}>
-                                <Scrollchor to={`#${id}`} disableHistory>
-                                  {title}
-                                </Scrollchor>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        <hr className="u-section-underline--no-margins" />
-                      </li>
-                    );
-                  })}
-                  <li key="bottom" className="c-article-nav-list__item" onClick={e => setOpen(false)}>
-                    <Scrollchor to="#additional-info" disableHistory>
-                      Additional Information
-                    </Scrollchor>
-                  </li>
-                </ul>
-              </div>
-            ) : null}
+                {titleObjects.length
+                  ? titleObjects.map(titleObject => {
+                      const { title, id, children = [] } = titleObject;
+                      return (
+                        <li
+                          key={id}
+                          className={`c-article-nav-list__item`}
+                          onClick={e => setOpen(false)}
+                        >
+                          <Scrollchor to={`#${id}`} disableHistory>
+                            {title}
+                          </Scrollchor>
+                          {titleObject.selected && (
+                            <ul className="c-article-nav-list c-article-nav-list--inner">
+                              {children.map(({ title, id }) => (
+                                <li key={id} className={`c-article-nav-list__item`}>
+                                  <Scrollchor to={`#${id}`} disableHistory>
+                                    {title}
+                                  </Scrollchor>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                          <hr className="u-section-underline--no-margins" />
+                        </li>
+                      );
+                    })
+                  : null}
+                <li key="bottom" className="c-article-nav-list__item" onClick={e => setOpen(false)}>
+                  <Scrollchor to="#additional-info" disableHistory>
+                    Additional Information
+                  </Scrollchor>
+                </li>
+              </ul>
+            </div>
             <div />
           </div>
         </div>

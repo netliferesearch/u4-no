@@ -95,22 +95,8 @@
   }
 }
 
-.u-headline--black--44I {
-  font-family: $font-sans-header;
-  font-size: 32px;
-  line-height: 39px;
-  font-weight: 900;
-  color: $v2-black;
-  letter-spacing: 0.01em;
-  @include mq($from: tablet) {
-    font-family: $font-sans;
-    font-size: 44px;
-    line-height: 53px;
-  }
-}
-
 .u-black-32-headline {
-  font-family: $font-sans-header;
+  font-family: $font-sans;
   font-size: 32px;
   line-height: 39px;
   font-weight: 700;

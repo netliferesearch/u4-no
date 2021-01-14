@@ -14,8 +14,14 @@ export const TextButton = ({ onClick = () => null, text = '', modifier = 'qua', 
 
 export const TextIconButton = ({ onClick = () => null, text = '', modifier = 'qua', disabled=false }) => (
   <button {...classes(null, modifier, 'c-btn--chevron')} onClick={onClick} disabled={disabled}>
-    {text && <div>{text}</div>}
-    <ArrowDown />
+    <div>{text && <span>{text}</span>}<ArrowDown /></div>
+    
+  </button>
+);
+
+export const RoundIconButton = ({ onClick = () => null, text = '', modifier = 'qua', disabled=false }) => (
+  <button {...classes(null, modifier, 'c-btn--chevron')} onClick={onClick} disabled={disabled}>
+    <div>{text && <span>{text}</span>}<ArrowDown /></div>
   </button>
 );
 

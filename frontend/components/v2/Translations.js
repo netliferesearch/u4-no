@@ -3,7 +3,8 @@ import { TextButton, TextIconButton } from './buttons';
 import ClientOnlyPortal from './ClientOnlyPortal';
 import languageName from '../../helpers/languageName';
 import { useLockBodyScroll, useOnClickOutside } from '../../helpers/hooks';
-import router from 'next/router';
+//import router from 'next/router';
+import LinkToItem from '../LinkToItem';
 
 export const Translations = ({ translations, language, route, currentSlug }) => {
   const [open, setOpen] = useState(false);
@@ -16,7 +17,7 @@ export const Translations = ({ translations, language, route, currentSlug }) => 
       />
       {open && (
         <RadioModal
-          title="Language settings"
+          title="Also available in"
           options={translations}
           setOpen={setOpen}
           route={route}
@@ -28,7 +29,7 @@ export const Translations = ({ translations, language, route, currentSlug }) => 
 };
 
 export const RadioModal = ({ title = '', options, setOpen, route, currentSlug }) => {
-  const [selectedItem, setSelectedItem] = useState(null);
+  //const [selectedItem, setSelectedItem] = useState(null);
   // ref that we add to the element for which we want to detect outside clicks
   const ref = useRef();
   //hook passing in the ref and a function to call on outside click
@@ -36,14 +37,14 @@ export const RadioModal = ({ title = '', options, setOpen, route, currentSlug })
   //hook to lock body scroll
   useLockBodyScroll();
 
-  const handleApplyClick = () => {
-    setOpen(false);
-    router.push(`${route}/${selectedItem}`);  
-  };
+  // const handleApplyClick = () => {
+  //   setOpen(false);
+  //   router.push(`${route}/${selectedItem}`);
+  // };
 
-  const handleChange = e => {
-    setSelectedItem(options.find(o => o.language === e.target.value).slug);
-  };
+  // const handleChange = e => {
+  //   setSelectedItem(options.find(o => o.language === e.target.value).slug);
+  // };
 
   const onKeyDown = event => {
     if (event.keyCode === 27) {
@@ -67,7 +68,18 @@ export const RadioModal = ({ title = '', options, setOpen, route, currentSlug })
           <hr className="u-section-underline--no-margins" />
           <div className="c-modal__content">
             <div className="c-modal__list">
-              {options &&
+            {options.map(
+                (item = {}, index) =>
+                  item.slug &&
+                  item.title && (
+                    <LinkToItem type="publication" slug={item.slug} key={item._id}>
+                      <span >
+                        <a className="c-modal__label c-btn c-btn--qua">{languageName({ langcode: item.language })}</a>
+                      </span>
+                    </LinkToItem>
+                  )
+              )}
+              {/* {options &&
                 options.map((option, index) => {
                   return (
                     <label key={index} className="c-modal__label">
@@ -81,13 +93,13 @@ export const RadioModal = ({ title = '', options, setOpen, route, currentSlug })
                       <span>{languageName({ langcode: option.language })}</span>
                     </label>
                   );
-                })}
+                })} */}
             </div>
           </div>
           <div className="c-modal__bottom">
             <div className="c-modal__controls">
               <TextButton onClick={() => setOpen(false)} text="Cancel" modifier="ter" />
-              <TextButton onClick={handleApplyClick} text="Confirm" modifier="pri" disabled={!selectedItem}/>
+              {/* <TextButton onClick={handleApplyClick} text="Confirm" modifier="pri" disabled={!selectedItem}/> */}
             </div>
           </div>
         </form>

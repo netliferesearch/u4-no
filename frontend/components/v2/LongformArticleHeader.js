@@ -18,7 +18,7 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
     subtitle = '',
     featuredImage = {},
     summary = '',
-    content = '',
+    content = [],
     publicationType = {},
     pdfFile = {},
     legacypdf = {},
@@ -74,7 +74,7 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
               </a>
             </Link>
 
-            <h2 className="u-headline--black--44I">{title}</h2>
+            <h2 className="u-headline--black--44">{title}</h2>
             {subtitle ? <p {...classes('subtitle')}>{subtitle}</p> : null}
           </div>
           {featuredImage.asset && (
@@ -118,7 +118,7 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
                     href={`/publication/${slug.current}.pdf`}
                     //download={`/publication/${slug.current}.pdf`}
                     target="_blank"
-                    className="c-btn c-btn--qua"
+                    className="c-btn c-btn--sec"
                   >
                     <span>Download PDF</span>
                   </a>
@@ -133,7 +133,7 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
           </div>
         </div>
         <hr className="u-section-underline--no-margins" />
-        <ReadingProgress targetRef={targetRef} />
+        {content.length > 0 ? <ReadingProgress targetRef={targetRef} /> : null}
       </div>
       <span ref={menuRef} />
     </header>
