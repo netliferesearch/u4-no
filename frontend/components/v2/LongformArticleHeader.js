@@ -52,7 +52,11 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
     <header className={`c-pubHeader c-pubHeader--LA ${scrolled ? 'c-pubHeader--scrolled' : ''}`}>
       <div className="c-pubHeader--LA__top">
         <div className="c-lAHeader__top-content">
-        <Link route="/"><a className="u-no-underline"><LogoU4 /></a></Link>
+          <Link route="/">
+            <a className="u-no-underline">
+              <LogoU4 />
+            </a>
+          </Link>
           <div className="c-lAHeader__close">
             <CloseButton onClick={e => setReaderOpen(false)}>
               <span className="u-headline--5 c-btn__label">Close Publication</span>
@@ -61,52 +65,55 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
         </div>
         <hr className="u-section-underline--no-margins" />
       </div>
-      <div className="c-article-header__container">
-        <div className="c-pubHeader__content o-wrapper u-side-padding">
-          <Link route={getRouteByType(publicationType.title)}>
-            <a className="c-btn--sen">
-              <h6>{publicationType.title && `${publicationType.title}`}</h6>
-            </a>
-          </Link>
+      <div className="c-pubHeader--LA__main u-scroll-bar">
+        <div className="c-article-header__container">
+          <div className="c-pubHeader__content o-wrapper u-side-padding">
+            <Link route={getRouteByType(publicationType.title)}>
+              <a className="c-btn--sen">
+                <h6>{publicationType.title && `${publicationType.title}`}</h6>
+              </a>
+            </Link>
 
-          <h2 className="u-headline--black--44I">{title}</h2>
-          {subtitle ? <p {...classes('subtitle')}>{subtitle}</p> : null}
-        </div>
-        {featuredImage.asset && (
-          <div className="c-pubHeader--LA__featured-image">
-            <figure
-              className="c-pubHeader--LA__featured-image--bg"
-              style={{ backgroundImage: `url('${featuredImage.asset.url}?w=1072')` }}
-            >
-              <img
-                className="u-visually-hidden-v2"
-                src={`${featuredImage.asset.url}?w=1072`}
-                alt={featuredImage.altText}
-              />
-            </figure>
-            {/* <figcaption className="">
+            <h2 className="u-headline--black--44I">{title}</h2>
+            {subtitle ? <p {...classes('subtitle')}>{subtitle}</p> : null}
+          </div>
+          {featuredImage.asset && (
+            <div className="c-pubHeader--LA__featured-image">
+              <figure
+                className="c-pubHeader--LA__featured-image--bg"
+                style={{ backgroundImage: `url('${featuredImage.asset.url}?w=1072')` }}
+              >
+                <img
+                  className="u-visually-hidden-v2"
+                  src={`${featuredImage.asset.url}?w=1072`}
+                  alt={featuredImage.altText}
+                />
+              </figure>
+              {/* <figcaption className="">
               <PhotoCaptionCredit featuredImage={featuredImage} />
             </figcaption> */}
-          </div>
-        )}
-        <div className={`c-pubHeader--LA__actions-container ${scrolled ? 'u-fixed' : ''}`}>
-          
+            </div>
+          )}
+        </div>
+      </div>
+      <div className={`c-pubHeader--LA__actions-container ${scrolled ? 'u-fixed' : ''}`}>
         <hr className="u-section-underline--no-margins" />
-        <div className="c-pubHeader--LA__actions-content">
-            
-
-            <div className="c-pubHeader__actions o-wrapper-section">
-              <Contents title={title} content={content} setReaderOpen={setReaderOpen} />
-              <div className="c-pubHeader__row">
-                {summary.length > 0 && (
+        <div className="c-pubHeader--LA__actions-content u-scroll-bar">
+          <div className="c-pubHeader__actions o-wrapper-section u-side-padding">
+            <Contents title={title} content={content} setReaderOpen={setReaderOpen} />
+            <div className="c-pubHeader__row">
+              {summary.length > 0 && (
+                <div>
                   <Link route="publication.shortVersion" params={{ slug: slug.current }}>
                     <a className="c-btn c-btn--qua">
                       <span {...classes('button-text')}>Read short version</span>
                       {/* <div {...classes('button-icon')} /> */}
                     </a>
                   </Link>
-                )}
-                {pdfAsset && (
+                </div>
+              )}
+              {pdfAsset && (
+                <div className="u-hidden--tablet">
                   <a
                     href={`/publication/${slug.current}.pdf`}
                     //download={`/publication/${slug.current}.pdf`}
@@ -115,20 +122,18 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
                   >
                     <span>Download PDF</span>
                   </a>
-                )}
-                {scrolled ? (
-                  <div className="c-lAHeader__close">
-                    <CloseButton onClick={handleClick} />
-                  </div>
-                ) : null}
-              </div>
+                </div>
+              )}
+              {scrolled ? (
+                <div className="c-lAHeader__close">
+                  <CloseButton onClick={handleClick} />
+                </div>
+              ) : null}
             </div>
-
-            
           </div>
-          <hr className="u-section-underline--no-margins" />
-          <ReadingProgress targetRef={targetRef} />
         </div>
+        <hr className="u-section-underline--no-margins" />
+        <ReadingProgress targetRef={targetRef} />
       </div>
       <span ref={menuRef} />
     </header>

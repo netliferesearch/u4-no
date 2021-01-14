@@ -4,10 +4,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  width: 100vw;
+  //width: 100vw;
   min-height: 100%;
   min-height: 100vh;
   background-color: $white;
+  //margin-left: calc(100vw - 100%);
 
   .o-wrapper-section {
     max-width: 1312px;
@@ -23,7 +24,7 @@
   .c-article-sidebar {
     margin-top: 32px;
   }
-  .c-article__additional-content {
+  .c-article__additional-info-container {
     margin-bottom: 160px;
   }
 }

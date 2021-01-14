@@ -86,10 +86,12 @@
     max-width: 600px;
   }
   .c-pubHeader__actions {
+    width: 100%;
     justify-content: space-between;
     margin: 0 auto;
   }
 }
+
 .c-lAHeader__top-content {
   display: flex;
   justify-content: space-between;
@@ -182,10 +184,25 @@
 }
 
 .c-pubHeader--LA__actions-container {
-  //width: 100%;
+  &.u-fixed {
+    .c-pubHeader__actions {
+      .c-pubHeader__row {
+        display: none;
+      }
+      @include mq($from: tablet) {
+        .c-pubHeader__row {
+          display: flex;
+        }
+      }
+    }
+  }
 }
 
 .c-pubHeader--LA__actions-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: white;
-  padding: 24px;
+  padding: 24px 0;
+  height: 80px;
 }

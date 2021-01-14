@@ -103,9 +103,12 @@ iframe {
   right: 0;
   position: fixed;
   z-index: 99999;
-  .c-pubHeader--LA__actions-content {
-  margin-left: calc(100vw - 100%);
 }
+
+.u-scroll-bar {
+  @include mq($from: tablet) {
+    margin-left: calc(100vw - 100%);
+  }
 }
 
 @keyframes fadeIn {

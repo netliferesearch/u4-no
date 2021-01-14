@@ -154,7 +154,7 @@ const LongFormArticleContainer = (props = {}) => {
                 </div>
                 <div className="content c-article__col c-article__center">
                   <PublicationContent {...props.data} />
-                  <div className="c-article__additional-content">
+                  <div className="c-article__additional-info-content">
                     <div className="u-hidden--desktop">
                       <Partners data={props.data} />
                     </div>
