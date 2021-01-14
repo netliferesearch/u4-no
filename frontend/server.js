@@ -26,7 +26,9 @@ app.prepare().then(() => {
   }
   server.get('/robots.txt', (req, res) => {
     res.type('text/plain');
-    res.send('User-agent: *\nDisallow:');
+    // Only allow indexing on production.
+    const urlPath = process.NODE_ENV === 'production' ? "" : "/"
+    res.send(`User-agent: *\nDisallow:${urlPath}`);
   });
   server.get('//$', (req, res) => res.redirect(301, '/'));
   // /search-v2 was a temporary test url, that we want to remove from any
