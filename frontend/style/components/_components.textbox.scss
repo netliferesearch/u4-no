@@ -138,6 +138,12 @@
     h4.c-longform-grid__standard {
       color: $v2-dark-blue-box;
     }
+    div {
+      .c-longform-grid__standard:first-child {
+        margin-top: 48px;
+        padding-top: 0;
+      }
+    }
   }
   .c-textbox__container--collapsed {
     a.c-textbox__expand {

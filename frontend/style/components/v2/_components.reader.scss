@@ -29,7 +29,7 @@
     margin-top: -120px;
   }
   .c-article-sidebar__bibliography,
-  .c-article-sidebar__date, 
+  .c-article-sidebar__date,
   .c-authors-list__position {
     display: none;
   }
@@ -45,6 +45,13 @@
   line-height: 1.56;
   letter-spacing: 0.02em;
 
+  div {
+    .c-longform-grid__standard:first-child {
+      margin-top: 32px;
+      padding-top: 120px;
+      margin-top: -120px;
+    }
+
   .c-longform-grid__large,
   .c-longform-grid__medium,
   .c-longform-grid__standard {
@@ -53,10 +60,6 @@
   }
   .c-longform-grid__standard {
     max-width: 600px;
-    &:first-child {
-      margin-top: 32px;
-      padding-top: 120px;
-      margin-top: -120px;
     }
   }
 

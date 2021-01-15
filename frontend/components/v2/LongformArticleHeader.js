@@ -55,7 +55,7 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
       <div className="c-pubHeader--LA__top">
         <div className="c-lAHeader__top-content">
           <Link route="/">
-            <a className="u-no-underline">
+            <a className="u-no-underline u-hidden--tablet">
               <LogoU4 />
             </a>
           </Link>
