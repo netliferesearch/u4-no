@@ -15,7 +15,7 @@ const getStringsByType = item => {
         item.publicationType && typeof item.publicationType.title === 'string'
           ? item.publicationType.title
           : '';
-      slugOfType = 'publication/';
+      slugOfType = 'publications/';
       break;
     case 'course':
       typeTitle = 'Online course';
@@ -51,7 +51,7 @@ export const RelatedSimple = ({ items, title }) => {
   const classes = BEMHelper({ name: 'related-items-list', prefix: 'c-' });
   return (
     <div className="c-related-simple">
-      <h6>{title}</h6>
+      <h5 className="u-headline--4">{title}</h5>
       <div>
         {items
           ? items.map((item, index) => (

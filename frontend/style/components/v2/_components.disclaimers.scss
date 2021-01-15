@@ -1,0 +1,40 @@
+.c-disclaimers {
+  color: $v2-dark-grey;
+  p {
+    font-family: $font-sans;
+    font-size: 15px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+  }
+  .c-disclaimers__link {
+    margin-top: 0;
+  }
+  a {
+    color: $v2-dark-grey;
+  }
+  a:hover {
+    color: $v2-dark-grey;
+    border-bottom: 1px solid transparent;
+  }
+  a:visited {
+    color: $v2-dark-grey;
+    border-bottom: 1px solid transparent;
+  }
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: $v2-grey;
+    path {
+      fill: $v2-grey;
+    }
+  }
+  @include mq($from: tablet) {
+    p {
+      margin-bottom: 24px;
+    }
+    .c-disclaimers__link {
+      margin-top: 32px;
+    }
+  }
+}

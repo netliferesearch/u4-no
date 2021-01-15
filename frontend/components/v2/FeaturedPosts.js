@@ -46,7 +46,7 @@ const FeaturedPosts = ({ featured }) => {
           />
           <div className="text">
             <h6 {...classes('publication-type')}>Featured publication</h6>
-            <a href={`publication/${publication.slug}`} {...classes('publication-headline')}>
+            <a href={`publications/${publication.slug}`} {...classes('publication-headline')}>
               <h3 {...classes('publication-headline')}>{publication.title}</h3>
             </a>
             <p {...classes('publication-intro')}>{publication.standfirst}</p>

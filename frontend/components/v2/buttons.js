@@ -1,6 +1,6 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-
+import { ArrowDown } from './icons/ArrowDown'
 const classes = BEMHelper({
   name: 'btn',
   prefix: 'c-',
@@ -12,8 +12,22 @@ export const TextButton = ({ onClick = () => null, text = '', modifier = 'qua', 
   </button>
 );
 
-export const CloseButton = ({ onClick = () => null, modifier = 'close' }) => (
+export const TextIconButton = ({ onClick = () => null, text = '', modifier = 'qua', disabled=false }) => (
+  <button {...classes(null, modifier, 'c-btn--chevron')} onClick={onClick} disabled={disabled}>
+    <div>{text && <span>{text}</span>}<ArrowDown /></div>
+    
+  </button>
+);
+
+export const RoundIconButton = ({ onClick = () => null, text = '', modifier = 'qua', disabled=false }) => (
+  <button {...classes(null, modifier, 'c-btn--chevron')} onClick={onClick} disabled={disabled}>
+    <div>{text && <span>{text}</span>}<ArrowDown /></div>
+  </button>
+);
+
+export const CloseButton = ({ onClick = () => null, modifier = 'close', children }) => (
   <button {...classes({ modifier })} onClick={onClick} aria-label="Close modal">
+    {children}
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z"

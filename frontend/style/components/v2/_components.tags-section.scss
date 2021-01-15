@@ -46,16 +46,22 @@
   }
 }
 
+.c-topics {
+  .topic a {
+    font-family: $font-sans;
+    color: $v2-black;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    display: inline-block;
+    border: none;
+    padding: 0;
+    padding-left: 2px;
+  }
+}
+
 .c-keywords {
   margin-bottom: 32px;
-  h6 {
-    font-size: $font-size-nano;
-    line-height: 14px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
 }
 
 .c-keywords__list {

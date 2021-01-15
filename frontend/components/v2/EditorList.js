@@ -3,33 +3,39 @@ import { LinkToItem } from '../';
 
 const EditorList = ({ editors = [], intro = 'Series editor', pluralize = true }) =>
   editors.length > 0 && (
-    <div>
-      <h2 className="u-black-mid-headline">
+    <div className="c-editors-list">
+      <h4 className="c-authors-list__title">
         {intro}
         {pluralize && editors.length > 1 ? 's' : ''}
-      </h2>
+        {':'}
+      </h4>
       {editors
         .map(editor => (editor.target ? editor.target : editor))
-        .map(({ _id = '', firstName = '', surname = '', slug = {} }, affiliations = []) => (
-          <div key={_id} className="author">
-            {_id ? (
-              <LinkToItem type="person" slug={slug}>
-                <a>
-                  <strong>
+        .map(({ _id = '', firstName = '', surname = '', slug = {}, position = '' }, affiliations = []) => (
+          <div key={_id} className="author c-authors-list__item">
+            <div className="c-authors-list__name">
+              {_id ? (
+                <LinkToItem type="person" slug={slug}>
+                  <a className="c-btn--qua">
+                    <span>{firstName} {surname}</span>
+                  </a>
+                </LinkToItem>
+              ) : (
+                <p>
+                  <span>
                     {firstName} {surname}
-                  </strong>
-                </a>
-              </LinkToItem>
-            ) : (
-              <p>
-                <strong>
-                  {firstName} {surname}
-                </strong>
-              </p>
+                  </span>
+                </p>
+              )}
+            </div>
+            {position && (
+              <div className="c-authors-list__position">
+                <span>{position}</span>
+              </div>
             )}
             {/* {editors.length > 1 && index + 2 < editors.length && <span>, </span>}
             {editors.length > 1 && index + 2 === editors.length && <span> {`${and}`} </span>} */}
-            {affiliations && affiliations[0] ? <p>{affiliations[0].target.name}</p> : null}
+            {/* {affiliations && affiliations[0] ? <p>{affiliations[0].target.name}</p> : null} */}
           </div>
         ))}
     </div>

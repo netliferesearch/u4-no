@@ -7,7 +7,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
   const trans = translate(language);
   const lang = langCode(language);
   return (
-    <div className="c-blog-authors-list">
+    <div className="c-blog-authors-list c-about-author">
       {authors &&
         authors
           .filter(author => author)
@@ -34,7 +34,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                   (lang === 'es' && bioShort_es.length)) ? (
                   <div>
                     <hr className="u-section-underline--no-margins" />
-                    <h3 className="c-blog-authors-list__h">About the author</h3>
+                    <h3 className="u-headline--2">About the author</h3>
                   </div>
                 ) : null}
                 {/* <div className="c-blog-authors-list__name">
@@ -60,7 +60,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                     <span>{position}</span>
                   </div>
                 )} */}
-                <div className="c-blog-authors-list__text-block c-blog-entry__main-text">
+                <div className="c-blog-authors-list__text-block c-article-v2__main-text">
                   {lang === 'en' && bioShort && <BlockContent blocks={bioShort} />}
                   {lang === 'fr' && bioShort_fr && <BlockContent blocks={bioShort_fr} />}
                   {lang === 'es' && bioShort_es && <BlockContent blocks={bioShort_es} />}

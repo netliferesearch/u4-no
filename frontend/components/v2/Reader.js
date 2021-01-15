@@ -1,130 +1,151 @@
-import React, { useState } from 'react';
-import BEMHelper from 'react-bem-helper';
-import { ArrowRightSlim } from '../icons/ArrowRightSlim';
-import buildTitleObjects from '../TableOfContents/buildTitleObjects';
+import React, { useRef, useState } from 'react';
+import BlockContent from '@sanity/block-content-to-react';
 import Scrollchor from 'react-scrollchor';
+import serializers from '../serializers';
 import LongformArticle from './LongformArticle';
-import { ShareOnSocialMedia } from './ShareOnSocialMedia';
 import PdfViewer from '../PdfViewer';
+import { LongformArticleHeader } from './LongformArticleHeader';
+import { PublicationSidebar } from './PublicationSidebar';
+import { ToggleBlock } from './ToggleBlock';
+import { Acknowledgements } from './Aknowledgements';
+import { Partners } from './Partners';
+import { Disclaimers } from './Disclaimers';
+import { PhotoCaptionCredit } from './PhotoCaptionCredit';
+import { ToTop } from './icons/ToTop';
+import { useScrollInfo } from '../../helpers/useScrollInfo';
 
-const classes = BEMHelper({
-  name: 'article-header-v2',
-  prefix: 'c-',
-});
+export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversion = false }) => {
+  const {
+    title = '',
+    content = [],
+    references = [],
+    methodology = [],
+    notes = '',
+    featuredImage = {},
+    abbreviations = [],
+  } = data;
+  const readerRef = useRef();
+  const [scrolled, setScrolled] = useState(false);
 
-const classes1 = BEMHelper({
-  name: 'reader',
-  prefix: 'c-',
-});
-
-export const Reader = ({ title = '', content = [], setReaderOpen = false, legacypdf = {} }) => {
-  const [readingFontSize, setReadingFontSize] = useState('medium'); // 'normal' | 'medium' | 'large'
-  const FONT_SIZES = {
-    normal: '16px',
-    medium: '22px',
-    large: '26px',
-  };
-  const titleObjects = buildTitleObjects(content);
+  useScrollInfo(
+    ({ currPos }) => {
+      const isScrolled = currPos.y < -200;
+      if (scrolled !== isScrolled) {
+        setScrolled(isScrolled);
+      }
+    },
+    [scrolled],
+    readerRef,
+    false,
+    0
+  );
 
   return (
-    <div {...classes('fullscreen-article')}>
-      <div className="sidebar">
-        <a
-          href=""
-          onClick={e => {
-            e.preventDefault();
-            setReaderOpen(false);
-          }}
-          {...classes1('back-button')}
-        >
-          <span className="u-reverse-arrow">
-            <ArrowRightSlim />
-          </span>
-          Exit publication
-        </a>
-        <div className="socials">
-          <ShareOnSocialMedia title={title} />
-          {content.length > 0 && (
-            <div className="fonts">
-              <button
-                className={`normal${readingFontSize === 'normal' ? ' active' : ''}`}
-                onClick={() => setReadingFontSize('normal')}
-              >
-                A
-              </button>
-              <button
-                className={`medium${readingFontSize === 'medium' ? ' active' : ''}`}
-                onClick={() => setReadingFontSize('medium')}
-              >
-                A
-              </button>
-              <button
-                className={`large${readingFontSize === 'large' ? ' active' : ''}`}
-                onClick={() => setReadingFontSize('large')}
-              >
-                A
-              </button>
+    <div id="c-reader" className="c-reader" ref={readerRef}>
+      <span id="js-top-reader" />
+      <LongformArticleHeader data={data} setReaderOpen={setReaderOpen} targetRef={readerRef} />
+      <div className="u-scroll-bar">
+        {content.length > 0 && (
+          <main className="c-reader__main o-wrapper-section u-side-padding c-article__row">
+            <div className="c-article__side c-article__col">
+              <PublicationSidebar data={data} side={'left'} />
             </div>
-          )}
-        </div>
-        {titleObjects.length ? (
-          <div>
-            <ul className="c-article-nav-list">
-              <li key="top" className={`c-article-nav-list__item`}>
-                <Scrollchor to="#js-top" disableHistory>
-                  Top
-                </Scrollchor>
-              </li>
-              {titleObjects.map(titleObject => {
-                const { title, id, children = [] } = titleObject;
-                return (
-                  <li key={id} className={`c-article-nav-list__item`}>
-                    <Scrollchor to={`#${id}`} disableHistory>
-                      {title}
-                    </Scrollchor>
-                    {titleObject.selected && (
-                      <ul className="c-article-nav-list c-article-nav-list--inner">
-                        {children.map(({ title, id }) => (
-                          <li key={id} className={`c-article-nav-list__item`}>
-                            <Scrollchor to={`#${id}`} disableHistory>
-                              {title}
-                            </Scrollchor>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                );
-              })}
-              <li key="bottom" className="c-article-nav-list__item">
-                <Scrollchor to="#js-bottom" disableHistory>
-                  Bottom
-                </Scrollchor>
-              </li>
-            </ul>
-          </div>
-        ) : null}
-        <div>
-        <ul className="c-article-nav-list c-article-nav-list--2">
-          <li className={`c-article-nav-list__item`}><a href='#'>References</a></li>
-          <li className={`c-article-nav-list__item`}><a href='#'>About the author</a></li>
-          <li className={`c-article-nav-list__item`}><a href='#'>Acknowledgements</a></li>
-          <li className={`c-article-nav-list__item`}><a href='#'>Methodology</a></li>
-          <li className={`c-article-nav-list__item`}><a href='#'>Notes</a></li>
-          <li className={`c-article-nav-list__item`}><a href='#'>Annex</a></li>
-        </ul>
-        </div>
+            <div className="c-article__center c-article__col">
+              <LongformArticle content={content} title={title} />
+            </div>
+            <div className="c-article__side c-article__col">
+              <div className="c-article-sidebar" />
+            </div>
+          </main>
+        )}
 
-      </div>
-      {content.length > 0 && (
-        <LongformArticle content={content} title={title} fontSize={FONT_SIZES[readingFontSize]} />
-      )}
-      {!content.length && legacypdf.asset && (
-        <div className="c-article-v2 c-article-v2__pdf-viewer o-wrapper-section">
-          <h1 className="title">{title}</h1>
-          <PdfViewer file={{ url: legacypdf.asset.url }} />
+        {!content.length && legacypdf.asset && (
+          <main className="c-reader__main o-wrapper-section u-side-padding c-article__row">
+            <div className="c-article-v2 c-article-v2__pdf-viewer o-wrapper-section">
+              <PdfViewer file={{ url: legacypdf.asset.url }} />
+            </div>
+          </main>
+        )} 
+
+        <div
+          id="additional-info"
+          className="c-article__additional-info-container o-wrapper-section u-side-padding"
+        >
+          <div className="c-article__additional-info-content">
+            {!shortversion && references && references.length ? (
+              <ToggleBlock title="References" content={references} />
+            ) : null}
+            {abbreviations.length ? (
+              <ToggleBlock title="Abbreviation list" content={abbreviations} />
+            ) : null}
+            <Acknowledgements data={data} bottom={true} />
+            <Partners data={data} bottom={true} />
+            {/* {!shortversion && methodology && methodology.length > 0 ? (
+              <ToggleBlock title="Methodology" content={methodology} />
+            ) : null} */}
+            {!shortversion && methodology && methodology.length > 0 ? (
+              <div className="c-meta">
+                <hr className="u-section-underline--no-margins" />
+                <div className="c-meta__title">
+                  <h3 className="u-headline--2">Methodology</h3>
+                </div>
+                <div className="c-meta__content">
+                  {typeof methodology === 'string' && <p>{methodology}</p>}
+                  {typeof methodology !== 'string' && (
+                    <BlockContent blocks={methodology} serializers={serializers} />
+                  )}
+                </div>
+              </div>
+            ) : null}
+            {!shortversion && notes ? (
+              <div className="c-meta">
+                <hr className="u-section-underline--no-margins" />
+                <div className="c-meta__title">
+                  <h3 className="u-headline--2">Notes</h3>
+                </div>
+                <div className="c-meta__content">
+                  {typeof notes === 'string' && <p>{notes}</p>}
+                  {typeof notes !== 'string' && (
+                    <BlockContent blocks={notes} serializers={serializers} />
+                  )}
+                  {featuredImage.caption && (
+                    <div className="c-credit__caption">
+                      <p>
+                        <b>Header image:</b>
+                      </p>
+                      <BlockToContent
+                        blocks={featuredImage.caption}
+                        serializers={{
+                          types: {
+                            block: props => <p style={{ display: 'inline' }}>{props.children}</p>,
+                          },
+                        }}
+                      />
+                    </div>
+                  )}
+                  <PhotoCaptionCredit featuredImage={featuredImage} showCaption={false} />
+                </div>
+              </div>
+            ) : null}
+            <Disclaimers title={false} />
+            {/*             
+          {!shortversion && props.data.abstract ? (
+            <div className="c-longform-grid">
+              <div className="c-longform-grid__standard">
+                <ToggleBlock title="Abstract" content={props.data.abstract} />
+              </div>
+            </div>
+          ) : null} */}
+          </div>
         </div>
-      )}
+      </div>
+      {scrolled ? (
+        <div className="c-scroll-top">
+          <Scrollchor to="#js-top-reader" disableHistory>
+            <ToTop />
+          </Scrollchor>
+        </div>
+      ) : null}
     </div>
   );
 };

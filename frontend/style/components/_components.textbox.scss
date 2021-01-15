@@ -101,3 +101,50 @@
     margin-top: 24px;
   }
 }
+
+//v2
+.c-article-v2,
+.c-blog-entry,
+.c-reader {
+  /* for screen (togglable) */
+  .c-textbox__container {
+    color: $v2-dark-blue-box;
+    background: $v2-lightest-blue;
+    font-size: 18px;
+    line-height: 28px;
+    padding: 24px 24px;
+    margin-bottom: 48px;
+    margin-left: -24px;
+    margin-right: -24px;
+    @include mq($from: tablet) {
+      padding: 24px 64px;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  .c-textbox__content {
+    ol {
+      list-style-position: inside;
+    }
+    li {
+      margin-bottom: 16px;
+    }
+    a {
+      color: $v2-blue-box;
+      border-bottom: 1px solid $v2-blue-box;
+    }
+    h2.c-longform-grid__standard,
+    h3.c-longform-grid__standard,
+    h4.c-longform-grid__standard {
+      color: $v2-dark-blue-box;
+    }
+  }
+  .c-textbox__container--collapsed {
+    a.c-textbox__expand {
+      display: none;
+    }
+    .c-textbox__content {
+      max-height: none;
+    }
+  }
+}

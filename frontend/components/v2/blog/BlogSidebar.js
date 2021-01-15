@@ -51,20 +51,20 @@ export const BlogSidebar = ({ data, side }) => {
           ) : null}
           {translations.length > 0 && (
             <div className="u-hidden--tablet">
-              <Translations translations={translations} language={language} currentSlug={slug}/>
+              <Translations translations={translations} language={language} route={'/blog'} currentSlug={slug}/>
             </div>
           )}
           <div className="u-hidden--desktop">
             <Share text={title} />
             {translations.length > 0 && (
-              <Translations translations={translations} language={language} currentSlug={slug}/>
+              <Translations translations={translations} language={language} route={'/blog'} currentSlug={slug}/>
             )}
           </div>
         </div>
       ) : null}
       {side === 'right' ? (
         <div className="c-blog-sidebar--right">
-          {keywords.length > 0 ? <Keywords title={true} keywords={keywords} /> : null}
+          {keywords.length > 0 ? <Keywords title={true} keywords={keywords} hr={true} /> : null}
           {relatedContent.length > 0 ? (
             <RelatedSimple items={relatedContent} title={'Related'} />
           ) : null}

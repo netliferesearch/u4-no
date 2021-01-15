@@ -151,7 +151,7 @@ const RecentWork = ({ articles }) => (
                     <br />
                     <Link
                       route={
-                        article._type === 'publication' ? 'publication.entry' : 'general.article'
+                        article._type === 'publication' ? 'publication.entry-v2' : 'general.article'
                       }
                       params={{ slug: article.slug.current }}
                     >

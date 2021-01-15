@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { LinkToItem } from '../';
 
-const AuthorList = ({ authors = [], intro = 'Authors' }) => {
+const AuthorList = ({ authors = [], intro = 'Author', pluralize = true }) => {
   return (
-    <div>
-      <h2 className="u-black-mid-headline">{intro}</h2>
+    <div className="c-authors-list">
+      <h4 className="c-authors-list__title">
+        {intro}
+        {pluralize && authors.length > 1 ? 's' : ''}
+        {':'}
+      </h4>
       {authors &&
         authors
           .filter(author => author)
@@ -17,10 +21,14 @@ const AuthorList = ({ authors = [], intro = 'Authors' }) => {
               surname = '',
               slug = false,
               affiliations = [],
+              position = '',
+              bioShort = [],
+              bioShort_fr = [],
+              bioShort_es = [],
             }) => (
-              <div key={_id} className="author">
-                <p>
-                  <strong>
+              <div key={_id} className="author c-authors-list__item">
+                <div className="c-authors-list__name">
+                  <span>
                     {slug &&
                     affiliations.length &&
                     affiliations.some(
@@ -30,14 +38,21 @@ const AuthorList = ({ authors = [], intro = 'Authors' }) => {
                         _ref === '3babc8f1-9e38-4493-9823-a9352b46585b'
                     ) ? (
                       <LinkToItem type="person" slug={slug.current}>
-                        <a>{`${firstName} ${surname}`}</a>
+                        <a className="c-btn--qua">
+                          <span>{`${firstName} ${surname}`}</span>
+                        </a>
                       </LinkToItem>
                     ) : (
                       `${firstName} ${surname}`
                     )}
-                  </strong>
-                </p>
-                {affiliations && affiliations[0] ? <p>{affiliations[0].target.name}</p> : null}
+                  </span>
+                </div>
+                {position && (
+                  <div className="c-authors-list__position">
+                    <span>{position}</span>
+                  </div>
+                )}
+                {/* {affiliations && affiliations[0] ? <p>{affiliations[0].target.name}</p> : null} */}
               </div>
             )
           )}

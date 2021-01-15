@@ -113,7 +113,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
                   </div>
                 ) : null}
                 <div className="c-blog-entry__additional-content">
-                  {keywords.length > 0 ? <Keywords title={false} keywords={keywords} /> : null}
+                  {keywords.length > 0 ? <Keywords title={false} keywords={keywords} hr={false}/> : null}
                   <Share text={title} />
                   <AboutAuthor authors={authors} />
                   <Disclaimers />

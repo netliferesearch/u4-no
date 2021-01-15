@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Copy } from './icons/Copy';
 
 const CopyToClipboardButton = ({
   reference = {},
@@ -25,8 +26,9 @@ const CopyToClipboardButton = ({
   }, []);
 
   return documentLoaded && document.queryCommandSupported('copy') ? (
-    <button onClick={copyToClipboard} className="u-button-copy">
-      {copyText}
+    <button onClick={copyToClipboard} className="c-btn--copy">
+      {/* {copyText} */}
+      <Copy />
     </button>
   ) : null;
 };

@@ -226,7 +226,7 @@
   }
   .publication-headline {
     @include mq($from: tablet) {
-      font-family: $font-sans-header;
+      font-family: $font-sans;
       font-size: 32px;
       line-height: 39px;
       font-size: 32px;
