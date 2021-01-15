@@ -126,12 +126,15 @@
 
 .c-lAHeader__top-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 20px 24px;
+
   @include mq($from: tablet) {
+    justify-content: space-between;
     padding: 24px 32px 24px 24px;
   }
+
   .u-no-underline {
     height: 32px;
   }
