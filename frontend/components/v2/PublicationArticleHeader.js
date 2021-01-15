@@ -56,7 +56,7 @@ const PublicationArticleHeader = ({
             )}
             {pdfAsset && (
               <a
-                href={`/publication/${slug.current}.pdf`}
+                href={`/publications/${slug.current}.pdf`}
                 //download={`/publication/${slug.current}.pdf`}
                 target="_blank"
                 className="c-btn c-btn--qua"

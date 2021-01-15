@@ -15,7 +15,7 @@ const getStringsByType = item => {
         item.publicationType && typeof item.publicationType.title === 'string'
           ? item.publicationType.title
           : '';
-      slugOfType = 'publication/';
+      slugOfType = 'publications/';
       break;
     case 'course':
       typeTitle = 'Online course';

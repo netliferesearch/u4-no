@@ -2,7 +2,7 @@ import React from 'react';
 
 /**
  * Keywords component to list keywords (keyword categories: "keywords")
- * Used in BlogEntry component - blog page, LongFormArticle component - publication/:slug page.
+ * Used in BlogEntry component - blog page, LongFormArticle component - publications/:slug page.
  *
  * @param {Boolean} title
  * @param {Array} keywords

@@ -6,6 +6,7 @@ import { Link } from '../../routes';
 import LogoU4 from '../icons/LogoU4';
 import { CloseButton } from './buttons';
 import { Contents } from './Contents';
+import { Topics } from './Topics';
 
 const classes = BEMHelper({
   name: 'pubHeader',
@@ -23,6 +24,7 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
     pdfFile = {},
     legacypdf = {},
     slug = '',
+    topics = [],
   } = data;
   const pdfAsset = legacypdf.asset ? legacypdf.asset : pdfFile.asset;
   const [scrolled, setScrolled] = useState(false);
@@ -73,7 +75,9 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
                 <h6>{publicationType.title && `${publicationType.title}`}</h6>
               </a>
             </Link>
-
+            <div className="u-hidden--desktop">
+              <Topics title={false} topics={topics} hr={false} />
+            </div>
             <h2 className="u-headline--black--44">{title}</h2>
             {subtitle ? <p {...classes('subtitle')}>{subtitle}</p> : null}
           </div>
@@ -115,7 +119,7 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
               {pdfAsset && (
                 <div className="u-hidden--tablet">
                   <a
-                    href={`/publication/${slug.current}.pdf`}
+                    href={`/publications/${slug.current}.pdf`}
                     //download={`/publication/${slug.current}.pdf`}
                     target="_blank"
                     className="c-btn c-btn--sec"

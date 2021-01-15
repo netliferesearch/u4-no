@@ -65,7 +65,7 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
               <PdfViewer file={{ url: legacypdf.asset.url }} />
             </div>
           </main>
-        )}
+        )} 
 
         <div
           id="additional-info"

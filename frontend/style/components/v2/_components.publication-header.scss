@@ -97,14 +97,27 @@
   .c-pubHeader__subtitle {
     text-align: left;
   }
+  .u-headline--black--44 {
+    margin-top: 24px;
+  }
   .c-pubHeader__subtitle {
     margin-top: 16px;
+  }
+  .c-topics {
+    margin-top: 8px;
+    text-align: left;
+    .c-btn--ter {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+    }
   }
   @include mq($from: tablet) {
     .u-headline--black--44,
     .c-pubHeader__subtitle {
       text-align: center;
     }
+    .u-headline--black--44,
     .c-pubHeader__subtitle {
       margin-top: 32px;
     }

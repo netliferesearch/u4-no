@@ -73,8 +73,8 @@ export const RadioModal = ({ title = '', options, setOpen, route, currentSlug })
                   item.slug &&
                   item.title && (
                     <LinkToItem type="publication" slug={item.slug} key={item._id}>
-                      <span >
-                        <a className="c-modal__label c-btn c-btn--qua">{languageName({ langcode: item.language })}</a>
+                      <span>
+                        <a className="c-modal__label c-btn c-btn--qua" onClick={() => setOpen(false)}>{languageName({ langcode: item.language })}</a>
                       </span>
                     </LinkToItem>
                   )
