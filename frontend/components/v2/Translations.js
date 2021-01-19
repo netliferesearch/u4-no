@@ -7,26 +7,49 @@ import { useLockBodyScroll, useOnClickOutside } from '../../helpers/hooks';
 import LinkToItem from '../LinkToItem';
 
 export const Translations = ({ translations, language, route, currentSlug }) => {
-  const [open, setOpen] = useState(false);
   return (
-    <div className={`c-modal${open ? ' open' : ''}`}>
-      <TextIconButton
-        onClick={() => setOpen(true)}
-        text={languageName({ langcode: language })}
-        modifier="sec"
-      />
-      {open && (
-        <RadioModal
-          title="Also available in"
-          options={translations}
-          setOpen={setOpen}
-          route={route}
-          currentSlug={currentSlug}
-        />
+    <div>
+      Also available in{' '}
+      {translations.map(
+        (item = {}, index) =>
+          item.slug &&
+          item.title && (
+            <LinkToItem type="publication" slug={item.slug} key={item._id}>
+              <span>
+                <a className="c-btn c-btn--qua">
+                  {languageName({ langcode: item.language })}
+                </a>
+                {index + 2 < translations.length && <span>, </span>}
+                {index + 2 === translations.length && <span> and </span>}
+              </span>
+            </LinkToItem>
+          )
       )}
     </div>
   );
 };
+
+// export const Translations = ({ translations, language, route, currentSlug }) => {
+//   const [open, setOpen] = useState(false);
+//   return (
+//     <div className={`c-modal${open ? ' open' : ''}`}>
+//       <TextIconButton
+//         onClick={() => setOpen(true)}
+//         text={languageName({ langcode: language })}
+//         modifier="sec"
+//       />
+//       {open && (
+//         <RadioModal
+//           title="Also available in"
+//           options={translations}
+//           setOpen={setOpen}
+//           route={route}
+//           currentSlug={currentSlug}
+//         />
+//       )}
+//     </div>
+//   );
+// };
 
 export const RadioModal = ({ title = '', options, setOpen, route, currentSlug }) => {
   //const [selectedItem, setSelectedItem] = useState(null);
@@ -68,13 +91,18 @@ export const RadioModal = ({ title = '', options, setOpen, route, currentSlug })
           <hr className="u-section-underline--no-margins" />
           <div className="c-modal__content">
             <div className="c-modal__list">
-            {options.map(
+              {options.map(
                 (item = {}, index) =>
                   item.slug &&
                   item.title && (
                     <LinkToItem type="publication" slug={item.slug} key={item._id}>
                       <span>
-                        <a className="c-modal__label c-btn c-btn--qua" onClick={() => setOpen(false)}>{languageName({ langcode: item.language })}</a>
+                        <a
+                          className="c-modal__label c-btn c-btn--qua"
+                          onClick={() => setOpen(false)}
+                        >
+                          {languageName({ langcode: item.language })}
+                        </a>
                       </span>
                     </LinkToItem>
                   )

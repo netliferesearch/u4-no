@@ -6,6 +6,8 @@ import {
   SEARCH_U4_HELPDESK,
   SEARCH_U4_ISSUE,
   SEARCH_U4_REPORT,
+  SEARCH_U4_PRACTITIONER_EXPERIENCE_NOTE,
+  U4_PRACTITIONER_EXPERIENCE_NOTE,
   U4_BRIEF,
   U4_GUIDE,
   U4_HELPDESK,
@@ -34,6 +36,9 @@ export const getRouteByType = publicationType => {
       break;
     case U4_REPORT:
       href = SEARCH_U4_REPORT;
+      break;
+    case U4_PRACTITIONER_EXPERIENCE_NOTE:
+      href = SEARCH_U4_PRACTITIONER_EXPERIENCE_NOTE;
       break;
     default:
       href = SEARCH_PUBLICATIONS;

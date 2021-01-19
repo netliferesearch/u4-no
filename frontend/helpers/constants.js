@@ -16,3 +16,5 @@ export const SEARCH_U4_REPORT =
   '/search?filters=publications-only%2Cpub-U4%20Report&search=U4%20Report&searchPageNum=1&sort=year-desc';
 export const SEARCH_U4_GUIDE =
   '/search?filters=publications-only%2Cpub-U4%20Guide&search=U4%20Guide&searchPageNum=1&sort=year-desc';
+export const SEARCH_U4_PRACTITIONER_EXPERIENCE_NOTE =
+  '/search?filters=publications-only&search=U4%20Practitioner%20Experience%20Notes&searchPageNum=1&sort=year-desc';

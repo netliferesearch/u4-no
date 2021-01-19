@@ -41,7 +41,7 @@ const PublicationArticleHeader = ({
           {subtitle ? <p {...classes('subtitle')}>{subtitle}</p> : null}
           {/* {standfirst ? <p {...classes('intro')}>{standfirst}</p> : null} */}
           <div {...classes('actions')}>
-            {(content.length > 0 || legacypdf.asset) && (
+            {content.length > 0 && (
               <button
                 className="c-btn c-btn--sec"
                 onClick={() => {
@@ -54,7 +54,7 @@ const PublicationArticleHeader = ({
                 Read online
               </button>
             )}
-            {pdfAsset && (
+            {pdfAsset && content.length > 0 && (
               <a
                 href={`/publications/${slug.current}.pdf`}
                 //download={`/publication/${slug.current}.pdf`}
@@ -64,6 +64,27 @@ const PublicationArticleHeader = ({
                 <span>Download PDF</span>
               </a>
             )}
+
+            {!content.length && legacypdf.asset ? (
+              <a
+                href={`/publications/${slug.current}.pdf`}
+                //download={`/publication/${slug.current}.pdf`}
+                target="_blank"
+                className="c-btn c-btn--sec"
+              >
+                <span>Read online</span>
+              </a>
+            ) : null}
+            {!content.length && legacypdf.asset ? (
+              <a
+                href={`/publications/${slug.current}.pdf`}
+                download={`/publication/${slug.current}.pdf`}
+                target="_blank"
+                className="c-btn c-btn--qua"
+              >
+                <span>Download PDF</span>
+              </a>
+            ) : null}
 
             {summary.length > 0 && (
               <Link route="publication.shortVersion" params={{ slug: slug.current }}>
