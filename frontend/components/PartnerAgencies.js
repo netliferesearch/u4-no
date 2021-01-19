@@ -35,11 +35,6 @@ const PartnerAgencies = ({ title }) => (
           <PartnerLogoDanida />
         </a>
       </div>
-      <div {...classes('item')}>
-        <a href="http://dfat.gov.au/pages/default.aspx" rel="noopener noreferrer" target="_blank">
-          <PartnerLogo2 />
-        </a>
-      </div>
       <div {...classes('item', 'small')}>
         <a href="https://www.giz.de/en/html/index.html" rel="noopener noreferrer" target="_blank">
           <PartnerLogo3 />
