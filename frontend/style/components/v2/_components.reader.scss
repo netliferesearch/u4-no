@@ -33,6 +33,11 @@
   .c-authors-list__position {
     display: none;
   }
+  .c-article-sidebar__left {
+    .c-modal {
+      margin-top: 32px;
+    }
+  }
 }
 
 .c-blog-entry__main-text,
