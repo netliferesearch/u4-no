@@ -142,6 +142,19 @@
   color: $v2-dark-grey;
 }
 
+.u-headline--6 {
+  display: inline-block;
+  font-family: $font-sans;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $v2-black;
+  padding-bottom: 2px;
+  border-bottom: 1px solid $v2-lighter-grey;
+}
+
 .u-drop-cap {
   p:first-child::first-letter,
   .c-article__lead--abstract::first-letter {
@@ -159,5 +172,18 @@
 }
 
 .u-grey-text {
- color: $v2-grey-2;
+  color: $v2-grey-2;
+}
+
+.u-intro-text {
+  font-family: $font-serif;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 400;
+  color: $v2-black;
+  letter-spacing: 0.02em;
+  margin: 0 0 64px 0;
+  @include mq($from: tablet) {
+    margin: 0 0 72px 0;
+  }
 }

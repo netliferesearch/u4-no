@@ -42,6 +42,15 @@
   margin-right: auto;
   margin-left: auto;
 }
+//v2 temp override:
+.c-blog-entry,
+.c-reader,
+.c-article-v2,
+.c-service-page {
+  .o-wrapper-section {
+    max-width: 1312px;
+  }
+}
 
 .o-wrapper-inner {
   @include inuit-clearfix();

@@ -1,5 +1,5 @@
 /**
- * A testimonial is a combination of simple quote content and cite
+ * A testimonial is a combination of quote content, image and cite
  */
 
 export default {

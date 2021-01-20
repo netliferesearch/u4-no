@@ -2,9 +2,7 @@
   margin-bottom: 100px;
   color: $v2-black;
 
-  .o-wrapper-section {
-    max-width: 1312px;
-  }
+
   .c-breadcrumb--v2 {
     @include mq($from: tablet) {
       margin: 16px 0;

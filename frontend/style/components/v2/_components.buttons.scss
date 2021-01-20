@@ -293,3 +293,38 @@
     }
   }
 }
+
+
+.c-link--pri a {
+  background-color: $v2-blue;
+  border-radius: 20px;
+  font-family: $font-sans;
+  font-size: $font-size-micro;
+  line-height: 1.2;
+  letter-spacing: 0.1px;
+  color: $white;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  transition: all 100ms ease-out;
+  &:hover,
+  &:hover:visited {
+    color: $white;
+    text-decoration: none;
+    background-color: $v2-dark-blue;
+  }
+  &:focus {
+    text-decoration: none;
+  }
+  &:active {
+    padding-top: 10px;
+    padding-bottom: 6px;
+    border: 1px solid $v2-dark-yellow;
+    box-shadow: 0 0 0 1px $v2-dark-yellow;
+    outline: none;
+  }
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+}
