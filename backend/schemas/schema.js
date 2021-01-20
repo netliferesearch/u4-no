@@ -24,8 +24,8 @@ import articleType from './articleType';
 import u4Event from './event';
 import blogPost from './blogPost';
 //import localeString from './fields/localeString'
-import blogPost from './blogPost';
 import defaultBlocks from './fields/defaultBlocks';
+import testimonial from './testimonial';
 
 const types = [
   article,
@@ -50,9 +50,9 @@ const types = [
   nugget,
   pullQuote,
   richDate,
-  blogPost,
   //localeString,
   defaultBlocks,
+  testimonial,
 ];
 export default createSchema({
   name: 'default',
