@@ -1,12 +1,10 @@
 import React from 'react';
 import DataLoader from '../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from '../components/serializers';
-
-import { Footer, Newsletter, ServiceArticle } from '../components';
+import serializers from '../components/v2/serializers';
 import Layout from '../components/v2/Layout';
-import { LinkList } from '../components';
 import Scrollchor from 'react-scrollchor';
+import { Testimonial } from '../components/v2/Testimonial';
 
 const ServicePage = ({
   data: {
@@ -18,12 +16,14 @@ const ServicePage = ({
       leadLinks = '',
       sections = [],
       relatedUrl = {},
+      persons = {},
+      resources = [],
     } = {},
   } = {},
   url = {},
 }) => {
-  const features = sections.filter(s => s._type === 'features')
- 
+  const features = sections.slice(0, 3);
+  console.log(resources);
   return (
     <Layout
       headComponentConfig={{
@@ -38,10 +38,7 @@ const ServicePage = ({
         <section className="o-wrapper-section">
           <h2 className="u-headline--6">{title}</h2>
           <h2 className="u-headline--black--44 ">{longTitle}</h2>
-          <p className="u-intro-text">
-            Dynamic and time-efficient online courses for people seeking updated anti-corruption
-            knowledge. All courses are free of charge.
-          </p>
+          <BlockContent blocks={lead} serializers={serializers} />
           <div className="c-link--pri">
             <Scrollchor to="#courses" disableHistory>
               Start for free
@@ -49,27 +46,39 @@ const ServicePage = ({
           </div>
         </section>
         <hr className="u-section-underline--no-margins" />
-
-        <section className="o-wrapper-section">
-          {console.log(sections)}
-          <BlockContent blocks={features} serializers={serializers} />
-        </section>
-        <section id="courses" className="o-wrapper-section">
-          <ServiceArticle blocks={sections} />
-        </section>
-        <section className="o-wrapper-section">
-          <div>
-            <figure className="">
-              <img alt="" src={featuredImage} />
-            </figure>
-            <div className="">
-              {console.log(leadLinks)}
-              <BlockContent blocks={lead} serializers={serializers} />
-              {leadLinks && <LinkList title="" content={leadLinks} />}
-            </div>
+        <div className="u-bg-lightest-grey">
+          <div className="o-wrapper-section">
+            <BlockContent blocks={features} serializers={serializers} />
           </div>
-        </section>
-        {/* <Footer /> */}
+        </div>
+        <div id="courses">
+          <div className="">
+            <BlockContent blocks={sections.slice(3, 5)} serializers={serializers} />
+            <div>View courses available in:</div>
+            <BlockContent blocks={sections.slice(5, 6)} serializers={serializers} />
+          </div>
+        </div>
+        <div className="u-bg-lightest-blue">
+          <div className="">
+            <BlockContent blocks={sections.slice(6, 7)} serializers={serializers} />
+            <div>View courses available in:</div>
+            <BlockContent blocks={sections.slice(7, 8)} serializers={serializers} />
+          </div>
+        </div>
+        <div className="u-bg-light-grey">
+          <div className="o-wrapper-section">
+            {resources.length > 0
+              ? resources
+                  .filter(r => r._type === 'testimonial')
+                  .map(r => <Testimonial testimonial={r} />)
+              : null}
+          </div>
+        </div>
+          <BlockContent blocks={sections.slice(8, 10)} serializers={serializers} />
+        <div className="u-bg-light-grey">
+          <BlockContent blocks={sections.slice(10, 11)} serializers={serializers} />
+        </div>
+        <BlockContent blocks={sections.slice(11, 12)} serializers={serializers} />
       </div>
     </Layout>
   );
@@ -77,7 +86,7 @@ const ServicePage = ({
 export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery:
-      '{ "service": *[_type=="frontpage" && slug.current == "online-courses"][0]{title, longTitle, slug, lead, leadLinks, _id, sections, "featuredImage": featuredImage.asset->url}}',
+      '{ "service": *[_type=="frontpage" && slug.current == "online-courses-NEW"][0]{title, longTitle, slug, lead, leadLinks, _id, sections[]{..., personLeft[]->, personRight[]-> }, "persons": sections[11]{..., personLeft[]->, personRight[]->}, resources[]->, "featuredImage": featuredImage.asset->url}}',
     param: { slug },
   }),
   materializeDepth: 2,

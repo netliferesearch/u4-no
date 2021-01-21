@@ -888,6 +888,9 @@ export default {
             {
               type: 'blog-post',
             },
+            {
+              type: 'testimonial',
+            },
           ],
         },
       ],
