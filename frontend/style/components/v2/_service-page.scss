@@ -1,0 +1,85 @@
+.c-courses-overview {
+  font-family: $font-sans;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.47;
+  letter-spacing: 0.01em;
+  color: $v2-black;
+  .u-heading--2 {
+    text-align: center;
+    margin-top: 0;
+  }
+}
+
+#courses {
+  padding-top: 120px;
+  margin-top: -100px;
+}
+
+.c-service-page__intro {
+  padding: 40px 0 40px 0;
+  h2 {
+    margin: 32px 0 0 0;
+  }
+  .c-longform-grid__standard {
+    font-family: $font-serif;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+    color: $v2-black;
+    padding: 0;
+    margin: 24px 0;
+    max-width: 580px;
+    @include mq($from: tablet) {
+      margin: 24px 0 32px 0;
+    }
+  }
+}
+
+.c-service-page__section {
+  .c-longform-grid__standard {
+    color: $v2-grey-555;
+    font-family: $font-sans;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0.01em;
+    text-align: center;
+  }
+}
+
+.c-testimonial {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.c-testimonial__image {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+}
+.c-testimonial__text {
+  max-width: 674px;
+  .c-longform-grid__standard {
+    margin: $spacing 0;
+    padding: 0;
+    text-align: left;
+  }
+  .u-heading--2 {
+    text-align: left;
+  }
+}
+
+.c-testimonial__cite {
+  color: $v2-grey-555;
+  font-size: 15px;
+  line-height: 28px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  margin: 0;
+}

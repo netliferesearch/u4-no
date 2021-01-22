@@ -296,10 +296,11 @@
 
 
 .c-link--pri a {
+  display: inline-flex;
   background-color: $v2-blue;
   border-radius: 20px;
   font-family: $font-sans;
-  font-size: $font-size-micro;
+  font-size: $font-size-nano;
   line-height: 1.2;
   letter-spacing: 0.1px;
   color: $white;

@@ -19,11 +19,45 @@
   font-weight: 300;
 }
 .c-features__icon {
-  svg, path {
+  svg,
+  path {
     fill: $brand-dark;
   }
   padding-bottom: $spacing-small;
   img {
     max-height: 80px;
+  }
+}
+
+.c-courses-overview {
+  .c-features {
+    @include mq($from: tablet) {
+      margin: 0 -24px;
+    }
+  }
+  .c-features__item {
+    padding: $spacing;
+    text-align: left;
+    font-family: $font-sans;
+    font-size: 15px;
+    line-height: 1.47;
+    color: $v2-grey-555;
+    font-weight: 400;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    @include mq($from: tablet) {
+      width: 33%;
+    }
+  }
+  .c-features__icon:first-child {
+    display: none;
+  }
+  .c-features__icon {
+    mix-blend-mode: luminosity;
+    padding: 0 32px 0 $spacing-small;
+    @include mq($from: tablet) {
+      padding: 0 32px 0 0;
+    }
   }
 }

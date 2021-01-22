@@ -13,7 +13,7 @@ import { Link } from '../../routes';
 export const Topics = ({ title = true, topics = [], hr = false }) => {
   return topics ? (
     <div className="c-topics">
-      {title ? <h4 className="u-headline--3">Topics</h4> : null}
+      {title ? <h4 className="u-heading--3">Topics</h4> : null}
       {hr ? <hr className="u-section-underline--no-margins" /> : null}
       <div className="c-topics__list">
         {topics.map((topic, index) =>

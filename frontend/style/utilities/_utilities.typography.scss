@@ -82,7 +82,7 @@
   border-top: 1px solid #e6e6e6;
 }
 
-.u-headline--black--44 {
+.u-heading--black--44 {
   font-family: $font-sans;
   font-size: 32px;
   line-height: 39px;
@@ -103,7 +103,20 @@
   color: $v2-black;
 }
 
-.u-headline--2 {
+.u-heading--1 {
+  font-family: $font-sans;
+  font-size: 32px;
+  line-height: 39px;
+  font-weight: 700;
+  color: $v2-black;
+  letter-spacing: 0.01em;
+  @include mq($from: tablet) {
+    font-size: 44px;
+    line-height: 53px;
+  }
+}
+
+.u-heading--2 {
   font-family: $font-sans;
   font-style: normal;
   font-weight: 700;
@@ -112,7 +125,7 @@
   letter-spacing: 0.02em;
   color: $v2-black;
 }
-.u-headline--3 {
+.u-heading--3 {
   font-family: $font-sans;
   font-style: normal;
   font-weight: 700;
@@ -122,7 +135,7 @@
   color: $v2-black;
 }
 
-.u-headline--4 {
+.u-heading--4 {
   font-family: $font-sans;
   font-size: 12px;
   line-height: 14px;
@@ -133,7 +146,7 @@
   color: $v2-dark-grey;
 }
 
-.u-headline--5 {
+.u-heading--5 {
   font-family: $font-sans;
   font-weight: 700;
   font-size: 15px;
@@ -142,7 +155,7 @@
   color: $v2-dark-grey;
 }
 
-.u-headline--6 {
+.u-heading--6 {
   display: inline-block;
   font-family: $font-sans;
   font-weight: 900;
@@ -153,6 +166,16 @@
   color: $v2-black;
   padding-bottom: 2px;
   border-bottom: 1px solid $v2-lighter-grey;
+}
+
+.u-heading--7 {
+  font-family: $font-sans;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.02em;
+  color: $v2-black;
 }
 
 .u-drop-cap {

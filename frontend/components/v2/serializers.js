@@ -66,7 +66,7 @@ const serializers = {
     heading: ({ node: { headingValue = '' } }) => (
       <h2
         id={slugify(headingValue, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })}
-        className="c-topic-section__title u-margin-bottom-none"
+        className="u-heading--2"
       >
         {headingValue}
       </h2>
@@ -125,18 +125,9 @@ const serializers = {
       </section>
     ),
     HelpdeskTeam: ({
-      node: { textRight, img, headingLeft, headingRight, personLeft, personRight },
+      node: { headingLeft, headingRight, personLeft, personRight },
     }) => (
       <div className="o-wrapper-inner">
-        {/* <BoxOnImage
-          wide
-          text={textRight}
-          image={img}
-          headingLeft={headingLeft}
-          headingRight={headingRight}
-          personsLeft={personLeft}
-          personsRight={personRight}
-        /> */}
         <div className="c-columns c-columns--two">
           {personLeft ? (
             <div className="c-columns__item c-columns--two__item">
@@ -229,7 +220,7 @@ const serializers = {
     table: ({ node }) => <Table {...node} />,
     chart: ({ node }) => <Chart {...node} />,
     features: ({ node: { featureArray } }) => (
-      <section className="o-wrapper c-topic-section">
+      <section className="o-wrapper-medium">
         <div className="c-features">
           {featureArray.map(item => (
             <Feature key={item._key} title={item.featureText} iconUrl={item.image.asset.url} />

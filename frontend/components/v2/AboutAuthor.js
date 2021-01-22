@@ -34,7 +34,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                   (lang === 'es' && bioShort_es.length)) ? (
                   <div>
                     <hr className="u-section-underline--no-margins" />
-                    <h3 className="u-headline--2">About the author</h3>
+                    <h3 className="u-heading--2">About the author</h3>
                   </div>
                 ) : null}
                 {/* <div className="c-blog-authors-list__name">

@@ -13,7 +13,7 @@ export const Acknowledgements = ({ data, bottom = false }) => {
     <div className={`c-acknowledgements ${bottom ? 'c-acknowledgements--bottom c-meta' : ''}`}>
       {bottom ? <hr className="u-section-underline--no-margins" /> : null }
       {acknowledgements ? (
-        <h3 className="u-headline--2">Acknowledgements</h3>
+        <h3 className="u-heading--2">Acknowledgements</h3>
       ) : null}
       {acknowledgements ? (
         <div {...classes('item')}>

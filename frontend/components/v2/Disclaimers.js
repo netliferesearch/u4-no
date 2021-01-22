@@ -12,7 +12,7 @@ export const Disclaimers = ({ title = false }) => {
       <div className="c-disclaimers__container">
         <div className="c-disclaimers__content c-disclaimers__disclaimer">
           <hr className="u-section-underline--no-margins" />
-          {title ? <h3 className="u-headline--2 c-meta__title">Disclaimer</h3> : null}
+          {title ? <h3 className="u-heading--2 c-meta__title">Disclaimer</h3> : null}
           <p> 
             All views in this text are the author(s)’, and may differ from the U4 partner agencies’
             policies.

@@ -10,7 +10,7 @@ export const ToggleBlock = ({ title = '', content = '', children }) => {
     <div className="c-toggle-block c-meta" onClick={() => toggleOpen(!open)}>
       <hr className="u-section-underline--no-margins" />
       <div className="c-toggle-block__h">
-        <h3 className="u-headline--2">{title}</h3>
+        <h3 className="u-heading--2">{title}</h3>
         <div className="c-toggle-block__icon">
           <ArrowDown />
         </div>

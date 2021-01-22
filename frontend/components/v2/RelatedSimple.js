@@ -51,7 +51,7 @@ export const RelatedSimple = ({ items, title }) => {
   const classes = BEMHelper({ name: 'related-items-list', prefix: 'c-' });
   return (
     <div className="c-related-simple">
-      <h5 className="u-headline--4">{title}</h5>
+      <h5 className="u-heading--4">{title}</h5>
       <div>
         {items
           ? items.map((item, index) => (

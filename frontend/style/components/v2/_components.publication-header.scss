@@ -93,11 +93,11 @@
     justify-content: space-between;
     margin: 0 auto;
   }
-  .u-headline--black--44,
+  .u-heading--black--44,
   .c-pubHeader__subtitle {
     text-align: left;
   }
-  .u-headline--black--44 {
+  .u-heading--black--44 {
     margin-top: 24px;
   }
   .c-pubHeader__subtitle {
@@ -113,11 +113,11 @@
     }
   }
   @include mq($from: tablet) {
-    .u-headline--black--44,
+    .u-heading--black--44,
     .c-pubHeader__subtitle {
       text-align: center;
     }
-    .u-headline--black--44,
+    .u-heading--black--44,
     .c-pubHeader__subtitle {
       margin-top: 32px;
     }

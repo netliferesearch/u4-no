@@ -111,6 +111,21 @@ iframe {
   }
 }
 
+.u-flex-start-center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.u-span-btn {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  span {
+    margin-right: 8px;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

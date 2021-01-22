@@ -48,9 +48,16 @@
 .c-article-v2,
 .c-service-page {
   .o-wrapper-section {
-    max-width: 1312px;
+    max-width: 1312px; 
+  }
+  .o-wrapper-medium {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1056px;
   }
 }
+
+
 
 .o-wrapper-inner {
   @include inuit-clearfix();

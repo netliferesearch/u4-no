@@ -14,11 +14,14 @@
 
 .u-bg-light-grey {
   background-color: $v2-light-grey-bg;
+  padding: $spacing-large 0;
 }
 .u-bg-lightest-grey {
   background-color: $v2-lightest-grey-bg;
+  padding: $spacing 0 $spacing-large 0;
 }
 
 .u-bg-lightest-blue {
   background-color: $v2-lightest-blue;
+  padding: $spacing-large 0;
 }

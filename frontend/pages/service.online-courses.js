@@ -5,6 +5,7 @@ import serializers from '../components/v2/serializers';
 import Layout from '../components/v2/Layout';
 import Scrollchor from 'react-scrollchor';
 import { Testimonial } from '../components/v2/Testimonial';
+import { CoursesList } from '../components/v2/CoursesList';
 
 const ServicePage = ({
   data: {
@@ -23,7 +24,7 @@ const ServicePage = ({
   url = {},
 }) => {
   const features = sections.slice(0, 3);
-  console.log(resources);
+  console.log(sections);
   return (
     <Layout
       headComponentConfig={{
@@ -36,37 +37,35 @@ const ServicePage = ({
     >
       <div className="c-service-page c-courses-overview">
         <section className="o-wrapper-section">
-          <h2 className="u-headline--6">{title}</h2>
-          <h2 className="u-headline--black--44 ">{longTitle}</h2>
-          <BlockContent blocks={lead} serializers={serializers} />
-          <div className="c-link--pri">
-            <Scrollchor to="#courses" disableHistory>
-              Start for free
-            </Scrollchor>
+          <div className="c-service-page__intro">
+            <h2 className="u-heading--6">{title}</h2>
+            <h2 className="u-heading--1">{longTitle}</h2>
+            <BlockContent blocks={lead} serializers={serializers} />
+            <div className="c-link--pri">
+              <Scrollchor to="#courses" disableHistory>
+                Start for free
+              </Scrollchor>
+            </div>
           </div>
         </section>
         <hr className="u-section-underline--no-margins" />
-        <div className="u-bg-lightest-grey">
-          <div className="o-wrapper-section">
-            <BlockContent blocks={features} serializers={serializers} />
-          </div>
+        <div className="u-bg-lightest-grey c-service-page__section">
+          <BlockContent blocks={features} serializers={serializers} />
         </div>
-        <div id="courses">
-          <div className="">
+        <div id="courses" className="c-service-page__section">
+          <div className="o-wrapper-medium">
             <BlockContent blocks={sections.slice(3, 5)} serializers={serializers} />
-            <div>View courses available in:</div>
-            <BlockContent blocks={sections.slice(5, 6)} serializers={serializers} />
+            <CoursesList blocks={sections.slice(5, 6)} />
           </div>
         </div>
-        <div className="u-bg-lightest-blue">
-          <div className="">
-            <BlockContent blocks={sections.slice(6, 7)} serializers={serializers} />
-            <div>View courses available in:</div>
-            <BlockContent blocks={sections.slice(7, 8)} serializers={serializers} />
-          </div>
-        </div>
-        <div className="u-bg-light-grey">
+        <div id="courses-2" className="u-bg-lightest-blue c-service-page__section">
           <div className="o-wrapper-section">
+            <BlockContent blocks={sections.slice(6, 7)} serializers={serializers} />
+            <CoursesList blocks={sections.slice(7, 8)} cta="Read more"/>
+          </div>
+        </div>
+        <div className="u-bg-light-grey c-service-page__section">
+          <div className="o-wrapper-medium">
             {resources.length > 0
               ? resources
                   .filter(r => r._type === 'testimonial')
@@ -74,19 +73,20 @@ const ServicePage = ({
               : null}
           </div>
         </div>
-          <BlockContent blocks={sections.slice(8, 10)} serializers={serializers} />
+        <BlockContent blocks={sections.slice(8, 10)} serializers={serializers} />
         <div className="u-bg-light-grey">
           <BlockContent blocks={sections.slice(10, 11)} serializers={serializers} />
         </div>
         <BlockContent blocks={sections.slice(11, 12)} serializers={serializers} />
       </div>
+      <div id="modal" />
     </Layout>
   );
 };
 export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery:
-      '{ "service": *[_type=="frontpage" && slug.current == "online-courses-NEW"][0]{title, longTitle, slug, lead, leadLinks, _id, sections[]{..., personLeft[]->, personRight[]-> }, "persons": sections[11]{..., personLeft[]->, personRight[]->}, resources[]->, "featuredImage": featuredImage.asset->url}}',
+      '{ "service": *[_type=="frontpage" && slug.current == "online-courses-NEW"][0]{title, longTitle, slug, lead, leadLinks, _id, sections[]{..., personLeft[]->, personRight[]->, coursesRef[]->{...,"featuredImage": featuredImage.asset->url} }, "persons": sections[11]{..., personLeft[]->, personRight[]->}, resources[]->, "featuredImage": featuredImage.asset->url}}',
     param: { slug },
   }),
   materializeDepth: 2,
