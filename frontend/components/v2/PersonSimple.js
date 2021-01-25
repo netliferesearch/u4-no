@@ -3,12 +3,12 @@ import BEMHelper from 'react-bem-helper';
 import { Link } from '../../routes';
 
 const classes = BEMHelper({
-  name: 'person',
+  name: 'person-simple',
   prefix: 'c-',
 });
 export const PersonSimple = ({ person }) => {
   return (
-    <div className="c-person">
+    <div className="c-person-simple">
       <div>
         <div
           {...classes('item-body-img', person.image ? 'light' : 'noimg')}
@@ -23,18 +23,18 @@ export const PersonSimple = ({ person }) => {
         {person.slug && person.bio ? (
           <Link to={`/the-team/${person.slug.current}`}>
             <a>
-              <h3 {...classes('item-title')}>
+              <p {...classes('item-title--name')}>
                 {person.firstName && person.firstName} {person.surname && person.surname}
-              </h3>
+              </p>
             </a>
           </Link>
         ) : (
-          <h3 {...classes('item-title')}>
+          <p {...classes('item-title--name')}>
             {person.firstName && person.firstName} {person.surname && person.surname}
-          </h3>
+          </p>
         )}
         <p>{person.position && `${person.position}`}</p>
-        {person.email && <a href={`mailto:${person.email}`}>{person.email}</a>}
+        {person.email && <p><span>Email: </span><a href={`mailto:${person.email}`}>{person.email}</a></p>}
       </div>
     </div>
   );

@@ -7,17 +7,26 @@
   color: $v2-black;
   .u-heading--2 {
     text-align: center;
-    margin-top: 0;
+    margin-top: 48px;
+  }
+
+  .c-team {
+    margin: 48px auto;
+    .c-columns__item {
+      margin-bottom: 64px;
+    }
+    .u-heading--2 {
+      text-align: left;
+      margin-top: 0;
+    }
   }
 }
 
-#courses {
-  padding-top: 120px;
-  margin-top: -100px;
-}
-
 .c-service-page__intro {
-  padding: 40px 0 40px 0;
+  padding: 0 0 40px 0;
+  @include mq($from: tablet) {
+    padding: 48px 0 48px 0;
+  }
   h2 {
     margin: 32px 0 0 0;
   }
@@ -28,15 +37,21 @@
     font-weight: 400;
     color: $v2-black;
     padding: 0;
-    margin: 24px 0;
+    margin: 24px 0 32px 0;
     max-width: 580px;
     @include mq($from: tablet) {
-      margin: 24px 0 32px 0;
+      margin: 24px 0 40px 0;
     }
   }
 }
 
 .c-service-page__section {
+  padding-top: 16px;
+  padding-bottom: 32px;
+  @include mq($from: tablet) {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
   .c-longform-grid__standard {
     color: $v2-grey-555;
     font-family: $font-sans;
@@ -46,14 +61,67 @@
     letter-spacing: 0.01em;
     text-align: center;
   }
+
+}
+
+.c-features__container,
+.c-courses__container {
+  .c-text-block {
+    margin-bottom: 32px;
+  }
+  p.c-longform-grid__standard {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.c-features__container {
+  .u-heading--2 {
+    margin-top: 24px;
+  }
+}
+
+#courses {
+  padding-top: 100px;
+  margin-top: -80px;
+  @include mq($from: tablet) {
+    padding-top: 120px;
+    margin-top: -80px;
+  }
+
+}
+
+.c-courses-list {
+  margin-top: 48px;
+  @include mq($from: tablet) {
+    margin-top: 72px;
+  }
+}
+
+.c-courses-list__content {
+  max-width: 1182px;
+  margin: 0 auto;
+  @include mq($from: tablet) {
+    .u-span-btn {
+      margin-left: 16px;
+    }
+  }
 }
 
 .c-testimonial {
   max-width: 880px;
-  margin: 0 auto;
+  margin: 32px 24px 8px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column-reverse;
+  @include mq($from: tablet) {
+    flex-direction: row;
+    margin: 48px auto;
+  }
+  .u-heading--2 {
+    margin-top: 0;
+  }
 }
 .c-testimonial__image {
   background-repeat: no-repeat;
@@ -62,6 +130,10 @@
   width: 160px;
   height: 160px;
   border-radius: 50%;
+  margin: 32px auto 0 auto;
+  @include mq($from: tablet) {
+    margin: 0;
+  }
 }
 .c-testimonial__text {
   max-width: 674px;
@@ -82,4 +154,85 @@
   letter-spacing: 0.01em;
   text-align: left;
   margin: 0;
+}
+
+.c-service-page__section div {
+  .o-wrapper-inner:nth-child(even) {
+    .c-text-image-block {
+      flex-direction: column;
+      @include mq($from: tablet) {
+        flex-direction: row-reverse;      }
+    }
+  }
+}
+
+.c-text-image-block {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 24px 0 48px 0;
+  @include mq($from: tablet) {
+    flex-direction: row;
+    margin: 48px 0;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+.c-text-image-block__body {
+  max-width: 552px;
+  h3.c-longform-grid__standard {
+    text-align: left;
+    font-family: $font-sans;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.27;
+    letter-spacing: 0.02em;
+    color: $v2-black;
+    padding: 0;
+    margin-top: 32px;
+    @include mq($from: tablet) {
+      margin-top: 48px;
+    }
+  }
+  p.c-longform-grid__standard {
+    text-align: left;
+    font-family: $font-serif;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    padding: 0;
+  }
+}
+
+.c-person-simple {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 40px;
+  p {
+    margin: 0 0 8px 0;
+  }
+  @include mq($from: tablet) {
+    align-items: center;
+  }
+}
+
+.c-person-simple__item-body-img {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 98px;
+  border-radius: 50%;
+  min-height: 98px;
+  margin-right: 40px;
+  @include mq($from: tablet) {
+    min-height: 98px;
+  }
+}
+
+.c-person-simple__item-title--name {
+  font-weight: 700;
 }

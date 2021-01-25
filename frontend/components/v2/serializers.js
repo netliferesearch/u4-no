@@ -24,6 +24,7 @@ import {
 } from '../';
 import { ArrowRight } from '../icons';
 import { PersonSimple } from './PersonSimple';
+import { TextImageBlock } from './TextImageBlock';
 
 const classes = BEMHelper({
   name: 'longform-grid',
@@ -88,7 +89,7 @@ const serializers = {
 
     textBlock: ({ node: { text = false } }) =>
       text && (
-        <div className="o-wrapper-inner c-article u-margin-top u-margin-bottom-large">
+        <div className="o-wrapper-inner c-text-block">
           <BlockContent blocks={text} serializers={serializers} />
         </div>
       ),
@@ -124,14 +125,17 @@ const serializers = {
         <BoxOnBoxTopics left={textLeft} right={textRight} />
       </section>
     ),
-    HelpdeskTeam: ({
-      node: { headingLeft, headingRight, personLeft, personRight },
-    }) => (
-      <div className="o-wrapper-inner">
+    HelpdeskTeam: ({ node: { headingLeft, headingRight, personLeft, personRight } }) => (
+      <div className="o-wrapper-inner c-team">
         <div className="c-columns c-columns--two">
           {personLeft ? (
             <div className="c-columns__item c-columns--two__item">
-              {headingLeft && <h3 className="c-columns__title">{headingLeft}</h3>}
+              {headingLeft && (
+                <div>
+                  <h3 className="u-heading--2">Course application enquires</h3>
+                  <h3 className="u-heading--2--grey">{headingLeft}</h3>
+                </div>
+              )}
               {personLeft
                 .map(person => (person.target ? person.target : person))
                 .map(person => (
@@ -141,7 +145,12 @@ const serializers = {
           ) : null}
           {personRight && (
             <div className="c-columns__item c-columns--two__item c-columns__item--narrow">
-              {headingRight && <h3 className="c-columns__title">{headingRight}</h3>}
+              {headingRight && (
+                <div>
+                  <h3 className="u-heading--2">General questions</h3>
+                  <h3 className="u-heading--2--grey">{headingRight}</h3>
+                </div>
+              )}
               {personRight
                 .map(person => (person.target ? person.target : person))
                 .map(person => (
@@ -153,8 +162,8 @@ const serializers = {
       </div>
     ),
     boxOnImageRef: ({ node: { block, img } }) => (
-      <section className="c-topic-section">
-        <BoxOnImage text={block} image={img} />
+      <section className="o-wrapper-inner">
+        <TextImageBlock text={block} image={img} />
       </section>
     ),
     workshops: ({ node: { workshopsRef } }) => (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import DataLoader from '../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../components/v2/serializers';
@@ -6,6 +6,9 @@ import Layout from '../components/v2/Layout';
 import Scrollchor from 'react-scrollchor';
 import { Testimonial } from '../components/v2/Testimonial';
 import { CoursesList } from '../components/v2/CoursesList';
+import { useScrollInfo } from '../helpers/useScrollInfo';
+import { Link } from '../routes';
+import LogoU4 from '../components/icons/LogoU4';
 
 const ServicePage = ({
   data: {
@@ -24,7 +27,22 @@ const ServicePage = ({
   url = {},
 }) => {
   const features = sections.slice(0, 3);
-  console.log(sections);
+  const [scrolled, setScrolled] = useState(false);
+  const introRef = useRef(null);
+
+  useScrollInfo(
+    ({ currPos }) => {
+      const isScrolled = currPos.y < 70;
+      if (scrolled !== isScrolled) {
+        setScrolled(isScrolled);
+      }
+    },
+    [scrolled],
+    introRef,
+    false,
+    0
+  );
+
   return (
     <Layout
       headComponentConfig={{
@@ -36,48 +54,77 @@ const ServicePage = ({
       }}
     >
       <div className="c-service-page c-courses-overview">
-        <section className="o-wrapper-section">
-          <div className="c-service-page__intro">
-            <h2 className="u-heading--6">{title}</h2>
-            <h2 className="u-heading--1">{longTitle}</h2>
-            <BlockContent blocks={lead} serializers={serializers} />
-            <div className="c-link--pri">
-              <Scrollchor to="#courses" disableHistory>
-                Start for free
-              </Scrollchor>
+        {scrolled ? (
+          <div className="c-header--fixed u-hidden--desktop">
+            <div className="c-header--fixed__content">
+              <Link route="/">
+                <a className="u-no-underline">
+                  <LogoU4 />
+                </a>
+              </Link>
+              <div>
+                <div className="c-link--pri">
+                  <Scrollchor to="#courses" disableHistory>
+                    Start for free
+                  </Scrollchor>
+                </div>
+              </div>
+            </div>
+            <hr className="u-section-underline--no-margins" />
+          </div>
+        ) : null}
+        <section className="o-wrapper u-side-padding">
+          <div className="o-wrapper-section">
+            <div className="c-service-page__intro">
+              <h2 className="u-heading--6">{title}</h2>
+              <h2 className="u-heading--1">{longTitle}</h2>
+              <BlockContent blocks={lead} serializers={serializers} />
+              <div className="c-link--pri">
+                <Scrollchor to="#courses" disableHistory>
+                  Start for free
+                </Scrollchor>
+              </div>
+              <span ref={introRef} />
             </div>
           </div>
         </section>
         <hr className="u-section-underline--no-margins" />
-        <div className="u-bg-lightest-grey c-service-page__section">
+        <div className="u-bg-lightest-grey c-service-page__section c-features__container u-side-padding">
           <BlockContent blocks={features} serializers={serializers} />
         </div>
-        <div id="courses" className="c-service-page__section">
-          <div className="o-wrapper-medium">
+        <div id="courses" className="c-service-page__section c-courses__container u-side-padding">
+          <div className="o-wrapper-section">
             <BlockContent blocks={sections.slice(3, 5)} serializers={serializers} />
             <CoursesList blocks={sections.slice(5, 6)} />
           </div>
         </div>
-        <div id="courses-2" className="u-bg-lightest-blue c-service-page__section">
+        <div
+          id="courses-2"
+          className="u-bg-lightest-blue c-service-page__section c-courses__container u-side-padding"
+        >
           <div className="o-wrapper-section">
             <BlockContent blocks={sections.slice(6, 7)} serializers={serializers} />
-            <CoursesList blocks={sections.slice(7, 8)} cta="Read more"/>
+            <CoursesList blocks={sections.slice(7, 8)} cta="Read more" />
           </div>
         </div>
-        <div className="u-bg-light-grey c-service-page__section">
+        <div className="u-bg-light-grey c-service-page__section u-side-padding">
           <div className="o-wrapper-medium">
             {resources.length > 0
               ? resources
                   .filter(r => r._type === 'testimonial')
-                  .map(r => <Testimonial testimonial={r} />)
+                  .map(r => <Testimonial key={r._id} testimonial={r} />)
               : null}
           </div>
         </div>
-        <BlockContent blocks={sections.slice(8, 10)} serializers={serializers} />
-        <div className="u-bg-light-grey">
+        <div className="c-service-page__section u-side-padding">
+          <BlockContent blocks={sections.slice(8, 10)} serializers={serializers} />
+        </div>
+        <div className="u-bg-light-grey c-service-page__section u-side-padding">
           <BlockContent blocks={sections.slice(10, 11)} serializers={serializers} />
         </div>
-        <BlockContent blocks={sections.slice(11, 12)} serializers={serializers} />
+        <div className="c-service-page__section u-side-padding">
+          <BlockContent blocks={sections.slice(11, 12)} serializers={serializers} />
+        </div>
       </div>
       <div id="modal" />
     </Layout>

@@ -36,7 +36,7 @@
     }
   }
   .c-features__item {
-    padding: $spacing;
+    padding: $spacing 8px;
     text-align: left;
     font-family: $font-sans;
     font-size: 15px;
@@ -48,6 +48,7 @@
     align-items: flex-start;
     @include mq($from: tablet) {
       width: 33%;
+      padding: $spacing;
     }
   }
   .c-features__icon:first-child {

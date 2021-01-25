@@ -17,7 +17,7 @@ export const Cards = ({ resources = [], cta = '' }) => (
         const linkTo =
           item._type === 'course' ? buildUrl({ _type: 'course', slug: item.slug }) : item.link;
         return (
-          <div key={item._key} {...classes('item')}>
+          <div key={item._id} {...classes('item')}>
             <Link to={linkTo}>
               <a>
                 <div {...classes('item-content')}>
@@ -43,8 +43,8 @@ export const Cards = ({ resources = [], cta = '' }) => (
                   </div>
                   <div className="c-cards__text">
                     <div>
-                      <h7 className="u-heading--7">{item.title}</h7>
-                      <div>{item.lead && item.lead.split('\n').map(i => <p>{i}</p>)}</div>
+                      <h6 className="u-heading--7">{item.title}</h6>
+                      <div>{item.lead && item.lead.split('\n').map((i, index) => <p key={index} >{i}</p>)}</div>
                     </div>
                     <div>{cta && <div className="c-btn c-btn--sec">{cta}</div>}</div>
                   </div>

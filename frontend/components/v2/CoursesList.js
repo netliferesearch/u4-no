@@ -25,13 +25,14 @@ export const CoursesList = ({ blocks = [], cta = 'Register' }) => {
   );
   return (
     <div className="c-courses-list">
+      <div className="c-courses-list__content">
       <div className="u-span-btn">
         <span>View courses available in:</span>
         <LangFilter languages={languages} setFilters={setFilters} currentLang={filter} />
       </div>
       {/* <TextButton onClick={handleRemove} text="Remove all" modifier="ter" /> */}
       <Cards resources={currentResults} cta={cta} />
-    </div>
+    </div></div>
   );
 };
 

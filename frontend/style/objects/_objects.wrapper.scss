@@ -55,9 +55,13 @@
     margin-left: auto;
     max-width: 1056px;
   }
+  .o-wrapper-inner {
+    @include inuit-clearfix();
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 960px;
+  }
 }
-
-
 
 .o-wrapper-inner {
   @include inuit-clearfix();

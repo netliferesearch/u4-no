@@ -39,25 +39,35 @@ a.c-simple-mosaic__item {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 16px auto 0 auto;
   @include mq($from: tablet) {
-    margin: $spacing-large auto $spacing-huge;
+    margin: 8px auto $spacing auto;
   }
 
   .c-simple-mosaic__item,
   a.c-simple-mosaic__item {
-    max-width: 400px;
+    max-width: 362px;
     width: 100%;
-    margin: 16px;
-    padding: $spacing;
+    margin: 16px 0;
+    padding: 0;
     font-family: $font-sans;
     background-color: $white;
-    border: 1px solid transparent;
+    border: 1px solid $v2-lightest-grey;
+    @include mq($from: tablet) {
+      max-width: 400px;
+      padding: $spacing;
+      border: 1px solid transparent;
+      margin: 16px;
+    }
 
     .c-simple-mosaic__item-content {
       height: 100%;
-      border: 1px solid $v2-lightest-grey;
+      border: none;
       display: flex;
       flex-direction: column;
+      @include mq($from: tablet) {
+        border: 1px solid $v2-lightest-grey;
+      }
     }
     a {
       border: none;
@@ -65,7 +75,9 @@ a.c-simple-mosaic__item {
     }
     &:hover,
     &:hover:visited {
-      border: 1px solid $v2-green;
+      @include mq($from: tablet) {
+        border: 1px solid $v2-green;
+      }
     }
   }
 
@@ -106,7 +118,7 @@ a.c-simple-mosaic__item {
     border: 1px solid $v2-lightest-grey;
   }
   .c-simple-mosaic__item-content {
-    border: 1px solid transparent;
+    border: none;
   }
   .c-cards__text {
     color: $v2-black;
