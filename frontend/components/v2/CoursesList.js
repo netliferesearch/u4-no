@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { LangFilter } from './LangFilter';
 import { uniq } from 'lodash';
 import { Cards } from './Cards';
+import languageName from '../../helpers/languageName';
 
 const applyFliters = (filter, elements) => {
   if (filter) {
@@ -11,7 +12,7 @@ const applyFliters = (filter, elements) => {
   }
 };
 
-export const CoursesList = ({ blocks = [], cta = 'Register' }) => {
+export const CoursesList = ({ blocks = [], cta = 'Register', badge = '' }) => {
   const languages = uniq(
     blocks.length > 0 ? blocks[0].coursesRef.map(course => course.language) : ''
   );
@@ -26,13 +27,33 @@ export const CoursesList = ({ blocks = [], cta = 'Register' }) => {
   return (
     <div className="c-courses-list">
       <div className="c-courses-list__content">
-      <div className="u-span-btn">
-        <span>View courses available in:</span>
-        <LangFilter languages={languages} setFilters={setFilters} currentLang={filter} />
+        <div className="u-span-btn">
+          <span className="u-span-btn__cta">View courses available in:</span>
+          {languages.length > 4 ? (
+            <LangFilter languages={languages} setFilters={setFilters} currentLang={filter} />
+          ) : (
+            <form className="c-courses-list__filter">
+              {languages &&
+                languages.map((language, index) => (
+                  <label key={index} className="c-modal__label">
+                    <input
+                      className="c-modal__input"
+                      onChange={e => setFilters(languages.find(l => l === e.target.value))}
+                      type="radio"
+                      name="language"
+                      value={language}
+                      checked={language === filter ? true : false}
+                    />
+                    <span>{languageName({ langcode: language })}</span>
+                  </label>
+                ))}
+            </form>
+          )}
+        </div>
+        {/* <TextButton onClick={handleRemove} text="Remove all" modifier="ter" /> */}
+        <Cards resources={currentResults} cta={cta} badge={badge} />
       </div>
-      {/* <TextButton onClick={handleRemove} text="Remove all" modifier="ter" /> */}
-      <Cards resources={currentResults} cta={cta} />
-    </div></div>
+    </div>
   );
 };
 

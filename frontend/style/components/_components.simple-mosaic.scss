@@ -34,6 +34,7 @@ a.c-simple-mosaic__item {
   @include inuit-font-size($font-size-normal, $font-size-large);
   margin-bottom: $spacing;
 }
+
 //v2
 .c-cards.c-simple-mosaic {
   display: flex;
@@ -46,6 +47,7 @@ a.c-simple-mosaic__item {
 
   .c-simple-mosaic__item,
   a.c-simple-mosaic__item {
+    position: relative;
     max-width: 362px;
     width: 100%;
     margin: 16px 0;
@@ -54,9 +56,9 @@ a.c-simple-mosaic__item {
     background-color: $white;
     border: 1px solid $v2-lightest-grey;
     @include mq($from: tablet) {
-      max-width: 400px;
-      padding: $spacing;
-      border: 1px solid transparent;
+      //max-width: 400px;
+      //padding: $spacing;
+      //border: 1px solid transparent;
       margin: 16px;
     }
 
@@ -65,9 +67,6 @@ a.c-simple-mosaic__item {
       border: none;
       display: flex;
       flex-direction: column;
-      @include mq($from: tablet) {
-        border: 1px solid $v2-lightest-grey;
-      }
     }
     a {
       border: none;
@@ -76,7 +75,6 @@ a.c-simple-mosaic__item {
     &:hover,
     &:hover:visited {
       @include mq($from: tablet) {
-        border: 1px solid $v2-green;
       }
     }
   }
@@ -110,16 +108,13 @@ a.c-simple-mosaic__item {
   }
 }
 
+.c-cards__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
 #courses-2 {
-  .c-simple-mosaic__item,
-  a.c-simple-mosaic__item {
-    max-width: 362px;
-    padding: 0;
-    border: 1px solid $v2-lightest-grey;
-  }
-  .c-simple-mosaic__item-content {
-    border: none;
-  }
   .c-cards__text {
     color: $v2-black;
   }

@@ -61,7 +61,6 @@
     letter-spacing: 0.01em;
     text-align: center;
   }
-
 }
 
 .c-features__container,
@@ -88,7 +87,6 @@
     padding-top: 120px;
     margin-top: -80px;
   }
-
 }
 
 .c-courses-list {
@@ -101,9 +99,33 @@
 .c-courses-list__content {
   max-width: 1182px;
   margin: 0 auto;
+  .u-span-btn {
+    flex-direction: column;
+    align-items: flex-start;
+    .u-span-btn__cta {
+      margin-bottom: 8px;
+    }
+  }
   @include mq($from: tablet) {
     .u-span-btn {
+      flex-direction: row;
+      align-items: center;
       margin-left: 16px;
+      .u-span-btn__cta {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.c-courses-list__filter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .c-modal__label {
+    margin: 0 8px 0 0;
+    @include mq($from: tablet) {
+      margin: 0 8px;
     }
   }
 }
@@ -161,7 +183,8 @@
     .c-text-image-block {
       flex-direction: column;
       @include mq($from: tablet) {
-        flex-direction: row-reverse;      }
+        flex-direction: row-reverse;
+      }
     }
   }
 }

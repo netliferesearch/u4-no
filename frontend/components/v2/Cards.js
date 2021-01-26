@@ -9,7 +9,7 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-export const Cards = ({ resources = [], cta = '' }) => (
+export const Cards = ({ resources = [], cta = '', badge= '' }) => (
   <div className="c-simple-mosaic c-cards">
     {console.log(resources)}
     {resources
@@ -22,6 +22,7 @@ export const Cards = ({ resources = [], cta = '' }) => (
             <Link to={linkTo}>
               <a>
                 <div {...classes('item-content')}>
+                  {badge ? <div className="c-btn c-btn--sec c-cards__badge">{badge}</div> : null}
                   <div className="c-cards__image">
                     {item.vimeo ? (
                       <div className={`u-video ${item.vimeo.size || ''}`}>
@@ -45,7 +46,10 @@ export const Cards = ({ resources = [], cta = '' }) => (
                   <div className="c-cards__text">
                     <div>
                       <h6 className="u-heading--7">{item.title}</h6>
-                      <div>{item.lead && item.lead.split('\n').map((i, index) => <p key={index} >{i}</p>)}</div>
+                      <div>
+                        {item.lead &&
+                          item.lead.split('\n').map((i, index) => <p key={index}>{i}</p>)}
+                      </div>
                     </div>
                     <div>{cta && <div className="c-btn c-btn--sec">{cta}</div>}</div>
                   </div>

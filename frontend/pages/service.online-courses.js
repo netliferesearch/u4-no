@@ -95,7 +95,7 @@ const ServicePage = ({
         <div id="courses" className="c-service-page__section c-courses__container u-side-padding">
           <div className="o-wrapper-section">
             <BlockContent blocks={sections.slice(3, 5)} serializers={serializers} />
-            <CoursesList blocks={sections.slice(5, 6)} />
+            <CoursesList blocks={sections.slice(5, 6)} badge="Start here" />
           </div>
         </div>
         <div
