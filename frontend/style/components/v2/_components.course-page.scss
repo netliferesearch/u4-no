@@ -1,0 +1,108 @@
+.c-course-entry {
+  .u-video {
+    width: 520px;
+  }
+}
+
+.c-course-entry__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  //padding-bottom: 104px;
+
+  @include mq($from: tablet) {
+    flex-direction: row;
+    //position: relative;
+    //padding-bottom: 0;
+  }
+}
+
+.c-course-entry__intro {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  @include mq($from: tablet) {
+    width: calc(100% - 520px);
+    padding: 32px 48px 32px 0;
+    //flex: 0 0 auto;
+  }
+  &.c-blog-entry__intro--no-img {
+    h2 {
+      // font-size: 32px;
+      // line-height: 39px;
+      // letter-spacing: 0.01em;
+      @include mq($from: tablet) {
+        max-width: 1130px;
+        font-size: 44px;
+        line-height: 53px;
+      }
+    }
+    .c-blog-entry__standfirst {
+      margin-bottom: $spacing;
+      @include mq($from: tablet) {
+        max-width: 644px;
+        margin-bottom: $spacing-large;
+      }
+    }
+    @include mq($from: tablet) {
+      width: 85%;
+      //flex: 0 0 auto;
+    }
+  }
+  h2 {
+    margin: $spacing 0;
+    @include mq($from: tablet) {
+      //width: 94%;
+      //margin-bottom: $spacing-large;
+    }
+  }
+  .c-blog-entry__standfirst {
+    margin-bottom: $spacing;
+    @include mq($from: tablet) {
+      width: 94%;
+      //margin-bottom: $spacing-large;
+    }
+  }
+  h6 {
+    //   font-family: $font-sans;
+    //   font-weight: 900;
+    //   font-size: 12px;
+    //   line-height: 14px;
+    //   letter-spacing: 0.08em;
+    margin-top: $spacing-large;
+    margin-bottom: 0;
+    @include mq($from: tablet) {
+      margin-top: 0;
+      //margin-bottom: 32px;
+    }
+  }
+}
+
+.c-course-entry__featured-image--bg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  @include mq($from: tablet) {
+    height: 292px;
+    width: 520px;
+  }
+}
+
+.c-course-entry__featured-image {
+  margin: 0;
+  @include mq($from: tablet) {
+    //margin: 0;
+    //width: calc(50% - 8px);
+  }
+  // img {
+  //   @include mq($from: tablet) {
+  //     width: auto;
+  //     min-width: 100%;
+  //     object-fit: cover;
+  //   }
+  // }
+}

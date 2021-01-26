@@ -67,18 +67,22 @@
       border-bottom: none;
       padding: 0 0 24px 0;
     }
-    a {
-      color: $v2-dark-grey;
-      border-bottom: none;
-      text-decoration: underline;
-    }
-    a:hover,
-    a:visited:hover {
-      color: $brand-main;
-    }
-    a:visited {
-    }
-    a:active {
+    .c-longform-grid__standard {
+      a {
+        color: $v2-dark-grey;
+        border-bottom: none;
+        text-decoration: underline;
+        &:hover,
+        &:visited:hover {
+          color: $v2-blue;
+          text-decoration: none;
+          border-bottom: none;
+        }
+        &:visited {
+          text-decoration: none;
+          border-bottom: none;
+        }
+      }
     }
   }
   .c-columns__item {

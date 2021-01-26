@@ -40,7 +40,7 @@ export const Cards = ({ resources = [], cta = '', badge= '' }) => (
                         />
                       </div>
                     ) : item.featuredImage ? (
-                      <img src={`${item.featuredImage}?w=350&h=170&fit=crop`} />
+                      <img src={`${item.featuredImage}?w=700&h=340&fit=crop`} />
                     ) : null}
                   </div>
                   <div className="c-cards__text">

@@ -23,7 +23,7 @@ import {
   Table,
 } from '../';
 import { ArrowRight } from '../icons';
-import { PersonSimple } from './PersonSimple';
+import { PersonBasic } from './PersonBasic';
 import { TextImageBlock } from './TextImageBlock';
 
 const classes = BEMHelper({
@@ -139,7 +139,7 @@ const serializers = {
               {personLeft
                 .map(person => (person.target ? person.target : person))
                 .map(person => (
-                  <PersonSimple key={person._id} person={person} />
+                  <PersonBasic key={person._id} person={person} />
                 ))}
             </div>
           ) : null}
@@ -154,7 +154,7 @@ const serializers = {
               {personRight
                 .map(person => (person.target ? person.target : person))
                 .map(person => (
-                  <PersonSimple key={person._id} person={person} />
+                  <PersonBasic key={person._id} person={person} />
                 ))}
             </div>
           )}
@@ -198,7 +198,7 @@ const serializers = {
     ),
     vimeo: ({ node: { src, title, size } }) => (
       <div {...classes('full')}>
-        <div className="u-bg-light-blue o-wrapper-full-width">
+        <div className="">
           <div className="o-wrapper o-wrapper-medium ">
             <h2 className="c-topic-section__title u-margin-top-large u-margin-bottom-huge">
               {title}

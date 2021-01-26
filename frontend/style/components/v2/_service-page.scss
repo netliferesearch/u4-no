@@ -229,33 +229,3 @@
     padding: 0;
   }
 }
-
-.c-person-simple {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-top: 40px;
-  p {
-    margin: 0 0 8px 0;
-  }
-  @include mq($from: tablet) {
-    align-items: center;
-  }
-}
-
-.c-person-simple__item-body-img {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 98px;
-  border-radius: 50%;
-  min-height: 98px;
-  margin-right: 40px;
-  @include mq($from: tablet) {
-    min-height: 98px;
-  }
-}
-
-.c-person-simple__item-title--name {
-  font-weight: 700;
-}

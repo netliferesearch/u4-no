@@ -225,3 +225,34 @@
     margin: 0 0 72px 0;
   }
 }
+
+.u-link-basic {
+  color: $v2-dark-grey;
+  text-decoration: none;
+  transition: all 100ms ease-out;
+  border-bottom: none;
+  &:hover,
+  &:visited:hover {
+    border: none;
+    color: $v2-blue;
+    text-decoration: underline;
+  }
+  &:visited {
+    color: $v2-dark-grey;
+    text-decoration: none;
+    border-bottom: none;
+  }
+  &:active {
+    color: $v2-blue;
+    border-bottom: none;
+    text-decoration: underline;
+    // & > * {
+    //   display: inline-block;
+    //   transform: translateY(2px);
+    //   text-decoration: underline;
+    // }
+  }
+  &:focus {
+    border: none;
+  }
+}
