@@ -11,6 +11,7 @@ const classes = BEMHelper({
 
 export const Cards = ({ resources = [], cta = '' }) => (
   <div className="c-simple-mosaic c-cards">
+    {console.log(resources)}
     {resources
       .map(item => (item.target ? item.target : item))
       .map(item => {

@@ -17,21 +17,19 @@ import {
   ArrowRight,
 } from '../components/icons';
 import languageName from '../helpers/languageName';
+import { CourseHeader } from '../components/v2/CourseHeader';
 
 const CoursePage = ({ data: { course = {} }, url = {} }) => {
   const {
     title = '',
     language = '',
-    link = '',
     startDate = {},
     endDate = {},
     featuredImage = {},
     lead = '',
     content = [],
     contact = [],
-    relatedContent = [],
     topics = [],
-    keywords = [],
     courseType = 18,
   } = course;
   return (
@@ -44,14 +42,19 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
         ogp: {},
       }}
     >
-      <div className="c-oneColumnBox c-oneColumnBox__darkOnWhite">
+      <div className="c-course-entry">
+        <section className="o-wrapper">
+          <CourseHeader data={course} />
+        </section>
+        <hr className="u-section-underline--no-margins" /> 
+         
         <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
           <div>
-            <p className="c-longform-grid__standard">
+            {/* <p className="c-longform-grid__standard">
               <a href="/online-courses">Online courses</a>
-            </p>
-            <h2 className="c-longform-grid__standard">{title}</h2>
-            {lead && <p className="c-longform-grid__standard">{lead}</p>}
+            </p> */}
+            {/* <h2 className="c-longform-grid__standard">{title}</h2>
+            {lead && <p className="c-longform-grid__standard">{lead}</p>} */}
             {false && startDate.utc && (
               <p className="c-longform-grid__standard">
                 {startDate.utc.split('T')[0]} {endDate.utc && `${endDate.utc.split('T')[0]}`}
@@ -124,6 +127,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             </p>
           )}
         </div>
+        <div id="modal" />
       </div>
 
       {courseType !== 15 && courseType !== 16 && contact.length > 0 && (
@@ -140,8 +144,8 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
           />
         </div>
       )}
-      <Newsletter />
-      <Footer />
+      {/* <Newsletter />
+      <Footer /> */}
     </Layout>
   );
 };
@@ -162,7 +166,15 @@ export default DataLoader(CoursePage, {
            slug,
            bio
          },
-        topics, keywords,  _id, "featuredImage": featuredImage.asset->url}}`,
+        topics[]->{ _id, title, slug }, 
+        keywords,  _id, 
+        "featuredImage": {
+          "asset": featuredImage.asset->{
+            "altText": altText,
+            "url": url
+          }
+        },
+        vimeo}}`,
     param: { slug },
   }),
   materializeDepth: 5,
