@@ -97,4 +97,10 @@
 }
 
 .c-person-basic--contact {
+  p {
+    margin: 0;
+  }
+  .c-person-basic__item-body-img {
+    margin: 32px 0;
+  }
 }

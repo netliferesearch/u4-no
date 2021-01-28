@@ -60,7 +60,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
         </section>
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper u-side-padding">
-          <div className="o-wrapper-section c-article__row">
+          <div className="o-wrapper-section c-article__row u-hidden--tablet">
             <BreadCrumbV2
               title={`All Online Courses`}
               parentSlug={'/online-courses'}
@@ -86,7 +86,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
                 ? contact.map((c, index) =>
                     c._id !== 'author-31' ? (
                       <div key={index}>
-                        <h6 className="u-heading--7">Course developer & facilitator</h6>
+                        <h4 className="u-heading--3">Course developer & facilitator</h4>
                         <PersonBasic person={c} showEmail={false} />
                       </div>
                     ) : null
@@ -96,7 +96,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
                 ? contact.map((c, index) =>
                     c._id === 'author-31' ? (
                       <div key={index}>
-                        <h6 className="u-heading--7">Course coordinator</h6>
+                        <h4 className="u-heading--3">Course coordinator</h4>
                         <PersonBasic person={c} showEmail={false} />
                       </div>
                     ) : null

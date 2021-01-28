@@ -367,7 +367,7 @@
   position: relative;
   margin-bottom: 40px;
   .c-blog-sidebar__date {
-    margin-bottom: 30px;
+    margin-bottom: 24px;
   }
   .c-blog-sidebar__row--regular {
     display: block;
@@ -383,6 +383,9 @@
     width: 240px;
     padding-bottom: 48px;
     margin-bottom: $spacing-large;
+    .c-blog-sidebar__date {
+      margin-bottom: 32px;
+    }
   }
 }
 

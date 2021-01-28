@@ -76,7 +76,7 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
               </a>
             </Link>
             <div className="u-hidden--desktop">
-              <Topics title={false} topics={topics} hr={false} />
+              <Topics title={false} topics={topics} hr={false} linkType="5" />
             </div>
             <h2 className="u-heading--black--44">{title}</h2>
             {subtitle ? <p {...classes('subtitle')}>{subtitle}</p> : null}

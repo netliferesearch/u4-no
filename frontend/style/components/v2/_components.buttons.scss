@@ -2,11 +2,11 @@
   background-color: $v2-blue;
   border-radius: 20px;
   font-family: $font-sans;
-  font-size: $font-size-micro;
+  font-size: $font-size-nano;
   line-height: 1.2;
   letter-spacing: 0.1px;
   color: $white;
-  padding: 8px 16px;
+  padding: 10px 16px;
   border: 1px solid transparent;
   transition: all 100ms ease-out;
   &:hover {
@@ -17,8 +17,8 @@
     text-decoration: none;
   }
   &:active {
-    padding-top: 10px;
-    padding-bottom: 6px;
+    padding-top: 12px;
+    padding-bottom: 8px;
     border: 1px solid $v2-dark-yellow;
     box-shadow: 0 0 0 1px $v2-dark-yellow;
     outline: none;
@@ -27,6 +27,11 @@
     cursor: default;
     pointer-events: none;
     opacity: 0.4;
+  }
+}
+.c-modal__controls {
+  .c-btn--pri {
+    font-size: $font-size-micro;
   }
 }
 
@@ -63,6 +68,7 @@
     border: 1px solid $v2-lighter-grey;
   }
 }
+
 .c-btn--ter {
   display: inline-block;
   font-family: $font-sans;
@@ -208,7 +214,6 @@
   }
 }
 
-
 .c-btn--7 {
   display: inline-block;
   font-family: $font-sans;
@@ -330,7 +335,6 @@
   }
 }
 
-
 .c-link--pri a {
   display: inline-flex;
   background-color: $v2-blue;
@@ -340,7 +344,7 @@
   line-height: 1.2;
   letter-spacing: 0.1px;
   color: $white;
-  padding: 8px 16px;
+  padding: 10px 16px;
   border: 1px solid transparent;
   transition: all 100ms ease-out;
   &:hover,
@@ -353,8 +357,8 @@
     text-decoration: none;
   }
   &:active {
-    padding-top: 10px;
-    padding-bottom: 6px;
+    padding-top: 12px;
+    padding-bottom: 8px;
     border: 1px solid $v2-dark-yellow;
     box-shadow: 0 0 0 1px $v2-dark-yellow;
     outline: none;

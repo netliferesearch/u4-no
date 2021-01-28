@@ -2,10 +2,8 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import languageName from '../../helpers/languageName';
 import { Translations } from './Translations';
-import moment from 'moment';
 import dateToString from '../../helpers/dateToString';
-import Team from '../Team';
-import { PersonBasic, PersonContactBasic } from './PersonBasic';
+import { PersonContactBasic } from './PersonBasic';
 
 const classes = BEMHelper({
   name: 'article-sidebar',
@@ -40,9 +38,9 @@ export const CourseSidebar = ({ data, side }) => {
           <div className="c-article-sidebar__row--regular">
             {courseType.waitingListId !== 15 &&
               courseType.waitingListId !== 16 &&
-              contact.filter(c => c._id === "author-31").length > 0 && (
+              contact.filter(c => c._id === 'author-31').length > 0 && (
                 <div id="contacts" className="">
-                  <PersonContactBasic person={contact.find(c => c._id === "author-31")} />
+                  <PersonContactBasic person={contact.find(c => c._id === 'author-31')} />
                 </div>
               )}
           </div>
@@ -52,40 +50,58 @@ export const CourseSidebar = ({ data, side }) => {
       {side === 'right' ? (
         <div {...classes('right')}>
           <div className="c-article-sidebar__row--regular">
-            <h3 className="u-heading--7">Course Type</h3>
-            <p>{courseType.title}</p>
+            <h3 className="u-heading--5">Course Type</h3>
+            <p className="u-grey-text">{courseType.title}</p>
           </div>
 
           {startDate.utc && (
             <div className="c-article-sidebar__row--regular">
-              <h3 className="u-heading--7">When</h3>
-              <p className="">{dateToString({ start: startDate.utc, end: endDate.utc || '' })}</p>
+              <hr className="u-section-underline--no-margins" />
+              <h3 className="u-heading--5">When</h3>
+              <p className="u-grey-text">
+                {dateToString({ start: startDate.utc, end: endDate.utc || '' })}
+              </p>
             </div>
           )}
 
           <div className="c-article-sidebar__row--regular">
-            <h3 className="u-heading--7">Cost</h3>
-            <p>Free</p>
+            <hr className="u-section-underline--no-margins" />
+            <h3 className="u-heading--5">Cost</h3>
+            <p className="u-grey-text">Free</p>
           </div>
 
           {language && (
             <div className="c-article-sidebar__row--regular">
-              <h3 className="u-heading--7">Language:</h3>
-              <p>{languageName({ langcode: language })}</p>
+              <hr className="u-section-underline--no-margins" />
+              <h3 className="u-heading--5">Language:</h3>
+              <p className="u-grey-text">{languageName({ langcode: language })}</p>
             </div>
           )}
 
           <div className="c-article-sidebar__row--regular">
-            <h3 className="u-heading--7">Duration</h3>
-            <p />
+            <hr className="u-section-underline--no-margins" />
+            <h3 className="u-heading--5">Duration</h3>
+            <p className="u-grey-text" />
           </div>
 
           <div className="c-article-sidebar__row--regular">
-            <h3 className="u-heading--7">Comitment</h3>
-            <p />
+            <hr className="u-section-underline--no-margins" />
+            <h3 className="u-heading--5">Comitment</h3>
+            <p className="u-grey-text" />
           </div>
 
-          <div className="c-article-sidebar__row--regular">View course leaflet (PDF)</div>
+          <div className="c-article-sidebar__row--regular">
+            <div>
+              <a
+                // href={`/publications/${slug.current}.pdf`}
+                //download={`/publication/${slug.current}.pdf`}
+                target="_blank"
+                className="c-btn c-btn--sec"
+              >
+                <span>View course leaflet (PDF)</span>
+              </a>
+            </div>
+          </div>
         </div>
       ) : null}
     </div>

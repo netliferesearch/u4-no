@@ -18,7 +18,7 @@ export const CourseHeader = ({ data }) => {
   return data ? (
     <div className="o-wrapper-section c-course-entry__header">
       <div
-        className={`c-course-entry__intro ${featuredImage ? '' : 'c-blog-entry__intro--no-img'}`}
+        className={`c-course-entry__intro ${featuredImage ? '' : 'c-course-entry__intro--no-img'}`}
       >
         <div>
           <Link route={'/online-courses'}>
@@ -28,12 +28,12 @@ export const CourseHeader = ({ data }) => {
           </Link>
 
           <h2 className="u-heading--1">{title}</h2>
-          {lead && <p className="c-blog-entry__standfirst">{lead}</p>}
+          {lead && <p className="c-course-entry__standfirst u-standfirst">{lead}</p>}
         </div>
         <RegisterForm courseType={courseType.waitingListId} />
-        <div className="c-blog-entry__header-row">
-          {topics ? <Topics title={false} topics={topics} hr={false} /> : null}
-          <div className="c-blog-sidebar__share-container u-hidden--tablet">
+        <div className="c-course-entry__header-row">
+          {topics ? <Topics title={false} topics={topics} hr={false} linkType={"5"} /> : null}
+          <div className="u-hidden--tablet">
             <Share text={title} />
           </div>
         </div>
@@ -56,7 +56,7 @@ export const CourseHeader = ({ data }) => {
       ) : featuredImage && featuredImage.asset ? (
         <div
           className="c-course-entry__featured-image c-course-entry__featured-image--bg"
-          style={{ backgroundImage: `url('${featuredImage.asset.url}?w=520')` }}
+          style={{ backgroundImage: `url('${featuredImage.asset.url}?w=520&fit=crop&crop=focalpoint')` }}
         />
       ) : // <figure className="c-course-entry__featured-image u-hidden--tablet">
       //   <img

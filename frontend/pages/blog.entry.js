@@ -62,7 +62,6 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
 
   useEffect(() => littlefootActivator(), []);
 
-  console.log(blogEntry);
   const topBlocks = getFirstPart(content);
   //console.log(topBlocks.length);
   const belowBlocks = content.slice(topBlocks.length);
