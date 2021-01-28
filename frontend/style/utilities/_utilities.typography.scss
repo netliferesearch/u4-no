@@ -194,7 +194,7 @@
 }
 
 .u-drop-cap {
-  p:first-child::first-letter,
+  p.c-longform-grid__standard:first-child::first-letter,
   .c-article__lead--abstract::first-letter {
     font-size: 72px;
     line-height: 0.62;

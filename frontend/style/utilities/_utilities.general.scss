@@ -127,6 +127,10 @@ iframe {
   }
 }
 
+.pointer-events--none {
+  pointer-events: none;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

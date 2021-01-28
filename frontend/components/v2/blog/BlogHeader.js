@@ -32,7 +32,7 @@ export const BlogHeader = ({ data }) => {
               {topics.map((topic, index) => (
                 <span className="topic" key={index}>
                   <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                    <a className="c-btn--ter">
+                    <a className="c-btn--5">
                       <div>{topic.title}</div>
                     </a>
                   </Link>

@@ -50,7 +50,6 @@ export const CoursesList = ({ blocks = [], cta = 'Register', badge = '' }) => {
             </form>
           )}
         </div>
-        {/* <TextButton onClick={handleRemove} text="Remove all" modifier="ter" /> */}
         <Cards resources={currentResults} cta={cta} badge={badge} />
       </div>
     </div>

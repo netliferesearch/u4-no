@@ -57,11 +57,9 @@
   a.c-btn--sec {
     border-color: #dedede;
   }
-  .c-btn--qua {
+  .c-btn--5 {
     margin: 0;
     padding: 6px 0;
-    font-size: 12px;
-    font-weight: 400;
     @include mq($from: tablet) {
       margin: 0 16px;
     }

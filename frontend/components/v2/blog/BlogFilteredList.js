@@ -239,7 +239,7 @@ const BlogFilteredList = props => {
                   </li>
                 );
               })}
-              {totalPages > pageCount ? '...' : null}
+              {totalPages > pageCount ? <div className="pagination-item pointer-events--none">...</div> : null}
               {totalPages > pageCount ? (
                 <li>
                   <button

@@ -16,7 +16,7 @@ export const Contents = ({ title = '', content = [] }) => {
   return (
     <div className={`c-contents c-modal${open ? ' open' : ''}`}>
       <ContentsIcon />
-      <TextIconButton onClick={() => setOpen(true)} text="Contents" modifier="qui" />
+      <TextIconButton onClick={() => setOpen(true)} text="Contents" modifier="7" />
       {open && <ContentsModal title={title} setOpen={setOpen} content={content} />}
     </div>
   );

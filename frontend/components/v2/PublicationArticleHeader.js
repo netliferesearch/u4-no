@@ -59,7 +59,7 @@ const PublicationArticleHeader = ({
                 href={`/publications/${slug.current}.pdf`}
                 //download={`/publication/${slug.current}.pdf`}
                 target="_blank"
-                className="c-btn c-btn--qua"
+                className="c-btn c-btn--5"
               >
                 <span>Download PDF</span>
               </a>
@@ -80,7 +80,7 @@ const PublicationArticleHeader = ({
                 href={`/publications/${slug.current}.pdf`}
                 download={`/publication/${slug.current}.pdf`}
                 target="_blank"
-                className="c-btn c-btn--qua"
+                className="c-btn c-btn--5"
               >
                 <span>Download PDF</span>
               </a>
@@ -88,7 +88,7 @@ const PublicationArticleHeader = ({
 
             {summary.length > 0 && (
               <Link route="publication.shortVersion" params={{ slug: slug.current }}>
-                <a className="c-btn c-btn--qua">
+                <a className="c-btn c-btn--5">
                   <span {...classes('button-text')}>Read short version</span>
                   {/* <div {...classes('button-icon')} /> */}
                 </a>
