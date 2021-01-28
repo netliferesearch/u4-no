@@ -6,14 +6,7 @@ import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
 import Layout from '../components/v2/Layout';
 
-import {
-  BoxOnBox,
-  Footer,
-  Accordion,
-  Newsletter,
-  ServiceArticle,
-  Person,
-} from '../components';
+import { BoxOnBox, Footer, Accordion, Newsletter, ServiceArticle, Person } from '../components';
 import { Feature, Mosaic, LinkBox, Team } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import {
@@ -78,30 +71,31 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
               <hr className="u-section-underline--no-margins" />
               <div
                 id="additional-info"
-                className="c-article__additional-info-container o-wrapper-section u-side-padding"
-              />
-              <h3 className="u-heading--2">Course experts</h3>
-              <p className="u-grey-text">Text about the value of U4 experts</p>
-              {contact.length > 0
-                ? contact.map((c, index) =>
-                    c._id !== 'author-31' ? (
-                      <div key={index}>
-                        <h4 className="u-heading--3">Course developer & facilitator</h4>
-                        <PersonBasic person={c} showEmail={false} />
-                      </div>
-                    ) : null
-                  )
-                : null}
-              {contact.length > 0
-                ? contact.map((c, index) =>
-                    c._id === 'author-31' ? (
-                      <div key={index}>
-                        <h4 className="u-heading--3">Course coordinator</h4>
-                        <PersonBasic person={c} showEmail={false} />
-                      </div>
-                    ) : null
-                  )
-                : null}
+                className="c-article__additional-info-container o-wrapper-section"
+              >
+                <h3 className="u-heading--2">Course experts</h3>
+                <p className="u-grey-text">Text about the value of U4 experts</p>
+                {contact.length > 0
+                  ? contact.map((c, index) =>
+                      c._id !== 'author-31' ? (
+                        <div key={index}>
+                          <h4 className="u-heading--3">Course developer & facilitator</h4>
+                          <PersonBasic person={c} showEmail={false} />
+                        </div>
+                      ) : null
+                    )
+                  : null}
+                {contact.length > 0
+                  ? contact.map((c, index) =>
+                      c._id === 'author-31' ? (
+                        <div key={index}>
+                          <h4 className="u-heading--3">Course coordinator</h4>
+                          <PersonBasic person={c} showEmail={false} />
+                        </div>
+                      ) : null
+                    )
+                  : null}
+              </div>
             </div>
             <div className="c-article__side c-article__col">
               <CourseSidebar data={course} side={'right'} />

@@ -52,7 +52,7 @@ export const FormModal = props => {
             <CloseButton onClick={e => setOpen(false)} />
           </div>
           <hr className="u-section-underline--no-margins" />
-          <div className="c-modal__content">
+          <div className="c-modal__content c-modal--form">
             {courseType !== 15 && courseType !== 16 && (
               <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
                 <div>

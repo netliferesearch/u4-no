@@ -2,6 +2,35 @@
   .u-video {
     width: 520px;
   }
+  .c-article__additional-info-container {
+    font-family: $font-sans;
+    font-size: 18px;
+    line-height: 1.67;
+    letter-spacing: 0.02em;
+    .u-heading--2 {
+      margin-top: 32px;
+    }
+  }
+  .c-person-basic__text {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.c-article-sidebar__right {
+  .u-heading--5 {
+    margin: 16px 0 0 0;
+  }
+  p {
+    line-height: 2;
+    margin: 0;
+  }
+  .c-article-sidebar__row--regular {
+    margin-bottom: 16px;
+  }
+  .c-btn--sec {
+    margin-top: 40px;
+  }
 }
 
 .c-course-entry__header {
@@ -108,7 +137,6 @@
   // }
 }
 
-
 .c-course-entry__header-row {
   display: flex;
   justify-content: space-between;
@@ -119,7 +147,7 @@
   }
 }
 
-  //overriting
-  a.c-btn--sec {
-    border-color: #dedede;
-  }
+//overriting
+a.c-btn--sec {
+  border-color: #dedede;
+}

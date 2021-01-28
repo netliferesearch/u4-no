@@ -4,7 +4,7 @@ input[type='checkbox'].c-modal__input {
   position: absolute;
   opacity: 0;
   //-webkit-appearance: none;
-  
+
   &:checked {
     border: 1px solid $v2-dark-blue-2;
     background: $v2-dark-blue-2;
@@ -253,5 +253,17 @@ input[type='radio'].c-modal__input {
       border-radius: 20px;
       height: auto;
     }
+  }
+}
+
+.c-modal--form {
+  label {
+    font-family: $font-sans;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    text-align: left;
   }
 }

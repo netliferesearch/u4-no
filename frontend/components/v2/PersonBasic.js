@@ -20,7 +20,7 @@ export const PersonBasic = ({ person, showEmail = true }) => {
           }}
         />
       </div>
-      <div>
+      <div className="c-person-basic__text">
         {person.slug && person.bio ? (
           <Link to={`/the-team/${person.slug.current}`}>
             <a className="c-btn--qua">
@@ -84,7 +84,7 @@ export const PersonContactBasic = ({ person, cta = 'Questions about the course?'
           <p className="u-grey-text">
             <span>Contact </span>
             <a className="u-grey-a" href={`mailto:${person.email}`}>
-              {person.firstName}
+              <span>{person.firstName}</span>
             </a>
           </p>
         </div>

@@ -23,7 +23,7 @@ export const CourseSidebar = ({ data, side }) => {
   } = data;
 
   return data ? (
-    <div {...classes('', null, className)}>
+    <div className="c-article-sidebar c-course-sidebar">
       {side === 'left' ? (
         <div {...classes('left')}>
           <div className="c-article-sidebar__date" />
