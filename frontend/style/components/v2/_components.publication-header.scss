@@ -57,11 +57,9 @@
   a.c-btn--sec {
     border-color: #dedede;
   }
-  .c-btn--qua {
+  .c-btn--5 {
     margin: 0;
     padding: 6px 0;
-    font-size: 12px;
-    font-weight: 400;
     @include mq($from: tablet) {
       margin: 0 16px;
     }
@@ -93,11 +91,11 @@
     justify-content: space-between;
     margin: 0 auto;
   }
-  .u-headline--black--44,
+  .u-heading--black--44,
   .c-pubHeader__subtitle {
     text-align: left;
   }
-  .u-headline--black--44 {
+  .u-heading--black--44 {
     margin-top: 24px;
   }
   .c-pubHeader__subtitle {
@@ -113,11 +111,11 @@
     }
   }
   @include mq($from: tablet) {
-    .u-headline--black--44,
+    .u-heading--black--44,
     .c-pubHeader__subtitle {
       text-align: center;
     }
-    .u-headline--black--44,
+    .u-heading--black--44,
     .c-pubHeader__subtitle {
       margin-top: 32px;
     }
@@ -152,6 +150,36 @@
   top: 0;
   left: 0;
   right: 0;
+}
+
+.c-header--fixed {
+  background-color: white;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.c-header--fixed__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+
+  @include mq($from: tablet) {
+    justify-content: space-between;
+    padding: 24px 32px 24px 24px;
+  }
+
+  .u-no-underline {
+    height: 32px;
+  }
+  .c-logo {
+    max-width: 150px;
+    height: 32px;
+    margin: 0;
+  }
 }
 
 .c-lAHeader__close {

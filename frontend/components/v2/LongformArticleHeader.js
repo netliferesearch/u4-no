@@ -61,7 +61,7 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
           </Link>
           <div className="c-lAHeader__close">
             <CloseButton onClick={e => setReaderOpen(false)}>
-              <span className="u-headline--5 c-btn__label">Close Publication</span>
+              <span className="u-heading--5 c-btn__label">Close Publication</span>
             </CloseButton>
           </div>
         </div>
@@ -76,9 +76,9 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
               </a>
             </Link>
             <div className="u-hidden--desktop">
-              <Topics title={false} topics={topics} hr={false} />
+              <Topics title={false} topics={topics} hr={false} linkType="5" />
             </div>
-            <h2 className="u-headline--black--44">{title}</h2>
+            <h2 className="u-heading--black--44">{title}</h2>
             {subtitle ? <p {...classes('subtitle')}>{subtitle}</p> : null}
           </div>
           {featuredImage.asset && (

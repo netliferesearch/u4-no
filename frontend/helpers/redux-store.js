@@ -67,6 +67,7 @@ const defaultState = {
   defaultSearchAggs: [],
   blogFilters: [],
   blogPageNum: 1,
+  langFilters: [],
 };
 
 export const actionTypes = {
@@ -85,6 +86,8 @@ export const actionTypes = {
   BLOG_UPDATE_FILTERS: 'BLOG_UPDATE_FILTERS',
   BLOG_CLEAR_FILTERS: 'BLOG_CLEAR_FILTERS',
   BLOG_UPDATE_PAGE_NUM: 'BLOG_UPDATE_PAGE_NUM',
+  LANG_UPDATE_FILTERS: 'LANG_UPDATE_FILTERS',
+  LANG_CLEAR_FILTERS: 'LANG_CLEAR_FILTERS',
 };
 
 // REDUCERS
@@ -162,6 +165,16 @@ export const reducer = (state = defaultState, action) => {
       }
       return state;
 
+    case actionTypes.LANG_UPDATE_FILTERS:
+      return Object.assign({}, state, {
+        langFilters: uniq(action.langFilters),
+      });
+
+    case actionTypes.LANG_CLEAR_FILTERS:
+      return Object.assign({}, state, {
+        langFilters: [],
+      });
+
     default:
       return state;
   }
@@ -206,8 +219,14 @@ export const clearBlogFilters = () => dispatch =>
   dispatch({ type: actionTypes.BLOG_CLEAR_FILTERS });
 
 export const updateBlogPageNum = blogPageNum => dispatch => {
-    return dispatch({ type: actionTypes.BLOG_UPDATE_PAGE_NUM, blogPageNum });
-  };
+  return dispatch({ type: actionTypes.BLOG_UPDATE_PAGE_NUM, blogPageNum });
+};
+
+export const updateLangFilters = (langFilters = []) => dispatch =>
+  dispatch({ type: actionTypes.LANG_UPDATE_FILTERS, langFilters });
+
+export const clearLangFilters = () => dispatch =>
+  dispatch({ type: actionTypes.LANG_CLEAR_FILTERS });
 
 export const initStore = (initialState = defaultState, options) => {
   const { query = {} } = options;

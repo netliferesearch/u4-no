@@ -8,6 +8,8 @@ import { RelatedSimple } from '../RelatedSimple';
 import { Keywords } from '../Keywords';
 import LinkToItem from '../../LinkToItem';
 import { Translations } from '../Translations';
+import moment from 'moment';
+import languageName from '../../../helpers/languageName';
 /**
  * V2 - Sidebar component to be used in BlogEntry component
  * @param {object} data
@@ -23,9 +25,12 @@ export const BlogSidebar = ({ data, side }) => {
     topics = '',
     keywords = '',
     language = '',
-    translations = '',
-    slug=''
+    translation = {},
+    slug = '',
   } = data;
+
+  const showUpdated = moment(_updatedAt).isAfter(moment(date.utc), 'day');
+  console.log("tr",translation);
 
   return data ? (
     <div className="c-blog-sidebar">
@@ -37,7 +42,7 @@ export const BlogSidebar = ({ data, side }) => {
                 {dateToString({ start: date.utc })}
               </span>
             )}
-            {_updatedAt && (
+            {_updatedAt && showUpdated && (
               <span className="c-blog-sidebar__row--regular">
                 Updated {dateToString({ start: _updatedAt })}
               </span>
@@ -49,15 +54,31 @@ export const BlogSidebar = ({ data, side }) => {
               //language={language}
             />
           ) : null}
-          {translations.length > 0 && (
-            <div className="u-hidden--tablet">
-              <Translations translations={translations} language={language} route={'/blog'} currentSlug={slug}/>
+          {translation.slug && (
+            <div className="c-blog-sidebar__translation u-hidden--tablet">
+              Also available in{' '}
+              <LinkToItem type="blog-post" slug={translation.slug} key={translation._id}>
+                <span>
+                  <a className="c-btn c-btn--qua">
+                    {languageName({ langcode: translation.language })}
+                  </a>
+                </span>
+              </LinkToItem>
             </div>
           )}
           <div className="u-hidden--desktop">
             <Share text={title} />
-            {translations.length > 0 && (
-              <Translations translations={translations} language={language} route={'/blog'} currentSlug={slug}/>
+            {translation.slug && (
+              <div className="c-blog-sidebar__translation">
+                Also available in{' '}
+                <LinkToItem type="blog-post" slug={translation.slug} key={translation._id}>
+                  <span>
+                    <a className="c-btn c-btn--qua">
+                      {languageName({ langcode: translation.language })}
+                    </a>
+                  </span>
+                </LinkToItem>
+              </div>
             )}
           </div>
         </div>

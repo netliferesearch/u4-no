@@ -18,8 +18,8 @@
 }
 
 .c-blog-authors-list {
-  margin-top: 32px;
-  margin-bottom: 20px;
+  margin-top: 24px;
+  margin-bottom: 24px;
   .c-blog-authors-list__name {
     font-weight: 700;
     a {
@@ -42,6 +42,14 @@
     margin: $spacing 0 0 0;
   }
   @include mq($from: tablet) {
-    margin-bottom: $spacing-large;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+}
+
+.c-blog-sidebar__translation {
+  margin-top: 24px;
+  @include mq($from: tablet) {
+    margin-top: 0;
   }
 }

@@ -2,9 +2,6 @@ import React, { useRef, useState } from 'react';
 import ClientOnlyPortal from '../ClientOnlyPortal';
 import { CloseButton, TextButton } from '../buttons';
 import { useOnClickOutside, useLockBodyScroll } from '../../../helpers/hooks';
-import { updateBlogPageNum } from '../../../helpers/redux-store';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 /**
  * V2 - Blog filter component to be used in BlogPage component
@@ -111,15 +108,3 @@ export const MultiselectModal = props => {
     </ClientOnlyPortal>
   );
 };
-
-// const mapStateToProps = ({ blogFilters = [], blogPageNum = 1 }) => ({ blogFilters, blogPageNum });
-
-// const mapDispatchToProps = dispatch => ({
-//   updateBlogFilters: bindActionCreators(updateBlogFilters, dispatch),
-//   updateBlogPageNum: bindActionCreators(updateBlogPageNum, dispatch),
-// });
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(BlogEntriesFilter);

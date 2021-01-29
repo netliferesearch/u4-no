@@ -34,3 +34,88 @@ a.c-simple-mosaic__item {
   @include inuit-font-size($font-size-normal, $font-size-large);
   margin-bottom: $spacing;
 }
+
+//v2
+.c-cards.c-simple-mosaic {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 16px auto 0 auto;
+  @include mq($from: tablet) {
+    margin: 8px auto $spacing auto;
+  }
+
+  .c-simple-mosaic__item,
+  a.c-simple-mosaic__item {
+    position: relative;
+    max-width: 362px;
+    width: 100%;
+    margin: 16px 0;
+    padding: 0;
+    font-family: $font-sans;
+    background-color: $white;
+    border: 1px solid $v2-lightest-grey;
+    @include mq($from: tablet) {
+      //max-width: 400px;
+      //padding: $spacing;
+      //border: 1px solid transparent;
+      margin: 16px;
+    }
+
+    .c-simple-mosaic__item-content {
+      height: 100%;
+      border: none;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      border: none;
+      color: $brand-dark;
+    }
+    &:hover,
+    &:hover:visited {
+      @include mq($from: tablet) {
+      }
+    }
+  }
+
+  .c-cards__image {
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  .c-cards__text {
+    padding: $spacing;
+    color: $v2-grey-555;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.56;
+    letter-spacing: 0.02em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+  .c-simple-mosaic__meta {
+    font-weight: 300;
+    text-transform: uppercase;
+    padding-bottom: $spacing;
+  }
+  .c-simple-mosaic__title {
+    @include inuit-font-size($font-size-normal, $font-size-large);
+    margin-bottom: $spacing;
+  }
+}
+
+.c-cards__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+#courses-2 {
+  .c-cards__text {
+    color: $v2-black;
+  }
+}

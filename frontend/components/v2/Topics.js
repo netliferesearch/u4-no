@@ -10,17 +10,17 @@ import { Link } from '../../routes';
  * @param {Boolean} hr
  */
 
-export const Topics = ({ title = true, topics = [], hr = false }) => {
+export const Topics = ({ title = true, topics = [], hr = false, linkType = "ter" }) => {
   return topics ? (
     <div className="c-topics">
-      {title ? <h4 className="u-headline--3">Topics</h4> : null}
+      {title ? <h4 className="u-heading--3">Topics</h4> : null}
       {hr ? <hr className="u-section-underline--no-margins" /> : null}
       <div className="c-topics__list">
         {topics.map((topic, index) =>
           topic.slug && topic.title ? (
             <span className="topic" key={index}>
               <Link route="topic.entry" params={{ slug: topic.slug.current }}>
-                <a className="c-btn--ter">
+                <a className={`c-btn--${linkType}`}>
                   <div>{topic.title}</div>
                 </a>
               </Link>

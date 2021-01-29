@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import serializers from '../components/serializers';
+import findFootnotes from '../components/findFootnotes';
+import footnoteSerializer from '../components/footnoteSerializer';
 import DataLoader from '../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
-import BlockToContent from '@sanity/block-content-to-react';
 import { Layout } from '../components/v2';
 import { BlogSidebar } from '../components/v2/blog/BlogSidebar';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
@@ -13,6 +14,11 @@ import { AboutAuthor } from '../components/v2/AboutAuthor';
 import { Disclaimers } from '../components/v2/Disclaimers';
 import { Share } from '../components/v2/ShareOnSocialMedia';
 import { PhotoCaptionCredit } from '../components/v2/PhotoCaptionCredit';
+
+const littlefootActivator = () => {
+  const littlefoot = require('littlefoot').default;
+  littlefoot();
+};
 
 const isPar = p => (p.children && p.style === 'normal' ? true : false);
 
@@ -47,10 +53,15 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     topics = '',
     keywords = '',
     language = '',
-    translation = '',
+    translation = {},
   } = blogEntry;
 
-  //console.log(content);
+  const blocks = content.filter(block => !['reference'].includes(block._type));
+  const footnotes = findFootnotes(blocks);
+  const footNotesKeys = Object.keys(footnotes);
+
+  useEffect(() => littlefootActivator(), []);
+
   const topBlocks = getFirstPart(content);
   //console.log(topBlocks.length);
   const belowBlocks = content.slice(topBlocks.length);
@@ -110,10 +121,24 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
                 {belowBlocks ? (
                   <div className="c-blog-entry__main-text">
                     <BlockContent blocks={belowBlocks} serializers={serializers} />
+                    <div className="footnotes">
+                      <ol>
+                        {footNotesKeys.map(key => (
+                          <div key={key}>
+                            <BlockContent
+                              blocks={footnotes[key]}
+                              serializers={footnoteSerializer(key)}
+                            />
+                          </div>
+                        ))}
+                      </ol>
+                    </div>
                   </div>
                 ) : null}
                 <div className="c-blog-entry__additional-content">
-                  {keywords.length > 0 ? <Keywords title={false} keywords={keywords} hr={false}/> : null}
+                  {keywords.length > 0 ? (
+                    <Keywords title={false} keywords={keywords} hr={false} />
+                  ) : null}
                   <Share text={title} />
                   <AboutAuthor authors={authors} />
                   <Disclaimers />

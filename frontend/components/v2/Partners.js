@@ -14,7 +14,7 @@ export const Partners = ({ data, bottom = false }) => {
   return partners.length > 0 || publicationType._id === 'pubtype-3' ? (
     <div className={`c-acknowledgements c-partners ${bottom ? 'c-acknowledgements--bottom c-meta' : 'c-acknowledgements--side'}`}>
       {bottom ? <hr className="u-section-underline--no-margins" /> : null }
-        <h3 className="u-headline--2">In collaboration with</h3>
+        <h3 className="u-heading--2">In collaboration with</h3>
       {partners.length > 0 || publicationType._id === 'pubtype-3' ? (
         <div {...classes('item')}>
           {/* <h3 className="u-black-mid-headline">Partners</h3> */}

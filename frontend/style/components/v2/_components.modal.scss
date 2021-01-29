@@ -4,7 +4,7 @@ input[type='checkbox'].c-modal__input {
   position: absolute;
   opacity: 0;
   //-webkit-appearance: none;
-  
+
   &:checked {
     border: 1px solid $v2-dark-blue-2;
     background: $v2-dark-blue-2;
@@ -17,7 +17,7 @@ input[type='checkbox'].c-modal__input {
   height: 20px;
   border-radius: 2px;
   outline: none;
-  border: 1px solid #8f8f8f;
+  border: 1px solid $v2-lighter-grey;
   margin-right: 12px;
 }
 
@@ -37,21 +37,23 @@ input[type='radio'].c-modal__input {
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  background-color: white;
   outline: none;
-  border: 2px solid #8f8f8f;
+  border: 1px solid $v2-lighter-grey;
   &:before {
     content: '';
     display: block;
-    width: 60%;
-    height: 60%;
-    margin: 20% auto;
+    width: 10px;
+    height: 10px;
+    margin: 50% auto 0 auto;
+    transform: translateY(-50%);
     border-radius: 50%;
   }
   &:checked:before {
-    background: #8f8f8f;
+    background: $v2-blue;
   }
   &:checked {
-    border-color: #8f8f8f;
+    border-color: $v2-lighter-grey;
   }
 }
 
@@ -251,5 +253,17 @@ input[type='radio'].c-modal__input {
       border-radius: 20px;
       height: auto;
     }
+  }
+}
+
+.c-modal--form {
+  label {
+    font-family: $font-sans;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    text-align: left;
   }
 }

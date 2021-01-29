@@ -83,5 +83,7 @@ export default augmentSchema({
       },
     },
     slug,
+    featuredImage,
+    vimeoVideo,
   ],
 });

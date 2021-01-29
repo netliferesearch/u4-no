@@ -4,8 +4,9 @@ import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
+import Layout from '../components/v2/Layout';
 
-import { BoxOnBox, Footer, Layout, Accordion, Newsletter, ServiceArticle } from '../components';
+import { BoxOnBox, Footer, Accordion, Newsletter, ServiceArticle, Person } from '../components';
 import { Feature, Mosaic, LinkBox, Team } from '../components';
 import { DownArrowButton, RightArrowButton } from '../components/buttons';
 import {
@@ -17,21 +18,23 @@ import {
   ArrowRight,
 } from '../components/icons';
 import languageName from '../helpers/languageName';
+import { CourseHeader } from '../components/v2/CourseHeader';
+import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
+import { CourseSidebar } from '../components/v2/CourseSidebar';
+import serializers from '../components/v2/serializers';
+import { PersonBasic } from '../components/v2/PersonBasic';
 
 const CoursePage = ({ data: { course = {} }, url = {} }) => {
   const {
     title = '',
     language = '',
-    link = '',
     startDate = {},
     endDate = {},
     featuredImage = {},
     lead = '',
     content = [],
     contact = [],
-    relatedContent = [],
     topics = [],
-    keywords = [],
     courseType = 18,
   } = course;
   return (
@@ -44,27 +47,65 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
         ogp: {},
       }}
     >
-      <div className="c-oneColumnBox c-oneColumnBox__darkOnWhite">
-        <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
-          <div>
-            <p className="c-longform-grid__standard">
-              <a href="/online-courses">Online courses</a>
-            </p>
-            <h2 className="c-longform-grid__standard">{title}</h2>
-            {lead && <p className="c-longform-grid__standard">{lead}</p>}
-            {false && startDate.utc && (
-              <p className="c-longform-grid__standard">
-                {startDate.utc.split('T')[0]} {endDate.utc && `${endDate.utc.split('T')[0]}`}
-              </p>
-            )}
-            {false && language && (
-              <p className="c-longform-grid__standard">
-                Language: {languageName({ langcode: language })}
-              </p>
-            )}
+      <div className="c-course-entry c-article-v2">
+        <section className="o-wrapper u-side-padding">
+          <CourseHeader data={course} />
+        </section>
+        <hr className="u-section-underline--no-margins" />
+        <section className="o-wrapper u-side-padding">
+          <div className="o-wrapper-section c-article__row u-hidden--tablet">
+            <BreadCrumbV2
+              title={`All Online Courses`}
+              parentSlug={'/online-courses'}
+              home={false}
+            />
           </div>
-          {content ? <ServiceArticle blocks={content} /> : null}
+          <div className="o-wrapper-section c-article__row">
+            <div className="c-article__side c-article__col">
+              <CourseSidebar data={course} side={'left'} />
+            </div>
+            <div className="content c-article__col c-article__center">
+              <div className="c-article-v2 o-wrapper-section c-article-v2__main-text">
+                {content ? <BlockContent blocks={content} serializers={serializers} /> : null}
+              </div>
+              <hr className="u-section-underline--no-margins" />
+              <div
+                id="additional-info"
+                className="c-article__additional-info-container o-wrapper-section"
+              >
+                <h3 className="u-heading--2">Course experts</h3>
+                <p className="u-grey-text">Text about the value of U4 experts</p>
+                {contact.length > 0
+                  ? contact.map((c, index) =>
+                      c._id !== 'author-31' ? (
+                        <div key={index}>
+                          <h4 className="u-heading--3">Course developer & facilitator</h4>
+                          <PersonBasic person={c} showEmail={false} />
+                        </div>
+                      ) : null
+                    )
+                  : null}
+                {contact.length > 0
+                  ? contact.map((c, index) =>
+                      c._id === 'author-31' ? (
+                        <div key={index}>
+                          <h4 className="u-heading--3">Course coordinator</h4>
+                          <PersonBasic person={c} showEmail={false} />
+                        </div>
+                      ) : null
+                    )
+                  : null}
+              </div>
+            </div>
+            <div className="c-article__side c-article__col">
+              <CourseSidebar data={course} side={'right'} />
+            </div>
+          </div>
+        </section>
+        <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
+          <div />
 
+          {/* 
           {courseType !== 15 && courseType !== 16 && (
             <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
               <div>
@@ -107,9 +148,9 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             >
               Your browser seems to have problems with iframes. Please try a different browser!
             </iframe>
-          )}
+          )} */}
 
-          {false && topics.length > 0 && (
+          {/* {false && topics.length > 0 && (
             <p className="c-longform-grid__standard">
               Related topics:{' '}
               {topics.map(({ _ref = '', target = {} }) => (
@@ -122,11 +163,12 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
                 </Link>
               ))}
             </p>
-          )}
+          )} */}
         </div>
+        <div id="modal" />
       </div>
 
-      {courseType !== 15 && courseType !== 16 && contact.length > 0 && (
+      {/* {courseType.waitingListId !== 15 && courseType.waitingListId !== 16 && contact.length > 0 && (
         <div id="contacts" className="c-topic-section--lightblue o-wrapper-full-width">
           <Team
             title={
@@ -139,9 +181,9 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             linkLabel="Read full bio"
           />
         </div>
-      )}
-      <Newsletter />
-      <Footer />
+      )} */}
+      {/* <Newsletter />
+      <Footer /> */}
     </Layout>
   );
 };
@@ -150,7 +192,7 @@ export default DataLoader(CoursePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
        "course": *[_type=="course" && slug.current == $slug][0]{title, language, link, startDate, endDate, lead, content, slug,
-          "courseType": courseType->waitingListId,
+          "courseType": courseType->{ title, waitingListId},
           "contact": contact[]->{
           _id,
            title,
@@ -162,7 +204,15 @@ export default DataLoader(CoursePage, {
            slug,
            bio
          },
-        topics, keywords,  _id, "featuredImage": featuredImage.asset->url}}`,
+        topics[]->{ _id, title, slug }, 
+        keywords,  _id, 
+        "featuredImage": {
+          "asset": featuredImage.asset->{
+            "altText": altText,
+            "url": url
+          }
+        },
+        vimeo}}`,
     param: { slug },
   }),
   materializeDepth: 5,

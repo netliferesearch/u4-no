@@ -25,6 +25,7 @@ import u4Event from './event';
 import blogPost from './blogPost';
 //import localeString from './fields/localeString'
 import defaultBlocks from './fields/defaultBlocks';
+import testimonial from './testimonial';
 
 const types = [
   article,
@@ -51,6 +52,7 @@ const types = [
   richDate,
   //localeString,
   defaultBlocks,
+  testimonial,
 ];
 export default createSchema({
   name: 'default',

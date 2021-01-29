@@ -63,7 +63,7 @@ const PublicationContent = ({
 
       {mainPoints.length > 0 && (
         <div className="publication-preview">
-          <h3 className="u-headline--2">Main points</h3>
+          <h3 className="u-heading--2">Main points</h3>
           <ul className="c-article_mainPoints-list">
             {mainPoints.map((mainPoint, index) => (
               <li key={index} className="c-article_mainPoints-item">
