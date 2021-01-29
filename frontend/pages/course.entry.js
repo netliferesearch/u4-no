@@ -48,7 +48,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
       }}
     >
       <div className="c-course-entry c-article-v2">
-        <section className="o-wrapper">
+        <section className="o-wrapper u-side-padding">
           <CourseHeader data={course} />
         </section>
         <hr className="u-section-underline--no-margins" />

@@ -67,7 +67,7 @@ export const CourseSidebar = ({ data, side }) => {
           <div className="c-article-sidebar__row--regular">
             <hr className="u-section-underline--no-margins" />
             <h3 className="u-heading--5">Cost</h3>
-            <p className="u-grey-text">Free</p>
+            <p className="u-grey-text"></p>
           </div>
 
           {language && (
