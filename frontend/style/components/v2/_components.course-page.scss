@@ -1,4 +1,15 @@
 .c-course-entry {
+  // modal jump fix:
+  .c-header--fixed {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  .u-scroll-bar {
+    @include mq($from: tablet) {
+      width: 100%;
+    }
+  }
+
   .u-video {
     width: 520px;
   }
@@ -15,21 +26,65 @@
     display: flex;
     flex-direction: column-reverse;
   }
+  .c-header--fixed {
+    button {
+      margin-left: 16px;
+    }
+    @include mq($from: tablet) {
+      button {
+        margin-left: 32px;
+      }
+    }
+  }
 }
 
-.c-article-sidebar__right {
+.c-course-sidebar {
+  .c-course-sidebar__row-first {
+    margin-top: 0;
+    .c-translations {
+      margin-top: 16px;
+    }
+    @include mq($from: tablet) {
+      margin-top: 16px;
+      .c-translations {
+        margin-top: 0;
+      }
+    }
+  }
   .u-heading--5 {
     margin: 16px 0 0 0;
   }
-  p {
-    line-height: 2;
-    margin: 0;
+
+  .c-course-sidebar__right,
+  .c-course-sidebar__left .u-hidden--desktop {
+    p {
+      margin: 6px 0 0 0;
+    }
+    .c-article-sidebar__row--regular {
+      margin-bottom: 16px;
+    }
+    .c-modal .c-btn--sec {
+      margin-top: 40px;
+    }
   }
-  .c-article-sidebar__row--regular {
-    margin-bottom: 16px;
+}
+
+.c-person-basic--coordinator {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .c-person-basic__text {
+    flex-direction: column;
+    margin-left: 24px;
+    p.u-grey-text {
+      margin: 0;
+    }
+    .c-btn--qua {
+      margin-bottom: 8px;
+    }
   }
   .c-btn--sec {
-    margin-top: 40px;
+    margin-top: 16px;
   }
 }
 

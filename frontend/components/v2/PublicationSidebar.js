@@ -63,7 +63,7 @@ export const PublicationSidebar = ({ data, side }) => {
             <Translations
               translations={translations}
               language={language}
-              route={'/publications'}
+              type={'publications'}
               currentSlug={slug}
             />
           )}
