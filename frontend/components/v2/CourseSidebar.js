@@ -33,18 +33,30 @@ export const CourseSidebar = ({ data, side }) => {
     <div className="c-article-sidebar c-course-sidebar">
       {side === 'left' ? (
         <div className="c-article-sidebar__left c-course-sidebar__left">
-          <div className="c-article-sidebar__row--regular c-course-sidebar__row-first">
-            <div className="u-hidden--desktop">
-              <Share text={title} />
+          {otherLanguages.length > 0 && (
+            <div className="u-hidden--tablet">
+              <div className="c-article-sidebar__row--regular c-course-sidebar__row-first u-hidden--tablet">
+                <Translations
+                  translations={otherLanguages}
+                  language={language}
+                  type={'course'}
+                  currentSlug={slug}
+                />
+              </div>
             </div>
-            {otherLanguages.length > 0 && (
-              <Translations
-                translations={otherLanguages}
-                language={language}
-                type={'course'}
-                currentSlug={slug}
-              />
-            )}
+          )}
+          <div className="u-hidden--desktop">
+            <div className="c-article-sidebar__row--regular c-course-sidebar__row-first">
+              <Share text={title} />
+              {otherLanguages.length > 0 && (
+                <Translations
+                  translations={otherLanguages}
+                  language={language}
+                  type={'course'}
+                  currentSlug={slug}
+                />
+              )}
+            </div>
           </div>
           <div className="u-hidden--desktop">
             <div className="c-article-sidebar__row--regular">
@@ -92,19 +104,20 @@ export const CourseSidebar = ({ data, side }) => {
 
             <hr className="u-section-underline--no-margins" />
           </div>
-
-          <div className="c-article-sidebar__row--regular">
-            {(courseType.waitingListId !== 15 &&
-              courseType.waitingListId !== 16 &&
-              coordinator.length > 0) ||
-            contact.filter(c => c._id === 'author-31').length > 0 ? (
-              <div className="u-hidden--tablet">
-                <h3 className="u-heading--5">Course coordinator:</h3>
-                <PersonContactBasic
-                  person={coordinator[0] || contact.find(c => c._id === 'author-31')}
-                />
-              </div>
-            ) : null}
+          <div className="u-hidden--tablet">
+            <div className="c-article-sidebar__row--regular">
+              {(courseType.waitingListId !== 15 &&
+                courseType.waitingListId !== 16 &&
+                coordinator.length > 0) ||
+              contact.filter(c => c._id === 'author-31').length > 0 ? (
+                <div>
+                  <h3 className="u-heading--5">Course coordinator:</h3>
+                  <PersonContactBasic
+                    person={coordinator[0] || contact.find(c => c._id === 'author-31')}
+                  />
+                </div>
+              ) : null}
+            </div>
           </div>
           <div className="c-article-sidebar__row--regular">
             {(courseType.waitingListId !== 15 &&
@@ -114,7 +127,7 @@ export const CourseSidebar = ({ data, side }) => {
               <div className="u-hidden--desktop">
                 <CourseCoordinator
                   person={coordinator[0] || contact.find(c => c._id === 'author-31')}
-                  url={pdfAsset.asset.url}
+                  url={pdfAsset.asset ? pdfAsset.asset.url : ''}
                 />
               </div>
             ) : null}
@@ -172,12 +185,10 @@ export const CourseSidebar = ({ data, side }) => {
           ) : null}
 
           {pdfAsset.asset ? (
-            <div className="c-article-sidebar__row--regular">
-              <div>
-                <a href={pdfAsset.asset.url} target="_blank" className="c-btn c-btn--sec">
-                  <span>View course leaflet (PDF)</span>
-                </a>
-              </div>
+            <div className="c-article-sidebar__select">
+              <a href={pdfAsset.asset.url} target="_blank" className="c-btn c-btn--sec">
+                <span>View course leaflet (PDF)</span>
+              </a>
             </div>
           ) : null}
         </div>

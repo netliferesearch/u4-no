@@ -21,7 +21,7 @@
   font-family: $font-sans;
   color: $brand-dark;
   margin: 0;
-  @include inuit-font-size($font-size-small, $line-height-large); 
+  @include inuit-font-size($font-size-small, $line-height-large);
   @include mq($from: tablet) {
     width: 52%;
   }
@@ -101,6 +101,9 @@
     margin: 0;
   }
   .c-person-basic__item-body-img {
-    margin: 32px 0;
+    margin: 0;
+    @include mq($from: tablet) {
+      margin: 32px 0;
+    }
   }
 }
