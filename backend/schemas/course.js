@@ -39,8 +39,69 @@ export default augmentSchema({
     },
     language,
     {
+      name: 'otherLanguages',
+      title: 'Course available in other languages',
+      description: 'Add course versions in other languages',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'course',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'cost',
+      title: 'Cost',
+      type: 'string',
+    },
+    {
+      name: 'duration',
+      title: 'Duration',
+      type: 'string',
+    },
+    {
+      name: 'commitment',
+      title: 'Commitment',
+      type: 'string',
+    },
+    {
       name: 'contact',
       title: 'Contact person',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'person',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'coordinator',
+      title: 'Course coordinator',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'person',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'developer',
+      title: 'Course developer',
       type: 'array',
       of: [
         {
@@ -85,5 +146,10 @@ export default augmentSchema({
     slug,
     featuredImage,
     vimeoVideo,
+    {
+      name: 'pdfAsset',
+      description: 'Upload course leaflet',
+      type: 'file'
+    },
   ],
 });

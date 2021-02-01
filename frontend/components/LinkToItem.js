@@ -1,7 +1,7 @@
 import { Link } from '../routes';
 
 const getRoute = (type = '') => {
-  if (type === 'publication') {
+  if (type === 'publications') {
     return 'publication.entry-v2';
   } else if (type === 'topics') {
     return 'topic.entry';

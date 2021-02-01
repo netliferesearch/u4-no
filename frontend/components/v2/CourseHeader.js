@@ -10,7 +10,7 @@ export const CourseHeader = ({ data }) => {
   const {
     title = '',
     lead = '',
-    featuredImage = '',
+    featuredImage = {},
     vimeo = '',
     topics = [],
     courseType = {},
@@ -18,7 +18,7 @@ export const CourseHeader = ({ data }) => {
   return data ? (
     <div className="o-wrapper-section c-course-entry__header">
       <div
-        className={`c-course-entry__intro ${featuredImage ? '' : 'c-course-entry__intro--no-img'}`}
+        className={`c-course-entry__intro ${(featuredImage && featuredImage.asset) || vimeo ? '' : 'c-course-entry__intro--no-img'}`}
       >
         <div>
           <Link route={'/online-courses'}>
@@ -39,7 +39,7 @@ export const CourseHeader = ({ data }) => {
         </div>
       </div>
       {vimeo ? (
-        <div className={`u-video ${vimeo.size || ''}`}>
+        <div className={`u-video u-hidden--tablet  ${vimeo.size || ''}`}>
           <ReactPlayer
             controls
             width="100%"

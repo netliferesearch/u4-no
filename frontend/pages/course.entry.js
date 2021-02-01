@@ -1,42 +1,46 @@
-import React, { Component } from 'react';
-import { Link } from '../routes';
-import sanityClient from '@sanity/client';
+import React, { useRef, useState } from 'react';
 import DataLoader from '../helpers/data-loader';
-import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
 import Layout from '../components/v2/Layout';
-
-import { BoxOnBox, Footer, Accordion, Newsletter, ServiceArticle, Person } from '../components';
-import { Feature, Mosaic, LinkBox, Team } from '../components';
-import { DownArrowButton, RightArrowButton } from '../components/buttons';
-import {
-  Basics,
-  Picture,
-  Publication,
-  Resources,
-  ResearchAgenda,
-  ArrowRight,
-} from '../components/icons';
-import languageName from '../helpers/languageName';
 import { CourseHeader } from '../components/v2/CourseHeader';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
 import { CourseSidebar } from '../components/v2/CourseSidebar';
 import serializers from '../components/v2/serializers';
 import { PersonBasic } from '../components/v2/PersonBasic';
+import { useScrollInfo } from '../helpers/useScrollInfo';
+import { Link } from '../routes';
+import LogoU4 from '../components/icons/LogoU4';
+import { RegisterForm } from '../components/v2/RegisterForm';
+import { Share } from '../components/v2/ShareOnSocialMedia';
 
 const CoursePage = ({ data: { course = {} }, url = {} }) => {
   const {
     title = '',
-    language = '',
-    startDate = {},
-    endDate = {},
     featuredImage = {},
     lead = '',
     content = [],
     contact = [],
-    topics = [],
     courseType = 18,
+    coordinator = [],
+    developer = [],
   } = course;
+
+  const [scrolled, setScrolled] = useState(false);
+  const introRef = useRef(null);
+
+  useScrollInfo(
+    ({ currPos }) => {
+      const isScrolled = currPos.y < 70;
+      if (scrolled !== isScrolled) {
+        setScrolled(isScrolled);
+      }
+    },
+    [scrolled],
+    introRef,
+    false,
+    0
+  );
+
   return (
     <Layout
       headComponentConfig={{
@@ -48,8 +52,32 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
       }}
     >
       <div className="c-course-entry c-article-v2">
+        {scrolled ? (
+          <div className="c-header--fixed">
+            <div className="u-scroll-bar">
+              <div className="c-header--fixed__content ">
+                <div>
+                  <Link route="/">
+                    <a className="u-no-underline">
+                      <LogoU4 />
+                    </a>
+                  </Link>
+                </div>
+                <div className="u-flex-start-center">
+                  <p className="u-grey-text u-hidden--tablet">
+                    A one sentence upsell of the generic value of U4 Online courses
+                  </p>
+                  <RegisterForm courseType={courseType.waitingListId} />
+                  <Share text={title} />
+                </div>
+              </div>
+            </div>
+            <hr className="u-section-underline--no-margins" />
+          </div>
+        ) : null}
         <section className="o-wrapper u-side-padding">
           <CourseHeader data={course} />
+          <span ref={introRef} />
         </section>
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper u-side-padding">
@@ -75,8 +103,8 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
               >
                 <h3 className="u-heading--2">Course experts</h3>
                 <p className="u-grey-text">Text about the value of U4 experts</p>
-                {contact.length > 0
-                  ? contact.map((c, index) =>
+                {developer.length > 0
+                  ? developer.map((c, index) =>
                       c._id !== 'author-31' ? (
                         <div key={index}>
                           <h4 className="u-heading--3">Course developer & facilitator</h4>
@@ -85,7 +113,14 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
                       ) : null
                     )
                   : null}
-                {contact.length > 0
+                {coordinator.length > 0
+                  ? coordinator.map((c, index) => (
+                      <div key={index}>
+                        <h4 className="u-heading--3">Course coordinator</h4>
+                        <PersonBasic person={c} showEmail={false} />
+                      </div>
+                    ))
+                  : contact.length > 0
                   ? contact.map((c, index) =>
                       c._id === 'author-31' ? (
                         <div key={index}>
@@ -150,20 +185,6 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             </iframe>
           )} */}
 
-          {/* {false && topics.length > 0 && (
-            <p className="c-longform-grid__standard">
-              Related topics:{' '}
-              {topics.map(({ _ref = '', target = {} }) => (
-                <Link
-                  key={_ref}
-                  route="topic.entry"
-                  params={{ slug: target.slug ? target.slug.current : '' }}
-                >
-                  <a className="c-article-header__link-item">{target.title}</a>
-                </Link>
-              ))}
-            </p>
-          )} */}
         </div>
         <div id="modal" />
       </div>
@@ -191,7 +212,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
 export default DataLoader(CoursePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-       "course": *[_type=="course" && slug.current == $slug][0]{title, language, link, startDate, endDate, lead, content, slug,
+       "course": *[_type=="course" && slug.current == $slug][0]{title, language, link, startDate, endDate, lead, content, slug, cost, duration, commitment,
           "courseType": courseType->{ title, waitingListId},
           "contact": contact[]->{
           _id,
@@ -204,6 +225,29 @@ export default DataLoader(CoursePage, {
            slug,
            bio
          },
+        "coordinator": coordinator[]->{
+          _id,
+           title,
+           "image": image.asset->{"asset": { "url": url}},
+           position,
+           firstName,
+           surname,
+           email,
+           slug,
+           bio
+         },
+         "developer": developer[]->{
+          _id,
+           title,
+           "image": image.asset->{"asset": { "url": url}},
+           position,
+           firstName,
+           surname,
+           email,
+           slug,
+           bio
+         },
+        otherLanguages[]->{_id, title, language, slug},
         topics[]->{ _id, title, slug }, 
         keywords,  _id, 
         "featuredImage": {
@@ -212,7 +256,8 @@ export default DataLoader(CoursePage, {
             "url": url
           }
         },
-        vimeo}}`,
+        vimeo,
+        pdfAsset}}`,
     param: { slug },
   }),
   materializeDepth: 5,

@@ -6,19 +6,17 @@ import { useLockBodyScroll, useOnClickOutside } from '../../helpers/hooks';
 //import router from 'next/router';
 import LinkToItem from '../LinkToItem';
 
-export const Translations = ({ translations, language, route, currentSlug }) => {
+export const Translations = ({ translations, language, type = 'publications', currentSlug }) => {
   return (
-    <div>
+    <div className="c-translations">
       Also available in{' '}
       {translations.map(
         (item = {}, index) =>
           item.slug &&
           item.title && (
-            <LinkToItem type="publication" slug={item.slug} key={item._id}>
+            <LinkToItem type={type} slug={item.slug} key={item._id}>
               <span>
-                <a className="c-btn c-btn--qua">
-                  {languageName({ langcode: item.language })}
-                </a>
+                <a className="c-btn c-btn--qua">{languageName({ langcode: item.language })}</a>
                 {index + 2 < translations.length && <span>, </span>}
                 {index + 2 === translations.length && <span> and </span>}
               </span>
