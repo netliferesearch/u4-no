@@ -46,15 +46,15 @@ export const FormModal = props => {
         role="dialog"
         onKeyDown={onKeyDown}
       >
-        <div className="c-modal__area c-modal--filters" ref={ref}>
+        <div className="c-modal__area c-modal--form" ref={ref}>
           <div className="c-modal__top">
             <h3 className="c-modal__title">{title}</h3>
             <CloseButton onClick={e => setOpen(false)} />
           </div>
           <hr className="u-section-underline--no-margins" />
-          <div className="c-modal__content c-modal--form">
+          <div className={`c-modal__content ${courseType === 18 ? "" : "c-modal--partners"}`}>
             {courseType !== 15 && courseType !== 16 && (
-              <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
+              <div className="u-margin-top">
                 <div>
                   <iframe
                     title="signup"
@@ -96,13 +96,6 @@ export const FormModal = props => {
                 Your browser seems to have problems with iframes. Please try a different browser!
               </iframe>
             )}
-          </div>
-          <div className="c-modal__bottom">
-            <hr className="u-section-underline--no-margins" />
-            <div className="c-modal__controls">
-              <TextButton onClick={() => setOpen(false)} text="Cancel" modifier="ter" />
-              {/* <TextButton onClick={handleApplyClick} text="Apply" modifier="pri" /> */}
-            </div>
           </div>
         </div>
       </aside>

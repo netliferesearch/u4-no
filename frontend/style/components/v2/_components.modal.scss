@@ -253,13 +253,31 @@ input[type='radio'].c-modal__input {
 }
 
 .c-modal--form {
-  label {
-    font-family: $font-sans;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0.02em;
-    text-align: left;
+  max-width: 600px;
+
+  .c-modal__content {
+    position: relative;
+    padding: 0;
+    @include mq($from: tablet) {
+      padding: 0 16px;
+    }
+  }
+  iframe {
+    height: 70vh;
+    max-height: 762px;
+  }
+  .c-btn--ter {
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    bottom: 63px;
+    right: 150px;
+  }
+
+}
+
+.c-modal--partners {
+  iframe {
+    max-height: 880px;
   }
 }
