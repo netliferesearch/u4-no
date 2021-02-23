@@ -1,26 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { LongformArticleContainer } from '../components';
+// import { LongformArticleContainer } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
+import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
+import LongformArticleContainer from '../components/v2/LongformArticleContainer';
 
-const TopicArticleEntry = (props) => {
-  const { data: { title = '', summary = [] }, url = {} } = props;
+const TopicArticleEntry = props => {
+  const {
+    data: { title = '', summary = [] },
+    url = {},
+  } = props;
   const { query = {} } = url;
   const { slug = '' } = query;
   return (
     <LongformArticleContainer
       BreadCrumbComponent={
-        <BreadCrumb
-          data={{
-            _type: 'publication',
-            slug: { current: slug },
-            title,
-          }}
-        />
+        // <BreadCrumb
+        //   data={{
+        //     _type: 'publication',
+        //     slug: { current: slug },
+        //     title,
+        //   }}
+        // />
+        <BreadCrumbV2 title={title} parentSlug={`/publications/${slug}`} home={false} />
       }
-      content={summary}
+      shortversionContent={summary}
       shortversion
     />
   );

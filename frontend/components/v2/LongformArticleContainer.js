@@ -9,7 +9,8 @@ import {
   TableOfContentsContent,
   AuthorList,
 } from '../';
-import { PublicationContent, Layout, PublicationArticleHeader } from './';
+import { PublicationContent, PublicationArticleHeader } from './';
+import { Layout } from './Layout';
 import { PublicationSidebar } from './PublicationSidebar';
 import { AboutAuthor } from './AboutAuthor';
 import { Disclaimers } from './Disclaimers';
@@ -20,7 +21,7 @@ import { BreadCrumbV2 } from './BreadCrumbV2';
 import { getRouteByType } from '../../helpers/getRouteByType';
 import { Partners } from './Partners';
 import { Reader } from './Reader';
-import LongformArticle from '../LongformArticle';
+import LongformArticle from './LongformArticle';
 import TnrcFooter from '../TnrcFooter';
 
 const LongFormArticleContainer = (props = {}) => {
@@ -56,6 +57,7 @@ const LongFormArticleContainer = (props = {}) => {
       summary = [],
     } = {},
     shortversion = false,
+    shortversionContent = [],
     headComponentConfigOverride,
     isArticleMenuOpen,
     showLoadingScreen,
@@ -140,14 +142,16 @@ const LongFormArticleContainer = (props = {}) => {
             className="o-wrapper u-side-padding"
             style={{ display: readerOpen ? 'none' : 'block' }}
           >
-            <div className="o-wrapper-section c-article__row u-hidden--tablet">
-              <BreadCrumbV2
-                title={`All ${publicationType.title}s`}
-                parentSlug={getRouteByType(publicationType.title)}
-                home={false}
-              />
-            </div>
-            {_type === 'publication' && (
+            {!shortversion ? (
+              <div className="o-wrapper-section c-article__row u-hidden--tablet">
+                <BreadCrumbV2
+                  title={`All ${publicationType.title}s`}
+                  parentSlug={getRouteByType(publicationType.title)}
+                  home={false}
+                />
+              </div>
+            ) : null}
+            {_type === 'publication' && !shortversion && (
               <div className="o-wrapper-section c-article__row">
                 <div className="c-article__side c-article__col">
                   <PublicationSidebar data={props.data} side={'left'} />
@@ -207,7 +211,16 @@ const LongFormArticleContainer = (props = {}) => {
             )}
           </section>
 
-          {/* <LongformArticle content={shortversion ? props.content : ''} {...props.data} /> */}
+          {shortversion && (
+            <div className="c-article--shortversion">
+              <div className="o-wrapper-section c-article__row">
+                {BreadCrumbComponent && BreadCrumbComponent}
+              </div>
+              <div className="o-wrapper-section c-article__row">
+                <LongformArticle content={shortversionContent} {...props.data} />
+              </div>
+            </div>
+          )}
 
           <TnrcFooter publicationTypeId={publicationType._id} />
 
@@ -215,7 +228,12 @@ const LongFormArticleContainer = (props = {}) => {
         </article>
       )}
       {readerOpen && (
-        <Reader data={props.data} setReaderOpen={setReaderOpen} legacypdf={legacypdf} shortversion={shortversion}/>
+        <Reader
+          data={props.data}
+          setReaderOpen={setReaderOpen}
+          legacypdf={legacypdf}
+          shortversion={shortversion}
+        />
       )}
       <div id="modal" />
     </Layout>

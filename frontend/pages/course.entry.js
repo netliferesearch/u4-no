@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import DataLoader from '../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
-import Layout from '../components/v2/Layout';
+import { Layout } from '../components/v2/Layout';
 import { CourseHeader } from '../components/v2/CourseHeader';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
 import { CourseSidebar } from '../components/v2/CourseSidebar';
@@ -184,7 +184,6 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
               Your browser seems to have problems with iframes. Please try a different browser!
             </iframe>
           )} */}
-
         </div>
         <div id="modal" />
       </div>

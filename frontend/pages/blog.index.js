@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DataLoader from '../helpers/data-loader';
-import { Layout } from '../components/v2';
+import { Layout } from '../components/v2/Layout';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
 import BlogFilteredList from '../components/v2/blog/BlogFilteredList';
 

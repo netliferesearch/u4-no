@@ -10,7 +10,7 @@ import footnoteSerializer from '../footnoteSerializer';
  * @type {Object}
  */
 
-const LongformArticle = ({ content = [] }) => {
+const LongformArticle = ({ content = [], title = '' }) => {
   useEffect(() => {
     const littlefoot = require('littlefoot').default;
     littlefoot();

@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import DataLoader from '../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../components/v2/serializers';
-import Layout from '../components/v2/Layout';
+import { Layout } from '../components/v2/Layout';
 import Scrollchor from 'react-scrollchor';
 import { Testimonial } from '../components/v2/Testimonial';
 import { CoursesList } from '../components/v2/CoursesList';

@@ -5,11 +5,13 @@ import {
   CorruptionByTopic,
   Guidance,
   FeaturedPosts,
-  Layout,
   InsightPosts,
   RecentPublications,
   NewsAndEvents,
 } from '../components/v2';
+
+import { Layout } from '../components/v2/Layout';
+
 const Frontpage = ({
   data: { frontPage = {}, topics = {}, featured = {}, insights = [], events = [] },
 }) => (

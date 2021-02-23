@@ -15,7 +15,7 @@ const FeaturedPosts = ({ featured }) => {
         <div className="col">
           <div
             className="post-image"
-            style={{ backgroundImage: `url('${blog.imageUrl}?w=700')` }}
+            style={{ backgroundImage: `url('${blog ? blog.imageUrl : ''}?w=700')` }}
           />
           <div className="text">
             <h6 {...classes('publication-type')}>Featured blog post</h6>
@@ -42,7 +42,7 @@ const FeaturedPosts = ({ featured }) => {
         <div className="col">
           <div
             className="post-image"
-            style={{ backgroundImage: `url('${publication.imageUrl}?w=700')` }}
+            style={{ backgroundImage: `url('${publication ? publication.imageUrl : ''}?w=700')` }}
           />
           <div className="text">
             <h6 {...classes('publication-type')}>Featured publication</h6>
@@ -65,31 +65,35 @@ const FeaturedPosts = ({ featured }) => {
           <hr className="u-section-underline" />
         </div>
       )}
-      <div className="col full-width-post">
-        <div
-          className="post-image"
-          style={{ backgroundImage: `url('${blogLarge.imageUrl}?w=1600&fit=max')` }}
-        />
-        <div className="text">
-          <h6 {...classes('publication-type')}>Featured blog post</h6>
-          <a href={`blog/${blogLarge.slug}`} {...classes('publication-headline')}>
-            <h3 {...classes('publication-headline')}>{blogLarge.title}</h3>
-          </a>
-          <p {...classes('publication-intro')}>{blogLarge.standfirst}</p>
-          <p {...classes('date')}>{dateToString({ start: blogLarge.date.utc })}</p>
-          <div {...classes('topic')}>
-            {blogLarge.topics &&
-              blogLarge.topics.map((topic, index) => {
-                return (
-                  <span className="topic" key={index}>
-                    {topic.title}
-                  </span>
-                );
-              })}
+      {blogLarge ? (
+        <div className="col full-width-post">
+          <div
+            className="post-image"
+            style={{
+              backgroundImage: `url('${blogLarge ? blogLarge.imageUrl : ''}?w=1600&fit=max')`,
+            }}
+          />
+          <div className="text">
+            <h6 {...classes('publication-type')}>Featured blog post</h6>
+            <a href={`blog/${blogLarge.slug}`} {...classes('publication-headline')}>
+              <h3 {...classes('publication-headline')}>{blogLarge.title}</h3>
+            </a>
+            <p {...classes('publication-intro')}>{blogLarge.standfirst}</p>
+            <p {...classes('date')}>{dateToString({ start: blogLarge.date.utc })}</p>
+            <div {...classes('topic')}>
+              {blogLarge.topics &&
+                blogLarge.topics.map((topic, index) => {
+                  return (
+                    <span className="topic" key={index}>
+                      {topic.title}
+                    </span>
+                  );
+                })}
+            </div>
           </div>
+          <hr className="u-section-underline" />
         </div>
-        <hr className="u-section-underline" />
-      </div>
+      ) : null}
     </div>
   );
 };

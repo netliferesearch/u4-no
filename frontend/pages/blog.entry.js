@@ -4,7 +4,7 @@ import findFootnotes from '../components/findFootnotes';
 import footnoteSerializer from '../components/footnoteSerializer';
 import DataLoader from '../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
-import { Layout } from '../components/v2';
+import { Layout } from '../components/v2/Layout';
 import { BlogSidebar } from '../components/v2/blog/BlogSidebar';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
 import { BlogHeader } from '../components/v2/blog/BlogHeader';

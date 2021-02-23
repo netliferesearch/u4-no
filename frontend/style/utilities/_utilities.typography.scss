@@ -48,34 +48,6 @@
   font-weight: 900;
   color: $brand-dark;
 }
-.u-navy-mid-headline {
-  font-family: $font-sans;
-  font-size: 36px;
-  line-height: 50px;
-  font-weight: 700;
-  color: $brand-dark;
-  margin: 32px 0;
-}
-.u-navy-small-headline {
-  color: $brand-dark;
-  font-size: 12px;
-  line-height: 32px;
-  font-family: $font-sans;
-  text-transform: uppercase;
-  font-weight: 900;
-  margin: 0;
-  @include mq($from: tablet) {
-    font-size: 14px;
-  }
-}
-.u-black-mid-headline {
-  font-family: $font-sans;
-  font-size: 22px;
-  line-height: 24px;
-  font-weight: 700;
-  color: $black;
-  margin: 0;
-}
 
 .u-grey-container {
   border-bottom: 1px solid #e6e6e6;
@@ -204,11 +176,11 @@
 
 .u-drop-cap {
   p.c-longform-grid__standard:first-child::first-letter,
-  .c-article__lead--abstract::first-letter {
+  .c-article__lead--abstract::first-letter,
+  &.c-article__lead:first-child::first-letter {
     font-size: 72px;
     line-height: 0.62;
     padding: 8px 8px 0 0;
-
     float: left;
     @include mq($from: tablet) {
       font-size: 144px;
