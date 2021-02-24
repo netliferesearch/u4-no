@@ -6,9 +6,11 @@ import { useLockBodyScroll, useOnClickOutside } from '../../helpers/hooks';
 //import router from 'next/router';
 import LinkToItem from '../LinkToItem';
 
-export const Translations = ({ translations, language, type = 'publications', currentSlug }) => {
+export const Translations = ({ translations, language, type = 'publication', currentSlug }) => {
+  
   return (
     <div className="c-translations">
+      
       Also available in{' '}
       {translations.map(
         (item = {}, index) =>
@@ -93,7 +95,7 @@ export const RadioModal = ({ title = '', options, setOpen, route, currentSlug })
                 (item = {}, index) =>
                   item.slug &&
                   item.title && (
-                    <LinkToItem type="publication" slug={item.slug} key={item._id}>
+                    <LinkToItem type={item._type} slug={item.slug} key={item._id}>
                       <span>
                         <a
                           className="c-modal__label c-btn c-btn--qua"

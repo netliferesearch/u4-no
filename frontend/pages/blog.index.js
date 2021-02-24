@@ -24,7 +24,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
       <div className="c-blog-index">
         <section className="o-wrapper">
           <div className="o-wrapper-section">
-            <h2 className="u-black-32-headline">The U4 Blog</h2>
+            <h2 className="u-black-32-heading">The U4 Blog</h2>
             <p className="c-blog-index__intro">
               Practitioners, policymakers, activists, and academics share insights on how to build a
               sustainable and inclusive future by curbing corruption.

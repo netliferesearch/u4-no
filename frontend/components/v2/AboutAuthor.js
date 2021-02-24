@@ -1,6 +1,5 @@
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import { LinkToItem } from '../';
 import { translate, langCode } from '../../helpers/translate';
 
 export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) => {

@@ -58,6 +58,14 @@
     padding: 0;
     padding-left: 2px;
   }
+  .topic--plain {
+    font-family: $font-sans;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.01em;
+    color: $brand-main;
+  }
 }
 
 .c-keywords {

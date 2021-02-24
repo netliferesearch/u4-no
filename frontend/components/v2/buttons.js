@@ -1,27 +1,47 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { ArrowDown } from './icons/ArrowDown'
+import { ArrowDown } from './icons/ArrowDown';
 const classes = BEMHelper({
   name: 'btn',
   prefix: 'c-',
 });
 
-export const TextButton = ({ onClick = () => null, text = '', modifier = 'qua', disabled=false }) => (
+export const TextButton = ({
+  onClick = () => null,
+  text = '',
+  modifier = 'qua',
+  disabled = false,
+}) => (
   <button {...classes({ modifier })} onClick={onClick} disabled={disabled}>
     {text && <div>{text}</div>}
   </button>
 );
 
-export const TextIconButton = ({ onClick = () => null, text = '', modifier = 'qua', disabled=false }) => (
+export const TextIconButton = ({
+  onClick = () => null,
+  text = '',
+  modifier = 'qua',
+  disabled = false,
+}) => (
   <button {...classes(null, modifier, 'c-btn--chevron')} onClick={onClick} disabled={disabled}>
-    <div>{text && <span>{text}</span>}<ArrowDown /></div>
-    
+    <div>
+      {text && <span>{text}</span>}
+      <ArrowDown />
+    </div>
   </button>
 );
 
-export const RoundIconButton = ({ onClick = () => null, text = '', modifier = 'qua', disabled=false }) => (
+export const RoundIconButton = ({
+  onClick = () => null,
+  text = '',
+  modifier = 'qua',
+  disabled = false,
+}) => (
   <button {...classes(null, modifier, 'c-btn--chevron')} onClick={onClick} disabled={disabled}>
-    <div>{text && <span>{text}</span>}<ArrowDown /></div>
+    <div>
+      {text && <span>{text}</span>}
+      <ArrowDown />
+    </div>
   </button>
 );
 
@@ -74,3 +94,9 @@ export const SubmitButton = ({ onClick = () => null, modifier = 'submit', text =
     {text}
   </button>
 );
+
+// export const LinkButton = ({ slug, text = '', modifier = 'qua', disabled = false }) => (
+//   <Link to={to} {...classes({ modifier })} disabled={disabled}>
+//     <a>{text && <div>{text}</div>}</a>
+//   </Link>
+// );

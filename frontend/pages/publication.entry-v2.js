@@ -4,7 +4,7 @@ import DataLoader from '../helpers/data-loader';
 import LongformArticleContainer from '../components/v2/LongformArticleContainer';
 
 const PublicationEntry = props => (
-  <div>
+  <div className="c-publication">
     <LongformArticleContainer {...props} />
   </div>
 );

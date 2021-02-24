@@ -10,7 +10,7 @@ import { Link } from '../../routes';
  * @param {Boolean} hr
  */
 
-export const Topics = ({ title = true, topics = [], hr = false, linkType = "ter" }) => {
+export const Topics = ({ title = true, topics = [], hr = false, linkType = 'ter' }) => {
   return topics ? (
     <div className="c-topics">
       {title ? <h4 className="u-heading--3">Topics</h4> : null}
@@ -24,6 +24,11 @@ export const Topics = ({ title = true, topics = [], hr = false, linkType = "ter"
                   <div>{topic.title}</div>
                 </a>
               </Link>
+              <span>{`${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}</span>
+            </span>
+          ) : !topic.slug && topic.title ? (
+            <span className="topic--plain" key={index}>
+              <span>{topic.title}</span>
               <span>{`${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}</span>
             </span>
           ) : null

@@ -94,39 +94,8 @@ const LongFormArticleContainer = (props = {}) => {
       showTopTab={!isArticleMenuOpen}
       headComponentConfig={headComponentConfig}
     >
-      {/* {isArticleMenuOpen && (
-        <div
-          className={`c-article-nav-fullscreen ${
-            isArticleMenuOpen ? 'c-article-nav-fullscreen c-article-nav-fullscreen--open' : ''
-          }`}
-        >
-          <TableOfContentsButton {...props.data} />
-          <TableOfContentsContent
-            showAllItems
-            onItemSelected={e => {
-              const linkThatWasClicked = e.target;
-              // prevent this from triggering multiple times
-              if (!showLoadingScreen) {
-                toggleLoadingScreen();
-                setTimeout(() => {
-                  toggleArticleMenu();
-                  linkThatWasClicked.click();
-                  setTimeout(() => {
-                    toggleLoadingScreen();
-                  }, 1);
-                }, 1);
-              }
-            }}
-            {...props.data}
-          />
-        </div>
-      )} */}
-
       {!isArticleMenuOpen && (
         <article className="c-article-v2">
-          {/* {_type === 'publication' && !isPublicationDrawerOpen && (
-            <TableOfContentsButton {...props.data} />
-          )} */}
           <span id="js-top" />
           <div id="js-scroll-trigger" className="o-wrapper u-side-padding">
             {_type === 'publication' && !shortversion && (
@@ -212,14 +181,14 @@ const LongFormArticleContainer = (props = {}) => {
           </section>
 
           {shortversion && (
-            <div className="c-article--shortversion">
+            <section className="c-article--shortversion o-wrapper u-side-padding">
               <div className="o-wrapper-section c-article__row">
                 {BreadCrumbComponent && BreadCrumbComponent}
               </div>
               <div className="o-wrapper-section c-article__row">
                 <LongformArticle content={shortversionContent} {...props.data} />
               </div>
-            </div>
+            </section>
           )}
 
           <TnrcFooter publicationTypeId={publicationType._id} />

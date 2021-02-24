@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 // import { LongformArticleContainer } from '../components';
-import BreadCrumb from '../components/BreadCrumb';
+// import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
 import LongformArticleContainer from '../components/v2/LongformArticleContainer';
 
-const TopicArticleEntry = props => {
+const PublicationShort = props => {
   const {
     data: { title = '', summary = [] },
     url = {},
@@ -32,7 +31,7 @@ const TopicArticleEntry = props => {
   );
 };
 
-TopicArticleEntry.propTypes = {
+PublicationShort.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
     summary: PropTypes.arrayOf(PropTypes.object),
@@ -41,14 +40,14 @@ TopicArticleEntry.propTypes = {
     current: PropTypes.string,
   }).isRequired,
 };
-TopicArticleEntry.defaultProps = {
+PublicationShort.defaultProps = {
   data: {
     title: 'No title',
     summary: 'No summary',
   },
 };
 
-export default DataLoader(TopicArticleEntry, {
+export default DataLoader(PublicationShort, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: '*[slug.current == $slug][0]',
     param: { slug },
