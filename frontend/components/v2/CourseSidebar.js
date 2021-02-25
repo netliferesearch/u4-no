@@ -61,13 +61,13 @@ export const CourseSidebar = ({ data, side }) => {
           <div className="u-hidden--desktop">
             <div className="c-article-sidebar__row--regular">
               <h3 className="u-heading--5">Course Type</h3>
-              <p className="u-grey-text">{courseType.title}</p>
+              <p className="u-text--grey">{courseType.title}</p>
             </div>
             {startDate.utc && (
               <div className="c-article-sidebar__row--regular">
                 <hr className="u-section-underline--no-margins" />
                 <h3 className="u-heading--5">When</h3>
-                <p className="u-grey-text">
+                <p className="u-text--grey">
                   {dateToString({ start: startDate.utc, end: endDate.utc || '' })}
                 </p>
               </div>
@@ -76,21 +76,21 @@ export const CourseSidebar = ({ data, side }) => {
               <div className="c-article-sidebar__row--regular">
                 <hr className="u-section-underline--no-margins" />
                 <h3 className="u-heading--5">{cost}</h3>
-                <p className="u-grey-text" />
+                <p className="u-text--grey" />
               </div>
             ) : null}
             {language && (
               <div className="c-article-sidebar__row--regular">
                 <hr className="u-section-underline--no-margins" />
                 <h3 className="u-heading--5">Language:</h3>
-                <p className="u-grey-text">{languageName({ langcode: language })}</p>
+                <p className="u-text--grey">{languageName({ langcode: language })}</p>
               </div>
             )}
             {duration ? (
               <div className="c-article-sidebar__row--regular">
                 <hr className="u-section-underline--no-margins" />
                 <h3 className="u-heading--5">Duration</h3>
-                <p className="u-grey-text">{duration}</p>
+                <p className="u-text--grey">{duration}</p>
               </div>
             ) : null}
 
@@ -98,7 +98,7 @@ export const CourseSidebar = ({ data, side }) => {
               <div className="c-article-sidebar__row--regular">
                 <hr className="u-section-underline--no-margins" />
                 <h3 className="u-heading--5">Commitment</h3>
-                <p className="u-grey-text">{commitment}</p>
+                <p className="u-text--grey">{commitment}</p>
               </div>
             ) : null}
 
@@ -139,14 +139,14 @@ export const CourseSidebar = ({ data, side }) => {
         <div className="c-course-sidebar__right u-hidden--tablet">
           <div className="c-article-sidebar__row--regular">
             <h3 className="u-heading--5">Course Type</h3>
-            <p className="u-grey-text">{courseType.title}</p>
+            <p className="u-text--grey">{courseType.title}</p>
           </div>
 
           {startDate.utc && (
             <div className="c-article-sidebar__row--regular">
               <hr className="u-section-underline--no-margins" />
               <h3 className="u-heading--5">When</h3>
-              <p className="u-grey-text">
+              <p className="u-text--grey">
                 {dateToString({ start: startDate.utc, end: endDate.utc || '' })}
               </p>
             </div>
@@ -156,7 +156,7 @@ export const CourseSidebar = ({ data, side }) => {
             <div className="c-article-sidebar__row--regular">
               <hr className="u-section-underline--no-margins" />
               <h3 className="u-heading--5">{cost}</h3>
-              <p className="u-grey-text" />
+              <p className="u-text--grey" />
             </div>
           ) : null}
 
@@ -164,7 +164,7 @@ export const CourseSidebar = ({ data, side }) => {
             <div className="c-article-sidebar__row--regular">
               <hr className="u-section-underline--no-margins" />
               <h3 className="u-heading--5">Language:</h3>
-              <p className="u-grey-text">{languageName({ langcode: language })}</p>
+              <p className="u-text--grey">{languageName({ langcode: language })}</p>
             </div>
           )}
 
@@ -172,7 +172,7 @@ export const CourseSidebar = ({ data, side }) => {
             <div className="c-article-sidebar__row--regular">
               <hr className="u-section-underline--no-margins" />
               <h3 className="u-heading--5">Duration</h3>
-              <p className="u-grey-text">{duration}</p>
+              <p className="u-text--grey">{duration}</p>
             </div>
           ) : null}
 
@@ -180,7 +180,7 @@ export const CourseSidebar = ({ data, side }) => {
             <div className="c-article-sidebar__row--regular">
               <hr className="u-section-underline--no-margins" />
               <h3 className="u-heading--5">Commitment</h3>
-              <p className="u-grey-text">{commitment}</p>
+              <p className="u-text--grey">{commitment}</p>
             </div>
           ) : null}
 

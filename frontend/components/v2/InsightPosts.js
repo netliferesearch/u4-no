@@ -1,34 +1,26 @@
 import React from 'react';
 import dateToString from '../../helpers/dateToString';
-import BEMHelper from 'react-bem-helper';
-import { Link } from '../../routes';
 import LinkToItem from '../LinkToItem';
 import { BlogAuthorsShortList } from './blog/BlogAuthorsShortList';
+import { SectionIntro } from './SectionIntro';
 import { Topics } from './Topics';
 
-export const PostsList = ({ insights }) => {
-  const classes = BEMHelper({ name: 'frontpage-section', prefix: 'c-' });
+export const PostList = ({ insights }) => {
   const firstPost = insights[0];
   return (
-    <div className="c-posts-list c-post-list--2col">
-      <div className="c-posts-list__row">
-        <div>
-          <h2 className="u-heading--2">Latest from the blog</h2>
-          <p className="u-standfirst u-grey-text">Lorem ipsum ipsum lorem</p>
-          <div>
-            <Link route={'/blog'}>
-              <a className="c-btn c-btn--ter">
-                <span>View blog</span>
-              </a>
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div className="c-posts-list__row">
-        <div className="c-posts-list__col--1">
+    <div className="c-post-list c-post-list--2col">
+      <SectionIntro
+        title="Latest from the blog"
+        text="Lorem ipsum ipsum lorem"
+        slug="/blog"
+        label="View blog"
+      />
+
+      <div className="c-post-list__row c-post-list__content">
+        <div className="c-post-list__col--1">
           {firstPost ? (
             <LinkToItem type={firstPost._type} slug={firstPost.slug}>
-              <a className={`c-featured-post__item c-featured-post__item--full-width`}>
+              <a className={`c-featured-post__item c-featured-post__item--big`}>
                 {firstPost.imageUrl ? (
                   <div
                     className="c-featured-post__featured-image"
@@ -62,43 +54,44 @@ export const PostsList = ({ insights }) => {
             </LinkToItem>
           ) : null}
         </div>
-        <div className="c-posts-list__col--2">
+        <div className="c-post-list__col--2">
           {insights.length > 2
-            ? insights.map((post, index) => (
-                index !== 0 ? <LinkToItem type={post._type} slug={post.slug} key={index}>
-                  <a className={`c-featured-post__item`}>
-                    {post.imageUrl ? (
-                      <div
-                        className="c-featured-post__featured-image"
-                        style={{
-                          backgroundImage: `url(${
-                            post.imageUrl
-                          }?w=523&h=408&fit=crop&crop=focalpoint)`,
-                        }}
-                      />
-                    ) : null}
-                    <div className="c-featured-post__text">
-                      <div>
+            ? insights.map((post, index) =>
+                index !== 0 ? (
+                  <LinkToItem type={post._type} slug={post.slug} key={index}>
+                    <a className={`c-featured-post__item c-featured-post__item--small`}>
+                      {post.imageUrl ? (
+                        <div
+                          className="c-featured-post__featured-image"
+                          style={{
+                            backgroundImage: `url(${
+                              post.imageUrl
+                            }?w=523&h=408&fit=crop&crop=focalpoint)`,
+                          }}
+                        />
+                      ) : null}
+                      <div className="c-featured-post__text">
                         <div>
-                          {post.topics && (
-                            <Topics title={false} topics={post.topics} hr={false} linkType={'5'} />
-                          )}
+                          <div>
+                            {post.topics && (
+                              <Topics
+                                title={false}
+                                topics={post.topics}
+                                hr={false}
+                                linkType={'5'}
+                              />
+                            )}
+                            <h3 className="u-heading--5">{post.title}</h3>
+                          </div>
+                          <p className="c-featured-post__date">
+                            {post.date ? dateToString({ start: post.date.utc }) : null}
+                          </p>
                         </div>
-                        <h3 className="u-black-32-heading">{post.title}</h3>
-                        <p className="c-featured-post__intro">{post.standfirst}</p>
-                        <p className="c-featured-post__name">
-                          {post.authors.length > 0 ? (
-                            <BlogAuthorsShortList authors={post.authors} />
-                          ) : null}
-                        </p>
-                        <p className="c-featured-post__date">
-                          {post.date ? dateToString({ start: post.date.utc }) : null}
-                        </p>
                       </div>
-                    </div>
-                  </a>
-                </LinkToItem> : null
-              ))
+                    </a>
+                  </LinkToItem>
+                ) : null
+              )
             : null}
         </div>
       </div>

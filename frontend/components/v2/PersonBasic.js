@@ -80,8 +80,8 @@ export const PersonContactBasic = ({ person, cta = 'Questions about the course?'
 
       {cta && person.email ? (
         <div>
-          <p className="u-grey-text">{cta}</p>
-          <p className="u-grey-text">
+          <p className="u-text--grey">{cta}</p>
+          <p className="u-text--grey">
             <span>Contact </span>
             <a className="u-grey-a" href={`mailto:${person.email}`}>
               <span>{person.firstName}</span>
@@ -123,8 +123,8 @@ export const CourseCoordinator = ({ person, cta = 'Questions about the course?',
         )}
         {cta && person.email ? (
           <div>
-            <p className="u-grey-text">{cta}</p>
-            <p className="u-grey-text">
+            <p className="u-text--grey">{cta}</p>
+            <p className="u-text--grey">
               <span>Contact </span>
               <a className="u-grey-a" href={`mailto:${person.email}`}>
                 <span>{person.firstName}</span>

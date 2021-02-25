@@ -28,8 +28,7 @@ export const Topics = ({ title = true, topics = [], hr = false, linkType = 'ter'
             </span>
           ) : !topic.slug && topic.title ? (
             <span className="topic--plain" key={index}>
-              <span>{topic.title}</span>
-              <span>{`${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}</span>
+              {`${topic.title}${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}
             </span>
           ) : null
         )}

@@ -64,7 +64,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
                   </Link>
                 </div>
                 <div className="u-flex-start-center">
-                  <p className="u-grey-text u-hidden--tablet">
+                  <p className="u-text--grey u-hidden--tablet">
                     A one sentence upsell of the generic value of U4 Online courses
                   </p>
                   <RegisterForm courseType={courseType.waitingListId} />
@@ -102,7 +102,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
                 className="c-article__additional-info-container o-wrapper-section"
               >
                 <h3 className="u-heading--2">Course experts</h3>
-                <p className="u-grey-text">Text about the value of U4 experts</p>
+                <p className="u-text--grey">Text about the value of U4 experts</p>
                 {developer.length > 0
                   ? developer.map((c, index) =>
                       c._id !== 'author-31' ? (
