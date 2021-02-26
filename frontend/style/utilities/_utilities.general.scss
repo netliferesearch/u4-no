@@ -117,6 +117,12 @@ iframe {
   align-items: center;
 }
 
+.u-flex-sb {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .u-span-btn {
   display: flex;
   justify-content: flex-start;

@@ -9,7 +9,7 @@ import { BlogSidebar } from '../components/v2/blog/BlogSidebar';
 import { BreadCrumbV2 } from '../components/v2/BreadCrumbV2';
 import { BlogHeader } from '../components/v2/blog/BlogHeader';
 import { Keywords } from '../components/v2/Keywords';
-import Newsletter from '../components/v2/Newsletter';
+import { Newsletter } from '../components/v2/Newsletter';
 import { AboutAuthor } from '../components/v2/AboutAuthor';
 import { Disclaimers } from '../components/v2/Disclaimers';
 import { Share } from '../components/v2/ShareOnSocialMedia';

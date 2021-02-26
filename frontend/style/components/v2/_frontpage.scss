@@ -532,12 +532,15 @@
 
 .c-section-intro {
   margin: 32px 0;
+
   h2 {
     margin-top: 0;
+    max-width: 640px;
   }
   p {
     margin-top: 8px;
     margin-bottom: 0;
+    max-width: 640px;
   }
   @include mq($from: tablet) {
     align-items: flex-end;

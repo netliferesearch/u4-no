@@ -1,15 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DataLoader from '../helpers/data-loader';
-import {
-  CorruptionByTopic,
-  Guidance,
-  FeaturedPosts,
-  InsightPosts,
-  RecentPublications,
-  NewsAndEvents,
-} from '../components/v2';
-
 import { Layout } from '../components/v2/Layout';
 import { Footer, PartnerAgencies } from '../components';
 import { FeaturedPost } from '../components/v2/FeaturedPosts';
@@ -71,10 +62,14 @@ const Frontpage = ({
           <hr className="u-section-underline--no-margins" />
         </div>
       </section>
+      <section className="u-side-padding">
+        <PartnerAgencies />
+      </section>
+      <section className="u-bg-light-grey u-side-padding">
+        <Footer />
+      </section>
     </div>
 
-    <PartnerAgencies />
-    <Footer />
     {/* <section className="o-wrapper">
       <div className="o-wrapper-section">
         <NewsAndEvents items={events} title={'News & events'} />

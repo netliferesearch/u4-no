@@ -114,3 +114,28 @@
     }
   }
 }
+
+.c-newsletter-footer {
+  .c-newsletter {
+    max-width: 530px;
+    margin: 0;
+  }
+  .c-newsletter__content {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+  }
+  .c-newsletter__cta {
+    text-align: left;
+    font-weight: 700;
+    font-size: 22px;
+    color: $v2-black;
+  }
+  .c-newsletter__title-wrapper {
+    border: none;
+    background-color: #ffffff;
+  }
+  .c-newsletter__input {
+    max-width: 364px;
+  }
+}
