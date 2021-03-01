@@ -137,6 +137,14 @@ iframe {
   pointer-events: none;
 }
 
+.u-border--none {
+  border: none;
+  &:hover,
+  &:active {
+    border: none;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

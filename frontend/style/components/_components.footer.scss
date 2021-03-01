@@ -77,17 +77,34 @@
   .c-btn {
     display: block;
     text-align: left;
-    line-height: 18px;
+    line-height: 1.6;
+  }
+  .c-share-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+  .c-newsletter-v2 .c-newsletter__cta {
+    margin: 0 0 24px 0;
+  }
+}
+
+.c-footer__logo {
+  svg {
+    max-width: 148px;
   }
 }
 
 .c-footer__row {
-  margin-bottom: 64px;
+  margin-bottom: 48px;
 }
 
 .c-footer__col1 {
   width: 100%;
   max-width: 400px;
+  .u-heading--5 {
+    line-height: 1.6;
+  }
   @include mq($from: tablet) {
   }
 }
