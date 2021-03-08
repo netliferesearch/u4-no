@@ -11,7 +11,7 @@ export default {
       { title: 'German', value: 'de_DE' },
       { title: 'Portuguese', value: 'pt_PT' },
       { title: 'Russian', value: 'ru_RU' },
-      { title: 'Ukranian', value: 'uk_UA' },
+      { title: 'Ukrainian', value: 'uk_UA' },
     ], // <-- predefined values
   },
   layout: "dropdown"

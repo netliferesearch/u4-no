@@ -11,7 +11,7 @@ const languages = [
   { code: 'fr', name: 'French' },
   { code: 'es', name: 'Spanish' },
   { code: 'in', name: 'Indonesian' },
-  { code: 'uk', name: 'Ukranian' },
+  { code: 'uk', name: 'Ukrainian' },
 ];
 
 const camelToTitle = (camelCase) => camelCase
