@@ -24,12 +24,17 @@ app.prepare().then(() => {
   if (process.env.NODE_ENV === 'production') {
     server.use(forceSsl);
   }
-  server.get('/robots.txt', (req, res) => {
-    res.type('text/plain');
-    // Only allow indexing on production.
-    const urlPath = process.NODE_ENV === 'production' ? "" : "/"
-    res.send(`User-agent: *\nDisallow:${urlPath}`);
-  });
+  if (process.env.NODE_ENV !== 'production') {
+    server.get('/robots.txt', (req, res) => {
+      res.type('text/plain');
+      res.send('User-agent: *\nDisallow: /');
+    });
+  } else {
+    server.get('/robots.txt', (req, res) => {
+      res.type('text/plain');
+      res.send('User-agent: *\nDisallow:');
+    });
+  }
   server.get('//$', (req, res) => res.redirect(301, '/'));
   // /search-v2 was a temporary test url, that we want to remove from any
   // browsers by telling them that the page has been moved to /search.
