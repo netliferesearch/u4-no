@@ -7,7 +7,7 @@ export default ({ langcode = '' }) => {
     in_IN: 'Indonesian',
     pt_PT: 'Portuguese',
     ru_RU: 'Russian',
-    uk_UA: 'Ukranian',
+    uk_UA: 'Ukrainian',
   };
   if (langcode === '') return 'English';
   return languageNames[langcode] ? languageNames[langcode] : 'an other language';

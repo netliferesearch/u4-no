@@ -370,7 +370,7 @@ function getLanguageName(languageCode) {
     de_DE: 'German',
     pt_PT: 'Portuguese',
     ru_RU: 'Russian',
-    uk_UA: 'Ukranian',
+    uk_UA: 'Ukrainian',
   };
   return languageMap[languageCode];
 }
