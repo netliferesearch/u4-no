@@ -8,7 +8,8 @@ const Mosaic = ({ resources = [], alt = false }) => (
       .filter(({ _id = '' }) => _id)
       // loops through lists and return only a set with resources with unique ids
       .reduce((x, y) => (x.map(({ _id }) => _id).includes(y._id) ? x : [...x, y]), [])
-      .map((
+      .map(
+        (
           {
             title = '',
             _id = '',
@@ -21,7 +22,7 @@ const Mosaic = ({ resources = [], alt = false }) => (
             firstName = '',
             surname = '',
           },
-          index,
+          index
         ) => (
           <LinkToItem key={_id} type={_type} slug={slug}>
             <a
@@ -33,7 +34,7 @@ const Mosaic = ({ resources = [], alt = false }) => (
                   : ' '
               }`}
               style={{
-                backgroundImage: imageUrl && index % 4 === 0 ? `url(${imageUrl}?w=1200)` : '',
+                backgroundImage: imageUrl && index % 4 === 0 ? `url(${imageUrl}?w=800&q=70)` : '',
               }}
             >
               <div
@@ -54,7 +55,8 @@ const Mosaic = ({ resources = [], alt = false }) => (
               </div>
             </a>
           </LinkToItem>
-        ))}
+        )
+      )}
   </div>
 );
 
