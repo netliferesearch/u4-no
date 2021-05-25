@@ -87,7 +87,7 @@ class Menu extends Component {
               Menu
               <span {...classes('menu-icon')}>
                 {this.state.activeMenu ? (
-                  <img alt="Close icon" src="/static/close.svg" />
+                  <img alt="Close icon" src="/public/close.svg" />
                 ) : (
                   <MenuIcon />
                 )}

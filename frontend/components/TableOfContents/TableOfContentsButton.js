@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { toggleArticleMenu, saveScrollPosition } from '../../helpers/redux-store';
 
-const TableOfContentsButton = (props) => {
+const TableOfContentsButton = props => {
   const {
     toggleArticleMenu = () => {},
     storedScrollPosition = false,
@@ -38,9 +38,9 @@ const TableOfContentsButton = (props) => {
       }}
     >
       {props.isArticleMenuOpen ? (
-        <img alt="Close icon" src="/static/close.svg" />
+        <img alt="Close icon" src="/public/close.svg" />
       ) : (
-        <img alt="Table of contents icon" src="/static/table-of-contents-icon.svg" />
+        <img alt="Table of contents icon" src="/public/table-of-contents-icon.svg" />
       )}
     </button>
   );
@@ -51,4 +51,7 @@ const mapDispatchToProps = dispatch => ({
   toggleArticleMenu: bindActionCreators(toggleArticleMenu, dispatch),
   saveScrollPosition: bindActionCreators(saveScrollPosition, dispatch),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(TableOfContentsButton);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TableOfContentsButton);

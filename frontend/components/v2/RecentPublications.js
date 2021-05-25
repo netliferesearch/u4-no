@@ -74,7 +74,7 @@ const RecentPublications = ({ resources = [], alt = false }) => {
         )}
       <h2 className="c-frontpage-section__cta">
         <a href="/search?search=*" {...classes('view-all')}>
-          View all <img alt="Close icon" src="/static/arrow-right-slim.svg" />
+          View all <img alt="Close icon" src="/public/arrow-right-slim.svg" />
         </a>
       </h2>
     </div>

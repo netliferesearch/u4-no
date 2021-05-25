@@ -273,7 +273,7 @@ const LongFormArticleContainer = props => {
       <span id="js-bottom" />
       <Footer />
       <Head>
-        <link rel="icon" type="image/png" href="/static/favicon.png" />
+        <link rel="icon" type="image/png" href="/public/favicon.png" />
       </Head>
     </article>
   );

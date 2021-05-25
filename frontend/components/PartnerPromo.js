@@ -57,7 +57,7 @@ const PartnerPromo = ({
         </a>
       </div>
       <figure className="c-boxOnImage__figure c-boxOnImage__figure--smaller">
-        <img src="/static/services_partners.jpg?w=1600&amp;h=400&amp;fit=crop&amp;crop=focalpoint" />
+        <img src="/public/services_partners.jpg?w=1600&amp;h=400&amp;fit=crop&amp;crop=focalpoint" />
       </figure>
     </section>
     <h2 className="c-topic-section__cta u-margin-top-huge">
