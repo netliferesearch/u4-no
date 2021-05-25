@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import stylesheet from '../style/main.scss';
 
 const HeadComponent = ({ title, description, image, url, ogp }) => (
   <Head>
@@ -25,7 +24,6 @@ const HeadComponent = ({ title, description, image, url, ogp }) => (
     <meta name="twitter:site" content="@U4_ACRC" />
     <link rel="icon" type="image/png" href="/static/favicon.png" />
 
-    <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
     <script
       dangerouslySetInnerHTML={{
         __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
