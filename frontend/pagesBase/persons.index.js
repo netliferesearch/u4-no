@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import sortBy from 'lodash/sortBy';
-import { Link } from '../routes';
+import Link from 'next/link';
 import { Layout, Footer, Team } from '../components';
 import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';

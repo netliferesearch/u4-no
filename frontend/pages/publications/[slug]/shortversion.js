@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { LongformArticleContainer } from '../components';
-import BreadCrumb from '../components/BreadCrumb';
-import DataLoader from '../helpers/data-loader';
+import { LongformArticleContainer } from '../../../components';
+import BreadCrumb from '../../../components/BreadCrumb';
+import DataLoader from '../../../helpers/data-loader';
 
-const TopicArticleEntry = (props) => {
-  const { data: { title = '', summary = [] }, url = {} } = props;
+const TopicArticleEntry = props => {
+  const {
+    data: { title = '', summary = [] },
+    url = {},
+  } = props;
   const { query = {} } = url;
   const { slug = '' } = query;
   return (

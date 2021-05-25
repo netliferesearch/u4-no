@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from '../routes';
+import Link from 'next/link';
 import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';

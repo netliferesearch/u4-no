@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from '../routes';
+import Link from 'next/link';
 import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from '../components/serializers'
+import serializers from '../components/serializers';
 
 import { BoxOnBox, Footer, Layout, Accordion, Newsletter, ServiceArticle } from '../components';
 import { Feature, Mosaic, LinkBox, LinkList } from '../components';
@@ -27,19 +27,19 @@ const ServicePage = ({
       lead = [],
       leadLinks = '',
       sections = [],
-      relatedUrl = {}
-    }  = {},
+      relatedUrl = {},
+    } = {},
   } = {},
   url = {},
 }) => (
   <Layout
-  headComponentConfig={{
-    title,
-    description: lead,
-    image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
-    url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
-    ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
-  }}
+    headComponentConfig={{
+      title,
+      description: lead,
+      image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
+      url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
+      ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
+    }}
   >
     <h2 className="c-topic-page_title">{title}</h2>
     <h2 className="c-topic-page__longTitle">{longTitle}</h2>
@@ -49,8 +49,8 @@ const ServicePage = ({
           <img alt="" src={featuredImage} />
         </figure>
         <div className="c-boxOnImage__body">
-           <BlockContent blocks={lead} serializers={serializers} />
-           {leadLinks && <LinkList title="" content={leadLinks} />}
+          <BlockContent blocks={lead} serializers={serializers} />
+          {leadLinks && <LinkList title="" content={leadLinks} />}
         </div>
       </section>
     ) : null}

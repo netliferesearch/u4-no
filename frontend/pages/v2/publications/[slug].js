@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DataLoader from '../helpers/data-loader';
-import LongformArticleContainer from '../components/v2/LongformArticleContainer';
+import DataLoader from '../../../helpers/data-loader';
+import LongformArticleContainer from '../../../components/v2/LongformArticleContainer';
 
 const PublicationEntry = props => (
   <div>

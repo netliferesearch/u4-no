@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DataLoader from '../helpers/data-loader';
+import DataLoader from '../../helpers/data-loader';
 import {
   CorruptionByTopic,
   Guidance,
@@ -9,7 +9,7 @@ import {
   InsightPosts,
   RecentPublications,
   NewsAndEvents,
-} from '../components/v2';
+} from '../../components/v2';
 const Frontpage = ({
   data: { frontPage = {}, topics = {}, featured = {}, insights = [], events = [] },
 }) => (
@@ -58,7 +58,7 @@ const Frontpage = ({
 
     <section className="o-wrapper">
       <div className="o-wrapper-section">
-        <NewsAndEvents items={events} title={'News & events'}/>
+        <NewsAndEvents items={events} title={'News & events'} />
       </div>
     </section>
   </Layout>

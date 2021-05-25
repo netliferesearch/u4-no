@@ -1,6 +1,6 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { Link } from '../routes';
+import Link from 'next/link';
 import { Layout, Footer } from '../components';
 import { ArrowRight, ArrowRightSmall, MediumLogo, TwitterLogo } from '../components/icons/';
 import BreadCrumb from '../components/BreadCrumb';

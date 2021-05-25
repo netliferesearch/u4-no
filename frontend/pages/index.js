@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
-import { Link } from '../routes';
+import Link from 'next/link';
 import {
   Layout,
   FrontpageSearchField,

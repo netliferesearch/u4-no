@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import dateToString from '../helpers/dateToString';
-import { Link } from '../routes';
+import Link from 'next/link';
 import sanityClient from '@sanity/client';
 import DataLoader from '../helpers/data-loader';
 import Head from 'next/head';
