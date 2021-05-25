@@ -4,7 +4,7 @@ import BEMHelper from 'react-bem-helper';
 import autobind from 'react-autobind';
 import { Loader } from '../components';
 import { MagnifyingGlass } from '../components/icons';
-import { Router } from '../routes';
+import { withRouter } from 'next/router';
 
 const classes = BEMHelper({
   name: 'frontpage-search',
@@ -46,7 +46,7 @@ class FrontpageSearchField extends Component {
     this.setState({
       loading: !this.state.loading,
     });
-    Router.pushRoute(`/search?search=${e.target.search.value}`);
+    this.props.router.pushRoute(`/search?search=${e.target.search.value}`);
   }
 
   render() {
@@ -81,7 +81,7 @@ class FrontpageSearchField extends Component {
                       searchQuery: value,
                       loading: true,
                     },
-                    () => Router.pushRoute(`/search?search=${value}`)
+                    () => this.props.router.pushRoute(`/search?search=${value}`)
                   );
                 }, 500);
               }
@@ -108,10 +108,11 @@ class FrontpageSearchField extends Component {
 
 FrontpageSearchField.propTypes = {
   modifier: PropTypes.string,
+  router: PropTypes.object.isRequired,
 };
 
 FrontpageSearchField.defaultProps = {
   modifier: '',
 };
 
-export default FrontpageSearchField;
+export default withRouter(FrontpageSearchField);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '../routes';
+import Link from 'next/link';
 import BEMHelper from 'react-bem-helper';
 import { Pin } from './icons';
 

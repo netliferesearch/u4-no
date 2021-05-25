@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import withRedux from 'next-redux-wrapper';
@@ -10,7 +9,6 @@ const elasticsearch = require('elasticsearch');
 const mapDispatchToProps = dispatch => ({
   updateReadingProgress: bindActionCreators(updateReadingProgress, dispatch),
 });
-
 
 // anonymous has read access to elasticsearch index so this works
 const client = new elasticsearch.Client({

@@ -3,8 +3,6 @@ import BEMHelper from 'react-bem-helper';
 import sanityClient from '@sanity/client';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
-import { Link } from '../routes';
-import { SearchField, SearchFieldV2 } from '../components';
 import { ArrowRight, SearchIcon, MenuIcon } from '../components/icons';
 
 const classes = BEMHelper({

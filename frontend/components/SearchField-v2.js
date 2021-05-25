@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import { updateSearchPageNum } from '../helpers/redux-store';
 import { LoaderV2 } from '../components';
 import { SearchIcon } from '../components/icons';
-import { Router } from '../routes';
 import { withRouter } from 'next/router';
 import queryString from 'query-string';
 

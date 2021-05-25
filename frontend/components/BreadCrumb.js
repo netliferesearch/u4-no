@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import buildUrl from '../helpers/buildUrl'
-import client from '../helpers/sanity-client-config'
-import { Link } from '../routes';
+import buildUrl from '../helpers/buildUrl';
+import client from '../helpers/sanity-client-config';
+import Link from 'next/link';
 import ArrowRightSmall from './icons/ArrowRightSmall';
 
 /**
@@ -20,8 +20,8 @@ class BreadCrumb extends Component {
     }).isRequired,
     url: PropTypes.shape({
       current: PropTypes.string,
-    }).isRequired
-  }
+    }).isRequired,
+  };
 
   constructor(props) {
     super(props);
@@ -33,34 +33,30 @@ class BreadCrumb extends Component {
       return; // no need to fetch data if we got link data passed in.
     }
     const sanityQuery = '*[slug.current == $ref][0]';
-    const {
-      url: {
-        query: {
-          ref = '',
-        } = {},
-      } = {},
-    } = this.props;
+    const { url: { query: { ref = '' } = {} } = {} } = this.props;
     const sanityParams = { ref };
     if (ref) {
-      client.fetch(sanityQuery, sanityParams).then((data) => {
+      client.fetch(sanityQuery, sanityParams).then(data => {
         this.setState(() => ({ data }));
       });
     }
   }
 
   render() {
-    if(!this.state.data) return <div></div>
-    const { data = { title: '' } } = this.state
-    const { title = '' } = data
+    if (!this.state.data) return <div />;
+    const { data = { title: '' } } = this.state;
+    const { title = '' } = data;
     return (
       <div className="c-breadcrumb">
         <div className="c-breadcrumb-inner o-wrapper o-wrapper--padded">
-        {data && (
-          <Link route={buildUrl(data)}>
-            <a className="c-breadcrumb__link"><ArrowRightSmall /> {title}</a>
-          </Link>
-        )}
-      </div>
+          {data && (
+            <Link route={buildUrl(data)}>
+              <a className="c-breadcrumb__link">
+                <ArrowRightSmall /> {title}
+              </a>
+            </Link>
+          )}
+        </div>
       </div>
     );
   }

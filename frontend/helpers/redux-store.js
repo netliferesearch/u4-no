@@ -5,7 +5,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import uniq from 'lodash/uniq';
 import queryString from 'query-string';
-import { Router } from '../routes';
 
 // for when we need to reflect some redux state in the url
 const replaceWindowHash = hashValue => {
@@ -107,7 +106,7 @@ export const reducer = (state = defaultState, action) => {
         searchFilters: uniq(action.searchFilters),
       });
     case actionTypes.SEARCH_UPDATE_PAGE_NUM:
-      if(state.searchPageNum !== action.searchPageNum) {
+      if (state.searchPageNum !== action.searchPageNum) {
         addQueryParams({
           searchPageNum: `${action.searchPageNum}`,
         });
@@ -124,7 +123,7 @@ export const reducer = (state = defaultState, action) => {
         defaultSearchAggs: action.defaultSearchAggs,
       });
     case actionTypes.SEARCH_UPDATE_RESULTS:
-      return {...state, searchResults: action.searchResults};
+      return { ...state, searchResults: action.searchResults };
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
     case actionTypes.TOGGLE_LOADING_SCREEN:

@@ -1,7 +1,7 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { Logo } from './';
-import { Link } from '../routes';
+import Link from 'next/link';
 import { CmiLogo, MediumLogo, TwitterLogo, FacebookLogo, LinkedIn } from './icons/';
 
 const classes = BEMHelper({

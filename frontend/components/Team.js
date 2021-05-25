@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '../routes';
+import Link from 'next/link';
 import BEMHelper from 'react-bem-helper';
 import { Person } from './';
 import { ArrowRight } from '../components/icons';
@@ -23,7 +23,8 @@ const Team = ({
         <h2 {...classes('title')}>
           {sayHi && (
             <span>
-              Hi!<br />
+              Hi!
+              <br />
             </span>
           )}
           {title}
@@ -33,7 +34,9 @@ const Team = ({
     <div {...classes('wrapper', null)}>
       {members
         .map(member => (member.target ? member.target : member))
-        .map(member => <Person key={member._id} light person={member} linkLabel={linkLabel} />)}
+        .map(member => (
+          <Person key={member._id} light person={member} linkLabel={linkLabel} />
+        ))}
     </div>
   </section>
 );

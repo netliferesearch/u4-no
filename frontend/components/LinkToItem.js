@@ -1,4 +1,4 @@
-import { Link } from '../routes';
+import Link from 'next/link';
 
 const getRoute = (type = '') => {
   if (type === 'publication') {
@@ -21,9 +21,7 @@ const getRoute = (type = '') => {
   return 'general.article';
 };
 
-const LinkToItem = ({
-  type = false, _type = '', slug = '', children,
-}) => (
+const LinkToItem = ({ type = false, _type = '', slug = '', children }) => (
   <Link route={getRoute(type || _type)} params={{ slug: slug.current ? slug.current : slug }}>
     {children}
   </Link>

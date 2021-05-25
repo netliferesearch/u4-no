@@ -1,6 +1,6 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { Link } from '../routes';
+import Link from 'next/link';
 import languageName from '../helpers/languageName';
 import bibliographicReference from '../helpers/bibliographicReference';
 import { Download, ArrowRight, PartnerLogo10 } from './icons';

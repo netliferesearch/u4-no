@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from '../routes';
+import Link from 'next/link';
 import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';

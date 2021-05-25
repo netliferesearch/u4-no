@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
-import { Link } from '../routes';
+import Link from 'next/link';
 import { HeadComponent, Logo, MenuV2, SearchFieldV2 } from '../components';
 
 const classes = BEMHelper({

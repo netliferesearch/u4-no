@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '../routes';
+import Link from 'next/link';
 import BEMHelper from 'react-bem-helper';
 import { Person } from './';
 import { ArrowRight, Helpdesk, OnlineTraining, Workshops, Download } from '../components/icons';
@@ -63,7 +63,8 @@ const PartnerPromo = ({
     <h2 className="c-topic-section__cta u-margin-top-huge">
       <Link to="/u4-partner-agencies">
         <a>
-          See all our partners &nbsp;<ArrowRight />
+          See all our partners &nbsp;
+          <ArrowRight />
         </a>
       </Link>
     </h2>

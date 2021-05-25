@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
-import { Link } from '../../routes';
+import Link from 'next/link';
 import { HeadComponent, Logo } from '../';
-import {  Menu, SearchField } from '.';
-import { LogoCMI } from './icons/LogoCMI'
-import { LogoMobile } from './icons/LogoMobile'
+import { Menu, SearchField } from '.';
+import { LogoCMI } from './icons/LogoCMI';
+import { LogoMobile } from './icons/LogoMobile';
 import LogoU4 from '../icons/LogoU4';
 
 const classes = BEMHelper({
@@ -70,13 +70,14 @@ class Layout extends Component {
                   </a>
                 </Link>
               )}
-              {this.state.searchOpen &&
+              {this.state.searchOpen && (
                 <SearchField
                   isOpen={this.state.activeSearchMenu}
                   isAlwaysOpen={true}
                   triggerSearchMenu={this.triggerSearchMenu}
                   searchData={searchData}
-                />}
+                />
+              )}
               {hideLogo && <div />}
               <Menu
                 noSearch={noSearch}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Link } from '../routes';
+import Link from 'next/link';
 import { ArrowRight } from '../components/icons';
 
 const classes = BEMHelper({
@@ -12,8 +12,7 @@ const classes = BEMHelper({
 class FrontpageFeature extends Component {
   static propTypes = {
     topics: PropTypes.arrayOf(PropTypes.object),
-
-  }
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -76,7 +75,8 @@ class FrontpageFeature extends Component {
               </ul>
             ) : null}
             <a className="c-topic-section__cta-light" href="/topics">
-              View all {topics.length} topics &nbsp;<ArrowRight />
+              View all {topics.length} topics &nbsp;
+              <ArrowRight />
             </a>
             {false && (
               <button {...classes('btn')} onClick={this.triggerToggle}>
