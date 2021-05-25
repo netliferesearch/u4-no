@@ -38,7 +38,7 @@
     "force-ssl-heroku": "^1.0.2",
     "get-random-values": "^1.2.0",
     "glob": "^7.1.2",
-    "highcharts": "^7.0.3",
+    "highcharts": "^9.0.0",
     "highcharts-react-official": "^2.0.0",
     "html-to-text": "^4.0.0",
     "intersection-observer": "^0.5.1",
