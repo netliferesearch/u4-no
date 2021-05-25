@@ -12,7 +12,7 @@ const {
 const { shortUrlHandler } = require('./pagesBase/_shorturl');
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
-const handler = app.getRequestHandler();
+const handle = app.getRequestHandler();
 
 // With express
 const express = require('express');
@@ -37,6 +37,14 @@ app.prepare().then(() => {
   server.get('/publication/:slug.pdf', publicationPdfHandler);
   server.get('/previewpdf/:type/:id', publicationPdfPreviewHandler);
   server.get('/r/:shortSlug', shortUrlHandler);
-  server.use(handler);
-  server.listen(process.env.PORT || 3000);
+
+  server.all('*', (req, res) => {
+    return handle(req, res);
+  });
+
+  const port = process.env.PORT || 3000;
+  server.listen(port, err => {
+    if (err) throw err;
+    console.log(`> Ready on http://localhost:${port}`);
+  });
 });
