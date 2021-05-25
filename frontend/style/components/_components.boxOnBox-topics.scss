@@ -3,7 +3,8 @@
   font-weight: 300;
   font-family: $font-sans;
   color: $white-on-blue;
-  @include inuit-font-size($font-size-small, $font-size-large) @include mq($from: tablet) {
+  @include inuit-font-size($font-size-small, $font-size-large);
+  @include mq($from: tablet) {
     margin-right: auto;
     margin-left: auto;
     max-width: 1100px;
@@ -111,14 +112,14 @@
 }
 
 .c-boxOnBox-topics__statement-title {
-  @include inuit-font-size($font-size-normal, $line-height-normal );
+  @include inuit-font-size($font-size-normal, $line-height-normal);
   margin-top: 0;
   margin-bottom: 0;
   color: $white;
 }
 
 .c-boxOnBox-topics__statement-body {
-  @include inuit-font-size($font-size-small, $line-height-normal );
+  @include inuit-font-size($font-size-small, $line-height-normal);
   margin-top: $spacing-small;
   max-width: 550px;
   color: $white-on-blue;

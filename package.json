@@ -60,6 +60,7 @@
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
+    "sass": "^1.34.0",
     "slugify": "^1.2.9",
     "textract": "^2.5.0",
     "typewriter-effect": "^2.5.3",
