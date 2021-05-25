@@ -9,7 +9,8 @@
     "@sanity/block-content-to-tree": "^0.3.0",
     "@sanity/client": "^0.139.0",
     "autoprefixer": "^7.2.5",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
+    "babel-jest": "^27.0.1",
     "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "concurrently": "^3.5.0",
@@ -18,7 +19,7 @@
     "downshift": "^1.25.0",
     "elasticsearch": "^16.7.1",
     "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-compat": "^2.2.0",
@@ -36,20 +37,21 @@
     "intersection-observer": "^0.5.1",
     "inuitcss": "^6.0.0-beta.5",
     "isomorphic-fetch": "^2.2.1",
-    "jest": "^22.1.4",
+    "jest": "^27.0.1",
     "littlefoot": "^1.0.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",
     "moment": "^2.22.1",
     "next": "^10.2.3",
     "next-redux-wrapper": "^1.3.5",
-    "prop-types": "^15.6.0",
+    "postcss": "^8.3.0",
+    "prop-types": "^15.7.2",
     "query-string": "^5.0.1",
-    "react": "^16.8.6",
+    "react": "^16.14.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-autobind": "^1.0.6",
     "react-bem-helper": "^1.4.1",
-    "react-dom": "^16.13.1",
+    "react-dom": "^16.14.0",
     "react-intersection-observer": "^8.0.5",
     "react-paginating": "^1.4.0",
     "react-pdf": "2.1.7",
@@ -78,14 +80,6 @@
     "storybook": "cd frontend && start-storybook -p 6006",
     "build-storybook": "cd frontend && build-storybook"
   },
-  "jest": {
-    "transform": {
-      "^.+\\.js$": "<rootDir>/jest.transform.js"
-    },
-    "moduleNameMapper": {
-      "^.+\\.(css|less|scss)$": "babel-jest"
-    }
-  },
   "engines": {
     "node": "^10.13.0"
   },
@@ -103,7 +97,7 @@
     "babel-eslint": "^10.0.1",
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-babel": "^5.3.0",
-    "nodemon": "^1.19.0",
+    "nodemon": "^2.0.7",
     "prettier": "1.15.3"
   }
 }
