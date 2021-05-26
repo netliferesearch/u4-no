@@ -1,8 +1,6 @@
 import React from 'react';
 import Router from 'next/router';
 
-import sanityClient from '@sanity/client';
-
 /* send 301 Permanent redirect to path */
 function redirectPermanent(ctx, path) {
   if (ctx.res) {

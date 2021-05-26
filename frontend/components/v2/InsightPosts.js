@@ -1,7 +1,6 @@
 import React from 'react';
 import dateToString from '../../helpers/dateToString';
 import BEMHelper from 'react-bem-helper';
-import { Link } from '@reach/router';
 
 const InsightPosts = ({ insights }) => {
   const classes = BEMHelper({ name: 'frontpage-section', prefix: 'c-' });

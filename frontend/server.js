@@ -20,7 +20,8 @@ const express = require('express');
 app.prepare().then(() => {
   const server = express();
   server.use(bodyParser.json());
-  if (process.env.NODE_ENV === 'production') {
+  console.log('process.env.SKIP_SSL', process.env.SKIP_SSL);
+  if (process.env.NODE_ENV === 'production' && process.env.SKIP_SSL !== 'true') {
     server.use(forceSsl);
   }
   if (process.env.NODE_ENV !== 'production') {

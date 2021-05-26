@@ -1,7 +1,7 @@
 import React from 'react';
-import { PrintLongformArticleContainer } from '../components/print';
-import DataLoader from '../helpers/data-loader';
-import { localize } from '../helpers/translate';
+import { PrintLongformArticleContainer } from '../../../components/print';
+import DataLoader from '../../../helpers/data-loader';
+import { localize } from '../../../helpers/translate';
 
 const PublicationEntry = ({ data: { current, institutions = [], u4 } = {} }) => (
   <div>{current && <PrintLongformArticleContainer {...{ ...current, institutions, u4 }} />}</div>

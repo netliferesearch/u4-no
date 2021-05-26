@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { ArrowRightSlim } from '../icons/ArrowRightSlim';
 import buildTitleObjects from '../TableOfContents/buildTitleObjects';
-import Scrollchor from 'react-scrollchor';
+import { Scrollchor } from 'react-scrollchor';
 import LongformArticle from './LongformArticle';
 import { ShareOnSocialMedia } from './ShareOnSocialMedia';
 import PdfViewer from '../PdfViewer';
@@ -105,16 +105,27 @@ export const Reader = ({ title = '', content = [], setReaderOpen = false, legacy
           </div>
         ) : null}
         <div>
-        <ul className="c-article-nav-list c-article-nav-list--2">
-          <li className={`c-article-nav-list__item`}><a href='#'>References</a></li>
-          <li className={`c-article-nav-list__item`}><a href='#'>About the author</a></li>
-          <li className={`c-article-nav-list__item`}><a href='#'>Acknowledgements</a></li>
-          <li className={`c-article-nav-list__item`}><a href='#'>Methodology</a></li>
-          <li className={`c-article-nav-list__item`}><a href='#'>Notes</a></li>
-          <li className={`c-article-nav-list__item`}><a href='#'>Annex</a></li>
-        </ul>
+          <ul className="c-article-nav-list c-article-nav-list--2">
+            <li className={`c-article-nav-list__item`}>
+              <a href="#">References</a>
+            </li>
+            <li className={`c-article-nav-list__item`}>
+              <a href="#">About the author</a>
+            </li>
+            <li className={`c-article-nav-list__item`}>
+              <a href="#">Acknowledgements</a>
+            </li>
+            <li className={`c-article-nav-list__item`}>
+              <a href="#">Methodology</a>
+            </li>
+            <li className={`c-article-nav-list__item`}>
+              <a href="#">Notes</a>
+            </li>
+            <li className={`c-article-nav-list__item`}>
+              <a href="#">Annex</a>
+            </li>
+          </ul>
         </div>
-
       </div>
       {content.length > 0 && (
         <LongformArticle content={content} title={title} fontSize={FONT_SIZES[readingFontSize]} />

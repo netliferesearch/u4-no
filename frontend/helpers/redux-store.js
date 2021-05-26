@@ -1,7 +1,6 @@
 /* eslint-disable */
 
 import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import uniq from 'lodash/uniq';
 import queryString from 'query-string';
@@ -185,5 +184,5 @@ export const initStore = (initialState = defaultState, options) => {
     };
   }
 
-  return createStore(reducer, state, composeWithDevTools(applyMiddleware(thunkMiddleware)));
+  return createStore(reducer, state, applyMiddleware(thunkMiddleware));
 };
