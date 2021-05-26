@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
-import { HeadComponent, Logo } from '../';
+import { HeadComponent } from '../';
 import { Menu, SearchField } from '.';
-import { LogoCMI } from './icons/LogoCMI';
-import { LogoMobile } from './icons/LogoMobile';
+import LogoCMI from './icons/LogoCMI';
+import LogoMobile from './icons/LogoMobile';
 import LogoU4 from '../icons/LogoU4';
 
 const classes = BEMHelper({
