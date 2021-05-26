@@ -2,8 +2,7 @@ import React from 'react';
 import { LinkToItem } from '../';
 import BEMHelper from 'react-bem-helper';
 import dateToString from '../../helpers/dateToString';
-import { Document, Page } from 'react-pdf/build/entry.noworker';
-//import useMediaQuery from '../../helpers/useMediaQuery';
+import { Document, Page } from 'react-pdf';
 
 const RecentPublications = ({ resources = [], alt = false }) => {
   const classes = BEMHelper({ name: 'frontpage-section', prefix: 'c-' });
