@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import buildUrl from '../helpers/buildUrl';
 
 const getRoute = (type = '') => {
   if (type === 'publication') {
@@ -22,7 +23,7 @@ const getRoute = (type = '') => {
 };
 
 const LinkToItem = ({ type = false, _type = '', slug = '', children }) => (
-  <Link route={getRoute(type || _type)} params={{ slug: slug.current ? slug.current : slug }}>
+  <Link href={buildUrl(_type, slug)} params={{ slug: slug.current ? slug.current : slug }}>
     {children}
   </Link>
 );

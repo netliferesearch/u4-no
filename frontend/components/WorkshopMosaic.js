@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import BEMHelper from 'react-bem-helper';
 import { Pin } from './icons';
+import buildUrl from '../helpers/buildUrl'
 
 const classes = BEMHelper({
   name: 'workshop-mosaic',
@@ -12,7 +13,7 @@ const WorkshopMosaic = ({ resources = [] }) => (
   <div {...classes()}>
     {resources.map(item => (
       <div {...classes('item')}>
-        <Link route="event.entry" params={{ slug: item.target.slug.current }}>
+        <Link href={buildUrl(item.target.slug)} params={{ slug: item.target.slug.current }}>
           <a>
             <Pin {...classes('icon')} />
             <div {...classes('title')}>{item.target.title}</div>

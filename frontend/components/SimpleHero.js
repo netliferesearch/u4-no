@@ -20,7 +20,7 @@ const SimpleHero = ({ title, content = [], light = false, cta = false, helpdesk 
     {!cta && helpdesk && (
       <div {...classes('content')}>
         {'Ask our free helpdesk today – send your question to '}
-        <Link to="mailto:helpdesk@u4.no">
+        <Link href="mailto:helpdesk@u4.no">
           <a {...classes('mailto')} title="Send an e-mail to helpdesk@u4.no">
             helpdesk@u4.no
           </a>
@@ -28,7 +28,7 @@ const SimpleHero = ({ title, content = [], light = false, cta = false, helpdesk 
       </div>
     )}
     {cta && helpdesk && (
-      <Link to="mailto:helpdesk@u4.no">
+      <Link href="mailto:helpdesk@u4.no">
         <a {...classes('cta')}>
           Ask our free helpdesk today – send your question to helpdesk@u4.no
         </a>

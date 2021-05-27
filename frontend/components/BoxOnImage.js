@@ -33,7 +33,7 @@ const BoxOnImage = ({
               .map(person => (person.target ? person.target : person))
               .map(person => (
                 <p>
-                  <Link to={buildUrl({ _type: 'person', slug: person.slug.current })}>
+                  <Link href={buildUrl({ _type: 'person', slug: person.slug.current })}>
                     <a>
                       {person.firstName} {person.surname}
                     </a>
@@ -57,7 +57,7 @@ const BoxOnImage = ({
                 .map(person => (person.target ? person.target : person))
                 .map(person => (
                   <p>
-                    <Link to={buildUrl({ _type: 'person', slug: person.slug.current })}>
+                    <Link href={buildUrl({ _type: 'person', slug: person.slug.current })}>
                       <a>
                         {person.firstName} {person.surname}
                       </a>
