@@ -46,15 +46,15 @@ const Footer = () => (
             Newsletter
           </a>
           <br />
-          <Link to="/privacy-policy">
+          <Link href="/privacy-policy">
             <a>Privacy policy</a>
           </Link>
           <br />
-          <Link to="/about-u4#open-access-policy">
+          <Link href="/about-u4#open-access-policy">
             <a>Open access policy</a>
           </Link>
           <br />
-          <Link to="/about-u4">
+          <Link href="/about-u4">
             <a>About U4</a>
           </Link>
           <br />

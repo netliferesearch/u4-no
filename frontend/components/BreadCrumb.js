@@ -50,7 +50,7 @@ class BreadCrumb extends Component {
       <div className="c-breadcrumb">
         <div className="c-breadcrumb-inner o-wrapper o-wrapper--padded">
           {data && (
-            <Link route={buildUrl(data)}>
+            <Link href={buildUrl(data)}>
               <a className="c-breadcrumb__link">
                 <ArrowRightSmall /> {title}
               </a>

@@ -51,7 +51,7 @@ class Layout extends Component {
         {showTopTab && (
           <div {...classes('', '', 'u-z-index-xx u-bg-white')}>
             {!hideLogo && (
-              <Link route="/">
+              <Link href="/">
                 <a {...classes('logo')}>
                   <Logo />
                 </a>
