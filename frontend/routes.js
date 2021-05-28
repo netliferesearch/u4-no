@@ -21,7 +21,7 @@
 //   .add('event.entry', '/events/:slug')
 //   .add('course.entry', '/courses/:slug')
 //   .add('service.workshops', '/workshops-and-events')
-//   .add('service.online-courses', '/online-courses')
+//   .add('service.online-courses', '/online-courses') => /online-courses/index.js
 //   .add('service.helpdesk', '/helpdesk')
 //   .add('service.about', '/about-u4') => /about-u4/index.js
 //   .add('asset.entry', '/assets/:slug')

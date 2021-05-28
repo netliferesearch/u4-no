@@ -13,7 +13,7 @@ const WorkshopMosaic = ({ resources = [] }) => (
   <div {...classes()}>
     {resources.map(item => (
       <div {...classes('item')}>
-        <Link href={buildUrl(item.target.slug)} params={{ slug: item.target.slug.current }}>
+        <Link href={buildUrl(item.target.slug)}>
           <a>
             <Pin {...classes('icon')} />
             <div {...classes('title')}>{item.target.title}</div>
