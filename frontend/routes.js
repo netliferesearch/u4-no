@@ -8,8 +8,8 @@
 //   .add('publication.entry', '/publications/:slug')
 //   .add('publication.print', '/publications/:slug/print')
 //   .add('publication.entry-v2', '/publication/:slug')
-//   .add('blog.index', '/blog')
-//   .add('blog.entry', '/blog/:slug')
+//   .add('blog.index', '/blog') => /blog/index.js
+//   .add('blog.entry', '/blog/:slug') => /blog/[slug].js
 //   .add('topic.article', '/topics/:slug/:topicPart')
 //   .add('topic.entry', '/topics/:slug') => /topics/[slug].js
 //   .add('topic.index', '/topics') => /topics/index.js

@@ -63,7 +63,7 @@ class Layout extends Component {
             </a>
             <div className="fixed-header-content">
               {!hideLogo && (
-                <Link route="/">
+                <Link href="/">
                   <a {...classes('logo', 'fixed', this.state.searchOpen ? '' : 'logo-white')}>
                     <LogoU4 />
                     <LogoMobile />
