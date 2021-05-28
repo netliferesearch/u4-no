@@ -22,9 +22,11 @@ const getRoute = (type = '') => {
   return 'general.article';
 };
 
-const LinkToItem = ({ type = false, _type = '', slug = '', children }) => (
-  <Link href={buildUrl(_type, slug)} params={{ slug: slug.current ? slug.current : slug }}>
-    {children}
-  </Link>
-);
+const LinkToItem = ({ _type = '', slug = '', children }) => {
+  return(
+    <Link href={buildUrl({_type, slug})}>
+      {children}
+    </Link>
+  );
+};
 export default LinkToItem;

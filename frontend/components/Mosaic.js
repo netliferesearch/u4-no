@@ -24,7 +24,7 @@ const Mosaic = ({ resources = [], alt = false }) => (
           },
           index
         ) => (
-          <LinkToItem key={_id} type={_type} slug={slug}>
+          <LinkToItem key={_id} _type={_type} slug={slug}>
             <a
               className={`c-mosaic_item ${
                 index % 4 === 0 ? 'c-mosaic_item--backgroundImage' : ''
