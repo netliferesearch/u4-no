@@ -14,7 +14,7 @@
 //   .add('topic.entry', '/topics/:slug')                                                       => /topics/[slug].js
 //   .add('topic.index', '/topics')                                                             => /topics/index.js
 //   .add('glossary.index', '/terms')                                                           => /terms/index.js
-//   .add('keywords.index', '/keywords')
+//   .add('keywords.index', '/keywords')                                                        => /keywords/index.js
 //   .add('persons.index', '/the-team')                                                         => /the-team/index.js
 //   .add('persons.entry', '/the-team/:slug')                                                   => /the-team/[slug].js
 //   .add('search-v2.index', '/search')
