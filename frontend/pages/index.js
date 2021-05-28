@@ -46,11 +46,11 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} } }) => (
     </section>
     <section className="o-wrapper-medium u-margin-bottom-huge">
       <div className="c-introduction-text">
-        {/* <BlockContent blocks={frontPage.sections} serializers={serializers} /> */}
+        <BlockContent blocks={frontPage.sections} serializers={serializers} />
       </div>
     </section>
 
-    {/* <FrontpageFeature topics={topics} />
+    <FrontpageFeature topics={topics} />
 
     <section className="o-wrapper u-margin-bottom-huge">
       <h2 className="c-topic-section__title">
@@ -95,7 +95,7 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} } }) => (
 
     <Footer />
 
-    <PartnerAgencies /> */}
+    <PartnerAgencies />
   </Layout>
 );
 

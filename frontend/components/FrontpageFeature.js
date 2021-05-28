@@ -53,7 +53,7 @@ class FrontpageFeature extends Component {
             <ul {...classes('list')}>
               {topics.slice(0, 5).map((topic, index) => (
                 <li key={topic._id} {...classes('list-item')}>
-                  <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                  <Link href={`/topics/${topic.slug.current}`} >
                     <a {...classes('link')} onMouseEnter={() => this.triggerImg(topic.imageUrl)}>
                       {topic.title}
                     </a>
@@ -65,7 +65,7 @@ class FrontpageFeature extends Component {
               <ul {...classes('list', 'active')}>
                 {topics.slice(5, 50).map(topic => (
                   <li {...classes('list-item')}>
-                    <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                    <Link href={`/topics/${topic.slug.current}`}>
                       <a {...classes('link')} onMouseEnter={() => this.triggerImg(topic.imageUrl)}>
                         {topic.title}
                       </a>
