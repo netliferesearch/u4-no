@@ -1,27 +1,6 @@
 import Link from 'next/link';
 import buildUrl from '../helpers/buildUrl';
 
-const getRoute = (type = '') => {
-  if (type === 'publication') {
-    return 'publication.entry';
-  } else if (type === 'topics') {
-    return 'topic.entry';
-  } else if (type === 'article') {
-    return 'general.article';
-  } else if (type === 'person') {
-    return 'persons.entry';
-  } else if (type === 'frontpage') {
-    return 'general.article';
-  } else if (type === 'course') {
-    return 'course.entry';
-  } else if (type === 'asset') {
-    return 'asset.entry';
-  } else if (type === 'term') {
-    return 'glossary.index';
-  }
-  return 'general.article';
-};
-
 const LinkToItem = ({ _type = '', slug = '', children }) => {
   return(
     <Link href={buildUrl({_type, slug})}>
