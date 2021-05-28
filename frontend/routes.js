@@ -1,7 +1,7 @@
 // const routes = ''; //(module.exports = require('next-routes')());
 
 // routes
-//   .add('main.index', '/')
+//   .add('main.index', '/') => index.js
 //   .add('main.index-v2', '/v2')
 //   .add('publication.shortVersion', '/publications/:slug/shortversion')
 //   .add('publication.file', '/publications/:slug/downloadasset/:legacyid')
@@ -15,16 +15,16 @@
 //   .add('topic.index', '/topics')
 //   .add('glossary.index', '/terms')
 //   .add('keywords.index', '/keywords')
-//   .add('persons.index', '/the-team')
-//   .add('persons.entry', '/the-team/:slug')
+//   .add('persons.index', '/the-team') => /the-team/index.js
+//   .add('persons.entry', '/the-team/:slug') => /the-team/[slug].js
 //   .add('search-v2.index', '/search')
 //   .add('event.entry', '/events/:slug')
 //   .add('course.entry', '/courses/:slug')
 //   .add('service.workshops', '/workshops-and-events')
 //   .add('service.online-courses', '/online-courses')
 //   .add('service.helpdesk', '/helpdesk')
-//   .add('service.about', '/about-u4')
+//   .add('service.about', '/about-u4') => /about-u4/index.js
 //   .add('asset.entry', '/assets/:slug')
-//   .add('general.article', '/:slug')
+//   .add('general.article', '/:slug') => [slug].js
 //   .add('preview', '/preview/:type/:id')
 //   .add('publication.print.preview', '/printpreview/:id');

@@ -39,7 +39,6 @@ const About = ({ data: { about = {}, url = {} } }) => {
     
       {sections ? <ServiceArticle blocks={sections} /> : null}
     
-
       <Newsletter />
       <Footer />
     </Layout>
