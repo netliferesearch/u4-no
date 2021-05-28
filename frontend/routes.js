@@ -22,7 +22,7 @@
 //   .add('course.entry', '/courses/:slug')
 //   .add('service.workshops', '/workshops-and-events') => /workshops-and-events/index.js
 //   .add('service.online-courses', '/online-courses') => /online-courses/index.js
-//   .add('service.helpdesk', '/helpdesk')
+//   .add('service.helpdesk', '/helpdesk') => /helpdesk/index.js
 //   .add('service.about', '/about-u4') => /about-u4/index.js
 //   .add('asset.entry', '/assets/:slug')
 //   .add('general.article', '/:slug') => [slug].js
