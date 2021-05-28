@@ -13,12 +13,12 @@
 //   .add('topic.article', '/topics/:slug/:topicPart')
 //   .add('topic.entry', '/topics/:slug')
 //   .add('topic.index', '/topics')
-//   .add('glossary.index', '/terms')
+//   .add('glossary.index', '/terms') => /terms/index.js
 //   .add('keywords.index', '/keywords')
 //   .add('persons.index', '/the-team') => /the-team/index.js
 //   .add('persons.entry', '/the-team/:slug') => /the-team/[slug].js
 //   .add('search-v2.index', '/search')
-//   .add('event.entry', '/events/:slug')
+//   .add('event.entry', '/events/:slug') => /events/[slug].js
 //   .add('course.entry', '/courses/:slug')
 //   .add('service.workshops', '/workshops-and-events') => /workshops-and-events/index.js
 //   .add('service.online-courses', '/online-courses') => /online-courses/index.js
