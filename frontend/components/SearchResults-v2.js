@@ -43,7 +43,7 @@ const SearchResult = props => {
       <div {...classes('glossary')}>
         <span {...classes('items-type')}>Glossary</span>
         <br />
-        <Link route={url}>
+        <Link href={url}>
           <a {...classes('items-title')}>{termTitle}</a>
         </Link>
         <br />
@@ -72,7 +72,7 @@ const SearchResult = props => {
           <div {...classes('topic-content')}>
             <span {...classes('items-type')}>Topic</span>
             <br />
-            <Link route={url}>
+            <Link href={url}>
               <a {...classes('items-title')}>
                 <Highlight highlight={topicTitleHighlight} fallback={topicTitle} />
               </a>
@@ -82,7 +82,7 @@ const SearchResult = props => {
             {isBasicGuidePresent && (
               <div {...classes('topic-point')}>
                 <ArrowRightSmall />
-                <Link route={`${url}/basics`}>
+                <Link href={`${url}/basics`}>
                   <a>Basic guide</a>
                 </Link>
               </div>
@@ -90,7 +90,7 @@ const SearchResult = props => {
             {isAgendaPresent && (
               <div {...classes('topic-point')}>
                 <ArrowRightSmall />
-                <Link route={`${url}/agenda`}>
+                <Link href={`${url}/agenda`}>
                   <a>Research and policy agenda</a>
                 </Link>
               </div>
@@ -98,7 +98,7 @@ const SearchResult = props => {
             {numberOfTopicResources > 0 && (
               <div {...classes('topic-point')}>
                 <ArrowRightSmall />
-                <Link route={`${url}#resources`}>
+                <Link href={`${url}#resources`}>
                   <a>Publications and other resources</a>
                 </Link>
               </div>
@@ -133,7 +133,7 @@ const SearchResult = props => {
           {`${publicationTypeTitle}`}
         </span>
         <br />
-        <Link route={url}>
+        <Link href={url}>
           <a {...classes('items-title')}>
             <Highlight highlight={titleHighlight} fallback={title} />
             {`${subtitle ? ': ' : ''}`}
@@ -171,7 +171,7 @@ const SearchResult = props => {
           : type.charAt(0).toUpperCase() + type.slice(1)}
       </span>
       <br />
-      <Link route={url}>
+      <Link href={url}>
         <a {...classes('items-title')}>
           <Highlight highlight={titleHighlight} fallback={title} />
         </a>

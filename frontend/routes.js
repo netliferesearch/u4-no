@@ -27,4 +27,4 @@
 //   .add('asset.entry', '/assets/:slug')
 //   .add('general.article', '/:slug')                                                          => [slug].js
 //   .add('preview', '/preview/:type/:id')
-//   .add('publication.print.preview', '/printpreview/:id');
+//   .add('publication.print.preview', '/printpreview/:id');                                    
