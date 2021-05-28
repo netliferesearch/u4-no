@@ -5,13 +5,13 @@
 //   .add('main.index-v2', '/v2')
 //   .add('publication.shortVersion', '/publications/:slug/shortversion')
 //   .add('publication.file', '/publications/:slug/downloadasset/:legacyid')
-//   .add('publication.entry', '/publications/:slug')
+//   .add('publication.entry', '/publications/:slug')                                           
 //   .add('publication.print', '/publications/:slug/print')
 //   .add('publication.entry-v2', '/publication/:slug')
 //   .add('blog.index', '/blog')                                                                => /blog/index.js
 //   .add('blog.entry', '/blog/:slug')                                                          => /blog/[slug].js
-//   .add('topic.article', '/topics/:slug/:topicPart')
-//   .add('topic.entry', '/topics/:slug')                                                       => /topics/[slug].js
+//   .add('topic.article', '/topics/:slug/:topicPart')                                          => /topics/[slug]/[article].js
+//   .add('topic.entry', '/topics/:slug')                                                       => /topics/[slug]/index.js
 //   .add('topic.index', '/topics')                                                             => /topics/index.js
 //   .add('glossary.index', '/terms')                                                           => /terms/index.js
 //   .add('keywords.index', '/keywords')                                                        => /keywords/index.js

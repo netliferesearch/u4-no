@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
-import DataLoader from '../../helpers/data-loader';
+import DataLoader from '../../../helpers/data-loader';
 import slugify from 'slugify';
-import serializers from '../../components/serializers';
-import { Footer, Layout, Team, Mosaic, Newsletter, PartnerPromo, LinkList } from '../../components';
-import { BasicGuide, ResearchAgenda, ArrowRight } from '../../components/icons';
-import LinkBox from '../../components/LinkBox';
+import serializers from '../../../components/serializers';
+import { Footer, Layout, Team, Mosaic, Newsletter, PartnerPromo, LinkList } from '../../../components';
+import { BasicGuide, ResearchAgenda, ArrowRight } from '../../../components/icons';
+import LinkBox from '../../../components/LinkBox';
 
 const TopicEntry = ({
   data: {
