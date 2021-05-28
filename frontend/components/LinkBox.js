@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
+import buildUrl from '../helpers/buildUrl';
 
 const classes = BEMHelper({
   name: 'linkbox',
   prefix: 'c-',
 });
 
-const LinkBox = ({ title = 'Click me', text = '', icon = '', route = '', params = {} }) => (
+const LinkBox = ({ title = 'Click me', text = '', icon = '', _type='', slug='' }) => (
   <div {...classes()}>
-    <Link route={route} params={params}>
+    <Link href={buildUrl({_type, slug})}>
       <a {...classes('link')}>
         <div {...classes('content')}>
           {icon && <div {...classes('icon')}>{icon()}</div>}

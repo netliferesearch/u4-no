@@ -4,6 +4,10 @@ export default ({ _type = 'notype', slug = {} }) => {
     return `/publications/${actualSlug}`;
   } else if (_type === 'topics') {
     return `/topics/${actualSlug}`;
+  } else if (_type === 'topicsBasics') {
+    return `/topics/${actualSlug}/basics`;
+  } else if (_type === 'topicsAgenda') {
+    return `/topics/${actualSlug}/agenda`;
   } else if (_type === 'article') {
     return `/${actualSlug}`;
   } else if (_type === 'person') {

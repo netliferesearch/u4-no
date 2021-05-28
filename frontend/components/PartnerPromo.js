@@ -61,7 +61,7 @@ const PartnerPromo = ({
       </figure>
     </section>
     <h2 className="c-topic-section__cta u-margin-top-huge">
-      <Link to="/u4-partner-agencies">
+      <Link href="/u4-partner-agencies">
         <a>
           See all our partners &nbsp;
           <ArrowRight />

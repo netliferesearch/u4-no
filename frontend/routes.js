@@ -11,8 +11,8 @@
 //   .add('blog.index', '/blog')
 //   .add('blog.entry', '/blog/:slug')
 //   .add('topic.article', '/topics/:slug/:topicPart')
-//   .add('topic.entry', '/topics/:slug')
-//   .add('topic.index', '/topics')
+//   .add('topic.entry', '/topics/:slug') => /topics/[slug].js
+//   .add('topic.index', '/topics') => /topics/index.js
 //   .add('glossary.index', '/terms') => /terms/index.js
 //   .add('keywords.index', '/keywords')
 //   .add('persons.index', '/the-team') => /the-team/index.js
