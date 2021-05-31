@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import ElasticDataLoader from '../helpers/elastic-data-loader';
 import { Layout, Footer, SearchResultsV2, SearchFiltersV2 } from '../components/';
 
-const Search = ({
-  data = {}, url = ''
-}) => {
+const Search = ({ data = {}, url = '' }) => {
   if (!data) return <div />;
   return (
     <Layout
@@ -34,7 +32,9 @@ const Search = ({
 
 const mapStateToProps = state => state;
 const mapDispatchToProps = () => ({});
-export default ElasticDataLoader(connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Search));
+export default ElasticDataLoader(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Search)
+);
