@@ -76,7 +76,7 @@ const PublicationArticleHeader = ({
           .filter(value => Object.keys(value).length)
           .map(({ title = '', slug = {} }) => (
             <LinkToItem
-              type="topics"
+              _type="topics"
               slug={slug.current ? slug.current : slug}
               key={slug.current ? slug.current : ''}
             >
@@ -120,7 +120,7 @@ const PublicationArticleHeader = ({
                 (item = {}, index) =>
                   item.slug &&
                   item.title && (
-                    <LinkToItem type="publication" slug={item.slug} key={item._id}>
+                    <LinkToItem _type="publication" slug={item.slug} key={item._id}>
                       <span>
                         <a {...classes('language')}>{languageName({ langcode: item.language })}</a>
                         {index + 2 < translations.length && <span>, </span>}
@@ -143,14 +143,14 @@ const PublicationArticleHeader = ({
           )}
         </div>
         {summary.length > 0 && (
-          <Link route="publication.shortVersion" params={{ slug: slug.current }}>
+          <LinkToItem _type="shortVersionPublication" slug={slug.current}>
             <a {...classes('button')}>
               <div {...classes('button-text')}>Read our short version</div>
               <div {...classes('button-icon')}>
                 <ArrowRight />
               </div>
             </a>
-          </Link>
+          </LinkToItem>
         )}
         {pdfFile.asset && (
           <div {...classes('meta', null, 'c-article-header__download')}>
