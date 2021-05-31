@@ -5,9 +5,8 @@ headless backend with [Sanity](https://sanity.io).
 
 Enviroments:
 
-- Develop: https://u4-frontend-test.herokuapp.com/
-- Staging: https://u4-frontend-staging.herokuapp.com
-- Production: https://www.u4.no
+- Production: https://www.u4.no (auto-deploys from `production` branch)
+- Staging: https://u4-frontend-staging.herokuapp.com (auto-deploys from `main` branch)
 
 ## Develop frontend
 
@@ -17,7 +16,14 @@ Enviroments:
 
 **Tests:** Run `npx jest --watch` to start running [Jest tests](https://jestjs.io) locally.
 
-For local development of frontend. Pull from master-new branch, which is copy of production. Develop on your-feature-branch. You can test uncertain features at development environment [test](https://u4-frontend-test.herokuapp.com/) by merging to develop branch. When ready push your changes(branch) to master-new branch to test them on the [staging environment](https://u4-frontend-staging.herokuapp.com). Pushes and Pull Requests to the production branch deploys the app on production.
+**Branch workflow:**
+
+1. The development branch is `main` branch. Pushes to this branch will get auto-deployed to the staging environment.
+1. New features a developed as feature-branches and then merged into `main` branch via Pull Requests. If need be you can create a [Heroku Review App](https://devcenter.heroku.com/articles/github-integration-review-apps) based on the pull request.
+
+   - After creating a pull request you can go to the [Heroku pipeline overview](https://dashboard.heroku.com/pipelines/ba174b5e-35af-40b9-848b-570ac810fca8), and specify that you want to create a review app. You'll then get a dedicated review app accessible behind a random url which is useful when you want to give people a chance to review new features before merging them into `main` branch to be auto-deployed to the staging environment.
+
+1. To deploy to production you create a PR from `main` into `production` branch.
 
 ## Develop Sanity backend
 
