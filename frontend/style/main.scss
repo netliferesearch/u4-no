@@ -209,5 +209,5 @@
 @import 'utilities/utilities.general';
 @import 'utilities/utilities.bg';
 
-//SANDBOX
-@import 'sandbox';
+// Rules that get activated when user wants to print a publication page.
+@import 'print';
