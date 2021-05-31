@@ -46,7 +46,7 @@ class FrontpageSearchField extends Component {
     this.setState({
       loading: !this.state.loading,
     });
-    this.props.router.pushRoute(`/search?search=${e.target.search.value}`);
+    this.props.router.push(`/search?search=${e.target.search.value}`);
   }
 
   render() {
@@ -81,7 +81,7 @@ class FrontpageSearchField extends Component {
                       searchQuery: value,
                       loading: true,
                     },
-                    () => this.props.router.pushRoute(`/search?search=${value}`)
+                    () => this.props.router.push(`/search?search=${value}`)
                   );
                 }, 500);
               }
