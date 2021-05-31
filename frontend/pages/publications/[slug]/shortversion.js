@@ -7,20 +7,14 @@ import DataLoader from '../../../helpers/data-loader';
 
 const TopicArticleEntry = props => {
   const {
-    data: { title = '', summary = [] },
+    data: { title = '', summary = [], _type = '', slug = ''  },
     url = {},
   } = props;
-  const { query = {} } = url;
-  const { slug = '' } = query;
   return (
     <LongformArticleContainer
       BreadCrumbComponent={
         <BreadCrumb
-          data={{
-            _type: 'publication',
-            slug: { current: slug },
-            title,
-          }}
+          data={{ _type: _type, slug: slug , title }}
         />
       }
       content={summary}
