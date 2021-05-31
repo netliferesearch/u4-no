@@ -19,9 +19,10 @@ Enviroments:
 **Branch workflow:**
 
 1. The development branch is `main` branch. Pushes to this branch will get auto-deployed to the staging environment.
-1. New features a developed as feature-branches and then merged into `main` branch via Pull Requests. If need be you can create a [Heroku Review App](https://devcenter.heroku.com/articles/github-integration-review-apps) based on the pull request.
+1. Code changes are developed as [feature branches](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) and then merged into `main` branch via Pull Requests. If need be you can create a [Heroku Review App](https://devcenter.heroku.com/articles/github-integration-review-apps) based on the pull request.
 
    - After creating a pull request you can go to the [Heroku pipeline overview](https://dashboard.heroku.com/pipelines/ba174b5e-35af-40b9-848b-570ac810fca8), and specify that you want to create a review app. You'll then get a dedicated review app accessible behind a random url which is useful when you want to give people a chance to review new features before merging them into `main` branch to be auto-deployed to the staging environment.
+   - Avoid long-lived branches because they can be painful to merge in.
 
 1. To deploy to production you create a PR from `main` into `production` branch.
 
