@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import uniq from 'lodash/uniq';
 import queryString from 'query-string';
+import Router from 'next/router';
 
 // for when we need to reflect some redux state in the url
 const replaceWindowHash = hashValue => {
@@ -42,7 +43,7 @@ const addQueryParams = queryParams => {
   const newUrl = `${window.location.protocol}//${window.location.host}${
     window.location.pathname
   }?${newQueryString}`;
-  Router.replaceRoute(newUrl);
+  Router.replace(newUrl);
 };
 
 const updateFilterQueryParams = (filters = []) =>
