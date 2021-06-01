@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .c-newsletter {
   margin-bottom: $spacing-large;
   margin-top: $spacing-large;
@@ -44,7 +46,7 @@
   @include inuit-font-size($font-size-normal, $line-height-normal );
   @include mq($from: tablet) {
     padding-bottom: $spacing-small;
-    @include inuit-font-size($font-size-huge/1.5, $line-height-large );
+    @include inuit-font-size(math.div($font-size-huge, 1.5), $line-height-large );
   }
 }
 .c-newsletter__small-title {
@@ -60,11 +62,11 @@
   @include inuit-font-size($font-size-small, $line-height-normal );
   @include mq($from: tablet) {
     padding-bottom: $spacing-small;
-    @include inuit-font-size($font-size-largest/1.5, $line-height-large );
+    @include inuit-font-size(math.div($font-size-largest, 1.5), $line-height-large );
   }
   @include mq($from: desktop) {
     padding-bottom: $spacing-small;
-    @include inuit-font-size($font-size-huge/1.5, $line-height-large );
+    @include inuit-font-size(math.div($font-size-huge, 1.5), $line-height-large );
   }
   border-style: none;
   background: $brand-lightest;
