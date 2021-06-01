@@ -84,7 +84,7 @@ class SearchFieldV2 extends Component {
             search: value,
             searchPageNum: 1,
           });
-          Router[`${urlUpdateType}Route`](`/search?${updatedQueryString}`);
+          this.props.router[`${urlUpdateType}`](`/search?${updatedQueryString}`);
           console.log('debounce was called');
         }, 100)();
       }
