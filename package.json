@@ -72,7 +72,7 @@
     "deploy-frontend--force": "git push heroku --force",
     "deploy-backend": "cd backend && sanity deploy && cd ..",
     "test": "jest",
-    "dev": "cd frontend && cross-env NODE_ENV=dev nodemon -w server.js -w server.elastic.js -w pdf-generator.js server.js",
+    "dev": "cd frontend && cross-env NODE_ENV=development nodemon -w server.js -w server.elastic.js -w pdf-generator.js server.js",
     "build": "cd frontend && next build",
     "start": "cd frontend && node server.js",
     "start:skip-ssl": "cd frontend && cross-env NODE_ENV=production SKIP_SSL=true node server.js",
