@@ -40,411 +40,412 @@
 /**
 * Resets
 */
+@media print {
+  .c-article-header__language,
+  .c-article-header__download,
+  .c-top-bar,
+  .c-footer {
+    display: none;
+  }
 
-.c-article-header__language,
-.c-article-header__download,
-.c-top-bar,
-.c-footer {
-  display: none;
-}
-
-/**
+  /**
 * Print layout
 */
 
-/*
+  /*
  * Page Layout
 */
 
-body {
-  color: black;
-}
-/* hide divs containing next scripts to avoid trailing blank page */
-body > div + div,
-div#__next-error {
-  display: none;
-}
-@page {
-  size: A4 portrait;
-  margin-top: 2cm;
-  margin-bottom: 2cm;
-  margin-inside: 3cm;
-  margin-outside: 3cm;
-}
-.page2 {
-  page-break-before: always;
-  display: block;
-  page: page2;
-  font-family: $font-sans;
-  margin-bottom: $spacing-tiny;
-
-  p {
-    margin: 0;
-    font-size: 10pt;
-    line-height: 1.1;
+  body {
+    color: black;
   }
-  h2 {
-    font-weight: bold;
-    font-size: 10pt;
-    margin: 0;
-    margin-top: $spacing-tiny;
-  }
-  img {
-    height: 1cm;
-    margin-right: 0.5cm;
-    margin-top: 0.2cm;
-  }
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  li {
-    margin: 0;
-    margin-bottom: $spacing-tiny;
-    font-size: 10pt;
-    line-height: 1.1;
-  }
-}
-@page page2 {
-  @top {
-  }
-  @bottom {
-  }
-}
-.page2 {
-}
-.page2-ccimage {
-  height: 0.6cm;
-  width: auto;
-}
-
-.contents {
-  page-break-before: always;
-  display: block;
-  page: table-of-contents;
-  counter-reset: page 1;
-}
-@page table-of-contents {
-  @top {
-  }
-  @bottom {
-    content: counter(page, lower-alpha);
-  }
-}
-
-.contents__list-item a[href]::after {
-  content: leader(' ') target-counter(attr(href), page);
-  margin-left: 1cm;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.body {
-  display: block;
-  page: main;
-  counter-reset: page 1;
-  font-size: 12pt;
-  line-height: 1.5;
-}
-h2,
-h3 {
-  line-height: 1.2;
-}
-
-p {
-  orphans: 2;
-  widows: 2;
-}
-.fn {
-  font-size: 9pt;
-  font-weight: normal !important;
-  font-style: normal !important;
-  font-family: $font-serif !important;
-  counter-increment: footnote;
-  display: prince-footnote;
-  footnote-style-position: inside;
-  float: footnote;
-}
-
-/* footnote markers */
-.fn::footnote-call {
-  content: counter(footnote);
-  font-size: 83%;
-  vertical-align: super;
-  line-height: none;
-}
-/* consecutive footnote markers separated by comma */
-.fn + .fn::footnote-call {
-  content: ', ' counter(footnote);
-}
-/* format links as links instead of footnotes */
-a.inlineLink {
-  border-bottom: 0.2pt solid #ccc;
-}
-
-/* .referencesLink { } */
-p {
-  prince-footnote-policy: keep-with-line;
-}
-.c-print__publication-type-and-number {
-  string-set: publication-type-and-number content();
-}
-.body {
-  page-break-before: always;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  page-break-after: avoid;
-  page-break-inside: avoid;
-}
-h3 {
-  font-weight: bold;
-  font-size: 16pt;
-}
-h4 {
-  font-weight: bold;
-  font-family: $font-sans;
-  font-size: 12pt !important;
-  margin-top: 1.5em;
-}
-h4 + p {
-  margin-top: 0.2em;
-  margin-block-start: 0.2em;
-}
-h5 {
-  font-weight: bold;
-  font-size: 10pt;
-  margin-top: 1.5em;
-}
-h5 + p {
-  margin-top: 0.2em;
-  margin-block-start: 0.2em;
-}
-a {
-  border: none;
-  color: black;
-  text-decoration: none;
-}
-
-.c-article_mainPoints-item {
-  margin-bottom: $spacing-tiny;
-}
-.contents__list {
-  list-style-type: none;
-  margin: 0 0 0.5cm 0;
-  padding: 0;
-  font-family: $font-sans;
-  h2 {
-    margin-bottom: $spacing;
-  }
-}
-
-.contents__list-item {
-  margin: 0.3cm 0;
-  padding: 0;
-  font-size: 10pt;
-  line-height: 1.2;
-  font-weight: bold;
-
-  a {
-    position: relative;
-    display: block;
-    padding-right: 2cm;
-    word-break: normal;
-    hyphens: none;
-  }
-}
-
-.contents__list-subitem {
-  font-weight: normal;
-  margin-left: $spacing;
-}
-
-.c-print__front-logo-top {
-  position: absolute;
-  top: -1.5cm;
-  left: -2cm;
-}
-
-.c-print__float-right {
-  float: right;
-  margin-top: 20px;
-  margin-right: -2cm;
-}
-
-.c-print__float-left {
-  float: left;
-}
-
-.c-print__front-image {
-  width: 19.5cm;
-  height: auto;
-  overflow: hidden;
-  margin-left: -4cm;
-  padding-top: 0.5cm;
-  z-index: -10;
-  figcaption {
-    font-size: 10pt;
-    color: grey;
-    text-align: right;
-  }
-}
-
-.c-print__front-text {
-  //border: solid 0.1cm $brand-dark;
-  background-color: $brand-lightest;
-  z-index: 10;
-  padding: 1cm 4cm 1cm 2cm;
-  margin-right: -4cm;
-  margin-left: -2cm;
-  page-break-after: always;
-  page-break-inside: avoid;
-  position: absolute;
-  top: 9cm;
-}
-
-.c-print__title {
-  color: $brand-dark;
-  margin: 0;
-  font-family: $font-serif;
-  font-weight: bold;
-  padding-top: $spacing;
-}
-
-.c-print__subtitle {
-  color: $brand-dark;
-  font-weight: lighter;
-  font-family: $font-sans;
-  padding-top: $spacing-tiny;
-  padding-bottom: $spacing;
-  margin: 0;
-
-  @include inuit-font-size($font-size-large, $line-height-normal);
-}
-
-.c-print__meta {
-  color: $brand-dark;
-  font-family: $font-sans;
-  a {
-    color: $brand-dark;
-    font-family: $font-sans;
-    border: none;
-  }
-}
-
-.c-print__meta-inline {
-  display: inline-block;
-  margin: 0;
-  padding-right: $spacing-tiny;
-}
-
-.c-article__pullQuote {
-  @include inuit-font-size($font-size-normal, $line-height-normal);
-  font-family: $font-sans;
-  font-weight: 300;
-  font-style: italic;
-  text-align: left;
-  letter-spacing: 0.02em;
-  padding-left: $spacing-large;
-  padding-right: $spacing-large;
-  margin-bottom: $spacing-small;
-  margin-top: $spacing-small;
-  page-break-inside: avoid;
-}
-
-blockquote {
-  border-left: $black solid 1px;
-  //font-style: italic;
-  //letter-spacing: 0.02em;
-  font-weight: 300;
-  padding-left: $spacing;
-  line-height: 1.2em;
-  page-break-inside: avoid;
-}
-
-figure {
-  margin: 0;
-}
-
-.c-article__figure-img {
-  margin: 0;
-  max-height: 23cm;
-}
-
-.footnotes {
-  display: block;
-  ol {
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.c-footnote__item {
-  float: left;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  a {
+  /* hide divs containing next scripts to avoid trailing blank page */
+  body > div + div,
+  div#__next-error {
     display: none;
   }
-}
-
-.c-toggle-block__title {
-  display: none;
-}
-
-.c-textbox--longform {
-  background: $brand-lightest;
-  padding: $spacing-tiny $spacing;
-  font-family: $font-sans;
-  font-size: 90%;
-  orphans: 3;
-  widows: 3;
-  box-decoration-break: clone;
-
-  p:first-child,
-  h4:first-child {
-    margin-top: $spacing;
-    margin-block-start: $spacing;
+  @page {
+    size: A4 portrait;
+    margin-top: 2cm;
+    margin-bottom: 2cm;
+    margin-inside: 3cm;
+    margin-outside: 3cm;
   }
-  p:last-child {
-    margin-bottom: $spacing;
-    margin-block-end: $spacing;
-  }
-}
-
-#references {
-  page-break-before: always;
-}
-@page main {
-  @top {
-    content: string(publication-type-and-number);
+  .page2 {
+    page-break-before: always;
+    display: block;
+    page: page2;
     font-family: $font-sans;
-    font-size: 9pt;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
-  @bottom {
-    content: counter(page);
-    font-family: $font-sans;
-    font-size: 9pt;
-    // content: 'Page ' counter(page) ' of ' counter(pages);
-  }
-  @footnote {
-    border-top: solid black thin;
-    padding-top: 11pt;
-    margin-top: 4pt;
-    bottom: 0;
-  }
-}
+    margin-bottom: $spacing-tiny;
 
-.c-pagebreak {
-  height: 0;
-  page-break-after: always;
+    p {
+      margin: 0;
+      font-size: 10pt;
+      line-height: 1.1;
+    }
+    h2 {
+      font-weight: bold;
+      font-size: 10pt;
+      margin: 0;
+      margin-top: $spacing-tiny;
+    }
+    img {
+      height: 1cm;
+      margin-right: 0.5cm;
+      margin-top: 0.2cm;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      margin: 0;
+      margin-bottom: $spacing-tiny;
+      font-size: 10pt;
+      line-height: 1.1;
+    }
+  }
+  @page page2 {
+    @top {
+    }
+    @bottom {
+    }
+  }
+  .page2 {
+  }
+  .page2-ccimage {
+    height: 0.6cm;
+    width: auto;
+  }
+
+  .contents {
+    page-break-before: always;
+    display: block;
+    page: table-of-contents;
+    counter-reset: page 1;
+  }
+  @page table-of-contents {
+    @top {
+    }
+    @bottom {
+      content: counter(page, lower-alpha);
+    }
+  }
+
+  .contents__list-item a[href]::after {
+    content: leader(' ') target-counter(attr(href), page);
+    margin-left: 1cm;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .body {
+    display: block;
+    page: main;
+    counter-reset: page 1;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  h2,
+  h3 {
+    line-height: 1.2;
+  }
+
+  p {
+    orphans: 2;
+    widows: 2;
+  }
+  .fn {
+    font-size: 9pt;
+    font-weight: normal !important;
+    font-style: normal !important;
+    font-family: $font-serif !important;
+    counter-increment: footnote;
+    display: prince-footnote;
+    footnote-style-position: inside;
+    float: footnote;
+  }
+
+  /* footnote markers */
+  .fn::footnote-call {
+    content: counter(footnote);
+    font-size: 83%;
+    vertical-align: super;
+    line-height: none;
+  }
+  /* consecutive footnote markers separated by comma */
+  .fn + .fn::footnote-call {
+    content: ', ' counter(footnote);
+  }
+  /* format links as links instead of footnotes */
+  a.inlineLink {
+    border-bottom: 0.2pt solid #ccc;
+  }
+
+  /* .referencesLink { } */
+  p {
+    prince-footnote-policy: keep-with-line;
+  }
+  .c-print__publication-type-and-number {
+    string-set: publication-type-and-number content();
+  }
+  .body {
+    page-break-before: always;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+  h3 {
+    font-weight: bold;
+    font-size: 16pt;
+  }
+  h4 {
+    font-weight: bold;
+    font-family: $font-sans;
+    font-size: 12pt !important;
+    margin-top: 1.5em;
+  }
+  h4 + p {
+    margin-top: 0.2em;
+    margin-block-start: 0.2em;
+  }
+  h5 {
+    font-weight: bold;
+    font-size: 10pt;
+    margin-top: 1.5em;
+  }
+  h5 + p {
+    margin-top: 0.2em;
+    margin-block-start: 0.2em;
+  }
+  a {
+    border: none;
+    color: black;
+    text-decoration: none;
+  }
+
+  .c-article_mainPoints-item {
+    margin-bottom: $spacing-tiny;
+  }
+  .contents__list {
+    list-style-type: none;
+    margin: 0 0 0.5cm 0;
+    padding: 0;
+    font-family: $font-sans;
+    h2 {
+      margin-bottom: $spacing;
+    }
+  }
+
+  .contents__list-item {
+    margin: 0.3cm 0;
+    padding: 0;
+    font-size: 10pt;
+    line-height: 1.2;
+    font-weight: bold;
+
+    a {
+      position: relative;
+      display: block;
+      padding-right: 2cm;
+      word-break: normal;
+      hyphens: none;
+    }
+  }
+
+  .contents__list-subitem {
+    font-weight: normal;
+    margin-left: $spacing;
+  }
+
+  .c-print__front-logo-top {
+    position: absolute;
+    top: -1.5cm;
+    left: -2cm;
+  }
+
+  .c-print__float-right {
+    float: right;
+    margin-top: 20px;
+    margin-right: -2cm;
+  }
+
+  .c-print__float-left {
+    float: left;
+  }
+
+  .c-print__front-image {
+    width: 19.5cm;
+    height: auto;
+    overflow: hidden;
+    margin-left: -4cm;
+    padding-top: 0.5cm;
+    z-index: -10;
+    figcaption {
+      font-size: 10pt;
+      color: grey;
+      text-align: right;
+    }
+  }
+
+  .c-print__front-text {
+    //border: solid 0.1cm $brand-dark;
+    background-color: $brand-lightest;
+    z-index: 10;
+    padding: 1cm 4cm 1cm 2cm;
+    margin-right: -4cm;
+    margin-left: -2cm;
+    page-break-after: always;
+    page-break-inside: avoid;
+    position: absolute;
+    top: 9cm;
+  }
+
+  .c-print__title {
+    color: $brand-dark;
+    margin: 0;
+    font-family: $font-serif;
+    font-weight: bold;
+    padding-top: $spacing;
+  }
+
+  .c-print__subtitle {
+    color: $brand-dark;
+    font-weight: lighter;
+    font-family: $font-sans;
+    padding-top: $spacing-tiny;
+    padding-bottom: $spacing;
+    margin: 0;
+
+    @include inuit-font-size($font-size-large, $line-height-normal);
+  }
+
+  .c-print__meta {
+    color: $brand-dark;
+    font-family: $font-sans;
+    a {
+      color: $brand-dark;
+      font-family: $font-sans;
+      border: none;
+    }
+  }
+
+  .c-print__meta-inline {
+    display: inline-block;
+    margin: 0;
+    padding-right: $spacing-tiny;
+  }
+
+  .c-article__pullQuote {
+    @include inuit-font-size($font-size-normal, $line-height-normal);
+    font-family: $font-sans;
+    font-weight: 300;
+    font-style: italic;
+    text-align: left;
+    letter-spacing: 0.02em;
+    padding-left: $spacing-large;
+    padding-right: $spacing-large;
+    margin-bottom: $spacing-small;
+    margin-top: $spacing-small;
+    page-break-inside: avoid;
+  }
+
+  blockquote {
+    border-left: $black solid 1px;
+    //font-style: italic;
+    //letter-spacing: 0.02em;
+    font-weight: 300;
+    padding-left: $spacing;
+    line-height: 1.2em;
+    page-break-inside: avoid;
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  .c-article__figure-img {
+    margin: 0;
+    max-height: 23cm;
+  }
+
+  .footnotes {
+    display: block;
+    ol {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .c-footnote__item {
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    a {
+      display: none;
+    }
+  }
+
+  .c-toggle-block__title {
+    display: none;
+  }
+
+  .c-textbox--longform {
+    background: $brand-lightest;
+    padding: $spacing-tiny $spacing;
+    font-family: $font-sans;
+    font-size: 90%;
+    orphans: 3;
+    widows: 3;
+    box-decoration-break: clone;
+
+    p:first-child,
+    h4:first-child {
+      margin-top: $spacing;
+      margin-block-start: $spacing;
+    }
+    p:last-child {
+      margin-bottom: $spacing;
+      margin-block-end: $spacing;
+    }
+  }
+
+  #references {
+    page-break-before: always;
+  }
+  @page main {
+    @top {
+      content: string(publication-type-and-number);
+      font-family: $font-sans;
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    @bottom {
+      content: counter(page);
+      font-family: $font-sans;
+      font-size: 9pt;
+      // content: 'Page ' counter(page) ' of ' counter(pages);
+    }
+    @footnote {
+      border-top: solid black thin;
+      padding-top: 11pt;
+      margin-top: 4pt;
+      bottom: 0;
+    }
+  }
+
+  .c-pagebreak {
+    height: 0;
+    page-break-after: always;
+  }
 }
