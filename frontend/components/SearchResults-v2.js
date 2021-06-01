@@ -206,10 +206,7 @@ class SearchResultsV2 extends Component {
   }
   render() {
     const { data = {}, searchPageNum = 1, updateSearchPageNum, searchFilters = [] } = this.props;
-    const {
-      hits = [],
-      total: { value = 0 },
-    } = data.hits || {};
+    const { hits = [], total: { value = 0 } = {} } = data.hits || {};
 
     const resultsPerPage = 10;
     const isMoreResultsToLoad = searchPageNum * resultsPerPage < value;
