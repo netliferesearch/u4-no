@@ -11,6 +11,7 @@
     "autoprefixer": "^7.2.5",
     "axios": "^0.21.1",
     "babel-jest": "^27.0.1",
+    "babel-polyfill": "^6.26.0",
     "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "concurrently": "^3.5.0",
