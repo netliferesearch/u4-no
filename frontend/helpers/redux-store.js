@@ -43,7 +43,7 @@ const addQueryParams = queryParams => {
   const newUrl = `${window.location.protocol}//${window.location.host}${
     window.location.pathname
   }?${newQueryString}`;
-  Router.replace(newUrl);
+  Router.replace(newUrl, undefined, { scroll: false });
 };
 
 const updateFilterQueryParams = (filters = []) =>
