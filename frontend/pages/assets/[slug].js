@@ -1,10 +1,10 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
 
-import { Layout, PdfViewer } from '../components';
-import { Download } from '../components/icons';
-import BreadCrumb from '../components/BreadCrumb';
-import DataLoader from '../helpers/data-loader';
+import { Layout, PdfViewer } from '../../components';
+import { Download } from '../../components/icons';
+import BreadCrumb from '../../components/BreadCrumb';
+import DataLoader from '../../helpers/data-loader';
 
 const classes = BEMHelper({
   name: 'article-header',
