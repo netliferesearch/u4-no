@@ -26,7 +26,7 @@ const Glossary = ({ data: { terms = [] }, url = {} }) => (
         {terms.map(
           ({ term = '', definition = [], slug = {} }) =>
             definition.length > 0 && (
-              <div {...classes('terms')}>
+              <div {...classes('terms')} key={slug.current}>
                 <h3 {...classes('terms-term')} id={slug.current ? slug.current : ''}>
                   {term}
                 </h3>

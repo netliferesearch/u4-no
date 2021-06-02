@@ -43,7 +43,6 @@ const GeneralArticle = (props) => {
   }
   return (
     <LongformArticleContainer
-      BreadCrumbComponent={<BreadCrumb url={props.url} />}
       lead={props.data.standfirst}
       {...props}
     />
