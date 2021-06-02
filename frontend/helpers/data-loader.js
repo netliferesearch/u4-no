@@ -49,7 +49,7 @@ async function fetchAndMaterialize({ nextContext, queryFunc, materializeDepth })
   return { data };
 }
 
-export default (Child, { queryFunc = false, materializeDepth = false, query = {} }) =>
+const DataLoaderWrapper = (Child, { queryFunc = false, materializeDepth = false, query = {} }) =>
   withRedux(initStore, null, mapDispatchToProps)(
     class DataLoader extends Component {
       static async getInitialProps(nextContext) {
@@ -74,3 +74,5 @@ export default (Child, { queryFunc = false, materializeDepth = false, query = {}
       }
     }
   );
+
+export default DataLoaderWrapper

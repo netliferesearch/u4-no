@@ -1,4 +1,4 @@
-export default ({ _type = 'notype', slug = {} }) => {
+const BuildUrl = ({ _type = 'notype', slug = {} }) => {
   const actualSlug = slug.current || slug;
   if (_type === 'publication') {
     return `/publications/${actualSlug}`;
@@ -29,3 +29,5 @@ export default ({ _type = 'notype', slug = {} }) => {
   }
   return actualSlug;
 };
+
+export default BuildUrl

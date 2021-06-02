@@ -294,7 +294,7 @@ const getSearchAggregations = async () => {
   }
 };
 
-export default Child =>
+const ElasticDataLoader = Child =>
   withRedux(initStore, null, mapDispatchToProps)(
     class DataLoader extends Component {
       static async getInitialProps(nextContext) {
@@ -337,3 +337,5 @@ export default Child =>
       }
     }
   );
+
+export default ElasticDataLoader

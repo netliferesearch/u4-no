@@ -44,7 +44,7 @@ function merge(obj, children) {
   return obj;
 }
 
-export default (doc, depth) => {
+const Materialize = (doc, depth) => {
   const iterations = depth || 1;
   console.log('iterations', iterations);
   let result = Promise.resolve(doc);
@@ -54,3 +54,5 @@ export default (doc, depth) => {
   }
   return result;
 };
+
+export default Materialize

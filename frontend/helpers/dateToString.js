@@ -4,7 +4,7 @@ import { format } from 'date-fns'
   return date formatted as format string
   if start and end dates don't repeat year and month if same
 */
-export default ({ start = '', end = '', dateFormat = 'D MMMM YYYY' }) => {
+const DateToString = ({ start = '', end = '', dateFormat = 'D MMMM YYYY' }) => {
   if (start === '') {
     return '';
 
@@ -22,3 +22,5 @@ export default ({ start = '', end = '', dateFormat = 'D MMMM YYYY' }) => {
   }
   return format(new Date(start), dateFormat)
 };
+
+export default DateToString

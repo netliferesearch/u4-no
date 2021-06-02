@@ -4,4 +4,6 @@ import client from './client';
 
 const builder = imageUrlBuilder(client);
 
-export default source => builder.image(source);
+const ImageUrl = source => builder.image(source);
+
+export default ImageUrl
