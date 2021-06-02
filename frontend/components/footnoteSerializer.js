@@ -1,4 +1,4 @@
-export default (key = '') => ({
+const FootnoteSerializer = (key = '') => ({
   types: {
     span: () => null,
     block: ({ children }) => {
@@ -11,3 +11,5 @@ export default (key = '') => ({
     },
   },
 });
+
+export default FootnoteSerializer

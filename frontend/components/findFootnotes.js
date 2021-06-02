@@ -1,4 +1,4 @@
-export default (blocks = []) => {
+const FindFootnotes = (blocks = []) => {
   /**
    * First find markDefs that is footnotes.
    * @todo: this doesn't work recursively, in case
@@ -20,3 +20,5 @@ export default (blocks = []) => {
     .reduce((acc, { _key, content }) => ({ [_key]: content, ...acc }), {});
   return footnotes;
 };
+
+export default FindFootnotes
