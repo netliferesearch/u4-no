@@ -20,7 +20,7 @@ class BreadCrumb extends Component {
     }).isRequired,
     url: PropTypes.shape({
       current: PropTypes.string,
-    }).isRequired,
+    })
   };
 
   constructor(props) {
