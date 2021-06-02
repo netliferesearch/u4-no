@@ -115,7 +115,7 @@ const RecentWork = ({ articles }) => (
     <ul {...classesSearch('content')}>
       {articles.map(
         article =>
-          console.log('article', article) || (
+          (
             <li key={article._id} {...classesSearch('items')}>
               <div {...classesSearch('topic')}>
                 <div {...classesSearch('topic-wrapper')}>
@@ -168,7 +168,6 @@ const RecentWork = ({ articles }) => (
   </div>
 );
 const Persons = ({ data: { person = {} }, url = {query: { slug: '' }} }) => {
-  console.log('cc', person)
   return (
     <Layout
       headComponentConfig={{
