@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import withRedux from 'next-redux-wrapper';
-import sanityClient from '@sanity/client';
+import PicoSanity from 'picosanity'
 import { initStore, updateReadingProgress } from './redux-store';
 import { Error404 } from '../components';
 import { redirectPermanent, getRedirect } from '../helpers/redirect';
@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 async function fetchAndMaterialize({ nextContext, queryFunc, materializeDepth }) {
-  const client = sanityClient({
+  const client = new PicoSanity({
     projectId: '1f1lcoov',
     dataset: 'production',
     token: process.env.SANITY_TOKEN,
