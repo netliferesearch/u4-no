@@ -1,6 +1,7 @@
 import sanityClient from '@sanity/client';
+import PicoSanity from 'picosanity'
 
-const client = sanityClient({
+const client = new PicoSanity({
   projectId: '1f1lcoov',
   dataset: 'production',
   token: '',

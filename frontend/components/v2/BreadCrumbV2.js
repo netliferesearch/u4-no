@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import buildUrl from '../../helpers/buildUrl';
-//import client from '../helpers/sanity-client-config'
 import Link from 'next/link';
 import ArrowRightSmall from '../icons/ArrowRightSmall';
 
