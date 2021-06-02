@@ -21,8 +21,6 @@ const Persons = props => {
             url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
           }}
         >
-        
-          <BreadCrumb url={url} />
           <div className="u-bg-dark-blue o-wrapper-full-width">
             <div className="c-article__lead c-article__lead--big-light   c-article__lead--center">
               <BlockContent blocks={frontpage.lead} serializers={serializers} />
