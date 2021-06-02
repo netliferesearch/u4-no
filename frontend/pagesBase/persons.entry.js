@@ -9,7 +9,6 @@ import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../components/serializers';
 import { format } from 'date-fns';
 import uniq from 'lodash/uniq';
-import moment from 'moment';
 
 const classes = BEMHelper({
   name: 'persons',
@@ -305,9 +304,6 @@ export default DataLoader(Persons, {
       }`,
       param: {
         slug,
-        now: moment()
-          .utc()
-          .format(),
       },
     };
   },

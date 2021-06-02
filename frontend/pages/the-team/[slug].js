@@ -9,7 +9,6 @@ import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers';
 import { format } from 'date-fns';
 import uniq from 'lodash/uniq';
-import moment from 'moment';
 
 const classes = BEMHelper({
   name: 'persons',
@@ -168,8 +167,9 @@ const RecentWork = ({ articles }) => (
     </ul>
   </div>
 );
-const Persons = ({ data: { person = {} }, url = {query: { slug: '' }} }) =>
-  console.log('cc', person) || (
+const Persons = ({ data: { person = {} }, url = {query: { slug: '' }} }) => {
+  console.log('cc', person)
+  return (
     <Layout
       headComponentConfig={{
         title: `${person.firstName} ${person.surname}`,
@@ -265,6 +265,8 @@ const Persons = ({ data: { person = {} }, url = {query: { slug: '' }} }) =>
       <Footer />
     </Layout>
   );
+}
+
 export default DataLoader(Persons, {
   queryFunc: ({ query: { slug = '' } }) => {
     return {
@@ -288,9 +290,6 @@ export default DataLoader(Persons, {
       }`,
       param: {
         slug,
-        now: moment()
-          .utc()
-          .format(),
       },
     };
   },
