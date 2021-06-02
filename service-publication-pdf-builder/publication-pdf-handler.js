@@ -3,19 +3,9 @@ const axios = require('axios');
 const sanityClient = require('@sanity/client');
 
 /**
- * Purpose: To be used by frontend/server.js, send pdf file to browser
+ * Purpose of this handler is to check if there is a PDF
+ * attached to a given publication and then return it.
  */
-
-function getPdfUrl(data) {
-  if (data && data.legacypdf && data.legacypdf.asset && data.legacypdf.asset.url) {
-    return data.legacypdf.asset.url;
-  }
-  if (data && data.pdfFile && data.pdfFile.asset && data.pdfFile.asset.url) {
-    return data.pdfFile.asset.url;
-  }
-  return false;
-}
-
 async function publicationPdfHandler(req, res) {
   const { slug = '' } = req.params;
 
@@ -59,6 +49,16 @@ async function publicationPdfHandler(req, res) {
     console.error('Error', e);
     res.status(500).send('Error: Was not able to load pdf');
   }
+}
+
+function getPdfUrl(data) {
+  if (data && data.legacypdf && data.legacypdf.asset && data.legacypdf.asset.url) {
+    return data.legacypdf.asset.url;
+  }
+  if (data && data.pdfFile && data.pdfFile.asset && data.pdfFile.asset.url) {
+    return data.pdfFile.asset.url;
+  }
+  return false;
 }
 
 module.exports = { publicationPdfHandler };
