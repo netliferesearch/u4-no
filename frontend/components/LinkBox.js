@@ -29,8 +29,11 @@ LinkBox.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string,
   icon: PropTypes.func,
-  route: PropTypes.string.isRequired,
-  params: PropTypes.object.isRequired,
+  _type: PropTypes.string.isRequired,
+  slug: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string
+  ]).isRequired,
 };
 
 LinkBox.defaultProps = {

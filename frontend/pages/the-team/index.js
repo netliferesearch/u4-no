@@ -17,7 +17,7 @@ const Persons = props => {
         <Layout
           headComponentConfig={{
             title: frontpage.title,
-            description: frontpage.lead,
+            description: frontpage.lead[0].text,
             url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
           }}
         >
