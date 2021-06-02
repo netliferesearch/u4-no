@@ -102,7 +102,7 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} } }) => (
 Frontpage.propTypes = {
   data: PropTypes.shape({
     frontPage: PropTypes.object,
-    topics: PropTypes.object,
+    topics: PropTypes.array,
   }).isRequired,
 };
 
