@@ -1,6 +1,10 @@
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
+/**
+ * Support switchable global styling
+ * See: https://pulkitgoyal.in/conditional-global-stylesheets-for-nextjs-apps
+ */
 const CSSMain = dynamic(() => import('../components/CSSMain'));
 const CSSPrint = dynamic(() => import('../components/CSSPrint'));
 
