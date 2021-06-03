@@ -78,8 +78,7 @@
     "dev": "cd frontend && cross-env NODE_ENV=development nodemon -w server.js -w server.elastic.js -w pdf-generator.js server.js",
     "build": "cd frontend && next build",
     "start": "cd frontend && node server.js",
-    "start:skip-ssl": "cd frontend && cross-env NODE_ENV=production SKIP_SSL=true node server.js",
-    "heroku-postbuild": "cd frontend && next build"
+    "start:skip-ssl": "cd frontend && cross-env NODE_ENV=production SKIP_SSL=true node server.js"
   },
   "engines": {
     "node": "14.x",
