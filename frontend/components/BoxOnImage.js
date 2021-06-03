@@ -81,17 +81,20 @@ const BoxOnImage = ({
   </div>
 );
 BoxOnImage.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.string
+  ]),
   image: PropTypes.shape({
     asset: PropTypes.shape({
       url: PropTypes.string,
     }),
   }).isRequired,
   wide: PropTypes.bool,
-  headingLeft: PropTypes.string.isRequired,
-  headingRight: PropTypes.string.isRequired,
-  personsLeft: PropTypes.arrayOf(PropTypes.object).isRequired,
-  personsRight: PropTypes.arrayOf(PropTypes.object).isRequired,
+  headingLeft: PropTypes.string,
+  headingRight: PropTypes.string,
+  personsLeft: PropTypes.arrayOf(PropTypes.object),
+  personsRight: PropTypes.arrayOf(PropTypes.object),
 };
 
 BoxOnImage.defaultProps = {

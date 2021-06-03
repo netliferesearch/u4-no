@@ -17,7 +17,7 @@ const SimpleMosaic = ({ resources = [], cta = '' }) => (
         const linkTo =
           item._type === 'course' ? buildUrl({ _type: 'course', slug: item.slug }) : item.link;
         return (
-          <div {...classes('item')}>
+          <div {...classes('item')} key={item.title} >
             <Link href={linkTo}>
               <a>
                 <div {...classes('title')}>{item.title}</div>

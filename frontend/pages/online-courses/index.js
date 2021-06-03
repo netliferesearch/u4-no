@@ -34,7 +34,7 @@ const ServicePage = ({
   <Layout
     headComponentConfig={{
       title,
-      description: lead,
+      description: lead.length ? lead[0].text : lead,
       image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
       url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
       ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
@@ -61,6 +61,7 @@ const ServicePage = ({
     <Footer />
   </Layout>
 );
+
 export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery:
