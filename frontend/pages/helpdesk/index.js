@@ -24,29 +24,13 @@ const ServicePage = ({
       ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
     }}
   >
-    <SimpleHero title={title} content={longTitle} cta="" helpdesk="true" />
+    <SimpleHero content={longTitle} cta="" helpdesk="true" />
 
     <ServiceArticle blocks={sections} />
     <Newsletter />
     <Footer />
   </Layout>
 );
-
-ServicePage.propTypes = {
-  longTitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  featuredImage: PropTypes.shape({
-    asset: PropTypes.shape({
-      url: PropTypes.string,
-    }),
-  }).isRequired,
-  lead: PropTypes.string.isRequired,
-  sections: PropTypes.array.isRequired,
-  relatedUrl: PropTypes.object.isRequired,
-  url: PropTypes.shape({
-    asPAth: PropTypes.string,
-  }).isRequired,
-};
 
 export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({

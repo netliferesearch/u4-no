@@ -4,13 +4,15 @@ import isArray from 'lodash/isArray';
 import BlockContent from '@sanity/block-content-to-react';
 import Link from 'next/link';
 import serializers from './serializers';
+import PropTypes from 'prop-types';
+
 
 const classes = BEMHelper({
   name: 'simple-hero',
   prefix: 'c-',
 });
 
-const SimpleHero = ({ title, content = [], light = false, cta = false, helpdesk = false }) => (
+const SimpleHero = ({ content = [], light = false, cta = false, helpdesk = false }) => (
   <div {...classes(null, light ? 'light' : null, 'o-wrapper-full-width')}>
     <div {...classes('content')}>
       {isArray(content) && <BlockContent blocks={content} serializers={serializers} />}
@@ -36,5 +38,13 @@ const SimpleHero = ({ title, content = [], light = false, cta = false, helpdesk 
     )}
   </div>
 );
+
+SimpleHero.propTypes = {
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array
+  ]).isRequired
+}
+
 
 export default SimpleHero;
