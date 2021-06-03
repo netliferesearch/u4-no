@@ -1,30 +1,3 @@
-// SETTINGS
-@import 'settings/settings.config';
-@import 'settings/settings.core';
-@import 'settings/settings.global';
-@import 'settings/settings.colors';
-@import 'settings/settings.typography';
-
-// TOOLS
-@import '../node_modules/inuitcss/tools/tools.font-size';
-@import '../node_modules/inuitcss/tools/tools.clearfix';
-@import '../node_modules/sass-mq/mq';
-@import 'tools/tools.aliases';
-
-// GENERIC
-@import '../node_modules/inuitcss/generic/generic.box-sizing';
-@import '../node_modules/inuitcss/generic/generic.normalize';
-@import '../node_modules/inuitcss/generic/generic.shared';
-
-// ELEMENTS
-//@import '../node_modules/inuitcss/elements/elements.page';
-@import '../node_modules/inuitcss/elements/elements.headings';
-@import 'elements/elements.body';
-@import 'elements/elements.figure';
-@import 'elements/elements.headings';
-@import 'elements/elements.links';
-@import 'elements/elements.input';
-
 // COMPONENTS
 @import 'components/components.figure';
 @import 'components/components.table';
