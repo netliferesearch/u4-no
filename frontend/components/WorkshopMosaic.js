@@ -12,12 +12,12 @@ const WorkshopMosaic = ({ resources = [] }) => {
   return(
   <div {...classes()}>
     {resources.map(item => (
-      <div {...classes('item')}>
-        <LinkToItem key={item.target._id} _type={item.target._type} slug={item.target.slug}>
+      <div {...classes('item')} key={item.target._id}>
+        <LinkToItem _type={item.target._type} slug={item.target.slug}>
           <a>
             <Pin {...classes('icon')} />
             <div {...classes('title')}>{item.target.title}</div>
-            <div>{item.target.lead && item.target.lead.split('\n').map(i => <p>{i}</p>)}</div>
+            <div>{item.target.lead && item.target.lead.split('\n').map((i, index) => <p key={index}>{i}</p>)}</div>
           </a>
         </LinkToItem>
       </div>
