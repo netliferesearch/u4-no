@@ -41,6 +41,7 @@ const pdfConfig = ({
         user_credentials: token,
         document_url: `${url}/${id}`,
         type: 'pdf',
+        javascript: true,
         name: title,
         test: true,
         prince_options: {
