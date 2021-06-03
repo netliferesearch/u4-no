@@ -36,8 +36,8 @@ const RightArrowButton = ({ onClick = () => null, text = '', modifier = 'primary
 );
 
 DownArrowButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  text: PropTypes.string,
   modifier: PropTypes.string,
 };
 

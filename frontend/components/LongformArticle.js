@@ -39,7 +39,7 @@ class LongformArticle extends Component {
           <div className="footnotes">
             <ol>
               {footNotesKeys.map(key => (
-                <BlockContent blocks={footnotes[key]} serializers={footnoteSerializer(key)} />
+                <BlockContent key={key} blocks={footnotes[key]} serializers={footnoteSerializer(key)} />
               ))}
             </ol>
           </div>

@@ -29,7 +29,7 @@ const EditorList = (
         {editors
           .map(editor => (editor.target ? editor.target : editor))
           .map((person, index) => (
-            <span key={_id}>
+            <span key={index}>
               {_id ? (
                 <LinkToItem type="person" slug={person.slug}>
                   <a>
