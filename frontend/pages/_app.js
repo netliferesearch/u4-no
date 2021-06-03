@@ -1,21 +1,14 @@
+import '../style/global.scss';
 import { useRouter } from 'next/router';
-
-/**
- * Support switchable global styling
- * See: https://pulkitgoyal.in/conditional-global-stylesheets-for-nextjs-apps
- */
-import CSSMain from '../components/CSSMain';
-import CSSPrint from '../components/CSSPrint';
 
 function U4App({ Component, pageProps }) {
   const router = useRouter();
   // When generating a PDF we want to completely switch the global styles.
-  const printPaths = ['/publications/[slug]/print', '/printpreview/[id]'];
+  const isPrinting = ['/publications/[slug]/print', '/printpreview/[id]'].includes(router.route);
   return (
-    <>
-      {printPaths.includes(router.route) ? <CSSPrint /> : <CSSMain />}
+    <div className={isPrinting ? 'print-style' : 'main-style'}>
       <Component {...pageProps} />
-    </>
+    </div>
   );
 }
 
