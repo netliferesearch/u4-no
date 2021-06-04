@@ -10,9 +10,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateSearchPageNum } from '../helpers/redux-store';
 import Link from 'next/link';
-import { ArrowRightSmall } from '../components/icons';
+import ArrowRightSmall from '../components/icons/ArrowRightSmall';
 import format from 'date-fns/format';
-import { SearchResultsSortingSelect } from '../components';
+import SearchResultsSortingSelect from './SearchResultsSortingSelect';
 
 const classes = BEMHelper({
   name: 'search-results-v2',

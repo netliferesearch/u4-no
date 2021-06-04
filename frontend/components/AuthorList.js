@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LinkToItem } from './';
+import LinkToItem from './linkToItem';
 import { translate, translateField } from '../helpers/translate';
 
 const AuthorList = ({

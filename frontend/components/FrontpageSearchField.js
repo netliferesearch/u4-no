@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import autobind from 'react-autobind';
-import { Loader } from '../components';
-import { MagnifyingGlass } from '../components/icons';
 import { withRouter } from 'next/router';
+
+import Loader from './Loader';
+import MagnifyingGlass from './icons/MagnifyingGlass';
 
 const classes = BEMHelper({
   name: 'frontpage-search',

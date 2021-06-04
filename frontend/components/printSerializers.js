@@ -2,12 +2,16 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
+
 import FunkyTable from './FunkyTable';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
 import findFootnotes from './findFootnotes';
 import findLinks from './findLinks';
-import { PullQuote, ChartPrint, Figure, Table } from './';
+import PullQuote from './PullQuote';
+import ChartPrint from './ChartPrint';
+import Figure from './Figure';
+import Table from './Table';
 import printFootnoteSerializer from './print/printFootnoteSerializer';
 
 const classes = BEMHelper({

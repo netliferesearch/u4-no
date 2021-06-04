@@ -1,8 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import BEMHelper from 'react-bem-helper';
-import { Pin, ArrowRight } from './icons';
 import buildUrl from '../helpers/buildUrl';
+
+import Pin from './icons/Pin';
+import ArrowRight from './icons/ArrowRight';
 
 const classes = BEMHelper({
   name: 'simple-mosaic',

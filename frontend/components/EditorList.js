@@ -1,5 +1,5 @@
 import React from 'react';
-import { LinkToItem } from './';
+import LinkToItem from './LinkToItem';
 import { translate, translateField } from '../helpers/translate';
 
 const EditorList = (

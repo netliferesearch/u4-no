@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Footer, Layout } from '../components';
+import Footer from './Footer';
+import Layout from './Layout';
 
 const Error404 = () => (
   <Layout

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 
 import Link from 'next/link';
-import { ArrowRight } from '../components/icons';
+import ArrowRight from './icons/ArrowRight';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import { DownArrowButton } from '../components/buttons';

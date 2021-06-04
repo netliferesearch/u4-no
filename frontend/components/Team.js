@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import BEMHelper from 'react-bem-helper';
-import { Person } from './';
-import { ArrowRight } from '../components/icons';
+import Person from './Person';
+import ArrowRight from './icons/ArrowRight'
 
 const classes = BEMHelper({
   name: 'team',

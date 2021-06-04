@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import Link from 'next/link';
-import { PartnerLogo10 } from './icons/';
+import PartnerLogo10 from './icons/PartnerLogo10';
 import buildUrl from '../helpers/buildUrl';
 import serializers from './serializers';
 

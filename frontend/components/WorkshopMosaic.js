@@ -1,7 +1,7 @@
 import React from 'react';
-import { LinkToItem } from './';
+import LinkToItem from './LinkToItem';
 import BEMHelper from 'react-bem-helper';
-import { Pin } from './icons';
+import Pin from './icons/Pin';
 
 const classes = BEMHelper({
   name: 'workshop-mosaic',

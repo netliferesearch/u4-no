@@ -1,5 +1,5 @@
 import React from 'react';
-import { LinkToItem } from './';
+import LinkToItem from './LinkToItem';
 
 const Mosaic = ({ resources = [], alt = false }) => (
   <div className="c-mosaic">

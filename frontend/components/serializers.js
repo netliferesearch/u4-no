@@ -4,24 +4,24 @@ import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 import ReactPlayer from 'react-player';
 import buildUrl from '../helpers/buildUrl';
+
 import FunkyTable from './FunkyTable';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
-import {
-  Figure,
-  PullQuote,
-  BoxOnBox,
-  BoxOnBoxTopics,
-  BoxOnImage,
-  Chart,
-  WorkshopMosaic,
-  Feature,
-  SimpleMosaic,
-  Mosaic,
-  ToggleTextBox,
-  Table,
-} from './';
-import { ArrowRight } from './icons';
+import Figure from './Figure';
+import PullQuote from './PullQuote';
+import BoxOnBox from './BoxOnBox';
+import BoxOnBoxTopics from './BoxOnBoxTopics';
+import BoxOnImage from './BoxOnImage';
+import Chart from './Chart';
+import WorkshopMosaic from './WorkshopMosaic';
+import Feature from './Feature';
+import SimpleMosaic from './SimpleMosaic';
+import Mosaic from './Mosaic';
+import ToggleTextBox from './ToggleTextBox';
+import Table from './Table';
+
+import ArrowRight from './icons/ArrowRight';
 
 const classes = BEMHelper({
   name: 'longform-grid',

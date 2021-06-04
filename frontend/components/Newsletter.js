@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
-import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
+
+import ArrowRight from './icons/ArrowRight';
 
 const classes = BEMHelper({
   name: 'newsletter',

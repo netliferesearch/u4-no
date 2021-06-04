@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
-import { ArrowRight } from '../components/icons';
+
+import ArrowRight from './icons/ArrowRight';
 
 const classes = BEMHelper({
   name: 'frontpage-feature',

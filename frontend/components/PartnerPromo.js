@@ -1,8 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import BEMHelper from 'react-bem-helper';
-import { Person } from './';
-import { ArrowRight, Helpdesk, OnlineTraining, Workshops, Download } from '../components/icons';
+
+import Person from './Person';
+import ArrowRight from './icons/ArrowRight';
+import Helpdesk from './icons/Helpdesk';
+import OnlineTraining from './icons/OnlineTraining';
+import Workshops from './icons/Workshops';
+import Download from './icons/Download';
 
 const classes = BEMHelper({
   name: 'partner-promo',
