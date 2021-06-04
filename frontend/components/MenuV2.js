@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
-import PicoSanity from 'picosanity'
+import PicoSanity from 'picosanity';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 

@@ -54,7 +54,7 @@ class FrontpageFeature extends Component {
             <ul {...classes('list')}>
               {topics.slice(0, 5).map((topic, index) => (
                 <li key={topic._id} {...classes('list-item')}>
-                  <Link href={`/topics/${topic.slug.current}`} >
+                  <Link href={`/topics/${topic.slug.current}`}>
                     <a {...classes('link')} onMouseEnter={() => this.triggerImg(topic.imageUrl)}>
                       {topic.title}
                     </a>

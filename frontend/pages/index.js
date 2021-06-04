@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
 import Link from 'next/link';
-
 import Layout from '../components/Layout';
 import FrontpageSearchField from '../components/FrontpageSearchField';
 import BoxOnBoxPartnerFeatures from '../components/BoxOnBoxPartnerFeatures';
@@ -12,6 +11,9 @@ import Footer from '../components/Footer';
 import PartnerAgencies from '../components/PartnerAgencies';
 import FrontpageFeature from '../components/FrontpageFeature';
 import Mosaic from '../components/Mosaic';
+
+import U4LogoSquare from '../components/icons/U4LogoSquare';
+import ArrowRight from '../components/icons/ArrowRight';
 import serializers from '../components/serializers';
 
 import U4LogoSquare from '../components/icons/U4LogoSquare';

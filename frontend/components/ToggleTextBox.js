@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import BlockContent from '@sanity/block-content-to-react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import autobind from 'react-autobind';
 
 import Link from 'next/link';
 import ArrowRight from './icons/ArrowRight';
 import BEMHelper from 'react-bem-helper';
-import BlockContent from '@sanity/block-content-to-react';
 import { DownArrowButton } from '../components/buttons';
 import serializers from './serializers';
 

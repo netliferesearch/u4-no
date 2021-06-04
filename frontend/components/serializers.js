@@ -208,7 +208,11 @@ const serializers = {
       <section className="o-wrapper c-topic-section">
         <div className="c-features">
           {featureArray.map(item => (
-            <Feature key={item.featureText} title={item.featureText} iconUrl={item.image.asset.url} />
+            <Feature
+              key={item.featureText}
+              title={item.featureText}
+              iconUrl={item.image.asset.url}
+            />
           ))}
         </div>
       </section>

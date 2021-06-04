@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import withRedux from 'next-redux-wrapper';
-import PicoSanity from 'picosanity'
+import PicoSanity from 'picosanity';
 import { initStore, updateReadingProgress } from './redux-store';
-import { Error404 } from '../components';
+import Error404 from '../components/Error404';
 import { redirectPermanent, getRedirect } from '../helpers/redirect';
 import materialize from '../helpers/materialize';
 import { timer } from '../helpers/timer';
@@ -75,4 +75,4 @@ const DataLoaderWrapper = (Child, { queryFunc = false, materializeDepth = false,
     }
   );
 
-export default DataLoaderWrapper
+export default DataLoaderWrapper;

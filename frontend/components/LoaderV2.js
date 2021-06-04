@@ -11,7 +11,6 @@ const LoaderV2 = () => (
   <div {...classes()}>
     <Loading />
   </div>
-
 );
 
 export default LoaderV2;

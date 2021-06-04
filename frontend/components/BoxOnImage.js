@@ -81,10 +81,7 @@ const BoxOnImage = ({
   </div>
 );
 BoxOnImage.propTypes = {
-  text: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.string
-  ]),
+  text: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   image: PropTypes.shape({
     asset: PropTypes.shape({
       url: PropTypes.string,
