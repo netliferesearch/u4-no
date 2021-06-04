@@ -16,9 +16,6 @@ import U4LogoSquare from '../components/icons/U4LogoSquare';
 import ArrowRight from '../components/icons/ArrowRight';
 import serializers from '../components/serializers';
 
-import U4LogoSquare from '../components/icons/U4LogoSquare';
-import ArrowRight from '../components/icons/ArrowRight';
-
 const Frontpage = ({ data: { frontPage = {}, topics = {} } }) => (
   <Layout
     hideLogo

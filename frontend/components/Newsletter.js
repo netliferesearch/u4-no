@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
-import ArrowRight from '../components/icons/ArrowRight';
-
 import ArrowRight from './icons/ArrowRight';
 
 const classes = BEMHelper({

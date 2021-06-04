@@ -1,10 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import BEMHelper from 'react-bem-helper';
-import ArrowRight from './icons/ArrowRight';
 import buildUrl from '../helpers/buildUrl';
-
-import Pin from './icons/Pin';
 import ArrowRight from './icons/ArrowRight';
 
 const classes = BEMHelper({
