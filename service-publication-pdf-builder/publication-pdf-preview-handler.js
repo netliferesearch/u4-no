@@ -29,6 +29,7 @@ const pdfConfig = ({
   url = `https://u4-frontend-staging.herokuapp.com/printpreview`,
 }) => {
   const token = process.env.DOCRAPTOR_API_KEY;
+  const baseurl = new URL(url).origin;
   return {
     url: `https://${token}@docraptor.com/docs`,
     method: 'POST',
@@ -45,7 +46,8 @@ const pdfConfig = ({
         name: title,
         test: true,
         prince_options: {
-          baseurl: 'https://www.u4.no', // URL to use for generating absolute URLs for assets from relative URLs
+          //baseurl: 'https://www.u4.no', // URL to use for generating absolute URLs for assets from relative URLs
+          baseurl, // URL to use for generating absolute URLs for assets from relative URLs
           //   media:   "screen",          // use screen styles instead of print styles
         },
       },
