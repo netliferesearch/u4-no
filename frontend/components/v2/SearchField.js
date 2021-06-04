@@ -5,8 +5,9 @@ import autobind from 'react-autobind';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateSearchPageNum } from '../../helpers/redux-store';
-import { LoaderV2 } from '../';
-import { SearchIcon } from '../icons';
+
+import LoaderV2 from '../LoaderV2';
+import SearchIcon from '../icons/SearchIcon';
 import { Router } from '../../routes';
 import { withRouter } from 'next/router';
 import queryString from 'query-string';

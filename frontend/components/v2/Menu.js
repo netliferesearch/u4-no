@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
-import { SearchIcon, MenuIcon, FbRound, TwitterRound, LinkedInRound } from '../icons';
 import client from '../../helpers/sanity-client-config';
+
+import SearchIcon from '../icons/SearchIcon';
+import MenuIcon from '../icons/MenuIcon';
+import FbRound from '../icons/FbRound';
+import TwitterRound from '../icons/TwitterRound';
+import LinkedInRound from '../icons/LinkedInRound';
 
 const classes = BEMHelper({
   name: 'top-bar-v2',

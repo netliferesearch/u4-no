@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import buildUrl from '../../helpers/buildUrl';
 import Link from 'next/link';
 import ArrowRightSmall from '../icons/ArrowRightSmall';
 

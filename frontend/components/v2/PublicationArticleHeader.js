@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { ArrowRight } from '../icons';
+import ArrowRight from '../icons/ArrowRight';
+
 import { ArrowWhite } from '../icons/ArrowWhite';
 import { Document, Page } from 'react-pdf';
-import { useMediaQuery } from './';
 import { Reader } from './Reader';
 const classes = BEMHelper({
   name: 'article-header-v2',

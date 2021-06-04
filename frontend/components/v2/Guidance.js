@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight } from '../icons';
+import ArrowRight from '../icons/ArrowRight';
 
 const Guidance = () => {
   return (

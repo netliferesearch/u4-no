@@ -7,16 +7,14 @@ import {
   TableOfContentsButton,
   TableOfContentsSidebar,
   TableOfContentsContent,
-  AuthorList,
-} from '../';
-import {
-  PublicationSidebar,
-  PublicationContent,
-  Layout,
-  PublicationArticleHeader,
-  PublicationAccordion,
-  NewsAndEvents,
-} from './';
+} from '../TableOfContents';
+import AuthorList from '../AuthorList';
+import PublicationSidebar from './PublicationSidebar';
+import PublicationContent from './PublicationContent';
+import Layout from './Layout';
+import PublicationArticleHeader from './PublicationArticleHeader';
+import PublicationAccordion from './PublicationAccordion';
+import NewsAndEvents from './NewsAndEvents';
 
 const LongFormArticleContainer = (props = {}) => {
   const {
