@@ -1,8 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import DataLoader from '../../helpers/data-loader';
 
-import { Footer, Layout, Newsletter, ServiceArticle, SimpleHero } from '../../components';
+import Footer from '../../components/Footer';
+import Layout from '../../components/Layout';
+import Newsletter from '../../components/Newsletter';
+import ServiceArticle from '../../components/ServiceArticle';
+import SimpleHero from '../../components/SimpleHero';
 
 const ServicePage = ({
   data: {

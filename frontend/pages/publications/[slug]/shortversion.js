@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { LongformArticleContainer } from '../../../components';
+import LongformArticleContainer from '../../../components/LongformArticleContainer';
 import BreadCrumb from '../../../components/BreadCrumb';
 import DataLoader from '../../../helpers/data-loader';
 

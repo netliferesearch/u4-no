@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Pagination from 'react-paginating';
 import PropTypes from 'prop-types';
 import DataLoader from '../../helpers/data-loader';
-import { Layout } from '../../components/v2';
+import Layout from '../../components/v2/Layout';
 import dateToString from '../../helpers/dateToString';
 import { BreadCrumbV2 } from '../../components/v2/BreadCrumbV2';
 import { BlogEntriesFilter } from '../../components/v2/blog/BlogEntriesFilter';

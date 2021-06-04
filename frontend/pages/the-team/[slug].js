@@ -1,8 +1,14 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
-import { Layout, Footer } from '../../components';
-import { ArrowRight, ArrowRightSmall, MediumLogo, TwitterLogo } from '../../components/icons/';
+import Layout from '../../components/Layout';
+import Footer from '../../components/Footer';
+
+import ArrowRight from '../../components/icons/ArrowRight';
+import ArrowRightSmall from '../../components/icons/ArrowRightSmall';
+import MediumLogo from '../../components/icons/MediumLogo';
+import TwitterLogo from '../../components/icons/TwitterLogo';
+
 import BreadCrumb from '../../components/BreadCrumb';
 import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';

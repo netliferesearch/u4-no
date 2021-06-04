@@ -1,9 +1,10 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
 
-import { Layout, PdfViewer } from '../../components';
-import { Download } from '../../components/icons';
-import BreadCrumb from '../../components/BreadCrumb';
+import Layout from '../../components/Layout';
+import PdfViewer from '../../components/PdfViewer';
+import Download from '../../components/icons/Download';
+
 import DataLoader from '../../helpers/data-loader';
 
 const classes = BEMHelper({

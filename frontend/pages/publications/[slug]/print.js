@@ -1,5 +1,5 @@
 import React from 'react';
-import { PrintLongformArticleContainer } from '../../../components/print';
+import PrintLongformArticleContainer from '../../../components/print/PrintLongformArticleContainer';
 import DataLoader from '../../../helpers/data-loader';
 import { localize } from '../../../helpers/translate';
 

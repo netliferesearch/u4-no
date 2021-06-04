@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LongformArticleContainer, LegacyPublicationContainer } from '../../../components';
+import LongformArticleContainer from '../../../components/LongformArticleContainer';
+import LegacyPublicationContainer from '../../../components/LegacyPublicationContainer';
 import DataLoader from '../../../helpers/data-loader';
 import { localize } from '../../../helpers/translate';
 

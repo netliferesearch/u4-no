@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DataLoader from '../../helpers/data-loader';
-import {
-  CorruptionByTopic,
-  Guidance,
-  FeaturedPosts,
-  Layout,
-  InsightPosts,
-  RecentPublications,
-  NewsAndEvents,
-} from '../../components/v2';
+
+import CorruptionByTopic from '../../components/v2/CorruptionByTopic';
+import Guidance from '../../components/v2/Guidance';
+import FeaturedPosts from '../../components/v2/FeaturedPosts';
+import Layout from '../../components/v2/Layout';
+import InsightPosts from '../../components/v2/InsightPosts';
+import RecentPublications from '../../components/v2/RecentPublications';
+import NewsAndEvents from '../../components/v2/NewsAndEvents';
+
 const Frontpage = ({
   data: { frontPage = {}, topics = {}, featured = {}, insights = [], events = [] },
 }) => (

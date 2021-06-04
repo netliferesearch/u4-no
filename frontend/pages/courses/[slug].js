@@ -3,8 +3,11 @@ import Link from 'next/link';
 import DataLoader from '../../helpers/data-loader';
 import languageName from '../../helpers/languageName';
 
-import { Footer, Layout, Newsletter, ServiceArticle } from '../../components';
-import { Team } from '../../components';
+import Footer from '../../components/Footer';
+import Layout from '../../components/Layout';
+import Newsletter from '../../components/Newsletter';
+import ServiceArticle from '../../components/ServiceArticle';
+import Team from '../../components/Team';
 
 const CoursePage = ({ data: { course = {} }, url = {} }) => {
   const {

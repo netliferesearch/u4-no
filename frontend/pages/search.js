@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ElasticDataLoader from '../helpers/elastic-data-loader';
-import { Layout, Footer, SearchResultsV2, SearchFiltersV2 } from '../components/';
+
+import Layout from '../components/Layout';
+import Footer from '../components/Footer';
+import SearchResultsV2 from '../components/SearchResults-v2';
+import SearchFiltersV2 from '../components/SearchFilters-v2';
 
 const Search = ({ data = {}, url = '' }) => {
   if (!data) return <div />;

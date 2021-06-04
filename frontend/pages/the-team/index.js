@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import sortBy from 'lodash/sortBy';
-import { Layout, Footer, Team } from '../../components';
-import BreadCrumb from '../../components/BreadCrumb';
+import Layout from '../../components/Layout';
+import Footer from '../../components/Footer';
+import Team from '../../components/Team';
 import DataLoader from '../../helpers/data-loader';
-import { ArrowLarge } from '../../components/icons';
+import ArrowLarge from '../../components/icons/ArrowLarge';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers';
 

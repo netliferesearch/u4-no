@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LongformArticleContainer, LegacyPublicationContainer } from '../../../components';
 import DataLoader from '../../../helpers/data-loader-preview';
 import { localize } from '../../../helpers/translate';
+
+import LongformArticleContainer from '../../../components/LongformArticleContainer';
+import LegacyPublicationContainer from '../../../components/LegacyPublicationContainer';
 
 const PublicationEntry = props => (
   <div>

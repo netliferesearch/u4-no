@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Link from 'next/link';
 import DataLoader from '../../helpers/data-loader';
-import Head from 'next/head';
 import BEMHelper from 'react-bem-helper';
 
-import { Footer, Layout, ServiceArticle } from '../../components';
+import Footer from '../../components/Footer';
+import Layout from '../../components/Layout';
+import ServiceArticle from '../../components/ServiceArticle';
 
 const classes = BEMHelper({
   name: 'glossary',

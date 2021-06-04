@@ -1,9 +1,8 @@
 import React from 'react';
 import { sortBy } from 'lodash';
-import Link from 'next/link';
-import { Footer, Layout, Newsletter } from '../../components';
+import Footer from '../../components/Footer';
+import Layout from '../../components/Layout';
 import DataLoader from '../../helpers/data-loader';
-import { DownArrowButton } from '../../components/buttons';
 
 function sortItems(items, key) {
   return sortBy(items, ({ keyword = '' }) => keyword.toUpperCase());

@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
-import Link from 'next/link';
 import DataLoader from '../../helpers/data-loader';
-import Head from 'next/head';
 
-import { BoxOnBox, Footer, Layout, Accordion, Newsletter, ServiceArticle } from '../../components';
-import { Feature, Mosaic, LinkBox, SimpleHero } from '../../components';
-import { DownArrowButton, RightArrowButton } from '../../components/buttons';
-import {
-  Basics,
-  Picture,
-  Publication,
-  Resources,
-  ResearchAgenda,
-  ArrowRight,
-} from '../../components/icons';
+import Footer from '../../components/Footer';
+import Layout from '../../components/Layout';
+import Newsletter from '../../components/Newsletter';
+import ServiceArticle from '../../components/ServiceArticle';
+import SimpleHero from '../../components/SimpleHero';
 
 const About = ({ data: { about = {}, url = {} } }) => {
   const {

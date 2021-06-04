@@ -1,15 +1,12 @@
 import React from 'react';
-
-import {
-  LongformArticleContainer,
-  Footer,
-  Layout,
-  Newsletter,
-  ServiceArticle,
-  SimpleHero,
-} from '../components';
-import BreadCrumb from '../components/BreadCrumb';
 import DataLoader from '../helpers/data-loader';
+
+import LongformArticleContainer from '../components/LongformArticleContainer';
+import Footer from '../components/Footer';
+import Layout from '../components/Layout';
+import Newsletter from '../components/Newsletter';
+import ServiceArticle from '../components/ServiceArticle';
+import SimpleHero from '../components/SimpleHero';
 
 const GeneralArticle = (props) => {
   if (props.data._type === 'frontpage') {

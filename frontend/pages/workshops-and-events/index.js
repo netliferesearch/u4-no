@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
-import Link from 'next/link';
 import slugify from 'slugify';
 import DataLoader from '../../helpers/data-loader';
-import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers';
-import { BoxOnBox, Footer, Layout, Accordion, Newsletter, ServiceArticle } from '../../components';
-import { Feature, Mosaic, LinkBox, LinkList } from '../../components';
-import { DownArrowButton, RightArrowButton } from '../../components/buttons';
-import {
-  Basics,
-  Picture,
-  Publication,
-  Resources,
-  ResearchAgenda,
-  ArrowRight,
-} from '../../components/icons';
+
+import Footer from '../../components/Footer';
+import Layout from '../../components/Layout';
+import Newsletter from '../../components/Newsletter';
+import ServiceArticle from '../../components/ServiceArticle';
+import LinkList from '../../components/LinkList';
 
 const ServicePage = ({ data: { service = {}, url = {} } }) => {
   const {

@@ -2,7 +2,7 @@ import React from 'react';
 import find from 'lodash/find';
 import { useRouter } from 'next/router'
 
-import { LongformArticleContainer } from '../../../components';
+import LongformArticleContainer from '../../../components/LongformArticleContainer';
 import BreadCrumb from '../../../components/BreadCrumb';
 import DataLoader from '../../../helpers/data-loader';
 

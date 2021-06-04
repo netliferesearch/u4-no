@@ -4,8 +4,19 @@ import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../../../helpers/data-loader';
 import slugify from 'slugify';
 import serializers from '../../../components/serializers';
-import { Footer, Layout, Team, Mosaic, Newsletter, PartnerPromo, LinkList } from '../../../components';
-import { BasicGuide, ResearchAgenda, ArrowRight } from '../../../components/icons';
+
+import Footer from '../../../components/Footer';
+import Layout from '../../../components/Layout';
+import Team from '../../../components/Team';
+import Mosaic from '../../../components/Mosaic';
+import Newsletter from '../../../components/Newsletter';
+import PartnerPromo from '../../../components/PartnerPromo';
+import LinkList from '../../../components/LinkList';
+
+import BasicGuide from '../../../components/icons/BasicGuide';
+import ResearchAgenda from '../../../components/icons/ResearchAgenda';
+import ArrowRight from '../../../components/icons/ArrowRight';
+
 import LinkBox from '../../../components/LinkBox';
 
 const TopicEntry = ({

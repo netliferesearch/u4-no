@@ -1,7 +1,8 @@
 import React from 'react';
 import { sortBy } from 'lodash';
 import Link from 'next/link';
-import { Footer, Layout, LinkToItem } from '../../components';
+import Footer from '../../components/Footer';
+import Layout from '../../components/Layout';
 import DataLoader from '../../helpers/data-loader';
 
 function sortTopics(items, key) {

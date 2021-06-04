@@ -3,8 +3,12 @@ import React, { Component } from 'react';
 import dateToString from '../../helpers/dateToString';
 import DataLoader from '../../helpers/data-loader';
 
-import { Footer, Layout, Newsletter, ServiceArticle } from '../../components';
-import { Team, LinkToItem } from '../../components';
+import Footer from '../../components/Footer';
+import Layout from '../../components/Layout';
+import Newsletter from '../../components/Newsletter';
+import ServiceArticle from '../../components/ServiceArticle';
+import Team from '../../components/Team';
+import LinkToItem from '../../components/LinkToItem';
 
 
 const EventPage = ({ data: { event = {} }, url = {} }) => {
