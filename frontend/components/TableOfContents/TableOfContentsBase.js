@@ -2,7 +2,7 @@ import React from 'react';
 import { Scrollchor } from 'react-scrollchor';
 import { connect } from 'react-redux';
 import buildTitleObjects from './buildTitleObjects';
-import { TOCup } from '../icons';
+import TOCup from '../icons/TOCup';
 
 /**
  * This breaks down article content and creates a list based on titles found

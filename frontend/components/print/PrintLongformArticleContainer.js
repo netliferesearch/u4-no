@@ -16,10 +16,10 @@ import CreativecommonsBY from '../icons/CreativecommonsBY';
 import CreativecommonsNC from '../icons/CreativecommonsNC';
 import CreativecommonsND from '../icons/CreativecommonsND';
 
+import { LongformArticleContainer } from '../';
 import Footer from '../Footer';
 import AuthorList from '../AuthorList';
 import EditorList from '../EditorList';
-import LongFormArticleContainer from '../LongformArticleContainer';
 import Logo from '../Logo';
 
 const classes = BEMHelper({
