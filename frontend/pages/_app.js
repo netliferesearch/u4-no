@@ -7,6 +7,19 @@ function U4App({ Component, pageProps }) {
   const isPrinting = ['/publications/[slug]/print', '/printpreview/[id]'].includes(router.route);
   return (
     <div className={isPrinting ? 'print-style' : 'main-style'}>
+      {!isPrinting && (
+        <style jsx global>
+          {`
+            html {
+              font-size: 1em;
+              line-height: 1.5;
+              overflow-y: scroll;
+              min-height: 100%;
+              overflow-y: initial;
+            }
+          `}
+        </style>
+      )}
       <Component {...pageProps} />
     </div>
   );
