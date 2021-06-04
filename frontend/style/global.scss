@@ -111,6 +111,4 @@ namespace these styles and toggle their presence in app.js.
   @import 'main';
 }
 
-.print-style {
-  @import 'print';
-}
+@import 'print';
