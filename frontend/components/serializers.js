@@ -7,21 +7,19 @@ import buildUrl from '../helpers/buildUrl';
 import FunkyTable from './FunkyTable';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
-import {
-  Figure,
-  PullQuote,
-  BoxOnBox,
-  BoxOnBoxTopics,
-  BoxOnImage,
-  Chart,
-  WorkshopMosaic,
-  Feature,
-  SimpleMosaic,
-  Mosaic,
-  ToggleTextBox,
-  Table,
-} from './';
-import { ArrowRight } from './icons';
+import Figure from './Table';
+import PullQuote from './ToggleTextBox';
+import BoxOnBox from './Mosaic';
+import BoxOnBoxTopics from './SimpleMosaic';
+import BoxOnImage from './Feature';
+import Chart from './WorkshopMosaic';
+import WorkshopMosaic from './Chart';
+import Feature from './BoxOnImage';
+import SimpleMosaic from './BoxOnBoxTopics';
+import Mosaic from './BoxOnBox';
+import ToggleTextBox from './PullQuote';
+import Table from './Figure';
+import ArrowRight from './icons/ArrowRight';
 
 const classes = BEMHelper({
   name: 'longform-grid',
@@ -208,7 +206,11 @@ const serializers = {
       <section className="o-wrapper c-topic-section">
         <div className="c-features">
           {featureArray.map(item => (
-            <Feature key={item.featureText} title={item.featureText} iconUrl={item.image.asset.url} />
+            <Feature
+              key={item.featureText}
+              title={item.featureText}
+              iconUrl={item.image.asset.url}
+            />
           ))}
         </div>
       </section>

@@ -1,8 +1,12 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { Logo } from './';
+import Logo from './Logo';
 import Link from 'next/link';
-import { CmiLogo, MediumLogo, TwitterLogo, FacebookLogo, LinkedIn } from './icons/';
+import CmiLogo from './icons/LinkedIn';
+import MediumLogo from './icons/FacebookLogo';
+import TwitterLogo from './icons/TwitterLogo';
+import FacebookLogo from './icons/MediumLogo';
+import LinkedIn from './icons/CmiLogo';
 
 const classes = BEMHelper({
   name: 'footer',

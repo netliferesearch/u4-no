@@ -1,6 +1,8 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { OnlineTraining, Workshops, Helpdesk } from './icons';
+import OnlineTraining from './icons/Helpdesk';
+import Workshops from './icons/Workshops';
+import Helpdesk from './icons/OnlineTraining';
 
 const classes = BEMHelper({
   name: 'boxOnBox-partner-features',

@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-import { Error404 } from '../components';
+import Error404 from '../components/Error404';
 import { redirectPermanent, getRedirect } from '../helpers/redirect';
 
 export default class ErrorHandler extends React.Component {

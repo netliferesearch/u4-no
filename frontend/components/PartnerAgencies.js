@@ -1,19 +1,14 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { Logo } from './';
-import {
-  CmiLogo,
-  PartnerLogoDanida,
-  PartnerLogo2,
-  PartnerLogo3,
-  PartnerLogo4,
-  PartnerLogo5,
-  PartnerLogo6,
-  PartnerLogo7,
-  PartnerLogo8,
-  PartnerLogo9,
-  PartnerLogoCanada,
-} from './icons/';
+import PartnerLogo3 from './icons/PartnerLogo3';
+import PartnerLogo4 from './icons/PartnerLogo4';
+import PartnerLogo5 from './icons/PartnerLogo5';
+import PartnerLogo6 from './icons/PartnerLogo6';
+import PartnerLogo7 from './icons/PartnerLogo7';
+import PartnerLogo8 from './icons/PartnerLogo8';
+import PartnerLogo9 from './icons/PartnerLogo9';
+import PartnerLogoCanada from './icons/PartnerLogoCanada';
+import PartnerLogoDanida from './icons/PartnerLogoDanida';
 
 const classes = BEMHelper({
   name: 'partnerAgencies',

@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
-import { HeadComponent, Logo, MenuV2, SearchFieldV2 } from '../components';
+import HeadComponent from '../components/HeadComponent';
+import Logo from '../components/Logo';
+import MenuV2 from '../components/MenuV2';
+import SearchFieldV2 from '../components/SearchField-v2';
 
 const classes = BEMHelper({
   name: 'top-bar',

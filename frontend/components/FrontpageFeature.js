@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
-import { ArrowRight } from '../components/icons';
+import ArrowRight from '../components/icons/ArrowRight';
 
 const classes = BEMHelper({
   name: 'frontpage-feature',
@@ -53,7 +53,7 @@ class FrontpageFeature extends Component {
             <ul {...classes('list')}>
               {topics.slice(0, 5).map((topic, index) => (
                 <li key={topic._id} {...classes('list-item')}>
-                  <Link href={`/topics/${topic.slug.current}`} >
+                  <Link href={`/topics/${topic.slug.current}`}>
                     <a {...classes('link')} onMouseEnter={() => this.triggerImg(topic.imageUrl)}>
                       {topic.title}
                     </a>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import autobind from 'react-autobind';
-import { Loader } from '../components';
-import { MagnifyingGlass } from '../components/icons';
+import Loader from '../components/Loader';
+import MagnifyingGlass from '../components/icons/MagnifyingGlass';
 import { withRouter } from 'next/router';
 
 const classes = BEMHelper({

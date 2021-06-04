@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
-import PicoSanity from 'picosanity'
+import PicoSanity from 'picosanity';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
-import { ArrowRight, SearchIcon, MenuIcon } from '../components/icons';
+import ArrowRight from '../components/icons/ArrowRight';
+import SearchIcon from '../components/icons/SearchIcon';
+import MenuIcon from '../components/icons/MenuIcon';
 
 const classes = BEMHelper({
   name: 'top-bar',

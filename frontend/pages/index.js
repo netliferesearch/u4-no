@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
 import Link from 'next/link';
-import {
-  Layout,
-  FrontpageSearchField,
-  BoxOnBoxPartnerFeatures,
-  Newsletter,
-  Footer,
-  PartnerAgencies,
-  FrontpageFeature,
-  Mosaic,
-} from '../components';
-import { U4LogoSquare, ArrowRight } from '../components/icons';
+import Layout from '../components/Layout';
+import FrontpageSearchField from '../components/FrontpageSearchField';
+import BoxOnBoxPartnerFeatures from '../components/BoxOnBoxPartnerFeatures';
+import Newsletter from '../components/Newsletter';
+import Footer from '../components/Footer';
+import PartnerAgencies from '../components/PartnerAgencies';
+import FrontpageFeature from '../components/FrontpageFeature';
+import Mosaic from '../components/Mosaic';
+
+import U4LogoSquare from '../components/icons/U4LogoSquare';
+import ArrowRight from '../components/icons/ArrowRight';
 import serializers from '../components/serializers';
 
 const Frontpage = ({ data: { frontPage = {}, topics = {} } }) => (
