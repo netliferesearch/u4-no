@@ -16,7 +16,7 @@ async function fetchAndMaterialize({ nextContext, queryFunc, materializeDepth })
   const client = new PicoSanity({
     projectId: '1f1lcoov',
     dataset: 'production',
-    token: process.env.SANITY_TOKEN,
+    // token: process.env.SANITY_TOKEN,
     useCdn: true,
   });
 
