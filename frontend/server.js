@@ -25,21 +25,22 @@ app.prepare().then(() => {
 
   server.get('/robots.txt', (req, res) => {
     res.type('text/plain');
-    if (process.env.NODE_ENV === 'production') {
-      /**
-       * Disallow indexing preview functionality, and unpublished functionality
-       */
-      return res.send(
-        [
-          'User-agent: *',
-          'Disallow: /v2/',
-          'Disallow: /preview/',
-          'Disallow: /generate-pdf-preview',
-        ].join('\n')
-      );
+    if (process.env.ROBOTS_TXT_DISALLOW_ALL === 'true') {
+      // Prevent indexing staging and test environments.
+      return res.send(['User-agent: *', 'Disallow: /'].join('\n'));
     }
-    // Otherwise prevent indexing staging environments.
-    return res.send(['User-agent: *', 'Disallow: /'].join('\n'));
+    /**
+     * In production:
+     * Disallow indexing preview functionality, and unpublished functionality
+     */
+    return res.send(
+      [
+        'User-agent: *',
+        'Disallow: /v2/',
+        'Disallow: /preview/',
+        'Disallow: /generate-pdf-preview',
+      ].join('\n')
+    );
   });
 
   server.use('/public', express.static('public'));
