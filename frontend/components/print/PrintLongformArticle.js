@@ -86,7 +86,7 @@ class LongformArticle extends PureComponent {
               {authors
                 .map(author => (author.target ? author.target : author))
                 .map((person, index) => (
-                  <div>
+                  <div key={person._id}>
                     {person.image && person.image.asset && person.image.asset.url && (
                       <img
                         alt={`${transField(person, 'firstName')} ${transField(person, 'surname')}`}
