@@ -127,7 +127,7 @@ const PublicationArticleHeader = ({
                 (item = {}, index) =>
                   item.slug &&
                   item.title && (
-                    <LinkToItem _type="publication" slug={item.slug} key={item._id}>
+                    <LinkToItem type="publication" slug={item.slug} key={item._id}>
                       <span>
                         <a {...classes('language')}>{languageName({ langcode: item.language })}</a>
                         {index + 2 < translations.length && <span>, </span>}
@@ -150,7 +150,7 @@ const PublicationArticleHeader = ({
           )}
         </div>
         {summary.length > 0 && (
-          <LinkToItem _type="shortVersionPublication" slug={slug.current}>
+          <LinkToItem type="shortVersionPublication" slug={slug.current}>
             <a {...classes('button')}>
               <div {...classes('button-text')}>Read our short version</div>
               <div {...classes('button-icon')}>
