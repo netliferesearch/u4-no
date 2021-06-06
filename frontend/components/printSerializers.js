@@ -1,18 +1,19 @@
+import BlockContent from '@sanity/block-content-to-react';
+import dynamic from 'next/dynamic';
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
-
-import FunkyTable from './FunkyTable';
-import LineChart from './LineChart';
 import BarChart from './BarChart';
-import findFootnotes from './findFootnotes';
-import findLinks from './findLinks';
-import PullQuote from './PullQuote';
 import ChartPrint from './ChartPrint';
 import Figure from './Figure';
-import Table from './Table';
+import findFootnotes from './findFootnotes';
+import findLinks from './findLinks';
+import FunkyTable from './FunkyTable';
 import printFootnoteSerializer from './print/printFootnoteSerializer';
+import PullQuote from './PullQuote';
+import Table from './Table';
+
+const LineChart = dynamic(() => import('./LineChart'));
 
 const classes = BEMHelper({
   name: 'longform-grid',
