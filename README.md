@@ -45,14 +45,17 @@ The pdf service is a worker defined in the `Procfile`. When it starts up it list
 
 Relevant files when working with this pdf functionality:
 
-- `frontend/pages/publication.print.js`
+- `frontend/pages/publications/[slug]/print.js`
 - `frontend/style/print.scss`
 - `frontend/components/printSerializers.js`
+- `service-publication-pdf-builder/publication-pdf-handler.js`
+- `service-publication-pdf-builder/publication-pdf-preview-handler.js`
 - [DocRaptor documentation](http://docraptor.com/documentation/style)
+- To see DocRaptor logs, log into Heroku and click on the DocRaptor addon attached to the Heroku dyno.
 
-To make DocRaptor build pdfs while you're working locally you can use Ngrok to create a web accessible tunnel.
+**Testing locally:**
 
-Once you have [Ngrok](https://ngrok.com/) running you can manually trigger pdf builds with:
+To make DocRaptor build pdfs while you're working locally you can use Ngrok to create a web accessible tunnel (or some similar tunneling service). Once you have [Ngrok](https://ngrok.com/) running you can manually trigger pdf builds with:
 
 ```sh
 cd service-publication-pdf-builder/
@@ -60,6 +63,18 @@ cp env-example .env # be sure to configure its credentials
 # Deletes test.pdf if it is present, then makes DocRaptor goto provided url and build a pdf.
 rm test.pdf || true && node cmd-pdf.js https://a7df9417.ngrok.io/publications/addressing-corruption-risks-in-multi-partner-funds
 ```
+
+**Trigger a test build of a PDF:**
+
+You can also do test builds of PDFs with an url like so:
+
+```
+https://u4-frontend-staging.herokuapp.com/generate-pdf-preview
+  ?id=2276f04c-ee78-4dbf-8cd4-589289908149
+  &url=https://u4-frontend-staging.herokuapp.com/printpreview
+```
+
+Here we define query parameters `id` which is the publication id, and then the `url` to say _which server_ DocRaptor should go to render the document. This means that when testing you can tell DocRaptor to render different documents from different servers which is useful for comparisons. For full details see `publication-pdf-preview-handler.js`.
 
 ## Develop elastic indexer service
 
