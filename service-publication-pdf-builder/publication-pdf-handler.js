@@ -26,14 +26,14 @@ async function publicationPdfHandler(req, res) {
 
     if (!sanityResults) {
       console.warn('Sanity returned nothing', sanityResults);
-      return req.status(404).send('Could not find pdf file');
+      return res.status(404).send('Could not find pdf file');
     }
 
     const data = Array.isArray(sanityResults) ? [...sanityResults] : { ...sanityResults };
 
     const pdfUrl = getPdfUrl(data);
     if (!pdfUrl) {
-      return req.status(404).send('Could not find pdf file url');
+      return res.status(404).send('Could not find pdf file url');
     }
 
     const response = await axios({
