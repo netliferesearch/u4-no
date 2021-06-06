@@ -13,7 +13,6 @@ async function publicationPdfHandler(req, res) {
     const client = sanityClient({
       projectId: '1f1lcoov',
       dataset: 'production',
-      token: process.env.SANITY_TOKEN,
       useCdn: true,
     });
     const queryFunc = slug => ({

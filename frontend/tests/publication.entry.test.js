@@ -3,7 +3,7 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import PublicationEntry from '../pages/publications/[slug]/index';
-import { client } from '../helpers/picoSanityClient';
+import { client } from '../helpers/sanityClient.pico';
 
 Enzyme.configure({ adapter: new Adapter() });
 

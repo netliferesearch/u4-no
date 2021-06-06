@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 
 import buildUrl from '../helpers/buildUrl';
-import client from '../helpers/sanity-client-config';
+import { client } from '../helpers/sanityClient.pico';
 
 import ArrowRightSmall from './icons/ArrowRightSmall';
 
@@ -22,7 +22,7 @@ class BreadCrumb extends Component {
     }).isRequired,
     url: PropTypes.shape({
       current: PropTypes.string,
-    })
+    }),
   };
 
   constructor(props) {

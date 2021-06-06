@@ -3,7 +3,7 @@ import Error404 from '../components/Error404';
 import materialize from '../helpers/materialize';
 import { getRedirect, redirectPermanent } from '../helpers/redirect';
 import { timer } from '../helpers/timer';
-import { client } from '../helpers/picoSanityClient';
+import { client } from '../helpers/sanityClient.pico';
 
 async function fetchAndMaterialize({ nextContext, queryFunc, materializeDepth }) {
   if (!queryFunc) {

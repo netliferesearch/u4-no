@@ -1,5 +1,5 @@
 // require('dotenv').config();
-const sanityClient = require('@sanity/client');
+const sanityClient = require('picosanity');
 
 // return url from type and slug
 const buildUrl = ({ _type = 'notype', slug = {} }) => {
@@ -40,7 +40,6 @@ async function shortUrlHandler(req, res) {
   const client = sanityClient({
     projectId: '1f1lcoov',
     dataset: 'production',
-    token: process.env.SANITY_TOKEN,
     useCdn: true,
   });
 

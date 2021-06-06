@@ -4,7 +4,6 @@ import queryString from 'query-string';
 import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
-import { Router } from '../../routes';
 import SearchIcon from '../icons/SearchIcon';
 import LoaderV2 from '../LoaderV2';
 
@@ -104,7 +103,7 @@ class SearchField extends Component {
             search: value,
             searchPageNum: 1,
           });
-          Router[`${urlUpdateType}Route`](`/search?${updatedQueryString}`);
+          this.props.router[`${urlUpdateType}Route`](`/search?${updatedQueryString}`);
           console.log('debounce was called');
         }, 100)();
       }
