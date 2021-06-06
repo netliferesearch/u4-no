@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import withRedux from 'next-redux-wrapper';
-import { initStore, updateReadingProgress } from './redux-store';
 import Error404 from '../components/Error404';
 
 const elasticsearch = require('elasticsearch');
-
-const mapDispatchToProps = dispatch => ({
-  updateReadingProgress: bindActionCreators(updateReadingProgress, dispatch),
-});
 
 // anonymous has read access to elasticsearch index so this works
 const client = new elasticsearch.Client({
@@ -295,47 +288,44 @@ const getSearchAggregations = async () => {
 };
 
 const ElasticDataLoader = Child =>
-  withRedux(initStore, null, mapDispatchToProps)(
-    class DataLoader extends Component {
-      static async getInitialProps(nextContext) {
-        console.log('Elastic data loader fetching data');
-        const { query, store } = nextContext;
-        const { defaultSearchAggs = {} } = store.getState();
-        // Use Promise.all so that we can fire off 1 or 2 two queries at once,
-        // without one waiting for the other.
-        const [result] = await Promise.all([
-          doSearch({ query, defaultSearchAggs }),
-          (async () => {
-            if (defaultSearchAggs.length > 0) {
-              return true;
-            }
-            // We do one search just to know how many possible aggregations
-            // we have. Filters needs this if they want to display unmatched filters.
-            const { aggregations } = await getSearchAggregations();
-            return store.dispatch({
-              type: 'SEARCH_UPDATE_DEFAULT_AGGS',
-              defaultSearchAggs: aggregations,
-            });
-          })(),
-        ]);
-        store.dispatch({
-          type: 'SEARCH_UPDATE_RESULTS',
-          searchResults: result,
-        });
-        return { data: result };
-      }
-      render() {
-        const { error } = this.props;
-        if (error) {
-          return <Error404 {...this.props} />;
-        }
-        return (
-          <div>
-            <Child {...this.props} />
-          </div>
-        );
-      }
+  class DataLoader extends Component {
+    static async getInitialProps(nextContext) {
+      console.log('Elastic data loader fetching data');
+      const { query, store } = nextContext;
+      const { defaultSearchAggs = {} } = store.getState();
+      // Use Promise.all so that we can fire off 1 or 2 two queries at once,
+      // without one waiting for the other.
+      const [result] = await Promise.all([
+        doSearch({ query, defaultSearchAggs }),
+        (async () => {
+          if (defaultSearchAggs.length > 0) {
+            return true;
+          }
+          // We do one search just to know how many possible aggregations
+          // we have. Filters needs this if they want to display unmatched filters.
+          const { aggregations } = await getSearchAggregations();
+          return store.dispatch({
+            type: 'SEARCH_UPDATE_DEFAULT_AGGS',
+            defaultSearchAggs: aggregations,
+          });
+        })(),
+      ]);
+      store.dispatch({
+        type: 'SEARCH_UPDATE_RESULTS',
+        searchResults: result,
+      });
+      return { data: result };
     }
-  );
-
+    render() {
+      const { error } = this.props;
+      if (error) {
+        return <Error404 {...this.props} />;
+      }
+      return (
+        <div>
+          <Child {...this.props} />
+        </div>
+      );
+    }
+  };
 export default ElasticDataLoader;

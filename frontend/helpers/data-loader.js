@@ -1,16 +1,9 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import withRedux from 'next-redux-wrapper';
 import PicoSanity from 'picosanity';
-import { initStore, updateReadingProgress } from './redux-store';
+import React, { Component } from 'react';
 import Error404 from '../components/Error404';
-import { redirectPermanent, getRedirect } from '../helpers/redirect';
 import materialize from '../helpers/materialize';
+import { getRedirect, redirectPermanent } from '../helpers/redirect';
 import { timer } from '../helpers/timer';
-
-const mapDispatchToProps = dispatch => ({
-  updateReadingProgress: bindActionCreators(updateReadingProgress, dispatch),
-});
 
 async function fetchAndMaterialize({ nextContext, queryFunc, materializeDepth }) {
   const client = new PicoSanity({
@@ -50,29 +43,26 @@ async function fetchAndMaterialize({ nextContext, queryFunc, materializeDepth })
 }
 
 const DataLoaderWrapper = (Child, { queryFunc = false, materializeDepth = false, query = {} }) =>
-  withRedux(initStore, null, mapDispatchToProps)(
-    class DataLoader extends Component {
-      static async getInitialProps(nextContext) {
-        const { params = {} } = nextContext;
-        const time = timer(`DataLoader, params: ${JSON.stringify(params)}`);
-        const result = await fetchAndMaterialize({ queryFunc, nextContext, materializeDepth });
-        time();
-        return result;
-      }
-      render() {
-        // console.log('DataLoader rendering with these props:');
-        // console.log(this.props);
-        const { error } = this.props;
-        if (error) {
-          return <Error404 {...this.props} />;
-        }
-        return (
-          <div>
-            <Child {...this.props} />
-          </div>
-        );
-      }
+  class DataLoader extends Component {
+    static async getInitialProps(nextContext) {
+      const { params = {} } = nextContext;
+      const time = timer(`DataLoader, params: ${JSON.stringify(params)}`);
+      const result = await fetchAndMaterialize({ queryFunc, nextContext, materializeDepth });
+      time();
+      return result;
     }
-  );
-
+    render() {
+      // console.log('DataLoader rendering with these props:');
+      // console.log(this.props);
+      const { error } = this.props;
+      if (error) {
+        return <Error404 {...this.props} />;
+      }
+      return (
+        <div>
+          <Child {...this.props} />
+        </div>
+      );
+    }
+  };
 export default DataLoaderWrapper;

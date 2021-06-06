@@ -4,6 +4,7 @@ import LongformArticleContainer from '../../../components/LongformArticleContain
 import LegacyPublicationContainer from '../../../components/LegacyPublicationContainer';
 import DataLoader from '../../../helpers/data-loader';
 import { localize } from '../../../helpers/translate';
+import { wrapInRedux } from '../../../helpers/redux-store-wrapper';
 
 const PublicationEntry = props => (
   <div>
@@ -34,17 +35,18 @@ PublicationEntry.defaultProps = {
   },
 };
 
-export default DataLoader(PublicationEntry, {
-  queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `*[_type == 'publication' && slug.current == $slug]{ _type, _id,
+export default wrapInRedux(
+  DataLoader(PublicationEntry, {
+    queryFunc: ({ query: { slug = '' } }) => ({
+      sanityQuery: `*[_type == 'publication' && slug.current == $slug]{ _type, _id,
       abbreviations, abstract, acknowledgements,
       authors[]->{ _id, affiliations, email, ${localize('firstName')}, slug, ${localize(
-      'surname'
-    )} },
+        'surname'
+      )} },
       bibliographicalOverride, blurbs, content, date,
       editors[]->{ _id, affiliations, email, ${localize('firstName')}, slug, ${localize(
-      'surname'
-    )} },
+        'surname'
+      )} },
       featuredImage, headsUp, keywords, language,
       lead, legacypdf, mainPoints, methodology, notes, partners, pdfFile, publicationNumber,
       publicationType->{ _id, title },
@@ -61,7 +63,8 @@ export default DataLoader(PublicationEntry, {
                },
       "updatedVersion": updatedVersion->{title,slug,publicationType,publicationNumber,date,reference},
     }[0]`,
-    param: { slug },
-  }),
-  materializeDepth: 2,
-});
+      param: { slug },
+    }),
+    materializeDepth: 2,
+  })
+);
