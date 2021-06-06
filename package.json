@@ -84,6 +84,10 @@
     "node": "14.x",
     "npm": "7.x"
   },
+  "os": [
+    "darwin",
+    "linux"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/netliferesearch/u4-no.git"
