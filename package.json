@@ -55,7 +55,7 @@
     "react-dom": "^16.14.0",
     "react-intersection-observer": "^8.0.5",
     "react-paginating": "^1.4.0",
-    "react-pdf": "^2.1.7",
+    "react-pdf": "2.1.7",
     "react-player": "^0.25.3",
     "react-redux": "^5.0.6",
     "react-scrollchor": "^7.0.0",
