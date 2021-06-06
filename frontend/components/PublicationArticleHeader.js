@@ -83,7 +83,7 @@ const PublicationArticleHeader = ({
           .filter(value => Object.keys(value).length)
           .map(({ title = '', slug = {} }) => (
             <LinkToItem
-              _type="topics"
+              type="topics"
               slug={slug.current ? slug.current : slug}
               key={slug.current ? slug.current : ''}
             >
