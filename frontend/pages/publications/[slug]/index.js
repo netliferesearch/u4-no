@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LongformArticleContainer from '../../../components/LongformArticleContainer';
-import LegacyPublicationContainer from '../../../components/LegacyPublicationContainer';
+import dynamic from 'next/dynamic';
 import DataLoader from '../../../helpers/data-loader';
 import { localize } from '../../../helpers/translate';
 import { wrapInRedux } from '../../../helpers/redux-store-wrapper';
+
+const LongformArticleContainer = dynamic(() =>
+  import('../../../components/LongformArticleContainer')
+);
+const LegacyPublicationContainer = dynamic(() =>
+  import('../../../components/LegacyPublicationContainer')
+);
 
 const PublicationEntry = props => (
   <div>
