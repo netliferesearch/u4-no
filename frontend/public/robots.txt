@@ -1,3 +1,0 @@
-User-agent: *
-Disallow: /search-v2/
-Disallow: /v2/

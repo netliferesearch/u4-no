@@ -22,12 +22,18 @@ app.prepare().then(() => {
   if (process.env.NODE_ENV === 'production' && process.env.SKIP_SSL !== 'true') {
     server.use(forceSsl);
   }
-  if (process.env.NODE_ENV !== 'production') {
-    server.get('/robots.txt', (req, res) => {
-      res.type('text/plain');
-      res.send('User-agent: *\nDisallow: /');
-    });
-  }
+
+  server.get('/robots.txt', (req, res) => {
+    res.type('text/plain');
+    if (process.env.NODE_ENV === 'production') {
+      /**
+       * Disallow indexing preview functionality, and unpublished functionality
+       */
+      return res.send(['User-agent: *', 'Disallow: /v2/', 'Disallow: /preview/'].join('\n'));
+    }
+    // Otherwise prevent indexing staging environments.
+    return res.send(['User-agent: *', 'Disallow: /'].join('\n'));
+  });
 
   server.use('/public', express.static('public'));
 
