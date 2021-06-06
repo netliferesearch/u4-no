@@ -3,19 +3,9 @@ const axios = require('axios');
 const sanityClient = require('@sanity/client');
 
 /**
- * Purpose: To be used by frontend/server.js, send pdf file to browser
+ * Purpose of this handler is to check if there is a PDF
+ * attached to a given publication and then return it.
  */
-
-function getPdfUrl(data) {
-  if (data && data.legacypdf && data.legacypdf.asset && data.legacypdf.asset.url) {
-    return data.legacypdf.asset.url;
-  }
-  if (data && data.pdfFile && data.pdfFile.asset && data.pdfFile.asset.url) {
-    return data.pdfFile.asset.url;
-  }
-  return false;
-}
-
 async function publicationPdfHandler(req, res) {
   const { slug = '' } = req.params;
 
@@ -23,7 +13,6 @@ async function publicationPdfHandler(req, res) {
     const client = sanityClient({
       projectId: '1f1lcoov',
       dataset: 'production',
-      token: process.env.SANITY_TOKEN,
       useCdn: true,
     });
     const queryFunc = slug => ({
@@ -37,14 +26,14 @@ async function publicationPdfHandler(req, res) {
 
     if (!sanityResults) {
       console.warn('Sanity returned nothing', sanityResults);
-      return req.status(404).send('Could not find pdf file');
+      return res.status(404).send('Could not find pdf file');
     }
 
     const data = Array.isArray(sanityResults) ? [...sanityResults] : { ...sanityResults };
 
     const pdfUrl = getPdfUrl(data);
     if (!pdfUrl) {
-      return req.status(404).send('Could not find pdf file url');
+      return res.status(404).send('Could not find pdf file url');
     }
 
     const response = await axios({
@@ -59,6 +48,16 @@ async function publicationPdfHandler(req, res) {
     console.error('Error', e);
     res.status(500).send('Error: Was not able to load pdf');
   }
+}
+
+function getPdfUrl(data) {
+  if (data && data.legacypdf && data.legacypdf.asset && data.legacypdf.asset.url) {
+    return data.legacypdf.asset.url;
+  }
+  if (data && data.pdfFile && data.pdfFile.asset && data.pdfFile.asset.url) {
+    return data.pdfFile.asset.url;
+  }
+  return false;
 }
 
 module.exports = { publicationPdfHandler };

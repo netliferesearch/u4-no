@@ -1,10 +1,8 @@
 /* eslint-disable react/no-danger */
 import React, { PureComponent } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import Head from 'next/head';
 import serializers from '../printSerializers';
 import buildTitleObjects from '../TableOfContents/buildTitleObjects';
-import stylesheet from '../../style/print.scss';
 import { translate, translateField, langCode } from '../../helpers/translate';
 
 /**
@@ -191,10 +189,6 @@ class LongformArticle extends PureComponent {
             </div>
           ) : null}
         </div>
-
-        <Head>
-          <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-        </Head>
       </main>
     );
   }

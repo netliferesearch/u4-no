@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
-import {
-  Footer,
-  Layout,
-  PublicationArticleHeader,
-  PdfViewer,
-  PublicationNotification,
-  RecommendedResources,
-} from './';
 
-const LegacyPublicationContainer = (props) => {
+import Footer from './Footer';
+import Layout from './Layout';
+import PublicationArticleHeader from './PublicationArticleHeader';
+import PdfViewer from './PdfViewer';
+import PublicationNotification from './PublicationNotification';
+import RecommendedResources from './RecommendedResources';
+
+const LegacyPublicationContainer = props => {
   const {
     data: {
       lead = '',
@@ -139,5 +138,5 @@ export default connect(
   dispatch => ({
     toggleArticleMenu: bindActionCreators(toggleArticleMenu, dispatch),
     toggleLoadingScreen: bindActionCreators(toggleLoadingScreen, dispatch),
-  }),
+  })
 )(LegacyPublicationContainer);

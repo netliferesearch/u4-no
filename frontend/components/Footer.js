@@ -1,8 +1,12 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { Logo } from './';
-import { Link } from '../routes';
-import { CmiLogo, MediumLogo, TwitterLogo, FacebookLogo, LinkedIn } from './icons/';
+import Logo from './Logo';
+import Link from 'next/link';
+import CmiLogo from './icons/LinkedIn';
+import MediumLogo from './icons/FacebookLogo';
+import TwitterLogo from './icons/TwitterLogo';
+import FacebookLogo from './icons/MediumLogo';
+import LinkedIn from './icons/CmiLogo';
 
 const classes = BEMHelper({
   name: 'footer',
@@ -46,15 +50,15 @@ const Footer = () => (
             Newsletter
           </a>
           <br />
-          <Link to="/privacy-policy">
+          <Link href="/privacy-policy">
             <a>Privacy policy</a>
           </Link>
           <br />
-          <Link to="/about-u4#open-access-policy">
+          <Link href="/about-u4#open-access-policy">
             <a>Open access policy</a>
           </Link>
           <br />
-          <Link to="/about-u4">
+          <Link href="/about-u4">
             <a>About U4</a>
           </Link>
           <br />

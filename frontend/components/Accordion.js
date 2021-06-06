@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import T from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group';
 import autobind from 'react-autobind';
-
-const Icon = () => <div />;
 
 const classes = new BEMHelper({
   name: 'accordion',
@@ -65,13 +63,13 @@ export default class Accordion extends Component {
           </span>
         </button>
 
-        <ReactCSSTransitionGroup
+        <CSSTransitionGroup
           transitionName={classes('wrapper').className}
           transitionEnterTimeout={550}
           transitionLeaveTimeout={200}
         >
           {expanded && <div {...classes('content')}>{children}</div>}
-        </ReactCSSTransitionGroup>
+        </CSSTransitionGroup>
       </section>
     );
   }

@@ -1,14 +1,13 @@
 import React from 'react';
 import dateToString from '../../helpers/dateToString';
 import BEMHelper from 'react-bem-helper';
-import { Link } from '@reach/router';
 
 const FeaturedPosts = ({ featured }) => {
   const classes = BEMHelper({ name: 'frontpage-section', prefix: 'c-' });
   const { publication } = featured;
   const blog = featured.blog[0];
-  const blogLarge = featured.blog[1];
-  //console.log(publication.slug)
+  const blogLarge = featured.blog[1] || {};
+  // console.log(publication.slug)
   return (
     <div className="c-frontpage-section__content c-frontpage-section__featured">
       {blog && (
@@ -76,7 +75,9 @@ const FeaturedPosts = ({ featured }) => {
             <h3 {...classes('publication-headline')}>{blogLarge.title}</h3>
           </a>
           <p {...classes('publication-intro')}>{blogLarge.standfirst}</p>
-          <p {...classes('date')}>{dateToString({ start: blogLarge.date.utc })}</p>
+          <p {...classes('date')}>
+            {dateToString({ start: blogLarge.date && blogLarge.date.utc })}
+          </p>
           <div {...classes('topic')}>
             {blogLarge.topics &&
               blogLarge.topics.map((topic, index) => {

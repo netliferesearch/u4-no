@@ -31,7 +31,7 @@ const TnrcHeader = ({ publicationTypeId = '' }) => {
             target="_blank"
             title="Targeting Natural Resource Corruption"
           >
-            <img src="/static/tnrc/TNRC.png" alt="Targeting Natural Resource Corruption" />
+            <img src="/public/tnrc/TNRC.png" alt="Targeting Natural Resource Corruption" />
           </a>
         </div>
       </section>

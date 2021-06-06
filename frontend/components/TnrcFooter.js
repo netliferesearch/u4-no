@@ -19,7 +19,7 @@ const TnrcFooter = ({ publicationTypeId = '' }) => {
                 target="_blank"
                 title="Targeting Natural Resource Corruption"
               >
-                <img src="/static/tnrc/TNRC.png" alt="Targeting Natural Resource Corruption" />
+                <img src="/public/tnrc/TNRC.png" alt="Targeting Natural Resource Corruption" />
               </a>
             </div>
           </div>
@@ -31,7 +31,7 @@ const TnrcFooter = ({ publicationTypeId = '' }) => {
                 style={{
                   width: '155px',
                   height: '100px',
-                  backgroundImage: "url('/static/tnrc/USAID.png')",
+                  backgroundImage: "url('/public/tnrc/USAID.png')",
                   backgroundSize: '100%',
                   backgroundPosition: '50% 50%',
                 }}
@@ -46,7 +46,7 @@ const TnrcFooter = ({ publicationTypeId = '' }) => {
                 style={{
                   width: '105px',
                   height: '100px',
-                  backgroundImage: "url('/static/tnrc/WWF.png')",
+                  backgroundImage: "url('/public/tnrc/WWF.png')",
                   backgroundSize: '45%',
                   backgroundPosition: '70% 50%',
                 }}
@@ -61,7 +61,7 @@ const TnrcFooter = ({ publicationTypeId = '' }) => {
                 style={{
                   width: '220px',
                   height: '100px',
-                  backgroundImage: "url('/static/tnrc/CMI_U4.png')",
+                  backgroundImage: "url('/public/tnrc/CMI_U4.png')",
                   backgroundSize: '90%',
                   backgroundPosition: '50% 50%',
                 }}
@@ -76,7 +76,7 @@ const TnrcFooter = ({ publicationTypeId = '' }) => {
                 style={{
                   width: '170px',
                   height: '100px',
-                  backgroundImage: "url('/static/tnrc/traccc.jpg')",
+                  backgroundImage: "url('/public/tnrc/traccc.jpg')",
                   backgroundSize: '88%',
                   backgroundPosition: '50% 50%',
                 }}
@@ -91,7 +91,7 @@ const TnrcFooter = ({ publicationTypeId = '' }) => {
                 style={{
                   width: '155px',
                   height: '100px',
-                  backgroundImage: "url('/static/tnrc/TRAFFIC.png')",
+                  backgroundImage: "url('/public/tnrc/TRAFFIC.png')",
                   backgroundSize: '93%',
                   backgroundPosition: '50% 50%',
                 }}

@@ -2,30 +2,30 @@ import React from 'react';
 import BlockToContent from '@sanity/block-content-to-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import dateToString from '../helpers/dateToString';
-import {
-  Footer,
-  Layout,
-  LongformArticle,
-  PublicationArticleHeader,
-  TableOfContentsButton,
-  TableOfContentsSidebar,
-  TableOfContentsContent,
-  CustomScrollSpy,
-  RecommendedResources,
-  ToggleBlock,
-  AuthorList,
-  PublicationNotification,
-  TnrcHeader,
-  TnrcFooter,
-} from './';
-import {
-  CreativecommonsCC,
-  CreativecommonsBY,
-  CreativecommonsNC,
-  CreativecommonsND,
-} from './icons';
+
+import Footer from './Footer';
+import Layout from './Layout';
+import LongformArticle from './LongformArticle';
+import PublicationArticleHeader from './PublicationArticleHeader';
+import TableOfContentsButton from './TableOfContents/TableOfContentsButton';
+import TableOfContentsSidebar from './TableOfContents/TableOfContentsSidebar';
+import TableOfContentsBase from './TableOfContents/TableOfContentsBase';
+import CustomScrollSpy from './TableOfContents/CustomScrollSpy';
+import RecommendedResources from './RecommendedResources';
+import ToggleBlock from './ToggleBlock';
+import AuthorList from './AuthorList';
+import PublicationNotification from './PublicationNotification';
+import TnrcHeader from './TnrcHeader';
+import TnrcFooter from './TnrcFooter';
+
+import CreativecommonsCC from './icons/CreativecommonsCC';
+import CreativecommonsBY from './icons/CreativecommonsBY';
+import CreativecommonsNC from './icons/CreativecommonsNC';
+import CreativecommonsND from './icons/CreativecommonsND';
+
 import { translate } from '../helpers/translate';
 
 const LongFormArticleContainer = (props = {}) => {
@@ -94,7 +94,7 @@ const LongFormArticleContainer = (props = {}) => {
           }`}
         >
           <TableOfContentsButton {...props.data} />
-          <TableOfContentsContent
+          <TableOfContentsBase
             showAllItems
             onItemSelected={e => {
               const linkThatWasClicked = e.target;
@@ -114,13 +114,14 @@ const LongFormArticleContainer = (props = {}) => {
           />
         </div>
       )}
-
+      
       {!isArticleMenuOpen && (
         <article>
           {_type === 'publication' && !isPublicationDrawerOpen && (
             <TableOfContentsButton {...props.data} />
           )}
           {/* <CustomScrollSpy {...props.data} /> */}
+          
           <span id="js-top" />
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}

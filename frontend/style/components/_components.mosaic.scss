@@ -98,7 +98,6 @@
       //6
       &:nth-child(6):nth-last-child(1) {
         grid-column: 1 / 3;
-
       }
       //8
       &:nth-child(3):nth-last-child(6) {
@@ -125,7 +124,7 @@
     }
     @include mq($from: desktop, $until: wide) {
       //2
-      &:nth-child(2)nth-child(9):nth-last-child(1) {
+      &:nth-child(2):nth-child(9):nth-last-child(1) {
         grid-row: 1 / 3;
       }
       //4
@@ -299,10 +298,10 @@
 .c-mosaic_item-title {
   hyphens: none;
   font-weight: 400;
-  @include inuit-font-size($font-size-small*1.1, $font-size-large);
+  @include inuit-font-size($font-size-small * 1.1, $font-size-large);
   @include mq($from: tablet) {
     font-weight: 300;
-    @include inuit-font-size($font-size-normal, $font-size-large*1.1);
+    @include inuit-font-size($font-size-normal, $font-size-large * 1.1);
   }
 }
 

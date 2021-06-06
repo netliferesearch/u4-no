@@ -1,11 +1,18 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { Link } from '../routes';
+import Link from 'next/link';
 import languageName from '../helpers/languageName';
 import bibliographicReference from '../helpers/bibliographicReference';
-import { Download, ArrowRight, PartnerLogo10 } from './icons';
-import { AuthorList, EditorList, InstitutionList, LinkToItem } from './';
 import { translate, translateField, langCode } from '../helpers/translate';
+
+import Download from './icons/Download';
+import ArrowRight from './icons/ArrowRight';
+import PartnerLogo10 from './icons/PartnerLogo10';
+
+import AuthorList from './AuthorList';
+import EditorList from './EditorList';
+import InstitutionList from './InstitutionList';
+import LinkToItem from './LinkToItem';
 
 const classes = BEMHelper({
   name: 'article-header',
@@ -76,7 +83,7 @@ const PublicationArticleHeader = ({
           .filter(value => Object.keys(value).length)
           .map(({ title = '', slug = {} }) => (
             <LinkToItem
-              type="topics"
+              _type="topics"
               slug={slug.current ? slug.current : slug}
               key={slug.current ? slug.current : ''}
             >
@@ -120,7 +127,7 @@ const PublicationArticleHeader = ({
                 (item = {}, index) =>
                   item.slug &&
                   item.title && (
-                    <LinkToItem type="publication" slug={item.slug} key={item._id}>
+                    <LinkToItem _type="publication" slug={item.slug} key={item._id}>
                       <span>
                         <a {...classes('language')}>{languageName({ langcode: item.language })}</a>
                         {index + 2 < translations.length && <span>, </span>}
@@ -143,14 +150,14 @@ const PublicationArticleHeader = ({
           )}
         </div>
         {summary.length > 0 && (
-          <Link route="publication.shortVersion" params={{ slug: slug.current }}>
+          <LinkToItem _type="shortVersionPublication" slug={slug.current}>
             <a {...classes('button')}>
               <div {...classes('button-text')}>Read our short version</div>
               <div {...classes('button-icon')}>
                 <ArrowRight />
               </div>
             </a>
-          </Link>
+          </LinkToItem>
         )}
         {pdfFile.asset && (
           <div {...classes('meta', null, 'c-article-header__download')}>

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .c-frontpage-search {
   //display: grid;
   //grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
@@ -129,7 +131,7 @@
   padding-bottom: $spacing-tiny;
 }
 .c-frontpage-search__items-type {
-  @include inuit-font-size($font-size-tiny/1.2, $line-height-tiny);
+  @include inuit-font-size(math.div($font-size-tiny, 1.2), $line-height-tiny);
   color: $grey;
   text-transform: uppercase;
 }

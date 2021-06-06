@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // These are the key variables for styling the popover.
 // Just set the variable to none if you don't want that styling.
 
@@ -17,7 +19,7 @@ $popover-bottom-position: auto !default; // Sets the bottom position of the popo
 $popover-left-position: auto !default; // Sets the left position of the popover. Use only when setting positionPopover to false in the script
 $popover-tooltip-size: 1.3em !default; // Sets the side lengths of the tooltip
 $popover-scroll-indicator-width: .625em !default; // The width of the scroll indicator
-$popover-scroll-indicator-aspect-ratio: (15 / 12) !default; // The ratio of the height over the width of the scroll indicator
+$popover-scroll-indicator-aspect-ratio: math.div(15, 12) !default; // The ratio of the height over the width of the scroll indicator
 $popover-scroll-indicator-opacity: .1 !default; // The active opacity of scroll indicators
 $popover-initial-transform-state: scale(.1) translateZ(0) !default; // The inital transform state for the popover
 $popover-active-transform-state: scale(1) translateZ(0) !default; // The transform state for the popover once it is fully activated

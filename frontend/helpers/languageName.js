@@ -1,4 +1,4 @@
-export default ({ langcode = '' }) => {
+const LanguageName = ({ langcode = '' }) => {
   const languageNames = {
     en_US: 'English',
     fr_FR: 'French',
@@ -12,3 +12,5 @@ export default ({ langcode = '' }) => {
   if (langcode === '') return 'English';
   return languageNames[langcode] ? languageNames[langcode] : 'an other language';
 };
+
+export default LanguageName

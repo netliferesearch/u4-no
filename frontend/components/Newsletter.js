@@ -1,8 +1,7 @@
+import Link from 'next/link';
 import React, { Component } from 'react';
-import { Link } from '../routes';
-import { ArrowRight } from '../components/icons';
 import BEMHelper from 'react-bem-helper';
-import PropTypes from 'prop-types';
+import ArrowRight from './icons/ArrowRight';
 
 const classes = BEMHelper({
   name: 'newsletter',
@@ -49,7 +48,7 @@ class Newsletter extends Component {
               </div>
             </form>
             {false && (
-              <Link to={link}>
+              <Link href={link}>
                 <a {...classes('title-wrapper')}>
                   <h3 {...classes('title')}>{title}</h3>
                   <span {...classes('title-arrow')}>

@@ -2,9 +2,9 @@ import 'babel-polyfill';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import withRedux from 'next-redux-wrapper';
-import sanityClient from '@sanity/client';
+import { configureClient } from '../helpers/sanityClient.pico';
 import { initStore, updateReadingProgress } from './redux-store';
-import { Error404 } from '../components';
+import Error404 from '../components/Error404';
 import { redirectPermanent, getRedirect } from '../helpers/redirect';
 import materialize from '../helpers/materialize';
 
@@ -17,12 +17,8 @@ export default (Child, { queryFunc = false, materializeDepth = false, query = {}
     class DataLoader extends Component {
       static async getInitialProps(nextContext) {
         /* sanity client with read only token (to get draft item) */
-        const client = sanityClient({
-          projectId: '1f1lcoov',
-          dataset: 'production',
-          token: process.env.PREVIEW_SANITY_TOKEN,
-          useCdn: false,
-        });
+
+        const client = configureClient({ token: process.env.PREVIEW_SANITY_TOKEN });
 
         if (!queryFunc) {
           console.log('No query function provided. Returning empty object');

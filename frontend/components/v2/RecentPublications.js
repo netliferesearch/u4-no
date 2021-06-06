@@ -1,9 +1,8 @@
 import React from 'react';
-import { LinkToItem } from '../';
+import LinkToItem from '../LinkToItem';
 import BEMHelper from 'react-bem-helper';
 import dateToString from '../../helpers/dateToString';
-import { Document, Page } from 'react-pdf/build/entry.noworker';
-//import useMediaQuery from '../../helpers/useMediaQuery';
+import { Document, Page } from 'react-pdf';
 
 const RecentPublications = ({ resources = [], alt = false }) => {
   const classes = BEMHelper({ name: 'frontpage-section', prefix: 'c-' });
@@ -74,7 +73,7 @@ const RecentPublications = ({ resources = [], alt = false }) => {
         )}
       <h2 className="c-frontpage-section__cta">
         <a href="/search?search=*" {...classes('view-all')}>
-          View all <img alt="Close icon" src="/static/arrow-right-slim.svg" />
+          View all <img alt="Close icon" src="/public/arrow-right-slim.svg" />
         </a>
       </h2>
     </div>

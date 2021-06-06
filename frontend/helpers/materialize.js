@@ -1,15 +1,15 @@
-import client from './sanity-client-config';
+import { client } from './sanityClient.pico';
 
 function extractRefs(obj) {
   let result = [];
   if (Array.isArray(obj)) {
-    obj.forEach((sub) => {
+    obj.forEach(sub => {
       result = result.concat(extractRefs(sub));
     });
   } else if (obj && obj._ref) {
     return [obj._ref];
   } else if (typeof obj === 'object') {
-    Object.keys(obj).forEach((key) => {
+    Object.keys(obj).forEach(key => {
       result = result.concat(extractRefs(obj[key]));
     });
   }
@@ -18,9 +18,9 @@ function extractRefs(obj) {
 
 function fetchAll(ids) {
   const query = `*[${ids.map(id => `_id=="${id}"`).join('||')}]`;
-  return client.fetch(query).then((docs) => {
+  return client.fetch(query).then(docs => {
     const result = {};
-    docs.forEach((doc) => {
+    docs.forEach(doc => {
       result[doc._id] = doc;
     });
     return result;
@@ -31,12 +31,10 @@ function merge(obj, children) {
   if (Array.isArray(obj)) {
     return obj.map(sub => merge(sub, children));
   } else if (children[obj._ref]) {
-    return obj._key
-      ? Object.assign({}, obj, { target: children[obj._ref] })
-      : children[obj._ref];
+    return obj._key ? Object.assign({}, obj, { target: children[obj._ref] }) : children[obj._ref];
   } else if (typeof obj === 'object') {
     const result = {};
-    Object.keys(obj).forEach((key) => {
+    Object.keys(obj).forEach(key => {
       result[key] = merge(obj[key], children);
     });
     return result;
@@ -44,7 +42,7 @@ function merge(obj, children) {
   return obj;
 }
 
-export default (doc, depth) => {
+const Materialize = (doc, depth) => {
   const iterations = depth || 1;
   console.log('iterations', iterations);
   let result = Promise.resolve(doc);
@@ -54,3 +52,5 @@ export default (doc, depth) => {
   }
   return result;
 };
+
+export default Materialize;

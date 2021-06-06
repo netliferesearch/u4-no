@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
 import Downshift from 'downshift';
-import BEMHelper from 'react-bem-helper';
-import autobind from 'react-autobind';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { updateSearchPageNum } from '../helpers/redux-store';
-import { LoaderV2 } from '../components';
-import { SearchIcon } from '../components/icons';
-import { Router } from '../routes';
 import { withRouter } from 'next/router';
 import queryString from 'query-string';
+import React, { Component } from 'react';
+import autobind from 'react-autobind';
+import BEMHelper from 'react-bem-helper';
+import SearchIcon from './icons/SearchIcon';
+import LoaderV2 from './LoaderV2';
 
 const classes = BEMHelper({
   name: 'search-v2',
@@ -85,7 +81,9 @@ class SearchFieldV2 extends Component {
             search: value,
             searchPageNum: 1,
           });
-          Router[`${urlUpdateType}Route`](`/search?${updatedQueryString}`);
+          this.props.router[`${urlUpdateType}`](`/search?${updatedQueryString}`, undefined, {
+            scroll: false,
+          });
           console.log('debounce was called');
         }, 100)();
       }
@@ -187,13 +185,4 @@ class SearchFieldV2 extends Component {
   }
 }
 
-const mapStateToProps = ({ searchPageNum }) => ({ searchPageNum });
-const mapDispatchToProps = dispatch => ({
-  updateSearchPageNum: bindActionCreators(updateSearchPageNum, dispatch),
-});
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(SearchFieldV2)
-);
+export default withRouter(SearchFieldV2);

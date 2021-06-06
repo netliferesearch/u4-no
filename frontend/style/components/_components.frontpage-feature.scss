@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .c-frontpage-feature {
   background: $brand-main;
   color: $white;
@@ -62,7 +64,7 @@
 
   &:after {
     position: absolute;
-    left: -$spacing-large/1.5;
+    left: math.div(-$spacing-large, 1.5);
     top: $font-size-tiny;
     content: counter(counter, decimal-leading-zero);
     counter-increment: counter;

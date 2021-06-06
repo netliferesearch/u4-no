@@ -5,9 +5,8 @@ headless backend with [Sanity](https://sanity.io).
 
 Enviroments:
 
-- Develop: https://u4-frontend-test.herokuapp.com/
-- Staging: https://u4-frontend-staging.herokuapp.com
-- Production: https://www.u4.no
+- Production: https://www.u4.no (auto-deploys from `production` branch)
+- Staging: https://u4-frontend-staging.herokuapp.com (auto-deploys from `main` branch)
 
 ## Develop frontend
 
@@ -17,7 +16,15 @@ Enviroments:
 
 **Tests:** Run `npx jest --watch` to start running [Jest tests](https://jestjs.io) locally.
 
-For local development of frontend. Pull from master-new branch, which is copy of production. Develop on your-feature-branch. You can test uncertain features at development environment [test](https://u4-frontend-test.herokuapp.com/) by merging to develop branch. When ready push your changes(branch) to master-new branch to test them on the [staging environment](https://u4-frontend-staging.herokuapp.com). Pushes and Pull Requests to the production branch deploys the app on production.
+**Branch workflow:**
+
+1. The development branch is `main` branch. Pushes to this branch will get auto-deployed to the staging environment.
+1. Code changes are developed as [feature branches](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) and then merged into `main` branch via Pull Requests. If need be you can create a [Heroku Review App](https://devcenter.heroku.com/articles/github-integration-review-apps) based on the pull request.
+
+   - After creating a pull request you can go to the [Heroku pipeline overview](https://dashboard.heroku.com/pipelines/ba174b5e-35af-40b9-848b-570ac810fca8), and specify that you want to create a review app. You'll then get a dedicated review app accessible behind a random url which is useful when you want to give people a chance to review new features before merging them into `main` branch to be auto-deployed to the staging environment.
+   - Avoid long-lived branches because they can be painful to merge in.
+
+1. To deploy to production you create a PR from `main` into `production` branch.
 
 ## Develop Sanity backend
 
@@ -38,14 +45,17 @@ The pdf service is a worker defined in the `Procfile`. When it starts up it list
 
 Relevant files when working with this pdf functionality:
 
-- `frontend/pages/publication.print.js`
+- `frontend/pages/publications/[slug]/print.js`
 - `frontend/style/print.scss`
 - `frontend/components/printSerializers.js`
+- `service-publication-pdf-builder/publication-pdf-handler.js`
+- `service-publication-pdf-builder/publication-pdf-preview-handler.js`
 - [DocRaptor documentation](http://docraptor.com/documentation/style)
+- To see DocRaptor logs, log into Heroku and click on the DocRaptor addon attached to the Heroku dyno.
 
-To make DocRaptor build pdfs while you're working locally you can use Ngrok to create a web accessible tunnel.
+**Testing locally:**
 
-Once you have [Ngrok](https://ngrok.com/) running you can manually trigger pdf builds with:
+To make DocRaptor build pdfs while you're working locally you can use Ngrok to create a web accessible tunnel (or some similar tunneling service). Once you have [Ngrok](https://ngrok.com/) running you can manually trigger pdf builds with:
 
 ```sh
 cd service-publication-pdf-builder/
@@ -53,6 +63,18 @@ cp env-example .env # be sure to configure its credentials
 # Deletes test.pdf if it is present, then makes DocRaptor goto provided url and build a pdf.
 rm test.pdf || true && node cmd-pdf.js https://a7df9417.ngrok.io/publications/addressing-corruption-risks-in-multi-partner-funds
 ```
+
+**Trigger a test build of a PDF:**
+
+You can also do test builds of PDFs with an url like so:
+
+```
+https://u4-frontend-staging.herokuapp.com/generate-pdf-preview
+  ?id=2276f04c-ee78-4dbf-8cd4-589289908149
+  &url=https://u4-frontend-staging.herokuapp.com/printpreview
+```
+
+Here we define query parameters `id` which is the publication id, and then the `url` to say _which server_ DocRaptor should go to render the document. This means that when testing you can tell DocRaptor to render different documents from different servers which is useful for comparisons. For full details see `publication-pdf-preview-handler.js`.
 
 ## Develop elastic indexer service
 

@@ -1,7 +1,8 @@
 import imageUrlBuilder from '@sanity/image-url';
+import { defaultConfig } from './sanityClient.pico';
 
-import client from './client';
+const builder = imageUrlBuilder(defaultConfig);
 
-const builder = imageUrlBuilder(client);
+const ImageUrl = source => builder.image(source);
 
-export default source => builder.image(source);
+export default ImageUrl;

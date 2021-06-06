@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'next/router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import sortBy from 'lodash/sortBy';
@@ -11,7 +10,9 @@ import {
   replaceSearchFilters,
 } from '../helpers/redux-store';
 import { publicationTypesToShow } from '../helpers/elastic-data-loader';
-import { SearchFilterReset } from './';
+
+import SearchFilterReset from './SearchFilterReset';
+
 
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   !!searchFilters.find(name => name === filterName);

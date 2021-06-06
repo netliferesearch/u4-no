@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
-import { SearchIcon, MenuIcon, FbRound, TwitterRound, LinkedInRound } from '../icons';
-import client from '../../helpers/sanity-client-config';
+import { client } from '../../helpers/sanityClient.pico';
+
+import SearchIcon from '../icons/SearchIcon';
+import MenuIcon from '../icons/MenuIcon';
+import FbRound from '../icons/FbRound';
+import TwitterRound from '../icons/TwitterRound';
+import LinkedInRound from '../icons/LinkedInRound';
 
 const classes = BEMHelper({
   name: 'top-bar-v2',
@@ -88,7 +93,7 @@ class Menu extends Component {
               Menu
               <span {...classes('menu-icon')}>
                 {this.state.activeMenu ? (
-                  <img alt="Close icon" src="/static/close.svg" />
+                  <img alt="Close icon" src="/public/close.svg" />
                 ) : (
                   <MenuIcon />
                 )}
@@ -103,22 +108,19 @@ class Menu extends Component {
               <div {...menuClasses('section')}>
                 {topics && (
                   <div {...menuClasses('topics')}>
-                    
-                    <h4 {...menuClasses('heading', 'border-left')}>
-                      Corruption by topic
-                    </h4>
+                    <h4 {...menuClasses('heading', 'border-left')}>Corruption by topic</h4>
                     <div {...menuClasses('border-left')}>
-                    <ul {...menuClasses('list')}>
-                      {topics.slice(0, 14).map(topic => (
-                        <li {...menuClasses('list-item')} key={topic._id}>
-                          <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
-                            {topic.title}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
+                      <ul {...menuClasses('list')}>
+                        {topics.slice(0, 14).map(topic => (
+                          <li {...menuClasses('list-item')} key={topic._id}>
+                            <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
+                              {topic.title}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <ul {...menuClasses('list','', 'rest-topics')}>
+                    <ul {...menuClasses('list', '', 'rest-topics')}>
                       {topics.slice(14, 22).map(topic => (
                         <li {...menuClasses('list-item')} key={topic._id}>
                           <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
@@ -131,9 +133,7 @@ class Menu extends Component {
                 )}
                 <div {...menuClasses('resources')}>
                   <div {...menuClasses('border-left')}>
-                    <h4 {...menuClasses('heading')}>
-                      Resources
-                    </h4>
+                    <h4 {...menuClasses('heading')}>Resources</h4>
                     <ul {...menuClasses('list')}>
                       <li {...menuClasses('list-item')}>
                         <a
@@ -144,10 +144,7 @@ class Menu extends Component {
                         </a>
                       </li>
                       <li {...menuClasses('list-item')}>
-                        <a
-                          {...menuClasses('link')}
-                          href="/blog"
-                        >
+                        <a {...menuClasses('link')} href="/blog">
                           Blog
                         </a>
                       </li>
@@ -159,9 +156,7 @@ class Menu extends Component {
                     </ul>
                   </div>
                   <div {...menuClasses('border-left')}>
-                    <h4 {...menuClasses('heading')}>
-                      Learning &amp; events
-                    </h4>
+                    <h4 {...menuClasses('heading')}>Learning &amp; events</h4>
                     <ul {...menuClasses('list')}>
                       <li {...menuClasses('list-item')}>
                         <a {...menuClasses('link')} href="/online-courses">
@@ -186,9 +181,7 @@ class Menu extends Component {
                     </ul>
                   </div>
                   <div {...menuClasses('border-left')}>
-                    <h4 {...menuClasses('heading')}>
-                      About
-                    </h4>
+                    <h4 {...menuClasses('heading')}>About</h4>
                     <ul {...menuClasses('list')}>
                       <li {...menuClasses('list-item')}>
                         <a {...menuClasses('link')} href="/about-u4">

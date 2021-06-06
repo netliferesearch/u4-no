@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { ArrowRight } from '../icons';
+import ArrowRight from '../icons/ArrowRight';
+
 import { ArrowWhite } from '../icons/ArrowWhite';
-import { Document, Page } from 'react-pdf/build/entry.noworker';
-import { useMediaQuery } from './';
+import { Document, Page } from 'react-pdf';
 import { Reader } from './Reader';
 const classes = BEMHelper({
   name: 'article-header-v2',
@@ -25,7 +25,7 @@ const PublicationArticleHeader = ({
   summary = [],
   mainPoints = [],
   setReaderOpen = null,
-  readerOpen = false
+  readerOpen = false,
 }) => {
   const [downloadsOpen, setDownloadsOpen] = useState(false);
   const pdfAsset = legacypdf.asset ? legacypdf.asset : pdfFile.asset;
@@ -87,7 +87,7 @@ const PublicationArticleHeader = ({
               <button
                 className="read-online button"
                 onClick={() => {
-                  setReaderOpen(true)
+                  setReaderOpen(true);
                   setDownloadsOpen(false);
                 }}
               >
@@ -108,7 +108,12 @@ const PublicationArticleHeader = ({
         )}
       </div>
       {readerOpen && (
-        <Reader title={title} content={content} setReaderOpen={setReaderOpen} legacypdf={legacypdf} />
+        <Reader
+          title={title}
+          content={content}
+          setReaderOpen={setReaderOpen}
+          legacypdf={legacypdf}
+        />
       )}
     </header>
   );

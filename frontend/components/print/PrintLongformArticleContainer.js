@@ -8,16 +8,20 @@ import { get } from 'lodash';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../printSerializers';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
-import { PrintLongformArticle } from './';
-import {
-  CreativecommonsCC,
-  CreativecommonsBY,
-  CreativecommonsNC,
-  CreativecommonsND,
-  CmiLogo,
-} from '../icons';
-import { Footer, AuthorList, EditorList, LongformArticleContainer, Logo } from '../';
 import { translate, translateField, langCode } from '../../helpers/translate';
+
+import PrintLongformArticle from './PrintLongformArticle';
+import CreativecommonsCC from '../icons/CreativecommonsCC';
+import CreativecommonsBY from '../icons/CreativecommonsBY';
+import CreativecommonsNC from '../icons/CreativecommonsNC';
+import CreativecommonsND from '../icons/CreativecommonsND';
+import CmiLogo from '../icons/CmiLogo';
+
+import LongformArticleContainer from '../LongformArticleContainer';
+import Footer from '../Footer';
+import AuthorList from '../AuthorList';
+import EditorList from '../EditorList';
+import Logo from '../Logo';
 
 const classes = BEMHelper({
   name: 'print',
@@ -273,7 +277,7 @@ const LongFormArticleContainer = props => {
       <span id="js-bottom" />
       <Footer />
       <Head>
-        <link rel="icon" type="image/png" href="/static/favicon.png" />
+        <link rel="icon" type="image/png" href="/public/favicon.png" />
       </Head>
     </article>
   );

@@ -2,7 +2,7 @@
 import React from 'react';
 import Enzyme, { shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import HelpdeskServicePage from '../pages/service.helpdesk';
+import HelpdeskServicePage from '../pages/helpdesk/index';
 
 Enzyme.configure({ adapter: new Adapter() });
 

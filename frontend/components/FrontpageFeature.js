@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Link } from '../routes';
-import { ArrowRight } from '../components/icons';
+import Link from 'next/link';
+
+import ArrowRight from './icons/ArrowRight';
 
 const classes = BEMHelper({
   name: 'frontpage-feature',
@@ -12,8 +13,7 @@ const classes = BEMHelper({
 class FrontpageFeature extends Component {
   static propTypes = {
     topics: PropTypes.arrayOf(PropTypes.object),
-
-  }
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -54,7 +54,7 @@ class FrontpageFeature extends Component {
             <ul {...classes('list')}>
               {topics.slice(0, 5).map((topic, index) => (
                 <li key={topic._id} {...classes('list-item')}>
-                  <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                  <Link href={`/topics/${topic.slug.current}`}>
                     <a {...classes('link')} onMouseEnter={() => this.triggerImg(topic.imageUrl)}>
                       {topic.title}
                     </a>
@@ -66,7 +66,7 @@ class FrontpageFeature extends Component {
               <ul {...classes('list', 'active')}>
                 {topics.slice(5, 50).map(topic => (
                   <li {...classes('list-item')}>
-                    <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                    <Link href={`/topics/${topic.slug.current}`}>
                       <a {...classes('link')} onMouseEnter={() => this.triggerImg(topic.imageUrl)}>
                         {topic.title}
                       </a>
@@ -76,7 +76,8 @@ class FrontpageFeature extends Component {
               </ul>
             ) : null}
             <a className="c-topic-section__cta-light" href="/topics">
-              View all {topics.length} topics &nbsp;<ArrowRight />
+              View all {topics.length} topics &nbsp;
+              <ArrowRight />
             </a>
             {false && (
               <button {...classes('btn')} onClick={this.triggerToggle}>

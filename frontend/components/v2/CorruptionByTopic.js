@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '../../routes';
+import Link from 'next/link';
 
 const CorruptionByTopic = ({ topics }) => {
   return (
@@ -11,7 +11,7 @@ const CorruptionByTopic = ({ topics }) => {
           <ul>
             {topics.slice(0, 6).map((topic, index) => (
               <li key={topic._id}>
-                <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                <Link href={`/topics/${topic.slug.current}`}>
                   <a>{topic.title}</a>
                 </Link>
               </li>
@@ -22,7 +22,7 @@ const CorruptionByTopic = ({ topics }) => {
           <ul>
             {topics.slice(6, 12).map((topic, index) => (
               <li key={topic._id}>
-                <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                <Link href={`/topics/${topic.slug.current}`}>
                   <a>{topic.title}</a>
                 </Link>
               </li>
@@ -33,7 +33,7 @@ const CorruptionByTopic = ({ topics }) => {
           <ul>
             {topics.slice(12, 18).map((topic, index) => (
               <li key={topic._id}>
-                <Link route="topic.entry" params={{ slug: topic.slug.current }}>
+                <Link href={`/topics/${topic.slug.current}`}>
                   <a>{topic.title}</a>
                 </Link>
               </li>

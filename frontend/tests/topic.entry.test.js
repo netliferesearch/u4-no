@@ -2,7 +2,7 @@
 import React from 'react';
 import Enzyme, { shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import TopicEntry from '../pages/topic.entry';
+import TopicEntry from '../pages/topics/[slug]/index';
 
 Enzyme.configure({ adapter: new Adapter() });
 

@@ -9,7 +9,8 @@ import {
   clearAllSearchFilters,
   replaceSearchFilters,
 } from '../helpers/redux-store';
-import { SearchFilterReset } from './';
+
+import SearchFilterReset from './SearchFilterReset'
 
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   !!searchFilters.find(name => name === filterName);
