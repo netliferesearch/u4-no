@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DataLoader from '../../../helpers/data-loader';
 import LongformArticleContainer from '../../../components/v2/LongformArticleContainer';
+import { wrapInRedux } from '../../../helpers/redux-store-wrapper';
 
 const PublicationEntry = props => (
   <div>
@@ -28,9 +29,10 @@ PublicationEntry.defaultProps = {
   },
 };
 
-export default DataLoader(PublicationEntry, {
-  queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `*[_type == 'publication' && slug.current == $slug]{ _type, _id,
+export default wrapInRedux(
+  DataLoader(PublicationEntry, {
+    queryFunc: ({ query: { slug = '' } }) => ({
+      sanityQuery: `*[_type == 'publication' && slug.current == $slug]{ _type, _id,
       abbreviations, abstract, acknowledgements,
       authors[]->{ _id, affiliations, email, firstName, slug, surname },
       bibliographicalOverride, blurbs, content, date,
@@ -51,7 +53,8 @@ export default DataLoader(PublicationEntry, {
                },
       "updatedVersion": updatedVersion->{title,slug,publicationType,publicationNumber,date,reference},
     }[0]`,
-    param: { slug },
-  }),
-  materializeDepth: 2,
-});
+      param: { slug },
+    }),
+    materializeDepth: 2,
+  })
+);

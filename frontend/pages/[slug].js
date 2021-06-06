@@ -7,8 +7,9 @@ import Layout from '../components/Layout';
 import Newsletter from '../components/Newsletter';
 import ServiceArticle from '../components/ServiceArticle';
 import SimpleHero from '../components/SimpleHero';
+import { wrapInRedux } from '../helpers/redux-store-wrapper';
 
-const GeneralArticle = (props) => {
+const GeneralArticle = props => {
   if (props.data._type === 'frontpage') {
     const {
       title = '',
@@ -38,18 +39,15 @@ const GeneralArticle = (props) => {
       </Layout>
     );
   }
-  return (
-    <LongformArticleContainer
-      lead={props.data.standfirst}
-      {...props}
-    />
-  );
+  return <LongformArticleContainer lead={props.data.standfirst} {...props} />;
 };
 
-export default DataLoader(GeneralArticle, {
-  queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '*[slug.current == $slug][0]',
-    param: { slug },
-  }),
-  materializeDepth: 2,
-});
+export default wrapInRedux(
+  DataLoader(GeneralArticle, {
+    queryFunc: ({ query: { slug = '' } }) => ({
+      sanityQuery: '*[slug.current == $slug][0]',
+      param: { slug },
+    }),
+    materializeDepth: 2,
+  })
+);

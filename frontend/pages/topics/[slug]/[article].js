@@ -1,10 +1,11 @@
 import React from 'react';
 import find from 'lodash/find';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 import LongformArticleContainer from '../../../components/LongformArticleContainer';
 import BreadCrumb from '../../../components/BreadCrumb';
 import DataLoader from '../../../helpers/data-loader';
+import { wrapInRedux } from '../../../helpers/redux-store-wrapper';
 
 const firstTitleInContent = (content = []) => {
   const firstTitle = find(content, ({ style = '' }) => style === 'h1' || style === 'h2');
@@ -24,7 +25,8 @@ const TopicArticleEntry = props => {
     agenda: 'agenda',
   };
   const router = useRouter();
-  const content = props.data[topicPartMap[router.asPath.split('/')[router.asPath.split('/').length - 1]]];
+  const content =
+    props.data[topicPartMap[router.asPath.split('/')[router.asPath.split('/').length - 1]]];
   return (
     <LongformArticleContainer
       BreadCrumbComponent={
@@ -40,10 +42,12 @@ const TopicArticleEntry = props => {
   );
 };
 
-export default DataLoader(TopicArticleEntry, {
-  queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '*[slug.current == $slug && _type == "topics"][0]',
-    param: { slug },
-  }),
-  materializeDepth: 1,
-});
+export default wrapInRedux(
+  DataLoader(TopicArticleEntry, {
+    queryFunc: ({ query: { slug = '' } }) => ({
+      sanityQuery: '*[slug.current == $slug && _type == "topics"][0]',
+      param: { slug },
+    }),
+    materializeDepth: 1,
+  })
+);

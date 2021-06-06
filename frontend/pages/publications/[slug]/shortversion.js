@@ -4,19 +4,16 @@ import PropTypes from 'prop-types';
 import LongformArticleContainer from '../../../components/LongformArticleContainer';
 import BreadCrumb from '../../../components/BreadCrumb';
 import DataLoader from '../../../helpers/data-loader';
+import { wrapInRedux } from '../../../helpers/redux-store-wrapper';
 
 const TopicArticleEntry = props => {
   const {
-    data: { title = '', summary = [], _type = '', slug = ''  },
+    data: { title = '', summary = [], _type = '', slug = '' },
     url = {},
   } = props;
   return (
     <LongformArticleContainer
-      BreadCrumbComponent={
-        <BreadCrumb
-          data={{ _type: _type, slug: slug , title }}
-        />
-      }
+      BreadCrumbComponent={<BreadCrumb data={{ _type: _type, slug: slug, title }} />}
       content={summary}
       shortversion
     />
@@ -39,10 +36,12 @@ TopicArticleEntry.defaultProps = {
   },
 };
 
-export default DataLoader(TopicArticleEntry, {
-  queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: '*[slug.current == $slug][0]',
-    param: { slug },
-  }),
-  materializeDepth: 1,
-});
+export default wrapInRedux(
+  DataLoader(TopicArticleEntry, {
+    queryFunc: ({ query: { slug = '' } }) => ({
+      sanityQuery: '*[slug.current == $slug][0]',
+      param: { slug },
+    }),
+    materializeDepth: 1,
+  })
+);

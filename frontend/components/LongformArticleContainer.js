@@ -13,7 +13,6 @@ import PublicationArticleHeader from './PublicationArticleHeader';
 import TableOfContentsButton from './TableOfContents/TableOfContentsButton';
 import TableOfContentsSidebar from './TableOfContents/TableOfContentsSidebar';
 import TableOfContentsBase from './TableOfContents/TableOfContentsBase';
-import CustomScrollSpy from './TableOfContents/CustomScrollSpy';
 import RecommendedResources from './RecommendedResources';
 import ToggleBlock from './ToggleBlock';
 import AuthorList from './AuthorList';
@@ -114,14 +113,14 @@ const LongFormArticleContainer = (props = {}) => {
           />
         </div>
       )}
-      
+
       {!isArticleMenuOpen && (
         <article>
           {_type === 'publication' && !isPublicationDrawerOpen && (
             <TableOfContentsButton {...props.data} />
           )}
           {/* <CustomScrollSpy {...props.data} /> */}
-          
+
           <span id="js-top" />
           <div id="js-scroll-trigger">
             {BreadCrumbComponent && BreadCrumbComponent}
