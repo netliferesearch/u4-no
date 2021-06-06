@@ -29,7 +29,14 @@ app.prepare().then(() => {
       /**
        * Disallow indexing preview functionality, and unpublished functionality
        */
-      return res.send(['User-agent: *', 'Disallow: /v2/', 'Disallow: /preview/'].join('\n'));
+      return res.send(
+        [
+          'User-agent: *',
+          'Disallow: /v2/',
+          'Disallow: /preview/',
+          'Disallow: /generate-pdf-preview',
+        ].join('\n')
+      );
     }
     // Otherwise prevent indexing staging environments.
     return res.send(['User-agent: *', 'Disallow: /'].join('\n'));
