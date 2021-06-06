@@ -89,8 +89,8 @@
     "type": "git",
     "url": "git+https://github.com/netliferesearch/u4-no.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Netlife & CMI",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/netliferesearch/u4-no/issues"
   },
