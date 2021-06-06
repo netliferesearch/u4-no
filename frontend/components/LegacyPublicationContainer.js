@@ -9,9 +9,9 @@ import Layout from './Layout';
 import PublicationArticleHeader from './PublicationArticleHeader';
 import PdfViewer from './PdfViewer';
 import PublicationNotification from './PublicationNotification';
-import recommendedResources from './RecommendedResources';
+import RecommendedResources from './RecommendedResources';
 
-const LegacyPublicationContainer = (props) => {
+const LegacyPublicationContainer = props => {
   const {
     data: {
       lead = '',
@@ -138,5 +138,5 @@ export default connect(
   dispatch => ({
     toggleArticleMenu: bindActionCreators(toggleArticleMenu, dispatch),
     toggleLoadingScreen: bindActionCreators(toggleLoadingScreen, dispatch),
-  }),
+  })
 )(LegacyPublicationContainer);
