@@ -8,7 +8,7 @@ const {
   publicationPdfPreviewHandler,
 } = require('../service-publication-pdf-builder/publication-pdf-preview-handler');
 
-const { shortUrlHandler } = require('./pagesBase/_shorturl');
+const { shortUrlHandler } = require('./helpers/_shorturl');
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
 const handle = app.getRequestHandler();
