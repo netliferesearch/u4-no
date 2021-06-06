@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import DataLoader from '../../helpers/data-loader';
 import languageName from '../../helpers/languageName';
@@ -104,7 +104,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             <p className="c-longform-grid__standard">
               Related topics:{' '}
               {topics.map(({ _ref = '', target = {} }) => (
-                <Link key={_ref} href={`/topics/${target.slug.current}`} >
+                <Link key={_ref} href={`/topics/${target.slug.current}`}>
                   <a className="c-article-header__link-item">{target.title}</a>
                 </Link>
               ))}

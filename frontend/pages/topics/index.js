@@ -20,11 +20,17 @@ const TopicOverview = ({ data: { topics = [] } }) => (
 
       <section id="topics" className=" c-topic-index__list u-margin-bottom-huge">
         {sortTopics(topics, 'title').map(
-          ({ _id = false, title = 'Title is lacking', slug = {}, relatedCount = 0, _type='' }) => (
+          ({
+            _id = false,
+            title = 'Title is lacking',
+            slug = {},
+            relatedCount = 0,
+            _type = '',
+          }) => (
             <div className="o-layout--middle c-topic-index__item" key={_id}>
               <div className="o-layout__item c-topic-index__item-child u-1/2@tablet u-tr">
                 <div className="c-topic-index__left">
-                  <Link href={`/topics/${slug.current}`} >
+                  <Link href={`/topics/${slug.current}`}>
                     {relatedCount > 0 ? (
                       <a className="c-topic-index__title">{title}</a>
                     ) : (
@@ -54,7 +60,7 @@ const TopicOverview = ({ data: { topics = [] } }) => (
               </div>
             </div>
           )
-                  )}
+        )}
       </section>
     </div>
     <Footer />

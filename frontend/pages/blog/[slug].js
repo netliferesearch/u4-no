@@ -2,7 +2,6 @@ import React from 'react';
 import serializers from '../../components/serializers';
 import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
-import BlockToContent from '@sanity/block-content-to-react';
 import NewsAndEvents from '../../components/v2/NewsAndEvents';
 import Layout from '../../components/v2/Layout';
 import { BlogAccordion } from '../../components/v2/blog/BlogAccordion';
@@ -62,24 +61,34 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
                   alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
                 />
                 {featuredImage.caption && (
-                  <BlockToContent
+                  <BlockContent
                     blocks={featuredImage.caption}
                     serializers={{
                       types: {
-                        block: props => <p className="c-blog-entry__caption" style={{ display: 'inline' }}>{props.children}</p>,
+                        block: props => (
+                          <p className="c-blog-entry__caption" style={{ display: 'inline' }}>
+                            {props.children}
+                          </p>
+                        ),
                       },
                     }}
                   />
                 )}
               </figure>
             )}
-            {content ? <div className="c-blog-entry__main-text"><BlockContent blocks={content} serializers={serializers} /></div> : null}
+            {content ? (
+              <div className="c-blog-entry__main-text">
+                <BlockContent blocks={content} serializers={serializers} />
+              </div>
+            ) : null}
             {headsUp && (
               <div className="c-blog-entry__heads-up">
                 <BlockContent blocks={headsUp} serializers={serializers} />
               </div>
             )}
-            {topics.length > 0 || keywords.length > 0 ? <TagsSection topics={topics} keywords={keywords} /> : null}
+            {topics.length > 0 || keywords.length > 0 ? (
+              <TagsSection topics={topics} keywords={keywords} />
+            ) : null}
             <BlogAccordion />
           </div>
         </section>

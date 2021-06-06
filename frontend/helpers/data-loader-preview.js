@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import withRedux from 'next-redux-wrapper';
 import sanityClient from '@sanity/client';
 import { initStore, updateReadingProgress } from './redux-store';
-import { Error404 } from '../components';
+import Error404 from '../components/Error404';
 import { redirectPermanent, getRedirect } from '../helpers/redirect';
 import materialize from '../helpers/materialize';
 

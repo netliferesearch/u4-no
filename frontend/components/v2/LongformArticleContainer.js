@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
 import dateToString from '../../helpers/dateToString';
-import {
-  TableOfContentsButton,
-  TableOfContentsSidebar,
-  TableOfContentsContent,
-} from '../TableOfContents';
+import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
 import AuthorList from '../AuthorList';
-import PublicationSidebar from './PublicationSidebar';
-import PublicationContent from './PublicationContent';
+import TableOfContentsSidebar from '../TableOfContents/TableOfContentsSidebar';
 import Layout from './Layout';
-import PublicationArticleHeader from './PublicationArticleHeader';
-import PublicationAccordion from './PublicationAccordion';
 import NewsAndEvents from './NewsAndEvents';
+import PublicationAccordion from './PublicationAccordion';
+import PublicationArticleHeader from './PublicationArticleHeader';
+import PublicationContent from './PublicationContent';
+import PublicationSidebar from './PublicationSidebar';
 
 const LongFormArticleContainer = (props = {}) => {
   const {
@@ -124,7 +120,10 @@ const LongFormArticleContainer = (props = {}) => {
               />
             )}
           </div>
-          <section className="o-wrapper u-side-padding" style={{ display: readerOpen ? 'none' : 'block'}}>
+          <section
+            className="o-wrapper u-side-padding"
+            style={{ display: readerOpen ? 'none' : 'block' }}
+          >
             {_type === 'publication' && (
               <div className="o-wrapper-section c-article__container">
                 <PublicationSidebar {...props.data} />
@@ -239,7 +238,7 @@ const LongFormArticleContainer = (props = {}) => {
             </div>
           ) : null} */}
 
-          <section className="o-wrapper" style={{ display: readerOpen ? 'none' : 'block'}}>
+          <section className="o-wrapper" style={{ display: readerOpen ? 'none' : 'block' }}>
             <div className="o-wrapper-section">
               {recommendedResources.length || relatedResources.length ? (
                 <NewsAndEvents

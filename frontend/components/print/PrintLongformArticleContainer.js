@@ -15,8 +15,9 @@ import CreativecommonsCC from '../icons/CreativecommonsCC';
 import CreativecommonsBY from '../icons/CreativecommonsBY';
 import CreativecommonsNC from '../icons/CreativecommonsNC';
 import CreativecommonsND from '../icons/CreativecommonsND';
+import CmiLogo from '../icons/CmiLogo';
 
-import { LongformArticleContainer } from '../';
+import LongformArticleContainer from '../LongformArticleContainer';
 import Footer from '../Footer';
 import AuthorList from '../AuthorList';
 import EditorList from '../EditorList';

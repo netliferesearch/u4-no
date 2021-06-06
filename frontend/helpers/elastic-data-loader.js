@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import withRedux from 'next-redux-wrapper';
 import { initStore, updateReadingProgress } from './redux-store';
-import { Error404 } from '../components';
+import Error404 from '../components/Error404';
 
 const elasticsearch = require('elasticsearch');
 
@@ -338,4 +338,4 @@ const ElasticDataLoader = Child =>
     }
   );
 
-export default ElasticDataLoader
+export default ElasticDataLoader;

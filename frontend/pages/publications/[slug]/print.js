@@ -3,9 +3,11 @@ import PrintLongformArticleContainer from '../../../components/print/PrintLongfo
 import DataLoader from '../../../helpers/data-loader';
 import { localize } from '../../../helpers/translate';
 
-const PublicationEntry = ({ data: { current, institutions = [], u4 } = {} }) => (
-  <div>{current && <PrintLongformArticleContainer {...{ ...current, institutions, u4 }} />}</div>
-);
+const PublicationEntry = ({ data: { current, institutions = [], u4 } = {} }) => {
+  return (
+    <div>{current && <PrintLongformArticleContainer {...{ ...current, institutions, u4 }} />}</div>
+  );
+};
 
 export default DataLoader(PublicationEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({

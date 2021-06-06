@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import dateToString from '../../helpers/dateToString';
 import DataLoader from '../../helpers/data-loader';
@@ -9,7 +9,6 @@ import Newsletter from '../../components/Newsletter';
 import ServiceArticle from '../../components/ServiceArticle';
 import Team from '../../components/Team';
 import LinkToItem from '../../components/LinkToItem';
-
 
 const EventPage = ({ data: { event = {} }, url = {} }) => {
   const {
@@ -65,11 +64,14 @@ const EventPage = ({ data: { event = {} }, url = {} }) => {
           {topics.length > 0 && (
             <p className="c-longform-grid__standard">
               Related topics:{' '}
-              {topics.map(({ _ref = '', target = {} }) => (
-                    <LinkToItem _type={target._type} slug={target.slug} >
+              {topics.map(topic => {
+                const { _key, target = {} } = topic;
+                return (
+                  <LinkToItem key={_key} _type={target._type} slug={target.slug}>
                     <a className="c-article-header__link-item">{target.title}</a>
-                    </LinkToItem>
-                ))}
+                  </LinkToItem>
+                );
+              })}
             </p>
           )}
         </div>

@@ -13,6 +13,7 @@ const ListKeywords = ({
   <Layout
     headComponentConfig={{
       title: 'Keywords overview',
+      url: `https://www.u4.no/keywords`,
     }}
   >
     <div className="o-wrapper u-tc">
