@@ -67,7 +67,7 @@ const EventPage = ({ data: { event = {} }, url = {} }) => {
               {topics.map(topic => {
                 const { _key, target = {} } = topic;
                 return (
-                  <LinkToItem key={_key} _type={target._type} slug={target.slug}>
+                  <LinkToItem key={_key} type={target._type} slug={target.slug}>
                     <a className="c-article-header__link-item">{target.title}</a>
                   </LinkToItem>
                 );
