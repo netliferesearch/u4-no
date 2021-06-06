@@ -1,18 +1,11 @@
-import PicoSanity from 'picosanity';
 import React, { Component } from 'react';
 import Error404 from '../components/Error404';
 import materialize from '../helpers/materialize';
 import { getRedirect, redirectPermanent } from '../helpers/redirect';
 import { timer } from '../helpers/timer';
+import { client } from '../helpers/picoSanityClient';
 
 async function fetchAndMaterialize({ nextContext, queryFunc, materializeDepth }) {
-  const client = new PicoSanity({
-    projectId: '1f1lcoov',
-    dataset: 'production',
-    // token: process.env.SANITY_TOKEN,
-    useCdn: true,
-  });
-
   if (!queryFunc) {
     console.log('No query function provided. Returning empty object');
     return {};
