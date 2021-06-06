@@ -6,6 +6,7 @@ import Layout from '../../components/Layout';
 import Newsletter from '../../components/Newsletter';
 import ServiceArticle from '../../components/ServiceArticle';
 import SimpleHero from '../../components/SimpleHero';
+import { blocksToText } from '../../helpers/blocksToText';
 
 const About = ({ data: { about = {}, url = {} } }) => {
   const {
@@ -20,16 +21,16 @@ const About = ({ data: { about = {}, url = {} } }) => {
     <Layout
       headComponentConfig={{
         title,
-        description: lead,
+        description: blocksToText(lead),
         image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
       }}
     >
       {lead && <SimpleHero light title={title} content={lead} />}
-    
+
       {sections ? <ServiceArticle blocks={sections} /> : null}
-    
+
       <Newsletter />
       <Footer />
     </Layout>
