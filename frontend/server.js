@@ -29,6 +29,8 @@ app.prepare().then(() => {
     });
   }
 
+  server.use('/public', express.static('public'));
+
   server.get('//$', (req, res) => res.redirect(301, '/'));
 
   // Handle multiple ways to request a PDF file for a publication.
