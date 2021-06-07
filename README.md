@@ -10,16 +10,20 @@ Environments:
 
 ## Develop frontend
 
-Prerequisites:
+**Prerequisites to developing locally:**
 
 - Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 - Access for external collaborators: Ask Heroku admin to grant you collaborator access to the staging environment. Additionally, you should also be given access to the Heroku pipeline with [deploy role](https://devcenter.heroku.com/articles/pipelines#permissions-and-capabilities) so that you can create Review Apps (see Branch workflow below).
+
+**Starting application locally:**
 
 1. Run `npm install`
 1. Run `heroku config -s --app u4-frontend-staging | tr -d "'" > .env` To get .env configuration.
 1. Run `npm run dev`
 
-**Tests:** Run `npx jest --watch` to start running [Jest tests](https://jestjs.io) locally.
+**Running tests:**
+
+Run `npx jest --watch` to start running [Jest tests](https://jestjs.io) locally.
 
 **Branch workflow:**
 
