@@ -1,14 +1,19 @@
 # Monorepo for u4.no
 
-React server-side rendering with [next.js](https://github.com/zeit/next.js/) and
+React server-side rendering with [next.js](https://nextjs.org/) and
 headless backend with [Sanity](https://sanity.io).
 
-Enviroments:
+Environments:
 
 - Production: https://www.u4.no (auto-deploys from `production` branch)
 - Staging: https://u4-frontend-staging.herokuapp.com (auto-deploys from `main` branch)
 
 ## Develop frontend
+
+Prerequisites:
+
+- Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+- Access for external collaborators: Ask Heroku admin to grant you collaborator access to the staging environment. Additionally, you should also be given access to the Heroku pipeline with [deploy role](https://devcenter.heroku.com/articles/pipelines#permissions-and-capabilities) so that you can create Review Apps (see Branch workflow below).
 
 1. Run `npm install`
 1. Run `heroku config -s --app u4-frontend-staging | tr -d "'" > .env` To get .env configuration.
