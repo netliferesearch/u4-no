@@ -13,7 +13,7 @@ Environments:
 **Prerequisites to developing locally:**
 
 - Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
-- Access for external collaborators: Ask Heroku admin to grant you collaborator access to the staging environment. Additionally, you should also be given access to the Heroku pipeline with [deploy role](https://devcenter.heroku.com/articles/pipelines#permissions-and-capabilities) so that you can create Review Apps (see Branch workflow below).
+- Access for external collaborators: Ask Heroku admin to grant you collaborator access to the staging environment as well as the Heroku pipeline so that you can create Review Apps (see Branch workflow below).
 
 **Starting application locally:**
 
