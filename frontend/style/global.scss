@@ -101,6 +101,9 @@
 @import 'elements/elements.footnotes';
 @import 'elements/elements.body';
 
+// COMPONENTS
+@import 'components/littlefoot/littlefoot';
+
 /*
 Overcome NextJS limitation of having only one stylesheet. We
 namespace these styles and toggle their presence in app.js.
