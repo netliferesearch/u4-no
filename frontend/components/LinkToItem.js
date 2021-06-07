@@ -11,7 +11,12 @@ const LinkToItem = ({ type = '', _type = '', slug = '', children }) => {
 
 LinkToItem.propTypes = {
   type: PropTypes.string,
-  slug: PropTypes.string.isRequired,
+  slug: PropTypes.oneOfType([
+    PropTypes.shape({
+      current: PropTypes.string,
+    }),
+    PropTypes.string,
+  ]).isRequired,
   children: PropTypes.element.isRequired,
 };
 
