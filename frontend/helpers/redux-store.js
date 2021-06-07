@@ -173,7 +173,7 @@ export const updateSearchPageNum = searchPageNum => dispatch => {
 export const saveScrollPosition = scrollPosition => dispatch =>
   dispatch({ type: actionTypes.SCROLL_POSITION_SAVE, scrollPosition });
 
-export const initStore = (initialState = defaultState, options) => {
+export const initStore = (initialState = defaultState, options = {}) => {
   const { query = {} } = options;
   const { searchPageNum } = query;
   let state = initialState;

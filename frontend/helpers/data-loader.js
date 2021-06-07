@@ -5,7 +5,7 @@ import { getRedirect, redirectPermanent } from '../helpers/redirect';
 import { timer } from '../helpers/timer';
 import { client } from '../helpers/sanityClient.pico';
 
-async function fetchAndMaterialize({ nextContext, queryFunc, materializeDepth }) {
+export async function fetchAndMaterialize({ nextContext, queryFunc, materializeDepth }) {
   if (!queryFunc) {
     console.log('No query function provided. Returning empty object');
     return {};
