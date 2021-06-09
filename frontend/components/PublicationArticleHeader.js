@@ -1,11 +1,18 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { Link } from '../routes';
+import Link from 'next/link';
 import languageName from '../helpers/languageName';
 import bibliographicReference from '../helpers/bibliographicReference';
-import { Download, ArrowRight, PartnerLogo10 } from './icons';
-import { AuthorList, EditorList, InstitutionList, LinkToItem } from './';
 import { translate, translateField, langCode } from '../helpers/translate';
+
+import Download from './icons/Download';
+import ArrowRight from './icons/ArrowRight';
+import PartnerLogo10 from './icons/PartnerLogo10';
+
+import AuthorList from './AuthorList';
+import EditorList from './EditorList';
+import InstitutionList from './InstitutionList';
+import LinkToItem from './LinkToItem';
 
 const classes = BEMHelper({
   name: 'article-header',
@@ -143,14 +150,14 @@ const PublicationArticleHeader = ({
           )}
         </div>
         {summary.length > 0 && (
-          <Link route="publication.shortVersion" params={{ slug: slug.current }}>
+          <LinkToItem type="shortVersionPublication" slug={slug.current}>
             <a {...classes('button')}>
               <div {...classes('button-text')}>Read our short version</div>
               <div {...classes('button-icon')}>
                 <ArrowRight />
               </div>
             </a>
-          </Link>
+          </LinkToItem>
         )}
         {pdfFile.asset && (
           <div {...classes('meta', null, 'c-article-header__download')}>

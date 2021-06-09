@@ -2,7 +2,7 @@
 import React from 'react';
 import Enzyme, { shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import WorkshopsServicePage from '../pages/service.workshops';
+import WorkshopsServicePage from '../pages/workshops-and-events/index';
 
 Enzyme.configure({ adapter: new Adapter() });
 

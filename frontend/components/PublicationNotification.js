@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from '../routes';
+import Link from 'next/link';
 import BlockContent from '@sanity/block-content-to-react';
 import BEMHelper from 'react-bem-helper';
 
@@ -15,7 +15,7 @@ const classes = BEMHelper({
 
 // remove blocks with no text
 const trimEmptyBlocks = blocks =>
-  blocks.filter((block) => {
+  blocks.filter(block => {
     if (
       block._type === 'block' &&
       block.children.length === 1 &&

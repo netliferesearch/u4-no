@@ -1,4 +1,4 @@
-export default ({
+const BibliographicReference =  ({
   publicationType = {},
   publicationNumber = false,
   reference = false,
@@ -15,3 +15,5 @@ export default ({
   } else if (publicationNumber) return publicationNumber;
   return '';
 };
+
+export default BibliographicReference

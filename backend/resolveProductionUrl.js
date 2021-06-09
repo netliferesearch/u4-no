@@ -1,4 +1,3 @@
-
 const buildUrl = ({ _type = 'notype', slug = {} }) => {
   const actualSlug = slug.current || slug;
   if (_type === 'publication') {
@@ -23,10 +22,8 @@ const buildUrl = ({ _type = 'notype', slug = {} }) => {
   return actualSlug;
 };
 
-
-
 export default function resolveProductionUrl(document) {
-  return ( document._id.startsWith('drafts.')
-    ? `https://beta.u4.no/preview/${document._type}/${document._id}`
-    : 'https://beta.u4.no' + buildUrl( document ) );
+  return document._id.startsWith('drafts.')
+    ? `https://u4.no/preview/${document._type}/${document._id}`
+    : 'https://u4.no' + buildUrl(document);
 }

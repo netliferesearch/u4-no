@@ -1,31 +1,27 @@
-import { Link } from '../routes';
+import Link from 'next/link';
+import PropTypes from 'prop-types';
+import buildUrl from '../helpers/buildUrl';
 
-const getRoute = (type = '') => {
-  if (type === 'publication') {
-    return 'publication.entry';
-  } else if (type === 'topics') {
-    return 'topic.entry';
-  } else if (type === 'article') {
-    return 'general.article';
-  } else if (type === 'person') {
-    return 'persons.entry';
-  } else if (type === 'frontpage') {
-    return 'general.article';
-  } else if (type === 'course') {
-    return 'course.entry';
-  } else if (type === 'asset') {
-    return 'asset.entry';
-  } else if (type === 'term') {
-    return 'glossary.index';
-  }
-  return 'general.article';
+const LinkToItem = ({ type = '', _type = '', slug = '', children }) => {
+  // Handle both type and _type as possible input props. Ideally,
+  // we only want to use type.
+  const actualType = type || _type;
+  return <Link href={buildUrl({ _type: actualType, slug })}>{children}</Link>;
 };
 
-const LinkToItem = ({
-  type = false, _type = '', slug = '', children,
-}) => (
-  <Link route={getRoute(type || _type)} params={{ slug: slug.current ? slug.current : slug }}>
-    {children}
-  </Link>
-);
+LinkToItem.propTypes = {
+  type: PropTypes.string,
+  slug: PropTypes.oneOfType([
+    PropTypes.shape({
+      current: PropTypes.string,
+    }),
+    PropTypes.string,
+  ]).isRequired,
+  children: PropTypes.element.isRequired,
+};
+
+LinkToItem.defaultProps = {
+  type: '',
+};
+
 export default LinkToItem;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { LinkToItem } from '../';
+import LinkToItem from '../LinkToItem';
 
 const EditorList = ({ editors = [], intro = 'Series editor', pluralize = true }) =>
   editors.length > 0 && (

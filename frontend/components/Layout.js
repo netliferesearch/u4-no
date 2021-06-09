@@ -2,8 +2,11 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
-import { Link } from '../routes';
-import { HeadComponent, Logo, MenuV2, SearchFieldV2 } from '../components';
+import Link from 'next/link';
+import HeadComponent from '../components/HeadComponent';
+import Logo from '../components/Logo';
+import MenuV2 from '../components/MenuV2';
+import SearchFieldV2 from '../components/SearchField-v2';
 
 const classes = BEMHelper({
   name: 'top-bar',
@@ -51,7 +54,7 @@ class Layout extends Component {
         {showTopTab && (
           <div {...classes('', '', 'u-z-index-xx u-bg-white')}>
             {!hideLogo && (
-              <Link route="/">
+              <Link href="/">
                 <a {...classes('logo')}>
                   <Logo />
                 </a>

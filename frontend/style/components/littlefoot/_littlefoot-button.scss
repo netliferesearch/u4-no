@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // The button that activates the footnote. By default, this will appear as a
 // flat button that has an ellipse contained inside of it.
 //
@@ -55,7 +57,7 @@
 }
 
 .littlefoot-footnote__button__number {
-  border-radius: $button-height / 2;
+  border-radius: math.div($button-height, 2);
   height: $button-height;
   position: relative;
   width: 1.5em;

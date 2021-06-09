@@ -1,11 +1,10 @@
 /* eslint-disable */
 
 import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import uniq from 'lodash/uniq';
 import queryString from 'query-string';
-import { Router } from '../routes';
+import Router from 'next/router';
 
 // for when we need to reflect some redux state in the url
 const replaceWindowHash = hashValue => {
@@ -44,7 +43,7 @@ const addQueryParams = queryParams => {
   const newUrl = `${window.location.protocol}//${window.location.host}${
     window.location.pathname
   }?${newQueryString}`;
-  Router.replaceRoute(newUrl);
+  Router.replace(newUrl, undefined, { scroll: false });
 };
 
 const updateFilterQueryParams = (filters = []) =>
@@ -107,7 +106,7 @@ export const reducer = (state = defaultState, action) => {
         searchFilters: uniq(action.searchFilters),
       });
     case actionTypes.SEARCH_UPDATE_PAGE_NUM:
-      if(state.searchPageNum !== action.searchPageNum) {
+      if (state.searchPageNum !== action.searchPageNum) {
         addQueryParams({
           searchPageNum: `${action.searchPageNum}`,
         });
@@ -124,7 +123,7 @@ export const reducer = (state = defaultState, action) => {
         defaultSearchAggs: action.defaultSearchAggs,
       });
     case actionTypes.SEARCH_UPDATE_RESULTS:
-      return {...state, searchResults: action.searchResults};
+      return { ...state, searchResults: action.searchResults };
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
     case actionTypes.TOGGLE_LOADING_SCREEN:
@@ -174,7 +173,7 @@ export const updateSearchPageNum = searchPageNum => dispatch => {
 export const saveScrollPosition = scrollPosition => dispatch =>
   dispatch({ type: actionTypes.SCROLL_POSITION_SAVE, scrollPosition });
 
-export const initStore = (initialState = defaultState, options) => {
+export const initStore = (initialState = defaultState, options = {}) => {
   const { query = {} } = options;
   const { searchPageNum } = query;
   let state = initialState;
@@ -186,5 +185,5 @@ export const initStore = (initialState = defaultState, options) => {
     };
   }
 
-  return createStore(reducer, state, composeWithDevTools(applyMiddleware(thunkMiddleware)));
+  return createStore(reducer, state, applyMiddleware(thunkMiddleware));
 };

@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import buildUrl from '../../helpers/buildUrl';
-//import client from '../helpers/sanity-client-config'
-import { Link } from '../../routes';
+import Link from 'next/link';
 import ArrowRightSmall from '../icons/ArrowRightSmall';
 
 /**
@@ -16,11 +13,11 @@ export const BreadCrumbV2 = ({ parentSlug = '', title = '' }) => {
     <div className="c-breadcrumb--v2">
       {parentSlug && (
         <div className="c-breadcrumb-inner o-wrapper-section">
-          <Link route={'/'}>
+          <Link href="/">
             <a className="c-breadcrumb__link">Home</a>
           </Link>
           <ArrowRightSmall />
-          <Link route={parentSlug}>
+          <Link href={parentSlug}>
             <a className="c-breadcrumb__link">{title}</a>
           </Link>
         </div>

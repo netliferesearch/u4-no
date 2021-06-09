@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
-import sanityClient from '@sanity/client';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
-import { SearchIcon, MenuIcon } from '../icons';
-import client from '../../helpers/sanity-client-config';
+import { client } from '../../helpers/sanityClient.pico';
+
+import SearchIcon from '../icons/SearchIcon';
+import MenuIcon from '../icons/MenuIcon';
 
 const classes = BEMHelper({
   name: 'top-bar-v2',
@@ -87,7 +88,7 @@ class Menu extends Component {
               Menu
               <span {...classes('menu-icon')}>
                 {this.state.activeMenu ? (
-                  <img alt="Close icon" src="/static/close.svg" />
+                  <img alt="Close icon" src="/public/close.svg" />
                 ) : (
                   <MenuIcon />
                 )}

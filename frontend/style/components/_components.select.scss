@@ -1,9 +1,9 @@
 .c-select {
-  background: url('/static/arrowdown.svg') no-repeat;
+  background: url('/public/arrowdown.svg') no-repeat;
   background-position: center right;
   border: 1px solid $brand-dark;
   border-radius: 0;
-  box-shadow: 1px 1px 1px 1px rgba($black, .1);
+  box-shadow: 1px 1px 1px 1px rgba($black, 0.1);
   color: $brand-dark;
   //width: 100%;
   padding: 5px 25px 5px 5px;
@@ -20,15 +20,15 @@
 
 /* CAUTION: IE hackery ahead */
 .c-select::-ms-expand {
-    display: none; /* remove default arrow on ie10 and ie11 */
+  display: none; /* remove default arrow on ie10 and ie11 */
 }
 
 /* target Internet Explorer 9 to undo the custom arrow */
-@media screen and (min-width:0\0) {
-    .c-select {
-        background:none\9;
-        padding: 5px\9;
-    }
+@media screen and (min-width: 0\0) {
+  .c-select {
+    background: none\9;
+    padding: 5px\9;
+  }
 }
 
 .c-select__full-width-mobile {

@@ -1,20 +1,26 @@
-import moment from 'moment';
+import { format } from 'date-fns'
 
 /*
   return date formatted as format string
   if start and end dates don't repeat year and month if same
 */
-export default ({ start = '', end = '', format = 'D MMMM YYYY' }) => {
+const DateToString = ({ start = '', end = '', dateFormat = 'D MMMM YYYY' }) => {
   if (start === '') {
     return '';
+
   } else if (end === '') {
-    return moment(start).format(format);
-  } else if (moment(start).year() !== moment(end).year()) {
-    return `${moment(start).format(format)} - ${moment(end).format(format)}`;
-  } else if (moment(start).month() !== moment(end).month()) {
-    return `${moment(start).format('D MMMM')} - ${moment(end).format(format)}`;
-  } else if (moment(start).day() !== moment(end).day()) {
-    return `${moment(start).format('D')} - ${moment(end).format(format)}`;
+    return format(new Date(start), dateFormat)
+    
+  } else if (format(new Date(start), 'Y') !== format(new Date(end), 'Y') ){
+    return `${format(new Date(start), dateFormat)} - ${format(new Date(end), dateFormat)}`;
+
+  } else if (format(new Date(start), 'M') !== format(new Date(end), 'M') ){
+    return `${format(new Date(start), 'D MMMM')} - ${format(new Date(end), dateFormat)}`;
+
+  } else if (format(new Date(start), 'd') !== format(new Date(end), 'd') ){
+    return `${format(new Date(start), 'D')} - ${format(new Date(end), dateFormat)}`;
   }
-  return moment(start).format(format);
+  return format(new Date(start), dateFormat)
 };
+
+export default DateToString

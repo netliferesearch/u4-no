@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
-import sanityClient from '@sanity/client';
+import PicoSanity from 'picosanity';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
-import { Link } from '../routes';
-import { SearchField, SearchFieldV2 } from '../components';
-import { ArrowRight, SearchIcon, MenuIcon } from '../components/icons';
+
+import ArrowRight from './icons/ArrowRight';
+import SearchIcon from './icons/SearchIcon';
+import MenuIcon from './icons/MenuIcon';
 
 const classes = BEMHelper({
   name: 'top-bar',
@@ -35,7 +36,7 @@ class MenuV2 extends Component {
     if (this.state.data) {
       return; // no need to fetch data if we got link data passed in.
     }
-    const client = sanityClient({
+    const client = new PicoSanity({
       projectId: '1f1lcoov',
       dataset: 'production',
       token: '',

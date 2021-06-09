@@ -1,8 +1,13 @@
 import React from 'react';
-import { Link } from '../routes';
+import Link from 'next/link';
 import BEMHelper from 'react-bem-helper';
-import { Person } from './';
-import { ArrowRight, Helpdesk, OnlineTraining, Workshops, Download } from '../components/icons';
+
+import Person from './Person';
+import ArrowRight from './icons/ArrowRight';
+import Helpdesk from './icons/Helpdesk';
+import OnlineTraining from './icons/OnlineTraining';
+import Workshops from './icons/Workshops';
+import Download from './icons/Download';
 
 const classes = BEMHelper({
   name: 'partner-promo',
@@ -57,13 +62,14 @@ const PartnerPromo = ({
         </a>
       </div>
       <figure className="c-boxOnImage__figure c-boxOnImage__figure--smaller">
-        <img src="/static/services_partners.jpg?w=1600&amp;h=400&amp;fit=crop&amp;crop=focalpoint" />
+        <img src="/public/services_partners.jpg?w=1600&amp;h=400&amp;fit=crop&amp;crop=focalpoint" />
       </figure>
     </section>
     <h2 className="c-topic-section__cta u-margin-top-huge">
-      <Link to="/u4-partner-agencies">
+      <Link href="/u4-partner-agencies">
         <a>
-          See all our partners &nbsp;<ArrowRight />
+          See all our partners &nbsp;
+          <ArrowRight />
         </a>
       </Link>
     </h2>

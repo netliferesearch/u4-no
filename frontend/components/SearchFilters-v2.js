@@ -3,19 +3,19 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 import {
-  SearchFilterPublicationTypes,
-  SearchFilterTopics,
-  SearchFilterLanguages,
-  SearchFilterYears,
-  SearchFilterReset,
-} from './';
-import {
   addSearchFilter,
   removeSearchFilter,
   clearAllSearchFilters,
   replaceSearchFilters,
   updateSearchSorting,
 } from '../helpers/redux-store';
+
+import SearchFilterPublicationTypes from './SearchFilterPublicationTypes';
+import SearchFilterTopics from './SearchFilterTopics';
+import SearchFilterLanguages from './SearchFilterLanguages';
+import SearchFilterYears from './SearchFilterYears';
+import SearchFilterReset from './SearchFilterReset';
+
 
 function toggle() {
   if (document) {

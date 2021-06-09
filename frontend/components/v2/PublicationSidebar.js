@@ -1,9 +1,11 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import languageName from '../../helpers/languageName';
-import { LinkToItem } from '../';
-import { AuthorList, EditorList } from './';
 import dateToString from '../../helpers/dateToString';
+
+import LinkToItem from '../LinkToItem';
+import AuthorList from './AuthorList';
+import EditorList from './EditorList';
 
 const classes = BEMHelper({
   name: 'article-sidebar',

@@ -1,27 +1,27 @@
+import BlockContent from '@sanity/block-content-to-react';
+import dynamic from 'next/dynamic';
 import { createElement } from 'react';
 import BEMHelper from 'react-bem-helper';
-import BlockContent from '@sanity/block-content-to-react';
-import slugify from 'slugify';
 import ReactPlayer from 'react-player';
+import slugify from 'slugify';
 import buildUrl from '../helpers/buildUrl';
-import FunkyTable from './FunkyTable';
-import LineChart from './LineChart';
 import BarChart from './BarChart';
-import {
-  Figure,
-  PullQuote,
-  BoxOnBox,
-  BoxOnBoxTopics,
-  BoxOnImage,
-  Chart,
-  WorkshopMosaic,
-  Feature,
-  SimpleMosaic,
-  Mosaic,
-  ToggleTextBox,
-  Table,
-} from './';
-import { ArrowRight } from './icons';
+import BoxOnBox from './BoxOnBox';
+import BoxOnBoxTopics from './BoxOnBoxTopics';
+import BoxOnImage from './BoxOnImage';
+import Feature from './Feature';
+import Figure from './Figure';
+import ArrowRight from './icons/ArrowRight';
+import Mosaic from './Mosaic';
+import PullQuote from './PullQuote';
+import SimpleMosaic from './SimpleMosaic';
+import Table from './Table';
+import ToggleTextBox from './ToggleTextBox';
+import WorkshopMosaic from './WorkshopMosaic';
+
+const FunkyTable = dynamic(() => import('./FunkyTable'));
+const LineChart = dynamic(() => import('./LineChart'));
+const Chart = dynamic(() => import('./Chart'));
 
 const classes = BEMHelper({
   name: 'longform-grid',
@@ -208,7 +208,11 @@ const serializers = {
       <section className="o-wrapper c-topic-section">
         <div className="c-features">
           {featureArray.map(item => (
-            <Feature title={item.featureText} iconUrl={item.image.asset.url} />
+            <Feature
+              key={item.featureText}
+              title={item.featureText}
+              iconUrl={item.image.asset.url}
+            />
           ))}
         </div>
       </section>

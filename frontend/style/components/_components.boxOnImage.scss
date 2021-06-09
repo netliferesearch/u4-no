@@ -18,7 +18,8 @@
   h6 {
     color: $white;
   }
-  @include inuit-font-size($font-size-small, $font-size-large) @include mq($from: tablet) {
+  @include inuit-font-size($font-size-small, $font-size-large);
+  @include mq($from: tablet) {
     max-width: 50%;
     position: absolute;
     top: 0;
@@ -29,7 +30,8 @@
   }
 
   @include mq($from: wide) {
-    @include inuit-font-size(17px, 28px) padding: 6%;
+    @include inuit-font-size(17px, 28px);
+    padding: 6%;
 
     p {
       //margin-top: 0;
@@ -139,7 +141,8 @@
       padding: 10%;
     }
     @include mq($from: wide) {
-      @include inuit-font-size(17px, 28px) padding: 15%;
+      @include inuit-font-size(17px, 28px);
+      padding: 15%;
     }
   }
 

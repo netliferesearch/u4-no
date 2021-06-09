@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
-import { ToggleBlock } from '../';
 import { PartnersList } from './PartnersList';
 import serializers from '../serializers';
-import { PublicationNotifications, CopyToClipboardButton } from './';
+import PublicationNotifications from './PublicationNotifications';
+import CopyToClipboardButton from './CopyToClipboardButton'
 import { TagsSection } from './TagsSection';
 import findFootnotes from '../findFootnotes';
 import footnoteSerializer from '../footnoteSerializer';

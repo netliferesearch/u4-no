@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
-import { LinkToItem } from '../../';
 import { translate, langCode } from '../../../helpers/translate';
+
+import LinkToItem from '../../LinkToItem';
 
 export const BlogAuthorsList = ({ authors = [], introkey = 'by', language = 'en' }) => {
   const trans = translate(language);

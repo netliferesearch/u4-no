@@ -9,10 +9,10 @@ import { InView } from 'react-intersection-observer';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateSearchPageNum } from '../helpers/redux-store';
-import { Link } from '../routes';
-import { ArrowRightSmall } from '../components/icons';
+import Link from 'next/link';
+import ArrowRightSmall from '../components/icons/ArrowRightSmall';
 import format from 'date-fns/format';
-import { SearchResultsSortingSelect } from '../components';
+import SearchResultsSortingSelect from './SearchResultsSortingSelect';
 
 const classes = BEMHelper({
   name: 'search-results-v2',
@@ -43,7 +43,7 @@ const SearchResult = props => {
       <div {...classes('glossary')}>
         <span {...classes('items-type')}>Glossary</span>
         <br />
-        <Link route={url}>
+        <Link href={url}>
           <a {...classes('items-title')}>{termTitle}</a>
         </Link>
         <br />
@@ -63,7 +63,6 @@ const SearchResult = props => {
     } = _source;
     return (
       <div {...classes('topic')}>
-
         <div {...classes('topic-wrapper')}>
           <div {...classes('topic-img')}>
             {featuredImageUrl && (
@@ -73,7 +72,7 @@ const SearchResult = props => {
           <div {...classes('topic-content')}>
             <span {...classes('items-type')}>Topic</span>
             <br />
-            <Link route={url}>
+            <Link href={url}>
               <a {...classes('items-title')}>
                 <Highlight highlight={topicTitleHighlight} fallback={topicTitle} />
               </a>
@@ -83,7 +82,7 @@ const SearchResult = props => {
             {isBasicGuidePresent && (
               <div {...classes('topic-point')}>
                 <ArrowRightSmall />
-                <Link route={`${url}/basics`}>
+                <Link href={`${url}/basics`}>
                   <a>Basic guide</a>
                 </Link>
               </div>
@@ -91,7 +90,7 @@ const SearchResult = props => {
             {isAgendaPresent && (
               <div {...classes('topic-point')}>
                 <ArrowRightSmall />
-                <Link route={`${url}/agenda`}>
+                <Link href={`${url}/agenda`}>
                   <a>Research and policy agenda</a>
                 </Link>
               </div>
@@ -99,7 +98,7 @@ const SearchResult = props => {
             {numberOfTopicResources > 0 && (
               <div {...classes('topic-point')}>
                 <ArrowRightSmall />
-                <Link route={`${url}#resources`}>
+                <Link href={`${url}#resources`}>
                   <a>Publications and other resources</a>
                 </Link>
               </div>
@@ -109,7 +108,13 @@ const SearchResult = props => {
       </div>
     );
   } else if (type === 'publication') {
-    const { highlight: { content = [], title: titleHighlight = [], subtitle: subTitleHighlight = [] } = {} } = props;
+    const {
+      highlight: {
+        content = [],
+        title: titleHighlight = [],
+        subtitle: subTitleHighlight = [],
+      } = {},
+    } = props;
 
     const {
       title = '',
@@ -123,11 +128,16 @@ const SearchResult = props => {
 
     return (
       <div>
-        <span {...classes('items-type')}>Publication<span {...classes('pipe')}>|</span>{`${publicationTypeTitle}`}</span>
+        <span {...classes('items-type')}>
+          Publication<span {...classes('pipe')}>|</span>
+          {`${publicationTypeTitle}`}
+        </span>
         <br />
-        <Link route={url}>
+        <Link href={url}>
           <a {...classes('items-title')}>
-            <Highlight highlight={titleHighlight} fallback={title} />{`${subtitle ? ': ' : ''}`}<Highlight highlight={subTitleHighlight} fallback={subtitle} />
+            <Highlight highlight={titleHighlight} fallback={title} />
+            {`${subtitle ? ': ' : ''}`}
+            <Highlight highlight={subTitleHighlight} fallback={subtitle} />
           </a>
         </Link>
         <br />
@@ -135,12 +145,14 @@ const SearchResult = props => {
         <p {...classes('lead-text')}>
           <Highlight highlight={content} fallback={standfirst} />
         </p>
-        {uniq(filedUnderTopicNames).slice(0,1).map(name => (
-          //<div key={name} {...classes('items-tab')}>
-          <div key={name} className='topic'>
-            {name}
-          </div>
-        ))}
+        {uniq(filedUnderTopicNames)
+          .slice(0, 1)
+          .map(name => (
+            //<div key={name} {...classes('items-tab')}>
+            <div key={name} className="topic">
+              {name}
+            </div>
+          ))}
       </div>
     );
   }
@@ -159,7 +171,7 @@ const SearchResult = props => {
           : type.charAt(0).toUpperCase() + type.slice(1)}
       </span>
       <br />
-      <Link route={url}>
+      <Link href={url}>
         <a {...classes('items-title')}>
           <Highlight highlight={titleHighlight} fallback={title} />
         </a>
@@ -169,8 +181,8 @@ const SearchResult = props => {
         <Highlight highlight={content} fallback={standfirst} />
       </p>
       {uniq(filedUnderTopicNames).map(name => (
-        //<div key={name} {...classes('items-tab')}>
-        <div key={name} className='topic'>
+        // <div key={name} {...classes('items-tab')}>
+        <div key={name} className="topic">
           {name}
         </div>
       ))}
@@ -194,7 +206,7 @@ class SearchResultsV2 extends Component {
   }
   render() {
     const { data = {}, searchPageNum = 1, updateSearchPageNum, searchFilters = [] } = this.props;
-    const { hits = [], total:{value = 0} } = data.hits || {};
+    const { hits = [], total: { value = 0 } = {} } = data.hits || {};
 
     const resultsPerPage = 10;
     const isMoreResultsToLoad = searchPageNum * resultsPerPage < value;

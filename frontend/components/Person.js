@@ -1,6 +1,6 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { Link } from '../routes';
+import Link from 'next/link';
 
 const classes = BEMHelper({
   name: 'person',
@@ -11,7 +11,7 @@ const Person = ({ person, linkLabel = 'Bio', light = true }) => (
   <div {...classes('item', person.image ? 'light' : 'noimg')}>
     <div {...classes('item-body', person.image ? 'light' : 'noimg')}>
       {person.slug && person.bio ? (
-        <Link to={`/the-team/${person.slug.current}`}>
+        <Link href={`/the-team/${person.slug.current}`}>
           <a
             {...classes('item-body-img', person.image ? 'light' : 'noimg')}
             style={{
@@ -33,7 +33,7 @@ const Person = ({ person, linkLabel = 'Bio', light = true }) => (
       <div {...classes('item-body-text')}>
         <div>
           {person.slug && person.bio ? (
-            <Link to={`/the-team/${person.slug.current}`}>
+            <Link href={`/the-team/${person.slug.current}`}>
               <a>
                 <h3 {...classes('item-title')}>
                   {person.firstName && person.firstName} {person.surname && person.surname}

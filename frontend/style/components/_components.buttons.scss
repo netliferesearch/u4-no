@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* ==========================================================================
    #BUTTONS
    ========================================================================== */
@@ -69,7 +71,7 @@
 }
 .c-btn__body {
   font-family: $font-sans;
-  margin-left: $spacing / 2;
+  margin-left: math.div($spacing, 2);
   display: inline-block;
   margin: auto;
   padding: $spacing-small $spacing;

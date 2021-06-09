@@ -3,7 +3,7 @@
   font-weight: 300;
   font-family: $font-sans;
   color: $white-on-blue;
-  @include inuit-font-size($font-size-small, $font-size-large)
+  @include inuit-font-size($font-size-small, $font-size-large);
   @include mq($from: tablet) {
     width: 100%;
     display: grid;
@@ -52,15 +52,15 @@
       display: block;
       border: none;
       color: $brand-dark;
-      border-bottom: 1px solid rgba($brand-dark, .1);
+      border-bottom: 1px solid rgba($brand-dark, 0.1);
       padding: $spacing 0;
       &:after {
         content: '';
         display: inline-block;
         width: 20px;
         height: 20px;
-        background: url('/static/arrowright.svg') no-repeat;
-        float:right;
+        background: url('/public/arrowright.svg') no-repeat;
+        float: right;
         margin-top: $spacing-small;
       }
 
