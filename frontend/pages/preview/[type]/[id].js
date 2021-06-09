@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DataLoader from '../../../helpers/data-loader-preview';
+import DataLoaderPreview from '../../../helpers/data-loader-preview';
 import { localize } from '../../../helpers/translate';
 
 import LongformArticleContainer from '../../../components/LongformArticleContainer';
@@ -37,7 +37,7 @@ PublicationEntry.defaultProps = {
 };
 
 export default wrapInRedux(
-  DataLoader(PublicationEntry, {
+  DataLoaderPreview(PublicationEntry, {
     queryFunc: ({ query: { id = '' } }) => ({
       sanityQuery: `*[_id == $id]{ _type, _id,
       abbreviations, abstract, acknowledgements,
