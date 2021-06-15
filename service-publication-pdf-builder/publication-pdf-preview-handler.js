@@ -9,8 +9,9 @@ const axios = require('axios');
  */
 async function publicationPdfPreviewHandler(req, res) {
   const { url } = req.query;
-  // Support alternative url path '/previewpdf/:type/:id' defined in server.js
-  // by also checking req.params.id
+  // Also support older url path '/previewpdf/:type/:id' defined in server.js
+  // by also checking req.params.id. This way of fetching pdf does not let us
+  // override the url target for DocRaptor but it's kept around to avoid breakage.
   const id = req.query.id || req.params.id || '';
   if (!id) {
     return res.status(400).send('Missing publication id (?id=123)');
