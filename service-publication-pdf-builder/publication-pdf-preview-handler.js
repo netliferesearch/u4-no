@@ -8,7 +8,10 @@ const axios = require('axios');
  * Url is configurable.
  */
 async function publicationPdfPreviewHandler(req, res) {
-  const { id = '', url } = req.query;
+  const { url } = req.query;
+  // Support alternative url path '/previewpdf/:type/:id' defined in server.js
+  // by also checking req.params.id
+  const id = req.query.id || req.params.id || '';
   if (!id) {
     return res.status(400).send('Missing publication id (?id=123)');
   }

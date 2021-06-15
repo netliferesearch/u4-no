@@ -38,6 +38,7 @@ app.prepare().then(() => {
         'User-agent: *',
         'Disallow: /v2/',
         'Disallow: /preview/',
+        'Disallow: /previewpdf/',
         'Disallow: /generate-pdf-preview',
       ].join('\n')
     );
@@ -52,6 +53,11 @@ app.prepare().then(() => {
   server.get('/publications/:slug.pdf', publicationPdfHandler);
   server.get('/publication/:slug.pdf', publicationPdfHandler);
   server.get('/generate-pdf-preview', publicationPdfPreviewHandler);
+  /**
+   * To be replaced by '/generate-pdf-preview' which is a bit more clearly worded
+   * and has extra features. Keeping this around to avoid breaking old urls.
+   */
+  server.get('/previewpdf/:type/:id', publicationPdfPreviewHandler);
   server.get('/r/:shortSlug', shortUrlHandler);
 
   server.all('*', (req, res) => {
