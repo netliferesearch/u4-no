@@ -20,7 +20,7 @@ const HeadComponent = ({ title, description, image, url, ogp }) => (
     <meta name="google-site-verification" content="IuEUdfNVUT1nJ-DJUcrg99bbRIha348aLY0tC4tOIk0" />
 
     {/* Twitter will reuse OGP declarations for description and image */}
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@U4_ACRC" />
     <link rel="icon" type="image/png" href="/public/favicon.png" />
 
