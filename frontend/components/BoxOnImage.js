@@ -22,7 +22,18 @@ const BoxOnImage = ({
   personsRight = [],
 }) => (
   <div {...classes()}>
-    <figure {...classes('figure')}>{image && <img alt="" src={image.asset.url} />}</figure>
+    <figure {...classes('figure')}>
+      {image && (
+        <img
+          alt=""
+          src={`${image.asset.url}?w=1600&q=80`}
+          srcSet={`${image.asset.url}?w=500&q=70 500w, ${image.asset.url}?w=800&q=75 800w, ${
+            image.asset.url
+          }?w=1600&q=80 1600w, ${image.asset.url}?w=2400&q=80 2400w`}
+          sizes="90vw"
+        />
+      )}
+    </figure>
     <div {...classes('body', wide ? 'wide' : null)}>
       <BlockContent blocks={text} serializers={serializers} />
       {personsLeft.length ? (
