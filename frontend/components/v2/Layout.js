@@ -61,6 +61,7 @@ class Layout extends Component {
           <div {...classes('', 'fixed', 'u-bg-white')}>
             <a href="#" {...classes('logo-cmi')}>
               <LogoCMI />
+              TEST
             </a>
             <div className="fixed-header-content">
               {!hideLogo && (
