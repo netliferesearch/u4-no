@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900');
+// font css inlined in Head component instead for improved performance
+// @import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900');
 
 $font-sans: 'Lato', Helvetica, Arial, sans-serif;
 $font-serif: Georgia, serif;
