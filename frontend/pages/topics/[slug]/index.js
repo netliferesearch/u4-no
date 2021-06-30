@@ -77,9 +77,21 @@ const TopicEntry = ({
               }
               src={
                 featuredImage.asset && featuredImage.asset.url
-                  ? `${featuredImage.asset.url}?w=1120&fit=crop&crop=focalpoint`
+                  ? `${featuredImage.asset.url}?auto=format&w=1120&fit=crop&crop=focalpoint`
                   : ''
               }
+              srcSet={
+                featuredImage.asset && featuredImage.asset.url
+                  ? `${featuredImage.asset.url}?auto=format&w=500&q=70 500w, ${
+                      featuredImage.asset.url
+                    }?auto=format&w=800&q=75 800w, ${
+                      featuredImage.asset.url
+                    }?auto=format&w=1600&q=80 1600w, ${
+                      featuredImage.asset.url
+                    }?auto=format&w=2400&q=80 2400w`
+                  : ''
+              }
+              sizes="90vw"
             />
             <span className="c-boxOnImage__caption">
               {featuredImage.caption && (
@@ -114,7 +126,7 @@ const TopicEntry = ({
                 title="Basic guide"
                 text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
                 icon={BasicGuide}
-                _type='topicsBasics'
+                _type="topicsBasics"
                 slug={slug}
               />
             )}
@@ -123,7 +135,7 @@ const TopicEntry = ({
                 title="Research and policy agenda"
                 text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
                 icon={ResearchAgenda}
-                _type='topicsAgenda'
+                _type="topicsAgenda"
                 slug={slug}
               />
             )}
@@ -155,15 +167,15 @@ const TopicEntry = ({
     {advisors.length > 0 && (
       <div id="advisors" className="c-topic-section--lightblue o-wrapper-full-width">
         {
-        <Team
-          title={
-            advisors.length > 1
-              ? 'We’re the team developing this topic.'
-              : 'I’m developing this topic.'
-          }
-          members={advisors}
-          linkLabel="Read full bio"
-        />
+          <Team
+            title={
+              advisors.length > 1
+                ? 'We’re the team developing this topic.'
+                : 'I’m developing this topic.'
+            }
+            members={advisors}
+            linkLabel="Read full bio"
+          />
         }
         <h2 className="c-topic-section__cta">
           <a href="/the-team">
@@ -175,9 +187,9 @@ const TopicEntry = ({
     )}
 
     {
-    <div id="partners" className="c-topic-section">
-      <PartnerPromo />
-    </div>
+      <div id="partners" className="c-topic-section">
+        <PartnerPromo />
+      </div>
     }
     <Newsletter />
 

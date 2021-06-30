@@ -135,7 +135,9 @@ const LongFormArticleContainer = (props = {}) => {
                   style={{
                     backgroundImage:
                       featuredImage.asset && featuredImage.asset.url
-                        ? `url(${featuredImage.asset.url}?w=1120&q=80&crop=focalpoint&fit=scale)`
+                        ? `url(${
+                            featuredImage.asset.url
+                          }?auto=format&w=1120&q=80&crop=focalpoint&fit=scale)`
                         : '',
                     backgroundColor: '#0079CF',
                   }}

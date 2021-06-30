@@ -40,8 +40,8 @@ const ServicePage = ({
         <figure className="c-boxOnImage__figure">
           <img
             alt=""
-            src={`${featuredImage}?w=1600&q=80`}
-            srcSet={`${featuredImage}?w=500&q=70 500w, ${featuredImage}?w=800&q=75 800w, ${featuredImage}?w=1600&q=80 1600w, ${featuredImage}?w=2400&q=80 2400w`}
+            src={`${featuredImage}?auto=format&w=1600&q=80`}
+            srcSet={`${featuredImage}?auto=format&w=500&q=70 500w, ${featuredImage}?auto=format&w=800&q=75 800w, ${featuredImage}?auto=format&w=1600&q=80 1600w, ${featuredImage}?auto=format&w=2400&q=80 2400w`}
             sizes="90vw"
           />
         </figure>

@@ -73,7 +73,17 @@ const Figure = ({
 }) => (
   <figure {...classes('figure', null, figureOutFigureClass(size))}>
     {(title || heading) && <p className="c-figure__title">{title || heading}</p>}
-    <img src={asset.url} alt={altText} />
+    <img
+      src={`${asset.url}?auto=format&w=1600&q=80`}
+      alt={altText}
+      srcSet={`${asset.url}?auto=format&w=500&q=70 500w, ${
+        asset.url
+      }?auto=format&w=800&q=75 800w, ${asset.url}?auto=format&w=1600&q=80 1600w, ${
+        asset.url
+      }?auto=format&w=2400&q=80 2400w`}
+      sizes="90vw"
+      loading="lazy"
+    />
     {(caption.length > 0 || credit || sourceUrl || license) && (
       <figcaption className="c-figure__caption">
         {renderCaption(caption)}
