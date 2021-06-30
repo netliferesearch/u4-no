@@ -26,11 +26,14 @@ const BoxOnImage = ({
       {image && (
         <img
           alt=""
-          src={`${image.asset.url}?w=1600&q=80`}
-          srcSet={`${image.asset.url}?w=500&q=70 500w, ${image.asset.url}?w=800&q=75 800w, ${
+          src={`${image.asset.url}?auto=format&w=1600&q=80`}
+          srcSet={`${image.asset.url}?auto=format&w=500&q=70 500w, ${
             image.asset.url
-          }?w=1600&q=80 1600w, ${image.asset.url}?w=2400&q=80 2400w`}
+          }?auto=format&w=800&q=75 800w, ${image.asset.url}?auto=format&w=1600&q=80 1600w, ${
+            image.asset.url
+          }?auto=format&w=2400&q=80 2400w`}
           sizes="90vw"
+          loading="lazy"
         />
       )}
     </figure>

@@ -17,7 +17,7 @@ const Person = ({ person, linkLabel = 'Bio', light = true }) => (
             style={{
               backgroundImage: `url(${person.image &&
                 person.image.asset &&
-                person.image.asset.url}?w=400&q=100)`,
+                person.image.asset.url}?auto=format&w=400&q=90)`,
             }}
           />
         </Link>
@@ -25,7 +25,8 @@ const Person = ({ person, linkLabel = 'Bio', light = true }) => (
         <a
           {...classes('item-body-img', person.image ? 'light' : 'noimg')}
           style={{
-            backgroundImage: `url(${person.image && person.image.asset.url}?w=400&q=100)`,
+            backgroundImage: `url(${person.image &&
+              person.image.asset.url}?auto=format&w=400&q=90)`,
           }}
         />
       )}

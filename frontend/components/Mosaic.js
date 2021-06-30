@@ -34,7 +34,8 @@ const Mosaic = ({ resources = [], alt = false }) => (
                   : ' '
               }`}
               style={{
-                backgroundImage: imageUrl && index % 4 === 0 ? `url(${imageUrl}?w=800&q=70)` : '',
+                backgroundImage:
+                  imageUrl && index % 4 === 0 ? `url(${imageUrl}?auto=format&w=800&q=70)` : '',
               }}
             >
               <div
