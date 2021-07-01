@@ -4,6 +4,7 @@ import DataLoader from '../../helpers/data-loader';
 import { Layout } from '../../components/v2/Layout';
 import { BreadCrumbV2 } from '../../components/v2/BreadCrumbV2';
 import BlogFilteredList from '../../components/v2/blog/BlogFilteredList';
+import { wrapInRedux } from '../../helpers/redux-store-wrapper';
 
 const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
   return (
@@ -51,12 +52,14 @@ BlogPage.propTypes = {
   }).isRequired,
 };
 
-export default DataLoader(BlogPage, {
-  queryFunc: () => ({
-    sanityQuery: `{
+export default wrapInRedux(
+  DataLoader(BlogPage, {
+    queryFunc: () => ({
+      sanityQuery: `{
       "blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {_id, _type, title, date, content, authors, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current},
       "topics": *[_type == "topics"] | order(title){_id, title, slug},
     }`,
-  }),
-  materializeDepth: 1,
-});
+    }),
+    materializeDepth: 1,
+  })
+);

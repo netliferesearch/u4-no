@@ -5,9 +5,9 @@ import Router from 'next/router';
 import PicoSanity from 'picosanity';
 import { SearchIcon } from './icons/SearchIcon';
 import  MenuIcon from '../icons/MenuIcon';
-import { FbRound } from '../icons/FbRound';
-import { TwitterRound } from '../icons/TwitterRound';
-import { LinkedInRound } from '../icons/LinkedInRound';
+import  FbRound  from '../icons/FbRound';
+import  TwitterRound  from '../icons/TwitterRound';
+import  LinkedInRound  from '../icons/LinkedInRound';
 
 const classes = BEMHelper({
   name: 'top-bar-v2',
