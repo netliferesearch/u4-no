@@ -130,18 +130,21 @@ const LongFormArticleContainer = (props = {}) => {
                   publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''
                 }`}
               >
-                <div
-                  className="c-hero-image"
-                  style={{
-                    backgroundImage:
-                      featuredImage.asset && featuredImage.asset.url
-                        ? `url(${
-                            featuredImage.asset.url
-                          }?auto=format&w=1120&q=80&crop=focalpoint&fit=scale)`
-                        : '',
-                    backgroundColor: '#0079CF',
-                  }}
-                />
+                <div className="c-hero-image">
+                  {featuredImage.asset && featuredImage.asset.url && (
+                    <img
+                      src={`${featuredImage.asset.url}?auto=format&w=800&q=75`}
+                      alt=""
+                      srcSet={`${featuredImage.asset.url}?auto=format&w=500&q=70 500w, ${
+                        featuredImage.asset.url
+                      }?auto=format&w=800&q=75 800w, ${
+                        featuredImage.asset.url
+                      }?auto=format&w=1600&q=80 1600w, ${
+                        featuredImage.asset.url
+                      }?auto=format&w=2400&q=80 2400w`}
+                    />
+                  )}
+                </div>
                 <div className="c-hero-bg" />
                 <div className="c-hero-sideText">
                   {!featuredImage.sourceUrl && featuredImage.credit && (
