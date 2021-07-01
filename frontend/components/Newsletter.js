@@ -48,7 +48,7 @@ class Newsletter extends Component {
               </div>
             </form>
             {false && (
-              <Link href={link}>
+              <Link href={link || ''}>
                 <a {...classes('title-wrapper')}>
                   <h3 {...classes('title')}>{title}</h3>
                   <span {...classes('title-arrow')}>

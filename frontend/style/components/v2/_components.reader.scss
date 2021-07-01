@@ -1,0 +1,324 @@
+.c-reader {
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  //width: 100vw;
+  min-height: 100%;
+  min-height: 100vh;
+  background-color: $white;
+
+  .c-article-header__container {
+    max-width: initial;
+  }
+  // .c-article__row {
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: space-between;
+  // }
+  .c-article-sidebar {
+    margin-top: 32px;
+  }
+  .c-article__additional-info-container {
+    margin-bottom: 160px;
+    padding-top: 120px;
+    margin-top: -120px;
+  }
+  .c-article-sidebar__bibliography,
+  .c-article-sidebar__date,
+  .c-authors-list__position {
+    display: none;
+  }
+  .c-article-sidebar__left {
+    .c-modal {
+      margin-top: 32px;
+    }
+  }
+}
+
+.c-blog-entry__main-text,
+.c-article-v2__main-text {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  font-family: $font-serif;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.02em;
+
+  div {
+    // .c-longform-grid__standard:first-child {
+    //   margin-top: 32px;
+    // }
+
+    .c-longform-grid__large,
+    .c-longform-grid__medium,
+    .c-longform-grid__standard {
+      padding: 0;
+      margin: 32px auto;
+    }
+    .c-longform-grid__standard {
+      max-width: 600px;
+    }
+  }
+
+  div.c-longform-grid__standard {
+    max-width: 720px;
+  }
+
+  h2.c-longform-grid__standard {
+    font-family: $font-sans;
+    color: $v2-black;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 68px auto 32px auto;
+  }
+
+  h3.c-longform-grid__standard {
+    font-family: $font-sans;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+    color: $v2-black;
+
+    // color: $v2-black;
+    // font-weight: 700;
+    // font-size: 22px;
+    // line-height: 1.3;
+
+    margin: 68px auto 32px auto;
+  }
+  h4.c-longform-grid__standard {
+    font-family: $font-sans;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: $v2-dark-grey;
+
+    margin: 68px auto 32px auto;
+  }
+  h5.c-longform-grid__standard {
+    font-family: $font-sans;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    color: $v2-dark-grey;
+
+    margin: 68px auto 32px auto;
+  }
+
+  .c-article__pullQuote {
+    color: $v2-grey-pQ;
+    padding: 0;
+    font-family: $font-sans;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+    position: relative;
+    max-width: 304px;
+    margin: 32px auto 32px auto;
+    @include mq($from: tablet) {
+      font-size: 24px;
+      float: left;
+      margin: 32px 32px 32px -90px;
+      max-width: 304px;
+    }
+  }
+  .c-figure__caption {
+    margin: 24px 0;
+  }
+  .c-figure__caption > .c-longform-grid__standard,
+  .c-table__caption > .c-longform-grid__standard {
+    font-size: 15px;
+    line-height: 1.33;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+  }
+  .c-table table {
+    margin-bottom: 24px;
+  }
+  a {
+    color: $v2-black;
+    border-bottom: 1px solid $v2-black;
+  }
+  a:hover {
+    color: $brand-main;
+    border-bottom: 1px solid $brand-main;
+  }
+  a:active {
+    color: $brand-main;
+    border-bottom: 1px solid $brand-main;
+  }
+  a:visited {
+    //color: $brand-main;
+    //border-bottom: 1px solid $brand-main;
+  }
+  ol.c-longform-grid__standard,
+  ul.c-longform-grid__standard {
+    //list-style-position: inside;
+    padding-left: 24px;
+  }
+
+  @include mq($from: tablet) {
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 32px auto $spacing-large auto;
+  }
+}
+
+.c-article-v2__main-text {
+  div {
+    .c-longform-grid__standard:first-child {
+      padding-top: 120px;
+      margin-top: -120px;
+    }
+  }
+  h2.c-longform-grid__standard {
+    padding-top: 120px;
+    margin-top: -82px;
+  }
+}
+
+.c-article--shortversion .c-article-v2__main-text {
+  div {
+    .c-longform-grid__standard:first-child {
+      padding-top: 0;
+      margin-top: 32px;
+    }
+  }
+}
+
+.c-article-v2__pdf-viewer {
+  font-family: $font-sans;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  margin-bottom: $spacing-huge;
+
+  .c-pdf-viewer {
+    margin-top: $spacing-large;
+  }
+
+  .c-pdf-viewer__pdf {
+    margin-top: $spacing;
+  }
+}
+
+.c-contents {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  .c-btn {
+    margin-left: 10px;
+    padding: 0;
+    div {
+      padding: 1px 6px;
+    }
+  }
+}
+.c-modal__cover--contents {
+  z-index: 100;
+}
+.c-modal--contents {
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  right: 0;
+  width: 262px;
+  min-height: 100vh;
+  margin: 0 0 0 auto;
+  border-radius: 0;
+
+  .c-modal__top {
+    padding: 32px 24px;
+  }
+  .c-modal__content {
+    padding: 32px 24px;
+    flex-wrap: nowrap;
+    height: calc(100vh - 98px);
+    overflow-y: auto;
+    .c-modal__title {
+      margin-bottom: 8px;
+    }
+  }
+  .c-modal__title {
+    color: $v2-black;
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .c-article-nav-list {
+    padding: 0;
+    transition: none;
+  }
+
+  .c-article-nav-list__item {
+    padding: 0;
+    transition: none;
+    border: none;
+    &:first-child {
+      padding: 0;
+    }
+    a {
+      display: inline-block;
+      font-family: $font-serif;
+      color: $v2-black;
+      font-size: 14px;
+      line-height: 17px;
+      font-weight: 400;
+      border-bottom: none;
+      padding: 16px 0;
+    }
+    &:hover,
+    &:visited:hover {
+      a {
+        color: $v2-blue;
+        text-decoration: underline;
+        border-bottom: none;
+      }
+    }
+    &:active {
+      color: $v2-blue;
+      text-decoration: underline;
+      border-bottom: none;
+      & > * {
+        transform: translateY(2px);
+      }
+    }
+  }
+}
+
+.c-scroll-top {
+  display: none;
+  background-color: $v2-lighter-grey;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 96px;
+  right: 96px;
+  a {
+    padding: 8px 16px;
+    border: none;
+    &:hover,
+    &:visited,
+    &:active {
+      border: none;
+    }
+  }
+  @include mq($from: tablet) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

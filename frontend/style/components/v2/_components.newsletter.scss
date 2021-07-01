@@ -1,0 +1,141 @@
+.c-newsletter-v2 {
+  .c-newsletter {
+    margin: $spacing-large auto;
+    max-width: 600px;
+  }
+
+  .c-newsletter__content {
+    font-family: $font-sans;
+    //flex-grow: 10;
+    border: 1px solid $v2-light-green;
+    background: $white;
+    padding: $spacing;
+    @include mq($from: tablet) {
+      //margin-left: -$spacing;
+      padding: 32px $spacing-large;
+    }
+  }
+  .c-newsletter__title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $v2-light-grey;
+    margin: 0;
+    padding: 1px;
+    &:hover {
+      .c-newsletter__title {
+        color: $v2-black;
+      }
+      .c-newsletter__input::placeholder {
+        color: $v2-black;
+      }
+    }
+    @include mq($from: tablet) {
+      margin: 0 0 32px 0;
+      padding: 4px;
+    }
+  }
+  .c-btn--submit {
+    background-color: $v2-green;
+    font-family: $font-sans;
+    font-size: $font-size-micro;
+    line-height: 1.7;
+    letter-spacing: 0.1px;
+    color: $white;
+    padding: 6px 10px;
+    &:hover {
+      text-decoration: none;
+      background-color: $v2-dark-green;
+    }
+    &:focus {
+      text-decoration: none;
+      //outline: none;
+    }
+    &:active {
+      padding-top: 10px;
+      padding-bottom: 6px;
+    }
+    @include mq($from: tablet) {
+      padding: 8px 16px;
+    }
+  }
+
+  .c-newsletter__title {
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: $v2-grey;
+    margin: 0 0 32px 0;
+    padding-bottom: $spacing-tiny;
+    transition: border 0.2s ease-out;
+  }
+  .c-newsletter__cta {
+    font-weight: 900;
+    font-size: $font-size-small;
+    line-height: 1.33;
+    text-align: left;
+    letter-spacing: 0.02em;
+    margin: 0 0 32px 0;
+    @include mq($from: tablet) {
+      text-align: center;
+    }
+  }
+
+  .c-newsletter__input {
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: $v2-black;
+    background-color: $white;
+    margin: 0;
+    padding: 5px 8px;
+    transition: border 0.2s ease-out;
+    border-style: none;
+    width: 100%;
+    @include mq($from: tablet) {
+      padding: 8px;
+    }
+  }
+  ::placeholder {
+    color: $v2-grey;
+    opacity: 1;
+  }
+
+  .c-newsletter__text {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: left;
+    letter-spacing: 0.02em;
+    margin: 0 0 32px 0;
+    @include mq($from: tablet) {
+      text-align: center;
+      margin: 0;
+    }
+  }
+}
+
+.c-newsletter-footer {
+  .c-newsletter {
+    max-width: 530px;
+    margin: 0;
+  }
+  .c-newsletter__content {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+  }
+  .c-newsletter__cta {
+    text-align: left;
+    font-weight: 700;
+    font-size: 22px;
+    color: $v2-black;
+  }
+  .c-newsletter__title-wrapper {
+    border: none;
+    background-color: #ffffff;
+  }
+  .c-newsletter__input {
+    max-width: 364px;
+  }
+}

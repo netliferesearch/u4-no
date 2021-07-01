@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-
-import CreativecommonsCC from '../../icons/CreativecommonsCC';
-import CreativecommonsBY from '../../icons/CreativecommonsBY';
-import CreativecommonsNC from '../../icons/CreativecommonsNC';
-import CreativecommonsND from '../../icons/CreativecommonsND';
+import {
+  CreativecommonsCC,
+  CreativecommonsBY,
+  CreativecommonsNC,
+  CreativecommonsND,
+} from '../../icons';
 import { ArrowDark } from '../../icons/ArrowDark';
 
 export const BlogAccordion = () => {

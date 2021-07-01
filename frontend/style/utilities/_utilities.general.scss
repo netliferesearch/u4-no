@@ -52,12 +52,97 @@ iframe {
 .u-overflow-hidden {
   overflow-y: hidden;
 }
+
 .u-visually-hidden {
   visibility: hidden;
 }
 
+.u-visually-hidden-v2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
 .u-reverse-arrow {
   transform: rotate(180deg);
+}
+
+.u-hidden--tablet {
+  display: none;
+  @include mq($from: tablet) {
+    display: block;
+  }
+}
+
+.u-hidden--tablet-flex {
+  display: none;
+  @include mq($from: tablet) {
+    display: flex;
+  }
+}
+
+.u-hidden--desktop {
+  display: block;
+  @include mq($from: tablet) {
+    display: none;
+  }
+}
+
+.u-hidden--desktop-flex {
+  display: flex;
+  @include mq($from: tablet) {
+    display: none;
+  }
+}
+
+.u-fixed {
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  z-index: 99999;
+}
+
+.u-scroll-bar {
+  @include mq($from: tablet) {
+    margin-left: calc(100vw - 100%);
+  }
+}
+
+.u-flex-start-center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.u-flex-sb {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.u-span-btn {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  span {
+    margin-right: 8px;
+    color: $v2-black;
+  }
+}
+
+.pointer-events--none {
+  pointer-events: none;
+}
+
+.u-border--none {
+  border: none;
+  &:hover,
+  &:active {
+    border: none;
+  }
 }
 
 @keyframes fadeIn {

@@ -1,11 +1,9 @@
 import React, { useState, useRef } from 'react';
-import CopyToClipboardButton from './CopyToClipboardButton';
-
+import { CopyToClipboardButton } from './';
 import CreativecommonsCC from '../icons/CreativecommonsCC';
 import CreativecommonsBY from '../icons/CreativecommonsBY';
 import CreativecommonsNC from '../icons/CreativecommonsNC';
 import CreativecommonsND from '../icons/CreativecommonsND';
-
 import { ArrowDark } from '../icons/ArrowDark';
 import dateToString from '../../helpers/dateToString';
 

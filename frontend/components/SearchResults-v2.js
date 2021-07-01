@@ -43,7 +43,7 @@ const SearchResult = props => {
       <div {...classes('glossary')}>
         <span {...classes('items-type')}>Glossary</span>
         <br />
-        <Link href={url}>
+        <Link href={url || ''}>
           <a {...classes('items-title')}>{termTitle}</a>
         </Link>
         <br />
@@ -72,7 +72,7 @@ const SearchResult = props => {
           <div {...classes('topic-content')}>
             <span {...classes('items-type')}>Topic</span>
             <br />
-            <Link href={url}>
+            <Link href={url || ''}>
               <a {...classes('items-title')}>
                 <Highlight highlight={topicTitleHighlight} fallback={topicTitle} />
               </a>
@@ -133,7 +133,7 @@ const SearchResult = props => {
           {`${publicationTypeTitle}`}
         </span>
         <br />
-        <Link href={url}>
+        <Link href={url || ''}>
           <a {...classes('items-title')}>
             <Highlight highlight={titleHighlight} fallback={title} />
             {`${subtitle ? ': ' : ''}`}
@@ -171,7 +171,7 @@ const SearchResult = props => {
           : type.charAt(0).toUpperCase() + type.slice(1)}
       </span>
       <br />
-      <Link href={url}>
+      <Link href={url || ''}>
         <a {...classes('items-title')}>
           <Highlight highlight={titleHighlight} fallback={title} />
         </a>
