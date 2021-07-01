@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
-const HeadComponent = ({ title, description, image, url, ogp }) => (
+const HeadComponent = ({ title, description, image, preloadImage, url, ogp }) => (
   <Head>
     <meta charSet="utf-8" />
     <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -10,6 +10,22 @@ const HeadComponent = ({ title, description, image, url, ogp }) => (
     <title>{title}</title>
     <meta name="description" content={description} />
 
+    {preloadImage && (
+      <link
+        rel="preload"
+        as="image"
+        href={`${preloadImage}?auto=format&w=600&q=80&crop=focalpoint&fit=scale`}
+        media="(max-width: 639px)"
+      />
+    )}
+    {preloadImage && (
+      <link
+        rel="preload"
+        as="image"
+        href={`${preloadImage}?auto=format&w=1120&q=80&crop=focalpoint&fit=scale`}
+        media="(min-width: 640px)"
+      />
+    )}
     <meta property="og:url" content={ogp.url ? ogp.url : url} />
     <meta property="og:type" content="article" />
     <meta property="og:title" content={ogp.title ? ogp.title : title} />
@@ -45,6 +61,7 @@ const basicMetaValidation = {
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
+  preloadImage: PropTypes.string,
 };
 
 HeadComponent.propTypes = {
@@ -58,6 +75,7 @@ HeadComponent.defaultProps = {
   description:
     'U4 translates anti-corruption research into practical advice for international development actors. We offer publications, training, workshops, helpdesk, and policy advice to government agencies and the global anti-corruption community.',
   image: '',
+  preloadImage: '',
   ogp: {},
 };
 

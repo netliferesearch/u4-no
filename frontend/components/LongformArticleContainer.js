@@ -75,6 +75,7 @@ const LongFormArticleContainer = (props = {}) => {
           featuredImage.asset && featuredImage.asset.url
             ? `${featuredImage.asset.url}?w=1200&h=630&fit=min`
             : '',
+        preloadImage: featuredImage.asset && featuredImage.asset.url,
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
       },
@@ -130,18 +131,25 @@ const LongFormArticleContainer = (props = {}) => {
                   publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''
                 }`}
               >
-                <div
-                  className="c-hero-image"
-                  style={{
-                    backgroundImage:
-                      featuredImage.asset && featuredImage.asset.url
-                        ? `url(${
-                            featuredImage.asset.url
-                          }?auto=format&w=1120&q=80&crop=focalpoint&fit=scale)`
-                        : '',
-                    backgroundColor: '#0079CF',
-                  }}
-                />
+                <div className="c-hero-image" style={{ backgroundColor: '#0079CF' }}>
+                  {featuredImage.asset && featuredImage.asset.url && (
+                    <picture>
+                      <source
+                        srcSet={`${
+                          featuredImage.asset.url
+                        }?auto=format&w=1120&q=80&crop=focalpoint&fit=scale`}
+                        media="(min-width: 640px)"
+                      />
+                      <img
+                        style={{ width: '100%', height: '100%', 'object-fit': 'cover' }}
+                        alt=""
+                        src={`${
+                          featuredImage.asset.url
+                        }?auto=format&w=600&q=80&crop=focalpoint&fit=scale`}
+                      />
+                    </picture>
+                  )}
+                </div>
                 <div className="c-hero-bg" />
                 <div className="c-hero-sideText">
                   {!featuredImage.sourceUrl && featuredImage.credit && (
