@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import Link from 'next/link';
+
+import Image from 'next/image';
+import sanityImageLoader from './sanityImageLoader';
+
 import PartnerLogo10 from './icons/PartnerLogo10';
 import buildUrl from '../helpers/buildUrl';
 import serializers from './serializers';
@@ -24,16 +28,13 @@ const BoxOnImage = ({
   <div {...classes()}>
     <figure {...classes('figure')}>
       {image && (
-        <img
+        <Image
+          loader={sanityImageLoader}
+          src={image.asset.url}
           alt=""
-          src={`${image.asset.url}?auto=format&w=1600&q=80`}
-          srcSet={`${image.asset.url}?auto=format&w=500&q=70 500w, ${
-            image.asset.url
-          }?auto=format&w=800&q=75 800w, ${image.asset.url}?auto=format&w=1600&q=80 1600w, ${
-            image.asset.url
-          }?auto=format&w=2400&q=80 2400w`}
-          sizes="90vw"
-          loading="lazy"
+          layout="fill"
+          objectFit="cover"
+          priority="true"
         />
       )}
     </figure>
