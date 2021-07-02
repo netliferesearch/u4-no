@@ -95,7 +95,6 @@
   @include mq($from: tablet) {
     writing-mode: horizontal-tb;
     margin: 0 0 0 0;
-    //position: relative;
     bottom: -1.5em;
     padding-left: $spacing-tiny;
   }
