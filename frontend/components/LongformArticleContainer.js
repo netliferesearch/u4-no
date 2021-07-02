@@ -3,6 +3,9 @@ import BlockToContent from '@sanity/block-content-to-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import Image from 'next/image';
+import sanityImageLoader from './sanityImageLoader';
+
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import dateToString from '../helpers/dateToString';
 
@@ -132,16 +135,13 @@ const LongFormArticleContainer = (props = {}) => {
               >
                 <div className="c-hero-image">
                   {featuredImage.asset && featuredImage.asset.url && (
-                    <img
-                      src={`${featuredImage.asset.url}?auto=format&w=800&q=75`}
+                    <Image
+                      loader={sanityImageLoader}
+                      src={featuredImage.asset.url}
                       alt=""
-                      srcSet={`${featuredImage.asset.url}?auto=format&w=500&q=70 500w, ${
-                        featuredImage.asset.url
-                      }?auto=format&w=800&q=75 800w, ${
-                        featuredImage.asset.url
-                      }?auto=format&w=1600&q=80 1600w, ${
-                        featuredImage.asset.url
-                      }?auto=format&w=2400&q=80 2400w`}
+                      layout="fill"
+                      objectFit="cover"
+                      priority="true"
                     />
                   )}
                 </div>
