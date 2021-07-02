@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+
+import Image from 'next/image';
+import sanityImageLoader from './sanityImageLoader';
+
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from './serializers';
 import imageUrl from '../helpers/imageUrl';
@@ -73,17 +77,15 @@ const Figure = ({
 }) => (
   <figure {...classes('figure', null, figureOutFigureClass(size))}>
     {(title || heading) && <p className="c-figure__title">{title || heading}</p>}
-    <img
-      src={`${asset.url}?auto=format&w=1600&q=80`}
+    <Image
+      loader={sanityImageLoader}
+      src={asset.url}
       alt={altText}
-      srcSet={`${asset.url}?auto=format&w=500&q=70 500w, ${
-        asset.url
-      }?auto=format&w=800&q=75 800w, ${asset.url}?auto=format&w=1600&q=80 1600w, ${
-        asset.url
-      }?auto=format&w=2400&q=80 2400w`}
-      sizes="90vw"
-      loading="lazy"
+      layout="responsive"
+      width={asset.metadata.dimensions.width}
+      height={asset.metadata.dimensions.height}
     />
+
     {(caption.length > 0 || credit || sourceUrl || license) && (
       <figcaption className="c-figure__caption">
         {renderCaption(caption)}
