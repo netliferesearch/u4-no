@@ -14,7 +14,7 @@ export const TopicCardList = ({ topics }) => {
       <ul>
         {topics.map((topic, index) => (
           <li key={topic._id} className="c-topic-card-list__item">
-            <Link href="topic.entry" params={{ slug: topic.slug.current }}>
+            <Link href={`/topics/${topic.slug.current}`}>
               <a>
                 <div className="c-topic-card-list__item-text">
                   <div>
@@ -22,7 +22,7 @@ export const TopicCardList = ({ topics }) => {
                     <p className="u-text--15 u-text--grey">{topic.longTitle}</p>
                   </div>
                   <div>
-                    <Link href="topic.entry" params={{ slug: topic.slug.current }}>
+                    <Link href={`/topics/${topic.slug.current}`}>
                       <a className="c-btn c-btn--sec">
                         <span>Learn more</span>
                       </a>

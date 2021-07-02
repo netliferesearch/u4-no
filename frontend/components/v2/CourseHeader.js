@@ -21,7 +21,7 @@ export const CourseHeader = ({ data }) => {
         className={`c-course-entry__intro ${(featuredImage && featuredImage.asset) || vimeo ? '' : 'c-course-entry__intro--no-img'}`}
       >
         <div>
-          <Link route={'/online-courses'}>
+          <Link href={'/online-courses'}>
             <a className="c-btn--sen">
               <h6>Online course</h6>
             </a>

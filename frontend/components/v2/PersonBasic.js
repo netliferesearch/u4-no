@@ -22,7 +22,7 @@ export const PersonBasic = ({ person, showEmail = true }) => {
       </div>
       <div className="c-person-basic__text">
         {person.slug && person.bio ? (
-          <Link to={`/the-team/${person.slug.current}`}>
+          <Link href={`/the-team/${person.slug.current}`}>
             <a className="c-btn--qua">
               <p {...classes('item-title--name')}>
                 {person.firstName && person.firstName} {person.surname && person.surname}
@@ -54,7 +54,7 @@ export const PersonContactBasic = ({ person, cta = 'Questions about the course?'
       <div>
         {/* <p className="u-heading--5">{person.position && `${person.position}`}</p> */}
         {person.slug && person.bio ? (
-          <Link to={`/the-team/${person.slug.current}`}>
+          <Link href={`/the-team/${person.slug.current}`}>
             <a className="c-btn--qua">
               <span {...classes('item-title--name')}>
                 {person.firstName && person.firstName} {person.surname && person.surname}
@@ -109,7 +109,7 @@ export const CourseCoordinator = ({ person, cta = 'Questions about the course?',
       <div className="c-person-basic__text">
         <h3 className="u-heading--5">Course coordinator:</h3>
         {person.slug && person.bio ? (
-          <Link to={`/the-team/${person.slug.current}`}>
+          <Link href={`/the-team/${person.slug.current}`}>
             <a className="c-btn--qua">
               <span {...classes('item-title--name')}>
                 {person.firstName && person.firstName} {person.surname && person.surname}

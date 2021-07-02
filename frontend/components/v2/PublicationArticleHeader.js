@@ -27,7 +27,7 @@ const PublicationArticleHeader = ({
     <header {...classes('', null, className)}>
       <div className="c-article-header__container">
         <div {...classes('content')}>
-          <Link to={getRouteByType(publicationType.title)}>
+          <Link href={getRouteByType(publicationType.title)}>
             <a className="c-btn--sen">
               <h6>
                 {' '}

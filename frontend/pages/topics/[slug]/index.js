@@ -114,7 +114,7 @@ const TopicEntry = ({
                 title="Basic guide"
                 text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
                 icon={BasicGuide}
-                _type='topicsBasics'
+                _type="topicsBasics"
                 slug={slug}
               />
             )}
@@ -123,7 +123,7 @@ const TopicEntry = ({
                 title="Research and policy agenda"
                 text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
                 icon={ResearchAgenda}
-                _type='topicsAgenda'
+                _type="topicsAgenda"
                 slug={slug}
               />
             )}
@@ -155,15 +155,15 @@ const TopicEntry = ({
     {advisors.length > 0 && (
       <div id="advisors" className="c-topic-section--lightblue o-wrapper-full-width">
         {
-        <Team
-          title={
-            advisors.length > 1
-              ? 'We’re the team developing this topic.'
-              : 'I’m developing this topic.'
-          }
-          members={advisors}
-          linkLabel="Read full bio"
-        />
+          <Team
+            title={
+              advisors.length > 1
+                ? 'We’re the team developing this topic.'
+                : 'I’m developing this topic.'
+            }
+            members={advisors}
+            linkLabel="Read full bio"
+          />
         }
         <h2 className="c-topic-section__cta">
           <a href="/the-team">
@@ -175,9 +175,9 @@ const TopicEntry = ({
     )}
 
     {
-    <div id="partners" className="c-topic-section">
-      <PartnerPromo />
-    </div>
+      <div id="partners" className="c-topic-section">
+        <PartnerPromo />
+      </div>
     }
     <Newsletter />
 

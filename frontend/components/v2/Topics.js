@@ -19,7 +19,7 @@ export const Topics = ({ title = true, topics = [], hr = false, linkType = 'ter'
         {topics.map((topic, index) =>
           topic.slug && topic.title ? (
             <span className="topic" key={index}>
-              <Link href="topic.entry" params={{ slug: topic.slug.current }}>
+              <Link href={`/topics/${topic.slug.current}`}>
                 <a className={`c-btn--${linkType}`}>
                   <div>{topic.title}</div>
                 </a>

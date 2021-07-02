@@ -1,6 +1,7 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { AuthorList, EditorList } from './';
+import { EditorList } from './EditorList';
+import { AuthorList } from './AuthorList';
 import dateToString from '../../helpers/dateToString';
 import { RelatedSimple } from './RelatedSimple';
 import { Document, Page } from 'react-pdf/build/entry.noworker';

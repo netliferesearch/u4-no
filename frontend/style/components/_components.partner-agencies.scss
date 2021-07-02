@@ -1,71 +1,106 @@
-.c-partnerAgencies{
-  text-align: center;
-  background-color: $brand-dark;
-  padding: $spacing;
-  font-family: $font-sans;
-  color: $white;
-}
-.c-partnerAgencies__wrapper {
-  flex-wrap: wrap;
-  display:flex;
-}
+// .c-partnerAgencies{
+//   text-align: center;
+//   background-color: $brand-dark;
+//   padding: $spacing;
+//   font-family: $font-sans;
+//   color: $white;
+// }
+// .c-partnerAgencies__wrapper {
+//   flex-wrap: wrap;
+//   display:flex;
+// }
 
+// .c-partnerAgencies__item {
+//   align-self: center;
+//   box-sizing: border-box;
+//   padding: $spacing-small;
+//   margin-bottom: $spacing;
+//   width: 100%;
+//   @include mq($from: tablet, $until: wide) {
+//     width: 50%;
+//   }
+//   @include mq($from: wide) {
+//     padding: $spacing $spacing-large;
+//     width: 33%;
+//   }
+//   svg {
+//     max-width: 50%;
+//     max-height: 100%;
+//   }
+//   a {
+//     border: none;
+//   }
+// }
+// .c-partnerAgencies__item--small {
+//   @include mq($from: desktop) {
+//     svg {
+//       max-width: 30%;
+//       max-height: 100%;
+//     }
+//   }
+// }
+// .c-partnerAgencies__heading {
+//   padding-bottom: $spacing;
+//   @include mq($from: tablet, $until: desktop) {
+//     padding: 0 $spacing-large $spacing-large;
+//   }
+//   @include mq($from: desktop) {
+//     padding: 0 $spacing-huge*1.5 $spacing-large;
+//   }
+// }
+
+// .c-partnerAgencies__text {
+//   max-width: 950px;
+//   font-weight: 300;
+//   margin: auto;
+//   @include mq($from: tablet) {
+//     padding: 0 $spacing-large;
+//     @include inuit-font-size($font-size-normal, $font-size-larger);
+//   }
+// }
+
+// .c-partnerAgencies__color-icon {
+//   max-width: 100%;
+//   @include mq($from: tablet) {
+//   }
+//   path, polygon {
+//     fill: $white;
+//   }
+// }
+
+.c-partnerAgencies__list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 -24px 32px -24px;
+}
 
 .c-partnerAgencies__item {
-  align-self: center;
-  box-sizing: border-box;
-  padding: $spacing-small;
-  margin-bottom: $spacing;
-  width: 100%;
-  @include mq($from: tablet, $until: wide) {
-    width: 50%;
-  }
-  @include mq($from: wide) {
-    padding: $spacing $spacing-large;
-    width: 33%;
-  }
-  svg {
-    max-width: 50%;
-    max-height: 100%;
-  }
+  text-align: center;
+  width: 14%;
+  margin: 24px 24px 32px 24px;
   a {
     border: none;
   }
-}
-.c-partnerAgencies__item--small {
-  @include mq($from: desktop) {
-    svg {
-      max-width: 30%;
-      max-height: 100%;
+  svg {
+    max-height: 60px;
+  }
+  svg,
+  path {
+    fill: $v2-black;
+  }
+  #Fill-144 {
+    fill: #ffffff;
+  }
+  #Group-21,
+  #Group-141 {
+    svg,
+    path,
+    polygon {
+      fill: $v2-black;
     }
   }
-}
-.c-partnerAgencies__heading {
-  padding-bottom: $spacing;
-  @include mq($from: tablet, $until: desktop) {
-    padding: 0 $spacing-large $spacing-large;
-  }
-  @include mq($from: desktop) {
-    padding: 0 $spacing-huge*1.5 $spacing-large;
-  }
-}
-
-.c-partnerAgencies__text {
-  max-width: 950px;
-  font-weight: 300;
-  margin: auto;
-  @include mq($from: tablet) {
-    padding: 0 $spacing-large;
-    @include inuit-font-size($font-size-normal, $font-size-larger);
-  }
-}
-
-
-.c-partnerAgencies__color-icon {
-  max-width: 100%;
-  @include mq($from: tablet) {
-  }
-  path, polygon {
-    fill: $white;
+  polygon#Shape {
+    fill: $v2-black;
   }
 }

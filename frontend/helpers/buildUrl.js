@@ -26,8 +26,10 @@ const BuildUrl = ({ _type = 'notype', slug = {} }) => {
     return `/terms#${actualSlug}`;
   } else if (_type === 'people') {
     return `/the-team`;
+  } else if (_type === 'blog-post') {
+    return `/blog/${actualSlug}`;
   }
   return actualSlug;
 };
 
-export default BuildUrl
+export default BuildUrl;

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { PublicationNotifications } from './';
+import { PublicationNotifications } from './PublicationNotifications';
 import findFootnotes from '../findFootnotes';
 
 const littlefootActivator = () => {

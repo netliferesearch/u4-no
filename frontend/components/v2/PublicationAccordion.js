@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { CopyToClipboardButton } from './';
+import { CopyToClipboardButton } from './CopyToClipboardButton';
 import CreativecommonsCC from '../icons/CreativecommonsCC';
 import CreativecommonsBY from '../icons/CreativecommonsBY';
 import CreativecommonsNC from '../icons/CreativecommonsNC';

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { CopyToClipboardButton } from './';
+import { CopyToClipboardButton } from './CopyToClipboardButton';
 import dateToString from '../../helpers/dateToString';
 
 export const Cite = ({ date = {}, title = '', publicationType = {}, header = 'publication' }) => {

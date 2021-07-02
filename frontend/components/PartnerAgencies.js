@@ -13,25 +13,28 @@ import PartnerLogo7 from './icons/PartnerLogo7';
 import PartnerLogo8 from './icons/PartnerLogo8';
 import PartnerLogo9 from './icons/PartnerLogo9';
 import PartnerLogoCanada from './icons/PartnerLogoCanada';
+import { SectionIntro } from './v2/SectionIntro';
 
 const classes = BEMHelper({
   name: 'partnerAgencies',
   prefix: 'c-',
 });
 
-const PartnerAgencies = ({ title }) => (
-  <div {...classes(null, null, 'o-wrapper-full-width')}>
-    <div {...classes('heading')}>
-      <h1>Partner agencies</h1>
-      <p {...classes('text')}>
-        The U4 Anti-Corruption Resource Centre is an institutional partnership of bilateral
-        international development agencies/ministries of foreign affairs.
-      </p>
-    </div>
-    <section {...classes('wrapper', null, 'o-wrapper')}>
+const PartnerAgencies = () => (
+  <div className="c-partnerAgencies o-wrapper-medium">
+    <SectionIntro
+      title="Our funding partners"
+      text="The U4 Anti-Corruption Resource Centre is an institutional partnership of bilateral international development agencies/ministries of foreign affairs."
+    />
+    <section className="c-partnerAgencies__list">
       <div {...classes('item')}>
         <a href="http://um.dk/en/danida-en/" rel="noopener noreferrer" target="_blank">
           <PartnerLogoDanida />
+        </a>
+      </div>
+      <div {...classes('item')}>
+        <a href="http://dfat.gov.au/pages/default.aspx" rel="noopener noreferrer" target="_blank">
+          <PartnerLogo2 />
         </a>
       </div>
       <div {...classes('item', 'small')}>

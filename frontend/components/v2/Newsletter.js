@@ -38,7 +38,7 @@ export const Newsletter = ({
           </div>
         </form>
         {false && (
-          <Link to={link}>
+          <Link thref={link}>
             <a {...classes('title-wrapper')}>
               <h3 {...classes('title')}>{title}</h3>
               <span {...classes('title-arrow')} />

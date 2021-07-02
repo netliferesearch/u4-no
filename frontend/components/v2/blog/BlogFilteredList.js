@@ -131,6 +131,7 @@ export const BlogFilteredList = props => {
           updateBlogPageNum={updateBlogPageNum}
         />
       </div>
+      
       {currentResults ? (
         <div className="c-blog-index__list">
           {currentResults.map((post, index) => (
@@ -139,7 +140,7 @@ export const BlogFilteredList = props => {
                 className={`c-blog-index__item c-blog-index__item${
                   blogFilters.length === 0 && index === 0 ? '--full-width' : ''
                 }`}
-              >
+              >{ console.log(post)}
                 {post.imageUrl ? (
                   <div
                     className="c-blog-index__featured-image"

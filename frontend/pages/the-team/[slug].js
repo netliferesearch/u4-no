@@ -46,7 +46,7 @@ const Topics = ({ topics }) => (
                 <div {...classesSearch('topic-content')}>
                   <span {...classesSearch('items-type')}>Topic</span>
                   <br />
-                  <Link href={`/topics/${topic.slug.current}` }>
+                  <Link href={`/topics/${topic.slug.current}`}>
                     <a {...classesSearch('items-title')}>{topic.title}</a>
                   </Link>
                   <br />
@@ -54,7 +54,7 @@ const Topics = ({ topics }) => (
                   {topic.introductions > 0 && (
                     <div {...classesSearch('topic-point')}>
                       <ArrowRightSmall />
-                      <Link href={`/topics/${topic.slug.current}/basics`} >
+                      <Link href={`/topics/${topic.slug.current}/basics`}>
                         <a>Basic guide</a>
                       </Link>
                     </div>
@@ -62,7 +62,7 @@ const Topics = ({ topics }) => (
                   {topic.agenda > 0 && (
                     <div {...classesSearch('topic-point')}>
                       <ArrowRightSmall />
-                      <Link href={`/topics/${topic.slug.current}/agenda`} >
+                      <Link href={`/topics/${topic.slug.current}/agenda`}>
                         <a>Research and policy agenda</a>
                       </Link>
                     </div>
@@ -97,7 +97,13 @@ const CoursesAndWorkshops = ({ courses }) => (
                     {course._type === 'course' ? 'Online course' : 'Workshop'}
                   </span>
                   <br />
-                  <Link href={course._type === 'course' ? `/courses/${course.slug}` : `/events/${event.slug}`} >
+                  <Link
+                    href={
+                      course._type === 'course'
+                        ? `/courses/${course.slug}`
+                        : `/events/${event.slug}`
+                    }
+                  >
                     <a {...classesSearch('items-title')}>{course.title}</a>
                   </Link>
                   {course.startDate && (
@@ -119,61 +125,62 @@ const RecentWork = ({ articles }) => (
   <div {...classes('recent-work')}>
     {articles && articles.length > 0 && <h1>Recent work</h1>}
     <ul {...classesSearch('content')}>
-      {articles.map(
-        article =>
-          (
-            <li key={article._id} {...classesSearch('items')}>
-              <div {...classesSearch('topic')}>
-                <div {...classesSearch('topic-wrapper')}>
-                  <div {...classesSearch('topic-content')}>
-                    <span {...classesSearch('items-type')}>
-                      {article._type === 'publication' ? 'Publication' : 'Article'}
-                      {article.publicationTypeTitle && (
-                        <span>
-                          <span {...classesSearch('pipe')}> | </span>
-                          {article.publicationTypeTitle}
-                        </span>
-                      )}
-                      {article.articleTypeTitle && (
-                        <span>
-                          <span {...classesSearch('pipe')}> | </span>
-                          {article.articleTypeTitle}
-                        </span>
-                      )}
+      {articles.map(article => (
+        <li key={article._id} {...classesSearch('items')}>
+          <div {...classesSearch('topic')}>
+            <div {...classesSearch('topic-wrapper')}>
+              <div {...classesSearch('topic-content')}>
+                <span {...classesSearch('items-type')}>
+                  {article._type === 'publication' ? 'Publication' : 'Article'}
+                  {article.publicationTypeTitle && (
+                    <span>
+                      <span {...classesSearch('pipe')}> | </span>
+                      {article.publicationTypeTitle}
                     </span>
-                    <br />
-                    <Link href={ article._type === 'publication' ? `/publications/${article.slug.current}` : `/${article.slug.current }`} >
-                      <a {...classesSearch('items-title')}>{article.title}</a>
-                    </Link>
-                    {article.date && (
-                      <p {...classesSearch('items-date')}>
-                        {format(article.date.utc, 'D MMM YYYY')}
-                      </p>
-                    )}
-                    <p {...classesSearch('lead-text')}>
-                      {article.standfirst
-                        ? article.standfirst
-                        : article.lead
-                        ? `${article.lead.substring(0, 200)}...`
-                        : ''}
-                    </p>
-                    {uniq(article.topicsTitles)
-                      .slice(0, 1)
-                      .map(topic => (
-                        <div key={topic.title} {...classesSearch('items-tab')}>
-                          {topic.title}
-                        </div>
-                      ))}
-                  </div>
-                </div>
+                  )}
+                  {article.articleTypeTitle && (
+                    <span>
+                      <span {...classesSearch('pipe')}> | </span>
+                      {article.articleTypeTitle}
+                    </span>
+                  )}
+                </span>
+                <br />
+                <Link
+                  href={
+                    article._type === 'publication'
+                      ? `/publications/${article.slug.current}`
+                      : `/${article.slug.current}`
+                  }
+                >
+                  <a {...classesSearch('items-title')}>{article.title}</a>
+                </Link>
+                {article.date && (
+                  <p {...classesSearch('items-date')}>{format(article.date.utc, 'D MMM YYYY')}</p>
+                )}
+                <p {...classesSearch('lead-text')}>
+                  {article.standfirst
+                    ? article.standfirst
+                    : article.lead
+                    ? `${article.lead.substring(0, 200)}...`
+                    : ''}
+                </p>
+                {uniq(article.topicsTitles)
+                  .slice(0, 1)
+                  .map(topic => (
+                    <div key={topic.title} {...classesSearch('items-tab')}>
+                      {topic.title}
+                    </div>
+                  ))}
               </div>
-            </li>
-          )
-      )}
+            </div>
+          </div>
+        </li>
+      ))}
     </ul>
   </div>
 );
-const Persons = ({ data: { person = {} }, url = {query: { slug: '' }} }) => {
+const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
   return (
     <Layout
       headComponentConfig={{
@@ -270,7 +277,7 @@ const Persons = ({ data: { person = {} }, url = {query: { slug: '' }} }) => {
       <Footer />
     </Layout>
   );
-}
+};
 
 export default DataLoader(Persons, {
   queryFunc: ({ query: { slug = '' } }) => {

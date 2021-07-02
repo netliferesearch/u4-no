@@ -9,11 +9,11 @@ export const SectionIntro = ({ title, text, slug, label }) => {
         <p className="u-text--18 u-text--grey">{text}</p>
       </div>
       <div>
-        <Link to={slug}>
+        {/* <Link href={slug}>
           <a className="c-btn c-btn--ter">
             <span>{label}</span>
           </a>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

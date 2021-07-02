@@ -8,7 +8,7 @@ import { RelatedSimple } from '../RelatedSimple';
 import { Keywords } from '../Keywords';
 import LinkToItem from '../../LinkToItem';
 import { Translations } from '../Translations';
-import moment from 'moment';
+import { format, isAfter } from 'date-fns';
 import languageName from '../../../helpers/languageName';
 /**
  * V2 - Sidebar component to be used in BlogEntry component
@@ -29,8 +29,8 @@ export const BlogSidebar = ({ data, side }) => {
     slug = '',
   } = data;
 
-  const showUpdated = moment(_updatedAt).isAfter(moment(date.utc), 'day');
-  console.log("tr",translation);
+ const showUpdated = isAfter(format(new Date(_updatedAt)),format(new Date(date.utc)));
+ // console.log("showUpdated",showUpdated);
 
   return data ? (
     <div className="c-blog-sidebar">

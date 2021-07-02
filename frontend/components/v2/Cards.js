@@ -18,7 +18,7 @@ export const Cards = ({ resources = [], cta = '', badge= '' }) => (
           item._type === 'course' ? buildUrl({ _type: 'course', slug: item.slug }) : item.link;
         return (
           <div key={item._id} {...classes('item')}>
-            <Link to={linkTo}>
+            <Link href={linkTo}>
               <a>
                 <div {...classes('item-content')}>
                   {badge ? <div className="c-btn c-btn--sec c-cards__badge">{badge}</div> : null}

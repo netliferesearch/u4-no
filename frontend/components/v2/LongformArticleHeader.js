@@ -70,7 +70,7 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
       <div className="c-pubHeader--LA__main u-scroll-bar">
         <div className="c-article-header__container">
           <div className="c-pubHeader__content o-wrapper u-side-padding">
-            <Link to={getRouteByType(publicationType.title)}>
+            <Link href={getRouteByType(publicationType.title)}>
               <a className="c-btn--sen">
                 <h6>{publicationType.title && `${publicationType.title}`}</h6>
               </a>

@@ -5,7 +5,8 @@ import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-stor
 import dateToString from '../../helpers/dateToString';
 import { AuthorList } from '../AuthorList';
 import TableOfContentsSidebar from '../TableOfContents/TableOfContentsSidebar';
-import { PublicationContent, PublicationArticleHeader } from './';
+import { PublicationContent } from './PublicationContent';
+import { PublicationArticleHeader } from './PublicationArticleHeader';
 import { Layout } from './Layout';
 import { PublicationSidebar } from './PublicationSidebar';
 import { AboutAuthor } from './AboutAuthor';
@@ -21,49 +22,19 @@ import LongformArticle from './LongformArticle';
 import TnrcFooter from '../TnrcFooter';
 
 const LongFormArticleContainer = (props = {}) => {
+  console.log("LongFormArticleContainer V2")
   const {
     data: {
-      _type = '',
-      longTitle = '',
       title = '',
-      content = '',
-      authors = [],
-      date = {},
       lead = '',
       standfirst = '',
-      references = [],
-      acknowledgements = '',
-      methodology = [],
-      notes = '',
-      abstract = '',
-      mainPoints = [],
-      resources = [],
       featuredImage = {},
       relatedUrl = {},
-      publicationType = {},
-      articleType = [],
-      keywords = [],
-      topics = [],
-      pdfFile = {},
-      legacypdf = {},
-      recommendedResources = [],
-      relatedResources = [],
-      headsUp = [],
-      updatedVersion = false,
-      summary = [],
     } = {},
-    shortversion = false,
-    shortversionContent = [],
     headComponentConfigOverride,
     isArticleMenuOpen,
     showLoadingScreen,
-    toggleArticleMenu,
-    toggleLoadingScreen,
-    isPublicationDrawerOpen,
-    BreadCrumbComponent = null,
     url = {},
-    translation = {},
-    language = '',
   } = props;
 
   const headComponentConfig =
@@ -90,6 +61,7 @@ const LongFormArticleContainer = (props = {}) => {
       showTopTab={!isArticleMenuOpen}
       headComponentConfig={headComponentConfig}
     >
+      {console.log("LongFormArticleContainer V2 return")}
       {!isArticleMenuOpen && (
         <article className="c-article-v2">
           <span id="js-top" />

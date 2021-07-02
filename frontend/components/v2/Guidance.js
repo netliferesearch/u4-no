@@ -6,7 +6,7 @@ export const CTA = () => {
     <div className="c-cta">
       <h2 className="u-heading--2">Inform your work with U4’s quality research and practical guidance</h2>
       <p className="u-standfirst u-text--grey">Sustainable and inclusive development starts where corruption ends</p>
-      <Link route="/about-u4">
+      <Link href="/about-u4">
         <a className="c-btn c-btn--pri">
           <span>Learn more about us</span>
         </a>

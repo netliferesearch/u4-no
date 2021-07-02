@@ -17,7 +17,7 @@ export const BlogHeader = ({ data }) => {
         }`}
       >
         <div>
-          <Link route={'/blog'}>
+          <Link href={'/blog'}>
             <a className="c-btn--sen">
               <h6>Blog</h6>
             </a>

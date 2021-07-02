@@ -1,5 +1,5 @@
 import React from 'react';
-import LinkToItem from '../';
+import LinkToItem from '../LinkToItem';
 import dateToString from '../../helpers/dateToString';
 import { Document, Page } from 'react-pdf/build/entry.noworker';
 import { SectionIntro } from './SectionIntro';
