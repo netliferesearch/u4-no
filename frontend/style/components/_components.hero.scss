@@ -14,6 +14,7 @@
   width: 95%;
   background-size: cover;
   background-color: $brand-main;
+  position: relative;
   z-index: -1;
   @include mq($from: tablet) {
     height: 560px;
@@ -22,11 +23,6 @@
   @include mq($from: desktop) {
     width: 70%;
     height: 700px;
-  }
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
   }
 }
 

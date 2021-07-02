@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
+
+import Image from 'next/image';
+import sanityImageLoader from '../../../components/sanityImageLoader';
+
 import DataLoader from '../../../helpers/data-loader';
 import slugify from 'slugify';
 import serializers from '../../../components/serializers';
@@ -69,30 +73,15 @@ const TopicEntry = ({
       <section className="c-boxOnImage u-margin-bottom-huge">
         {featuredImage ? (
           <figure className="c-boxOnImage__figure">
-            <img
-              alt={
-                featuredImage.asset && featuredImage.asset.altText
-                  ? featuredImage.asset.altText
-                  : ''
-              }
-              src={
-                featuredImage.asset && featuredImage.asset.url
-                  ? `${featuredImage.asset.url}?auto=format&w=1120&fit=crop&crop=focalpoint`
-                  : ''
-              }
-              srcSet={
-                featuredImage.asset && featuredImage.asset.url
-                  ? `${featuredImage.asset.url}?auto=format&w=500&q=70 500w, ${
-                      featuredImage.asset.url
-                    }?auto=format&w=800&q=75 800w, ${
-                      featuredImage.asset.url
-                    }?auto=format&w=1600&q=80 1600w, ${
-                      featuredImage.asset.url
-                    }?auto=format&w=2400&q=80 2400w`
-                  : ''
-              }
-              sizes="90vw"
+            <Image
+              loader={sanityImageLoader}
+              src={featuredImage.asset.url}
+              alt={featuredImage.asset.altText ? featuredImage.asset.altText : ''}
+              layout="fill"
+              objectFit="cover"
+              priority="true"
             />
+
             <span className="c-boxOnImage__caption">
               {featuredImage.caption && (
                 <BlockContent blocks={featuredImage.caption} serializers={serializers} />

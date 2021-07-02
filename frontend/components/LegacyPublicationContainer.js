@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 
+import Image from 'next/image';
+import sanityImageLoader from './sanityImageLoader';
+
 import Footer from './Footer';
 import Layout from './Layout';
 import PublicationArticleHeader from './PublicationArticleHeader';
@@ -47,16 +50,13 @@ const LegacyPublicationContainer = props => {
         <div className={`c-hero ${publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''}`}>
           <div className="c-hero-image">
             {featuredImage.asset && featuredImage.asset.url && (
-              <img
-                src={`${featuredImage.asset.url}?auto=format&w=800&q=75`}
+              <Image
+                loader={sanityImageLoader}
+                src={featuredImage.asset.url}
                 alt=""
-                srcSet={`${featuredImage.asset.url}?auto=format&w=500&q=70 500w, ${
-                  featuredImage.asset.url
-                }?auto=format&w=800&q=75 800w, ${
-                  featuredImage.asset.url
-                }?auto=format&w=1600&q=80 1600w, ${
-                  featuredImage.asset.url
-                }?auto=format&w=2400&q=80 2400w`}
+                layout="fill"
+                objectFit="cover"
+                priority="true"
               />
             )}
           </div>
