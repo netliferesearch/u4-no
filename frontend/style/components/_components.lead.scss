@@ -1,8 +1,8 @@
 .c-lead::first-letter {
-  color: $black;
+  color: $dark-grey;
   letter-spacing: 0;
   text-transform: uppercase;
-  color: $black;
+  color: $dark-grey;
   @include inuit-font-size($font-size-huge, $line-height-tiny);
   @include mq($from: tablet) {
     @include inuit-font-size($font-size-huge * 1.2, $line-height-tiny);

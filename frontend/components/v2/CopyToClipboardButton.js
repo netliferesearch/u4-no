@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Copy } from './icons/Copy';
 
-const CopyToClipboardButton = ({
+export const CopyToClipboardButton = ({
   reference = {},
   text = 'Copy',
   textAfterCopy = 'Copied to clipboard',
@@ -25,8 +26,9 @@ const CopyToClipboardButton = ({
   }, []);
 
   return documentLoaded && document.queryCommandSupported('copy') ? (
-    <button onClick={copyToClipboard} className="u-button-copy">
-      {copyText}
+    <button onClick={copyToClipboard} className="c-btn--copy">
+      {/* {copyText} */}
+      <Copy />
     </button>
   ) : null;
 };
@@ -36,5 +38,3 @@ CopyToClipboardButton.propTypes = {
   text: PropTypes.string,
   textAfterCopy: PropTypes.string,
 };
-
-export default CopyToClipboardButton;

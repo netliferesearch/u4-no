@@ -2,7 +2,7 @@
   margin: $spacing-huge $spacing $spacing-large;
   @include inuit-font-size(24px, 1.3em);
   max-width: 700px;
-  color: $brand-dark;
+  color: $dark-blue;
   text-align: center;
   @include mq($from: tablet) {
     margin: $spacing-huge auto $spacing-large;
@@ -23,12 +23,12 @@
   a,
   a:hover {
       border: none;
-    color: $brand-dark;
+    color: $dark-blue;
     }
   svg,
   svg path {
     transition: transform 0.2s ease-out;
-    fill: $brand-dark;
+    fill: $dark-blue;
   }
   &:hover {
     svg {
@@ -77,7 +77,7 @@ a.c-topic-section__cta-light {
   }
 }
 .c-topic-section--lightblue {
-  background: $brand-lightest;
+  background: $light-blue;
   padding: $spacing-large $spacing $spacing-large;
   @include mq($from: tablet) {
     padding: $spacing-huge 0;

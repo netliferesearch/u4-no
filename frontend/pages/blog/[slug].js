@@ -2,12 +2,43 @@ import React from 'react';
 import serializers from '../../components/serializers';
 import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
-import NewsAndEvents from '../../components/v2/NewsAndEvents';
-import Layout from '../../components/v2/Layout';
-import { BlogAccordion } from '../../components/v2/blog/BlogAccordion';
+import { Layout } from '../../components/v2/Layout';
 import { BlogSidebar } from '../../components/v2/blog/BlogSidebar';
-import { TagsSection } from '../../components/v2/TagsSection';
 import { BreadCrumbV2 } from '../../components/v2/BreadCrumbV2';
+import findFootnotes from '../../components/findFootnotes';
+import footnoteSerializer from '../../components/footnoteSerializer';
+import { BlogHeader } from '../../components/v2/blog/BlogHeader';
+import { Keywords } from '../../components/v2/Keywords';
+import { Newsletter } from '../../components/v2/Newsletter';
+import { AboutAuthor } from '../../components/v2/AboutAuthor';
+import { Disclaimers } from '../../components/v2/Disclaimers';
+import { Share } from '../../components/v2/ShareOnSocialMedia';
+import { PhotoCaptionCredit } from '../../components/v2/PhotoCaptionCredit';
+import { useEffect } from 'react';
+
+
+const littlefootActivator = () => {
+  const littlefoot = require('littlefoot').default;
+  littlefoot();
+};
+
+const isPar = p => (p.children && p.style === 'normal' ? true : false);
+
+const getFirstPart = content => {
+  const firstPart = [];
+  const countPar = [];
+  content.forEach(b => {
+    if (countPar.length < 2) {
+      firstPart.push(b);
+      if (isPar(b) === true) {
+        countPar.push(b);
+      }
+    } else {
+      return firstPart;
+    }
+  });
+  return firstPart;
+};
 
 const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
   const {
@@ -27,77 +58,102 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     keywords = '',
   } = blogEntry;
 
+  const blocks = content.filter(block => !['reference'].includes(block._type));
+  const footnotes = findFootnotes(blocks);
+  const footNotesKeys = Object.keys(footnotes);
+
+  useEffect(() => littlefootActivator(), []);
+
+  const topBlocks = getFirstPart(content);
+  //console.log(topBlocks.length);
+  const belowBlocks = content.slice(topBlocks.length);
+  //console.log(belowBlocks.length);
+
   return (
-    <Layout
+   <Layout
       headComponentConfig={{
         title,
-        description: lead || standfirst,
+        description: standfirst || lead,
         image: featuredImage.asset ? featuredImage.asset.url : '',
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: {},
       }}
     >
       <hr className="u-section-underline--no-margins" />
-      <div className="o-wrapper c-blog-entry">
-        <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} />
-        <section className="o-wrapper-section c-blog-entry__post">
-          <BlogSidebar data={blogEntry} />
-          <div className="c-blog-entry__content">
-            <div className="c-blog-entry__head">
-              <h2>{title}</h2>
-              {lead && <p className="c-blog-entry__lead">{lead}</p>}
-              {topics &&
-                topics.map((topic, index) => (
-                  <span className="topic" key={index}>
-                    {topic.title}
-                  </span>
-                ))}
+      <div className={`c-blog-entry ${featuredImage.asset ? '' : 'c-blog-entry--no-img'}`}>
+        <section className="o-wrapper--no-padding">
+          <BlogHeader data={blogEntry} />
+        </section>
+        <hr className="u-section-underline--no-margins" />
+        <section className="o-wrapper c-blog-entry__main">
+          {featuredImage.asset && (
+            <figure className="c-blog-entry__featured-image u-hidden--desktop">
+              <img
+                src={`${featuredImage.asset.url}?w=800`}
+                alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
+              />
+              <figcaption className="u-hidden--desktop">
+                <PhotoCaptionCredit featuredImage={featuredImage} />
+              </figcaption>
+            </figure>
+          )}
+          <div className="o-wrapper-section c-blog-entry__row u-hidden--tablet-flex">
+            <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} home={false} />
+            <PhotoCaptionCredit featuredImage={featuredImage} />
+          </div>
+          <div className="o-wrapper-section c-blog-entry__row">
+            <div className="c-blog-entry__side c-blog-entry__col">
+              <BlogSidebar data={blogEntry} side={'left'} />
             </div>
-
-            {featuredImage.asset && (
-              <figure className="c-blog-entry__featured-image">
-                <img
-                  src={`${featuredImage.asset.url}?w=800`}
-                  alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
-                />
-                {featuredImage.caption && (
-                  <BlockContent
-                    blocks={featuredImage.caption}
-                    serializers={{
-                      types: {
-                        block: props => (
-                          <p className="c-blog-entry__caption" style={{ display: 'inline' }}>
-                            {props.children}
-                          </p>
-                        ),
-                      },
-                    }}
-                  />
-                )}
-              </figure>
-            )}
-            {content ? (
-              <div className="c-blog-entry__main-text">
-                <BlockContent blocks={content} serializers={serializers} />
+            <div className="c-blog-entry__col c-blog-entry__center">
+              <div className="c-blog-entry__content">
+                {topBlocks ? (
+                  <div className="c-blog-entry__main-text u-drop-cap c-blog-entry__first-p">
+                    <BlockContent blocks={topBlocks} serializers={serializers} />
+                  </div>
+                ) : null}
+                <div className="c-newsletter-v2">
+                  <Newsletter />
+                </div>
+                {belowBlocks ? (
+                  <div className="c-blog-entry__main-text">
+                    <BlockContent blocks={belowBlocks} serializers={serializers} />
+                    <div className="footnotes">
+                      <ol>
+                        {footNotesKeys.map(key => (
+                          <div key={key}>
+                            <BlockContent
+                              blocks={footnotes[key]}
+                              serializers={footnoteSerializer(key)}
+                            />
+                          </div>
+                        ))}
+                      </ol>
+                    </div>
+                  </div>
+                ) : null}
+                <div className="c-blog-entry__additional-content">
+                  {keywords.length > 0 ? (
+                    <Keywords title={false} keywords={keywords} hr={false} />
+                  ) : null}
+                  <Share text={title} />
+                  <AboutAuthor authors={authors} />
+                  <Disclaimers />
+                  {headsUp && (
+                    <div className="c-blog-entry __heads-up">
+                      <BlockContent blocks={headsUp} serializers={serializers} />
+                    </div>
+                  )}
+                </div>
               </div>
-            ) : null}
-            {headsUp && (
-              <div className="c-blog-entry__heads-up">
-                <BlockContent blocks={headsUp} serializers={serializers} />
-              </div>
-            )}
-            {topics.length > 0 || keywords.length > 0 ? (
-              <TagsSection topics={topics} keywords={keywords} />
-            ) : null}
-            <BlogAccordion />
+            </div>
+            <div className="c-blog-entry__side c-blog-entry__col u-hidden--tablet">
+              <BlogSidebar data={blogEntry} side={'right'} />
+            </div>
           </div>
         </section>
       </div>
-      <section className="o-wrapper c-blog-entry__bottom">
-        <div className="o-wrapper-section">
-          {relatedContent ? <NewsAndEvents items={relatedContent} title={'Related'} /> : null}
-        </div>
-      </section>
+      <div id="modal" />
     </Layout>
   );
 };
@@ -105,7 +161,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
 export default DataLoader(BlogEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title}, keywords[]->{category, keyword}, "slug": slug.current, pdfFile, legacypdf,
+      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title, slug}, keywords[]->{category, keyword}, "slug": slug.current, language, translation, 
       "featuredImage": {
         "caption": featuredImage.caption,
         "credit": featuredImage.credit,

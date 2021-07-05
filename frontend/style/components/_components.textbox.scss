@@ -7,7 +7,7 @@
 }
 /* for print */
 .c-textbox--longform {
-  background: $brand-lightest;
+  background: $light-blue;
   font-family: $font-sans;
 }
 /* for screen (togglable) */
@@ -15,8 +15,8 @@
   position: relative;
   padding: $spacing 0;
   color: inherit;
-  background: $brand-lightest;
-  border: 0px solid $grey;
+  background: $light-blue;
+  border: 0px solid $mid-grey;
   font-size: $font-size-small;
   font-family: $font-sans;
 }
@@ -44,7 +44,7 @@
   right: 0;
   bottom: 0;
   border: 0 !important;
-  background: linear-gradient(rgba(255, 255, 255, 0), $brand-lightest 100%);
+  background: linear-gradient(rgba(255, 255, 255, 0), $light-blue 100%);
   height: 100px;
   text-align: center;
 

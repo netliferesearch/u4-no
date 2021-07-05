@@ -13,11 +13,11 @@ a.c-simple-mosaic__item {
   width: 100%;
   margin: $spacing-small;
   padding: $spacing;
-  border: 1px solid $brand-dark;
+  border: 1px solid $dark-blue;
   font-family: $font-sans;
   a {
     border: none;
-    color: $brand-dark;
+    color: $dark-blue;
   }
   &:hover,
   &:hover:visited {

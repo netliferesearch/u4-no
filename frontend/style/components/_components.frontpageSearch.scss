@@ -9,14 +9,14 @@
   width: 100%;
   display: inline-block;
   @include inuit-font-size($font-size-small, $line-height-normal);
-  color: $brand-dark;
+  color: $dark-blue;
   margin: 0 0 $spacing-small;
   font-family: $font-sans;
   font-weight: 400;
 }
 
 .c-frontpage-search__wrapper {
-  background-color: $brand-lightest;
+  background-color: $light-blue;
   padding-top: $spacing-huge;
   padding-bottom: $spacing;
   @include mq($from: desktop) {
@@ -44,7 +44,7 @@
   width: 80%;
   border: 0;
   display: block;
-  color: $black;
+  color: $dark-grey;
   margin: 0 0;
   padding-left: $spacing-small;
   padding-right: $spacing-small;
@@ -132,12 +132,12 @@
 }
 .c-frontpage-search__items-type {
   @include inuit-font-size(math.div($font-size-tiny, 1.2), $line-height-tiny);
-  color: $grey;
+  color: $mid-grey;
   text-transform: uppercase;
 }
 
 .c-frontpage-search__items--highlighted {
-  background-color: $brand-lightest;
+  background-color: $light-blue;
   font-weight: bold;
 }
 

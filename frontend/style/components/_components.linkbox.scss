@@ -39,7 +39,7 @@
     }
   }
   &:nth-child(3n + 2) {
-    background-color: $brand-dark;
+    background-color: $dark-blue;
     &:hover {
       background-color: $brand-medium;
       svg {
@@ -97,7 +97,7 @@
   p {
     font-size: $font-size-small;
     max-width: 450px;
-    color: $white-on-blue;
+    color: $light-blue;
     margin-bottom: 0;
   }
 }

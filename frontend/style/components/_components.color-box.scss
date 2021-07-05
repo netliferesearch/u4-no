@@ -11,7 +11,7 @@
   text-transform: uppercase;
 }
 .c-colorBox--brandDark {
-  background-color: $brand-dark;
+  background-color: $dark-blue;
 }
 .c-colorBox--brandMedium {
   background-color: $brand-medium;
@@ -23,14 +23,14 @@
   background-color: $brand-light;
 }
 .c-colorBox--black {
-  background-color: $black;
+  background-color: $dark-grey;
 }
 .c-colorBox--grey {
-  background-color: $grey;
+  background-color: $mid-grey;
 }
 .c-colorBox--white {
-  color: $black;
-  border: 1px solid $grey;
+  color: $dark-grey;
+  border: 1px solid $mid-grey;
   background-color: $white;
 }
 .c-colorBox--contrast {

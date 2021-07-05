@@ -79,6 +79,11 @@ export const actionTypes = {
   SEARCH_UPDATE_RESULTS: 'SEARCH_UPDATE_RESULTS',
   SCROLL_POSITION_SAVE: 'SCROLL_POSITION_SAVE',
   SEARCH_UPDATE_DEFAULT_AGGS: 'SEARCH_UPDATE_DEFAULT_AGGS',
+  BLOG_UPDATE_FILTERS: 'BLOG_UPDATE_FILTERS',
+  BLOG_CLEAR_FILTERS: 'BLOG_CLEAR_FILTERS',
+  BLOG_UPDATE_PAGE_NUM: 'BLOG_UPDATE_PAGE_NUM',
+  LANG_UPDATE_FILTERS: 'LANG_UPDATE_FILTERS',
+  LANG_CLEAR_FILTERS: 'LANG_CLEAR_FILTERS',
 };
 
 // REDUCERS
@@ -136,6 +141,36 @@ export const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, { readingProgressId: action.readingProgressId });
     case actionTypes.SCROLL_POSITION_SAVE:
       return Object.assign({}, state, { storedScrollPosition: action.scrollPosition });
+
+    case actionTypes.BLOG_UPDATE_FILTERS:
+      return Object.assign({}, state, {
+        blogFilters: uniq(action.blogFilters),
+      });
+
+    case actionTypes.BLOG_CLEAR_FILTERS:
+      return Object.assign({}, state, {
+        blogFilters: [],
+      });
+
+    case actionTypes.BLOG_UPDATE_PAGE_NUM:
+      if (state.blogPageNum !== action.blogPageNum) {
+        addQueryParams({
+          blogPageNum: `${action.blogPageNum}`,
+        });
+        return { ...state, blogPageNum: action.blogPageNum };
+      }
+      return state;
+
+    case actionTypes.LANG_UPDATE_FILTERS:
+      return Object.assign({}, state, {
+        langFilters: uniq(action.langFilters),
+      });
+
+    case actionTypes.LANG_CLEAR_FILTERS:
+      return Object.assign({}, state, {
+        langFilters: [],
+      });
+
     default:
       return state;
   }
@@ -172,6 +207,22 @@ export const updateSearchPageNum = searchPageNum => dispatch => {
 
 export const saveScrollPosition = scrollPosition => dispatch =>
   dispatch({ type: actionTypes.SCROLL_POSITION_SAVE, scrollPosition });
+
+export const updateBlogFilters = (blogFilters = []) => dispatch =>
+  dispatch({ type: actionTypes.BLOG_UPDATE_FILTERS, blogFilters });
+
+export const clearBlogFilters = () => dispatch =>
+  dispatch({ type: actionTypes.BLOG_CLEAR_FILTERS });
+
+export const updateBlogPageNum = blogPageNum => dispatch => {
+  return dispatch({ type: actionTypes.BLOG_UPDATE_PAGE_NUM, blogPageNum });
+};
+
+export const updateLangFilters = (langFilters = []) => dispatch =>
+  dispatch({ type: actionTypes.LANG_UPDATE_FILTERS, langFilters });
+
+export const clearLangFilters = () => dispatch =>
+  dispatch({ type: actionTypes.LANG_CLEAR_FILTERS });
 
 export const initStore = (initialState = defaultState, options = {}) => {
   const { query = {} } = options;

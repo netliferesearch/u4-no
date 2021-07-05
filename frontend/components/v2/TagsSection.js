@@ -1,6 +1,8 @@
 import React from 'react';
 
 /**
+ * Not used in 2021 design
+ * 
  * TagsSection component to list topics and keywords (keyword categories: "regions" + "countries" and "keywords")
  * Used in BlogEntry component - blog page, LongFormArticle component - publication/:slug page.
  *

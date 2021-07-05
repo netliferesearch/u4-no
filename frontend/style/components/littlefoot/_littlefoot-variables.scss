@@ -49,7 +49,7 @@ $popover-tooltip-background: $popover-color-background !default;
 $popover-tooltip-radius: 0 !default;
 $popover-scroll-indicator-bottom-position: .45em !default;
 $popover-scrolly-fade-gradient-start-location: 50% !default;
-$popover-scroll-indicator-padding: (($popover-padding-content-horizontal / 2) - ($popover-scroll-indicator-width / 2)) !default;
+$popover-scroll-indicator-padding: (math.div($popover-padding-content-horizontal, 2) - ($popover-scroll-indicator-width / 2)) !default;
 
 // TRANSITIONS
 $popover-transition-default-duration: .25s !default;

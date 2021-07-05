@@ -18,14 +18,14 @@
   height: 0;
   overflow: hidden;
   @include inuit-font-size($font-size-small, $line-height-normal);
-  color: $brand-dark;
+  color: $dark-blue;
   margin: 0;
   font-family: $font-sans;
   font-weight: 400;
 }
 
 .c-search-v2__wrapper {
-  background-color: $brand-lightest;
+  background-color: $light-blue;
   padding-top: $spacing-huge;
   padding-bottom: $spacing;
   @include mq($from: desktop) {
@@ -54,7 +54,7 @@
   width: 100%;
   border: 0;
   display: block;
-  color: $black;
+  color: $dark-grey;
   margin: 0 0;
   transition: border 0.2s ease-out;
   @include inuit-font-size($font-size-tiny, $line-height-tiny);

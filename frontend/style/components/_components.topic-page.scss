@@ -2,7 +2,7 @@
 .c-topic-page_title {
   font-family: $font-sans;
   position: relative;
-  color: $brand-dark;
+  color: $dark-blue;
   font-weight: 300;
   padding: 0 0 0 ($spacing);
   text-transform: uppercase;
@@ -23,7 +23,7 @@
 }
 .c-topic-page__longTitle {
   font-family: $font-sans;
-  color: $brand-dark;
+  color: $dark-blue;
   margin: $spacing-small $spacing $spacing;
   max-width: 650px;
   @include inuit-font-size($font-size-normal, $font-size-large);

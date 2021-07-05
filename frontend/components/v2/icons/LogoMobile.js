@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function LogoMobile(props) {
+export const LogoMobile = (props) => {
   return (
     <svg
       className="logo-mobile"

@@ -19,7 +19,7 @@
 
 .c-persons__bio {
   font-family: $font-sans;
-  color: $brand-dark;
+  color: $dark-blue;
   margin: 0;
   @include inuit-font-size($font-size-small, $line-height-large);
   @include mq($from: tablet) {
@@ -29,7 +29,7 @@
 
 .c-persons__profile-name {
   margin-top: $spacing;
-  color: $brand-dark;
+  color: $dark-blue;
   font-weight: bolder;
   @include inuit-font-size($font-size-largest, $line-height-tiny);
 }
@@ -58,6 +58,6 @@
   margin-bottom: -4px;
   path,
   polygon {
-    fill: $brand-dark;
+    fill: $dark-blue;
   }
 }

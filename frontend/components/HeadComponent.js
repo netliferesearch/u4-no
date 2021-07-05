@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
-const HeadComponent = ({ title, description, image, url, ogp }) => (
+const HeadComponent = ({ title, description, image, url = '', ogp }) => (
   <Head>
     <meta charSet="utf-8" />
     <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -49,7 +49,7 @@ const basicMetaValidation = {
 
 HeadComponent.propTypes = {
   ...basicMetaValidation,
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
   ogp: PropTypes.shape({ ...basicMetaValidation }),
 };
 

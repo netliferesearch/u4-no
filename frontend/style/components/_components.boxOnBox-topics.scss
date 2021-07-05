@@ -2,7 +2,7 @@
   display: block;
   font-weight: 300;
   font-family: $font-sans;
-  color: $white-on-blue;
+  color: $light-blue;
   @include inuit-font-size($font-size-small, $font-size-large);
   @include mq($from: tablet) {
     margin-right: auto;
@@ -19,7 +19,7 @@
   }
 }
 .c-boxOnBox-topics__left {
-  background: $brand-dark;
+  background: $dark-blue;
   color: $white;
   z-index: 9;
   position: relative;
@@ -70,7 +70,7 @@
       display: block;
       border: none;
       color: $white;
-      border-bottom: 1px solid rgba($brand-dark, 0.1);
+      border-bottom: 1px solid rgba($dark-blue, 0.1);
       padding: $spacing 0;
       &:after {
         content: '';
@@ -122,7 +122,7 @@
   @include inuit-font-size($font-size-small, $line-height-normal);
   margin-top: $spacing-small;
   max-width: 550px;
-  color: $white-on-blue;
+  color: $light-blue;
   margin-bottom: 0;
   @include mq($from: tablet) {
     margin-bottom: 0;

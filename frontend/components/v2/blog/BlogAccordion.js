@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import CreativecommonsCC from '../../icons/CreativecommonsCC';
 import CreativecommonsBY from '../../icons/CreativecommonsBY';
 import CreativecommonsNC from '../../icons/CreativecommonsNC';

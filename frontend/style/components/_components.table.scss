@@ -32,7 +32,7 @@
   }
 
   tr:nth-child(even) {
-    background-color: $lightGrey;
+    background-color: $light-grey;
   }
 
   td ul,
@@ -48,7 +48,7 @@
   font-weight: bold;
   font-family: $font-sans;
   @include inuit-font-size($font-size-tiny);
-  color: $black;
+  color: $dark-grey;
   margin-bottom: 0;
   page-break-after: avoid;
 }
@@ -56,7 +56,7 @@
 .c-table__caption {
   font-family: $font-sans;
   @include inuit-font-size($font-size-tiny);
-  color: $black;
+  color: $dark-grey;
   page-break-before: avoid;
 
   & > .c-longform-grid__standard {

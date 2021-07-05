@@ -15,12 +15,12 @@
   text-align: center;
   font-family: $font-sans;
   @include inuit-font-size($font-size-small, $font-size-large);
-  color: $brand-dark;
+  color: $dark-blue;
   font-weight: 300;
 }
 .c-features__icon {
   svg, path {
-    fill: $brand-dark;
+    fill: $dark-blue;
   }
   padding-bottom: $spacing-small;
   img {
