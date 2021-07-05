@@ -66,7 +66,7 @@ const serializers = {
     heading: ({ node: { headingValue = '' } }) => (
       <h2
         id={slugify(headingValue, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })}
-        className="u-heading--2"
+        className="u-primary-heading"
       >
         {headingValue}
       </h2>
@@ -131,8 +131,8 @@ const serializers = {
             <div className="c-columns__item c-columns--two__item">
               {headingLeft && (
                 <div>
-                  <h3 className="u-heading--2">Course application enquires</h3>
-                  <h3 className="u-heading--2--grey">{headingLeft}</h3>
+                  <h3 className="u-primary-heading">Course application enquires</h3>
+                  <h3 className="u-primary-heading">{headingLeft}</h3>
                 </div>
               )}
               {personLeft
@@ -146,8 +146,8 @@ const serializers = {
             <div className="c-columns__item c-columns--two__item c-columns__item--narrow">
               {headingRight && (
                 <div>
-                  <h3 className="u-heading--2">General questions</h3>
-                  <h3 className="u-heading--2--grey">{headingRight}</h3>
+                  <h3 className="u-primary-heading">General questions</h3>
+                  <h3 className="u-primary-heading">{headingRight}</h3>
                 </div>
               )}
               {personRight

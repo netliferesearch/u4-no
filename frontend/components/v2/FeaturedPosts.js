@@ -22,14 +22,14 @@ export const FeaturedPost = ({ featured }) => {
           ) : null}
           <div className="c-featured-post__text">
             <div>
-              <h4 className="u-heading--6">Featured publication</h4>
+              <h4 className="u-secondary-heading">Featured publication</h4>
             </div>
             <div>
               <div>
                 {publication.topics &&
                   <Topics title={false} topics={publication.topics} hr={false} linkType={'5'} />}
               </div>
-              <h3 className="u-black-32-heading">{publication.title}</h3>
+              <h3 className="u-primary-heading">{publication.title}</h3>
               <p className="c-featured-post__intro">{publication.standfirst}</p>
               <p className="c-featured-post__name">
                 {publication.authors.length > 0 ? (

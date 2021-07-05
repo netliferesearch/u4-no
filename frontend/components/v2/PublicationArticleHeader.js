@@ -37,7 +37,7 @@ const PublicationArticleHeader = ({
             </a>
           </Link>
 
-          <h2 className="u-heading--black--44">{title}</h2>
+          <h2 className="u-primary-heading">{title}</h2>
           {subtitle ? <p {...classes('subtitle')}>{subtitle}</p> : null}
           {/* {standfirst ? <p {...classes('intro')}>{standfirst}</p> : null} */}
           <div {...classes('actions')}>

@@ -8,7 +8,7 @@ const RelatedResources = ({ resources }) => {
   const classes = BEMHelper({ name: 'publication-section', prefix: 'c-' });
   return (
     <div className="o-wrapper-section c-publication-section">
-      <h2 className="u-blue-underline">Related</h2>
+      <h2 className="">Related</h2>
       <hr className="u-section-underline" />
       <div {...classes('cols')}>
         {resources.map((resource, index) => (

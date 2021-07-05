@@ -1,7 +1,7 @@
 .c-frontpage-section {
   &__date {
     font-family: $font-sans;
-    color: $brand-dark;
+    color: $dark-blue;
     font-size: 14px;
     line-height: 20px;
     font-weight: normal;
@@ -23,7 +23,7 @@
     }
   }
   &__publication-type {
-    color: $brand-dark;
+    color: $dark-blue;
     font-size: 12px;
     line-height: 32px;
     font-family: $font-sans;
@@ -62,7 +62,7 @@
     }
   }
   &__publication-intro {
-    color: $brand-dark;
+    color: $dark-blue;
     font-weight: 300;
     font-family: $font-sans;
     font-size: 18px;
@@ -73,21 +73,21 @@
     font-family: $font-sans;
     @include inuit-font-size(16px, 28px);
     font-weight: 600;
-    color: $brand-dark;
+    color: $dark-blue;
     img {
       padding-left: 5px;
       transition: padding-left 0.2s ease-in-out;
     }
     &:visited {
-      color: $brand-dark;
+      color: $dark-blue;
       &:hover {
         border: none;
-        color: $brand-dark;
+        color: $dark-blue;
       }
     }
     &:hover {
       border: none;
-      color: $brand-dark;
+      color: $dark-blue;
       img {
         padding-left: 10px;
       }
@@ -169,7 +169,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       @include inuit-font-size(14px, 32px);
-      color: $brand-dark;
+      color: $dark-blue;
       .col {
         width: calc(50% - 13px);
         padding-top: 345px;
@@ -187,11 +187,11 @@
     font-family: $font-sans;
     display: flex;
     flex-wrap: wrap;
-    color: $brand-dark;
+    color: $dark-blue;
     padding-bottom: 38px;
     .sidebar {
       width: 100%;
-      background-color: $brand-lightest;
+      background-color: $light-blue;
       padding: $spacing;
       display: flex;
       justify-content: space-between;
@@ -285,7 +285,7 @@
     font-family: $font-sans;
     padding: 0 $spacing;
     h2 {
-      color: $brand-dark;
+      color: $dark-blue;
     }
     .text {
       .u-section-underline {
@@ -345,7 +345,7 @@
     //   }
     // }
     // h2 {
-    //   color: $brand-dark;
+    //   color: $dark-blue;
     // }
     // @include mq($from: tablet) {
     //   padding: 0;
@@ -402,17 +402,17 @@
     background-position: center center;
   }
 
-  .u-black-32-heading {
+  .u-primary-heading {
     margin-top: 8px;
   }
-  .u-heading--6 {
+  .u-secondary-heading {
     margin-top: 0;
   }
   &:hover,
   &:visited:hover {
     border-color: transparent;
     h3 {
-      color: $v2-blue;
+      color: $brand-main;
       //border-color: transparent;
       text-decoration: underline;
     }
@@ -464,7 +464,7 @@
   font-size: 15px;
   line-height: 1.5;
   font-weight: 400;
-  color: $v2-grey;
+  color: $mid-grey;
   margin-bottom: $spacing;
   @include mq($from: tablet) {
     font-size: $font-size-small;
@@ -474,7 +474,7 @@
 
 .c-featured-post__date {
   font-family: $font-sans;
-  color: $v2-grey;
+  color: $mid-grey;
   font-size: 15px;
   line-height: 1.6;
   font-weight: 400;
@@ -483,7 +483,7 @@
 
 .c-featured-post__name {
   font-family: $font-sans;
-  color: $v2-black;
+  color: $dark-grey;
   font-size: 15px;
   line-height: 1.6;
   font-weight: 400;
@@ -514,14 +514,14 @@
     }
   }
   h3 {
-    color: $v2-black;
+    color: $dark-grey;
     margin: 12px 0 24px 0;
   }
 }
 
 .c-cta {
   margin: 40px 0;
-  .u-heading--2 {
+  .u-primary-heading {
     margin-top: 0;
   }
 }
@@ -557,7 +557,7 @@
   @include mq($from: tablet) {
     width: 70%;
     padding-right: 28px;
-    border-right: 1px solid $v2-lightest-grey;
+    border-right: 1px solid $light-grey;
   }
 }
 
@@ -579,13 +579,13 @@
 }
 
 .c-card-list__item {
-  border: 1px solid $v2-lightest-grey;
+  border: 1px solid $light-grey;
   margin-bottom: 32px;
   &:hover,
   &:visited:hover {
     border-color: transparent;
     h3 {
-      color: $v2-blue;
+      color: $brand-main;
       //border-color: transparent;
       text-decoration: underline;
     }
@@ -601,7 +601,7 @@
 .c-card-list__pdf-container {
   width: 100%;
   height: 148px;
-  background-color: $v2-lightest-blue;
+  background-color: $light-blue;
   margin-right: $spacing-huge;
   overflow: hidden;
   position: relative;
@@ -650,7 +650,7 @@
   width: 100%;
   margin: 12px;
   padding: 24px;
-  border: 1px solid $v2-lightest-grey;
+  border: 1px solid $light-grey;
   h3 {
     margin: 0;
   }

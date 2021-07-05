@@ -40,7 +40,7 @@
   }
 
   &__date {
-    color: $brand-dark;
+    color: $dark-blue;
     font-size: 14px;
     line-height: 20px;
     font-weight: normal;
@@ -59,7 +59,7 @@
     margin-bottom: 11px;
   }
   &__publication-type {
-    color: $brand-dark;
+    color: $dark-blue;
     font-family: $font-sans;
     font-size: 12px;
     line-height: 32px;
@@ -96,7 +96,7 @@
     }
   }
   &__publication-intro {
-    color: $brand-dark;
+    color: $dark-blue;
     font-weight: 300;
     font-size: 18px;
     line-height: 26px;
@@ -114,18 +114,18 @@
       font-size: 15px;
       line-height: 1.5;
       letter-spacing: 0.01em;
-      color: $v2-dark-grey;
+      color: $dark-grey;
       margin: 16px 0;
     }
     &:hover,
     &:visited:hover {
       h3 {
-        color: $v2-blue;
+        color: $brand-main;
         text-decoration: underline;
       }
     }
     &:active {
-      color: $v2-blue;
+      color: $brand-main;
       text-decoration: underline;
       border-bottom: none;
       & > * {

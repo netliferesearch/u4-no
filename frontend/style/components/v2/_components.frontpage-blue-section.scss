@@ -1,9 +1,9 @@
 .c-frontpage-blue-section {
   position: relative;
-  background-color: $brand-lightest;
+  background-color: $light-blue;
   padding: $spacing;
   font-family: $font-sans;
-  color: $brand-dark;
+  color: $dark-blue;
   &__content {
     .col {
       p {
@@ -13,7 +13,7 @@
       }
     }
     a {
-      color: $brand-dark;
+      color: $dark-blue;
       border: none;
       transition: color 0.2s ease-out;
       &:hover {
@@ -71,7 +71,7 @@
     &:after {
       content: '';
       position: absolute;
-      background-color: $brand-lightest;
+      background-color: $light-blue;
       width: 100vw;
       height: 100%;
       top: 0;

@@ -53,7 +53,7 @@
 }
 
 .c-person__item-body-img {
-  background-color: $brand-lightest;
+  background-color: $light-blue;
   width: 40%;
   min-height: 180px;
   background-size: cover;
@@ -89,7 +89,7 @@
 .c-person__item-body--apply {
   border: none;
   padding: $spacing;
-  color: $brand-dark;
+  color: $dark-blue;
 }
 .extra-person-content {
   margin-right:$spacing-small;
@@ -106,7 +106,7 @@
 }
 .c-person__item-title {
   margin: 0;
-  color: $brand-dark;
+  color: $dark-blue;
   font-weight: bold;
   @include inuit-font-size($font-size-normal, $line-height-small);
   @include mq($from: tablet) {

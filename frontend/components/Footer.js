@@ -20,7 +20,7 @@ const Footer = () => (
     </div>
     <div className="c-footer__row u-flex-sb">
       <div className="c-footer__col1">
-        <p className="u-text--18">
+        <p className="">
           The U4 Anti-Corruption Resource Centre works to reduce the harmful impact of corruption on
           society. U4 is a permanent centre at Chr. Michelsen Institute in Norway.
         </p>
@@ -31,8 +31,8 @@ const Footer = () => (
     </div>
     <div className="u-flex-sb">
       <div className="c-footer__col1">
-        <div className="u-text--15 u-text--grey">
-          <h4 className="u-heading--5">Address</h4>
+        <div className="u-text--grey">
+          <h4 className="u-secondary-heading">Address</h4>
           <p className="u-margin--no">U4 - Chr. Michelsen Institute</p>
           <p className="u-margin--no">P.O. Box 6033</p>
           <p className="u-margin--no">N-5892 Bergen, Norway</p>
@@ -61,7 +61,7 @@ const Footer = () => (
           </Link>
         </div>
         <div className="c-footer__col c-footer__links">
-          <h4 className="u-heading--5">About U4</h4>
+          <h4 className="u-secondary-heading">About U4</h4>
           <Link href="/the-team">
             <a className="c-btn c-btn--qua">
               <span>Team</span>
@@ -81,7 +81,7 @@ const Footer = () => (
           </Link>
         </div>
         <div className="c-footer__col c-footer__links">
-          <h4 className="u-heading--5">Contact</h4>
+          <h4 className="u-secondary-heading">Contact</h4>
           <a className="c-btn c-btn--qua" href="mailto:u4@cmi.no">
             u4@cmi.no
           </a>

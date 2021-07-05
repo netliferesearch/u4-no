@@ -60,13 +60,13 @@ export const CourseSidebar = ({ data, side }) => {
           </div>
           <div className="u-hidden--desktop">
             <div className="c-article-sidebar__row--regular">
-              <h3 className="u-heading--5">Course Type</h3>
+              <h3 className="u-secondary-heading">Course Type</h3>
               <p className="u-text--grey">{courseType.title}</p>
             </div>
             {startDate.utc && (
               <div className="c-article-sidebar__row--regular">
                 <hr className="u-section-underline--no-margins" />
-                <h3 className="u-heading--5">When</h3>
+                <h3 className="u-secondary-heading">When</h3>
                 <p className="u-text--grey">
                   {dateToString({ start: startDate.utc, end: endDate.utc || '' })}
                 </p>
@@ -75,21 +75,21 @@ export const CourseSidebar = ({ data, side }) => {
             {cost ? (
               <div className="c-article-sidebar__row--regular">
                 <hr className="u-section-underline--no-margins" />
-                <h3 className="u-heading--5">{cost}</h3>
+                <h3 className="u-secondary-heading">{cost}</h3>
                 <p className="u-text--grey" />
               </div>
             ) : null}
             {language && (
               <div className="c-article-sidebar__row--regular">
                 <hr className="u-section-underline--no-margins" />
-                <h3 className="u-heading--5">Language:</h3>
+                <h3 className="u-secondary-heading">Language:</h3>
                 <p className="u-text--grey">{languageName({ langcode: language })}</p>
               </div>
             )}
             {duration ? (
               <div className="c-article-sidebar__row--regular">
                 <hr className="u-section-underline--no-margins" />
-                <h3 className="u-heading--5">Duration</h3>
+                <h3 className="u-secondary-heading">Duration</h3>
                 <p className="u-text--grey">{duration}</p>
               </div>
             ) : null}
@@ -97,7 +97,7 @@ export const CourseSidebar = ({ data, side }) => {
             {commitment ? (
               <div className="c-article-sidebar__row--regular">
                 <hr className="u-section-underline--no-margins" />
-                <h3 className="u-heading--5">Commitment</h3>
+                <h3 className="u-secondary-heading">Commitment</h3>
                 <p className="u-text--grey">{commitment}</p>
               </div>
             ) : null}
@@ -111,7 +111,7 @@ export const CourseSidebar = ({ data, side }) => {
                 coordinator.length > 0) ||
               contact.filter(c => c._id === 'author-31').length > 0 ? (
                 <div>
-                  <h3 className="u-heading--5">Course coordinator:</h3>
+                  <h3 className="u-secondary-heading">Course coordinator:</h3>
                   <PersonContactBasic
                     person={coordinator[0] || contact.find(c => c._id === 'author-31')}
                   />
@@ -138,14 +138,14 @@ export const CourseSidebar = ({ data, side }) => {
       {side === 'right' ? (
         <div className="c-course-sidebar__right u-hidden--tablet">
           <div className="c-article-sidebar__row--regular">
-            <h3 className="u-heading--5">Course Type</h3>
+            <h3 className="u-secondary-heading">Course Type</h3>
             <p className="u-text--grey">{courseType.title}</p>
           </div>
 
           {startDate.utc && (
             <div className="c-article-sidebar__row--regular">
               <hr className="u-section-underline--no-margins" />
-              <h3 className="u-heading--5">When</h3>
+              <h3 className="u-secondary-heading">When</h3>
               <p className="u-text--grey">
                 {dateToString({ start: startDate.utc, end: endDate.utc || '' })}
               </p>
@@ -155,7 +155,7 @@ export const CourseSidebar = ({ data, side }) => {
           {cost ? (
             <div className="c-article-sidebar__row--regular">
               <hr className="u-section-underline--no-margins" />
-              <h3 className="u-heading--5">{cost}</h3>
+              <h3 className="u-secondary-heading">{cost}</h3>
               <p className="u-text--grey" />
             </div>
           ) : null}
@@ -163,7 +163,7 @@ export const CourseSidebar = ({ data, side }) => {
           {language && (
             <div className="c-article-sidebar__row--regular">
               <hr className="u-section-underline--no-margins" />
-              <h3 className="u-heading--5">Language:</h3>
+              <h3 className="u-secondary-heading">Language:</h3>
               <p className="u-text--grey">{languageName({ langcode: language })}</p>
             </div>
           )}
@@ -171,7 +171,7 @@ export const CourseSidebar = ({ data, side }) => {
           {duration ? (
             <div className="c-article-sidebar__row--regular">
               <hr className="u-section-underline--no-margins" />
-              <h3 className="u-heading--5">Duration</h3>
+              <h3 className="u-secondary-heading">Duration</h3>
               <p className="u-text--grey">{duration}</p>
             </div>
           ) : null}
@@ -179,7 +179,7 @@ export const CourseSidebar = ({ data, side }) => {
           {commitment ? (
             <div className="c-article-sidebar__row--regular">
               <hr className="u-section-underline--no-margins" />
-              <h3 className="u-heading--5">Commitment</h3>
+              <h3 className="u-secondary-heading">Commitment</h3>
               <p className="u-text--grey">{commitment}</p>
             </div>
           ) : null}

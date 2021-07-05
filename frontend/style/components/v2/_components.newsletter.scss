@@ -19,15 +19,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid $v2-light-grey;
+    border: 1px solid $light-grey;
     margin: 0;
     padding: 1px;
     &:hover {
       .c-newsletter__title {
-        color: $v2-black;
+        color: $dark-grey;
       }
       .c-newsletter__input::placeholder {
-        color: $v2-black;
+        color: $dark-grey;
       }
     }
     @include mq($from: tablet) {
@@ -64,7 +64,7 @@
     font-size: 15px;
     line-height: 1.6;
     letter-spacing: 0.02em;
-    color: $v2-grey;
+    color: $mid-grey;
     margin: 0 0 32px 0;
     padding-bottom: $spacing-tiny;
     transition: border 0.2s ease-out;
@@ -85,7 +85,7 @@
     font-size: 15px;
     line-height: 1.6;
     letter-spacing: 0.02em;
-    color: $v2-black;
+    color: $dark-grey;
     background-color: $white;
     margin: 0;
     padding: 5px 8px;
@@ -97,7 +97,7 @@
     }
   }
   ::placeholder {
-    color: $v2-grey;
+    color: $mid-grey;
     opacity: 1;
   }
 
@@ -129,7 +129,7 @@
     text-align: left;
     font-weight: 700;
     font-size: 22px;
-    color: $v2-black;
+    color: $dark-grey;
   }
   .c-newsletter__title-wrapper {
     border: none;

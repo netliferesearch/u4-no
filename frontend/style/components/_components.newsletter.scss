@@ -8,7 +8,7 @@
 
 .c-newsletter__content {
   flex-grow: 10;
-  background: $brand-lightest;
+  background: $light-blue;
   padding: $spacing-large $spacing;
   @include mq($from: tablet) {
     //margin-left: -$spacing;
@@ -19,13 +19,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid $brand-dark;
+  border-bottom: 1px solid $dark-blue;
   &:hover {
     .c-newsletter__title {
       color: $brand-light;
     }
     .c-newsletter__input::placeholder {
-      color: $grey;
+      color: $mid-grey;
     }
     .c-newsletter__title-arrow {
       svg path {
@@ -35,11 +35,11 @@
   }
   & button {
     border-style: none;
-    background: $brand-lightest;
+    background: $light-blue;
   }
 }
 .c-newsletter__title {
-  color: $brand-dark;
+  color: $dark-blue;
   margin: 0 0 $spacing-small;
   padding-bottom: $spacing-tiny;
   transition: border 0.2s ease-out;
@@ -55,7 +55,7 @@
 
 .c-newsletter__input {
   display: flex;
-  color: $brand-dark;
+  color: $dark-blue;
   margin: 0 0 $spacing-small;
   padding-bottom: $spacing-tiny;
   transition: border 0.2s ease-out;
@@ -69,20 +69,20 @@
     @include inuit-font-size(math.div($font-size-huge, 1.5), $line-height-large );
   }
   border-style: none;
-  background: $brand-lightest;
+  background: $light-blue;
   width: 100%;
   font-family: $font-sans;
   padding-left: $spacing-small;
 }
 ::placeholder {
-  color: $brand-dark;
+  color: $dark-blue;
   opacity: 1;
 }
 
 .c-newsletter__title-arrow {
   padding: 0 $spacing-small $spacing-small;
   svg path {
-    fill: $brand-dark;
+    fill: $dark-blue;
   }
 }
 
@@ -90,7 +90,7 @@
   display: inline-block;
   @include inuit-font-size($font-size-tiny, $line-height-normal );
   padding-bottom: $spacing-small;
-  color: $brand-dark;
+  color: $dark-blue;
   margin: 0;
   font-family: $font-sans;
   font-weight: 400;
@@ -110,13 +110,13 @@
 
   a {
     border: 0;
-    color: $brand-dark;
+    color: $dark-blue;
     cursor: pointer;
   }
 }
 .c-newsletter__to-top-arrow {
   path {
-    fill: $brand-dark;
+    fill: $dark-blue;
   }
   writing-mode: vertical-lr;
   transform: translateY(-5px) rotate(-270deg);

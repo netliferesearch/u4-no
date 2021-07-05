@@ -2,8 +2,8 @@ input[type='checkbox'].c-modal__input {
   position: absolute;
   opacity: 0;
   &:checked {
-    border: 1px solid $v2-dark-blue-2;
-    background: $v2-dark-blue-2;
+    border: 1px solid $dark-blue;
+    background: $dark-blue;
   }
 }
 .custom-checkbox {
@@ -13,19 +13,19 @@ input[type='checkbox'].c-modal__input {
   height: 20px;
   border-radius: 2px;
   outline: none;
-  border: 1px solid $v2-lighter-grey;
+  border: 1px solid $light-grey;
   margin-right: 12px;
 }
 
 input[type='checkbox'].c-modal__input:checked + .custom-checkbox {
-  border: 1px solid $v2-dark-blue-2;
-  background: $v2-dark-blue-2;
+  border: 1px solid $dark-blue;
+  background: $dark-blue;
   //background-image: url('public/check-mark.svg');
   background-repeat: no-repeat;
   background-position: center center;
 }
 input[type='checkbox'].c-modal__input:focus + .custom-checkbox {
-  border: 1px solid $v2-dark-blue-2;
+  border: 1px solid $dark-blue;
 }
 
 input[type='radio'].c-modal__input {
@@ -35,7 +35,7 @@ input[type='radio'].c-modal__input {
   border-radius: 50%;
   background-color: white;
   outline: none;
-  border: 1px solid $v2-lighter-grey;
+  border: 1px solid $light-grey;
   &:before {
     content: '';
     display: block;
@@ -46,10 +46,10 @@ input[type='radio'].c-modal__input {
     border-radius: 50%;
   }
   &:checked:before {
-    background: $v2-blue;
+    background: $brand-main;
   }
   &:checked {
-    border-color: $v2-lighter-grey;
+    border-color: $light-grey;
   }
 }
 
@@ -110,7 +110,7 @@ input[type='radio'].c-modal__input {
 }
 .c-modal__title {
   font-weight: 700;
-  color: $v2-dark-grey;
+  color: $dark-grey;
   font-size: $font-size-small;
   line-height: 1.3;
   letter-spacing: 0.2px;
@@ -133,7 +133,7 @@ input[type='radio'].c-modal__input {
 
 .c-modal__label {
   cursor: pointer;
-  color: $v2-black;
+  color: $dark-grey;
   font-family: $font-sans;
   font-weight: 400;
   font-size: 15px;
@@ -193,7 +193,7 @@ input[type='radio'].c-modal__input {
     width: calc(100% - 48px);
     border-radius: 10px;
     .c-btn--ter {
-      color: $v2-grey;
+      color: $mid-grey;
       padding: 8px 16px;
       font-size: 14px;
     }

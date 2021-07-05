@@ -129,7 +129,7 @@ iframe {
   align-items: center;
   span {
     margin-right: 8px;
-    color: $v2-black;
+    color: $dark-grey;
   }
 }
 
@@ -143,6 +143,10 @@ iframe {
   &:active {
     border: none;
   }
+}
+
+.u-margin--no {
+  margin: 0;
 }
 
 @keyframes fadeIn {

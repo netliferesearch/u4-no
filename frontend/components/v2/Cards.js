@@ -44,7 +44,7 @@ export const Cards = ({ resources = [], cta = '', badge= '' }) => (
                   </div>
                   <div className="c-cards__text">
                     <div>
-                      <h6 className="u-heading--7">{item.title}</h6>
+                      <h6 className="u-secondary-heading">{item.title}</h6>
                       <div>
                         {item.lead &&
                           item.lead.split('\n').map((i, index) => <p key={index}>{i}</p>)}

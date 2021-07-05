@@ -1,6 +1,6 @@
 .c-article-v2 {
   margin-bottom: 100px;
-  color: $v2-black;
+  color: $dark-grey;
 
 
   .c-breadcrumb--v2 {
@@ -22,7 +22,7 @@
     font-size: 20px;
     line-height: 1.5;
     letter-spacing: 0.02em;
-    color: $v2-black;
+    color: $dark-grey;
     width: 100%;
     max-width: 752px;
     margin: 0 auto;
@@ -31,7 +31,7 @@
   .c-article__lead {
     font-size: 18px;
     line-height: 1.56;
-    color: $v2-black;
+    color: $dark-grey;
     max-width: 600px;
     margin: 0 auto 32px auto;
     padding: 0;
@@ -64,7 +64,7 @@
     }
 
     &__headsUp {
-      border: 1px solid $v2-lighter-grey;
+      border: 1px solid $light-grey;
     }
 
     &__old,
@@ -102,7 +102,7 @@
   }
 
   .c-tnrc-footer {
-    border-top: 1px solid $v2-lighter-grey;
+    border-top: 1px solid $light-grey;
   }
 
   .c-tnrc-footer__body {
@@ -160,7 +160,7 @@
 
   .c-article_mainPoints-item {
     &:before {
-      background-color: $v2-light-blue;
+      background-color: $highlight-blue;
       width: 24px;
       left: -40px;
       top: 8px;
@@ -173,7 +173,7 @@
   max-width: 600px;
   margin: 0 auto;
   clear: both;
-  .u-heading--2.tags {
+  .u-primary-heading.tags {
     margin-top: 24px;
   }
   .c-topics {
@@ -208,8 +208,8 @@
 }
 
 .c-meta {
-  color: $v2-dark-grey;
-  .u-heading--2 {
+  color: $dark-grey;
+  .u-primary-heading {
     margin-top: 0;
   }
   .c-longform-grid__standard {
@@ -222,13 +222,13 @@
     letter-spacing: 0.02em;
   }
   a {
-    color: $v2-dark-grey;
+    color: $dark-grey;
     border-bottom: none;
     text-decoration: underline;
   }
   a:hover,
   a:visited:hover {
-    color: $v2-blue;
+    color: $brand-main;
     text-decoration: none;
     border-bottom: none;
   }
@@ -237,7 +237,7 @@
     border-bottom: none;
   }
   a:active {
-    color: $v2-blue;
+    color: $brand-main;
     text-decoration: none;
     border-bottom: none;
     & > * {

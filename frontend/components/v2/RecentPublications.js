@@ -55,7 +55,7 @@ export const CardList = ({ resources = [], alt = false }) => {
                             <Topics title={false} topics={topics} hr={false} linkType={'5'} />
                           )}
                         </div>
-                        <h3 className="u-heading--3">{title}</h3>
+                        <h3 className="u-primary-heading">{title}</h3>
                         <p className="c-featured-post__intro">{standfirst}</p>
                       </div>
                       <div>

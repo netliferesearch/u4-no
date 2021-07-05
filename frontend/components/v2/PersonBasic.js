@@ -52,7 +52,7 @@ export const PersonContactBasic = ({ person, cta = 'Questions about the course?'
   return (
     <div className="c-person-basic--contact">
       <div>
-        {/* <p className="u-heading--5">{person.position && `${person.position}`}</p> */}
+        {/* <p className="u-secondary-heading">{person.position && `${person.position}`}</p> */}
         {person.slug && person.bio ? (
           <Link href={`/the-team/${person.slug.current}`}>
             <a className="c-btn--qua">
@@ -83,7 +83,7 @@ export const PersonContactBasic = ({ person, cta = 'Questions about the course?'
           <p className="u-text--grey">{cta}</p>
           <p className="u-text--grey">
             <span>Contact </span>
-            <a className="u-grey-a" href={`mailto:${person.email}`}>
+            <a className="" href={`mailto:${person.email}`}>
               <span>{person.firstName}</span>
             </a>
           </p>
@@ -107,7 +107,7 @@ export const CourseCoordinator = ({ person, cta = 'Questions about the course?',
         />
       </div>
       <div className="c-person-basic__text">
-        <h3 className="u-heading--5">Course coordinator:</h3>
+        <h3 className="u-secondary-heading">Course coordinator:</h3>
         {person.slug && person.bio ? (
           <Link href={`/the-team/${person.slug.current}`}>
             <a className="c-btn--qua">
@@ -126,7 +126,7 @@ export const CourseCoordinator = ({ person, cta = 'Questions about the course?',
             <p className="u-text--grey">{cta}</p>
             <p className="u-text--grey">
               <span>Contact </span>
-              <a className="u-grey-a" href={`mailto:${person.email}`}>
+              <a className="" href={`mailto:${person.email}`}>
                 <span>{person.firstName}</span>
               </a>
             </p>

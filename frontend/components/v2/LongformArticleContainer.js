@@ -103,7 +103,7 @@ const LongFormArticleContainer = (props = {}) => {
                       <hr className="u-section-underline--no-margins u-hidden--desktop" />
                     ) : null}
                     {topics.length > 0 || keywords.length > 0 ? (
-                      <h3 className="u-heading--2 tags">Tags</h3>
+                      <h3 className="u-primary-heading tags">Tags</h3>
                     ) : null}
                     {topics.length > 0 ? <Topics title={true} topics={topics} hr={false} /> : null}
                     {keywords.length > 0 ? (

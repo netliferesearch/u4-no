@@ -14,7 +14,7 @@ export const Testimonial = ({ testimonial }) => {
         }}
       />
       <div className="c-testimonial__text">
-        <h3 className="u-heading--2">What participant say</h3>
+        <h3 className="u-primary-heading">What participant say</h3>
         <BlockContent blocks={testimonial.text} serializers={serializers} />
         <p className="c-testimonial__cite">{testimonial.cite}</p>
       </div>

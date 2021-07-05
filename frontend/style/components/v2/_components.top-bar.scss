@@ -87,7 +87,7 @@
 
 .c-top-bar-v2__logo-cmi {
   display: none;
-  background-color: $brand-dark;
+  background-color: $dark-blue;
   height: 93px;
   width: 93px;
   flex-shrink: 0;
@@ -202,9 +202,9 @@ a.c-top-bar-v2__logo:visited {
       color: $brand-main;
       transition: background-color 0.2s ease-out, color 0.2s ease-out;
       &.c-top-bar-v2__menu-button--active {
-        background-color: $brand-dark;
+        background-color: $dark-blue;
         color: $white;
-        border-color: $brand-dark;
+        border-color: $dark-blue;
         .c-top-bar-v2__menu-icon {
           img {
             width: 23px;

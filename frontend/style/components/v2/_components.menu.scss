@@ -42,7 +42,7 @@
   height: 100%;
   z-index: -2;
   border: 0;
-  //background: rgba($brand-dark, 0.5);
+  //background: rgba($dark-blue, 0.5);
   background: $brand-main;
   animation: fadeIn 0.2s ease-out;
 }
@@ -126,7 +126,7 @@
     content: '';
     position: absolute;
     bottom: 0;
-    background: rgba($grey, 0.7);
+    background: rgba($mid-grey, 0.7);
     left: 0;
     width: 100%;
     height: 1px;

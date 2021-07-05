@@ -1,5 +1,5 @@
 .c-disclaimers {
-  color: $v2-dark-grey;
+  color: $dark-grey;
   p {
     font-family: $font-sans;
     font-size: 15px;
@@ -11,22 +11,22 @@
     margin-top: 0;
   }
   a {
-    color: $v2-dark-grey;
+    color: $dark-grey;
   }
   a:hover {
-    color: $v2-dark-grey;
+    color: $dark-grey;
     border-bottom: 1px solid transparent;
   }
   a:visited {
-    color: $v2-dark-grey;
+    color: $dark-grey;
     border-bottom: 1px solid transparent;
   }
   svg {
     width: 24px;
     height: 24px;
-    fill: $v2-grey;
+    fill: $mid-grey;
     path {
-      fill: $v2-grey;
+      fill: $mid-grey;
     }
   }
   @include mq($from: tablet) {

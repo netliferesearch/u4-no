@@ -1,5 +1,5 @@
 .c-topic-heading {
-  color: $brand-dark;
+  color: $dark-blue;
   font-weight: bold;
   margin-bottom: $spacing;
   @include mq($from: tablet) {
@@ -24,16 +24,16 @@
 .c-topic-index__title {
   @include inuit-font-size($font-size-normal, $line-height-normal);
   border: none;
-  color: $brand-dark;
+  color: $dark-blue;
   border-bottom: 1px solid transparent;
   &:visited {
-    color: $brand-dark;
+    color: $dark-blue;
   }
   &:hover {
-    color: $brand-dark;
+    color: $dark-blue;
   }
   &:visited:hover {
-    color: $brand-dark;
+    color: $dark-blue;
   }
 }
 .c-topic-index__count {

@@ -1,6 +1,6 @@
 .c-pubHeader {
   font-family: $font-sans;
-  color: $v2-black;
+  color: $dark-grey;
 
   .c-article-header__container {
     max-width: 600px;
@@ -91,11 +91,11 @@
     justify-content: space-between;
     margin: 0 auto;
   }
-  .u-heading--black--44,
+  .u-primary-heading,
   .c-pubHeader__subtitle {
     text-align: left;
   }
-  .u-heading--black--44 {
+  .u-primary-heading {
     margin-top: 24px;
   }
   .c-pubHeader__subtitle {
@@ -111,11 +111,11 @@
     }
   }
   @include mq($from: tablet) {
-    .u-heading--black--44,
+    .u-primary-heading,
     .c-pubHeader__subtitle {
       text-align: center;
     }
-    .u-heading--black--44,
+    .u-primary-heading,
     .c-pubHeader__subtitle {
       margin-top: 32px;
     }
@@ -196,15 +196,15 @@
     align-items: center;
     svg g,
     svg path {
-      fill: $v2-black;
+      fill: $dark-grey;
     }
     // &:hover {
     //   svg g,
     //   svg path {
-    //     fill: $v2-blue;
+    //     fill: $brand-main;
     //   }
     //   .c-btn__label {
-    //     color: $v2-blue;
+    //     color: $brand-main;
     //   }
     // }
   }

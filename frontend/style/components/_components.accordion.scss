@@ -24,7 +24,7 @@
   }
   &:nth-of-type(4) {
     > button {
-      background-color: $brand-dark;
+      background-color: $dark-blue;
     }
   }
   @include mq($from: wide) {

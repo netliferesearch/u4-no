@@ -1,6 +1,6 @@
 .c-article {
   &.c-article__lead {
-    color: $black;
+    color: $dark-grey;
     //max-width: 950px;
     //margin-top: 0;
     margin-bottom: $spacing-large;
@@ -56,7 +56,7 @@
         display: flex;
         border-bottom: 1px solid $border-grey;
         .tab-header {
-          color: $black;
+          color: $dark-grey;
           font-weight: bold;
           border-bottom: 4px solid transparent;
           margin-right: $spacing;

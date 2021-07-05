@@ -69,7 +69,7 @@
 
   h2.c-longform-grid__standard {
     font-family: $font-sans;
-    color: $v2-black;
+    color: $dark-grey;
     font-weight: 700;
     font-size: 22px;
     line-height: 1.3;
@@ -83,9 +83,9 @@
     font-size: 18px;
     line-height: 22px;
     letter-spacing: 0.02em;
-    color: $v2-black;
+    color: $dark-grey;
 
-    // color: $v2-black;
+    // color: $dark-grey;
     // font-weight: 700;
     // font-size: 22px;
     // line-height: 1.3;
@@ -100,7 +100,7 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 12px;
-    color: $v2-dark-grey;
+    color: $dark-grey;
 
     margin: 68px auto 32px auto;
   }
@@ -110,13 +110,13 @@
     font-size: 15px;
     line-height: 18px;
     letter-spacing: 0.01em;
-    color: $v2-dark-grey;
+    color: $dark-grey;
 
     margin: 68px auto 32px auto;
   }
 
   .c-article__pullQuote {
-    color: $v2-grey-pQ;
+    color: $dark-grey;
     padding: 0;
     font-family: $font-sans;
     font-style: normal;
@@ -149,8 +149,8 @@
     margin-bottom: 24px;
   }
   a {
-    color: $v2-black;
-    border-bottom: 1px solid $v2-black;
+    color: $dark-grey;
+    border-bottom: 1px solid $dark-grey;
   }
   a:hover {
     color: $brand-main;
@@ -253,7 +253,7 @@
     }
   }
   .c-modal__title {
-    color: $v2-black;
+    color: $dark-grey;
     font-size: 14px;
     line-height: 17px;
   }
@@ -272,7 +272,7 @@
     a {
       display: inline-block;
       font-family: $font-serif;
-      color: $v2-black;
+      color: $dark-grey;
       font-size: 14px;
       line-height: 17px;
       font-weight: 400;
@@ -282,13 +282,13 @@
     &:hover,
     &:visited:hover {
       a {
-        color: $v2-blue;
+        color: $brand-main;
         text-decoration: underline;
         border-bottom: none;
       }
     }
     &:active {
-      color: $v2-blue;
+      color: $brand-main;
       text-decoration: underline;
       border-bottom: none;
       & > * {
@@ -300,7 +300,7 @@
 
 .c-scroll-top {
   display: none;
-  background-color: $v2-lighter-grey;
+  background-color: $light-grey;
   width: 48px;
   height: 48px;
   border-radius: 50%;

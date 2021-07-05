@@ -1,6 +1,6 @@
 // .c-partnerAgencies{
 //   text-align: center;
-//   background-color: $brand-dark;
+//   background-color: $dark-blue;
 //   padding: $spacing;
 //   font-family: $font-sans;
 //   color: $white;
@@ -87,7 +87,7 @@
   }
   svg,
   path {
-    fill: $v2-black;
+    fill: $dark-grey;
   }
   #Fill-144 {
     fill: #ffffff;
@@ -97,10 +97,10 @@
     svg,
     path,
     polygon {
-      fill: $v2-black;
+      fill: $dark-grey;
     }
   }
   polygon#Shape {
-    fill: $v2-black;
+    fill: $dark-grey;
   }
 }

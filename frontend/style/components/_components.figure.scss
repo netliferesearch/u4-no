@@ -4,7 +4,7 @@
   font-weight: bold;
   font-family: $font-sans;
   @include inuit-font-size($font-size-tiny);
-  color: $black;
+  color: $dark-grey;
   margin-bottom: $spacing-small;
   page-break-after: avoid;
 }
@@ -12,7 +12,7 @@
 .c-figure__caption {
   font-family: $font-sans;
   @include inuit-font-size($font-size-tiny);
-  color: $black;
+  color: $dark-grey;
 
   & > .c-longform-grid__standard {
     padding-left: 0;

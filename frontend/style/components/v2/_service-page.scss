@@ -4,8 +4,8 @@
   font-size: 15px;
   line-height: 1.47;
   letter-spacing: 0.01em;
-  color: $v2-black;
-  .u-heading--2 {
+  color: $dark-grey;
+  .u-primary-heading {
     text-align: center;
     margin-top: 48px;
   }
@@ -15,7 +15,7 @@
     .c-columns__item {
       margin-bottom: 64px;
     }
-    .u-heading--2 {
+    .u-primary-heading {
       text-align: left;
       margin-top: 0;
     }
@@ -35,7 +35,7 @@
     font-size: 20px;
     line-height: 30px;
     font-weight: 400;
-    color: $v2-black;
+    color: $dark-grey;
     padding: 0;
     margin: 24px 0 32px 0;
     max-width: 580px;
@@ -53,7 +53,7 @@
     padding-bottom: 32px;
   }
   .c-longform-grid__standard {
-    color: $v2-grey-555;
+    color: $mid-grey;
     font-family: $font-sans;
     font-size: 18px;
     font-weight: 400;
@@ -75,7 +75,7 @@
 }
 
 .c-features__container {
-  .u-heading--2 {
+  .u-primary-heading {
     margin-top: 24px;
   }
 }
@@ -141,7 +141,7 @@
     flex-direction: row;
     margin: 48px auto;
   }
-  .u-heading--2 {
+  .u-primary-heading {
     margin-top: 0;
   }
 }
@@ -164,13 +164,13 @@
     padding: 0;
     text-align: left;
   }
-  .u-heading--2 {
+  .u-primary-heading {
     text-align: left;
   }
 }
 
 .c-testimonial__cite {
-  color: $v2-grey-555;
+  color: $mid-grey;
   font-size: 15px;
   line-height: 28px;
   letter-spacing: 0.01em;
@@ -212,7 +212,7 @@
     font-size: 22px;
     line-height: 1.27;
     letter-spacing: 0.02em;
-    color: $v2-black;
+    color: $dark-grey;
     padding: 0;
     margin-top: 32px;
     @include mq($from: tablet) {

@@ -50,7 +50,7 @@ const NewsAndEvents = ({ items, title }) => {
   //console.log('Related items', items);
   return (
     <div className="c-related-items-list">
-      <h2 className="u-blue-underline u-navy-big-headline">{title}</h2>
+      <h2 className="">{title}</h2>
       <hr className="u-section-underline" />
       <div className="cols">
         {items

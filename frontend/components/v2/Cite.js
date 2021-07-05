@@ -9,7 +9,7 @@ export const Cite = ({ date = {}, title = '', publicationType = {}, header = 'pu
     <div className="c-cite">
       <hr className="u-section-underline--no-margins" />
       <div className="c-cite__action">
-        <h3 className="u-heading--2">{`Cite this ${header}`}</h3>
+        <h3 className="u-primary-heading">{`Cite this ${header}`}</h3>
         <CopyToClipboardButton reference={citeRef} />
       </div>
       <div className="c-cite__content">

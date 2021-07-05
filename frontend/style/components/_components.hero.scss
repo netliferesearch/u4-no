@@ -28,7 +28,7 @@
   color: white;
   width: 95%;
   float: right;
-  background: $brand-dark;
+  background: $dark-blue;
   margin-top: -200px;
 
   @include mq($from: tablet) {
@@ -121,7 +121,7 @@
   }
 
   .c-hero-bg {
-    background-color: $brand-dark;
+    background-color: $dark-blue;
     grid-column: 4 / 10;
     grid-row: 2 / 4;
     margin-bottom: $spacing-large;

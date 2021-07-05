@@ -87,7 +87,7 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
               <div className="c-meta">
                 <hr className="u-section-underline--no-margins" />
                 <div className="c-meta__title">
-                  <h3 className="u-heading--2">Methodology</h3>
+                  <h3 className="u-primary-heading">Methodology</h3>
                 </div>
                 <div className="c-meta__content">
                   {typeof methodology === 'string' && <p>{methodology}</p>}
@@ -101,7 +101,7 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
               <div className="c-meta">
                 <hr className="u-section-underline--no-margins" />
                 <div className="c-meta__title">
-                  <h3 className="u-heading--2">Notes</h3>
+                  <h3 className="u-primary-heading">Notes</h3>
                 </div>
                 <div className="c-meta__content">
                   {typeof notes === 'string' && <p>{notes}</p>}

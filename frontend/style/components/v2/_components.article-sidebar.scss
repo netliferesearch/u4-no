@@ -5,7 +5,7 @@
   letter-spacing: 0.01em;
   padding-bottom: 0;
   width: 100%;
-  color: $v2-black;
+  color: $dark-grey;
   position: relative;
   margin-bottom: 40px;
 
@@ -63,7 +63,7 @@
     @include mq($from: tablet) {
       margin-top: 64px;
     }
-    .u-heading--4 {
+    .u-secondary-heading {
       font-size: 22px;
       line-height: 1.27;
       letter-spacing: 0.02em;
@@ -122,7 +122,7 @@
   font-size: 15px;
   line-height: 1.5;
   letter-spacing: 0.01em;
-  color: $v2-black;
+  color: $dark-grey;
   margin-bottom: 32px;
   .c-logo {
     max-width: 240px;
@@ -134,7 +134,7 @@
 }
 
 .c-acknowledgements--bottom {
-  .u-heading--2 {
+  .u-primary-heading {
     margin-top: 24px;
     margin-bottom: 12px;
   }
@@ -146,7 +146,7 @@
 .c-acknowledgements--side { 
   @include mq($from: tablet) {
     h3 {
-      color: $v2-dark-grey;
+      color: $dark-grey;
       font-family: $font-sans;
       font-size: 12px;
       line-height: 14px;

@@ -18,23 +18,23 @@
     &:hover,
     &:active {
       svg {
-        fill: $v2-blue;
+        fill: $brand-main;
         path {
-          fill: $v2-blue;
+          fill: $brand-main;
         }
       }
     }
   }
   .c-breadcrumb__link {
-    color: $v2-dark-grey;
+    color: $dark-grey;
     //text-transform: uppercase;
     margin: 0 8px 0 6px;
     &:hover {
-      color: $v2-blue;
+      color: $brand-main;
       text-decoration: underline;
     }
     &:active {
-      color: $v2-blue;
+      color: $brand-main;
       text-decoration: none;
       // & > * {
       //   display: inline-block;

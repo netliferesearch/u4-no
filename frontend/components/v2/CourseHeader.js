@@ -27,8 +27,8 @@ export const CourseHeader = ({ data }) => {
             </a>
           </Link>
 
-          <h2 className="u-heading--1">{title}</h2>
-          {lead && <p className="c-course-entry__standfirst u-standfirst">{lead}</p>}
+          <h2 className="u-primary-heading">{title}</h2>
+          {lead && <p className="c-course-entry__standfirst">{lead}</p>}
         </div>
         <RegisterForm courseType={courseType.waitingListId} />
         <div className="c-course-entry__header-row">

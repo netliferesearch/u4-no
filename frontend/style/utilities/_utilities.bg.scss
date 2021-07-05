@@ -1,25 +1,26 @@
-.u-bg-light-blue {
-  background: $brand-lightest;
-  padding: $spacing-large 0;
-}
-
-.u-bg-dark-blue {
-  background: $brand-dark;
-  padding: $spacing-large 0;
-}
-
 .u-bg-white {
   background-color: $white;
 }
 
+.u-bg-light-blue {
+  background: $light-blue;
+  //padding: $spacing-large 0;
+}
+
+.u-bg-mid-blue {
+  background: $brand-main;
+}
+
+.u-bg-dark-blue {
+  background: $dark-blue;
+  //padding: $spacing-large 0;
+}
+
+.u-bg-darkest-blue {
+  background: $darkest-blue;
+  //padding: $spacing-large 0;
+}
+
 .u-bg-light-grey {
-  background-color: $v2-light-grey-bg;
-}
-
-.u-bg-lightest-grey {
-  background-color: $v2-lightest-grey-bg;
-}
-
-.u-bg-lightest-blue {
-  background-color: $v2-lightest-blue;
+  background-color: $light-grey;
 }

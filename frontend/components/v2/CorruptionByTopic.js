@@ -18,8 +18,8 @@ export const TopicCardList = ({ topics }) => {
               <a>
                 <div className="c-topic-card-list__item-text">
                   <div>
-                    <h3 className="u-heading--5 u-text--blue">{topic.title}</h3>
-                    <p className="u-text--15 u-text--grey">{topic.longTitle}</p>
+                    <h3 className="u-secondary-heading u-text--blue">{topic.title}</h3>
+                    <p className="u-text--grey">{topic.longTitle}</p>
                   </div>
                   <div>
                     <Link href={`/topics/${topic.slug.current}`}>

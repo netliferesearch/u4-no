@@ -1,7 +1,7 @@
 .c-blog-entry {
   background-color: $white;
   font-size: 15px;
-  color: $v2-black;
+  color: $dark-grey;
   margin-bottom: 100px;
 
   .o-wrapper {
@@ -13,7 +13,7 @@
     font-weight: 700;
     font-size: 32px;
     line-height: 39px;
-    color: $v2-black;
+    color: $dark-grey;
     margin: 0 0 32px 0;
     @include mq($from: tablet) {
       font-family: $font-sans;
@@ -58,7 +58,7 @@
   }
 
   .c-blog-entry__heads-up {
-    border-top: 1px solid $v2-lightest-grey;
+    border-top: 1px solid $light-grey;
     line-height: 26px;
     padding: 15px 0;
     .c-longform-grid__standard {
@@ -68,7 +68,7 @@
 
   // .topic a {
   //   font-family: $font-sans;
-  //   color: $v2-black;
+  //   color: $dark-grey;
   //   font-weight: 700;
   //   font-size: 12px;
   //   line-height: 14px;
@@ -121,14 +121,14 @@
 //   }
 
 //   h2.c-longform-grid__standard {
-//     color: $v2-black;
+//     color: $dark-grey;
 //     font-weight: 700;
 //     font-size: 22px;
 //     line-height: 1.3;
 //     margin: 68px auto 32px auto;
 //   }
 //   h3.c-longform-grid__standard {
-//     color: $v2-black;
+//     color: $dark-grey;
 //     font-weight: 700;
 //     font-size: 22px;
 //     line-height: 1.3;
@@ -142,7 +142,7 @@
 //     }
 //   }
 //   .c-article__pullQuote {
-//     color: $v2-grey-pQ;
+//     color: $dark-grey;
 //     padding: 0;
 //     font-family: $font-sans;
 //     font-style: normal;
@@ -193,8 +193,8 @@
 //   }
 
 //   a {
-//     color: $v2-black;
-//     border-bottom: 1px solid $black;
+//     color: $dark-grey;
+//     border-bottom: 1px solid $dark-grey;
 //   }
 //   a:hover {
 //     color: $brand-main;
@@ -313,7 +313,7 @@
 
 .c-blog-entry__standfirst {
   font-family: $font-serif;
-  color: $v2-black;
+  color: $dark-grey;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.56;
@@ -363,7 +363,7 @@
   font-family: $font-sans;
   padding-bottom: 0;
   width: 100%;
-  color: $v2-black;
+  color: $dark-grey;
   position: relative;
   margin-bottom: 40px;
   .c-blog-sidebar__date {
@@ -411,7 +411,7 @@
   line-height: 14px;
   text-align: right;
   padding: 2px;
-  color: $v2-dark-grey;
+  color: $dark-grey;
 }
 
 .c-credit > a,
@@ -424,7 +424,7 @@
   }
   &:hover,
   &:visited:hover {
-    color: $v2-blue;
+    color: $brand-main;
     //text-decoration: none;
     border-bottom: none;
   }
@@ -434,7 +434,7 @@
     border-bottom: none;
   }
   &:active {
-    color: $v2-blue;
+    color: $brand-main;
     border-bottom: none;
     & > * {
       display: inline-block;
@@ -446,7 +446,7 @@
   }
   @include mq($from: tablet) {
     &:visited {
-      color: $v2-dark-grey;
+      color: $dark-grey;
     }
   }
 }

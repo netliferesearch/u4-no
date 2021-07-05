@@ -7,26 +7,14 @@
 .u-tl {
   text-align: left;
 }
-.u-blue-underline {
-  position: relative;
-  display: block;
-  padding-bottom: 50px;
-  margin-bottom: $spacing-large;
-  font-weight: 700;
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 4px;
-    width: 100px;
-    max-width: 100%;
-    background-color: $brand-main;
-  }
+
+.u-white-font {
+  color: $white;
 }
+
 .u-section-underline {
   border: none;
-  border-bottom: 1px solid $v2-lightest-grey;
+  border-bottom: 1px solid $light-grey;
   margin-bottom: 40px;
   width: 100%;
   align-self: flex-end;
@@ -34,144 +22,74 @@
 
 .u-section-underline--no-margins {
   border: none;
-  border-bottom: 1px solid $v2-lightest-grey;
+  border-bottom: 1px solid $light-grey;
   margin: 0;
   width: 100%;
   -ms-flex-item-align: end;
   align-self: flex-end;
 }
 
-.u-navy-big-headline {
+.u-primary-heading {
   font-family: $font-sans;
-  font-size: 47px;
-  line-height: 60px;
-  font-weight: 900;
-  color: $brand-dark;
-}
-
-.u-grey-container {
-  border-bottom: 1px solid $v2-lightest-grey;
-  border-top: 1px solid $v2-lightest-grey;
-}
-
-.u-heading--black--44 {
-  font-family: $font-sans;
-  font-size: 32px;
-  line-height: 39px;
-  font-weight: 900;
-  color: $v2-black;
+  font-weight: 700;
   letter-spacing: 0.01em;
-  @include mq($from: tablet) {
-    font-size: 44px;
-    line-height: 53px;
-  }
+  color: $dark-grey;
 }
 
-.u-black-32-heading {
+.u-secondary-heading {
   font-family: $font-sans;
-  font-size: 32px;
-  line-height: 39px;
-  font-weight: 700;
-  color: $v2-black;
-}
-
-.u-heading--1 {
-  font-family: $font-sans;
-  // font-size: 32px;
-  // line-height: 39px;
-  font-size: 32px;
-  line-height: 38px;
-  font-weight: 700;
-  color: $v2-black;
-  letter-spacing: 0.01em;
-  @include mq($from: tablet) {
-    font-size: 44px;
-    line-height: 53px;
-  }
-}
-
-.u-heading--2 {
-  font-family: $font-sans;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 1.27;
-  letter-spacing: 0.02em;
-  color: $v2-black;
-}
-
-.u-heading--2--grey {
-  font-family: $font-sans;
-  font-style: normal;
   font-weight: 400;
-  font-size: 22px;
-  line-height: 1.27;
-  letter-spacing: 0.02em;
-  color: $v2-grey-555;
-  margin: 0;
+  letter-spacing: 0.15em;
+  color: $dark-grey;
+  text-transform: uppercase;
 }
 
-.u-heading--3 {
-  font-family: $font-sans;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
+.u-secondary-h1 {
+  font-size: $font-size-tiny;
   line-height: 22px;
-  letter-spacing: 0.02em;
-  color: $v2-black;
+  @include mq($from: tablet) {
+    font-size: $font-size-normal;
+    line-height: 1;
+  }
 }
 
-.u-heading--4 {
-  font-family: $font-sans;
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  color: $v2-dark-grey;
+.u-detail--blue {
+  position: relative;
+  display: block;
+  padding-bottom: 12px;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 21px;
+    max-width: 100%;
+    background-color: $brand-main;
+  }
+  @include mq($from: tablet) {
+    padding-bottom: 6px;
+    &:after {
+      height: 6px;
+      width: 26px;
+    }
+  }
 }
 
-.u-heading--5 {
-  font-family: $font-sans;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 18px;
-  letter-spacing: 0.01em;
-  color: $v2-dark-grey;
-}
-
-.u-heading--6 {
-  display: inline-block;
-  font-family: $font-sans;
-  font-weight: 900;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: $v2-black;
-  padding-bottom: 2px;
-  border-bottom: 1px solid $v2-lighter-grey;
-}
-
-.u-heading--7 {
-  font-family: $font-sans;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 18px;
-  line-height: 1.56;
-  letter-spacing: 0.02em;
-  color: $v2-black;
-  margin-top: 16px;
-}
-
-.u-heading--8 {
-  font-family: $font-sans;
-  font-weight: 900;
-  font-size: 15px;
-  line-height: 18px;
-  letter-spacing: 0.01em;
-  color: $v2-dark-grey;
+.u-detail--blue--small {
+  position: relative;
+  display: block;
+  padding-bottom: 6px;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 21px;
+    max-width: 100%;
+    background-color: $brand-main;
+  }
 }
 
 .u-drop-cap {
@@ -190,44 +108,20 @@
   }
 }
 
-.u-intro-text {
-  font-family: $font-serif;
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: 400;
-  color: $v2-black;
-  letter-spacing: 0.02em;
-  margin: 0 0 64px 0;
-  @include mq($from: tablet) {
-    margin: 0 0 72px 0;
-  }
-}
-
-.u-standfirst {
-  font-family: $font-serif;
-  color: $v2-black;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.56;
-  @include mq($from: tablet) {
-    line-height: 1.3;
-  }
-}
-
 .u-text--blue {
-  color: $v2-blue;
+  color: $brand-main;
 }
 
 .u-text--grey {
-  color: $v2-grey-2;
+  color: $mid-grey;
 }
 
-.u-grey-a {
-  color: $v2-grey-2;
+.u-link--grey {
+  color: $mid-grey;
   text-decoration: underline;
   border-bottom: none;
   &:hover {
-    color: $v2-blue;
+    color: $brand-main;
     text-decoration: none;
     border-bottom: none;
   }
@@ -244,38 +138,24 @@
   }
 }
 
-.u-text--15 {
-  font-family: $font-sans;
-  font-size: 15px;
-  line-height: 1.6;
-  font-weight: 400;
-}
-
-.u-text--18 {
-  font-family: $font-sans;
-  font-size: 18px;
-  line-height: 1.6;
-  font-weight: 400;
-}
-
 .u-link-basic {
-  color: $v2-dark-grey;
+  color: $dark-grey;
   text-decoration: none;
   transition: all 100ms ease-out;
   border-bottom: none;
   &:hover,
   &:visited:hover {
     border: none;
-    color: $v2-blue;
+    color: $brand-main;
     text-decoration: underline;
   }
   &:visited {
-    color: $v2-dark-grey;
+    color: $dark-grey;
     text-decoration: none;
     border-bottom: none;
   }
   &:active {
-    color: $v2-blue;
+    color: $brand-main;
     border-bottom: none;
     text-decoration: underline;
     // & > * {
@@ -287,8 +167,4 @@
   &:focus {
     border: none;
   }
-}
-
-.u-margin--no {
-  margin: 0;
 }

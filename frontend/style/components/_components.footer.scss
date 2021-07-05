@@ -2,7 +2,7 @@
 //   margin-top: $spacing-large;
 //   padding: $spacing-large $spacing;
 //   font-family: $font-sans;
-//   border-top: 1px solid $brand-lightest;
+//   border-top: 1px solid $light-blue;
 // }
 
 // .c-footer__wrapper {
@@ -47,7 +47,7 @@
 // .c-footer__color-icon {
 //   margin-bottom: $spacing;
 //   path, polygon {
-//     fill: $brand-dark;
+//     fill: $dark-blue;
 //   }
 // }
 
@@ -58,7 +58,7 @@
 //   margin-right: $spacing-tiny;
 //   margin-bottom: -4px;
 //   path, polygon {
-//     fill: $brand-dark;
+//     fill: $dark-blue;
 //   }
 // }
 
@@ -71,8 +71,7 @@
 
 .c-footer {
   padding: 80px 0;
-  .u-text--18,
-  .u-heading--5 {
+  .u-secondary-heading {
     margin-top: 0;
   }
   .c-btn {
@@ -103,7 +102,7 @@
 .c-footer__col1 {
   width: 100%;
   max-width: 400px;
-  .u-heading--5 {
+  .u-secondary-heading {
     line-height: 1.6;
   }
   @include mq($from: tablet) {
@@ -131,7 +130,7 @@
   flex-direction: column;
   justify-content: space-between;
   a {
-    color: $v2-grey-2;
+    color: $mid-grey;
     font-weight: 400;
     border: none;
     margin-bottom: 8px;

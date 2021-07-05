@@ -1,5 +1,5 @@
 .c-simple-hero {
-  background: $brand-dark;
+  background: $dark-blue;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -14,7 +14,7 @@
 }
 .c-simple-hero--light {
   background: $white;
-  color: $brand-dark;
+  color: $dark-blue;
   @include mq($from: tablet) {
     min-height: 360px;
     padding: $spacing $spacing 0;
@@ -44,8 +44,8 @@
   border: 2px solid $brand-lighter;
 
   &:hover {
-    border: 2px solid $white-on-blue;
-    color: $white-on-blue;
+    border: 2px solid $light-blue;
+    color: $light-blue;
   }
 }
 .c-simple-hero__mailto {

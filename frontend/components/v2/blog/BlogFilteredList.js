@@ -222,7 +222,7 @@ export const BlogFilteredList = props => {
               {pages.map(page => {
                 let activePage = null;
                 if (currentPage === page) {
-                  activePage = { color: '$brand-dark' };
+                  activePage = { color: '$dark-blue' };
                 }
                 return (
                   <li key={page}>

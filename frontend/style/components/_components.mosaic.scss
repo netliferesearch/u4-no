@@ -245,7 +245,7 @@
   .c-mosaic_item:nth-child(1) {
     .c-mosaic_item-content {
       @include mq($from: tablet) {
-        background-color: $brand-dark;
+        background-color: $dark-blue;
         .c-mosaic_item-content__meta,
         .c-mosaic_item-title {
           color: $white;
@@ -265,13 +265,13 @@
   color: $white;
 }
 .c-mosaic_item:nth-child(4n + 3) {
-  background-color: $brand-dark;
+  background-color: $dark-blue;
   color: $white;
 }
 .c-mosaic_item:nth-child(4n + 4) {
-  border: solid 1px $brand-dark;
+  border: solid 1px $dark-blue;
   background-color: $white;
-  color: $brand-dark;
+  color: $dark-blue;
 }
 
 // Content inside the grid items
@@ -350,9 +350,9 @@ a.c-mosaic_item:hover {
   background-color: $brand-dark-hover;
 }
 .c-mosaic_item:nth-child(4n + 4):hover {
-  background-color: $brand-lightest;
-  color: $brand-dark;
-  border: 1px solid $brand-dark;
+  background-color: $light-blue;
+  color: $dark-blue;
+  border: 1px solid $dark-blue;
 }
 .c-mosaic_item:nth-child(4n + 5):hover {
   background-color: $brand-medium;

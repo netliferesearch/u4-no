@@ -8,7 +8,7 @@
 }
 
 .c-search-results-v2__topbar {
-  color: $brand-dark;
+  color: $dark-blue;
   margin: $spacing 0 $spacing-large;
   display: flex;
   flex-wrap: wrap;
@@ -82,12 +82,12 @@
 
 .c-search-results-v2__items {
   list-style-type: none;
-  color: $brand-dark;
+  color: $dark-blue;
   font-family: $font-sans;
   margin: $spacing 0;
   border-bottom: none;
   em {
-    background-color: $brand-lightest;
+    background-color: $light-blue;
   }
   @include mq($from: tablet) {
     margin: $spacing-large 0;
@@ -95,7 +95,7 @@
   &:after {
     content:"";
     display: block;
-    background:$lightGrey;
+    background:$light-grey;
     width:100%;
     height:1px;
     margin-top:$spacing-large;
@@ -134,7 +134,7 @@
 }
 .c-search-results-v2__items-tab {
   @include inuit-font-size($font-size-nano, $line-height-tiny);
-  background-color: $brand-dark;
+  background-color: $dark-blue;
   color:$white;
   font-weight:400;
   text-transform:uppercase;

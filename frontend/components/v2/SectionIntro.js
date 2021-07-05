@@ -5,8 +5,8 @@ export const SectionIntro = ({ title, text, slug, label }) => {
   return (
     <div className="c-section-intro">
       <div>
-        <h2 className="u-heading--2">{title}</h2>
-        <p className="u-text--18 u-text--grey">{text}</p>
+        <h2 className="u-primary-heading">{title}</h2>
+        <p className=" u-text--grey">{text}</p>
       </div>
       <div>
         {/* <Link href={slug}>
