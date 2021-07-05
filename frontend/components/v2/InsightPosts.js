@@ -38,7 +38,7 @@ export const PostList = ({ insights }) => {
                         <Topics title={false} topics={firstPost.topics} hr={false} linkType={'5'} />
                       )}
                     </div>
-                    <h3 className="u-primary-heading">{firstPost.title}</h3>
+                    <h3 className="u-black-32-heading">{firstPost.title}</h3>
                     <p className="c-featured-post__intro">{firstPost.standfirst}</p>
                     <p className="c-featured-post__name">
                       {firstPost.authors.length > 0 ? (
@@ -81,7 +81,7 @@ export const PostList = ({ insights }) => {
                                 linkType={'5'}
                               />
                             )}
-                            <h3 className="u-secondary-heading">{post.title}</h3>
+                            <h3 className="u-heading--5">{post.title}</h3>
                           </div>
                           <p className="c-featured-post__date">
                             {post.date ? dateToString({ start: post.date.utc }) : null}

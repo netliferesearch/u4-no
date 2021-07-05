@@ -137,16 +137,16 @@
 }
 
 .c-article__pullQuote {
-  @include inuit-font-size($font-size-normal, $line-height-normal);
+  @include inuit-font-size(18px, 28px);
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-large, $line-height-normal);
+    @include inuit-font-size($font-size-normal, 34px);
   }
-  font-family: $font-sans;
-  font-weight: 300;
-  color: $dark-grey;
-  font-style: italic;
+  font-family: $font-serif;
+  font-weight: 400;
+  color: $dark-blue;
+  //font-style: italic;
   text-align: left;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   padding: 0 $spacing-large;
   @include mq($from: tablet) {
     padding: 0 $spacing-large;

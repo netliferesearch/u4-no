@@ -47,10 +47,47 @@
 .u-secondary-h1 {
   font-size: $font-size-tiny;
   line-height: 22px;
+  color: $dark-blue;
   @include mq($from: tablet) {
     font-size: $font-size-normal;
     line-height: 1;
   }
+}
+
+.u-secondary-h2 {
+  font-size: $font-size-micro;
+  line-height: $font-size-small;
+  @include mq($from: tablet) {
+    font-size: $font-size-tiny;
+    line-height: 22px;
+  }
+}
+
+.u-secondary-h3 {
+  font-weight: 700;
+  font-size: $font-size-nano;
+  line-height: $line-height-mid;
+}
+
+.u-secondary-h4 {
+  font-size: $font-size-nano;
+  line-height: $font-size-micro;
+}
+
+.u-body {
+  font-size: $font-size-micro;
+  line-height: $font-size-small;
+}
+
+.u-body--grey {
+  font-size: $font-size-micro;
+  line-height: $font-size-small;
+  color: $mid-grey;
+}
+
+.u-body--small {
+  font-size: $font-size-nano;
+  line-height: $font-size-micro;
 }
 
 .u-detail--blue {
@@ -68,7 +105,7 @@
     background-color: $brand-main;
   }
   @include mq($from: tablet) {
-    padding-bottom: 6px;
+    padding-bottom: 18px; 
     &:after {
       height: 6px;
       width: 26px;
