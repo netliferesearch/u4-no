@@ -2,18 +2,18 @@ import React from 'react';
 import serializers from '../../components/serializers';
 import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
-import { Layout } from '../../components/v2/Layout';
-import { BlogSidebar } from '../../components/v2/blog/BlogSidebar';
-import { BreadCrumbV2 } from '../../components/v2/BreadCrumbV2';
+import { Layout } from '../../components/Layout';
+import { BlogSidebar } from '../../components/blog/BlogSidebar';
+import { BreadCrumbV2 } from '../../components/BreadCrumbV2';
 import findFootnotes from '../../components/findFootnotes';
 import footnoteSerializer from '../../components/footnoteSerializer';
-import { BlogHeader } from '../../components/v2/blog/BlogHeader';
-import { Keywords } from '../../components/v2/Keywords';
-import { Newsletter } from '../../components/v2/Newsletter';
-import { AboutAuthor } from '../../components/v2/AboutAuthor';
-import { Disclaimers } from '../../components/v2/Disclaimers';
-import { Share } from '../../components/v2/ShareOnSocialMedia';
-import { PhotoCaptionCredit } from '../../components/v2/PhotoCaptionCredit';
+import { BlogHeader } from '../../components/blog/BlogHeader';
+import { Keywords } from '../../components/Keywords';
+import { Newsletter } from '../../components/Newsletter';
+import { AboutAuthor } from '../../components/AboutAuthor';
+import { Disclaimers } from '../../components/Disclaimers';
+import { Share } from '../../components/ShareOnSocialMedia';
+import { PhotoCaptionCredit } from '../../components/PhotoCaptionCredit';
 import { useEffect } from 'react';
 
 

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DataLoader from '../../helpers/data-loader';
-import { Layout } from '../../components/v2/Layout';
+import { Layout } from '../../components/Layout';
 import Footer from '../../components/Footer';
 import PartnerAgencies from '../../components/PartnerAgencies';
-import { FeaturedPost } from '../../components/v2/FeaturedPosts';
-import { CTA } from '../../components/v2/Guidance';
-import { PostList } from '../../components/v2/InsightPosts';
-import { CardList } from '../../components/v2/RecentPublications';
-import { FeatureList } from '../../components/v2/FeatureList';
-import { TopicCardList } from '../../components/v2/CorruptionByTopic';
+import { FeaturedPost } from '../../components/FeaturedPosts';
+import { CTA } from '../../components/Guidance';
+import { PostList } from '../../components/InsightPosts';
+import { CardList } from '../../components/RecentPublications';
+import { FeatureList } from '../../components/FeatureList';
+import { TopicCardList } from '../../components/CorruptionByTopic';
 
 const Frontpage = ({
   data: { frontPage = {}, topics = {}, featured = {}, insights = [], events = [] },
@@ -70,12 +70,6 @@ const Frontpage = ({
         <Footer />
       </section>
     </div>
-
-    {/* <section className="o-wrapper">
-    <div className="o-wrapper-section">
-      <NewsAndEvents items={events} title={'News & events'} />
-    </div>
-  </section> */}
   </Layout>
 );
 
@@ -95,7 +89,7 @@ export default DataLoader(Frontpage, {
       "frontPage": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0]{id,title,sections,"imageUrl": featuredImage.asset->url,
       "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title, date, standfirst, topics[]->{title}, "slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title, "imageUrl": featuredImage.asset->url, "pdfFile": pdfFile.asset->url}[0..2]},
       "topics": *[_type == "topics"] | order(title) {_id, title, longTitle, slug, "imageUrl": featuredImage.asset->url}[0..5],
-      "featured": {"publication": *[_type  == "publication"] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0],
+      "featured": {"publication": *[_type  == "publication"] | order(date.utc desc) {_id, _type, "publicationType": publicationType->title, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0],
       "blog": *[_type  == "blog-post" && references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..1],},
       "insights": *[_type == "blog-post" && !references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..2],
       "events": *[_type in ["course", "event"]] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}}[0..2],

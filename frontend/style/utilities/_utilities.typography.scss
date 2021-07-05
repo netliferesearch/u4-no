@@ -75,17 +75,20 @@
 }
 
 .u-body {
-  font-size: $font-size-micro;
-  line-height: $font-size-small;
+  font-family: $font-sans;
+  font-size: $font-size-tiny;
+  line-height: $font-size-normal;
 }
 
 .u-body--grey {
-  font-size: $font-size-micro;
-  line-height: $font-size-small;
+  font-family: $font-sans;
+  font-size: $font-size-tiny;
+  line-height: $font-size-normal;
   color: $mid-grey;
 }
 
 .u-body--small {
+  font-family: $font-sans;
   font-size: $font-size-nano;
   line-height: $font-size-micro;
 }
@@ -105,7 +108,7 @@
     background-color: $brand-main;
   }
   @include mq($from: tablet) {
-    padding-bottom: 18px; 
+    padding-bottom: 18px;
     &:after {
       height: 6px;
       width: 26px;

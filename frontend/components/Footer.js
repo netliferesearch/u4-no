@@ -3,8 +3,8 @@ import BEMHelper from 'react-bem-helper';
 import Logo from './Logo';
 import Link from 'next/link';
 import CmiLogo from './icons/CmiLogo';
-import { FacebookIcon, TwitterIcon, LinkedInIcon } from './v2/icons/SocialIcons';
-import { Newsletter } from './v2/Newsletter';
+import { FacebookIcon, TwitterIcon, LinkedInIcon } from './icons/SocialIcons';
+import { Newsletter } from './Newsletter';
 
 const classes = BEMHelper({
   name: 'footer',

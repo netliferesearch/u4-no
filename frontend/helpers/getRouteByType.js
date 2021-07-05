@@ -45,3 +45,33 @@ export const getRouteByType = publicationType => {
   }
   return href;
 };
+
+export const getPostType = item => {
+  const itemType = item._type;
+  let typeTitle = '';
+console.log(item)
+  switch (itemType) {
+    case 'publication':
+      typeTitle =
+        item.publicationType && typeof item.publicationType === 'string'
+          ? item.publicationType
+          : '';
+      break;
+    case 'course':
+      typeTitle = 'Online course';
+      break;
+    case 'event':
+      typeTitle = 'Workshop';
+      break;
+    case 'blog-post':
+      typeTitle = 'Blog';
+      break;
+    case 'article':
+      typeTitle = 'Article';
+      break;
+    default:
+      typeTitle = '';
+  }
+
+  return typeTitle;
+};

@@ -414,7 +414,7 @@
     h3 {
       color: $brand-main;
       //border-color: transparent;
-      text-decoration: underline;
+      //text-decoration: underline;
     }
   }
   &:focus {
@@ -460,25 +460,25 @@
   }
 }
 .c-featured-post__intro {
-  font-family: $font-serif;
-  font-size: 15px;
-  line-height: 1.5;
-  font-weight: 400;
-  color: $mid-grey;
-  margin-bottom: $spacing;
-  @include mq($from: tablet) {
-    font-size: $font-size-small;
-    line-height: 1.33;
-  }
+  // font-family: $font-serif;
+  // font-size: 15px;
+  // line-height: 1.5;
+  // font-weight: 400;
+  // color: $mid-grey;
+  // margin-bottom: $spacing;
+  // @include mq($from: tablet) {
+  //   font-size: $font-size-small;
+  //   line-height: 1.33;
+  // }
 }
 
 .c-featured-post__date {
-  font-family: $font-sans;
-  color: $mid-grey;
-  font-size: 15px;
-  line-height: 1.6;
-  font-weight: 400;
-  margin: 0;
+  // font-family: $font-sans;
+   color: $mid-grey;
+  // font-size: 15px;
+  // line-height: 1.6;
+  // font-weight: 400;
+  // margin: 0;
 }
 
 .c-featured-post__name {

@@ -13,7 +13,7 @@ import PartnerLogo7 from './icons/PartnerLogo7';
 import PartnerLogo8 from './icons/PartnerLogo8';
 import PartnerLogo9 from './icons/PartnerLogo9';
 import PartnerLogoCanada from './icons/PartnerLogoCanada';
-import { SectionIntro } from './v2/SectionIntro';
+import { SectionIntro } from './SectionIntro';
 
 const classes = BEMHelper({
   name: 'partnerAgencies',
