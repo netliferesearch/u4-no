@@ -4,10 +4,10 @@ import Link from 'next/link';
 export const CTA = () => {
   return (
     <div className="c-cta">
-      <h2 className="u-primary-heading">Inform your work with U4’s quality research and practical guidance</h2>
-      <p className="u-text--grey">Sustainable and inclusive development starts where corruption ends</p>
+      <h1 className="u-primary-heading">Inform your work with U4’s quality research and practical guidance</h1>
+      <p className="">Sustainable and inclusive development starts where corruption ends</p>
       <Link href="/about-u4">
-        <a className="c-btn c-btn--pri">
+        <a className="c-btn">
           <span>Learn more about us</span>
         </a>
       </Link>
