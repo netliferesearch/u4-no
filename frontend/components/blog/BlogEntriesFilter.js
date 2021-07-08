@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import ClientOnlyPortal from '../ClientOnlyPortal';
 import { CloseButton, TextButton } from '../buttons';
-import { useOnClickOutside, useLockBodyScroll } from '../../../helpers/hooks';
+import { useOnClickOutside, useLockBodyScroll } from '../../helpers/hooks';
 
 /**
  * V2 - Blog filter component to be used in BlogPage component

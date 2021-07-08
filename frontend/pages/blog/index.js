@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DataLoader from '../../helpers/data-loader';
 import { Layout } from '../../components/Layout';
-import { BreadCrumbV2 } from '../../components/v2/BreadCrumbV2';
-import BlogFilteredList from '../../components/v2/blog/BlogFilteredList';
+import { BreadCrumbV2 } from '../../components/BreadCrumbV2';
+import BlogFilteredList from '../../components/blog/BlogFilteredList';
 import { wrapInRedux } from '../../helpers/redux-store-wrapper';
 
 const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {

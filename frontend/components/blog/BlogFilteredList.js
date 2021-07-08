@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Pagination from 'react-paginating';
-import dateToString from '../../../helpers/dateToString';
+import dateToString from '../../helpers/dateToString';
 import { BlogEntriesFilter } from './BlogEntriesFilter';
 import { TextButton } from '../buttons';
 import { BlogAuthorsShortList } from './BlogAuthorsShortList';
-import { ArrowPrev } from '../../icons/ArrowPrev';
-import { ArrowNext } from '../../icons/ArrowNext';
-import { DoubleChevron } from '../../icons/DoubleChevron';
-import LinkToItem from '../../LinkToItem';
+import { ArrowPrev } from '../icons/ArrowPrev';
+import { ArrowNext } from '../icons/ArrowNext';
+import { DoubleChevron } from '../icons/DoubleChevron';
+import LinkToItem from '../LinkToItem';
 import {
   clearBlogFilters,
   updateBlogFilters,
   updateBlogPageNum,
-} from '../../../helpers/redux-store';
+} from '../../helpers/redux-store';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
