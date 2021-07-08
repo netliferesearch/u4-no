@@ -14,7 +14,7 @@ export const FeaturedPost = ({ featured }) => {
       <div className="c-featured-post__list">
         {featured
           ? featured.map((post, index) => (
-              <div key={post} className="c-featured-post">
+              <div key={index} className="c-featured-post">
                 <LinkToItem type={post._type} slug={post.slug}>
                   <a className={`c-featured-post__item ${index === 0 ? "c-featured-post__item--full-width" : ""}`}>
                     {post.imageUrl ? (

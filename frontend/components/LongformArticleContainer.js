@@ -45,6 +45,7 @@ const LongFormArticleContainer = (props = {}) => {
       headsUp = [],
       updatedVersion = false,
       language = '',
+      topics = [],
     } = {},
     shortversion = false,
     headComponentConfigOverride,
@@ -82,7 +83,7 @@ const LongFormArticleContainer = (props = {}) => {
       showTopTab={!isArticleMenuOpen}
       headComponentConfig={headComponentConfig}
     >
-      {console.log("LongFormArticleContainer V2 return")}
+      {console.log("LongFormArticleContainer V2 return", props )}
       {!isArticleMenuOpen && (
         <article className="c-article-v2">
           <span id="js-top" />
