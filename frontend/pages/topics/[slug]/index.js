@@ -9,7 +9,7 @@ import Footer from '../../../components/Footer';
 import Layout from '../../../components/Layout';
 import Team from '../../../components/Team';
 import Mosaic from '../../../components/Mosaic';
-import Newsletter from '../../../components/Newsletter';
+import { Newsletter } from '../../../components/Newsletter';
 import PartnerPromo from '../../../components/PartnerPromo';
 import LinkList from '../../../components/LinkList';
 

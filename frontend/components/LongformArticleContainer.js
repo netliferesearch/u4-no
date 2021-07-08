@@ -25,16 +25,37 @@ const LongFormArticleContainer = (props = {}) => {
   console.log("LongFormArticleContainer V2")
   const {
     data: {
-      title = '',
       lead = '',
+      _type = '',
+      longTitle = '',
+      title = '',
+      authors = [],
+      date = {},
       standfirst = '',
+      mainPoints = [],
+      resources = [],
+      methodology = [],
+      references = [],
       featuredImage = {},
       relatedUrl = {},
+      publicationType = {},
+      articleType = [],
+      recommendedResources = [],
+      relatedResources = [],
+      headsUp = [],
+      updatedVersion = false,
+      language = '',
     } = {},
+    shortversion = false,
     headComponentConfigOverride,
     isArticleMenuOpen,
     showLoadingScreen,
+    toggleArticleMenu,
+    toggleLoadingScreen,
+    isPublicationDrawerOpen,
+    BreadCrumbComponent = null,
     url = {},
+    translation = {},
   } = props;
 
   const headComponentConfig =
