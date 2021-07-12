@@ -7,6 +7,7 @@ import LogoU4 from './icons/LogoU4';
 import { CloseButton } from './buttons';
 import { Contents } from './Contents';
 import { Topics } from './Topics';
+import LinkToItem from './LinkToItem';
 
 const classes = BEMHelper({
   name: 'pubHeader',
@@ -108,12 +109,12 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
             <div className="c-pubHeader__row">
               {summary.length > 0 && (
                 <div>
-                  <Link href="publication.shortVersion" params={{ slug: slug.current }}>
+                  <LinkToItem type="shortVersionPublication" slug={slug.current}>
                     <a className="c-btn c-btn--qua">
                       <span {...classes('button-text')}>Read short version</span>
                       {/* <div {...classes('button-icon')} /> */}
                     </a>
-                  </Link>
+                  </LinkToItem>
                 </div>
               )}
               {pdfAsset && (

@@ -2,12 +2,13 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { getRouteByType } from '../../helpers/getRouteByType';
 import Link from 'next/link';
+import LinkToItem from '../LinkToItem';
 const classes = BEMHelper({
   name: 'pubHeader',
   prefix: 'c-',
 });
 
-const PublicationArticleHeader = ({
+export const PublicationArticleHeader = ({
   title = '',
   subtitle = '',
   slug = {},
@@ -87,12 +88,12 @@ const PublicationArticleHeader = ({
             ) : null}
 
             {summary.length > 0 && (
-              <Link href="publication.shortVersion" params={{ slug: slug.current }}>
+              <LinkToItem type="shortVersionPublication" slug={slug.current}>
                 <a className="c-btn c-btn--5">
                   <span {...classes('button-text')}>Read short version</span>
                   {/* <div {...classes('button-icon')} /> */}
                 </a>
-              </Link>
+              </LinkToItem>
             )}
           </div>
         </div>

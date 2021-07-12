@@ -23,7 +23,7 @@ const trimEmptyBlocks = blocks =>
     return true;
   });
 
-const PublicationNotifications = ({
+export const PublicationNotifications = ({
   headsUp = false,
   updatedVersion = false,
   date = {},

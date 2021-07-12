@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import dateToString from '../helpers/dateToString';
-import { AuthorList } from './AuthorList';
+import AuthorList  from './AuthorList';
 import TableOfContentsSidebar from './TableOfContents/TableOfContentsSidebar';
 import { PublicationContent } from './publication/PublicationContent';
 import { PublicationArticleHeader } from './publication/PublicationArticleHeader';
@@ -21,7 +21,7 @@ import { Reader } from './publication/Reader';
 import LongformArticle from './LongformArticle';
 import TnrcFooter from './TnrcFooter';
 
-const LongFormArticleContainer = (props = {}) => {
+export const LongFormArticleContainer = (props = {}) => {
   console.log("LongFormArticleContainer V2")
   const {
     data: {
@@ -45,6 +45,7 @@ const LongFormArticleContainer = (props = {}) => {
       headsUp = [],
       updatedVersion = false,
       language = '',
+      legacypdf = {},
       topics = [],
       keywords = [],
     } = {},
@@ -177,7 +178,7 @@ const LongFormArticleContainer = (props = {}) => {
                 {BreadCrumbComponent && BreadCrumbComponent}
               </div>
               <div className="o-wrapper-section c-article__row">
-                <LongformArticle content={shortversionContent} {...props.data} />
+                <LongformArticle content={shortversion ? props.content : ''} {...props.data} />
               </div>
             </section>
           )}
@@ -200,37 +201,25 @@ const LongFormArticleContainer = (props = {}) => {
   );
 };
 
-export default connect(
-  state => state,
-  dispatch => ({
-    toggleArticleMenu: bindActionCreators(toggleArticleMenu, dispatch),
-    toggleLoadingScreen: bindActionCreators(toggleLoadingScreen, dispatch),
-  })
-)(LongFormArticleContainer);
+export default LongFormArticleContainer
+
+// export default connect(
+//   state => state,
+//   dispatch => ({
+//     toggleArticleMenu: bindActionCreators(toggleArticleMenu, dispatch),
+//     toggleLoadingScreen: bindActionCreators(toggleLoadingScreen, dispatch),
+//   })
+// )(LongFormArticleContainer);
 
 
-// import React from 'react';
-// import BlockToContent from '@sanity/block-content-to-react';
-// import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-
-// import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
-// import dateToString from '../helpers/dateToString';
 
 // import Footer from './Footer';
-// import Layout from './Layout';
-// import LongformArticle from './LongformArticle';
-// import PublicationArticleHeader from './PublicationArticleHeader';
 // import TableOfContentsButton from './TableOfContents/TableOfContentsButton';
-// import TableOfContentsSidebar from './TableOfContents/TableOfContentsSidebar';
 // import TableOfContentsBase from './TableOfContents/TableOfContentsBase';
 // import RecommendedResources from './RecommendedResources';
-// import ToggleBlock from './ToggleBlock';
-// import AuthorList from './AuthorList';
+// import { ToggleBlock } from './ToggleBlock';
 // import PublicationNotification from './PublicationNotification';
 // import TnrcHeader from './TnrcHeader';
-// import TnrcFooter from './TnrcFooter';
-
 // import CreativecommonsCC from './icons/CreativecommonsCC';
 // import CreativecommonsBY from './icons/CreativecommonsBY';
 // import CreativecommonsNC from './icons/CreativecommonsNC';

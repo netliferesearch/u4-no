@@ -13,7 +13,7 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const PublicationContent = ({
+export const PublicationContent = ({
   standfirst = '',
   lead = '',
   abstract = '',
