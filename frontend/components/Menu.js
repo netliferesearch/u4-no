@@ -150,7 +150,7 @@ export const Menu = props => {
                       </a>
                     </li>
                     <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/u4-in-country-workshop-topics">
+                      <a {...menuClasses('link')} href="/workshops-and-events">
                         Workshops
                       </a>
                     </li>

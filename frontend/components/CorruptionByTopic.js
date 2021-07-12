@@ -22,11 +22,11 @@ export const TopicCardList = ({ topics }) => {
                     <p className="u-text--grey">{topic.longTitle}</p>
                   </div>
                   <div>
-                    <Link href={`/topics/${topic.slug.current}`}>
-                      <a className="c-btn c-btn--sec">
+                    {/* <Link href={`/topics/${topic.slug.current}`}> */}
+                      <div className="c-btn c-btn--sec">
                         <span>Learn more</span>
-                      </a>
-                    </Link>
+                      </div>
+                    {/* </Link> */}
                   </div>
                 </div>
               </a>

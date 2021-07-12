@@ -4,7 +4,7 @@ import DataLoader from '../helpers/data-loader';
 import LongformArticleContainer from '../components/LongformArticleContainer';
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
-import Newsletter from '../components/Newsletter';
+import { Newsletter } from '../components/Newsletter';
 import ServiceArticle from '../components/ServiceArticle';
 import SimpleHero from '../components/SimpleHero';
 import { wrapInRedux } from '../helpers/redux-store-wrapper';

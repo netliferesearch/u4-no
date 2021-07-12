@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import Scrollchor from 'react-scrollchor';
+import { Scrollchor } from 'react-scrollchor';
 import serializers from '../serializers';
 import LongformArticle from '../LongformArticle';
 import PdfViewer from '../PdfViewer';

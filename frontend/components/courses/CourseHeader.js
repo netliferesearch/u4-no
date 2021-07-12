@@ -1,9 +1,9 @@
 import React from 'react';
-import { Share } from './ShareOnSocialMedia';
+import { Share } from '../ShareOnSocialMedia';
 import Link from 'next/link';
 import ReactPlayer from 'react-player';
 import { RegisterForm } from '../RegisterForm';
-import { Topics } from './Topics';
+import { Topics } from '../Topics';
 
 export const CourseHeader = ({ data }) => {
   const {
@@ -43,7 +43,7 @@ export const CourseHeader = ({ data }) => {
             controls
             width="100%"
             height="0"
-            vimeoConfig={{
+            config={{
               preload: true,
             }}
             style={{

@@ -1,7 +1,6 @@
 import React from 'react';
 import dateToString from '../helpers/dateToString';
 import LinkToItem from './LinkToItem';
-import { BlogAuthorsShortList } from './blog/BlogAuthorsShortList';
 import { Topics } from './Topics';
 import { getPostType } from '../helpers/getRouteByType';
 

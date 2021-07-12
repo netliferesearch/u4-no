@@ -3,7 +3,7 @@ import DataLoader from '../../helpers/data-loader';
 
 import Footer from '../../components/Footer';
 import Layout from '../../components/Layout';
-import Newsletter from '../../components/Newsletter';
+import { Newsletter } from '../../components/Newsletter';
 import ServiceArticle from '../../components/ServiceArticle';
 import SimpleHero from '../../components/SimpleHero';
 

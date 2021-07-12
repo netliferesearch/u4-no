@@ -5,7 +5,7 @@ import slugify from 'slugify';
 import ReactPlayer from 'react-player';
 import buildUrl from '../helpers/buildUrl';
 import BarChart from './BarChart';
-import { ArrowRight } from './icons/ArrowRight';
+import ArrowRight from './icons/ArrowRight';
 import { PersonBasic } from './PersonBasic';
 import { TextImageBlock } from './TextImageBlock';
 import dynamic from 'next/dynamic';
@@ -206,7 +206,7 @@ const serializers = {
                 controls
                 width="100%"
                 height="0"
-                vimeoConfig={{
+                config={{
                   preload: true,
                 }}
                 style={{

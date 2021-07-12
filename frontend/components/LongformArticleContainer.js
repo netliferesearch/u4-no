@@ -46,6 +46,7 @@ const LongFormArticleContainer = (props = {}) => {
       updatedVersion = false,
       language = '',
       topics = [],
+      keywords = [],
     } = {},
     shortversion = false,
     headComponentConfigOverride,
