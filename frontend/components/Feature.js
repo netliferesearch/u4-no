@@ -8,7 +8,7 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Feature = ({ title = '', text = '', icon = () => null, iconUrl = '' }) => (
+const Feature = ({ title = '', text = '', icon = () => null, iconUrl = {} }) => (
   <div className="c-feature-list__item">
     {icon && <div {...classes('icon')}>{icon()}</div>}
     {iconUrl && (
@@ -21,15 +21,15 @@ const Feature = ({ title = '', text = '', icon = () => null, iconUrl = '' }) => 
   </div>
 );
 
-Feature.propTypes = {
-  title: PropTypes.string.isRequired,
-  icon: PropTypes.func,
-  iconUrl: PropTypes.string,
-};
+// Feature.propTypes = {
+//   title: PropTypes.string.isRequired,
+//   icon: PropTypes.func,
+//   iconUrl: PropTypes.string,
+// };
 
-Feature.defaultProps = {
-  icon: () => null,
-  iconUrl: '',
-};
+// Feature.defaultProps = {
+//   icon: () => null,
+//   iconUrl: '',
+// };
 
 export default Feature;

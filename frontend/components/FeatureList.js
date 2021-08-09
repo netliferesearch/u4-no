@@ -40,10 +40,10 @@ export const FeatureList = ({ features = [], alt = false }) => {
           </div> */}
 
           {features.map((feature) => (
-            <div className="c-feature-list__item">
+            <div className="c-feature-list__item" key={feature._key}>
               {console.log(feature)}
               <Feature
-                key={feature._key}
+                
                 title={feature.image.title}
                 text={feature.featureText}
                 iconUrl={feature.image}
