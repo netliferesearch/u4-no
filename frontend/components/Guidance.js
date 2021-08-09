@@ -1,16 +1,37 @@
 import React from 'react';
 import Link from 'next/link';
+import { urlObjectKeys } from 'next/dist/next-server/lib/utils';
+import { ArrowNext } from './icons/ArrowNext';
+// import HomePageHero from '../public/HomePageHero';
 
 export const CTA = () => {
   return (
-    <div className="c-cta">
-      <h1 className="u-primary-heading">Inform your work with U4’s quality research and practical guidance</h1>
-      <p className="">Sustainable and inclusive development starts where corruption ends</p>
-      <Link href="/about-u4">
-        <a className="c-btn">
-          <span>Learn more about us</span>
-        </a>
-      </Link>
+    <div
+      className="c-cta"
+      style={{
+        backgroundImage: `linear-gradient(
+          90deg
+          , rgb(0 0 0 / 57%) 2.51%, rgb(11 11 11 / 54%) 25.95%, rgb(11 11 11 / 59%) 45.68%, rgba(255, 255, 255, 0) 99.64%),url('../public/HomePageHero.png')`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center center',
+        height: '650px',
+      }}
+    >
+      <div className="o-wrapper-medium">
+        <h1 className="u-primary-heading ">
+          Inform your work with U4’s quality research and practical guidance
+        </h1>
+        <p className="c-cta-paragraph">
+          Sustainable and inclusive development starts where corruption ends
+        </p>
+        <Link href="/about-u4">
+          <a className="c-btn c-hyperlink">
+            Learn more about u4
+            <ArrowNext />
+          </a>
+        </Link>
+      </div>
     </div>
   );
 };

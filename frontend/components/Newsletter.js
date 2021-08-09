@@ -26,7 +26,7 @@ export const Newsletter = ({
   return (
     <div {...classes(null, null)}>
       <div {...classes('content')}>
-        <h4 {...classes('cta')}>{cta}</h4>
+        <h4 className="u-secondary-heading-white u-secondary-h1-white u-detail--white">{cta}</h4>
         <p className="c-newsletter__text u-hidden--desktop">{text2}</p>
         <form onSubmit={onFormSubmit}>
           <div {...classes('title-wrapper')}>
@@ -114,8 +114,6 @@ export const Newsletter = ({
 // };
 
 // export default Newsletter;
-
-
 
 // import Link from 'next/link';
 // import React, { Component } from 'react';

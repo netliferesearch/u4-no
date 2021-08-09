@@ -126,11 +126,9 @@ class SearchFieldV2 extends Component {
               Search to find topics, publications, people, services, and more:
             </label>
             <div className="c-search-v2__content">
-              <button {...classes('button')} type="submit" value="Search">
-                {this.state.loading ? <LoaderV2 /> : <SearchIcon />}
-              </button>
               <input
                 ref={this.inputReference}
+                placeholder="Search"
                 {...classes('input', modifier)}
                 {...getInputProps({
                   id: 'search',
@@ -172,6 +170,9 @@ class SearchFieldV2 extends Component {
                   },
                 })}
               />
+              <button {...classes('button')} type="submit" value="Search">
+                {this.state.loading ? <LoaderV2 /> : <SearchIcon />}
+              </button>
               {!isAlwaysOpen && (
                 <button {...classes('button')} type="button" onClick={triggerSearchMenu}>
                   ✕

@@ -1,7 +1,7 @@
 .c-newsletter-v2 {
   .c-newsletter {
     margin: $spacing-large auto;
-    max-width: 600px;
+    max-width: 100%;
   }
 
   .c-newsletter__content {
@@ -17,7 +17,7 @@
   }
   .c-newsletter__title-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     border: 1px solid $light-grey;
     margin: 0;
@@ -27,25 +27,29 @@
         color: $dark-grey;
       }
       .c-newsletter__input::placeholder {
-        color: $dark-grey;
+        color: $white;
       }
     }
     @include mq($from: tablet) {
-      margin: 0 0 32px 0;
+      margin: 32px 0 32px 0;
       padding: 4px;
     }
   }
   .c-btn--submit {
-    background-color: $v2-green;
+    background-color: transparent;
     font-family: $font-sans;
-    font-size: $font-size-micro;
+    font-size: 12px;
     line-height: 1.7;
     letter-spacing: 0.1px;
-    color: $white;
+    text-transform: uppercase;
+    color: $highlight-yellow;
     padding: 6px 10px;
+    margin-left: 28px;
+    border: 1px solid $highlight-yellow;
     &:hover {
       text-decoration: none;
-      background-color: $v2-dark-green;
+      background-color: $highlight-yellow;
+      color: #333333;
     }
     &:focus {
       text-decoration: none;
@@ -85,8 +89,9 @@
     font-size: 15px;
     line-height: 1.6;
     letter-spacing: 0.02em;
-    color: $dark-grey;
-    background-color: $white;
+    color: $white;
+    text-transform: uppercase;
+    // background-color: $white;
     margin: 0;
     padding: 5px 8px;
     transition: border 0.2s ease-out;
@@ -97,7 +102,7 @@
     }
   }
   ::placeholder {
-    color: $mid-grey;
+    color: $white;
     opacity: 1;
   }
 
@@ -117,13 +122,18 @@
 
 .c-newsletter-footer {
   .c-newsletter {
-    max-width: 530px;
+    max-width: 100%;
     margin: 0;
   }
   .c-newsletter__content {
     border: none;
     background-color: transparent;
     padding: 0;
+    @include mq($from: mobile, $until: desktop) {
+      h4 {
+        margin-top: 0;
+      }
+    }
   }
   .c-newsletter__cta {
     text-align: left;
@@ -133,9 +143,11 @@
   }
   .c-newsletter__title-wrapper {
     border: none;
-    background-color: #ffffff;
+    // background-color: #ffffff;
   }
   .c-newsletter__input {
-    max-width: 364px;
+    max-width: 550px;
+    background-color: transparent;
+    border-bottom: 1px solid $white;
   }
 }

@@ -12,6 +12,11 @@
   color: $white;
 }
 
+.u-heading--4 {
+  font-size: $font-size-normal;
+  line-height: 32px;
+}
+
 .u-section-underline {
   border: none;
   border-bottom: 1px solid $light-grey;
@@ -42,6 +47,23 @@
   letter-spacing: 0.15em;
   color: $dark-grey;
   text-transform: uppercase;
+}
+.u-secondary-heading-white {
+  font-family: $font-sans;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: $white;
+  text-transform: uppercase;
+}
+
+.u-secondary-h1-white {
+  font-size: $font-size-tiny;
+  line-height: 22px;
+  color: $white;
+  @include mq($from: tablet) {
+    font-size: $font-size-normal;
+    line-height: 1;
+  }
 }
 
 .u-secondary-h1 {
@@ -108,6 +130,33 @@
     background-color: $brand-main;
   }
   @include mq($from: tablet) {
+    margin: 0;
+    padding-top: 48px;
+    padding-bottom: 18px;
+    &:after {
+      height: 6px;
+      width: 26px;
+    }
+  }
+}
+
+.u-detail--white {
+  position: relative;
+  display: block;
+  padding-bottom: 12px;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 21px;
+    max-width: 100%;
+    background-color: $white;
+  }
+  @include mq($from: tablet) {
+    margin: 0;
+    padding-top: 48px;
     padding-bottom: 18px;
     &:after {
       height: 6px;

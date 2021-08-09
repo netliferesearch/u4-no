@@ -4,20 +4,36 @@ import LinkToItem from './LinkToItem';
 import { BlogAuthorsShortList } from './blog/BlogAuthorsShortList';
 import { SectionIntro } from './SectionIntro';
 import { Topics } from './Topics';
+import { getPostType } from '../helpers/getRouteByType';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import { ArrowNext } from './icons/ArrowNext';
 
 export const PostList = ({ insights }) => {
-  const firstPost = insights[0];
+  const responsive = {
+    0: { items: 1.2 },
+    568: { items: 1.2 },
+    980: { items: 3 },
+  };
+
+  const renderDotsItem = ({ isActive }) => {
+    return isActive ? (
+      <div className="c-carousel-dots-active" />
+    ) : (
+      <div className="c-carousel-dots-deactivated" />
+    );
+  };
   return (
     <div className="c-post-list c-post-list--2col">
       <SectionIntro
         title="Latest from the blog"
-        text="Lorem ipsum ipsum lorem"
+        // text="Lorem ipsum ipsum lorem"
         slug="/blog"
         label="View blog"
       />
 
-      <div className="c-post-list__row c-post-list__content">
-        <div className="c-post-list__col--1">
+      {/* <div className="c-post-list__row c-post-list__content"> */}
+      {/* <div className="c-post-list__col--1">
           {firstPost ? (
             <LinkToItem type={firstPost._type} slug={firstPost.slug}>
               <a className={`c-featured-post__item c-featured-post__item--big`}>
@@ -53,13 +69,19 @@ export const PostList = ({ insights }) => {
               </a>
             </LinkToItem>
           ) : null}
-        </div>
-        <div className="c-post-list__col--2">
-          {insights.length > 2
-            ? insights.map((post, index) =>
-                index !== 0 ? (
+        </div> */}
+
+      <div className="c-post-list__col">
+        <AliceCarousel
+          responsive={responsive}
+          renderDotsItem={renderDotsItem}
+          disableButtonsControls
+        >
+          {insights
+            ? insights.map((post, index, { length }) => (
+                <div key={index} className="c-blog-post__item-box">
                   <LinkToItem type={post._type} slug={post.slug} key={index}>
-                    <a className={`c-featured-post__item c-featured-post__item--small`}>
+                    <a className={`c-blog-post__item c-blog-post__item--small`}>
                       {post.imageUrl ? (
                         <div
                           className="c-featured-post__featured-image"
@@ -73,16 +95,14 @@ export const PostList = ({ insights }) => {
                       <div className="c-featured-post__text">
                         <div>
                           <div>
-                            {post.topics && (
-                              <Topics
-                                title={false}
-                                topics={post.topics}
-                                hr={false}
-                                linkType={'5'}
-                              />
+                            {getPostType(post) && (
+                              <h5 className="u-secondary-heading u-secondary-h4 u-detail--blue--small">
+                                {getPostType(post)}
+                              </h5>
                             )}
-                            <h3 className="u-heading--5">{post.title}</h3>
+                            <h4 className="u-primary-heading">{post.title}</h4>
                           </div>
+                          <p className="c-featured-post__intro u-body--grey">{post.standfirst}</p>
                           <p className="c-featured-post__date u-body--small">
                             {post.date ? dateToString({ start: post.date.utc }) : null}
                           </p>
@@ -90,12 +110,25 @@ export const PostList = ({ insights }) => {
                       </div>
                     </a>
                   </LinkToItem>
-                ) : null
-              )
+
+                  <div>
+                    {post.topics && (
+                      <Topics title={false} topics={post.topics} hr={false} linkType={'5'} />
+                    )}
+                  </div>
+                </div>
+              ))
             : null}
+        </AliceCarousel>
+        <div className="c-view-all">
+          <a className="c-topic-view-all" href="/blog">
+            View all
+            <ArrowNext />
+          </a>
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 

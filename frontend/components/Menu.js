@@ -3,11 +3,13 @@ import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import PicoSanity from 'picosanity';
-import { SearchIcon } from './icons/SearchIconV2';
-import  MenuIcon from './icons/MenuIcon';
-import  FbRound  from './icons/FbRound';
-import  TwitterRound  from './icons/TwitterRound';
-import  LinkedInRound  from './icons/LinkedInRound';
+import SearchIcon from './icons/SearchIcon';
+import MenuIcon from './icons/MenuIcon';
+import FbRound from './icons/FbRound';
+import TwitterRound from './icons/TwitterRound';
+import LinkedInRound from './icons/LinkedInRound';
+import SearchFieldV2 from './SearchField-v2';
+import { CloseSearch } from './icons/CloseSearch';
 
 const classes = BEMHelper({
   name: 'top-bar-v2',
@@ -20,13 +22,46 @@ const menuClasses = BEMHelper({
 });
 
 export const Menu = props => {
-  const { noSearch, triggerSearchMenu, setSearchOpen, activeSearchMenu } = props;
+  const {
+    noSearch,
+    triggerSearchMenu,
+    setSearchOpen,
+    activeSearchMenu,
+    searchOpen,
+    searchData,
+  } = props;
   const [activeMenu, setActiveMenu] = useState(false);
+  const [activeEventsMenu, setActiveEventsMenu] = useState(false);
+  const [activeAboutMenu, setActiveAboutMenu] = useState(false);
   const [data, setData] = useState('');
-  const triggerMenu = e => {
+  const triggerMenu = (e, string) => {
     e.preventDefault();
-    setActiveMenu(!activeMenu);
-    setSearchOpen(activeMenu);
+    if (string === 'ResearchTopics') {
+      setActiveMenu(!activeMenu);
+      setActiveEventsMenu(false);
+      setActiveAboutMenu(false);
+      setSearchOpen(false);
+    }
+    if (string === 'Learning') {
+      setActiveEventsMenu(!activeEventsMenu);
+      setActiveMenu(false);
+      setActiveAboutMenu(false);
+      setSearchOpen(false);
+    }
+    if (string === 'About') {
+      setActiveAboutMenu(!activeAboutMenu);
+      setActiveEventsMenu(false);
+      setActiveMenu(false);
+      setSearchOpen(false);
+    }
+    if (string === 'Search') {
+      setSearchOpen(!searchOpen);
+      setActiveAboutMenu(false);
+      setActiveEventsMenu(false);
+      setActiveMenu(false);
+    }
+
+    // setSearchOpen(activeMenu);
   };
 
   useEffect(
@@ -51,151 +86,329 @@ export const Menu = props => {
   useEffect(() => {
     Router.onRouteChangeStart = () => {
       setActiveMenu(false);
-      setSearchOpen(true);
+      setSearchOpen(false);
     };
   }, []);
 
   return (
-    <div>
-      <ul {...classes('menu')}>
-        {!noSearch && !activeSearchMenu && (
-          <li {...classes('menu-item')}>
-            <button onClick={triggerSearchMenu}>
-              Search
-              <span {...classes('menu-icon')}>
-                <SearchIcon />
-              </span>
-            </button>
-          </li>
-        )}
+    <div {...menuClasses('main-menu-box')}>
+      {/* <ul {...classes('menu')}> */}
+      {!noSearch && !activeSearchMenu && (
         <li {...classes('menu-item')}>
+          <button onClick={triggerSearchMenu}>
+            Search
+            <span {...classes('menu-icon')}>
+              <SearchIcon />
+            </span>
+          </button>
+        </li>
+      )}
+      <div {...menuClasses('items')}>
+        {searchOpen === false ? (
+          <>
+            {' '}
+            <h3
+              onClick={e => triggerMenu(e, 'ResearchTopics')}
+              {...menuClasses('heading', `${activeMenu === true ? 'active' : ''}`)}
+            >
+              Research Topics
+            </h3>
+            <h3
+              onClick={e => triggerMenu(e, 'Learning')}
+              {...menuClasses('heading', `${activeEventsMenu === true ? 'active' : ''}`)}
+            >
+              Learning &amp; events
+            </h3>
+            <h3
+              onClick={e => triggerMenu(e, 'About')}
+              {...menuClasses('heading', `${activeAboutMenu === true ? 'active' : ''}`)}
+            >
+              About Us
+            </h3>
+            <a href="/blog" {...menuClasses('link')}>
+              <h3 {...menuClasses('heading')}>The U4 Blog</h3>
+            </a>
+            <a href="/search?filters=publications-only&sort=year-desc" {...menuClasses('link')}>
+              <h3 {...menuClasses('heading')}>Publications</h3>
+            </a>
+            <h3
+              onClick={e => triggerMenu(e, 'Search')}
+              {...menuClasses('heading')}
+              // style={{ marginRight: '0' }}
+            >
+              Search
+            </h3>
+            <span
+              onClick={e => triggerMenu(e, 'Search')}
+              {...menuClasses('heading')}
+              style={{ marginRight: '0' }}
+            >
+              <SearchIcon />
+            </span>
+          </>
+        ) : (
+          <div {...menuClasses('search-holder')}>
+            <SearchFieldV2
+              isOpen={activeSearchMenu}
+              isAlwaysOpen={true}
+              triggerSearchMenu={triggerSearchMenu}
+              searchData={searchData}
+            />
+
+            <CloseSearch closeSearch={triggerMenu} />
+          </div>
+        )}
+      </div>
+
+      {/* <li {...classes('menu-item')}>
           <button onClick={triggerMenu} {...classes('menu-button', activeMenu && 'active')}>
             Menu
             <span {...classes('menu-icon')}>
               {activeMenu ? <img alt="Close icon" src="/static/close.svg" /> : <MenuIcon />}
             </span>
           </button>
-        </li>
-      </ul>
+        </li> */}
+      {/* </ul> */}
       {activeMenu ? (
-        <div>
-          <button onClick={triggerMenu} {...menuClasses('backdrop')} />
-          <div {...menuClasses('')}>
-            <div {...menuClasses('section')}>
-              {data && (
-                <div {...menuClasses('topics')}>
-                  <h4 {...menuClasses('heading', 'border-left')}>Corruption by topic</h4>
-                  <div {...menuClasses('border-left')}>
-                    <ul {...menuClasses('list')}>
-                      {data.slice(0, 14).map(topic => (
-                        <li {...menuClasses('list-item')} key={topic._id}>
-                          <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
-                            {topic.title}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <ul {...menuClasses('list', '', 'rest-topics')}>
-                    {data.slice(14, 22).map(topic => (
-                      <li {...menuClasses('list-item')} key={topic._id}>
-                        <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
-                          {topic.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              <div {...menuClasses('resources')}>
-                <div {...menuClasses('border-left')}>
-                  <h4 {...menuClasses('heading')}>Resources</h4>
-                  <ul {...menuClasses('list')}>
-                    <li {...menuClasses('list-item')}>
-                      <a
-                        {...menuClasses('link')}
-                        href="/search?filters=publications-only&sort=year-desc"
-                      >
-                        All publications &amp; resources
-                      </a>
-                    </li>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/blog">
-                        Blog
-                      </a>
-                    </li>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/terms">
-                        Glossary
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div {...menuClasses('border-left')}>
-                  <h4 {...menuClasses('heading')}>Learning &amp; events</h4>
-                  <ul {...menuClasses('list')}>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/online-courses">
-                        Online courses
-                      </a>
-                    </li>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/helpdesk">
-                        Helpdesk - Ask your question
-                      </a>
-                    </li>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/workshops-and-events">
-                        Events
-                      </a>
-                    </li>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/workshops-and-events">
-                        Workshops
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div {...menuClasses('border-left')}>
-                  <h4 {...menuClasses('heading')}>About</h4>
-                  <ul {...menuClasses('list')}>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/about-u4">
-                        About us
-                      </a>
-                    </li>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/the-team">
-                        Staff
-                      </a>
-                    </li>
-                    <li {...menuClasses('list-item')}>
-                      <a {...menuClasses('link')} href="/u4-partner-agencies">
-                        Partner Information
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+        <div {...menuClasses('backdrop')}>
+          {' '}
+          {data && (
+            <div {...menuClasses('topics')}>
+              <h4 {...menuClasses('section-title')}>
+                Explore the full range of U4's unique research
+              </h4>
+              {/* <div {...menuClasses('border-left')}> */}
+              <ul {...menuClasses('list')}>
+                {data.slice(0, 9).map(topic => (
+                  <li {...menuClasses('list-item')} key={topic._id}>
+                    <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
+                      {topic.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              {/* </div> */}
+              <ul {...menuClasses('list')}>
+                {data.slice(8, 17).map(topic => (
+                  <li {...menuClasses('list-item')} key={topic._id}>
+                    <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
+                      {topic.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <ul {...menuClasses('list')}>
+                {data.slice(17, 24).map(topic => (
+                  <li {...menuClasses('list-item')} key={topic._id}>
+                    <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
+                      {topic.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
+          )}
+        </div>
+      ) : null}
 
-            <div {...menuClasses('contact')}>
-              <a href="https://www.linkedin.com/showcase/u4-anti-corruption-resource-centre/">
-                <LinkedInRound {...classes('some-icon')} />
-              </a>
-              <a href="https://twitter.com/U4_ACRC">
-                <TwitterRound {...classes('some-icon')} />
-              </a>
-              <a href="https://www.facebook.com/U4anticorruption/">
-                <FbRound {...classes('some-icon')} />
-              </a>
-              <a {...menuClasses('link')} href="/the-team">
-                Contact
-              </a>
-            </div>
+      {activeEventsMenu ? (
+        <div {...menuClasses('backdrop')}>
+          <div {...menuClasses('topics')}>
+            <h4 {...menuClasses('section-title')}>
+              Anti-corruption training for development practitioners
+            </h4>
+            {/* <h4 {...menuClasses('heading')}>Learning &amp; events</h4> */}
+            <ul {...menuClasses('list')}>
+              <h3 {...menuClasses('heading', 'small-section-title')}>Learning</h3>
+              <li {...menuClasses('list-item')}>
+                <a {...menuClasses('link')} href="/online-courses">
+                  Online courses
+                </a>
+              </li>
+              <li {...menuClasses('list-item')}>
+                <a {...menuClasses('link')} href="/helpdesk">
+                  Helpdesk - Ask your question
+                </a>
+              </li>
+              {/* <li {...menuClasses('list-item')}>
+                <a {...menuClasses('link')} href="/workshops-and-events">
+                  Events
+                </a>
+              </li> */}
+              <li {...menuClasses('list-item')}>
+                <a {...menuClasses('link')} href="/workshops-and-events">
+                  Workshops
+                </a>
+              </li>
+            </ul>
+            <ul {...menuClasses('list')}>
+              <h3 {...menuClasses('heading', 'small-section-title')}>Events</h3>
+              {/* <li {...menuClasses('list-item')}>
+                {' '}
+                <a {...menuClasses('link')} href="/workshops-and-events">
+                  Events
+                </a>
+              </li> */}
+              <li {...menuClasses('list-item')}>
+                {' '}
+                <a {...menuClasses('link')}>Public U4 Events</a>
+              </li>
+              <li {...menuClasses('list-item')}>
+                {' '}
+                <a {...menuClasses('link')}>Partners only events</a>
+              </li>
+            </ul>
+          </div>{' '}
+        </div>
+      ) : null}
+
+      {activeAboutMenu ? (
+        <div {...menuClasses('backdrop')}>
+          <div {...menuClasses('topics')}>
+            {' '}
+            <h4 {...menuClasses('section-title')}>
+              Working to reduce the harmful impact of corruption on society
+            </h4>
+            <ul {...menuClasses('list')}>
+              <h3 {...menuClasses('heading', 'small-section-title')}>About U4</h3>
+              <li {...menuClasses('list-item')}>
+                <a {...menuClasses('link')} href="/about-u4">
+                  About us
+                </a>
+              </li>
+              <li {...menuClasses('list-item')}>
+                <a {...menuClasses('link')} href="/the-team">
+                  Staff
+                </a>
+              </li>
+              <li {...menuClasses('list-item')}>
+                <a {...menuClasses('link')} href="/u4-partner-agencies">
+                  Partner Information
+                </a>
+              </li>
+            </ul>
+            <ul {...menuClasses('list')}>
+              <h3 {...menuClasses('heading', 'small-section-title')}>Who we work with</h3>
+              <li {...menuClasses('list-item')}>
+                <a {...menuClasses('link')}>Funding Partners</a>
+              </li>
+              <li {...menuClasses('list-item')}>
+                <a {...menuClasses('link')} href="/the-team">
+                  Expert Network
+                </a>
+              </li>
+              <li {...menuClasses('list-item')}>
+                <a {...menuClasses('link')} href="/helpdesk">
+                  Anti-Coruption helpdesk
+                </a>
+              </li>
+            </ul>
+            <ul {...menuClasses('list')}>
+              <h3 {...menuClasses('heading', 'small-section-title')}>GENERAL ENQUIRIES</h3>
+              <li {...menuClasses('list-item')}>
+                <a {...menuClasses('link')} href="/about-u4">
+                  Contact
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       ) : null}
+
+      {/* {activeMenu ? ( */}
+      {/* <div>
+        <button onClick={triggerMenu} {...menuClasses('backdrop')} />
+        <div {...menuClasses('')}>
+          <div {...menuClasses('section')}>
+            <div {...menuClasses('resources')}>
+              <div {...menuClasses('border-left')}>
+                <h4 {...menuClasses('heading')}>Resources</h4>
+                <ul {...menuClasses('list')}>
+                  <li {...menuClasses('list-item')}>
+                    <a
+                      {...menuClasses('link')}
+                      href="/search?filters=publications-only&sort=year-desc"
+                    >
+                      All publications &amp; resources
+                    </a>
+                  </li>
+                  <li {...menuClasses('list-item')}>
+                    <a {...menuClasses('link')} href="/blog">
+                      Blog
+                    </a>
+                  </li>
+                  <li {...menuClasses('list-item')}>
+                    <a {...menuClasses('link')} href="/terms">
+                      Glossary
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div {...menuClasses('border-left')}>
+                <h4 {...menuClasses('heading')}>Learning &amp; events</h4>
+                <ul {...menuClasses('list')}>
+                  <li {...menuClasses('list-item')}>
+                    <a {...menuClasses('link')} href="/online-courses">
+                      Online courses
+                    </a>
+                  </li>
+                  <li {...menuClasses('list-item')}>
+                    <a {...menuClasses('link')} href="/helpdesk">
+                      Helpdesk - Ask your question
+                    </a>
+                  </li>
+                  <li {...menuClasses('list-item')}>
+                    <a {...menuClasses('link')} href="/workshops-and-events">
+                      Events
+                    </a>
+                  </li>
+                  <li {...menuClasses('list-item')}>
+                    <a {...menuClasses('link')} href="/workshops-and-events">
+                      Workshops
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div {...menuClasses('border-left')}>
+                <h4 {...menuClasses('heading')}>About</h4>
+                <ul {...menuClasses('list')}>
+                  <li {...menuClasses('list-item')}>
+                    <a {...menuClasses('link')} href="/about-u4">
+                      About us
+                    </a>
+                  </li>
+                  <li {...menuClasses('list-item')}>
+                    <a {...menuClasses('link')} href="/the-team">
+                      Staff
+                    </a>
+                  </li>
+                  <li {...menuClasses('list-item')}>
+                    <a {...menuClasses('link')} href="/u4-partner-agencies">
+                      Partner Information
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div {...menuClasses('contact')}>
+            <a href="https://www.linkedin.com/showcase/u4-anti-corruption-resource-centre/">
+              <LinkedInRound {...classes('some-icon')} />
+            </a>
+            <a href="https://twitter.com/U4_ACRC">
+              <TwitterRound {...classes('some-icon')} />
+            </a>
+            <a href="https://www.facebook.com/U4anticorruption/">
+              <FbRound {...classes('some-icon')} />
+            </a>
+            <a {...menuClasses('link')} href="/the-team">
+              Contact
+            </a>
+          </div>
+        </div>
+      </div> */}
+      {/* ) : null} */}
     </div>
   );
 };

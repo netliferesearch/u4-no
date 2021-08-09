@@ -22,10 +22,9 @@ const classes = BEMHelper({
 
 const PartnerAgencies = () => (
   <div className="c-partnerAgencies o-wrapper-medium">
-    <SectionIntro
-      title="Our funding partners"
-      text="The U4 Anti-Corruption Resource Centre is an institutional partnership of bilateral international development agencies/ministries of foreign affairs."
-    />
+    <div>
+      <h4 className="u-secondary-heading u-secondary-h1 u-detail--blue">Our partners</h4>
+    </div>
     <section className="c-partnerAgencies__list">
       <div {...classes('item')}>
         <a href="http://um.dk/en/danida-en/" rel="noopener noreferrer" target="_blank">

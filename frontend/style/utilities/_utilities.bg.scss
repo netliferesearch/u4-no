@@ -24,3 +24,21 @@
 .u-bg-light-grey {
   background-color: $light-grey;
 }
+
+.u-bg-transparent-blue {
+  background-color: $dark-blue;
+  mix-blend-mode: multiply;
+  // position: relative;
+  // z-index: 0;
+}
+// .u-bg-transparent-blue::before {
+//   content: '';
+//   display: block;
+//   height: 100%;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   background-color: rgba(220, 235, 255, 0.8);
+//   mix-blend-mode: multiply;
+// }

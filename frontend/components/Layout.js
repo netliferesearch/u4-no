@@ -3,19 +3,23 @@ import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
-import HeadComponent  from './HeadComponent';
+import HeadComponent from './HeadComponent';
 import { Menu } from './Menu';
 //import { SearchField } from './SearchField';
 import { LogoCMI } from './icons/LogoCMI';
 import { LogoMobile } from './icons/LogoMobile';
-import LogoU4 from './icons/LogoU4';
+import LogoU4White from './icons/LogoU4White';
 import SearchFieldV2 from './SearchField-v2';
+import { useRouter } from 'next/router';
+import { MenuMobile } from './MenuMobile';
 
 const classes = BEMHelper({
   name: 'top-bar-v2',
   prefix: 'c-',
 });
 export const Layout = props => {
+  const { asPath } = useRouter(); // window location pathname check
+
   const {
     showLoadingScreen = false,
     showTopTab = true,
@@ -24,53 +28,78 @@ export const Layout = props => {
     searchV2 = false,
     searchData = {},
     isSearchPage = false,
-    headComponentConfig = {}, 
+    headComponentConfig = {},
     hideLogo = false,
   } = props;
   const [activeSearchMenu, setActiveSearchMenu] = useState(true);
-  const [searchOpen, setSearchOpen] = useState(true);
+  const [searchOpen, setSearchOpen] = useState(false);
   const triggerSearchMenu = e => {
     e.preventDefault();
     setActiveSearchMenu(!activeSearchMenu);
   };
 
+  // console.log(searchOpen, 'searchopen');
+
   return (
     <div
-      className="u-print-width o-wrapper-page o-wrapper-fixed-header"
-      style={{ transition: 'all 0.1s ease-out', opacity: showLoadingScreen ? 0 : 1 }}
+      className={
+        asPath === '/'
+          ? 'u-print-width o-wrapper-page '
+          : 'u-print-width o-wrapper-page o-wrapper-fixed-header'
+      }
+      style={{
+        transition: 'all 0.1s ease-out',
+        opacity: showLoadingScreen ? 0 : 1,
+      }}
     >
       <HeadComponent {...headComponentConfig} />
       {showTopTab && (
-        <div {...classes('', 'fixed', 'u-bg-white')}>
-          <a href="#" {...classes('logo-cmi')}>
-            <LogoCMI />
-          </a>
-          <div className="fixed-header-content">
-            {!hideLogo && (
-              <Link href="/">
-                <a {...classes('logo', 'fixed', searchOpen ? '' : 'logo-white')}>
-                  <LogoU4 />
-                  <LogoMobile />
-                </a>
-              </Link>
-            )}
-            {searchOpen && (
-              <SearchFieldV2
-                isOpen={activeSearchMenu}
-                isAlwaysOpen={true}
+        <>
+          <div className="c-top-bar-v2-background-bar u-bg-transparent-blue" />
+          <div {...classes('', 'fixed')}>
+            <a href="#" {...classes('logo-cmi')}>
+              <LogoCMI />
+            </a>
+            <div className="fixed-header-content">
+              {!hideLogo && (
+                <Link href="/">
+                  <a {...classes('logo', 'fixed', searchOpen ? '' : 'logo-white')}>
+                    <LogoU4White />
+                    {/* <LogoMobile /> */}
+                  </a>
+                </Link>
+              )}
+
+              {/* {searchOpen ? (
+                <SearchFieldV2
+                  isOpen={activeSearchMenu}
+                  isAlwaysOpen={true}
+                  triggerSearchMenu={triggerSearchMenu}
+                  searchData={searchData}
+                />
+              ) : null} */}
+              {hideLogo && <div />}
+              <MenuMobile
+                noSearch={noSearch}
                 triggerSearchMenu={triggerSearchMenu}
+                setSearchOpen={setSearchOpen}
+                activeSearchMenu={activeSearchMenu}
+                searchOpen={searchOpen}
+                isAlwaysOpen={true}
                 searchData={searchData}
               />
-            )}
-            {hideLogo && <div />}
-            <Menu
-              noSearch={noSearch}
-              triggerSearchMenu={triggerSearchMenu}
-              setSearchOpen={setSearchOpen}
-              activeSearchMenu={activeSearchMenu}
-            />
+              <Menu
+                noSearch={noSearch}
+                triggerSearchMenu={triggerSearchMenu}
+                setSearchOpen={setSearchOpen}
+                activeSearchMenu={activeSearchMenu}
+                searchOpen={searchOpen}
+                isAlwaysOpen={true}
+                searchData={searchData}
+              />
+            </div>
           </div>
-        </div>
+        </>
       )}
       {children}
     </div>

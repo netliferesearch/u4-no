@@ -73,12 +73,32 @@
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 -24px 32px -24px;
+  margin-bottom: 0;
+  padding-bottom: 32px;
+  padding-top: 32px;
+  @include mq($from: mobile, $until: tablet) {
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+  }
+  @include mq($from: tablet, $until: desktop) {
+    flex-direction: row;
+    justify-content: center;
+    // overflow: hidden;
+  }
 }
 
 .c-partnerAgencies__item {
   text-align: center;
   width: 14%;
   margin: 24px 24px 32px 24px;
+  @include mq($from: mobile, $until: tablet) {
+    width: 30%;
+  }
+  @include mq($from: tablet, $until: desktop) {
+    width: 30%;
+    // overflow: hidden;
+  }
   a {
     border: none;
   }

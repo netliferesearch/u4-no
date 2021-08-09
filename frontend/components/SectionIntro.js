@@ -5,7 +5,7 @@ export const SectionIntro = ({ title, text, slug, label }) => {
   return (
     <div className="c-section-intro">
       <div>
-        <h2 className="u-primary-heading">{title}</h2>
+      <h4 className="u-secondary-heading u-secondary-h1 u-detail--blue" >{title}</h4>
         <p className=" u-text--grey">{text}</p>
       </div>
       <div>

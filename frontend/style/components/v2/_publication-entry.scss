@@ -2,7 +2,6 @@
   margin-bottom: 100px;
   color: $dark-grey;
 
-
   .c-breadcrumb--v2 {
     @include mq($from: tablet) {
       margin: 20px 0;
@@ -215,7 +214,8 @@
   .c-longform-grid__standard {
     padding: 0;
   }
-  p, li {
+  p,
+  li {
     font-family: $font-sans;
     font-size: 15px;
     line-height: 1.5;

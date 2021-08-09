@@ -49,7 +49,7 @@ export const getRouteByType = publicationType => {
 export const getPostType = item => {
   const itemType = item._type;
   let typeTitle = '';
-console.log(item)
+  // console.log(item);
   switch (itemType) {
     case 'publication':
       typeTitle =

@@ -18,16 +18,17 @@
   }
   .fixed-header-content {
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
     //background-color: $white;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0 0 0 $spacing;
-    height: 80px;
+    padding: 0 $spacing 0 $spacing;
+    height: 90px;
   }
   .logo-white {
-    path, polygon {
+    path,
+    polygon {
       fill: $white;
     }
   }
@@ -41,8 +42,8 @@
   @include mq($from: tablet) {
     margin-left: auto;
     margin-right: auto;
-    padding: 11px 0 11px $spacing;
-    max-width: 1548px;
+    padding: 0 $spacing 0 $spacing;
+    max-width: 100%;
     .fixed-header-content {
       padding: 0 $spacing 0 0;
       height: 93px;
@@ -68,15 +69,19 @@
   }
   @include mq($from: desktop) {
     flex-wrap: nowrap;
+    padding: 11px 0 11px $spacing;
     .fixed-header-content {
-      height: 93px;
+      height: 80px;
       align-items: center;
+      justify-content: space-evenly;
     }
   }
   @include mq($from: wide) {
+    padding: 11px 0 11px $spacing;
     .fixed-header-content {
       //padding-right: 178px;
       height: 93px;
+      justify-content: space-evenly;
       //padding-left: 117px;
     }
     .c-top-bar-v2__logo {
@@ -106,8 +111,8 @@
 
 a.c-top-bar-v2__logo,
 a.c-top-bar-v2__logo:visited {
-  width: 50px;
-  height: 50px;
+  width: 173px;
+  height: 24px;
   display: inline-block;
   border-bottom: 0;
   @include mq($from: tablet) {
@@ -226,4 +231,23 @@ a.c-top-bar-v2__logo:visited {
   margin-right: $spacing-small;
   margin-left: $spacing-small;
   vertical-align: middle;
+}
+
+.c-top-bar-v2-background-bar {
+  background-color: #162063;
+  mix-blend-mode: multiply;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 90px;
+  z-index: 10;
+  @include mq($from: tablet) {
+    height: 90px;
+  }
+  @include mq($from: desktop) {
+    height: inherit;
+
+    padding: 54px;
+  }
 }

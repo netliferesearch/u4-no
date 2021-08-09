@@ -68,9 +68,8 @@
 //   }
 // }
 
-
 .c-footer {
-  padding: 80px 0;
+  padding: 0 0;
   .u-secondary-heading {
     margin-top: 0;
   }
@@ -81,8 +80,16 @@
   }
   .c-share-buttons {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     padding: 0;
+    margin-top: 32px;
+    .c-share-button {
+      border-bottom: none;
+      margin-right: 39px;
+      @include mq($from: mobile, $until: desktop) {
+        margin-right: 25px;
+      }
+    }
   }
   .c-newsletter-v2 .c-newsletter__cta {
     margin: 0 0 24px 0;
@@ -96,7 +103,45 @@
 }
 
 .c-footer__row {
-  margin-bottom: 48px;
+  padding-bottom: 48px;
+  padding-top: 48px;
+  @include mq($from: mobile, $until: desktop) {
+    margin-bottom: 0;
+    justify-content: end !important;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+.c-footer__row-second {
+  border-top: 1px solid $white;
+  background-color: $darkest-blue;
+  .c-footer-description {
+    color: $white;
+    max-width: 485px;
+    @include mq($from: mobile, $until: desktop) {
+      margin-bottom: 0;
+    }
+    @include mq($from: mobile, $until: desktop) {
+      justify-content: end;
+    }
+  }
+  .c-footer-hyperlinks-light {
+    color: $light-blue;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    &:hover {
+      color: $brand-main;
+    }
+  }
+  .c-footer-hyperlinks {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: $light-blue;
+  }
+  .u-flex-sb {
+    align-items: center;
+  }
 }
 
 .c-footer__col1 {
@@ -111,7 +156,7 @@
 
 .c-footer__col2 {
   width: 100%;
-  max-width: 530px;
+  max-width: 720px;
   @include mq($from: tablet) {
   }
 }
@@ -137,5 +182,32 @@
   }
   h4 {
     margin-bottom: 8px;
+  }
+}
+
+.c-footer-mobile-seperator {
+  @include mq($from: mobile, $until: desktop) {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid $white;
+    width: 100%;
+    opacity: 0.2;
+  }
+}
+.c-footer-mobile-margin {
+  @include mq($from: mobile, $until: desktop) {
+    margin: 0;
+  }
+}
+
+.c-social-icons-svg {
+  &:hover {
+    .c-social-icons-firstpath {
+      fill: $highlight-yellow !important;
+    }
+
+    .c-social-icons-secondpath {
+      fill: $dark-blue !important;
+    }
   }
 }

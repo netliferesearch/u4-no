@@ -1,13 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
 import { SectionIntro } from './SectionIntro';
+import { ArrowNext } from './icons/ArrowNext';
+import dateToString from '../helpers/dateToString';
 
 export const TopicCardList = ({ topics }) => {
   return (
     <div className="c-topic-card-list">
       <SectionIntro
         title="Corruption by topic"
-        text="A sentence on contextualising the value/use of U4 topics"
+        // text="A sentence on contextualising the value/use of U4 topics"
         label="View all topics"
         slug="/topics"
       />
@@ -18,14 +20,19 @@ export const TopicCardList = ({ topics }) => {
               <a>
                 <div className="c-topic-card-list__item-text">
                   <div>
-                    <h3 className="u-secondary-heading u-text--blue">{topic.title}</h3>
-                    <p className="u-text--grey">{topic.longTitle}</p>
+                    <h2 className="u-secondary-h2 u-text--white">{topic.title}</h2>
+                    <p className="u-body u-text--grey c-topic-paragraph">{topic.longTitle}</p>
                   </div>
+                  <p className="c-topic__date  u-body--small">
+                    {topic._updatedAt
+                      ? 'Updated' + ' ' + dateToString({ start: topic._updatedAt })
+                      : null}
+                  </p>
                   <div>
                     {/* <Link href={`/topics/${topic.slug.current}`}> */}
-                      <div className="c-btn c-btn--sec">
-                        <span>Learn more</span>
-                      </div>
+                    {/* <div className="c-btn c-btn--sec">
+                      <span>Learn more</span>
+                    </div> */}
                     {/* </Link> */}
                   </div>
                 </div>
@@ -34,6 +41,12 @@ export const TopicCardList = ({ topics }) => {
           </li>
         ))}
       </ul>
+      <div className="c-topic-view-all-holder">
+        <a className="c-topic-view-all" href="/topics">
+          View All
+          <ArrowNext />
+        </a>
+      </div>
     </div>
   );
 };

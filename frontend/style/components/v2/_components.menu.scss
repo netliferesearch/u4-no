@@ -19,9 +19,9 @@
   max-width: 1435px;
   height: calc(100vh - 93px);
   overflow-y: scroll;
-  &::-webkit-scrollbar { 
-    display: none; 
-  } 
+  &::-webkit-scrollbar {
+    display: none;
+  }
   @include mq($from: tablet) {
     padding: $spacing-large $spacing-large;
     height: auto;
@@ -35,16 +35,25 @@
 
 .c-menu-v2__backdrop {
   position: fixed;
-  top: 0;
+  top: 105px;
   left: 0;
   width: 100%;
   width: 100vw;
-  height: 100%;
+  height: auto;
   z-index: -2;
   border: 0;
+  border-top: 1px solid $white;
   //background: rgba($dark-blue, 0.5);
-  background: $brand-main;
+  background: $dark-blue;
+  // animation-name: sliding-vertically 0.5s;
+
   animation: fadeIn 0.2s ease-out;
+  padding: 48px 52px;
+}
+.c-menu-v2__search-holder {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .c-menu-v2 {
@@ -67,13 +76,13 @@
       }
     }
     @include mq($from: tablet) {
-      width: 60%;
+      // width: 60%;
       display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      justify-content: space-evenly;
+      // flex-wrap: wrap;
       padding-bottom: $spacing;
       .c-menu-v2__list {
-        width: 50%;
+        width: 15%;
       }
       .c-menu-v2__border-left {
         width: 50%;
@@ -107,19 +116,24 @@
       line-height: 1;
     }
   }
-  &__border-left {
-    border-left: 5px solid $brand-medium;
-    padding-left: $spacing;
-  }
+  // &__border-left {
+  //   border-left: 5px solid $brand-medium;
+  //   padding-left: $spacing;
+  // }
 }
 
 .c-menu-v2__heading {
-  @include inuit-font-size(22px, 40px);
+  @include inuit-font-size(12px, 14px);
   position: relative;
-  margin-top: $spacing-large;
+  // margin-top: $spacing-large;
   letter-spacing: normal;
-  font-weight: bold;
-  width: 100%;
+  font-weight: normal;
+  width: fit-content;
+  text-transform: uppercase;
+  color: $white;
+  margin: 0;
+  cursor: pointer;
+  margin-right: 30px;
   //padding-bottom: $spacing-small;
   &:before {
     display: none;
@@ -131,9 +145,71 @@
     width: 100%;
     height: 1px;
   }
-  &--border-left {
-    padding-left: $spacing;
-    border-left: 5px solid $brand-medium;
+
+  &:hover {
+    font-weight: bold;
+    color: $highlight-blue;
+  }
+  // &--border-left {
+  //   padding-left: $spacing;
+  //   border-left: 5px solid $brand-medium;
+  // }
+}
+.c-menu-v2__heading--active {
+  @include inuit-font-size(12px, 14px);
+  position: relative;
+  letter-spacing: normal;
+  font-weight: bold;
+  width: fit-content;
+  text-transform: uppercase;
+  color: $highlight-blue;
+  margin: 0;
+  margin-right: 30px;
+  //padding-bottom: $spacing-small;
+  &:before {
+    display: none;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    background: rgba($mid-grey, 0.7);
+    left: 0;
+    width: 100%;
+    height: 1px;
+  }
+
+  &:hover {
+    font-weight: bold;
+    color: $highlight-blue;
+  }
+  // &--border-left {
+  //   padding-left: $spacing;
+  //   border-left: 5px solid $brand-medium;
+  // }
+}
+
+.c-menu-v2__section-title {
+  font-size: 24px;
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  color: $white;
+  margin: 0;
+  width: 20%;
+}
+
+.c-menu-v2__heading--small-section-title {
+  margin-bottom: 29px;
+}
+
+.c-menu-v2__items {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  align-items: center;
+}
+
+.c-menu-v2__main-menu-box {
+  width: 50%;
+  @include mq($from: mobile, $until: desktop) {
+    display: none;
   }
 }
 
@@ -151,8 +227,8 @@
   padding-top: $spacing-tiny;
   @include inuit-font-size(18px, 40px);
   &.rest-topics {
-      border-left: 5px solid $brand-medium;
-      padding-left: $spacing;
+    border-left: 5px solid $brand-medium;
+    padding-left: $spacing;
     @include mq($from: tablet) {
       border-left: none;
       //padding-left: 0;
@@ -200,21 +276,22 @@
 .c-menu-v2__link {
   font-weight: 400;
   color: $white;
-  font-size: 18px;
-  line-height: 40px;
+  font-size: 16px;
+  line-height: 24px;
   border-bottom: 1px solid transparent;
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
   &:hover {
-    color: inherit;
+    color: $highlight-blue;
   }
-  &:visited {
-    color: inherit;
-    font-size: 18px;
-    line-height: 40px;
-    border-bottom: 1px solid transparent;
-    &:hover {
-      color: inherit;
-    }
-  }
+  // &:visited {
+  //   color: inherit;
+  //   font-size: 18px;
+  //   line-height: 40px;
+  //   border-bottom: 1px solid transparent;
+  //   &:hover {
+  //     color: inherit;
+  //   }
+  // }
 }
 
 .c-menu-v2__links--round {

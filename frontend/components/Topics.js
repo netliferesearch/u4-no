@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { spacesToDash } from '../helpers/stringHelpers';
 
 /**
  * Topics component to list topics
@@ -19,17 +20,20 @@ export const Topics = ({ title = true, topics = [], hr = false, linkType = 'ter'
         {topics.map((topic, index) =>
           topic.slug && topic.title ? (
             <span className="topic" key={index}>
-              <Link href={`/topics/${topic.slug.current}`}>
+              <a href={`/topics/${topic.slug.current}`}>
                 <a className={`c-btn--${linkType}`}>
                   <div>{topic.title}</div>
                 </a>
-              </Link>
+              </a>
               <span>{`${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}</span>
             </span>
           ) : !topic.slug && topic.title ? (
-            <span className="topic--plain" key={index}>
-              {`${topic.title}${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}
-            </span>
+            <div key={index} className="c-topics__list-buttons">
+              <a href={`/topics/${spacesToDash(topic.title)}`} className="topic--plain" key={index}>
+                {topic.title}
+                {/* {`${topic.title}${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`} */}
+              </a>
+            </div>
           ) : null
         )}
       </div>
