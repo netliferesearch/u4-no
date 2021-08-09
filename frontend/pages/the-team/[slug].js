@@ -111,8 +111,8 @@ const CoursesAndWorkshops = ({ courses }) => (
                   <Link
                     href={
                       course._type === 'course'
-                        ? `/courses/${course.slug}`
-                        : `/events/${event.slug}`
+                        ? `/courses/${course.slug.current}`
+                        : `/events/${course.slug.current}`
                     }
                   >
                     <a {...classesSearch('items-title')}>{course.title}</a>
