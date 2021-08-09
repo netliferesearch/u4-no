@@ -4,14 +4,14 @@ import { urlObjectKeys } from 'next/dist/next-server/lib/utils';
 import { ArrowNext } from './icons/ArrowNext';
 // import HomePageHero from '../public/HomePageHero';
 
-export const CTA = () => {
+export const CTA = ({img = ''}) => {
   return (
     <div
       className="c-cta"
       style={{
         backgroundImage: `linear-gradient(
           90deg
-          , rgb(0 0 0 / 57%) 2.51%, rgb(11 11 11 / 54%) 25.95%, rgb(11 11 11 / 59%) 45.68%, rgba(255, 255, 255, 0) 99.64%),url('../public/HomePageHero.png')`,
+          , rgb(0 0 0 / 57%) 2.51%, rgb(11 11 11 / 54%) 25.95%, rgb(11 11 11 / 59%) 45.68%, rgba(255, 255, 255, 0) 99.64%),url(${img})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',

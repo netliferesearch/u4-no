@@ -36,7 +36,7 @@ const Footer = () => (
           <a className="c-share-button" href="https://twitter.com/U4_ACRC">
             <TwitterIcon />
           </a>
-          <a className="c-share-button" href="https://twitter.com/U4_ACRC">
+          <a className="c-share-button" href="mailto:u4@cmi.no">
             <EmailIcon />
           </a>
         </div>

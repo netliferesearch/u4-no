@@ -14,7 +14,7 @@ export const FeatureList = ({ features = [], alt = false }) => {
           Become a partner
         </h4>
         <div className=" c-feature-list">
-          <div className="c-feature-list__item">
+          {/* <div className="c-feature-list__item">
             <OnlineTrainingIcon />
             <h2 className="u-secondary-h2 u-text--white">Online training</h2>
             <p className="u-body u-text--grey c-topic-paragraph">
@@ -37,15 +37,19 @@ export const FeatureList = ({ features = [], alt = false }) => {
               Send in your corruption-related questions about development programmes, sectors or
               countries. A free research service.
             </p>
-          </div>
+          </div> */}
 
-          {/* {features.map(({ title = '', _id = '', _type = '' }) => (
-            <Feature
-              key={feature._key}
-              title={feature.featureText}
-              iconUrl={feature.image.asset.url}
-            />
-          ))} */}
+          {features.map((feature) => (
+            <div className="c-feature-list__item">
+              {console.log(feature)}
+              <Feature
+                key={feature._key}
+                title={feature.image.title}
+                text={feature.featureText}
+                iconUrl={feature.image}
+              />
+            </div>
+          ))}
         </div>
         <button className="c-partner-btn">Become a partner</button>
       </div>

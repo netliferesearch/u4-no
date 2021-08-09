@@ -13,7 +13,15 @@ import { TopicCardList } from '../components/CorruptionByTopic';
 import { LearningEvents } from '../components/LearningEvents';
 
 const Frontpage = ({
-  data: { frontPage = {}, topics = {}, featured = {}, blogPosts = [], events = [] },
+  data: {
+    // allFrontPages = [],
+    // ORGfrontPage = {},
+    frontPage = {},
+    topics = {},
+    featured = {},
+    blogPosts = [],
+    events = [],
+  },
 }) => (
   <Layout
     hideLogo={false}
@@ -29,9 +37,12 @@ const Frontpage = ({
     }}
   >
     <div className="c-frontpage">
+      {/* {console.log('allFronts', allFrontPages)}
+      {console.log('ORGfrontPage', ORGfrontPage)} */}
+      {/* {console.log('frontPage', frontPage.sections)} */}
       <section className="o-wrapper u-side-padding">
         <div className="o-wrapper-full-width">
-          <CTA />
+          <CTA img={frontPage.imageUrl} />
         </div>
       </section>
       <hr className="u-section-underline--no-margins" />
@@ -61,7 +72,7 @@ const Frontpage = ({
       </section>
       <section className="o-wrapper u-side-padding">
         <div className="o-wrapper-medium">
-          <FeatureList /> <hr className="u-section-underline--no-margins" />
+          <FeatureList features={frontPage.sections[2].featureArray} /> <hr className="u-section-underline--no-margins" />
         </div>
       </section>
       <section className="o-wrapper u-side-padding">
@@ -92,7 +103,7 @@ Frontpage.propTypes = {
 export default DataLoader(Frontpage, {
   queryFunc: () => ({
     sanityQuery: `{
-      "frontPage": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0]{id,title,sections,"imageUrl": featuredImage.asset->url, "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title, date, standfirst, topics[]->{title}, "slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title, "imageUrl": featuredImage.asset->url, "pdfFile": pdfFile.asset->url}[0..2]},
+      "frontPage": *[_type=="frontpage" && slug.current == "frontpage-NEW"][0]{id,title,sections,"imageUrl": featuredImage.asset->url, "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title, date, standfirst, topics[]->{title}, "slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title, "imageUrl": featuredImage.asset->url, "pdfFile": pdfFile.asset->url}[0..2]},
       "topics": *[_type == "topics"] | order(title) {_id, title, longTitle, slug, _updatedAt, "imageUrl": featuredImage.asset->url}[0..5],
       "featured": {"publication": *[_type  == "publication"] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8], "blog": *[_type  == "blog-post" && references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..1],},
       "blogPosts": *[_type == "blog-post" && !references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
@@ -102,7 +113,24 @@ export default DataLoader(Frontpage, {
   materializeDepth: 0,
 });
 
-//
+
+//For logging old front page as well:
+// export default DataLoader(Frontpage, {
+//   queryFunc: () => ({
+//     sanityQuery: `{
+//       "allFrontPages": *[_type=="frontpage"],
+//       "ORGfrontPage": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0]{id,title,sections,"imageUrl": featuredImage.asset->url, "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title, date, standfirst, topics[]->{title}, "slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title, "imageUrl": featuredImage.asset->url, "pdfFile": pdfFile.asset->url}[0..2]},
+//       "frontPage": *[_type=="frontpage" && slug.current == "frontpage-NEW"][0]{id,title,sections,"imageUrl": featuredImage.asset->url, "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title, date, standfirst, topics[]->{title}, "slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title, "imageUrl": featuredImage.asset->url, "pdfFile": pdfFile.asset->url}[0..2]},
+//       "topics": *[_type == "topics"] | order(title) {_id, title, longTitle, slug, _updatedAt, "imageUrl": featuredImage.asset->url}[0..5],
+//       "featured": {"publication": *[_type  == "publication"] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8], "blog": *[_type  == "blog-post" && references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..1],},
+//       "blogPosts": *[_type == "blog-post" && !references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
+//       "events": *[_type in ["course", "event"]] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}}[0..2],
+//     }`,
+//   }),
+//   materializeDepth: 0,
+// });
+
+//Original query:
 // export default DataLoader(Frontpage, {
 //   queryFunc: () => ({
 //     sanityQuery: `{
