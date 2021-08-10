@@ -32,9 +32,9 @@ h4 {
   @include mq($from: desktop) {
     @include inuit-font-size($font-size-normal, 32px);
   }
-  margin-top: $spacing-large;
-  margin-bottom: 0;
-  font-weight: bold;
+  //margin-top: $spacing-large;
+  //margin-bottom: 0;
+  //font-weight: bold;
 }
 
 h5 {

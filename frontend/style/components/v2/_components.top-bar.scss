@@ -73,7 +73,7 @@
     .fixed-header-content {
       height: 80px;
       align-items: center;
-      justify-content: space-evenly;
+      //justify-content: space-evenly;
     }
   }
   @include mq($from: wide) {
@@ -81,7 +81,7 @@
     .fixed-header-content {
       //padding-right: 178px;
       height: 93px;
-      justify-content: space-evenly;
+      //justify-content: space-evenly;
       //padding-left: 117px;
     }
     .c-top-bar-v2__logo {

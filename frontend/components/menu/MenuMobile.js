@@ -3,18 +3,18 @@ import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import PicoSanity from 'picosanity';
-import SearchIcon from './icons/SearchIcon';
-import MenuIcon from './icons/MenuIcon';
+import SearchIcon from '../icons/SearchIcon';
+import MenuIcon from '../icons/MenuIcon';
 import Collapsible from 'react-collapsible';
 
-import FbRound from './icons/FbRound';
-import TwitterRound from './icons/TwitterRound';
-import LinkedInRound from './icons/LinkedInRound';
-import SearchFieldV2 from './SearchField-v2';
-import { CloseSearch } from './icons/CloseSearch';
-import ArrowDownCollapsible from './icons/ArrowDownCollapsible';
-import CloseIcon from './icons/CloseIcon';
-import { EmailIcon, FacebookIcon, LinkedInIcon, TwitterIcon } from './icons/SocialIcons';
+import FbRound from '../icons/FbRound';
+import TwitterRound from '../icons/TwitterRound';
+import LinkedInRound from '../icons/LinkedInRound';
+import SearchFieldV2 from '../SearchField-v2';
+import { CloseSearch } from '../icons/CloseSearch';
+import ArrowDownCollapsible from '../icons/ArrowDownCollapsible';
+import CloseIcon from '../icons/CloseIcon';
+import { EmailIcon, FacebookIcon, LinkedInIcon, TwitterIcon } from '../icons/SocialIcons';
 
 const menuClasses = BEMHelper({
   name: 'mobile-menu-v2',

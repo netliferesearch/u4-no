@@ -1,11 +1,15 @@
 import React from 'react';
 
 export const CloseSearch = props => {
-  const { closeSearch } = props;
+  const { setSearchOpen, searchOpen } = props;
+  const closeSearch = e => {
+    e.preventDefault();
+    setSearchOpen(!searchOpen);
+  };
   return (
     <svg
       className="c-search-v2__close-icon"
-      onClick={e => closeSearch(e, 'Search')}
+      onClick={closeSearch}
       width="17"
       height="17"
       //   viewBox="0 0 17 17"

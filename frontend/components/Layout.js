@@ -4,14 +4,14 @@ import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
 import HeadComponent from './HeadComponent';
-import { Menu } from './Menu';
+import { Menu } from './menu/Menu';
 //import { SearchField } from './SearchField';
 import { LogoCMI } from './icons/LogoCMI';
 import { LogoMobile } from './icons/LogoMobile';
 import LogoU4White from './icons/LogoU4White';
 import SearchFieldV2 from './SearchField-v2';
 import { useRouter } from 'next/router';
-import { MenuMobile } from './MenuMobile';
+import { MenuMobile } from './menu/MenuMobile';
 
 const classes = BEMHelper({
   name: 'top-bar-v2',
@@ -60,7 +60,7 @@ export const Layout = props => {
             <a href="#" {...classes('logo-cmi')}>
               <LogoCMI />
             </a>
-            <div className="fixed-header-content">
+            <div className="o-wrapper-medium fixed-header-content">
               {!hideLogo && (
                 <Link href="/">
                   <a {...classes('logo', 'fixed', searchOpen ? '' : 'logo-white')}>
