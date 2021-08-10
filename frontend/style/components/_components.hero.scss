@@ -13,6 +13,9 @@
   height: 50vh;
   width: 95%;
   background-size: cover;
+  background-color: $brand-main;
+  position: relative;
+  z-index: -1;
   @include mq($from: tablet) {
     height: 560px;
     width: 90%;

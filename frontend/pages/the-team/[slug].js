@@ -39,7 +39,18 @@ const Topics = ({ topics }) => (
                   {topic.featuredImage && (
                     <img
                       alt={topic.featuredImage.asset.altText}
-                      src={`${topic.featuredImage.asset.url}?w=500&h=500&fit=crop&crop=focalpoint`}
+                      src={`${
+                        topic.featuredImage.asset.url
+                      }?auto=format&w=500&h=500&fit=crop&crop=focalpoint`}
+                      srcSet={`${topic.featuredImage.asset.url}?auto=format&w=500&q=70 500w, ${
+                        topic.featuredImage.asset.url
+                      }?auto=format&w=800&q=75 800w, ${
+                        topic.featuredImage.asset.url
+                      }?auto=format&w=1600&q=80 1600w, ${
+                        topic.featuredImage.asset.url
+                      }?auto=format&w=2400&q=80 2400w`}
+                      sizes="30vw"
+                      loading="lazy"
                     />
                   )}
                 </div>
@@ -100,8 +111,8 @@ const CoursesAndWorkshops = ({ courses }) => (
                   <Link
                     href={
                       course._type === 'course'
-                        ? `/courses/${course.slug}`
-                        : `/events/${event.slug}`
+                        ? `/courses/${course.slug.current}`
+                        : `/events/${course.slug.current}`
                     }
                   >
                     <a {...classesSearch('items-title')}>{course.title}</a>
@@ -204,7 +215,7 @@ const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
                 </h1>
                 <p {...classes('profile-position')}>{person.position}</p>
                 {person.image && person.image.asset && person.image.asset.url && (
-                  <img alt="x" src={`${person.image.asset.url}?w=400`} />
+                  <img alt="x" src={`${person.image.asset.url}?auto=format&w=400&q=90`} />
                 )}
                 <div {...classes('profile-info')}>
                   <a href={`mailto:${person.email}`}>{person.email}</a>

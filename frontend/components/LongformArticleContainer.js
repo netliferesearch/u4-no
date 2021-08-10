@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
+import Image from 'next/image';
+import sanityImageLoader from './sanityImageLoader';
+
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import dateToString from '../helpers/dateToString';
 import AuthorList  from './AuthorList';
@@ -91,6 +95,42 @@ export const LongFormArticleContainer = (props = {}) => {
           <span id="js-top" />
           <div id="js-scroll-trigger" className="o-wrapper u-side-padding">
             {_type === 'publication' && !shortversion && (
+              <div
+                className={`c-hero u-bg-white u-z-index-x ${
+                  publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''
+                }`}
+              >
+                <div className="c-hero-image">
+                  {featuredImage.asset && featuredImage.asset.url && (
+                    <Image
+                      loader={sanityImageLoader}
+                      src={featuredImage.asset.url}
+                      alt=""
+                      layout="fill"
+                      objectFit="cover"
+                      priority="true"
+                    />
+                  )}
+                </div>
+                <div className="c-hero-bg" />
+                <div className="c-hero-sideText">
+                  {!featuredImage.sourceUrl && featuredImage.credit && (
+                    <div style={{ display: 'inline' }}>{featuredImage.credit}</div>
+                  )}
+                  {featuredImage.sourceUrl && (
+                    <a className="u-margin-left-tiny" href={featuredImage.sourceUrl}>
+                      {featuredImage.credit ? featuredImage.credit : featuredImage.sourceUrl}
+                    </a>
+                  )}
+                  {featuredImage.license && (
+                    <span>
+                      {' '}
+                      {featuredImage.license.startsWith('copyrighted') || 'CC'}{' '}
+                      {featuredImage.license.toUpperCase()}
+                    </span>
+                  )}
+                </div>
+                <div className="c-hero-header">
               <PublicationArticleHeader
                 {...props.data}
                 shortversion={shortversion}

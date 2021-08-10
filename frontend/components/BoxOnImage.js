@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import Link from 'next/link';
+
+import Image from 'next/image';
+import sanityImageLoader from './sanityImageLoader';
+
 import PartnerLogo10 from './icons/PartnerLogo10';
 import buildUrl from '../helpers/buildUrl';
 import serializers from './serializers';
@@ -22,7 +26,18 @@ const BoxOnImage = ({
   personsRight = [],
 }) => (
   <div {...classes()}>
-    <figure {...classes('figure')}>{image && <img alt="" src={image.asset.url} />}</figure>
+    <figure {...classes('figure')}>
+      {image && (
+        <Image
+          loader={sanityImageLoader}
+          src={image.asset.url}
+          alt=""
+          layout="fill"
+          objectFit="cover"
+          priority="true"
+        />
+      )}
+    </figure>
     <div {...classes('body', wide ? 'wide' : null)}>
       <BlockContent blocks={text} serializers={serializers} />
       {personsLeft.length ? (
