@@ -1,36 +1,34 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
-import PropTypes from 'prop-types';
-import Router from 'next/router';
 import PicoSanity from 'picosanity';
 import SearchIcon from '../icons/SearchIcon';
 import MenuIcon from '../icons/MenuIcon';
 import Collapsible from 'react-collapsible';
-
-import FbRound from '../icons/FbRound';
-import TwitterRound from '../icons/TwitterRound';
-import LinkedInRound from '../icons/LinkedInRound';
-import SearchFieldV2 from '../SearchField-v2';
-import { CloseSearch } from '../icons/CloseSearch';
 import ArrowDownCollapsible from '../icons/ArrowDownCollapsible';
 import CloseIcon from '../icons/CloseIcon';
-import { EmailIcon, FacebookIcon, LinkedInIcon, TwitterIcon } from '../icons/SocialIcons';
+import { SocialFollow } from '../general/social/SocialFollow';
+import { socialItems } from '../general/social/socialItems';
+import { menuItems } from './menuItems';
+import { MainMenuItem } from './MainMenuItem';
+import { MobileMainMenuItem } from './MobileMainMenuItem';
+import { SubMenuItem } from './SubMenuItem';
+import { useOnClickOutside } from '../../helpers/hooks';
 
 const menuClasses = BEMHelper({
-  name: 'mobile-menu-v2',
+  name: 'menu--mobile',
   prefix: 'c-',
 });
 
 export const MenuMobile = props => {
   const {
-    noSearch,
     triggerSearchMenu,
     setSearchOpen,
     activeSearchMenu,
     searchOpen,
     searchData,
+    activeMenu,
+    setActiveMenu,
   } = props;
-  const [activeMenu, setActiveMenu] = useState(false);
 
   const triggerMenu = e => {
     e.preventDefault();
@@ -38,9 +36,14 @@ export const MenuMobile = props => {
   };
 
   const [data, setData] = useState('');
+  const [activeItem, setActiveItem] = useState('');
+  // const refMobile = useRef();
+  // useOnClickOutside(refMobile, () => setActiveMenu(false));
+
   useEffect(
     () => {
       if (data) {
+        menuItems[0].items = data;
         return; // no need to fetch data if we got link data passed in.
       }
       const client = new PicoSanity({
@@ -72,14 +75,14 @@ export const MenuMobile = props => {
           <MenuIcon />
         )}
       </button>
-
+      {console.log(activeMenu)}
       {activeMenu ? (
         <div {...menuClasses('backdrop')}>
           <Collapsible
             overflowWhenOpen="scroll"
             trigger={
-              <div className="c-mobile-menu-v2__collapsible-trigger-box">
-                <p className="c-mobile-menu-v2__collapsible-text">Research topics</p>
+              <div className="c-menu--mobile__collapsible-trigger-box">
+                <MobileMainMenuItem item={menuItems[0]} />
                 <ArrowDownCollapsible />
               </div>
             }
@@ -88,11 +91,11 @@ export const MenuMobile = props => {
               <div {...menuClasses('topics')}>
                 <ul {...menuClasses('list')}>
                   {data.slice(0, 27).map(topic => (
-                    <li {...menuClasses('list-item')} key={topic._id}>
-                      <a href={`/topics/${topic.slug.current}`} {...menuClasses('link')}>
-                        {topic.title}
-                      </a>
-                    </li>
+                    <SubMenuItem
+                      key={topic._id}
+                      label={topic.title}
+                      slug={`/topics/${topic.slug.current}`}
+                    />
                   ))}
                 </ul>
               </div>
@@ -100,8 +103,8 @@ export const MenuMobile = props => {
           </Collapsible>
           <Collapsible
             trigger={
-              <div className="c-mobile-menu-v2__collapsible-trigger-box">
-                <p className="c-mobile-menu-v2__collapsible-text">LEARNING & EVENTS</p>
+              <div className="c-menu--mobile__collapsible-trigger-box">
+                <MobileMainMenuItem item={menuItems[1]} />
                 <ArrowDownCollapsible />
               </div>
             }
@@ -143,8 +146,8 @@ export const MenuMobile = props => {
           </Collapsible>
           <Collapsible
             trigger={
-              <div className="c-mobile-menu-v2__collapsible-trigger-box">
-                <p className="c-mobile-menu-v2__collapsible-text">About us</p>{' '}
+              <div className="c-menu--mobile__collapsible-trigger-box">
+                <MobileMainMenuItem item={menuItems[2]} />
                 <ArrowDownCollapsible />
               </div>
             }
@@ -192,39 +195,12 @@ export const MenuMobile = props => {
               </ul>
             </div>
           </Collapsible>
-          <Collapsible
-            trigger={
-              <div className="c-mobile-menu-v2__collapsible-trigger-box">
-                <p className="c-mobile-menu-v2__collapsible-text">The U4 Blog</p>
-                <ArrowDownCollapsible />
-              </div>
-            }
-          >
-            <p style={{ color: 'white' }}>
-              This is the collapsible content. It can be any element or React component you like.
-            </p>
-            <p style={{ color: 'white' }}>
-              It can even be another Collapsible component. Check out the next section!
-            </p>
-          </Collapsible>
-          <div {...menuClasses('share-holder')}>
-            <a {...menuClasses('share-button')} href="https://www.facebook.com/U4anticorruption/">
-              <FacebookIcon />
-            </a>
-            <a
-              {...menuClasses('share-button')}
-              href="https://www.linkedin.com/showcase/u4-anti-corruption-resource-centre/"
-            >
-              <LinkedInIcon />
-            </a>
 
-            <a {...menuClasses('share-button')} href="https://twitter.com/U4_ACRC">
-              <TwitterIcon />
-            </a>
-            <a {...menuClasses('share-button')} href="https://twitter.com/U4_ACRC">
-              <EmailIcon />
-            </a>
+          <div className="c-menu--mobile__collapsible-trigger-box">
+            <MobileMainMenuItem item={menuItems[3]} />
           </div>
+
+          <SocialFollow items={socialItems} />
         </div>
       ) : null}
     </div>

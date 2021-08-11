@@ -1,17 +1,12 @@
-import React, { Component, useState } from 'react';
-import PropTypes from 'prop-types';
-import autobind from 'react-autobind';
+import React, { useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
 import HeadComponent from './HeadComponent';
 import { Menu } from './menu/Menu';
-//import { SearchField } from './SearchField';
-import { LogoCMI } from './icons/LogoCMI';
-import { LogoMobile } from './icons/LogoMobile';
 import LogoU4White from './icons/LogoU4White';
-import SearchFieldV2 from './SearchField-v2';
 import { useRouter } from 'next/router';
 import { MenuMobile } from './menu/MenuMobile';
+import { useOnClickOutside } from '../helpers/hooks';
 
 const classes = BEMHelper({
   name: 'top-bar-v2',
@@ -24,7 +19,6 @@ export const Layout = props => {
     showLoadingScreen = false,
     showTopTab = true,
     children = [],
-    noSearch = false,
     searchV2 = false,
     searchData = {},
     isSearchPage = false,
@@ -33,6 +27,9 @@ export const Layout = props => {
   } = props;
   const [activeSearchMenu, setActiveSearchMenu] = useState(true);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(false);
+  const ref = useRef();
+  useOnClickOutside(ref, () => setActiveMenu(false));
   const triggerSearchMenu = e => {
     e.preventDefault();
     setActiveSearchMenu(!activeSearchMenu);
@@ -55,12 +52,12 @@ export const Layout = props => {
       <HeadComponent {...headComponentConfig} />
       {showTopTab && (
         <>
-          <div className="c-top-bar-v2-background-bar u-bg-transparent-blue" />
+          <div className={`c-top-bar__background ${activeMenu ? '' : 'u-bg-transparent-blue'}`} />
           <div {...classes('', 'fixed')}>
             {/* <a href="#" {...classes('logo-cmi')}>
               <LogoCMI />
             </a> */}
-            <div className="o-wrapper-medium fixed-header-content">
+            <div className="o-wrapper-medium fixed-header-content" ref={ref}>
               {!hideLogo && (
                 <Link href="/">
                   <a {...classes('logo', 'fixed', searchOpen ? '' : 'logo-white')}>
@@ -69,33 +66,26 @@ export const Layout = props => {
                   </a>
                 </Link>
               )}
-
-              {/* {searchOpen ? (
-                <SearchFieldV2
-                  isOpen={activeSearchMenu}
-                  isAlwaysOpen={true}
-                  triggerSearchMenu={triggerSearchMenu}
-                  searchData={searchData}
-                />
-              ) : null} */}
               {hideLogo && <div />}
               <MenuMobile
-                noSearch={noSearch}
                 triggerSearchMenu={triggerSearchMenu}
                 setSearchOpen={setSearchOpen}
                 activeSearchMenu={activeSearchMenu}
                 searchOpen={searchOpen}
                 isAlwaysOpen={true}
                 searchData={searchData}
+                activeMenu={activeMenu}
+                setActiveMenu={setActiveMenu}
               />
               <Menu
-                noSearch={noSearch}
                 triggerSearchMenu={triggerSearchMenu}
                 setSearchOpen={setSearchOpen}
                 activeSearchMenu={activeSearchMenu}
                 searchOpen={searchOpen}
                 isAlwaysOpen={true}
                 searchData={searchData}
+                activeMenu={activeMenu}
+                setActiveMenu={setActiveMenu}
               />
             </div>
           </div>

@@ -1,13 +1,20 @@
 .c-share-buttons {
-    padding: 10px 0;
-    // border-bottom: 1px solid $light-grey;
-    // border-top:  1px solid $light-grey;
-    // margin-bottom: 30px;
-    // max-width: 240px;
-    button {
-        margin: 0 2px;
-    }
-    svg {
-        vertical-align: bottom;
-    }
+  padding: 10px 0;
+  // border-bottom: 1px solid $light-grey;
+  // border-top:  1px solid $light-grey;
+  // margin-bottom: 30px;
+  // max-width: 240px;
+  button {
+    margin: 0 2px;
+  }
+  svg {
+    vertical-align: bottom;
+  }
+}
+.c-social--follow {
+  padding: 18px 24px;
+}
+.c-social-follow__item {
+  margin-right: 25px;
+  border-bottom: 1px solid transparent;
 }

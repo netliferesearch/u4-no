@@ -3,7 +3,7 @@ import React from 'react';
 export default function ArrowDownCollapsible() {
   return (
     <svg
-      className="c-mobile-menu-v2__collapsible-arrow-svg"
+      className="c-menu--mobile__collapsible-arrow-svg"
       width="15"
       height="9"
       viewBox="0 0 15 9"

@@ -12,7 +12,7 @@ const Search = ({ data = {}, url = '' }) => {
   if (!data) return <div />;
   return (
     <Layout
-      noSearch
+      
       searchV2
       isSearchPage
       headComponentConfig={{

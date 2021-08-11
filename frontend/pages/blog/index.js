@@ -10,7 +10,6 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
   return (
     <Layout
       hideLogo={false}
-      noSearch={false}
       headComponentConfig={{
         title: 'Blog',
         description:

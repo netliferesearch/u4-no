@@ -1,34 +1,56 @@
-import React, { useRef, useState } from 'react';
-import ClientOnlyPortal from './ClientOnlyPortal';
-import { CloseButton, TextButton } from './buttons';
-import { useOnClickOutside, useLockBodyScroll } from '../helpers/hooks';
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  TwitterShareButton,
-  LinkedinShareButton,
-  // FacebookIcon,
-  // TwitterIcon,
-  // EmailIcon,
-} from 'react-share';
-import { FacebookIcon, TwitterIcon, EmailIcon, LinkedInIcon } from './icons/SocialIcons';
+import React from 'react';
+import { EmailIcon, FacebookIcon, LinkedInIcon, TwitterIcon } from '../../icons/SocialIcons';
 
-/**
- * V2 - Social Share component with modal
- * @param {Array} topics
- * @param {function} setFilter
- * @param {Array} filters
- */
-
-export const Share = ({ text = '' }) => {
-  const [open, setOpen] = useState();
+export const SocialFollow = ({ items }) => {
   return (
-    <div className={`c-modal${open ? ' open' : ''}`}>
-      <TextButton onClick={() => setOpen(true)} text="Share" modifier="sec" />
-      {open && <Modal text={text} title="Share" setOpen={setOpen} />}
+    <div className="c-social c-social--follow">
+      <a className="c-social-follow__item" href={items[0].url}>
+        <FacebookIcon />
+      </a>
+      <a className="c-social-follow__item" href={items[1].url}>
+        <LinkedInIcon />
+      </a>
+      <a className="c-social-follow__item" href={items[2].url}>
+        <TwitterIcon />
+      </a>
+      <a className="c-social-follow__item" href={items[0].url}>
+        <EmailIcon />
+      </a>
     </div>
   );
 };
+
+// import React, { useRef, useState } from 'react';
+// import ClientOnlyPortal from '../../ClientOnlyPortal';
+// import { CloseButton, TextButton } from '../../buttons';
+// import { useOnClickOutside, useLockBodyScroll } from '../../../helpers/hooks';
+// import {
+//   EmailShareButton,
+//   FacebookShareButton,
+//   TwitterShareButton,
+//   LinkedinShareButton,
+//   // FacebookIcon,
+//   // TwitterIcon,
+//   // EmailIcon,
+// } from 'react-share';
+// import { FacebookIcon, TwitterIcon, EmailIcon, LinkedInIcon } from '../../icons/SocialIcons';
+
+// /**
+//  * V2 - Social Share component with modal
+//  * @param {Array} topics
+//  * @param {function} setFilter
+//  * @param {Array} filters
+//  */
+
+// export const Share = ({ text = '' }) => {
+//   const [open, setOpen] = useState();
+//   return (
+//     <div className={`c-modal${open ? ' open' : ''}`}>
+//       <TextButton onClick={() => setOpen(true)} text="Share" modifier="sec" />
+//       {open && <Modal text={text} title="Share" setOpen={setOpen} />}
+//     </div>
+//   );
+// };
 
 export const Modal = ({ text = '', title = '', setOpen }) => {
   const url = typeof window === 'undefined' ? '' : window.location.href;
@@ -84,7 +106,11 @@ export const Modal = ({ text = '', title = '', setOpen }) => {
                   iconFillColor={'#1E2051'}
                 />
               </EmailShareButton>
-              <TextButton onClick={() => navigator.clipboard.writeText(url)} text="Copy link" modifier="ter" />
+              <TextButton
+                onClick={() => navigator.clipboard.writeText(url)}
+                text="Copy link"
+                modifier="ter"
+              />
             </div>
           </div>
         </div>

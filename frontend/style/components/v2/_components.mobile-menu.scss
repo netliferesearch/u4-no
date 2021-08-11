@@ -1,15 +1,15 @@
-.c-mobile-menu-v2__main-box {
+.c-menu--mobile__main-box {
   display: block;
   @include mq($from: desktop) {
     display: none;
   }
 }
 
-.c-mobile-menu-v2__menu-svg-element {
+.c-menu--mobile__menu-svg-element {
   fill: $white;
 }
 
-.c-mobile-menu-v2__backdrop {
+.c-menu--mobile__backdrop {
   position: fixed;
   top: 90px;
   left: 0;
@@ -29,7 +29,7 @@
   //   padding: 48px 52px;
 }
 
-.c-mobile-menu-v2__button {
+.c-menu--mobile__button {
   border-radius: 0;
   border: none;
   color: $brand-main;
@@ -37,11 +37,11 @@
   cursor: pointer;
 }
 
-.c-mobile-menu-v2__list {
+.c-menu--mobile__list {
   list-style: none;
   padding: 0;
 }
-.c-mobile-menu-v2__link {
+.c-menu--mobile__link {
   font-weight: 400;
   color: $white;
   font-size: 16px;
@@ -61,14 +61,8 @@
   //   }
   // }
 }
-.c-mobile-menu-v2__share-holder {
-  padding: 19px 25px 19px 25px;
-}
-.c-mobile-menu-v2__share-button {
-  margin-right: 25px;
-}
 
-.c-mobile-menu-v2__search-icon-holder {
+.c-menu--mobile__search-icon-holder {
   margin-right: 18px;
 }
 
@@ -78,7 +72,7 @@
 
 .Collapsible {
   background: $dark-blue;
-  border-bottom: 1px solid #ffffff4a;
+  //border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 .Collapsible__trigger.is-open svg {
   transform: rotate(180deg);
@@ -92,15 +86,21 @@
   border-top: 1px solid $highlight-blue;
 }
 
-.c-mobile-menu-v2__collapsible-trigger-box {
+.c-menu--mobile__collapsible-trigger-box {
+  cursor: pointer;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 12px 25px 12px 25px;
+  padding: 12px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  &:hover {
+    color: $highlight-blue;
+  }
 }
-.c-mobile-menu-v2__collapsible-text {
-  width: 100%;
-  margin: 0;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
-}
+// .c-menu--mobile__collapsible-text {
+//   width: 100%;
+//   margin: 0;
+//   font-size: 12px;
+//   text-transform: uppercase;
+//   font-family: 'Lato', Helvetica, Arial, sans-serif;
+// }

@@ -4,7 +4,6 @@ import DataLoader from '../helpers/data-loader';
 import { Layout } from '../components/Layout';
 import Footer from '../components/Footer';
 import PartnerAgencies from '../components/PartnerAgencies';
-import { FeaturedPost } from '../components/FeaturedPosts';
 import { CTA } from '../components/Guidance';
 import { PostList } from '../components/InsightPosts';
 import { CardList } from '../components/RecentPublications';
@@ -26,7 +25,6 @@ const Frontpage = ({
 }) => (
   <Layout
     hideLogo={false}
-    noSearch={false}
     headComponentConfig={{
       title: 'U4 Anti-Corruption Resource Centre',
       description:

@@ -8,20 +8,19 @@ import { MainMenu } from './MainMenu';
 
 export const Menu = props => {
   const {
-    noSearch,
     triggerSearchMenu,
     setSearchOpen,
     activeSearchMenu,
     searchOpen,
     searchData,
+    activeMenu,
+    setActiveMenu,
   } = props;
   const [data, setData] = useState('');
-  const [activeMenu, setActiveMenu] = useState(false);
   const [activeItem, setActiveItem] = useState('');
   const [activeItemData, setActiveItemData] = useState(null);
-  const ref = useRef();
-  useOnClickOutside(ref, () => setActiveMenu(false));
-
+  // const ref = useRef();
+  // useOnClickOutside(ref, () => setActiveMenu(false));
   useEffect(
     () => {
       if (data) {
@@ -42,14 +41,12 @@ export const Menu = props => {
 
     [data]
   );
-
   useEffect(() => {
     Router.onRouteChangeStart = () => {
       setActiveMenu(false);
       setSearchOpen(false);
     };
   }, []);
-
   useEffect(
     () => {
       setActiveItemData(menuItems.find(i => i.id === activeItem));
@@ -58,7 +55,7 @@ export const Menu = props => {
   );
 
   return (
-    <div className="c-menu" ref={ref}>
+    <div className="c-menu" >
       <MainMenu
         searchOpen={searchOpen}
         activeItem={activeItem}
@@ -68,9 +65,10 @@ export const Menu = props => {
         isOpen={activeSearchMenu}
         triggerSearchMenu={triggerSearchMenu}
         searchData={searchData}
+        setSearchOpen={setSearchOpen}
       />
 
-      {!!activeItem && activeMenu ? (
+      {activeItem && activeItem !== 'search' && activeMenu ? (
         <SubMenu activeItem={activeItem} activeItemData={activeItemData} />
       ) : null}
     </div>

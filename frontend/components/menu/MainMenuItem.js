@@ -5,7 +5,7 @@ export const MainMenuItem = ({
   item = {},
   activeItem = '',
   setActiveItem = () => null,
-  activeMenu = false,
+  activeMenu,
   setActiveMenu = () => null,
 }) => {
   const handleClick = (e, id) => {
@@ -18,7 +18,7 @@ export const MainMenuItem = ({
     }
     setActiveItem(id);
   };
-  return !!item.slug ? (
+  return item.slug ? (
     <Link href={item.slug}>
       <a className="c-menu__link">
         <h3

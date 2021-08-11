@@ -45,7 +45,7 @@
     padding: 0 $spacing 0 $spacing;
     max-width: 100%;
     .fixed-header-content {
-      padding: 0 $spacing 0 0;
+      padding: 0;
       height: 93px;
       flex-wrap: nowrap;
     }
@@ -132,110 +132,8 @@ a.c-top-bar-v2__logo:visited {
   align-items: center;
 }
 
-// .c-top-bar-v2__menu {
-//   color: $brand-main;
-//   list-style: none;
-//   display: flex;
-//   font-family: $font-sans;
-//   padding: 0;
-//   justify-content: flex-end;
-//   margin: 0;
-//   margin-top: 0;
-//   @include mq($from: tablet) {
-//     justify-content: center;
-//     margin: 0;
-//     //margin-top: $spacing-tiny;
-//   }
-// }
-// .c-top-bar-v2__menu--active {
-//   margin-top: -$spacing-tiny;
-//   color: $brand-lighter;
-//   @include mq($from: tablet) {
-//     position: absolute;
-//     top: $spacing-large;
-//     right: ($spacing-huge)-8px;
-//     margin-left: $spacing-huge + 24px;
-//   }
-// }
-// .c-top-bar-v2__menu-item {
-//   @include mq($from: tablet) {
-//     background: none;
-//     border: none;
-//     margin-right: $spacing-small;
-//     padding: 0;
-//     &:last-child {
-//       margin-right: 0;
-//     }
-//     button {
-//       &:focus {
-//         outline: auto;
-//       }
-//     }
-//   }
-//   button {
-//     letter-spacing: 0.6px;
-//   }
-//   margin-left: $spacing-small;
-
-//   button {
-//     border: none;
-//     background: none;
-//     margin: 0;
-//     appearance: normal;
-//     outline: inherit;
-//     cursor: pointer;
-//     font-family: $font-sans;
-//     font-weight: 700;
-//     color: inherit;
-//     white-space: nowrap;
-//     @include mq($from: tablet) {
-//       padding: $spacing-small $spacing-small;
-//       &.c-top-bar-v2__menu-button {
-//         margin-top: $spacing;
-//         border: 2px solid $brand-main;
-//       }
-//     }
-//     @include mq($from: desktop) {
-//       padding: $spacing-small $spacing-small;
-//       &.c-top-bar-v2__menu-button {
-//         margin-top: 0;
-//       }
-//     }
-//     &.c-top-bar-v2__menu-button {
-//       height: 49px;
-//       width: 108px;
-//       color: $brand-main;
-//       transition: background-color 0.2s ease-out, color 0.2s ease-out;
-//       &.c-top-bar-v2__menu-button--active {
-//         background-color: $dark-blue;
-//         color: $white;
-//         border-color: $dark-blue;
-//         .c-top-bar-v2__menu-icon {
-//           img {
-//             width: 23px;
-//             max-width: 100%;
-//             vertical-align: top;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-// .c-top-bar-v2__menu-item--active {
-//   background: $brand-main;
-//   color: $white;
-// }
-
-// .c-top-bar-v2__menu-icon {
-//   margin-right: $spacing-small;
-//   margin-left: $spacing-small;
-//   vertical-align: middle;
-// }
-
-.c-top-bar-v2-background-bar {
+.c-top-bar__background {
   background-color: #162063;
-  mix-blend-mode: multiply;
   position: fixed;
   width: 100%;
   top: 0;
@@ -247,7 +145,6 @@ a.c-top-bar-v2__logo:visited {
   }
   @include mq($from: desktop) {
     height: inherit;
-
     padding: 54px;
   }
 }

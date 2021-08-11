@@ -14,6 +14,7 @@ export const MainMenu = ({
   activeSearchMenu,
   triggerSearchMenu,
   searchData,
+  setSearchOpen,
 }) => {
   return (
     <div className="c-menu__items c-main-menu">
