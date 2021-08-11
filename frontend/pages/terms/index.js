@@ -45,7 +45,7 @@ const Glossary = ({ data: { terms = [] }, url = {} }) => (
 export default DataLoader(Glossary, {
   queryFunc: () => ({
     sanityQuery: `{
-      "terms": *[_type == "term"][1..10000] | order(term)
+      "terms": *[_type == "term"] | order(term)
     }`,
   }),
   materializeDepth: 2,
