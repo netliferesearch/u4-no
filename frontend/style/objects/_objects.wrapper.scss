@@ -17,10 +17,8 @@
   margin-right: auto;
   margin-left: auto;
   max-width: $site-width;
-  @include mq($from: tablet) {
-    padding-right: $inuit-global-spacing-unit;
-    padding-left: $inuit-global-spacing-unit;
-  }
+  padding-right: $inuit-global-spacing-unit;
+  padding-left: $inuit-global-spacing-unit;
 }
 
 .o-wrapper--padded {

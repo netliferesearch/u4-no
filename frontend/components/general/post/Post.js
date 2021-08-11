@@ -1,30 +1,41 @@
-
+import React from 'react';
 import dateToString from '../../../helpers/dateToString';
-import { Tags } from '../tag/Tags';
+import sanityImageLoader from '../../sanityImageLoader';
 
-export const Post = ({post}) => {
-return     <div className="articleWithTag">
-  <div>
-    {/*<Image*/}
-    {/*  loader={sanityImageLoader}*/}
-    {/*  src={image.asset.url}*/}
-    {/*  alt=""*/}
-    {/*  loading="lazy"*/}
-    {/*  layout="fill"*/}
-    {/*  objectFit="cover"*/}
-    {/*  priority="true"*/}
-    {/*/>*/}
-    <img className="articleImg" alt="articlepost" src={post.imageUrl} />
-  </div>
-  <div className="articleElemMain">
-    <div className="articleElem">
-      <div className="elementCategory">{post._type}</div>
-      <div className="elementCategoryRectangular"></div>
-      <h4>{post.title}</h4>
-      <p className="articleContent">{post.standfirst}</p>
-      <p className="articleDate">{dateToString({ start: post.date.utc })}</p>
-    </div>
-  </div>
-  <Tags tags={post.topics} />
-</div>
+import Image from 'next/image';
+import { Topics } from '../../Topics';
+import LinkToItem from '../../LinkToItem';
+import { getPostType } from '../../../helpers/getRouteByType';
+
+export const POST_SIZE = {
+  SMALL:'small', //collapsable in mobile view/normal in desktop
+  NORMAL:'normal', //normal size both in mobile and desktop
+  LARGE:'large', //large in desktop, full with image in mobile
 }
+
+export const Post = ({ post, size }) => {
+  return <LinkToItem type={post._type} slug={post.slug}>
+    <div className={`post ${size}`}>
+      <div className={`post-image`}>
+        <Image
+          loader={sanityImageLoader}
+          src={post.imageUrl}
+          alt=""
+          loading="lazy"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
+      <div className="post-info">
+        {getPostType(post) && <div
+          className="u-secondary-heading u-secondary-h4 u-detail--blue--small post-type">{getPostType(post)}</div>}
+        <h4 className="post-title">{post.title}</h4>
+        <div className="u-body articleContent">{post.standfirst}</div>
+        <div className="articleDate u-body--small">{dateToString({ start: post.date.utc })}</div>
+      </div>
+      {post.topics && (
+        <Topics title={false} topics={post.topics} hr={false} linkType={'5'}/>
+      )}
+    </div>
+  </LinkToItem>;
+};

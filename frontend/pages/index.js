@@ -48,9 +48,8 @@ const Frontpage = ({
       </section>
       <hr className="u-section-underline--no-margins" />
       <section className="c-section-background o-wrapper-full-width">
-        <div className="o-wrapper-medium">
+        <div className="o-wrapper">
           <FeaturedPosts featured={frontPage.resources} />
-          {/*<FeaturedPost featured={frontPage.resources} />*/}
         </div>
       </section>
       <hr className="u-section-underline--no-margins" />

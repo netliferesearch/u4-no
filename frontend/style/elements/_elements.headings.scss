@@ -28,13 +28,10 @@ h3 {
 }
 
 h4 {
-  @include inuit-font-size($font-size-tiny, 22px);
+  @include inuit-font-size($font-size-tiny, 24px);
   @include mq($from: desktop) {
     @include inuit-font-size($font-size-normal, 32px);
   }
-  margin-top: $spacing-large;
-  margin-bottom: 0;
-  font-weight: bold;
 }
 
 h5 {

@@ -1,9 +1,83 @@
+.post {
+  margin-bottom: 24px;
+  padding-bottom:24px;
+  border-bottom:1px solid $light-grey;
+  @include mq($from: tablet) {
+    border-bottom:none;
+    margin-bottom: 44px;
+    padding-bottom:0;
+  }
+  :hover {
+    cursor: pointer;
+  }
+}
+.post.small:last-child {
+    border-bottom: none;
+    padding-bottom:0;
+}
+.post:last-child {
+  margin-bottom: 0;
+}
+.post-image {
+  position:relative;
+  margin-left:-$inuit-global-spacing-unit;
+  margin-right:-$inuit-global-spacing-unit;
+  @include mq($from: tablet) {
+    margin:0
+  }
+}
+.post:hover .post-image{
+  opacity: 0.7;
+}
+.large .post-image {
+  height: 208px;
+  @include mq($from: tablet) {
+    height: 424px;
+  }
+}
+.small .post-image {
+  height: 85px;
+  @include mq($from: tablet) {
+    height: 205px;
+  }
+}
+.post.small {
+  display:flex;
+  align-items: center;
+  .post-image{
+    margin:0;
+    width:160px;
+    min-width: 160px;
+  }
+  .articleContent, .articleDate, .c-topics  {
+    display:none
+  }
+  @include mq($from: tablet) {
+    display:inherit;
+    .articleContent, .articleDate, .c-topics  {
+      display:inherit;
+      width:auto;
+    }
+    .post-image{
+      margin:0;
+      width:auto;
+    }
+  }
+}
 .articleImg {
   width: 100%;
   height: 205px;
   object-fit: cover;
 }
-
+.post-title {
+  margin:6px 0 16px;
+  text-overflow: ellipsis;
+  max-height: 68px;
+  overflow: hidden;
+  @include mq($from: tablet) {
+    margin:12px 0 16px;
+  }
+}
 .articleImg::before {
   content: "";
   position: absolute;
@@ -19,59 +93,40 @@
   );
 }
 
-.articleElem {
+.post-info {
   display: flex;
-  width: 100%;
   flex-direction: column;
+  margin-left:8px;
+  @include mq($from: tablet) {
+    margin-left:0px;
+  }
+}
+.post-type {
+  margin-top: 12px;
+  @include mq($from: tablet) {
+    margin-top: 20px;
+  }
 }
 
-.articleElemMain {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-.elementCategory {
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-family: "Lato", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 14px;
-  margin-top: 1em;
-}
-
-.elementCategoryRectangular {
-  width: 27px;
-  height: 2px;
-  background-color: #0079cf;
-  margin-bottom: 1em;
-}
-
-h4 {
-  font-family: "Lato", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 32px;
-  letter-spacing: 0.01em;
-  color: #333333;
-  margin: 0;
+.post.small .post-type {
+  margin-top: 0;
+  @include mq($from: tablet) {
+    margin-top: 20px;
+  }
 }
 
 .articleContent {
-  font-family: "Lato", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
-  color: #6f6f6f;
+  margin-bottom:24px;
+  color: $mid-grey;
 }
 
 .articleDate {
-  color: #6f6f6f;
-  font-family: "Lato", sans-serif;
+  margin:0 0 16px 0;
+  color: $mid-grey;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
