@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import PartnerAgencies from '../components/PartnerAgencies';
 import { FeaturedPost } from '../components/FeaturedPosts';
 import { CTA } from '../components/Guidance';
-import { PostList } from '../components/InsightPosts';
+import { PostList } from '../components/front-page/InsightPosts';
 import { CardList } from '../components/RecentPublications';
 import { FeatureList } from '../components/FeatureList';
 import { TopicCardList } from '../components/CorruptionByTopic';
@@ -41,21 +41,21 @@ const Frontpage = ({
       {/* {console.log('allFronts', allFrontPages)}
       {console.log('ORGfrontPage', ORGfrontPage)} */}
       {/* {console.log('frontPage', frontPage.sections)} */}
-      <section className="o-wrapper u-side-padding">
-        <div className="o-wrapper-full-width">
+      <section className="o-wrapper-full">
+        <div className="">
           <CTA img={frontPage.imageUrl} />
         </div>
       </section>
       <hr className="u-section-underline--no-margins" />
-      <section className="c-section-background o-wrapper-full-width">
-        <div className="o-wrapper">
+      <section className="c-section-background o-wrapper-full">
+        <div className="o-wrapper-medium">
           <FeaturedPosts featured={frontPage.resources} />
         </div>
       </section>
       <hr className="u-section-underline--no-margins" />
 
-      <section className="o-wrapper u-side-padding">
-        <div className="o-wrapper-medium">
+      <section className="">
+        <div className="o-wrapper-medium o-wrapper-mobile-full">
           <PostList insights={blogPosts} />
           <hr className="u-section-underline--no-margins" />
         </div>
@@ -81,10 +81,10 @@ const Frontpage = ({
           <TopicCardList topics={topics} />
         </div>
       </section>
-      <section className="u-side-padding c-section-background o-wrapper-full-width">
+      <section className="u-side-padding c-section-background o-wrapper-full">
         <PartnerAgencies />
       </section>
-      <section className="u-bg-dark-blue u-side-padding o-wrapper-full-width">
+      <section className="u-bg-dark-blue u-side-padding o-wrapper-full">
         <Footer />
       </section>
     </div>

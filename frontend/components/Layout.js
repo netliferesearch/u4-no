@@ -44,8 +44,8 @@ export const Layout = props => {
     <div
       className={
         asPath === '/'
-          ? 'u-print-width o-wrapper-page '
-          : 'u-print-width o-wrapper-page o-wrapper-fixed-header'
+          ? 'u-print-width '
+          : 'u-print-width o-wrapper-fixed-header'
       }
       style={{
         transition: 'all 0.1s ease-out',
