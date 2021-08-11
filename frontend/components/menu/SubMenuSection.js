@@ -1,12 +1,12 @@
 import React from 'react';
-import { MenuItem } from './MenuItem';
+import { SubMenuItem } from './SubMenuItem';
 
 export const SubMenuSection = ({ section }) => {
   return (
     <ul className="c-menu__list">
-      <h3 className="c-menu__heading small-section-title">{section.subtitle}</h3>
+      <h3 className="c-menu__heading c-sub-menu__heading">{section.subtitle}</h3>
       {section.items.map((i, index) => (
-        <MenuItem key={index} label={i.label} slug={i.slug} />
+        <SubMenuItem key={index} label={i.label} slug={i.slug} />
       ))}
     </ul>
   );

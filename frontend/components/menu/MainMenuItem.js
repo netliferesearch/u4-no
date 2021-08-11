@@ -31,7 +31,7 @@ export const MainMenuItem = ({
   ) : (
     <h3
       onClick={e => handleClick(e, item.id)}
-      className={`c-menu__heading c-menu__heading${activeItem === item.id ? '--active' : ''}`}
+      className={`c-menu__heading c-menu__heading${activeItem === item.id ? '--active' : ''} `}
     >
       {item.label}
     </h3>

@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 
-export const MenuItem = ({ label = '', slug = '' }) => {
+export const SubMenuItem = ({ label = '', slug = '' }) => {
   return (
     <Link href={slug}>
       <li className="c-menu__list-item">
-        <a className="c-menu__link">{label}</a>
+        <a className="c-menu__link u-body--white">{label}</a>
       </li>
     </Link>
   );

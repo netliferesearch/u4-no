@@ -57,9 +57,9 @@ export const Layout = props => {
         <>
           <div className="c-top-bar-v2-background-bar u-bg-transparent-blue" />
           <div {...classes('', 'fixed')}>
-            <a href="#" {...classes('logo-cmi')}>
+            {/* <a href="#" {...classes('logo-cmi')}>
               <LogoCMI />
-            </a>
+            </a> */}
             <div className="o-wrapper-medium fixed-header-content">
               {!hideLogo && (
                 <Link href="/">
