@@ -4,6 +4,9 @@ import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers';
 
+import Image from 'next/image';
+import sanityImageLoader from '../../components/sanityImageLoader';
+
 import Footer from '../../components/Footer';
 import Layout from '../../components/Layout';
 import { Newsletter } from '../../components/Newsletter';
@@ -45,7 +48,14 @@ const ServicePage = ({ data: { service = {}, url = {} } }) => {
       {featuredImage ? (
         <section className="c-boxOnImage">
           <figure className="c-boxOnImage__figure">
-            <img alt="" src={featuredImage} />
+            <Image
+              loader={sanityImageLoader}
+              src={featuredImage}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              priority="true"
+            />
           </figure>
           <div className="c-boxOnImage__body">
             <BlockContent blocks={lead} serializers={serializers} />

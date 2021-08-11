@@ -11,6 +11,7 @@ import { CardList } from '../components/RecentPublications';
 import { FeatureList } from '../components/FeatureList';
 import { TopicCardList } from '../components/CorruptionByTopic';
 import { LearningEvents } from '../components/LearningEvents';
+import { FeaturedPosts } from '../components/front-page/FeaturedPosts';
 
 const Frontpage = ({
   data: {
@@ -47,8 +48,8 @@ const Frontpage = ({
       </section>
       <hr className="u-section-underline--no-margins" />
       <section className="c-section-background o-wrapper-full-width">
-        <div className="o-wrapper-medium">
-          <FeaturedPost featured={frontPage.resources} />
+        <div className="o-wrapper">
+          <FeaturedPosts featured={frontPage.resources} />
         </div>
       </section>
       <hr className="u-section-underline--no-margins" />

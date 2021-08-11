@@ -99,6 +99,9 @@
 @import 'components/v2/components.reader';
 @import 'components/v2/service-page';
 @import 'components/v2/components.course-page';
+@import 'components/general/post/components.post';
+@import 'components/general/typography/components.sectionTitle';
+@import 'components/front-page/components.featuredPosts';
 
 // UTILITIES
 @import '../node_modules/inuitcss/utilities/utilities.widths';

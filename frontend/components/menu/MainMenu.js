@@ -1,13 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import Router from 'next/router';
-import PicoSanity from 'picosanity';
+import React from 'react';
 import SearchIcon from '../icons/SearchIcon';
 import { menuItems } from './menuItems';
 import { MainMenuItem } from './MainMenuItem';
 import SearchFieldV2 from '../SearchField-v2';
 import { CloseSearch } from '../icons/CloseSearch';
-import { SubMenu } from './SubMenu';
-import { useOnClickOutside } from '../../helpers/hooks';
 
 export const MainMenu = ({
   searchOpen,

@@ -18,6 +18,7 @@ const PartnerPromo = ({
   title = {
     __html: '<span>Are you U4 partner staff?<br />Take advantage of exclusive U4 services.</span>',
   },
+  imageUrl = 'https://cdn.sanity.io/images/1f1lcoov/production/09ede1f209d57acaaa02feae00f49a0111b36e1b-1642x726.jpg',
 }) => (
   <section {...classes('')}>
     <h2 {...classes('title')} dangerouslySetInnerHTML={title} />
@@ -62,7 +63,13 @@ const PartnerPromo = ({
         </a>
       </div>
       <figure className="c-boxOnImage__figure c-boxOnImage__figure--smaller">
-        <img src="/public/services_partners.jpg?w=1600&amp;h=400&amp;fit=crop&amp;crop=focalpoint" />
+        <img
+          alt=""
+          src={`${imageUrl}?auto=format&w=1600&h=400&fit=crop&crop=focalpoint`}
+          srcSet={`${imageUrl}?auto=format&w=500&q=70 500w, ${imageUrl}?auto=format&w=800&q=75 800w, ${imageUrl}?auto=format&w=1600&q=80 1600w, ${imageUrl}?auto=format&w=2400&q=80 2400w`}
+          sizes="90vw"
+          loading="lazy"
+        />
       </figure>
     </section>
     <h2 className="c-topic-section__cta u-margin-top-huge">
