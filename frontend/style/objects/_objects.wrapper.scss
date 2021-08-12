@@ -52,6 +52,13 @@
   margin-right: auto;
   margin-left: auto;
   max-width: 1206px;
+  padding-right: $inuit-global-spacing-unit;
+  padding-left: $inuit-global-spacing-unit;
+}
+
+.o-wrapper-medium.o-wrapper-mobile-full {
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .o-wrapper--no-padding {
@@ -59,6 +66,11 @@
     padding-right: 0;
     padding-left: 0;
   }
+}
+
+.o-wrapper-full {
+  width: 100%;
+  max-width: 100%;
 }
 
 .o-wrapper-full-width {
