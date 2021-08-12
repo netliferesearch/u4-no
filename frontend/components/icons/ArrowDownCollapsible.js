@@ -10,7 +10,7 @@ export default function ArrowDownCollapsible() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path opacity="0.5" d="M1 1L7.5 7.5L14 1" stroke="white" stroke-width="1.5" />
+      <path opacity="0.5" d="M1 1L7.5 7.5L14 1" stroke="white" strokeWidth="1.5" />
     </svg>
   );
 }

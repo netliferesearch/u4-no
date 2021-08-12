@@ -1,23 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
-import BEMHelper from 'react-bem-helper';
+import React, { useEffect, useState } from 'react';
 import PicoSanity from 'picosanity';
 import SearchIcon from '../icons/SearchIcon';
 import MenuIcon from '../icons/MenuIcon';
-import Collapsible from 'react-collapsible';
 import ArrowDownCollapsible from '../icons/ArrowDownCollapsible';
 import CloseIcon from '../icons/CloseIcon';
 import { SocialFollow } from '../general/social/SocialFollow';
 import { socialItems } from '../general/social/socialItems';
 import { menuItems } from './menuItems';
-import { MainMenuItem } from './MainMenuItem';
 import { MobileMainMenuItem } from './MobileMainMenuItem';
 import { SubMenuItem } from './SubMenuItem';
-import { useOnClickOutside } from '../../helpers/hooks';
-
-const menuClasses = BEMHelper({
-  name: 'menu--mobile',
-  prefix: 'c-',
-});
+import { Accordion } from '../general/accordion/Accordion';
+import SearchFieldV2 from '../SearchField-v2';
+import { CloseSearch } from '../icons/CloseSearch';
 
 export const MenuMobile = props => {
   const {
@@ -36,9 +30,6 @@ export const MenuMobile = props => {
   };
 
   const [data, setData] = useState('');
-  const [activeItem, setActiveItem] = useState('');
-  // const refMobile = useRef();
-  // useOnClickOutside(refMobile, () => setActiveMenu(false));
 
   useEffect(
     () => {
@@ -61,148 +52,79 @@ export const MenuMobile = props => {
   );
   return (
     <div className="c-menu--mobile c-menu--mobile__main-box" style={{ color: 'white' }}>
-      <button {...menuClasses('button')} onClick={triggerMenu}>
+      <button className="c-menu--mobile__button" onClick={triggerMenu}>
         {activeMenu ? (
           <div>
-            <span {...menuClasses('search-icon-holder')}>
+            {/* <SearchFieldV2
+              isOpen={activeSearchMenu}
+              isAlwaysOpen={true}
+              triggerSearchMenu={triggerSearchMenu}
+              searchData={searchData}
+            /> */}
+            <span className="c-menu--mobile__search-icon-holder">
               <SearchIcon />
             </span>
             <span>
               <CloseIcon />
-            </span>{' '}
+            </span>
           </div>
         ) : (
           <MenuIcon />
         )}
       </button>
-      {console.log(activeMenu)}
       {activeMenu ? (
-        <div {...menuClasses('backdrop')}>
-          <Collapsible
-            overflowWhenOpen="scroll"
+        <div className="c-menu--mobile__backdrop">
+          <Accordion
             trigger={
-              <div className="c-menu--mobile__collapsible-trigger-box">
+              <div className="c-menu--mobile__trigger-box">
                 <MobileMainMenuItem item={menuItems[0]} />
                 <ArrowDownCollapsible />
               </div>
             }
           >
             {data && (
-              <div {...menuClasses('topics')}>
-                <ul {...menuClasses('list')}>
-                  {data.slice(0, 27).map(topic => (
-                    <SubMenuItem
-                      key={topic._id}
-                      label={topic.title}
-                      slug={`/topics/${topic.slug.current}`}
-                    />
-                  ))}
-                </ul>
-              </div>
+              <ul className="c-menu__list">
+                {data.slice(0, 27).map(topic => (
+                  <SubMenuItem
+                    key={topic._id}
+                    label={topic.title}
+                    slug={`/topics/${topic.slug.current}`}
+                  />
+                ))}
+              </ul>
             )}
-          </Collapsible>
-          <Collapsible
+          </Accordion>
+          <Accordion
             trigger={
-              <div className="c-menu--mobile__collapsible-trigger-box">
+              <div className="c-menu--mobile__trigger-box">
                 <MobileMainMenuItem item={menuItems[1]} />
                 <ArrowDownCollapsible />
               </div>
             }
           >
-            {/* {menuItems[1].sections.map((i, index) => (
-              <SubMenuItem key={index} label={i.label} slug={i.slug} />
-            ))} */}
-            <div {...menuClasses('topics')}>
-              {/* <h4 {...menuClasses('heading')}>Learning &amp; events</h4> */}
-              <ul {...menuClasses('list')}>
-                <li {...menuClasses('list-item')}>
-                  <a {...menuClasses('link')} href="/online-courses">
-                    Online courses
-                  </a>
-                </li>
-                <li {...menuClasses('list-item')}>
-                  <a {...menuClasses('link')} href="/helpdesk">
-                    Helpdesk - Ask your question
-                  </a>
-                </li>
-
-                <li {...menuClasses('list-item')}>
-                  <a {...menuClasses('link')} href="/workshops-and-events">
-                    Workshops
-                  </a>
-                </li>
-
-                <li {...menuClasses('list-item')}>
-                  {' '}
-                  <a {...menuClasses('link')} href="/workshops-and-events">
-                    Public U4 Events
-                  </a>
-                </li>
-                <li {...menuClasses('list-item')}>
-                  {' '}
-                  <a {...menuClasses('link')} href="/workshops-and-events">
-                    Partners only events
-                  </a>
-                </li>
-              </ul>
-            </div>{' '}
-          </Collapsible>
-          <Collapsible
+            <ul className="c-menu__list">
+              {menuItems[1].sections.map((s, index) =>
+                s.items.map((i, index) => <SubMenuItem key={index} label={i.label} slug={i.slug} />)
+              )}
+            </ul>
+          </Accordion>
+          <Accordion
             trigger={
-              <div className="c-menu--mobile__collapsible-trigger-box">
+              <div className="c-menu--mobile__trigger-box">
                 <MobileMainMenuItem item={menuItems[2]} />
                 <ArrowDownCollapsible />
               </div>
             }
           >
-            <div {...menuClasses('topics')}>
-              {' '}
-              <ul {...menuClasses('list')}>
-                <li {...menuClasses('list-item')}>
-                  <a {...menuClasses('link')} href="/about-u4">
-                    About us
-                  </a>
-                </li>
-                <li {...menuClasses('list-item')}>
-                  <a {...menuClasses('link')} href="/the-team">
-                    Staff
-                  </a>
-                </li>
-                <li {...menuClasses('list-item')}>
-                  <a {...menuClasses('link')} href="/u4-partner-agencies">
-                    Partner Information
-                  </a>
-                </li>
-
-                <li {...menuClasses('list-item')}>
-                  <a {...menuClasses('link')} href="/about-u4">
-                    Funding Partners
-                  </a>
-                </li>
-                <li {...menuClasses('list-item')}>
-                  <a {...menuClasses('link')} href="/the-team">
-                    Expert Network
-                  </a>
-                </li>
-                <li {...menuClasses('list-item')}>
-                  <a {...menuClasses('link')} href="/u4-partner-agencies">
-                    Anti-Coruption helpdesk
-                  </a>
-                </li>
-
-                <li {...menuClasses('list-item')}>
-                  <a {...menuClasses('link')} href="/about-u4">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </Collapsible>
-
-          <div className="c-menu--mobile__collapsible-trigger-box">
+            <ul className="c-menu__list">
+              {menuItems[2].sections.map((s, index) =>
+                s.items.map((i, index) => <SubMenuItem key={index} label={i.label} slug={i.slug} />)
+              )}
+            </ul>
+          </Accordion>
+          <div className="c-menu--mobile__trigger-box">
             <MobileMainMenuItem item={menuItems[3]} />
           </div>
-
           <SocialFollow items={socialItems} />
         </div>
       ) : null}

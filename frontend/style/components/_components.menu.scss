@@ -3,6 +3,9 @@
   @include mq($from: desktop) {
     display: block;
   }
+  .c-menu__list {
+    width: 33%;
+  }
 }
 
 .c-menu__items {
@@ -104,7 +107,7 @@
   padding: 0;
   padding-top: $spacing-tiny;
   // @include inuit-font-size(18px, 40px);
-  width: 33%;
+  //width: 33%;
 }
 
 @keyframes toggleFromTop {

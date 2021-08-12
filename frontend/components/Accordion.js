@@ -1,76 +1,41 @@
-import React, { Component } from 'react';
-import T from 'prop-types';
-import BEMHelper from 'react-bem-helper';
-import { CSSTransitionGroup } from 'react-transition-group';
-import autobind from 'react-autobind';
+import React, { useState } from 'react';
 
-const classes = new BEMHelper({
-  name: 'accordion',
-  prefix: 'c-',
-});
-
-export default class Accordion extends Component {
-  static propTypes = {
-    title: T.string,
-    icon: T.string,
-    expanded: T.bool,
-    children: T.any,
-    simple: T.bool,
+export const Accordion = ({}) => {
+  const [activeAccordion, setActiveAccordion] = useState(-1);
+  const toggleAccordion = index => {
+    const newIndex = index === activeAccordion ? -1 : index;
+    setActiveAccordion(newIndex);
   };
 
-  static defaultProps = {
-    expanded: false,
-    simple: false,
-  };
-
-  constructor() {
-    super();
-
-    this.state = {
-      expanded: false,
-    };
-
-    autobind(this);
-  }
-
-  componentDidMount() {
-    this.setState({
-      expanded: this.props.expanded,
-    });
-  }
-
-  handleToggle() {
-    this.setState({
-      expanded: !this.state.expanded,
-    });
-  }
-
-  render() {
-    const { icon, title, children, simple, summary = '' } = this.props;
-    const { expanded } = this.state;
-
-    const modifiers = { expanded, simple };
-
-    return (
-      <section {...classes('', modifiers)}>
-        <button type="button" {...classes('toggle')} onClick={this.handleToggle}>
-          {icon()}
-          <h2 {...classes('title')}>{title}</h2>
-          {summary && <p>{summary}</p>}
-          <span {...classes('indicator')}>
-            {/* !simple && <Icon icon="arrow-down" />*/}
-            {/* simple && <Icon type="chevron-down" />*/}
-          </span>
-        </button>
-
-        <CSSTransitionGroup
-          transitionName={classes('wrapper').className}
-          transitionEnterTimeout={550}
-          transitionLeaveTimeout={200}
-        >
-          {expanded && <div {...classes('content')}>{children}</div>}
-        </CSSTransitionGroup>
-      </section>
-    );
-  }
-}
+  return (
+    <div className="c_accordion">
+      <div className="c-accordion__block" onClick={e => toggleAccordion(0)}>
+        <div className="c-accordion__container">
+          <h3 className="c-accordion__title">Cite this publication</h3>
+          <div className={`c-accordion__content${activeAccordion === 0 ? ' open' : ''}`} />
+        </div>
+        <div className={`c-accordion__arrow${activeAccordion === 0 ? ' open' : ''}`}>
+          <ArrowDownCollapsible />
+        </div>
+      </div>
+      <div className="c-accordion__block" onClick={e => toggleAccordion(1)}>
+        <div className="c-accordion__container">
+          <h3 className="c-accordion__title">Licence</h3>
+          <div className={`c-accordion__content${activeAccordion === 1 ? ' open' : ''}`} />
+        </div>
+        <div className={`c-accordion__arrow${activeAccordion === 1 ? ' open' : ''}`}>
+          <ArrowDownCollapsible />
+        </div>
+      </div>
+      <div className="c-accordion__block" onClick={e => toggleAccordion(2)}>
+        <div className="c-accordion__container">
+          <h3 className="c-accordion__title">Disclaimer</h3>
+          <div className={`c-accordion__content${activeAccordion === 2 ? ' open' : ''}`} />
+        </div>
+        <div className={`c-accordion__arrow${activeAccordion === 2 ? ' open' : ''}`}>
+          <ArrowDownCollapsible />
+        </div>
+      </div>
+    </div>
+  );
+};

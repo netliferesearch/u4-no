@@ -3,7 +3,6 @@ import Router from 'next/router';
 import PicoSanity from 'picosanity';
 import { menuItems } from './menuItems';
 import { SubMenu } from './SubMenu';
-import { useOnClickOutside } from '../../helpers/hooks';
 import { MainMenu } from './MainMenu';
 
 export const Menu = props => {
@@ -19,8 +18,6 @@ export const Menu = props => {
   const [data, setData] = useState('');
   const [activeItem, setActiveItem] = useState('');
   const [activeItemData, setActiveItemData] = useState(null);
-  // const ref = useRef();
-  // useOnClickOutside(ref, () => setActiveMenu(false));
   useEffect(
     () => {
       if (data) {
