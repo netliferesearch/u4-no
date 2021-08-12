@@ -7,7 +7,7 @@ import { useScrollInfo } from '../../helpers/useScrollInfo';
 import { CourseHeader } from '../../components/courses/CourseHeader';
 import { BreadCrumbV2 } from '../../components/BreadCrumbV2';
 import { CourseSidebar } from '../../components/courses/CourseSidebar';
-import { Share } from '../../components/ShareOnSocialMedia';
+import { Share } from '../../components/general/social/SocialShare';
 import serializers from '../../components/serializers';
 import { PersonBasic } from '../../components/PersonBasic';
 import LogoU4 from '../../components/icons/LogoU4';

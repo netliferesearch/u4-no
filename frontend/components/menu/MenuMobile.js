@@ -109,6 +109,9 @@ export const MenuMobile = props => {
               </div>
             }
           >
+            {/* {menuItems[1].sections.map((i, index) => (
+              <SubMenuItem key={index} label={i.label} slug={i.slug} />
+            ))} */}
             <div {...menuClasses('topics')}>
               {/* <h4 {...menuClasses('heading')}>Learning &amp; events</h4> */}
               <ul {...menuClasses('list')}>

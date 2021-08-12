@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BlogAuthorsList } from './BlogAuthorsList';
 import dateToString from '../../helpers/dateToString';
 import { DownloadPdf } from '../DownloadDropdown';
-import { Share, ShareOnSocialMedia } from '../ShareOnSocialMedia';
+import { Share } from '../general/social/SocialShare';
 import { TagsSection } from '../TagsSection';
 import { RelatedSimple } from '../RelatedSimple';
 import { Keywords } from '../Keywords';

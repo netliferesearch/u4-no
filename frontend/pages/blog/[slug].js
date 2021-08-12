@@ -12,7 +12,7 @@ import { Keywords } from '../../components/Keywords';
 import { Newsletter } from '../../components/Newsletter';
 import { AboutAuthor } from '../../components/AboutAuthor';
 import { Disclaimers } from '../../components/Disclaimers';
-import { Share } from '../../components/ShareOnSocialMedia';
+import { Share } from '../../components/general/social/SocialShare';
 import { PhotoCaptionCredit } from '../../components/PhotoCaptionCredit';
 import { useEffect } from 'react';
 

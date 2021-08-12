@@ -4,7 +4,7 @@ import languageName from '../../helpers/languageName';
 import { Translations } from '../Translations';
 import dateToString from '../../helpers/dateToString';
 import { PersonContactBasic } from '../PersonBasic';
-import { Share } from '../ShareOnSocialMedia';
+import { Share } from '../general/social/SocialShare';
 import { CourseCoordinator } from '../PersonBasic';
 const classes = BEMHelper({
   name: 'article-sidebar',

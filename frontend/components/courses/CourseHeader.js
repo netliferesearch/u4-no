@@ -1,5 +1,5 @@
 import React from 'react';
-import { Share } from '../ShareOnSocialMedia';
+import { Share } from '../general/social/SocialShare';
 import Link from 'next/link';
 import ReactPlayer from 'react-player';
 import { RegisterForm } from '../RegisterForm';
