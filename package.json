@@ -89,7 +89,8 @@
   },
   "os": [
     "darwin",
-    "linux"
+    "linux",
+    "win32"
   ],
   "repository": {
     "type": "git",
