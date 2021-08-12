@@ -5,6 +5,8 @@ import Link from 'next/link';
 import CmiLogoWhite from './icons/CmiLogoWhite';
 import { FacebookIcon, TwitterIcon, LinkedInIcon, EmailIcon } from './icons/SocialIcons';
 import { Newsletter } from './Newsletter';
+import { SocialFollow } from './general/social/SocialFollow';
+import { socialItems } from './general/social/socialItems';
 
 const classes = BEMHelper({
   name: 'footer',
@@ -22,24 +24,7 @@ const Footer = () => (
         <h4 className="u-secondary-heading-white u-detail--white c-footer-mobile-margin">
           Follow Us
         </h4>
-        <div className="c-share-buttons">
-          <a className="c-share-button" href="https://www.facebook.com/U4anticorruption/">
-            <FacebookIcon />
-          </a>
-          <a
-            className="c-share-button"
-            href="https://www.linkedin.com/showcase/u4-anti-corruption-resource-centre/"
-          >
-            <LinkedInIcon />
-          </a>
-
-          <a className="c-share-button" href="https://twitter.com/U4_ACRC">
-            <TwitterIcon />
-          </a>
-          <a className="c-share-button" href="mailto:u4@cmi.no">
-            <EmailIcon />
-          </a>
-        </div>
+        <SocialFollow items={socialItems} />
       </div>
     </div>
     <div className="o-wrapper-full-width c-footer__row-second">

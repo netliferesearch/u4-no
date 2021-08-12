@@ -78,14 +78,14 @@
     text-align: left;
     line-height: 1.6;
   }
-  .c-share-buttons {
-    display: flex;
-    // justify-content: space-between;
-    padding: 0;
+  .c-social--follow {
+    // display: flex;
+    // // justify-content: space-between;
+    // padding: 0;
     margin-top: 32px;
-    .c-share-button {
+    .c-social-follow__item {
       border-bottom: none;
-      margin-right: 39px;
+      margin-right: 40px;
       @include mq($from: mobile, $until: desktop) {
         margin-right: 25px;
       }

@@ -60,7 +60,7 @@ export const MenuMobile = props => {
     [data]
   );
   return (
-    <div {...menuClasses('main-box')} style={{ color: 'white' }}>
+    <div className="c-menu--mobile c-menu--mobile__main-box" style={{ color: 'white' }}>
       <button {...menuClasses('button')} onClick={triggerMenu}>
         {activeMenu ? (
           <div>
