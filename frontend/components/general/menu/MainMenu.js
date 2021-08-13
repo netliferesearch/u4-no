@@ -1,9 +1,9 @@
 import React from 'react';
-import SearchIcon from '../icons/SearchIcon';
+import { SearchIcon } from '../../icons/SearchIcon';
 import { menuItems } from './menuItems';
 import { MainMenuItem } from './MainMenuItem';
-import SearchFieldV2 from '../SearchField-v2';
-import { CloseSearch } from '../icons/CloseSearch';
+import SearchFieldV2 from '../../SearchField-v2';
+import { CloseSearch } from '../../icons/CloseSearch';
 
 export const MainMenu = ({
   searchOpen,

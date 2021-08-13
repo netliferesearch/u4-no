@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import PicoSanity from 'picosanity';
-import SearchIcon from '../icons/SearchIcon';
-import MenuIcon from '../icons/MenuIcon';
-import ArrowDownCollapsible from '../icons/ArrowDownCollapsible';
-import CloseIcon from '../icons/CloseIcon';
-import { SocialFollow } from '../general/social/SocialFollow';
-import { socialItems } from '../general/social/socialItems';
+import { SearchIcon } from '../../icons/SearchIcon';
+import { MenuIcon } from '../../icons/MenuIcon';
+import { ArrowDownCollapsible } from '../../icons/ArrowDownCollapsible';
+import { CloseIcon } from '../../icons/CloseIcon';
+import { SocialFollow } from '../social/SocialFollow';
+import { socialItems } from '../social/socialItems';
 import { menuItems } from './menuItems';
 import { MobileMainMenuItem } from './MobileMainMenuItem';
 import { SubMenuItem } from './SubMenuItem';
-import { Accordion } from '../general/accordion/Accordion';
-import SearchFieldV2 from '../SearchField-v2';
-import { CloseSearch } from '../icons/CloseSearch';
+import { Accordion } from '../accordion/Accordion';
 
 export const MenuMobile = props => {
   const {

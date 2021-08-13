@@ -32,7 +32,7 @@ export const LearningEvents = ({ events }) => {
                               {getPostType(post)}
                             </h5>
                           )}
-                          <h3 className="u-heading--4">{post.title}</h3>
+                          <h3 className="">{post.title}</h3>
                         </div>
                         <p className="c-featured-post__intro u-body--grey c-event-intro-text">
                           {post.lead}

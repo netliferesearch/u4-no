@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DataLoader from '../helpers/data-loader';
 import { Layout } from '../components/Layout';
-import Footer from '../components/Footer';
+import Footer from '../components/general/footer/Footer';
 import PartnerAgencies from '../components/PartnerAgencies';
 import { CTA } from '../components/Guidance';
 import { PostList } from '../components/front-page/InsightPosts';
@@ -44,14 +44,11 @@ const Frontpage = ({
           <CTA img={frontPage.imageUrl} />
         </div>
       </section>
-      <hr className="u-section-underline--no-margins" />
       <section className="c-section-background o-wrapper-full">
         <div className="o-wrapper-medium">
           <FeaturedPosts featured={frontPage.resources} />
         </div>
       </section>
-      <hr className="u-section-underline--no-margins" />
-
       <section className="">
         <div className="o-wrapper-medium o-wrapper-mobile-full">
           <PostList insights={blogPosts} />
@@ -79,10 +76,10 @@ const Frontpage = ({
           <TopicCardList topics={topics} />
         </div>
       </section>
-      <section className="u-side-padding c-section-background o-wrapper-full">
+      <section className="c-section-background o-wrapper-full">
         <PartnerAgencies />
       </section>
-      <section className="u-bg-dark-blue u-side-padding o-wrapper-full">
+      <section className="o-wrapper-full">
         <Footer />
       </section>
     </div>

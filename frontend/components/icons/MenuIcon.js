@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function MenuIcon(props) {
+export const MenuIcon = props => {
   return (
     <svg
       className="c-menu--mobile__menu-svg"
@@ -16,4 +16,4 @@ export default function MenuIcon(props) {
       </g>
     </svg>
   );
-}
+};

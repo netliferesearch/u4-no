@@ -10,7 +10,7 @@ export const FeatureList = ({ features = [], alt = false }) => {
   return (
     <div className="c-feature--list o-wrapper-full-width">
       <div className="o-wrapper-medium c-feature-main-box">
-        <h4 className="u-secondary-heading-white u-secondary-h1-white u-detail--blue c-feature-title">
+        <h4 className="u-secondary-heading u-secondary-h1 u-text--white u-detail--blue c-feature-title">
           Become a partner
         </h4>
         <div className=" c-feature-list">
@@ -43,7 +43,6 @@ export const FeatureList = ({ features = [], alt = false }) => {
             <div className="c-feature-list__item" key={feature._key}>
               {console.log(feature)}
               <Feature
-                
                 title={feature.image.title}
                 text={feature.featureText}
                 iconUrl={feature.image}

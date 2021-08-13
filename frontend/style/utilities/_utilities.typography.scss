@@ -12,11 +12,6 @@
   color: $white;
 }
 
-.u-heading--4 {
-  font-size: $font-size-normal;
-  line-height: 32px;
-}
-
 .u-section-underline {
   border: none;
   border-bottom: 1px solid $light-grey;
@@ -54,23 +49,6 @@
   letter-spacing: 0.15em;
   color: $dark-grey;
   text-transform: uppercase;
-}
-.u-secondary-heading-white {
-  font-family: $font-sans;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  color: $white;
-  text-transform: uppercase;
-}
-
-.u-secondary-h1-white {
-  font-size: $font-size-tiny;
-  line-height: 22px;
-  color: $white;
-  @include mq($from: tablet) {
-    font-size: $font-size-normal;
-    line-height: 1;
-  }
 }
 
 .u-secondary-h1 {
@@ -129,7 +107,8 @@
 .u-body--small {
   font-family: $font-sans;
   font-size: $font-size-nano;
-  line-height: $font-size-micro;
+  line-height: $line-height-mid;
+  letter-spacing: 0.01em;
 }
 
 .u-detail--blue {
@@ -162,6 +141,7 @@
 .u-detail--white {
   position: relative;
   display: block;
+  padding-top: 24px;
   padding-bottom: 12px;
   &:after {
     content: '';
@@ -214,6 +194,14 @@
       line-height: 0.8;
     }
   }
+}
+
+.u-text--white {
+  color: $white;
+}
+
+.u-text--light-blue {
+  color: $light-blue;
 }
 
 .u-text--blue {
@@ -275,4 +263,8 @@
   &:focus {
     border: none;
   }
+}
+
+.u-opacity--60 {
+  opacity: 0.6;
 }

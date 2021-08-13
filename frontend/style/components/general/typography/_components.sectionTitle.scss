@@ -30,7 +30,7 @@
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #e4f1fa;
+  color: $light-blue;
   margin: 0 70px;
 }
 .titleHeadingLightNoMargin {
@@ -41,7 +41,7 @@
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #e4f1fa;
+  color: $light-blue;
   margin: 0;
 }
 
@@ -55,20 +55,20 @@
 .BlogTitleRectangularLightNoMargin {
   width: 26.37px;
   height: 5.73px;
-  background-color: #e4f1fa;
+  background-color: $light-blue;
 }
 
 .BlogTitleRectangularWhiteMargin {
   width: 26.37px;
   height: 5.73px;
-  background-color: #e4f1fa;
+  background-color: $light-blue;
   margin: 0 70px 2em 70px;
 }
 
 .BlogTitleRectangularWhiteNoMargin {
   width: 26.37px;
   height: 5.73px;
-  background-color: #e4f1fa;
+  background-color: $light-blue;
 }
 
 .BlogTitleRectangularDarkMargin {
@@ -81,5 +81,5 @@
 .BlogTitleRectangularDarkNoMargin {
   width: 26.37px;
   height: 5.73px;
-  background-color: #e4f1fa;
+  background-color: $light-blue;
 }

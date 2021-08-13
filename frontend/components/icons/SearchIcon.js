@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function SearchIcon(props) {
+export const SearchIcon = (props) => {
   return (
     <svg
       className="c-search-v2__icon-svg"

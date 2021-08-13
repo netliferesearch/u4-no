@@ -13,6 +13,9 @@
 }
 
 .c-social-follow__item {
-  margin-right: 25px;
+  margin-right: 24px;
   border-bottom: 1px solid transparent;
+  @include mq($from: tablet) {
+    margin-right: 40px;
+  }
 }

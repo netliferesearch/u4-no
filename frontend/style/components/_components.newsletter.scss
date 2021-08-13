@@ -1,154 +1,81 @@
-@use "sass:math";
-
 .c-newsletter {
-  margin-bottom: $spacing-large;
-  margin-top: $spacing-large;
-  display: flex;
+  margin: 0;
+  max-width: 100%;
 }
 
 .c-newsletter__content {
-  flex-grow: 10;
-  background: $light-blue;
-  padding: $spacing-large $spacing;
-  @include mq($from: tablet) {
-    //margin-left: -$spacing;
-    padding: $spacing-huge*1.5 $spacing-large $spacing-huge $spacing-huge;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  @include mq($from: mobile, $until: desktop) {
+    h4 {
+      margin-top: 0;
+    }
   }
 }
-.c-newsletter__title-wrapper {
+
+.c-newsletter__form-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid $dark-blue;
-  &:hover {
-    .c-newsletter__title {
-      color: $brand-light;
-    }
-    .c-newsletter__input::placeholder {
-      color: $mid-grey;
-    }
-    .c-newsletter__title-arrow {
-      svg path {
-        fill: $brand-light;
-      }
-    }
-  }
-  & button {
-    border-style: none;
-    background: $light-blue;
+  justify-content: flex-start;
+  align-items: flex-end;
+  border: none;
+  margin: 0;
+  padding: 2px 0;
+  @include mq($from: tablet) {
+    margin: 36px 0;
+    padding: 4px 0;
   }
 }
+
 .c-newsletter__title {
-  color: $dark-blue;
-  margin: 0 0 $spacing-small;
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: $mid-grey;
+  margin: 0 0 32px 0;
   padding-bottom: $spacing-tiny;
   transition: border 0.2s ease-out;
-  @include inuit-font-size($font-size-normal, $line-height-normal );
-  @include mq($from: tablet) {
-    padding-bottom: $spacing-small;
-    @include inuit-font-size(math.div($font-size-huge, 1.5), $line-height-large );
-  }
-}
-.c-newsletter__small-title {
-  padding-left: $spacing-small;
 }
 
 .c-newsletter__input {
-  display: flex;
-  color: $dark-blue;
-  margin: 0 0 $spacing-small;
-  padding-bottom: $spacing-tiny;
-  transition: border 0.2s ease-out;
-  @include inuit-font-size($font-size-small, $line-height-normal );
-  @include mq($from: tablet) {
-    padding-bottom: $spacing-small;
-    @include inuit-font-size(math.div($font-size-largest, 1.5), $line-height-large );
-  }
-  @include mq($from: desktop) {
-    padding-bottom: $spacing-small;
-    @include inuit-font-size(math.div($font-size-huge, 1.5), $line-height-large );
-  }
-  border-style: none;
-  background: $light-blue;
-  width: 100%;
   font-family: $font-sans;
-  padding-left: $spacing-small;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.15em;
+  color: $light-grey;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin: 0;
+  padding: 6px 0;
+  transition: border 0.2s ease-out;
+  border-style: none;
+  width: 100%;
+  //max-width: 224px;
+  background-color: transparent;
+  border-bottom: 1px solid $light-grey;
+  @include mq($from: tablet) {
+    padding: 8px 0;
+    max-width: 588px;
+  }
 }
 ::placeholder {
-  color: $dark-blue;
+  color: $light-grey;
   opacity: 1;
 }
-
-.c-newsletter__title-arrow {
-  padding: 0 $spacing-small $spacing-small;
-  svg path {
-    fill: $dark-blue;
+.c-newsletter {
+  .c-btn--submit {
+    margin-left: 12px;
   }
 }
-
-.c-newsletter__small-title {
-  display: inline-block;
-  @include inuit-font-size($font-size-tiny, $line-height-normal );
-  padding-bottom: $spacing-small;
-  color: $dark-blue;
-  margin: 0;
-  font-family: $font-sans;
+.c-newsletter__text {
   font-weight: 400;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: left;
+  letter-spacing: 0.02em;
+  margin: 0 0 32px 0;
   @include mq($from: tablet) {
-    @include inuit-font-size($font-size-small, $line-height-normal );
-  }
-}
-.c-newsletter__to-top {
-  width: 70px;
-  padding: 0 $spacing;
-  writing-mode: vertical-lr;
-  text-align: right;
-  font-family: $font-sans;
-  transition: all 0.3s ease-out;
-  @include mq($from: tablet) {
-  }
-
-  a {
-    border: 0;
-    color: $dark-blue;
-    cursor: pointer;
-  }
-}
-.c-newsletter__to-top-arrow {
-  path {
-    fill: $dark-blue;
-  }
-  writing-mode: vertical-lr;
-  transform: translateY(-5px) rotate(-270deg);
-  margin-bottom: $spacing-small;
-  transition: transform 0.15s ease-out;
-}
-
-@supports (display: grid) {
-  .c-newsletter {
-    //display: grid;
-    //grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
-  }
-
-  .c-newsletter__content {
-    //grid-column: 1 / 9;
-    @include mq($from: tablet) {
-      //grid-column: 1 / 10;
-    }
-  }
-  .c-newsletter__to-top {
-    //grid-column: 9 / 11;
-    @include mq($from: tablet) {
-      //grid-column: 10 / 11;
-    }
-    &:hover {
-      .c-newsletter__to-top-arrow {
-        transform: translateY(-10px) rotate(-90deg);
-      }
-    }
-  }
-  .c-newsletter__to-top-arrow {
-    transform: rotate(-90deg);
-    transition: transform 0.15s ease-out;
+    text-align: center;
+    margin: 0;
   }
 }

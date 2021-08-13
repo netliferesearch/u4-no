@@ -591,3 +591,35 @@ $btn-ghost-border-width: 2px;
     opacity: 0.4;
   }
 }
+
+//v3:
+
+.c-btn--submit {
+  font-family: $font-sans;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $highlight-yellow;
+  background-color: transparent;
+  border: 1px solid $highlight-yellow;
+  padding: 6px 14px;
+  min-width: fit-content;
+  &:hover {
+    text-decoration: none;
+    background-color: $highlight-yellow;
+    color: #333333;
+  }
+  &:focus {
+    text-decoration: none;
+    //outline: none;
+  }
+  // &:active {
+  //   padding-top: 10px;
+  //   padding-bottom: 6px;
+  // }
+  @include mq($from: tablet) {
+    padding: 8px 16px;
+  }
+}

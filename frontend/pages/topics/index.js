@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { sortBy } from 'lodash';
 import Link from 'next/link';
-import Footer from '../../components/Footer';
+import Footer from '../../components/footer/Footer';
 import Layout from '../../components/Layout';
 import DataLoader from '../../helpers/data-loader';
 import dateToString from '../../helpers/dateToString';
