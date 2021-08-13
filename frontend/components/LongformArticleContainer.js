@@ -9,7 +9,7 @@ import sanityImageLoader from './sanityImageLoader';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import dateToString from '../helpers/dateToString';
 
-import Footer from './Footer';
+import Footer from '../components/general/footer/Footer';
 import Layout from './Layout';
 import LongformArticle from './LongformArticle';
 import PublicationArticleHeader from './PublicationArticleHeader';

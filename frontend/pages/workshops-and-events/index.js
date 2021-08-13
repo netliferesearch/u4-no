@@ -7,9 +7,9 @@ import serializers from '../../components/serializers';
 import Image from 'next/image';
 import sanityImageLoader from '../../components/sanityImageLoader';
 
-import Footer from '../../components/Footer';
+import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
-import { Newsletter } from '../../components/Newsletter';
+import { Newsletter } from '../../components/general/newsletter/Newsletter';
 import ServiceArticle from '../../components/ServiceArticle';
 import LinkList from '../../components/LinkList';
 

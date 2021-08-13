@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ElasticDataLoader from '../helpers/elastic-data-loader';
 
 import Layout from '../components/Layout';
-import Footer from '../components/Footer';
+import Footer from '../components/general/footer/Footer';
 import SearchResultsV2 from '../components/SearchResults-v2';
 import SearchFiltersV2 from '../components/SearchFilters-v2';
 import { wrapInRedux } from '../helpers/redux-store-wrapper';
