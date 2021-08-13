@@ -59,6 +59,16 @@
 .o-wrapper-medium.o-wrapper-mobile-full {
   padding-right: 0;
   padding-left: 0;
+  @include mq($from: tablet) {
+    padding-right: $inuit-global-spacing-unit;
+    padding-left: $inuit-global-spacing-unit;
+  }
+}
+.o-wrapper-medium.o-wrapper-mobile-full  .o-wrapper-medium {
+  @include mq($from: tablet) {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 .o-wrapper--no-padding {

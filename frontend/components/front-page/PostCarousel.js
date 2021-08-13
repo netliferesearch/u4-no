@@ -1,18 +1,20 @@
 import React from 'react';
-import { SectionIntro } from '../SectionIntro';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { ArrowNext } from '../icons/ArrowNext';
-import { Post, POST_SIZE } from '../general/post/Post';
+import { Post } from '../general/post/Post';
 import PropTypes from 'prop-types';
 
-export const PostList = ({ insights }) => {
+export const PostCarousel = ({ posts, type, buttonPath, title }) => {
   const responsive = {
     0: { items: 1.2 },
-    568: { items: 1.2 },
+    568: { items: 2.2 },
     980: { items: 3 },
   };
-  console.log('insights', insights);
+  console.log('posts', posts);
+  const items = posts && posts.map((post) => (
+    <Post key={post._id} type={type} post={post}/>
+  ));
   const renderDotsItem = ({ isActive }) => {
     return isActive ? (
       <div className="c-carousel-dots-active"/>
@@ -22,24 +24,18 @@ export const PostList = ({ insights }) => {
   };
   return (
     <div className="c-post-list c-post-list--2col">
-      <SectionIntro
-        title="Latest from the blog"
-        slug="/blog"
-        label="View blog"
-      />
-
+      <div className="o-wrapper-medium">
+      {title && <h4 className="u-secondary-heading u-secondary-h1 u-detail--blue">{title}</h4>}
+      </div>
       <div className="c-post-list__col">
         <AliceCarousel
+          items={items}
           responsive={responsive}
           renderDotsItem={renderDotsItem}
           disableButtonsControls
-        >
-          {insights && insights.map((post) => (
-            <Post key={post._id} size={POST_SIZE.NORMAL} post={post}/>
-          ))}
-        </AliceCarousel>
-        <div className="c-view-all">
-          <a className="c-topic-view-all" href="/blog">
+        />
+        <div className="o-wrapper-medium c-view-all">
+          <a className="c-topic-view-all" href={buttonPath}>
             View all
             <ArrowNext/>
           </a>
@@ -49,10 +45,16 @@ export const PostList = ({ insights }) => {
   );
 };
 
-PostList.defaultProps = {
-  insights: [],
+PostCarousel.defaultProps = {
+  posts: [],
+  type: '',
+  title: '',
+  buttonPath: '',
 };
 
-PostList.propTypes = {
-  insights: PropTypes.array,
+PostCarousel.propTypes = {
+  posts: PropTypes.array,
+  type: PropTypes.string,
+  buttonPath: PropTypes.string,
+  title: PropTypes.string,
 };

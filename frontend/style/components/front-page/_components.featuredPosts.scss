@@ -1,11 +1,12 @@
 .featured-posts {
   display: grid;
-  grid-gap: 30px;
+  grid-gap: 0px;
   @include mq($from: mobile) {
     grid-template-columns:1fr;
   }
   @include mq($from: tablet) {
 
+    grid-gap: 30px;
     grid-template-columns: 2fr 2fr;
   }
   @include mq($from: desktop) {
