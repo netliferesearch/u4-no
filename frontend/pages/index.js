@@ -5,12 +5,13 @@ import { Layout } from '../components/Layout';
 import Footer from '../components/general/footer/Footer';
 import PartnerAgencies from '../components/PartnerAgencies';
 import { CTA } from '../components/Guidance';
-import { PostList } from '../components/front-page/InsightPosts';
 import { CardList } from '../components/RecentPublications';
 import { FeatureList } from '../components/FeatureList';
 import { TopicCardList } from '../components/CorruptionByTopic';
 import { LearningEvents } from '../components/LearningEvents';
 import { FeaturedPosts } from '../components/front-page/FeaturedPosts';
+import { POST_TYPE } from '../components/general/post/Post';
+import { PostCarousel } from '../components/front-page/PostCarousel';
 
 const Frontpage = ({
   data: {
@@ -51,16 +52,23 @@ const Frontpage = ({
       </section>
       <section className="">
         <div className="o-wrapper-medium o-wrapper-mobile-full">
-          <PostList insights={blogPosts} />
+          <PostCarousel posts={blogPosts} type={POST_TYPE.BLOG} buttonPath='/blog' title='Latest from the blog' />
           <hr className="u-section-underline--no-margins" />
         </div>
       </section>
-      <section className="o-wrapper u-side-padding">
-        <div className="o-wrapper-medium">
-          <CardList resources={featured.publication} />
+      <section className="">
+        <div className="o-wrapper-medium o-wrapper-mobile-full">
+
+          <PostCarousel posts={featured.publication} type={POST_TYPE.PUBLICATION} buttonPath='/publications' title='U4 publications' />
           <hr className="u-section-underline--no-margins" />
         </div>
       </section>
+      {/*<section className="o-wrapper u-side-padding">*/}
+      {/*  <div className="o-wrapper-medium">*/}
+      {/*    <CardList resources={featured.publication} />*/}
+      {/*    /!*<hr className="u-section-underline--no-margins" />*!/*/}
+      {/*  </div>*/}
+      {/*</section>*/}
       <section className="o-wrapper u-side-padding">
         <div className="o-wrapper-medium">
           <LearningEvents events={events} />
