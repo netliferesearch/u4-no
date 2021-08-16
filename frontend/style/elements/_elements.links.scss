@@ -1,10 +1,11 @@
 a {
-  color: $brand-main;
+  color: $highlight-blue;
   text-decoration: none;
   padding-bottom: 0.05em;
   cursor: pointer;
-  border-bottom: 1px solid transparent;
   overflow-wrap: break-word;
+  //text-decoration: underline;
+
   // Commented out in case there was good reason to have this
   /*
   word-wrap: break-word;
@@ -21,50 +22,36 @@ a {
   hyphens: auto;
   */
 }
-/* a:visited used to be $brand-medium, robert changed this */
 a:visited {
-  color: $brand-main;
+  //color: $highlight-blue;
 }
 
 a:visited:hover {
-  color: $brand-main;
-  border-bottom: 1px solid currentColor;
+  //color: $highlight-blue;
+  //text-decoration: underline;
 }
 
 a:hover {
-  border-bottom: 1px solid currentColor;
+  color: $highlight-blue;
+  //text-decoration: underline;
 }
 
 a:focus {
-  border-bottom: 1px solid currentColor;
+  color: $highlight-blue;
 }
 
 a:active {
-  border-bottom: 1px solid rcurrentColor;
+  color: $highlight-blue;
+  //text-decoration: underline;
 }
 
-// Add this class when the links are on a dark background
-.links-wrapper-dark-background {
-  a {
-    color: $brand-lighter;
-  }
-  a:visited {
-    color: $brand-lighter;
-    border-bottom: 1px solid $brand-lighter;
-  }
-  a:visited:hover {
-    color: $brand-lighter;
-    border-bottom: 1px solid $brand-lighter;
-  }
-  a:hover {
-    border-bottom: 1px solid currentColor;
-  }
-}
 a.u-no-underline {
   text-decoration: none;
   border: none;
 
-  &:hover {
+  &:hover,
+  &:visited:hover,
+  &:active {
     text-decoration: none;
     border: none;
   }

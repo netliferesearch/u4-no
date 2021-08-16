@@ -30,7 +30,7 @@ export const TopicCardList = ({ topics }) => {
                   </p>
                   <div>
                     {/* <Link href={`/topics/${topic.slug.current}`}> */}
-                    {/* <div className="c-btn c-btn--sec">
+                    {/* <div className="c-btn c-btn--secondary">
                       <span>Learn more</span>
                     </div> */}
                     {/* </Link> */}
@@ -41,8 +41,8 @@ export const TopicCardList = ({ topics }) => {
           </li>
         ))}
       </ul>
-      <div className="c-topic-view-all-holder">
-        <a className="c-topic-view-all" href="/topics">
+      <div className="c-topics__link-holder">
+        <a className="c-btn c-btn--link " href="/topics">
           View All
           <ArrowNext />
         </a>

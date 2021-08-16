@@ -110,7 +110,7 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
               {summary.length > 0 && (
                 <div>
                   <LinkToItem type="shortVersionPublication" slug={slug.current}>
-                    <a className="c-btn c-btn--qua">
+                    <a className="c-btn c-btn--link">
                       <span {...classes('button-text')}>Read short version</span>
                       {/* <div {...classes('button-icon')} /> */}
                     </a>
@@ -123,7 +123,7 @@ export const LongformArticleHeader = ({ data = '', setReaderOpen = null, targetR
                     href={`/publications/${slug.current}.pdf`}
                     //download={`/publication/${slug.current}.pdf`}
                     target="_blank"
-                    className="c-btn c-btn--sec"
+                    className="c-btn c-btn--secondary"
                   >
                     <span>Download PDF</span>
                   </a>

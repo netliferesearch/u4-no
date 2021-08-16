@@ -38,17 +38,17 @@
 .c-footer__row {
   padding-bottom: 24px;
   padding-top: 24px;
-  @include mq($from: tablet) {
-    padding-top: 48px;
-    padding-bottom: 48px;
-  }
+  // @include mq($from: tablet) {
+  //   padding-top: 40px;
+  //   padding-bottom: 40px;
+  // }
 }
 
 .c-footer-description {
   max-width: 485px;
   margin-bottom: 0;
   @include mq($from: tablet) {
-    margin: 12px 0;
+    margin: 12px 0 12px 56px;
   }
 }
 
@@ -58,11 +58,21 @@
   padding-top: 24px;
   @include mq($from: tablet) {
     padding-top: 0;
+    .c-footer__col1 {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
   }
 }
 
-.c-footer-hyperlinks {
+.c-footer-hyperlink {
   padding-bottom: 10px;
+  &:hover,
+  &:focus,
+  &:active {
+    color: $highlight-blue;
+  }
 }
 
 .c-footer__col1 {

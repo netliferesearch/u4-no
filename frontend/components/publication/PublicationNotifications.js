@@ -59,7 +59,7 @@ export const PublicationNotifications = ({
                 slug: updatedVersion.slug,
               })}
               title={updatedVersion.title}
-              className="c-btn--qua"
+              className="c-btn--link"
             >
               {updatedVersion.title}
             </a>

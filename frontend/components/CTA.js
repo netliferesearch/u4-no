@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { urlObjectKeys } from 'next/dist/next-server/lib/utils';
 import { ArrowNext } from './icons/ArrowNext';
 // import HomePageHero from '../public/HomePageHero';
 
@@ -15,18 +14,18 @@ export const CTA = ({img = ''}) => {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
-        height: '650px',
+        height: '500px',
       }}
     >
       <div className="o-wrapper-medium">
-        <h1 className="u-primary-heading ">
+        <h1 className="u-primary-heading u-text--white">
           Inform your work with U4’s quality research and practical guidance
         </h1>
         <p className="c-cta-paragraph">
           Sustainable and inclusive development starts where corruption ends
         </p>
         <Link href="/about-u4">
-          <a className="c-btn c-hyperlink">
+          <a className="c-btn c-btn--link c-btn--link--dark c-cta__hyperlink">
             Learn more about u4
             <ArrowNext />
           </a>

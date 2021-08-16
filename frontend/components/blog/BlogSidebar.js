@@ -59,7 +59,7 @@ export const BlogSidebar = ({ data, side }) => {
               Also available in{' '}
               <LinkToItem type="blog-post" slug={translation.slug} key={translation._id}>
                 <span>
-                  <a className="c-btn c-btn--qua">
+                  <a className="c-btn c-btn--link">
                     {languageName({ langcode: translation.language })}
                   </a>
                 </span>
@@ -73,7 +73,7 @@ export const BlogSidebar = ({ data, side }) => {
                 Also available in{' '}
                 <LinkToItem type="blog-post" slug={translation.slug} key={translation._id}>
                   <span>
-                    <a className="c-btn c-btn--qua">
+                    <a className="c-btn c-btn--link">
                       {languageName({ langcode: translation.language })}
                     </a>
                   </span>

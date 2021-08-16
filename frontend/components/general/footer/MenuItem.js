@@ -5,7 +5,7 @@ import Link from 'next/link';
 export const MenuItem = ({ item }) => {
     return (
       <Link href={item.slug}>
-        <a className="c-btn u-body--small u-text--light-blue c-footer-hyperlinks">
+        <a className="c-btn u-no-underline u-body--small u-text--light-blue c-footer-hyperlink">
           <span>{item.label}</span>
         </a>
       </Link>

@@ -21,7 +21,7 @@ export const Cards = ({ resources = [], cta = '', badge= '' }) => (
             <Link href={linkTo}>
               <a>
                 <div {...classes('item-content')}>
-                  {badge ? <div className="c-btn c-btn--sec c-cards__badge">{badge}</div> : null}
+                  {badge ? <div className="c-btn c-btn--secondary c-cards__badge">{badge}</div> : null}
                   <div className="c-cards__image">
                     {item.vimeo ? (
                       <div className={`u-video ${item.vimeo.size || ''}`}>
@@ -50,7 +50,7 @@ export const Cards = ({ resources = [], cta = '', badge= '' }) => (
                           item.lead.split('\n').map((i, index) => <p key={index}>{i}</p>)}
                       </div>
                     </div>
-                    <div>{cta && <div className="c-btn c-btn--sec">{cta}</div>}</div>
+                    <div>{cta && <div className="c-btn c-btn--secondary">{cta}</div>}</div>
                   </div>
                 </div>
               </a>

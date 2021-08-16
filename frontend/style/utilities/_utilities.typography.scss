@@ -64,6 +64,8 @@
 .u-secondary-h2 {
   font-size: $font-size-micro;
   line-height: $font-size-small;
+  letter-spacing: 0.15em;
+
   @include mq($from: tablet) {
     font-size: $font-size-tiny;
     line-height: 22px;
@@ -212,59 +214,11 @@
   color: $mid-grey;
 }
 
-.u-link--grey {
-  color: $mid-grey;
-  text-decoration: underline;
-  border-bottom: none;
-  &:hover {
-    color: $brand-main;
-    text-decoration: none;
-    border-bottom: none;
-  }
-  &:active {
-    text-decoration: none;
-    border-bottom: none;
-    & > * {
-      display: inline-block;
-      transform: translateY(2px);
+.u-opacity--60--text {
+  a {
+    opacity: 0.6;
+    &:hover {
+      opacity: 1;
     }
   }
-  &:focus {
-    border: none;
-  }
-}
-
-.u-link-basic {
-  color: $dark-grey;
-  text-decoration: none;
-  transition: all 100ms ease-out;
-  border-bottom: none;
-  &:hover,
-  &:visited:hover {
-    border: none;
-    color: $brand-main;
-    text-decoration: underline;
-  }
-  &:visited {
-    color: $dark-grey;
-    text-decoration: none;
-    border-bottom: none;
-  }
-  &:active {
-    color: $brand-main;
-    border-bottom: none;
-    text-decoration: underline;
-    // & > * {
-    //   display: inline-block;
-    //   transform: translateY(2px);
-    //   text-decoration: underline;
-    // }
-  }
-  &:focus {
-    border: none;
-  }
-}
-
-.u-opacity--60 {
-  opacity: 0.6;
 }

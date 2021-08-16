@@ -4,7 +4,7 @@ import DataLoader from '../helpers/data-loader';
 import { Layout } from '../components/Layout';
 import Footer from '../components/general/footer/Footer';
 import PartnerAgencies from '../components/PartnerAgencies';
-import { CTA } from '../components/Guidance';
+import { CTA } from '../components/CTA';
 import { FeatureList } from '../components/FeatureList';
 import { TopicCardList } from '../components/CorruptionByTopic';
 import { LearningEvents } from '../components/LearningEvents';
@@ -51,14 +51,23 @@ const Frontpage = ({
       </section>
       <section className="">
         <div className="o-wrapper-medium o-wrapper-mobile-full">
-          <PostCarousel posts={blogPosts} type={POST_TYPE.BLOG} buttonPath='/blog' title='Latest from the blog' />
+          <PostCarousel
+            posts={blogPosts}
+            type={POST_TYPE.BLOG}
+            buttonPath="/blog"
+            title="Latest from the blog"
+          />
           <hr className="u-section-underline--no-margins" />
         </div>
       </section>
       <section className="">
         <div className="o-wrapper-medium o-wrapper-mobile-full">
-
-          <PostCarousel posts={featured.publication} type={POST_TYPE.PUBLICATION} buttonPath='/publications' title='U4 publications' />
+          <PostCarousel
+            posts={featured.publication}
+            type={POST_TYPE.PUBLICATION}
+            buttonPath="/publications"
+            title="U4 publications"
+          />
           <hr className="u-section-underline--no-margins" />
         </div>
       </section>
@@ -73,9 +82,9 @@ const Frontpage = ({
           <LearningEvents events={events} />
         </div>
       </section>
-      <section className="o-wrapper u-side-padding">
-        <div className="o-wrapper-medium">
-          <FeatureList features={frontPage.sections[2].featureArray} /> <hr className="u-section-underline--no-margins" />
+      <section className="o-wrapper-full">
+        <div className="u-bg--shifted">
+          <FeatureList features={frontPage.sections[2].featureArray} />
         </div>
       </section>
       <section className="o-wrapper u-side-padding">
@@ -115,7 +124,6 @@ export default DataLoader(Frontpage, {
   }),
   materializeDepth: 0,
 });
-
 
 //For logging old front page as well:
 // export default DataLoader(Frontpage, {
