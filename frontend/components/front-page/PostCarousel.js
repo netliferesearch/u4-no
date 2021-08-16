@@ -2,14 +2,21 @@ import React from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { ArrowNext } from '../icons/ArrowNext';
-import { Post } from '../general/post/Post';
+import { Post, POST_TYPE } from '../general/post/Post';
 import PropTypes from 'prop-types';
+
+const columnsByType = {
+  [POST_TYPE.SMALL]: 3,
+  [POST_TYPE.BLOG]: 3,
+  [POST_TYPE.PUBLICATION]: 4,
+  [POST_TYPE.LARGE]: 3,
+};
 
 export const PostCarousel = ({ posts, type, buttonPath, title }) => {
   const responsive = {
     0: { items: 1.2 },
     568: { items: 2.2 },
-    980: { items: 3 },
+    980: { items: columnsByType[type] },
   };
   console.log('posts', posts);
   const items = posts && posts.map((post) => (
@@ -23,7 +30,7 @@ export const PostCarousel = ({ posts, type, buttonPath, title }) => {
     );
   };
   return (
-    <div className="c-post-list c-post-list--2col">
+    <div className={`c-post-list c-post-list--2col c-post-list--column-${columnsByType[type]}`}>
       <div className="o-wrapper-medium">
       {title && <h4 className="u-secondary-heading u-secondary-h1 u-detail--blue">{title}</h4>}
       </div>

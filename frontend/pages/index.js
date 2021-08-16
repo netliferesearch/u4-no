@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DataLoader from '../helpers/data-loader';
 import { Layout } from '../components/Layout';
 import Footer from '../components/general/footer/Footer';
-import PartnerAgencies from '../components/PartnerAgencies';
+import PartnerAgencies from '../components/front-page/PartnerAgencies';
 import { CTA } from '../components/CTA';
 import { FeatureList } from '../components/FeatureList';
 import { TopicCardList } from '../components/CorruptionByTopic';
@@ -77,7 +77,7 @@ const Frontpage = ({
       {/*    /!*<hr className="u-section-underline--no-margins" />*!/*/}
       {/*  </div>*/}
       {/*</section>*/}
-      <section className="o-wrapper u-side-padding">
+      <section className="">
         <div className="o-wrapper-medium">
           <LearningEvents events={events} />
         </div>
@@ -87,7 +87,7 @@ const Frontpage = ({
           <FeatureList features={frontPage.sections[2].featureArray} />
         </div>
       </section>
-      <section className="o-wrapper u-side-padding">
+      <section className="">
         <div className="o-wrapper-medium">
           <TopicCardList topics={topics} />
         </div>
