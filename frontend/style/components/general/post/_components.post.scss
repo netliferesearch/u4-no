@@ -75,8 +75,10 @@
 }
 
 .c-post.small {
-  display: flex;
-  align-items: center;
+  .c-post__link {
+    display: flex;
+    align-items: center;
+  }
 
   .c-post__post-image {
     margin: 0;
@@ -90,7 +92,7 @@
 
   @include mq($from: tablet) {
     display: inherit;
-    .c-post__article-content, .c-post__date, .c-topics {
+    .c-post__article-content, .c-post__date, .c-topics, .c-post__link {
       display: inherit;
       width: auto;
     }

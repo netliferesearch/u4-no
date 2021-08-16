@@ -1,108 +1,27 @@
-// .c-partnerAgencies{
-//   text-align: center;
-//   background-color: $dark-blue;
-//   padding: $spacing;
-//   font-family: $font-sans;
-//   color: $white;
-// }
-// .c-partnerAgencies__wrapper {
-//   flex-wrap: wrap;
-//   display:flex;
-// }
-
-// .c-partnerAgencies__item {
-//   align-self: center;
-//   box-sizing: border-box;
-//   padding: $spacing-small;
-//   margin-bottom: $spacing;
-//   width: 100%;
-//   @include mq($from: tablet, $until: wide) {
-//     width: 50%;
-//   }
-//   @include mq($from: wide) {
-//     padding: $spacing $spacing-large;
-//     width: 33%;
-//   }
-//   svg {
-//     max-width: 50%;
-//     max-height: 100%;
-//   }
-//   a {
-//     border: none;
-//   }
-// }
-// .c-partnerAgencies__item--small {
-//   @include mq($from: desktop) {
-//     svg {
-//       max-width: 30%;
-//       max-height: 100%;
-//     }
-//   }
-// }
-// .c-partnerAgencies__heading {
-//   padding-bottom: $spacing;
-//   @include mq($from: tablet, $until: desktop) {
-//     padding: 0 $spacing-large $spacing-large;
-//   }
-//   @include mq($from: desktop) {
-//     padding: 0 $spacing-huge*1.5 $spacing-large;
-//   }
-// }
-
-// .c-partnerAgencies__text {
-//   max-width: 950px;
-//   font-weight: 300;
-//   margin: auto;
-//   @include mq($from: tablet) {
-//     padding: 0 $spacing-large;
-//     @include inuit-font-size($font-size-normal, $font-size-larger);
-//   }
-// }
-
-// .c-partnerAgencies__color-icon {
-//   max-width: 100%;
-//   @include mq($from: tablet) {
-//   }
-//   path, polygon {
-//     fill: $white;
-//   }
-// }
-
+.c-partnerAgencies {
+  padding-bottom:45px;
+}
 .c-partnerAgencies__list {
-  display: flex;
+  padding-top:30px;
+  display: grid;
+  grid-gap: 60px;
+  grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 0 -24px 32px -24px;
-  margin-bottom: 0;
-  padding-bottom: 32px;
-  padding-top: 32px;
-  @include mq($from: mobile, $until: tablet) {
-    flex-direction: row;
-    justify-content: center;
-    overflow: hidden;
+  @include mq($from: tablet) {
+    grid-template-columns: repeat(3, 1fr);
   }
-  @include mq($from: tablet, $until: desktop) {
-    flex-direction: row;
-    justify-content: center;
-    // overflow: hidden;
+  @include mq($from: desktop) {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
 .c-partnerAgencies__item {
   text-align: center;
-  width: 14%;
-  margin: 24px 24px 32px 24px;
-  @include mq($from: mobile, $until: tablet) {
-    width: 30%;
-  }
-  @include mq($from: tablet, $until: desktop) {
-    width: 30%;
-    // overflow: hidden;
-  }
   a {
     border: none;
   }
   svg {
+    max-width: 100%;
     max-height: 60px;
   }
   svg,
