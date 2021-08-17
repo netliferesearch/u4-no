@@ -1,0 +1,60 @@
+.c-cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 518px;
+  padding-top: 108px;
+  @include mq($from: mobile, $until: desktop) {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .o-wrapper-medium {
+    width: 100%;
+  }
+
+  .u-primary-heading {
+    margin-top: 0;
+    max-width: 692px;
+  }
+
+  .c-cta-paragraph {
+    max-width: 400px;
+    font-size: 20px;
+    line-height: 28px;
+    color: $white;
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    @include mq($from: mobile, $until: desktop) {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  .c-cta-hyperlink-text {
+    width: 342px;
+    font-size: 14px;
+    line-height: 28px;
+    color: $white;
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    margin-right: 10px;
+    text-transform: uppercase;
+    @include mq($from: mobile, $until: desktop) {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  .c-cta__hyperlink {
+    font-weight: 400;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    .c-arrow-next-svg {
+      margin-left: 5px;
+      @include mq($from: mobile, $until: desktop) {
+        width: 7px;
+      }
+    }
+  }
+}

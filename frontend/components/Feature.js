@@ -9,20 +9,9 @@ const Feature = ({ title = '', text = '', icon = () => null, iconUrl = {} }) => 
         <img src={ImageUrl(iconUrl)} alt={title} />
       </div>
     )}
-    {title && <h2 className="u-secondary-h2 u-text--white">{title}</h2>}
-    {text && <p className="u-body u-text--white">{text}</p>}
+    {title && <h2 className="u-secondary-h2 u-text--light-blue">{title}</h2>}
+    {text && <p className="u-body u-text--light-blue">{text}</p>}
   </div>
 );
-
-// Feature.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   icon: PropTypes.func,
-//   iconUrl: PropTypes.string,
-// };
-
-// Feature.defaultProps = {
-//   icon: () => null,
-//   iconUrl: '',
-// };
 
 export default Feature;

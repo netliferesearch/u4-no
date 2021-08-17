@@ -39,7 +39,7 @@ export const FeaturedPost = ({ featured }) => {
                       )}
 
                       <h4 className="u-primary-heading">{firstPost.title}</h4>
-                      <p className="c-featured-post__intro u-body--grey u-hidden-mobile">
+                      <p className="c-featured-post__intro u-body--grey u-hidden--tablet">
                         {firstPost.standfirst}
                       </p>
                       {/* <p className="c-featured-post__name">
@@ -90,7 +90,7 @@ export const FeaturedPost = ({ featured }) => {
                               )}
 
                               <h4 className="u-primary-heading">{post.title}</h4>
-                              <p className="c-featured-post__intro u-body--grey u-hidden-mobile">
+                              <p className="c-featured-post__intro u-body--grey u-hidden--tablet">
                                 {post.standfirst}
                               </p>
                               {/* <p className="c-featured-post__name">
@@ -98,7 +98,7 @@ export const FeaturedPost = ({ featured }) => {
                       <BlogAuthorsShortList authors={post.authors} />
                     ) : null}
                   </p> */}
-                              <p className="c-featured-post__date u-body--small u-hidden-mobile">
+                              <p className="c-featured-post__date u-body--small u-hidden--tablet">
                                 {post.date ? dateToString({ start: post.date.utc }) : null}
                               </p>
                             </div>
@@ -106,7 +106,7 @@ export const FeaturedPost = ({ featured }) => {
                         </a>
                       </LinkToItem>
                     </div>
-                    <div className="u-hidden-mobile">
+                    <div className="u-hidden--tablet">
                       {post.topics && (
                         <Topics title={false} topics={post.topics} hr={false} linkType={'5'} />
                       )}
