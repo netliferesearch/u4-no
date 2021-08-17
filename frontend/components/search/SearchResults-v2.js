@@ -8,9 +8,9 @@ if (typeof window !== 'undefined') {
 import { InView } from 'react-intersection-observer';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { updateSearchPageNum } from '../helpers/redux-store';
+import { updateSearchPageNum } from '../../helpers/redux-store';
 import Link from 'next/link';
-import ArrowRightSmall from '../components/icons/ArrowRightSmall';
+import ArrowRightSmall from '../icons/ArrowRightSmall';
 import format from 'date-fns/format';
 import SearchResultsSortingSelect from './SearchResultsSortingSelect';
 

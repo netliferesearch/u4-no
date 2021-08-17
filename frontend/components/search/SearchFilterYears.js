@@ -6,7 +6,7 @@ import {
   removeSearchFilter,
   clearAllSearchFilters,
   replaceSearchFilters,
-} from '../helpers/redux-store';
+} from '../../helpers/redux-store';
 import SearchFilterReset from './SearchFilterReset';
 
 const getFromYear = ({ searchFilters = [] }) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import LinkToItem from './LinkToItem';
+import LinkToItem from './general/LinkToItem';
 import BEMHelper from 'react-bem-helper';
 import Pin from './icons/Pin';
 

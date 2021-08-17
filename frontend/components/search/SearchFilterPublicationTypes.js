@@ -8,8 +8,8 @@ import {
   removeSearchFilter,
   clearAllSearchFilters,
   replaceSearchFilters,
-} from '../helpers/redux-store';
-import { publicationTypesToShow } from '../helpers/elastic-data-loader';
+} from '../../helpers/redux-store';
+import { publicationTypesToShow } from '../../helpers/elastic-data-loader';
 
 import SearchFilterReset from './SearchFilterReset';
 

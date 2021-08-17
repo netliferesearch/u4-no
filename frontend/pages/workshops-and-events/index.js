@@ -11,7 +11,7 @@ import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import { Newsletter } from '../../components/general/newsletter/Newsletter';
 import ServiceArticle from '../../components/ServiceArticle';
-import LinkList from '../../components/LinkList';
+import LinkList from '../../components/general/LinkList';
 
 const ServicePage = ({ data: { service = {}, url = {} } }) => {
   const {

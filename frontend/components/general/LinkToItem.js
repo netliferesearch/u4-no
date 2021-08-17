@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import buildUrl from '../helpers/buildUrl';
+import buildUrl from '../../helpers/buildUrl';
 
 const LinkToItem = ({ type = '', _type = '', slug = '', children }) => {
   // Handle both type and _type as possible input props. Ideally,

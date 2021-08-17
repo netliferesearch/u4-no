@@ -6,7 +6,7 @@ import autobind from 'react-autobind';
 import Link from 'next/link';
 import ArrowRight from './icons/ArrowRight';
 import BEMHelper from 'react-bem-helper';
-import { DownArrowButton } from '../components/buttons';
+import { DownArrowButton } from './general/buttons';
 import serializers from './serializers';
 
 const classes = BEMHelper({

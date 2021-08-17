@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import ClientOnlyPortal from '../ClientOnlyPortal';
-import { CloseButton, TextButton } from '../buttons';
+import { CloseButton, TextButton } from '../general/buttons';
 import { useOnClickOutside, useLockBodyScroll } from '../../helpers/hooks';
 
 /**

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import ArrowRight from './icons/ArrowRight';
-import buildUrl from '../helpers/buildUrl';
+import ArrowRight from '../icons/ArrowRight';
+import buildUrl from '../../helpers/buildUrl';
 
 const classes = BEMHelper({
   name: 'link-list',

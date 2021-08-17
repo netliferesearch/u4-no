@@ -15,7 +15,7 @@ import Team from '../../../components/Team';
 import Mosaic from '../../../components/Mosaic';
 import { Newsletter } from '../../../components/general/newsletter/Newsletter';
 import PartnerPromo from '../../../components/PartnerPromo';
-import LinkList from '../../../components/LinkList';
+import LinkList from '../../../components/general/LinkList';
 
 import BasicGuide from '../../../components/icons/BasicGuide';
 import ResearchAgenda from '../../../components/icons/ResearchAgenda';

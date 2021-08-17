@@ -6,7 +6,7 @@ import { Share } from '../general/social/SocialShare';
 import { TagsSection } from '../TagsSection';
 import { RelatedSimple } from '../RelatedSimple';
 import { Keywords } from '../Keywords';
-import LinkToItem from '../LinkToItem';
+import LinkToItem from '../general/LinkToItem';
 import { Translations } from '../Translations';
 import { format, isAfter } from 'date-fns';
 import languageName from '../../helpers/languageName';

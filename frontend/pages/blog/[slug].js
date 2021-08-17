@@ -10,7 +10,7 @@ import footnoteSerializer from '../../components/footnoteSerializer';
 import { BlogHeader } from '../../components/blog/BlogHeader';
 import { Keywords } from '../../components/Keywords';
 import { Newsletter } from '../../components/general/newsletter/Newsletter';
-import { AboutAuthor } from '../../components/AboutAuthor';
+import { AboutAuthor } from '../../components/blog/AboutAuthor';
 import { Disclaimers } from '../../components/Disclaimers';
 import { Share } from '../../components/general/social/SocialShare';
 import { PhotoCaptionCredit } from '../../components/PhotoCaptionCredit';
@@ -161,7 +161,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
 export default DataLoader(BlogEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title, slug}, keywords[]->{category, keyword}, "slug": slug.current, language, translation, 
+      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title, slug}, keywords[]->{category, keyword}, "slug": slug.current, language, translation,
       "featuredImage": {
         "caption": featuredImage.caption,
         "credit": featuredImage.credit,

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LinkToItem from './LinkToItem';
+import LinkToItem from '../general/LinkToItem';
 
 const AuthorList = ({ authors = [], intro = 'Author', pluralize = true }) => {
   return (

@@ -7,7 +7,7 @@ import PdfViewer from '../PdfViewer';
 import { LongformArticleHeader } from '../LongformArticleHeader';
 import { PublicationSidebar } from './PublicationSidebar';
 import { ToggleBlock } from '../ToggleBlock';
-import { Acknowledgements } from '../Aknowledgements';
+import { Acknowledgements } from './Aknowledgements';
 import { Partners } from '../Partners';
 import { Disclaimers } from '../Disclaimers';
 import { PhotoCaptionCredit } from '../PhotoCaptionCredit';
@@ -128,7 +128,7 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
               </div>
             ) : null}
             <Disclaimers title={false} />
-            {/*             
+            {/*
           {!shortversion && props.data.abstract ? (
             <div className="c-longform-grid">
               <div className="c-longform-grid__standard">
