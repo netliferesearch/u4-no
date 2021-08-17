@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import ClientOnlyPortal from './ClientOnlyPortal';
 import { useOnClickOutside, useLockBodyScroll } from '../helpers/hooks';
 import languageName from '../helpers/languageName';
-import { TextButton, TextIconButton } from './buttons';
+import { TextButton, TextIconButton } from './general/buttons';
 
 /**
  * V2 - LangFilter component to be used in CoursesList component
@@ -13,7 +13,7 @@ import { TextButton, TextIconButton } from './buttons';
 
  export const LangFilter = ({ languages, setFilters, currentLang = 'en_US' }) => {
   const [open, setOpen] = useState(false);
-  
+
   return (
     <div className={`c-modal${open ? ' open' : ''}`}>
       <TextIconButton
@@ -43,22 +43,22 @@ export const RadioModal = ({ title = '', options, checkedItem = '', setOpen, set
     useOnClickOutside(ref, () => setOpen(false));
     //hook to lock body scroll
     useLockBodyScroll();
-  
+
     const handleApplyClick = () => {
       setOpen(false);
       setFilters(selectedItem)
     };
-  
+
     const handleChange = e => {
       setSelectedItem(options.find(o => o === e.target.value));
     };
-  
+
     const onKeyDown = event => {
       if (event.keyCode === 27) {
         setOpen(false);
       }
     };
-  
+
     return (
       <ClientOnlyPortal selector="#modal">
         <aside
@@ -69,7 +69,7 @@ export const RadioModal = ({ title = '', options, checkedItem = '', setOpen, set
           onKeyDown={onKeyDown}
         >
           <form className="c-modal__area c-modal--translations" ref={ref}>
-            <div className="c-modal__top"> 
+            <div className="c-modal__top">
               <h3 className="c-modal__title">{title}</h3>
             </div>
             <hr className="u-section-underline--no-margins" />
@@ -103,4 +103,3 @@ export const RadioModal = ({ title = '', options, checkedItem = '', setOpen, set
       </ClientOnlyPortal>
     );
   };
-  

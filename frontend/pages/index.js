@@ -5,7 +5,7 @@ import { Layout } from '../components/Layout';
 import Footer from '../components/general/footer/Footer';
 import PartnerAgencies from '../components/front-page/PartnerAgencies';
 import { CTA } from '../components/front-page/CTA';
-import { FeatureList } from '../components/FeatureList';
+import { FeatureList } from '../components/general/FeatureList';
 import { TopicCardList } from '../components/CorruptionByTopic';
 import { LearningEvents } from '../components/LearningEvents';
 import { FeaturedPosts } from '../components/front-page/FeaturedPosts';

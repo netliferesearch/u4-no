@@ -2,7 +2,7 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { getRouteByType } from '../../helpers/getRouteByType';
 import Link from 'next/link';
-import LinkToItem from '../LinkToItem';
+import LinkToItem from '../general/LinkToItem';
 const classes = BEMHelper({
   name: 'pubHeader',
   prefix: 'c-',

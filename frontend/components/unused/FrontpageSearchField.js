@@ -4,8 +4,8 @@ import BEMHelper from 'react-bem-helper';
 import autobind from 'react-autobind';
 import { withRouter } from 'next/router';
 
-import Loader from './Loader';
-import MagnifyingGlass from './icons/MagnifyingGlass';
+import Loader from '../Loader';
+import MagnifyingGlass from '../icons/MagnifyingGlass';
 
 const classes = BEMHelper({
   name: 'frontpage-search',

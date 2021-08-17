@@ -1,7 +1,7 @@
 import React from 'react';
 import { Share } from '../general/social/SocialShare';
 import Link from 'next/link';
-import { Topics } from '../Topics';
+import { Topics } from '../general/topics/Topics';
 
 export const BlogHeader = ({ data }) => {
   const { title = '', standfirst = '', featuredImage = {}, topics = [] } = data;

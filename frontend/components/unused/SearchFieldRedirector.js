@@ -1,7 +1,8 @@
 import React from 'react';
-import { withRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
-const SearchFieldRedirector = ({ router }) => {
+export const SearchFieldRedirector = () => {
+  const router = useRouter();
   return (
     <form>
       <input
@@ -17,5 +18,3 @@ const SearchFieldRedirector = ({ router }) => {
     </form>
   );
 };
-
-export default withRouter(SearchFieldRedirector);

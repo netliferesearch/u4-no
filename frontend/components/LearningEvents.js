@@ -1,7 +1,7 @@
 import React from 'react';
 import dateToString from '../helpers/dateToString';
-import LinkToItem from './LinkToItem';
-import { SectionIntro } from './SectionIntro';
+import LinkToItem from './general/LinkToItem';
+import { SectionIntro } from './general/SectionIntro';
 import { getPostType } from '../helpers/getRouteByType';
 import { shortSentences } from '../helpers/stringHelpers';
 import LocationIcon from './icons/LocationIcon';

@@ -19,9 +19,9 @@ import CmiLogo from '../icons/CmiLogo';
 
 import LongformArticleContainer from '../LongformArticleContainer';
 import Footer from '../general/footer/Footer';
-import AuthorList from '../AuthorList';
+import AuthorList from '../publication/AuthorList';
 import EditorList from '../EditorList';
-import Logo from '../Logo';
+import Logo from '../icons/Logo';
 
 const classes = BEMHelper({
   name: 'print',

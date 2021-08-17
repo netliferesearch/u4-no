@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { updateSearchSorting } from '../helpers/redux-store';
+import { updateSearchSorting } from '../../helpers/redux-store';
 
 const SearchResultsSortingSelect = ({ searchSorting = '', updateSearchSorting = () => {} }) => {
   return (

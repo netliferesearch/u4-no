@@ -4,10 +4,10 @@ import { getRouteByType } from '../helpers/getRouteByType';
 import { useScrollInfo } from '../helpers/useScrollInfo';
 import Link from 'next/link';
 import LogoU4 from './icons/LogoU4';
-import { CloseButton } from './buttons';
+import { CloseButton } from './general/buttons';
 import { Contents } from './Contents';
-import { Topics } from './Topics';
-import LinkToItem from './LinkToItem';
+import { Topics } from './general/topics/Topics';
+import LinkToItem from './general/LinkToItem';
 
 const classes = BEMHelper({
   name: 'pubHeader',

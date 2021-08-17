@@ -8,7 +8,7 @@ import {
   clearAllSearchFilters,
   replaceSearchFilters,
   updateSearchSorting,
-} from '../helpers/redux-store';
+} from '../../helpers/redux-store';
 
 import SearchFilterPublicationTypes from './SearchFilterPublicationTypes';
 import SearchFilterTopics from './SearchFilterTopics';

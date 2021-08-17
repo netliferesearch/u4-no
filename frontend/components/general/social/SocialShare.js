@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { EmailIcon, FacebookIcon, LinkedInIcon, TwitterIcon } from '../../icons/SocialIcons';
 import ClientOnlyPortal from '../../ClientOnlyPortal';
-import { CloseButton, TextButton } from '../../buttons';
+import { CloseButton, TextButton } from '../buttons';
 import { useOnClickOutside, useLockBodyScroll } from '../../../helpers/hooks';
 import {
   EmailShareButton,

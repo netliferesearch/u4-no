@@ -9,10 +9,10 @@ import Download from './icons/Download';
 import ArrowRight from './icons/ArrowRight';
 import PartnerLogo10 from './icons/PartnerLogo10';
 
-import AuthorList from './AuthorList';
+import AuthorList from './publication/AuthorList';
 import EditorList from './EditorList';
 import InstitutionList from './InstitutionList';
-import LinkToItem from './LinkToItem';
+import LinkToItem from './general/LinkToItem';
 
 const classes = BEMHelper({
   name: 'article-header',

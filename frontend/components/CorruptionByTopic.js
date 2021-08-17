@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { SectionIntro } from './SectionIntro';
+import { SectionIntro } from './general/SectionIntro';
 import { ArrowNext } from './icons/ArrowNext';
 import dateToString from '../helpers/dateToString';
 

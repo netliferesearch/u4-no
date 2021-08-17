@@ -1,5 +1,5 @@
 import React from 'react';
-import { SubmitButton } from '../../buttons';
+import { SubmitButton } from '../buttons';
 
 export const Newsletter = ({
   cta = 'Never miss U4 news again. Sign up',

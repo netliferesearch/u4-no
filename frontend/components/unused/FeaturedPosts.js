@@ -1,8 +1,8 @@
 import React from 'react';
-import dateToString from '../helpers/dateToString';
-import LinkToItem from './LinkToItem';
-import { Topics } from './Topics';
-import { getPostType } from '../helpers/getRouteByType';
+import dateToString from '../../helpers/dateToString';
+import LinkToItem from '../general/LinkToItem';
+import { Topics } from '../general/topics/Topics';
+import { getPostType } from '../../helpers/getRouteByType';
 
 export const FeaturedPost = ({ featured }) => {
   const firstPost = featured[0];
