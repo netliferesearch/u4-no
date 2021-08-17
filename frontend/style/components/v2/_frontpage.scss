@@ -429,8 +429,6 @@
   }
 }
 
-
-
 .c-events__item--small {
   margin-bottom: 40px;
   width: 31%;
@@ -448,7 +446,7 @@
   }
 
   h3 {
-    color: $dark-grey;
+    color: $dark-blue;
     margin: 12px 0 24px 0;
   }
 }
@@ -504,7 +502,7 @@
   margin: 12px 0 0 0;
 }
 
-.alice-carousel__dots > li{
+.alice-carousel__dots > li {
   margin: 0 4px;
 }
 
@@ -581,6 +579,7 @@
   background-color: $light-blue;
   padding: 25px 15px 20px 15px;
   position: relative;
+  transition: all 0.4s ease-in-out;
 
   // max-height: 324px;
   &:hover {
@@ -588,8 +587,7 @@
     -webkit-box-shadow: -9px 9px 0px 0px $dark-blue !important;
     -moz-box-shadow: -9px 9px 0px 0px $dark-blue !important;
     box-shadow: -9px 9px 0px 0px $dark-blue;
-    transition: box-shadow 0.4s ease-in-out;
-
+    transition: all 0.4s ease-in-out;
     h3,
     h5,
     p {
