@@ -18,7 +18,7 @@ import TableOfContentsSidebar from './TableOfContents/TableOfContentsSidebar';
 import TableOfContentsBase from './TableOfContents/TableOfContentsBase';
 import RecommendedResources from './RecommendedResources';
 import {ToggleBlock} from './ToggleBlock';
-import AuthorList from './AuthorList';
+import AuthorList from './publication/AuthorList';
 import PublicationNotification from './PublicationNotification';
 import TnrcHeader from './TnrcHeader';
 import TnrcFooter from './TnrcFooter';

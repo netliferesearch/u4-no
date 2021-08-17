@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { spacesToDash } from '../helpers/stringHelpers';
+import { spacesToDash } from '../../../helpers/stringHelpers';
 
 /**
  * Topics component to list topics

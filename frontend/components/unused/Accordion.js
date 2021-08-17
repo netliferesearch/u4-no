@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowDownCollapsible } from './icons/ArrowDownCollapsible';
+import { ArrowDownCollapsible } from '../icons/ArrowDownCollapsible';
 
 export const Accordion = ({}) => {
   const [activeAccordion, setActiveAccordion] = useState(-1);

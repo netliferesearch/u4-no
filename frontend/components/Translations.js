@@ -1,16 +1,16 @@
 import React, { useRef, useState } from 'react';
-import { TextButton, TextIconButton } from './buttons';
+import { TextButton, TextIconButton } from './general/buttons';
 import ClientOnlyPortal from './ClientOnlyPortal';
 import languageName from '../helpers/languageName';
 import { useLockBodyScroll, useOnClickOutside } from '../helpers/hooks';
 //import router from 'next/router';
-import LinkToItem from './LinkToItem';
+import LinkToItem from './general/LinkToItem';
 
 export const Translations = ({ translations, language, type = 'publication', currentSlug }) => {
-  
+
   return (
     <div className="c-translations">
-      
+
       Also available in{' '}
       {translations.map(
         (item = {}, index) =>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { SectionIntro } from './SectionIntro';
+import { SectionIntro } from './general/SectionIntro';
 import Feature from './Feature';
 import { OnlineTrainingIcon } from './icons/OnlineTrainingIcon';
 import { WorkshopEventsIcon } from './icons/WorkshopEventsIcon';

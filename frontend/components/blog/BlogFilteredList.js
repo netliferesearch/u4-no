@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Pagination from 'react-paginating';
 import dateToString from '../../helpers/dateToString';
 import { BlogEntriesFilter } from './BlogEntriesFilter';
-import { TextButton } from '../buttons';
+import { TextButton } from '../general/buttons';
 import { BlogAuthorsShortList } from './BlogAuthorsShortList';
 import { ArrowPrev } from '../icons/ArrowPrev';
 import { ArrowNext } from '../icons/ArrowNext';
 import { DoubleChevron } from '../icons/DoubleChevron';
-import LinkToItem from '../LinkToItem';
+import LinkToItem from '../general/LinkToItem';
 import {
   clearBlogFilters,
   updateBlogFilters,
@@ -131,7 +131,7 @@ export const BlogFilteredList = props => {
           updateBlogPageNum={updateBlogPageNum}
         />
       </div>
-      
+
       {currentResults ? (
         <div className="c-blog-index__list">
           {currentResults.map((post, index) => (

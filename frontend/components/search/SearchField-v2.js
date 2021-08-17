@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
 import Downshift from 'downshift';
-import BEMHelper from 'react-bem-helper';
-import autobind from 'react-autobind';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { updateSearchPageNum } from '../helpers/redux-store';
-import { LoaderV2 } from './LoaderV2';
-import { SearchIcon } from './icons/SearchIcon';
 import { withRouter } from 'next/router';
 import queryString from 'query-string';
+import React, { Component } from 'react';
+import autobind from 'react-autobind';
+import BEMHelper from 'react-bem-helper';
+import SearchIcon from '../icons/SearchIcon';
+import LoaderV2 from '../LoaderV2';
 
 const classes = BEMHelper({
-  name: 'search-v3',
+  name: 'search-v2',
   prefix: 'c-',
 });
 
@@ -29,19 +26,17 @@ function debounce(fn, time) {
   return wrapper;
 }
 
-class SearchFieldComponent extends Component {
+class SearchFieldV2 extends Component {
   constructor(props) {
     super(props);
     autobind(this);
-    this.state = {
-      loading: false,
-    };
+    this.state = { loading: false, typingTimeout: 0 };
   }
 
   componentDidMount() {
     const { search: searchValue = '' } = this.props.router.query;
     const { current: input } = this.inputReference;
-    if (input.value) {
+    if (input) {
       // Trick to put caret after word in input field.
       // Source: https://stackoverflow.com/a/2345915
       input.focus();
@@ -59,26 +54,6 @@ class SearchFieldComponent extends Component {
     this.updateSearch({ urlUpdateType: 'push', value: e.target.value });
   }
 
-  handleInputChange(e) {
-    e.persist();
-    const { value = '' } = e.target;
-    if (this.typingTimeout) clearTimeout(this.typingTimeout);
-    this.typingTimeout = setTimeout(() => {
-      if (value.length <= 2) {
-        return null; // Do nothing.
-      } else if (window.location.pathname !== '/search') {
-        return this.updateSearch({
-          urlUpdateType: 'push',
-          value,
-        });
-      }
-      return this.updateSearch({
-        urlUpdateType: 'replace',
-        value: e.target.value,
-      });
-    }, 400);
-  }
-
   updateLoadingState({ prevProps }) {
     const { searchData: prevSearchData = {} } = prevProps;
     const { searchData = {} } = this.props;
@@ -87,7 +62,7 @@ class SearchFieldComponent extends Component {
     }
   }
 
-  updateSearch({ urlUpdateType, value }) {
+  updateSearch({ urlUpdateType, value = '' }) {
     this.setState(
       {
         // Prevent loading indicator from showing before search has been made.
@@ -145,18 +120,16 @@ class SearchFieldComponent extends Component {
         {({ getInputProps, getLabelProps }) => (
           <form onSubmit={this.handleSubmit} {...classes()}>
             <label
-              {...getLabelProps({
-                htmlFor: 'search',
-              })}
+              {...getLabelProps({ htmlFor: 'search' })}
               {...classes('label', modifier, 'u-visually-hidden')}
             >
               Search to find topics, publications, people, services, and more:
             </label>
-            <div className="c-search-v3__content">
+            <div className="c-search-v2__content">
               <input
                 ref={this.inputReference}
+                placeholder="Search"
                 {...classes('input', modifier)}
-                placeholder="Search the entire site"
                 {...getInputProps({
                   id: 'search',
                   name: 'search',
@@ -176,24 +149,36 @@ class SearchFieldComponent extends Component {
                     // changes value, we need to also listen for the enter key
                     // so that we can re-trigger query.
                     if (event.keyCode === 13) {
-                      this.updateSearch({
-                        urlUpdateType: 'push',
-                        value: event.target.value,
-                      });
+                      this.updateSearch({ urlUpdateType: 'push', value: event.target.value });
                     }
                   },
-                  onChange: e => this.handleInputChange(e),
+                  onChange: event => {
+                    event.persist();
+                    const { value = '' } = event.target;
+                    if (this.typingTimeout) clearTimeout(this.typingTimeout);
+                    this.typingTimeout = setTimeout(() => {
+                      if (value.length <= 2) {
+                        return null; // Do nothing.
+                      } else if (window.location.pathname !== '/search') {
+                        return this.updateSearch({ urlUpdateType: 'push', value });
+                      }
+                      return this.updateSearch({
+                        urlUpdateType: 'replace',
+                        value: event.target.value,
+                      });
+                    }, 500);
+                  },
                 })}
               />
+              <button {...classes('button')} type="submit" value="Search">
+                {this.state.loading ? <LoaderV2 /> : <SearchIcon />}
+              </button>
               {!isAlwaysOpen && (
                 <button {...classes('button')} type="button" onClick={triggerSearchMenu}>
                   ✕
                 </button>
               )}
             </div>
-            <button {...classes('button')} type="submit" value="Search">
-              {this.state.loading ? <LoaderV2 /> : <SearchIcon />}
-            </button>
           </form>
         )}
       </Downshift>
@@ -201,13 +186,4 @@ class SearchFieldComponent extends Component {
   }
 }
 
-const mapStateToProps = ({ searchPageNum }) => ({ searchPageNum });
-const mapDispatchToProps = dispatch => ({
-  updateSearchPageNum: bindActionCreators(updateSearchPageNum, dispatch),
-});
-export const SearchField = () => withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(SearchFieldComponent)
-);
+export default withRouter(SearchFieldV2);

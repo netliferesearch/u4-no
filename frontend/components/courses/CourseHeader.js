@@ -3,7 +3,7 @@ import { Share } from '../general/social/SocialShare';
 import Link from 'next/link';
 import ReactPlayer from 'react-player';
 import { RegisterForm } from '../RegisterForm';
-import { Topics } from '../Topics';
+import { Topics } from '../general/topics/Topics';
 
 export const CourseHeader = ({ data }) => {
   const {

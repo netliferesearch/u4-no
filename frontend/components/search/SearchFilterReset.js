@@ -7,7 +7,7 @@ import {
   removeSearchFilter,
   clearAllSearchFilters,
   replaceSearchFilters,
-} from '../helpers/redux-store';
+} from '../../helpers/redux-store';
 
 const SearchFilterReset = props => {
   const { buttonText, searchFilters = [], replaceSearchFilters, filterPrefix = '' } = props;

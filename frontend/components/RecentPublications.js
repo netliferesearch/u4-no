@@ -1,9 +1,9 @@
 import React from 'react';
-import LinkToItem from './LinkToItem';
+import LinkToItem from './general/LinkToItem';
 import dateToString from '../helpers/dateToString';
 import { Document, Page } from 'react-pdf/build/entry.noworker';
-import { SectionIntro } from './SectionIntro';
-import { Topics } from './Topics';
+import { SectionIntro } from './general/SectionIntro';
+import { Topics } from './general/topics/Topics';
 import { getPostType } from '../helpers/getRouteByType';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';

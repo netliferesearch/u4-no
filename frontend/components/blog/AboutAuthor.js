@@ -1,6 +1,6 @@
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import { translate, langCode } from '../helpers/translate';
+import { translate, langCode } from '../../helpers/translate';
 
 export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) => {
   const trans = translate(language);

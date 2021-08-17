@@ -4,15 +4,15 @@ import ElasticDataLoader from '../helpers/elastic-data-loader';
 
 import Layout from '../components/Layout';
 import Footer from '../components/general/footer/Footer';
-import SearchResultsV2 from '../components/SearchResults-v2';
-import SearchFiltersV2 from '../components/SearchFilters-v2';
+import SearchResultsV2 from '../components/search/SearchResults-v2';
+import SearchFiltersV2 from '../components/search/SearchFilters-v2';
 import { wrapInRedux } from '../helpers/redux-store-wrapper';
 
 const Search = ({ data = {}, url = '' }) => {
   if (!data) return <div />;
   return (
     <Layout
-      
+
       searchV2
       isSearchPage
       headComponentConfig={{

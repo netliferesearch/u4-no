@@ -8,7 +8,7 @@ import Layout from '../../components/Layout';
 import { Newsletter } from '../../components/general/newsletter/Newsletter';
 import ServiceArticle from '../../components/ServiceArticle';
 import Team from '../../components/Team';
-import LinkToItem from '../../components/LinkToItem';
+import LinkToItem from '../../components/general/LinkToItem';
 
 const EventPage = ({ data: { event = {} }, url = {} }) => {
   const {
