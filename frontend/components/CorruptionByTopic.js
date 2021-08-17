@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { SectionIntro } from './SectionIntro';
 import { ArrowNext } from './icons/ArrowNext';
 import dateToString from '../helpers/dateToString';
+import { BlueCard } from './general/blue-card/BlueCard';
 
 export const TopicCardList = ({ topics }) => {
   return (
@@ -14,31 +15,32 @@ export const TopicCardList = ({ topics }) => {
         slug="/topics"
       />
       <ul>
-        {topics.map((topic, index) => (
-          <li key={topic._id} className="c-topic-card-list__item">
-            <Link href={`/topics/${topic.slug.current}`}>
-              <a>
-                <div className="c-topic-card-list__item-text">
-                  <div>
-                    <h2 className="u-secondary-h2 u-text--white">{topic.title}</h2>
-                    <p className="u-body u-text--grey c-topic-paragraph">{topic.longTitle}</p>
-                  </div>
-                  <p className="c-topic__date  u-body--small">
-                    {topic._updatedAt
-                      ? 'Updated' + ' ' + dateToString({ start: topic._updatedAt })
-                      : null}
-                  </p>
-                  <div>
-                    {/* <Link href={`/topics/${topic.slug.current}`}> */}
-                    {/* <div className="c-btn c-btn--sec">
-                      <span>Learn more</span>
-                    </div> */}
-                    {/* </Link> */}
-                  </div>
-                </div>
-              </a>
-            </Link>
-          </li>
+        {topics.map((post, index) => (
+          <BlueCard post={post} key={index} />
+          // <li key={topic._id} className="c-topic-card-list__item">
+          //   <Link href={`/topics/${topic.slug.current}`}>
+          //     <a>
+          //       <div className="c-topic-card-list__item-text">
+          //         <div>
+          //           <h2 className="u-secondary-h2 u-text--white">{topic.title}</h2>
+          //           <p className="u-body u-text--grey c-topic-paragraph">{topic.longTitle}</p>
+          //         </div>
+          //         <p className="c-topic__date  u-body--small">
+          //           {topic._updatedAt
+          //             ? 'Updated' + ' ' + dateToString({ start: topic._updatedAt })
+          //             : null}
+          //         </p>
+          //         <div>
+          //           {/* <Link href={`/topics/${topic.slug.current}`}> */}
+          //           {/* <div className="c-btn c-btn--sec">
+          //             <span>Learn more</span>
+          //           </div> */}
+          //           {/* </Link> */}
+          //         </div>
+          //       </div>
+          //     </a>
+          //   </Link>
+          // </li>
         ))}
       </ul>
       <div className="c-topic-view-all-holder">

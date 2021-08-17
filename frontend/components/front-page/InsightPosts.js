@@ -15,18 +15,14 @@ export const PostList = ({ insights }) => {
   console.log('insights', insights);
   const renderDotsItem = ({ isActive }) => {
     return isActive ? (
-      <div className="c-carousel-dots-active"/>
+      <div className="c-carousel-dots-active" />
     ) : (
-      <div className="c-carousel-dots-deactivated"/>
+      <div className="c-carousel-dots-deactivated" />
     );
   };
   return (
-    <div className="c-post-list c-post-list--2col">
-      <SectionIntro
-        title="Latest from the blog"
-        slug="/blog"
-        label="View blog"
-      />
+    <div>
+      <SectionIntro title="Latest from the blog" slug="/blog" label="View blog" />
 
       <div className="c-post-list__col">
         <AliceCarousel
@@ -34,14 +30,13 @@ export const PostList = ({ insights }) => {
           renderDotsItem={renderDotsItem}
           disableButtonsControls
         >
-          {insights && insights.map((post) => (
-            <Post key={post._id} size={POST_SIZE.NORMAL} post={post}/>
-          ))}
+          {insights &&
+            insights.map(post => <Post key={post._id} size={POST_SIZE.NORMAL} post={post} />)}
         </AliceCarousel>
         <div className="c-view-all">
           <a className="c-topic-view-all" href="/blog">
             View all
-            <ArrowNext/>
+            <ArrowNext />
           </a>
         </div>
       </div>

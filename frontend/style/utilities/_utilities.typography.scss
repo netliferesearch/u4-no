@@ -55,6 +55,13 @@
   color: $dark-grey;
   text-transform: uppercase;
 }
+.u-secondary-heading-dark-blue {
+  font-family: $font-sans;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: $dark-blue;
+  text-transform: uppercase;
+}
 .u-secondary-heading-white {
   font-family: $font-sans;
   font-weight: 400;
@@ -220,6 +227,9 @@
   color: $brand-main;
 }
 
+.u-text--dark-blue {
+  color: $dark-blue;
+}
 .u-text--grey {
   color: $mid-grey;
 }

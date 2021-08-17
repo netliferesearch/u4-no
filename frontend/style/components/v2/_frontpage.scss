@@ -978,7 +978,7 @@
     // height: 276px;
   }
   h3 {
-    color: $dark-grey;
+    color: $dark-blue;
     margin: 12px 0 24px 0;
   }
 }
@@ -1010,7 +1010,7 @@
   }
 }
 .alice-carousel__stage {
-  scroll-padding-left:$inuit-global-spacing-unit;
+  scroll-padding-left: $inuit-global-spacing-unit;
 }
 .alice-carousel__stage-item {
   padding-right: $gutter-width;
@@ -1018,18 +1018,19 @@
   }
 }
 .alice-carousel__stage-item:first-child {
-  padding-left:$inuit-global-spacing-unit;
+  padding-left: $inuit-global-spacing-unit;
   @include mq($from: desktop) {
     padding-left: 0;
   }
 }
 .alice-carousel__stage-item:nth-child(3n) {
-  padding-right:  $gutter-width;
+  padding-right: $gutter-width;
   @include mq($from: desktop) {
     padding-right: 0;
   }
 }
-.c-post-list .c-section-intro, .c-post-list .c-view-all {
+.c-post-list .c-section-intro,
+.c-post-list .c-view-all {
   padding: 0 $inuit-global-spacing-unit;
 }
 .c-post-list__col--1 {
@@ -1081,6 +1082,7 @@
   background-color: $light-blue;
   padding: 25px 15px 20px 15px;
   position: relative;
+  transition: all 0.4s ease-in-out;
 
   // max-height: 324px;
   &:hover {
@@ -1088,7 +1090,7 @@
     -webkit-box-shadow: -9px 9px 0px 0px $dark-blue !important;
     -moz-box-shadow: -9px 9px 0px 0px $dark-blue !important;
     box-shadow: -9px 9px 0px 0px $dark-blue;
-    transition: box-shadow 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
     h3,
     h5,
     p {
