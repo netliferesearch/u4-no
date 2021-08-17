@@ -5,7 +5,7 @@
   border-bottom: 1px solid $light-grey;
   @include mq($from: tablet) {
     border-bottom: none;
-    margin-bottom: 44px;
+    margin-bottom: 40px;
     padding-bottom: 0;
   }
 
@@ -18,25 +18,14 @@
   display: block;
 }
 
-.c-post.blog, .c-post.publication, {
+.c-post.blog,
+.c-post.publication {
   border-bottom: none;
 }
 
 .small .c-post__link:last-child .c-post {
   border-bottom: none;
   padding-bottom: 0;
-}
-
-.small .c-post__post-image:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  opacity: 0.38;
-  background: #E4F1FA;
 }
 
 .c-post__link:last-child {
@@ -47,17 +36,22 @@
   margin-left: -$inuit-global-spacing-unit;
   margin-right: -$inuit-global-spacing-unit;
   @include mq($from: tablet) {
-    margin: 0
+    margin: 0;
   }
 }
 
 .c-post__post-image {
   position: relative;
-  transition: all 0.5s ease;
+  transition: $global-transition;
 }
 
-.c-post a:hover .c-post__post-image {
-  opacity: 0.7;
+.c-post a:hover {
+  .c-post__post-image {
+    opacity: 0.5;
+  }
+  .c-post__title {
+    color: $blue;
+  }
 }
 
 .large .c-post__post-image {
@@ -86,13 +80,18 @@
     min-width: 160px;
   }
 
-  .c-post__article-content, .c-post__date, .c-topics {
-    display: none
+  .c-post__article-content,
+  .c-post__date,
+  .c-topics {
+    display: none;
   }
 
   @include mq($from: tablet) {
     display: inherit;
-    .c-post__article-content, .c-post__date, .c-topics, .c-post__link {
+    .c-post__article-content,
+    .c-post__date,
+    .c-topics,
+    .c-post__link {
       display: inherit;
       width: auto;
     }
@@ -112,18 +111,14 @@
 
 //unsused css for image 50% background, delete if opacity is enough
 .articleImg::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 2;
-  background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-  );
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
 }
 
 .small .c-post__post-info {
@@ -170,7 +165,6 @@
 
 //normal used for blog, probably should rename
 .blog.c-post {
-
   .c-post__post-image {
     height: 135px;
     @include mq($from: desktop) {

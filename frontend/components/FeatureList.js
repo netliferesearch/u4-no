@@ -5,7 +5,7 @@ export const FeatureList = ({ features = [], alt = false }) => {
   return (
     <div className="c-features">
       <div className="c-features__content">
-        <h4 className="u-secondary-heading u-secondary-h1 u-text--white u-detail--blue c-features__title">
+        <h4 className="u-secondary-heading u-secondary-h1 u-text--light-blue u-detail--blue--bright c-features__title">
           Become a partner
         </h4>
         <div className="c-feature-list">

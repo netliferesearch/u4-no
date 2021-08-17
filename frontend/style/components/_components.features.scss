@@ -1,7 +1,7 @@
 .c-feature-list {
   display: flex;
   justify-content: space-between;
-  padding-top: 36px;
+  padding-top: 16px;
 
   @include mq($from: mobile, $until: desktop) {
     flex-wrap: wrap;
@@ -10,6 +10,7 @@
   h2 {
     text-transform: uppercase;
     color: $white;
+    margin-top: 24px;
   }
 
   p {
@@ -38,6 +39,7 @@
 
 .c-features__icon {
   img {
-    mix-blend-mode: exclusion;
+    width: 90px;
+    filter: invert(1);
   }
 }

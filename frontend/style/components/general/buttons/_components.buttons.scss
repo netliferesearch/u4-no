@@ -207,8 +207,8 @@
 
 .c-btn--primary--dark {
   color: $dark-blue;
-  background-color: $white;
-  border: 1px solid $white;
+  background-color: $light-blue;
+  border: 1px solid $light-blue;
   &:hover,
   &:focus,
   &:active {
@@ -229,9 +229,9 @@
 }
 
 .c-btn--secondary--dark {
-  color: $white;
+  color: $light-blue;
   background-color: transparent;
-  border: 1px solid $white;
+  border: 1px solid $light-blue;
   &:hover,
   &:focus,
   &:active {
@@ -254,11 +254,11 @@
 }
 
 .c-btn--link--dark {
-  color: $white;
+  color: $light-blue;
   //min-width: fit-content;
   svg,
   path {
-    stroke: $white;
+    stroke: $light-blue;
   }
 
   &:hover,
@@ -291,9 +291,9 @@
 }
 
 .c-btn--tag--dark {
-  border: 1px solid $white;
+  border: 1px solid $light-blue;
   a {
-    color: $white;
+    color: $light-blue;
   }
 
   &:hover {

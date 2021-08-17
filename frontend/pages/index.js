@@ -4,7 +4,7 @@ import DataLoader from '../helpers/data-loader';
 import { Layout } from '../components/Layout';
 import Footer from '../components/general/footer/Footer';
 import PartnerAgencies from '../components/front-page/PartnerAgencies';
-import { CTA } from '../components/CTA';
+import { CTA } from '../components/front-page/CTA';
 import { FeatureList } from '../components/FeatureList';
 import { TopicCardList } from '../components/CorruptionByTopic';
 import { LearningEvents } from '../components/LearningEvents';
@@ -66,7 +66,7 @@ const Frontpage = ({
             posts={featured.publication}
             type={POST_TYPE.PUBLICATION}
             buttonPath="/publications"
-            title="U4 publications"
+            title="Latest publications"
           />
           <hr className="u-section-underline--no-margins" />
         </div>
