@@ -2,10 +2,10 @@ import React, { useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
 import HeadComponent from './HeadComponent';
-import { Menu } from './menu/Menu';
+import { Menu } from './general/menu/Menu';
 import LogoU4White from './icons/LogoU4White';
 import { useRouter } from 'next/router';
-import { MenuMobile } from './menu/MenuMobile';
+import { MenuMobile } from './general/menu/MenuMobile';
 import { useOnClickOutside } from '../helpers/hooks';
 
 const classes = BEMHelper({

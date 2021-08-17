@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DataLoader from '../helpers/data-loader';
 import { Layout } from '../components/Layout';
-import Footer from '../components/Footer';
-import PartnerAgencies from '../components/PartnerAgencies';
-import { CTA } from '../components/Guidance';
-import { PostList } from '../components/front-page/InsightPosts';
-import { CardList } from '../components/RecentPublications';
+import Footer from '../components/general/footer/Footer';
+import PartnerAgencies from '../components/front-page/PartnerAgencies';
+import { CTA } from '../components/CTA';
 import { FeatureList } from '../components/FeatureList';
 import { TopicCardList } from '../components/CorruptionByTopic';
 import { LearningEvents } from '../components/LearningEvents';
 import { FeaturedPosts } from '../components/front-page/FeaturedPosts';
+import { POST_TYPE } from '../components/general/post/Post';
+import { PostCarousel } from '../components/front-page/PostCarousel';
 
 const Frontpage = ({
   data: {
@@ -44,45 +44,58 @@ const Frontpage = ({
           <CTA img={frontPage.imageUrl} />
         </div>
       </section>
-      <hr className="u-section-underline--no-margins" />
       <section className="c-section-background o-wrapper-full">
         <div className="o-wrapper-medium">
           <FeaturedPosts featured={frontPage.resources} />
         </div>
       </section>
-      <hr className="u-section-underline--no-margins" />
-
       <section className="">
         <div className="o-wrapper-medium o-wrapper-mobile-full">
-          <PostList insights={blogPosts} />
+          <PostCarousel
+            posts={blogPosts}
+            type={POST_TYPE.BLOG}
+            buttonPath="/blog"
+            title="Latest from the blog"
+          />
           <hr className="u-section-underline--no-margins" />
         </div>
       </section>
-      <section className="o-wrapper u-side-padding">
-        <div className="o-wrapper-medium">
-          <CardList resources={featured.publication} />
+      <section className="">
+        <div className="o-wrapper-medium o-wrapper-mobile-full">
+          <PostCarousel
+            posts={featured.publication}
+            type={POST_TYPE.PUBLICATION}
+            buttonPath="/publications"
+            title="U4 publications"
+          />
           <hr className="u-section-underline--no-margins" />
         </div>
       </section>
-      <section className="o-wrapper u-side-padding">
+      {/*<section className="o-wrapper u-side-padding">*/}
+      {/*  <div className="o-wrapper-medium">*/}
+      {/*    <CardList resources={featured.publication} />*/}
+      {/*    /!*<hr className="u-section-underline--no-margins" />*!/*/}
+      {/*  </div>*/}
+      {/*</section>*/}
+      <section className="">
         <div className="o-wrapper-medium">
           <LearningEvents events={events} />
         </div>
       </section>
-      <section className="o-wrapper u-side-padding">
-        <div className="o-wrapper-medium">
-          <FeatureList features={frontPage.sections[2].featureArray} /> <hr className="u-section-underline--no-margins" />
+      <section className="o-wrapper-full">
+        <div className="u-bg--shifted">
+          <FeatureList features={frontPage.sections[2].featureArray} />
         </div>
       </section>
-      <section className="o-wrapper u-side-padding">
+      <section className="">
         <div className="o-wrapper-medium">
           <TopicCardList topics={topics} />
         </div>
       </section>
-      <section className="u-side-padding c-section-background o-wrapper-full">
+      <section className="c-section-background o-wrapper-full">
         <PartnerAgencies />
       </section>
-      <section className="u-bg-dark-blue u-side-padding o-wrapper-full">
+      <section className="o-wrapper-full">
         <Footer />
       </section>
     </div>
@@ -111,7 +124,6 @@ export default DataLoader(Frontpage, {
   }),
   materializeDepth: 0,
 });
-
 
 //For logging old front page as well:
 // export default DataLoader(Frontpage, {

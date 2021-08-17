@@ -12,11 +12,6 @@
   color: $white;
 }
 
-.u-heading--4 {
-  font-size: $font-size-normal;
-  line-height: 32px;
-}
-
 .u-section-underline {
   border: none;
   border-bottom: 1px solid $light-grey;
@@ -55,30 +50,6 @@
   color: $dark-grey;
   text-transform: uppercase;
 }
-.u-secondary-heading-dark-blue {
-  font-family: $font-sans;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  color: $dark-blue;
-  text-transform: uppercase;
-}
-.u-secondary-heading-white {
-  font-family: $font-sans;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  color: $white;
-  text-transform: uppercase;
-}
-
-.u-secondary-h1-white {
-  font-size: $font-size-tiny;
-  line-height: 22px;
-  color: $white;
-  @include mq($from: tablet) {
-    font-size: $font-size-normal;
-    line-height: 1;
-  }
-}
 
 .u-secondary-h1 {
   font-size: $font-size-tiny;
@@ -93,6 +64,8 @@
 .u-secondary-h2 {
   font-size: $font-size-micro;
   line-height: $font-size-small;
+  letter-spacing: 0.15em;
+
   @include mq($from: tablet) {
     font-size: $font-size-tiny;
     line-height: 22px;
@@ -136,7 +109,8 @@
 .u-body--small {
   font-family: $font-sans;
   font-size: $font-size-nano;
-  line-height: $font-size-micro;
+  line-height: $line-height-mid;
+  letter-spacing: 0.01em;
 }
 
 .u-detail--blue {
@@ -169,6 +143,7 @@
 .u-detail--white {
   position: relative;
   display: block;
+  padding-top: 24px;
   padding-bottom: 12px;
   &:after {
     content: '';
@@ -223,6 +198,14 @@
   }
 }
 
+.u-text--white {
+  color: $white;
+}
+
+.u-text--light-blue {
+  color: $light-blue;
+}
+
 .u-text--blue {
   color: $brand-main;
 }
@@ -234,55 +217,11 @@
   color: $mid-grey;
 }
 
-.u-link--grey {
-  color: $mid-grey;
-  text-decoration: underline;
-  border-bottom: none;
-  &:hover {
-    color: $brand-main;
-    text-decoration: none;
-    border-bottom: none;
-  }
-  &:active {
-    text-decoration: none;
-    border-bottom: none;
-    & > * {
-      display: inline-block;
-      transform: translateY(2px);
+.u-opacity--60--text {
+  a {
+    opacity: 0.6;
+    &:hover {
+      opacity: 1;
     }
-  }
-  &:focus {
-    border: none;
-  }
-}
-
-.u-link-basic {
-  color: $dark-grey;
-  text-decoration: none;
-  transition: all 100ms ease-out;
-  border-bottom: none;
-  &:hover,
-  &:visited:hover {
-    border: none;
-    color: $brand-main;
-    text-decoration: underline;
-  }
-  &:visited {
-    color: $dark-grey;
-    text-decoration: none;
-    border-bottom: none;
-  }
-  &:active {
-    color: $brand-main;
-    border-bottom: none;
-    text-decoration: underline;
-    // & > * {
-    //   display: inline-block;
-    //   transform: translateY(2px);
-    //   text-decoration: underline;
-    // }
-  }
-  &:focus {
-    border: none;
   }
 }

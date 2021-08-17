@@ -1,84 +1,115 @@
 .c-post {
   margin-bottom: 24px;
-  padding-bottom:24px;
-  border-bottom:1px solid $light-grey;
+  padding-bottom: 24px;
+  display: block;
+  border-bottom: 1px solid $light-grey;
   @include mq($from: tablet) {
-    border-bottom:none;
+    border-bottom: none;
     margin-bottom: 44px;
-    padding-bottom:0;
+    padding-bottom: 0;
   }
-  :hover {
+
+  a:hover {
     cursor: pointer;
   }
 }
-.c-post.small:last-child {
-    border-bottom: none;
-    padding-bottom:0;
+
+.c-post__link {
+  display: block;
 }
-.c-post:last-child {
+
+.c-post.blog, .c-post.publication, {
+  border-bottom: none;
+}
+
+.small .c-post__link:last-child .c-post {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.small .c-post__post-image:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  opacity: 0.38;
+  background: #E4F1FA;
+}
+
+.c-post__link:last-child {
   margin-bottom: 0;
 }
+
 .large .c-post__post-image {
-  margin-left:-$inuit-global-spacing-unit;
-  margin-right:-$inuit-global-spacing-unit;
+  margin-left: -$inuit-global-spacing-unit;
+  margin-right: -$inuit-global-spacing-unit;
   @include mq($from: tablet) {
-    margin:0
+    margin: 0
   }
 }
+
 .c-post__post-image {
-  position:relative;
+  position: relative;
+  transition: all 0.5s ease;
 }
-.c-post:hover .c-post__post-image{
+
+.c-post a:hover .c-post__post-image {
   opacity: 0.7;
 }
+
 .large .c-post__post-image {
   height: 208px;
   @include mq($from: tablet) {
     height: 424px;
   }
 }
-.normal .c-post__post-image {
-  height: 205px;
-}
+
 .small .c-post__post-image {
   height: 85px;
   @include mq($from: tablet) {
     height: 205px;
   }
 }
+
 .c-post.small {
-  display:flex;
-  align-items: center;
-  .c-post__post-image{
-    margin:0;
-    width:160px;
+  .c-post__link {
+    display: flex;
+    align-items: center;
+  }
+
+  .c-post__post-image {
+    margin: 0;
+    width: 160px;
     min-width: 160px;
   }
-  .c-post__article-content, .c-post__date, .c-topics  {
-    display:none
+
+  .c-post__article-content, .c-post__date, .c-topics {
+    display: none
   }
+
   @include mq($from: tablet) {
-    display:inherit;
-    .c-post__article-content, .c-post__date, .c-topics  {
-      display:inherit;
-      width:auto;
+    display: inherit;
+    .c-post__article-content, .c-post__date, .c-topics, .c-post__link {
+      display: inherit;
+      width: auto;
     }
-    .c-post__post-image{
-      margin:0;
-      width:auto;
+    .c-post__post-image {
+      margin: 0;
+      width: auto;
     }
   }
 }
+
 .c-post__title {
-  margin:6px 0 16px;
+  margin: 6px 0 16px;
   @include mq($from: tablet) {
-    margin:12px 0 16px;
+    margin: 12px 0 16px;
   }
 }
-.small .c-post__title {
-  max-height: 68px;
-  overflow: hidden;
-}
+
 //unsused css for image 50% background, delete if opacity is enough
 .articleImg::before {
   content: "";
@@ -98,11 +129,12 @@
 .small .c-post__post-info {
   display: flex;
   flex-direction: column;
-  margin-left:8px;
+  margin-left: 8px;
   @include mq($from: tablet) {
-    margin-left:0px;
+    margin-left: 0px;
   }
 }
+
 .c-post__post-type {
   margin-top: 12px;
   @include mq($from: tablet) {
@@ -122,16 +154,40 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
-  margin-bottom:24px;
+  margin-bottom: 24px;
   color: $mid-grey;
 }
 
 .c-post__date {
-  margin:0 0 16px 0;
+  margin: 0 0 16px 0;
   color: $mid-grey;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 18px;
   letter-spacing: 0.01em;
+}
+
+//normal used for blog, probably should rename
+.blog.c-post {
+
+  .c-post__post-image {
+    height: 135px;
+    @include mq($from: desktop) {
+      height: 205px;
+    }
+  }
+
+  .c-post__article-content {
+    display: none;
+  }
+
+  @include mq($from: desktop) {
+    .c-post__article-content {
+      display: inherit;
+    }
+    .c-post__title {
+      max-height: inherit;
+    }
+  }
 }

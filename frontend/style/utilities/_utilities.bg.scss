@@ -31,14 +31,27 @@
   // position: relative;
   // z-index: 0;
 }
-// .u-bg-transparent-blue::before {
-//   content: '';
-//   display: block;
-//   height: 100%;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   background-color: rgba(220, 235, 255, 0.8);
-//   mix-blend-mode: multiply;
-// }
+
+.u-bg--shifted {
+  position: relative;
+  max-width: 1206px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: $dark-blue;
+  box-shadow: -16px 16px 0px 0px #0079cf;
+  @include mq($from: tablet) {
+    clip-path: inset(0px 0px -16px -1000px);
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: -1000px;
+      background-color: $dark-blue;
+      box-shadow: 0 16px 0px 0px #0079cf;
+      z-index: -1;
+    }
+  }
+
+}

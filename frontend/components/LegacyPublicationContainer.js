@@ -7,7 +7,7 @@ import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import Image from 'next/image';
 import sanityImageLoader from './sanityImageLoader';
 
-import Footer from './Footer';
+import Footer from '../components/general/footer/Footer';
 import Layout from './Layout';
 import PublicationArticleHeader from './PublicationArticleHeader';
 import PdfViewer from './PdfViewer';

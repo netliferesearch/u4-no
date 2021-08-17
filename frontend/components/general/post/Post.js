@@ -1,53 +1,85 @@
 import React from 'react';
 import dateToString from '../../../helpers/dateToString';
 import sanityImageLoader from '../../sanityImageLoader';
-
 import Image from 'next/image';
 import { Topics } from '../../Topics';
 import LinkToItem from '../../LinkToItem';
 import { getPostType } from '../../../helpers/getRouteByType';
 import PropTypes from 'prop-types';
+import TextClamp from 'react-string-clamp';
 
-export const POST_SIZE = {
+export const POST_TYPE = {
   SMALL: 'small', //collapsable in mobile view/normal in desktop
-  NORMAL: 'normal', //normal size both in mobile and desktop
+  BLOG: 'blog', //special post for blogs
+  PUBLICATION: 'publication', //special post for publication
   LARGE: 'large', //large in desktop, full with image in mobile
 };
+const ellipsizeLines = {
+  [POST_TYPE.SMALL]: 4,
+  [POST_TYPE.BLOG]: 3,
+  [POST_TYPE.PUBLICATION]: 3,
+  [POST_TYPE.LARGE]: 33,
+};
 
-export const Post = ({ post, size }) => {
-  return <LinkToItem type={post._type} slug={post.slug}>
-    <a className={`c-post ${size}`}>
-
-        {post.imageUrl && <div className="c-post__post-image">
-          <Image
-            loader={sanityImageLoader}
-            src={post.imageUrl}
-            alt=""
-            loading="lazy"
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>}
-        <div className="c-post__post-info">
-          {getPostType(post) && <div
-            className="c-post__post-type u-secondary-heading u-secondary-h4 u-detail--blue--small">{getPostType(post)}</div>}
-          <h4 className="c-post__title">{post.title}</h4>
-          <div className="c-post__article-content u-body">{post.standfirst}</div>
-          <div className="c-post__date u-body--small">{dateToString({ start: post.date.utc })}</div>
-        </div>
-        {post.topics && (
-          <Topics title={false} topics={post.topics} hr={false} linkType={'5'}/>
-        )}
-    </a>
-  </LinkToItem>;
+const standFirstLines = {
+  [POST_TYPE.SMALL]: 3,
+  [POST_TYPE.BLOG]: 3,
+  [POST_TYPE.PUBLICATION]: 3,
+  [POST_TYPE.LARGE]: 33,
+};
+const renderImage = (type) => {
+  switch (type) {
+    case [POST_TYPE.PUBLICATION]:
+      return false;
+    default:
+      return true;
+  }
+};
+export const Post = ({ post, type }) => {
+  return <div className={`c-post ${type}`}>
+    <LinkToItem type={post._type} slug={post.slug}>
+      <a className="c-post__link u-fake-anchor">
+          {post.imageUrl && renderImage(type) && <div className="c-post__post-image">
+            <Image
+              loader={sanityImageLoader}
+              src={post.imageUrl}
+              alt=""
+              loading="lazy"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>}
+          <div className="c-post__post-info">
+            {getPostType(post) && <div
+              className="c-post__post-type u-secondary-heading u-secondary-h4 u-detail--blue--small">{getPostType(post)}</div>}
+            <h4 className="c-post__title">
+              <TextClamp
+                text={post.title}
+                lines={ellipsizeLines[type]}
+              />
+            </h4>
+            <div className="c-post__article-content u-body">
+              <TextClamp
+                text={post.standfirst}
+                lines={standFirstLines[type]}
+              />
+            </div>
+            <div className="c-post__date u-body--small">{dateToString({ start: post.date.utc })}</div>
+          </div>
+      </a>
+    </LinkToItem>
+    {post.topics && (
+      <Topics title={false} topics={post.topics} hr={false} linkType={'5'}/>
+    )}
+  </div>;
 };
 
 Post.defaultProps = {
-  size: POST_SIZE.NORMAL,
+  type: POST_TYPE.NORMAL,
   post: {},
 };
 
 Post.propTypes = {
-  size: PropTypes.string,
+  type: PropTypes.string,
   post: PropTypes.any,
 };

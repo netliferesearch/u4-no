@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { sortBy } from 'lodash';
 import Link from 'next/link';
-import Footer from '../../components/Footer';
+import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import DataLoader from '../../helpers/data-loader';
 import dateToString from '../../helpers/dateToString';
@@ -91,7 +91,7 @@ const TopicOverview = ({ data: { topics = [] } }) => {
                         </p>
                         <div>
                           {/* <Link href={`/topics/${topic.slug.current}`}> */}
-                          {/* <div className="c-btn c-btn--sec">
+                          {/* <div className="c-btn c-btn--secondary">
                         <span>Learn more</span>
                       </div> */}
                           {/* </Link> */}

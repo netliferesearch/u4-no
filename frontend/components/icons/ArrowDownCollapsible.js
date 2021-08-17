@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ArrowDownCollapsible() {
+export const ArrowDownCollapsible = () => {
   return (
     <svg
       className="c-menu--mobile__collapsible-arrow-svg"
@@ -13,4 +13,4 @@ export default function ArrowDownCollapsible() {
       <path opacity="0.5" d="M1 1L7.5 7.5L14 1" stroke="white" strokeWidth="1.5" />
     </svg>
   );
-}
+};

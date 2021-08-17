@@ -19,8 +19,8 @@ export const TopicCardList = ({ topics }) => {
           <BlueCard post={post} key={index} />
         ))}
       </ul>
-      <div className="c-topic-view-all-holder">
-        <a className="c-topic-view-all" href="/topics">
+      <div className="c-topics__link-holder">
+        <a className="c-btn c-btn--link " href="/topics">
           View All
           <ArrowNext />
         </a>

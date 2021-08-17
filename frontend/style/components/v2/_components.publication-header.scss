@@ -47,14 +47,14 @@
   @include mq($from: tablet) {
     justify-content: center;
   }
-  .c-btn--sec {
+  .c-btn--secondary {
     margin: 0 16px 0 0;
     @include mq($from: tablet) {
       margin: 0 16px;
     }
   }
   //overriting
-  a.c-btn--sec {
+  a.c-btn--secondary {
     border-color: #dedede;
   }
   .c-btn--5 {

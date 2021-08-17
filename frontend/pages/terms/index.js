@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DataLoader from '../../helpers/data-loader';
 import BEMHelper from 'react-bem-helper';
 
-import Footer from '../../components/Footer';
+import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import ServiceArticle from '../../components/ServiceArticle';
 

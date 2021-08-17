@@ -9,7 +9,7 @@ import findFootnotes from '../../components/findFootnotes';
 import footnoteSerializer from '../../components/footnoteSerializer';
 import { BlogHeader } from '../../components/blog/BlogHeader';
 import { Keywords } from '../../components/Keywords';
-import { Newsletter } from '../../components/Newsletter';
+import { Newsletter } from '../../components/general/newsletter/Newsletter';
 import { AboutAuthor } from '../../components/AboutAuthor';
 import { Disclaimers } from '../../components/Disclaimers';
 import { Share } from '../../components/general/social/SocialShare';

@@ -28,7 +28,7 @@ export const Topics = ({ title = true, topics = [], hr = false, linkType = 'ter'
               <span>{`${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}</span>
             </span>
           ) : !topic.slug && topic.title ? (
-            <div key={index} className="c-topics__list-buttons">
+            <div key={index} className="c-btn--tag">
               <a href={`/topics/${spacesToDash(topic.title)}`} className="topic--plain" key={index}>
                 {topic.title}
                 {/* {`${topic.title}${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`} */}

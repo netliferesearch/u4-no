@@ -3,10 +3,7 @@ import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers';
 
-import Image from 'next/image';
-import sanityImageLoader from '../../components/sanityImageLoader';
 
-import Footer from '../../components/Footer';
 import Layout from '../../components/Layout';
 import { Scrollchor } from 'react-scrollchor';
 import { Testimonial } from '../../components/Testimonial';
@@ -68,7 +65,7 @@ const ServicePage = ({
                 </a>
               </Link>
               <div>
-                <div className="c-link--pri">
+                <div className="">
                   <Scrollchor to="#courses" disableHistory>
                     Start for free
                   </Scrollchor>
@@ -84,7 +81,7 @@ const ServicePage = ({
               <h2 className="u-heading--6">{title}</h2>
               <h2 className="u-heading--1">{longTitle}</h2>
               <BlockContent blocks={lead} serializers={serializers} />
-              <div className="c-link--pri">
+              <div className="">
                 <Scrollchor to="#courses" disableHistory>
                   Start for free
                 </Scrollchor>

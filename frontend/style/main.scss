@@ -10,11 +10,9 @@
 @import 'objects/objects.wrapper';
 
 // COMPONENTS
-@import 'components/components.accordion';
 @import 'components/components.article-header';
 @import 'components/components.article';
 @import 'components/components.article-nav';
-@import 'components/components.buttons';
 @import 'components/components.breadcrumb';
 @import 'components/components.boxOnBox';
 @import 'components/components.boxOnBox-partner-features';
@@ -25,7 +23,6 @@
 @import 'components/components.duo';
 @import 'components/components.frontpage-feature';
 @import 'components/components.features';
-@import 'components/components.footer';
 @import 'components/components.figure';
 @import 'components/components.filters-v2';
 @import 'components/components.glossary';
@@ -39,8 +36,6 @@
 @import 'components/components.logo';
 @import 'components/components.oneColumnBox';
 @import 'components/components.overview-page';
-@import 'components/components.menu';
-@import 'components/v2/components.mobile-menu';
 @import 'components/components.top-bar';
 @import 'components/v2/components.top-bar';
 @import 'components/components.headroom';
@@ -48,7 +43,6 @@
 @import 'components/components.lead';
 @import 'components/components.linkbox';
 @import 'components/components.mosaic';
-@import 'components/components.newsletter';
 @import 'components/components.notification';
 @import 'components/components.simple-hero';
 @import 'components/components.simple-mosaic';
@@ -85,13 +79,11 @@
 @import 'components/v2/components.blog-list';
 @import 'components/v2/components.blog-single';
 @import 'components/v2/components.breadcrumb-v2';
-@import 'components/v2/components.share';
 @import 'components/v2/components.tags-section';
 @import 'components/v2/components.publication-header';
 @import 'components/v2/publication-entry';
 @import 'components/v2/components.related-items-list';
 @import 'components/v2/components.modal';
-@import 'components/v2/components.newsletter';
 @import 'components/v2/components.disclaimers';
 @import 'components/v2/components.article-sidebar';
 @import 'components/v2/components.abaut-author';
@@ -99,8 +91,15 @@
 @import 'components/v2/components.reader';
 @import 'components/v2/service-page';
 @import 'components/v2/components.course-page';
+@import 'components/general/accordion/components.accordion';
+@import 'components/general/buttons/components.buttons';
 @import 'components/general/post/components.post';
 @import 'components/general/typography/components.sectionTitle';
+@import 'components/general/menu/components.menu';
+@import 'components/general/menu/components.mobile-menu';
+@import 'components/general/social/components.share';
+@import 'components/general/footer/components.footer';
+@import 'components/general/newsletter/components.newsletter';
 @import 'components/front-page/components.featuredPosts';
 
 // UTILITIES

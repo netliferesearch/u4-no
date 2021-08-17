@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import sortBy from 'lodash/sortBy';
 import Layout from '../../components/Layout';
-import Footer from '../../components/Footer';
+import Footer from '../../components/general/footer/Footer';
 import Team from '../../components/Team';
 import DataLoader from '../../helpers/data-loader';
 import ArrowLarge from '../../components/icons/ArrowLarge';

@@ -20,7 +20,7 @@ export const MainMenuItem = ({
   };
   return item.slug ? (
     <Link href={item.slug}>
-      <a className="c-menu__link">
+      <a className="c-btn c-menu__link u-no-underline">
         <h3
           className={`c-menu__heading c-menu__heading${activeItem === item.id ? '--active' : ''}`}
         >

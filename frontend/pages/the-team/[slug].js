@@ -2,7 +2,7 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
-import Footer from '../../components/Footer';
+import Footer from '../../components/general/footer/Footer';
 
 import ArrowRight from '../../components/icons/ArrowRight';
 import ArrowRightSmall from '../../components/icons/ArrowRightSmall';

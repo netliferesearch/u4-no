@@ -38,10 +38,10 @@
 .c-simple-hero__cta {
   display: inline-block;
   margin: $spacing-large auto;
-  color: $brand-lighter;
+  color: $highlight-blue;
   padding: $spacing-small $spacing;
   font-family: $font-sans;
-  border: 2px solid $brand-lighter;
+  border: 2px solid $highlight-blue;
 
   &:hover {
     border: 2px solid $light-blue;
