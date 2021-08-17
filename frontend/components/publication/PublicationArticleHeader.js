@@ -44,7 +44,7 @@ export const PublicationArticleHeader = ({
           <div {...classes('actions')}>
             {content.length > 0 && (
               <button
-                className="c-btn c-btn--sec"
+                className="c-btn c-btn--secondary"
                 onClick={() => {
                   setReaderOpen(true);
                   if (typeof window !== 'undefined') {
@@ -71,7 +71,7 @@ export const PublicationArticleHeader = ({
                 href={`/publications/${slug.current}.pdf`}
                 //download={`/publication/${slug.current}.pdf`}
                 target="_blank"
-                className="c-btn c-btn--sec"
+                className="c-btn c-btn--secondary"
               >
                 <span>Read online</span>
               </a>

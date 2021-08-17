@@ -23,16 +23,16 @@
 }
 .c-link-list__link {
   border-bottom: none;
-  color: $brand-lighter;
+  color: $highlight-blue;
   &:visited {
-    color: $brand-lighter;
+    color: $highlight-blue;
   }
   &:hover {
-    color: $brand-lighter;
+    color: $highlight-blue;
     border-bottom: none;
     }
   &:visited:hover {
-    color: $brand-lighter;
+    color: $highlight-blue;
   }
 
 }

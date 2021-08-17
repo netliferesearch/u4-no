@@ -1,0 +1,344 @@
+@use "sass:math";
+
+/* ==========================================================================
+   #BUTTONS
+   ========================================================================== */
+
+/**
+ * This is an example component. Extend inuitcss by building your own components
+ * that make up your UI. Component classes are prefixed with a `c-`.
+ */
+
+/**
+ * 1. Allow us to style box model properties.
+ * 2. Line different sized buttons up a little nicer.
+ * 3. Make buttons inherit font styles (often necessary when styling `input`s as
+ *    buttons).
+ * 4. Reset/normalize some styles.
+ * 5. Force all button-styled elements to appear clickable.
+ */
+
+.c-btn {
+  display: inline-block; /* [1] */
+  vertical-align: middle; /* [2] */
+  font: inherit; /* [3] */
+  text-align: center; /* [4] */
+  margin: 0; /* [4] */
+  cursor: pointer; /* [5] */
+  transition: $global-transition;
+  border: none;
+  background-color: transparent;
+  svg,
+  svg path {
+    transition: $global-transition;
+  }
+  &:hover,
+  &:focus {
+    //text-decoration: underline; /* [4] */
+  }
+}
+
+.c-btn--flex {
+  display: flex;
+  align-items: center;
+}
+
+.c-btn--icon {
+  color: $brand-main;
+  height: 54px;
+
+  svg g {
+  }
+  svg path {
+    stroke: $brand-main;
+  }
+  svg circle {
+    stroke: $brand-main;
+    fill: transparent;
+  }
+
+  &:hover,
+  &:focus {
+    border: none;
+    outline: none;
+
+    svg g,
+    svg path {
+      stroke: $white;
+      fill: $white;
+    }
+    svg circle {
+      //stroke: $brand-main;
+      fill: $brand-main;
+    }
+  }
+}
+
+//check if still needed when doing search and Pdf viewer:
+.c-btn__body {
+  font-family: $font-sans;
+  margin-left: math.div($spacing, 2);
+  display: inline-block;
+  margin: auto;
+  padding: $spacing-small $spacing;
+  border: 2px solid $blue;
+
+  &:hover {
+    border: 2px solid $highlight-blue;
+  }
+}
+
+/* Style variants
+   ========================================================================== */
+
+.c-btn--primary {
+  font-family: $font-sans;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $white;
+  background-color: $dark-blue;
+  border: 1px solid $dark-blue;
+  padding: 6px 14px;
+  min-width: fit-content;
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    background-color: $blue;
+    color: $white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  @include mq($from: tablet) {
+    padding: 8px 16px;
+  }
+}
+
+.c-btn--secondary {
+  font-family: $font-sans;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $dark-blue;
+  background-color: transparent;
+  border: 1px solid $dark-blue;
+  padding: 6px 14px;
+  min-width: fit-content;
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    color: $blue;
+    border: 1px solid $blue;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  @include mq($from: tablet) {
+    padding: 8px 16px;
+  }
+}
+
+.c-btn--link {
+  font-family: $font-sans;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $dark-grey;
+  text-decoration: none;
+  //min-width: fit-content;
+
+  svg {
+    margin-left: 12px;
+    stroke: $dark-grey;
+  }
+
+  &:hover,
+  //&:visited,
+  //&:visited:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    color: $blue;
+    svg,
+    path {
+      stroke: $blue;
+    }
+  }
+}
+
+.c-btn--tag {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  width: fit-content;
+  border-radius: 47px;
+  transition: $global-transition--longer;
+  border: 1px solid $mid-grey;
+  line-height: 14px;
+
+  a {
+    font-family: $font-sans;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.01em;
+    display: inline-block;
+    padding: 7px 12px;
+    color: $mid-grey;
+    transition: $global-transition--longer;
+  }
+
+  &:hover {
+    background-color: $blue;
+    border: 1px solid $blue;
+
+    a {
+      color: $white;
+    }
+  }
+}
+
+/* Color variants
+========================================================================== */
+
+.c-btn--primary--dark {
+  color: $dark-blue;
+  background-color: $white;
+  border: 1px solid $white;
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    background-color: $highlight-yellow;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.c-btn--primary--blue {
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    background-color: $highlight-blue;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.c-btn--secondary--dark {
+  color: $white;
+  background-color: transparent;
+  border: 1px solid $white;
+  &:hover,
+  &:focus,
+  &:active {
+    color: $dark-blue;
+    text-decoration: none;
+    background-color: $highlight-yellow;
+    border: 1px solid $highlight-yellow;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.c-btn--secondary--blue {
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    background-color: $highlight-blue;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.c-btn--link--dark {
+  color: $white;
+  //min-width: fit-content;
+  svg,
+  path {
+    stroke: $white;
+  }
+
+  &:hover,
+  &:focus,
+  //&:visited,
+  //&:visited:hover,
+  &:active {
+    text-decoration: none;
+    color: $highlight-yellow;
+    svg,
+    path {
+      stroke: $highlight-yellow;
+    }
+  }
+}
+
+.c-btn--link--blue {
+  &:hover,
+  &:focus,
+  //&:visited,
+  //&:visited:hover,
+  &:active {
+    text-decoration: none;
+    color: $white;
+    svg,
+    path {
+      stroke: $white;
+    }
+  }
+}
+
+.c-btn--tag--dark {
+  border: 1px solid $white;
+  a {
+    color: $white;
+  }
+
+  &:hover {
+    background-color: $highlight-yellow;
+    border: 1px solid $highlight-yellow;
+    a {
+      color: $dark-blue;
+    }
+  }
+}
+
+/* Size variants
+   ========================================================================== */
+
+.c-btn--small {
+  padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+}
+
+.c-btn--large {
+  padding: $inuit-global-spacing-unit $inuit-global-spacing-unit-large;
+}
+
+/* Buttons that do not fit the style guide 
+   ========================================================================== */
+
+.c-btn--submit {
+  font-family: $font-sans;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $highlight-yellow;
+  background-color: transparent;
+  border: 1px solid $highlight-yellow;
+  padding: 6px 14px;
+  min-width: fit-content;
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+    background-color: $highlight-yellow;
+    color: $dark-blue;
+  }
+  @include mq($from: tablet) {
+    padding: 8px 16px;
+  }
+}

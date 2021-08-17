@@ -14,7 +14,18 @@
 
 .c-social-follow__item {
   margin-right: 24px;
-  border-bottom: 1px solid transparent;
+  &:hover {
+    svg {
+      .c-social-icons-secondpath {
+        fill: $dark-blue;
+      }
+      .c-social-icons-firstpath {
+        stroke: $highlight-yellow;
+        fill: $highlight-yellow;
+      }
+    }
+  }
+
   @include mq($from: tablet) {
     margin-right: 40px;
   }

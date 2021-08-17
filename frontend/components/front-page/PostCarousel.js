@@ -42,7 +42,7 @@ export const PostCarousel = ({ posts, type, buttonPath, title }) => {
           disableButtonsControls
         />
         <div className="o-wrapper-medium c-view-all">
-          <a className="c-topic-view-all" href={buttonPath}>
+          <a className="c-btn c-btn--link" href={buttonPath}>
             View all
             <ArrowNext/>
           </a>

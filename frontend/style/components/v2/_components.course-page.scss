@@ -76,7 +76,7 @@
   .c-article-sidebar__row--regular {
     margin-bottom: 16px;
   }
-  .c-modal .c-btn--sec {
+  .c-modal .c-btn--secondary {
     margin-top: 40px;
   }
 }
@@ -105,11 +105,11 @@
     p.u-text--grey {
       margin: 0;
     }
-    .c-btn--qua {
+    .c-btn--link {
       margin-bottom: 8px;
     }
   }
-  .c-btn--sec {
+  .c-btn--secondary {
     margin-top: 16px;
   }
 }
@@ -224,6 +224,6 @@
 }
 
 //overriting
-a.c-btn--sec {
+a.c-btn--secondary {
   border-color: #dedede;
 }

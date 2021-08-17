@@ -99,7 +99,7 @@ export const CardList = ({ resources = [], alt = false }) => {
         </AliceCarousel>
       </div>
       <div className="c-view-all">
-        <a className="c-topic-view-all" href="/publications">
+        <a className="c-btn c-btn--link" href="/publications">
           View all
           <ArrowNext />
         </a>

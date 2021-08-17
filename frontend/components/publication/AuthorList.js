@@ -38,7 +38,7 @@ const AuthorList = ({ authors = [], intro = 'Author', pluralize = true }) => {
                         _ref === '3babc8f1-9e38-4493-9823-a9352b46585b'
                     ) ? (
                       <LinkToItem type="person" slug={slug.current}>
-                        <a className="c-btn--qua">
+                        <a className="c-btn--link">
                           <span>{`${firstName} ${surname}`}</span>
                         </a>
                       </LinkToItem>

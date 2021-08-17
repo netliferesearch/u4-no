@@ -1,29 +1,43 @@
-.c-features {
-  @include mq($from: tablet) {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
+.c-feature-list {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 36px;
+
+  @include mq($from: mobile, $until: desktop) {
+    flex-wrap: wrap;
+  }
+
+  h2 {
+    text-transform: uppercase;
+    color: $white;
+  }
+
+  p {
+    width: 92%;
   }
 }
-.c-features__item {
+
+.c-feature-list__item {
+  width: 100%;
+  max-width: 370px;
   @include mq($from: tablet) {
-    display: inline-block;
-    width: 25%;
+    width: 31%;
   }
-  padding: $spacing;
-  text-align: center;
-  font-family: $font-sans;
-  @include inuit-font-size($font-size-small, $font-size-large);
-  color: $dark-blue;
-  font-weight: 300;
 }
+
+.c-features__content {
+  padding-bottom: 48px;
+  padding-left: 24px;
+  padding-right: 24px;
+  @include mq($from: tablet) {
+    padding-bottom: 64px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 .c-features__icon {
-  svg, path {
-    fill: $dark-blue;
-  }
-  padding-bottom: $spacing-small;
   img {
-    max-height: 80px;
+    mix-blend-mode: exclusion;
   }
 }

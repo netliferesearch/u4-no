@@ -91,7 +91,7 @@ const TopicOverview = ({ data: { topics = [] } }) => {
                         </p>
                         <div>
                           {/* <Link href={`/topics/${topic.slug.current}`}> */}
-                          {/* <div className="c-btn c-btn--sec">
+                          {/* <div className="c-btn c-btn--secondary">
                         <span>Learn more</span>
                       </div> */}
                           {/* </Link> */}

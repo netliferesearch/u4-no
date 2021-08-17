@@ -186,7 +186,7 @@ export const CourseSidebar = ({ data, side }) => {
 
           {pdfAsset.asset ? (
             <div className="c-article-sidebar__select">
-              <a href={pdfAsset.asset.url} target="_blank" className="c-btn c-btn--sec">
+              <a href={pdfAsset.asset.url} target="_blank" className="c-btn c-btn--secondary">
                 <span>View course leaflet (PDF)</span>
               </a>
             </div>

@@ -23,7 +23,7 @@ export const PersonBasic = ({ person, showEmail = true }) => {
       <div className="c-person-basic__text">
         {person.slug && person.bio ? (
           <Link href={`/the-team/${person.slug.current}`}>
-            <a className="c-btn--qua">
+            <a className="c-btn--link">
               <p {...classes('item-title--name')}>
                 {person.firstName && person.firstName} {person.surname && person.surname}
               </p>
@@ -38,7 +38,7 @@ export const PersonBasic = ({ person, showEmail = true }) => {
         {person.email && showEmail && (
           <p>
             <span>Email: </span>
-            <a className="u-link-basic" href={`mailto:${person.email}`}>
+            <a className="" href={`mailto:${person.email}`}>
               {person.email}
             </a>
           </p>
@@ -55,7 +55,7 @@ export const PersonContactBasic = ({ person, cta = 'Questions about the course?'
         {/* <p className="u-secondary-heading">{person.position && `${person.position}`}</p> */}
         {person.slug && person.bio ? (
           <Link href={`/the-team/${person.slug.current}`}>
-            <a className="c-btn--qua">
+            <a className="c-btn--link">
               <span {...classes('item-title--name')}>
                 {person.firstName && person.firstName} {person.surname && person.surname}
               </span>
@@ -110,7 +110,7 @@ export const CourseCoordinator = ({ person, cta = 'Questions about the course?',
         <h3 className="u-secondary-heading">Course coordinator:</h3>
         {person.slug && person.bio ? (
           <Link href={`/the-team/${person.slug.current}`}>
-            <a className="c-btn--qua">
+            <a className="c-btn--link">
               <span {...classes('item-title--name')}>
                 {person.firstName && person.firstName} {person.surname && person.surname}
               </span>
@@ -134,7 +134,7 @@ export const CourseCoordinator = ({ person, cta = 'Questions about the course?',
         ) : null}
         {url ? (
           <div className="">
-            <a href={url} target="_blank" className="c-btn c-btn--sec">
+            <a href={url} target="_blank" className="c-btn c-btn--secondary">
               <span>View course leaflet (PDF)</span>
             </a>
           </div>

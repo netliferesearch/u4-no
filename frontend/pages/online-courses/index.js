@@ -65,7 +65,7 @@ const ServicePage = ({
                 </a>
               </Link>
               <div>
-                <div className="c-link--pri">
+                <div className="">
                   <Scrollchor to="#courses" disableHistory>
                     Start for free
                   </Scrollchor>
@@ -81,7 +81,7 @@ const ServicePage = ({
               <h2 className="u-heading--6">{title}</h2>
               <h2 className="u-heading--1">{longTitle}</h2>
               <BlockContent blocks={lead} serializers={serializers} />
-              <div className="c-link--pri">
+              <div className="">
                 <Scrollchor to="#courses" disableHistory>
                   Start for free
                 </Scrollchor>

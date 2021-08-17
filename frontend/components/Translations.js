@@ -18,7 +18,7 @@ export const Translations = ({ translations, language, type = 'publication', cur
           item.title && (
             <LinkToItem type={type} slug={item.slug} key={item._id}>
               <span>
-                <a className="c-btn c-btn--qua">{languageName({ langcode: item.language })}</a>
+                <a className="c-btn c-btn--link">{languageName({ langcode: item.language })}</a>
                 {index + 2 < translations.length && <span>, </span>}
                 {index + 2 === translations.length && <span> and </span>}
               </span>
@@ -98,7 +98,7 @@ export const RadioModal = ({ title = '', options, setOpen, route, currentSlug })
                     <LinkToItem type={item._type} slug={item.slug} key={item._id}>
                       <span>
                         <a
-                          className="c-modal__label c-btn c-btn--qua"
+                          className="c-modal__label c-btn c-btn--link"
                           onClick={() => setOpen(false)}
                         >
                           {languageName({ langcode: item.language })}

@@ -16,7 +16,7 @@ const EditorList = ({ editors = [], intro = 'Series editor', pluralize = true })
             <div className="c-authors-list__name">
               {_id ? (
                 <LinkToItem type="person" slug={slug}>
-                  <a className="c-btn--qua">
+                  <a className="c-btn--link">
                     <span>{firstName} {surname}</span>
                   </a>
                 </LinkToItem>

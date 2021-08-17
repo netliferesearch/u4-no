@@ -444,61 +444,8 @@
     flex-wrap: wrap;
   }
 
-  .c-topics__list-buttons {
-    margin-right: 5px;
-    margin-bottom: 5px;
-    width: fit-content;
-    border-radius: 47px;
-    transition:background-color 0.5s ease;
-    border: 1px solid $mid-grey;
-    line-height: 14px;
-
-    .topic--plain {
-      display:inline-block;
-      padding: 7px 12px;
-      color: $mid-grey !important;
-      border-bottom: none;
-    }
-  }
-
-  .c-topics__list-buttons:hover {
-    background-color: $brand-main;
-    border: 1px solid $brand-main;
-
-    .topic--plain {
-      color: #fff !important;
-    }
-  }
-
-  .c-topic-view-all-holder {
+  .c-topics__link-holder {
     margin-top: 28px;
-  }
-
-  .c-topic-view-all {
-    display: flex;
-    align-items: center;
-    margin-top: 28px;
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #333333;
-    font-family: 'Lato', Helvetica, Arial, sans-serif;
-    border-bottom: none;
-
-    .c-arrow-next-svg {
-      margin-left: 12px;
-      width: 8px;
-    }
-
-    &:hover {
-      .c-arrow-next {
-        fill: $brand-main;
-      }
-
-      color: $brand-main;
-      // .c-small-arrow-path {
-      //   fill: $brand-main;
-      // }
-    }
   }
 }
 
@@ -515,49 +462,6 @@
   .c-arrow-next-svg {
     margin-left: 12px;
     width: 8px;
-  }
-}
-
-.c-feature-list {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 36px;
-
-  @include mq($from: mobile, $until: desktop) {
-    flex-wrap: wrap;
-  }
-
-  .c-feature-list__item {
-    max-width: 370px;
-  }
-
-  h2 {
-    text-transform: uppercase;
-    color: $white;
-  }
-
-  .c-topic-paragraph {
-    color: $white;
-  }
-}
-
-.c-featured-post {
-  margin-top: 40px;
-
-  .c-blog-authors-list--short {
-    margin: 0;
-  }
-}
-
-.c-feature-title {
-  @include mq($from: mobile, $until: desktop) {
-    margin-top: 10px;
-  }
-}
-
-.c-feature-main-box {
-  @include mq($from: mobile, $until: desktop) {
-    padding: 30px 20px;
   }
 }
 
@@ -891,6 +795,14 @@
   margin-bottom: 10px;
 }
 
+.c-featured-post {
+  margin-top: 40px;
+
+  .c-blog-authors-list--short {
+    margin: 0;
+  }
+}
+
 .c-featured-post__name {
   font-family: $font-sans;
   color: $dark-grey;
@@ -937,23 +849,6 @@
   }
 }
 
-.c-feature--list {
-  width: 90vw;
-  height: 510px;
-  background-color: $dark-blue;
-  box-shadow: -13px 11px 0px 0px #0079cf;
-  @include mq($from: tablet, $until: desktop) {
-    width: 100vw;
-    height: fit-content;
-    // margin: 0;
-  }
-  @include mq($from: mobile, $until: desktop) {
-    width: 100vw;
-    height: fit-content;
-    // margin: 0;
-  }
-}
-
 .c-blog-post__item-box {
   width: 93%;
 
@@ -987,6 +882,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 108px;
   @include mq($from: mobile, $until: desktop) {
     padding-left: 25px;
     padding-right: 25px;
@@ -996,22 +892,9 @@
     width: 100%;
   }
 
-  padding: 40px 0;
-
   .u-primary-heading {
     margin-top: 0;
-  }
-
-  h1 {
-    @include mq($from: mobile, $until: desktop) {
-      font-size: 36px;
-      line-height: 42px;
-    }
     max-width: 692px;
-    color: $white;
-    font-size: 56px;
-    line-height: 62px;
-    font-family: 'Lato', Helvetica, Arial, sans-serif;
   }
 
   .c-cta-paragraph {
@@ -1040,32 +923,12 @@
     }
   }
 
-  .c-arrow-next {
-    fill: $white;
-
-    // margin-left: 5px;
-  }
-
-  .c-hyperlink {
+  .c-cta__hyperlink {
+    font-weight: 400;
+    font-size: 12px;
     display: flex;
     align-items: center;
     width: fit-content;
-    font-size: 14px;
-    line-height: 28px;
-    color: $white;
-    font-family: 'Lato', Helvetica, Arial, sans-serif;
-    margin-right: 10px;
-    text-transform: uppercase;
-    text-decoration: none;
-
-    &:hover {
-      .c-arrow-next {
-        fill: $highlight-yellow;
-      }
-
-      color: $highlight-yellow;
-    }
-
     .c-arrow-next-svg {
       margin-left: 5px;
       @include mq($from: mobile, $until: desktop) {
@@ -1237,7 +1100,7 @@
     }
 
     h5:after {
-      background-color: $brand-lighter;
+      background-color: $highlight-blue;
     }
 
     .c-events-location-icon {
@@ -1434,23 +1297,6 @@
   margin-right: 5px;
   @include mq($from: mobile, $until: desktop) {
     display: none;
-  }
-}
-
-.c-partner-btn {
-  color: $white;
-  background-color: transparent;
-  border: 1px solid $white;
-  padding: 8px 16px;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
-
-  &:hover {
-    background-color: $highlight-yellow;
-    border: none;
-    color: #333333;
-    cursor: pointer;
   }
 }
 

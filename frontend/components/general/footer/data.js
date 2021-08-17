@@ -2,7 +2,7 @@
 export const footerMenu = [
     { id: 'topics', label: 'Research topics', slug: '/topics' },
     { id: 'blog', label: 'Blog', slug: '/blog' },
-    { id: 'courses', label: 'Online course', slug: '/courses' },
+    { id: 'courses', label: 'Online courses', slug: '/online-courses' },
     { id: 'privacy-policy', label: 'Privacy policy', slug: '/privacy-policy' },
     { id: 'about-u4', label: 'Vision & Strategy', slug: '/about-u4' },
     { id: 'the-team', label: 'Team', slug: '/the-team' },

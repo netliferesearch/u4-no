@@ -43,7 +43,7 @@ const Footer = () => (
               <MenuItem key={index} item={i} />
             ))}
           </div>
-          <div className="u-opacity--60 c-footer__menu-col">
+          <div className="u-opacity--60--text c-footer__menu-col">
             {footerMenu.slice(3).map((i, index) => (
               <MenuItem key={index} item={i} />
             ))}
