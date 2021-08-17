@@ -37,6 +37,7 @@
   max-width: 1206px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 16px;
   background-color: $dark-blue;
   box-shadow: -16px 16px 0px 0px #0079cf;
   @include mq($from: tablet) {

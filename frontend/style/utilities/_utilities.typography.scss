@@ -196,7 +196,7 @@
 .u-detail--blue--small {
   position: relative;
   display: block;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
   &:after {
     content: '';
     position: absolute;
@@ -206,6 +206,9 @@
     width: 21px;
     max-width: 100%;
     background-color: $blue;
+  }
+  @include mq($from: tablet) {
+    padding-bottom: 6px;
   }
 }
 

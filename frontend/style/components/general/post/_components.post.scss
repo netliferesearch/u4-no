@@ -23,7 +23,7 @@
   border-bottom: none;
 }
 
-.small .c-post__link:last-child .c-post {
+.small .c-post:last-child {
   border-bottom: none;
   padding-bottom: 0;
 }
@@ -131,9 +131,9 @@
 }
 
 .c-post__post-type {
-  margin-top: 12px;
+  margin-top: 16px;
   @include mq($from: tablet) {
-    margin-top: 20px;
+    margin-top: 20px; 
   }
 }
 
@@ -147,20 +147,18 @@
 .c-post__article-content {
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
-  line-height: 24px;
   margin-bottom: 24px;
   color: $mid-grey;
 }
 
 .c-post__date {
-  margin: 0 0 16px 0;
+  margin: 0 0 12px 0;
   color: $mid-grey;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
-  line-height: 18px;
-  letter-spacing: 0.01em;
+  @include mq($from: tablet) {
+    margin: 0 0 16px 0;
+  }
 }
 
 //normal used for blog, probably should rename

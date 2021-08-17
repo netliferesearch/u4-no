@@ -27,7 +27,7 @@
   font-size: 14px;
   text-transform: uppercase;
   color: #333333;
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  font-family: $font-sans;
   border-bottom: none;
 
   .c-arrow-next-svg {
@@ -463,7 +463,7 @@
 }
 
 .c-section-intro {
-  margin: 32px 0;
+  //margin: 32px 0;
 
   h2 {
     margin-top: 0;

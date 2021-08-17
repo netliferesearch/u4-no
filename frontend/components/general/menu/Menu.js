@@ -52,7 +52,7 @@ export const Menu = props => {
   );
 
   return (
-    <div className="c-menu" >
+    <div className="c-menu">
       <MainMenu
         searchOpen={searchOpen}
         activeItem={activeItem}

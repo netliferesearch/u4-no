@@ -11,6 +11,7 @@ import { LearningEvents } from '../components/LearningEvents';
 import { FeaturedPosts } from '../components/front-page/FeaturedPosts';
 import { POST_TYPE } from '../components/general/post/Post';
 import { PostCarousel } from '../components/front-page/PostCarousel';
+import { heroData } from '../components/front-page/data';
 
 const Frontpage = ({
   data: {
@@ -41,7 +42,7 @@ const Frontpage = ({
       {/* {console.log('frontPage', frontPage.sections)} */}
       <section className="o-wrapper-full">
         <div className="">
-          <CTA img={frontPage.imageUrl} />
+          <CTA img={frontPage.imageUrl} data={heroData}/>
         </div>
       </section>
       <section className="c-section-background o-wrapper-full">

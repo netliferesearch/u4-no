@@ -2,15 +2,20 @@
   display: grid;
   grid-gap: 0px;
   @include mq($from: mobile) {
-    grid-template-columns:1fr;
+    grid-template-columns: 1fr;
   }
   @include mq($from: tablet) {
-
     grid-gap: 30px;
     grid-template-columns: 2fr 2fr;
   }
   @include mq($from: desktop) {
+    grid-template-columns: 2fr 1fr;
+  }
+}
 
-    grid-template-columns: 3fr 1fr;
+.featured-posts .c-post__article-content {
+  display: none;
+  @include mq($from: tablet) {
+    display: block;
   }
 }
