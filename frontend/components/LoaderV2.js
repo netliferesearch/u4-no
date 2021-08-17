@@ -7,10 +7,8 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const LoaderV2 = () => (
+export const LoaderV2 = () => (
   <div {...classes()}>
     <Loading />
   </div>
 );
-
-export default LoaderV2;

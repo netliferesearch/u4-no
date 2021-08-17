@@ -4,8 +4,8 @@ import queryString from 'query-string';
 import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
-import { SearchIcon } from './icons/SearchIcon';
-import LoaderV2 from './LoaderV2';
+import { LoaderV2 } from '../LoaderV2';
+import { SearchIcon } from '../icons/SearchIconV2';
 
 const classes = BEMHelper({
   name: 'search-v2',
