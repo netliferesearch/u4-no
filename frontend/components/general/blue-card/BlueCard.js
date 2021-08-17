@@ -1,6 +1,6 @@
 import React from 'react';
 import dateToString from '../../../helpers/dateToString';
-import LinkToItem from '../../LinkToItem';
+import LinkToItem from '../LinkToItem';
 import LocationIcon from '../../icons/LocationIcon';
 import { getPostType } from '../../../helpers/getRouteByType';
 import { CalendorIcon } from '../../icons/CalendorIcon';
