@@ -103,9 +103,17 @@
 }
 
 .c-post__title {
-  margin: 6px 0 16px;
+  margin: 6px 0 16px 0;
   @include mq($from: tablet) {
     margin: 12px 0 16px;
+  }
+}
+
+//alice carousel overrides line height of it's items.
+.alice-carousel h4.c-post__title * {
+  line-height: 24px;
+  @include mq($from: desktop) {
+    line-height: 32px;
   }
 }
 
@@ -133,7 +141,7 @@
 .c-post__post-type {
   margin-top: 16px;
   @include mq($from: tablet) {
-    margin-top: 20px; 
+    margin-top: 20px;
   }
 }
 
@@ -144,11 +152,18 @@
   }
 }
 
-.c-post__article-content {
+.c-post__article-content,
+.c-post__article-content * {
+  font-size: $font-size-nano;
+  line-height: 18px;
   font-style: normal;
   font-weight: normal;
   margin-bottom: 24px;
   color: $mid-grey;
+  @include mq($from: tablet) {
+    font-size: $font-size-tiny;
+    line-height: $font-size-normal;
+  }
 }
 
 .c-post__date {
@@ -163,6 +178,12 @@
 
 //normal used for blog, probably should rename
 .blog.c-post {
+  padding-right: 24px;
+  border-right: 1px solid $light-grey;
+  @include mq($from: desktop) {
+    padding-right: 0;
+    border-right: none;
+  }
   .c-post__post-image {
     height: 135px;
     @include mq($from: desktop) {
@@ -181,5 +202,14 @@
     .c-post__title {
       max-height: inherit;
     }
+  }
+}
+
+.c-post.publication {
+  padding-right: 24px;
+  border-right: 1px solid $light-grey;
+  @include mq($from: desktop) {
+    padding-right: 0;
+    border-right: none;
   }
 }
