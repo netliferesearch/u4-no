@@ -78,6 +78,7 @@
     margin: 0;
     width: 160px;
     min-width: 160px;
+    position: relative;
   }
 
   .c-post__article-content,
@@ -104,29 +105,40 @@
 
 .c-post__title {
   margin: 6px 0 16px 0;
+  line-height: 22px;
   @include mq($from: tablet) {
     margin: 12px 0 16px;
+    line-height: 32px;
   }
 }
 
 //alice carousel overrides line height of it's items.
 .alice-carousel h4.c-post__title * {
-  line-height: 24px;
+  line-height: 22px;
   @include mq($from: desktop) {
     line-height: 32px;
   }
 }
 
 //unsused css for image 50% background, delete if opacity is enough
-.articleImg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+.c-post.small .u-overlay--light-blue {
+  position: relative;
+  &::before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  }
+  @include mq($from: tablet) {
+    &::before {
+      display: none;
+    }
+  }
 }
 
 .small .c-post__post-info {

@@ -19,3 +19,10 @@
     display: block;
   }
 }
+
+.featured-posts .small .c-post__title {
+  margin: 6px 0 0 0;
+  @include mq($from: tablet) {
+    margin: 6px 0 16px 0;
+  }
+}

@@ -6,7 +6,7 @@ export const Accordion = ({ trigger, children }) => {
 
   return (
     <section className={`c-accordion  ${expanded ? 'c-accordion--expanded' : ''}`}>
-      <div type="button" className="c-accordion__toggle" onClick={() => setExpanded(!expanded)}>
+      <div className="c-accordion__toggle" onClick={() => setExpanded(!expanded)}>
         {trigger}
       </div>
       <CSSTransitionGroup
