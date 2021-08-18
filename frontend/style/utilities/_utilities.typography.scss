@@ -81,6 +81,10 @@
 .u-secondary-h4 {
   font-size: $font-size-nano;
   line-height: $font-size-tiny;
+  letter-spacing: 0.1em;
+  @include mq($from: tablet) {
+    letter-spacing: 0.15em;
+  }
 }
 
 .u-body {
@@ -196,7 +200,7 @@
 .u-detail--blue--small {
   position: relative;
   display: block;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
   &:after {
     content: '';
     position: absolute;
@@ -206,6 +210,9 @@
     width: 21px;
     max-width: 100%;
     background-color: $blue;
+  }
+  @include mq($from: tablet) {
+    padding-bottom: 6px;
   }
 }
 

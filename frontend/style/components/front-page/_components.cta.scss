@@ -2,15 +2,21 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 518px;
-  padding-top: 108px;
-  @include mq($from: mobile, $until: desktop) {
-    padding-left: 25px;
-    padding-right: 25px;
-  }
-
-  .o-wrapper-medium {
+  height: 480px;
+  padding-top: 90px;
+  position: relative;
+  &::after {
+    display: block;
+    content: '';
+    position: absolute;
     width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $dark-blue;
+    mix-blend-mode: multiply;
+    opacity: 0.75;
   }
 
   .u-primary-heading {
@@ -18,43 +24,41 @@
     max-width: 692px;
   }
 
-  .c-cta-paragraph {
-    max-width: 400px;
+  @include mq($from: desktop) {
+    height: 518px;
+    padding-top: 108px;
+    &::after {
+      display: none;
+    }
+  }
+}
+.c-cta__content {
+  width: 100%;
+  z-index: 9;
+}
+
+.c-cta__paragraph {
+  max-width: 400px;
+  font-size: 14px;
+  line-height: 20px;
+  color: $white;
+  font-family: $font-sans;
+  @include mq($from: tablet) {
     font-size: 20px;
     line-height: 28px;
-    color: $white;
-    font-family: 'Lato', Helvetica, Arial, sans-serif;
-    @include mq($from: mobile, $until: desktop) {
-      font-size: 14px;
-      line-height: 20px;
-    }
   }
+}
 
-  .c-cta-hyperlink-text {
-    width: 342px;
-    font-size: 14px;
-    line-height: 28px;
-    color: $white;
-    font-family: 'Lato', Helvetica, Arial, sans-serif;
-    margin-right: 10px;
-    text-transform: uppercase;
+.c-cta__link {
+  font-weight: 400;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  .c-arrow-next-svg {
+    margin-left: 5px;
     @include mq($from: mobile, $until: desktop) {
-      font-size: 12px;
-      line-height: 14px;
-    }
-  }
-
-  .c-cta__hyperlink {
-    font-weight: 400;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    .c-arrow-next-svg {
-      margin-left: 5px;
-      @include mq($from: mobile, $until: desktop) {
-        width: 7px;
-      }
+      width: 7px;
     }
   }
 }

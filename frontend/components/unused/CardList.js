@@ -1,13 +1,12 @@
 import React from 'react';
-import LinkToItem from './general/LinkToItem';
-import dateToString from '../helpers/dateToString';
-import { Document, Page } from 'react-pdf/build/entry.noworker';
-import { SectionIntro } from './general/SectionIntro';
-import { Topics } from './general/topics/Topics';
-import { getPostType } from '../helpers/getRouteByType';
+import LinkToItem from '../general/LinkToItem';
+import dateToString from '../../helpers/dateToString';
+import { SectionIntro } from '../general/SectionIntro';
+import { Topics } from '../general/topics/Topics';
+import { getPostType } from '../../helpers/getRouteByType';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { ArrowNext } from './icons/ArrowNext';
+import { ArrowNext } from '../icons/ArrowNext';
 
 export const CardList = ({ resources = [], alt = false }) => {
   const responsive = {

@@ -2,9 +2,12 @@
   background-color: $white;
 }
 
+.u-bg--lighter-blue {
+  background-color: $lighter-blue
+}
+
 .u-bg-light-blue {
   background: $light-blue;
-  //padding: $spacing-large 0;
 }
 
 .u-bg-mid-blue {
@@ -37,6 +40,7 @@
   max-width: 1206px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 16px;
   background-color: $dark-blue;
   box-shadow: -16px 16px 0px 0px #0079cf;
   @include mq($from: tablet) {

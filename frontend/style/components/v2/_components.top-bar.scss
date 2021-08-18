@@ -4,11 +4,12 @@
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  z-index: 10;
+  z-index: 11;
   top: 0;
   left: 0;
   right: 0;
   padding: 0;
+  border-bottom: 1px solid $white;
   .logo-mobile {
     display: inline-block;
     vertical-align: top;
@@ -39,13 +40,14 @@
     display: flex;
     align-items: center;
   }
+
   @include mq($from: tablet) {
     margin-left: auto;
     margin-right: auto;
     padding: 0 $spacing 0 $spacing;
     max-width: 100%;
     .fixed-header-content {
-      height: 93px;
+      height: 90px;
       flex-wrap: nowrap;
     }
     .c-search-v2 {
@@ -68,21 +70,13 @@
   }
   @include mq($from: desktop) {
     flex-wrap: nowrap;
-    padding: 11px 0 11px $spacing;
+    //padding: 6px 0 6px $spacing;
     .fixed-header-content {
-      height: 80px;
       align-items: center;
       //justify-content: space-evenly;
     }
   }
   @include mq($from: wide) {
-    padding: 11px 0 11px $spacing;
-    .fixed-header-content {
-      //padding-right: 178px;
-      height: 93px;
-      //justify-content: space-evenly;
-      //padding-left: 117px;
-    }
     .c-top-bar-v2__logo {
       margin-left: 0;
     }
@@ -132,18 +126,11 @@ a.c-top-bar-v2__logo:visited {
 }
 
 .c-top-bar__background {
-  background-color: #162063;
+  background-color: $dark-blue;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   height: 90px;
   z-index: 10;
-  @include mq($from: tablet) {
-    height: 90px;
-  }
-  @include mq($from: desktop) {
-    height: inherit;
-    padding: 54px;
-  }
 }

@@ -12,6 +12,7 @@ import { FeaturedPosts } from '../components/front-page/FeaturedPosts';
 import { POST_TYPE } from '../components/general/post/Post';
 import { CARD_TYPE } from '../components/general/blue-card/BlueCard';
 import { PostCarousel } from '../components/front-page/PostCarousel';
+import { heroData } from '../components/front-page/data';
 
 const Frontpage = ({
   data: {
@@ -42,10 +43,10 @@ const Frontpage = ({
       {/* {console.log('frontPage', frontPage.sections)} */}
       <section className="o-wrapper-full">
         <div className="">
-          <CTA img={frontPage.imageUrl} />
+          <CTA img={frontPage.imageUrl} data={heroData}/>
         </div>
       </section>
-      <section className="c-section-background o-wrapper-full">
+      <section className="u-bg--lighter-blue o-wrapper-full">
         <div className="o-wrapper-medium">
           <FeaturedPosts featured={frontPage.resources} />
         </div>
@@ -56,7 +57,7 @@ const Frontpage = ({
             posts={blogPosts}
             type={POST_TYPE.BLOG}
             buttonPath="/blog"
-            title="Latest from the blog"
+            title="From the blog"
           />
           <hr className="u-section-underline--no-margins" />
         </div>
@@ -93,7 +94,7 @@ const Frontpage = ({
           <TopicCardList topics={topics} />
         </div>
       </section>
-      <section className="c-section-background o-wrapper-full">
+      <section className="u-bg--lighter-blue o-wrapper-full">
         <PartnerAgencies />
       </section>
       <section className="o-wrapper-full">
@@ -118,7 +119,7 @@ export default DataLoader(Frontpage, {
     sanityQuery: `{
       "frontPage": *[_type=="frontpage" && slug.current == "frontpage-NEW"][0]{id,title,sections,"imageUrl": featuredImage.asset->url, "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title, date, standfirst, topics[]->{title}, "slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title, "imageUrl": featuredImage.asset->url, "pdfFile": pdfFile.asset->url}[0..2]},
       "topics": *[_type == "topics"] | order(title) {_id, title, longTitle, slug, _updatedAt, "imageUrl": featuredImage.asset->url}[0..5],
-      "featured": {"publication": *[_type  == "publication"] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8], "blog": *[_type  == "blog-post" && references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..1],},
+      "featured": {"publication": *[_type  == "publication"] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8], "blog": *[_type  == "blog-post" && references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..1],},
       "blogPosts": *[_type == "blog-post" && !references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
       "events": *[_type in ["course", "event"]] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}}[0..2],
     }`,
