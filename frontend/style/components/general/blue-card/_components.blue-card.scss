@@ -7,7 +7,9 @@
   flex-wrap: wrap;
   align-items: stretch;
   transition: all 0.4s ease-in-out;
-
+  h2 {
+    margin: 0;
+  }
   a:hover {
     cursor: pointer;
   }
@@ -23,12 +25,14 @@
       color: $white;
     }
     .c-topic-paragraph {
-      color: $white;
+      color: $light-grey;
     }
     .c-events-location {
       visibility: hidden;
     }
-
+    h2 {
+      color: $light-blue;
+    }
     h4 {
       color: $light-grey;
     }
@@ -37,10 +41,7 @@
       background-color: $highlight-blue;
     }
 
-    .c-events-location-icon {
-      fill: $white;
-    }
-
+    .c-events-location-icon,
     .c-events-calendor-icon {
       fill: $white;
     }
@@ -48,19 +49,6 @@
     .c-events-view-more {
       display: none;
     }
-  }
-}
-.c-blue-card__link {
-  display: inline-grid;
-  grid-gap: 0px;
-  @include mq($from: mobile) {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-  @include mq($from: desktop) {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 30px;
-    grid-template-rows: auto;
   }
 }
 
@@ -73,4 +61,11 @@
   display: flex;
   width: 50%;
   justify-content: flex-end;
+}
+
+.c-blue-card__info {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }

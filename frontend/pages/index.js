@@ -6,7 +6,7 @@ import Footer from '../components/general/footer/Footer';
 import PartnerAgencies from '../components/front-page/PartnerAgencies';
 import { CTA } from '../components/front-page/CTA';
 import { FeatureList } from '../components/general/FeatureList';
-import { TopicCardList } from '../components/CorruptionByTopic';
+import { TopicCardList } from '../components/front-page/CorruptionByTopic';
 import { LearningEvents } from '../components/front-page/LearningEvents';
 import { FeaturedPosts } from '../components/front-page/FeaturedPosts';
 import { POST_TYPE } from '../components/general/post/Post';
@@ -43,7 +43,7 @@ const Frontpage = ({
       {/* {console.log('frontPage', frontPage.sections)} */}
       <section className="o-wrapper-full">
         <div className="">
-          <CTA img={frontPage.imageUrl} data={heroData}/>
+          <CTA img={frontPage.imageUrl} data={heroData} />
         </div>
       </section>
       <section className="u-bg--lighter-blue o-wrapper-full">
@@ -91,7 +91,7 @@ const Frontpage = ({
       </section>
       <section className="">
         <div className="o-wrapper-medium">
-          <TopicCardList topics={topics} />
+          <TopicCardList type={CARD_TYPE.TOPIC} topics={topics} />
         </div>
       </section>
       <section className="u-bg--lighter-blue o-wrapper-full">

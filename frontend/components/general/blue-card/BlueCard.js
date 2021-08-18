@@ -23,12 +23,16 @@ export const BlueCard = ({ post, type }) => {
               {getPostType(post)}
             </h4>
           )}
-          <h4>{post.title}</h4>
+          {type === CARD_TYPE.TOPIC ? (
+            <h2 className="u-secondary-heading u-secondary-h2">{post.title}</h2>
+          ) : (
+            <h4>{post.title}</h4>
+          )}
         </div>
         <p className="c-featured-post__intro u-body--grey c-event-intro-text">{post.lead}</p>
         <p className="u-body u-text--dark-blue c-topic-paragraph">{post.longTitle}</p>
         {post.lead && (
-          <div style={{ width: '100%', marginTop: '20px' }}>
+          <div className="c-blue-card__info">
             <div>
               <p className="c-events-location u-body--small">
                 <LocationIcon /> {post.startDate.timezone}

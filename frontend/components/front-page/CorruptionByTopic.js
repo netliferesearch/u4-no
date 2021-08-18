@@ -1,9 +1,9 @@
 import React from 'react';
-import { SectionIntro } from './general/SectionIntro';
-import { ArrowNext } from './icons/ArrowNext';
-import { BlueCard } from './general/blue-card/BlueCard';
+import { SectionIntro } from '../general/SectionIntro';
+import { ArrowNext } from '../icons/ArrowNext';
+import { BlueCard } from '../general/blue-card/BlueCard';
 
-export const TopicCardList = ({ topics }) => {
+export const TopicCardList = ({ topics, type }) => {
   return (
     <div className="c-topic-card-list">
       <SectionIntro
@@ -12,11 +12,11 @@ export const TopicCardList = ({ topics }) => {
         label="View all topics"
         slug="/topics"
       />
-      <ul>
+      <div className="c-corruption-by-topic__wrapper">
         {topics.map((post, index) => (
-          <BlueCard post={post} key={index} />
+          <BlueCard type={type} post={post} key={index} />
         ))}
-      </ul>
+      </div>
       <div className="c-topics__link-holder">
         <a className="c-btn c-btn--link " href="/topics">
           View All
