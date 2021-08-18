@@ -15,6 +15,7 @@ import { Disclaimers } from '../../components/Disclaimers';
 import { ShareOpen } from '../../components/general/social/ShareOpen';
 import { PhotoCaptionCredit } from '../../components/PhotoCaptionCredit';
 import { useEffect } from 'react';
+import Footer from '../../components/general/footer/Footer';
 
 
 const littlefootActivator = () => {
@@ -154,6 +155,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
         </section>
       </div>
       <div id="modal" />
+      <Footer />
     </Layout>
   );
 };

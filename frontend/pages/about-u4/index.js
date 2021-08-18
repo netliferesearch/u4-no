@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import DataLoader from '../../helpers/data-loader';
 import Layout from '../../components/Layout';
-import { Newsletter } from '../../components/general/newsletter/Newsletter';
 import ServiceArticle from '../../components/ServiceArticle';
 import SimpleHero from '../../components/SimpleHero';
 import { blocksToText } from '../../helpers/blocksToText';
+import Footer from '../../components/general/footer/Footer';
 
 const About = ({ data: { about = {}, url = {} } }) => {
   const {
@@ -29,8 +29,7 @@ const About = ({ data: { about = {}, url = {} } }) => {
 
       {sections ? <ServiceArticle blocks={sections} /> : null}
 
-      <Newsletter />
-      {/* <Footer /> */}
+      <Footer />
     </Layout>
   );
 };

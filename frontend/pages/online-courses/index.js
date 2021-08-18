@@ -11,6 +11,7 @@ import { CoursesList } from '../../components/courses/CoursesList';
 import { useScrollInfo } from '../../helpers/useScrollInfo';
 import Link from 'next/link';
 import LogoU4 from '../../components/icons/LogoU4';
+import Footer from '../../components/general/footer/Footer';
 
 const ServicePage = ({
   data: {
@@ -128,6 +129,7 @@ const ServicePage = ({
           <BlockContent blocks={sections.slice(11, 12)} serializers={serializers} />
         </div>
       </div>
+      <Footer />
       <div id="modal" />
     </Layout>
   );

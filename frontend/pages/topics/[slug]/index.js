@@ -13,7 +13,6 @@ import Footer from '../../../components/general/footer/Footer';
 import Layout from '../../../components/Layout';
 import Team from '../../../components/Team';
 import Mosaic from '../../../components/Mosaic';
-import { Newsletter } from '../../../components/general/newsletter/Newsletter';
 import PartnerPromo from '../../../components/PartnerPromo';
 import LinkList from '../../../components/general/LinkList';
 
@@ -180,8 +179,6 @@ const TopicEntry = ({
         <PartnerPromo />
       </div>
     }
-    <Newsletter />
-
     <Footer />
   </Layout>
 );

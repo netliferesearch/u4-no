@@ -5,6 +5,7 @@ import { Layout } from '../../components/Layout';
 import { BreadCrumbV2 } from '../../components/BreadCrumbV2';
 import BlogFilteredList from '../../components/blog/BlogFilteredList';
 import { wrapInRedux } from '../../helpers/redux-store-wrapper';
+import Footer from '../../components/general/footer/Footer';
 
 const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
   return (
@@ -40,6 +41,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
         </section>
       </div>
       <div id="modal" />
+      <Footer />
     </Layout>
   );
 };
