@@ -21,14 +21,12 @@
     transition: all 0.4s ease-in-out;
     h3,
     h5,
-    p {
+    p,
+    .c-events-view-more {
       color: $white;
     }
     .c-topic-paragraph {
       color: $light-grey;
-    }
-    .c-events-location {
-      visibility: hidden;
     }
     h2 {
       color: $light-blue;
@@ -45,9 +43,8 @@
     .c-events-calendor-icon {
       fill: $white;
     }
-
-    .c-events-view-more {
-      display: none;
+    .c-arrow-next {
+      stroke: $white;
     }
   }
 }
@@ -61,6 +58,7 @@
   display: flex;
   width: 50%;
   justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .c-blue-card__info {

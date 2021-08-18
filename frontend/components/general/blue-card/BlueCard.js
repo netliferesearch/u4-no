@@ -31,7 +31,7 @@ export const BlueCard = ({ post, type }) => {
         </div>
         <p className="c-featured-post__intro u-body--grey c-event-intro-text">{post.lead}</p>
         <p className="u-body u-text--dark-blue c-topic-paragraph">{post.longTitle}</p>
-        {post.lead && (
+        {type !== CARD_TYPE.TOPIC && (
           <div className="c-blue-card__info">
             <div>
               <p className="c-events-location u-body--small">
