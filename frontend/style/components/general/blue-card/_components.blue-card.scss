@@ -1,0 +1,76 @@
+.c-blue-card {
+  background-color: $light-blue;
+  //   margin-bottom: 24px;
+  padding: 20px 14px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  transition: all 0.4s ease-in-out;
+
+  a:hover {
+    cursor: pointer;
+  }
+  &:hover {
+    background-color: $brand-main;
+    -webkit-box-shadow: -9px 9px 0px 0px $dark-blue !important;
+    -moz-box-shadow: -9px 9px 0px 0px $dark-blue !important;
+    box-shadow: -9px 9px 0px 0px $dark-blue;
+    transition: all 0.4s ease-in-out;
+    h3,
+    h5,
+    p {
+      color: $white;
+    }
+    .c-topic-paragraph {
+      color: $white;
+    }
+    .c-events-location {
+      visibility: hidden;
+    }
+
+    h4 {
+      color: $light-grey;
+    }
+
+    h4:after {
+      background-color: $highlight-blue;
+    }
+
+    .c-events-location-icon {
+      fill: $white;
+    }
+
+    .c-events-calendor-icon {
+      fill: $white;
+    }
+
+    .c-events-view-more {
+      display: none;
+    }
+  }
+}
+.c-blue-card__link {
+  display: inline-grid;
+  grid-gap: 0px;
+  @include mq($from: mobile) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  @include mq($from: desktop) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    grid-template-rows: auto;
+  }
+}
+
+.c-blue-card__details {
+  display: flex;
+  width: 100%;
+}
+
+.c-blue-card__more {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+}

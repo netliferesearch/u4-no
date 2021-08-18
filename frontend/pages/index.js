@@ -7,9 +7,10 @@ import PartnerAgencies from '../components/front-page/PartnerAgencies';
 import { CTA } from '../components/front-page/CTA';
 import { FeatureList } from '../components/general/FeatureList';
 import { TopicCardList } from '../components/CorruptionByTopic';
-import { LearningEvents } from '../components/LearningEvents';
+import { LearningEvents } from '../components/front-page/LearningEvents';
 import { FeaturedPosts } from '../components/front-page/FeaturedPosts';
 import { POST_TYPE } from '../components/general/post/Post';
+import { CARD_TYPE } from '../components/general/blue-card/BlueCard';
 import { PostCarousel } from '../components/front-page/PostCarousel';
 
 const Frontpage = ({
@@ -79,7 +80,7 @@ const Frontpage = ({
       {/*</section>*/}
       <section className="">
         <div className="o-wrapper-medium">
-          <LearningEvents events={events} />
+          <LearningEvents events={events} type={CARD_TYPE.EVENT} />
         </div>
       </section>
       <section className="o-wrapper-full">

@@ -23,7 +23,7 @@
 .c-events-view-more {
   display: flex;
   align-items: center;
-  margin-top: 28px;
+  // margin-top: 28px;
   font-size: 14px;
   text-transform: uppercase;
   color: #333333;
@@ -343,7 +343,8 @@
   display: flex;
   align-items: flex-end;
   color: $mid-grey;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
+  margin: 0;
 }
 
 .c-featured-post {
