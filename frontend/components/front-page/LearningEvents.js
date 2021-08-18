@@ -1,13 +1,6 @@
 import React from 'react';
-import dateToString from '../../helpers/dateToString';
-import LinkToItem from '../general/LinkToItem';
 import { SectionIntro } from '../general/SectionIntro';
-import { getPostType } from '../../helpers/getRouteByType';
-import { shortSentences } from '../../helpers/stringHelpers';
-import LocationIcon from '../icons/LocationIcon';
-import { CalendorIcon } from '../icons/CalendorIcon';
-import { ArrowNext } from '../icons/ArrowNext';
-import { BlueCard } from '../general/blue-card/BlueCard';
+import { BlueCard, CONTENT_BY_TYPE } from '../general/blue-card/BlueCard';
 
 export const LearningEvents = ({ events, type }) => {
   if (!events || events.length === 0) return null;
@@ -15,15 +8,15 @@ export const LearningEvents = ({ events, type }) => {
     <div>
       <SectionIntro
         title="Learning and Events"
-        // text="Lorem ipsum ipsum lorem"
-        slug="/blog"
-        label="View blog"
+        //text="Lorem ipsum ipsum lorem"
+        //slug="/blog"
+        //label="View blog"
       />
 
       <div className="c-events-list__row c-events-list__content">
         <div className="c-learning-events__wrapper">
           {events
-            ? events.map((post, index) => <BlueCard type={type} post={post} key={index} />)
+            ? events.map((post, index) => <BlueCard type={type} post={post} content={CONTENT_BY_TYPE.COURSE} key={index} />)
             : null}
         </div>
       </div>

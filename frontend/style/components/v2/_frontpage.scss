@@ -9,22 +9,6 @@
   }
 }
 
-.c-events-view-more {
-  display: flex;
-  align-items: center;
-  // margin-top: 28px;
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #333333;
-  font-family: $font-sans;
-  border-bottom: none;
-
-  .c-arrow-next-svg {
-    margin-left: 12px;
-    width: 8px;
-  }
-}
-
 .c-featured-post:hover {
   .u-primary-heading {
     color: $brand-main;
@@ -111,16 +95,6 @@
     flex-wrap: nowrap;
   }
 
-  @include mq($from: tablet) {
-    // width: calc(33.3% - 24px);
-    // margin-bottom: 72px;
-    // .text {
-    //   display: flex;
-    //   flex-direction: column;
-    //   justify-content: space-between;
-    //   flex: 1 0 auto;
-    // }
-  }
 }
 
 .c-featured-first-post__item {
@@ -409,56 +383,10 @@
 }
 
 .c-events-list__content {
-  margin-bottom: 32px;
+  margin-bottom: 64px;
 }
 
-.c-events-list__col {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.c-events-box {
-  background-color: $lighter-blue;
-  padding: 25px 15px 20px 15px;
-  position: relative;
-  transition: all 0.4s ease-in-out;
-
-  &:hover {
-    background-color: $brand-main;
-    -webkit-box-shadow: -9px 9px 0px 0px $dark-blue !important;
-    -moz-box-shadow: -9px 9px 0px 0px $dark-blue !important;
-    box-shadow: -9px 9px 0px 0px $dark-blue;
-    transition: all 0.4s ease-in-out;
-    h3,
-    h5,
-    p {
-      color: $white;
-    }
-
-    .c-topic-paragraph {
-      color: $white;
-    }
-
-    h5:after {
-      background-color: $highlight-blue;
-    }
-
-    .c-events-location-icon {
-      fill: $white;
-    }
-
-    .c-events-calendor-icon {
-      fill: $white;
-    }
-
-    .c-events-view-more {
-      display: none;
-    }
-  }
-}
-
-.c-events-calendor-svg {
+.c-events-calendar-svg {
   margin-right: 10px;
   @include mq($from: mobile, $until: desktop) {
     display: none;
@@ -561,54 +489,6 @@
   }
 }
 
-.c-topic-card-list__item {
-  width: 100%;
-  margin: 12px;
-  padding: 24px;
-  background-color: $light-blue;
-  // border: 1px solid $light-grey;
-  &:hover {
-    background-color: $brand-main;
-    -webkit-box-shadow: -9px 9px 0px 0px $dark-blue !important;
-    -moz-box-shadow: -9px 9px 0px 0px $dark-blue !important;
-    box-shadow: -9px 9px 0px 0px $dark-blue;
-    transition: box-shadow 0.4s ease-in-out;
-
-    h2 {
-      color: $white;
-    }
-
-    .c-topic-paragraph {
-      color: $white;
-    }
-
-    .c-topic__date {
-      color: $white;
-    }
-  }
-
-  h2 {
-    margin: 0;
-    text-transform: uppercase;
-    color: $dark-blue;
-  }
-
-  .c-topic-paragraph {
-    color: $dark-blue;
-  }
-
-  .c-topic-card-list__item-text {
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  @include mq($from: tablet) {
-    width: 30%;
-    margin: 12px;
-  }
-}
-
 .c-topic__date {
   display: flex;
   align-items: flex-end;
@@ -646,17 +526,6 @@
   bottom: 5px;
 }
 
-.c-view-more {
-  position: absolute;
-  right: 15px;
-  bottom: 19px;
-  @include mq($from: tablet, $until: desktop) {
-    display: none;
-  }
-  @include mq($from: mobile, $until: desktop) {
-    display: none;
-  }
-}
 
 .u-side-padding-mobile {
   @include mq($from: mobile, $until: desktop) {

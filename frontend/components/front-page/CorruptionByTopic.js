@@ -12,7 +12,7 @@ export const TopicCardList = ({ topics, type }) => {
         label="View all topics"
         slug="/topics"
       />
-      <div className="c-corruption-by-topic__wrapper">
+      <div className="c-topic-card-list__wrapper">
         {topics.map((post, index) => (
           <BlueCard type={type} post={post} key={index} />
         ))}

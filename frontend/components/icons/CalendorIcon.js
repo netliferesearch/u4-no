@@ -3,7 +3,7 @@ import React from 'react';
 export const CalendorIcon = () => {
   return (
     <svg
-      className="c-events-calendor-svg"
+      className="c-events-calendar-svg"
       width="14"
       height="17"
       viewBox="0 0 14 17"
