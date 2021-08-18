@@ -43,7 +43,6 @@
   line-height: 14px;
   letter-spacing: 0.15em;
   color: $light-grey;
-  text-transform: uppercase;
   opacity: 0.8;
   margin: 0;
   padding: 6px 0;
@@ -59,6 +58,7 @@
   }
 }
 ::placeholder {
+  text-transform: uppercase;
   color: $light-grey;
   opacity: 1;
 }
