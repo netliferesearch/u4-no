@@ -12,9 +12,10 @@ import { Keywords } from '../../components/Keywords';
 import { Newsletter } from '../../components/general/newsletter/Newsletter';
 import { AboutAuthor } from '../../components/blog/AboutAuthor';
 import { Disclaimers } from '../../components/Disclaimers';
-import { Share } from '../../components/general/social/SocialShare';
+import { ShareOpen } from '../../components/general/social/ShareOpen';
 import { PhotoCaptionCredit } from '../../components/PhotoCaptionCredit';
 import { useEffect } from 'react';
+import Footer from '../../components/general/footer/Footer';
 
 
 const littlefootActivator = () => {
@@ -136,7 +137,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
                   {keywords.length > 0 ? (
                     <Keywords title={false} keywords={keywords} hr={false} />
                   ) : null}
-                  <Share text={title} />
+                  <ShareOpen text={title} />
                   <AboutAuthor authors={authors} />
                   <Disclaimers />
                   {headsUp && (
@@ -154,6 +155,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
         </section>
       </div>
       <div id="modal" />
+      <Footer />
     </Layout>
   );
 };

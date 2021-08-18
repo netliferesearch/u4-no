@@ -1,5 +1,5 @@
 import React from 'react';
-import { Share } from '../general/social/SocialShare';
+import { ShareOpen } from '../general/social/ShareOpen';
 import Link from 'next/link';
 import ReactPlayer from 'react-player';
 import { RegisterForm } from '../RegisterForm';
@@ -33,7 +33,7 @@ export const CourseHeader = ({ data }) => {
         <div className="c-course-entry__header-row">
           {topics ? <Topics title={false} topics={topics} hr={false} linkType={"5"} /> : null}
           <div className="u-hidden--tablet">
-            <Share text={title} />
+            <ShareOpen text={title} />
           </div>
         </div>
       </div>

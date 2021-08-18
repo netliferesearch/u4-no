@@ -1,5 +1,5 @@
 import React from 'react';
-import Feature from '../Feature';
+import Feature from '../general/feature/Feature';
 
 export const FeatureList = ({ features = [], alt = false }) => {
   return (

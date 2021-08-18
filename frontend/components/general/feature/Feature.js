@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageUrl from '../helpers/imageUrl';
+import ImageUrl from '../../../helpers/imageUrl';
 
 const Feature = ({ title = '', text = '', icon = () => null, iconUrl = {} }) => (
   <div className="c-feature">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Share } from '../general/social/SocialShare';
+import { ShareOpen } from '../general/social/ShareOpen';
 import Link from 'next/link';
 import { Topics } from '../general/topics/Topics';
 
@@ -29,7 +29,7 @@ export const BlogHeader = ({ data }) => {
         <div className="c-blog-entry__header-row">
           {topics ? <Topics title={false} topics={topics} hr={false} linkType={'5'} /> : null}
           <div className="c-blog-sidebar__share-container u-hidden--tablet">
-            <Share text={title} />
+            <ShareOpen text={title} />
           </div>
         </div>
       </div>

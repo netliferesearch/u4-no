@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { TextButton, TextIconButton } from './general/buttons';
-import ClientOnlyPortal from './ClientOnlyPortal';
+import React, { useRef } from 'react';
+import { TextButton } from './general/buttons';
+import ClientOnlyPortal from './general/ClientOnlyPortal';
 import languageName from '../helpers/languageName';
 import { useLockBodyScroll, useOnClickOutside } from '../helpers/hooks';
 //import router from 'next/router';

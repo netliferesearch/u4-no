@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BlogAuthorsList } from './BlogAuthorsList';
 import dateToString from '../../helpers/dateToString';
-import { DownloadPdf } from '../DownloadDropdown';
-import { Share } from '../general/social/SocialShare';
-import { TagsSection } from '../TagsSection';
+import { ShareOpen } from '../general/social/ShareOpen';
 import { RelatedSimple } from '../RelatedSimple';
 import { Keywords } from '../Keywords';
 import LinkToItem from '../general/LinkToItem';
-import { Translations } from '../Translations';
 import { format, isAfter } from 'date-fns';
 import languageName from '../../helpers/languageName';
 /**
@@ -67,7 +64,7 @@ export const BlogSidebar = ({ data, side }) => {
             </div>
           )}
           <div className="u-hidden--desktop">
-            <Share text={title} />
+            <ShareOpen text={title} />
             {translation.slug && (
               <div className="c-blog-sidebar__translation">
                 Also available in{' '}

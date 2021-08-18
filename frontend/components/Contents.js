@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import buildTitleObjects from './TableOfContents/buildTitleObjects';
 import { Scrollchor } from 'react-scrollchor';
-import ClientOnlyPortal from './ClientOnlyPortal';
+import ClientOnlyPortal from './general/ClientOnlyPortal';
 import { TextIconButton } from './general/buttons';
 import { useOnClickOutside, useLockBodyScroll } from '../helpers/hooks';
 import { ContentsIcon } from './icons/ContentsIcon';
