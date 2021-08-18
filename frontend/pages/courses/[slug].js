@@ -7,7 +7,7 @@ import { useScrollInfo } from '../../helpers/useScrollInfo';
 import { CourseHeader } from '../../components/courses/CourseHeader';
 import { BreadCrumbV2 } from '../../components/BreadCrumbV2';
 import { CourseSidebar } from '../../components/courses/CourseSidebar';
-import { Share } from '../../components/general/social/SocialShare';
+import { ShareOpen } from '../../components/general/social/ShareOpen';
 import serializers from '../../components/serializers';
 import { PersonBasic } from '../../components/PersonBasic';
 import LogoU4 from '../../components/icons/LogoU4';
@@ -68,7 +68,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
                     A one sentence upsell of the generic value of U4 Online courses
                   </p>
                   <RegisterForm courseType={courseType.waitingListId} />
-                  <Share text={title} />
+                  <ShareOpen text={title} />
                 </div>
               </div>
             </div>

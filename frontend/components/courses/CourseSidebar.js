@@ -4,7 +4,7 @@ import languageName from '../../helpers/languageName';
 import { Translations } from '../Translations';
 import dateToString from '../../helpers/dateToString';
 import { PersonContactBasic } from '../PersonBasic';
-import { Share } from '../general/social/SocialShare';
+import { ShareOpen } from '../general/social/ShareOpen';
 import { CourseCoordinator } from '../PersonBasic';
 const classes = BEMHelper({
   name: 'article-sidebar',
@@ -47,7 +47,7 @@ export const CourseSidebar = ({ data, side }) => {
           )}
           <div className="u-hidden--desktop">
             <div className="c-article-sidebar__row--regular c-course-sidebar__row-first">
-              <Share text={title} />
+              <ShareOpen text={title} />
               {otherLanguages.length > 0 && (
                 <Translations
                   translations={otherLanguages}

@@ -1,9 +1,5 @@
-.c-share-buttons {
+.c-social--share__buttons {
   padding: 10px 0;
-  // border-bottom: 1px solid $light-grey;
-  // border-top:  1px solid $light-grey;
-  // margin-bottom: 30px;
-  // max-width: 240px;
   button {
     margin: 0 2px;
   }
@@ -12,7 +8,7 @@
   }
 }
 
-.c-social-follow__item {
+.c-social--follow__item {
   margin-right: 24px;
   &:hover {
     svg {
@@ -28,5 +24,29 @@
 
   @include mq($from: tablet) {
     margin-right: 40px;
+  }
+}
+
+.c-social--share__item {
+  border-radius: 16px;
+  svg {
+    .c-social-icons-secondpath {
+      fill: $dark-blue;
+    }
+    .c-social-icons-firstpath {
+      stroke: $dark-blue;
+    }
+  }
+  &:hover {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+
+    svg {
+      .c-social-icons-secondpath {
+        fill: $blue;
+      }
+      .c-social-icons-firstpath {
+        stroke: $blue;
+      }
+    }
   }
 }

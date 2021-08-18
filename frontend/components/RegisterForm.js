@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import ClientOnlyPortal from './ClientOnlyPortal';
+import ClientOnlyPortal from './general/ClientOnlyPortal';
 import { CloseButton, TextButton } from './general/buttons';
 import { useOnClickOutside, useLockBodyScroll } from '../helpers/hooks';
 

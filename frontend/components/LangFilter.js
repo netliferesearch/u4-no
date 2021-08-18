@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import ClientOnlyPortal from './ClientOnlyPortal';
+import ClientOnlyPortal from './general/ClientOnlyPortal';
 import { useOnClickOutside, useLockBodyScroll } from '../helpers/hooks';
 import languageName from '../helpers/languageName';
 import { TextButton, TextIconButton } from './general/buttons';

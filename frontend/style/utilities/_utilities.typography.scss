@@ -65,7 +65,6 @@
   font-size: $font-size-micro;
   line-height: $font-size-small;
   letter-spacing: 0.15em;
-
   @include mq($from: tablet) {
     font-size: $font-size-tiny;
     line-height: 22px;

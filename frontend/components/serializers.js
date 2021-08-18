@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic';
 import BoxOnBox from './BoxOnBox';
 import BoxOnBoxTopics from './BoxOnBoxTopics';
 import BoxOnImage from './BoxOnImage';
-import Feature from './Feature';
+import Feature from './general/feature/Feature';
 import Figure from './Figure';
 import Mosaic from './Mosaic';
 import PullQuote from './PullQuote';
