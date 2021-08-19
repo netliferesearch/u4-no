@@ -57,7 +57,7 @@ export const FeaturedPost = ({ featured }) => {
               </div>
               <div className="c-featured-mobile-padding">
                 {firstPost.topics && (
-                  <Topics title={false} topics={firstPost.topics} hr={false} linkType={'5'} />
+                  <Topics title={false} topics={firstPost.topics} hr={false} />
                 )}
               </div>
             </>
@@ -108,7 +108,7 @@ export const FeaturedPost = ({ featured }) => {
                     </div>
                     <div className="u-hidden--tablet">
                       {post.topics && (
-                        <Topics title={false} topics={post.topics} hr={false} linkType={'5'} />
+                        <Topics title={false} topics={post.topics} hr={false} />
                       )}
                     </div>
                   </div>

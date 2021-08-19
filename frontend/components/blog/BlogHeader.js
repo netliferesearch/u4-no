@@ -27,7 +27,7 @@ export const BlogHeader = ({ data }) => {
           {/* <DownloadPdf url={getFileUrl(pdfFile, legacypdf)} /> */}
         </div>
         <div className="c-blog-entry__header-row">
-          {topics ? <Topics title={false} topics={topics} hr={false} linkType={'5'} /> : null}
+          {topics ? <Topics title={false} topics={topics} hr={false} /> : null}
           <div className="c-blog-sidebar__share-container u-hidden--tablet">
             <ShareOpen text={title} />
           </div>

@@ -6,9 +6,9 @@
 
 .o-wrapper-fixed-header {
   max-width: 100%;
-  padding-top: 130px;
+  padding-top: 90px;
   @include mq($from: tablet) {
-    padding-top: 115px;
+    padding-top: 90px;
   }
 }
 

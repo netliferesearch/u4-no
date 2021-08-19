@@ -1,0 +1,10 @@
+.c-page-intro {
+  margin: 80px 0 48px 0;
+  @include mq($from: tablet) {}
+}
+
+.c-page-intro__p {
+  @include mq($from: tablet) {
+    max-width: 632px;
+  }
+}

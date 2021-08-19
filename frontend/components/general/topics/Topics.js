@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { spacesToDash } from '../../../helpers/stringHelpers';
 
 /**
@@ -11,7 +10,7 @@ import { spacesToDash } from '../../../helpers/stringHelpers';
  * @param {Boolean} hr
  */
 
-export const Topics = ({ title = true, topics = [], hr = false, linkType = 'ter' }) => {
+export const Topics = ({ title = true, topics = [], hr = false }) => {
   return topics ? (
     <div className="c-topics">
       {title ? <h4 className="u-primary-heading">Topics</h4> : null}
@@ -19,19 +18,16 @@ export const Topics = ({ title = true, topics = [], hr = false, linkType = 'ter'
       <div className="c-topics__list">
         {topics.map((topic, index) =>
           topic.slug && topic.title ? (
-            <span className="topic" key={index}>
-              <a href={`/topics/${topic.slug.current}`}>
-                <a className={`c-btn--${linkType}`}>
-                  <div>{topic.title}</div>
-                </a>
+            <div key={index} className="c-btn--tag">
+              <a href={`/topics/${topic.slug.current}`} className="topic--plain">
+                <div>{topic.title}</div>
               </a>
-              <span>{`${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}</span>
-            </span>
+              {/* <span>{`${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}</span> */}
+            </div>
           ) : !topic.slug && topic.title ? (
             <div key={index} className="c-btn--tag">
               <a href={`/topics/${spacesToDash(topic.title)}`} className="topic--plain" key={index}>
                 {topic.title}
-                {/* {`${topic.title}${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`} */}
               </a>
             </div>
           ) : null

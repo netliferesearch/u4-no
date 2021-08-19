@@ -66,10 +66,10 @@ export const BlueCard = ({ post, type, content = {} }) => {
                 {post.startDate ? dateToString({ start: post.startDate.utc }) : null}
               </p>
               <div className="c-blue-card__more">
-                <a className="c-blue-card__link" href={`/${content.slug}${post.slug}`}>
+                <div className="c-blue-card__link">
                   <h4 className="u-secondary-heading u-secondary-h4">{content.label}</h4>
                   <ArrowNext />
-                </a>
+                </div>
               </div>
             </div>
           </div>
