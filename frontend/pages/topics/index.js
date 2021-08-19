@@ -3,7 +3,7 @@ import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import DataLoader from '../../helpers/data-loader';
 import { CARD_TYPE } from '../../components/general/blue-card/BlueCard';
-import { TopicCardList } from '../../components/front-page/CorruptionByTopic';
+import { TopicCardList } from '../../components/front-page/TopicCardList';
 import { PageIntro } from '../../components/general/PageIntro';
 import {
   sortByDate,
