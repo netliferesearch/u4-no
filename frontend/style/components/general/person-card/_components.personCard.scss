@@ -1,0 +1,34 @@
+.c-person-card__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $mid-grey;
+  font-size: $font-size-tiny;
+  h5 {
+    font-size: $font-size-tiny;
+  }
+
+  img {
+    border-radius: 50%;
+  }
+
+  path {
+    stroke: $mid-grey;
+  }
+}
+
+.c-person-card__email {
+  display: flex;
+  align-items: center;
+}
+
+.adress {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+.icon {
+  display: flex;
+  align-items: flex-end;
+}

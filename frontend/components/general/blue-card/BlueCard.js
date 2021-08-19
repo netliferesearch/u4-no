@@ -5,6 +5,7 @@ import LocationIcon from '../../icons/LocationIcon';
 import { getPostType } from '../../../helpers/getRouteByType';
 import { CalendorIcon } from '../../icons/CalendorIcon';
 import { ArrowNext } from '../../icons/ArrowNext';
+import TextClamp from 'react-string-clamp';
 
 export const CARD_TYPE = {
   LARGE: '2-col',
@@ -13,11 +14,11 @@ export const CARD_TYPE = {
   TOPIC: 'topic',
 };
 
-export const CONTENT_BY_TYPE = {
-  COURSE: { label: 'Register', slug: 'courses/' },
-  TOPIC: { label: '', slug: 'courses/' },
-  PUBLICATION: { label: 'View More', slug: 'publications/' },
-};
+// export const CONTENT_BY_TYPE = {
+//   COURSE: { label: 'Register', slug: 'courses/' },
+//   TOPIC: { label: '', slug: 'courses/' },
+//   PUBLICATION: { label: 'View More', slug: 'publications/' },
+// };
 
 export const BlueCard = ({ post, type, content = {} }) => {
   return (
@@ -37,39 +38,34 @@ export const BlueCard = ({ post, type, content = {} }) => {
             )}
           </div>
           {post.lead && (
-            <p className="c-featured-post__intro u-body--dark-grey c-event-intro-text">
-              {post.lead}
-            </p>
+            <div className="c-blue-card__content--lead u-body--dark-grey">
+              <TextClamp text={post.lead} lines={3} />
+            </div>
           )}
           {post.longTitle && (
             <p className="u-body u-text--dark-blue c-blue-card__p--topic">{post.longTitle}</p>
           )}
         </div>
         {type === CARD_TYPE.TOPIC && (
-          <p className="c-featured-post__date c-events-date u-body--small">
-            {post._updatedAt ? 'Updated ' + dateToString({ start: post._updatedAt }) : null}
+          <p className="c-blue-card__date u-body--small">
+            {post._updatedAt && 'Updated ' + dateToString({ start: post._updatedAt })}
           </p>
         )}
         {type !== CARD_TYPE.TOPIC && (
           <div className="c-blue-card__info">
-            <div>
-              <p className="c-events-location u-body--small">
-                <LocationIcon /> {post.startDate.timezone}
-              </p>
-            </div>
+            <p className="c-blue-card__location u-body--small">
+              <LocationIcon /> {post.startDate.timezone}
+            </p>
             <div className="c-blue-card__details">
-              <p
-                style={{ width: '50%' }}
-                className="c-featured-post__date c-events-date u-body--small"
-              >
+              <p className="c-blue-card__date u-body--small">
                 <CalendorIcon />
-                {post.startDate ? dateToString({ start: post.startDate.utc }) : null}
+                {post.startDate && dateToString({ start: post.startDate.utc })}
               </p>
               <div className="c-blue-card__more">
-                <a className="c-blue-card__link" href={`/${content.slug}${post.slug}`}>
+                <div className="c-blue-card__link">
                   <h4 className="u-secondary-heading u-secondary-h4">{content.label}</h4>
                   <ArrowNext />
-                </a>
+                </div>
               </div>
             </div>
           </div>

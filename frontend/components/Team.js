@@ -2,7 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import BEMHelper from 'react-bem-helper';
 import Person from './Person';
-import ArrowRight from './icons/ArrowRight'
+import { PersonCard } from './general/person/PersonCard';
+import ArrowRight from './icons/ArrowRight';
 
 const classes = BEMHelper({
   name: 'team',
@@ -35,7 +36,7 @@ const Team = ({
       {members
         .map(member => (member.target ? member.target : member))
         .map(member => (
-          <Person key={member._id} light person={member} linkLabel={linkLabel} />
+          <PersonCard key={member._id} light person={member} linkLabel={linkLabel} />
         ))}
     </div>
   </section>
