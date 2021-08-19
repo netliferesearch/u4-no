@@ -32,12 +32,14 @@ const Team = ({
         </h2>
       </div>
     )}
-    <div {...classes('wrapper', null)}>
-      {members
-        .map(member => (member.target ? member.target : member))
-        .map(member => (
-          <PersonCard key={member._id} light person={member} linkLabel={linkLabel} />
-        ))}
+    <div>
+      <div className="c-team__wrapper">
+        {members
+          .map(member => (member.target ? member.target : member))
+          .map(member => (
+            <PersonCard key={member._id} light person={member} linkLabel={linkLabel} />
+          ))}
+      </div>
     </div>
   </section>
 );

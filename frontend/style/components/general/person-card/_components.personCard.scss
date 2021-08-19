@@ -5,16 +5,27 @@
   align-items: center;
   color: $mid-grey;
   font-size: $font-size-tiny;
-  h5 {
-    font-size: $font-size-tiny;
-  }
 
   img {
     border-radius: 50%;
+    align-self: center;
   }
 
   path {
     stroke: $mid-grey;
+  }
+
+  a {
+    color: $mid-grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h5 {
+      font-size: $font-size-tiny;
+      display: flex;
+      justify-content: center;
+      margin-top: 0;
+    }
   }
 }
 
@@ -31,4 +42,9 @@
 .icon {
   display: flex;
   align-items: flex-end;
+}
+
+.c-person-card__image-wrapper {
+  justify-content: center;
+  display: flex;
 }
