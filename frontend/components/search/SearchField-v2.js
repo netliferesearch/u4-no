@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
 import { LoaderV2 } from '../LoaderV2';
-import { SearchIcon } from '../icons/SearchIconV2';
+import { SearchIcon } from '../icons/SearchIcon';
 
 const classes = BEMHelper({
   name: 'search-v2',

@@ -1,12 +1,14 @@
 .c-blue-card {
-  background-color: $light-blue;
+  background-color: $lighter-blue;
   //   margin-bottom: 24px;
-  padding: 20px 14px;
+  padding: 16px;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  align-items: space-between;
-  transition: all 0.4s ease-in-out;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  //transition: all 0.4s ease-in-out;
+  transition: $global-transition--longer;
   h2 {
     margin: 0;
   }
@@ -18,14 +20,16 @@
     -webkit-box-shadow: -9px 9px 0px 0px $dark-blue !important;
     -moz-box-shadow: -9px 9px 0px 0px $dark-blue !important;
     box-shadow: -9px 9px 0px 0px $dark-blue;
-    transition: all 0.4s ease-in-out;
+    //transition: all 0.4s ease-in-out;
+    transition: $global-transition--longer;
     h3,
     h5,
     p,
-    .c-events-view-more {
+    .c-blue-card__link,
+    .c-blue-card__link h4 {
       color: $white;
     }
-    .c-topic-paragraph {
+    .c-blue-card__p--topic {
       color: $light-grey;
     }
     h2 {
@@ -34,7 +38,6 @@
     h4 {
       color: $light-grey;
     }
-
     h4:after {
       background-color: $highlight-blue;
     }
@@ -43,10 +46,42 @@
     .c-events-calendor-icon {
       fill: $white;
     }
-    .c-arrow-next {
+    .c-arrow-next-svg path {
       stroke: $white;
     }
   }
+}
+
+.c-blue-card__p--topic {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.c-blue-card__link {
+  display: flex;
+  align-items: center;
+  border-bottom: none;
+  h4 {
+    margin: 0;
+    color: $dark-blue;
+  }
+  .c-arrow-next-svg {
+    margin-left: 12px;
+    width: 8px;
+    path {
+      stroke: $dark-blue;
+    }
+  }
+}
+
+.c-blue-card__type {
+  margin: 12px 0;
+}
+
+.c-blue-card__heading {
+  font-size: 24px;
+  line-height: 32px;
+  margin: 12px 0 16px 0;
 }
 
 .c-blue-card__details {
@@ -67,6 +102,8 @@
   display: flex;
   flex-direction: column;
 }
-.c-topic-paragraph {
-  margin-top: 12px;
+
+.c-blue-card--topic {
+  padding: 12px;
+  min-height: 160px;
 }

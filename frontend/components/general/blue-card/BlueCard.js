@@ -13,24 +13,43 @@ export const CARD_TYPE = {
   TOPIC: 'topic',
 };
 
-export const BlueCard = ({ post, type }) => {
+export const CONTENT_BY_TYPE = {
+  COURSE: { label: 'Register', slug: 'courses/' },
+  TOPIC: { label: '', slug: 'courses/' },
+  PUBLICATION: { label: 'View More', slug: 'publications/' },
+};
+
+export const BlueCard = ({ post, type, content = {} }) => {
   return (
     <LinkToItem type={post._type} slug={post.slug}>
-      <a className="c-blue-card">
-        <div>
-          {getPostType(post) && (
-            <h4 className="u-secondary-heading u-secondary-h4 u-detail--blue--small">
-              {getPostType(post)}
-            </h4>
+      <a className={`c-blue-card c-blue-card--${type}`}>
+        <div className="c-blue-card__top-content">
+          <div>
+            {getPostType(post) && (
+              <h4 className="c-blue-card__type u-secondary-heading u-secondary-h4 u-detail--blue--small">
+                {getPostType(post)}
+              </h4>
+            )}
+            {type === CARD_TYPE.TOPIC ? (
+              <h2 className="u-secondary-heading u-secondary-h2 u-text--dark-blue">{post.title}</h2>
+            ) : (
+              <h4 className="c-blue-card__heading u-primary-heading">{post.title}</h4>
+            )}
+          </div>
+          {post.lead && (
+            <p className="c-featured-post__intro u-body--dark-grey c-event-intro-text">
+              {post.lead}
+            </p>
           )}
-          {type === CARD_TYPE.TOPIC ? (
-            <h2 className="u-secondary-heading u-secondary-h2">{post.title}</h2>
-          ) : (
-            <h4>{post.title}</h4>
+          {post.longTitle && (
+            <p className="u-body u-text--dark-blue c-blue-card__p--topic">{post.longTitle}</p>
           )}
         </div>
-        <p className="c-featured-post__intro u-body--grey c-event-intro-text">{post.lead}</p>
-        <p className="u-body u-text--dark-blue c-topic-paragraph">{post.longTitle}</p>
+        {type === CARD_TYPE.TOPIC && (
+          <p className="c-featured-post__date c-events-date u-body--small">
+            {post._updatedAt ? 'Updated ' + dateToString({ start: post._updatedAt }) : null}
+          </p>
+        )}
         {type !== CARD_TYPE.TOPIC && (
           <div className="c-blue-card__info">
             <div>
@@ -38,10 +57,7 @@ export const BlueCard = ({ post, type }) => {
                 <LocationIcon /> {post.startDate.timezone}
               </p>
             </div>
-            <div
-              className="c-blue-card__details"
-              // style={{ display: 'flex', alignSelf: 'flex-end', width: '100%' }}
-            >
+            <div className="c-blue-card__details">
               <p
                 style={{ width: '50%' }}
                 className="c-featured-post__date c-events-date u-body--small"
@@ -50,8 +66,8 @@ export const BlueCard = ({ post, type }) => {
                 {post.startDate ? dateToString({ start: post.startDate.utc }) : null}
               </p>
               <div className="c-blue-card__more">
-                <a className="c-events-view-more" href="/publications">
-                  View more
+                <a className="c-blue-card__link" href={`/${content.slug}${post.slug}`}>
+                  <h4 className="u-secondary-heading u-secondary-h4">{content.label}</h4>
                   <ArrowNext />
                 </a>
               </div>

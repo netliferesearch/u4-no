@@ -81,7 +81,7 @@ const Frontpage = ({
       {/*</section>*/}
       <section className="">
         <div className="o-wrapper-medium">
-          <LearningEvents events={events} type={CARD_TYPE.EVENT} />
+          <LearningEvents events={events} type={CARD_TYPE.MEDIUM}/>
         </div>
       </section>
       <section className="o-wrapper-full">
@@ -118,7 +118,7 @@ export default DataLoader(Frontpage, {
   queryFunc: () => ({
     sanityQuery: `{
       "frontPage": *[_type=="frontpage" && slug.current == "frontpage-NEW"][0]{id,title,sections,"imageUrl": featuredImage.asset->url, "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title, date, standfirst, topics[]->{title}, "slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title, "imageUrl": featuredImage.asset->url, "pdfFile": pdfFile.asset->url}[0..2]},
-      "topics": *[_type == "topics"] | order(title) {_id, title, longTitle, slug, _updatedAt, "imageUrl": featuredImage.asset->url}[0..5],
+      "topics": *[_type == "topics"] | order(title) {_id, _type, title, longTitle, slug, _updatedAt, "imageUrl": featuredImage.asset->url}[0..5],
       "featured": {"publication": *[_type  == "publication"] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8], "blog": *[_type  == "blog-post" && references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..1],},
       "blogPosts": *[_type == "blog-post" && !references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
       "events": *[_type in ["course", "event"]] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}}[0..2],
