@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ArrowDown } from '../icons/ArrowDown';
 
@@ -25,7 +24,7 @@ export const DownArrowButton = ({ onClick = () => null, text = '', modifier = 'p
 
 
 
-//V2 Buttons: import React from 'react';
+//V2 Buttons: 
 
 export const TextButton = ({
   onClick = () => null,
@@ -37,17 +36,6 @@ export const TextButton = ({
     {text && <div>{text}</div>}
   </button>
 );
-
-// export const TextButton = ({
-//   onClick = () => null,
-//   text = '',
-//   modifier = 'qua',
-//   disabled = false,
-// }) => (
-//   <button {...classes({ modifier })} onClick={onClick} disabled={disabled}>
-//     {text && <div>{text}</div>}
-//   </button>
-// );
 
 export const TextIconButton = ({
   onClick = () => null,

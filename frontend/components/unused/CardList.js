@@ -89,7 +89,7 @@ export const CardList = ({ resources = [], alt = false }) => {
                     </LinkToItem>
                   </div>
                   <div>
-                    {topics && <Topics title={false} topics={topics} hr={false} linkType={'5'} />}
+                    {topics && <Topics title={false} topics={topics} hr={false} />}
                   </div>
                 </div>
               )

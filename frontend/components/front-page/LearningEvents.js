@@ -8,9 +8,6 @@ export const LearningEvents = ({ events, type }) => {
     <div>
       <SectionIntro
         title="Learning and Events"
-        //text="Lorem ipsum ipsum lorem"
-        //slug="/blog"
-        //label="View blog"
       />
 
       <div className="c-events-list__row c-events-list__content">

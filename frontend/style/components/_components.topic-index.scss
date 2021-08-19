@@ -1,3 +1,7 @@
+// All these classes except the last one are used in
+// keywords page only, probably will need to be deleted
+// Topics Index uses reusable components mostly.
+
 .c-topic-heading {
   color: $dark-blue;
   font-weight: bold;
@@ -15,10 +19,6 @@
   @include mq($from: tablet) {
     justify-content: space-around;
   }
-}
-
-.c-topic-index__item-child {
-  width: auto;
 }
 
 .c-topic-index__title {
@@ -69,167 +69,11 @@
   }
 }
 
-////////////////////////////////////////////////////
-////////////////// NEW STYLES /////////////////////
-//////////////////////////////////////////////////
-
-.c-topic-index__main-box {
-  padding-left: 25px;
-  padding-right: 25px;
-
-  @include mq($from: desktop) {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-.c-topic-index__main-title-box {
-  padding-left: 25px;
-  padding-right: 25px;
-
-  @include mq($from: desktop) {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
-.c-topic-index-list__box {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
-}
-
-.c-topic-index-list__item {
-  width: 100%;
-  margin: 0px;
-  padding: 24px;
-  background-color: $light-blue;
-  list-style: none;
-  margin-bottom: 15px;
-  // border: 1px solid $light-grey;
-  &:hover {
-    background-color: $brand-main;
-    -webkit-box-shadow: -9px 9px 0px 0px $dark-blue !important;
-    -moz-box-shadow: -9px 9px 0px 0px $dark-blue !important;
-    box-shadow: -9px 9px 0px 0px $dark-blue;
-    transition: box-shadow 0.4s ease-in-out;
-    h2 {
-      color: $white;
-    }
-    .c-topic-index-paragraph {
-      color: $white;
-    }
-    .c-topic-index__date {
-      color: $white;
-    }
-  }
-
-  h2 {
-    margin: 0;
-    text-transform: uppercase;
-    color: $dark-blue;
-  }
-  .c-topic-index-paragraph {
-    color: $dark-blue;
-  }
-  .c-topic-index-list__item-text {
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
+.c-topic-index__list {
+  margin-top: 24px;
+  margin-bottom: 48px;
   @include mq($from: tablet) {
-    width: 31%;
-    margin: 12px;
-    margin-left: 0;
-    margin-right: 0;
+    margin-top: 24px;
+    margin-bottom: 64px;
   }
-}
-
-.c-topic-index__date {
-  display: flex;
-  align-items: flex-end;
-  color: $mid-grey;
-  margin-bottom: 0px;
-  color: $mid-grey;
-}
-
-.c-topic-index__seperator {
-  height: 1px;
-  width: 100%;
-  background: $light-grey;
-}
-.c-topic-index__topic-count {
-  margin-top: 22px;
-  margin-bottom: 0;
-  color: $mid-grey;
-}
-
-.c-topic-index__radio-form {
-  display: flex;
-  align-items: center;
-  margin-top: 17px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-.c-topic-index__order-text {
-  margin: 0;
-  margin-right: 17px;
-}
-.c-topic-index__sort-type-text {
-  margin: 0;
-  margin-right: 20px;
-}
-
-.c-topic-index__radio-container {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin-top: 10px;
-
-  input {
-    margin-right: 20px;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  input[type='radio']:after {
-    width: 20px;
-    height: 20px;
-    border-radius: 15px;
-    top: -2px;
-    left: -1px;
-    position: relative;
-    background-color: $white;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 2px solid $dark-blue;
-    margin-right: 12px;
-  }
-
-  input[type='radio']:checked:after {
-    width: 20px;
-    height: 20px;
-    border-radius: 15px;
-    top: -2px;
-    left: -1px;
-    position: relative;
-    background-color: $highlight-blue;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 2px solid $dark-blue;
-    margin-right: 12px;
-  }
-
-  @include mq($from: tablet) {
-    width: auto;
-    margin: 0;
-  }
-}
-
-.c-topic-index__titles-holder {
-  width: 100%;
 }

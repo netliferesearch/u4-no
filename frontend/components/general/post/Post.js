@@ -69,7 +69,7 @@ export const Post = ({ post, type }) => {
       </a>
     </LinkToItem>
     {post.topics && (
-      <Topics title={false} topics={post.topics} hr={false} linkType={'5'}/>
+      <Topics title={false} topics={post.topics} hr={false}/>
     )}
   </div>;
 };

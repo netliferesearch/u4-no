@@ -31,7 +31,7 @@ export const CourseHeader = ({ data }) => {
         </div>
         <RegisterForm courseType={courseType.waitingListId} />
         <div className="c-course-entry__header-row">
-          {topics ? <Topics title={false} topics={topics} hr={false} linkType={"5"} /> : null}
+          {topics ? <Topics title={false} topics={topics} hr={false} /> : null}
           <div className="u-hidden--tablet">
             <ShareOpen text={title} />
           </div>
