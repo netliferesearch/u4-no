@@ -19,7 +19,7 @@ const Team = ({
   sayHi = true,
 }) => (
   <section {...classes('', light && 'light')}>
-    {title && (
+    {/* {title && (
       <div className="o-wrapper">
         <h2 {...classes('title')}>
           {sayHi && (
@@ -31,7 +31,7 @@ const Team = ({
           {title}
         </h2>
       </div>
-    )}
+    )} */}
     <div>
       <div className="c-team__wrapper">
         {members

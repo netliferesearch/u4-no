@@ -8,6 +8,11 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto;
   }
+  @include mq($from: tablet) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    grid-template-rows: auto;
+  }
   @include mq($from: desktop) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 30px;

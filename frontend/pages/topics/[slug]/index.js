@@ -153,7 +153,7 @@ const TopicEntry = ({
     </div>
 
     {advisors.length > 0 && (
-      <div id="advisors" className="c-topic-section--lightblue o-wrapper-full-width">
+      <div id="advisors" className="o-wrapper-medium">
         {
           <Team
             title={
@@ -165,12 +165,12 @@ const TopicEntry = ({
             linkLabel="Read full bio"
           />
         }
-        <h2 className="c-topic-section__cta">
+        {/* <h2 className="c-topic-section__cta">
           <a href="/the-team">
             The whole U4 team &nbsp;
             <ArrowRight />
           </a>
-        </h2>
+        </h2> */}
       </div>
     )}
 
