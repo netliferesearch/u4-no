@@ -175,14 +175,6 @@
   .u-primary-heading.tags {
     margin-top: 24px;
   }
-  .c-topics {
-    h4 {
-      margin: 24px 0 12px 0;
-      @include mq($from: tablet) {
-        margin: 32px 0 12px 0;
-      }
-    }
-  }
 
   .c-keywords {
     margin-bottom: 32px;

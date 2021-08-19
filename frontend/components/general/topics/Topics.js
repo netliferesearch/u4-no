@@ -2,7 +2,7 @@ import React from 'react';
 import { spacesToDash } from '../../../helpers/stringHelpers';
 
 /**
- * Topics component to list topics
+ * Topics Link list/Tags list component to list topics
  * Used in LongFormArticle component - publication/:slug page.
  *
  * @param {Boolean} title
@@ -10,10 +10,10 @@ import { spacesToDash } from '../../../helpers/stringHelpers';
  * @param {Boolean} hr
  */
 
-export const Topics = ({ title = true, topics = [], hr = false }) => {
+export const Topics = ({ title = '', topics = [], hr = false }) => {
   return topics ? (
     <div className="c-topics">
-      {title ? <h4 className="u-primary-heading">Topics</h4> : null}
+      {title ? <h4 className="u-primary-heading">{title}</h4> : null}
       {hr ? <hr className="u-section-underline--no-margins" /> : null}
       <div className="c-topics__list">
         {topics.map((topic, index) =>

@@ -3,7 +3,7 @@ import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import DataLoader from '../../helpers/data-loader';
 import { CARD_TYPE } from '../../components/general/blue-card/BlueCard';
-import { TopicCardList } from '../../components/front-page/TopicCardList';
+import { TopicCardList } from '../../components/general/topics/TopicCardList';
 import { PageIntro } from '../../components/general/PageIntro';
 import {
   sortByDate,
@@ -73,7 +73,7 @@ export default DataLoader(TopicsOverview, {
   // getInitialProps
   queryFunc: () => ({
     sanityQuery:
-      '{"topics": *[_type == "topics"]{_id, title, longTitle, slug, _updatedAt, "relatedCount": count(*[_type in ["publication", "helpdesk"] && references(^._id)])}|order(title asc)}',
+      '{"topics": *[_type == "topics"]{_id, _type, title, longTitle, slug, _updatedAt, "relatedCount": count(*[_type in ["publication", "helpdesk"] && references(^._id)])}|order(title asc)}',
   }),
   materializeDepth: 0,
 });

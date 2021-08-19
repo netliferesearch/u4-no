@@ -101,15 +101,7 @@
   .c-pubHeader__subtitle {
     margin-top: 16px;
   }
-  .c-topics {
-    margin-top: 8px;
-    text-align: left;
-    .c-btn--ter {
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 14px;
-    }
-  }
+
   @include mq($from: tablet) {
     .u-primary-heading,
     .c-pubHeader__subtitle {

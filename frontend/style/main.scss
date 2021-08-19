@@ -26,7 +26,7 @@
 @import 'components/components.figure';
 @import 'components/components.filters-v2';
 @import 'components/components.glossary';
-@import 'components/components.topic-page';
+@import 'components/components.topic-section';
 @import 'components/components.hero';
 @import 'components/components.input';
 @import 'components/components.loader';
@@ -53,8 +53,6 @@
 @import 'components/components.team';
 @import 'components/components.table';
 @import 'components/components.textbox';
-@import 'components/components.topic-section';
-@import 'components/components.topic-index';
 @import 'components/components.toggle-block';
 @import 'components/components.workshop-mosaic';
 // @import "components/components.buttons";
@@ -106,7 +104,9 @@
 @import 'components/front-page/components.featuredPosts';
 @import 'components/front-page/components.cta';
 @import 'components/front-page/components.learningEvents';
-@import 'components/front-page/components.corruptionByTopic';
+@import 'components/front-page/components.topics-card-list';
+@import 'components/topics/components.topic-page';
+@import 'components/topics/components.topic-index';
 
 // UTILITIES
 @import '../node_modules/inuitcss/utilities/utilities.widths';
