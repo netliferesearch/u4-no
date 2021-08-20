@@ -39,7 +39,7 @@ const Team = ({
           .map(member => (member.target ? member.target : member))
           .map(member => (
             <PersonCard
-              type={PERSON_CARD_TYPE.IMAGE_TOP}
+              type={PERSON_CARD_TYPE.PROFILE}
               key={member._id}
               light
               person={member}
