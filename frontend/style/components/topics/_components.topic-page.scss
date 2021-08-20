@@ -1,40 +1,40 @@
 
 .c-topic-page_title {
-  font-family: $font-sans;
-  position: relative;
-  color: $dark-blue;
-  font-weight: 300;
-  padding: 0 0 0 ($spacing);
-  text-transform: uppercase;
-  margin: $spacing-large $spacing $spacing-small;
-  @include inuit-font-size($font-size-tiny, $line-height-normal );
-  @include mq($from: tablet) {
-    margin: 0 $spacing-huge;
-    @include inuit-font-size($font-size-tiny, $line-height-normal );
-  }
+  // font-family: $font-sans;
+  // position: relative;
+  // color: $dark-blue;
+  // font-weight: 300;
+  // padding: 0 0 0 ($spacing);
+  // text-transform: uppercase;
+  // margin: $spacing-large $spacing $spacing-small;
+  // @include inuit-font-size($font-size-tiny, $line-height-normal );
+  // @include mq($from: tablet) {
+  //   margin: 0 $spacing-huge;
+  //   @include inuit-font-size($font-size-tiny, $line-height-normal );
+  // }
 
-  &:before {
-    position: absolute;
-    content: '–';
-    color: $brand-main;
-    left: 0;
+  // &:before {
+  //   position: absolute;
+  //   content: '–';
+  //   color: $brand-main;
+  //   left: 0;
 
-  }
+  // }
 }
 .c-topic-page__longTitle {
-  font-family: $font-sans;
-  color: $dark-blue;
-  margin: $spacing-small $spacing $spacing;
-  max-width: 650px;
-  @include inuit-font-size($font-size-normal, $font-size-large);
-  @include mq($from: tablet) {
-    margin: $spacing-small $spacing $spacing-huge;
-    @include inuit-font-size($font-size-largest, 57px);
-    margin: $spacing-small $spacing $spacing-huge $spacing-huge;
-  }
+  // font-family: $font-sans;
+  // color: $dark-blue;
+  // margin: $spacing-small $spacing $spacing;
+  // max-width: 650px;
+  // @include inuit-font-size($font-size-normal, $font-size-large);
+  // @include mq($from: tablet) {
+  //   margin: $spacing-small $spacing $spacing-huge;
+  //   @include inuit-font-size($font-size-largest, 57px);
+  //   margin: $spacing-small $spacing $spacing-huge $spacing-huge;
+  // }
 }
 .c-topic-page__body {
-  @include inuit-font-size($font-size-normal, $font-size-larger);
+  // @include inuit-font-size($font-size-normal, $font-size-larger);
 }
 .c-topic-page__navigate--down {
 

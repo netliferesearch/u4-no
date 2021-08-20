@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DataLoader from '../../helpers/data-loader';
 import { Layout } from '../../components/Layout';
-import { BreadCrumbV2 } from '../../components/BreadCrumbV2';
+import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
 import BlogFilteredList from '../../components/blog/BlogFilteredList';
 import { wrapInRedux } from '../../helpers/redux-store-wrapper';
 import Footer from '../../components/general/footer/Footer';
@@ -35,7 +35,7 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper">
           <div className="o-wrapper-section">
-            <BreadCrumbV2 />
+            <BreadCrumbV2 home={true}/>
             <BlogFilteredList blogEntries={blogEntries} topics={topics} />
           </div>
         </section>

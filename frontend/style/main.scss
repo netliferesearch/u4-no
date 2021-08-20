@@ -13,7 +13,6 @@
 @import 'components/components.article-header';
 @import 'components/components.article';
 @import 'components/components.article-nav';
-@import 'components/components.breadcrumb';
 @import 'components/components.boxOnBox';
 @import 'components/components.boxOnBox-partner-features';
 @import 'components/components.boxOnBox-topics';
@@ -27,7 +26,6 @@
 @import 'components/components.filters-v2';
 @import 'components/components.glossary';
 @import 'components/components.topic-section';
-@import 'components/components.hero';
 @import 'components/components.input';
 @import 'components/components.loader';
 @import 'components/components.loader-v2';
@@ -76,7 +74,6 @@
 @import 'components/v2/frontpage';
 @import 'components/v2/components.blog-list';
 @import 'components/v2/components.blog-single';
-@import 'components/v2/components.breadcrumb-v2';
 @import 'components/v2/components.tags-section';
 @import 'components/v2/components.publication-header';
 @import 'components/v2/publication-entry';
@@ -101,6 +98,8 @@
 @import 'components/general/blue-card/components.blue-card';
 @import 'components/general/sort/components.sort';
 @import 'components/general/page-intro/components.page-intro';
+@import 'components/general/breadcrumb/components.breadcrumb';
+@import 'components/general/hero/components.hero';
 @import 'components/front-page/components.featuredPosts';
 @import 'components/front-page/components.cta';
 @import 'components/front-page/components.learningEvents';
