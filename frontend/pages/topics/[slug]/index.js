@@ -7,7 +7,7 @@ import Team from '../../../components/Team';
 import BasicGuide from '../../../components/icons/BasicGuide';
 import ResearchAgenda from '../../../components/icons/ResearchAgenda';
 import ArrowRight from '../../../components/icons/ArrowRight';
-import LinkBox from '../../../components/LinkBox';
+import { LinkBox } from '../../../components/general/link-box/LinkBox';
 import { FeaturedPosts } from '../../../components/front-page/FeaturedPosts';
 import { PostCarousel } from '../../../components/front-page/PostCarousel';
 import { POST_TYPE } from '../../../components/general/post/Post';
@@ -58,29 +58,29 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             topics={relatedTopics}
           />
         </section>
-        <section>
+        <section className="o-wrapper-medium">
           {introduction.length + agenda.length > 0 && (
-            <div>
-              <section className="c-linkbox-wrapper">
-                {introduction.length > 0 && (
-                  <LinkBox
-                    title="Basic guide"
-                    text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
-                    icon={BasicGuide}
-                    _type="topicsBasics"
-                    slug={slug}
-                  />
-                )}
-                {agenda.length > 0 && (
-                  <LinkBox
-                    title="Research and policy agenda"
-                    text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
-                    icon={ResearchAgenda}
-                    _type="topicsAgenda"
-                    slug={slug}
-                  />
-                )}
-              </section>
+            <div className="c-linkbox-wrapper">
+              {introduction.length > 0 && (
+                <LinkBox
+                  title="Basic guide"
+                  text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
+                  icon={BasicGuide}
+                  _type="topicsBasics"
+                  slug={slug}
+                  color="white"
+                />
+              )}
+              {agenda.length > 0 && (
+                <LinkBox
+                  title="Research and policy agenda"
+                  text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
+                  icon={ResearchAgenda}
+                  _type="topicsAgenda"
+                  slug={slug}
+                  color="dark-blue"
+                />
+              )}
             </div>
           )}
         </section>

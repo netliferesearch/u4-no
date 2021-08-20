@@ -35,7 +35,9 @@ export const Hero = ({ contentType = '', image = {}, title, text, topics }) => {
           )}
           <div className="c-hero__row">
             <PageIntro title={title} text={text} onDark={true} />
-            <Topics title="Related topics" topics={topics} hr={true} onDark={true} />
+            {topics.length > 0 ? (
+              <Topics title="Related topics" topics={topics} hr={true} onDark={true} />
+            ) : null}
           </div>
         </div>
       </div>

@@ -1,0 +1,128 @@
+.c-linkbox-wrapper {
+  display: grid;
+  gap: 0;
+  grid-template-columns: 1fr;
+
+  @include mq($from: tablet) {
+    margin-top: -12px;
+    margin-bottom: -12px;
+    grid-template-columns: 1fr 1fr;
+  }
+  // @include mq($until: tablet) {
+  //   flex-direction: row;
+  //   display: block;
+  // }
+}
+
+.c-linkbox {
+  margin-left: -24px;
+  margin-right: -24px;
+  z-index: 2;
+
+  &:nth-child(3n + 1) {
+    @include mq($from: tablet) {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: -12px;
+      margin-bottom: 12px;
+      .c-linkbox__content {
+        padding: 0 56px 56px 0;
+      }
+    }
+  }
+  &:nth-child(3n + 2) {
+    @include mq($from: tablet) {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 12px;
+      margin-bottom: -12px;
+      .c-linkbox__content {
+        padding: 0 0 56px 56px;
+      }
+    }
+  }
+}
+
+.c-linkbox__text {
+  max-width: 484px;
+}
+
+.c-linkbox--white {
+  position: relative;
+  background-color: $white;
+  &:nth-child(3n + 1) {
+    @include mq($from: tablet) {
+      //clip-path: inset(0px 0px -16px -1000px);
+      &:before {
+        content: '';
+        position: absolute;
+        width: 1000px;
+        height: 100%;
+        top: 0;
+        left: -630px;
+        background-color: $white;
+        z-index: -1;
+      }
+    }
+  }
+
+  .c-linkbox__text {
+    color: $dark-grey;
+  }
+}
+
+.c-linkbox--lighter-blue {
+  background-color: $lighter-blue;
+}
+
+.c-linkbox--blue {
+  background-color: $blue;
+}
+
+.c-linkbox--dark-blue {
+  background-color: $dark-blue;
+  position: relative;
+
+  &:nth-child(3n + 2) {
+    @include mq($from: tablet) {
+      //clip-path: inset(0px 0px -16px -1000px);
+      &::before {
+        content: '';
+        position: absolute;
+        width: 1000px;
+        height: 100%;
+        top: 0;
+        right: -630px;
+        background-color: $dark-blue;
+        z-index: 1;
+      }
+    }
+  }
+
+  .c-linkbox__text {
+    color: $white;
+  }
+  .c-linkbox__title {
+    color: $white;
+  }
+}
+
+.c-linkbox__content {
+
+  padding: 0 24px 32px 24px;
+  align-items: flex-start;
+  height: 100%;
+  position: relative;
+  z-index: 100;
+  @include mq($from: tablet) {
+    padding: $spacing-large 0 56px 0;
+  }
+}
+
+.c-linkbox__title {
+  //margin-top: 0;
+}
+
+.c-linkbox__icon {
+  padding: $spacing-small;
+}
