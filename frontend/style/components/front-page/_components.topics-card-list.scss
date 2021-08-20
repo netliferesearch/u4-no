@@ -14,7 +14,7 @@
   @include mq($from: desktop) {
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 30px;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr 1fr;
   }
 }
 

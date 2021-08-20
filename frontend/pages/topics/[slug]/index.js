@@ -14,6 +14,7 @@ import { POST_TYPE } from '../../../components/general/post/Post';
 import { TopicCardList } from '../../../components/general/topics/TopicCardList';
 import { CARD_TYPE } from '../../../components/general/blue-card/BlueCard';
 import { Hero } from '../../../components/general/Hero';
+import { PERSON_CARD_TYPE } from '../../../components/general/person/PersonCard';
 
 const TopicEntry = ({ data: { topic = {} } }) => {
   const {
@@ -118,6 +119,18 @@ const TopicEntry = ({ data: { topic = {} } }) => {
           </div>
         </section>
       ) : null}
+      {advisors.length > 0 && (
+        <div id="advisors" className="o-wrapper-medium">
+          {<Team type={PERSON_CARD_TYPE.IMAGE_TOP} members={advisors} linkLabel="Read full bio" />}
+          {/* <h2 className="c-topic-section__cta">
+            <a href="/the-team">
+              The whole U4 team &nbsp;
+              <ArrowRight />
+            </a>
+          </h2> */}
+          <hr className="u-section-underline--no-margins" />
+        </div>
+      )}
       {relatedTopics.length > 0 ? (
         <section className="">
           <div className="o-wrapper-medium">
@@ -127,27 +140,6 @@ const TopicEntry = ({ data: { topic = {} } }) => {
       ) : null}
       <div />
 
-      {advisors.length > 0 && (
-        <div id="advisors" className="c-topic-section--lightblue o-wrapper-full-width">
-          {
-            <Team
-              title={
-                advisors.length > 1
-                  ? 'We’re the team developing this topic.'
-                  : 'I’m developing this topic.'
-              }
-              members={advisors}
-              linkLabel="Read full bio"
-            />
-          }
-          <h2 className="c-topic-section__cta">
-            <a href="/the-team">
-              The whole U4 team &nbsp;
-              <ArrowRight />
-            </a>
-          </h2>
-        </div>
-      )}
       <Footer />
     </Layout>
   );
