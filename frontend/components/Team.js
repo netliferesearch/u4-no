@@ -32,6 +32,7 @@ const Team = ({
         </h2>
       </div>
     )} */}
+    <h4 className="u-secondary-heading u-secondary-h1 u-detail--blue">Topic experts</h4>
     <div>
       <div className="c-team__wrapper">
         {members

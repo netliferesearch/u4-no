@@ -171,6 +171,7 @@ const TopicEntry = ({
             <ArrowRight />
           </a>
         </h2> */}
+        <hr className="u-section-underline--no-margins" />
       </div>
     )}
 

@@ -27,15 +27,17 @@ export const PersonCard = ({ person }) => {
           <h5 className="u-text--dark-blue">{`${person.firstName} ${person.surname}`}</h5>
         </a>
       </Link>
-      <div>{person.position}</div>
-      <a href={`mailto:${person.email}`}>
-        <div className="c-person-card__email">
-          <div className="icon">
-            <EmailIconSmall />
+      {person.position && <div>{person.position}</div>}
+      {person.email && (
+        <a href={`mailto:${person.email}`}>
+          <div className="c-person-card__email">
+            <div className="icon">
+              <EmailIconSmall />
+            </div>
+            <div className="adress">{`${person.email}`}</div>
           </div>
-          <div className="adress">{`${person.email}`}</div>
-        </div>
-      </a>
+        </a>
+      )}
     </div>
   );
 };
