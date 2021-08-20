@@ -27,7 +27,7 @@ const standFirstLines = {
   [POST_TYPE.PUBLICATION]: 3,
   [POST_TYPE.LARGE]: 33,
 };
-const renderImage = (type) => {
+const renderImage = type => {
   switch (type) {
     case [POST_TYPE.PUBLICATION]:
       return false;
@@ -36,42 +36,45 @@ const renderImage = (type) => {
   }
 };
 export const Post = ({ post, type }) => {
-  return <div className={`c-post ${type}`}>
-    <LinkToItem type={post._type} slug={post.slug}>
-      <a className="c-post__link u-fake-anchor">
-          {post.imageUrl && renderImage(type) && <div className="c-post__post-image u-overlay--light-blue">
-            <Image
-              loader={sanityImageLoader}
-              src={post.imageUrl}
-              alt=""
-              loading="lazy"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>}
-          <div className="c-post__post-info">
-            {getPostType(post) && <div
-              className="c-post__post-type u-secondary-heading u-secondary-h4 u-detail--blue--small">{getPostType(post)}</div>}
-            <h4 className="c-post__title">
-              <TextClamp
-                text={post.title}
-                lines={ellipsizeLines[type]}
-              />
-            </h4>
-            <div className="c-post__article-content u-body">
-              <TextClamp
-                text={post.standfirst}
-                lines={standFirstLines[type]}
+  return (
+    <div className={`c-post ${type}`}>
+      <LinkToItem type={post._type} slug={post.slug}>
+        <a className="c-post__link u-fake-anchor">
+          {post.imageUrl && renderImage(type) && (
+            <div className="c-post__post-image u-overlay--light-blue">
+              <Image
+                loader={sanityImageLoader}
+                src={post.imageUrl}
+                alt=""
+                loading="lazy"
+                layout="fill"
+                objectFit="cover"
               />
             </div>
-            <div className="c-post__date u-body--small">{dateToString({ start: post.date.utc })}</div>
+          )}
+          <div className="c-post__post-info">
+            {getPostType(post) && (
+              <div className="c-post__post-type u-secondary-heading u-secondary-h4 u-detail--blue--small">
+                {getPostType(post)}
+              </div>
+            )}
+            <h4 className="c-post__title">
+              <TextClamp text={post.title} lines={ellipsizeLines[type]} />
+            </h4>
+            <div className="c-post__article-content u-body">
+              <TextClamp text={post.standfirst} lines={standFirstLines[type]} />
+            </div>
+            {post.date ? (
+              <div className="c-post__date u-body--small">
+                {dateToString({ start: post.date.utc })}
+              </div>
+            ) : null}
           </div>
-      </a>
-    </LinkToItem>
-    {post.topics && (
-      <Topics title={false} topics={post.topics} hr={false}/>
-    )}
-  </div>;
+        </a>
+      </LinkToItem>
+      {post.topics && <Topics title={false} topics={post.topics} hr={false} />}
+    </div>
+  );
 };
 
 Post.defaultProps = {

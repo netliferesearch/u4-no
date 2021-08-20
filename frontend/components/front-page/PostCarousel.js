@@ -18,7 +18,7 @@ export const PostCarousel = ({ posts, type, buttonPath, title }) => {
     568: { items: 2.2 },
     980: { items: columnsByType[type] },
   };
-  console.log('posts', posts);
+  //console.log('posts', posts);
   const items = posts && posts.map((post) => (
     <Post key={post._id} type={type} post={post}/>
   ));

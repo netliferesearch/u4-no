@@ -2,7 +2,7 @@ import React from 'react';
 import { spacesToDash } from '../../../helpers/stringHelpers';
 
 /**
- * Topics component to list topics
+ * Topics Link list/Tags list component to list topics
  * Used in LongFormArticle component - publication/:slug page.
  *
  * @param {Boolean} title
@@ -10,16 +10,19 @@ import { spacesToDash } from '../../../helpers/stringHelpers';
  * @param {Boolean} hr
  */
 
-export const Topics = ({ title = true, topics = [], hr = false }) => {
+export const Topics = ({ title = '', topics = [], hr = false, onDark = false }) => {
   return topics ? (
     <div className="c-topics">
-      {title ? <h4 className="u-primary-heading">Topics</h4> : null}
       {hr ? <hr className="u-section-underline--no-margins" /> : null}
+      {title ? <h4 className={`u-secondary-heading u-secondary-h4 ${onDark ? 'u-text--white' : ''}`}>{title}</h4> : null}
       <div className="c-topics__list">
         {topics.map((topic, index) =>
           topic.slug && topic.title ? (
-            <div key={index} className="c-btn--tag">
-              <a href={`/topics/${topic.slug.current}`} className="topic--plain">
+            <div key={index} className={`c-btn--tag ${onDark ? 'c-btn--tag--onDark' : ''}`}>
+              <a
+                href={`/topics/${topic.slug.current ? topic.slug.current : topic.slug}`}
+                className="topic--plain"
+              >
                 <div>{topic.title}</div>
               </a>
               {/* <span>{`${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}</span> */}

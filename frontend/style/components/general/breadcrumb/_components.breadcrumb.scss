@@ -1,0 +1,43 @@
+.c-breadcrumb {
+  margin: 24px 0;
+
+  @include mq($from: tablet) {
+    margin: 32px 0;
+  }
+}
+
+.c-breadcrumb--onDark {
+  .c-breadcrumb__link {
+    color: $white;
+  }
+}
+
+.c-breadcrumb-inner {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+}
+
+// .c-breadcrumb__item {
+//   &:hover,
+//   &:active {
+//     svg {
+//       stroke: $blue;
+//       path {
+//         stroke: $blue;
+//       }
+//     }
+//   }
+// }
+
+.c-breadcrumb__link {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 400;
+  margin: 0 8px 0 6px;
+  &:hover, 
+  &:active  {
+    color: $brand-main;
+  }
+}

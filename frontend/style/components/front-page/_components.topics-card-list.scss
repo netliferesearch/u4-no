@@ -17,3 +17,27 @@
     grid-template-rows: 1fr 1fr;
   }
 }
+
+.c-topic-card-list {
+  margin-bottom: 48px;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: -12px;
+    padding: 0;
+  }
+}
+
+// Component Topics
+
+.c-topics__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.c-topics__link-holder {
+  margin-top: 28px;
+}

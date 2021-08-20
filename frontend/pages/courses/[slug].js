@@ -5,7 +5,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import Layout from '../../components/Layout';
 import { useScrollInfo } from '../../helpers/useScrollInfo';
 import { CourseHeader } from '../../components/courses/CourseHeader';
-import { BreadCrumbV2 } from '../../components/BreadCrumbV2';
+import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
 import { CourseSidebar } from '../../components/courses/CourseSidebar';
 import { ShareOpen } from '../../components/general/social/ShareOpen';
 import serializers from '../../components/serializers';
@@ -86,7 +86,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             <BreadCrumbV2
               title={`All Online Courses`}
               parentSlug={'/online-courses'}
-              home={false}
+              home={true}
             />
           </div>
           <div className="o-wrapper-section c-article__row">

@@ -6,8 +6,7 @@
   img {
     border-radius: 50%;
     align-self: center;
-    width: 176px;
-    height: 176px;
+    width: 100%;
   }
 
   a {
@@ -89,7 +88,9 @@
   h5 {
     display: flex;
     justify-content: center;
+    align-items: center;
     font-size: $font-size-tiny;
+    text-align: center;
   }
 
   a {
@@ -133,6 +134,6 @@
 .c-person-card__image-wrapper {
   justify-content: center;
   display: flex;
-  width: 176px;
-  height: 176px;
+  width: 100%;
+  // max-width: 176px;
 }

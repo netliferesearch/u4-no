@@ -4,7 +4,7 @@ import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import { Layout } from '../../components/Layout';
 import { BlogSidebar } from '../../components/blog/BlogSidebar';
-import { BreadCrumbV2 } from '../../components/BreadCrumbV2';
+import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
 import findFootnotes from '../../components/findFootnotes';
 import footnoteSerializer from '../../components/footnoteSerializer';
 import { BlogHeader } from '../../components/blog/BlogHeader';
@@ -13,7 +13,7 @@ import { Newsletter } from '../../components/general/newsletter/Newsletter';
 import { AboutAuthor } from '../../components/blog/AboutAuthor';
 import { Disclaimers } from '../../components/Disclaimers';
 import { ShareOpen } from '../../components/general/social/ShareOpen';
-import { PhotoCaptionCredit } from '../../components/PhotoCaptionCredit';
+import { PhotoCaptionCredit } from '../../components/general/PhotoCaptionCredit';
 import { useEffect } from 'react';
 import Footer from '../../components/general/footer/Footer';
 
@@ -99,7 +99,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
             </figure>
           )}
           <div className="o-wrapper-section c-blog-entry__row u-hidden--tablet-flex">
-            <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} home={false} />
+            <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} home={true} />
             <PhotoCaptionCredit featuredImage={featuredImage} />
           </div>
           <div className="o-wrapper-section c-blog-entry__row">

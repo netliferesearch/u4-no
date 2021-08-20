@@ -1,12 +1,5 @@
 .c-frontpage {
-  .c-topics__list {
-    display: flex;
-    flex-wrap: wrap;
-  }
 
-  .c-topics__link-holder {
-    margin-top: 28px;
-  }
 }
 
 .c-featured-post:hover {
@@ -474,19 +467,6 @@
 .c-card-list {
   margin-bottom: 30px;
   position: relative;
-}
-
-.c-topic-card-list {
-  margin-bottom: 48px;
-
-  ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    margin: -12px;
-    padding: 0;
-  }
 }
 
 .c-topic__date {

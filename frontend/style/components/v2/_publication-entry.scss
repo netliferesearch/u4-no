@@ -2,11 +2,6 @@
   margin-bottom: 100px;
   color: $dark-grey;
 
-  .c-breadcrumb--v2 {
-    @include mq($from: tablet) {
-      margin: 20px 0;
-    }
-  }
 
   .c-article__center {
     @include mq($from: tablet) {
@@ -174,14 +169,6 @@
   clear: both;
   .u-primary-heading.tags {
     margin-top: 24px;
-  }
-  .c-topics {
-    h4 {
-      margin: 24px 0 12px 0;
-      @include mq($from: tablet) {
-        margin: 32px 0 12px 0;
-      }
-    }
   }
 
   .c-keywords {

@@ -1,13 +1,13 @@
 import React from 'react';
-import { SectionIntro } from '../general/SectionIntro';
-import { ArrowNext } from '../icons/ArrowNext';
-import { BlueCard } from '../general/blue-card/BlueCard';
+import { SectionIntro } from '../SectionIntro';
+import { ArrowNext } from '../../icons/ArrowNext';
+import { BlueCard } from '../blue-card/BlueCard';
 
-export const TopicCardList = ({ topics, type, showIntro = true, showLink = true }) => {
+export const TopicCardList = ({ topics, type, title = 'Browse our topics', showIntro = true, showLink = true }) => {
   return (
     <div className="c-topic-card-list">
       {showIntro && (
-        <SectionIntro title="Browse our topics" label="View all topics" slug="/topics" />
+        <SectionIntro title={title} />
       )}
       <div className="c-topic-card-list__wrapper">
         {topics.map((post, index) => (

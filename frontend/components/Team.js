@@ -12,6 +12,7 @@ const classes = BEMHelper({
 
 const Team = ({
   title,
+  type,
   members,
   light = false,
   linkLabel = 'Bio',
@@ -38,13 +39,7 @@ const Team = ({
         {members
           .map(member => (member.target ? member.target : member))
           .map(member => (
-            <PersonCard
-              type={PERSON_CARD_TYPE.PROFILE}
-              key={member._id}
-              light
-              person={member}
-              linkLabel={linkLabel}
-            />
+            <PersonCard type={type} key={member._id} light person={member} linkLabel={linkLabel} />
           ))}
       </div>
     </div>
