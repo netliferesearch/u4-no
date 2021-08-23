@@ -7,6 +7,8 @@ import DataLoader from '../../helpers/data-loader';
 import ArrowLarge from '../../components/icons/ArrowLarge';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers';
+import { PERSON_CARD_TYPE } from '../../components/general/person/PersonCard';
+import { PageIntro } from '../../components/general/PageIntro';
 
 const Persons = props => {
   const {
@@ -22,19 +24,15 @@ const Persons = props => {
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
       }}
     >
-      <div className="u-bg-dark-blue o-wrapper-full-width">
-        <div className="c-article__lead c-article__lead--big-light   c-article__lead--center">
-          <BlockContent blocks={frontpage.lead} serializers={serializers} />
-        </div>
-        <div className="c-person__team">
-          <h1 className="c-person__team-text ">{frontpage.title}</h1>
-          <div className="c-person__team-arrow">
-            <ArrowLarge />
-          </div>
-        </div>
+      <div className="o-wrapper-medium">
+        <PageIntro
+          title="People"
+          text={<BlockContent blocks={frontpage.lead} serializers={serializers} />}
+        />
+        <hr className="u-section-underline--no-margins" />
       </div>
 
-      <div className="c-filters-v2--standalone ">
+      {/* <div className="c-filters-v2--standalone ">
         <div className="c-filters-v2__label--standalone">
           Filter people by:
           <button className="c-filters-v2__item--standalone" onClick={() => setGroup(1)}>
@@ -47,9 +45,33 @@ const Persons = props => {
             <a>Affiliated Experts</a>
           </button>
         </div>
-      </div>
+      </div> */}
       <div className="o-wrapper c-article u-margin-bottom-huge">
-        {group === 1 ? (
+        <div className="o-wrapper-full">
+          <div className="o-wrapper-medium">
+            <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading={'The u4 team'} members={persons} />
+            <hr className="u-section-underline--no-margins" />
+          </div>
+        </div>
+        <div className="o-wrapper-full">
+          <div className="o-wrapper-medium">
+            <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading={'Help desk'} members={helpdesk} />
+            <hr className="u-section-underline--no-margins" />
+          </div>
+        </div>
+        <div className="o-wrapper-full">
+          <div className="o-wrapper-medium">
+            <Team
+              type={PERSON_CARD_TYPE.IMAGE_TOP}
+              heading={'Affiliates'}
+              members={affiliatedexperts}
+            />
+          </div>
+        </div>
+        {/* <Team type={PERSON_CARD_TYPE.IMAGE_TOP} members={persons.affiliatedexperts} />
+        <Team type={PERSON_CARD_TYPE.IMAGE_TOP} members={persons.helpdesk} /> */}
+
+        {/* {group === 1 ? (
           <div id="advisors">
             <h2 className="c-article__title c-article__title--center">U4 TEAM</h2>
             <Team
@@ -76,7 +98,7 @@ const Persons = props => {
               members={sortBy(affiliatedexperts, ({ firstName = '' }) => firstName.toUpperCase())}
             />
           </div>
-        ) : null}
+        ) : null} */}
       </div>
       <Footer />
     </Layout>

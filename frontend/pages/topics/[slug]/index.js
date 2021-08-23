@@ -123,7 +123,14 @@ const TopicEntry = ({ data: { topic = {} } }) => {
       ) : null}
       {advisors.length > 0 && (
         <div id="advisors" className="o-wrapper-medium">
-          {<Team type={PERSON_CARD_TYPE.IMAGE_TOP} members={advisors} linkLabel="Read full bio" />}
+          {
+            <Team
+              type={PERSON_CARD_TYPE.IMAGE_TOP}
+              heading={'Topic Experts'}
+              members={advisors}
+              linkLabel="Read full bio"
+            />
+          }
           {/* <h2 className="c-topic-section__cta">
             <a href="/the-team">
               The whole U4 team &nbsp;
