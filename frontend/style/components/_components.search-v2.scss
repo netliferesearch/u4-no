@@ -7,22 +7,11 @@
     order: 0;
     width: auto;
     margin-top: 0;
-    margin-left: 8.33333%;
-    margin-right: $spacing;
+    margin-left: 24px;
+    margin-right: 16px;
   }
 }
 
-// input::placeholder {
-//   color: $light-grey;
-//   font-size: 12px;
-//   font-weight: 400;
-//   text-transform: uppercase;
-//   margin: 0;
-
-//   // &:hover {
-//   //   color: #fff;
-//   // }
-// }
 .c-search-v2__label {
   width: 100%;
   display: block;
@@ -53,9 +42,10 @@
 }
 
 .c-search-v2__content {
-  border-bottom: 1px solid $light-grey;
+  border-bottom: 1px solid rgba($light-grey, 0.5);
   position: relative;
   display: flex;
+  align-items: center;
   flex-wrap: nowrap;
 }
 
@@ -70,18 +60,22 @@
   transition: border 0.2s ease-out;
   caret-color: $light-grey;
   font-family: $font-sans;
-  @include inuit-font-size($font-size-tiny, $line-height-tiny);
-  letter-spacing: 0.15em;
-  @include mq($from: tablet) {
-    font-size: 12px;
-    line-height: 14px;
-  }
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  // @include mq($from: tablet) {
+  //   font-size: 20px;
+  //   line-height: 1.4;
+  // }
 
   &::placeholder {
     color: $light-grey;
-    font-size: 12px;
+    opacity: 0.5;
+    font-size: 20px;
+    line-height: 1.4;
     font-weight: 400;
-    text-transform: uppercase;
+    text-transform: none;
     margin: 0;
   }
 
@@ -99,7 +93,7 @@
 .c-search-v2__button {
   border-radius: 0;
   border: none;
-  padding: 8px;
+  padding: 4px 0;
   color: $brand-main;
   background-color: transparent;
   border-left: none;
@@ -110,23 +104,25 @@
   }
 }
 
-.c-search-v2__icon-svg {
-  .c-search-v2__svg-elements {
-    stroke: $white;
-  }
-  &:hover {
+.c-main-menu {
+  .c-search-v2__icon-svg {
     .c-search-v2__svg-elements {
-      stroke: $highlight-blue;
+      stroke: $white;
+    }
+    &:hover {
+      .c-search-v2__svg-elements {
+        stroke: $highlight-blue;
+      }
     }
   }
 }
 .c-search-v2__close-icon {
   cursor: pointer;
   .c-search-v2__close-svg-elements {
-    stroke: #8a8fb0;
+    //stroke: #8a8fb0;
   }
   &:hover {
-    .c-search-v2__close-svg-elements {
+    path {
       stroke: $highlight-blue;
     }
   }
