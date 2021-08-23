@@ -14,7 +14,6 @@ export const PERSON_CARD_TYPE = {
 };
 
 export const PersonCard = ({ person, type }) => {
-  console.log(person);
   return (
     <div className={`c-person-card__wrapper c-person-card--${type}`}>
       <Link href={`/the-team/${person.slug.current}`}>

@@ -3,6 +3,7 @@
 }
 .c-team__wrapper {
   width: 100%;
+  margin-bottom: 48px;
   display: inline-grid;
   grid-gap: 30px;
   @include mq($from: mobile) {
