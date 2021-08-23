@@ -56,10 +56,10 @@
       &:before {
         content: '';
         position: absolute;
-        width: 1000px;
+        width: 1100px;
         height: 100%;
         top: 0;
-        left: -630px;
+        left: -680px;
         background-color: $white;
         z-index: -1;
       }
@@ -89,10 +89,10 @@
       &::before {
         content: '';
         position: absolute;
-        width: 1000px;
+        width: 1100px;
         height: 100%;
         top: 0;
-        right: -630px;
+        right: -680px;
         background-color: $dark-blue;
         z-index: 1;
       }
@@ -117,10 +117,6 @@
   @include mq($from: tablet) {
     padding: $spacing-large 0 56px 0;
   }
-}
-
-.c-linkbox__title {
-  //margin-top: 0;
 }
 
 .c-linkbox__icon {

@@ -12,7 +12,7 @@ const columnsByType = {
   [POST_TYPE.LARGE]: 3,
 };
 
-export const PostCarousel = ({ posts, type, buttonPath, title }) => {
+export const PostCarousel = ({ posts, type, buttonPath, title, minPosts }) => {
   const responsive = {
     0: { items: 1.2 },
     568: { items: 2.2 },
@@ -40,6 +40,7 @@ export const PostCarousel = ({ posts, type, buttonPath, title }) => {
           responsive={responsive}
           renderDotsItem={renderDotsItem}
           disableButtonsControls
+          disableDotsControls={items.length > minPosts ? false : true}
         />
         <div className="o-wrapper-medium c-view-all">
           <a className="c-btn c-btn--link" href={buttonPath}>
