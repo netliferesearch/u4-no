@@ -23,8 +23,7 @@ export const menuItems = [
       {
         subtitle: 'Events',
         items: [
-          { label: 'Public U4 Events', slug: '/workshops-and-events' },
-          { label: 'Partners only events', slug: '/workshops-and-events' },
+          { label: 'All events', slug: '/workshops-and-events' },
         ],
       },
     ],

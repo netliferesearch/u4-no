@@ -100,6 +100,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
                 type={POST_TYPE.BLOG}
                 buttonPath="/blog"
                 title="From the blog"
+                minPosts={3}
               />
               <hr className="u-section-underline--no-margins" />
             </div>
@@ -114,6 +115,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
               type={POST_TYPE.PUBLICATION}
               buttonPath="/publications"
               title="Latest publications"
+              minPosts={4}
             />
             <hr className="u-section-underline--no-margins" />
           </div>
@@ -204,8 +206,8 @@ export default DataLoader(TopicEntry, {
           "imageUrl": featuredImage.asset->url,
           topics[]->{title},
         }[0..3],
-        "relatedPublications": *[_type == 'publication' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
-        "relatedBlogPosts": *[_type == 'blog-post' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
+        "relatedPublications": *[_type == 'publication' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
+        "relatedBlogPosts": *[_type == 'blog-post' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
     }[0]}`,
     param: { slug },
   }),
