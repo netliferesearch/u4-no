@@ -66,7 +66,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
                   icon={BasicGuide}
                   _type="topicsBasics"
                   slug={slug}
-                  color="white"
+                  color={`${agenda.length > 0 ? "white" : "lighter-blue--full"}`}
                 />
               )}
               {agenda.length > 0 && (

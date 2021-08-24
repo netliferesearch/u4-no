@@ -1,34 +1,34 @@
-.u-bg-white {
+.u-bg--white {
   background-color: $white;
 }
 
 .u-bg--lighter-blue {
-  background-color: $lighter-blue
+  background-color: $lighter-blue;
 }
 
-.u-bg-light-blue {
+.u-bg--light-blue {
   background: $light-blue;
 }
 
-.u-bg-mid-blue {
+.u-bg--blue {
   background: $brand-main;
 }
 
-.u-bg-dark-blue {
+.u-bg--dark-blue {
   background: $dark-blue;
   //padding: $spacing-large 0;
 }
 
-.u-bg-darkest-blue {
+.u-bg--darkest-blue {
   background: $darkest-blue;
   //padding: $spacing-large 0;
 }
 
-.u-bg-light-grey {
+.u-bg--light-grey {
   background-color: $light-grey;
 }
 
-.u-bg-transparent-blue {
+.u-bg--transparent-blue {
   background-color: $dark-blue;
   mix-blend-mode: multiply;
   // position: relative;

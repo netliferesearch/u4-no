@@ -129,7 +129,7 @@ const LongFormArticleContainer = (props = {}) => {
             {BreadCrumbComponent && BreadCrumbComponent}
             {_type === 'publication' && !shortversion && (
               <div
-                className={`c-hero u-bg-white u-z-index-x ${
+                className={`c-hero u-bg--white u-z-index-x ${
                   publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''
                 }`}
               >
@@ -219,7 +219,7 @@ const LongFormArticleContainer = (props = {}) => {
           )}
           {_type !== 'publication' && (
             <div>
-              <div className="c-longform-grid u-bg-white u-z-index-x">
+              <div className="c-longform-grid u-bg--white u-z-index-x">
                 {articleType.length ? (
                   <h2 className="c-longform-grid__standard c-article-header__meta c-article-header__meta-uppercase">
                     {articleType[0].target.title}

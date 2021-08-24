@@ -513,7 +513,7 @@ export default serializers;
 //     ),
 //     vimeo: ({ node: { src, title, size } }) => (
 //       <div {...classes('full')}>
-//         <div className="u-bg-light-blue o-wrapper-full-width">
+//         <div className="u-bg--light-blue o-wrapper-full-width">
 //           <div className="o-wrapper o-wrapper-medium ">
 //             <h2 className="c-topic-section__title u-margin-top-large u-margin-bottom-huge">
 //               {title}

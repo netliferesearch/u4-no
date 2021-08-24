@@ -73,7 +73,7 @@ export default DataLoader(TopicsOverview, {
   // getInitialProps
   queryFunc: () => ({
     sanityQuery:
-      '{"topics": *[_type == "topics"]{_id, _type, title, longTitle, slug, _updatedAt, "relatedCount": count(*[_type in ["publication", "helpdesk"] && references(^._id)])}|order(title asc)}',
+      '{"topics": *[_type == "topics"]{_id, _type, title, longTitle, standfirst, slug, _updatedAt, "relatedCount": count(*[_type in ["publication", "helpdesk"] && references(^._id)])}|order(title asc)}',
   }),
   materializeDepth: 0,
 });

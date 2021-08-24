@@ -52,7 +52,7 @@ export const Layout = props => {
       <HeadComponent {...headComponentConfig} />
       {showTopTab && (
         <>
-          <div className={`c-top-bar__background ${activeMenu || searchOpen ? '' : 'u-bg-transparent-blue'}`} />
+          <div className={`c-top-bar__background ${activeMenu || searchOpen ? '' : 'u-bg--transparent-blue'}`} />
           <div {...classes('', 'fixed')}>
             <div className="o-wrapper-medium fixed-header-content" ref={ref}>
               {!hideLogo && (
@@ -149,7 +149,7 @@ export default Layout;
 //       >
 //         <HeadComponent {...headComponentConfig} />
 //         {showTopTab && (
-//           <div {...classes('', '', 'u-z-index-xx u-bg-white')}>
+//           <div {...classes('', '', 'u-z-index-xx u-bg--white')}>
 //             {!hideLogo && (
 //               <Link href="/">
 //                 <a {...classes('logo')}>

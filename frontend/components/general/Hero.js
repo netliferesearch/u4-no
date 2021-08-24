@@ -9,7 +9,7 @@ import { PageIntro } from './PageIntro';
 export const Hero = ({ contentType = '', image = {}, title, text, topics }) => {
   return (
     <div className="c-hero">
-      {image ? (
+      {image && image.asset ? (
         <figure className="c-hero-image">
           <Image
             loader={sanityImageLoader}
@@ -22,7 +22,7 @@ export const Hero = ({ contentType = '', image = {}, title, text, topics }) => {
           />
           <PhotoCaptionCredit image={image} showCaption={false} />
         </figure>
-      ) : null}
+      ) : <div className="c-hero-image u-bg--dark-blue"></div> }
       <div className="c-hero__content o-wrapper-medium">
         <BreadCrumbV2 title={`Topics`} parentSlug={'/topics'} home={true} onDark={true} />
         <div className="c-hero__text">

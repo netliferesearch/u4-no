@@ -110,7 +110,7 @@ const ServicePage = ({
             <CoursesList blocks={sections.slice(7, 8)} cta="Read more" />
           </div>
         </div>
-        <div className="u-bg-light-grey c-service-page__section u-side-padding">
+        <div className="u-bg--light-grey c-service-page__section u-side-padding">
           <div className="o-wrapper-medium">
             {resources.length > 0
               ? resources
@@ -122,7 +122,7 @@ const ServicePage = ({
         <div className="c-service-page__section u-side-padding">
           <BlockContent blocks={sections.slice(8, 10)} serializers={serializers} />
         </div>
-        <div className="u-bg-light-grey c-service-page__section u-side-padding">
+        <div className="u-bg--light-grey c-service-page__section u-side-padding">
           <BlockContent blocks={sections.slice(10, 11)} serializers={serializers} />
         </div>
         <div className="c-service-page__section u-side-padding">
