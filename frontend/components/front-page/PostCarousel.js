@@ -19,20 +19,18 @@ export const PostCarousel = ({ posts, type, buttonPath, title, minPosts }) => {
     980: { items: columnsByType[type] },
   };
   //console.log('posts', posts);
-  const items = posts && posts.map((post) => (
-    <Post key={post._id} type={type} post={post}/>
-  ));
+  const items = posts && posts.map(post => <Post key={post._id} type={type} post={post} />);
   const renderDotsItem = ({ isActive }) => {
     return isActive ? (
-      <div className="c-carousel-dots-active"/>
+      <div className="c-carousel-dots-active" />
     ) : (
-      <div className="c-carousel-dots-deactivated"/>
+      <div className="c-carousel-dots-deactivated" />
     );
   };
   return (
     <div className={`c-post-list c-post-list--2col c-post-list--column-${columnsByType[type]}`}>
       <div className="o-wrapper-medium">
-      {title && <h4 className="u-secondary-heading u-secondary-h1 u-detail--blue">{title}</h4>}
+        {title && <h4 className="u-secondary-heading u-secondary-h1 u-detail--blue">{title}</h4>}
       </div>
       <div className="c-post-list__col">
         <AliceCarousel
@@ -45,7 +43,7 @@ export const PostCarousel = ({ posts, type, buttonPath, title, minPosts }) => {
         <div className="o-wrapper-medium c-view-all">
           <a className="c-btn c-btn--link" href={buttonPath}>
             View all
-            <ArrowNext/>
+            <ArrowNext />
           </a>
         </div>
       </div>

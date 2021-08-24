@@ -2,10 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import sanityImageLoader from '../../sanityImageLoader';
 import Image from 'next/image';
-import { EmailIconSmall } from '../../icons/SocialIcons';
 import { SocialFollow } from '../social/SocialFollow';
 import { socialItems } from '../social/socialItems';
-import { Profiler } from 'react';
 
 export const PERSON_CARD_TYPE = {
   IMAGE_TOP: 'image-top',
@@ -54,9 +52,6 @@ export const PersonCard = ({ person, type }) => {
         {person.email && (
           <a href={`mailto:${person.email}`}>
             <div className="c-person-card__email">
-              {/* <div className="icon">
-                <EmailIconSmall />
-              </div> */}
               <div className="c-person-card__adress">{`Email: ${person.email}`}</div>
             </div>
           </a>

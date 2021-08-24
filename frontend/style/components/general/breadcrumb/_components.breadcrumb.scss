@@ -4,9 +4,13 @@
   @include mq($from: tablet) {
     margin: 32px 0;
   }
+  @include mq($from: desktop) {
+    margin: 60px 0;
+  }
 }
 
 .c-breadcrumb--onDark {
+  margin: 24px 0;
   .c-breadcrumb__link {
     color: $white;
   }
@@ -36,8 +40,8 @@
   line-height: 14px;
   font-weight: 400;
   margin: 0 8px 0 6px;
-  &:hover, 
-  &:active  {
+  &:hover,
+  &:active {
     color: $brand-main;
   }
 }
