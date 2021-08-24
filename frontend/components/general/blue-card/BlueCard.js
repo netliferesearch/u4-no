@@ -16,7 +16,7 @@ export const CARD_TYPE = {
 
 export const CONTENT_BY_TYPE = {
   COURSE: { label: 'Register', slug: 'courses/' },
-  TOPIC: { label: '', slug: 'courses/' },
+  TOPIC: { label: '', slug: 'topics/' },
   PUBLICATION: { label: 'View More', slug: 'publications/' },
 };
 
