@@ -11,7 +11,7 @@ import { ShareOpen } from '../../components/general/social/ShareOpen';
 import serializers from '../../components/serializers';
 import { PersonBasic } from '../../components/PersonBasic';
 import LogoU4 from '../../components/icons/LogoU4';
-import { RegisterForm } from '../../components/RegisterForm';
+import { RegisterForm } from '../../components/courses/RegisterForm';
 import Footer from '../../components/general/footer/Footer';
 
 const CoursePage = ({ data: { course = {} }, url = {} }) => {

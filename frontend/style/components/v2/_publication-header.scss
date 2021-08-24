@@ -237,9 +237,9 @@
       width: calc(100% - 400px);
       color: $dark-grey;
 
-      .c-longform-grid__standard {
-        margin-bottom: 45px;
-      }
+      // .c-longform-grid__standard {
+      //   margin-bottom: 45px;
+      // }
 
       .title {
         line-height: 1.6;
@@ -279,9 +279,7 @@
         }
       }
     }
-    .c-textbox__container .c-longform-grid__standard {
-      font-family: $font-sans;
-    }
+
     .c-textbox__container,
     .c-article-nav-list,
     .c-table,

@@ -1,0 +1,249 @@
+/**
+  Specify defaults to be used if "display: grid" is not supported.
+*/
+.c-longform-grid,
+.c-longform-grid-sub-div > div {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 $spacing-small;
+  @media print {
+    width: 20cm;
+    margin: 0 auto;
+  }
+}
+.c-longform-grid__standard {
+  padding: 0 $spacing;
+}
+
+@supports (display: grid) {
+  .c-longform-grid,
+  .c-longform-grid-sub-div > div {
+    max-width: 100%;
+    @include mq($from: tablet) {
+      display: grid;
+      padding: 0;
+      grid-template-columns: 20px auto auto auto 1fr auto auto auto 20px;
+      grid-template-rows: auto;
+      grid-row-gap: 10px;
+      grid-template-columns: 1fr auto auto 1fr 620px 1fr auto auto 1fr;
+    }
+
+    @include mq($from: desktop) {
+      grid-template-columns: 1fr 80px 80px 80px 620px 80px 80px 80px 1fr;
+    }
+  }
+
+  .c-longform-grid__standard {
+    padding: 0 $spacing;
+    grid-column: 5 / 6;
+  }
+
+  .c-longform-grid__sidebar-right {
+    display: none;
+    @include mq($from: wide) {
+      display: block;
+      grid-column: 7 / 10;
+    }
+  }
+
+  .c-longform-grid__medium {
+    padding: 0 $spacing;
+    grid-column: 4 / 7;
+  }
+
+  .c-longform-grid__large {
+    padding: 0 $spacing;
+    grid-column: 3 / 8;
+  }
+
+  .c-longform-grid__large-right {
+    padding: 0 $spacing;
+    grid-column: 5 / 8;
+  }
+
+  .c-longform-grid__larger {
+    padding: 0 $spacing;
+    grid-column: 2 / 9;
+  }
+
+  .c-longform-grid__half {
+    grid-column: 4 / 7;
+  }
+
+  .c-longform-grid__full {
+    grid-column: 1 / 10;
+  }
+}
+
+.c-blog-entry__main-text,
+.c-article-v2__main-text {
+  div {
+
+    .c-longform-grid__large,
+    .c-longform-grid__medium,
+    .c-longform-grid__standard {
+      padding: 0;
+      margin: 32px auto;
+    }
+    .c-longform-grid__standard {
+      max-width: 600px;
+    }
+  }
+
+  div.c-longform-grid__standard {
+    max-width: 720px;
+  }
+
+  h2.c-longform-grid__standard {
+    font-family: $font-sans;
+    color: $dark-grey;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 68px auto 32px auto;
+  }
+
+  h3.c-longform-grid__standard {
+    font-family: $font-sans;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+    color: $dark-grey;
+
+    // color: $dark-grey;
+    // font-weight: 700;
+    // font-size: 22px;
+    // line-height: 1.3;
+
+    margin: 68px auto 32px auto;
+  }
+  h4.c-longform-grid__standard {
+    font-family: $font-sans;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: $dark-grey;
+
+    margin: 68px auto 32px auto;
+  }
+  h5.c-longform-grid__standard {
+    font-family: $font-sans;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    color: $dark-grey;
+
+    margin: 68px auto 32px auto;
+  }
+
+  .c-article__pullQuote {
+    color: $dark-grey;
+    padding: 0;
+    font-family: $font-sans;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+    position: relative;
+    max-width: 304px;
+    margin: 32px auto 32px auto;
+    @include mq($from: tablet) {
+      font-size: 24px;
+      float: left;
+      margin: 32px 32px 32px -90px;
+      max-width: 304px;
+    }
+  }
+  .c-figure__caption {
+    margin: 24px 0;
+  }
+  .c-figure__caption > .c-longform-grid__standard,
+  .c-table__caption > .c-longform-grid__standard {
+    font-size: 15px;
+    line-height: 1.33;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+  }
+  .c-table table {
+    margin-bottom: 24px;
+  }
+  a {
+    color: $dark-grey;
+    border-bottom: 1px solid $dark-grey;
+  }
+  a:hover {
+    color: $brand-main;
+    border-bottom: 1px solid $brand-main;
+  }
+  a:active {
+    color: $brand-main;
+    border-bottom: 1px solid $brand-main;
+  }
+  a:visited {
+    //color: $brand-main;
+    //border-bottom: 1px solid $brand-main;
+  }
+  ol.c-longform-grid__standard,
+  ul.c-longform-grid__standard {
+    //list-style-position: inside;
+    padding-left: 24px;
+  }
+
+  @include mq($from: tablet) {
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 32px auto $spacing-large auto;
+  }
+}
+
+.c-article--shortversion .c-article-v2__main-text {
+  div {
+    .c-longform-grid__standard:first-child {
+      padding-top: 0;
+      margin-top: 32px;
+    }
+  }
+}
+
+.c-article-v2__main-text {
+  div {
+    .c-longform-grid__standard:first-child {
+      padding-top: 120px;
+      margin-top: -120px;
+    }
+  }
+  h2.c-longform-grid__standard {
+    padding-top: 120px;
+    margin-top: -82px;
+  }
+}
+
+.c-article__persons {
+  display: flex;
+  width: 100%;
+  @include mq($from: desktop) {
+    width: 60%;
+  }
+  .c-longform-grid__standard {
+    margin: 32px 0px !important;
+  }
+  .c-longform-grid__standard:first-child {
+    padding-top: 0px !important;
+  }
+  .c-article-v2__main-text {
+    margin-top: 30px;
+    margin-bottom: 0px;
+  }
+
+  .c-article-v2__main-text {
+    margin: 0px !important;
+  }
+}

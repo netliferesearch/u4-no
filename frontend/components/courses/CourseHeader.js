@@ -2,7 +2,7 @@ import React from 'react';
 import { ShareOpen } from '../general/social/ShareOpen';
 import Link from 'next/link';
 import ReactPlayer from 'react-player';
-import { RegisterForm } from '../RegisterForm';
+import { RegisterForm } from './RegisterForm';
 import { Topics } from '../general/topics/Topics';
 
 export const CourseHeader = ({ data }) => {

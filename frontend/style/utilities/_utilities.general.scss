@@ -153,6 +153,12 @@ iframe {
   margin: 0;
 }
 
+.u-side-padding-mobile {
+  @include mq($from: mobile, $until: desktop) {
+    padding: 0 $spacing;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
