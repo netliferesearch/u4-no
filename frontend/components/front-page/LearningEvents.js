@@ -13,7 +13,7 @@ export const LearningEvents = ({ events, type }) => {
       <div className="c-events-list__row c-events-list__content">
         <div className="c-learning-events__wrapper">
           {events
-            ? events.map((post, index) => <BlueCard type={type} post={post} key={index} />)
+            ? events.map((post, index) => <BlueCard type={type} post={post} key={index} content={CONTENT_BY_TYPE.COURSE} />)
             : null}
         </div>
       </div>

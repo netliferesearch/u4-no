@@ -14,11 +14,11 @@ export const CARD_TYPE = {
   TOPIC: 'topic',
 };
 
-// export const CONTENT_BY_TYPE = {
-//   COURSE: { label: 'Register', slug: 'courses/' },
-//   TOPIC: { label: '', slug: 'courses/' },
-//   PUBLICATION: { label: 'View More', slug: 'publications/' },
-// };
+export const CONTENT_BY_TYPE = {
+  COURSE: { label: 'Register', slug: 'courses/' },
+  TOPIC: { label: '', slug: 'courses/' },
+  PUBLICATION: { label: 'View More', slug: 'publications/' },
+};
 
 export const BlueCard = ({ post, type, content = {} }) => {
   return (
