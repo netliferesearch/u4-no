@@ -8,8 +8,25 @@
   }
 }
 
+.c-menu--mobile__item:not(:last-child) {
+  margin-right: 18px;
+}
+
 .c-menu--mobile__menu-svg-element {
   fill: $white;
+}
+
+.c-menu--mobile__submenu {
+  .c-search-v2__button {
+    &:hover {
+      .c-search-v2__icon-svg {
+        path,
+        circle {
+          stroke: $highlight-blue;
+        }
+      }
+    }
+  }
 }
 
 .c-menu--mobile__backdrop {
@@ -32,10 +49,20 @@
 .c-menu--mobile__button {
   border-radius: 0;
   border: none;
-  color: $brand-main;
+  color: $white;
   background-color: transparent;
   cursor: pointer;
   padding: 0;
+  &:hover {
+    .c-search-v2__icon-svg,
+    .c-menu--mobile__menu-svg,
+    .c-close-icon {
+      path,
+      circle {
+        stroke: $highlight-blue;
+      }
+    }
+  }
 }
 
 .c-menu--mobile .c-menu__list {

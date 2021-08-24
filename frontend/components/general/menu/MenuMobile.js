@@ -7,9 +7,11 @@ import { CloseIcon } from '../../icons/CloseIcon';
 import { SocialFollow } from '../social/SocialFollow';
 import { socialItems } from '../social/socialItems';
 import { menuItems } from './menuItems';
-import { MobileMainMenuItem } from './MobileMainMenuItem';
+import { MainMenuMobileItem } from './MainMenuMobileItem';
 import { SubMenuItem } from './SubMenuItem';
 import { Accordion } from '../accordion/Accordion';
+import { CloseSearch } from '../../icons/CloseSearch';
+import SearchFieldV2 from '../../search/SearchField-v2';
 
 export const MenuMobile = props => {
   const {
@@ -25,6 +27,9 @@ export const MenuMobile = props => {
   const triggerMenu = e => {
     e.preventDefault();
     setActiveMenu(!activeMenu);
+    if (searchOpen) {
+      setSearchOpen(false);
+    }
   };
 
   const [data, setData] = useState('');
@@ -49,33 +54,46 @@ export const MenuMobile = props => {
     [data]
   );
   return (
-    <div className="c-menu--mobile c-menu--mobile__main-box" style={{ color: 'white' }}>
-      <button className="c-menu--mobile__button" onClick={triggerMenu}>
-        {activeMenu ? (
-          <div>
-            {/* <SearchFieldV2
-              isOpen={activeSearchMenu}
-              isAlwaysOpen={true}
-              triggerSearchMenu={triggerSearchMenu}
-              searchData={searchData}
-            /> */}
-            <span className="c-menu--mobile__search-icon-holder">
+    <div className="c-menu--mobile">
+      <div className="c-menu__items">
+        <div className="c-menu--mobile__item">
+          {!searchOpen ? (
+            <button
+              className="c-menu--mobile__button"
+              onClick={e => {
+                e.preventDefault();
+                setSearchOpen(!searchOpen);
+                if (activeMenu) {
+                  setActiveMenu(false);
+                }
+              }}
+            >
               <SearchIcon />
-            </span>
-            <span>
-              <CloseIcon />
-            </span>
-          </div>
-        ) : (
-          <MenuIcon />
-        )}
-      </button>
+            </button>
+          ) : (
+            <CloseSearch setSearchOpen={setSearchOpen} searchOpen={searchOpen} />
+          )}
+        </div>
+        <div className="c-menu--mobile__item">
+          <button className="c-menu--mobile__button" onClick={triggerMenu}>
+            {activeMenu ? (
+              <div>
+                <CloseIcon />
+              </div>
+            ) : (
+              <div>
+                <MenuIcon />
+              </div>
+            )}
+          </button>
+        </div>
+      </div>
       {activeMenu ? (
-        <div className="c-menu--mobile__backdrop">
+        <div className="c-menu--mobile__backdrop c-menu--mobile__submenu">
           <Accordion
             trigger={
               <div className="c-menu--mobile__trigger-box">
-                <MobileMainMenuItem item={menuItems[0]} />
+                <MainMenuMobileItem item={menuItems[0]} />
                 <ArrowDownCollapsible />
               </div>
             }
@@ -95,7 +113,7 @@ export const MenuMobile = props => {
           <Accordion
             trigger={
               <div className="c-menu--mobile__trigger-box">
-                <MobileMainMenuItem item={menuItems[1]} />
+                <MainMenuMobileItem item={menuItems[1]} />
                 <ArrowDownCollapsible />
               </div>
             }
@@ -109,7 +127,7 @@ export const MenuMobile = props => {
           <Accordion
             trigger={
               <div className="c-menu--mobile__trigger-box">
-                <MobileMainMenuItem item={menuItems[2]} />
+                <MainMenuMobileItem item={menuItems[2]} />
                 <ArrowDownCollapsible />
               </div>
             }
@@ -121,9 +139,21 @@ export const MenuMobile = props => {
             </ul>
           </Accordion>
           <div className="c-menu--mobile__trigger-box">
-            <MobileMainMenuItem item={menuItems[3]} />
+            <MainMenuMobileItem item={menuItems[3]} />
           </div>
           <SocialFollow items={socialItems} />
+        </div>
+      ) : null}
+      {searchOpen ? (
+        <div className="c-menu--mobile__backdrop c-menu--mobile__submenu">
+          <div className="c-menu--mobile__trigger-box">
+            <SearchFieldV2
+              isOpen={activeSearchMenu}
+              isAlwaysOpen={true}
+              triggerSearchMenu={triggerSearchMenu}
+              searchData={searchData}
+            />
+          </div>
         </div>
       ) : null}
     </div>

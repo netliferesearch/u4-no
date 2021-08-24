@@ -52,11 +52,8 @@ export const Layout = props => {
       <HeadComponent {...headComponentConfig} />
       {showTopTab && (
         <>
-          <div className={`c-top-bar__background ${activeMenu ? '' : 'u-bg-transparent-blue'}`} />
+          <div className={`c-top-bar__background ${activeMenu || searchOpen ? '' : 'u-bg-transparent-blue'}`} />
           <div {...classes('', 'fixed')}>
-            {/* <a href="#" {...classes('logo-cmi')}>
-              <LogoCMI />
-            </a> */}
             <div className="o-wrapper-medium fixed-header-content" ref={ref}>
               {!hideLogo && (
                 <Link href="/">

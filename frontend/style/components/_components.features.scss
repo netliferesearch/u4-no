@@ -40,9 +40,7 @@
 .c-features__icon {
   img {
     width: 90px;
-     filter: invert(1);
-    // mix-blend-mode: screen;
- //mix-blend-mode: exclusion;
- mix-blend-mode: luminosity;
+    filter: invert(0.8);
+    mix-blend-mode: screen;
   }
 }

@@ -38,14 +38,14 @@ const TopicsOverview = ({ data: { topics = [] } }) => {
       }}
     >
       <div className="c-topic-index">
-        <section className="o-wrapper-full">
-          <div className="o-wrapper-medium">
+        <section className="o-wrapper-medium">
+          <div>
             <PageIntro title={topicsPageContent.title} text={topicsPageContent.intro} />
           </div>
         </section>
         <hr className="u-section-underline--no-margins" />
-        <section className="c-topic-index__list o-wrapper-full">
-          <div className="o-wrapper-medium">
+        <section className="c-topic-index__list o-wrapper-medium">
+          <div>
             <p className="c-topic-index__topic-count u-body--small u-text--grey">
               {sortedTopics.length} {topicsPageContent.title}
             </p>

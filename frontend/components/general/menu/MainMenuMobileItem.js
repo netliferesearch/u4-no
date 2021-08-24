@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-export const MobileMainMenuItem = ({ item = {} }) => {
+export const MainMenuMobileItem = ({ item = {} }) => {
   return item.slug ? (
     <Link href={item.slug}>
       <a className="c-menu__link u-no-underline">
