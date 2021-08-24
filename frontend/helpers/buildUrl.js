@@ -13,7 +13,7 @@ const BuildUrl = ({ _type = 'notype', slug = {} }) => {
   } else if (_type === 'article') {
     return `/${actualSlug}`;
   } else if (_type === 'person') {
-    return `/the-team/${actualSlug}`;
+    return `/${actualSlug}`;
   } else if (_type === 'frontpage') {
     return `/${actualSlug}`;
   } else if (_type === 'course') {
@@ -25,7 +25,7 @@ const BuildUrl = ({ _type = 'notype', slug = {} }) => {
   } else if (_type === 'term') {
     return `/terms#${actualSlug}`;
   } else if (_type === 'people') {
-    return `/the-team`;
+    return `/${actualSlug}`;
   } else if (_type === 'blog-post') {
     return `/blog/${actualSlug}`;
   }

@@ -8,7 +8,16 @@ import { ChevronGrey } from '../icons/ChevronGrey';
  * It is a simplified version of the original BreadCrumb, which has more capabilities.
  */
 
-export const BreadCrumbV2 = ({ parentSlug = '', title = '', home = true, onDark = false, currentSlug = '', currentTitle = '' }) => {
+export const BreadCrumbV2 = ({
+  parentSlug = '',
+  title = '',
+  home = true,
+  onDark = false,
+  currentSlug = '',
+  currentTitle = '',
+  grandParentSlug = '',
+  grandParentTitle = '',
+}) => {
   return (
     <div className={`c-breadcrumb c-breadcrumb--${onDark ? 'onDark' : ''}`}>
       <div className="c-breadcrumb-inner">
@@ -16,6 +25,16 @@ export const BreadCrumbV2 = ({ parentSlug = '', title = '', home = true, onDark 
           <div className="c-breadcrumb__item">
             <Link href={'/'}>
               <a className="c-breadcrumb__link c-btn--link">Home</a>
+            </Link>
+          </div>
+        ) : null}
+        {grandParentSlug && grandParentTitle ? (
+          <div className="c-breadcrumb__item">
+            <ChevronGrey color={onDark ? '#ffffff' : '#333333'} />
+            <Link href={grandParentSlug}>
+              <a className="c-breadcrumb__link c-btn--link">
+                <span>{grandParentTitle}</span>
+              </a>
             </Link>
           </div>
         ) : null}
@@ -29,6 +48,7 @@ export const BreadCrumbV2 = ({ parentSlug = '', title = '', home = true, onDark 
             </Link>
           </div>
         ) : null}
+
         {currentSlug && currentTitle ? (
           <div className="c-breadcrumb__item">
             <ChevronGrey color={onDark ? '#ffffff' : '#333333'} />

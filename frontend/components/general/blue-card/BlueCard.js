@@ -42,11 +42,15 @@ export const BlueCard = ({ post, type, content = {} }) => {
               <TextClamp text={post.lead} lines={3} />
             </div>
           )}
-          {post.longTitle && (
+          {type === CARD_TYPE.TOPIC && post.standfirst ? (
+            <div className="u-body u-text--dark-blue c-blue-card__p--topic">
+              <TextClamp text={post.standfirst} lines={3} />
+            </div>
+          ) : (
             <p className="u-body u-text--dark-blue c-blue-card__p--topic">{post.longTitle}</p>
           )}
         </div>
-        {type === CARD_TYPE.TOPIC && (
+        {type === CARD_TYPE.TOPIC && post._updatedAt && (
           <p className="c-blue-card__date u-body--small">
             {post._updatedAt && 'Updated ' + dateToString({ start: post._updatedAt })}
           </p>

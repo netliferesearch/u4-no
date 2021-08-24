@@ -61,9 +61,12 @@ export const Post = ({ post, type }) => {
             <h4 className="c-post__title">
               <TextClamp text={post.title} lines={ellipsizeLines[type]} />
             </h4>
-            <div className="c-post__article-content u-body">
-              <TextClamp text={post.standfirst} lines={standFirstLines[type]} />
-            </div>
+            {post.standfirst && (
+              <div className="c-post__article-content u-body">
+                <TextClamp text={post.standfirst} lines={standFirstLines[type]} />
+              </div>
+            )}
+
             {post.date ? (
               <div className="c-post__date u-body--small">
                 {dateToString({ start: post.date.utc })}

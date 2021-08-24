@@ -1,10 +1,7 @@
-import { useState } from 'react';
-import sortBy from 'lodash/sortBy';
 import Layout from '../../components/Layout';
 import Footer from '../../components/general/footer/Footer';
-import Team from '../../components/Team';
+import { Team } from '../../components/Team';
 import DataLoader from '../../helpers/data-loader';
-import ArrowLarge from '../../components/icons/ArrowLarge';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers';
 import { PERSON_CARD_TYPE } from '../../components/general/person/PersonCard';
@@ -15,7 +12,6 @@ const Persons = props => {
     data: { frontpage, persons, helpdesk, affiliatedexperts },
     url = {},
   } = props;
-  const [group, setGroup] = useState(1);
   return (
     <Layout
       headComponentConfig={{
@@ -31,74 +27,24 @@ const Persons = props => {
         />
         <hr className="u-section-underline--no-margins" />
       </div>
+      <div className="c-article u-margin-bottom-huge">
+        <div className="o-wrapper-medium">
+          <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading={'The u4 team'} members={persons} />
+          <hr className="u-section-underline--no-margins" />
+        </div>
 
-      {/* <div className="c-filters-v2--standalone ">
-        <div className="c-filters-v2__label--standalone">
-          Filter people by:
-          <button className="c-filters-v2__item--standalone" onClick={() => setGroup(1)}>
-            <a>U4 Team</a>
-          </button>
-          <button className="c-filters-v2__item--standalone" onClick={() => setGroup(2)}>
-            <a>U4 Helpdesk</a>
-          </button>
-          <button className="c-filters-v2__item--standalone" onClick={() => setGroup(3)}>
-            <a>Affiliated Experts</a>
-          </button>
+        <div className="o-wrapper-medium">
+          <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading={'Help desk'} members={helpdesk} />
+          <hr className="u-section-underline--no-margins" />
         </div>
-      </div> */}
-      <div className="o-wrapper c-article u-margin-bottom-huge">
-        <div className="o-wrapper-full">
-          <div className="o-wrapper-medium">
-            <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading={'The u4 team'} members={persons} />
-            <hr className="u-section-underline--no-margins" />
-          </div>
-        </div>
-        <div className="o-wrapper-full">
-          <div className="o-wrapper-medium">
-            <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading={'Help desk'} members={helpdesk} />
-            <hr className="u-section-underline--no-margins" />
-          </div>
-        </div>
-        <div className="o-wrapper-full">
-          <div className="o-wrapper-medium">
-            <Team
-              type={PERSON_CARD_TYPE.IMAGE_TOP}
-              heading={'Affiliates'}
-              members={affiliatedexperts}
-            />
-          </div>
-        </div>
-        {/* <Team type={PERSON_CARD_TYPE.IMAGE_TOP} members={persons.affiliatedexperts} />
-        <Team type={PERSON_CARD_TYPE.IMAGE_TOP} members={persons.helpdesk} /> */}
 
-        {/* {group === 1 ? (
-          <div id="advisors">
-            <h2 className="c-article__title c-article__title--center">U4 TEAM</h2>
-            <Team
-              light
-              applyJob
-              members={sortBy(persons, ({ firstName = '' }) => firstName.toUpperCase())}
-            />
-          </div>
-        ) : null}
-        {group === 2 ? (
-          <div id="advisors2">
-            <h2 className="c-article__title c-article__title--center">U4 HELPDESK</h2>
-            <Team
-              light
-              members={sortBy(helpdesk, ({ firstName = '' }) => firstName.toUpperCase())}
-            />
-          </div>
-        ) : null}
-        {group === 3 ? (
-          <div id="advisors3">
-            <h2 className="c-article__title c-article__title--center">AFFILIATED EXPERTS</h2>
-            <Team
-              light
-              members={sortBy(affiliatedexperts, ({ firstName = '' }) => firstName.toUpperCase())}
-            />
-          </div>
-        ) : null} */}
+        <div className="o-wrapper-medium">
+          <Team
+            type={PERSON_CARD_TYPE.IMAGE_TOP}
+            heading={'Affiliates'}
+            members={affiliatedexperts}
+          />
+        </div>
       </div>
       <Footer />
     </Layout>

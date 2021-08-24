@@ -1,8 +1,12 @@
 .c-person-card__wrapper {
   display: flex;
+  flex-direction: column;
   color: $mid-grey;
   font-size: $font-size-tiny;
 
+  @include mq($from: tablet) {
+    flex-direction: row;
+  }
   img {
     border-radius: 50%;
     align-self: center;
@@ -38,18 +42,26 @@
 }
 
 .c-person-card--profile {
+  margin-bottom: 40px;
+
   h2 {
     font-weight: bold;
     margin: 0;
+    text-align: center;
   }
 
   .c-person-card__info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 30px;
+    align-items: center;
     width: auto;
     font-size: $font-size-small;
+
+    @include mq($from: tablet) {
+      align-items: flex-start;
+      margin-left: 30px;
+    }
   }
 
   .c-person-card__adress {
@@ -61,6 +73,9 @@
     margin-top: 25px;
   }
 
+  .c-social--follow__item:nth-of-type(4n) {
+    margin-right: 0px;
+  }
   path {
     stroke: $dark-blue;
   }
@@ -77,7 +92,6 @@
     transition: $global-transition--longer;
   }
   .c-social-icons-svg {
-    margin: 5px;
     overflow: visible !important;
   }
 }
@@ -136,5 +150,10 @@
   justify-content: center;
   display: flex;
   width: 100%;
+  margin-bottom: 30px;
   // max-width: 176px;
+
+  @include mq($from: tablet) {
+    margin: 0px;
+  }
 }

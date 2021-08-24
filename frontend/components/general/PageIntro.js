@@ -11,7 +11,9 @@ export const PageIntro = ({
     <div className={`c-page-intro c-page-intro--${type}`}>
       {contentType && (
         <h4
-          className={`u-secondary-heading u-secondary-h4 u-detail--blue--small ${onDark ? 'u-text--white' : ''}`}
+          className={`u-secondary-heading u-secondary-h4 u-detail--blue--small ${
+            onDark ? 'u-text--white' : ''
+          }`}
         >
           {contentType}
         </h4>
@@ -24,7 +26,9 @@ export const PageIntro = ({
         </h1>
       )}
       {text && (
-        <p className={`c-page-intro__p ${onDark ? ' u-body--white' : ' u-body--grey'}`}>{text}</p>
+        <div className={`c-page-intro__p ${onDark ? ' u-body--white' : ' u-body--grey'}`}>
+          {text}
+        </div>
       )}
     </div>
   );
