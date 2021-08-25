@@ -16,7 +16,7 @@ export const PersonCard = ({ person, type }) => {
     <div className={`c-person-card__wrapper c-person-card--${type}`}>
       <Link href={`/the-team/${person.slug.current}`}>
         <a>
-          <div className={`c-person-card__image-wrapper ${type}`}>
+          <div className="c-person-card__image-wrapper">
             <Image
               loader={sanityImageLoader}
               src={person.image.asset.url}
@@ -32,7 +32,7 @@ export const PersonCard = ({ person, type }) => {
           </div>
         </a>
       </Link>
-      <div className={`c-person-card__info ${type}`}>
+      <div className="c-person-card__info">
         {type === PERSON_CARD_TYPE.PROFILE && (
           <div className=" u-secondary-heading u-secondary-h4 u-detail--blue--small">
             U4 team member

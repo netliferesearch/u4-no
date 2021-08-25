@@ -64,7 +64,8 @@
     }
   }
 
-  .c-person-card__adress {
+  .c-person-card__adress,
+  .c-btn.c-btn--link {
     display: none;
   }
   .c-social--share__item {
@@ -85,36 +86,6 @@
       margin-right: 40px;
     }
   }
-
-  .c-btn.c-btn--link {
-    display: none;
-  }
-  // .c-social--follow {
-  //   display: flex;
-  //   margin-top: 25px;
-  // }
-
-  // .c-social--follow__item:nth-of-type(4n) {
-  //   margin-right: 0px;
-  // }
-  // path {
-  //   stroke: $dark-blue;
-  // }
-
-  // .c-social-icons-firstpath {
-  //   stroke: $dark-blue;
-  //   transition: $global-transition--longer;
-  //   margin: 5px;
-  // }
-
-  // .c-social-icons-secondpath {
-  //   stroke: $dark-blue;
-  //   fill: $dark-blue;
-  //   transition: $global-transition--longer;
-  // }
-  // .c-social-icons-svg {
-  //   overflow: visible !important;
-  // }
 }
 
 .c-person-card--image-top {
@@ -128,7 +99,8 @@
     text-align: center;
   }
 
-  a {
+  a,
+  .c-person-card__email {
     align-items: center;
     display: flex;
   }
@@ -151,28 +123,11 @@
   }
 }
 
-.c-person-card__email {
-  display: flex;
-  align-items: center;
-}
-
-// .icon {
-//   display: flex;
-//   align-items: flex-end;
-// }
-
-.c-social--follow__item:hover .c-social-icons-firstpath {
-  -webkit-filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.2));
-  filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.2));
-  transition: $global-transition--longer;
-}
-
 .c-person-card__image-wrapper {
   justify-content: center;
   display: flex;
   width: 100%;
   margin-bottom: 30px;
-  // max-width: 176px;
 
   @include mq($from: tablet) {
     margin: 0px;
