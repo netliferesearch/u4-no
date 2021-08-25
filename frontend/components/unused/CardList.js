@@ -17,9 +17,9 @@ export const CardList = ({ resources = [], alt = false }) => {
 
   const renderDotsItem = ({ isActive }) => {
     return isActive ? (
-      <div className="c-carousel-dots-active" />
+      <div className="c-carousel__dots--active" />
     ) : (
-      <div className="c-carousel-dots-deactivated" />
+      <div className="c-carousel__dots--deactivated" />
     );
   };
   return (

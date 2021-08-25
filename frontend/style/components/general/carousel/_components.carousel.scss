@@ -1,0 +1,53 @@
+.alice-carousel__stage {
+  scroll-padding-left: $inuit-global-spacing-unit;
+}
+
+.alice-carousel__stage-item {
+  padding-right: $gutter-width;
+}
+
+.alice-carousel__stage-item:first-child {
+  padding-left: $inuit-global-spacing-unit;
+  @include mq($from: tablet) {
+    padding-left: 0;
+  }
+}
+
+.alice-carousel__dots {
+  margin: 12px 0 0 0;
+}
+
+.alice-carousel__dots > li {
+  margin: 0 4px;
+}
+
+.c-carousel__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  transform: translateY(50%);
+  top: calc(50% - 84px);
+  border: none;
+  outline: none;
+  border-radius: 0;
+  background-color: $light-grey;
+  padding: 10px 17px;
+  &:disabled {
+    svg {
+      opacity: 0.3;
+    }
+  }
+}
+
+.c-carousel__btn--prev {
+  left: -70px;
+  svg {
+    transform: rotate(180deg);
+  }
+}
+
+.c-carousel__btn--next {
+  right: -70px;
+}
