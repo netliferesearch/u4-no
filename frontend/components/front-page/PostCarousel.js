@@ -4,6 +4,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import { ArrowNext } from '../icons/ArrowNext';
 import { Post, POST_TYPE } from '../general/post/Post';
 import PropTypes from 'prop-types';
+import { ArrowCarousel } from '../icons/ArrowCarousel';
 
 const columnsByType = {
   [POST_TYPE.SMALL]: 3,
@@ -22,13 +23,28 @@ export const PostCarousel = ({ posts, type, buttonPath, title, minPosts }) => {
   const items = posts && posts.map(post => <Post key={post._id} type={type} post={post} />);
   const renderDotsItem = ({ isActive }) => {
     return isActive ? (
-      <div className="c-carousel-dots-active" />
+      <div className="c-carousel__dots--active" />
     ) : (
-      <div className="c-carousel-dots-deactivated" />
+      <div className="c-carousel__dots--deactivated" />
     );
   };
+  const renderPrevButton = ({ isDisabled }) => (
+    <button className="c-carousel__btn c-carousel__btn--prev" disabled={isDisabled}>
+      <ArrowCarousel />
+    </button>
+  );
+  const renderNextButton = ({ isDisabled }) => (
+    <button className="c-carousel__btn c-carousel__btn--next" disabled={isDisabled}>
+      <ArrowCarousel />
+    </button>
+  );
+
   return (
-    <div className={`c-post-list c-post-list--2col c-post-list--column-${columnsByType[type]}`}>
+    <div
+      className={`c-post-list c-carousel c-post-list--2col c-post-list--column-${
+        columnsByType[type]
+      }`}
+    >
       <div className="o-wrapper-medium">
         {title && <h4 className="u-secondary-heading u-secondary-h1 u-detail--blue">{title}</h4>}
       </div>
@@ -37,8 +53,10 @@ export const PostCarousel = ({ posts, type, buttonPath, title, minPosts }) => {
           items={items}
           responsive={responsive}
           renderDotsItem={renderDotsItem}
-          disableButtonsControls
+          disableButtonsControls={items.length > minPosts ? false : true}
           disableDotsControls={items.length > minPosts ? false : true}
+          renderPrevButton={renderPrevButton}
+          renderNextButton={renderNextButton}
         />
         <div className="o-wrapper-medium c-view-all">
           <a className="c-btn c-btn--link" href={buttonPath}>

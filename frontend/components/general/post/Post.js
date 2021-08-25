@@ -37,7 +37,7 @@ const renderImage = type => {
 };
 export const Post = ({ post, type }) => {
   return (
-    <div className={`c-post ${type}`}>
+    <div className={`c-post ${type} ${type === 'large' ? 'u-sticky' : ''}`}>
       <LinkToItem type={post._type} slug={post.slug}>
         <a className="c-post__link u-fake-anchor">
           {post.imageUrl && renderImage(type) && (

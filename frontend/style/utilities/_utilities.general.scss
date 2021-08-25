@@ -105,6 +105,15 @@ iframe {
   z-index: 99999;
 }
 
+.u-static {
+  position: static;
+}
+
+.u-sticky {
+  position: sticky;
+  top: 120px;
+}
+
 .u-scroll-bar {
   @include mq($from: tablet) {
     margin-left: calc(100vw - 100%);

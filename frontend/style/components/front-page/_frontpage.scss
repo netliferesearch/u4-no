@@ -41,50 +41,49 @@
   }
 }
 
-.c-featured-post__item {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  // margin-bottom: 40px;
-  border-color: transparent;
+// .c-featured-post__item {
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   flex-wrap: wrap;
+//   // margin-bottom: 40px;
+//   border-color: transparent;
 
-  .c-featured-post__featured-image {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
+//   .c-featured-post__featured-image {
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     background-position: center center;
+//   }
 
-  .u-primary-heading {
-    margin-top: 8px;
-  }
+//   .u-primary-heading {
+//     margin-top: 8px;
+//   }
 
-  .u-secondary-heading {
-    margin-top: 0;
-  }
+//   .u-secondary-heading {
+//     margin-top: 0;
+//   }
 
-  &:hover,
-  &:visited:hover {
-    border-color: transparent;
+//   &:hover,
+//   &:visited:hover {
+//     border-color: transparent;
 
-    h3 {
-      color: $brand-main;
-      //border-color: transparent;
-      //text-decoration: underline;
-    }
-  }
+//     h3 {
+//       color: $brand-main;
+//       //border-color: transparent;
+//       //text-decoration: underline;
+//     }
+//   }
 
-  &:focus {
-    border-color: transparent;
-  }
+//   &:focus {
+//     border-color: transparent;
+//   }
 
-  @include mq($from: mobile, $until: desktop) {
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-
-}
+//   @include mq($from: mobile, $until: desktop) {
+//     flex-direction: row;
+//     flex-wrap: nowrap;
+//   }
+// }
 
 .c-featured-first-post__item {
   width: 100%;
@@ -188,50 +187,46 @@
 }
 
 .c-featured-post__name {
-  font-family: $font-sans;
   color: $dark-grey;
-  font-size: 15px;
-  line-height: 1.6;
-  font-weight: 400;
   margin: 0;
 }
 
-.c-featured-post__item--big {
-  .c-featured-first-post__featured-image {
-    width: 100%;
-    height: 156px;
-    //max-width: 264px;
-    margin-bottom: 32px;
-    @include mq($from: tablet) {
-      height: 312px;
-      //max-width: 736px;
-    }
-  }
-}
+// .c-featured-post__item--big {
+//   .c-featured-first-post__featured-image {
+//     width: 100%;
+//     height: 156px;
+//     //max-width: 264px;
+//     margin-bottom: 32px;
+//     @include mq($from: tablet) {
+//       height: 312px;
+//       //max-width: 736px;
+//     }
+//   }
+// }
 
-.c-featured-post__item--small {
-  // margin-bottom: 40px;
-  .c-featured-post__featured-image {
-    width: 100%;
-    height: 156px;
-    //max-width: 264px;
-    margin-bottom: 12px;
+// .c-featured-post__item--small {
+//   // margin-bottom: 40px;
+//   .c-featured-post__featured-image {
+//     width: 100%;
+//     height: 156px;
+//     //max-width: 264px;
+//     margin-bottom: 12px;
 
-    @include mq($from: mobile, $until: desktop) {
-      width: 100%;
-      height: auto;
-      margin-bottom: 0;
-      margin-right: 10px;
-    }
-    @include mq($from: tablet) {
-    }
-  }
+//     @include mq($from: mobile, $until: desktop) {
+//       width: 100%;
+//       height: auto;
+//       margin-bottom: 0;
+//       margin-right: 10px;
+//     }
+//     @include mq($from: tablet) {
+//     }
+//   }
 
-  h3 {
-    color: $dark-grey;
-    margin: 12px 0 24px 0;
-  }
-}
+//   h3 {
+//     color: $dark-grey;
+//     margin: 12px 0 24px 0;
+//   }
+// }
 
 .c-events__item--small {
   margin-bottom: 40px;
@@ -283,29 +278,6 @@
     display: flex;
     justify-content: space-between;
   }
-}
-
-.alice-carousel__stage {
-  scroll-padding-left: $inuit-global-spacing-unit;
-}
-
-.alice-carousel__stage-item {
-  padding-right: $gutter-width;
-}
-
-.alice-carousel__stage-item:first-child {
-  padding-left: $inuit-global-spacing-unit;
-  @include mq($from: tablet) {
-    padding-left: 0;
-  }
-}
-
-.alice-carousel__dots {
-  margin: 12px 0 0 0;
-}
-
-.alice-carousel__dots > li {
-  margin: 0 4px;
 }
 
 .c-post-list--column-3 .alice-carousel__stage-item:nth-child(3n) {
@@ -473,7 +445,7 @@
   color: $mid-grey;
 }
 
-.c-carousel-dots-active {
+.c-carousel__dots--active {
   width: 10px;
   height: 10px;
   background-color: $brand-main;
@@ -485,7 +457,7 @@
   }
 }
 
-.c-carousel-dots-deactivated {
+.c-carousel__dots--deactivated {
   width: 10px;
   height: 10px;
   background-color: #b3d7f1;
