@@ -13,6 +13,7 @@ export const POST_TYPE = {
   BLOG: 'blog', //special post for blogs
   PUBLICATION: 'publication', //special post for publication
   LARGE: 'large', //large in desktop, full with image in mobile
+  CARD: 'card', //render BlueCard onstead of Post
 };
 const ellipsizeLines = {
   [POST_TYPE.SMALL]: 4,
