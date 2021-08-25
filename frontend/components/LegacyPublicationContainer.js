@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 
 import Image from 'next/image';
-import sanityImageLoader from './sanityImageLoader';
+import sanityImageLoader from '../helpers/sanityImageLoader';
 
 import Footer from '../components/general/footer/Footer';
 import Layout from './Layout';

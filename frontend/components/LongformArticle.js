@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from './serializers';
+import serializers from './serializers/serializers';
 import findFootnotes from './findFootnotes';
 import footnoteSerializer from './footnoteSerializer';
 
@@ -45,7 +45,7 @@ export default LongformArticle;
 
 // import React, { Fragment } from 'react';
 // import BlockContent from '@sanity/block-content-to-react';
-// import serializers from './serializers';
+// import serializers from './serializers/serializers';
 // import findFootnotes from './findFootnotes';
 // import footnoteSerializer from './footnoteSerializer';
 // import { Littlefoot } from './Littlefoot';

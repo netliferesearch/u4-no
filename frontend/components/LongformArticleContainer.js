@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Image from 'next/image';
-import sanityImageLoader from './sanityImageLoader';
+import sanityImageLoader from '../helpers/sanityImageLoader';
 
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import dateToString from '../helpers/dateToString';

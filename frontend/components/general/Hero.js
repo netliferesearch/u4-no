@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import sanityImageLoader from '../../components/sanityImageLoader';
+import sanityImageLoader from '../../helpers/sanityImageLoader';
 import { Topics } from '../../components/general/topics/Topics';
 import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
 import { PhotoCaptionCredit } from './PhotoCaptionCredit';

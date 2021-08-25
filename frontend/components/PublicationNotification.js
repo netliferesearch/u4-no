@@ -4,7 +4,7 @@ import Link from 'next/link';
 import BlockContent from '@sanity/block-content-to-react';
 import BEMHelper from 'react-bem-helper';
 
-import serializers from './serializers';
+import serializers from './serializers/serializers';
 import bibliographicReference from '../helpers/bibliographicReference';
 import buildUrl from '../helpers/buildUrl';
 

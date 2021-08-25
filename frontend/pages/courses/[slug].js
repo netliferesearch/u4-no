@@ -8,7 +8,7 @@ import { CourseHeader } from '../../components/courses/CourseHeader';
 import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
 import { CourseSidebar } from '../../components/courses/CourseSidebar';
 import { ShareOpen } from '../../components/general/social/ShareOpen';
-import serializers from '../../components/serializers';
+import serializers from '../../components/serializers/serializers';
 import { PersonBasic } from '../../components/PersonBasic';
 import LogoU4 from '../../components/icons/LogoU4';
 import { RegisterForm } from '../../components/courses/RegisterForm';
@@ -82,13 +82,6 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
         </section>
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper u-side-padding">
-          <div className="o-wrapper-section c-article__row u-hidden--tablet">
-            <BreadCrumbV2
-              title={`All Online Courses`}
-              parentSlug={'/online-courses'}
-              home={true}
-            />
-          </div>
           <div className="o-wrapper-section c-article__row">
             <div className="c-article__side c-article__col">
               <CourseSidebar data={course} side={'left'} />

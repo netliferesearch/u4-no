@@ -3,7 +3,7 @@ import Footer from '../../components/general/footer/Footer';
 import { Team } from '../../components/Team';
 import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from '../../components/serializers';
+import serializers from '../../components/serializers/serializers';
 import { PERSON_CARD_TYPE } from '../../components/general/person/PersonCard';
 import { PageIntro } from '../../components/general/PageIntro';
 
