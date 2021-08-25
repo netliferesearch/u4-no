@@ -1,19 +1,28 @@
+.alice-carousel__wrapper {
+ margin: 0 -15px;
+  // margin-left: -15px;
+  // margin-right: 0;
+}
+
 .alice-carousel__stage {
-  scroll-padding-left: $inuit-global-spacing-unit;
+  //scroll-padding-left: $inuit-global-spacing-unit;
   display: grid;
   grid-auto-flow: column;
-  column-gap: 30px;
+  //column-gap: 30px;
+  //padding: 15px;
 }
 
 .alice-carousel__stage-item {
-  //padding-right: $gutter-width;
+  //padding-right: 30px;
+ // padding-left: 30px;
+  padding: 15px;
 }
 
 .alice-carousel__stage-item:first-child {
-  padding-left: $inuit-global-spacing-unit;
-  @include mq($from: tablet) {
-    padding-left: 0;
-  }
+  //padding-left: $inuit-global-spacing-unit;
+  // @include mq($from: tablet) {
+  //   padding-left: 0;
+  // }
 }
 
 .alice-carousel__dots {
