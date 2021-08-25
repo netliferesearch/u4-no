@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import BEMHelper from 'react-bem-helper';
 import { DownArrowButton } from './general/buttons';
-import serializers from './serializers';
+import serializers from './serializers/serializers';
 
 const classes = BEMHelper({
   name: 'textbox',

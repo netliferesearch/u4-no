@@ -84,10 +84,10 @@
       //   background-position: center;
       //   background-repeat: no-repeat;
       // }
-      .c-longform-grid__standard {
-        padding: 0;
-        margin: 0;
-      }
+      // .c-longform-grid__standard {
+      //   padding: 0;
+      //   margin: 0;
+      // }
     }
 
     @include mq($from: tablet) {
@@ -198,9 +198,9 @@
   .u-primary-heading {
     margin-top: 0;
   }
-  .c-longform-grid__standard {
-    padding: 0;
-  }
+  // .c-longform-grid__standard {
+  //   padding: 0;
+  // }
   p,
   li {
     font-family: $font-sans;

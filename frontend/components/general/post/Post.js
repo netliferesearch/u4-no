@@ -1,6 +1,6 @@
 import React from 'react';
 import dateToString from '../../../helpers/dateToString';
-import sanityImageLoader from '../../sanityImageLoader';
+import sanityImageLoader from '../../../helpers/sanityImageLoader';
 import Image from 'next/image';
 import { Topics } from '../topics/Topics';
 import LinkToItem from '../LinkToItem';

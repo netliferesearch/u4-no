@@ -1,5 +1,5 @@
 import React from 'react';
-import serializers from '../../components/serializers';
+import serializers from '../../components/serializers/serializers';
 import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import { Layout } from '../../components/Layout';
@@ -100,7 +100,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
           )}
           <div className="o-wrapper-section c-blog-entry__row u-hidden--tablet-flex">
             <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} home={true} />
-            <PhotoCaptionCredit featuredImage={featuredImage} />
+            {featuredImage ? <PhotoCaptionCredit featuredImage={featuredImage} /> : null}
           </div>
           <div className="o-wrapper-section c-blog-entry__row">
             <div className="c-blog-entry__side c-blog-entry__col">

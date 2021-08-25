@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import slugify from 'slugify';
 import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from '../../components/serializers';
+import serializers from '../../components/serializers/serializers';
 import Image from 'next/image';
-import sanityImageLoader from '../../components/sanityImageLoader';
+import sanityImageLoader from '../../helpers/sanityImageLoader';
 import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import ServiceArticle from '../../components/ServiceArticle';
 import LinkList from '../../components/general/LinkList';
+import { PageIntro } from '../../components/general/PageIntro';
 
 const ServicePage = ({ data: { service = {}, url = {} } }) => {
   const {
@@ -30,18 +31,19 @@ const ServicePage = ({ data: { service = {}, url = {} } }) => {
         ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
       }}
     >
-      <h2
+      {/* <h2
         id={slugify(title, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })}
         className="c-topic-page_title"
       >
         {title}
-      </h2>
-      <h2
+      </h2> */}
+      {/* <h2
         id={slugify(longTitle, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })}
         className="c-topic-page__longTitle"
       >
         {longTitle}
-      </h2>
+      </h2> */}
+      <PageIntro title={longTitle} />
       {featuredImage ? (
         <section className="c-boxOnImage">
           <figure className="c-boxOnImage__figure">

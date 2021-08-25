@@ -1,7 +1,7 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from './serializers';
+import serializers from './serializers/serializers';
 
 const classes = BEMHelper({
   name: 'text-image-block',

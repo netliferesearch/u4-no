@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import ClientOnlyPortal from './general/ClientOnlyPortal';
-import { CloseButton, TextButton } from './general/buttons';
-import { useOnClickOutside, useLockBodyScroll } from '../helpers/hooks';
+import ClientOnlyPortal from '../general/ClientOnlyPortal';
+import { CloseButton, TextButton } from '../general/buttons';
+import { useOnClickOutside, useLockBodyScroll } from '../../helpers/hooks';
 
 /**
  * V2 - RegiserForm component to be used in CourseHeader component

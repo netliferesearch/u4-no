@@ -1,7 +1,7 @@
 import React, { Component, useRef, useState } from 'react';
 import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from '../../components/serializers';
+import serializers from '../../components/serializers/serializers';
 
 
 import Layout from '../../components/Layout';
@@ -12,6 +12,7 @@ import { useScrollInfo } from '../../helpers/useScrollInfo';
 import Link from 'next/link';
 import LogoU4 from '../../components/icons/LogoU4';
 import Footer from '../../components/general/footer/Footer';
+import { PageIntro } from '../../components/general/PageIntro';
 
 const ServicePage = ({
   data: {
@@ -76,20 +77,17 @@ const ServicePage = ({
             <hr className="u-section-underline--no-margins" />
           </div>
         ) : null}
-        <section className="o-wrapper u-side-padding">
-          <div className="o-wrapper-section">
-            <div className="c-service-page__intro">
-              <h2 className="u-heading--6">{title}</h2>
-              <h2 className="u-heading--1">{longTitle}</h2>
-              <BlockContent blocks={lead} serializers={serializers} />
-              <div className="">
+        <section className="o-wrapper-medium">
+            <div className="">
+              <PageIntro title={longTitle} text={<BlockContent blocks={lead} serializers={serializers} />} contentType={title}/>
+              
+              <div className="c-btn c-btn--primary c-btn--child-link">
                 <Scrollchor to="#courses" disableHistory>
                   Start for free
                 </Scrollchor>
               </div>
               <span ref={introRef} />
             </div>
-          </div>
         </section>
         <hr className="u-section-underline--no-margins" />
         <div className="u-bg-lightest-grey c-service-page__section c-features__container u-side-padding">

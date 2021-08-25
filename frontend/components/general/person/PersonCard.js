@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import sanityImageLoader from '../../sanityImageLoader';
+import sanityImageLoader from '../../../helpers/sanityImageLoader';
 import Image from 'next/image';
 import { SocialShare } from '../social/SocialShare';
 import { socialItems } from '../social/socialItems';

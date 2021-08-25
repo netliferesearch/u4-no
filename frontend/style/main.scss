@@ -20,7 +20,7 @@
 @import 'components/components.chart';
 @import 'components/components.columns';
 @import 'components/components.duo';
-@import 'components/components.frontpage-feature';
+//@import 'components/components.frontpage-feature';
 @import 'components/components.features';
 @import 'components/components.figure';
 @import 'components/components.filters-v2';
@@ -30,7 +30,6 @@
 @import 'components/components.loader';
 @import 'components/components.loader-v2';
 @import 'components/components.link-list';
-@import 'components/components.longform';
 @import 'components/components.logo';
 @import 'components/components.oneColumnBox';
 @import 'components/components.overview-page';
@@ -45,7 +44,7 @@
 @import 'components/components.simple-mosaic';
 @import 'components/components.select';
 @import 'components/components.partner-promo';
-@import 'components/components.person';
+//@import 'components/components.person';
 @import 'components/components.persons';
 @import 'components/components.team';
 @import 'components/components.table';
@@ -58,8 +57,7 @@
 // @import "components/components.site-nav";
 // @import "components/components.ads";
 // @import "components/components.promo";
-@import 'components/_components.frontpageSearch';
-@import 'components/v2/_components.frontpage-blue-section';
+//@import 'components/_components.frontpageSearch';
 @import 'components/_components.search-v2';
 @import 'components/v2/components.search';
 @import 'components/_components.introduction-text';
@@ -70,7 +68,6 @@
 @import 'components/components.tnrc';
 @import 'components/components.pagebreak';
 
-@import 'components/v2/frontpage';
 @import 'components/v2/components.blog-list';
 @import 'components/v2/components.blog-single';
 @import 'components/v2/components.tags-section';
@@ -101,10 +98,12 @@
 @import 'components/general/breadcrumb/components.breadcrumb';
 @import 'components/general/hero/components.hero';
 @import 'components/general/linkbox/components.linkbox';
+@import 'components/general/longform/components.longform';
 @import 'components/front-page/components.featuredPosts';
 @import 'components/front-page/components.cta';
 @import 'components/front-page/components.learningEvents';
 @import 'components/front-page/components.topics-card-list';
+@import 'components/front-page/frontpage';
 @import 'components/topics/components.topic-page';
 @import 'components/topics/components.topic-index';
 

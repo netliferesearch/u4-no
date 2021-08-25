@@ -1,7 +1,7 @@
 import React from 'react';
 import BlockToContent from '@sanity/block-content-to-react';
 
-export const PhotoCaptionCredit = ({ image, showCaption = true }) => {
+export const PhotoCaptionCredit = ({ image = {}, showCaption = true }) => {
 console.log(image)
   const { license = '', credit = '', sourceUrl = '', caption } = image;
   return (

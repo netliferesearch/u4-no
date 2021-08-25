@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
-import serializers from './serializers';
+import serializers from './serializers/serializers';
 
 const sizeClass = (size) => {
   if (size === 'narrow') {

@@ -75,12 +75,6 @@ const Frontpage = ({
           <hr className="u-section-underline--no-margins" />
         </div>
       </section>
-      {/*<section className="o-wrapper u-side-padding">*/}
-      {/*  <div className="o-wrapper-medium">*/}
-      {/*    <CardList resources={featured.publication} />*/}
-      {/*    /!*<hr className="u-section-underline--no-margins" />*!/*/}
-      {/*  </div>*/}
-      {/*</section>*/}
       <section className="">
         <div className="o-wrapper-medium">
           <LearningEvents events={events} type={CARD_TYPE.MEDIUM}/>

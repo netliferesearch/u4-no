@@ -1,25 +1,5 @@
 .c-courses-overview {
-  font-family: $font-sans;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 1.47;
-  letter-spacing: 0.01em;
-  color: $dark-grey;
-  .u-primary-heading {
-    text-align: center;
-    margin-top: 48px;
-  }
 
-  .c-team {
-    margin: 48px auto;
-    .c-columns__item {
-      margin-bottom: 64px;
-    }
-    .u-primary-heading {
-      text-align: left;
-      margin-top: 0;
-    }
-  }
 }
 
 .c-service-page__intro {
@@ -30,19 +10,19 @@
   h2 {
     margin: 32px 0 0 0;
   }
-  .c-longform-grid__standard {
-    font-family: $font-serif;
-    font-size: 20px;
-    line-height: 30px;
-    font-weight: 400;
-    color: $dark-grey;
-    padding: 0;
-    margin: 24px 0 32px 0;
-    max-width: 580px;
-    @include mq($from: tablet) {
-      margin: 24px 0 40px 0;
-    }
-  }
+  // .c-longform-grid__standard {
+  //   font-family: $font-serif;
+  //   font-size: 20px;
+  //   line-height: 30px;
+  //   font-weight: 400;
+  //   color: $dark-grey;
+  //   padding: 0;
+  //   margin: 24px 0 32px 0;
+  //   max-width: 580px;
+  //   @include mq($from: tablet) {
+  //     margin: 24px 0 40px 0;
+  //   }
+  // }
 }
 
 .c-service-page__section {
@@ -52,15 +32,15 @@
     padding-top: 32px;
     padding-bottom: 32px;
   }
-  .c-longform-grid__standard {
-    color: $mid-grey;
-    font-family: $font-sans;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 28px;
-    letter-spacing: 0.01em;
-    text-align: center;
-  }
+  // .c-longform-grid__standard {
+  //   color: $mid-grey;
+  //   font-family: $font-sans;
+  //   font-size: 18px;
+  //   font-weight: 400;
+  //   line-height: 28px;
+  //   letter-spacing: 0.01em;
+  //   text-align: center;
+  // }
 }
 
 .c-features__container,
@@ -68,10 +48,10 @@
   .c-text-block {
     margin-bottom: 32px;
   }
-  p.c-longform-grid__standard {
-    margin: 0;
-    padding: 0;
-  }
+  // p.c-longform-grid__standard {
+  //   margin: 0;
+  //   padding: 0;
+  // }
 }
 
 .c-features__container {
@@ -159,11 +139,11 @@
 }
 .c-testimonial__text {
   max-width: 674px;
-  .c-longform-grid__standard {
-    margin: $spacing 0;
-    padding: 0;
-    text-align: left;
-  }
+  // .c-longform-grid__standard {
+  //   margin: $spacing 0;
+  //   padding: 0;
+  //   text-align: left;
+  // }
   .u-primary-heading {
     text-align: left;
   }
@@ -205,27 +185,27 @@
 
 .c-text-image-block__body {
   max-width: 552px;
-  h3.c-longform-grid__standard {
-    text-align: left;
-    font-family: $font-sans;
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 1.27;
-    letter-spacing: 0.02em;
-    color: $dark-grey;
-    padding: 0;
-    margin-top: 32px;
-    @include mq($from: tablet) {
-      margin-top: 48px;
-    }
-  }
-  p.c-longform-grid__standard {
-    text-align: left;
-    font-family: $font-serif;
-    font-size: 20px;
-    line-height: 30px;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    padding: 0;
-  }
+  // h3.c-longform-grid__standard {
+  //   text-align: left;
+  //   font-family: $font-sans;
+  //   font-weight: 700;
+  //   font-size: 22px;
+  //   line-height: 1.27;
+  //   letter-spacing: 0.02em;
+  //   color: $dark-grey;
+  //   padding: 0;
+  //   margin-top: 32px;
+  //   @include mq($from: tablet) {
+  //     margin-top: 48px;
+  //   }
+  // }
+  // p.c-longform-grid__standard {
+  //   text-align: left;
+  //   font-family: $font-serif;
+  //   font-size: 20px;
+  //   line-height: 30px;
+  //   font-weight: 400;
+  //   letter-spacing: 0.02em;
+  //   padding: 0;
+  // }
 }

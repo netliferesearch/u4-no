@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from './serializers';
+import serializers from './serializers/serializers';
 import { ArrowDown } from './icons/ArrowDown';
 
 export const ToggleBlock = ({ title = '', content = '', children }) => {
@@ -37,7 +37,7 @@ export const ToggleBlock = ({ title = '', content = '', children }) => {
 // import BEMHelper from 'react-bem-helper';
 // import BlockContent from '@sanity/block-content-to-react';
 // import { DownArrowButton } from '../components/buttons';
-// import serializers from './serializers';
+// import serializers from './serializers/serializers';
 
 // const classes = BEMHelper({
 //   name: 'toggle-block',

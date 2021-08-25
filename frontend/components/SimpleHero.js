@@ -3,7 +3,7 @@ import BEMHelper from 'react-bem-helper';
 import isArray from 'lodash/isArray';
 import BlockContent from '@sanity/block-content-to-react';
 import Link from 'next/link';
-import serializers from './serializers';
+import serializers from './serializers/serializers';
 import PropTypes from 'prop-types';
 
 

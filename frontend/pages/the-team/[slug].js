@@ -11,7 +11,7 @@ import { CARD_TYPE } from '../../components/general/blue-card/BlueCard';
 import { POST_TYPE } from '../../components/general/post/Post';
 import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from '../../components/serializers';
+import serializers from '../../components/serializers/serializers';
 import { format } from 'date-fns';
 
 const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
