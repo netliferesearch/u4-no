@@ -67,33 +67,54 @@
   .c-person-card__adress {
     display: none;
   }
+  .c-social--share__item {
+    margin-right: 24px;
+    &:hover {
+      svg {
+        .c-social-icons-secondpath {
+          fill: $dark-blue;
+        }
+        .c-social-icons-firstpath {
+          stroke: $highlight-yellow;
+          fill: $highlight-yellow;
+        }
+      }
+    }
 
-  .c-social--follow {
-    display: flex;
-    margin-top: 25px;
+    @include mq($from: tablet) {
+      margin-right: 40px;
+    }
   }
 
-  .c-social--follow__item:nth-of-type(4n) {
-    margin-right: 0px;
+  .c-btn.c-btn--link {
+    display: none;
   }
-  path {
-    stroke: $dark-blue;
-  }
+  // .c-social--follow {
+  //   display: flex;
+  //   margin-top: 25px;
+  // }
 
-  .c-social-icons-firstpath {
-    stroke: $dark-blue;
-    transition: $global-transition--longer;
-    margin: 5px;
-  }
+  // .c-social--follow__item:nth-of-type(4n) {
+  //   margin-right: 0px;
+  // }
+  // path {
+  //   stroke: $dark-blue;
+  // }
 
-  .c-social-icons-secondpath {
-    stroke: $dark-blue;
-    fill: $dark-blue;
-    transition: $global-transition--longer;
-  }
-  .c-social-icons-svg {
-    overflow: visible !important;
-  }
+  // .c-social-icons-firstpath {
+  //   stroke: $dark-blue;
+  //   transition: $global-transition--longer;
+  //   margin: 5px;
+  // }
+
+  // .c-social-icons-secondpath {
+  //   stroke: $dark-blue;
+  //   fill: $dark-blue;
+  //   transition: $global-transition--longer;
+  // }
+  // .c-social-icons-svg {
+  //   overflow: visible !important;
+  // }
 }
 
 .c-person-card--image-top {
