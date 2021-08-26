@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import sanityImageLoader from '../../../helpers/sanityImageLoader';
 import Image from 'next/image';
-import { SocialShare } from '../social/SocialShare';
+import { SocialFollow } from '../social/SocialFollow';
 import { socialItems } from '../social/socialItems';
 
 export const PERSON_CARD_TYPE = {
@@ -58,7 +58,13 @@ export const PersonCard = ({ person, type }) => {
         )}
         {type === PERSON_CARD_TYPE.PROFILE && (
           <div className=" c-person-card__social">
-            <SocialShare items={socialItems} />
+            <SocialFollow
+              twitter={person.twitter}
+              linkedIn={person.linkedIn}
+              faceBook={person.faceBook}
+              email={person.email}
+              items={socialItems}
+            />
           </div>
         )}
       </div>
