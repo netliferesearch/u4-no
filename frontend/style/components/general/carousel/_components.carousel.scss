@@ -1,9 +1,12 @@
 .alice-carousel__stage {
   scroll-padding-left: $inuit-global-spacing-unit;
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 30px;
 }
 
 .alice-carousel__stage-item {
-  padding-right: $gutter-width;
+  //padding-right: $gutter-width;
 }
 
 .alice-carousel__stage-item:first-child {
@@ -21,14 +24,47 @@
   margin: 0 4px;
 }
 
+.c-carousel__dots--active {
+  width: 10px;
+  height: 10px;
+  background-color: $brand-main;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-right: 5px;
+  @include mq($from: mobile, $until: desktop) {
+    display: none;
+  }
+}
+
+.c-carousel__dots--deactivated {
+  width: 10px;
+  height: 10px;
+  background-color: #b3d7f1;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-right: 5px;
+  @include mq($from: mobile, $until: desktop) {
+    display: none;
+  }
+}
+
+.alice-carousel__prev-btn,
+.alice-carousel__next-btn {
+  position: absolute;
+  transform: translateY(50%);
+  top: calc(50% - 84px);
+  width: 49px;
+  @include mq($from: mobile, $until: desktop) {
+    display: none;
+  }
+}
+
 .c-carousel__btn {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  position: absolute;
-  transform: translateY(50%);
-  top: calc(50% - 84px);
+  // position: absolute;
   border: none;
   outline: none;
   border-radius: 0;
@@ -41,13 +77,14 @@
   }
 }
 
-.c-carousel__btn--prev {
+.alice-carousel__prev-btn {
   left: -70px;
+}
+.alice-carousel__next-btn {
+  right: -70px;
+}
+.c-carousel__btn--prev {
   svg {
     transform: rotate(180deg);
   }
-}
-
-.c-carousel__btn--next {
-  right: -70px;
 }

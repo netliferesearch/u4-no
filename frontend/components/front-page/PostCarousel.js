@@ -5,12 +5,14 @@ import { ArrowNext } from '../icons/ArrowNext';
 import { Post, POST_TYPE } from '../general/post/Post';
 import PropTypes from 'prop-types';
 import { ArrowCarousel } from '../icons/ArrowCarousel';
+import { BlueCard, CARD_TYPE, CONTENT_BY_TYPE } from '../general/blue-card/BlueCard';
 
 const columnsByType = {
   [POST_TYPE.SMALL]: 3,
   [POST_TYPE.BLOG]: 3,
   [POST_TYPE.PUBLICATION]: 4,
   [POST_TYPE.LARGE]: 3,
+  [POST_TYPE.CARD]: 3,
 };
 
 export const PostCarousel = ({ posts, type, buttonPath, title, minPosts }) => {
@@ -20,7 +22,20 @@ export const PostCarousel = ({ posts, type, buttonPath, title, minPosts }) => {
     980: { items: columnsByType[type] },
   };
   //console.log('posts', posts);
-  const items = posts && posts.map(post => <Post key={post._id} type={type} post={post} />);
+  const items =
+    posts &&
+    posts.map(post =>
+      type === POST_TYPE.CARD ? (
+        <BlueCard
+          key={post._id}
+          type={CARD_TYPE.MEDIUM}
+          post={post}
+          content={CONTENT_BY_TYPE.PUBLICATION}
+        />
+      ) : (
+        <Post key={post._id} type={type} post={post} />
+      )
+    );
   const renderDotsItem = ({ isActive }) => {
     return isActive ? (
       <div className="c-carousel__dots--active" />
@@ -74,6 +89,7 @@ PostCarousel.defaultProps = {
   type: '',
   title: '',
   buttonPath: '',
+  minPosts: 0,
 };
 
 PostCarousel.propTypes = {
@@ -81,4 +97,5 @@ PostCarousel.propTypes = {
   type: PropTypes.string,
   buttonPath: PropTypes.string,
   title: PropTypes.string,
+  minPosts: PropTypes.number,
 };

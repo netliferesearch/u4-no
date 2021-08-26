@@ -14,6 +14,7 @@ import { TopicCardList } from '../../../components/general/topics/TopicCardList'
 import { CARD_TYPE } from '../../../components/general/blue-card/BlueCard';
 import { Hero } from '../../../components/general/Hero';
 import { PERSON_CARD_TYPE } from '../../../components/general/person/PersonCard';
+import { LearningEvents } from '../../../components/front-page/LearningEvents';
 
 const TopicEntry = ({ data: { topic = {} } }) => {
   const {
@@ -30,6 +31,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
     agenda = [],
     advisors = [],
     resources = [],
+    relatedEvents = [],
     relatedUrl = {},
     url = {},
   } = topic;
@@ -66,7 +68,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
                   icon={BasicGuide}
                   _type="topicsBasics"
                   slug={slug}
-                  color={`${agenda.length > 0 ? "white" : "lighter-blue--full"}`}
+                  color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
                 />
               )}
               {agenda.length > 0 && (
@@ -103,43 +105,61 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             </div>
           </section>
         ) : null}
-      </div>
-      {relatedPublications.length > 0 ? (
-        <section className="">
+
+        {relatedEvents.length ? (
+          <section className="">
+            <div className="o-wrapper-medium">
+              <LearningEvents events={relatedEvents} type={CARD_TYPE.MEDIUM} />
+            </div>
+          </section>
+        ) : null}
+        {relatedPublications.length > 0 ? (
+          <section className="">
+            <div className="o-wrapper-medium o-wrapper-mobile-full">
+              <PostCarousel
+                posts={relatedPublications}
+                type={POST_TYPE.PUBLICATION}
+                buttonPath="/publications"
+                title="Latest publications"
+                minPosts={4}
+              />
+              <hr className="u-section-underline--no-margins" />
+            </div>
+          </section>
+        ) : null}
+        {resources.length > 0 && (
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel
-              posts={relatedPublications}
-              type={POST_TYPE.PUBLICATION}
-              buttonPath="/publications"
-              title="Latest publications"
-              minPosts={4}
+              posts={resources}
+              type={POST_TYPE.CARD}
+              buttonPath="/blog"
+              title="Further Resources"
+              minPosts={3}
             />
             <hr className="u-section-underline--no-margins" />
           </div>
-        </section>
-      ) : null}
-      {advisors.length > 0 && (
-        <div id="advisors" className="o-wrapper-medium">
-          {
-            <Team
-              type={PERSON_CARD_TYPE.IMAGE_TOP}
-              heading={'Topic Experts'}
-              members={advisors}
-              linkLabel="Read full bio"
-            />
-          }
-          <hr className="u-section-underline--no-margins" />
-        </div>
-      )}
-      {relatedTopics.length > 0 ? (
-        <section className="">
-          <div className="o-wrapper-medium">
-            <TopicCardList type={CARD_TYPE.TOPIC} topics={relatedTopics} title="Related topics" />
+        )}
+        {advisors.length > 0 && (
+          <div id="advisors" className="o-wrapper-medium">
+            {
+              <Team
+                type={PERSON_CARD_TYPE.IMAGE_TOP}
+                heading={'Topic Experts'}
+                members={advisors}
+                linkLabel="Read full bio"
+              />
+            }
+            <hr className="u-section-underline--no-margins" />
           </div>
-        </section>
-      ) : null}
-      <div />
-
+        )}
+        {relatedTopics.length > 0 ? (
+          <section className="">
+            <div className="o-wrapper-medium">
+              <TopicCardList type={CARD_TYPE.TOPIC} topics={relatedTopics} title="Related topics" />
+            </div>
+          </section>
+        ) : null}
+      </div>
       <Footer />
     </Layout>
   );
@@ -199,6 +219,7 @@ export default DataLoader(TopicEntry, {
         }[0..3],
         "relatedPublications": *[_type == 'publication' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
         "relatedBlogPosts": *[_type == 'blog-post' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
+        "relatedEvents": *[_type in ["course", "event"] && references(^._id)] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}},
     }[0]}`,
     param: { slug },
   }),
