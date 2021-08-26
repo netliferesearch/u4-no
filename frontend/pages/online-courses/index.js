@@ -3,7 +3,6 @@ import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';
 
-
 import Layout from '../../components/Layout';
 import { Scrollchor } from 'react-scrollchor';
 import { Testimonial } from '../../components/Testimonial';
@@ -13,6 +12,7 @@ import Link from 'next/link';
 import LogoU4 from '../../components/icons/LogoU4';
 import Footer from '../../components/general/footer/Footer';
 import { PageIntro } from '../../components/general/PageIntro';
+import { SideBox } from '../../components/general/side-box/SideBox';
 
 const ServicePage = ({
   data: {
@@ -30,7 +30,9 @@ const ServicePage = ({
   } = {},
   url = {},
 }) => {
+  const featuresHeading = sections.slice(0, 1)
   const features = sections.slice(0, 3);
+  console.log(sections)
   const [scrolled, setScrolled] = useState(false);
   const introRef = useRef(null);
 
@@ -58,41 +60,26 @@ const ServicePage = ({
       }}
     >
       <div className="c-service-page c-courses-overview">
-        {scrolled ? (
-          <div className="c-header--fixed u-hidden--desktop">
-            <div className="c-header--fixed__content">
-              <Link href="/">
-                <a className="u-no-underline">
-                  <LogoU4 />
-                </a>
-              </Link>
-              <div>
-                <div className="">
-                  <Scrollchor to="#courses" disableHistory>
-                    Start for free
-                  </Scrollchor>
-                </div>
-              </div>
-            </div>
-            <hr className="u-section-underline--no-margins" />
-          </div>
-        ) : null}
         <section className="o-wrapper-medium">
-            <div className="">
-              <PageIntro title={longTitle} text={<BlockContent blocks={lead} serializers={serializers} />} contentType={title}/>
-              
-              <div className="c-btn c-btn--primary c-btn--child-link">
-                <Scrollchor to="#courses" disableHistory>
-                  Start for free
-                </Scrollchor>
-              </div>
-              <span ref={introRef} />
+          <div className="">
+            <PageIntro
+              title={longTitle}
+              text={<BlockContent blocks={lead} serializers={serializers} />}
+            />
+
+            <div className="c-btn c-btn--primary c-btn--child-link">
+              <Scrollchor to="#courses" disableHistory>
+                Start for free
+              </Scrollchor>
             </div>
+            <span ref={introRef} />
+          </div>
+          <SideBox>
+            <BlockContent blocks={features} serializers={serializers} />
+          </SideBox>
         </section>
         <hr className="u-section-underline--no-margins" />
-        <div className="u-bg-lightest-grey c-service-page__section c-features__container u-side-padding">
-          <BlockContent blocks={features} serializers={serializers} />
-        </div>
+
         <div id="courses" className="c-service-page__section c-courses__container u-side-padding">
           <div className="o-wrapper-section">
             <BlockContent blocks={sections.slice(3, 5)} serializers={serializers} />
@@ -140,57 +127,3 @@ export default DataLoader(ServicePage, {
   }),
   materializeDepth: 2,
 });
-
-// const ServicePage = ({
-//   data: {
-//     service: {
-//       title = '',
-//       longTitle = '',
-//       featuredImage = '',
-//       lead = [],
-//       leadLinks = '',
-//       sections = [],
-//       relatedUrl = {},
-//     } = {},
-//   } = {},
-//   url = {},
-// }) => (
-//   <Layout
-//     headComponentConfig={{
-//       title,
-//       description: lead.length ? lead[0].text : lead,
-//       image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
-//       url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
-//       ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
-//     }}
-//   >
-//     <h2 className="c-topic-page_title">{title}</h2>
-//     <h2 className="c-topic-page__longTitle">{longTitle}</h2>
-//     {featuredImage ? (
-//       <section className="c-boxOnImage">
-//         <figure className="c-boxOnImage__figure">
-//           <img alt="" src={featuredImage} />
-//         </figure>
-//         <div className="c-boxOnImage__body">
-//           <BlockContent blocks={lead} serializers={serializers} />
-//           {leadLinks && <LinkList title="" content={leadLinks} />}
-//         </div>
-//       </section>
-//     ) : null}
-
-//     <ServiceArticle blocks={sections} />
-
-//     <Newsletter />
-
-//     <Footer />
-//   </Layout>
-// );
-
-// export default DataLoader(ServicePage, {
-//   queryFunc: ({ query: { slug = '' } }) => ({
-//     sanityQuery:
-//       '{ "service": *[_type=="frontpage" && slug.current == "online-courses"][0]{title, longTitle, slug, lead, leadLinks, _id, sections, "featuredImage": featuredImage.asset->url}}',
-//     param: { slug },
-//   }),
-//   materializeDepth: 2,
-// });

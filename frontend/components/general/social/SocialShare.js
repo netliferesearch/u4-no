@@ -39,10 +39,10 @@ export const SocialShare = ({ title = ''}) => {
         subject={title}
       >
         <EmailIcon
-          size={40}
-          round={true}
-          bgStyle={{ fill: 'transparent' }}
-          iconFillColor={'#1E2051'}
+          // size={40}
+          // round={true}
+          // bgStyle={{ fill: 'transparent' }}
+          // iconFillColor={'#1E2051'}
         />
       </EmailShareButton>
       <TextButton onClick={() => navigator.clipboard.writeText(url)} text="Copy link" />
