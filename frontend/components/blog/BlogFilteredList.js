@@ -13,7 +13,7 @@ import {
   updateBlogFilters,
   updateBlogPageNum,
 } from '../../helpers/redux-store';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 const applyFliters = (filters, elements) => {
@@ -36,12 +36,11 @@ export const BlogFilteredList = props => {
     blogFilters,
     updateBlogFilters,
     blogPageNum,
-    updateBlogPageNum,
     clearBlogFilters,
     blogEntries = [],
     topics = [],
   } = props;
-
+  const dispatch = useDispatch()
   const [filtersResults, setFiltersResults] = useState([]);
   const [currentResults, setCurrentResults] = useState([]);
   const [pageCount, setPageCount] = useState(1);
@@ -52,7 +51,8 @@ export const BlogFilteredList = props => {
   let d = currentResults.length < limit ? 1 : currentResults.length;
 
   const handlePageChange = (page, e) => {
-    updateBlogPageNum(page);
+    dispatch(updateBlogPageNum(page))
+    //updateBlogPageNum(page);
     if (typeof window !== 'undefined') {
       window.scrollTo(0, 0);
     }
@@ -61,14 +61,16 @@ export const BlogFilteredList = props => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (window.location.search.indexOf('blogPageNum') === -1) {
-        updateBlogPageNum(1);
+        dispatch(updateBlogPageNum(1))
+        //updateBlogPageNum(1);
       }
     }
   }, []);
 
   const handleRemove = () => {
     clearBlogFilters();
-    updateBlogPageNum(1);
+    dispatch(updateBlogPageNum(1))
+    //updateBlogPageNum(1);
   };
 
   useEffect(
@@ -128,7 +130,6 @@ export const BlogFilteredList = props => {
           topics={topics}
           setFilters={updateBlogFilters}
           filters={blogFilters}
-          updateBlogPageNum={updateBlogPageNum}
         />
       </div>
 
@@ -297,7 +298,6 @@ const mapStateToProps = ({ blogFilters = [], blogPageNum = 1 }) => ({ blogFilter
 const mapDispatchToProps = dispatch => ({
   updateBlogFilters: bindActionCreators(updateBlogFilters, dispatch),
   clearBlogFilters: bindActionCreators(clearBlogFilters, dispatch),
-  updateBlogPageNum: bindActionCreators(updateBlogPageNum, dispatch),
 });
 
 export default connect(

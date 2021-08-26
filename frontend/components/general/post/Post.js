@@ -82,7 +82,7 @@ export const Post = ({ post, type }) => {
 };
 
 Post.defaultProps = {
-  type: POST_TYPE.NORMAL,
+  type: POST_TYPE.BLOG,
   post: {},
 };
 
