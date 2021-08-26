@@ -28,19 +28,6 @@
   }
 }
 
-// .c-post-list--column-3 .alice-carousel__stage-item:nth-child(3n) {
-//   padding-right: $gutter-width;
-//   @include mq($from: desktop) {
-//     padding-right: 0;
-//   }
-// }
-// .c-post-list--column-4 .alice-carousel__stage-item:nth-child(4n) {
-//   padding-right: $gutter-width;
-//   @include mq($from: desktop) {
-//     padding-right: 0;
-//   }
-// }
-
 .c-post-list .c-section-intro .c-post-list .c-view-all {
   padding: 0 $inuit-global-spacing-unit;
   @include mq($from: desktop) {
