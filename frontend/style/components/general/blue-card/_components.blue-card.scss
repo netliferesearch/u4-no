@@ -28,7 +28,7 @@
     p,
     .c-blue-card__link,
     .c-blue-card__link h4,
-    .c-blue-card__content--lead {
+    .c-blue-card__lead {
       color: $white;
     }
     .c-blue-card__p--topic {
@@ -81,10 +81,14 @@
 }
 
 .c-blue-card__heading {
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 20px;
+  line-height: 28px;
   letter-spacing: 0.01em !important;
   margin: 12px 0 16px 0;
+  @include mq($from: tablet) {
+    font-size: 24px;
+    line-height: 32px;
+  }
 }
 
 .c-blue-card__details {
@@ -139,17 +143,70 @@
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }
+.c-blue-card__lead {
+  max-width: 582px;
+}
 //alice carousel overrides line height of it's items.
-.c-blue-card__content--lead * {
-  //font-size: $font-size-nano;
+.c-blue-card__lead * {
   line-height: 18px;
-  // font-style: normal;
-  // font-weight: normal;
-  //  margin-bottom: 24px;
-  //color: $mid-grey;
   @include mq($from: tablet) {
-   //font-size: $font-size-tiny;
     line-height: $font-size-normal;
   }
 }
 
+.c-blue-card--3-col {
+  .c-blue-card__bottom-content .c-blue-card__more {
+    display: none;
+  }
+  .c-blue-card__details .c-blue-card__more {
+    display: flex;
+  }
+}
+
+.c-blue-card--1-col {
+  .c-blue-card__bottom-content .c-blue-card__more {
+    display: none;
+  }
+  .c-blue-card__details .c-blue-card__more {
+    display: flex;
+  }
+  @include mq($from: tablet) {
+    .c-blue-card__text {
+      width: 100%;
+      display: inline-grid;
+      grid-template-columns: 1fr 2fr;
+      column-gap: 64px;
+      grid-template-rows: auto;
+    }
+
+    .c-blue-card__bottom-content {
+      display: inline-grid;
+      grid-template-columns: 1fr 2fr;
+      column-gap: 64px;
+      grid-template-rows: auto;
+    }
+    .c-blue-card__info {
+      flex-direction: row;
+    }
+    .c-blue-card__location {
+      margin-right: 48px;
+    }
+    .c-blue-card__bottom-content .c-blue-card__more {
+      display: flex;
+    }
+    .c-blue-card__details .c-blue-card__more {
+      display: none;
+    }
+    .c-blue-card__details p {
+      width: 100%;
+    }
+
+    .c-blue-card__more {
+      width: 100%;
+      justify-content: flex-start;
+    }
+    .c-blue-card__heading {
+      margin-top: 0;
+    }
+  }
+}

@@ -9,6 +9,7 @@ import TextClamp from 'react-string-clamp';
 import { POST_TYPE } from '../post/Post';
 
 export const CARD_TYPE = {
+  FULL: '1-col',
   LARGE: '2-col',
   MEDIUM: '3-col',
   SMALL: '4-col',
@@ -53,7 +54,7 @@ export const PublicationContent = ({ post = {} }) => (
       )}
       <h4 className="c-blue-card__heading u-primary-heading">{post.title}</h4>
       {post.standfirst ? (
-        <div className="c-blue-card__content--lead u-body--dark-grey">
+        <div className="c-blue-card__lead u-body--dark-grey">
           <TextClamp text={post.standfirst} lines={3} />
         </div>
       ) : null}
@@ -76,29 +77,41 @@ export const CourseContent = ({ post = {}, content = {} }) => (
           {getPostType(post)}
         </h4>
       )}
-      <h4 className="c-blue-card__heading u-primary-heading">{post.title}</h4>
-      {post.lead && (
-        <div className="c-blue-card__content--lead u-body--dark-grey">
-          <TextClamp text={post.lead} lines={3} />
+      <div className="c-blue-card__text">
+        <h4 className="c-blue-card__heading u-primary-heading">{post.title}</h4>
+        <div>
+          {post.lead && (
+            <div className="c-blue-card__lead u-body--dark-grey">
+              <TextClamp text={post.lead} lines={3} />
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
-    <div className="c-blue-card__info">
-      {post.startDate && post.startDate.timezone && (
-        <p className="c-blue-card__location u-body--small">
-          <LocationIcon /> {post.startDate.timezone}
-        </p>
-      )}
-      <div className="c-blue-card__details">
-        <p className="c-blue-card__date u-body--small">
-          {post.startDate && <CalendorIcon />}
-          {post.startDate && dateToString({ start: post.startDate.utc })}
-        </p>
-        <div className="c-blue-card__more">
-          <div className="c-blue-card__link">
-            <h4 className="u-secondary-heading u-secondary-h4">{content.label}</h4>
-            <ArrowNext />
+    <div className="c-blue-card__bottom-content ">
+      <div className="c-blue-card__info">
+        {post.startDate && post.startDate.timezone && (
+          <p className="c-blue-card__location u-body--small">
+            <LocationIcon /> {post.startDate.timezone}
+          </p>
+        )}
+        <div className="c-blue-card__details">
+          <p className="c-blue-card__date u-body--small">
+            {post.startDate && <CalendorIcon />}
+            {post.startDate && dateToString({ start: post.startDate.utc })}
+          </p>
+          <div className="c-blue-card__more">
+            <div className="c-blue-card__link">
+              <h4 className="u-secondary-heading u-secondary-h4">{content.label}</h4>
+              <ArrowNext />
+            </div>
           </div>
+        </div>
+      </div>
+      <div className="c-blue-card__more">
+        <div className="c-blue-card__link">
+          <h4 className="u-secondary-heading u-secondary-h4">{content.label}</h4>
+          <ArrowNext />
         </div>
       </div>
     </div>
@@ -106,13 +119,14 @@ export const CourseContent = ({ post = {}, content = {} }) => (
 );
 
 export const BlueCard = ({ post, type, content = {} }) => {
-  console.log(content);
   return (
     <LinkToItem type={post._type} slug={post.slug}>
       <a className={`c-blue-card c-blue-card--${type}`}>
         {type === CARD_TYPE.TOPIC ? <TopicContent post={post} /> : null}
         {content.id === CONTENT_BY_TYPE.PUBLICATION.id ? <PublicationContent post={post} /> : null}
-        {content.id === CONTENT_BY_TYPE.COURSE.id ? <CourseContent post={post} content={CONTENT_BY_TYPE.COURSE}/> : null}
+        {content.id === CONTENT_BY_TYPE.COURSE.id ? (
+          <CourseContent post={post} content={CONTENT_BY_TYPE.COURSE} />
+        ) : null}
       </a>
     </LinkToItem>
   );

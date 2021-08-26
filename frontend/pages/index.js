@@ -77,7 +77,7 @@ const Frontpage = ({
       </section>
       <section className="">
         <div className="o-wrapper-medium">
-          <LearningEvents events={events} type={CARD_TYPE.MEDIUM}/>
+          <LearningEvents events={events} type={events.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL}/>
         </div>
       </section>
       <section className="o-wrapper-full">

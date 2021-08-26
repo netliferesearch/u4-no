@@ -109,7 +109,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
         {relatedEvents.length ? (
           <section className="">
             <div className="o-wrapper-medium">
-              <LearningEvents events={relatedEvents} type={CARD_TYPE.MEDIUM} />
+              <LearningEvents events={relatedEvents} type={relatedEvents.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL} />
             </div>
           </section>
         ) : null}
@@ -130,7 +130,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
         {resources.length > 0 && (
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel
-              posts={resources}
+              posts={resources.filter(i => Object.keys(i).length !== 0).slice(3)}
               type={POST_TYPE.CARD}
               buttonPath="/blog"
               title="Further Resources"
@@ -212,11 +212,12 @@ export default DataLoader(TopicEntry, {
           title,
           date, 
           standfirst,
+          lead,
           "slug": slug.current,
           "titleColor": featuredImage.asset->metadata.palette.dominant.title,
           "imageUrl": featuredImage.asset->url,
           topics[]->{title},
-        }[0..3],
+        },
         "relatedPublications": *[_type == 'publication' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
         "relatedBlogPosts": *[_type == 'blog-post' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
         "relatedEvents": *[_type in ["course", "event"] && references(^._id)] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}},

@@ -7,6 +7,7 @@ import LinkToItem from '../LinkToItem';
 import { getPostType } from '../../../helpers/getRouteByType';
 import PropTypes from 'prop-types';
 import TextClamp from 'react-string-clamp';
+import { imgLoader } from '../../../helpers/imgloader';
 
 export const POST_TYPE = {
   SMALL: 'small', //collapsable in mobile view/normal in desktop
@@ -36,16 +37,28 @@ const renderImage = type => {
       return true;
   }
 };
-export const Post = ({ post, type }) => {
+
+export const Post = ({ post, type, placeholder }) => {
   return (
     <div className={`c-post ${type} ${type === 'large' ? 'u-sticky' : ''}`}>
       <LinkToItem type={post._type} slug={post.slug}>
         <a className="c-post__link u-fake-anchor">
-          {post.imageUrl && renderImage(type) && (
+          {post.imageUrl && renderImage(type) ? (
             <div className="c-post__post-image u-overlay--light-blue">
               <Image
                 loader={sanityImageLoader}
                 src={post.imageUrl}
+                alt=""
+                loading="lazy"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          ) : (
+            <div className="c-post__post-image u-overlay--light-blue">
+              <Image
+                loader={imgLoader}
+                src={placeholder}
                 alt=""
                 loading="lazy"
                 layout="fill"
@@ -84,9 +97,11 @@ export const Post = ({ post, type }) => {
 Post.defaultProps = {
   type: POST_TYPE.NORMAL,
   post: {},
+  placeholder: '',
 };
 
 Post.propTypes = {
   type: PropTypes.string,
   post: PropTypes.any,
+  placeholder: PropTypes.string
 };

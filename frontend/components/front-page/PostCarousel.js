@@ -6,6 +6,7 @@ import { Post, POST_TYPE } from '../general/post/Post';
 import PropTypes from 'prop-types';
 import { ArrowCarousel } from '../icons/ArrowCarousel';
 import { BlueCard, CARD_TYPE, CONTENT_BY_TYPE } from '../general/blue-card/BlueCard';
+import { getPlaceholder } from '../../helpers/imgloader';
 
 const columnsByType = {
   [POST_TYPE.SMALL]: 3,
@@ -21,10 +22,11 @@ export const PostCarousel = ({ posts, type, buttonPath, title, minPosts }) => {
     568: { items: 2.2 },
     980: { items: columnsByType[type] },
   };
+
   //console.log('posts', posts);
   const items =
     posts &&
-    posts.map(post =>
+    posts.map((post, index) =>
       type === POST_TYPE.CARD ? (
         <BlueCard
           key={post._id}
@@ -33,7 +35,7 @@ export const PostCarousel = ({ posts, type, buttonPath, title, minPosts }) => {
           content={CONTENT_BY_TYPE.PUBLICATION}
         />
       ) : (
-        <Post key={post._id} type={type} post={post} />
+        <Post key={post._id} type={type} post={post} placeholder={getPlaceholder(index)} />
       )
     );
   const renderDotsItem = ({ isActive }) => {

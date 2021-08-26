@@ -9,7 +9,7 @@ export const LearningEvents = ({ events, type }) => {
       <SectionIntro title="Learning and Events" />
 
       <div className="c-events-list__row c-events-list__content">
-        <div className="c-learning-events__wrapper">
+        <div className={`c-learning-events__wrapper c-learning-events__grid ${events.length === 1 ? "c-learning-events__grid--1" : events.length === 2 ? "c-learning-events__grid--2" : ""}`}>
           {events
             ? events.map((post, index) => (
                 <BlueCard type={type} post={post} key={index} content={CONTENT_BY_TYPE.COURSE} />
