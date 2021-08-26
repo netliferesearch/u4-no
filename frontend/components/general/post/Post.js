@@ -95,7 +95,7 @@ export const Post = ({ post, type, placeholder }) => {
 };
 
 Post.defaultProps = {
-  type: POST_TYPE.NORMAL,
+  type: POST_TYPE.BLOG,
   post: {},
   placeholder: '',
 };
