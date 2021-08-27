@@ -57,6 +57,7 @@
     align-items: center;
     width: auto;
     font-size: $font-size-small;
+    line-height: 28px;
 
     @include mq($from: tablet) {
       align-items: flex-start;
@@ -124,9 +125,9 @@
   }
 
   .c-person-card__position {
-    display: flex;
-    justify-content: center;
-    text-align: center;
+    // display: flex;
+    // justify-content: center;
+    // text-align: center;
   }
 
   .c-person-card__adress {

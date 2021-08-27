@@ -52,6 +52,7 @@ export const LinkedInIcon = () => {
 
 export const TwitterIcon = () => {
   return (
+    
     <svg
       className="c-social-icons-svg"
       xmlns="http://www.w3.org/2000/svg"

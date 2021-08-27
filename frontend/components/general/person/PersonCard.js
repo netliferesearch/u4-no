@@ -34,7 +34,7 @@ export const PersonCard = ({ person, type }) => {
       </Link>
       <div className="c-person-card__info">
         {type === PERSON_CARD_TYPE.PROFILE && (
-          <div className=" u-secondary-heading u-secondary-h4 u-detail--blue--small">
+          <div className="u-secondary-heading u-secondary-h4 u-detail--blue--small">
             U4 team member
           </div>
         )}
@@ -48,7 +48,7 @@ export const PersonCard = ({ person, type }) => {
             )}
           </a>
         </Link>
-        {person.position && <div className="c-person-card__position">{person.position}</div>}
+        {person.position && <span className="c-person-card__position u-text--grey">{person.position}</span>}
         {person.email && (
           <a href={`mailto:${person.email}`}>
             <div className="c-person-card__email">

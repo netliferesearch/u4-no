@@ -37,11 +37,6 @@
     }
   }
 
-  .c-article-v2__main-text {
-    @include mq($from: tablet) {
-      margin-top: 16px;
-    }
-  }
 }
 
 .c-course-sidebar {
