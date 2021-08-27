@@ -26,7 +26,7 @@ export const CoursesList = ({ blocks = [], cta = 'Register', badge = '' }) => {
   );
   return (
     <div className="c-courses-list">
-      <div className="c-courses-list__content">
+      {/* <div className="c-courses-list__content">
         <div className="u-span-btn">
           <span className="u-span-btn__cta">View courses available in:</span>
           {languages.length > 4 ? (
@@ -51,7 +51,7 @@ export const CoursesList = ({ blocks = [], cta = 'Register', badge = '' }) => {
           )}
         </div>
         <Cards resources={currentResults} cta={cta} badge={badge} />
-      </div>
+      </div> */}
     </div>
   );
 };

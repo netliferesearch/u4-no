@@ -22,7 +22,7 @@ const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
       }}
     >
-      <div className="o-wrapper-medium">
+      <div className="o-wrapper-medium c-persons">
         <BreadCrumbV2
           title={`People`}
           parentSlug={'/the-team'}
@@ -37,10 +37,8 @@ const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
         <hr className="u-section-underline--no-margins" />
       </div>
       <div className="o-wrapper-medium">
-        <div className="c-article__persons">
-          <div className="c-article-v2 c-article-v2__main-text">
+        <div className="c-persons__article c-longform">
             <BlockContent blocks={person.bio} serializers={serializers} />
-          </div>
         </div>
         <hr className="u-section-underline--no-margins" />
       </div>
@@ -73,43 +71,43 @@ const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
   );
 };
 
-const CoursesAndWorkshops = ({ courses }) => (
-  <div {...classes('courses')}>
-    {courses && courses.length > 0 && <h1>Online training and workshops</h1>}
-    <ul {...classesSearch('content')}>
-      {courses &&
-        courses.map(course => (
-          <li key={course._id} {...classesSearch('items')}>
-            <div {...classesSearch('topic')}>
-              <div {...classesSearch('topic-wrapper')}>
-                <div {...classesSearch('topic-content')}>
-                  <span {...classesSearch('items-type')}>
-                    {course._type === 'course' ? 'Online course' : 'Workshop'}
-                  </span>
-                  <br />
-                  <Link
-                    href={
-                      course._type === 'course'
-                        ? `/courses/${course.slug.current}`
-                        : `/events/${course.slug.current}`
-                    }
-                  >
-                    <a {...classesSearch('items-title')}>{course.title}</a>
-                  </Link>
-                  {course.startDate && (
-                    <p {...classesSearch('items-date')}>
-                      {format(course.startDate.utc, 'D MMM YYYY')}
-                    </p>
-                  )}
-                  <p {...classesSearch('lead-text')}>{course.lead}</p>
-                </div>
-              </div>
-            </div>
-          </li>
-        ))}
-    </ul>
-  </div>
-);
+// const CoursesAndWorkshops = ({ courses }) => (
+//   <div {...classes('courses')}>
+//     {courses && courses.length > 0 && <h1>Online training and workshops</h1>}
+//     <ul {...classesSearch('content')}>
+//       {courses &&
+//         courses.map(course => (
+//           <li key={course._id} {...classesSearch('items')}>
+//             <div {...classesSearch('topic')}>
+//               <div {...classesSearch('topic-wrapper')}>
+//                 <div {...classesSearch('topic-content')}>
+//                   <span {...classesSearch('items-type')}>
+//                     {course._type === 'course' ? 'Online course' : 'Workshop'}
+//                   </span>
+//                   <br />
+//                   <Link
+//                     href={
+//                       course._type === 'course'
+//                         ? `/courses/${course.slug.current}`
+//                         : `/events/${course.slug.current}`
+//                     }
+//                   >
+//                     <a {...classesSearch('items-title')}>{course.title}</a>
+//                   </Link>
+//                   {course.startDate && (
+//                     <p {...classesSearch('items-date')}>
+//                       {format(course.startDate.utc, 'D MMM YYYY')}
+//                     </p>
+//                   )}
+//                   <p {...classesSearch('lead-text')}>{course.lead}</p>
+//                 </div>
+//               </div>
+//             </div>
+//           </li>
+//         ))}
+//     </ul>
+//   </div>
+// );
 
 export default DataLoader(Persons, {
   queryFunc: ({ query: { slug = '' } }) => {

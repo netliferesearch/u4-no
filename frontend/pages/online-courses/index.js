@@ -2,7 +2,6 @@ import React, { Component, useRef, useState } from 'react';
 import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';
-
 import Layout from '../../components/Layout';
 import { Scrollchor } from 'react-scrollchor';
 import { Testimonial } from '../../components/Testimonial';
@@ -14,7 +13,7 @@ import Footer from '../../components/general/footer/Footer';
 import { PageIntro } from '../../components/general/PageIntro';
 import { SideBox } from '../../components/general/side-box/SideBox';
 
-const ServicePage = ({
+const CoursesPage = ({
   data: {
     service: {
       title = '',
@@ -30,9 +29,9 @@ const ServicePage = ({
   } = {},
   url = {},
 }) => {
-  const featuresHeading = sections.slice(0, 1)
-  const features = sections.slice(0, 3);
-  console.log(sections)
+  const featuresHeading = sections.slice(0, 1);
+  const features = sections.slice(1, 3);
+  console.log(sections);
   const [scrolled, setScrolled] = useState(false);
   const introRef = useRef(null);
 
@@ -59,8 +58,8 @@ const ServicePage = ({
         ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
       }}
     >
-      <div className="c-service-page c-courses-overview">
-        <section className="o-wrapper-medium">
+      <div className="c-service-page c-courses-page">
+        <section className="o-wrapper-medium u-flex--sb">
           <div className="">
             <PageIntro
               title={longTitle}
@@ -75,15 +74,15 @@ const ServicePage = ({
             <span ref={introRef} />
           </div>
           <SideBox>
+            <BlockContent blocks={featuresHeading} serializers={serializers} />
             <BlockContent blocks={features} serializers={serializers} />
           </SideBox>
         </section>
-        <hr className="u-section-underline--no-margins" />
 
         <div id="courses" className="c-service-page__section c-courses__container u-side-padding">
           <div className="o-wrapper-section">
-            <BlockContent blocks={sections.slice(3, 5)} serializers={serializers} />
-            <CoursesList blocks={sections.slice(5, 6)} badge="Start here" />
+            {/* <BlockContent blocks={sections.slice(3, 5)} serializers={serializers} />
+            <CoursesList blocks={sections.slice(5, 6)} badge="Start here" /> */}
           </div>
         </div>
         <div
@@ -91,27 +90,27 @@ const ServicePage = ({
           className="u-bg-lightest-blue c-service-page__section c-courses__container u-side-padding"
         >
           <div className="o-wrapper-section">
-            <BlockContent blocks={sections.slice(6, 7)} serializers={serializers} />
-            <CoursesList blocks={sections.slice(7, 8)} cta="Read more" />
+            {/* <BlockContent blocks={sections.slice(6, 7)} serializers={serializers} />
+            <CoursesList blocks={sections.slice(7, 8)} cta="Read more" /> */}
           </div>
         </div>
         <div className="u-bg--light-grey c-service-page__section u-side-padding">
-          <div className="o-wrapper-medium">
+          {/* <div className="o-wrapper-medium">
             {resources.length > 0
               ? resources
                   .filter(r => r._type === 'testimonial')
                   .map(r => <Testimonial key={r._id} testimonial={r} />)
               : null}
-          </div>
+          </div> */}
         </div>
         <div className="c-service-page__section u-side-padding">
-          <BlockContent blocks={sections.slice(8, 10)} serializers={serializers} />
+          {/* <BlockContent blocks={sections.slice(8, 10)} serializers={serializers} /> */}
         </div>
         <div className="u-bg--light-grey c-service-page__section u-side-padding">
-          <BlockContent blocks={sections.slice(10, 11)} serializers={serializers} />
+          {/* <BlockContent blocks={sections.slice(10, 11)} serializers={serializers} /> */}
         </div>
         <div className="c-service-page__section u-side-padding">
-          <BlockContent blocks={sections.slice(11, 12)} serializers={serializers} />
+          {/* <BlockContent blocks={sections.slice(11, 12)} serializers={serializers} /> */}
         </div>
       </div>
       <Footer />
@@ -119,7 +118,7 @@ const ServicePage = ({
     </Layout>
   );
 };
-export default DataLoader(ServicePage, {
+export default DataLoader(CoursesPage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery:
       '{ "service": *[_type=="frontpage" && slug.current == "online-courses-NEW"][0]{title, longTitle, slug, lead, leadLinks, _id, sections[]{..., personLeft[]->, personRight[]->, coursesRef[]->{...,"featuredImage": featuredImage.asset->url} }, "persons": sections[11]{..., personLeft[]->, personRight[]->}, resources[]->, "featuredImage": featuredImage.asset->url}}',

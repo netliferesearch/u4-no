@@ -45,7 +45,7 @@
 @import 'components/components.select';
 @import 'components/components.partner-promo';
 //@import 'components/components.person';
-@import 'components/components.persons';
+//@import 'components/components.persons';
 @import 'components/components.team';
 @import 'components/components.table';
 @import 'components/components.textbox';
@@ -80,7 +80,7 @@
 @import 'components/v2/components.abaut-author';
 @import 'components/v2/components.cite';
 @import 'components/v2/components.reader';
-@import 'components/v2/service-page';
+//@import 'components/v2/service-page';
 @import 'components/v2/components.course-page';
 @import 'components/general/accordion/components.accordion';
 @import 'components/general/buttons/components.buttons';
@@ -92,6 +92,7 @@
 @import 'components/general/footer/components.footer';
 @import 'components/general/newsletter/components.newsletter';
 @import 'components/general/blue-card/components.blue-card';
+@import 'components/general/carousel/components.carousel';
 @import 'components/general/person-card/components.personCard';
 @import 'components/general/sort/components.sort';
 @import 'components/general/page-intro/components.page-intro';
@@ -99,7 +100,7 @@
 @import 'components/general/hero/components.hero';
 @import 'components/general/linkbox/components.linkbox';
 @import 'components/general/longform/components.longform';
-@import 'components/general/carousel/components.carousel';
+@import 'components/general/side-box/components.side-box';
 @import 'components/front-page/components.featuredPosts';
 @import 'components/front-page/components.cta';
 @import 'components/front-page/components.learningEvents';
@@ -107,6 +108,7 @@
 @import 'components/front-page/frontpage';
 @import 'components/topics/components.topic-page';
 @import 'components/topics/components.topic-index';
+@import 'components/the-team/components.persons';
 
 // UTILITIES
 @import '../node_modules/inuitcss/utilities/utilities.widths';

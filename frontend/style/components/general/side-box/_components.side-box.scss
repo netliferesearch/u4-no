@@ -1,0 +1,47 @@
+.c-side-box {
+  background-color: $lighter-blue;
+  padding: 24px 40px;
+}
+.c-side-box__content {
+  .c-longform-grid__standard {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  h3 {
+    font-family: $font-sans;
+    letter-spacing: 0.15em;
+    color: $dark-blue;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: $font-size-micro;
+    line-height: $font-size-small;
+    letter-spacing: 0.1em;
+    position: relative;
+    display: block;
+    margin: 0 0 24px 0;
+    padding-top: 36px;
+    padding-bottom: 4px;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      width: 21px;
+      max-width: 100%;
+      background-color: $blue;
+    }
+    @include mq($from: tablet) {
+      font-size: $font-size-tiny;
+      line-height: 22px;
+      letter-spacing: 0.15em;
+      margin: 0 0 32px 0;
+      padding-bottom: 6px;
+      padding-top: 0;
+      &:after {
+        height: 4px;
+        width: 26px;
+      }
+    }
+  }
+}
