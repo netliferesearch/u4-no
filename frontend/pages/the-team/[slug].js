@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import Footer from '../../components/general/footer/Footer';
-
 import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
 import { TopicCardList } from '../../components/general/topics/TopicCardList';
 import { PostCarousel } from '../../components/front-page/PostCarousel';
@@ -15,6 +14,7 @@ import serializers from '../../components/serializers/serializers';
 import { format } from 'date-fns';
 
 const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
+  console.log(person);
   return (
     <Layout
       headComponentConfig={{
@@ -38,7 +38,7 @@ const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
       </div>
       <div className="o-wrapper-medium">
         <div className="c-persons__article c-longform">
-            <BlockContent blocks={person.bio} serializers={serializers} />
+          <BlockContent blocks={person.bio} serializers={serializers} />
         </div>
         <hr className="u-section-underline--no-margins" />
       </div>
@@ -58,7 +58,7 @@ const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
         <div className="o-wrapper-medium o-wrapper-mobile-full">
           <PostCarousel
             posts={person.recentWork}
-            type={POST_TYPE.PUBLICATION}
+            type={POST_TYPE.BLOG}
             buttonPath="/blog"
             title="Recent work"
             minPosts={3}
@@ -110,9 +110,8 @@ const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
 // );
 
 export default DataLoader(Persons, {
-  queryFunc: ({ query: { slug = '' } }) => {
-    return {
-      sanityQuery: `{
+  queryFunc: ({ query: { slug = '' } }) => ({
+    sanityQuery: `{
       "person": *[slug.current == $slug][0]{...,
         "topics": *[_type == "topics" && references(^._id)]{_id, _type, longTitle, slug, title, standfirst,
          "introductions": count(introduction),
@@ -125,14 +124,23 @@ export default DataLoader(Persons, {
             }
           }},
         "courses": *[(_type == "course" || _type=="event") && references(^._id) && defined(startDate) && (endDate.utc > $now)]  | order(startDate.utc asc) {_id, _type, slug, title, startDate, lead},
-        "recentWork": *[((_type == "publication" && (^._id in authors[]._ref)) || (_type == "article" && references(^._id) )) && defined(date)] | order(date.utc desc)[0...5]{_id, _type, slug, standfirst, title, date, lead, "topicsTitles": topics[]->{title}, "publicationType": publicationType->title, "articleTypeTitle": articleType[0]->title},
-           "affiliations": affiliations[]->name,
-        "image": { "asset": { "url": image.asset->url}}
+        "recentWork": *[((_type == "publication" && (^._id in authors[]._ref)) || (_type == "article" && references(^._id) )) && defined(date)] | order(date.utc desc)[0...5]{
+          _id, 
+          _type, 
+          slug, 
+          standfirst, 
+          title, 
+          date, 
+          lead,
+          "imageUrl": featuredImage.asset->url, 
+          "topicsTitles": topics[]->{title}, 
+          "publicationType": publicationType->title, 
+          "articleTypeTitle": articleType[0]->title}, 
         },
       }`,
-      param: {
-        slug,
-      },
-    };
-  },
+    param: {
+      slug,
+    },
+  }),
+  materializeDepth: 5,
 });
