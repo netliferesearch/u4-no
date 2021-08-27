@@ -4,6 +4,6 @@ export const imgLoader = ({ src, width, quality }) => {
 
 export const getPlaceholder = index => {
   const placeholders = [1, 2, 3];
-  const result = index + 1 % placeholders.length;
-  return '../../../public/placeholder-0' + result + '.png';
+  const result = index % placeholders.length;
+  return '../../../public/placeholder-0' + (result * 1 + 1) + '.png';
 };

@@ -76,7 +76,6 @@
   background-color: $lighter-blue;
   &:nth-child(3n + 1) {
     @include mq($from: tablet) {
-      //clip-path: inset(0px 0px -16px -1000px);
       &:before {
         content: '';
         position: absolute;
