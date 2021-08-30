@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout';
 import Footer from '../../components/general/footer/Footer';
-import { Team } from '../../components/Team';
+import { Team } from '../../components/general/team/Team';
 import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PersonCard } from './general/person/PersonCard';
+import { PersonCard } from '../person/PersonCard';
 
 export const Team = ({ type, members, heading, linkLabel = 'Bio' }) => {
   return (

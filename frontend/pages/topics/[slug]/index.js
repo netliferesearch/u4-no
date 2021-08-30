@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DataLoader from '../../../helpers/data-loader';
 import Footer from '../../../components/general/footer/Footer';
 import Layout from '../../../components/Layout';
-import { Team } from '../../../components/Team';
+import { Team } from '../../../components/general/team/Team';
 import BasicGuide from '../../../components/icons/BasicGuide';
 import ResearchAgenda from '../../../components/icons/ResearchAgenda';
 import { LinkBox } from '../../../components/general/link-box/LinkBox';

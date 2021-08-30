@@ -6,7 +6,7 @@ import DataLoader from '../../helpers/data-loader';
 import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import ServiceArticle from '../../components/ServiceArticle';
-import { Team } from '../../components/Team';
+import { Team } from '../../components/general/team/Team';
 import LinkToItem from '../../components/general/LinkToItem';
 
 const EventPage = ({ data: { event = {} }, url = {} }) => {

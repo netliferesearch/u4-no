@@ -3,7 +3,7 @@ import ImageUrl from '../../../helpers/imageUrl';
 
 const Feature = ({ title = '', text = '', icon = () => null, iconUrl = {} }) => (
   <div className="c-feature">
-    {icon && <div className="c-features__icon">{icon()}</div>}
+    {/* {icon && <div className="c-features__icon">{icon()}</div>} */}
     {iconUrl && (
       <div className="c-features__icon">
         <img src={ImageUrl(iconUrl)} alt={title} />

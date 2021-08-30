@@ -87,7 +87,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
               <CourseSidebar data={course} side={'left'} />
             </div>
             <div className="content c-article__col c-article__center">
-              <div className="c-article-v2 o-wrapper-section c-article-v2__main-text">
+              <div className="c-longform">
                 {content ? <BlockContent blocks={content} serializers={serializers} /> : null}
               </div>
               <hr className="u-section-underline--no-margins" />

@@ -1,0 +1,13 @@
+.c-service-page__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.c-service-page__intro {
+  width: 100%;
+  @include mq($from: tablet) {
+    width: 50%;
+  }
+}

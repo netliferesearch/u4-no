@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
-import ClientOnlyPortal from './general/ClientOnlyPortal';
-import { useOnClickOutside, useLockBodyScroll } from '../helpers/hooks';
-import languageName from '../helpers/languageName';
-import { TextButton, TextIconButton } from './general/buttons';
+import ClientOnlyPortal from '../general/ClientOnlyPortal';
+import { useOnClickOutside, useLockBodyScroll } from '../../helpers/hooks';
+import languageName from '../../helpers/languageName';
+import { TextButton, TextIconButton } from '../general/buttons';
 
 /**
  * V2 - LangFilter component to be used in CoursesList component

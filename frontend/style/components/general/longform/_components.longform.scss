@@ -97,6 +97,20 @@ div.c-longform-grid__standard {
   max-width: 720px;
 }
 
+p.c-longform-grid__standard {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+p.c-longform-grid__standard a {
+  color: $blue;
+  border-bottom: 1px solid transparent;
+  &:hover,
+  &:focus {
+    border-bottom: 1px solid $blue;
+  }
+}
+
 h2.c-longform-grid__standard {
   font-family: $font-sans;
   color: $dark-grey;
@@ -185,9 +199,9 @@ ul.c-longform-grid__standard {
   padding-left: 24px;
 }
 
-@include mq($from: tablet) {
-  font-size: 20px;
-  line-height: 1.5;
-  margin: 32px auto $spacing-large auto;
-}
+// @include mq($from: tablet) {
+//   font-size: 20px;
+//   line-height: 1.5;
+//   margin: 32px auto $spacing-large auto;
+// }
 //}

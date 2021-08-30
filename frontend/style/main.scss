@@ -80,7 +80,6 @@
 @import 'components/v2/components.abaut-author';
 @import 'components/v2/components.cite';
 @import 'components/v2/components.reader';
-//@import 'components/v2/service-page';
 @import 'components/v2/components.course-page';
 @import 'components/general/accordion/components.accordion';
 @import 'components/general/buttons/components.buttons';
@@ -109,6 +108,7 @@
 @import 'components/topics/components.topic-page';
 @import 'components/topics/components.topic-index';
 @import 'components/the-team/components.persons';
+@import 'components/service-page/service-page';
 
 // UTILITIES
 @import '../node_modules/inuitcss/utilities/utilities.widths';

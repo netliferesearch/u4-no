@@ -35,7 +35,8 @@ export const PostCarousel = ({ posts, type, buttonPath, title, minPosts }) => {
           content={CONTENT_BY_TYPE.PUBLICATION}
         />
       ) : (
-        <Post key={post._id} type={type} post={post} placeholder={getPlaceholder(index)} />
+        <div>
+        <Post key={post._id} type={type} post={post} placeholder={getPlaceholder(index)} /></div>
       )
     );
   const renderDotsItem = ({ isActive }) => {

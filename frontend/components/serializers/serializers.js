@@ -227,13 +227,13 @@ const serializers = {
     table: ({ node }) => <Table {...node} />,
     chart: ({ node }) => <Chart {...node} />,
     features: ({ node: { featureArray } }) => (
-      <section className="o-wrapper-medium">
-        <div className="c-features">
-          {featureArray.map(item => (
-            <Feature key={item._key} title={item.featureText} iconUrl={item.image.asset.url} />
-          ))}
-        </div>
-      </section>
+      <div className="c-feature-list c-feature-list--small">
+        {featureArray.map(item => (
+          <div className="c-feature-list__item" key={item._key}>
+            <Feature text={item.featureText} iconUrl={item.image.asset.url} />
+          </div>
+        ))}
+      </div>
     ),
     pagebreak: props => <div className="c-pagebreak" />,
     block: props => {

@@ -39,7 +39,7 @@ const renderImage = type => {
 };
 
 export const Post = ({ post, type, placeholder }) => {
-  console.log(post)
+  //console.log(post)
   return (
     <div className={`c-post ${type} ${type === 'large' ? 'u-sticky' : ''}`}>
       <LinkToItem type={post._type} slug={post.slug}>
