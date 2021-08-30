@@ -9,12 +9,27 @@ import { PageIntro } from '../../components/general/PageIntro';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';
 import { LinkBox } from '../../components/general/link-box/LinkBox';
+import TextClamp from 'react-string-clamp';
 
 const About = ({ data: { about = {}, url = {}, sections = [] } }) => {
-  console.log(about.sections[13]);
+  console.log(about.sections);
   const { title = '', longTitle = '', featuredImage = {}, lead = '', relatedUrl = {} } = about;
-  const history = about.sections.slice(13, 14);
-  console.log(history[0].text);
+  const history = {
+    title: about.sections[13].text[0].children[0].text,
+    content: about.sections[13].text[1].children[0].text,
+  };
+  const strategy = {
+    title: about.sections[9].textLeft[0].children[0].text,
+    content: about.sections[9].textLeft[1].children[0].text,
+  };
+  const policies = {
+    title: about.sections[12].block[0].children[0].text,
+    content: about.sections[12].block[1].children[0].text,
+  };
+  const vacancies = {
+    title: about.sections[8].text[3].children[0].text,
+  };
+  console.log(vacancies.content);
   return (
     <Layout
       headComponentConfig={{
@@ -29,62 +44,61 @@ const About = ({ data: { about = {}, url = {}, sections = [] } }) => {
         <PageIntro title={title} text={<BlockContent blocks={lead} serializers={serializers} />} />
       </section>
       <section className="o-wrapper-full">
-        <div className="o-wrapper-medium">
+        <div className="o-wrapper-medium o-wrapper-mobile-full">
           <div className="c-linkbox-wrapper--about">
             <LinkBox
-              title={history[0].text[0].children[0].text}
-              text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
+              title={history.title}
+              text={<TextClamp text={history.content} lines={3} />}
               // icon={BasicGuide}
               _type="topicsBasics"
               // slug={slug}
-              // color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
+              color="light-blue"
             />
             <LinkBox
-              title="Basic guide"
-              text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
+              title="Our people"
+              text={
+                <TextClamp
+                  text={
+                    'We are lawyers, political scientists, communicators, managers, innovators, coordinators, and designers.'
+                  }
+                  lines={3}
+                />
+              }
               // icon={BasicGuide}
               _type="topicsBasics"
               // slug={slug}
-              // color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
+              color="highlight-blue"
             />
             <LinkBox
-              title="Basic guide"
-              text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
+              title={strategy.title}
+              text={<TextClamp text={strategy.content} lines={3} />}
               // icon={BasicGuide}
               _type="topicsBasics"
               // slug={slug}
-              // color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
+              color="blue"
             />
             <LinkBox
-              title="Basic guide"
-              text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
+              title={policies.title}
+              text={<TextClamp text={policies.content.slice(0, 88)} lines={3} />}
               // icon={BasicGuide}
               _type="topicsBasics"
               // slug={slug}
-              // color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
+              color="light-blue"
             />
             <LinkBox
-              title="Basic guide"
-              text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
+              title={vacancies.title}
+              text={<TextClamp text={strategy.content} lines={3} />}
               // icon={BasicGuide}
               _type="topicsBasics"
               // slug={slug}
-              // color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
-            />
-            <LinkBox
-              title="Basic guide"
-              text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
-              // icon={BasicGuide}
-              _type="topicsBasics"
-              // slug={slug}
-              // color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
+              color="highlight-blue"
             />
           </div>
         </div>
       </section>
-      {lead && <SimpleHero light title={title} content={lead} />}
+      {/* {lead && <SimpleHero light title={title} content={lead} />}
 
-      {sections ? <ServiceArticle blocks={sections} /> : null}
+      {sections ? <ServiceArticle blocks={sections} /> : null}  */}
 
       <Footer />
     </Layout>
