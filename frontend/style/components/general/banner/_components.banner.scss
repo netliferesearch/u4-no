@@ -1,0 +1,15 @@
+.c-banner__content {
+  padding-bottom: 48px;
+  padding-left: 24px;
+  padding-right: 24px;
+  @include mq($from: tablet) {
+    padding-bottom: 64px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.c-banner__body {
+  max-width: 1024px;
+  margin: 0 auto;
+}

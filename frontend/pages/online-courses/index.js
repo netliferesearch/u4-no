@@ -10,6 +10,7 @@ import { PageIntro } from '../../components/general/PageIntro';
 import { SideBox } from '../../components/general/side-box/SideBox';
 import { CARD_TYPE } from '../../components/general/blue-card/BlueCard';
 import { LearningEvents } from '../../components/front-page/LearningEvents';
+import { Banner } from '../../components/general/banner/banner';
 
 const CoursesPage = ({
   data: {
@@ -82,15 +83,15 @@ const CoursesPage = ({
             text="In-depth, expert-led courses for our partner agencies"
           />
         </section>
-        <div className="o-wrapper-medium">
-          <div className="u-bg--shifted">
+        <section>
+          <Banner title={'What participant say'}>
             {resources.length > 0
               ? resources
                   .filter(r => r._type === 'testimonial')
                   .map(r => <Testimonial key={r._id} testimonial={r} />)
-              : null}{' '}
-          </div>
-        </div>
+              : null}
+          </Banner>
+        </section>
         <div className="c-service-page__section u-side-padding">
           <BlockContent blocks={boxAndImg1} serializers={serializers} />
           <BlockContent blocks={boxAndImg2} serializers={serializers} />

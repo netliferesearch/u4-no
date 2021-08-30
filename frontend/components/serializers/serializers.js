@@ -15,7 +15,7 @@ import BoxOnImage from '../BoxOnImage';
 import Feature from '../general/feature/Feature';
 import Figure from '../Figure';
 import Mosaic from '../Mosaic';
-import PullQuote from '../PullQuote';
+import { ArticlePullQuote } from '../general/pull-quote/ArticlePullQuote';
 import SimpleMosaic from '../SimpleMosaic';
 import Table from '../Table';
 import ToggleTextBox from '../ToggleTextBox';
@@ -46,7 +46,7 @@ const serializers = {
     image: ({ node }) => <Figure {...node} />,
     pullQuote: ({ node: { text } }) => (
       <div {...classes('standard')}>
-        <PullQuote>{text}</PullQuote>
+        <ArticlePullQuote>{text}</ArticlePullQuote>
       </div>
     ),
     nugget: ({ node: { text, title } }) => (

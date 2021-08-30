@@ -9,7 +9,7 @@ import serializers from '../../components/serializers/serializers';
 import { LinkBox } from '../../components/general/link-box/LinkBox';
 import TextClamp from 'react-string-clamp';
 
-const About = ({ data: { about = {}, url = {}, sections = [], resources = [] } }) => {
+const About = ({ data: { about = {}, url = {} } }) => {
   const { title = '', featuredImage = {}, lead = '', relatedUrl = {} } = about;
   return (
     <Layout

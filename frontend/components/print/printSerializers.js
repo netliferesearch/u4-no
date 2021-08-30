@@ -10,7 +10,7 @@ import findFootnotes from '../findFootnotes';
 import findLinks from '../findLinks';
 import FunkyTable from '../FunkyTable';
 import printFootnoteSerializer from './printFootnoteSerializer';
-import PullQuote from '../PullQuote';
+import { ArticlePullQuote } from '../general/pull-quote/ArticlePullQuote';
 import Table from '../Table';
 
 const LineChart = dynamic(() => import('../LineChart'));
@@ -50,7 +50,7 @@ function printSerializers(blocks) {
       image: ({ node }) => <Figure {...node} />,
       pullQuote: ({ node: { text } }) => (
         <div {...classes('medium')}>
-          <PullQuote>{text}</PullQuote>
+          <ArticlePullQuote>{text}</ArticlePullQuote>
         </div>
       ),
       nugget: ({ node: { text, title } }) => (

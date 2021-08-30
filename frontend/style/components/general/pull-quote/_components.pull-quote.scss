@@ -1,0 +1,51 @@
+.c-pullQuote {
+  max-width: 896px;
+  padding-top: 24px;
+  margin-left: 100px;
+  margin-right: 100px;
+  p,
+  .c-longform-grid__standard {
+    font-family: $font-serif;
+    font-size: 36px;
+    line-height: 1.39;
+    color: $white;
+    position: relative;
+    display: inline;
+
+    &:before {
+      position: absolute;
+      top: -24px;
+      left: -100px;
+      content: '';
+      background-image: url('/public/quote-marks.svg');
+      background-repeat: no-repeat;
+      background-size: 71px 56px;
+      width: 71px;
+      height: 56px;
+      opacity: 0.2;
+    }
+
+    &:after {
+      content: '';
+      background-image: url('/public/quote-marks.svg');
+      background-repeat: no-repeat;
+      transform: rotate(180deg);
+      width: 71px;
+      height: 56px;
+      position: absolute;
+      bottom: -24px;
+      right: -100px;
+      opacity: 0.2;
+    }
+  }
+}
+
+.c-pullQuote__cite {
+  font-family: $font-sans;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $highlight-blue;
+  margin: 32px 0 0 100px;
+}

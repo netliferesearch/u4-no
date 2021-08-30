@@ -4,8 +4,6 @@ import DataLoader from '../../../helpers/data-loader';
 import Footer from '../../../components/general/footer/Footer';
 import Layout from '../../../components/Layout';
 import { Team } from '../../../components/general/team/Team';
-import BasicGuide from '../../../components/icons/BasicGuide';
-import ResearchAgenda from '../../../components/icons/ResearchAgenda';
 import { LinkBox } from '../../../components/general/link-box/LinkBox';
 import { FeaturedPosts } from '../../../components/front-page/FeaturedPosts';
 import { PostCarousel } from '../../../components/front-page/PostCarousel';
@@ -65,7 +63,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
                 <LinkBox
                   title="Basic guide"
                   text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
-                  icon={BasicGuide}
+                  //icon={BasicGuide}
                   _type="topicsBasics"
                   slug={slug}
                   color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
@@ -75,7 +73,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
                 <LinkBox
                   title="Research and policy agenda"
                   text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
-                  icon={ResearchAgenda}
+                  //icon={ResearchAgenda}
                   _type="topicsAgenda"
                   slug={slug}
                   color="dark-blue"

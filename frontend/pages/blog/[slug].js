@@ -109,7 +109,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
             <div className="c-blog-entry__col c-blog-entry__center">
               <div className="c-blog-entry__content">
                 {topBlocks ? (
-                  <div className="c-blog-entry__main-text u-drop-cap c-blog-entry__first-p">
+                  <div className="c-longform c-blog-entry__main-text u-drop-cap c-blog-entry__first-p">
                     <BlockContent blocks={topBlocks} serializers={serializers} />
                   </div>
                 ) : null}
@@ -117,7 +117,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
                   <Newsletter />
                 </div>
                 {belowBlocks ? (
-                  <div className="c-blog-entry__main-text">
+                  <div className="c-longform c-blog-entry__main-text">
                     <BlockContent blocks={belowBlocks} serializers={serializers} />
                     <div className="footnotes">
                       <ol>
