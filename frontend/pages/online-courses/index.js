@@ -10,7 +10,7 @@ import { PageIntro } from '../../components/general/PageIntro';
 import { SideBox } from '../../components/general/side-box/SideBox';
 import { CARD_TYPE } from '../../components/general/blue-card/BlueCard';
 import { LearningEvents } from '../../components/front-page/LearningEvents';
-import { Banner } from '../../style/components/general/banner/banner';
+import { Banner } from '../../components/general/banner/banner';
 
 const CoursesPage = ({
   data: {
@@ -83,7 +83,7 @@ const CoursesPage = ({
             text="In-depth, expert-led courses for our partner agencies"
           />
         </section>
-        <section className="o-wrapper-full">
+        <section>
           <Banner title={'What participant say'}>
             {resources.length > 0
               ? resources

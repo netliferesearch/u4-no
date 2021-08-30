@@ -18,7 +18,7 @@ export const Testimonial = ({ testimonial }) => {
         <PullQuote>
           <BlockContent blocks={testimonial.text} serializers={serializers} />
         </PullQuote>
-        <p className="c-testimonial__cite">{testimonial.cite}</p>
+        <p className="c-testimonial__cite c-pullQuote__cite">{testimonial.cite}</p>
       </div>
     </div>
   );

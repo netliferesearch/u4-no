@@ -36,7 +36,7 @@ const About = ({ data: { about = {}, url = {} } }) => {
 export default DataLoader(About, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery:
-      '{ "about": *[slug.current == "about-u4"][0]{title, slug, lead, _id, "sections": sections, "featuredImage": featuredImage.asset->url} }',
+      '{ "about": *[slug.current == "about-u4-new"][0]{title, slug, lead, _id, "sections": sections, "featuredImage": featuredImage.asset->url} }',
     param: { slug },
   }),
   materializeDepth: 3,
