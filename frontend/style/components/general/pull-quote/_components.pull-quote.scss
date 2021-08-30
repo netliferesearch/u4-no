@@ -1,0 +1,37 @@
+.c-pullQuote {
+  p,
+  .c-longform-grid__standard {
+    font-family: $font-serif;
+    font-size: 36px;
+    line-height: 1.39;
+    color: $white;
+    max-width: 896px;
+    position: relative;
+    padding-left: 80px;
+
+    &:before {
+      display: inline-block;
+      position: absolute;
+      content: '';
+      background-image: url('/public/quote-mark.svg');
+      background-repeat: no-repeat;
+      width: 71px;
+      height: 56px;
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
+    &:after {
+      position: absolute;
+      content: '';
+      background-image: url('/public/quote-mark.svg');
+      background-repeat: no-repeat;
+      transform: rotate(180deg);
+      width: 71px;
+      height: 56px;
+      bottom: 0;
+      right: -56px;
+      z-index: 999;
+    }
+  }
+}

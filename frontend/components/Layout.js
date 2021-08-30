@@ -59,7 +59,6 @@ export const Layout = props => {
                 <Link href="/">
                   <a {...classes('logo', 'fixed', searchOpen ? '' : 'logo-white')}>
                     <LogoU4White />
-                    {/* <LogoMobile /> */}
                   </a>
                 </Link>
               )}
