@@ -3,8 +3,7 @@
   @include inuit-font-size($font-size-small, $line-height-normal);
   @include mq($from: tablet) {
     display: flex;
-    justify-content: center;
-    margin-top: $spacing-large;
+    justify-content: space-between;
   }
 }
 .c-columns--two__item {

@@ -1,7 +1,7 @@
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from './serializers/serializers';
-import { PullQuote } from './general/pull-quote/PullQuote';
+import serializers from '../../serializers/serializers';
+import { PullQuote } from '../pull-quote/PullQuote';
 
 export const Testimonial = ({ testimonial }) => {
   return (
