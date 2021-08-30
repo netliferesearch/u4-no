@@ -13,4 +13,13 @@
 
 .c-page-intro__p > .c-longform-grid__standard {
   padding: 0px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+}
+.c-page-intro--about-u4 {
+  width: 100%;
+  @include mq($from: tablet) {
+    max-width: 632px;
+  }
 }
