@@ -20,7 +20,7 @@ export const LinkBox = ({
                 {link ? link.title : title}
               </h3>
               {link ? (
-                <div className="c-linkbox__text u-body">{link.content[0].children[0].text}</div>
+                <div className="c-linkbox__text u-body">{link.standfirst}</div>
               ) : (
                 <div className="c-linkbox__text u-body">{text}</div>
               )}

@@ -7,7 +7,6 @@ import { PageIntro } from '../../components/general/PageIntro';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';
 import { LinkBox } from '../../components/general/link-box/LinkBox';
-import TextClamp from 'react-string-clamp';
 
 const About = ({ data: { about = {}, url = {} } }) => {
   const { title = '', featuredImage = {}, lead = '', relatedUrl = {} } = about;
@@ -35,6 +34,7 @@ const About = ({ data: { about = {}, url = {} } }) => {
             {about.resources.map((link, index) => (
               <LinkBox link={link} key={index} _type="about" slug={link.slug} />
             ))}
+            <div className="c-linkbox c-linkbox--white" />
           </div>
         </div>
       </section>
