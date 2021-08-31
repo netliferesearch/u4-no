@@ -12,6 +12,7 @@ import { CARD_TYPE } from '../../components/general/blue-card/BlueCard';
 import { LearningEvents } from '../../components/front-page/LearningEvents';
 import { Banner } from '../../components/general/banner/Banner';
 
+
 const CoursesPage = ({
   data: {
     service: {

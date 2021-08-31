@@ -7,7 +7,7 @@ import buildUrl from '../../helpers/buildUrl';
 import BarChart from '../BarChart';
 import ArrowRight from '../icons/ArrowRight';
 import { PersonBasic } from '../PersonBasic';
-import { TextImageBlock } from '../TextImageBlock';
+import { TextImage } from '../general/text-image/TextImage';
 import dynamic from 'next/dynamic';
 import BoxOnBox from '../BoxOnBox';
 import BoxOnBoxTopics from '../BoxOnBoxTopics';
@@ -102,14 +102,14 @@ const serializers = {
       ),
 
     twoColumns: ({ node: { textLeft, textRight } }) => (
-        <div className="c-columns c-columns--two">
-          <div className="c-columns__item c-columns--two__item">
-            <BlockContent blocks={textLeft} serializers={serializers} />
-          </div>
-          <div className="c-columns__item c-columns--two__item">
-            <BlockContent blocks={textRight} serializers={serializers} />
-          </div>
+      <div className="c-columns c-columns--two">
+        <div className="c-columns__item c-columns--two__item">
+          <BlockContent blocks={textLeft} serializers={serializers} />
         </div>
+        <div className="c-columns__item c-columns--two__item">
+          <BlockContent blocks={textRight} serializers={serializers} />
+        </div>
+      </div>
     ),
     boxOnBoxRef: ({ node: { textLeft, textRight } }) => (
       <section className="c-topic-section">
@@ -159,7 +159,7 @@ const serializers = {
     ),
     boxOnImageRef: ({ node: { block, img } }) => (
       <section className="o-wrapper-inner">
-        <TextImageBlock text={block} image={img} />
+        <TextImage text={block} image={img} />
       </section>
     ),
     workshops: ({ node: { workshopsRef } }) => (
