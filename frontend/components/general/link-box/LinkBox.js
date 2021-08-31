@@ -8,7 +8,6 @@ export const LinkBox = ({
   _type = '',
   slug = '',
   color = 'white',
-  link,
 }) => {
   return (
     <div className={`c-linkbox c-linkbox--${color}`}>
@@ -16,14 +15,15 @@ export const LinkBox = ({
         <a className="c-linkbox__link">
           <div className="c-linkbox__content">
             <div className="c-linkbox__body">
-              <h3 className={`c-linkbox__title u-secondary-heading u-secondary-h1 u-detail--blue`}>
-                {link ? link.title : title}
-              </h3>
-              {link ? (
-                <div className="c-linkbox__text u-body">{link.standfirst}</div>
-              ) : (
-                <div className="c-linkbox__text u-body">{text}</div>
+              {title && (
+                <h3
+                  className={`c-linkbox__title u-secondary-heading u-secondary-h1 u-detail--blue`}
+                >
+                  {title}
+                </h3>
               )}
+              {text && <div className="c-linkbox__text u-body">{text}</div>}
+
               <div
                 className={`c-btn c-btn--link ${
                   color === 'dark-blue' ? 'c-btn--link--onDark' : ''
