@@ -7,9 +7,14 @@
     vertical-align: bottom;
   }
 }
+.c-social--follow {
+  display: flex;
+  margin-top: 10px;
+}
 
 .c-social--follow__item {
   margin-right: 24px;
+  height: 100%;
   &:hover {
     svg {
       .c-social-icons-secondpath {

@@ -23,7 +23,7 @@ const Footer = () => (
         <h4 className="c-footer__heading u-secondary-heading u-secondary-h1 u-detail--white">
           Follow Us
         </h4>
-        <SocialFollow items={socialItems} />
+        <SocialFollow footer items={socialItems} />
       </div>
     </div>
     <div className="c-footer__bottom">

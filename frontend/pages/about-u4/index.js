@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import DataLoader from '../../helpers/data-loader';
 import Layout from '../../components/Layout';
-import ServiceArticle from '../../components/ServiceArticle';
-import SimpleHero from '../../components/SimpleHero';
 import { blocksToText } from '../../helpers/blocksToText';
 import Footer from '../../components/general/footer/Footer';
+import { PageIntro } from '../../components/general/PageIntro';
+import BlockContent from '@sanity/block-content-to-react';
+import serializers from '../../components/serializers/serializers';
+import { LinkBox } from '../../components/general/link-box/LinkBox';
+import TextClamp from 'react-string-clamp';
 
 const About = ({ data: { about = {}, url = {} } }) => {
-  const {
-    title = '',
-    longTitle = '',
-    featuredImage = {},
-    lead = '',
-    sections,
-    relatedUrl = {},
-  } = about;
+  const { title = '', featuredImage = {}, lead = '', relatedUrl = {} } = about;
   return (
     <Layout
       headComponentConfig={{
@@ -25,10 +21,23 @@ const About = ({ data: { about = {}, url = {} } }) => {
         ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
       }}
     >
-      {lead && <SimpleHero light title={title} content={lead} />}
-
-      {sections ? <ServiceArticle blocks={sections} /> : null}
-
+      <section className="o-wrapper-medium">
+        <PageIntro
+          className="c-page-intro--about-u4"
+          title={title}
+          type="about-u4"
+          text={<BlockContent blocks={lead} serializers={serializers} />}
+        />
+      </section>
+      <section className="o-wrapper-full">
+        <div className="o-wrapper-medium o-wrapper-mobile-full">
+          <div className="c-linkbox-wrapper--about">
+            {about.resources.map((link, index) => (
+              <LinkBox link={link} key={index} _type="about" slug={link.slug} />
+            ))}
+          </div>
+        </div>
+      </section>
       <Footer />
     </Layout>
   );
@@ -36,7 +45,7 @@ const About = ({ data: { about = {}, url = {} } }) => {
 export default DataLoader(About, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery:
-      '{ "about": *[slug.current == "about-u4-new"][0]{title, slug, lead, _id, "sections": sections, "featuredImage": featuredImage.asset->url} }',
+      '{ "about": *[slug.current == "about-u4-new"][0]{title, slug, lead, _id, "resources": resources[]->{...,slug}, "sections": sections, "featuredImage": featuredImage.asset->url} }',
     param: { slug },
   }),
   materializeDepth: 3,

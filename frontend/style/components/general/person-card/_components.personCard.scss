@@ -22,12 +22,17 @@
 }
 
 .c-person-card--image-left {
+  margin-bottom: 40px;
   h5 {
     display: flex;
     justify-content: flex-start;
   }
 
   .c-person-card__info {
+    @include mq($until: tablet) {
+      align-items: center;
+      margin-left: 0;
+    }
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,12 +43,29 @@
   .c-person-card__adress {
     display: flex;
     align-items: center;
+    text-align: center;
   }
 }
 
 .c-person-card--profile {
   margin-bottom: 40px;
+  .c-person-card__position {
+    @include mq($until: tablet) {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .c-person-card__image-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    width: auto;
 
+    @include mq($from: tablet) {
+      margin: 0px;
+    }
+  }
   h2 {
     font-weight: bold;
     margin: 0;
@@ -69,9 +91,23 @@
   .c-btn.c-btn--link {
     display: none;
   }
-  .c-social--share__item {
+  .c-social--follow__item {
     margin-right: 24px;
+    border-radius: 16px;
+    // background-color: $highlight-yellow;
+    svg {
+      .c-social-icons-secondpath {
+        fill: $dark-blue;
+      }
+      .c-social-icons-firstpath {
+        stroke: $dark-blue;
+      }
+    }
+    &:last-child {
+      margin-right: 0;
+    }
     &:hover {
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
       svg {
         .c-social-icons-secondpath {
           fill: $dark-blue;
@@ -92,6 +128,7 @@
 .c-person-card--image-top {
   display: flex;
   flex-direction: column;
+
   h5 {
     display: flex;
     justify-content: center;
@@ -104,6 +141,7 @@
   .c-person-card__email {
     align-items: center;
     display: flex;
+    text-align: center;
   }
 
   .c-person-card__info {
@@ -115,12 +153,18 @@
   }
 
   .c-person-card__position {
+    display: flex;
+    justify-content: center;
     text-align: center;
   }
 
   .c-person-card__adress {
     display: none;
   }
+}
+
+a {
+  padding: 0;
 }
 
 .c-person-card__image-wrapper {

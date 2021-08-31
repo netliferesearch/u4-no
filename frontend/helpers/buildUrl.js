@@ -8,6 +8,8 @@ const BuildUrl = ({ _type = 'notype', slug = {} }) => {
     return `/topics/${actualSlug}`;
   } else if (_type === 'topicsBasics') {
     return `/topics/${actualSlug}/basics`;
+  } else if (_type === 'about') {
+    return `/about-u4/${actualSlug}`;
   } else if (_type === 'topicsAgenda') {
     return `/topics/${actualSlug}/agenda`;
   } else if (_type === 'article') {
