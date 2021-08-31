@@ -32,7 +32,7 @@ const About = ({ data: { about = {}, url = {} } }) => {
         <div className="o-wrapper-medium o-wrapper-mobile-full">
           <div className="c-linkbox-wrapper--about">
             {about.resources.map((link, index) => (
-              <LinkBox link={link} key={index} _type="about" slug={link.slug} />
+              <LinkBox key={index} _type="about" slug={link.slug} title={link.title} text={link.standfirst}/>
             ))}
             <div className="c-linkbox c-linkbox--white" />
           </div>

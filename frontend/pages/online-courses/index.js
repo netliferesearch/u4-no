@@ -11,7 +11,7 @@ import { SideBox } from '../../components/general/side-box/SideBox';
 import { CARD_TYPE } from '../../components/general/blue-card/BlueCard';
 import { LearningEvents } from '../../components/front-page/LearningEvents';
 import { Banner } from '../../components/general/banner/Banner';
-
+import { TextImage } from '../../components/general/text-image/TextImage';
 
 const CoursesPage = ({
   data: {
@@ -93,11 +93,11 @@ const CoursesPage = ({
               : null}
           </Banner>
         </section>
-        <div className="o-wrapper-medium">
-          <BlockContent blocks={boxAndImg1} serializers={serializers} />
-          <BlockContent blocks={boxAndImg2} serializers={serializers} />
+        <div className="o-wrapper-medium u-top-margin--64">
+          <TextImage text={boxAndImg1.block} image={boxAndImg1.img} imagePosition={true} />
+          <TextImage text={boxAndImg2.block} image={boxAndImg2.img} imagePosition={false} />
         </div>
-        <div className="">
+        <div className="u-top-margin--48">
           <Banner onDark={false}>
             <BlockContent blocks={twoCols} serializers={serializers} />
           </Banner>

@@ -1,18 +1,12 @@
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../serializers/serializers';
 import Image from 'next/image';
 import sanityImageLoader from '../../../helpers/sanityImageLoader';
 
-const classes = BEMHelper({
-  name: 'text-image',
-  prefix: 'c-',
-});
-
-export const TextImage = ({ text = '', image = {}, imagePosition = 'right', wide = false }) => (
+export const TextImage = ({ text = '', image = {}, imagePosition = true }) => (
   <div className={`c-text-image ${imagePosition ? 'c-text-image--right' : 'c-text-image--left'}`}>
-    <div {...classes('image')}>
+    <div className="c-text-image__image">
       {image && (
         <Image
           loader={sanityImageLoader}
@@ -24,7 +18,7 @@ export const TextImage = ({ text = '', image = {}, imagePosition = 'right', wide
         />
       )}
     </div>
-    <div {...classes('body', wide ? 'wide' : null)}>
+    <div className="c-text-image__body">
       <BlockContent blocks={text} serializers={serializers} />
     </div>
   </div>
