@@ -58,7 +58,6 @@
 
 .c-linkbox-wrapper--about {
   display: grid;
-  display: grid;
   gap: 0;
   grid-template-columns: 1fr;
 
@@ -146,8 +145,14 @@
 
     &:last-child {
       padding: 0;
+      margin-right: -24px;
       @include mq($until: tablet) {
         padding: 0;
+        height: 300px;
+      }
+      img {
+        z-index: 2;
+        width: calc(100% + 50px);
       }
     }
   }

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DataLoader from '../../helpers/data-loader';
 import { Layout } from '../../components/Layout';
-import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
 import BlogFilteredList from '../../components/blog/BlogFilteredList';
 import { wrapInRedux } from '../../helpers/redux-store-wrapper';
 import Footer from '../../components/general/footer/Footer';
+import { PageIntro } from '../../components/general/PageIntro';
 
 const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
   return (
@@ -21,23 +21,21 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
           'https://cdn.sanity.io/images/1f1lcoov/production/3e59eddc41cd02132774902dd229b24e55dbfcb5-1000x207.png',
       }}
     >
-      {/* <hr className="u-section-underline--no-margins" /> */}
       <div className="c-blog-index">
-        <section className="o-wrapper">
-          <div className="o-wrapper-section">
-            <h2 className="u-primary-heading">The U4 Blog</h2>
-            <p className="c-blog-index__intro">
-              Practitioners, policymakers, activists, and academics share insights on how to build a
-              sustainable and inclusive future by curbing corruption.
-            </p>
-          </div>
+        <section className="o-wrapper-medium">
+          <PageIntro
+            className="c-page-intro--about-u4"
+            title="The U4 Blog"
+            type="about-u4"
+            text="Practitioners, policymakers, activists, and academics share insights on how to build a
+          sustainable and inclusive future by curbing corruption."
+          />
+          {/* </div> */}
         </section>
         <hr className="u-section-underline--no-margins" />
-        <section className="o-wrapper">
-          <div className="o-wrapper-section">
-            <BreadCrumbV2 home={true}/>
-            <BlogFilteredList blogEntries={blogEntries} topics={topics} />
-          </div>
+        <section className="o-wrapper-medium">
+          <BlogFilteredList blogEntries={blogEntries} topics={topics} />
+          {/* </div> */}
         </section>
       </div>
       <div id="modal" />

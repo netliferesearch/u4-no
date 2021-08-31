@@ -2,7 +2,6 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { ArrowDown } from '../icons/ArrowDown';
 
-
 const classes = BEMHelper({
   name: 'btn',
   prefix: 'c-',
@@ -13,18 +12,17 @@ export const DownArrowButton = ({ onClick = () => null, text = '', modifier = 'p
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width={52} height={52}>
       <g fill="currentColor" fillRule="evenodd" transform="translate(1 1)">
         <circle cx={25} cy={25} r={25} stroke="currentColor" />
-        <path fill="currentColor" d="M25 31.99a.66.66 0 0 1-.47-.2l-3.34-3.27a.64.64 0 0 1 0-.92.69.69 0 0 1 .94 0l2.2 2.17V19.66c0-.36.3-.65.67-.65.36 0 .66.3.66.65v10.13l2.21-2.18a.67.67 0 0 1 .94 0c.25.26.25.67 0 .92l-3.34 3.28a.66.66 0 0 1-.47.19" />
+        <path
+          fill="currentColor"
+          d="M25 31.99a.66.66 0 0 1-.47-.2l-3.34-3.27a.64.64 0 0 1 0-.92.69.69 0 0 1 .94 0l2.2 2.17V19.66c0-.36.3-.65.67-.65.36 0 .66.3.66.65v10.13l2.21-2.18a.67.67 0 0 1 .94 0c.25.26.25.67 0 .92l-3.34 3.28a.66.66 0 0 1-.47.19"
+        />
       </g>
     </svg>
-    {text &&
-      <div {...classes('body')}>{text}</div>
-    }
+    {text && <div {...classes('body')}>{text}</div>}
   </button>
 );
 
-
-
-//V2 Buttons: 
+//V2 Buttons:
 
 export const TextButton = ({
   onClick = () => null,
@@ -32,7 +30,7 @@ export const TextButton = ({
   modifier = 'link',
   disabled = false,
 }) => (
-  <button {...classes({ modifier })} onClick={onClick} disabled={disabled}>
+  <button className="c-btn c-btn--primary" onClick={onClick} disabled={disabled}>
     {text && <div>{text}</div>}
   </button>
 );
@@ -100,6 +98,3 @@ export const SubmitButton = ({ onClick = () => null, modifier = 'submit', text =
     {text}
   </button>
 );
-
-
-

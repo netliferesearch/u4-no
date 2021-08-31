@@ -16,7 +16,12 @@ export const BlogEntriesFilter = ({ topics, setFilters, filters }) => {
   const [open, setOpen] = useState();
   return (
     <div className={`c-modal${open ? ' open' : ''}`}>
-      <TextButton onClick={() => setOpen(true)} text="Filter by topic" modifier="sec" />
+      <TextButton
+        className="c-btn c-btn--primary"
+        onClick={() => setOpen(true)}
+        text="Filter by topic"
+        modifier="sec"
+      />
       {open && (
         <MultiselectModal
           title="Filter by topic"
@@ -31,7 +36,7 @@ export const BlogEntriesFilter = ({ topics, setFilters, filters }) => {
 };
 
 export const MultiselectModal = props => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { title = '', options, setOpen, setFilters, filters } = props;
   const [selectedItems, setSelectedItems] = useState(filters);
   // ref that we add to the element for which we want to detect outside clicks
@@ -43,7 +48,7 @@ export const MultiselectModal = props => {
 
   const handleApplyClick = () => {
     setFilters(selectedItems);
-    dispatch(updateBlogPageNum(1))
+    dispatch(updateBlogPageNum(1));
     setOpen(false);
   };
 
