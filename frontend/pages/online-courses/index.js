@@ -96,7 +96,7 @@ const CoursesPage = ({
           <BlockContent blocks={boxAndImg1} serializers={serializers} />
           <BlockContent blocks={boxAndImg2} serializers={serializers} />
         </div>
-        <div className="o-wrapper-medium">
+        <div className="">
           <Banner onDark={false}>
             <BlockContent blocks={twoCols} serializers={serializers} />
           </Banner>

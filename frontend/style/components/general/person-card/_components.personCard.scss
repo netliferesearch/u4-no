@@ -110,13 +110,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: auto;
   }
 
   .c-person-card__position {
-    // display: flex;
-    // justify-content: center;
-    // text-align: center;
+    text-align: center;
   }
 
   .c-person-card__adress {

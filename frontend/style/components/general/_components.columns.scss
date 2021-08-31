@@ -1,32 +1,84 @@
 .c-columns {
-  font-family: $font-sans;
-  @include inuit-font-size($font-size-small, $line-height-normal);
-  @include mq($from: tablet) {
-    display: flex;
-    justify-content: space-between;
-  }
-}
-.c-columns--two__item {
-  padding: $spacing-small;
-  width: 100%;
-  @include mq($from: tablet) {
-    width: 50%;
-    padding: $spacing;
-  }
-  li {
-    border: none;
+  h2.c-longform-grid__standard,
+  h3.c-longform-grid__standard,
+  h4.c-longform-grid__standard {
+    font-family: $font-sans;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: $font-size-tiny;
+    line-height: 22px;
     color: $dark-blue;
-    border-bottom: 1px solid rgba($dark-blue, .1);
-    padding: $spacing-small 0;
+    position: relative;
+    display: block;
+    padding-bottom: 12px;
+    padding-top: 36px;
+    margin: 0 0 24px 0;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      width: 21px;
+      max-width: 100%;
+      background-color: $highlight-blue;
+    }
+    @include mq($from: tablet) {
+      margin: 0 0 32px 0;
+      padding-top: 48px;
+      padding-bottom: 18px;
+      font-size: $font-size-normal;
+      line-height: 1;
+      &:after {
+        height: 6px;
+        width: 26px;
+      }
+    }
+  }
+  p.c-longform-grid__standard,
+  ul.c-longform-grid__standard {
+    margin-top: 48px;
+  }
+  p,
+  li {
+    font-size: 16px;
+    line-height: 1.5;
+    color: $mid-grey;
   }
 }
 
-.c-columns__item--narrow {
-  @include mq($from: tablet) {
-    width: 50%;
-    padding: $spacing-small;
+.c-columns--two {
+  display: inline-grid;
+  padding-top: 16px;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  @include mq($from: desktop) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 120px;
   }
 }
+
+.c-columns--two__item {
+  max-width: 464px;
+  ul {
+    list-style: none;
+  }
+  li {
+    margin-bottom: 32px;
+    &::before {
+      content: '\25A0';
+      color: $highlight-blue;
+      font-size: 24px;
+      font-weight: bold;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      margin-left: -24px;
+      margin-top: -24px;
+    }
+  }
+}
+
 .c-columns__title {
-  margin: 0 0 $spacing;
 }
