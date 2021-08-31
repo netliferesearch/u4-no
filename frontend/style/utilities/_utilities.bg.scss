@@ -53,7 +53,32 @@
       top: 0;
       left: -1000px;
       background-color: $dark-blue;
-      box-shadow: 0 16px 0px 0px #0079cf;
+      box-shadow: 0 16px 0px 0px $blue;
+      z-index: -1;
+    }
+  }
+}
+
+
+.u-bg--shifted--light {
+  position: relative;
+  max-width: 1206px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 16px;
+  background-color: $light-blue;
+  box-shadow: -16px 16px 0px 0px $highlight-blue;
+  @include mq($from: tablet) {
+    clip-path: inset(0px 0px -16px -1000px);
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: -1000px;
+      background-color: $light-blue;
+      box-shadow: 0 16px 0px 0px $highlight-blue;
       z-index: -1;
     }
   }

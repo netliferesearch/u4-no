@@ -4,13 +4,13 @@ import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';
 import Layout from '../../components/Layout';
 import { Scrollchor } from 'react-scrollchor';
-import { Testimonial } from '../../components/Testimonial';
+import { Testimonial } from '../../components/general/testimonial/Testimonial';
 import Footer from '../../components/general/footer/Footer';
 import { PageIntro } from '../../components/general/PageIntro';
 import { SideBox } from '../../components/general/side-box/SideBox';
 import { CARD_TYPE } from '../../components/general/blue-card/BlueCard';
 import { LearningEvents } from '../../components/front-page/LearningEvents';
-import { Banner } from '../../components/general/banner/banner';
+import { Banner } from '../../components/general/banner/Banner';
 
 const CoursesPage = ({
   data: {
@@ -92,12 +92,14 @@ const CoursesPage = ({
               : null}
           </Banner>
         </section>
-        <div className="c-service-page__section u-side-padding">
+        <div className="o-wrapper-medium">
           <BlockContent blocks={boxAndImg1} serializers={serializers} />
           <BlockContent blocks={boxAndImg2} serializers={serializers} />
         </div>
-        <div className="c-service-page__section u-side-padding">
-          <BlockContent blocks={twoCols} serializers={serializers} />
+        <div className="">
+          <Banner onDark={false}>
+            <BlockContent blocks={twoCols} serializers={serializers} />
+          </Banner>
         </div>
       </div>
 
