@@ -10,9 +10,9 @@
     }
   }
 
-  .u-video {
-    width: 520px;
-  }
+  // .u-video {
+  //   width: 520px;
+  // }
   .c-article__additional-info-container {
     font-family: $font-sans;
     font-size: 18px;
@@ -89,98 +89,27 @@
   }
 }
 
-.c-person-basic--coordinator {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 32px 0;
-  .c-person-basic__text {
-    flex-direction: column;
-    margin-left: 24px;
-    p.u-text--grey {
-      margin: 0;
-    }
-    .c-btn--link {
-      margin-bottom: 8px;
-    }
-  }
-  .c-btn--secondary {
-    margin-top: 16px;
-  }
-}
-
 .c-course-entry__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
   position: relative;
-  //padding-bottom: 104px;
 
   @include mq($from: tablet) {
     flex-direction: row;
-    //position: relative;
-    //padding-bottom: 0;
   }
 }
 
 .c-course-entry__intro {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 0 0 24px 0;
+
   @include mq($from: tablet) {
     width: calc(100% - 520px);
-    padding: 32px 48px 24px 0;
-    //flex: 0 0 auto;
-  }
-  &.c-course-entry__intro--no-img {
-    h2 {
-      // font-size: 32px;
-      // line-height: 39px;
-      // letter-spacing: 0.01em;
-      @include mq($from: tablet) {
-        max-width: 1130px;
-        font-size: 44px;
-        line-height: 53px;
-      }
-    }
-    @include mq($from: tablet) {
-      width: 100%;
-      padding: 32px 0 24px 0;
-    }
-  }
 
-  h2 {
-    margin: $spacing 0;
-    @include mq($from: tablet) {
-      //width: 94%;
-      //margin-bottom: $spacing-large;
-    }
   }
-  .c-course-entry__standfirst {
-    margin-bottom: 24px;
-    max-width: 644px;
-    @include mq($from: tablet) {
-      width: 94%;
-      margin-bottom: 32px;
-    }
-  }
-  h6 {
-    //   font-family: $font-sans;
-    //   font-weight: 900;
-    //   font-size: 12px;
-    //   line-height: 14px;
-    //   letter-spacing: 0.08em;
-    margin-top: $spacing-large;
-    margin-bottom: 0;
-    @include mq($from: tablet) {
-      margin-top: 0;
-      //margin-bottom: 32px;
-    }
-  }
+  &.c-course-entry__intro--no-img {}
+
 }
 
 .c-course-entry__featured-image--bg {
@@ -199,13 +128,6 @@
     //margin: 0;
     //width: calc(50% - 8px);
   }
-  // img {
-  //   @include mq($from: tablet) {
-  //     width: auto;
-  //     min-width: 100%;
-  //     object-fit: cover;
-  //   }
-  // }
 }
 
 .c-course-entry__header-row {

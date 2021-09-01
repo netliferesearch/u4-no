@@ -13,6 +13,8 @@ import { PersonBasic } from '../../components/PersonBasic';
 import LogoU4 from '../../components/icons/LogoU4';
 import { RegisterForm } from '../../components/courses/RegisterForm';
 import Footer from '../../components/general/footer/Footer';
+import { Team } from '../../components/general/team/Team';
+import { PERSON_CARD_TYPE } from '../../components/general/person/PersonCard';
 
 const CoursePage = ({ data: { course = {} }, url = {} }) => {
   const {
@@ -26,22 +28,6 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
     developer = [],
   } = course;
 
-  const [scrolled, setScrolled] = useState(false);
-  const introRef = useRef(null);
-
-  useScrollInfo(
-    ({ currPos }) => {
-      const isScrolled = currPos.y < 70;
-      if (scrolled !== isScrolled) {
-        setScrolled(isScrolled);
-      }
-    },
-    [scrolled],
-    introRef,
-    false,
-    0
-  );
-
   return (
     <Layout
       headComponentConfig={{
@@ -52,89 +38,80 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
         ogp: {},
       }}
     >
-      <div className="c-course-entry c-article-v2">
-        {scrolled ? (
-          <div className="c-header--fixed">
-            <div className="u-scroll-bar">
-              <div className="c-header--fixed__content ">
-                <div>
-                  <Link href="/">
-                    <a className="u-no-underline">
-                      <LogoU4 />
-                    </a>
-                  </Link>
-                </div>
-                <div className="u-flex-start-center">
-                  <p className="u-text--grey u-hidden--tablet">
-                    A one sentence upsell of the generic value of U4 Online courses
-                  </p>
-                  <RegisterForm courseType={courseType.waitingListId} />
-                  <ShareOpen text={title} />
-                </div>
-              </div>
-            </div>
-            <hr className="u-section-underline--no-margins" />
-          </div>
-        ) : null}
-        <section className="o-wrapper u-side-padding">
+      <div className="c-course-entry">
+        <section className="o-wrapper-medium">
+          <BreadCrumbV2 title={`Online Courses`} parentSlug={'/online-courses'} home={true} />
           <CourseHeader data={course} />
-          <span ref={introRef} />
         </section>
         <hr className="u-section-underline--no-margins" />
-        <section className="o-wrapper u-side-padding">
-          <div className="o-wrapper-section c-article__row">
-            <div className="c-article__side c-article__col">
-              <CourseSidebar data={course} side={'left'} />
-            </div>
-            <div className="content c-article__col c-article__center">
-              <div className="c-longform">
-                {content ? <BlockContent blocks={content} serializers={serializers} /> : null}
-              </div>
-              <hr className="u-section-underline--no-margins" />
-              <div
-                id="additional-info"
-                className="c-article__additional-info-container o-wrapper-section"
-              >
-                <h3 className="u-heading--2">Course experts</h3>
-                <p className="u-text--grey">Text about the value of U4 experts</p>
-                {developer.length > 0
-                  ? developer.map((c, index) =>
-                      c._id !== 'author-31' ? (
-                        <div key={index}>
-                          <h4 className="u-heading--3">Course developer & facilitator</h4>
-                          <PersonBasic person={c} showEmail={false} />
-                        </div>
-                      ) : null
-                    )
-                  : null}
-                {coordinator.length > 0
-                  ? coordinator.map((c, index) => (
-                      <div key={index}>
-                        <h4 className="u-heading--3">Course coordinator</h4>
-                        <PersonBasic person={c} showEmail={false} />
-                      </div>
-                    ))
-                  : contact.length > 0
-                  ? contact.map((c, index) =>
-                      c._id === 'author-31' ? (
-                        <div key={index}>
-                          <h4 className="u-heading--3">Course coordinator</h4>
-                          <PersonBasic person={c} showEmail={false} />
-                        </div>
-                      ) : null
-                    )
-                  : null}
-              </div>
+        <section className="o-wrapper-medium">
+          <div className="">
+            <div className="c-longform c-article__col">
+              {content ? <BlockContent blocks={content} serializers={serializers} /> : null}
             </div>
             <div className="c-article__side c-article__col">
               <CourseSidebar data={course} side={'right'} />
             </div>
           </div>
         </section>
-        <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
-          <div />
+        <section className="o-wrapper-medium u-top-margin--64">
+          <hr className="u-section-underline--no-margins" />
+          <div className="o-grid-container--2">
+            {developer.length > 0 && (
+              <Team
+                type={PERSON_CARD_TYPE.IMAGE_LEFT}
+                heading="Course experts"
+                members={developer}
+              />
+            )}
+            {coordinator.length > 0 ? (
+              <Team
+                type={PERSON_CARD_TYPE.IMAGE_LEFT}
+                heading="Course coordinator"
+                members={coordinator}
+              />
+            ) : contact.length > 0 ? (
+              <Team
+                type={PERSON_CARD_TYPE.IMAGE_LEFT}
+                heading="Course coordinator"
+                members={contact}
+              />
+            ) : null}
+          </div>
+        </section>
 
-          {/* 
+            {/* <h3 className="u-heading--2">Course experts</h3>
+            {developer.length > 0
+              ? developer.map((c, index) =>
+                  c._id !== 'author-31' ? (
+                    <div key={index}>
+                      <h4 className="u-heading--3">Course developer & facilitator</h4>
+                      <PersonBasic person={c} showEmail={false} />
+                    </div>
+                  ) : null
+                )
+              : null}
+            {coordinator.length > 0
+              ? coordinator.map((c, index) => (
+                  <div key={index}>
+                    <h4 className="u-heading--3">Course coordinator</h4>
+                    <PersonBasic person={c} showEmail={false} />
+                  </div>
+                ))
+              : contact.length > 0
+              ? contact.map((c, index) =>
+                  c._id === 'author-31' ? (
+                    <div key={index}>
+                      <h4 className="u-heading--3">Course coordinator</h4>
+                      <PersonBasic person={c} showEmail={false} />
+                    </div>
+                  ) : null
+                )
+              : null} */}
+
+        <div />
+
+        {/* 
           {courseType !== 15 && courseType !== 16 && (
             <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
               <div>
@@ -178,7 +155,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
               Your browser seems to have problems with iframes. Please try a different browser!
             </iframe>
           )} */}
-        </div>
+
         <div id="modal" />
       </div>
 
@@ -221,6 +198,7 @@ export default DataLoader(CoursePage, {
           _id,
            title,
            "image": image.asset->{"asset": { "url": url}},
+           image,
            position,
            firstName,
            surname,

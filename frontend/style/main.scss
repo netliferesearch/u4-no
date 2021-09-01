@@ -20,7 +20,6 @@
 @import 'components/components.chart';
 @import 'components/components.duo';
 //@import 'components/components.frontpage-feature';
-@import 'components/components.features';
 @import 'components/components.figure';
 @import 'components/components.filters-v2';
 @import 'components/components.glossary';
@@ -39,7 +38,7 @@
 @import 'components/components.lead';
 @import 'components/components.mosaic';
 @import 'components/components.notification';
-@import 'components/components.simple-hero';
+//@import 'components/components.simple-hero';
 @import 'components/components.simple-mosaic';
 @import 'components/components.select';
 @import 'components/components.partner-promo';
@@ -73,16 +72,15 @@
 @import 'components/v2/components.publication-header';
 @import 'components/v2/publication-entry';
 @import 'components/v2/components.related-items-list';
-@import 'components/v2/components.modal';
 @import 'components/v2/components.disclaimers';
 @import 'components/v2/components.article-sidebar';
 @import 'components/v2/components.abaut-author';
 @import 'components/v2/components.cite';
 @import 'components/v2/components.reader';
-@import 'components/v2/components.course-page';
 @import 'components/general/components.columns';
 @import 'components/general/accordion/components.accordion';
 @import 'components/general/buttons/components.buttons';
+@import 'components/general/features/components.features';
 @import 'components/general/post/components.post';
 @import 'components/general/typography/components.sectionTitle';
 @import 'components/general/menu/components.menu';
@@ -103,6 +101,7 @@
 @import 'components/general/pull-quote/components.pull-quote';
 @import 'components/general/banner/components.banner';
 @import 'components/general/text-image/components.text-image';
+@import 'components/general/modal/components.modal';
 @import 'components/front-page/components.featuredPosts';
 @import 'components/front-page/components.cta';
 @import 'components/front-page/components.learningEvents';
@@ -112,6 +111,7 @@
 @import 'components/topics/components.topic-index';
 @import 'components/the-team/components.persons';
 @import 'components/service-page/service-page';
+@import 'components/course-page/components.course-page';
 
 // UTILITIES
 @import '../node_modules/inuitcss/utilities/utilities.widths';

@@ -17,14 +17,13 @@ export const CourseHeader = ({ data }) => {
     courseType = {},
   } = data;
   return data ? (
-    <div className="o-wrapper-section c-course-entry__header">
+    <div className="c-course-entry__header">
       <div
         className={`c-course-entry__intro ${
           (featuredImage && featuredImage.asset) || vimeo ? '' : 'c-course-entry__intro--no-img'
         }`}
       >
-        <BreadCrumbV2 title={`All Online Courses`} parentSlug={'/online-courses'} home={true} />
-        <PageIntro title={title} text={lead} contentType="Online course" />
+        <PageIntro title={title} text={lead} contentType="Online course" type="withBreadcrumb"/>
         <div className="c-course-entry__header-row">
           <RegisterForm courseType={courseType.waitingListId} />
           <ShareOpen text={title} />

@@ -1,10 +1,9 @@
 import React from 'react';
 import DataLoader from '../../helpers/data-loader';
-
 import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import ServiceArticle from '../../components/ServiceArticle';
-import SimpleHero from '../../components/SimpleHero';
+import { PageIntro } from '../../components/general/PageIntro';
 
 const ServicePage = ({
   data: {
@@ -26,8 +25,7 @@ const ServicePage = ({
       ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
     }}
   >
-    <SimpleHero content={longTitle} cta="" helpdesk="true" />
-
+    <PageIntro title={title} text={longTitle} />
     <ServiceArticle blocks={sections} />
     <Footer />
   </Layout>
