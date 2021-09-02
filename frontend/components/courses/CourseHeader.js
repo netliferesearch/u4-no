@@ -1,11 +1,8 @@
 import React from 'react';
 import { ShareOpen } from '../general/social/ShareOpen';
-import Link from 'next/link';
 import ReactPlayer from 'react-player';
 import { RegisterForm } from './RegisterForm';
-import { Topics } from '../general/topics/Topics';
 import { PageIntro } from '../general/PageIntro';
-import { BreadCrumbV2 } from '../general/BreadCrumbV2';
 import sanityImageLoader from '../../helpers/sanityImageLoader';
 import Image from 'next/image';
 
@@ -15,7 +12,6 @@ export const CourseHeader = ({ data }) => {
     lead = '',
     featuredImage = {},
     vimeo = '',
-    topics = [],
     courseType = {},
   } = data;
   return data ? (
@@ -26,7 +22,7 @@ export const CourseHeader = ({ data }) => {
         }`}
       >
         <PageIntro title={title} text={lead} contentType="Online course" type="withBreadcrumb" single={true}/>
-        <div className="c-course-entry__header-row">
+        <div className="c-course-entry__btn-row">
           <RegisterForm courseType={courseType.waitingListId} />
           <ShareOpen text={title} />
         </div>

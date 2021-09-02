@@ -45,12 +45,16 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
         </section>
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper-medium">
-          <div className="">
+          <div className="c-course-entry__content">
             <div className="c-longform c-article__col">
               {content ? <BlockContent blocks={content} serializers={serializers} /> : null}
+              <div className="c-course-entry__btn-row">
+                <RegisterForm courseType={courseType.waitingListId} />
+                <ShareOpen text={title} />
+              </div>
             </div>
             <div className="c-article__side c-article__col">
-              <CourseSidebar data={course} side={'right'} />
+              <CourseSidebar data={course} />
             </div>
           </div>
         </section>
@@ -58,57 +62,19 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
           <hr className="u-section-underline--no-margins" />
           <div className="o-grid-container--2">
             {developer.length > 0 && (
-              <Team
-                type={PERSON_CARD_TYPE.IMAGE_LEFT}
-                heading="Course experts"
-                members={developer}
-              />
+              <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading="Experts" members={developer} />
             )}
             {coordinator.length > 0 ? (
               <Team
-                type={PERSON_CARD_TYPE.IMAGE_LEFT}
-                heading="Course coordinator"
+                type={PERSON_CARD_TYPE.IMAGE_TOP}
+                heading="Coordinators"
                 members={coordinator}
               />
             ) : contact.length > 0 ? (
-              <Team
-                type={PERSON_CARD_TYPE.IMAGE_LEFT}
-                heading="Course coordinator"
-                members={contact}
-              />
+              <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading="Coordinators" members={contact} />
             ) : null}
           </div>
         </section>
-
-            {/* <h3 className="u-heading--2">Course experts</h3>
-            {developer.length > 0
-              ? developer.map((c, index) =>
-                  c._id !== 'author-31' ? (
-                    <div key={index}>
-                      <h4 className="u-heading--3">Course developer & facilitator</h4>
-                      <PersonBasic person={c} showEmail={false} />
-                    </div>
-                  ) : null
-                )
-              : null}
-            {coordinator.length > 0
-              ? coordinator.map((c, index) => (
-                  <div key={index}>
-                    <h4 className="u-heading--3">Course coordinator</h4>
-                    <PersonBasic person={c} showEmail={false} />
-                  </div>
-                ))
-              : contact.length > 0
-              ? contact.map((c, index) =>
-                  c._id === 'author-31' ? (
-                    <div key={index}>
-                      <h4 className="u-heading--3">Course coordinator</h4>
-                      <PersonBasic person={c} showEmail={false} />
-                    </div>
-                  ) : null
-                )
-              : null} */}
-
         <div />
 
         {/* 
@@ -158,21 +124,6 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
 
         <div id="modal" />
       </div>
-
-      {/* {courseType.waitingListId !== 15 && courseType.waitingListId !== 16 && contact.length > 0 && (
-        <div id="contacts" className="c-topic-section--lightblue o-wrapper-full-width">
-          <Team
-            title={
-              contact.length > 1
-                ? 'We’re the team responsible for this course'
-                : 'I’m responsible for this course'
-            }
-            sayHi
-            members={contact}
-            linkLabel="Read full bio"
-          />
-        </div>
-      )} */}
       <Footer />
     </Layout>
   );

@@ -10,18 +10,6 @@
     }
   }
 
-  // .u-video {
-  //   width: 520px;
-  // }
-  .c-article__additional-info-container {
-    font-family: $font-sans;
-    font-size: 18px;
-    line-height: 1.67;
-    letter-spacing: 0.02em;
-    .u-primary-heading {
-      margin-top: 32px;
-    }
-  }
   .c-header--fixed {
     button {
       margin-left: 16px;
@@ -32,46 +20,13 @@
       }
     }
   }
-}
 
-.c-course-sidebar {
-  .c-course-sidebar__row-first {
-    margin-top: 0;
-    .c-translations {
-      margin-top: 16px;
-    }
+  .c-team__wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 0;
     @include mq($from: tablet) {
-      margin-top: 16px;
-      .c-translations {
-        margin-top: 0;
-      }
+      margin-bottom: 48px;
     }
-  }
-}
-
-.c-course-sidebar__right,
-.c-course-sidebar__left .u-hidden--desktop {
-  p {
-    margin: 6px 0 0 0;
-  }
-  .c-article-sidebar__row--regular {
-    margin-bottom: 16px;
-  }
-  .c-modal .c-btn--secondary {
-    margin-top: 40px;
-  }
-}
-
-.c-course-sidebar__left .u-hidden--desktop {
-  .c-course-sidebar__row-first {
-    margin-bottom: 32px;
-  }
-}
-
-.c-article-sidebar__select {
-  margin: 16px 0;
-  @include mq($from: tablet) {
-    margin: 48px 0;
   }
 }
 
@@ -97,11 +52,11 @@
   align-items: flex-end;
   margin-top: 0;
   @include mq($from: tablet) {
-    margin-top: 64px;
+    margin-top: 48px;
   }
 }
 
-.c-course-entry__header-row {
+.c-course-entry__btn-row {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -110,7 +65,6 @@
   .c-modal {
     margin-right: 24px;
   }
-
 }
 
 //overriting
@@ -118,12 +72,17 @@ a.c-btn--secondary {
   border-color: #dedede;
 }
 
-.c-course-entry {
-  .c-team__wrapper {
-    grid-template-columns: 1fr;
-    margin-bottom: 0;
-    @include mq($from: tablet) {
-      margin-bottom: 48px;
-    }
+.c-course-entry__content {
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  @include mq($from: desktop) {
+    grid-template-columns: 5fr 2fr;
+    column-gap: 120px;
   }
+}
+
+.c-course-sidebar {
+  //possibly separate sheet
 }

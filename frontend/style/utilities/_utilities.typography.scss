@@ -12,14 +12,6 @@
   color: $white;
 }
 
-.u-section-underline {
-  border: none;
-  border-bottom: 1px solid $light-grey;
-  margin-bottom: 40px;
-  width: 100%;
-  align-self: flex-end;
-}
-
 .u-section-underline--no-margins {
   border: none;
   border-bottom: 1px solid $light-grey;
@@ -27,6 +19,14 @@
   width: 100%;
   -ms-flex-item-align: end;
   align-self: flex-end;
+}
+
+.u-section-underline--grey {
+  border: none;
+  border-bottom: 1px solid $mid-grey;
+  width: 100%;
+  opacity: 0.3;
+  margin: 0;
 }
 
 .u-primary-heading {
