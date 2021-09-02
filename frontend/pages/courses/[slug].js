@@ -198,7 +198,6 @@ export default DataLoader(CoursePage, {
           _id,
            title,
            "image": image.asset->{"asset": { "url": url}},
-           image,
            position,
            firstName,
            surname,

@@ -11,6 +11,10 @@
   }
 }
 
+.c-page-intro__h {
+  margin-bottom: 16px;
+}
+
 .c-page-intro__p {
   @include mq($from: tablet) {
     max-width: 632px;
@@ -27,5 +31,11 @@
   width: 100%;
   @include mq($from: tablet) {
     max-width: 632px;
+  }
+}
+
+.c-page-intro--single {
+  .c-page-intro__h {
+    margin-top: 0;
   }
 }

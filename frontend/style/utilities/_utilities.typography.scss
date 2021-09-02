@@ -49,6 +49,7 @@
   letter-spacing: 0.15em;
   color: $dark-grey;
   text-transform: uppercase;
+  margin-top: 0;
 }
 
 .u-secondary-h1 {
@@ -122,6 +123,17 @@
   font-size: $font-size-nano;
   line-height: $line-height-mid;
   letter-spacing: 0.01em;
+}
+
+.u-body--large {
+  font-family: $font-sans;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+  @include mq($from: tablet) {
+    font-size: 20px;
+    line-height: 28px;
+  }
 }
 
 .u-detail--blue {

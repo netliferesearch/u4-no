@@ -63,18 +63,6 @@
     @include mq($from: tablet) {
       margin-top: 64px;
     }
-    .u-secondary-heading {
-      font-size: 22px;
-      line-height: 1.27;
-      letter-spacing: 0.02em;
-      text-transform: none;
-      @include mq($from: tablet) {
-        font-size: 12px;
-        line-height: 14px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-    }
   }
 }
 

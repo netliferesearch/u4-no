@@ -21,7 +21,7 @@ h1 {
 h2 {
   @include inuit-font-size($font-size-normal, 32px);
   @include mq($from: desktop) {
-    @include inuit-font-size($font-size-larger, $font-size-largest);
+    @include inuit-font-size($font-size-larger, 42px);
   }
 }
 

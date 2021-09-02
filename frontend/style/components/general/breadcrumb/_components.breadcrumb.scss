@@ -5,7 +5,7 @@
     margin: 32px 0;
   }
   @include mq($from: desktop) {
-    margin: 60px 0;
+    margin: 60px 0 32px 0;
   }
 }
 
@@ -23,25 +23,20 @@
   padding: 0;
 }
 
-// .c-breadcrumb__item {
-//   &:hover,
-//   &:active {
-//     svg {
-//       stroke: $blue;
-//       path {
-//         stroke: $blue;
-//       }
-//     }
-//   }
-// }
-
 .c-breadcrumb__link {
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 10px;
+  line-height: 12px;
   font-weight: 400;
-  margin: 0 8px 0 6px;
+  margin: 0 12px;
   &:hover,
   &:active {
     color: $brand-main;
+    font-weight: 700;
+  }
+}
+
+.c-breadcrumb__item:first-child {
+  .c-breadcrumb__link {
+    margin-left: 0;
   }
 }

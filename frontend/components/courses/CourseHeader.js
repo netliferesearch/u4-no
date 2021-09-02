@@ -6,6 +6,8 @@ import { RegisterForm } from './RegisterForm';
 import { Topics } from '../general/topics/Topics';
 import { PageIntro } from '../general/PageIntro';
 import { BreadCrumbV2 } from '../general/BreadCrumbV2';
+import sanityImageLoader from '../../helpers/sanityImageLoader';
+import Image from 'next/image';
 
 export const CourseHeader = ({ data }) => {
   const {
@@ -23,7 +25,7 @@ export const CourseHeader = ({ data }) => {
           (featuredImage && featuredImage.asset) || vimeo ? '' : 'c-course-entry__intro--no-img'
         }`}
       >
-        <PageIntro title={title} text={lead} contentType="Online course" type="withBreadcrumb"/>
+        <PageIntro title={title} text={lead} contentType="Online course" type="withBreadcrumb" single={true}/>
         <div className="c-course-entry__header-row">
           <RegisterForm courseType={courseType.waitingListId} />
           <ShareOpen text={title} />
@@ -45,19 +47,18 @@ export const CourseHeader = ({ data }) => {
           />
         </div>
       ) : featuredImage && featuredImage.asset ? (
-        <div
-          className="c-course-entry__featured-image c-course-entry__featured-image--bg"
-          style={{
-            backgroundImage: `url('${featuredImage.asset.url}?w=520&fit=crop&crop=focalpoint')`,
-          }}
-        />
-      ) : // <figure className="c-course-entry__featured-image u-hidden--tablet">
-      //   <img
-      //     src={`${featuredImage.asset.url}?w=520`}
-      //     alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
-      //   />
-      // </figure>
-      null}
+        <div className="c-course-entry__image-wrapper">
+          <Image
+            loader={sanityImageLoader}
+            src={featuredImage.asset.url}
+            loading="lazy"
+            width="484"
+            height="273"
+            objectFit="cover"
+            objectPosition="center center"
+          />
+        </div>
+      ) : null}
     </div>
   ) : null;
 };
