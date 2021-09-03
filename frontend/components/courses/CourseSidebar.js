@@ -19,7 +19,7 @@ export const CourseSidebar = ({ data }) => {
 
   return data ? (
     <div className="c-article-sidebar c-course-sidebar">
-      <div className="c-course-sidebar__right u-hidden--tablet">
+      <div className="c-course-sidebar__right">
         <SidebarItem label="Course Type" content={courseType.title} />
         {startDate.utc && (
           <SidebarItem

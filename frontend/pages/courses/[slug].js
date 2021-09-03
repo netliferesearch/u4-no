@@ -58,7 +58,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             </div>
           </div>
         </section>
-        <section className="o-wrapper-medium u-top-margin--64">
+        <section className="o-wrapper-medium u-bottom-margin--24">
           <hr className="u-section-underline--no-margins" />
           <div className="o-grid-container--2">
             {developer.length > 0 && (

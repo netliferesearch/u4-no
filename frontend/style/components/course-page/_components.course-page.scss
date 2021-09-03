@@ -34,7 +34,7 @@
   width: 100%;
   display: inline-grid;
   grid-gap: 0;
-  margin-bottom: 40px;
+  //margin-bottom: 40px;
 
   @include mq($from: tablet) {
     grid-template-columns: 1fr 1fr;
@@ -61,7 +61,7 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  margin-top: 24px;
+  margin: 24px 0 40px 0;
   .c-modal {
     margin-right: 24px;
   }
