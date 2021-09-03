@@ -3,14 +3,16 @@ import BEMHelper from 'react-bem-helper';
 import { getRouteByType } from '../../helpers/getRouteByType';
 import Link from 'next/link';
 import LinkToItem from '../general/LinkToItem';
+import { PageIntro } from '../general/PageIntro';
 const classes = BEMHelper({
   name: 'pubHeader',
   prefix: 'c-',
 });
 
-export const PublicationArticleHeader = ({
+export const ArticleHeader = ({
   title = '',
   subtitle = '',
+  standfirst = '',
   slug = {},
   className = '',
   publicationType = {},
@@ -27,20 +29,16 @@ export const PublicationArticleHeader = ({
   return (
     <header {...classes('', null, className)}>
       <div className="c-article-header__container">
-        <div {...classes('content')}>
-          <Link href={getRouteByType(publicationType.title)}>
-            <a className="c-btn--sen">
-              <h6>
-                {' '}
-                {/* {publicationType.title && `Publication | ${publicationType.title}`} */}
-                {publicationType.title && `${publicationType.title}`}
-              </h6>
-            </a>
-          </Link>
+        <div>
+          <PageIntro
+            title={title}
+            subtitle={subtitle}
+            text={standfirst}
+            contentType="publication"
+            type="withBreadcrumb"
+            single={true}
+          />
 
-          <h2 className="u-primary-heading">{title}</h2>
-          {subtitle ? <p {...classes('subtitle')}>{subtitle}</p> : null}
-          {/* {standfirst ? <p {...classes('intro')}>{standfirst}</p> : null} */}
           <div {...classes('actions')}>
             {content.length > 0 && (
               <button
@@ -102,5 +100,3 @@ export const PublicationArticleHeader = ({
     </header>
   );
 };
-
-export default PublicationArticleHeader;

@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 const LongformArticleContainer = dynamic(() =>
   import('../../../components/LongformArticleContainer')
 );
+
 const LegacyPublicationContainer = dynamic(() =>
   import('../../../components/LegacyPublicationContainer')
 );

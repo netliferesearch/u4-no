@@ -2,6 +2,7 @@ import React from 'react';
 
 export const PageIntro = ({
   title = '',
+  subtitle = '',
   text = '',
   contentType = '',
   type = 'basic',
@@ -40,8 +41,19 @@ export const PageIntro = ({
           )}
         </>
       )}
+      {subtitle && (
+        <h4
+          className={`c-page-intro__h ${onDark ? 'u-primary-heading--white' : 'u-primary-heading'}`}
+        >
+          {subtitle}
+        </h4>
+      )}
       {text && (
-        <div className={`c-page-intro__p ${onDark ? 'u-text--white' : 'u-text--grey'} ${single ? 'u-body--large u-text--dark-grey' : 'u-body'}`}>
+        <div
+          className={`c-page-intro__p ${onDark ? 'u-text--white' : 'u-text--grey'} ${
+            single ? 'u-body--large u-text--dark-grey' : 'u-body'
+          }`}
+        >
           {text}
         </div>
       )}
