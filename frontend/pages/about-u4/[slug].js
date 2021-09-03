@@ -4,7 +4,6 @@ import LongformArticleContainer from '../../components/LongformArticleContainer'
 import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import ServiceArticle from '../../components/ServiceArticle';
-//import SimpleHero from '../../components/SimpleHero';
 import { wrapInRedux } from '../../helpers/redux-store-wrapper';
 
 const GeneralArticle = props => {

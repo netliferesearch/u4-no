@@ -5,12 +5,17 @@ import { fetchAndMaterialize } from '../../../helpers/data-loader';
 import { localize } from '../../../helpers/translate';
 import { initStore } from '../../../helpers/redux-store';
 import { Provider } from 'react-redux';
+// import { PublicationContainer } from '../../../components/publication/PublicationContainer';
 
 const LongformArticleContainer = dynamic(() =>
   import('../../../components/LongformArticleContainer')
 );
 const LegacyPublicationContainer = dynamic(() =>
   import('../../../components/LegacyPublicationContainer')
+);
+
+const PublicationContainer = dynamic(() =>
+  import('../../../components/publication/PublicationContainer')
 );
 
 const store = initStore();
@@ -21,7 +26,8 @@ const PublicationEntry = props => {
       {props.data.legacypdf && !props.data.content ? (
         <LegacyPublicationContainer {...props} />
       ) : (
-        <LongformArticleContainer {...props} />
+        // <LongformArticleContainer {...props} />
+        <PublicationContainer {...props} />
       )}
     </Provider>
   );

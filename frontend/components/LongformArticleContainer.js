@@ -2,13 +2,10 @@ import React from 'react';
 import BlockToContent from '@sanity/block-content-to-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 import Image from 'next/image';
 import sanityImageLoader from '../helpers/sanityImageLoader';
-
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import dateToString from '../helpers/dateToString';
-
 import Footer from '../components/general/footer/Footer';
 import Layout from './Layout';
 import LongformArticle from './LongformArticle';
@@ -22,7 +19,6 @@ import AuthorList from './publication/AuthorList';
 import PublicationNotification from './PublicationNotification';
 import TnrcHeader from './TnrcHeader';
 import TnrcFooter from './TnrcFooter';
-
 import CreativecommonsCC from './icons/CreativecommonsCC';
 import CreativecommonsBY from './icons/CreativecommonsBY';
 import CreativecommonsNC from './icons/CreativecommonsNC';

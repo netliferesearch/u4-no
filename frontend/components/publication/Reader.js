@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import { Scrollchor } from 'react-scrollchor';
-import serializers from '../serializers';
+import serializers from '../serializers/serializers';
 import LongformArticle from '../LongformArticle';
 import PdfViewer from '../PdfViewer';
 import { LongformArticleHeader } from '../LongformArticleHeader';
@@ -10,7 +10,7 @@ import { ToggleBlock } from '../ToggleBlock';
 import { Acknowledgements } from './Aknowledgements';
 import { Partners } from '../Partners';
 import { Disclaimers } from '../Disclaimers';
-import { PhotoCaptionCredit } from '../PhotoCaptionCredit';
+import { PhotoCaptionCredit } from '../general/PhotoCaptionCredit';
 import { ToTop } from '../icons/ToTop';
 import { useScrollInfo } from '../../helpers/useScrollInfo';
 

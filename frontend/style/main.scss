@@ -30,25 +30,21 @@
 @import 'components/components.link-list';
 @import 'components/components.logo';
 @import 'components/components.oneColumnBox';
-@import 'components/components.overview-page';
+//@import 'components/components.overview-page';
 @import 'components/components.top-bar';
-@import 'components/v2/components.top-bar';
 @import 'components/components.headroom';
 @import 'components/components.boxOnImage';
 @import 'components/components.lead';
 @import 'components/components.mosaic';
 @import 'components/components.notification';
-//@import 'components/components.simple-hero';
 @import 'components/components.simple-mosaic';
 @import 'components/components.select';
 @import 'components/components.partner-promo';
-//@import 'components/components.person';
-//@import 'components/components.persons';
-@import 'components/components.team';
 @import 'components/components.table';
 @import 'components/components.textbox';
 @import 'components/components.toggle-block';
 @import 'components/components.workshop-mosaic';
+//@import 'components/components.simple-hero';
 // @import "components/components.buttons";
 // @import "components/components.page-head";
 // @import "components/components.page-foot";
@@ -56,9 +52,12 @@
 // @import "components/components.ads";
 // @import "components/components.promo";
 //@import 'components/_components.frontpageSearch';
+//@import 'components/components.person';
+//@import 'components/components.persons';
 @import 'components/_components.search-v2';
 @import 'components/v2/components.search';
-@import 'components/_components.introduction-text';
+@import 'components/v2/components.top-bar';
+//@import 'components/_components.introduction-text';
 @import 'components/_components.partner-agencies';
 @import 'components/_components.search-results-v2';
 @import 'components/_components.publication-drawer';
@@ -69,17 +68,14 @@
 @import 'components/v2/components.blog-list';
 @import 'components/v2/components.blog-single';
 @import 'components/v2/components.tags-section';
-@import 'components/v2/components.publication-header';
-@import 'components/v2/publication-entry';
-@import 'components/v2/components.related-items-list';
+//@import 'components/v2/components.related-items-list';
 @import 'components/v2/components.disclaimers';
 @import 'components/v2/components.abaut-author';
 @import 'components/v2/components.cite';
-@import 'components/v2/components.reader';
 
-@import 'components/general/article-sidebar/components.article-sidebar';
-@import 'components/general/components.columns';
 @import 'components/general/accordion/components.accordion';
+@import 'components/general/article-sidebar/components.article-sidebar';
+@import 'components/general/columns/components.columns';
 @import 'components/general/buttons/components.buttons';
 @import 'components/general/features/components.features';
 @import 'components/general/post/components.post';
@@ -103,6 +99,7 @@
 @import 'components/general/banner/components.banner';
 @import 'components/general/text-image/components.text-image';
 @import 'components/general/modal/components.modal';
+@import 'components/general/team/components.team';
 @import 'components/front-page/components.featuredPosts';
 @import 'components/front-page/components.cta';
 @import 'components/front-page/components.learningEvents';
@@ -110,9 +107,12 @@
 @import 'components/front-page/frontpage';
 @import 'components/topics/components.topic-page';
 @import 'components/topics/components.topic-index';
-@import 'components/the-team/components.persons';
+@import 'components/persons/components.persons';
 @import 'components/service-page/service-page';
 @import 'components/course-page/components.course-page';
+@import 'components/publication/components.reader';
+@import 'components/publication/components.publication-header';
+@import 'components/publication/publication-entry';
 
 // UTILITIES
 @import '../node_modules/inuitcss/utilities/utilities.widths';
