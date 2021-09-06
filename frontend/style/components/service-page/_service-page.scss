@@ -11,3 +11,13 @@
     width: 50%;
   }
 }
+
+.c-service-page.c-courses-page {
+  .c-team__wrapper {
+    grid-template-columns: 1fr;
+    margin-bottom: 0;
+    @include mq($from: tablet) {
+      margin-bottom: 48px;
+    }
+  }
+}

@@ -1,11 +1,10 @@
 import React from 'react';
 import { ShareOpen } from '../general/social/ShareOpen';
-import Link from 'next/link';
 import ReactPlayer from 'react-player';
 import { RegisterForm } from './RegisterForm';
-import { Topics } from '../general/topics/Topics';
 import { PageIntro } from '../general/PageIntro';
-import { BreadCrumbV2 } from '../general/BreadCrumbV2';
+import sanityImageLoader from '../../helpers/sanityImageLoader';
+import Image from 'next/image';
 
 export const CourseHeader = ({ data }) => {
   const {
@@ -13,19 +12,17 @@ export const CourseHeader = ({ data }) => {
     lead = '',
     featuredImage = {},
     vimeo = '',
-    topics = [],
     courseType = {},
   } = data;
   return data ? (
-    <div className="o-wrapper-section c-course-entry__header">
+    <div className="c-course-entry__header">
       <div
         className={`c-course-entry__intro ${
           (featuredImage && featuredImage.asset) || vimeo ? '' : 'c-course-entry__intro--no-img'
         }`}
       >
-        <BreadCrumbV2 title={`All Online Courses`} parentSlug={'/online-courses'} home={true} />
-        <PageIntro title={title} text={lead} contentType="Online course" />
-        <div className="c-course-entry__header-row">
+        <PageIntro title={title} text={lead} contentType="Online course" type="withBreadcrumb" single={true}/>
+        <div className="c-course-entry__btn-row">
           <RegisterForm courseType={courseType.waitingListId} />
           <ShareOpen text={title} />
         </div>
@@ -46,19 +43,18 @@ export const CourseHeader = ({ data }) => {
           />
         </div>
       ) : featuredImage && featuredImage.asset ? (
-        <div
-          className="c-course-entry__featured-image c-course-entry__featured-image--bg"
-          style={{
-            backgroundImage: `url('${featuredImage.asset.url}?w=520&fit=crop&crop=focalpoint')`,
-          }}
-        />
-      ) : // <figure className="c-course-entry__featured-image u-hidden--tablet">
-      //   <img
-      //     src={`${featuredImage.asset.url}?w=520`}
-      //     alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
-      //   />
-      // </figure>
-      null}
+        <div className="c-course-entry__image-wrapper">
+          <Image
+            loader={sanityImageLoader}
+            src={featuredImage.asset.url}
+            loading="lazy"
+            width="484"
+            height="273"
+            objectFit="cover"
+            objectPosition="center center"
+          />
+        </div>
+      ) : null}
     </div>
   ) : null;
 };

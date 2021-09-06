@@ -151,7 +151,7 @@
   }
 }
 
-.c-post__post-type {
+.c-post__post-type.u-secondary-heading {
   margin-top: 16px;
   @include mq($from: tablet) {
     margin-top: 20px;

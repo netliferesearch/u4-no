@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import ClientOnlyPortal from '../general/ClientOnlyPortal';
-import { CloseButton, TextButton } from '../general/buttons';
+import { CloseButton } from '../general/buttons';
 import { useOnClickOutside, useLockBodyScroll } from '../../helpers/hooks';
 
 /**
@@ -12,7 +12,9 @@ export const RegisterForm = ({ courseType }) => {
   const [open, setOpen] = useState();
   return (
     <div className={`c-modal${open ? ' open' : ''}`}>
-      <TextButton onClick={() => setOpen(true)} text="Register" modifier="pri" />
+      <button className="c-btn c-btn--primary" onClick={() => setOpen(true)}>
+        Register
+      </button>
       {open && <FormModal title="Register" courseType={courseType} setOpen={setOpen} />}
     </div>
   );
@@ -52,7 +54,7 @@ export const FormModal = props => {
             <CloseButton onClick={e => setOpen(false)} />
           </div>
           <hr className="u-section-underline--no-margins" />
-          <div className={`c-modal__content ${courseType === 18 ? "" : "c-modal--partners"}`}>
+          <div className={`c-modal__content ${courseType === 18 ? '' : 'c-modal--partners'}`}>
             {courseType !== 15 && courseType !== 16 && (
               <div className="u-margin-top">
                 <div>

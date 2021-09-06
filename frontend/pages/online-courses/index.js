@@ -12,6 +12,8 @@ import { CARD_TYPE } from '../../components/general/blue-card/BlueCard';
 import { LearningEvents } from '../../components/front-page/LearningEvents';
 import { Banner } from '../../components/general/banner/Banner';
 import { TextImage } from '../../components/general/text-image/TextImage';
+import { Team } from '../../components/general/team/Team';
+import { PERSON_CARD_TYPE } from '../../components/general/person/PersonCard';
 
 const CoursesPage = ({
   data: {
@@ -102,6 +104,21 @@ const CoursesPage = ({
             <BlockContent blocks={twoCols} serializers={serializers} />
           </Banner>
         </div>
+        <div className="o-wrapper-medium u-top-margin--64">
+          <hr className="u-section-underline--no-margins" />
+          <div className="o-grid-container--2">
+            <Team
+              type={PERSON_CARD_TYPE.IMAGE_LEFT}
+              heading={persons.headingLeft}
+              members={persons.personLeft}
+            />
+            <Team
+              type={PERSON_CARD_TYPE.IMAGE_LEFT}
+              heading={persons.headingRight}
+              members={persons.personRight}
+            />
+          </div>
+        </div>
       </div>
 
       <Footer />
@@ -121,10 +138,16 @@ export default DataLoader(CoursesPage, {
         sections[]{..., 
           personLeft[]->, 
           personRight[]->, 
-          coursesRef[]->{...,"featuredImage": featuredImage.asset->url} }, 
-          "persons": sections[7]{..., 
+          coursesRef[]->{
+            ...,
+            "featuredImage": featuredImage.asset->url
+          } 
+        }, 
+          "persons": sections[7]{
+            ..., 
             personLeft[]->, 
-            personRight[]->}, 
+            personRight[]->
+          }, 
         resources[]->, "featuredImage": featuredImage.asset->url}}`,
     param: { slug },
   }),

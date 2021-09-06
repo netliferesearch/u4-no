@@ -5,8 +5,9 @@ import LongformArticleContainer from '../components/LongformArticleContainer';
 import Footer from '../components/general/footer/Footer';
 import Layout from '../components/Layout';
 import ServiceArticle from '../components/ServiceArticle';
-import SimpleHero from '../components/SimpleHero';
+//import SimpleHero from '../components/SimpleHero';
 import { wrapInRedux } from '../helpers/redux-store-wrapper';
+import { PageIntro } from '../components/general/PageIntro';
 
 const GeneralArticle = props => {
   if (props.data._type === 'frontpage') {
@@ -30,9 +31,9 @@ const GeneralArticle = props => {
           ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
         }}
       >
-        {lead && <SimpleHero light title={title} content={lead} />}
+        {/* {lead && <SimpleHero light title={title} content={lead} />} */}
+        {lead || title && <PageIntro title={title} text={lead ? lead : ''} />}
         {sections ? <ServiceArticle blocks={sections} /> : null}
-
         <Footer />
       </Layout>
     );

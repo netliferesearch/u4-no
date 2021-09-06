@@ -1,27 +1,27 @@
 .c-pullQuote {
   max-width: 896px;
   padding-top: 24px;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 48px;
+  margin-right: 48px;
   p,
   .c-longform-grid__standard {
     font-family: $font-serif;
-    font-size: 36px;
-    line-height: 1.39;
+    font-size: 24px;
+    line-height: 32px;
     color: $white;
     position: relative;
     display: inline;
 
     &:before {
       position: absolute;
-      top: -24px;
-      left: -100px;
+      top: -12px;
+      left: -48px;
       content: '';
       background-image: url('/public/quote-marks.svg');
       background-repeat: no-repeat;
-      background-size: 71px 56px;
-      width: 71px;
-      height: 56px;
+      background-size: 35px 28px;
+      width: 35px;
+      height: 28px;
       opacity: 0.2;
     }
 
@@ -30,22 +30,53 @@
       background-image: url('/public/quote-marks.svg');
       background-repeat: no-repeat;
       transform: rotate(180deg);
-      width: 71px;
-      height: 56px;
+      background-size: 35px 28px;
+      width: 35px;
+      height: 28px;
       position: absolute;
-      bottom: -24px;
-      right: -100px;
+      bottom: -12px;
+      right: -48px;
       opacity: 0.2;
+    }
+  }
+  @include mq($from: tablet) {
+    margin-left: 100px;
+    margin-right: 100px;
+    p,
+    .c-longform-grid__standard {
+      font-size: 36px;
+      line-height: 1.39;
+
+      &:before,
+      &:after {
+        background-size: 71px 56px;
+        width: 71px;
+        height: 56px;
+      }
+      &:before {
+        top: -24px;
+        left: -100px;
+      }
+
+      &:after {
+        bottom: -24px;
+        right: -100px;
+      }
     }
   }
 }
 
 .c-pullQuote__cite {
   font-family: $font-sans;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 12px;
+  line-height: 18px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: $highlight-blue;
-  margin: 32px 0 0 100px;
+  margin: 32px 0 0 48px;
+  @include mq($from: tablet) {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 32px 0 0 100px;
+  }
 }

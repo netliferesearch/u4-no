@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import BEMHelper from 'react-bem-helper';
-import serializers from '../serializers';
+import serializers from '../serializers/serializers';
 import buildUrl from '../../helpers/buildUrl';
 
 const classes = BEMHelper({
