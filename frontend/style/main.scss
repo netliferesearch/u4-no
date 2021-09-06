@@ -10,7 +10,7 @@
 @import 'objects/objects.wrapper';
 
 // COMPONENTS
-@import 'components/components.article-header';
+//@import 'components/components.article-header';
 @import 'components/components.article';
 @import 'components/components.article-nav';
 @import 'components/components.boxOnBox';
@@ -74,6 +74,7 @@
 @import 'components/v2/components.cite';
 
 @import 'components/general/accordion/components.accordion';
+@import 'components/general/article-header/components.article-header';
 @import 'components/general/article-sidebar/components.article-sidebar';
 @import 'components/general/columns/components.columns';
 @import 'components/general/buttons/components.buttons';
@@ -111,8 +112,8 @@
 @import 'components/service-page/service-page';
 @import 'components/course-page/components.course-page';
 @import 'components/publication/components.reader';
-@import 'components/publication/components.publication-header';
 @import 'components/publication/publication-entry';
+
 
 // UTILITIES
 @import '../node_modules/inuitcss/utilities/utilities.widths';

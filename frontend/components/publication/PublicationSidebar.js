@@ -73,17 +73,15 @@ export const PublicationSidebar = ({ data, side }) => {
 
       {side === 'right' ? (
         <div {...classes('right')}>
-          {(pdfFile.asset || legacypdf.asset) && (
+          {/* {(pdfFile.asset || legacypdf.asset) && (
             <div className="c-article-sidebar__row--regular">
               <div {...classes('right pdf-preview')}>
-                {/* {useMediaQuery('tablet') && ( */}
                 <Document file={pdfFile.asset ? pdfFile.asset : legacypdf.asset}>
                   <Page pageNumber={1} />
                 </Document>
-                {/* )} */}
               </div>
             </div>
-          )}
+          )} */}
           <div className="c-article-sidebar__row--regular">
             <div className="u-hidden--tablet">
               <Partners data={data} />

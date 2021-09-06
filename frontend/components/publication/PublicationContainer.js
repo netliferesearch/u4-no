@@ -6,7 +6,7 @@ import dateToString from '../../helpers/dateToString';
 import { AuthorList } from './AuthorList';
 import TableOfContentsSidebar from '../TableOfContents/TableOfContentsSidebar';
 import { PublicationContent } from './PublicationContent';
-import { ArticleHeader } from './ArticleHeader';
+import { ArticleHeader } from '../general/article-header/ArticleHeader';
 import { Layout } from '../Layout';
 import { PublicationSidebar } from './PublicationSidebar';
 import { AboutAuthor } from '../blog/AboutAuthor';
@@ -104,13 +104,14 @@ const PublicationContainer = (props = {}) => {
           ) : null}
           {_type === 'publication' && !shortversion && (
             <ArticleHeader
-              {...props.data}
+              data={props.data}
               shortversion={shortversion}
               readerOpen={readerOpen}
               setReaderOpen={setReaderOpen}
             />
           )}
         </section>
+        <hr className="u-section-underline--no-margins" />
         <section
           className="o-wrapper u-side-padding"
           style={{ display: readerOpen ? 'none' : 'block' }}

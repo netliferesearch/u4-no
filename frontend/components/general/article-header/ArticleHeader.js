@@ -1,48 +1,39 @@
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
-import { getRouteByType } from '../../helpers/getRouteByType';
-import Link from 'next/link';
-import LinkToItem from '../general/LinkToItem';
-import { PageIntro } from '../general/PageIntro';
-const classes = BEMHelper({
-  name: 'pubHeader',
-  prefix: 'c-',
-});
+import { Document, Page } from 'react-pdf/build/entry.noworker';
+import { PUBLICATION } from '../../../helpers/constants';
+import { getPostType } from '../../../helpers/getRouteByType';
+import LinkToItem from '../LinkToItem';
+import { PageIntro } from '../PageIntro';
 
-export const ArticleHeader = ({
-  title = '',
-  subtitle = '',
-  standfirst = '',
-  slug = {},
-  className = '',
-  publicationType = {},
-  pdfFile = {},
-  legacypdf = {},
-  shortversion = false,
-  content = [],
-  summary = [],
-  setReaderOpen = null,
-  readerOpen = false,
-}) => {
-  const pdfAsset = legacypdf.asset ? legacypdf.asset : pdfFile.asset;
-
+export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
+  const {
+    _type = '',
+    title = '',
+    subtitle = '',
+    standfirst = '',
+    slug = {},
+    pdfFile = {},
+    legacypdf = {},
+    content = [],
+    summary = [],
+  } = data;
+  const pdfAsset = legacypdf && legacypdf.asset ? legacypdf.asset : pdfFile.asset;
   return (
-    <header {...classes('', null, className)}>
+    <header className="c-article-header">
       <div className="c-article-header__container">
-        <div>
+        <div className="c-article-header__col">
           <PageIntro
             title={title}
             subtitle={subtitle}
             text={standfirst}
-            contentType="publication"
+            contentType={_type === 'publication' ? PUBLICATION : getPostType(data)}
             type="withBreadcrumb"
             single={true}
           />
-
-          <div {...classes('actions')}>
+          <div className="c-article-header__btn-row c-article-header__actions">
             {content.length > 0 && (
               <button
-                className="c-btn c-btn--secondary"
+                className="c-btn c-btn--primary"
                 onClick={() => {
                   setReaderOpen(true);
                   if (typeof window !== 'undefined') {
@@ -58,13 +49,13 @@ export const ArticleHeader = ({
                 href={`/publications/${slug.current}.pdf`}
                 //download={`/publication/${slug.current}.pdf`}
                 target="_blank"
-                className="c-btn c-btn--5"
+                className="c-btn c-btn--secondary"
               >
                 <span>Download PDF</span>
               </a>
             )}
 
-            {!content.length && legacypdf.asset ? (
+            {!content.length && legacypdf && legacypdf.asset ? (
               <a
                 href={`/publications/${slug.current}.pdf`}
                 //download={`/publication/${slug.current}.pdf`}
@@ -87,15 +78,23 @@ export const ArticleHeader = ({
 
             {summary.length > 0 && (
               <LinkToItem type="shortVersionPublication" slug={slug.current}>
-                <a className="c-btn c-btn--5">
-                  <span {...classes('button-text')}>Read short version</span>
-                  {/* <div {...classes('button-icon')} /> */}
+                <a className="c-btn c-btn--secondary">
+                  <span>Read short version</span>
                 </a>
               </LinkToItem>
             )}
           </div>
         </div>
-        <hr className="u-section-underline--no-margins" />
+
+        <div className="c-article-header__col">
+          {(pdfFile.asset || legacypdf.asset) && (
+            <div className="pdf-preview">
+              <Document file={pdfFile.asset ? pdfFile.asset : legacypdf.asset}>
+                <Page pageNumber={1} />
+              </Document>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

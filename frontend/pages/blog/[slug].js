@@ -16,7 +16,7 @@ import { ShareOpen } from '../../components/general/social/ShareOpen';
 import { PhotoCaptionCredit } from '../../components/general/PhotoCaptionCredit';
 import { useEffect } from 'react';
 import Footer from '../../components/general/footer/Footer';
-
+import { ArticleHeader } from '../../components/general/article-header/ArticleHeader';
 
 const littlefootActivator = () => {
   const littlefoot = require('littlefoot').default;
@@ -43,6 +43,7 @@ const getFirstPart = content => {
 
 const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
   const {
+    _type = '',
     title = '',
     authors = [],
     date = '',
@@ -71,7 +72,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
   //console.log(belowBlocks.length);
 
   return (
-   <Layout
+    <Layout
       headComponentConfig={{
         title,
         description: standfirst || lead,
@@ -83,7 +84,8 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
       <hr className="u-section-underline--no-margins" />
       <div className={`c-blog-entry ${featuredImage.asset ? '' : 'c-blog-entry--no-img'}`}>
         <section className="o-wrapper--no-padding">
-          <BlogHeader data={blogEntry} />
+          {/* <BlogHeader data={blogEntry} /> */}
+          <ArticleHeader data={blogEntry} />
         </section>
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper c-blog-entry__main">
@@ -163,7 +165,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
 export default DataLoader(BlogEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title, slug}, keywords[]->{category, keyword}, "slug": slug.current, language, translation,
+      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _type, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title, slug}, keywords[]->{category, keyword}, "slug": slug.current, language, translation,
       "featuredImage": {
         "caption": featuredImage.caption,
         "credit": featuredImage.credit,
