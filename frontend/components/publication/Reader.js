@@ -5,7 +5,7 @@ import serializers from '../serializers/serializers';
 import LongformArticle from '../LongformArticle';
 import PdfViewer from '../PdfViewer';
 import { LongformArticleHeader } from '../LongformArticleHeader';
-import { PublicationSidebar } from './PublicationSidebar';
+import { ArticleSidebar } from '../general/article-sidebar/ArticleSidebar';
 import { ToggleBlock } from '../ToggleBlock';
 import { Acknowledgements } from './Aknowledgements';
 import { Partners } from '../Partners';
@@ -48,7 +48,7 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
         {content.length > 0 && (
           <main className="c-reader__main o-wrapper-section u-side-padding c-article__row">
             <div className="c-article__side c-article__col">
-              <PublicationSidebar data={data} side={'left'} />
+              <ArticleSidebar data={data} side={'left'} />
             </div>
             <div className="c-article__center c-article__col">
               <LongformArticle content={content} title={title} />

@@ -2,7 +2,6 @@
   margin-bottom: 100px;
   color: $dark-grey;
 
-
   .c-article__center {
     @include mq($from: tablet) {
       padding: 0 24px;
@@ -20,25 +19,6 @@
     width: 100%;
     max-width: 752px;
     margin: 0 auto;
-  }
-
-  .c-article__lead {
-    font-size: 18px;
-    line-height: 1.56;
-    color: $dark-grey;
-    max-width: 600px;
-    margin: 0 auto 32px auto;
-    padding: 0;
-    p:first-child,
-    .c-article__lead--abstract p:first-child {
-      margin: 0;
-    }
-    @include mq($from: tablet) {
-      font-size: 20px;
-      line-height: 1.5;
-      //overriding:
-      //padding: 0 24px;
-    }
   }
 
   .c-notifications {
@@ -112,13 +92,24 @@
 }
 .c-article-v2,
 .c-reader {
-  .c-article__row {
-    //max-width: 1312px;
-    @include mq($from: tablet) {
-      display: flex;
-      justify-content: space-between;
-      //margin-bottom: $spacing-huge;
-    }
+  // .c-article__row {
+  //   //max-width: 1312px;
+  //   @include mq($from: tablet) {
+  //     display: flex;
+  //     justify-content: space-between;
+  //     //margin-bottom: $spacing-huge;
+  //   }
+  // }
+}
+
+.c-article__row {
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  @include mq($from: desktop) {
+    grid-template-columns: 5fr 2fr;
+    column-gap: 120px;
   }
 }
 
@@ -260,5 +251,3 @@
 .u-side-padding {
   padding: 0 $spacing;
 }
-
-

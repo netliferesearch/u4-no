@@ -8,7 +8,7 @@ import TableOfContentsSidebar from '../TableOfContents/TableOfContentsSidebar';
 import { PublicationContent } from './PublicationContent';
 import { ArticleHeader } from '../general/article-header/ArticleHeader';
 import { Layout } from '../Layout';
-import { PublicationSidebar } from './PublicationSidebar';
+import { ArticleSidebar } from '../general/article-sidebar/ArticleSidebar';
 import { AboutAuthor } from '../blog/AboutAuthor';
 import { Disclaimers } from '../Disclaimers';
 import { Cite } from '../Cite';
@@ -20,6 +20,7 @@ import { Partners } from '../Partners';
 import { Reader } from './Reader';
 import LongformArticle from '../LongformArticle';
 import TnrcFooter from '../TnrcFooter';
+import { SEARCH_PUBLICATIONS } from '../../helpers/constants';
 
 const PublicationContainer = (props = {}) => {
   const {
@@ -52,6 +53,7 @@ const PublicationContainer = (props = {}) => {
       headsUp = [],
       updatedVersion = false,
       summary = [],
+      translations = [],
     } = {},
     shortversion = false,
     shortversionContent = [],
@@ -96,11 +98,7 @@ const PublicationContainer = (props = {}) => {
         <span id="js-top" />
         <section id="js-scroll-trigger" className="o-wrapper-medium">
           {!shortversion ? (
-            <BreadCrumbV2
-              home={true}
-              title={`All ${publicationType.title}s`}
-              parentSlug={getRouteByType(publicationType.title)}
-            />
+            <BreadCrumbV2 home={true} title="Publications" parentSlug={SEARCH_PUBLICATIONS} />
           ) : null}
           {_type === 'publication' && !shortversion && (
             <ArticleHeader
@@ -111,17 +109,13 @@ const PublicationContainer = (props = {}) => {
             />
           )}
         </section>
+
         <hr className="u-section-underline--no-margins" />
-        <section
-          className="o-wrapper u-side-padding"
-          style={{ display: readerOpen ? 'none' : 'block' }}
-        >
+
+        <section className="o-wrapper-medium" style={{ display: readerOpen ? 'none' : 'block' }}>
           {_type === 'publication' && !shortversion && (
-            <div className="o-wrapper-section c-article__row">
-              <div className="c-article__side c-article__col">
-                <PublicationSidebar data={props.data} side={'left'} />
-              </div>
-              <div className="content c-article__col c-article__center">
+            <div className="c-article__row">
+              <div className="content c-article__col">
                 <PublicationContent {...props.data} />
                 <div className="c-article__additional-info-content">
                   <div className="u-hidden--desktop">
@@ -143,7 +137,7 @@ const PublicationContainer = (props = {}) => {
                 </div>
               </div>
               <div className="c-article__side c-article__col">
-                <PublicationSidebar data={props.data} side={'right'} />
+                <ArticleSidebar data={props.data} />
               </div>
             </div>
           )}
@@ -152,9 +146,7 @@ const PublicationContainer = (props = {}) => {
             <div>
               <div className="c-longform-grid u-bg-white u-z-index-x">
                 {articleType.length ? (
-                  <h2 className="c-longform-grid__standard c-article-header__meta c-article-header__meta-uppercase">
-                    {articleType[0].target.title}
-                  </h2>
+                  <h2 className="c-longform-grid__standard">{articleType[0].target.title}</h2>
                 ) : null}
                 <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
                 {authors.length ? (
@@ -177,11 +169,9 @@ const PublicationContainer = (props = {}) => {
         </section>
 
         {shortversion && (
-          <section className="c-article--shortversion o-wrapper u-side-padding">
-            <div className="o-wrapper-section c-article__row">
-              {BreadCrumbComponent && BreadCrumbComponent}
-            </div>
-            <div className="o-wrapper-section c-article__row">
+          <section className="c-article--shortversion o-wrapper-medium">
+            <div className="c-article__row">{BreadCrumbComponent && BreadCrumbComponent}</div>
+            <div className="c-article__row">
               <LongformArticle content={shortversionContent} {...props.data} />
             </div>
           </section>
@@ -191,7 +181,7 @@ const PublicationContainer = (props = {}) => {
 
         {/* <span id="js-bottom" /> */}
       </article>
-       {/* )} */}
+      {/* )} */}
       {readerOpen && (
         <Reader
           data={props.data}

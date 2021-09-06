@@ -46,11 +46,10 @@ const getStringsByType = item => {
   return { typeTitle, typeSubTitle, slugOfType };
 };
 
-export const RelatedSimple = ({ items, title }) => {
+export const RelatedSimple = ({ items }) => {
   const classes = BEMHelper({ name: 'related-items-list', prefix: 'c-' });
   return (
     <div className="c-related-simple">
-      <h5 className="u-secondary-heading">{title}</h5>
       <div>
         {items
           ? items.map((item, index) => (

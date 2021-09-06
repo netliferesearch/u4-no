@@ -17,24 +17,13 @@
   //   flex-direction: row;
   //   justify-content: space-between;
   // }
-  .c-article-sidebar {
-    margin-top: 32px;
-  }
+
   .c-article__additional-info-container {
     margin-bottom: 160px;
     padding-top: 120px;
     margin-top: -120px;
   }
-  .c-article-sidebar__bibliography,
-  .c-article-sidebar__date,
-  .c-authors-list__position {
-    display: none;
-  }
-  .c-article-sidebar__left {
-    .c-modal {
-      margin-top: 32px;
-    }
-  }
+
 }
 
 .c-article-v2__pdf-viewer {

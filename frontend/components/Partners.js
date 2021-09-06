@@ -8,13 +8,11 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-export const Partners = ({ data, bottom = false }) => {
-  const { publicationType = {}, partners = [] } = data;
-
+export const Partners = ({ partners = [], publicationType = {}, bottom = false }) => {
   return partners.length > 0 || publicationType._id === 'pubtype-3' ? (
     <div className={`c-acknowledgements c-partners ${bottom ? 'c-acknowledgements--bottom c-meta' : 'c-acknowledgements--side'}`}>
-      {bottom ? <hr className="u-section-underline--no-margins" /> : null }
-        <h3 className="u-primary-heading">In collaboration with</h3>
+      {/* {bottom ? <hr className="u-section-underline--no-margins" /> : null }
+        <h3 className="u-primary-heading">In collaboration with</h3> */}
       {partners.length > 0 || publicationType._id === 'pubtype-3' ? (
         <div {...classes('item')}>
           {/* <h3 className="u-black-mid-headline">Partners</h3> */}
