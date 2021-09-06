@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BlogEntriesFilter } from './BlogEntriesFilter';
-import { TextButton } from '../general/buttons';
+import { CloseButton } from '../general/buttons';
 import { clearBlogFilters, updateBlogFilters, updateBlogPageNum } from '../../helpers/redux-store';
 import { connect, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -79,7 +79,6 @@ export const BlogFilteredList = props => {
     },
     [currentResults, filtersResults]
   );
-
   return (
     <div>
       <div
@@ -88,22 +87,17 @@ export const BlogFilteredList = props => {
         }`}
       >
         <BlogEntriesFilter topics={topics} setFilters={updateBlogFilters} filters={blogFilters} />
-
+        <div className="c-blog-index__filters-set">
+          {blogFilters.map((f, index) => (
+            <div className="c-blog-index__tag-container" key={index}>
+              <div className="c-blog-index__tag">{f.title}</div>
+              <CloseButton onClick={handleRemove} text="Remove all" modifier="ter" />
+            </div>
+          ))}
+        </div>
         {blogFilters.length ? (
           <div className="c-blog-index__filters-info">
-            <h5>{`${filtersResults.length} Blog articles filtered by: `}</h5>
-            <div className="c-blog-index__filters-set">
-              {blogFilters.map((f, index) => (
-                <span key={index}>
-                  {f.title}
-                  <span>, </span>
-                  {/* <span>{`${
-                          filters.length > 1 && index + 1 < filters.length ? ', ' : '. '
-                        }`}</span> */}
-                </span>
-              ))}
-              <TextButton onClick={handleRemove} text="Remove all" modifier="ter" />
-            </div>
+            <h5>{`${filtersResults.length} Blog articles`}</h5>
           </div>
         ) : (
           <div className="c-blog-index__filters--none">

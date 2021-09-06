@@ -3,31 +3,35 @@ input[type='checkbox'].c-modal__input {
   opacity: 0;
   &:checked {
     border: 1px solid $dark-blue;
-    background: $dark-blue;
+    background: $highlight-blue;
+  }
+  &:hover {
+    cursor: pointer;
   }
 }
-.custom-checkbox {
+.c-modal__custom-checkbox {
   display: inline-block;
   cursor: pointer;
   width: 20px;
   height: 20px;
-  border-radius: 2px;
   outline: none;
-  border: 1px solid $light-grey;
+  border: 2px solid $dark-blue;
   margin-right: 12px;
 }
 
-input[type='checkbox'].c-modal__input:checked + .custom-checkbox {
-  border: 1px solid $dark-blue;
-  background: $dark-blue;
+input[type='checkbox'].c-modal__input:checked + .c-modal__custom-checkbox {
+  border: 2px solid $dark-blue;
+  background: $highlight-blue;
   //background-image: url('public/check-mark.svg');
   background-repeat: no-repeat;
   background-position: center center;
 }
-input[type='checkbox'].c-modal__input:focus + .custom-checkbox {
-  border: 1px solid $dark-blue;
+input[type='checkbox'].c-modal__input:focus + .c-modal__custom-checkbox {
+  border: 2px solid $dark-blue;
 }
-
+input[type='checkbox'].c-modal__input:checked ~ .c-modal__label-title {
+  color: $blue;
+}
 input[type='radio'].c-modal__input {
   -webkit-appearance: none;
   width: 20px;
@@ -86,7 +90,7 @@ input[type='radio'].c-modal__input {
   align-items: flex-start;
   position: relative;
   padding: 0 0 8px 0;
-  
+
   .c-btn--close {
     position: absolute;
     width: 14px;
@@ -116,7 +120,7 @@ input[type='radio'].c-modal__input {
   }
 }
 .c-modal__title {
-   margin: 0;
+  margin: 0;
 }
 .c-modal__list {
   display: flex;
@@ -144,10 +148,10 @@ input[type='radio'].c-modal__input {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  &:hover,
-  &:active,
-  &:focus {
-  }
+  // &:hover,
+  // &:active,
+  // &:focus {
+  // }
 }
 
 .c-modal__text {
@@ -198,12 +202,76 @@ input[type='radio'].c-modal__input {
 }
 
 .c-modal--filters {
+  .c-modal__title {
+    text-transform: uppercase;
+    font-size: $font-size-tiny;
+    line-height: 22px;
+    color: $dark-blue;
+  }
+  .c-btn--close path {
+    fill: darkblue;
+  }
+  .c-btn--qua--disabled {
+    font-family: $font-sans;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.7;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $dark-blue;
+    cursor: default;
+    background-color: transparent;
+    opacity: 0.2;
+    border: 1px solid $dark-blue;
+    padding: 6px 14px;
+    min-width: fit-content;
+    @include mq($from: tablet) {
+      padding: 8px 16px;
+    }
+  }
+  .c-btn--qua,
+  .c-btn--pri {
+    font-family: $font-sans;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.7;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $dark-blue;
+    background-color: transparent;
+    border: 1px solid $dark-blue;
+    padding: 6px 14px;
+    min-width: fit-content;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      color: $blue;
+      border: 1px solid $blue;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    @include mq($from: tablet) {
+      padding: 8px 16px;
+    }
+  }
   &.c-modal__area {
     margin: 0 0 0 auto;
     border-radius: 0;
     max-width: 300px;
     height: 100%;
     .c-modal__list {
+      display: grid;
+      gap: 0px;
+      grid-template-columns: 1fr;
+
+      @include mq($from: tablet) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+      }
+      @include mq($from: desktop) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+      }
       padding: 32px 16px;
       margin: 0;
       flex-wrap: nowrap;
@@ -211,8 +279,8 @@ input[type='radio'].c-modal__input {
       overflow-y: scroll;
       @include mq($from: tablet) {
         padding: 0;
-        max-height: 400px;
-        margin: 32px $spacing-large;
+        max-height: 600px;
+        margin: 0;
         flex-wrap: wrap;
         overflow-y: auto;
       }
@@ -221,7 +289,7 @@ input[type='radio'].c-modal__input {
       padding: 0;
 
       @include mq($from: tablet) {
-        padding: 0 $spacing-large 20px $spacing-large;
+        padding: 0;
       }
     }
     .c-modal__controls {
@@ -234,7 +302,6 @@ input[type='radio'].c-modal__input {
     @include mq($from: tablet) {
       max-width: 888px;
       margin: 10vh auto 0 auto;
-      border-radius: 20px;
       height: auto;
     }
   }
@@ -261,7 +328,6 @@ input[type='radio'].c-modal__input {
     bottom: 63px;
     right: 150px;
   }
-
 }
 
 .c-modal--partners {

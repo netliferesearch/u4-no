@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Pagination from 'react-paginating';
-import { ArrowNext } from '../icons/ArrowNext';
-import { ArrowPrev } from '../icons/ArrowPrev';
+import { ArrowNextPage, ArrowPrevPage, ArrowFirstPage, ArrowLastPage } from '../icons/PageArrows';
 import { DoubleChevron } from '../icons/DoubleChevron';
 import { connect, useDispatch } from 'react-redux';
 import { clearBlogFilters, updateBlogFilters, updateBlogPageNum } from '../../helpers/redux-store';
@@ -45,7 +44,7 @@ export const PaginationComponent = ({ total, limit, pageCount, blogPageNum }) =>
                     onPageChange: handlePageChange,
                   })}
                 >
-                  <DoubleChevron />
+                  <ArrowFirstPage />
                 </button>
               </li>
             ) : null}
@@ -58,7 +57,7 @@ export const PaginationComponent = ({ total, limit, pageCount, blogPageNum }) =>
                     onPageChange: handlePageChange,
                   })}
                 >
-                  <ArrowPrev />
+                  <ArrowPrevPage />
                 </button>
               </li>
             ) : null}
@@ -70,7 +69,9 @@ export const PaginationComponent = ({ total, limit, pageCount, blogPageNum }) =>
               return (
                 <li key={page}>
                   <button
-                    className={`pagination-item ${currentPage === page ? 'active' : ''}`}
+                    className={`pagination-item ${
+                      currentPage === page ? 'active u-detail--blue' : ''
+                    }`}
                     {...getPageItemProps({
                       pageValue: page,
                       key: page,
@@ -110,7 +111,7 @@ export const PaginationComponent = ({ total, limit, pageCount, blogPageNum }) =>
                     onPageChange: handlePageChange,
                   })}
                 >
-                  <ArrowNext />
+                  <ArrowNextPage />
                 </button>
               </li>
             ) : null}
@@ -125,7 +126,7 @@ export const PaginationComponent = ({ total, limit, pageCount, blogPageNum }) =>
                     onPageChange: handlePageChange,
                   })}
                 >
-                  <DoubleChevron />
+                  <ArrowLastPage />
                 </button>
               </li>
             ) : null}

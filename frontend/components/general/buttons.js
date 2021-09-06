@@ -30,7 +30,7 @@ export const TextButton = ({
   modifier = 'link',
   disabled = false,
 }) => (
-  <button className="c-btn c-btn--primary" onClick={onClick} disabled={disabled}>
+  <button {...classes({ modifier })} onClick={onClick} disabled={disabled}>
     {text && <div>{text}</div>}
   </button>
 );

@@ -96,8 +96,8 @@ export const MultiselectModal = props => {
                         checked={selectedItems.some(filter => filter.title === option.title)}
                         name={option.title}
                       />
-                      <span className="custom-checkbox" />
-                      <span>{option.title}</span>
+                      <span className="c-modal__custom-checkbox" />
+                      <span className="c-modal__label-title">{option.title}</span>
                     </label>
                   );
                 })}
@@ -106,7 +106,11 @@ export const MultiselectModal = props => {
           <div className="c-modal__bottom">
             <hr className="u-section-underline--no-margins" />
             <div className="c-modal__controls">
-              <TextButton onClick={e => setSelectedItems([])} text="Deselect All" modifier="qua" />
+              {selectedItems.length < 1 ? (
+                <TextButton text="Clear" modifier="qua--disabled" />
+              ) : (
+                <TextButton onClick={e => setSelectedItems([])} text="Clear" modifier="qua" />
+              )}
               <TextButton onClick={handleApplyClick} text="Apply" modifier="pri" />
             </div>
           </div>

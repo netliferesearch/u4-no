@@ -1,7 +1,7 @@
 .c-blog-index {
   font-family: $font-sans;
   background-color: $white;
-  font-size: $font-size-small;
+  font-size: $font-size-tiny;
   margin-bottom: 64px;
 
   .o-wrapper-section {
@@ -95,12 +95,11 @@
     grid-template-rows: 1fr 1fr 1fr;
   }
   .c-post.blog {
-    padding-right: 0px;
+    padding-right: 0;
     border-right: none;
-    @include mq($from: desktop) {
-      padding-right: 0;
-      border-right: none;
-    }
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
     .c-post__post-image {
       height: 135px;
       @include mq($from: desktop) {
@@ -184,9 +183,9 @@
       justify-content: space-between;
       flex: 1 0 auto;
     }
-    .c-blog-index__featured-image {
-      //margin-top: $spacing-large;
-    }
+    // .c-blog-index__featured-image {
+    //   //margin-top: $spacing-large;
+    // }
   }
 }
 
@@ -230,12 +229,66 @@
   }
 }
 .c-blog-index__filters {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
   margin-bottom: 32px;
   margin-top: 30px;
+  @include mq($until: tablet) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .c-modal {
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  .c-btn--ter {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+    &:hover {
+      background-color: transparent;
+      border: none;
+      box-shadow: unset;
+    }
+    .u-visually-hidden {
+      display: none;
+    }
+    svg {
+      width: 8px;
+      height: 8px;
+    }
+  }
+  button {
+    font-family: $font-sans;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.7;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $white;
+    background-color: $dark-blue;
+    border: 1px solid $dark-blue;
+    padding: 6px 14px;
+    min-width: fit-content;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      background-color: $blue;
+      color: $white;
+      border: 1px solid $blue;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    @include mq($from: tablet) {
+      padding: 8px 16px;
+    }
+  }
   h5,
   span {
     font-weight: 400;
@@ -259,25 +312,63 @@
   }
   &.c-blog-index__filters--active {
     .c-blog-index__filters-info {
-      max-width: 100%;
       @include mq($from: tablet) {
         max-width: 72%;
+        max-width: 100%;
+        margin: 0 0 0 auto;
+        display: flex;
+        flex-shrink: 0;
+        justify-content: flex-end;
       }
     }
   }
 }
 
 .c-blog-index__filters-set {
-  margin-bottom: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
   @include mq($from: tablet) {
-    margin-bottom: 0;
+    margin-top: 0;
   }
 }
 
 .c-blog-index__filters-info {
   max-width: 72%;
 }
-
+.c-blog-index__tag-container {
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 47px;
+  -webkit-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+  border: 1px solid #6f6f6f;
+  line-height: 14px;
+  margin: 5px;
+  @include mq($until: tablet) {
+    margin-left: 0;
+  }
+}
+.c-blog-index__tag {
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.01em;
+  display: inline-block;
+  padding: 7px 10px 7px 12px;
+  color: #6f6f6f;
+  -webkit-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+}
+.c-blog-index__filters--none {
+  @include mq($from: tablet) {
+    margin-left: auto;
+  }
+}
 .c-blog-index__paginator-list {
   padding: 0;
   margin: 0 auto;
@@ -288,25 +379,23 @@
     display: inline-block;
     list-style: none;
   }
+  .pointer-events--none {
+    text-align: center;
+  }
   .pagination-item {
     font-family: $font-sans;
     font-size: 15px;
     line-height: 1;
-    background-color: $light-grey;
-    color: $dark-grey;
+    background-color: $white;
+    color: rgba(22, 32, 99, 0.5);
     border: none;
     outline: none;
-    width: 50px;
-    height: 50px;
-    padding: 16px 20px;
+    width: 25px;
+    height: 25px;
+    padding: 0;
     text-decoration: none;
     transition: all 0.2s;
     cursor: pointer;
-    &.last-button {
-      svg {
-        transform: rotate(180deg);
-      }
-    }
     svg {
       vertical-align: middle;
     }
@@ -316,13 +405,83 @@
       pointer-events: none;
     }
     &:hover {
-      background-color: $highlight-blue;
+      color: $blue;
     }
     &.active {
-      color: white;
-      background-color: $dark-blue;
+      color: $blue;
+      background-color: $white;
       cursor: default;
       pointer-events: none;
+    }
+    &.u-detail--blue {
+      width: 25px;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 30px;
+        left: 2px;
+        height: 4px;
+        width: 21px;
+        max-width: 100%;
+        background-color: $blue;
+      }
+    }
+    &.prev-button {
+      border-radius: 50%;
+      border: solid rgba(22, 32, 99, 0.5) 0.5px;
+      margin-left: 10px;
+      &:hover path {
+        stroke: $blue;
+        opacity: 100%;
+      }
+      &:hover {
+        border: solid $blue 0.5px;
+      }
+    }
+    &.last-button {
+      border-radius: 50%;
+      border: solid rgba(22, 32, 99, 0.5) 0.5px;
+      &:hover path {
+        stroke: $blue;
+        opacity: 100%;
+      }
+      &:hover {
+        border: solid $blue 0.5px;
+      }
+    }
+    &.first-button {
+      border-radius: 50%;
+      border: solid rgba(22, 32, 99, 0.5) 0.5px;
+      &:hover path {
+        stroke: $blue;
+        opacity: 100%;
+      }
+      &:hover {
+        border: solid $blue 0.5px;
+      }
+    }
+    &.next-button {
+      border-radius: 50%;
+      border: solid rgba(22, 32, 99, 0.5) 0.5px;
+      margin-right: 10px;
+      &:hover path {
+        stroke: $blue;
+        opacity: 100%;
+      }
+      &:hover {
+        border: solid $blue 0.5px;
+      }
+    }
+    &.c-arrow-prev-page-svg,
+    .c-arrow-next-page-svg,
+    .c-arrow-first-page-svg,
+    .c-arrow-last-page-svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
   @include mq($from: tablet) {
