@@ -108,15 +108,15 @@ export const BlogFilteredList = props => {
         </div>
       ) : null}
       {/* {console.log(blogPageNum)} */}
-      {filtersResults && filtersResults.length > 0 && (
-        <PaginationComponent
-          className="c-blog-index__paginator"
-          total={total}
-          limit={limit}
-          pageCount={pageCount}
-          currentPage={blogPageNum}
-        />
-      )}
+      {/* {filtersResults && filtersResults.length > 0 && ( */}
+      <PaginationComponent
+        className="c-blog-index__paginator"
+        total={total}
+        limit={limit}
+        pageCount={pageCount}
+        currentPage={blogPageNum}
+      />
+      {/* )} */}
     </div>
   );
 };

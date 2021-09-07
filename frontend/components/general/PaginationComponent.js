@@ -5,7 +5,8 @@ import { DoubleChevron } from '../icons/DoubleChevron';
 import { connect, useDispatch } from 'react-redux';
 import { clearBlogFilters, updateBlogFilters, updateBlogPageNum } from '../../helpers/redux-store';
 
-export const PaginationComponent = ({ total, limit, pageCount, blogPageNum }) => {
+export const PaginationComponent = ({ total, limit, pageCount, currentPage }) => {
+  console.log(currentPage);
   const handlePageChange = (page, e) => {
     dispatch(updateBlogPageNum(page));
     //updateBlogPageNum(page);
@@ -14,7 +15,6 @@ export const PaginationComponent = ({ total, limit, pageCount, blogPageNum }) =>
     }
   };
   const dispatch = useDispatch();
-
   return (
     <div>
       <Pagination
@@ -22,7 +22,7 @@ export const PaginationComponent = ({ total, limit, pageCount, blogPageNum }) =>
         total={total}
         limit={limit}
         pageCount={pageCount}
-        currentPage={blogPageNum}
+        currentPage={currentPage}
       >
         {({
           pages,
@@ -35,6 +35,7 @@ export const PaginationComponent = ({ total, limit, pageCount, blogPageNum }) =>
           getPageItemProps,
         }) => (
           <ul className="c-blog-index__paginator-list">
+            {/* {console.log(pages)} */}
             {currentPage > 2 ? (
               <li>
                 <button
@@ -65,6 +66,9 @@ export const PaginationComponent = ({ total, limit, pageCount, blogPageNum }) =>
               let activePage = null;
               if (currentPage === page) {
                 activePage = { color: '$dark-blue' };
+              }
+              {
+                console.log(currentPage);
               }
               return (
                 <li key={page}>
