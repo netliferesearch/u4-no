@@ -16,11 +16,14 @@ import { Keywords } from '../Keywords';
 import { Topics } from '../general/topics/Topics';
 import { BreadCrumbV2 } from '../general/BreadCrumbV2';
 import { getRouteByType } from '../../helpers/getRouteByType';
-import { Partners } from '../Partners';
+import { Partners } from '../general/partners/Partners';
 import { Reader } from './Reader';
 import LongformArticle from '../LongformArticle';
 import TnrcFooter from '../TnrcFooter';
 import { SEARCH_PUBLICATIONS } from '../../helpers/constants';
+import Footer from '../general/footer/Footer';
+import { PostCarousel } from '../front-page/PostCarousel';
+import { POST_TYPE } from '../general/post/Post';
 
 const PublicationContainer = (props = {}) => {
   const {
@@ -118,9 +121,6 @@ const PublicationContainer = (props = {}) => {
               <div className="content c-article__col">
                 <PublicationContent {...props.data} />
                 <div className="c-article__additional-info-content">
-                  <div className="u-hidden--desktop">
-                    <Partners data={props.data} />
-                  </div>
                   {topics.length > 0 || keywords.length > 0 ? (
                     <hr className="u-section-underline--no-margins u-hidden--desktop" />
                   ) : null}
@@ -190,6 +190,21 @@ const PublicationContainer = (props = {}) => {
           shortversion={shortversion}
         />
       )}
+      {recommendedResources.length > 0 ? (
+        <section className="">
+          <div className="o-wrapper-medium o-wrapper-mobile-full">
+            <PostCarousel
+              posts={recommendedResources}
+              type={POST_TYPE.BLOG}
+              buttonPath="/publications"
+              title="From the blog"
+              minPosts={3}
+            />
+            <hr className="u-section-underline--no-margins" />
+          </div>
+        </section>
+      ) : null}
+      <Footer />
       <div id="modal" />
     </Layout>
   );

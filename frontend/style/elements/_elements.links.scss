@@ -45,6 +45,14 @@ a:active {
   //text-decoration: underline;
 }
 
+a.u-link--inText {
+  color: inherit;
+  &:hover {
+    color: $blue;
+    text-decoration: underline;
+  }
+}
+
 a.u-no-underline {
   text-decoration: none;
   border: none;

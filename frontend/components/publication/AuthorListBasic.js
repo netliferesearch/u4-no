@@ -28,7 +28,7 @@ export const AuthorListBasic = ({ authors = [] }) => {
                       _ref === '3babc8f1-9e38-4493-9823-a9352b46585b'
                   ) ? (
                     <LinkToItem type="person" slug={slug.current}>
-                      <a className="">
+                      <a className="u-link--inText"> {console.log(slug)}
                         <span>{`${firstName} ${surname}`}</span>
                       </a>
                     </LinkToItem>

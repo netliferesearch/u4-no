@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import BEMHelper from 'react-bem-helper';
 import serializers from '../serializers/serializers';
@@ -42,17 +41,15 @@ export const PublicationNotifications = ({
     <section {...classes()}>
       {headsUpHasContent && (
         <div className="c-notifications__note-item c-notifications__headsUp">
-          {/* <Note /> */}
-          <div {...classes('label')}>
-            <BlockContent blocks={headsUp} serializers={serializers} />
-          </div>
+          <BlockContent blocks={headsUp} serializers={serializers} />
         </div>
       )}
       {updatedVersion && (
         <div className="c-notifications__note-item c-notifications__updatedVersion">
           {/* <Note /> */}
+          <h4 className="u-secondary-heading">A more recent publication is available:</h4>
           <p {...classes('label')}>
-            This publication is from {pubyear}.A more recent version has been published,{' '}
+            {/* This publication is from {pubyear}.A more recent version has been published,{' '} */}
             <a
               href={buildUrl({
                 _type: 'publication',
@@ -90,13 +87,3 @@ export const PublicationNotifications = ({
     </section>
   ) : null;
 };
-
-PublicationNotifications.propTypes = {};
-
-PublicationNotifications.defaultProps = {
-  headsUp: [],
-  updatedVersion: {},
-  date: {},
-};
-
-export default PublicationNotifications;

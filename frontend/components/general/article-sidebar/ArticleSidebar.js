@@ -1,6 +1,6 @@
 import React from 'react';
 import { RelatedSimple } from '../../RelatedSimple';
-import { Partners } from '../../Partners';
+import { Partners } from '../partners/Partners';
 import { SidebarItem } from '../sidebar-item/SidebarItem';
 import { AuthorListBasic } from '../../publication/AuthorListBasic';
 import { Topics } from '../topics/Topics';

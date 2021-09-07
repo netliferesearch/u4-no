@@ -103,35 +103,3 @@
     margin: 0 0 $spacing 0;
   }
 }
-
-.c-related-simple {
-  margin-bottom: 48px;
-  .c-related-items-list__publication-headline {
-    margin: 0;
-    h3 {
-      font-family: $font-serif;
-      font-weight: 400;
-      font-size: 15px;
-      line-height: 1.5;
-      letter-spacing: 0.01em;
-      color: $dark-grey;
-      margin: 16px 0;
-    }
-    &:hover,
-    &:visited:hover {
-      h3 {
-        color: $brand-main;
-        text-decoration: underline;
-      }
-    }
-    &:active {
-      color: $brand-main;
-      text-decoration: underline;
-      border-bottom: none;
-      & > * {
-        display: inline-block;
-        transform: translateY(2px);
-      }
-    }
-  }
-}

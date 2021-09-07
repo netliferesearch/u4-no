@@ -59,9 +59,9 @@ export default PublicationEntry;
 const queryFunc = ({ params: { slug = '' } }) => ({
   sanityQuery: `*[_type == 'publication' && slug.current == $slug]{ _type, _id,
   abbreviations, abstract, acknowledgements,
-  authors[]->{ _id, affiliations, email, ${localize('firstName')}, slug, ${localize('surname')} },
+  authors[]->{ _id, affiliations, email, ${localize('firstName')}, slug, ${localize('surname')}, position },
   bibliographicalOverride, blurbs, content, date,
-  editors[]->{ _id, affiliations, email, ${localize('firstName')}, slug, ${localize('surname')} },
+  editors[]->{ _id, affiliations, email, ${localize('firstName')}, slug, ${localize('surname')}, position },
   featuredImage, headsUp, keywords, language,
   lead, legacypdf, mainPoints, methodology, notes, partners, pdfFile, publicationNumber,
   publicationType->{ _id, title },
