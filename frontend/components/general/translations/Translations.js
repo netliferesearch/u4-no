@@ -1,24 +1,22 @@
 import React, { useRef } from 'react';
-import { TextButton } from './general/buttons';
-import ClientOnlyPortal from './general/ClientOnlyPortal';
-import languageName from '../helpers/languageName';
-import { useLockBodyScroll, useOnClickOutside } from '../helpers/hooks';
-//import router from 'next/router';
-import LinkToItem from './general/LinkToItem';
+import { TextButton } from '../buttons';
+import ClientOnlyPortal from '../ClientOnlyPortal';
+import languageName from '../../../helpers/languageName';
+import { useLockBodyScroll, useOnClickOutside } from '../../../helpers/hooks';
+import LinkToItem from '../LinkToItem';
 
 export const Translations = ({ translations, language, type = 'publication', currentSlug }) => {
 
   return (
     <div className="c-translations">
-
-      Also available in{' '}
+      <span className="u-body--small u-text--grey">Also available in</span>{' '}
       {translations.map(
         (item = {}, index) =>
           item.slug &&
           item.title && (
             <LinkToItem type={type} slug={item.slug} key={item._id}>
-              <span>
-                <a className="c-btn c-btn--link">{languageName({ langcode: item.language })}</a>
+              <span className="u-body--small">
+                <a className="">{languageName({ langcode: item.language })}</a>
                 {index + 2 < translations.length && <span>, </span>}
                 {index + 2 === translations.length && <span> and </span>}
               </span>

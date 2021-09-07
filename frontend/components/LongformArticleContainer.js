@@ -217,7 +217,7 @@ const LongFormArticleContainer = (props = {}) => {
             <div>
               <div className="c-longform-grid u-bg--white u-z-index-x">
                 {articleType.length ? (
-                  <h2 className="c-longform-grid__standard c-article-header__meta c-article-header__meta-uppercase">
+                  <h2 className="c-longform-grid__standard">
                     {articleType[0].target.title}
                   </h2>
                 ) : null}

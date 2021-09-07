@@ -11,19 +11,7 @@
 }
 
 .c-article__lead {
-  color: $dark-blue;
-  max-width: 950px;
-  margin-top: 0;
-  margin-bottom: $spacing;
-  @include inuit-font-size($font-size-normal, $line-height-large);
-  padding-left: $spacing;
-  padding-right: $spacing;
-  @include mq($from: tablet) {
-    padding-left: $spacing-huge;
-  }
-  @include mq($from: tablet) {
-    @include inuit-font-size($font-size-large, $line-height-large);
-  }
+
 }
 
 .c-article__lead--center {

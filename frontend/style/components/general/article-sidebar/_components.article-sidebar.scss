@@ -28,7 +28,16 @@
   h4 {
     margin: 0 0 4px 0;
   }
-  p {
+  p,
+  .c-authors-list--basic,
+  .c-partners,
+  .c-topics,
+  .c-related-simple {
     margin-top: 12px;
+    margin-bottom: 24px;
   }
+  // div {
+  //   margin-top: 12px;
+  //   margin-bottom: 24px;
+  // }
 }

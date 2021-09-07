@@ -17,6 +17,7 @@ import { PhotoCaptionCredit } from '../../components/general/PhotoCaptionCredit'
 import { useEffect } from 'react';
 import Footer from '../../components/general/footer/Footer';
 import { ArticleHeader } from '../../components/general/article-header/ArticleHeader';
+import { ArticleSidebar } from '../../components/general/article-sidebar/ArticleSidebar';
 
 const littlefootActivator = () => {
   const littlefoot = require('littlefoot').default;
@@ -55,7 +56,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     headsUp = '',
     pdfFile = {},
     legacypdf = {},
-    relatedContent = '',
+    relatedResources = '',
     topics = '',
     keywords = '',
   } = blogEntry;
@@ -106,7 +107,8 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
           </div>
           <div className="o-wrapper-section c-blog-entry__row">
             <div className="c-blog-entry__side c-blog-entry__col">
-              <BlogSidebar data={blogEntry} side={'left'} />
+              {/* <BlogSidebar data={blogEntry} side={'left'} /> */}
+              {/* <ArticleSidebar data={blogEntry} /> */}
             </div>
             <div className="c-blog-entry__col c-blog-entry__center">
               <div className="c-blog-entry__content">
@@ -151,7 +153,8 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
               </div>
             </div>
             <div className="c-blog-entry__side c-blog-entry__col u-hidden--tablet">
-              <BlogSidebar data={blogEntry} side={'right'} />
+              {/* <BlogSidebar data={blogEntry} side={'right'} /> */}
+              <ArticleSidebar data={blogEntry} />
             </div>
           </div>
         </section>
@@ -176,7 +179,7 @@ export default DataLoader(BlogEntry, {
           "url": url
         }
       },
-      "relatedContent": relatedContent[]->{_type, _id, title, publicationType->{ title }, articleType[0]->{ title }, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..2]}
+      "relatedResources": relatedContent[]->{_type, _id, title, publicationType->{ title }, articleType[0]->{ title }, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..2]}
     }`,
     param: { slug },
   }),

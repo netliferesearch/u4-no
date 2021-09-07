@@ -1,6 +1,6 @@
 import React from 'react';
 import languageName from '../../helpers/languageName';
-import { Translations } from '../Translations';
+import { Translations } from '../general/translations/Translations';
 import dateToString from '../../helpers/dateToString';
 import { SidebarItem } from '../general/sidebar-item/SidebarItem';
 

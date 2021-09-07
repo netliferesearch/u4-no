@@ -1,20 +1,5 @@
 .c-article {
-  &.c-article__lead {
-    color: $dark-grey;
-    //max-width: 950px;
-    //margin-top: 0;
-    margin-bottom: $spacing-large;
-    //@include inuit-font-size($font-size-normal, $line-height-large );
-    padding: 0;
-    font-size: $font-size-small;
 
-    @include mq($from: tablet) {
-      padding-left: 0;
-    }
-    @include mq($from: tablet) {
-      //@include inuit-font-size($font-size-large, $line-height-large );
-    }
-  }
   &__container {
     font-family: $font-sans;
     padding: $spacing 0;
@@ -27,27 +12,7 @@
       font-size: $font-size-small;
       line-height: 30px;
     }
-    .c-article-sidebar {
-      margin: $spacing 0;
-      &__item {
-        border-bottom: 1px solid $border-grey;
-        margin-bottom: 36px;
-        padding-bottom: $spacing;
-        h2 {
-          margin: 0 0 16px 0;
-        }
-        p,
-        strong {
-          font-size: $font-size-tiny;
-          line-height: 1.5;
 
-          margin: 0;
-        }
-        .author {
-          margin-bottom: $spacing;
-        }
-      }
-    }
     .publication-preview {
       padding: 32px;
       border: 1px solid $brand-main;
@@ -174,9 +139,6 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: $spacing-huge;
-      .c-article-sidebar {
-        width: 240px;
-      }
       .content {
         width: calc(90% - 300px);
       }

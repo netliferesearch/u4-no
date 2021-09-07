@@ -22,6 +22,7 @@ const PublicationContainer = dynamic(() =>
 const store = initStore();
 
 const PublicationEntry = props => {
+  console.log(props.data)
   return (
     <Provider store={store}>
       {props.data.legacypdf && !props.data.content ? (
