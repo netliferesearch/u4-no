@@ -4,6 +4,7 @@
 
   @include mq($from: tablet) {
     margin-top: 64px;
+    margin-bottom: 64px;
   }
 
   .pdf-preview {

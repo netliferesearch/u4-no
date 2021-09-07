@@ -1,25 +1,13 @@
 .c-cite {
-  font-family: $font-sans;
-  font-size: 14px;
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-  color: $dark-grey;
-  
-  h3 {
-    margin-top: 0;
+  max-width: 691px;
+  padding: 48px 0;
+  .c-cite__container {
+    max-width: 691px;
+  }
+  h4 {
+    margin-bottom: 4px;
   }
   .c-cite__action {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     margin: 24px 0;
-  }
-  .c-cite__content {
-    //visibility: hidden;
-    position: absolute;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
   }
 }

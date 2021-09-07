@@ -37,12 +37,12 @@
 }
 
 .c-article__additional-info-content {
-  max-width: 600px;
-  margin: 0 auto;
-  clear: both;
-  .u-primary-heading.tags {
-    margin-top: 24px;
-  }
+  // max-width: 600px;
+  // margin: 0 auto;
+  // clear: both;
+  // .u-primary-heading.tags {
+  //   margin-top: 24px;
+  // }
 
   .c-keywords {
     margin-bottom: 32px;
@@ -61,7 +61,6 @@
     }
 
     @include mq($from: tablet) {
-      margin-bottom: 64px;
     }
   }
 }

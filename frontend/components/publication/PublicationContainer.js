@@ -120,21 +120,6 @@ const PublicationContainer = (props = {}) => {
             <div className="c-article__row">
               <div className="content c-article__col">
                 <PublicationContent {...props.data} />
-                <div className="c-article__additional-info-content">
-                  {topics.length > 0 || keywords.length > 0 ? (
-                    <hr className="u-section-underline--no-margins u-hidden--desktop" />
-                  ) : null}
-                  {topics.length > 0 || keywords.length > 0 ? (
-                    <h3 className="u-heading--2 tags">Tags</h3>
-                  ) : null}
-                  {topics.length > 0 ? <Topics title={true} topics={topics} hr={false} /> : null}
-                  {keywords.length > 0 ? (
-                    <Keywords title={true} keywords={keywords} hr={false} />
-                  ) : null}
-                  <AboutAuthor authors={authors} />
-                  <Cite {...props.data} />
-                  <Disclaimers title={true} />
-                </div>
               </div>
               <div className="c-article__side c-article__col">
                 <ArticleSidebar data={props.data} />
@@ -176,20 +161,27 @@ const PublicationContainer = (props = {}) => {
             </div>
           </section>
         )}
+        <div className="c-article__additional-info-content">
+          <section className="u-bg--blue">
+            <div className="o-wrapper-medium">
+              <Cite {...props.data} />
+            </div>
+          </section>
+          <section className="u-bg--lighter-blue">
+            <div className="o-wrapper-medium">
+              <AboutAuthor authors={authors} />
+              <Disclaimers title={true} />
+              {keywords.length > 0 ? (
+                <Keywords title={true} keywords={keywords} hr={false} />
+              ) : null}
+            </div>
+          </section>
 
-        <TnrcFooter publicationTypeId={publicationType._id} />
-
+          <TnrcFooter publicationTypeId={publicationType._id} />
+        </div>
         {/* <span id="js-bottom" /> */}
       </article>
       {/* )} */}
-      {readerOpen && (
-        <Reader
-          data={props.data}
-          setReaderOpen={setReaderOpen}
-          legacypdf={legacypdf}
-          shortversion={shortversion}
-        />
-      )}
       {recommendedResources.length > 0 ? (
         <section className="">
           <div className="o-wrapper-medium o-wrapper-mobile-full">
@@ -205,6 +197,14 @@ const PublicationContainer = (props = {}) => {
         </section>
       ) : null}
       <Footer />
+      {readerOpen && (
+        <Reader
+          data={props.data}
+          setReaderOpen={setReaderOpen}
+          legacypdf={legacypdf}
+          shortversion={shortversion}
+        />
+      )}
       <div id="modal" />
     </Layout>
   );
