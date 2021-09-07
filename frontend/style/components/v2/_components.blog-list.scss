@@ -251,7 +251,8 @@
     display: flex;
     align-items: center;
     margin-right: 12px;
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: transparent;
       border: none;
       box-shadow: unset;

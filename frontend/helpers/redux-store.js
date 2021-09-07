@@ -81,6 +81,7 @@ export const actionTypes = {
   SEARCH_UPDATE_DEFAULT_AGGS: 'SEARCH_UPDATE_DEFAULT_AGGS',
   BLOG_UPDATE_FILTERS: 'BLOG_UPDATE_FILTERS',
   BLOG_CLEAR_FILTERS: 'BLOG_CLEAR_FILTERS',
+  BLOG_CLEAR_FILTER: 'BLOG_CLEAR_FILTER',
   BLOG_UPDATE_PAGE_NUM: 'BLOG_UPDATE_PAGE_NUM',
   LANG_UPDATE_FILTERS: 'LANG_UPDATE_FILTERS',
   LANG_CLEAR_FILTERS: 'LANG_CLEAR_FILTERS',
@@ -90,6 +91,8 @@ export const actionTypes = {
 export const reducer = (state = defaultState, action) => {
   console.log('reducer', action, state);
   switch (action.type) {
+    case actionTypes.BLOG_CLEAR_FILTER:
+      return { ...state, blogFilters: state.blogFilters.filter((f, i) => i !== action.index) };
     case actionTypes.SEARCH_UPDATE_SORT:
       addQueryParams({
         sort: action.sortName,
@@ -213,6 +216,9 @@ export const updateBlogFilters = (blogFilters = []) => dispatch =>
 
 export const clearBlogFilters = () => dispatch =>
   dispatch({ type: actionTypes.BLOG_CLEAR_FILTERS });
+
+export const clearBlogFilter = index => dispatch =>
+  dispatch({ type: actionTypes.BLOG_CLEAR_FILTER, index });
 
 export const updateBlogPageNum = blogPageNum => dispatch => {
   return dispatch({ type: actionTypes.BLOG_UPDATE_PAGE_NUM, blogPageNum });
