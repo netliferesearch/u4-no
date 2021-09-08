@@ -23,12 +23,12 @@ export const Partners = ({ partners = [], publicationType = {}, bottom = false }
             <div className="">
               {/* <p>The U4 Helpdesk is operated by </p> */}
               <p className="c-partners__name">
-                {/* {description} */}
                 Transparency International
               </p>
               <div className="c-logo">
                 <PartnerLogo10Blue />
               </div>
+              <p className="c-partners__description u-body--small u-text--grey" >{description}</p>
             </div>
           )}
         </div>

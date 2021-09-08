@@ -67,7 +67,6 @@
   }
 }
 
-
 .c-events-list__content {
   margin-bottom: 64px;
 }
@@ -92,4 +91,12 @@
 .c-view-all {
   position: absolute;
   bottom: 5px;
+}
+
+.c-post-list__col--static {
+  flex-direction: column;
+  .c-view-all {
+    position: relative;
+    margin: 16px 0;
+  }
 }
