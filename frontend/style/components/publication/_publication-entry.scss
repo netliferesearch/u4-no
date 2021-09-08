@@ -1,12 +1,18 @@
 //dagne version
 
-.c-article-v2 {
+.c-article-v2,
+.c-legacy-publication-container {
 
   .c-article__content {
     max-width: 691px;
     @include mq($from: tablet) {
       margin-top: 64px;
+      margin-bottom: 120px;
     }
+  }
+
+  .c-article__additional-content {
+    padding: 40px 0;
   }
 
   .c-tnrc-footer {
@@ -21,7 +27,7 @@
   }
 
   @include mq($from: tablet) {
-    margin-bottom: 160px;
+    //margin-bottom: 160px;
   }
 }
 
@@ -33,35 +39,6 @@
   @include mq($from: desktop) {
     grid-template-columns: 5fr 2fr;
     column-gap: 120px;
-  }
-}
-
-.c-article__additional-info-content {
-  // max-width: 600px;
-  // margin: 0 auto;
-  // clear: both;
-  // .u-primary-heading.tags {
-  //   margin-top: 24px;
-  // }
-
-  .c-keywords {
-    margin-bottom: 32px;
-    .c-keywords__list {
-      margin-top: 12px;
-    }
-    h5 {
-      font-size: 18px;
-      line-height: 22px;
-      text-transform: initial;
-      letter-spacing: 0.02em;
-      margin: 24px 0 12px 0;
-      @include mq($from: tablet) {
-        margin: 32px 0 12px 0;
-      }
-    }
-
-    @include mq($from: tablet) {
-    }
   }
 }
 

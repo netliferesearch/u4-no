@@ -91,3 +91,10 @@
   margin-left: -50vw;
   margin-right: -50vw;
 }
+
+.o-wrapper-narrow {
+  width: 100%;
+  @include mq($from: tablet) {
+    max-width: 691px;
+  }
+}

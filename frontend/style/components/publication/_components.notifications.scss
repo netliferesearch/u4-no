@@ -1,6 +1,7 @@
 //dagne version
 
-.c-article-v2 {
+.c-article-v2,
+.c-legacy-publication-container {
   .c-notifications {
     max-width: 691px;
     //margin: 0 0 64px 0;
@@ -38,10 +39,15 @@
   .c-notifications__old,
   .c-notifications__updatedVersion,
   .c-notifications__partner {
+    padding: 12px 24px;
     background-color: $dark-blue;
     color: white;
     h4 {
       color: $highlight-yellow;
     }
+  }
+
+  .c-notifications__label {
+    margin: 0;
   }
 }

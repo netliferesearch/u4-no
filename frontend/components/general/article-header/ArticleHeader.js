@@ -2,11 +2,10 @@ import React from 'react';
 import { Document, Page } from 'react-pdf/build/entry.noworker';
 import { PUBLICATION } from '../../../helpers/constants';
 import { getPostType } from '../../../helpers/getRouteByType';
-import LinkToItem from '../LinkToItem';
 import { PageIntro } from '../PageIntro';
-import { ShareOpen } from '../social/ShareOpen';
 import dateToString from '../../../helpers/dateToString';
 import { Translations } from '../translations/Translations';
+import { ArticleActions } from '../article-actions/ArticleActions';
 
 export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
   const {
@@ -65,62 +64,7 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
               ) : null}
             </div>
           </div>
-          <div className="c-article-header__btn-row c-article-header__actions">
-            {content.length > 0 && _type === 'publication' ? (
-              <button
-                className="c-btn c-btn--primary"
-                onClick={() => {
-                  setReaderOpen(true);
-                  if (typeof window !== 'undefined') {
-                    window.scrollTo(0, 0);
-                  }
-                }}
-              >
-                Read online
-              </button>
-            ) : null}
-            {pdfAsset && content.length > 0 && (
-              <a
-                href={`/publications/${slug.current}.pdf`}
-                //download={`/publication/${slug.current}.pdf`}
-                target="_blank"
-                className="c-btn c-btn--secondary"
-              >
-                <span>Download PDF</span>
-              </a>
-            )}
-
-            {!content.length && legacypdf && legacypdf.asset ? (
-              <a
-                href={`/publications/${slug.current}.pdf`}
-                //download={`/publication/${slug.current}.pdf`}
-                target="_blank"
-                className="c-btn c-btn--secondary"
-              >
-                <span>Read online</span>
-              </a>
-            ) : null}
-            {!content.length && legacypdf.asset ? (
-              <a
-                href={`/publications/${slug.current}.pdf`}
-                download={`/publication/${slug.current}.pdf`}
-                target="_blank"
-                className="c-btn c-btn--5"
-              >
-                <span>Download PDF</span>
-              </a>
-            ) : null}
-
-            {summary.length > 0 && (
-              <LinkToItem type="shortVersionPublication" slug={slug.current}>
-                <a className="c-btn c-btn--secondary">
-                  <span>Read short version</span>
-                </a>
-              </LinkToItem>
-            )}
-
-            <ShareOpen text={title} />
-          </div>
+          <ArticleActions data={data} setReaderOpen={setReaderOpen} />
         </div>
 
         <div className="c-article-header__col">

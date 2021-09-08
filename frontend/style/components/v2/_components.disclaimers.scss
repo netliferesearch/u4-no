@@ -1,40 +1,26 @@
 .c-disclaimers {
   color: $dark-grey;
-  p {
-    font-family: $font-sans;
-    font-size: 15px;
-    line-height: 1.5;
-    letter-spacing: 0.02em;
-    margin-bottom: 16px;
+  margin-bottom: 16px;
+
+  h4 {
+    margin-bottom: 4px;
   }
-  .c-disclaimers__link {
-    margin-top: 0;
-  }
-  a {
-    color: $dark-grey;
-  }
-  a:hover {
-    color: $dark-grey;
-    border-bottom: 1px solid transparent;
-  }
-  a:visited {
-    color: $dark-grey;
-    border-bottom: 1px solid transparent;
-  }
+
   svg {
     width: 24px;
     height: 24px;
-    fill: $mid-grey;
+    fill: $dark-grey;
+    margin-top: 12px;
     path {
-      fill: $mid-grey;
+      fill: $dark-grey;
     }
   }
+  p {
+    margin: 0;
+  }
+  .c-disclaimers__content {
+    margin-top: 12px;
+  }
   @include mq($from: tablet) {
-    p {
-      margin-bottom: 24px;
-    }
-    .c-disclaimers__link {
-      margin-top: 32px;
-    }
   }
 }

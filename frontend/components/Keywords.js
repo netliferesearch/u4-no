@@ -11,20 +11,18 @@ import React from 'react';
 
 export const Keywords = ({ title = true, keywords = [], hr = false }) => {
   return (
-      keywords && (
-        <div className="c-keywords">
-          {title ? <h5 className="u-secondary-heading">Keywords</h5> : null }
-          {hr ? <hr className="u-section-underline--no-margins" /> : null }
-          <div className="c-keywords__list">
-            {keywords
-              .filter(keyword => keyword.category === 'keyword')
-              .map((keyword, index) => (
-                <span className="keyword" key={index}>
-                  {keyword.keyword}
-                </span>
-              ))}
-          </div>
-        </div>
-      )
+    <div className="c-keywords">
+      {title ? <h4 className="u-secondary-heading u-secondary-h3">Keywords</h4> : null}
+      {hr ?  <hr className="u-section-underline--dark-grey" /> : null}
+      <div className="c-keywords__list">
+        {keywords
+          .filter(keyword => keyword.category === 'keyword')
+          .map((keyword, index) => (
+            <span className="u-body--small" key={index}>
+              {keyword.keyword}{index < keywords.length - 1 ? ', ': ''}
+            </span>
+          ))}
+      </div>
+    </div>
   );
 };

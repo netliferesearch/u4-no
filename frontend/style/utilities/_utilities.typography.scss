@@ -29,6 +29,13 @@
   margin: 0;
 }
 
+.u-section-underline--dark-grey {
+  border: none;
+  border-bottom: 1px solid $dark-grey;
+  width: 100%;
+  margin: 0;
+}
+
 .u-primary-heading {
   font-family: $font-sans;
   font-weight: 700;
