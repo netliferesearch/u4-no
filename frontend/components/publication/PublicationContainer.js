@@ -16,7 +16,7 @@ import { Keywords } from '../Keywords';
 import { BreadCrumbV2 } from '../general/BreadCrumbV2';
 import { Reader } from './Reader';
 import LongformArticle from '../LongformArticle';
-import TnrcFooter from '../TnrcFooter';
+import TnrcFooter from '../general/tnrc/TnrcFooter';
 import { SEARCH_PUBLICATIONS } from '../../helpers/constants';
 import Footer from '../general/footer/Footer';
 import { PostCarousel } from '../front-page/PostCarousel';
@@ -87,7 +87,7 @@ const PublicationContainer = (props = {}) => {
     );
 
   const [readerOpen, setReaderOpen] = useState(false);
-console.log("publication", props.data)
+  //console.log('publication', props.data);
   return (
     <Layout
       showLoadingScreen={showLoadingScreen}
@@ -113,7 +113,10 @@ console.log("publication", props.data)
 
         <hr className="u-section-underline--no-margins" />
 
-        <section className="o-wrapper-medium o-wrapper-mobile-full" style={{ display: readerOpen ? 'none' : 'block' }}>
+        <section
+          className="o-wrapper-medium o-wrapper-mobile-full"
+          style={{ display: readerOpen ? 'none' : 'block' }}
+        >
           {_type === 'publication' && !shortversion && (
             <div className="c-article__row">
               <div className="content c-article__col">
@@ -159,27 +162,29 @@ console.log("publication", props.data)
             </div>
           </section>
         )}
-      
-          <section className="u-bg--blue">
-            <div className="o-wrapper-medium">
-              <div className="o-wrapper-narrow">
-                <Cite {...props.data} />
-              </div>
+
+        <section className="u-bg--blue">
+          <div className="o-wrapper-medium">
+            <div className="o-wrapper-narrow">
+              <Cite {...props.data} />
             </div>
-          </section>
-          <section className="u-bg--lighter-blue c-article__additional-content">
-            <div className="o-wrapper-medium">
-              <div className="o-wrapper-narrow">
-                <ArticleActions data={props.data} setReaderOpen={setReaderOpen} />
-                <AboutAuthor authors={authors} />
-                <Disclaimers title={true} />
-                {keywords.length > 0 ? (
-                  <Keywords title={true} keywords={keywords} hr={true} />
-                ) : null}
-              </div>
+          </div>
+        </section>
+        <section className="u-bg--lighter-blue c-article__additional-content">
+          <div className="o-wrapper-medium">
+            <div className="o-wrapper-narrow">
+              <ArticleActions data={props.data} setReaderOpen={setReaderOpen} />
+              <AboutAuthor authors={authors} />
+              <Disclaimers title={true} />
+              {keywords.length > 0 ? <Keywords title={true} keywords={keywords} hr={true} /> : null}
             </div>
-          </section>
-          <TnrcFooter publicationTypeId={publicationType._id} />
+          </div>
+        </section>
+        <section className="o-wrapper-medium">
+          <div className="o-wrapper-narrow">
+            <TnrcFooter publicationTypeId={publicationType._id} />
+          </div>
+        </section>
         {/* <span id="js-bottom" /> */}
       </article>
       {/* )} */}

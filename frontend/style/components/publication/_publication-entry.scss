@@ -15,16 +15,6 @@
     padding: 40px 0;
   }
 
-  .c-tnrc-footer {
-    border-top: 1px solid $light-grey;
-  }
-
-  .c-tnrc-footer__body {
-    font-family: $font-sans;
-    font-size: 14px;
-    line-height: 1.4;
-    letter-spacing: 0.02em;
-  }
 
   @include mq($from: tablet) {
     //margin-bottom: 160px;

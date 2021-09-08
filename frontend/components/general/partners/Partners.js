@@ -1,38 +1,18 @@
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
 import { PartnersList } from './PartnersList';
-import { PartnerLogo10Blue } from '../../icons/PartnerLogo10Blue';
-
-const classes = BEMHelper({
-  name: 'acknowledgements',
-  prefix: 'c-',
-});
+import { PartnerTI } from './PartnerTI';
+import { PartnerTNRC } from './PartnerTNRC';
 
 export const Partners = ({ partners = [], publicationType = {}, bottom = false }) => {
-  return partners.length > 0 || publicationType._id === 'pubtype-3' ? (
+  return (
     <div
       className={`c-acknowledgements c-partners ${
         bottom ? 'c-acknowledgements--bottom c-meta' : 'c-acknowledgements--side'
       }`}
     >
-      {partners.length > 0 || publicationType._id === 'pubtype-3' ? (
-        <div {...classes('item')}>
-          {/* <h3 className="u-black-mid-headline">Partners</h3> */}
-          {partners.length > 0 ? <PartnersList institutions={partners} /> : null}
-          {publicationType._id === 'pubtype-3' && (
-            <div className="">
-              {/* <p>The U4 Helpdesk is operated by </p> */}
-              <p className="c-partners__name">
-                Transparency International
-              </p>
-              <div className="c-logo">
-                <PartnerLogo10Blue />
-              </div>
-              <p className="c-partners__description u-body--small u-text--grey" >{description}</p>
-            </div>
-          )}
-        </div>
-      ) : null}
+      {partners.length > 0 && <PartnersList institutions={partners} />}
+      {publicationType._id === 'pubtype-3' && <PartnerTI />}
+      {publicationType._id === '080dc28c-9d5e-4c14-972f-73f83a206b92' && <PartnerTNRC />}
     </div>
-  ) : null;
+  );
 };
