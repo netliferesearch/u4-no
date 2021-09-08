@@ -4,6 +4,7 @@
 .c-legacy-publication-container {
   .c-notifications {
     max-width: 691px;
+    padding: 0 24px;
     //margin: 0 0 64px 0;
     //border-top: 1px solid $border-grey;
 
@@ -18,9 +19,9 @@
     //   margin-bottom: 32px;
     // }
 
-    // @include mq($from: tablet) {
-    //   margin: 0 0 72px 0;
-    // }
+    @include mq($from: tablet) {
+      padding: 0;
+    }
   }
   .c-notifications__headsUp {
     border: 1px solid $light-grey;

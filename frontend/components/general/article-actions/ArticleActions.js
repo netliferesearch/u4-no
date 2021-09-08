@@ -14,7 +14,7 @@ export const ArticleActions = ({ data = {}, setReaderOpen = null }) => {
   } = data;
   const pdfAsset = legacypdf && legacypdf.asset ? legacypdf.asset : pdfFile.asset;
   return (
-    <div className="c-article__btn-row c-article__btn-row">
+    <div className="c-article__btn-row c-article__actions">
       {content.length > 0 && _type === 'publication' ? (
         <button
           className="c-btn c-btn--primary"
@@ -44,7 +44,7 @@ export const ArticleActions = ({ data = {}, setReaderOpen = null }) => {
           href={`/publications/${slug.current}.pdf`}
           //download={`/publication/${slug.current}.pdf`}
           target="_blank"
-          className="c-btn c-btn--secondary"
+          className="c-btn c-btn--primary"
         >
           <span>Read online</span>
         </a>
@@ -54,7 +54,7 @@ export const ArticleActions = ({ data = {}, setReaderOpen = null }) => {
           href={`/publications/${slug.current}.pdf`}
           download={`/publication/${slug.current}.pdf`}
           target="_blank"
-          className="c-btn c-btn--5"
+          className="c-btn c-btn--secondary"
         >
           <span>Download PDF</span>
         </a>

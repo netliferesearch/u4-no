@@ -113,7 +113,7 @@ console.log("publication", props.data)
 
         <hr className="u-section-underline--no-margins" />
 
-        <section className="o-wrapper-medium" style={{ display: readerOpen ? 'none' : 'block' }}>
+        <section className="o-wrapper-medium o-wrapper-mobile-full" style={{ display: readerOpen ? 'none' : 'block' }}>
           {_type === 'publication' && !shortversion && (
             <div className="c-article__row">
               <div className="content c-article__col">

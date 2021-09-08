@@ -73,7 +73,7 @@ const LegacyPublicationContainer = props => {
 
         <hr className="u-section-underline--no-margins" />
 
-        <section className="o-wrapper-medium">
+        <section className="o-wrapper-medium o-wrapper-mobile-full">
           {_type === 'publication' && (
             <div className="c-article__row">
               <div className="content c-article__col">
@@ -145,6 +145,7 @@ const LegacyPublicationContainer = props => {
         ) : null}
         <Footer />
       </article>
+      <div id="modal" />
     </Layout>
   );
 };
