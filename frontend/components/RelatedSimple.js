@@ -1,5 +1,4 @@
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
 
 const getStringsByType = item => {
   const itemType = item._type;
@@ -47,25 +46,20 @@ const getStringsByType = item => {
 };
 
 export const RelatedSimple = ({ items }) => {
-  const classes = BEMHelper({ name: 'related-items-list', prefix: 'c-' });
   return (
     <div className="c-related-simple">
       <div>
         {items
           ? items.map((item, index) => (
               <div key={index} className="c-related-simple__item">
-                <hr className="u-section-underline--no-margins" />
-                {/* <h6 {...classes('publication-type')}>
-                      {getStringsByType(item).typeTitle}
-                      {getStringsByType(item).typeSubTitle}
-                    </h6> */}
+                {index > 0 && <hr className="u-section-underline--grey" />}
                 <a
-                  {...classes('publication-headline')}
+                  className="c-related-simple__link u-link--inText u-body--small u-text--grey"
                   href={`/${getStringsByType(item).slugOfType}${
                     typeof item.slug === 'string' ? item.slug : item.slug.current
                   }`}
                 >
-                  <h3>{item.title}</h3>
+                  <span>{item.title}</span>
                 </a>
               </div>
             ))

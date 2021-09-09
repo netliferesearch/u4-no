@@ -2,7 +2,7 @@
   .c-page-intro {
     width: 100%;
     @include mq($from: tablet) {
-      max-width: 689px;
+      max-width: 691px;
     }
   }
 
@@ -26,15 +26,20 @@
   margin-top: 16px;
 }
 
-.c-article-header__btn-row {
+.c-article__btn-row {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
   width: 100%;
   margin: 24px 0 40px 0;
-  .c-modal,
   .c-btn {
-    margin-right: 24px;
+    margin: 0 24px 24px 0;
+  }
+  @include mq($from: tablet) {
+    .c-btn {
+      margin: 0 24px 0 0;
+    }
   }
 }
 
@@ -50,6 +55,7 @@
   }
   .ReactPDF__Page__textContent {
     visibility: hidden;
+    display: none;
   }
 
   @include mq($from: tablet) {

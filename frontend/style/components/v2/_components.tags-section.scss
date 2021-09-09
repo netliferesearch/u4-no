@@ -48,24 +48,18 @@
 
 
 .c-keywords {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
+  h4 {
+    margin-bottom: 4px;
+  }
 }
 
 .c-keywords__list {
-  margin-top: 18px;
-  .keyword {
-    font-family: $font-sans;
-    color: $v2-brown;
-    font-size: $font-size-nano;
-    line-height: 14px;
-    background-color: $v2-yellow;
-    padding: 10px 16px;
-    margin: 0 2px 3px 0;
+  margin-top: 12px;
+  span {
+    margin: 0 2px 0 0;
     display: inline-block;
     &:first-letter {
-      text-transform: capitalize;
-    }
-    .keyword:first-letter {
       text-transform: capitalize;
     }
   }

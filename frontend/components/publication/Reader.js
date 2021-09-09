@@ -8,7 +8,7 @@ import { LongformArticleHeader } from '../LongformArticleHeader';
 import { ArticleSidebar } from '../general/article-sidebar/ArticleSidebar';
 import { ToggleBlock } from '../ToggleBlock';
 import { Acknowledgements } from './Aknowledgements';
-import { Partners } from '../Partners';
+import { Partners } from '../general/partners/Partners';
 import { Disclaimers } from '../Disclaimers';
 import { PhotoCaptionCredit } from '../general/PhotoCaptionCredit';
 import { ToTop } from '../icons/ToTop';

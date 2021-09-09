@@ -5,6 +5,7 @@ import { translate, langCode } from '../../helpers/translate';
 export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) => {
   const trans = translate(language);
   const lang = langCode(language);
+  console.log(authors);
   return (
     <div className="c-blog-authors-list c-about-author">
       {authors &&
@@ -32,8 +33,9 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                   (lang === 'fr' && bioShort_fr.lenth) ||
                   (lang === 'es' && bioShort_es.length)) ? (
                   <div>
-                    <hr className="u-section-underline--no-margins" />
-                    <h3 className="u-primary-heading">About the author</h3>
+                    <h4 className="u-primary-heading u-text--dark-blue">
+                      About the author{`${authors.length > 1 ? 's' : ''}`}
+                    </h4>
                   </div>
                 ) : null}
                 {/* <div className="c-blog-authors-list__name">
@@ -59,7 +61,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                     <span>{position}</span>
                   </div>
                 )} */}
-                <div className="c-blog-authors-list__text-block c-article-v2__main-text">
+                <div className="c-longform">
                   {lang === 'en' && bioShort && <BlockContent blocks={bioShort} />}
                   {lang === 'fr' && bioShort_fr && <BlockContent blocks={bioShort_fr} />}
                   {lang === 'es' && bioShort_es && <BlockContent blocks={bioShort_es} />}

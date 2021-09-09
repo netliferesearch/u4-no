@@ -13,14 +13,15 @@ import { AboutAuthor } from '../blog/AboutAuthor';
 import { Disclaimers } from '../Disclaimers';
 import { Cite } from '../Cite';
 import { Keywords } from '../Keywords';
-import { Topics } from '../general/topics/Topics';
 import { BreadCrumbV2 } from '../general/BreadCrumbV2';
-import { getRouteByType } from '../../helpers/getRouteByType';
-import { Partners } from '../Partners';
 import { Reader } from './Reader';
 import LongformArticle from '../LongformArticle';
-import TnrcFooter from '../TnrcFooter';
+import TnrcFooter from '../general/tnrc/TnrcFooter';
 import { SEARCH_PUBLICATIONS } from '../../helpers/constants';
+import Footer from '../general/footer/Footer';
+import { PostCarousel } from '../front-page/PostCarousel';
+import { POST_TYPE } from '../general/post/Post';
+import { ArticleActions } from '../general/article-actions/ArticleActions';
 
 const PublicationContainer = (props = {}) => {
   const {
@@ -86,7 +87,7 @@ const PublicationContainer = (props = {}) => {
     );
 
   const [readerOpen, setReaderOpen] = useState(false);
-
+  //console.log('publication', props.data);
   return (
     <Layout
       showLoadingScreen={showLoadingScreen}
@@ -112,29 +113,14 @@ const PublicationContainer = (props = {}) => {
 
         <hr className="u-section-underline--no-margins" />
 
-        <section className="o-wrapper-medium" style={{ display: readerOpen ? 'none' : 'block' }}>
+        <section
+          className="o-wrapper-medium o-wrapper-mobile-full"
+          style={{ display: readerOpen ? 'none' : 'block' }}
+        >
           {_type === 'publication' && !shortversion && (
             <div className="c-article__row">
               <div className="content c-article__col">
                 <PublicationContent {...props.data} />
-                <div className="c-article__additional-info-content">
-                  <div className="u-hidden--desktop">
-                    <Partners data={props.data} />
-                  </div>
-                  {topics.length > 0 || keywords.length > 0 ? (
-                    <hr className="u-section-underline--no-margins u-hidden--desktop" />
-                  ) : null}
-                  {topics.length > 0 || keywords.length > 0 ? (
-                    <h3 className="u-heading--2 tags">Tags</h3>
-                  ) : null}
-                  {topics.length > 0 ? <Topics title={true} topics={topics} hr={false} /> : null}
-                  {keywords.length > 0 ? (
-                    <Keywords title={true} keywords={keywords} hr={false} />
-                  ) : null}
-                  <AboutAuthor authors={authors} />
-                  <Cite {...props.data} />
-                  <Disclaimers title={true} />
-                </div>
               </div>
               <div className="c-article__side c-article__col">
                 <ArticleSidebar data={props.data} />
@@ -177,11 +163,46 @@ const PublicationContainer = (props = {}) => {
           </section>
         )}
 
-        <TnrcFooter publicationTypeId={publicationType._id} />
-
+        <section className="u-bg--blue">
+          <div className="o-wrapper-medium">
+            <div className="o-wrapper-narrow">
+              <Cite {...props.data} />
+            </div>
+          </div>
+        </section>
+        <section className="u-bg--lighter-blue c-article__additional-content">
+          <div className="o-wrapper-medium">
+            <div className="o-wrapper-narrow">
+              <ArticleActions data={props.data} setReaderOpen={setReaderOpen} />
+              <AboutAuthor authors={authors} />
+              <Disclaimers title={true} />
+              {keywords.length > 0 ? <Keywords title={true} keywords={keywords} hr={true} /> : null}
+            </div>
+          </div>
+        </section>
+        <section className="o-wrapper-medium">
+          <div className="o-wrapper-narrow">
+            <TnrcFooter publicationTypeId={publicationType._id} />
+          </div>
+        </section>
         {/* <span id="js-bottom" /> */}
       </article>
       {/* )} */}
+      {recommendedResources.length > 0 ? (
+        <section className="">
+          <div className="o-wrapper-medium o-wrapper-mobile-full">
+            <PostCarousel
+              posts={recommendedResources}
+              type={POST_TYPE.BLOG}
+              buttonPath="/publications"
+              title="Related Content"
+              minPosts={3}
+            />
+            <hr className="u-section-underline--no-margins" />
+          </div>
+        </section>
+      ) : null}
+      <Footer />
       {readerOpen && (
         <Reader
           data={props.data}

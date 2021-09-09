@@ -26,10 +26,7 @@
 
 .c-tnrc-footer {
   margin: $spacing 0;
-  border-top: 1px solid $light-blue;
   padding: $spacing 0;
-  font-family: $font-serif;
-  @include inuit-font-size($font-size-tiny, $line-height-normal);
 }
 .c-tnrc-footer__heading {
   img {
@@ -45,15 +42,15 @@
   a {
     height: 100px;
     display: inline-block;
-    margin: 3px;
+    margin: 12px;
     background-repeat: no-repeat;
   }
   a:hover {
-    border-bottom-color: $white;
+    //border-bottom-color: $white;
   }
 }
 
 .c-tnrc-footer__body {
-  @include inuit-font-size($font-size-tiny, $line-height-normal);
+  text-align: center;
   margin-top: $spacing-tiny;
 }

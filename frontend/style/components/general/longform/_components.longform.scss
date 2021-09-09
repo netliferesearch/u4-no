@@ -34,15 +34,10 @@
   }
 
   .c-longform-grid__standard {
-    //padding: 0 $spacing;
+    padding: 0 $spacing;
     grid-column: 5 / 6;
-  }
-
-  .c-longform-grid__sidebar-right {
-    display: none;
-    @include mq($from: wide) {
-      display: block;
-      grid-column: 7 / 10;
+    @include mq($from: tablet) {
+      padding: 0;
     }
   }
 
@@ -73,8 +68,14 @@
   .c-longform-grid__full {
     grid-column: 1 / 10;
   }
+  .c-longform-grid__sidebar-right {
+    display: none;
+    @include mq($from: wide) {
+      display: block;
+      grid-column: 7 / 10;
+    }
+  } 
 }
-
 div {
   .c-longform-grid__large,
   .c-longform-grid__medium,
@@ -94,6 +95,7 @@ div {
   letter-spacing: 0.02em;
 }
 
+.c-longform a, 
 .c-longform-grid__standard a {
   color: $blue;
   border-bottom: 1px solid transparent;

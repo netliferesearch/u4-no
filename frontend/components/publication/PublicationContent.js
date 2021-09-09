@@ -1,89 +1,37 @@
-import React, { useState, useRef, useEffect } from 'react';
-import BEMHelper from 'react-bem-helper';
+import React from 'react';
 import { PublicationNotifications } from './PublicationNotifications';
-import findFootnotes from '../findFootnotes';
-
-const littlefootActivator = () => {
-  const littlefoot = require('littlefoot').default;
-  littlefoot();
-};
-
-const classes = BEMHelper({
-  name: 'article__content',
-  prefix: 'c-',
-});
+import { MainPoints } from './MainPoints';
+import { ArticleLead } from '../general/article-lead/ArticleLead';
 
 export const PublicationContent = ({
-  standfirst = '',
   lead = '',
   abstract = '',
-  topics = [],
-  className = '',
   publicationType = {},
-  authors = [],
-  summary = [],
-  partners = [],
   mainPoints = [],
   headsUp = false,
   updatedVersion = false,
   date = {},
-  keywords = [],
-  references = [],
-  acknowledgements = '',
-  methodology = [],
-  notes = '',
-  featuredImage = {},
 }) => {
-  const [activeTab, setActiveTab] = useState('main-points');
-  const mainPointsRef = useRef(null);
-  const blocks = summary.filter(block => !['reference'].includes(block._type));
-  const footnotes = findFootnotes(blocks);
-  const footNotesKeys = Object.keys(footnotes);
-
-  useEffect(() => littlefootActivator(), []);
-
   return (
-    <div {...classes('', null, className)}>
-      <PublicationNotifications
-        headsUp={headsUp}
-        updatedVersion={updatedVersion}
-        date={date}
-        publicationType={publicationType}
-      />
-
-      {lead || abstract ? (
-        <div className="c-article c-article__lead u-drop-cap">
-          <p>{lead}</p>
-          {/* Legacy publication abstracts come with html included
-                so we go and render it out.
-          */}
-          {!lead && abstract && <div className="c-article__lead--abstract" dangerouslySetInnerHTML={{ __html: abstract }} />}
-        </div>
+    <div className="c-article__content c-publication__content">
+      {!headsUp ? (
+        <PublicationNotifications
+          headsUp={false}
+          updatedVersion={updatedVersion}
+          date={date}
+          publicationType={publicationType}
+        />
       ) : null}
-
-      {mainPoints.length > 0 && (
-        <div className="publication-preview">
-          <h3 className="u-primary-heading">Main points</h3>
-          <ul className="c-article_mainPoints-list">
-            {mainPoints.map((mainPoint, index) => (
-              <li key={index} className="c-article_mainPoints-item">
-                <span className="c-article_mainPoints-firstWords">
-                  {mainPoint
-                    .split(' ')
-                    .slice(0, 3)
-                    .join(' ')}{' '}
-                </span>
-                <span className="c-article_mainPoints-lastWords">
-                  {mainPoint
-                    .split(' ')
-                    .slice(3)
-                    .join(' ')}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {mainPoints.length > 0 && <MainPoints items={mainPoints} />}
+      {headsUp ? (
+        <PublicationNotifications
+          headsUp={headsUp}
+          updatedVersion={false}
+          date={date}
+          publicationType={publicationType}
+        />
+      ) : null}
+      {lead || abstract ? <ArticleLead lead={lead} abstract={abstract} /> : null}
 
       {/* {(mainPoints.length > 0 || summary.length > 0) && (
         <div className="publication-preview">
@@ -226,9 +174,6 @@ export const PublicationContent = ({
           </div>
         </div>
       ) : null} */}
-
     </div>
   );
 };
-
-export default PublicationContent;

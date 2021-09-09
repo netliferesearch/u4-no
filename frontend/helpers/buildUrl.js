@@ -15,7 +15,7 @@ const BuildUrl = ({ _type = 'notype', slug = {} }) => {
   } else if (_type === 'article') {
     return `/${actualSlug}`;
   } else if (_type === 'person') {
-    return `/${actualSlug}`;
+    return `/the-team/${actualSlug}`;
   } else if (_type === 'frontpage') {
     return `/${actualSlug}`;
   } else if (_type === 'course') {

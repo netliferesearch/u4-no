@@ -1,6 +1,6 @@
 import React from 'react';
 import { RelatedSimple } from '../../RelatedSimple';
-import { Partners } from '../../Partners';
+import { Partners } from '../partners/Partners';
 import { SidebarItem } from '../sidebar-item/SidebarItem';
 import { AuthorListBasic } from '../../publication/AuthorListBasic';
 import { Topics } from '../topics/Topics';
@@ -29,7 +29,7 @@ export const ArticleSidebar = ({ data }) => {
           <AuthorListBasic authors={editors} />
         </SidebarItem>
       ) : null}
-      {partners.length > 0 || publicationType._id === 'pubtype-3' ? (
+      {partners.length > 0 || publicationType._id === 'pubtype-3' || publicationType._id === '080dc28c-9d5e-4c14-972f-73f83a206b92' ? (
         <SidebarItem label="In colaboration with">
           <Partners partners={partners} publicationType={publicationType} />
         </SidebarItem>
