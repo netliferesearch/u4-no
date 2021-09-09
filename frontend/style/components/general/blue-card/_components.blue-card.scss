@@ -170,7 +170,7 @@
   .c-blue-card__details .c-blue-card__more {
     display: flex;
   }
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     .c-blue-card__text {
       width: 100%;
       display: inline-grid;

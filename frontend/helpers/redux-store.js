@@ -217,8 +217,7 @@ export const updateBlogFilters = (blogFilters = []) => dispatch =>
 export const clearBlogFilters = () => dispatch =>
   dispatch({ type: actionTypes.BLOG_CLEAR_FILTERS });
 
-export const clearBlogFilter = index => dispatch =>
-  dispatch({ type: actionTypes.BLOG_CLEAR_FILTER, index });
+export const clearBlogFilter = index => ({ type: actionTypes.BLOG_CLEAR_FILTER, index });
 
 export const updateBlogPageNum = blogPageNum => dispatch => {
   return dispatch({ type: actionTypes.BLOG_UPDATE_PAGE_NUM, blogPageNum });

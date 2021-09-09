@@ -61,7 +61,22 @@ export const getPostType = item => {
       typeTitle = 'Online course';
       break;
     case 'event':
-      typeTitle = 'Workshop';
+      switch (item.eventType) {
+        case 'other':
+          typeTitle = 'Event';
+          break;
+        case 'hqworkshop':
+          typeTitle = 'Workshop';
+          break;
+        case 'incountryworkshop':
+          typeTitle = 'Workshop';
+          break;
+        case 'webinar':
+          typeTitle = 'Webinar';
+          break;
+        default:
+          typeTitle = 'Workshop';
+      }
       break;
     case 'blog-post':
       typeTitle = 'Blog';
@@ -75,7 +90,6 @@ export const getPostType = item => {
 
   return typeTitle;
 };
-
 
 // export const getStringsByType = item => {
 //   const itemType = item._type;

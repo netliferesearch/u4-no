@@ -34,14 +34,25 @@
     justify-content: center;
     margin-left: 30px;
     width: auto;
+
     @include mq($until: tablet) {
       align-items: center;
       margin-left: 0;
+      .c-person-card__adress {
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
+      .c-person-card__position {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
       a {
         align-items: center;
       }
       h5 {
-      font-size: 16px;
+        font-size: 16px;
       }
     }
   }
@@ -49,7 +60,7 @@
   .c-person-card__adress {
     display: flex;
     align-items: center;
-    text-align: center;
+    text-align: left;
   }
 }
 

@@ -3,7 +3,7 @@
   padding: 24px 40px;
   position: relative;
   background-color: $lighter-blue;
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     &:after {
       content: '';
       position: absolute;
