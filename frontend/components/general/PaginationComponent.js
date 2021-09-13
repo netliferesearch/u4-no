@@ -6,7 +6,7 @@ import { connect, useDispatch } from 'react-redux';
 import { clearBlogFilters, updateBlogFilters, updateBlogPageNum } from '../../helpers/redux-store';
 
 export const PaginationComponent = ({ total, limit, pageCount, currentPage }) => {
-  console.log(currentPage);
+  // console.log(currentPage);
   const handlePageChange = (page, e) => {
     dispatch(updateBlogPageNum(page));
     //updateBlogPageNum(page);
@@ -68,7 +68,7 @@ export const PaginationComponent = ({ total, limit, pageCount, currentPage }) =>
                 activePage = { color: '$dark-blue' };
               }
               {
-                console.log(currentPage);
+                // console.log(currentPage);
               }
               return (
                 <li key={page}>
