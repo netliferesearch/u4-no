@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { CopyToClipboardButton } from './CopyToClipboardButton';
-import dateToString from '../helpers/dateToString';
+import { CopyToClipboardButton } from '../general/CopyToClipboardButton';
+import dateToString from '../../helpers/dateToString';
 
 export const Cite = ({
   authors = [],

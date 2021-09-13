@@ -2,25 +2,80 @@ import React, { useState, useRef } from 'react';
 import buildTitleObjects from './TableOfContents/buildTitleObjects';
 import { Scrollchor } from 'react-scrollchor';
 import ClientOnlyPortal from './general/ClientOnlyPortal';
-import { TextIconButton } from './general/buttons';
+//import { TextIconButton } from './general/buttons';
 import { useOnClickOutside, useLockBodyScroll } from '../helpers/hooks';
-import { ContentsIcon } from './icons/ContentsIcon';
+//import { ContentsIcon } from './icons/ContentsIcon';
 
 /**
- * V2 - Contents component to be used in Reader component
+ * V2 - Contents components to be used in Reader component
  */
 
 export const Contents = ({ title = '', content = [] }) => {
   const [open, setOpen] = useState();
-
+  const titleObjects = buildTitleObjects(content);
   return (
-    <div className={`c-contents c-modal${open ? ' open' : ''}`}>
-      <ContentsIcon />
-      <TextIconButton onClick={() => setOpen(true)} text="Contents" modifier="7" />
-      {open && <ContentsModal title={title} setOpen={setOpen} content={content} />}
+    <div className={`c-contents`}>
+      <div className="c-modal__content">
+        <h3 className="c-modal__title">Contents</h3>
+        {/* <li key="top" className={`c-article-nav-list__item`}>
+                      <Scrollchor to="#js-top" disableHistory>
+                        Top
+                      </Scrollchor>
+                    </li> */}
+        <div>
+          <ul className="c-article-nav-list">
+            {titleObjects.length
+              ? titleObjects.map(titleObject => {
+                  const { title, id, children = [] } = titleObject;
+                  return (
+                    <li
+                      key={id}
+                      className={`c-article-nav-list__item`}
+                      onClick={e => setOpen(false)}
+                    >
+                      <Scrollchor to={`#${id}`} disableHistory>
+                        {title}
+                      </Scrollchor>
+                      {titleObject.selected && (
+                        <ul className="c-article-nav-list c-article-nav-list--inner">
+                          {children.map(({ title, id }) => (
+                            <li key={id} className={`c-article-nav-list__item`}>
+                              <Scrollchor to={`#${id}`} disableHistory>
+                                {title}
+                              </Scrollchor>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <hr className="u-section-underline--no-margins" />
+                    </li>
+                  );
+                })
+              : null}
+            <li key="bottom" className="c-article-nav-list__item" onClick={e => setOpen(false)}>
+              <Scrollchor to="#additional-info" disableHistory>
+                Additional Information
+              </Scrollchor>
+            </li>
+          </ul>
+        </div>
+        <div />
+      </div>
     </div>
   );
 };
+
+// export const ContentsAsModal = ({ title = '', content = [] }) => {
+//   const [open, setOpen] = useState();
+
+//   return (
+//     <div className={`c-contents c-modal${open ? ' open' : ''}`}>
+//       <ContentsIcon />
+//       <TextIconButton onClick={() => setOpen(true)} text="Contents" modifier="7" />
+//       {open && <ContentsModal title={title} setOpen={setOpen} content={content} />}
+//     </div>
+//   );
+// };
 
 export const ContentsModal = props => {
   const { title = '', setOpen, content = [] } = props;

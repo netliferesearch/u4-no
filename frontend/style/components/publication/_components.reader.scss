@@ -8,122 +8,134 @@
   min-height: 100%;
   min-height: 100vh;
   background-color: $white;
-
-  .c-article-header__container {
-    max-width: initial;
-  }
-  // .c-article__row {
-  //   display: flex;
-  //   flex-direction: row;
-  //   justify-content: space-between;
-  // }
-
-  .c-article__additional-info-container {
-    margin-bottom: 160px;
-    padding-top: 120px;
-    margin-top: -120px;
-  }
-
 }
 
-.c-article-v2__pdf-viewer {
-  font-family: $font-sans;
-  font-size: 15px;
-  line-height: 1.5;
-  letter-spacing: 0.01em;
-  margin-bottom: $spacing-huge;
+// Reader Header:
 
-  .c-pdf-viewer {
-    margin-top: $spacing-large;
-  }
-
-  .c-pdf-viewer__pdf {
-    margin-top: $spacing;
-  }
+.c-reader-header {
 }
 
-.c-contents {
+.c-reader-header__row {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: flex-start;
-  .c-btn {
-    margin-left: 10px;
-    padding: 0;
-    div {
-      padding: 1px 6px;
-    }
+}
+
+.c-reader-header__main {
+  padding-top: 80px;
+}
+
+.c-progress-bar__container {
+  height: 12px;
+  background-color: #d9f6ff;
+}
+
+.c-progress-bar {
+  height: 12px;
+  background-color: $highlight-blue;
+}
+
+.c-reader-header--LA {
+  padding-top: 80px;
+  .c-reader-header__content {
+    max-width: 600px;
   }
 }
-.c-modal__cover--contents {
-  z-index: 100;
+
+.c-reader-header__top {
+  background-color: white;
 }
-.c-modal--contents {
+
+.c-reader-header__top-content {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px 24px;
+
+  @include mq($from: tablet) {
+    justify-content: space-between;
+    padding: 24px 32px 24px 24px;
+  }
+
+  .u-no-underline {
+    height: 32px;
+  }
+  .c-logo {
+    max-width: 150px;
+    height: 32px;
+    margin: 0;
+  }
+}
+
+.c-reader-header--LA__top {
+  background-color: white;
   position: fixed;
-  background-color: #fff;
+  z-index: 20;
   top: 0;
+  left: 0;
   right: 0;
-  width: 262px;
-  min-height: 100vh;
-  margin: 0 0 0 auto;
-  border-radius: 0;
+}
 
-  .c-modal__top {
-    padding: 32px 24px;
-  }
-  .c-modal__content {
-    padding: 32px 24px;
-    flex-wrap: nowrap;
-    height: calc(100vh - 98px);
-    overflow-y: auto;
-    .c-modal__title {
-      margin-bottom: 8px;
-    }
-  }
-  .c-modal__title {
-    color: $dark-grey;
-    font-size: 14px;
-    line-height: 17px;
-  }
-  .c-article-nav-list {
-    padding: 0;
-    transition: none;
+.c-header--fixed {
+  background-color: white;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.c-header--fixed__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+
+  @include mq($from: tablet) {
+    justify-content: space-between;
+    padding: 24px 32px 24px 24px;
   }
 
-  .c-article-nav-list__item {
-    padding: 0;
-    transition: none;
-    border: none;
-    &:first-child {
-      padding: 0;
+  .c-logo {
+    max-width: 150px;
+    height: 32px;
+    margin: 0;
+  }
+}
+
+.c-reader-header__close {
+  .c-btn--close {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    svg g,
+    svg path {
+      fill: $dark-grey;
     }
-    a {
-      display: inline-block;
-      font-family: $font-serif;
-      color: $dark-grey;
-      font-size: 14px;
-      line-height: 17px;
-      font-weight: 400;
-      border-bottom: none;
-      padding: 16px 0;
-    }
-    &:hover,
-    &:visited:hover {
-      a {
-        color: $brand-main;
-        text-decoration: underline;
-        border-bottom: none;
-      }
-    }
-    &:active {
-      color: $brand-main;
-      text-decoration: underline;
-      border-bottom: none;
-      & > * {
-        transform: translateY(2px);
-      }
+    // &:hover {
+    //   svg g,
+    //   svg path {
+    //     fill: $v2-blue;
+    //   }
+    //   .c-btn__label {
+    //     color: $v2-blue;
+    //   }
+    // }
+  }
+}
+
+.c-reader-header__featured-image {
+  figure {
+    margin: 0;
+  }
+  @include mq($from: tablet) {
+    figure {
+      height: 560px;
     }
   }
 }
+
+//Scroll to top button:
 
 .c-scroll-top {
   display: none;

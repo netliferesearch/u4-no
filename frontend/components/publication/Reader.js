@@ -4,7 +4,7 @@ import { Scrollchor } from 'react-scrollchor';
 import serializers from '../serializers/serializers';
 import LongformArticle from '../LongformArticle';
 import PdfViewer from '../PdfViewer';
-import { LongformArticleHeader } from '../LongformArticleHeader';
+import { ReaderHeader } from './ReaderHeader';
 import { ArticleSidebar } from '../general/article-sidebar/ArticleSidebar';
 import { ToggleBlock } from '../ToggleBlock';
 import { Acknowledgements } from './Aknowledgements';
@@ -13,16 +13,22 @@ import { Disclaimers } from '../Disclaimers';
 import { PhotoCaptionCredit } from '../general/PhotoCaptionCredit';
 import { ToTop } from '../icons/ToTop';
 import { useScrollInfo } from '../../helpers/useScrollInfo';
+import { Contents } from '../Contents';
+import { ArticleLead } from '../general/article-lead/ArticleLead';
 
 export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversion = false }) => {
   const {
     title = '',
+    lead = '',
+    abstract = '',
     content = [],
     references = [],
     methodology = [],
     notes = '',
     featuredImage = {},
     abbreviations = [],
+    partners = [],
+    publicationType = '',
   } = data;
   const readerRef = useRef();
   const [scrolled, setScrolled] = useState(false);
@@ -43,18 +49,26 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
   return (
     <div id="c-reader" className="c-reader" ref={readerRef}>
       <span id="js-top-reader" />
-      <LongformArticleHeader data={data} setReaderOpen={setReaderOpen} targetRef={readerRef} />
-      <div className="u-scroll-bar">
+      <ReaderHeader data={data} setReaderOpen={setReaderOpen} targetRef={readerRef} />
+      {/* <div className="u-scroll-bar"> */}
+      <section className="o-wrapper-medium">
         {content.length > 0 && (
-          <main className="c-reader__main o-wrapper-section u-side-padding c-article__row">
-            <div className="c-article__side c-article__col">
+          <main className="c-reader__main o-wrapper-section c-article__row">
+            {/* <div className="c-article__side c-article__col">
               <ArticleSidebar data={data} side={'left'} />
-            </div>
-            <div className="c-article__center c-article__col">
+            </div> */}
+            <div className="c-article__content c-article__col">
+              {lead || abstract ? <ArticleLead lead={lead} abstract={abstract} /> : null}
               <LongformArticle content={content} title={title} />
+              {references.length > 0 && <ToggleBlock title="References" content={references} />}
+              {abbreviations.length > 0 && (
+                <ToggleBlock title="Abbreviations" content={abbreviations} />
+              )}
             </div>
             <div className="c-article__side c-article__col">
-              <div className="c-article-sidebar" />
+              <div className="c-article-sidebar">
+                <Contents title={title} content={content} setReaderOpen={setReaderOpen} />
+              </div>
             </div>
           </main>
         )}
@@ -66,20 +80,12 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
             </div>
           </main>
         )}
-
-        <div
-          id="additional-info"
-          className="c-article__additional-info-container o-wrapper-section u-side-padding"
-        >
-          <div className="c-article__additional-info-content">
-            {!shortversion && references && references.length ? (
-              <ToggleBlock title="References" content={references} />
-            ) : null}
-            {abbreviations.length ? (
-              <ToggleBlock title="Abbreviation list" content={abbreviations} />
-            ) : null}
+      </section>
+      <section className="u-bg--lighter-blue c-article__additional-content">
+        <div className="o-wrapper-medium">
+          <div className="o-wrapper-narrow">
             <Acknowledgements data={data} bottom={true} />
-            <Partners data={data} bottom={true} />
+            <Partners partners={partners} publicationType={publicationType} />
             {/* {!shortversion && methodology && methodology.length > 0 ? (
               <ToggleBlock title="Methodology" content={methodology} />
             ) : null} */}
@@ -127,7 +133,6 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
                 </div>
               </div>
             ) : null}
-            <Disclaimers title={false} />
             {/*
           {!shortversion && props.data.abstract ? (
             <div className="c-longform-grid">
@@ -138,7 +143,8 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
           ) : null} */}
           </div>
         </div>
-      </div>
+      </section>
+      {/* </div> */}
       {scrolled ? (
         <div className="c-scroll-top">
           <Scrollchor to="#js-top-reader" disableHistory>

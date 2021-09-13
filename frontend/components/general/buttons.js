@@ -58,7 +58,7 @@ export const CloseButton = ({ onClick = () => null, modifier = 'close', children
         fill="#666666"
       />
     </svg>
-    <span className="u-visually-hidden">Close</span>
+    <span className="u-visually-hidden-v2">Close</span>
   </button>
 );
 
