@@ -12,7 +12,8 @@
   }
 }
 
-.c-service-page.c-courses-page {
+.c-service-page.c-courses-page,
+.c-service-page.c-events-page {
   .c-team__wrapper {
     grid-template-columns: 1fr;
     margin-bottom: 0;
@@ -20,4 +21,79 @@
       margin-bottom: 48px;
     }
   }
+  .c-learning-events__grid {
+    display: grid;
+    grid-gap: 30px;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+  .c-learning-events__grid.column-1 {
+    @include mq($from: tablet) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      a {
+        grid-column: span 3;
+      }
+    }
+    @include mq($from: desktop) {
+      a:nth-of-type(-n + 2) {
+        grid-column: span 6;
+        grid-auto-rows: 1fr;
+      }
+      a:nth-of-type(n + 2) {
+        grid-column: span 2;
+        grid-auto-rows: 1fr;
+      }
+    }
+  }
+  .c-learning-events__grid.column-2 {
+    @include mq($from: tablet) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      a {
+        grid-column: span 3;
+      }
+    }
+    @include mq($from: desktop) {
+      a:nth-of-type(n + 3) {
+        grid-column: span 2;
+      }
+    }
+  }
+  .c-learning-events__grid.column-3 {
+    @include mq($from: tablet) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      a {
+        grid-column: span 3;
+      }
+    }
+    @include mq($from: desktop) {
+      a {
+        grid-column: span 2;
+      }
+    }
+  }
+  .c-learning-events__grid.column-all-2 {
+    @include mq($from: tablet) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      a {
+        grid-column: span 3;
+      }
+    }
+  }
+}
+
+.c-service-page {
+  .c-oneColumnBox__darkOnLightBlue {
+    background-color: $dark-blue;
+    color: $white;
+    .c-longform-grid__standard {
+      background-color: $dark-blue;
+      color: $white;
+    }
+  }
+}
+
+.c-service__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }

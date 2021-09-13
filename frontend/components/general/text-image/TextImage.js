@@ -15,6 +15,7 @@ export const TextImage = ({ text = '', image = {}, imagePosition = true }) => (
           loading="lazy"
           layout="fill"
           objectFit="cover"
+          objectPosition="top center"
         />
       )}
     </div>

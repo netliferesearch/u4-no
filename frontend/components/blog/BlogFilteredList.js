@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BlogEntriesFilter } from './BlogEntriesFilter';
 import { CloseButton } from '../general/buttons';
-import { clearBlogFilters, updateBlogFilters, updateBlogPageNum } from '../../helpers/redux-store';
+import { clearBlogFilter, updateBlogFilters, updateBlogPageNum } from '../../helpers/redux-store';
 import { connect, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { PaginationComponent } from '../general/PaginationComponent';
@@ -23,14 +23,7 @@ const applyFliters = (filters, elements) => {
 };
 
 export const BlogFilteredList = props => {
-  const {
-    blogFilters,
-    updateBlogFilters,
-    blogPageNum,
-    clearBlogFilters,
-    blogEntries = [],
-    topics = [],
-  } = props;
+  const { blogFilters, updateBlogFilters, blogPageNum, blogEntries = [], topics = [] } = props;
   const dispatch = useDispatch();
   const [filtersResults, setFiltersResults] = useState([]);
   const [currentResults, setCurrentResults] = useState([]);
@@ -49,8 +42,8 @@ export const BlogFilteredList = props => {
     }
   }, []);
 
-  const handleRemove = () => {
-    clearBlogFilters();
+  const handleRemove = index => {
+    dispatch(clearBlogFilter(index));
     dispatch(updateBlogPageNum(1));
     //updateBlogPageNum(1);
   };
@@ -88,10 +81,11 @@ export const BlogFilteredList = props => {
       >
         <BlogEntriesFilter topics={topics} setFilters={updateBlogFilters} filters={blogFilters} />
         <div className="c-blog-index__filters-set">
+          {/* {console.log(blogFilters)} */}
           {blogFilters.map((f, index) => (
             <div className="c-blog-index__tag-container" key={index}>
               <div className="c-blog-index__tag">{f.title}</div>
-              <CloseButton onClick={handleRemove} text="Remove all" modifier="ter" />
+              <CloseButton onClick={() => handleRemove(index)} text="Remove all" modifier="ter" />
             </div>
           ))}
         </div>
@@ -113,15 +107,16 @@ export const BlogFilteredList = props => {
           ))}
         </div>
       ) : null}
-      {filtersResults && filtersResults.length > 0 && (
-        <PaginationComponent
-          className="c-blog-index__paginator"
-          total={total}
-          limit={limit}
-          pageCount={pageCount}
-          currentPage={blogPageNum}
-        />
-      )}
+      {/* {console.log(blogPageNum)} */}
+      {/* {filtersResults && filtersResults.length > 0 && ( */}
+      <PaginationComponent
+        className="c-blog-index__paginator"
+        total={total}
+        limit={limit}
+        pageCount={pageCount}
+        currentPage={blogPageNum}
+      />
+      {/* )} */}
     </div>
   );
 };
@@ -130,7 +125,6 @@ const mapStateToProps = ({ blogFilters = [], blogPageNum = 1 }) => ({ blogFilter
 
 const mapDispatchToProps = dispatch => ({
   updateBlogFilters: bindActionCreators(updateBlogFilters, dispatch),
-  clearBlogFilters: bindActionCreators(clearBlogFilters, dispatch),
 });
 
 export default connect(

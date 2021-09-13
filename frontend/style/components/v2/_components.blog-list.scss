@@ -250,8 +250,9 @@
     border: none;
     display: flex;
     align-items: center;
-    margin-right: 12px;
-    &:hover {
+    padding: 7px 12px;
+    &:hover,
+    &:focus {
       background-color: transparent;
       border: none;
       box-shadow: unset;
@@ -307,9 +308,7 @@
     white-space: pre;
     display: inline-block;
   }
-  .c-btn--ter {
-    padding: 0;
-  }
+
   &.c-blog-index__filters--active {
     .c-blog-index__filters-info {
       @include mq($from: tablet) {
@@ -359,7 +358,7 @@
   line-height: 14px;
   letter-spacing: 0.01em;
   display: inline-block;
-  padding: 7px 10px 7px 12px;
+  padding: 7px 0px 7px 12px;
   color: #6f6f6f;
   -webkit-transition: all 300ms ease-out;
   transition: all 300ms ease-out;
