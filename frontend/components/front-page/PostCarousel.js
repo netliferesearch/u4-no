@@ -16,7 +16,7 @@ const columnsByType = {
   [POST_TYPE.CARD]: 3,
 };
 
-export const PostCarousel = ({ posts, type, buttonPath, title, minPosts }) => {
+export const PostCarousel = ({ posts, type, buttonPath, title, underTitle, minPosts }) => {
   const responsive = {
     0: { items: 1.2 },
     568: { items: 2.2 },
@@ -66,6 +66,9 @@ export const PostCarousel = ({ posts, type, buttonPath, title, minPosts }) => {
     >
       <div className="o-wrapper-medium">
         {title && <h4 className="u-secondary-heading u-secondary-h1 u-detail--blue">{title}</h4>}
+      </div>
+      <div className="o-wrapper-medium">
+        {underTitle && <p className="c-post-list__under-title">{underTitle}</p>}
       </div>
       <div
         className={`c-post-list__col ${items.length < minPosts ? 'c-post-list__col--static' : ''}`}

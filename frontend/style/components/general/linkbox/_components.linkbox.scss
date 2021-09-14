@@ -75,14 +75,16 @@
       @include mq($until: tablet) {
         padding: 0 58px 58px 24px;
       }
-      &::after {
-        content: '';
-        position: absolute;
-        width: 2100px;
-        height: 100%;
-        top: 0;
-        left: 0px;
-        z-index: 1;
+      @include mq($from: tablet) {
+        &::after {
+          content: '';
+          position: absolute;
+          width: 2100px;
+          height: 100%;
+          top: 0;
+          left: 0px;
+          z-index: 1;
+        }
       }
     }
     &:nth-child(2n-1) {
@@ -90,14 +92,16 @@
       @include mq($until: tablet) {
         padding: 0 58px 58px 24px;
       }
-      &::after {
-        content: '';
-        position: absolute;
-        width: 2100px;
-        height: 100%;
-        top: 0;
-        right: 0px;
-        z-index: 1;
+      @include mq($from: tablet) {
+        &::after {
+          content: '';
+          position: absolute;
+          width: 2100px;
+          height: 100%;
+          top: 0;
+          right: 0px;
+          z-index: 1;
+        }
       }
     }
     &:nth-child(3n-2) {
@@ -149,6 +153,7 @@
       @include mq($until: tablet) {
         padding: 0;
         height: 300px;
+        margin-right: 0;
       }
       img {
         z-index: 2;

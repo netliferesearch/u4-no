@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Banner = ({ title = '', onDark = true, children }) => {
+export const Banner = ({ title = '', onDark = true, children, bannerLead }) => {
   return (
     <div className={`c-banner ${onDark ? 'u-bg--shifted' : 'u-bg--shifted--light'}`}>
       <div className="c-banner__content">
@@ -9,7 +9,10 @@ export const Banner = ({ title = '', onDark = true, children }) => {
             {title}
           </h4>
         )}
-        <div className="c-banner__body">{children}</div>
+        <div className="c-banner__body">
+          {bannerLead && <div className="c-banner__body-lead">{bannerLead}</div>}
+          {children}
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,36 @@
 .c-helpdesk-page {
+  .c-pullQuote {
+    @include mq($until: tablet) {
+      margin: 0;
+    }
+  }
+  .c-side-box {
+    @include mq($until: desktop) {
+      margin-top: 0px;
+    }
+  }
+  .c-columns--two {
+    padding-top: 0;
+  }
+  .u-bg--shifted--light {
+    h4 {
+      color: $dark-blue;
+    }
+    .c-columns__item {
+      p.c-longform-grid__standard {
+        font-weight: bold;
+        color: $dark-blue;
+        text-transform: uppercase;
+      }
+    }
+  }
+  .c-text-image__body {
+    h3.c-longform-grid__standard {
+      font-size: 36px;
+      line-height: 42px;
+      letter-spacing: -0.01em;
+    }
+  }
   .c-page-intro__p {
     padding: 0px;
     font-size: 16px;
