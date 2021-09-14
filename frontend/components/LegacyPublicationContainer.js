@@ -18,7 +18,7 @@ import { PublicationContent } from './publication/PublicationContent';
 import { ArticleSidebar } from './general/article-sidebar/ArticleSidebar';
 import { PostCarousel } from './front-page/PostCarousel';
 import { POST_TYPE } from './general/post/Post';
-import { Cite } from './Cite';
+import { Cite } from './publication/Cite';
 import { ArticleActions } from './general/article-actions/ArticleActions';
 import { AboutAuthor } from './blog/AboutAuthor';
 import { Disclaimers } from './Disclaimers';

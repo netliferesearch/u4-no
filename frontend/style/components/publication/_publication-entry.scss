@@ -2,7 +2,6 @@
 
 .c-article-v2,
 .c-legacy-publication-container {
-
   .c-article__content {
     max-width: 691px;
     @include mq($from: tablet) {
@@ -11,14 +10,13 @@
     }
   }
 
-  .c-article__additional-content {
-    padding: 40px 0;
-  }
-
-
   @include mq($from: tablet) {
     //margin-bottom: 160px;
   }
+}
+
+.c-article__additional-content {
+  padding: 40px 0;
 }
 
 .c-article__row {

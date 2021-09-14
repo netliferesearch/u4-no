@@ -11,7 +11,7 @@ import { Layout } from '../Layout';
 import { ArticleSidebar } from '../general/article-sidebar/ArticleSidebar';
 import { AboutAuthor } from '../blog/AboutAuthor';
 import { Disclaimers } from '../Disclaimers';
-import { Cite } from '../Cite';
+import { Cite } from '../publication/Cite';
 import { Keywords } from '../Keywords';
 import { BreadCrumbV2 } from '../general/BreadCrumbV2';
 import { Reader } from './Reader';
@@ -202,7 +202,6 @@ const PublicationContainer = (props = {}) => {
           </div>
         </section>
       ) : null}
-      <Footer />
       {readerOpen && (
         <Reader
           data={props.data}
@@ -211,6 +210,7 @@ const PublicationContainer = (props = {}) => {
           shortversion={shortversion}
         />
       )}
+      <Footer />
       <div id="modal" />
     </Layout>
   );
