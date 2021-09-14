@@ -10,23 +10,8 @@ import { ReadingProgress } from './ReadingProgress';
 import { PhotoCaptionCredit } from '../general/PhotoCaptionCredit';
 import { PageIntro } from '../general/PageIntro';
 import { PUBLICATION } from '../../helpers/constants';
-
-export const ReaderTop = ({ handleClick }) => {
-  return (
-    <div className="c-reader-header__top-content o-wrapper-medium">
-      <Link href="/">
-        <a className="u-no-underline u-hidden--tablet">
-          <LogoU4 />
-        </a>
-      </Link>
-      <div className="c-reader-header__close">
-        <CloseButton onClick={handleClick}>
-          {/* <span className="u-secondary-heading c-btn__label">Close Publication</span> */}
-        </CloseButton>
-      </div>
-    </div>
-  );
-};
+import { useSelector } from 'react-redux';
+import buildTitleObjects from '../TableOfContents/buildTitleObjects';
 
 export const ReaderHeader = ({ data = '', setReaderOpen = null, targetRef = null }) => {
   const {
@@ -42,6 +27,9 @@ export const ReaderHeader = ({ data = '', setReaderOpen = null, targetRef = null
     slug = '',
     topics = [],
   } = data;
+  const readingProgressId = useSelector(state => state.readingProgressId);
+  const titleObjects = buildTitleObjects(content);
+  const sectionNo = 1 + titleObjects.findIndex(i => i.id === readingProgressId);
   const pdfAsset = legacypdf.asset ? legacypdf.asset : pdfFile.asset;
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef(null);
@@ -55,7 +43,7 @@ export const ReaderHeader = ({ data = '', setReaderOpen = null, targetRef = null
 
   useScrollInfo(
     ({ currPos }) => {
-      const isScrolled = currPos.y < 70;
+      const isScrolled = currPos.y < -200;
       if (scrolled !== isScrolled) {
         setScrolled(isScrolled);
       }
@@ -74,14 +62,12 @@ export const ReaderHeader = ({ data = '', setReaderOpen = null, targetRef = null
       <div className="c-reader-header__top u-fixed">
         <ReaderTop handleClick={handleClick} />
         {content.length > 0 && scrolled ? <ReadingProgress targetRef={targetRef} /> : null}
+        {sectionNo > 0 && scrolled ? <SectionBar sectionNo={sectionNo} /> : null}
       </div>
       <div className="c-reader-header__main">
         {featuredImage.asset && (
           <div className="c-reader-header__featured-image">
-            <figure
-            // className="c-reader-header__featured-image--bg"
-            // style={{ backgroundImage: `url('${featuredImage.asset.url}?w=1072')` }}
-            >
+            <figure>
               <Image
                 loader={sanityImageLoader}
                 src={featuredImage.asset.url}
@@ -97,18 +83,16 @@ export const ReaderHeader = ({ data = '', setReaderOpen = null, targetRef = null
             </figcaption>
           </div>
         )}
-        <div className="o-wrapper-medium">
-          <div className="c-reader-header__intro o-wrapper-narrow">
+        <div className="o-wrapper-medium c-reader-header__intro-container">
+          <div className="c-reader-header__intro o-wrapper-narrow u-bg--lighter-blue">
             <PageIntro
               title={title}
               subtitle={subtitle}
-              //text={false}
               contentType={
                 _type === 'publication'
                   ? PUBLICATION + ' | ' + publicationType.title
                   : getPostType(data)
               }
-              //type="withBreadcrumb"
               single={true}
             />
           </div>
@@ -117,3 +101,26 @@ export const ReaderHeader = ({ data = '', setReaderOpen = null, targetRef = null
     </header>
   );
 };
+
+export const ReaderTop = ({ handleClick }) => {
+  return (
+    <div className="c-reader-header__top-content o-wrapper-medium">
+      <Link href="/">
+        <a className="u-no-underline u-hidden--tablet">
+          <LogoU4 />
+        </a>
+      </Link>
+      <div className="c-reader-header__close">
+        <CloseButton onClick={handleClick} />
+      </div>
+    </div>
+  );
+};
+
+export const SectionBar = ({ sectionNo = 0 }) => (
+  <div className="c-reader-header__section">
+    <div className="o-wrapper-medium">
+      <h5 className="u-secondary-heading u-secondary-h3 u-text--white">{`Section ${sectionNo}`}</h5>
+    </div>
+  </div>
+);

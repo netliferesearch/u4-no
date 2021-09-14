@@ -12,9 +12,6 @@
 
 // Reader Header:
 
-.c-reader-header {
-}
-
 .c-reader-header__row {
   display: flex;
   justify-content: flex-end;
@@ -33,13 +30,6 @@
 .c-progress-bar {
   height: 12px;
   background-color: $highlight-blue;
-}
-
-.c-reader-header--LA {
-  padding-top: 80px;
-  .c-reader-header__content {
-    max-width: 600px;
-  }
 }
 
 .c-reader-header__top {
@@ -67,39 +57,17 @@
   }
 }
 
-.c-reader-header--LA__top {
-  background-color: white;
-  position: fixed;
-  z-index: 20;
-  top: 0;
-  left: 0;
-  right: 0;
+.c-reader-header__intro-container {
+  margin-top: -175px;
+  z-index: 1;
+  position: relative;
 }
 
-.c-header--fixed {
-  background-color: white;
-  position: fixed;
-  z-index: 20;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-.c-header--fixed__content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 24px;
-
-  @include mq($from: tablet) {
-    justify-content: space-between;
-    padding: 24px 32px 24px 24px;
-  }
-
-  .c-logo {
-    max-width: 150px;
-    height: 32px;
-    margin: 0;
+.c-reader-header__intro {
+  overflow: auto;
+  padding: 0 24px;
+  .c-page-intro {
+    margin-top: 64px;
   }
 }
 
@@ -135,6 +103,11 @@
   }
 }
 
+.c-reader-header__section {
+  background-color: $blue;
+  padding: 6px 0;
+}
+
 //Scroll to top button:
 
 .c-scroll-top {
@@ -161,3 +134,61 @@
     align-items: center;
   }
 }
+
+.c-reader__main {
+  margin-bottom: 40px;
+}
+
+// Contents:
+
+.c-reader__sidebar {
+  //display: unset;
+  position: sticky;
+  top: 122px;
+}
+
+.c-contents__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.c-contents__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.c-contents__list-item {
+  a {
+    color: $mid-grey;
+    font-family: $font-serif;
+    font-size: 18px;
+    line-height: 24px;
+    display: inline-block;
+    padding: 8px 0 12px 0;
+  }
+  &:hover,
+  &:active {
+    a {
+      color: $blue;
+    }
+    .c-contents__subtitle {
+      color: $highlight-blue;
+    }
+  }
+}
+
+.c-contents__subtitle {
+  margin-bottom: 0;
+}
+
+.c-contents__list-item--active {
+  a {
+    color: $blue;
+  }
+  .c-contents__subtitle {
+    color: $highlight-blue;
+  }
+}
+

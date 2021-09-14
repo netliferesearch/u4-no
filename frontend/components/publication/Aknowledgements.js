@@ -1,20 +1,21 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
+import BlockContent from '@sanity/block-content-to-react';
+import serializers from '../serializers/serializers';
 
 const classes = BEMHelper({
   name: 'acknowledgements',
   prefix: 'c-',
 });
 
-export const Acknowledgements = ({ data, bottom = false }) => {
-  const { acknowledgements = '' } = data;
+export const Acknowledgements = ({ acknowledgements = [], bottom = false }) => {
 
   return acknowledgements ? (
     <div className={`c-acknowledgements ${bottom ? 'c-acknowledgements--bottom c-meta' : ''}`}>
-      {bottom ? <hr className="u-section-underline--no-margins" /> : null }
       {acknowledgements ? (
-        <h3 className="u-primary-heading">Acknowledgements</h3>
+        <h4 className="u-secondary-heading u-secondary-h3">Acknowledgements</h4>
       ) : null}
+      <hr className="u-section-underline--dark-grey" />
       {acknowledgements ? (
         <div {...classes('item')}>
           {/* <h3 className="u-black-mid-headline">Acknowledgements</h3> */}
