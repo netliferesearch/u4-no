@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import buildTitleObjects from './TableOfContents/buildTitleObjects';
+import buildTitleObjects from '../TableOfContents/buildTitleObjects';
 import { Scrollchor } from 'react-scrollchor';
 //import ClientOnlyPortal from './general/ClientOnlyPortal';
 //import { useOnClickOutside, useLockBodyScroll } from '../helpers/hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateReadingProgress } from '../helpers/redux-store';
-import { ToTop } from './icons/ToTop';
+import { updateReadingProgress } from '../../helpers/redux-store';
+import { ToTop } from '../icons/ToTop';
 //import { ContentsIcon } from './icons/ContentsIcon';
 
 /**

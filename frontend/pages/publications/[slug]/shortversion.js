@@ -1,22 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import LongformArticleContainer from '../../../components/LongformArticleContainer';
 import BreadCrumb from '../../../components/BreadCrumb';
 import DataLoader from '../../../helpers/data-loader';
 import { wrapInRedux } from '../../../helpers/redux-store-wrapper';
+import PublicationContainer from '../../../components/publication/PublicationContainer';
 
 const TopicArticleEntry = props => {
   const {
     data: { title = '', summary = [], _type = '', slug = '' },
     url = {},
   } = props;
+  console.log("summary", summary)
   return (
-    <LongformArticleContainer
-      BreadCrumbComponent={<BreadCrumb data={{ _type: _type, slug: slug, title }} />}
-      content={summary}
-      shortversion
-    />
+    // <LongformArticleContainer
+    //   BreadCrumbComponent={<BreadCrumb data={{ _type: _type, slug: slug, title }} />}
+    //   content={summary}
+    //   shortversion
+    // />
+    <PublicationContainer data={props.data} shortversionContent={summary} shortversion />
   );
 };
 

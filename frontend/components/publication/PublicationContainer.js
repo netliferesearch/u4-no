@@ -10,18 +10,19 @@ import { ArticleHeader } from '../general/article-header/ArticleHeader';
 import { Layout } from '../Layout';
 import { ArticleSidebar } from '../general/article-sidebar/ArticleSidebar';
 import { AboutAuthor } from '../blog/AboutAuthor';
-import { Disclaimers } from '../Disclaimers';
+import { Disclaimers } from '../general/disclaimers/Disclaimers';
 import { Cite } from '../publication/Cite';
 import { Keywords } from '../Keywords';
 import { BreadCrumbV2 } from '../general/BreadCrumbV2';
 import { Reader } from './Reader';
 import LongformArticle from '../LongformArticle';
 import TnrcFooter from '../general/tnrc/TnrcFooter';
-import { SEARCH_PUBLICATIONS } from '../../helpers/constants';
+import { PUBLICATION, SEARCH_PUBLICATIONS } from '../../helpers/constants';
 import Footer from '../general/footer/Footer';
 import { PostCarousel } from '../front-page/PostCarousel';
 import { POST_TYPE } from '../general/post/Post';
 import { ArticleActions } from '../general/article-actions/ArticleActions';
+import { PublicationAdditionalInfo } from './PublicationAdditionalInfo';
 
 const PublicationContainer = (props = {}) => {
   const {
@@ -34,6 +35,7 @@ const PublicationContainer = (props = {}) => {
       date = {},
       lead = '',
       standfirst = '',
+      slug = '',
       references = [],
       acknowledgements = '',
       methodology = [],
@@ -155,37 +157,19 @@ const PublicationContainer = (props = {}) => {
         </section>
 
         {shortversion && (
-          <section className="c-article--shortversion o-wrapper-medium">
-            <div className="c-article__row">{BreadCrumbComponent && BreadCrumbComponent}</div>
+          <section className="c-article--shortversion o-wrapper-medium o-wrapper-mobile-full">
+            <BreadCrumbV2 home={true} title={title} parentSlug={`/publications/${slug.current}`} />
             <div className="c-article__row">
               <LongformArticle content={shortversionContent} {...props.data} />
             </div>
           </section>
         )}
 
-        <section className="u-bg--blue">
-          <div className="o-wrapper-medium">
-            <div className="o-wrapper-narrow">
-              <Cite {...props.data} />
-            </div>
-          </div>
-        </section>
-        <section className="u-bg--lighter-blue c-article__additional-content">
-          <div className="o-wrapper-medium">
-            <div className="o-wrapper-narrow">
-              <ArticleActions data={props.data} setReaderOpen={setReaderOpen} />
-              <AboutAuthor authors={authors} />
-              <Disclaimers title={true} />
-              {keywords.length > 0 ? <Keywords title={true} keywords={keywords} hr={true} /> : null}
-            </div>
-          </div>
-        </section>
-        <section className="o-wrapper-medium">
-          <div className="o-wrapper-narrow">
-            <TnrcFooter publicationTypeId={publicationType._id} />
-          </div>
-        </section>
-        {/* <span id="js-bottom" /> */}
+        {!shortversion && (
+          <PublicationAdditionalInfo data={props.data} setReaderOpen={setReaderOpen} />
+        )}
+
+        <span id="js-bottom" />
       </article>
       {/* )} */}
       {recommendedResources.length > 0 ? (

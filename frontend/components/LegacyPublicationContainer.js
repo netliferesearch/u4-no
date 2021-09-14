@@ -21,7 +21,7 @@ import { POST_TYPE } from './general/post/Post';
 import { Cite } from './publication/Cite';
 import { ArticleActions } from './general/article-actions/ArticleActions';
 import { AboutAuthor } from './blog/AboutAuthor';
-import { Disclaimers } from './Disclaimers';
+import { Disclaimers } from './general/disclaimers/Disclaimers';
 import { Keywords } from './Keywords';
 
 const LegacyPublicationContainer = props => {

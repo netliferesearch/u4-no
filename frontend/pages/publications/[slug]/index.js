@@ -7,9 +7,9 @@ import { initStore } from '../../../helpers/redux-store';
 import { Provider } from 'react-redux';
 // import { PublicationContainer } from '../../../components/publication/PublicationContainer';
 
-const LongformArticleContainer = dynamic(() =>
-  import('../../../components/LongformArticleContainer')
-);
+// const LongformArticleContainer = dynamic(() =>
+//   import('../../../components/LongformArticleContainer')
+// );
 
 const LegacyPublicationContainer = dynamic(() =>
   import('../../../components/LegacyPublicationContainer')

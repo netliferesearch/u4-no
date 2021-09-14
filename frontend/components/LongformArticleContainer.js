@@ -14,7 +14,7 @@ import TableOfContentsButton from './TableOfContents/TableOfContentsButton';
 import TableOfContentsSidebar from './TableOfContents/TableOfContentsSidebar';
 import TableOfContentsBase from './TableOfContents/TableOfContentsBase';
 import RecommendedResources from './RecommendedResources';
-import {ToggleBlock} from './ToggleBlock';
+import { ToggleBlock } from './publication/ToggleBlock';
 import AuthorList from './publication/AuthorList';
 import PublicationNotification from './PublicationNotification';
 import TnrcHeader from './general/tnrc/TnrcHeader';
@@ -217,9 +217,7 @@ const LongFormArticleContainer = (props = {}) => {
             <div>
               <div className="c-longform-grid u-bg--white u-z-index-x">
                 {articleType.length ? (
-                  <h2 className="c-longform-grid__standard">
-                    {articleType[0].target.title}
-                  </h2>
+                  <h2 className="c-longform-grid__standard">{articleType[0].target.title}</h2>
                 ) : null}
                 <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
                 {authors.length ? (

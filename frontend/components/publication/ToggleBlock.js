@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from './serializers/serializers';
-import { ArrowDown } from './icons/ArrowDown';
+import serializers from '../serializers/serializers';
+import { ArrowDown } from '../icons/ArrowDown';
 import { CSSTransitionGroup } from 'react-transition-group';
 
 export const ToggleBlock = ({ title = '', content = '', children }) => {
