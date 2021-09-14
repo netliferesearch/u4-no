@@ -67,9 +67,6 @@ export const PostCarousel = ({ posts, type, buttonPath, title, underTitle, minPo
       <div className="o-wrapper-medium">
         {title && <h4 className="u-secondary-heading u-secondary-h1 u-detail--blue">{title}</h4>}
       </div>
-      <div className="o-wrapper-medium">
-        {underTitle && <p className="c-post-list__under-title">{underTitle}</p>}
-      </div>
       <div
         className={`c-post-list__col ${items.length < minPosts ? 'c-post-list__col--static' : ''}`}
       >

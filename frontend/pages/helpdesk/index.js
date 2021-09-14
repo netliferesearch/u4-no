@@ -8,9 +8,11 @@ import serializers from '../../components/serializers/serializers';
 import { SideBox } from '../../components/general/side-box/SideBox';
 import { Banner } from '../../components/general/banner/Banner';
 import { ArrowNext } from '../../components/icons/ArrowNext';
+import { PartnerLogo10Blue } from '../../components/icons/PartnerLogo10Blue';
 import { PostCarousel } from '../../components/front-page/PostCarousel';
 import { POST_TYPE } from '../../components/general/post/Post';
 import { TextImage } from '../../components/general/text-image/TextImage';
+import PartnerLogo8 from '../../components/icons/PartnerLogo10';
 
 const ServicePage = ({
   data: {
@@ -18,11 +20,12 @@ const ServicePage = ({
     longTitle = '',
     featuredImage = {},
     sections = [],
+    lead = [],
     relatedUrl = {},
     url = '',
   },
 }) => {
-  const lead = sections.filter(i => i._type === 'heading')[0];
+  const standFirst = sections.filter(i => i._type === 'heading')[0];
   const features = sections.filter(i => i._type === 'features');
   const bannerHeading = sections.filter(i => i._type === 'heading')[1];
   const bannerBeforeContent = sections.filter(i => i._type === 'cta')[0];
@@ -45,7 +48,7 @@ const ServicePage = ({
         <section className="o-wrapper-medium">
           <div className="c-service-page__top">
             <div className="c-service-page__intro">
-              <PageIntro title={title} text={lead.headingValue} />
+              <PageIntro title={title} text={standFirst.headingValue} />
             </div>
             <SideBox>
               <h3 className="c-longform-grid__standard">Anti-corruption encounters</h3>
@@ -53,8 +56,19 @@ const ServicePage = ({
             </SideBox>
           </div>
         </section>
+        <hr className="u-section-underline--no-margins" />
+
         <div className="o-wrapper-medium">
-          <hr className="u-section-underline--no-margins" />
+          <div className="c-helpdesk-page__lead">
+            <div className="c-helpdesk-page__lead-content">
+              <BlockContent blocks={lead} serializers={serializers} />
+            </div>
+            <div className="c-helpdesk-page__lead-content--second">
+              <div className="c-helpdesk-page__lead-image">
+                <PartnerLogo10Blue />
+              </div>
+            </div>
+          </div>
         </div>
         <div className="o-wrapper-medium o-wrapper-mobile-full">
           <div className="u-top-margin--64">
@@ -94,7 +108,6 @@ const ServicePage = ({
               type={POST_TYPE.PUBLICATION}
               buttonPath="/publications"
               title="Latest U4 helpdesk answers"
-              underTitle="Lorem ipsum"
               minPosts={4}
             />
             <hr className="u-section-underline--no-margins" />
@@ -108,7 +121,7 @@ const ServicePage = ({
 
 export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `*[_type == "frontpage" && slug.current == "helpdesk"][0]{
+    sanityQuery: `*[_type == "frontpage" && slug.current == "helpdesk-new"][0]{
         title,
             longTitle,
             slug,
