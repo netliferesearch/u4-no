@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 // );
 
 const LegacyPublicationContainer = dynamic(() =>
-  import('../../../components/LegacyPublicationContainer')
+  import('../../../components/publication/LegacyPublicationContainer')
 );
 
 const PublicationContainer = dynamic(() =>

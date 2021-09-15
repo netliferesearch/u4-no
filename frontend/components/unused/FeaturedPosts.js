@@ -42,11 +42,7 @@ export const FeaturedPost = ({ featured }) => {
                       <p className="c-featured-post__intro u-body--grey u-hidden--tablet">
                         {firstPost.standfirst}
                       </p>
-                      {/* <p className="c-featured-post__name">
-                 {post.authors.length > 0 ? (
-                   <BlogAuthorsShortList authors={post.authors} />
-                 ) : null}
-               </p> */}
+
                       <p className="c-featured-post__date u-body--small">
                         {firstPost.date ? dateToString({ start: firstPost.date.utc }) : null}
                       </p>
@@ -93,11 +89,6 @@ export const FeaturedPost = ({ featured }) => {
                               <p className="c-featured-post__intro u-body--grey u-hidden--tablet">
                                 {post.standfirst}
                               </p>
-                              {/* <p className="c-featured-post__name">
-                    {post.authors.length > 0 ? (
-                      <BlogAuthorsShortList authors={post.authors} />
-                    ) : null}
-                  </p> */}
                               <p className="c-featured-post__date u-body--small u-hidden--tablet">
                                 {post.date ? dateToString({ start: post.date.utc }) : null}
                               </p>

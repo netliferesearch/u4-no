@@ -18,8 +18,9 @@ import Mosaic from '../Mosaic';
 import { ArticlePullQuote } from '../general/pull-quote/ArticlePullQuote';
 import SimpleMosaic from '../SimpleMosaic';
 import Table from '../Table';
-import ToggleTextBox from '../ToggleTextBox';
+//import ToggleTextBox from '../general/text-box/ToggleTextBox';
 import WorkshopMosaic from '../WorkshopMosaic';
+import { SimpleTextBox } from '../general/textbox/SimpleTextBox';
 const FunkyTable = dynamic(() => import('../FunkyTable'));
 const LineChart = dynamic(() => import('../LineChart'));
 const Chart = dynamic(() => import('../Chart'));
@@ -81,7 +82,8 @@ const serializers = {
     box: ({ node: { content = false } }) =>
       content && (
         <div className="c-longform-grid__standard">
-          <ToggleTextBox content={content} />
+          {/* <ToggleTextBox content={content} /> */}
+          <SimpleTextBox content={content} />
         </div>
       ),
 

@@ -41,7 +41,6 @@
 @import 'components/components.select';
 @import 'components/components.partner-promo';
 @import 'components/components.table';
-@import 'components/components.textbox';
 @import 'components/components.toggle-block';
 @import 'components/components.workshop-mosaic';
 //@import 'components/components.simple-hero';
@@ -66,11 +65,9 @@
 
 @import 'components/v2/components.blog-list';
 @import 'components/v2/components.blog-single';
-@import 'components/v2/components.tags-section';
+//@import 'components/v2/components.tags-section';
 //@import 'components/v2/components.related-items-list';
-@import 'components/v2/components.disclaimers';
 @import 'components/v2/components.abaut-author';
-@import 'components/v2/components.cite';
 
 @import 'components/general/accordion/components.accordion';
 @import 'components/general/article-header/components.article-header';
@@ -80,6 +77,7 @@
 @import 'components/general/blue-card/components.blue-card';
 @import 'components/general/buttons/components.buttons';
 @import 'components/general/columns/components.columns';
+@import 'components/general/disclaimers/components.disclaimers';
 @import 'components/general/features/components.features';
 @import 'components/general/post/components.post';
 @import 'components/general/menu/components.menu';
@@ -100,6 +98,7 @@
 @import 'components/general/pull-quote/components.pull-quote';
 @import 'components/general/related-simple/components.related-simple';
 @import 'components/general/team/components.team';
+@import 'components/general/textbox/components.textbox';
 @import 'components/general/text-image/components.text-image';
 @import 'components/general/typography/components.sectionTitle';
 @import 'components/general/tnrc/components.tnrc';
@@ -119,6 +118,7 @@
 @import 'components/publication/components.reader';
 @import 'components/publication/components.reader';
 @import 'components/publication/publication-entry';
+@import 'components/publication/components.cite';
 
 // UTILITIES
 @import '../node_modules/inuitcss/utilities/utilities.widths';

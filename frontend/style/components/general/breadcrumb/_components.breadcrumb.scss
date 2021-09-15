@@ -40,3 +40,12 @@
     margin-left: 0;
   }
 }
+
+.c-breadcrumb__item--current {
+  color: $dark-grey;
+  &:hover,
+  &:active {
+    font-weight: 400;
+    color: $dark-grey;
+  }
+}

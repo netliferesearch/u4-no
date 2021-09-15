@@ -2,11 +2,11 @@ import React from 'react';
 import { AboutAuthor } from '../blog/AboutAuthor';
 import { Disclaimers } from '../general/disclaimers/Disclaimers';
 import { Cite } from '../publication/Cite';
-import { Keywords } from '../Keywords';
+import { Keywords } from '../general/keywords/Keywords';
 import TnrcFooter from '../general/tnrc/TnrcFooter';
 import { ArticleActions } from '../general/article-actions/ArticleActions';
 
-export const PublicationAdditionalInfo = ({ data = {}, setReaderOpen }) => {
+export const PublicationAdditionalInfo = ({ data = {}, setReaderOpen = () => null }) => {
   const { authors = [], publicationType = {}, keywords = [] } = data;
 
   return (

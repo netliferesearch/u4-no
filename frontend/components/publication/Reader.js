@@ -67,7 +67,7 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
         )}
 
         {!content.length && legacypdf.asset && (
-          <main className="c-reader__main o-wrapper-section u-side-padding c-article__row">
+          <main className="c-reader__main o-wrapper-section c-article__row">
             <div className="c-article-v2 c-article-v2__pdf-viewer o-wrapper-section">
               <PdfViewer file={{ url: legacypdf.asset.url }} />
             </div>

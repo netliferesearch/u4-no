@@ -52,7 +52,7 @@ export const BreadCrumbV2 = ({
         {currentSlug && currentTitle ? (
           <div className="c-breadcrumb__item">
             <ChevronGrey color={onDark ? '#ffffff' : '#333333'} />
-            <span className="c-breadcrumb__link c-btn--link">{currentTitle}</span>
+            <span className="c-breadcrumb__link c-btn--link  c-breadcrumb__item--current">{currentTitle}</span>
           </div>
         ) : null}
       </div>

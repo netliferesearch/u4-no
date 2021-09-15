@@ -12,7 +12,7 @@ export const Cite = ({
   const citeRef = useRef(null);
   // const authorsString = authors.map(author => (author.target ? author.target : author)).map((a,index) => (`${a.surname}, ${a.firstName.slice(1)}. ${index < authors.length - 1 ? ', ' : ''}`)
   const authorsFiltered = authors.map(author => (author.target ? author.target : author));
-  console.log(authorsFiltered)
+  // console.log(authorsFiltered)
   const authorsString = authorsFiltered.map((a, index) => {
     return `${a.surname}, ${a.firstName.substring(0,1)}.; `;
   }).join('');

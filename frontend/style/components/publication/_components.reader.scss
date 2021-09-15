@@ -58,9 +58,13 @@
 }
 
 .c-reader-header__intro-container {
-  margin-top: -175px;
+  //margin-top: -175px;
   z-index: 1;
   position: relative;
+}
+
+.c-reader-header__intro-container--with-img {
+  margin-top: -175px;
 }
 
 .c-reader-header__intro {
