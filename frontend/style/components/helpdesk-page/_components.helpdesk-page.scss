@@ -1,4 +1,26 @@
 .c-helpdesk-page {
+  .c-helpdesk-page__lead {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @include mq($until: desktop) {
+      grid-template-columns: 1fr;
+    }
+  }
+  .c-helpdesk-page__lead-content--second {
+    display: flex;
+    justify-content: center;
+    @include mq($from: tablet) {
+      justify-content: flex-start;
+    }
+    @include mq($from: desktop) {
+      justify-content: flex-end;
+    }
+  }
+  .c-helpdesk-page__lead-image {
+    width: 270px;
+    height: 80px;
+    margin-top: 32px;
+  }
   .c-pullQuote {
     @include mq($until: tablet) {
       margin: 0;

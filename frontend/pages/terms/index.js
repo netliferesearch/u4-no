@@ -6,7 +6,7 @@ import ServiceArticle from '../../components/ServiceArticle';
 import { PageIntro } from '../../components/general/PageIntro';
 const Glossary = ({ data: { terms = [] }, url = {} }) => {
   const [currentLetter, setCurrentLetter] = useState([]);
-  const letters = [
+  const alphabet = [
     'a',
     'b',
     'c',
@@ -34,10 +34,7 @@ const Glossary = ({ data: { terms = [] }, url = {} }) => {
     'y',
     'z',
   ];
-  console.log(currentLetter);
   const filteredTerms = terms.filter(i => i.term.toLowerCase().startsWith(currentLetter));
-  console.log(filteredTerms);
-
   return (
     <Layout
       className="o-wrapper"
@@ -60,7 +57,7 @@ const Glossary = ({ data: { terms = [] }, url = {} }) => {
 
         <div className="o-wrapper-medium">
           <div className="c-glossary__alphabet-nav">
-            {letters.map((letter, index) => (
+            {alphabet.map((letter, index) => (
               <button
                 className={`c-glossary__letter ${
                   currentLetter === letter ? 'active u-detail--blue' : ''
