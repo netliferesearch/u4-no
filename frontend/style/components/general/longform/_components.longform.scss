@@ -113,7 +113,8 @@ div {
       //left: 0;
     }
   }
-  .c-table__caption {
+  .c-table__caption,
+  .c-textbox--simple {
     p.c-longform-grid__standard:after {
       display: none;
     }
