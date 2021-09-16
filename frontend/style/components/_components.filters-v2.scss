@@ -2,19 +2,38 @@
   color: $dark-blue;
   padding: 0 $spacing;
   display: none;
+  background-color: rgba(240, 240, 240, 0.4);
   @include mq($from: tablet) {
     padding: 0 $spacing-huge;
   }
   @include mq($from: desktop) {
     display: block;
-    padding: 0;
+    padding: 15px;
   }
 }
-
+.c-filters-v2__item--date {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  h3.c-filters-v2__title {
+    width: 100%;
+  }
+}
 .c-filters-v2__clear-all {
-  padding-bottom: $spacing;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   min-height: 45px;
   text-align: right;
+  h4 {
+    margin: 0;
+  }
+  button {
+    text-transform: uppercase;
+    color: $mid-grey;
+    border-bottom: solid 1px $mid-grey;
+    font-size: $font-size-nano;
+  }
 }
 
 .c-filters-v2--standalone {
@@ -27,11 +46,16 @@
   margin-bottom: $spacing-large;
   @include inuit-font-size($font-size-small, $line-height-small);
 }
-
+.c-filters-v2__item--title {
+  margin: 0;
+}
+.c-filters-v2__item--title + .c-filters-v2__item {
+  margin-top: 0;
+}
 .c-filters-v2__item {
   font-family: $font-sans;
   padding: 0;
-  margin: $spacing-large 0;
+  margin: 40px 0;
   @include inuit-font-size($font-size-tiny, $line-height-tiny);
 }
 
@@ -51,13 +75,18 @@
   align-items: center;
 }
 
-.c-filters-v2__title {
+h3.c-filters-v2__title {
   padding: 0;
+  font-size: $font-size-nano;
+  text-transform: uppercase;
+  width: 100%;
+  border-bottom: 1px solid rgba(111, 111, 111, 0.3);
   margin: 20px 0;
   font-weight: bold;
-  @include inuit-font-size($font-size-small, $line-height-normal);
 }
-
+.c-filters-v2__item--date-section {
+  width: 50%;
+}
 .c-filters-v2__checkbox {
   margin-bottom: 14px;
   display: grid;
@@ -140,6 +169,8 @@
 .c-filters-v2__select {
   display: flex;
   flex-wrap: wrap;
+  color: $mid-grey;
+  width: 100%;
 }
 
 .c-filters-v2__select div {
@@ -148,10 +179,6 @@
 
 .c-filters-v2__select label {
   padding-right: $spacing-tiny;
-}
-
-.c-filters-v2__select > :first-child {
-  margin-right: $spacing;
 }
 
 .c-filters-v2--open {
@@ -225,6 +252,14 @@
   border-color: transparent;
   background-color: transparent;
   padding: 0;
+  font-size: $font-size-nano;
+  text-transform: uppercase;
+  color: $mid-grey;
+  letter-spacing: 0.15em;
+  line-height: 14px;
+  path {
+    stroke: $mid-grey;
+  }
 }
 
 .c-filters-v2-btn--list-item {
@@ -233,5 +268,5 @@
 }
 
 .c-filters-v2-btn:hover {
-  border-bottom: 1px solid currentColor;
+  cursor: pointer;
 }

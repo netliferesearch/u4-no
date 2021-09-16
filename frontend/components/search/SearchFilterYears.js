@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
@@ -7,7 +7,6 @@ import {
   clearAllSearchFilters,
   replaceSearchFilters,
 } from '../../helpers/redux-store';
-import SearchFilterReset from './SearchFilterReset';
 
 const getFromYear = ({ searchFilters = [] }) => {
   const yearFilter = searchFilters.find(name => name.startsWith('year-from'));
@@ -17,7 +16,6 @@ const getFromYear = ({ searchFilters = [] }) => {
   const fromYear = /year-from-(.*)/gi.exec(yearFilter)[1];
   return parseInt(fromYear, 10);
 };
-
 const getToYear = ({ searchFilters = [] }) => {
   const yearFilter = searchFilters.find(name => name.startsWith('year-to'));
   if (!yearFilter) {
@@ -29,23 +27,30 @@ const getToYear = ({ searchFilters = [] }) => {
 
 const SearchFilterYears = props => {
   const { searchFilters, years = [], replaceSearchFilters } = props;
+  const [fromExpanded, setFromExpanded] = useState('');
+  const [toExpanded, setToExpanded] = useState('');
   return (
-    <form className="c-filters-v2__item">
-      <div className="c-filters-v2__item-head">
-        <h3 className="c-filters-v2__title">Year</h3>
-        <span className="c-filters-v2__clear">
-          <SearchFilterReset filterPrefix="year-" />
-        </span>
-      </div>
-      <span>
-        <div className="c-filters-v2__select">
-          <div>
-            <label htmlFor="from">From:</label>
+    <form className="c-filters-v2__item--date">
+      <div className="c-filters-v2__item--date-section">
+        <div className="c-filters-v2__item-head">
+          <h3 className="c-filters-v2__title">From</h3>
+        </div>
+        <span>
+          <div className="c-filters-v2__select">
             <select
+              onClick={e => {
+                e.preventDefault();
+                setFromExpanded(prevIsExpanded => !prevIsExpanded);
+              }}
+              onBlur={e => {
+                e.preventDefault();
+                setFromExpanded(false);
+              }}
               id="from"
-              className="c-select"
+              className={`c-select ${fromExpanded && 'expanded'}`}
               onChange={event => {
                 const value = event.target.value;
+                console.log(value);
                 const newFilters = [...searchFilters.filter(name => !name.startsWith('year-from'))];
                 if (!value) {
                   return replaceSearchFilters(newFilters);
@@ -56,17 +61,31 @@ const SearchFilterYears = props => {
               value={getFromYear({ searchFilters })}
             >
               {years.map((year, i) => (
-                <option key={year} value={i === 0 ? '' : year}>
+                <option className="c-select__option" key={year} value={i === 0 ? '' : year}>
                   {year}
                 </option>
               ))}
             </select>
           </div>
-          <div>
-            <label htmlFor="to">To:</label>
+        </span>
+      </div>
+      <div className="c-filters-v2__item--date-section">
+        <div className="c-filters-v2__item-head">
+          <h3 className="c-filters-v2__title">To</h3>
+        </div>
+        <span>
+          <div className="c-filters-v2__select">
             <select
+              onClick={e => {
+                e.preventDefault();
+                setToExpanded(prevToExpanded => !prevToExpanded);
+              }}
+              onBlur={e => {
+                e.preventDefault();
+                setToExpanded(false);
+              }}
               id="to"
-              className="c-select"
+              className={`c-select ${toExpanded && 'expanded'}`}
               onChange={event => {
                 const value = event.target.value;
                 const newFilters = [...searchFilters.filter(name => !name.startsWith('year-to'))];
@@ -88,8 +107,8 @@ const SearchFilterYears = props => {
                 ))}
             </select>
           </div>
-        </div>
-      </span>
+        </span>
+      </div>
     </form>
   );
 };

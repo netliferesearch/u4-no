@@ -9,7 +9,6 @@ import {
   clearAllSearchFilters,
   replaceSearchFilters,
 } from '../../helpers/redux-store';
-import SearchFilterReset from './SearchFilterReset';
 import SearchFilterToggle from './SearchFilterToggle';
 
 const isFilterActive = ({ searchFilters = [], filterName }) =>
@@ -21,9 +20,6 @@ const SearchFilterTopics = props => {
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
         <h3 className="c-filters-v2__title">Topic</h3>
-        <span className="c-filters-v2__clear">
-          <SearchFilterReset filterPrefix="topic-type-" />
-        </span>
       </div>
       <span>
         <SearchFilterToggle bucketsToToggle={defaultBuckets}>

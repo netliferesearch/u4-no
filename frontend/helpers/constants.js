@@ -12,6 +12,7 @@ export const SEARCH_U4_ISSUE = '/search?filters=publications-only%2Cpub-U4%20Iss
 export const SEARCH_U4_HELPDESK =
   '/search?filters=publications-only%2Cpub-U4%20Helpdesk%20Answer&sort=year-desc';
 export const SEARCH_PUBLICATIONS = '/search?filters=publications-only&sort=year-desc';
+export const SEARCH = 'search';
 export const SEARCH_U4_REPORT =
   '/search?filters=publications-only%2Cpub-U4%20Report&search=U4%20Report&searchPageNum=1&sort=year-desc';
 export const SEARCH_U4_GUIDE =

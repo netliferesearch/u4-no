@@ -16,7 +16,6 @@ import SearchFilterLanguages from './SearchFilterLanguages';
 import SearchFilterYears from './SearchFilterYears';
 import SearchFilterReset from './SearchFilterReset';
 
-
 function toggle() {
   if (document) {
     document.querySelector('.c-filters-v2').classList.toggle('c-filters-v2--open');
@@ -67,53 +66,16 @@ class SearchFiltersV2 extends React.Component {
             Update search
           </button>
         </div>
-        <div className="c-filters-v2__item">
+        <div className="c-filters-v2__item--title">
           <div className="c-filters-v2__clear-all">
-            <SearchFilterReset buttonText="Clear all filters" />
-          </div>
-          <div className="c-input">
-            <input
-              id="all-content"
-              type="radio"
-              name="content"
-              value="all-content"
-              checked={!searchFilters.find(name => name === 'publications-only')}
-              onChange={() =>
-                replaceSearchFilters([
-                  ...searchFilters.filter(name => name !== 'publications-only'),
-                  'all-content',
-                ])
-              }
-            />
-            <label htmlFor="all-content">All website content</label>
-          </div>
-          <div className="c-input">
-            <input
-              id="publications-only"
-              type="radio"
-              name="content"
-              value="publications-only"
-              checked={!!searchFilters.find(name => name === 'publications-only')}
-              onChange={() =>
-                replaceSearchFilters([
-                  ...searchFilters.filter(name => name !== 'all-content'),
-                  'publications-only',
-                ])
-              }
-            />
-            <label htmlFor="publications-only" className="c-filters-v2__checkbox-label">
-              Publications only
-            </label>
+            <h4>Filters</h4>
+            <SearchFilterReset buttonText="Clear all" />
           </div>
         </div>
-
-        <SearchFilterPublicationTypes />
-
         <SearchFilterTopics />
-
-        <SearchFilterLanguages />
-
+        <SearchFilterPublicationTypes />
         <SearchFilterYears />
+        <SearchFilterLanguages />
       </div>
     );
   }

@@ -11,9 +11,6 @@ import {
 } from '../../helpers/redux-store';
 import { publicationTypesToShow } from '../../helpers/elastic-data-loader';
 
-import SearchFilterReset from './SearchFilterReset';
-
-
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   !!searchFilters.find(name => name === filterName);
 
@@ -28,10 +25,7 @@ const SearchFilterPublicationTypes = props => {
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
-        <h3 className="c-filters-v2__title">Publication type</h3>
-        <span className="c-filters-v2__clear">
-          <SearchFilterReset filterPrefix="pub-" />
-        </span>
+        <h3 className="c-filters-v2__title">Content type</h3>
       </div>
       <span>
         {bucketsToShow.map(bucket => {
