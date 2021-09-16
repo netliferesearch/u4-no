@@ -44,8 +44,8 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
   return (
     <div id="c-reader" className="c-reader" ref={readerRef}>
       <span id="js-top-reader" />
-      <ReaderHeader data={data} setReaderOpen={setReaderOpen} targetRef={readerRef} />
       <TitleProgressSpy content={content} />
+      <ReaderHeader data={data} setReaderOpen={setReaderOpen} targetRef={readerRef} />
       <section className="o-wrapper-medium">
         {content.length > 0 && (
           <main className="c-reader__main o-wrapper-section c-article__row">
@@ -54,9 +54,12 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
             </div> */}
             <div className="c-article__content c-article__col">
               {lead || abstract ? <ArticleLead lead={lead} abstract={abstract} /> : null}
+
               <LongformArticle content={content} title={title} />
               {references.length > 0 && <ToggleBlock title="References" content={references} />}
-              {abbreviations.length > 0 && <ToggleBlock title="Abbreviations" content={abbreviations} />}
+              {abbreviations.length > 0 && (
+                <ToggleBlock title="Abbreviations" content={abbreviations} />
+              )}
             </div>
             <div className="c-article__side c-article__col">
               <div className="c-reader__sidebar c-article-sidebar">

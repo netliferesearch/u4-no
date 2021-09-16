@@ -42,7 +42,8 @@ export const TitleProgressSpy = ({ content }) => {
       if (!element) {
         return acc;
       }
-      if (window.scrollY > element.offsetTop - element.offsetHeight) {
+      //take into account fixed header with aprox 130px
+      if (window.scrollY > element.offsetTop - element.offsetHeight - 130) {
         acc.selectedId = id;
       }
       return acc;

@@ -59,7 +59,7 @@ export const Contents = ({ title = '', content = [], scrolled = false }) => {
                     onClick={e => setOpen(false)}
                   >
                     <p className="c-contents__subtitle u-body--small">Section {index + 1}</p>
-                    <Scrollchor to={`#${id}`} beforeAnimate={onItemSelected} disableHistory>
+                    <Scrollchor to={`#${id}`} animate={{ offset: -120 }} beforeAnimate={onItemSelected} disableHistory>
                       {title}
                     </Scrollchor>
                     {/* {titleObject.selected && (
