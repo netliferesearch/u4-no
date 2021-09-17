@@ -25,10 +25,12 @@ import u4Event from './event';
 import blogPost from './blogPost';
 //import localeString from './fields/localeString'
 import defaultBlocks from './fields/defaultBlocks';
+import collection from './collection';
 
 const types = [
   article,
   blogPost,
+  collection,
   file,
   course,
   u4Event,
