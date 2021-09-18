@@ -58,7 +58,8 @@
   }
 
   .c-longform-grid__larger {
-    padding: 0 $spacing;
+    //padding: 0 $spacing;
+    padding: 0;
     grid-column: 2 / 9;
   }
 
@@ -96,8 +97,7 @@ div {
   letter-spacing: 0.02em;
 }
 
-.c-article-v2__main-text {
-  p.c-longform-grid__standard:last-child {
+.c-article-v2__main-text > div > p.c-longform-grid__standard:last-child {
     position: relative;
     &:after {
       content: '\25A0';
@@ -113,7 +113,8 @@ div {
       //left: 0;
     }
   }
-  .c-table__caption,
+
+.c-article-v2__main-text { .c-table__caption,
   .c-textbox--simple {
     p.c-longform-grid__standard:after {
       display: none;

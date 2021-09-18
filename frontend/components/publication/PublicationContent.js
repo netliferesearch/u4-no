@@ -1,11 +1,11 @@
 import React from 'react';
 import { PublicationNotifications } from './PublicationNotifications';
 import { MainPoints } from './MainPoints';
-import { ArticleLead } from '../general/article-lead/ArticleLead';
+//import { ArticleLead } from '../general/article-lead/ArticleLead';
 
 export const PublicationContent = ({
-  lead = '',
-  abstract = '',
+  //lead = '',
+  //abstract = '',
   publicationType = {},
   mainPoints = [],
   headsUp = false,
@@ -31,7 +31,6 @@ export const PublicationContent = ({
           publicationType={publicationType}
         />
       ) : null}
-      {lead || abstract ? <ArticleLead lead={lead} abstract={abstract} /> : null}
     </div>
   );
 };

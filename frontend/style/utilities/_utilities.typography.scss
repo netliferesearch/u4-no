@@ -242,10 +242,9 @@
   }
 }
 
-.u-drop-cap {
-  p.c-longform-grid__standard:first-child::first-letter,
-  .c-article__lead--abstract::first-letter,
-  &.c-article__lead p:first-child::first-letter {
+  //.c-article__lead--abstract::first-letter,
+  //.u-drop-cap > .c-article__lead > p:first-child::first-letter
+  .u-drop-cap > div > p.c-longform-grid__standard:first-child::first-letter {
     font-size: 72px;
     line-height: 0.62;
     padding: 8px 8px 0 0;
@@ -256,7 +255,7 @@
       line-height: 0.8;
     }
   }
-}
+
 
 .u-text--white {
   color: $white;
