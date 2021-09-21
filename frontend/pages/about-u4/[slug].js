@@ -29,7 +29,6 @@ const GeneralArticle = props => {
       </Layout>
     );
   }
-  console.log(props)
   //return <LongformArticleContainer lead={props.data.standfirst} {...props} />;
   return <ArticleContainer {...props} />
 };

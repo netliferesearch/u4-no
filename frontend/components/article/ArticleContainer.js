@@ -108,7 +108,6 @@ const ArticleContainer = (props = {}) => {
               currentSlug={slug.current}
             />
           ) : null}
-          {console.log()}
           {_type !== 'publication' && !shortversion && getParentPath() === '' ? (
             <BreadCrumbV2 home={true} currentTitle={title} currentSlug={slug.current} />
           ) : null}
