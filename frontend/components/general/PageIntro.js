@@ -2,7 +2,7 @@ import React from 'react';
 import { ArticleLead } from './article-lead/ArticleLead';
 
 export const PageIntro = ({
-pubType = '',
+  pubType = '',
   title = '',
   subtitle = '',
   text = '',

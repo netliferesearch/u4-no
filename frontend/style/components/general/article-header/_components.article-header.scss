@@ -22,6 +22,19 @@
   }
 }
 
+.c-article-header__img {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  @include mq($from: tablet) {
+    margin-top: 48px;
+  }
+  .c-credit {
+    align-self: flex-start;
+  }
+}
+
 .c-article-header__meta {
   margin-top: 16px;
 }

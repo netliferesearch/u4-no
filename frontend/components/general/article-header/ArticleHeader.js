@@ -6,6 +6,9 @@ import { PageIntro } from '../PageIntro';
 import dateToString from '../../../helpers/dateToString';
 import { Translations } from '../translations/Translations';
 import { ArticleActions } from '../article-actions/ArticleActions';
+import sanityImageLoader from '../../../helpers/sanityImageLoader';
+import Image from 'next/image';
+import { PhotoCaptionCredit } from '../PhotoCaptionCredit';
 
 export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
   const {
@@ -19,6 +22,7 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
     slug = {},
     pdfFile = {},
     legacypdf = {},
+    featuredImage = {},
     content = [],
     summary = [],
     language = {},
@@ -78,6 +82,20 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
               <Document file={pdfFile.asset ? pdfFile.asset : legacypdf.asset}>
                 <Page pageNumber={1} />
               </Document>
+            </div>
+          )}
+          {_type === 'blog-post' && featuredImage && featuredImage.asset && (
+            <div className="c-article-header__img">
+              <Image
+                loader={sanityImageLoader}
+                src={featuredImage.asset.url}
+                loading="lazy"
+                width="691"
+                height="353"
+                objectFit="cover"
+                objectPosition="center center"
+              />
+              <PhotoCaptionCredit image={featuredImage} />
             </div>
           )}
         </div>
