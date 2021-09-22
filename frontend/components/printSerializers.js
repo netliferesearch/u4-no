@@ -5,7 +5,7 @@ import BEMHelper from 'react-bem-helper';
 import slugify from 'slugify';
 import BarChart from './BarChart';
 import ChartPrint from './ChartPrint';
-import Figure from './Figure';
+import Figure from './print/Figure';
 import findFootnotes from './findFootnotes';
 import findLinks from './findLinks';
 import FunkyTable from './FunkyTable';
