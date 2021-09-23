@@ -6,7 +6,7 @@ import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
 import { PhotoCaptionCredit } from './PhotoCaptionCredit';
 import { PageIntro } from './PageIntro';
 
-export const Hero = ({ contentType = '', image = {}, title, text, topics }) => {
+export const Hero = ({ contentType = '', image = {}, title, text, topics, onDark = true }) => {
   return (
     <div className="c-hero">
       {image && image.asset ? (
@@ -22,21 +22,25 @@ export const Hero = ({ contentType = '', image = {}, title, text, topics }) => {
           />
           <PhotoCaptionCredit image={image} showCaption={false} />
         </figure>
-      ) : <div className="c-hero-image u-bg--dark-blue"></div> }
+      ) : (
+        <div className={` ${onDark ? 'c-hero-image u-bg--dark-blue' : ''}`} />
+      )}
       <div className="c-hero__content o-wrapper-medium">
-        <BreadCrumbV2 title={`Topics`} parentSlug={'/topics'} home={true} onDark={true} />
+        <BreadCrumbV2 title="Topics" parentSlug="/topics" home onDark={onDark} />
         <div className="c-hero__text">
           {contentType && (
             <h4
-              className={`u-secondary-heading u-secondary-h4 u-detail--blue--small u-text--white`}
+              className={`u-secondary-heading u-secondary-h4 u-detail--blue--small ${
+                onDark ? 'u-text--white' : ''
+              }`}
             >
               {contentType}
             </h4>
           )}
           <div className="c-hero__row">
-            <PageIntro title={title} text={text} onDark={true} />
+            <PageIntro title={title} text={text} onDark={onDark} />
             {topics.length > 0 ? (
-              <Topics title="Related topics" topics={topics} hr={true} onDark={true} />
+              <Topics title="Related topics" topics={topics} hr onDark={onDark} />
             ) : null}
           </div>
         </div>
