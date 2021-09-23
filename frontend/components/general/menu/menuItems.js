@@ -17,13 +17,13 @@ export const menuItems = [
         items: [
           { label: 'Online courses', slug: '/online-courses' },
           { label: 'Helpdesk - Ask your question', slug: '/helpdesk' },
-          { label: 'Workshops', slug: '/workshops-and-events' },
+          { label: 'Glossary', slug: '/terms ' },
         ],
       },
       {
         subtitle: 'Events',
         items: [
-          { label: 'All events', slug: '/workshops-and-events' },
+          { label: 'Workshops & events', slug: '/workshops-and-events' },
         ],
       },
     ],

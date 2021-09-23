@@ -85,7 +85,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
         <section className="o-wrapper-full u-bg--lighter-blue">
           <div className="o-wrapper-medium">
             <FeaturedPosts
-              featured={resources.filter(i => Object.keys(i).length !== 0).slice(0, 3)}
+              featured={resources.filter(i => Object.keys(i).length !== 0).slice(0, 5)}
             />
           </div>
         </section>

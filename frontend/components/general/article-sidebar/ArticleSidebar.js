@@ -38,7 +38,7 @@ export const ArticleSidebar = ({ data }) => {
       {partners.length > 0 ||
       publicationType._id === 'pubtype-3' ||
       publicationType._id === '080dc28c-9d5e-4c14-972f-73f83a206b92' ? (
-        <SidebarItem label="In colaboration with">
+        <SidebarItem label="In collaboration with">
           <Partners partners={partners} publicationType={publicationType} />
         </SidebarItem>
       ) : null}
