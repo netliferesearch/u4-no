@@ -69,7 +69,10 @@
 }
 
 .c-reader-header__intro-container--with-img {
-  margin-top: -175px;
+  margin-top: -16px;
+  @include mq($from: tablet) {
+    margin-top: -175px;
+  }
 }
 
 .c-reader-header__intro {
@@ -103,6 +106,7 @@
 
 .c-reader-header__featured-image {
   figure {
+    height: 192px;
     margin: 0;
   }
   @include mq($from: tablet) {
