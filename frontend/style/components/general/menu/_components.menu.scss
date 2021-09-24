@@ -33,9 +33,26 @@
   cursor: pointer;
   margin-right: 18px;
   //padding-bottom: $spacing-small;
+  .c-search-v2__icon-svg {
+    margin-left: 12px;
+  }
   &:hover {
     font-weight: bold;
     color: $highlight-blue;
+  }
+}
+
+.c-menu__heading--search {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  &:hover {
+    .c-search-v2__icon-svg {
+      path,
+      circle {
+        stroke: $highlight-blue;
+      }
+    }
   }
 }
 

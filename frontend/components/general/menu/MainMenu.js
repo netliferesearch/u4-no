@@ -29,10 +29,12 @@ export const MainMenu = ({
                   setActiveItem={setActiveItem}
                   activeMenu={activeMenu}
                   setActiveMenu={setActiveMenu}
+                  setSearchOpen={setSearchOpen}
+                  searchOpen={searchOpen}
                 />
               ))
             : null}
-          <span
+          {/* <span
             onClick={e => {
               e.preventDefault();
               setSearchOpen(!searchOpen);
@@ -41,7 +43,7 @@ export const MainMenu = ({
             style={{ marginRight: '0' }}
           >
             <SearchIcon />
-          </span>
+          </span> */}
         </>
       ) : (
         <div className="c-menu__search-holder">

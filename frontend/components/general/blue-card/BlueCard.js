@@ -100,12 +100,14 @@ export const CourseContent = ({ post = {}, content = {} }) => (
             {post.startDate && <CalendorIcon />}
             {post.startDate && dateToString({ start: post.startDate.utc })}
           </p>
-          <div className="c-blue-card__more">
-            <div className="c-blue-card__link">
-              <h4 className="u-secondary-heading u-secondary-h4">{content.label}</h4>
-              <ArrowNext />
+          {post._type !== 'event' && (
+            <div className="c-blue-card__more">
+              <div className="c-blue-card__link">
+                <h4 className="u-secondary-heading u-secondary-h4">{content.label}</h4>
+                <ArrowNext />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
       <div className="c-blue-card__more">
