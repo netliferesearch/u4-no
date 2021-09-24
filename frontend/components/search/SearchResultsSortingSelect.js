@@ -3,10 +3,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateSearchSorting } from '../../helpers/redux-store';
 
-const SearchResultsSortingSelect = ({ searchSorting = '', updateSearchSorting = () => {} }) => {
+const SearchResultsSortingSelect = ({
+  searchSorting = 'Sort by',
+  updateSearchSorting = () => {},
+}) => {
   return (
     <Fragment>
-      <label htmlFor="select-sorting">Sort by </label>
+      {/* <label htmlFor="select-sorting">Sort by </label> */}
       <select
         id="select-sorting"
         value={searchSorting}

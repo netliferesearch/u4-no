@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ArrowDown, ArrowUp } from '../icons/ArrowDown';
 
 export default class SearchFilterToggle extends React.Component {
   constructor() {
@@ -28,7 +29,15 @@ export default class SearchFilterToggle extends React.Component {
             className="c-filters-v2-btn c-filters-v2-btn--list-item"
             onClick={this.toggleHandler}
           >
-            {isToggleOpen ? 'Show less' : 'Show more'}
+            {isToggleOpen ? (
+              <div>
+                Show less <ArrowUp />
+              </div>
+            ) : (
+              <div>
+                Show more <ArrowDown />
+              </div>
+            )}
           </button>
         )}
       </div>

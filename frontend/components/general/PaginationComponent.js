@@ -3,13 +3,22 @@ import Pagination from 'react-paginating';
 import { ArrowNextPage, ArrowPrevPage, ArrowFirstPage, ArrowLastPage } from '../icons/PageArrows';
 import { DoubleChevron } from '../icons/DoubleChevron';
 import { connect, useDispatch } from 'react-redux';
-import { clearBlogFilters, updateBlogFilters, updateBlogPageNum } from '../../helpers/redux-store';
+import {
+  clearBlogFilters,
+  updateBlogFilters,
+  updateBlogPageNum,
+  updateSearchPageNum,
+} from '../../helpers/redux-store';
 
-export const PaginationComponent = ({ total, limit, pageCount, currentPage }) => {
-  // console.log(currentPage);
+export const PaginationComponent = ({ total, limit, pageCount, currentPage, search }) => {
   const handlePageChange = (page, e) => {
-    dispatch(updateBlogPageNum(page));
-    //updateBlogPageNum(page);
+    {
+      !search && dispatch(updateBlogPageNum(page));
+    }
+
+    {
+      search && dispatch(updateSearchPageNum(page));
+    }
     if (typeof window !== 'undefined') {
       window.scrollTo(0, 0);
     }
@@ -17,13 +26,7 @@ export const PaginationComponent = ({ total, limit, pageCount, currentPage }) =>
   const dispatch = useDispatch();
   return (
     <div>
-      <Pagination
-        className="c-blog-index__paginator"
-        total={total}
-        limit={limit}
-        pageCount={pageCount}
-        currentPage={currentPage}
-      >
+      <Pagination total={total} limit={limit} pageCount={pageCount} currentPage={currentPage}>
         {({
           pages,
           currentPage,
@@ -35,7 +38,11 @@ export const PaginationComponent = ({ total, limit, pageCount, currentPage }) =>
           getPageItemProps,
         }) => (
           <ul className="c-blog-index__paginator-list">
-            {/* {console.log(pages)} */}
+            {console.log('pages', pages)}
+            {console.log('currentPage', currentPage)}
+            {console.log('previousPage', previousPage)}
+            {console.log('nextPage', nextPage)}
+            {console.log('totalPages', totalPages)}
             {currentPage > 2 ? (
               <li>
                 <button
@@ -66,9 +73,6 @@ export const PaginationComponent = ({ total, limit, pageCount, currentPage }) =>
               let activePage = null;
               if (currentPage === page) {
                 activePage = { color: '$dark-blue' };
-              }
-              {
-                // console.log(currentPage);
               }
               return (
                 <li key={page}>

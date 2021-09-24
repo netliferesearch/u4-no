@@ -1,6 +1,6 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import sortBy from 'lodash/sortBy';
 import slugify from 'slugify';
 import {
@@ -8,22 +8,19 @@ import {
   removeSearchFilter,
   clearAllSearchFilters,
   replaceSearchFilters,
+  updateSearchPageNum,
 } from '../../helpers/redux-store';
-import SearchFilterReset from './SearchFilterReset';
 import SearchFilterToggle from './SearchFilterToggle';
-
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   !!searchFilters.find(name => name === filterName);
 
 const SearchFilterTopics = props => {
+  const dispatch = useDispatch();
   const { searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter } = props;
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
         <h3 className="c-filters-v2__title">Topic</h3>
-        <span className="c-filters-v2__clear">
-          <SearchFilterReset filterPrefix="topic-type-" />
-        </span>
       </div>
       <span>
         <SearchFilterToggle bucketsToToggle={defaultBuckets}>
@@ -41,8 +38,10 @@ const SearchFilterTopics = props => {
                     onChange={event => {
                       if (event.target.checked) {
                         addSearchFilter(filterName);
+                        dispatch(updateSearchPageNum(1));
                       } else {
                         removeSearchFilter(filterName);
+                        dispatch(updateSearchPageNum(1));
                       }
                     }}
                   />

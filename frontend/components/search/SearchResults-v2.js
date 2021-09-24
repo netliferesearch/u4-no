@@ -13,6 +13,8 @@ import Link from 'next/link';
 import ArrowRightSmall from '../icons/ArrowRightSmall';
 import format from 'date-fns/format';
 import SearchResultsSortingSelect from './SearchResultsSortingSelect';
+import { Post, POST_TYPE } from '../general/post/Post';
+import { getPlaceholder } from '../../helpers/imgloader';
 
 const classes = BEMHelper({
   name: 'search-results-v2',
@@ -62,50 +64,12 @@ const SearchResult = props => {
       isBasicGuidePresent,
     } = _source;
     return (
-      <div {...classes('topic')}>
-        <div {...classes('topic-wrapper')}>
-          <div {...classes('topic-img')}>
-            {featuredImageUrl && (
-              <img src={`${featuredImageUrl}?w=500&h=500&fit=crop&crop=focalpoint`} />
-            )}
-          </div>
-          <div {...classes('topic-content')}>
-            <span {...classes('items-type')}>Topic</span>
-            <br />
-            <Link href={url}>
-              <a {...classes('items-title')}>
-                <Highlight highlight={topicTitleHighlight} fallback={topicTitle} />
-              </a>
-            </Link>
-            <br />
-            <p {...classes('lead-text')}>{standfirst}</p>
-            {isBasicGuidePresent && (
-              <div {...classes('topic-point')}>
-                <ArrowRightSmall />
-                <Link href={`${url}/basics`}>
-                  <a>Basic guide</a>
-                </Link>
-              </div>
-            )}
-            {isAgendaPresent && (
-              <div {...classes('topic-point')}>
-                <ArrowRightSmall />
-                <Link href={`${url}/agenda`}>
-                  <a>Research and policy agenda</a>
-                </Link>
-              </div>
-            )}
-            {numberOfTopicResources > 0 && (
-              <div {...classes('topic-point')}>
-                <ArrowRightSmall />
-                <Link href={`${url}#resources`}>
-                  <a>Publications and other resources</a>
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+      <Post
+        showImage={false}
+        type={POST_TYPE.SEARCH}
+        post={_source}
+        placeholder={getPlaceholder(1)}
+      />
     );
   } else if (type === 'publication') {
     const {
@@ -120,73 +84,30 @@ const SearchResult = props => {
       title = '',
       subtitle = '',
       date: { utc: utcDate = '' } = {},
-      filedUnderTopicNames = [],
+      topics: { title: topics = '' } = {},
       url = '',
       standfirst = '',
       publicationType: { title: publicationTypeTitle = '' } = {},
     } = _source;
-
     return (
-      <div>
-        <span {...classes('items-type')}>
-          Publication<span {...classes('pipe')}>|</span>
-          {`${publicationTypeTitle}`}
-        </span>
-        <br />
-        <Link href={url}>
-          <a {...classes('items-title')}>
-            <Highlight highlight={titleHighlight} fallback={title} />
-            {`${subtitle ? ': ' : ''}`}
-            <Highlight highlight={subTitleHighlight} fallback={subtitle} />
-          </a>
-        </Link>
-        <br />
-        {utcDate && <p {...classes('items-date')}>{format(utcDate, 'D MMM YYYY')}</p>}
-        <p {...classes('lead-text')}>
-          <Highlight highlight={content} fallback={standfirst} />
-        </p>
-        {uniq(filedUnderTopicNames)
-          .slice(0, 1)
-          .map(name => (
-            //<div key={name} {...classes('items-tab')}>
-            <div key={name} className="topic">
-              {name}
-            </div>
-          ))}
-      </div>
+      <Post
+        showImage={false}
+        type={POST_TYPE.SEARCH}
+        post={_source}
+        placeholder={getPlaceholder(1)}
+      />
     );
   }
   // What to show if the search result did not match any of the items above.
   const { highlight: { content = [], title: titleHighlight = [] } = {} } = props;
   const { title = '', url = '', standfirst = '', filedUnderTopicNames = [] } = _source;
   return (
-    <div>
-      <span {...classes('items-type')}>
-        {type === 'frontpage'
-          ? 'Page'
-          : type === 'person'
-          ? 'Staff'
-          : type === 'course'
-          ? 'Online course'
-          : type.charAt(0).toUpperCase() + type.slice(1)}
-      </span>
-      <br />
-      <Link href={url}>
-        <a {...classes('items-title')}>
-          <Highlight highlight={titleHighlight} fallback={title} />
-        </a>
-      </Link>
-      <br />
-      <p {...classes('lead-text')}>
-        <Highlight highlight={content} fallback={standfirst} />
-      </p>
-      {uniq(filedUnderTopicNames).map(name => (
-        // <div key={name} {...classes('items-tab')}>
-        <div key={name} className="topic">
-          {name}
-        </div>
-      ))}
-    </div>
+    <Post
+      showImage={false}
+      type={POST_TYPE.SEARCH}
+      post={_source}
+      placeholder={getPlaceholder(1)}
+    />
   );
 };
 
@@ -194,9 +115,9 @@ class SearchResultsV2 extends Component {
   state = {
     isLoading: false,
   };
-
   componentDidUpdate(prevProps) {
     this.updateLoadingState({ prevProps });
+    console.log('prev', prevProps);
   }
 
   updateLoadingState({ prevProps }) {

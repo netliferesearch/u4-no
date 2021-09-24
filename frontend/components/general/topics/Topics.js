@@ -1,5 +1,6 @@
 import React from 'react';
 import { spacesToDash } from '../../../helpers/stringHelpers';
+import uniq from 'lodash/uniq';
 
 /**
  * Topics Link list/Tags list component to list topics
@@ -14,9 +15,13 @@ export const Topics = ({ title = '', topics = [], hr = false, onDark = false }) 
   return topics ? (
     <div className="c-topics">
       {hr ? <hr className="u-section-underline--no-margins" /> : null}
-      {title ? <h4 className={`u-secondary-heading u-secondary-h4 ${onDark ? 'u-text--white' : ''}`}>{title}</h4> : null}
+      {title ? (
+        <h4 className={`u-secondary-heading u-secondary-h4 ${onDark ? 'u-text--white' : ''}`}>
+          {title}
+        </h4>
+      ) : null}
       <div className="c-topics__list">
-        {topics.map((topic, index) =>
+        {uniq(topics).map((topic, index) =>
           topic.slug && topic.title ? (
             <div key={index} className={`c-btn--tag ${onDark ? 'c-btn--tag--onDark' : ''}`}>
               <a
@@ -27,10 +32,14 @@ export const Topics = ({ title = '', topics = [], hr = false, onDark = false }) 
               </a>
               {/* <span>{`${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}</span> */}
             </div>
-          ) : !topic.slug && topic.title ? (
+          ) : !topic.slug && (topic.title || topic) ? (
             <div key={index} className="c-btn--tag">
-              <a href={`/topics/${spacesToDash(topic.title)}`} className="topic--plain" key={index}>
-                {topic.title}
+              <a
+                href={`/topics/${spacesToDash(topic.title || topic)}`}
+                className="topic--plain"
+                key={index}
+              >
+                {topic.title || topic}
               </a>
             </div>
           ) : null

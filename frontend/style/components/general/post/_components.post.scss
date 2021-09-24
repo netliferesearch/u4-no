@@ -113,8 +113,7 @@
 }
 
 //alice carousel overrides line height of it's items.
-.alice-carousel h4.c-post__title *
-.alice-carousel h4.c-post__title * {
+.alice-carousel h4.c-post__title * .alice-carousel h4.c-post__title * {
   line-height: 22px;
   @include mq($from: desktop) {
     line-height: 32px;
@@ -217,7 +216,11 @@
     }
   }
 }
-
+.c-post.search {
+  .c-post__date {
+    color: $dark-blue;
+  }
+}
 .c-post.publication {
   padding-right: 24px;
   border-right: 1px solid $light-grey;

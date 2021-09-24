@@ -1,4 +1,4 @@
-import { SEARCH_PUBLICATIONS } from "../../../helpers/constants";
+import { SEARCH_PUBLICATIONS, SEARCH } from '../../../helpers/constants';
 
 export const menuItems = [
   {
@@ -22,9 +22,7 @@ export const menuItems = [
       },
       {
         subtitle: 'Events',
-        items: [
-          { label: 'Workshops & events', slug: '/workshops-and-events' },
-        ],
+        items: [{ label: 'Workshops & events', slug: '/workshops-and-events' }],
       },
     ],
   },
@@ -68,6 +66,6 @@ export const menuItems = [
   {
     label: 'Search',
     id: 'search',
-    //slug: SEARCH_PUBLICATIONS,
+    //slug: SEARCH,
   },
 ];

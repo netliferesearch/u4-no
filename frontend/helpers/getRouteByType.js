@@ -47,14 +47,17 @@ export const getRouteByType = publicationType => {
 };
 
 export const getPostType = item => {
-  const itemType = item._type;
+  const itemTypeUnderscore = item._type;
+  const itemType = item.type;
   let typeTitle = '';
-  switch (itemType) {
+  switch (itemTypeUnderscore || itemType) {
     case 'publication':
       typeTitle =
         item.publicationType && typeof item.publicationType.title === 'string'
           ? item.publicationType.title
-          : typeof item.publicationType === 'string' ? item.publicationType : 'Publication';
+          : typeof item.publicationType === 'string'
+          ? item.publicationType
+          : 'Publication';
       break;
     case 'course':
       typeTitle = 'Online course';
@@ -83,50 +86,11 @@ export const getPostType = item => {
     case 'article':
       typeTitle = 'Article';
       break;
+    case 'topic':
+      typeTitle = 'Topic';
+      break;
     default:
       typeTitle = '';
   }
   return typeTitle;
 };
-
-// export const getStringsByType = item => {
-//   const itemType = item._type;
-//   let typeTitle = '';
-//   let typeSubTitle = '';
-//   let slugOfType = '';
-
-//   switch (itemType) {
-//     case 'publication':
-//       typeTitle = 'Publication | ';
-//       typeSubTitle =
-//         item.publicationType && typeof item.publicationType.title === 'string'
-//           ? item.publicationType.title
-//           : '';
-//       slugOfType = 'publications/';
-//       break;
-//     case 'course':
-//       typeTitle = 'Online course';
-//       typeSubTitle = '';
-//       slugOfType = 'courses/';
-//       break;
-//     case 'event':
-//       typeTitle = 'Workshop';
-//       typeSubTitle = '';
-//       slugOfType = '';
-//       break;
-//     case 'blog-post':
-//       typeTitle = 'Blog post';
-//       typeSubTitle = '';
-//       slugOfType = 'blog/';
-//       break;
-//     case 'article':
-//       typeTitle = 'Article';
-//       // typeSubTitle = typeof item.articleType.title === 'string' ? ' | '+item.articleType.title : '';
-//       typeSubTitle = '';
-//       slugOfType = '';
-//       break;
-//     default:
-//       typeTitle = '';
-//       typeSubTitle = '';
-//       slugOfType = '';
-//   }

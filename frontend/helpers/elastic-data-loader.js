@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Error404 from '../components/Error404';
+import { limit } from '../components/search/SearchResultsV3';
 
 const elasticsearch = require('elasticsearch');
 
@@ -53,12 +54,10 @@ const doSearch = async ({
   query,
   defaultSearchAggs: { publicationTypes: defaultPublicationTypes = {} } = [],
 }) => {
-  const { search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0 } = query;
+  const { search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 1 } = query;
   const filters = filterStr.split(',').map(name => name.replace(/\|/g, ','));
   const searchQueryFilters = searchQuery.split(' ');
-
   const activeFilterQueries = [];
-
   const topicNames = filters
     .filter(filter => /^topic-type-/gi.test(filter))
     .map(filter => /topic-type-(.*)/gi.exec(filter)[1]);
@@ -209,14 +208,14 @@ const doSearch = async ({
             }
           : {}),
 
-        ...(searchPageNum > 0
+        ...(searchPageNum > 1
           ? {
-              from: 0,
-              size: searchPageNum * 10,
+              from: searchPageNum * limit - limit,
+              size: limit,
             }
           : {
               from: 0,
-              size: 10,
+              size: limit,
             }),
 
         highlight: {
@@ -262,6 +261,8 @@ const doSearch = async ({
       },
     });
     console.log('Elastic data loader received data', { query, result });
+    console.log('SearchPage');
+
     return result;
   } catch (e) {
     console.error('Elasticsearch query failed', e);
@@ -279,7 +280,7 @@ const getSearchAggregations = async () => {
         size: 1,
       },
     });
-    console.log('getSearchAggregations returned', result);
+    // console.log('getSearchAggregations returned', result);
     return result;
   } catch (e) {
     console.error('Elasticsearch query failed', e);
@@ -292,29 +293,31 @@ const ElasticDataLoader = Child =>
     static async getInitialProps(nextContext) {
       console.log('Elastic data loader fetching data');
       const { query, store } = nextContext;
-      const { defaultSearchAggs = {} } = store.getState();
-      // Use Promise.all so that we can fire off 1 or 2 two queries at once,
-      // without one waiting for the other.
-      const [result] = await Promise.all([
-        doSearch({ query, defaultSearchAggs }),
-        (async () => {
-          if (defaultSearchAggs.length > 0) {
-            return true;
-          }
-          // We do one search just to know how many possible aggregations
-          // we have. Filters needs this if they want to display unmatched filters.
-          const { aggregations } = await getSearchAggregations();
-          return store.dispatch({
-            type: 'SEARCH_UPDATE_DEFAULT_AGGS',
-            defaultSearchAggs: aggregations,
-          });
-        })(),
-      ]);
-      store.dispatch({
-        type: 'SEARCH_UPDATE_RESULTS',
-        searchResults: result,
-      });
-      return { data: result };
+      if (query.search) {
+        const { defaultSearchAggs = {} } = store.getState();
+        // Use Promise.all so that we can fire off 1 or 2 two queries at once,
+        // without one waiting for the other.
+        const [result] = await Promise.all([
+          doSearch({ query, defaultSearchAggs }),
+          (async () => {
+            if (defaultSearchAggs.length > 0) {
+              return true;
+            }
+            // We do one search just to know how many possible aggregations
+            // we have. Filters needs this if they want to display unmatched filters.
+            const { aggregations } = await getSearchAggregations();
+            return store.dispatch({
+              type: 'SEARCH_UPDATE_DEFAULT_AGGS',
+              defaultSearchAggs: aggregations,
+            });
+          })(),
+        ]);
+        store.dispatch({
+          type: 'SEARCH_UPDATE_RESULTS',
+          searchResults: result,
+        });
+        return { data: result };
+      }
     }
     render() {
       const { error } = this.props;

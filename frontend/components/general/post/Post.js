@@ -15,12 +15,14 @@ export const POST_TYPE = {
   PUBLICATION: 'publication', //special post for publication
   LARGE: 'large', //large in desktop, full with image in mobile
   CARD: 'card', //render BlueCard onstead of Post
+  SEARCH: 'search', //displaying in search results
 };
 const ellipsizeLines = {
   [POST_TYPE.SMALL]: 4,
   [POST_TYPE.BLOG]: 3,
   [POST_TYPE.PUBLICATION]: 3,
   [POST_TYPE.LARGE]: 33,
+  [POST_TYPE.SEARCH]: 2,
 };
 
 const standFirstLines = {
@@ -28,6 +30,7 @@ const standFirstLines = {
   [POST_TYPE.BLOG]: 3,
   [POST_TYPE.PUBLICATION]: 3,
   [POST_TYPE.LARGE]: 33,
+  [POST_TYPE.SEARCH]: 4,
 };
 const renderImage = type => {
   switch (type) {
@@ -38,13 +41,13 @@ const renderImage = type => {
   }
 };
 
-export const Post = ({ post, type, placeholder }) => {
+export const Post = ({ post, type, placeholder, showImage = true }) => {
   //console.log(post)
   return (
     <div className={`c-post ${type} ${type === 'large' ? 'u-sticky' : ''}`}>
-      <LinkToItem type={post._type} slug={post.slug}>
+      <LinkToItem type={post._type} slug={post.slug || post.url}>
         <a className="c-post__link u-fake-anchor">
-          {post.imageUrl && renderImage(type) ? (
+          {showImage && post.imageUrl && renderImage(type) ? (
             <div className="c-post__post-image u-overlay--light-blue">
               <Image
                 loader={sanityImageLoader}
@@ -74,7 +77,7 @@ export const Post = ({ post, type, placeholder }) => {
               </div>
             )}
             <h4 className="c-post__title">
-              <TextClamp text={post.title} lines={ellipsizeLines[type]} />
+              <TextClamp text={post.title || post.topicTitle} lines={ellipsizeLines[type]} />
             </h4>
             {post.standfirst && (
               <div className="c-post__article-content u-body">
@@ -91,6 +94,9 @@ export const Post = ({ post, type, placeholder }) => {
         </a>
       </LinkToItem>
       {post.topics && <Topics title={false} topics={post.topics} hr={false} />}
+      {post.filedUnderTopicNames && (
+        <Topics title={false} topics={post.filedUnderTopicNames} hr={false} />
+      )}
     </div>
   );
 };
@@ -104,5 +110,5 @@ Post.defaultProps = {
 Post.propTypes = {
   type: PropTypes.string,
   post: PropTypes.any,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
 };

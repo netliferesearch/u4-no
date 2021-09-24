@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
@@ -23,13 +23,8 @@ function toggle() {
   }
 }
 
-class SearchFiltersV2 extends React.Component {
-  componentDidMount() {
-    this.resetFilters();
-    this.resetSorting();
-  }
-
-  resetFilters() {
+export const SearchFiltersV2 = props => {
+  const resetFilters = () => {
     const {
       replaceSearchFilters,
       router: { query: { filters: filterStr = '' } = {} } = {},
@@ -48,38 +43,39 @@ class SearchFiltersV2 extends React.Component {
           !invalidFilters.find(invalidFilterName => filterName.startsWith(invalidFilterName))
       )
     );
-  }
+  };
 
-  resetSorting() {
-    const { updateSearchSorting, router: { query: { sort = '' } = {} } = {} } = this.props;
+  const resetSorting = () => {
+    const { updateSearchSorting, router: { query: { sort = '' } = {} } = {} } = props;
     updateSearchSorting(sort);
-  }
+  };
+  useEffect(() => {
+    resetFilters;
+    resetSorting;
+  }, []);
+  const { searchFilters, replaceSearchFilters, searchTotal } = props;
 
-  render() {
-    const { searchFilters, replaceSearchFilters, searchTotal } = this.props;
-
-    return (
-      <div className="c-filters-v2">
-        <div className="c-filters-v2__topbar">
-          <h3 className="c-filters-v2__topbar-result">Results ({`${searchTotal.value}`})</h3>
-          <button onClick={toggle} className="c-search-results-v2__topbar-filter">
-            Update search
-          </button>
-        </div>
-        <div className="c-filters-v2__item--title">
-          <div className="c-filters-v2__clear-all">
-            <h4>Filters</h4>
-            <SearchFilterReset buttonText="Clear all" />
-          </div>
-        </div>
-        <SearchFilterTopics />
-        <SearchFilterPublicationTypes />
-        <SearchFilterYears />
-        <SearchFilterLanguages />
+  return (
+    <div className="c-filters-v2">
+      <div className="c-filters-v2__topbar">
+        <h3 className="c-filters-v2__topbar-result">Results ({`${searchTotal.value}`})</h3>
+        <button onClick={toggle} className="c-search-results-v2__topbar-filter">
+          Update search
+        </button>
       </div>
-    );
-  }
-}
+      <div className="c-filters-v2__item--title">
+        <div className="c-filters-v2__clear-all">
+          <h4>Filters</h4>
+          <SearchFilterReset buttonText="Clear all" />
+        </div>
+      </div>
+      <SearchFilterTopics />
+      <SearchFilterPublicationTypes />
+      <SearchFilterYears />
+      <SearchFilterLanguages />
+    </div>
+  );
+};
 
 const mapStateToProps = ({
   searchFilters = [],
