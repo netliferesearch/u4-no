@@ -7,17 +7,19 @@ import TnrcFooter from '../general/tnrc/TnrcFooter';
 import { ArticleActions } from '../general/article-actions/ArticleActions';
 
 export const PublicationAdditionalInfo = ({ data = {}, setReaderOpen = () => null }) => {
-  const { authors = [], publicationType = {}, keywords = [] } = data;
+  const { _type = '', authors = [], publicationType = {}, keywords = [] } = data;
 
   return (
     <>
-      <section className="u-bg--blue">
-        <div className="o-wrapper-medium">
-          <div className="o-wrapper-narrow">
-            <Cite {...data} />
+      {_type !== 'blog-post' && (
+        <section className="u-bg--blue">
+          <div className="o-wrapper-medium">
+            <div className="o-wrapper-narrow">
+              <Cite {...data} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
       <section className="u-bg--lighter-blue c-article__additional-content">
         <div className="o-wrapper-medium">
           <div className="o-wrapper-narrow">

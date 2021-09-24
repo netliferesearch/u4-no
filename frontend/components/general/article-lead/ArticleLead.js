@@ -5,7 +5,7 @@ export const ArticleLead = ({ lead = '', abstract = '' }) => {
     <>
       {lead || abstract ? (
         <div className="c-article__lead c-longform">
-          <p className="c-longform-grid__standard">{lead}</p>
+          {lead && !abstract && <p className="c-longform-grid__standard">{lead}</p>}
           {/* Legacy publication abstracts come with html included
                 so we go and render it out.
           */}

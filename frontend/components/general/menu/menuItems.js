@@ -66,6 +66,6 @@ export const menuItems = [
   {
     label: 'Search',
     id: 'search',
-    slug: SEARCH,
+    //slug: SEARCH,
   },
 ];
