@@ -24,3 +24,21 @@
   @include mq($from: tablet) {
   }
 }
+
+.c-keywords {
+  margin-bottom: 16px;
+  h4 {
+    margin-bottom: 4px;
+  }
+}
+
+.c-keywords__list {
+  margin-top: 12px;
+  span {
+    margin: 0 2px 0 0;
+    display: inline-block;
+    &:first-letter {
+      text-transform: capitalize;
+    }
+  }
+}

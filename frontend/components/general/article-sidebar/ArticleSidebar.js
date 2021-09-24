@@ -1,5 +1,5 @@
 import React from 'react';
-import { RelatedSimple } from '../../RelatedSimple';
+import { RelatedSimple } from '../related-simple/RelatedSimple';
 import { Partners } from '../partners/Partners';
 import { SidebarItem } from '../sidebar-item/SidebarItem';
 import { AuthorListBasic } from '../../publication/AuthorListBasic';
@@ -15,7 +15,13 @@ export const ArticleSidebar = ({ data }) => {
     relatedResources = [],
     topics = [],
   } = data;
-  return data ? (
+  
+  return authors.length > 0 ||
+    editors.length > 0 ||
+    partners.length > 0 ||
+    recommendedResources.length > 0 ||
+    relatedResources.length > 0 ||
+    topics.length > 0 ? (
     <div className="c-article-sidebar">
       {authors.length ? (
         <SidebarItem label="By">
@@ -29,8 +35,10 @@ export const ArticleSidebar = ({ data }) => {
           <AuthorListBasic authors={editors} />
         </SidebarItem>
       ) : null}
-      {partners.length > 0 || publicationType._id === 'pubtype-3' || publicationType._id === '080dc28c-9d5e-4c14-972f-73f83a206b92' ? (
-        <SidebarItem label="In colaboration with">
+      {partners.length > 0 ||
+      publicationType._id === 'pubtype-3' ||
+      publicationType._id === '080dc28c-9d5e-4c14-972f-73f83a206b92' ? (
+        <SidebarItem label="In collaboration with">
           <Partners partners={partners} publicationType={publicationType} />
         </SidebarItem>
       ) : null}

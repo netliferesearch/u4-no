@@ -2,29 +2,9 @@
   h4 {
     margin-bottom: 16px;
   }
-  @include mq($from: tablet) {
-  }
 
   margin-top: 24px;
   margin-bottom: 24px;
-  // .c-blog-authors-list__name {
-  //   font-weight: 700;
-  //   a {
-  //     font-weight: 700;
-  //   }
-  // }
-  // .c-blog-authors-list__position {
-  //   font-weight: 400;
-  // }
-  // .c-blog-authors-list__text-block {
-  //   margin: 16px auto 24px auto;
-  //   p {
-  //     margin: 0;
-  //   }
-  //   @include mq($from: tablet) {
-  //     margin: 16px auto $spacing-large auto;
-  //   }
-  // }
 
   @include mq($from: tablet) {
     margin-top: 48px;

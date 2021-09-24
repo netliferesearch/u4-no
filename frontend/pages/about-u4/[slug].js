@@ -1,10 +1,11 @@
 import React from 'react';
 import DataLoader from '../../helpers/data-loader';
-import LongformArticleContainer from '../../components/LongformArticleContainer';
+//import LongformArticleContainer from '../../components/LongformArticleContainer';
 import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import ServiceArticle from '../../components/ServiceArticle';
 import { wrapInRedux } from '../../helpers/redux-store-wrapper';
+import ArticleContainer from '../../components/article/ArticleContainer';
 
 const GeneralArticle = props => {
   if (props.data._type === 'frontpage') {
@@ -28,13 +29,14 @@ const GeneralArticle = props => {
       </Layout>
     );
   }
-  return <LongformArticleContainer lead={props.data.standfirst} {...props} />;
+  //return <LongformArticleContainer lead={props.data.standfirst} {...props} />;
+  return <ArticleContainer {...props} />
 };
 
 export default wrapInRedux(
   DataLoader(GeneralArticle, {
     queryFunc: ({ query: { slug = '' } }) => ({
-      sanityQuery: '*[slug.current == $slug][0]',
+      sanityQuery: '*[slug.current == $slug][0]{..., topics[]->{ _id, title, slug }}',
       param: { slug },
     }),
     materializeDepth: 2,

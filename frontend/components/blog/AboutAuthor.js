@@ -5,7 +5,7 @@ import { translate, langCode } from '../../helpers/translate';
 export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) => {
   const trans = translate(language);
   const lang = langCode(language);
-  console.log(authors);
+  // console.log(authors);
   return (
     <div className="c-blog-authors-list c-about-author">
       {authors &&

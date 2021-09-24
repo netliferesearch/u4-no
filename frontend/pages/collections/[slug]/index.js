@@ -14,7 +14,7 @@ import { Hero } from '../../../components/general/Hero';
 import { PERSON_CARD_TYPE } from '../../../components/general/person/PersonCard';
 import { LearningEvents } from '../../../components/front-page/LearningEvents';
 
-const TopicEntry = ({ data: { topic = {} } }) => {
+const CollectionEntry = ({ data: { collection = {} } }) => {
   const {
     title = '',
     longTitle = '',
@@ -32,7 +32,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
     relatedEvents = [],
     relatedUrl = {},
     url = {},
-  } = topic;
+  } = collection;
   return (
     <Layout
       headComponentConfig={Object.assign(
@@ -49,46 +49,15 @@ const TopicEntry = ({ data: { topic = {} } }) => {
       <div className="c-topic-page">
         <section className="o-wrapper-full">
           <Hero
-            contentType="topic"
+            contentType="Resource collection"
             image={featuredImage}
             title={title}
             text={longTitle}
             topics={relatedTopics}
+            onDark={false}
           />
         </section>
-        <section className="o-wrapper-medium">
-          {introduction.length + agenda.length > 0 && (
-            <div className="c-linkbox-wrapper">
-              {introduction.length > 0 && (
-                <LinkBox
-                  title="Basic guide"
-                  text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
-                  //icon={BasicGuide}
-                  _type="topicsBasics"
-                  slug={slug}
-                  color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
-                />
-              )}
-              {agenda.length > 0 && (
-                <LinkBox
-                  title="Research and policy agenda"
-                  text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
-                  //icon={ResearchAgenda}
-                  _type="topicsAgenda"
-                  slug={slug}
-                  color="dark-blue"
-                />
-              )}
-            </div>
-          )}
-        </section>
-        <section className="o-wrapper-full u-bg--lighter-blue">
-          <div className="o-wrapper-medium">
-            <FeaturedPosts
-              featured={resources.filter(i => Object.keys(i).length !== 0).slice(0, 5)}
-            />
-          </div>
-        </section>
+        <hr className="u-section-underline--no-margins" />
         {relatedBlogPosts.length > 0 ? (
           <section className="">
             <div className="o-wrapper-medium o-wrapper-mobile-full">
@@ -107,7 +76,10 @@ const TopicEntry = ({ data: { topic = {} } }) => {
         {relatedEvents.length ? (
           <section className="">
             <div className="o-wrapper-medium">
-              <LearningEvents events={relatedEvents} type={relatedEvents.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL} />
+              <LearningEvents
+                events={relatedEvents}
+                type={relatedEvents.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL}
+              />
             </div>
           </section>
         ) : null}
@@ -137,19 +109,6 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             <hr className="u-section-underline--no-margins" />
           </div>
         )}
-        {advisors.length > 0 && (
-          <div id="advisors" className="o-wrapper-medium">
-            {
-              <Team
-                type={PERSON_CARD_TYPE.IMAGE_TOP}
-                heading={'Topic Experts'}
-                members={advisors}
-                linkLabel="Read full bio"
-              />
-            }
-            <hr className="u-section-underline--no-margins" />
-          </div>
-        )}
         {relatedTopics.length > 0 ? (
           <section className="">
             <div className="o-wrapper-medium">
@@ -163,38 +122,16 @@ const TopicEntry = ({ data: { topic = {} } }) => {
   );
 };
 
-TopicEntry.propTypes = {
+CollectionEntry.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default DataLoader(TopicEntry, {
+export default DataLoader(CollectionEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-      "topic": *[slug.current == $slug && _type=='topics']{
+      "collection": *[slug.current == $slug && _type=='collection']{
         ...,
-        "featuredImage": {
-          "caption": featuredImage.caption,
-          "credit": featuredImage.credit,
-          "sourceUrl": featuredImage.sourceUrl,
-          "license": featuredImage.license,
-          "asset": featuredImage.asset->{
-            "altText": altText,
-            "url": url
-          }
-        },
-        "advisors": advisors[]->{
-          _id,
-          title,
-          "image": image.asset->{"asset": { "url": url}},
-          position,
-          firstName,
-          surname,
-          email,
-          slug,
-          bio
-        },
-        "relatedTopics":
-          *[_type == 'topics' && _id != ^._id && (_id==coalesce(^.parent._ref,^._id) || (parent._ref == coalesce(^.parent._ref,^._id)))]{
+        "relatedTopics": topics[]->{
             _id,
             _type,
             title,
@@ -202,13 +139,13 @@ export default DataLoader(TopicEntry, {
             longTitle,
             _updatedAt,
           },
-        "resources": resources[]->{
+        "resources": resources[]-> | [_type in ['resource',"article"]]{
           _id,
           _type,
           "publicationType": publicationType->title,
           "articleType": articleType[0]->title,
           title,
-          date, 
+          date,
           standfirst,
           lead,
           "slug": slug.current,
@@ -216,9 +153,9 @@ export default DataLoader(TopicEntry, {
           "imageUrl": featuredImage.asset->url,
           topics[]->{title},
         },
-        "relatedPublications": *[_type == 'publication' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
-        "relatedBlogPosts": *[_type == 'blog-post' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
-        "relatedEvents": *[_type in ["course", "event"] && references(^._id)] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}},
+        "relatedPublications": resources[]-> | [_type == 'publication'] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
+        "relatedBlogPosts": resources[]-> | [_type == 'blog-post'] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
+        "relatedEvents": resources[]-> | [_type in ["course", "event"]] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}},
     }[0]}`,
     param: { slug },
   }),

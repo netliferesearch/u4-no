@@ -4,7 +4,7 @@ import DataLoaderPreview from '../../../helpers/data-loader-preview';
 import { localize } from '../../../helpers/translate';
 
 import LongformArticleContainer from '../../../components/LongformArticleContainer';
-import LegacyPublicationContainer from '../../../components/LegacyPublicationContainer';
+import LegacyPublicationContainer from '../../../components/publication/LegacyPublicationContainer';
 import { wrapInRedux } from '../../../helpers/redux-store-wrapper';
 
 const PublicationEntry = props => (

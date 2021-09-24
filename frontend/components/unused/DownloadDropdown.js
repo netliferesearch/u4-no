@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowWhite } from './icons/ArrowWhite';
+import { ArrowWhite } from '../icons/ArrowWhite';
 
 export const DownloadPdf = ({ url }) => {
   const [downloadsOpen, setDownloadsOpen] = useState(false);

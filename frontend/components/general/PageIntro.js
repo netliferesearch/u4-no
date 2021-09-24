@@ -1,6 +1,8 @@
 import React from 'react';
+import { ArticleLead } from './article-lead/ArticleLead';
 
 export const PageIntro = ({
+  pubType = '',
   title = '',
   subtitle = '',
   text = '',
@@ -48,7 +50,8 @@ export const PageIntro = ({
           {subtitle}
         </h4>
       )}
-      {text && (
+      {text && pubType === 'publication' && <ArticleLead lead={text} abstract={text} />}
+      {text && pubType !== 'publication' && (
         <div
           className={`c-page-intro__p ${onDark ? 'u-text--white' : 'u-text--grey'} ${
             single ? 'u-body--large u-text--dark-grey' : 'u-body'

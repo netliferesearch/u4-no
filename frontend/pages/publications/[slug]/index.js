@@ -7,12 +7,12 @@ import { initStore } from '../../../helpers/redux-store';
 import { Provider } from 'react-redux';
 // import { PublicationContainer } from '../../../components/publication/PublicationContainer';
 
-const LongformArticleContainer = dynamic(() =>
-  import('../../../components/LongformArticleContainer')
-);
+// const LongformArticleContainer = dynamic(() =>
+//   import('../../../components/LongformArticleContainer')
+// );
 
 const LegacyPublicationContainer = dynamic(() =>
-  import('../../../components/LegacyPublicationContainer')
+  import('../../../components/publication/LegacyPublicationContainer')
 );
 
 const PublicationContainer = dynamic(() =>
@@ -69,9 +69,9 @@ const queryFunc = ({ params: { slug = '' } }) => ({
   publicationType->{ _id, title },
   reference, references,
   "recommendedResources":
-    relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage },
+    relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, "imageUrl": featuredImage.asset->url },
   "relatedResources":
-      related[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage },
+      related[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, "imageUrl": featuredImage.asset->url },
   slug, standfirst, subtitle, summary, summaryExternal, title,
   topics[]->{ _id, title, slug },
   "translations":

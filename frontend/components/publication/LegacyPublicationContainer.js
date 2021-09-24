@@ -2,27 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
-import Image from 'next/image';
-import sanityImageLoader from '../helpers/sanityImageLoader';
-import Footer from '../components/general/footer/Footer';
-import Layout from './Layout';
-import PublicationArticleHeader from './PublicationArticleHeader';
-import PdfViewer from './PdfViewer';
-import PublicationNotification from './PublicationNotification';
-import RecommendedResources from './RecommendedResources';
-import { ArticleHeader } from './general/article-header/ArticleHeader';
-import { BreadCrumbV2 } from './general/BreadCrumbV2';
-import { SEARCH_PUBLICATIONS } from '../helpers/constants';
-import { PublicationContent } from './publication/PublicationContent';
-import { ArticleSidebar } from './general/article-sidebar/ArticleSidebar';
-import { PostCarousel } from './front-page/PostCarousel';
-import { POST_TYPE } from './general/post/Post';
-import { Cite } from './publication/Cite';
-import { ArticleActions } from './general/article-actions/ArticleActions';
-import { AboutAuthor } from './blog/AboutAuthor';
-import { Disclaimers } from './Disclaimers';
-import { Keywords } from './Keywords';
+import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
+import Footer from '../general/footer/Footer';
+import Layout from '../Layout';
+import PdfViewer from '../PdfViewer';
+import { ArticleHeader } from '../general/article-header/ArticleHeader';
+import { BreadCrumbV2 } from '../general/BreadCrumbV2';
+import { SEARCH_PUBLICATIONS } from '../../helpers/constants';
+import { PublicationContent } from './PublicationContent';
+import { ArticleSidebar } from '../general/article-sidebar/ArticleSidebar';
+import { PostCarousel } from '../front-page/PostCarousel';
+import { POST_TYPE } from '../general/post/Post';
+import { PublicationAdditionalInfo } from './PublicationAdditionalInfo';
 
 const LegacyPublicationContainer = props => {
   const {
@@ -85,50 +76,9 @@ const LegacyPublicationContainer = props => {
             </div>
           )}
         </section>
-        {/* <div className="c-longform-grid">
-          <div className="c-longform-grid__standard">
-            <PublicationNotification
-              headsUp={headsUp}
-              updatedVersion={updatedVersion}
-              date={date}
-            />
-
-            {lead && (
-              <div className="c-article">
-                <p>{lead}</p>
-              </div>
-            )}
-            {!lead && abstract && (
-              <div className="c-article" dangerouslySetInnerHTML={{ __html: abstract }} />
-            )}
-          </div>
-        </div> */}
         {legacypdf.asset && <PdfViewer file={{ url: legacypdf.asset.url }} />}
-        {/* {(recommendedResources.length > 0 || relatedResources.length > 0) && (
-          <div className="o-wrapper">
-            <h2>We also recommend</h2>
-            <RecommendedResources
-              resources={recommendedResources.length > 0 ? recommendedResources : relatedResources}
-            />
-          </div>
-        )} */}
-        <section className="u-bg--blue">
-          <div className="o-wrapper-medium">
-            <div className="o-wrapper-narrow">
-              <Cite {...props.data} />
-            </div>
-          </div>
-        </section>
-        <section className="u-bg--lighter-blue c-article__additional-content">
-          <div className="o-wrapper-medium">
-            <div className="o-wrapper-narrow">
-              <ArticleActions data={props.data} />
-              <AboutAuthor authors={authors} />
-              <Disclaimers title={true} />
-              {keywords.length > 0 ? <Keywords title={true} keywords={keywords} hr={true} /> : null}
-            </div>
-          </div>
-        </section>
+        <PublicationAdditionalInfo data={props.data} />
+
         {recommendedResources.length > 0 || relatedResources.length > 0 ? (
           <section className="">
             <div className="o-wrapper-medium o-wrapper-mobile-full">

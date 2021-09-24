@@ -1,8 +1,8 @@
 import React from 'react';
-import CreativecommonsCC from './icons/CreativecommonsCC';
-import CreativecommonsBY from './icons/CreativecommonsBY';
-import CreativecommonsNC from './icons/CreativecommonsNC';
-import CreativecommonsND from './icons/CreativecommonsND';
+import CreativecommonsCC from '../../icons/CreativecommonsCC';
+import CreativecommonsBY from '../../icons/CreativecommonsBY';
+import CreativecommonsNC from '../../icons/CreativecommonsNC';
+import CreativecommonsND from '../../icons/CreativecommonsND';
 
 export const Disclaimers = ({ title = false }) => {
   return (

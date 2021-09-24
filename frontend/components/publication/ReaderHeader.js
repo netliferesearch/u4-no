@@ -83,7 +83,7 @@ export const ReaderHeader = ({ data = '', setReaderOpen = null, targetRef = null
             </figcaption>
           </div>
         )}
-        <div className="o-wrapper-medium c-reader-header__intro-container">
+        <div className={`o-wrapper-medium c-reader-header__intro-container ${featuredImage.asset ? "c-reader-header__intro-container--with-img" : ""}`}>
           <div className="c-reader-header__intro o-wrapper-narrow u-bg--lighter-blue">
             <PageIntro
               title={title}

@@ -2,23 +2,21 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
-import dateToString from '../../helpers/dateToString';
-import { AuthorList } from './AuthorList';
-import TableOfContentsSidebar from '../TableOfContents/TableOfContentsSidebar';
-import { PublicationContent } from './PublicationContent';
 import { ArticleHeader } from '../general/article-header/ArticleHeader';
 import { Layout } from '../Layout';
 import { ArticleSidebar } from '../general/article-sidebar/ArticleSidebar';
 import { BreadCrumbV2 } from '../general/BreadCrumbV2';
-import { Reader } from './Reader';
 import LongformArticle from '../LongformArticle';
-import { SEARCH_PUBLICATIONS } from '../../helpers/constants';
 import Footer from '../general/footer/Footer';
 import { PostCarousel } from '../front-page/PostCarousel';
 import { POST_TYPE } from '../general/post/Post';
-import { PublicationAdditionalInfo } from './PublicationAdditionalInfo';
+import { ArticleLead } from '../general/article-lead/ArticleLead';
+import { ArticleActions } from '../general/article-actions/ArticleActions';
+import { AboutAuthor } from '../blog/AboutAuthor';
+import { Disclaimers } from '../general/disclaimers/Disclaimers';
+import { Keywords } from '../general/keywords/Keywords';
 
-const PublicationContainer = (props = {}) => {
+const ArticleContainer = (props = {}) => {
   const {
     data: {
       _type = '',
@@ -31,6 +29,7 @@ const PublicationContainer = (props = {}) => {
       standfirst = '',
       slug = '',
       references = [],
+      abbreviations = [],
       acknowledgements = '',
       methodology = [],
       notes = '',
@@ -85,19 +84,37 @@ const PublicationContainer = (props = {}) => {
   const [readerOpen, setReaderOpen] = useState(false);
   //console.log('publication', props.data);
 
+  const getParentPath = () => {
+    const pathArray = typeof window === 'undefined' ? '' : window.location.pathname.split('/');
+    const parrentPath = pathArray[pathArray.length - 2];
+    return parrentPath;
+  };
+
   return (
     <Layout
       showLoadingScreen={showLoadingScreen}
       showTopTab={!isArticleMenuOpen}
       headComponentConfig={headComponentConfig}
     >
-      {/* {!isArticleMenuOpen && ( */}
       <article className="c-publication-container c-article-v2">
         <span id="js-top" />
         <section id="js-scroll-trigger" className="o-wrapper-medium">
-          {_type === 'publication' && !shortversion ? (
-            <BreadCrumbV2 home={true} title="Publications" parentSlug={SEARCH_PUBLICATIONS} />
+          {_type !== 'publication' && !shortversion && getParentPath() !== '' ? (
+            <BreadCrumbV2
+              home={true}
+              title="About U4"
+              parentSlug={`/${getParentPath()}`}
+              currentTitle={title}
+              currentSlug={slug.current}
+            />
           ) : null}
+          {_type !== 'publication' && !shortversion && getParentPath() === '' ? (
+            <BreadCrumbV2 home={true} currentTitle={title} currentSlug={slug.current} />
+          ) : null}
+          {/* {articleType.length ? (
+                  <h2 className="c-longform-grid__standard">{articleType[0].target.title}</h2>
+                ) : null}
+                <h1 className="c-longform-grid__standard">{title || longTitle}</h1> */}
           {!shortversion && (
             <ArticleHeader
               data={props.data}
@@ -114,60 +131,40 @@ const PublicationContainer = (props = {}) => {
           className="o-wrapper-medium o-wrapper-mobile-full"
           style={{ display: readerOpen ? 'none' : 'block' }}
         >
-          {_type === 'publication' && !shortversion && (
-            <div className="c-article__row">
-              <div className="content c-article__col">
-                <PublicationContent {...props.data} />
+          {content.length > 0 && (
+            <main className="c-reader__main o-wrapper-section c-article__row">
+              <div className="c-article__content c-article__col">
+                {lead || abstract ? <ArticleLead lead={lead} abstract={abstract} /> : null}
+                <LongformArticle content={content} title={title} />
+                {references.length > 0 && <ToggleBlock title="References" content={references} />}
+                {abbreviations.length > 0 && (
+                  <ToggleBlock title="Abbreviations" content={abbreviations} />
+                )}
               </div>
               <div className="c-article__side c-article__col">
-                <ArticleSidebar data={props.data} />
+                  <ArticleSidebar data={props.data} />
               </div>
-            </div>
+            </main>
           )}
-          {/* {_type !== 'publication' && (
-            <div className="c-article__row">
-              <div className="c-longform-grid u-bg-white u-z-index-x">
-                {articleType.length ? (
-                  <h2 className="c-longform-grid__standard">{articleType[0].target.title}</h2>
-                ) : null}
-                <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
-                {authors.length ? (
-                  <div className="c-article c-longform-grid__standard">
-                    <AuthorList authors={authors} />
-                    {date && date.utc && (
-                      <span> (last update: {dateToString({ start: date.utc })})</span>
-                    )}
-                  </div>
-                ) : null}
-                {lead && <div className="c-article c-longform-grid__standard">{lead}</div>}
-              </div>
-              <div className="c-longform-grid">
-                <div className="c-longform-grid__sidebar-right">
-                  <TableOfContentsSidebar alwaysFollow {...props.data} />
-                </div>
-              </div>
-            </div>
-          )} */}
         </section>
 
-        {shortversion && (
-          <section className="c-article--shortversion o-wrapper-medium o-wrapper-mobile-full">
-            <BreadCrumbV2 home={true} title={title} parentSlug={`/publications/${slug.current}`} />
-            <div className="c-article__row">
-              <div className="content c-article__col">
-                <LongformArticle content={shortversionContent} {...props.data} />
+        {!shortversion && (
+          <section className="u-bg--lighter-blue c-article__additional-content">
+            <div className="o-wrapper-medium">
+              <div className="o-wrapper-narrow">
+                <ArticleActions data={props.data} setReaderOpen={setReaderOpen} />
+                <AboutAuthor authors={authors} />
+                <Disclaimers title={true} />
+                {keywords.length > 0 ? (
+                  <Keywords title={true} keywords={keywords} hr={true} />
+                ) : null}
               </div>
             </div>
           </section>
         )}
 
-        {!shortversion && (
-          <PublicationAdditionalInfo data={props.data} setReaderOpen={setReaderOpen} />
-        )}
-
         <span id="js-bottom" />
       </article>
-      {/* )} */}
       {recommendedResources.length > 0 ? (
         <section className="">
           <div className="o-wrapper-medium o-wrapper-mobile-full">
@@ -182,25 +179,17 @@ const PublicationContainer = (props = {}) => {
           </div>
         </section>
       ) : null}
-      {readerOpen && (
-        <Reader
-          data={props.data}
-          setReaderOpen={setReaderOpen}
-          legacypdf={legacypdf}
-          shortversion={shortversion}
-        />
-      )}
+
       <Footer />
       <div id="modal" />
     </Layout>
   );
 };
 
-// export default PublicationContainer
 export default connect(
   state => state,
   dispatch => ({
     toggleArticleMenu: bindActionCreators(toggleArticleMenu, dispatch),
     toggleLoadingScreen: bindActionCreators(toggleLoadingScreen, dispatch),
   })
-)(PublicationContainer);
+)(ArticleContainer);
