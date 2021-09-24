@@ -47,9 +47,10 @@ export const getRouteByType = publicationType => {
 };
 
 export const getPostType = item => {
-  const itemType = item._type;
+  const itemTypeUnderscore = item._type;
+  const itemType = item.type;
   let typeTitle = '';
-  switch (itemType) {
+  switch (itemTypeUnderscore || itemType) {
     case 'publication':
       typeTitle =
         item.publicationType && typeof item.publicationType.title === 'string'
@@ -84,6 +85,9 @@ export const getPostType = item => {
       break;
     case 'article':
       typeTitle = 'Article';
+      break;
+    case 'topic':
+      typeTitle = 'Topic';
       break;
     default:
       typeTitle = '';
