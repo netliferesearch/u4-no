@@ -6,6 +6,7 @@ export const PageIntro = ({
   title = '',
   subtitle = '',
   text = '',
+  abstract = '',
   contentType = '',
   type = 'basic',
   onDark = false,
@@ -50,7 +51,7 @@ export const PageIntro = ({
           {subtitle}
         </h4>
       )}
-      {text && pubType === 'publication' && <ArticleLead lead={text} abstract={text} />}
+      {text && pubType === 'publication' && <ArticleLead lead={abstract ? '' : text} abstract={abstract} />}
       {text && pubType !== 'publication' && (
         <div
           className={`c-page-intro__p ${onDark ? 'u-text--white' : 'u-text--grey'} ${

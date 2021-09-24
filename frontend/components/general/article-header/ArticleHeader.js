@@ -43,6 +43,7 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
             title={title}
             subtitle={subtitle}
             text={text}
+            abstract={abstract}
             contentType={
               _type === 'publication'
                 ? PUBLICATION + ' | ' + publicationType.title
