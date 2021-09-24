@@ -1,7 +1,17 @@
-import ReferringDocumentsList from '../components/referring-documents/src/ReferringDocumentsList'
-import { title, longTitle, explainerText, featuredImage, slug, license, standfirst, box, vimeoVideo } from './fields'
-import annotationsLinksOnly from './fields/annotationsLinksOnly'
-
+import ReferringDocumentsList from '../components/referring-documents/src/ReferringDocumentsList';
+import {
+  title,
+  longTitle,
+  explainerText,
+  featuredImage,
+  slug,
+  license,
+  standfirst,
+  box,
+  vimeoVideo,
+  tableBlock
+} from './fields';
+import annotationsLinksOnly from './fields/annotationsLinksOnly';
 
 export default {
   name: 'topics',
@@ -25,9 +35,9 @@ export default {
       type: 'reference',
       to: [
         {
-          type: 'topics'
-        }
-      ]
+          type: 'topics',
+        },
+      ],
     },
     {
       name: 'introduction',
@@ -37,127 +47,36 @@ export default {
         {
           type: 'block',
           styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'H2', value: 'h2'},
-            {title: 'H3', value: 'h3'},
-            {title: 'H4', value: 'h4'},
-            {title: 'H5', value: 'h5'},
+            { title: 'Normal', value: 'normal' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+            { title: 'H4', value: 'h4' },
+            { title: 'H5', value: 'h5' },
           ],
           // Only allow numbered lists
           marks: {
             // Only allow these decorators
-            decorators: [
-              {title: 'Strong', value: 'strong'},
-              {title: 'Emphasis', value: 'em'}
-            ],
+            decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
             // Support annotating text with a reference to an author
-            annotations: annotationsLinksOnly
-          }
+            annotations: annotationsLinksOnly,
+          },
         },
         box,
         vimeoVideo,
         {
           type: 'image',
           fields: [
-          {
-            name: 'altText',
-            title: 'Alternative text',
-            description: 'For users that can\'t see images',
-            type: 'string'
-          },
-          {
-            name: 'caption',
-            title: 'Caption text',
-            description: 'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
-            type: 'array',
-            of: [
-              {
-                type: 'block',
-                styles: [],
-                marks: {
-                  // Only allow these decorators
-                  decorators: [
-                    { title: 'Emphasis', value: 'em' }
-                  ],
-                },
-              },
-            ],
-          },
-          {
-            name: 'size',
-            title: 'Image size',
-            description: 'Set size for image in frontend that supports it',
-            type: 'string',
-            options: {
-              list: [
-                { title: 'wide', value: 'wide' },
-                { title: 'normal', value: 'normal' },
-                { title: 'small', value: 'small' },
-                { title: 'narrow', value: 'narrow' },
-              ],
-            },
-          },
-          {
-            name: 'credit',
-            title: 'Credit',
-            description: 'Photographer/publisher’s name.',
-            type: 'text'
-          },
-          {
-            name: 'sourceUrl',
-            title: 'Credit URL',
-            type: 'url',
-            description: 'Enter link for source for the image or the originator'
-          },
-          license,
-        ]
-        }
-      ]
-    },
-    {
-      name: 'agenda',
-      title: 'Research and policy agenda',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'H2', value: 'h2'},
-            {title: 'H3', value: 'h3'},
-          ],
-          // Only allow numbered lists
-          marks: {
-            // Only allow these decorators
-            decorators: [
-              {title: 'Strong', value: 'strong'},
-              {title: 'Emphasis', value: 'em'}
-            ],
-            // Support annotating text with a reference to an author
-            annotations: annotationsLinksOnly
-          }
-        },
-        {
-          type: 'reference',
-          to: [
-            {
-              type: 'nugget'
-            }
-          ]
-        },
-        {
-          type: 'image',
-          fields: [
             {
               name: 'altText',
               title: 'Alternative text',
-              description: 'For users that can\'t see images',
-              type: 'string'
+              description: "For users that can't see images",
+              type: 'string',
             },
             {
               name: 'caption',
               title: 'Caption text',
-              description: 'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
+              description:
+                'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
               type: 'array',
               of: [
                 {
@@ -165,9 +84,7 @@ export default {
                   styles: [],
                   marks: {
                     // Only allow these decorators
-                    decorators: [
-                      { title: 'Emphasis', value: 'em' }
-                    ],
+                    decorators: [{ title: 'Emphasis', value: 'em' }],
                   },
                 },
               ],
@@ -190,18 +107,104 @@ export default {
               name: 'credit',
               title: 'Credit',
               description: 'Photographer/publisher’s name.',
-              type: 'text'
+              type: 'text',
             },
             {
               name: 'sourceUrl',
               title: 'Credit URL',
               type: 'url',
-              description: 'Enter link for source for the image or the originator'
+              description: 'Enter link for source for the image or the originator',
             },
             license,
-          ]
-        }
-      ]
+          ],
+        },
+        tableBlock,
+      ],
+    },
+    {
+      name: 'agenda',
+      title: 'Research and policy agenda',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+          ],
+          // Only allow numbered lists
+          marks: {
+            // Only allow these decorators
+            decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
+            // Support annotating text with a reference to an author
+            annotations: annotationsLinksOnly,
+          },
+        },
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'nugget',
+            },
+          ],
+        },
+        {
+          type: 'image',
+          fields: [
+            {
+              name: 'altText',
+              title: 'Alternative text',
+              description: "For users that can't see images",
+              type: 'string',
+            },
+            {
+              name: 'caption',
+              title: 'Caption text',
+              description:
+                'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
+              type: 'array',
+              of: [
+                {
+                  type: 'block',
+                  styles: [],
+                  marks: {
+                    // Only allow these decorators
+                    decorators: [{ title: 'Emphasis', value: 'em' }],
+                  },
+                },
+              ],
+            },
+            {
+              name: 'size',
+              title: 'Image size',
+              description: 'Set size for image in frontend that supports it',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'wide', value: 'wide' },
+                  { title: 'normal', value: 'normal' },
+                  { title: 'small', value: 'small' },
+                  { title: 'narrow', value: 'narrow' },
+                ],
+              },
+            },
+            {
+              name: 'credit',
+              title: 'Credit',
+              description: 'Photographer/publisher’s name.',
+              type: 'text',
+            },
+            {
+              name: 'sourceUrl',
+              title: 'Credit URL',
+              type: 'url',
+              description: 'Enter link for source for the image or the originator',
+            },
+            license,
+          ],
+        },
+      ],
     },
     {
       name: 'advisors',
@@ -212,11 +215,11 @@ export default {
           type: 'reference',
           to: [
             {
-              type: 'person'
-            }
-          ]
-        }
-      ]
+              type: 'person',
+            },
+          ],
+        },
+      ],
     },
     slug,
     {
@@ -228,17 +231,17 @@ export default {
           type: 'reference',
           to: [
             {
-              type: 'article'
+              type: 'article',
             },
             {
-              type: 'publication'
+              type: 'publication',
             },
             {
               type: 'blog-post',
             },
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     },
   ],
   preview: {
@@ -247,12 +250,12 @@ export default {
       subtitle: 'longTitle',
       imageUrl: 'featuredImage.asset.url',
     },
-    prepare({title, subtitle, imageUrl}) {
+    prepare({ title, subtitle, imageUrl }) {
       return {
-        title: title,
-        subtitle: subtitle,
-        imageUrl: imageUrl
-      }
-    }
-  }
-}
+        title,
+        subtitle,
+        imageUrl,
+      };
+    },
+  },
+};

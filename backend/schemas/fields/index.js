@@ -18,3 +18,4 @@ export { default as box } from './box';
 export { default as previewLinks } from './previewLinks';
 export { default as vimeoVideo } from './vimeoVideo';
 export { default as shortSlug } from './shortSlug';
+export { default as tableBlock } from './tableBlock';
