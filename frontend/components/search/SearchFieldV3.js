@@ -45,6 +45,7 @@ export const SearchFieldV3 = props => {
     updateSearch({ urlUpdateType: 'push', value: e.target.value });
   };
   const updateSearch = ({ urlUpdateType, value = '' }) => {
+    console.log('updateSearch', value, urlUpdateType);
     setLoading(value.length > 2);
     debounce(() => {
       const queryParams = queryString.parse(location.search);
@@ -53,7 +54,8 @@ export const SearchFieldV3 = props => {
         search: value,
         searchPageNum: 1,
       });
-      router[`${urlUpdateType}`](`/search?${updatedQueryString}`, undefined, {
+      console.log('updatedQueryString', updatedQueryString);
+      router[urlUpdateType](`/search?${updatedQueryString}`, null, {
         scroll: false,
       });
       console.log('debounce was called');

@@ -1,7 +1,6 @@
 .c-filters-v2 {
   color: $dark-blue;
   padding: 0 $spacing;
-  display: none;
   background-color: rgba(240, 240, 240, 0.4);
   @include mq($from: tablet) {
     padding: 0 $spacing-huge;

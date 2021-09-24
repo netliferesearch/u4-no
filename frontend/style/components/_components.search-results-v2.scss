@@ -114,14 +114,15 @@
   }
   @include mq($from: tablet) {
     margin: $spacing-large 0;
-  }
-  &:after {
-    content: '';
-    display: block;
-    background: $light-grey;
-    width: 100%;
-    height: 1px;
-    margin-top: $spacing-large;
+
+    &:after {
+      content: '';
+      display: block;
+      background: $light-grey;
+      width: 100%;
+      height: 1px;
+      margin-top: $spacing-large;
+    }
   }
 }
 

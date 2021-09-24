@@ -46,12 +46,13 @@ const addQueryParams = queryParams => {
   Router.replace(newUrl, undefined, { scroll: false });
 };
 
-const updateFilterQueryParams = (filters = []) =>
+const updateFilterQueryParams = (filters = []) => {
   addQueryParams({
     filters: uniq(filters)
       .map(name => name.replace(/,/g, '|'))
       .join(),
   });
+};
 
 const defaultState = {
   readingProgressId: '',
@@ -121,6 +122,9 @@ export const reducer = (state = defaultState, action) => {
       if (state.searchPageNum !== action.searchPageNum) {
         addQueryParams({
           searchPageNum: `${action.searchPageNum}`,
+          filters: uniq(state.searchFilters)
+            .map(name => name.replace(/,/g, '|'))
+            .join(),
         });
         return { ...state, searchPageNum: action.searchPageNum };
       }
