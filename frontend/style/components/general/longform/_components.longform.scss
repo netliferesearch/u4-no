@@ -11,9 +11,6 @@
     margin: 0 auto;
   }
 }
-// .c-longform-grid__standard {
-//   //padding: 0 $spacing;
-// }
 
 @supports (display: grid) {
   .c-longform-grid,
@@ -34,7 +31,8 @@
   }
 
   .c-longform-grid__standard {
-    padding: 0 $spacing;
+    padding: 0;
+    //padding: 0 $spacing;
     grid-column: 5 / 6;
     @include mq($from: tablet) {
       padding: 0;
@@ -42,7 +40,8 @@
   }
 
   .c-longform-grid__medium {
-    padding: 0 $spacing;
+    //padding: 0 $spacing;
+    padding: 0;
     grid-column: 4 / 7;
   }
 
@@ -98,23 +97,24 @@ div {
 }
 
 .c-article-v2__main-text > div > p.c-longform-grid__standard:last-child {
-    position: relative;
-    &:after {
-      content: '\25A0';
-      color: $blue;
-      font-size: 24px;
-      font-weight: bold;
-      display: inline-block;
-      width: 24px;
-      height: 24px;
-      position: absolute;
-      bottom: 11px;
-      padding: 0 6px;
-      //left: 0;
-    }
+  position: relative;
+  &:after {
+    content: '\25A0';
+    color: $blue;
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    bottom: 11px;
+    padding: 0 6px;
+    //left: 0;
   }
+}
 
-.c-article-v2__main-text { .c-table__caption,
+.c-article-v2__main-text {
+  .c-table__caption,
   .c-textbox--simple {
     p.c-longform-grid__standard:after {
       display: none;
@@ -212,9 +212,6 @@ h5.c-longform-grid__standard {
   padding-left: 0;
   padding-right: 0;
   margin: 0 auto;
-}
-.c-table table {
-  margin-bottom: 24px;
 }
 
 ol.c-longform-grid__standard,

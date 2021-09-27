@@ -60,7 +60,7 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
                 <ToggleBlock title="Abbreviations" content={abbreviations} />
               )}
             </div>
-            <div className="c-article__side c-article__col">
+            <div className="c-article__side c-article__col u-hidden--tablet">
             <span ref={topRef}></span>
               <Contents title={title} content={content} scrolled={scrolled} footRef={footRef} topRef={topRef}/>
             </div>
