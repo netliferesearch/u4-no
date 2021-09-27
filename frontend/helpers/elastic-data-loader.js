@@ -293,31 +293,29 @@ const ElasticDataLoader = Child =>
     static async getInitialProps(nextContext) {
       console.log('Elastic data loader fetching data');
       const { query, store } = nextContext;
-      if (query.search) {
-        const { defaultSearchAggs = {} } = store.getState();
-        // Use Promise.all so that we can fire off 1 or 2 two queries at once,
-        // without one waiting for the other.
-        const [result] = await Promise.all([
-          doSearch({ query, defaultSearchAggs }),
-          (async () => {
-            if (defaultSearchAggs.length > 0) {
-              return true;
-            }
-            // We do one search just to know how many possible aggregations
-            // we have. Filters needs this if they want to display unmatched filters.
-            const { aggregations } = await getSearchAggregations();
-            return store.dispatch({
-              type: 'SEARCH_UPDATE_DEFAULT_AGGS',
-              defaultSearchAggs: aggregations,
-            });
-          })(),
-        ]);
-        store.dispatch({
-          type: 'SEARCH_UPDATE_RESULTS',
-          searchResults: result,
-        });
-        return { data: result };
-      }
+      const { defaultSearchAggs = {} } = store.getState();
+      // Use Promise.all so that we can fire off 1 or 2 two queries at once,
+      // without one waiting for the other.
+      const [result] = await Promise.all([
+        doSearch({ query, defaultSearchAggs }),
+        (async () => {
+          if (defaultSearchAggs.length > 0) {
+            return true;
+          }
+          // We do one search just to know how many possible aggregations
+          // we have. Filters needs this if they want to display unmatched filters.
+          const { aggregations } = await getSearchAggregations();
+          return store.dispatch({
+            type: 'SEARCH_UPDATE_DEFAULT_AGGS',
+            defaultSearchAggs: aggregations,
+          });
+        })(),
+      ]);
+      store.dispatch({
+        type: 'SEARCH_UPDATE_RESULTS',
+        searchResults: result,
+      });
+      return { data: result };
     }
     render() {
       const { error } = this.props;

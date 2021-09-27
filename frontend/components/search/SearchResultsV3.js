@@ -80,9 +80,12 @@ export const SearchResultsV3 = props => {
   const [pageCount, setPageCount] = useState(1);
   const searchResults = useSelector(state => state.searchResults);
   const { searchFilters = [] } = props;
-  const { hits = [], total: { value = 0 } = {} } = searchResults.hits || {};
+  const { hits = [], total: { value = 0 } = {} } = searchResults ? searchResults.hits : {};
   const maxPagesListed = 5;
-  const total = searchResults.hits && searchResults.hits.total ? searchResults.hits.total.value : 0;
+  const total =
+    searchResults && searchResults.hits && searchResults.hits.total
+      ? searchResults.hits.total.value
+      : 0;
   let d = total < limit ? 1 : Math.ceil(total / limit);
   const lastPage = Math.ceil(total / limit);
   const currentSearchPage = useSelector(state => state.searchPageNum);

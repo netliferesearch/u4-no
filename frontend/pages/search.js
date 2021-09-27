@@ -4,12 +4,12 @@ import ElasticDataLoader from '../helpers/elastic-data-loader';
 import { updateSearchPageNum } from '../helpers/redux-store';
 import Layout from '../components/Layout';
 import Footer from '../components/general/footer/Footer';
-import SearchFiltersV2 from '../components/search/SearchFilters-v2';
 import { SearchFieldV3 } from '../components/search/SearchFieldV3';
 import { wrapInRedux } from '../helpers/redux-store-wrapper';
 import { PageIntro } from '../components/general/PageIntro';
 import { SearchResultsV3 } from '../components/search/SearchResultsV3';
 import { bindActionCreators } from 'redux';
+import SearchFiltersV3 from '../components/search/SearchFiltersV3';
 
 const Search = ({ data = {}, url = '' }) => {
   const showResults = useSelector(state => state.searchResultsVisible);
@@ -42,7 +42,7 @@ const Search = ({ data = {}, url = '' }) => {
           <div className="o-wrapper-medium">
             <div className="c-search-page__sections">
               <section className="o-layout__item u-12/12 u-3/12@desktop">
-                <SearchFiltersV2 data={data} />
+                <SearchFiltersV3 data={data} />
               </section>
               <section className="o-layout__item u-12/12 u-8/12@desktop u-push-1/12@desktop">
                 <SearchResultsV3 data={data} />

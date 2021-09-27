@@ -370,10 +370,14 @@
 }
 .c-blog-index__paginator-list {
   padding: 0;
-  margin: auto auto 0;
   align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  @include mq($until: desktop) {
+    margin: $spacing auto 45px auto;
+    justify-content: center;
+  }
+  margin: $spacing auto 0;
   li {
     display: inline-block;
     list-style: none;
@@ -482,9 +486,6 @@
       align-items: center;
       justify-content: center;
     }
-  }
-  @include mq($from: tablet) {
-    margin: $spacing auto 0 auto;
   }
 }
 
