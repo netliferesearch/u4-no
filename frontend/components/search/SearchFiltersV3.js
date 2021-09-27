@@ -19,16 +19,17 @@ import SearchFilterReset from './SearchFilterReset';
 function toggle() {
   if (document) {
     document.querySelector('.c-filters-v2').classList.toggle('c-filters-v2--open');
-    document.querySelector('html').classList.toggle('u-overflow-hidden');
   }
 }
 
-export const SearchFiltersV2 = props => {
+const SearchFiltersV3 = props => {
+  // const { searchFilters, replaceSearchFilters, searchTotal } = props;
+  console.log('results props', props);
   const resetFilters = () => {
     const {
       replaceSearchFilters,
       router: { query: { filters: filterStr = '' } = {} } = {},
-    } = this.props;
+    } = props;
     // Purpose: Overwrite any filter state in Redux with the actual state in the url.
     const searchFilters = filterStr
       .split(',')
@@ -49,30 +50,31 @@ export const SearchFiltersV2 = props => {
     const { updateSearchSorting, router: { query: { sort = '' } = {} } = {} } = props;
     updateSearchSorting(sort);
   };
-  useEffect(() => {
-    resetFilters;
-    resetSorting;
-  }, []);
-  const { searchFilters, replaceSearchFilters, searchTotal } = props;
 
+  useEffect(() => {
+    resetFilters();
+    resetSorting();
+  }, []);
   return (
-    <div className="c-filters-v2">
-      <div className="c-filters-v2__topbar">
-        <h3 className="c-filters-v2__topbar-result">Results ({`${searchTotal.value}`})</h3>
-        <button onClick={toggle} className="c-search-results-v2__topbar-filter">
-          Update search
+    <div>
+      <button onClick={toggle} className="c-search-results-v2__topbar-filter">
+        Filters
+      </button>
+      <div className="c-filters-v2">
+        <div className="c-filters-v2__item--title">
+          <div className="c-filters-v2__clear-all">
+            <h4>Filters</h4>
+            <SearchFilterReset buttonText="Clear all" />
+          </div>
+        </div>
+        <SearchFilterTopics />
+        <SearchFilterPublicationTypes />
+        <SearchFilterYears />
+        <SearchFilterLanguages />
+        <button onClick={toggle} className="c-search-results-v2__topbar-filter-close">
+          Close
         </button>
       </div>
-      <div className="c-filters-v2__item--title">
-        <div className="c-filters-v2__clear-all">
-          <h4>Filters</h4>
-          <SearchFilterReset buttonText="Clear all" />
-        </div>
-      </div>
-      <SearchFilterTopics />
-      <SearchFilterPublicationTypes />
-      <SearchFilterYears />
-      <SearchFilterLanguages />
     </div>
   );
 };
@@ -94,5 +96,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(SearchFiltersV2)
+  )(SearchFiltersV3)
 );

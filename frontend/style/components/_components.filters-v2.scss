@@ -1,13 +1,21 @@
-.c-filters-v2 {
+.c-filters-v2.c-filters-v2--open {
   color: $dark-blue;
-  padding: 0 $spacing;
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-small $spacing;
   background-color: rgba(240, 240, 240, 0.4);
-  @include mq($from: tablet) {
-    padding: 0 $spacing-huge;
-  }
+  margin: $spacing-small 0;
   @include mq($from: desktop) {
     display: block;
     padding: 15px;
+  }
+}
+.c-filters-v2 {
+  display: none;
+  @include mq($from: desktop) {
+    display: block;
+    padding: 15px;
+    background-color: rgba(240, 240, 240, 0.4);
   }
 }
 .c-filters-v2__item--date {
@@ -56,6 +64,9 @@
   padding: 0;
   margin: 40px 0;
   @include inuit-font-size($font-size-tiny, $line-height-tiny);
+  &:last-of-type {
+    margin: 40px 0 0;
+  }
 }
 
 .c-filters-v2__item--standalone {
@@ -180,21 +191,21 @@ h3.c-filters-v2__title {
   padding-right: $spacing-tiny;
 }
 
-.c-filters-v2--open {
-  display: block;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: fixed;
-  overflow-y: scroll;
-  min-height: 100vh;
-  width: 100%;
-  background: $white;
-  z-index: 9;
-  animation: slideUp 0.2s ease-out;
-  -webkit-overflow-scrolling: touch;
-}
+// .c-filters-v2--open {
+//   display: block;
+//   top: 0;
+//   left: 0;
+//   bottom: 0;
+//   right: 0;
+//   position: fixed;
+//   overflow-y: scroll;
+//   min-height: 100vh;
+//   width: 100%;
+//   background: $white;
+//   z-index: 9;
+//   animation: slideUp 0.2s ease-out;
+//   -webkit-overflow-scrolling: touch;
+// }
 
 @keyframes slideUp {
   from {

@@ -29,6 +29,8 @@
     padding: 0;
   }
   .c-search-page__sections {
-    margin: 60px 0;
+    @include mq($from: desktop) {
+      margin: 60px 0;
+    }
   }
 }
