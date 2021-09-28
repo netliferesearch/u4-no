@@ -106,7 +106,7 @@ export const Contents = ({ title = '', content = [], scrolled = false, footRef, 
                   return (
                     <li
                       key={id}
-                      id={id}
+                      // id={id}
                       ref={el => (itemsRef.current[index] = el)}
                       className={`c-contents__list-item u-text--grey ${
                         activeItem === id ? 'c-contents__list-item--active' : ''

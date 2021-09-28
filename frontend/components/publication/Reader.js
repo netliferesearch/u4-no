@@ -49,7 +49,7 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
       <span id="js-top-reader" />
       <TitleProgressSpy content={content} />
       <ReaderHeader data={data} setReaderOpen={setReaderOpen} targetRef={readerRef} />
-      <section className="o-wrapper-medium">
+      <section className="o-wrapper-medium o-wrapper-mobile-full">
         {content.length > 0 && (
           <main className="c-reader__main o-wrapper-section c-article__row">
             <div className="c-article__content c-article__col">
@@ -60,7 +60,7 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
                 <ToggleBlock title="Abbreviations" content={abbreviations} />
               )}
             </div>
-            <div className="c-article__side c-article__col">
+            <div className="c-article__side c-article__col u-hidden--tablet">
             <span ref={topRef}></span>
               <Contents title={title} content={content} scrolled={scrolled} footRef={footRef} topRef={topRef}/>
             </div>

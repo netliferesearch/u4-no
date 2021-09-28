@@ -151,11 +151,19 @@ const PublicationContainer = (props = {}) => {
         </section>
 
         {shortversion && (
-          <section className="c-article--shortversion o-wrapper-medium o-wrapper-mobile-full">
-            <BreadCrumbV2 home={true} title={title} parentSlug={`/publications/${slug.current}`} />
-            <div className="c-article__row">
-              <div className="content c-article__col">
-                <LongformArticle content={shortversionContent} {...props.data} />
+          <section className="c-article--shortversion ">
+            <div className="o-wrapper-medium">
+              <BreadCrumbV2
+                home={true}
+                title={title}
+                parentSlug={`/publications/${slug.current}`}
+              />
+            </div>
+            <div className="o-wrapper-mobile-full  o-wrapper-medium">
+              <div className="c-article__row">
+                <div className="content c-article__col">
+                  <LongformArticle content={shortversionContent} {...props.data} />
+                </div>
               </div>
             </div>
           </section>

@@ -24,7 +24,10 @@
 }
 
 .c-reader-header__main {
-  padding-top: 80px;
+  padding-top: 72px;
+  @include mq($from: tablet) {
+    padding-top: 80px;
+  }
 }
 
 .c-progress-bar__container {
@@ -43,7 +46,7 @@
 
 .c-reader-header__top-content {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 20px 24px;
 
@@ -79,7 +82,12 @@
   overflow: auto;
   padding: 0 24px;
   .c-page-intro {
-    margin-top: 64px;
+    margin-top: 24px;
+  }
+  @include mq($from: tablet) {
+    .c-page-intro {
+      margin-top: 64px;
+    }
   }
 }
 
@@ -119,6 +127,22 @@
 .c-reader-header__section {
   background-color: $blue;
   padding: 6px 0;
+  .c-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .c-arrow-contents {
+    margin-left: 6px;
+    transform: rotate(0deg);
+    transition: $global-transition;
+  }
+  .c-contents__button--active {
+    .c-arrow-contents {
+      transform: rotate(180deg);
+      transition: $global-transition;
+    }
+  }
 }
 
 //Scroll to top button:
@@ -162,10 +186,24 @@
   min-width: 260px;
 }
 
+.c-contents--mobile {
+  background-color: $light-grey;
+}
+
 .c-contents__top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.c-scroll-top--contents {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  @include mq($from: tablet) {
+    position: initial;
+  }
 }
 
 .c-contents__list {
@@ -180,6 +218,25 @@
     font-family: $font-serif;
     font-size: 18px;
     line-height: 24px;
+    display: inline-block;
+    padding: 8px 0 12px 0;
+  }
+  &:hover,
+  &:active {
+    a {
+      color: $blue;
+    }
+    .c-contents__subtitle {
+      color: $highlight-blue;
+    }
+  }
+}
+
+.c-contents__list-item--mobile {
+  padding: 0 24px;
+  a {
+    color: $mid-grey;
+    font-family: $font-sans;
     display: inline-block;
     padding: 8px 0 12px 0;
   }

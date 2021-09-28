@@ -23,6 +23,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
     relatedTopics = [],
     relatedPublications = [],
     relatedBlogPosts = [],
+    resourceCollections = [],
     parent = {},
     slug = {},
     introduction = [],
@@ -51,6 +52,8 @@ const TopicEntry = ({ data: { topic = {} } }) => {
           <Hero
             contentType="topic"
             image={featuredImage}
+            parentSlug="/topics"
+            parentTitle="Topics"
             title={title}
             text={longTitle}
             topics={relatedTopics}
@@ -63,7 +66,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
                 <LinkBox
                   title="Basic guide"
                   text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
-                  //icon={BasicGuide}
+                  // icon={BasicGuide}
                   _type="topicsBasics"
                   slug={slug}
                   color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
@@ -73,7 +76,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
                 <LinkBox
                   title="Research and policy agenda"
                   text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
-                  //icon={ResearchAgenda}
+                  // icon={ResearchAgenda}
                   _type="topicsAgenda"
                   slug={slug}
                   color="dark-blue"
@@ -107,7 +110,10 @@ const TopicEntry = ({ data: { topic = {} } }) => {
         {relatedEvents.length ? (
           <section className="">
             <div className="o-wrapper-medium">
-              <LearningEvents events={relatedEvents} type={relatedEvents.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL} />
+              <LearningEvents
+                events={relatedEvents}
+                type={relatedEvents.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL}
+              />
             </div>
           </section>
         ) : null}
@@ -139,14 +145,12 @@ const TopicEntry = ({ data: { topic = {} } }) => {
         )}
         {advisors.length > 0 && (
           <div id="advisors" className="o-wrapper-medium">
-            {
-              <Team
-                type={PERSON_CARD_TYPE.IMAGE_TOP}
-                heading={'Topic Experts'}
-                members={advisors}
-                linkLabel="Read full bio"
-              />
-            }
+            <Team
+              type={PERSON_CARD_TYPE.IMAGE_TOP}
+              heading="Topic Experts"
+              members={advisors}
+              linkLabel="Read full bio"
+            />
             <hr className="u-section-underline--no-margins" />
           </div>
         )}
@@ -208,7 +212,7 @@ export default DataLoader(TopicEntry, {
           "publicationType": publicationType->title,
           "articleType": articleType[0]->title,
           title,
-          date, 
+          date,
           standfirst,
           lead,
           "slug": slug.current,
@@ -219,6 +223,7 @@ export default DataLoader(TopicEntry, {
         "relatedPublications": *[_type == 'publication' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
         "relatedBlogPosts": *[_type == 'blog-post' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
         "relatedEvents": *[_type in ["course", "event"] && references(^._id)] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}},
+        "resourceCollections": *[_type == 'collection' && references(^._id)] {_type, title, "slug": slug.current},
     }[0]}`,
     param: { slug },
   }),

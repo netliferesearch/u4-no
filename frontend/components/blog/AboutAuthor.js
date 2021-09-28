@@ -7,7 +7,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
   const lang = langCode(language);
   // console.log(authors);
   return (
-    <div className="c-blog-authors-list c-about-author">
+    <div className="c-about-author">
       {authors &&
         authors
           .filter(author => author)
@@ -27,7 +27,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
               },
               index
             ) => (
-              <div className="c-blog-authors-list__item" key={_id}>
+              <div className="c-about-author__item" key={_id}>
                 {index === 0 &&
                 ((lang === 'en' && bioShort.length) ||
                   (lang === 'fr' && bioShort_fr.lenth) ||
@@ -38,7 +38,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                     </h4>
                   </div>
                 ) : null}
-                {/* <div className="c-blog-authors-list__name">
+                {/* <div className="c-about-author__name">
                   <span>
                     {slug &&
                     affiliations.length &&
@@ -57,7 +57,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                   </span>
                 </div> */}
                 {/* {position && (
-                  <div classname="c-blog-authors-list__position">
+                  <div classname="c-about-author__position">
                     <span>{position}</span>
                   </div>
                 )} */}
