@@ -124,7 +124,7 @@ const doSearch = async ({
 
   try {
     const result = await client.search({
-      index: process.env.ES_INDEX || 'u4-staging-*',
+      index: process.env.ES_INDEX || 'u4-production-*',
       body: {
         query: {
           function_score: {
@@ -273,7 +273,7 @@ const doSearch = async ({
 const getSearchAggregations = async () => {
   try {
     const result = await client.search({
-      index: process.env.ES_INDEX || 'u4-staging-*',
+      index: process.env.ES_INDEX || 'u4-production-*',
       body: {
         query: { match_all: {} },
         aggs: aggregations,
