@@ -38,6 +38,9 @@
 
 .c-breadcrumb__item {
   white-space: nowrap;
+  span {
+    white-space: normal;
+  }
 }
 
 .c-breadcrumb__item:first-child {

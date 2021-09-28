@@ -5,6 +5,10 @@
   color: $dark-grey;
   margin-bottom: $spacing-small;
   page-break-after: avoid;
+  padding: 0 24px;
+  @include mq($from: tablet) {
+    padding: 0;
+  }
 }
 
 .c-figure__caption {
