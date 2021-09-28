@@ -6,7 +6,18 @@ import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
 import { PhotoCaptionCredit } from './PhotoCaptionCredit';
 import { PageIntro } from './PageIntro';
 
-export const Hero = ({ contentType = '', image = {}, title, text, topics, onDark = true }) => {
+export const Hero = ({
+  contentType = '',
+  image = {},
+  title,
+  text,
+  topics,
+  parentSlug = '',
+  parentTitle = '',
+  grandParentSlug = '',
+  grandParentTitle = '',
+  onDark = true,
+}) => {
   return (
     <div className="c-hero">
       {image && image.asset ? (
@@ -26,7 +37,14 @@ export const Hero = ({ contentType = '', image = {}, title, text, topics, onDark
         <div className={` ${onDark ? 'c-hero-image u-bg--dark-blue' : ''}`} />
       )}
       <div className="c-hero__content o-wrapper-medium">
-        <BreadCrumbV2 title="Topics" parentSlug="/topics" home onDark={onDark} />
+        <BreadCrumbV2
+          title={parentTitle}
+          parentSlug={parentSlug}
+          grandParentSlug={grandParentSlug}
+          grandParentTitle={grandParentTitle}
+          home
+          onDark={onDark}
+        />
         <div className="c-hero__text">
           {contentType && (
             <h4

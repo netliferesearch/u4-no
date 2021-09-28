@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DataLoader from '../../../helpers/data-loader';
-import Footer from '../../../components/general/footer/Footer';
-import Layout from '../../../components/Layout';
-import { Team } from '../../../components/general/team/Team';
-import { LinkBox } from '../../../components/general/link-box/LinkBox';
-import { FeaturedPosts } from '../../../components/front-page/FeaturedPosts';
-import { PostCarousel } from '../../../components/front-page/PostCarousel';
-import { POST_TYPE } from '../../../components/general/post/Post';
-import { TopicCardList } from '../../../components/general/topics/TopicCardList';
-import { CARD_TYPE } from '../../../components/general/blue-card/BlueCard';
-import { Hero } from '../../../components/general/Hero';
-import { PERSON_CARD_TYPE } from '../../../components/general/person/PersonCard';
-import { LearningEvents } from '../../../components/front-page/LearningEvents';
+import DataLoader from '../../helpers/data-loader';
+import Footer from '../../components/general/footer/Footer';
+import Layout from '../../components/Layout';
+import { Team } from '../../components/general/team/Team';
+import { LinkBox } from '../../components/general/link-box/LinkBox';
+import { FeaturedPosts } from '../../components/front-page/FeaturedPosts';
+import { PostCarousel } from '../../components/front-page/PostCarousel';
+import { POST_TYPE } from '../../components/general/post/Post';
+import { TopicCardList } from '../../components/general/topics/TopicCardList';
+import { CARD_TYPE } from '../../components/general/blue-card/BlueCard';
+import { Hero } from '../../components/general/Hero';
+import { PERSON_CARD_TYPE } from '../../components/general/person/PersonCard';
+import { LearningEvents } from '../../components/front-page/LearningEvents';
+import buildUrl from '../../helpers/buildUrl';
 
 const CollectionEntry = ({ data: { collection = {} } }) => {
   const {
@@ -55,6 +56,10 @@ const CollectionEntry = ({ data: { collection = {} } }) => {
             text={longTitle}
             topics={relatedTopics}
             onDark={false}
+            parentSlug={relatedTopics[0] ? buildUrl(relatedTopics[0]) : ''}
+            parentTitle={relatedTopics[0] ? relatedTopics[0].title : ''}
+            grandParentSlug={relatedTopics[0] ? '/topics' : ''}
+            grandParentTitle={relatedTopics[0] ? 'Topics' : ''}
           />
         </section>
         <hr className="u-section-underline--no-margins" />
@@ -139,7 +144,7 @@ export default DataLoader(CollectionEntry, {
             longTitle,
             _updatedAt,
           },
-        "resources": resources[]-> | [_type in ['resource',"article"]]{
+        "resources": resources[]-> | [_type in ['resource','article']]{
           _id,
           _type,
           "publicationType": publicationType->title,
