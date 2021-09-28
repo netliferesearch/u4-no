@@ -10,11 +10,12 @@ import LongformArticle from '../LongformArticle';
 import Footer from '../general/footer/Footer';
 import { PostCarousel } from '../front-page/PostCarousel';
 import { POST_TYPE } from '../general/post/Post';
-import { ArticleLead } from '../general/article-lead/ArticleLead';
+import { ArticleLead, ArticleLeadMain } from '../general/article-lead/ArticleLead';
 import { ArticleActions } from '../general/article-actions/ArticleActions';
 import { AboutAuthor } from '../blog/AboutAuthor';
 import { Disclaimers } from '../general/disclaimers/Disclaimers';
 import { Keywords } from '../general/keywords/Keywords';
+import { ToggleBlock } from '../../components/publication/ToggleBlock';
 
 const ArticleContainer = (props = {}) => {
   const {
@@ -134,8 +135,8 @@ const ArticleContainer = (props = {}) => {
           {content.length > 0 && (
             <main className="c-reader__main o-wrapper-section c-article__row">
               <div className="c-article__content c-article__col">
-                {lead || abstract ? <ArticleLead lead={lead} abstract={abstract} /> : null}
-                <LongformArticle content={content} title={title} />
+                {lead || abstract ? <ArticleLeadMain lead={lead} abstract={abstract} /> : null}
+                <LongformArticle content={content} title={title} lead={lead || abstract ? true : false}/>
                 {references.length > 0 && <ToggleBlock title="References" content={references} />}
                 {abbreviations.length > 0 && (
                   <ToggleBlock title="Abbreviations" content={abbreviations} />
