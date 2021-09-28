@@ -1,6 +1,7 @@
 import { leadText, featuredImage, slug, image } from './fields'
 import annotationsLinksOnly from './fields/annotationsLinksOnly'
 import defaultBlock from './fields/defaultBlock';
+import publicationContent from './fields/publicationContent';
 
 export default {
   title: 'Event',
@@ -60,14 +61,13 @@ export default {
 
     featuredImage,
     leadText,
-
-    {
-      name: 'content',
-      title: 'Content',
-      type: 'array',
-      of: [defaultBlock, image],
-    },
-
+    publicationContent,
+    // {
+    //   name: 'content',
+    //   title: 'Content',
+    //   type: 'array',
+    //   of: [defaultBlock, image],
+    // },
     {
       name: 'eventLink',
       title: 'URL to external event page (if any)',
