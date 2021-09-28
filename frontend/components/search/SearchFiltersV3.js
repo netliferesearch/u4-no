@@ -24,7 +24,6 @@ function toggle() {
 
 const SearchFiltersV3 = props => {
   // const { searchFilters, replaceSearchFilters, searchTotal } = props;
-  console.log('results props', props);
   const resetFilters = () => {
     const {
       replaceSearchFilters,

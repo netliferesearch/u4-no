@@ -1,5 +1,5 @@
 import Downshift from 'downshift';
-import { useRouter } from 'next/router';
+import router, { useRouter } from 'next/router';
 import queryString from 'query-string';
 import { useDispatch } from 'react-redux';
 import { React, useState, useEffect, useRef } from 'react';
@@ -62,13 +62,8 @@ export const SearchFieldV3 = props => {
       setLoading(false);
     }, 300)();
   };
-  const {
-    modifier,
-    triggerSearchMenu,
-    isOpen = false,
-    isAlwaysOpen = false,
-    router: { query: { search: searchValue = '' } = {} } = {},
-  } = props;
+  const { modifier, triggerSearchMenu, isOpen = false, isAlwaysOpen = false } = props;
+  const searchValue = router.query.search ?? '';
   if (!isOpen && !isAlwaysOpen) {
     return null;
   }
@@ -103,9 +98,7 @@ export const SearchFieldV3 = props => {
                 id: 'search',
                 name: 'search',
                 type: 'search',
-                // prevents field from forgetting input
-                defaultValue: searchValue,
-                value: undefined,
+                value: searchValue,
                 onKeyDown: event => {
                   // Prevent the user from typing more if search is initiated on
                   // page different from the search page.

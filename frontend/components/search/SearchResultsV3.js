@@ -45,7 +45,7 @@ const SearchResult = props => {
         placeholder={getPlaceholder(1)}
       />
     );
-  } else if (type === 'publication') {
+  } else if (type === 'publication' && props.publications === false) {
     const {
       title = '',
       subtitle = '',
@@ -59,6 +59,25 @@ const SearchResult = props => {
       <Post
         showImage={false}
         type={POST_TYPE.SEARCH}
+        post={_source}
+        placeholder={getPlaceholder(1)}
+      />
+    );
+  } else if (props.publications === true) {
+    const {
+      title = '',
+      subtitle = '',
+      date: { utc: utcDate = '' } = {},
+      topics: { title: topics = '' } = {},
+      url = '',
+      standfirst = '',
+      publicationType: { title: publicationTypeTitle = '' } = {},
+    } = _source;
+    console.log('testing type', POST_TYPE.PUBLICATIONS);
+    return (
+      <Post
+        showImage={false}
+        type={POST_TYPE.PUBLICATIONS}
         post={_source}
         placeholder={getPlaceholder(1)}
       />
@@ -120,7 +139,7 @@ export const SearchResultsV3 = props => {
       <ul className="c-search-results-v2__content">
         {hits.map(hit => (
           <li key={hit._id} className="c-search-results-v2__items">
-            <SearchResult {...hit} />
+            <SearchResult {...hit} publications={props.publications} />
           </li>
         ))}
       </ul>

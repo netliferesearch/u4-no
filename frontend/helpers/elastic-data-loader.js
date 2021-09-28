@@ -257,12 +257,12 @@ const doSearch = async ({
           'isBasicGuidePresent',
           'publicationType',
           'filedUnderTopicNames',
+          'pdfFile',
+          'legacypdf',
         ],
       },
     });
     console.log('Elastic data loader received data', { query, result });
-    console.log('SearchPage');
-
     return result;
   } catch (e) {
     console.error('Elasticsearch query failed', e);

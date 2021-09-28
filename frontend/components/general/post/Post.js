@@ -8,6 +8,7 @@ import { getPostType } from '../../../helpers/getRouteByType';
 import PropTypes from 'prop-types';
 import TextClamp from 'react-string-clamp';
 import { imgLoader } from '../../../helpers/imgloader';
+import { Document, Page } from 'react-pdf/build/entry.noworker';
 
 export const POST_TYPE = {
   SMALL: 'small', //collapsable in mobile view/normal in desktop
@@ -16,6 +17,7 @@ export const POST_TYPE = {
   LARGE: 'large', //large in desktop, full with image in mobile
   CARD: 'card', //render BlueCard onstead of Post
   SEARCH: 'search', //displaying in search results
+  PUBLICATIONS: 'publications', //displaying in publications page results
 };
 const ellipsizeLines = {
   [POST_TYPE.SMALL]: 4,
@@ -23,6 +25,7 @@ const ellipsizeLines = {
   [POST_TYPE.PUBLICATION]: 3,
   [POST_TYPE.LARGE]: 33,
   [POST_TYPE.SEARCH]: 2,
+  [POST_TYPE.PUBLICATIONS]: 2,
 };
 
 const standFirstLines = {
@@ -31,6 +34,7 @@ const standFirstLines = {
   [POST_TYPE.PUBLICATION]: 3,
   [POST_TYPE.LARGE]: 33,
   [POST_TYPE.SEARCH]: 4,
+  [POST_TYPE.PUBLICATIONS]: 4,
 };
 const renderImage = type => {
   switch (type) {
@@ -42,11 +46,19 @@ const renderImage = type => {
 };
 
 export const Post = ({ post, type, placeholder, showImage = true }) => {
-  //console.log(post)
+  console.log('PDF', post.pdfFile, post.legacypdf);
+  // console.log('PDF LEGACY', legacypdf);
   return (
     <div className={`c-post ${type} ${type === 'large' ? 'u-sticky' : ''}`}>
       <LinkToItem type={post._type} slug={post.slug || post.url}>
         <a className="c-post__link u-fake-anchor">
+          {type === 'publications' && post.legacypdf && (
+            <div className="pdf-preview">
+              <Document file={post.pdfFile ? post.pdfFile.asset : post.legacypdf.asset}>
+                <Page pageNumber={1} />
+              </Document>
+            </div>
+          )}
           {showImage && post.imageUrl && renderImage(type) ? (
             <div className="c-post__post-image u-overlay--light-blue">
               <Image
