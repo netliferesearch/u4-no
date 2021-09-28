@@ -20,6 +20,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
   padding: 0;
 }
 
@@ -33,6 +34,10 @@
     color: $brand-main;
     font-weight: 700;
   }
+}
+
+.c-breadcrumb__item {
+  white-space: nowrap;
 }
 
 .c-breadcrumb__item:first-child {

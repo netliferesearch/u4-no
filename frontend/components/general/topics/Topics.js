@@ -32,14 +32,10 @@ export const Topics = ({ title = '', topics = [], hr = false, onDark = false }) 
               </a>
               {/* <span>{`${topics.length > 1 && index + 1 < topics.length ? ', ' : ''}`}</span> */}
             </div>
-          ) : !topic.slug && (topic.title || topic) ? (
+          ) : !topic.slug && topic.title ? (
             <div key={index} className="c-btn--tag">
-              <a
-                href={`/topics/${spacesToDash(topic.title || topic)}`}
-                className="topic--plain"
-                key={index}
-              >
-                {topic.title || topic}
+              <a href={`/topics/${spacesToDash(topic.title)}`} className="topic--plain" key={index}>
+                {topic.title}
               </a>
             </div>
           ) : null

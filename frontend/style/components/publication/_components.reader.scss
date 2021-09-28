@@ -127,6 +127,22 @@
 .c-reader-header__section {
   background-color: $blue;
   padding: 6px 0;
+  .c-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .c-arrow-contents {
+    margin-left: 6px;
+    transform: rotate(0deg);
+    transition: $global-transition;
+  }
+  .c-contents__button--active {
+    .c-arrow-contents {
+      transform: rotate(180deg);
+      transition: $global-transition;
+    }
+  }
 }
 
 //Scroll to top button:

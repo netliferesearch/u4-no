@@ -31,23 +31,25 @@
   }
 
   .c-longform-grid__standard {
-    padding: 0;
-    //padding: 0 $spacing;
+    padding: 0 $spacing;
+    //padding: 0;
     grid-column: 5 / 6;
+    //word-break: break-all;
     @include mq($from: tablet) {
       padding: 0;
+      //word-break: normal;
     }
   }
 
   .c-longform-grid__medium {
-    //padding: 0 $spacing;
-    padding: 0;
+    padding: 0 $spacing;
+    //padding: 0;
     grid-column: 4 / 7;
   }
 
   .c-longform-grid__large {
-    //padding: 0 $spacing;
-    padding: 0;
+    padding: 0 $spacing;
+    //padding: 0;
     grid-column: 3 / 8;
   }
 
@@ -217,5 +219,8 @@ h5.c-longform-grid__standard {
 ol.c-longform-grid__standard,
 ul.c-longform-grid__standard {
   //list-style-position: inside;
-  padding-left: 24px;
+  padding-left: 48px;
+  @include mq($from: tablet) {
+    padding-left: 24px;
+  }
 }

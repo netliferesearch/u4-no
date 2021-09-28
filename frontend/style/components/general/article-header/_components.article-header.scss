@@ -73,6 +73,9 @@
     max-width: 289px;
     height: auto !important;
   }
+  .ReactPDF__Page__canvas {
+    margin: 0 auto;
+  }
   .ReactPDF__Page__textContent {
     visibility: hidden;
     display: none;

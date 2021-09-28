@@ -4,6 +4,7 @@ import { Scrollchor } from 'react-scrollchor';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateReadingProgress } from '../../helpers/redux-store';
 import { ToTop } from '../icons/ToTop';
+import { useOnClickOutside } from '../../helpers/hooks';
 
 /**
  * V2 - Contents components to be used in Reader component
@@ -13,7 +14,6 @@ export const ContentsMobile = ({ title = '', content = [] }) => {
   const [activeItem, setActiveItem] = useState();
   const titleObjects = buildTitleObjects(content);
   const readingProgressId = useSelector(state => state.readingProgressId);
-console.log(readingProgressId)
   const dispatch = useDispatch();
   const onItemSelected = e => {
     const hash = e.target.hash.substring(1);
@@ -38,7 +38,6 @@ console.log(readingProgressId)
               return (
                 <li
                   key={id}
-                  id={id}
                   className={`c-contents__list-item--mobile u-text--grey ${
                     activeItem === id ? 'c-contents__list-item--active' : ''
                   }`}
@@ -46,7 +45,7 @@ console.log(readingProgressId)
                   <p className="c-contents__subtitle u-secondary-heading u-secondary-h3">
                     <Scrollchor
                       to={`#${id}`}
-                      //animate={{ offset: -120 }}
+                      animate={{ offset: -120 }}
                       beforeAnimate={onItemSelected}
                       disableHistory
                     >
