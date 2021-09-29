@@ -23,7 +23,7 @@ const aggregations = {
   },
   publicationTypes: {
     terms: {
-      field: 'publicationTypeTitle',
+      field: 'publicationTypeTitle.keyword',
       size: 100,
     },
   },
@@ -124,7 +124,7 @@ const doSearch = async ({
 
   try {
     const result = await client.search({
-      index: process.env.ES_INDEX || 'u4-production-*',
+      index: process.env.ES_INDEX || 'u4-staging-*',
       body: {
         query: {
           function_score: {
@@ -257,8 +257,8 @@ const doSearch = async ({
           'isBasicGuidePresent',
           'publicationType',
           'filedUnderTopicNames',
-          'pdfFile',
-          'legacypdf',
+          'pdfFileUrl',
+          'legacypdfFileUrl',
         ],
       },
     });
@@ -272,8 +272,10 @@ const doSearch = async ({
 
 const getSearchAggregations = async () => {
   try {
+    console.log('process.env.ES_INDEX', process.env.ES_INDEX);
+    console.log('process.env.ES_INDEX', process.env.NEXT_PUBLIC_ES_INDEX);
     const result = await client.search({
-      index: process.env.ES_INDEX || 'u4-production-*',
+      index: process.env.ES_INDEX || 'u4-staging-*',
       body: {
         query: { match_all: {} },
         aggs: aggregations,
