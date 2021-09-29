@@ -73,9 +73,9 @@ iframe {
 }
 
 .u-hidden--tablet {
-  display: none;
+  display: none !important;
   @include mq($from: tablet) {
-    display: block;
+    display: block !important;
   }
 }
 

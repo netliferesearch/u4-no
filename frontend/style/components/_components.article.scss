@@ -17,7 +17,11 @@
     padding: 0;
   }
 }
-
+.c-article__lead--main.c-longform {
+  .c-longform-grid__standard {
+    padding: 0 24px;
+  }
+}
 
 .c-article__lead--center {
   text-align: center;
@@ -68,8 +72,8 @@
   font-weight: normal;
 }
 
-.c-article_mainPoints-lastWords {
-}
+// .c-article_mainPoints-lastWords {
+// }
 
 .c-article_mainPoints-list {
   list-style: none;

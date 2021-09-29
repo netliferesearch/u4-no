@@ -20,6 +20,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
   padding: 0;
 }
 
@@ -32,6 +33,13 @@
   &:active {
     color: $brand-main;
     font-weight: 700;
+  }
+}
+
+.c-breadcrumb__item {
+  white-space: nowrap;
+  span {
+    white-space: normal;
   }
 }
 

@@ -1,8 +1,9 @@
 .c-article-sidebar {
-  background-color: $light-grey;
+  background-color: white;
   padding: 16px 20px 24px 16px;
 
   @include mq($from: tablet) {
+    background-color: $light-grey;
     margin-top: 64px;
     margin-bottom: 64px;
   }

@@ -106,14 +106,18 @@
   overflow: auto;
   background-color: $lighter-blue;
   padding: 0 32px;
+  margin: 0 -24px;
 
   .c-longform-grid__standard {
+    padding: 0;
+  }
+
+  p.c-longform-grid__standard,
+  ul.c-longform-grid__standard {
     font-size: 16px;
     line-height: 24px;
-
-    // {
-    //   font-size: 24px;
-    //   line-height: 32px;
-    // }
+  }
+  @include mq($from: tablet) {
+    margin: 0;
   }
 }

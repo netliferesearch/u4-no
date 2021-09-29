@@ -22,17 +22,23 @@
   }
 }
 
-.c-article-header__img { 
+.c-article-header__img {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
-  @include mq($from: tablet) {
-    margin-top: 48px;
-  }
+  margin: 0 -24px;
   .c-credit {
     align-self: flex-start;
+    padding: 0 24px 24px 24px;
   }
+  @include mq($from: tablet) {
+    margin: 48px 0 0 0;
+    .c-credit {
+      padding: 0;
+    }
+  }
+
 }
 
 .c-article-header__meta {
@@ -45,14 +51,21 @@
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  margin: 24px 0 40px 0;
+  margin: 24px 0;
   .c-btn {
     margin: 0 24px 24px 0;
   }
   @include mq($from: tablet) {
+    margin: 24px 0 40px 0;
     .c-btn {
       margin: 0 24px 0 0;
     }
+  }
+}
+.c-article__additional-content .c-article__btn-row {
+  margin: 0;
+  @include mq($from: tablet) {
+    margin: 24px 0 40px 0;
   }
 }
 
@@ -65,6 +78,9 @@
     width: 100%;
     max-width: 289px;
     height: auto !important;
+  }
+  .ReactPDF__Page__canvas {
+    margin: 0 auto;
   }
   .ReactPDF__Page__textContent {
     visibility: hidden;

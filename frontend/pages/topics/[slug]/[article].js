@@ -90,17 +90,6 @@ const TopicArticleEntry = props => {
       <Footer />
       <div id="modal" />
     </Layout>
-    // <LongformArticleContainer
-    //   BreadCrumbComponent={
-    //     <BreadCrumb data={{ _type: 'topics', slug: { current: props.data.slug.current }, title }} />
-    //   }
-    //   data={{ content }}
-    //   headComponentConfigOverride={{
-    //     title: firstTitleInContent(content),
-    //     description: firstParagraphInContent(content),
-    //     url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
-    //   }}
-    // />
   );
 };
  
