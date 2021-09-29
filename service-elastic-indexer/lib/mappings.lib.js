@@ -3,7 +3,7 @@ const elasticsearch = require('elasticsearch');
 
 const client = new elasticsearch.Client({
   host: process.env.ES_HOST,
-  apiVersion: '7.2',
+  apiVersion: '7.7',
 });
 
 // setup mappings for each language and each type
@@ -28,9 +28,13 @@ const setupMappings = async ({ types = [], languages = [] }) => {
       if (indexExists) {
         continue; // skip iteration
       }
+      console.log('we are creating indexes', index)
       const analyzer = analyzers[index];
       const result = await client.indices.create({
         index,
+        //this filed will be removed in elastic search 8.0; no types will be included, bigger changes will be required
+        // https://www.elastic.co/guide/en/elasticsearch/reference/7.3/removal-of-types.html
+        include_type_name:true,
         body: {
           settings: {
             analysis: {
@@ -75,12 +79,18 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                   type: 'text',
                   analyzer,
                 },
-
                 relatedPersons: {
                   type: 'keyword',
-                },
+
+                  },
                 publicationTypeTitle: {
-                  type: 'keyword',
+                  "type": "text",
+                  fielddata:true,
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword"
+                    }
+                  }
                 },
                 // publications can be filed under multiple topic titles.
                 topicTitles: {

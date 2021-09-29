@@ -107,6 +107,8 @@ async function processPublication({ document: doc, allDocuments }) {
     authors = [],
     editors = [],
     language: languageCode,
+    pdfFile:  { asset: pdfFileAsset } = {},
+    legacypdf:  { asset: legacypdfAsset } = {},
     ...restOfDoc
   } = doc;
   console.log(doc.title);
@@ -128,6 +130,14 @@ async function processPublication({ document: doc, allDocuments }) {
   });
   const relatedAuthors = expand({
     references: authors,
+  });
+  const pdfFileUrl = expand({
+    reference: pdfFileAsset,
+    process: ({ url }) => url,
+  });
+  const legacypdfFileUrl = expand({
+    reference: legacypdfAsset,
+    process: ({ url }) => url,
   });
   const relatedPersons = relatedAuthors.concat(relatedEditors);
   const filedUnderTopics = topicsThatRelateToPublication.concat(publicationRelatesToTopics);
@@ -181,6 +191,8 @@ async function processPublication({ document: doc, allDocuments }) {
     publicationType,
     publicationTypeTitle,
     languageName,
+    pdfFileUrl,
+    legacypdfFileUrl,
     filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
     filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
     relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
