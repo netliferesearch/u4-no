@@ -16,13 +16,21 @@ const columnsByType = {
   [POST_TYPE.CARD]: 3,
 };
 
-export const PostCarousel = ({ posts, type, buttonPath, title, underTitle, minPosts }) => {
+export const PostCarousel = ({
+  posts,
+  type,
+  buttonPath,
+  title,
+  underTitle,
+  minPosts,
+  publications,
+}) => {
   const responsive = {
     0: { items: 1.2 },
     568: { items: 2.2 },
     980: { items: columnsByType[type] },
   };
-
+  console.log('is publicatiosn');
   //console.log('posts', posts);
   const items =
     posts &&
@@ -36,7 +44,13 @@ export const PostCarousel = ({ posts, type, buttonPath, title, underTitle, minPo
         />
       ) : (
         <div>
-          <Post key={post._id} type={type} post={post} placeholder={getPlaceholder(index)} />
+          <Post
+            key={post._id}
+            type={type}
+            post={post}
+            placeholder={getPlaceholder(index)}
+            publications
+          />
         </div>
       )
     );

@@ -61,11 +61,11 @@ export const menuItems = [
   {
     label: 'Publications',
     id: 'publications',
-    slug: SEARCH_PUBLICATIONS,
+    slug: '/publications',
   },
   {
     label: 'Search',
     id: 'search',
-    //slug: SEARCH,
+    // slug: SEARCH,
   },
 ];

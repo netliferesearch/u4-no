@@ -1,0 +1,85 @@
+.c-publications-index {
+  font-family: $font-sans;
+  background-color: $white;
+  font-size: $font-size-tiny;
+  margin-bottom: 64px;
+
+  .o-wrapper-section {
+    max-width: 1032px;
+  }
+  .o-wrapper {
+    padding: 0 $spacing;
+  }
+
+  h2 {
+    margin-top: 32px;
+    margin-bottom: 12px;
+    @include mq($from: tablet) {
+      margin-top: 72px;
+      margin-bottom: 16px;
+    }
+  }
+
+  h6 {
+    font-family: $font-sans;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0;
+    display: inline-block;
+  }
+
+  .u-section-underline--no-margins {
+    width: 100%;
+    margin: 0;
+    @include mq($from: tablet) {
+      width: 110%;
+      margin: 0 -24px;
+    }
+  }
+
+  .c-blog-index__intro {
+    font-family: $font-serif;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+    color: $mid-grey;
+    width: 100%;
+    max-width: 536px;
+    padding-right: $spacing;
+    margin: 0 0 64px 0;
+    @include mq($from: tablet) {
+      width: calc(100% - 216px);
+      margin: 0 0 72px 0;
+    }
+  }
+
+  .c-blog-index-item__intro {
+    font-family: $font-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: $mid-grey;
+    margin-bottom: $spacing;
+  }
+
+  .c-blog-index__date {
+    color: $mid-grey;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 400;
+    margin: 0;
+  }
+  .c-about-author--short {
+    margin: 0;
+  }
+  .c-blog-index__name {
+    color: $dark-grey;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 400;
+    margin: 0;
+  }
+  .o-layout__item {
+    padding-left: 0;
+  }
+}

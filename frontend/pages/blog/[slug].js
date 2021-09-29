@@ -12,7 +12,7 @@ import { ArticleHeader } from '../../components/general/article-header/ArticleHe
 import { ArticleSidebar } from '../../components/general/article-sidebar/ArticleSidebar';
 import { PostCarousel } from '../../components/front-page/PostCarousel';
 import { POST_TYPE } from '../../components/general/post/Post';
-import { PublicationAdditionalInfo } from '../../components/publication/PublicationAdditionalInfo'
+import { PublicationAdditionalInfo } from '../../components/publication/PublicationAdditionalInfo';
 import LongformArticle from '../../components/LongformArticle';
 
 const littlefootActivator = () => {
@@ -61,13 +61,11 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
           <ArticleHeader data={blogEntry} />
         </section>
         <hr className="u-section-underline--no-margins" />
-        <section
-          className="o-wrapper-medium o-wrapper-mobile-full"
-        >
-            <div className="c-article__row">
-              <div className="content c-article__col">
-                <LongformArticle content={content} title={title} />
-                  {/* <div className="c-longform c-blog-entry__main-text">
+        <section className="o-wrapper-medium o-wrapper-mobile-full">
+          <div className="c-article__row">
+            <div className="content c-article__col">
+              <LongformArticle content={content} title={title} />
+              {/* <div className="c-longform c-blog-entry__main-text">
                     <BlockContent blocks={content} serializers={serializers} />
                     <div className="footnotes">
                       <ol>
@@ -82,11 +80,11 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
                       </ol>
                     </div>
                   </div> */}
-              </div>
-              <div className="c-article__side c-article__col">
-                <ArticleSidebar data={blogEntry} />
-              </div>
             </div>
+            <div className="c-article__side c-article__col">
+              <ArticleSidebar data={blogEntry} />
+            </div>
+          </div>
         </section>
 
         <PublicationAdditionalInfo data={blogEntry} />

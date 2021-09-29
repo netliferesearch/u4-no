@@ -22,7 +22,7 @@ const Search = ({ data = {}, url = '' }) => {
   if (isPublicationsPage >= 0) {
     publications = true;
   }
-  // console.log('publications', data);
+  console.log('publications', data);
   if (!data) return <div />;
   return (
     <Layout
