@@ -50,7 +50,7 @@ export const FormModal = props => {
       >
         <div className="c-modal__area c-modal--form" ref={ref}>
           <div className="c-modal__top">
-            <h3 className="c-modal__title">{title}</h3>
+            <h3 className="u-secondary-heading u-secondary-h2 u-text--dark-blue">{title}</h3>
             <CloseButton onClick={e => setOpen(false)} />
           </div>
           <hr className="u-section-underline--no-margins" />
