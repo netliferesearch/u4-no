@@ -45,7 +45,7 @@ const GeneralArticle = props => {
 export default wrapInRedux(
   DataLoader(GeneralArticle, {
     queryFunc: ({ query: { slug = '' } }) => ({
-      sanityQuery: '*[slug.current == $slug][0]{..., topics[]->{ _id, title, slug }}',
+      sanityQuery: '*[slug.current == $slug][0]{..., topics[]->{ _id, title, slug }, "articleType": articleType[0]->title }',
       param: { slug },
     }),
     materializeDepth: 2,

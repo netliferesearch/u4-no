@@ -40,7 +40,7 @@ const ArticleContainer = (props = {}) => {
       featuredImage = {},
       relatedUrl = {},
       publicationType = {},
-      articleType = [],
+      articleType = '',
       keywords = [],
       topics = [],
       pdfFile = {},
