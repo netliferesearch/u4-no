@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import LongformArticle from '../LongformArticle';
-import PdfViewer from '../PdfViewer';
+//import PdfViewer from '../PdfViewer';
 import { ReaderHeader } from './ReaderHeader';
 import { ToggleBlock } from './ToggleBlock';
 import { useScrollInfo } from '../../helpers/useScrollInfo';
@@ -68,13 +68,13 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
           </main>
         )}
 
-        {!content.length && legacypdf.asset && (
+        {/* {!content.length && legacypdf.asset && (
           <main className="c-reader__main o-wrapper-section c-article__row">
             <div className="c-article-v2 c-article-v2__pdf-viewer o-wrapper-section">
               <PdfViewer file={{ url: legacypdf.asset.url }} />
             </div>
           </main>
-        )}
+        )} */}
       </section>
       {acknowledgements.length > 0 || methodology.length > 0 || notes || partners.length > 0 ? (
         <AdditionalInfo data={data} shortversion={shortversion} />
