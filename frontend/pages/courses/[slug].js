@@ -41,20 +41,26 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             <p className="c-longform-grid__standard">
               <a href="/online-courses">Online courses</a>
             </p>
-            <h2 className="c-longform-grid__standard">{title}</h2>
-            {lead && <p className="c-longform-grid__standard">{lead}</p>}
-            {false && startDate.utc && (
-              <p className="c-longform-grid__standard">
-                {startDate.utc.split('T')[0]} {endDate.utc && `${endDate.utc.split('T')[0]}`}
-              </p>
-            )}
-            {false && language && (
-              <p className="c-longform-grid__standard">
-                Language: {languageName({ langcode: language })}
-              </p>
-            )}
+            <div dir={language === 'ar_AR' ? 'rtl' : ''}>
+              <h2 className="c-longform-grid__standard">{title}</h2>
+              {lead && <p className="c-longform-grid__standard">{lead}</p>}
+              {false && startDate.utc && (
+                <p className="c-longform-grid__standard">
+                  {startDate.utc.split('T')[0]} {endDate.utc && `${endDate.utc.split('T')[0]}`}
+                </p>
+              )}
+              {false && language && (
+                <p className="c-longform-grid__standard">
+                  Language: {languageName({ langcode: language })}
+                </p>
+              )}
+            </div>
           </div>
-          {content ? <ServiceArticle blocks={content} /> : null}
+          {content && (
+            <div dir={language === 'ar_AR' ? 'rtl' : ''}>
+              <ServiceArticle blocks={content} />
+            </div>
+          )}
 
           {courseType !== 15 && courseType !== 16 && (
             <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
