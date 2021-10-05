@@ -53,6 +53,24 @@ export default {
       ],
     },
     {
+      name: 'headsUp',
+      title: 'Heads up',
+      description:
+        'Important message to the reader, like "The content in this publication might be outdated"',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          lists: [],
+          styles: [],
+          marks: {
+            // Only allow these decorators
+            decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
+          },
+        },
+      ],
+    },
+    {
       name: 'relatedContent',
       title: 'Recommended and related content',
       description: 'Add related content, max 3 will be displayed in the frontend',
