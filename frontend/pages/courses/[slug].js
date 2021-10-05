@@ -24,8 +24,11 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
     content = [],
     contact = [],
     courseType = 18,
-    coordinator = [],
-    developer = [],
+    cost = '', 
+    duration = '', 
+    commitment = '',
+    //coordinator = [],
+    expert = [],
   } = course;
 
   return (
@@ -61,16 +64,10 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
         <section className="o-wrapper-medium u-bottom-margin--24">
           <hr className="u-section-underline--no-margins" />
           <div className="o-grid-container--2">
-            {developer.length > 0 && (
-              <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading="Experts" members={developer} />
+            {expert.length > 0 && (
+              <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading="Experts" members={expert} />
             )}
-            {coordinator.length > 0 ? (
-              <Team
-                type={PERSON_CARD_TYPE.IMAGE_TOP}
-                heading="Coordinators"
-                members={coordinator}
-              />
-            ) : contact.length > 0 ? (
+            {contact.length > 0 ? (
               <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading="Coordinators" members={contact} />
             ) : null}
           </div>
@@ -156,7 +153,7 @@ export default DataLoader(CoursePage, {
            slug,
            bio
          },
-         "developer": developer[]->{
+         "expert": expert[]->{
           _id,
            title,
            "image": image.asset->{"asset": { "url": url}},
