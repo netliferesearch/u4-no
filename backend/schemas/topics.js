@@ -9,7 +9,7 @@ import {
   standfirst,
   box,
   vimeoVideo,
-  tableBlock
+  tableBlock,
 } from './fields';
 import annotationsLinksOnly from './fields/annotationsLinksOnly';
 
@@ -224,7 +224,8 @@ export default {
     slug,
     {
       name: 'resources',
-      description: 'Relevant resources for this topic page',
+      title: 'Featured resources',
+      description: 'Featured resources for this topic page',
       type: 'array',
       of: [
         {
@@ -238,6 +239,38 @@ export default {
             },
             {
               type: 'blog-post',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'further_resources',
+      title: 'Further resources',
+      description: 'Further resources for this topic page',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'article',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'collections',
+      title: 'Resource collection',
+      description: 'Resource collections for this topic page',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'collection',
             },
           ],
         },

@@ -10,7 +10,10 @@ const annotations = [
         name: 'href',
         title: 'URL',
         type: 'url',
-        validation: false,
+        //validation: false,
+        validation: Rule => Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel']
+        })
       },
     ],
   },
