@@ -10,7 +10,9 @@ const annotationsLinksOnly = [
         name: 'href',
         title: 'URL',
         type: 'url',
-        validation: false,
+        validation: Rule => Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel']
+        })
       },
     ],
   },
