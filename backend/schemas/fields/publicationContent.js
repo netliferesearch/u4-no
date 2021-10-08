@@ -40,6 +40,7 @@ const content = {
         decorators: [
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
+          { "title": "Strike", "value": "strike-through" },
           {
             title: 'Subscript',
             value: 'sub',
@@ -189,7 +190,7 @@ const content = {
           }
         }
       }
-    },    
+    },
   ],
 };
 
