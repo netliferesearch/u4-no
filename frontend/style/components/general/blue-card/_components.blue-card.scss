@@ -54,6 +54,36 @@
   }
 }
 
+.c-blue-card--dark {
+  background-color: $dark-blue;
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  .c-blue-card__link,
+  .c-blue-card__link h4,
+  .c-blue-card__lead {
+    color: $white;
+  }
+  .c-blue-card__p--topic {
+    color: $light-grey;
+  }
+  .c-events-location-icon,
+  .c-events-calendor-icon {
+    fill: $white;
+  }
+  .c-arrow-next-svg path {
+    stroke: $white;
+  }
+  &:hover {
+    background-color: $brand-main;
+    -webkit-box-shadow: -9px 9px 0px 0px $highlight-blue !important;
+    -moz-box-shadow: -9px 9px 0px 0px $highlight-blue !important;
+    box-shadow: -9px 9px 0px 0px $highlight-blue;
+  }
+}
+
 .c-blue-card__p--topic {
   margin-top: 12px;
   margin-bottom: 0;

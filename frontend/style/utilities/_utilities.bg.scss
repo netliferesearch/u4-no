@@ -6,6 +6,20 @@
   background-color: $lighter-blue;
 }
 
+.u-bg--light-blue--top {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 192px;
+    background-color: $light-blue;
+    z-index: -1;
+  }
+}
+
 .u-bg--light-blue {
   background: $light-blue;
 }

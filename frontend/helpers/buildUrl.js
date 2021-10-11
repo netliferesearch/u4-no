@@ -30,6 +30,8 @@ const BuildUrl = ({ _type = 'notype', slug = {} }) => {
     return `/${actualSlug}`;
   } else if (_type === 'blog-post') {
     return `/blog/${actualSlug}`;
+  } else if (_type === 'collection') {
+    return `/collections/${actualSlug}`;
   }
   return actualSlug;
 };

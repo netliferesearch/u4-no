@@ -8,6 +8,16 @@ export const menuItems = [
     items: [],
   },
   {
+    label: 'Publications',
+    id: 'publications',
+    slug: SEARCH_PUBLICATIONS,
+  },
+  {
+    label: 'The U4 Blog',
+    id: 'blog',
+    slug: '/blog',
+  },
+  {
     label: 'Learning & events',
     id: 'learning',
     headline: 'Anti-corruption training for development practitioners',
@@ -52,16 +62,6 @@ export const menuItems = [
         items: [{ label: 'Contact', slug: '/about-u4' }],
       },
     ],
-  },
-  {
-    label: 'The U4 Blog',
-    id: 'blog',
-    slug: '/blog',
-  },
-  {
-    label: 'Publications',
-    id: 'publications',
-    slug: SEARCH_PUBLICATIONS,
   },
   {
     label: 'Search',

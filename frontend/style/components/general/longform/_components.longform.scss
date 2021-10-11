@@ -49,8 +49,10 @@
 
   .c-longform-grid__large {
     padding: 0 $spacing;
-    //padding: 0;
     grid-column: 3 / 8;
+    @include mq($from: tablet) {
+      padding: 0;
+    }
   }
 
   .c-longform-grid__large-right {
@@ -59,9 +61,12 @@
   }
 
   .c-longform-grid__larger {
-    //padding: 0 $spacing;
-    padding: 0;
+    padding: 0 $spacing;
     grid-column: 2 / 9;
+    @include mq($from: tablet) {
+      padding: 0;
+      //word-break: normal;
+    }
   }
 
   .c-longform-grid__half {
@@ -212,7 +217,7 @@ h5.c-longform-grid__standard {
   font-size: 15px;
   line-height: 1.33;
   padding: 0 24px;
-  margin: 0 auto;
+  // margin: 0 auto;
   @include mq($from: tablet) {
     padding-left: 0;
     padding-right: 0;

@@ -6,7 +6,6 @@ import { getPostType } from '../../../helpers/getRouteByType';
 import { CalendorIcon } from '../../icons/CalendorIcon';
 import { ArrowNext } from '../../icons/ArrowNext';
 import TextClamp from 'react-string-clamp';
-import { POST_TYPE } from '../post/Post';
 
 export const CARD_TYPE = {
   FULL: '1-col',
@@ -19,7 +18,26 @@ export const CARD_TYPE = {
 export const CONTENT_BY_TYPE = {
   COURSE: { id: 'course', label: 'Register', slug: 'courses/' },
   TOPIC: { id: 'topic', label: '', slug: 'topics/' },
+  COLLECTION: { id: 'collection', label: '', slug: 'collections/' },
   PUBLICATION: { id: 'publication', label: 'View More', slug: 'publications/' },
+};
+
+export const BlueCard = ({ post, type, content = {} }) => {
+  return (
+    <LinkToItem type={post._type} slug={post.slug}>
+      <a className={`c-blue-card c-blue-card--${type} c-blue-card--${post._type  === CONTENT_BY_TYPE.COLLECTION.id ? 'dark' : 'light'}`}>
+        {type === CARD_TYPE.TOPIC ? <TopicContent post={post} /> : null}
+        {post._type === CONTENT_BY_TYPE.COLLECTION.id ? <CollectionContent post={post} /> : null}
+        {content.id === CONTENT_BY_TYPE.PUBLICATION.id &&
+        !(post._type === CONTENT_BY_TYPE.COLLECTION.id) ? (
+          <PublicationContent post={post} />
+        ) : null}
+        {content.id === CONTENT_BY_TYPE.COURSE.id ? (
+          <CourseContent post={post} content={CONTENT_BY_TYPE.COURSE} />
+        ) : null}
+      </a>
+    </LinkToItem>
+  );
 };
 
 export const TopicContent = ({ post = {} }) => (
@@ -41,6 +59,26 @@ export const TopicContent = ({ post = {} }) => (
         </p>
       )}
     </div>
+  </>
+);
+
+export const CollectionContent = ({ post = {} }) => (
+  <>
+    <div className="c-blue-card__top-content">
+      {getPostType(post) && (
+        <h4 className="c-blue-card__type u-secondary-heading u-secondary-h4 u-detail--blue--small">
+          {getPostType(post)}
+        </h4>
+      )}
+      {post.title && <h4 className="c-blue-card__heading u-primary-heading">{post.title}</h4>}
+    </div>
+    {/* <div>
+      {post._updatedAt && (
+        <p className="c-blue-card__date u-body--small">
+          {post._updatedAt && 'Updated ' + dateToString({ start: post._updatedAt })}
+        </p>
+      )}
+    </div> */}
   </>
 );
 
@@ -119,17 +157,3 @@ export const CourseContent = ({ post = {}, content = {} }) => (
     </div>
   </>
 );
-
-export const BlueCard = ({ post, type, content = {} }) => {
-  return (
-    <LinkToItem type={post._type} slug={post.slug}>
-      <a className={`c-blue-card c-blue-card--${type}`}>
-        {type === CARD_TYPE.TOPIC ? <TopicContent post={post} /> : null}
-        {content.id === CONTENT_BY_TYPE.PUBLICATION.id ? <PublicationContent post={post} /> : null}
-        {content.id === CONTENT_BY_TYPE.COURSE.id ? (
-          <CourseContent post={post} content={CONTENT_BY_TYPE.COURSE} />
-        ) : null}
-      </a>
-    </LinkToItem>
-  );
-};

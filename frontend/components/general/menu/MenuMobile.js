@@ -110,38 +110,41 @@ export const MenuMobile = props => {
               </ul>
             )}
           </Accordion>
-          <Accordion
-            trigger={
-              <div className="c-menu--mobile__trigger-box">
-                <MainMenuMobileItem item={menuItems[1]} />
-                <ArrowDownCollapsible />
-              </div>
-            }
-          >
-            <ul className="c-menu__list">
-              {menuItems[1].sections.map((s, index) =>
-                s.items.map((i, index) => <SubMenuItem key={index} label={i.label} slug={i.slug} />)
-              )}
-            </ul>
-          </Accordion>
-          <Accordion
-            trigger={
-              <div className="c-menu--mobile__trigger-box">
-                <MainMenuMobileItem item={menuItems[2]} />
-                <ArrowDownCollapsible />
-              </div>
-            }
-          >
-            <ul className="c-menu__list">
-              {menuItems[2].sections.map((s, index) =>
-                s.items.map((i, index) => <SubMenuItem key={index} label={i.label} slug={i.slug} />)
-              )}
-            </ul>
-          </Accordion>
           <div className="c-menu--mobile__trigger-box">
-            <MainMenuMobileItem item={menuItems[3]} />
+            <MainMenuMobileItem item={menuItems[1]} />
           </div>
-          <SocialFollow items={socialItems} />
+          <div className="c-menu--mobile__trigger-box">
+            <MainMenuMobileItem item={menuItems[2]} />
+          </div>
+          <Accordion
+            trigger={
+              <div className="c-menu--mobile__trigger-box">
+                <MainMenuMobileItem item={menuItems[3]} />
+                <ArrowDownCollapsible />
+              </div>
+            }
+          >
+            <ul className="c-menu__list">
+              {menuItems[3].sections.map((s, index) =>
+                s.items.map((i, index) => <SubMenuItem key={index} label={i.label} slug={i.slug} />)
+              )}
+            </ul>
+          </Accordion>
+          <Accordion
+            trigger={
+              <div className="c-menu--mobile__trigger-box">
+                <MainMenuMobileItem item={menuItems[4]} />
+                <ArrowDownCollapsible />
+              </div>
+            }
+          >
+            <ul className="c-menu__list">
+              {menuItems[4].sections.map((s, index) =>
+                s.items.map((i, index) => <SubMenuItem key={index} label={i.label} slug={i.slug} />)
+              )}
+            </ul>
+          </Accordion>
+          <SocialFollow footer items={socialItems} />
         </div>
       ) : null}
       {searchOpen ? (
