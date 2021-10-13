@@ -208,23 +208,31 @@ export const toggleLoadingScreen = () => dispatch =>
 
 export const actionSetSearchVisibility = value => ({ type: actionTypes.CLEAR_SEARCH_STATE, value });
 
-export const updateSearchSorting = sortName => dispatch =>
-  dispatch({ type: actionTypes.SEARCH_UPDATE_SORT, sortName });
+export const updateSearchSorting = sortName => {
+  return { type: actionTypes.SEARCH_UPDATE_SORT, sortName };
+};
 
-export const addSearchFilter = searchFilter => dispatch =>
-  dispatch({ type: actionTypes.SEARCH_ADD_FILTER, searchFilter });
+export const addSearchFilter = searchFilter => {
+  return { type: actionTypes.SEARCH_ADD_FILTER, searchFilter };
+};
 
-export const removeSearchFilter = searchFilter => dispatch =>
-  dispatch({ type: actionTypes.SEARCH_REMOVE_FILTER, searchFilter });
+export const removeSearchFilter = searchFilter => {
+  return { type: actionTypes.SEARCH_REMOVE_FILTER, searchFilter };
+};
 
-export const replaceSearchFilters = (searchFilters = []) => dispatch =>
-  dispatch({ type: actionTypes.SEARCH_REPLACE_FILTERS, searchFilters });
+export const replaceSearchFilters = (searchFilters = []) => {
+  return { type: actionTypes.SEARCH_REPLACE_FILTERS, searchFilters };
+};
 
 export const clearAllSearchFilters = () => dispatch =>
   dispatch({ type: actionTypes.SEARCH_CLEAR_ALL_FILTERS });
 
 export const updateSearchPageNum = searchPageNum => {
   return { type: actionTypes.SEARCH_UPDATE_PAGE_NUM, searchPageNum };
+};
+
+export const updateSearchAggregations = defaultSearchAggs => {
+  return { type: actionTypes.SEARCH_UPDATE_DEFAULT_AGGS, defaultSearchAggs };
 };
 
 export const saveScrollPosition = scrollPosition => dispatch =>

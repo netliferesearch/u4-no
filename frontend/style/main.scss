@@ -114,12 +114,14 @@
 @import 'components/search-page/search-page';
 @import 'components/helpdesk-page/components.helpdesk-page';
 @import 'components/course-page/components.course-page';
+@import 'components/event-page/components.event-page';
 @import 'components/publication/components.main-points';
 @import 'components/publication/components.notifications';
 @import 'components/publication/components.reader';
 @import 'components/publication/components.reader';
 @import 'components/publication/publication-entry';
 @import 'components/publication/components.cite';
+@import 'components/publication/publications';
 
 // UTILITIES
 @import '../node_modules/inuitcss/utilities/utilities.widths';

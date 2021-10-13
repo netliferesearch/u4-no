@@ -189,7 +189,8 @@
 }
 
 //normal used for blog, probably should rename
-.blog.c-post {
+.blog.c-post,
+.c-post.publications {
   padding-right: 24px;
   border-right: 1px solid $light-grey;
   @include mq($from: desktop) {
@@ -202,7 +203,6 @@
       height: 205px;
     }
   }
-
   .c-post__article-content {
     display: none;
   }

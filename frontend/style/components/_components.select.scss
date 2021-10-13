@@ -1,8 +1,11 @@
 .c-select {
-  background: url('/public/arrowDown.svg') no-repeat;
-  background-position: 90% center;
-  border: none;
+  @include mq($from: desktop) {
+    background: url('/public/arrowDown.svg') no-repeat;
+    background-position: 90% center;
+    background-color: $light-grey;
+  }
   background-color: $light-grey;
+  border: none;
   color: $dark-blue;
   width: 100%;
   padding: 5px 35px 5px 15px;

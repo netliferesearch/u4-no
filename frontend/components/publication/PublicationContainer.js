@@ -83,7 +83,7 @@ const PublicationContainer = (props = {}) => {
     );
 
   const [readerOpen, setReaderOpen] = useState(false);
-  //console.log('publication', props.data);
+  console.log('publication', recommendedResources);
 
   return (
     <Layout

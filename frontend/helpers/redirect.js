@@ -46,7 +46,6 @@ export function getRedirect(ctx) {
     { from: '/partner/classroom/participants-list.cfm', to: '/online-courses' },
     { from: '/partner/classroom', to: '/online-courses?oldpage=' },
 
-    { from: '/publications', to: '/search?filters=pub-type-0&search=%2A' },
     {
       from: '/publications-2-fr-FR',
       to: '/search?filters=pub-type-0%2Cpub-lang-fr_FR&search=%2A',

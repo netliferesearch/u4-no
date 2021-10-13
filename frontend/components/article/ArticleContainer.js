@@ -138,7 +138,7 @@ const ArticleContainer = (props = {}) => {
                 )}
               </div>
               <div className="c-article__side c-article__col">
-                  <ArticleSidebar data={props.data} />
+                <ArticleSidebar data={props.data} />
               </div>
             </main>
           )}

@@ -8,6 +8,7 @@ import { getPostType } from '../../../helpers/getRouteByType';
 import PropTypes from 'prop-types';
 import TextClamp from 'react-string-clamp';
 import { imgLoader } from '../../../helpers/imgloader';
+import { Document, Page } from 'react-pdf/build/entry.noworker';
 
 export const POST_TYPE = {
   SMALL: 'small', //collapsable in mobile view/normal in desktop
@@ -16,13 +17,15 @@ export const POST_TYPE = {
   LARGE: 'large', //large in desktop, full with image in mobile
   CARD: 'card', //render BlueCard onstead of Post
   SEARCH: 'search', //displaying in search results
+  PUBLICATIONS: 'publications', //displaying in publications page results
 };
 const ellipsizeLines = {
   [POST_TYPE.SMALL]: 4,
   [POST_TYPE.BLOG]: 3,
   [POST_TYPE.PUBLICATION]: 3,
   [POST_TYPE.LARGE]: 33,
-  [POST_TYPE.SEARCH]: 2,
+  [POST_TYPE.SEARCH]: 4,
+  [POST_TYPE.PUBLICATIONS]: 3,
 };
 
 const standFirstLines = {
@@ -30,7 +33,8 @@ const standFirstLines = {
   [POST_TYPE.BLOG]: 3,
   [POST_TYPE.PUBLICATION]: 3,
   [POST_TYPE.LARGE]: 33,
-  [POST_TYPE.SEARCH]: 4,
+  [POST_TYPE.SEARCH]: 3,
+  [POST_TYPE.PUBLICATIONS]: 2,
 };
 const renderImage = type => {
   switch (type) {
@@ -42,61 +46,69 @@ const renderImage = type => {
 };
 
 export const Post = ({ post, type, placeholder, showImage = true }) => {
-  //console.log(post)
   return (
     <div className={`c-post ${type} ${type === 'large' ? 'u-sticky' : ''}`}>
-      <LinkToItem type={post._type} slug={post.slug || post.url}>
-        <a className="c-post__link u-fake-anchor">
-          {showImage && post.imageUrl && renderImage(type) ? (
-            <div className="c-post__post-image u-overlay--light-blue">
-              <Image
-                loader={sanityImageLoader}
-                src={post.imageUrl}
-                alt=""
-                loading="lazy"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          ) : (
-            <div className="c-post__post-image u-overlay--light-blue">
-              <Image
-                loader={imgLoader}
-                src={placeholder}
-                alt=""
-                loading="lazy"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          )}
-          <div className="c-post__post-info">
-            {getPostType(post) && (
-              <div className="c-post__post-type u-secondary-heading u-secondary-h4 u-detail--blue--small">
-                {getPostType(post)}
-              </div>
-            )}
-            <h4 className="c-post__title">
-              <TextClamp text={post.title || post.topicTitle} lines={ellipsizeLines[type]} />
-            </h4>
-            {post.standfirst && (
-              <div className="c-post__article-content u-body">
-                <TextClamp text={post.standfirst} lines={standFirstLines[type]} />
-              </div>
-            )}
-
-            {post.date ? (
-              <div className="c-post__date u-body--small">
-                {dateToString({ start: post.date.utc })}
-              </div>
-            ) : null}
-          </div>
-        </a>
-      </LinkToItem>
-      {post.topics && <Topics title={false} topics={post.topics} hr={false} />}
-      {post.filedUnderTopicNames && (
-        <Topics title={false} topics={post.filedUnderTopicNames} hr={false} />
+      {type === 'search' && (post.pdfFile || post.legacypdf) && (
+        <div className="pdf-preview">
+          <Document file={post.pdfFile || post.legacypdf}>
+            <Page pageNumber={1} />
+          </Document>
+        </div>
       )}
+      <div>
+        <LinkToItem type={post._type} slug={post.slug || post.url}>
+          <a className="c-post__link u-fake-anchor">
+            {showImage && post.imageUrl && renderImage(type) ? (
+              <div className={`c-post__post-image ${type} u-overlay--light-blue`}>
+                <Image
+                  loader={sanityImageLoader}
+                  src={post.imageUrl}
+                  alt=""
+                  loading="lazy"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            ) : (
+              <div className="c-post__post-image u-overlay--light-blue">
+                <Image
+                  loader={imgLoader}
+                  src={placeholder}
+                  alt=""
+                  loading="lazy"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            )}
+            <div className="c-post__post-info">
+              {getPostType(post) && (
+                <div className="c-post__post-type u-secondary-heading u-secondary-h4 u-detail--blue--small">
+                  {getPostType(post)}
+                </div>
+              )}
+              <h4 className="c-post__title">
+                <TextClamp text={post.title || post.topicTitle} lines={ellipsizeLines[type]} />
+              </h4>
+              {post.standfirst && (
+                <div className="c-post__article-content u-body">
+                  <TextClamp text={post.standfirst} lines={standFirstLines[type]} />
+                </div>
+              )}
+
+              {post.date ? (
+                <div className="c-post__date u-body--small">
+                  {dateToString({ start: post.date.utc })}
+                </div>
+              ) : null}
+            </div>
+          </a>
+        </LinkToItem>
+        {post.topics && <Topics title={false} topics={post.topics} hr={false} />}
+        {post.filedUnderTopicNames && (
+          <Topics title={false} topics={post.filedUnderTopicNames} hr={false} />
+        )}
+      </div>
     </div>
   );
 };

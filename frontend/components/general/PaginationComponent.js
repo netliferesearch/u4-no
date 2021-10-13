@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Pagination from 'react-paginating';
 import { ArrowNextPage, ArrowPrevPage, ArrowFirstPage, ArrowLastPage } from '../icons/PageArrows';
-import { DoubleChevron } from '../icons/DoubleChevron';
-import { connect, useDispatch } from 'react-redux';
-import {
-  clearBlogFilters,
-  updateBlogFilters,
-  updateBlogPageNum,
-  updateSearchPageNum,
-} from '../../helpers/redux-store';
+import { useDispatch } from 'react-redux';
+import { updateBlogPageNum, updateSearchPageNum } from '../../helpers/redux-store';
 
 export const PaginationComponent = ({ total, limit, pageCount, currentPage, search }) => {
   const handlePageChange = (page, e) => {
@@ -27,22 +21,8 @@ export const PaginationComponent = ({ total, limit, pageCount, currentPage, sear
   return (
     <div>
       <Pagination total={total} limit={limit} pageCount={pageCount} currentPage={currentPage}>
-        {({
-          pages,
-          currentPage,
-          hasNextPage,
-          hasPreviousPage,
-          previousPage,
-          nextPage,
-          totalPages,
-          getPageItemProps,
-        }) => (
+        {({ pages, currentPage, previousPage, nextPage, totalPages, getPageItemProps }) => (
           <ul className="c-blog-index__paginator-list">
-            {console.log('pages', pages)}
-            {console.log('currentPage', currentPage)}
-            {console.log('previousPage', previousPage)}
-            {console.log('nextPage', nextPage)}
-            {console.log('totalPages', totalPages)}
             {currentPage > 2 ? (
               <li>
                 <button

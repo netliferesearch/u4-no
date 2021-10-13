@@ -1,0 +1,46 @@
+.c-event-entry {
+  .c-page-intro--withBreadcrumb {
+    margin-bottom: 30px;
+  }
+  .c-article-sidebar.c-course-sidebar {
+    position: sticky;
+    top: 120px;
+  }
+  .c-events-calendar-svg {
+    margin-right: 10px;
+  }
+
+  .u-text--grey {
+    @include mq($until: tablet) {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .c-btn--primary {
+    a {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 1.7;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: $white;
+    }
+  }
+  .c-blue-card__info {
+    flex-direction: row;
+    @include mq($until: tablet) {
+      flex-direction: column;
+    }
+    .c-blue-card__location {
+      align-items: center;
+      margin-right: 25px;
+    }
+    .c-blue-card__details {
+      .c-blue-card__date {
+        margin: 0;
+        align-items: center;
+        width: auto;
+      }
+    }
+  }
+}

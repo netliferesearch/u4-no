@@ -25,12 +25,17 @@
       }
     }
   }
-  .o-layout__item {
+  .o-layout__item:first-of-type {
     padding: 0;
+    position: sticky;
+    top: 120px;
   }
   .c-search-page__sections {
     @include mq($from: desktop) {
-      margin: 60px 0;
+      margin: 40px 0;
     }
+  }
+  .u-detail--blue {
+    margin: 0;
   }
 }

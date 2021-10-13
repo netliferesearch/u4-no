@@ -1,5 +1,4 @@
 import { SEARCH_PUBLICATIONS, SEARCH } from '../../../helpers/constants';
-
 export const menuItems = [
   {
     label: 'Research Topics',
@@ -10,7 +9,7 @@ export const menuItems = [
   {
     label: 'Publications',
     id: 'publications',
-    slug: SEARCH_PUBLICATIONS,
+    slug: '/publications?',
   },
   {
     label: 'The U4 Blog',
@@ -65,9 +64,9 @@ export const menuItems = [
       },
     ],
   },
+
   {
     label: 'Search',
     id: 'search',
-    //slug: SEARCH,
   },
 ];

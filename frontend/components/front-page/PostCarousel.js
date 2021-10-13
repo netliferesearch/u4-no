@@ -12,18 +12,25 @@ const columnsByType = {
   [POST_TYPE.SMALL]: 3,
   [POST_TYPE.BLOG]: 3,
   [POST_TYPE.PUBLICATION]: 4,
+  [POST_TYPE.PUBLICATIONS]: 4,
   [POST_TYPE.LARGE]: 3,
   [POST_TYPE.CARD]: 3,
 };
 
-export const PostCarousel = ({ posts, type, buttonPath, title, underTitle, minPosts }) => {
+export const PostCarousel = ({
+  posts,
+  type,
+  buttonPath,
+  title,
+  underTitle,
+  minPosts,
+  publications,
+}) => {
   const responsive = {
     0: { items: 1.2 },
     568: { items: 2.2 },
     980: { items: columnsByType[type] },
   };
-
-  //console.log('posts', posts);
   const items =
     posts &&
     posts.map((post, index) =>
@@ -36,7 +43,13 @@ export const PostCarousel = ({ posts, type, buttonPath, title, underTitle, minPo
         />
       ) : (
         <div>
-          <Post key={post._id} type={type} post={post} placeholder={getPlaceholder(index)} />
+          <Post
+            key={post._id}
+            type={type}
+            post={post}
+            placeholder={getPlaceholder(index)}
+            publications
+          />
         </div>
       )
     );
@@ -79,12 +92,14 @@ export const PostCarousel = ({ posts, type, buttonPath, title, underTitle, minPo
           renderPrevButton={renderPrevButton}
           renderNextButton={renderNextButton}
         />
-        <div className="o-wrapper-medium c-view-all">
-          <a className="c-btn c-btn--link" href={buttonPath}>
-            View all
-            <ArrowNext />
-          </a>
-        </div>
+        {type != 'publications' && (
+          <div className="o-wrapper-medium c-view-all">
+            <a className="c-btn c-btn--link" href={buttonPath}>
+              View all
+              <ArrowNext />
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

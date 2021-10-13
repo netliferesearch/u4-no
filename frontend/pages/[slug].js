@@ -32,14 +32,14 @@ const GeneralArticle = props => {
         }}
       >
         {/* {lead && <SimpleHero light title={title} content={lead} />} */}
-        {lead || title && <PageIntro title={title} text={lead ? lead : ''} />}
+        {lead || (title && <PageIntro title={title} text={lead ? lead : ''} />)}
         {sections ? <ServiceArticle blocks={sections} /> : null}
         <Footer />
       </Layout>
     );
   }
   //return <LongformArticleContainer lead={props.data.standfirst} {...props} />;
-  return <ArticleContainer {...props} />
+  return <ArticleContainer {...props} />;
 };
 
 export default wrapInRedux(
