@@ -1,5 +1,4 @@
 import React from 'react';
-import { SearchIcon } from '../../icons/SearchIcon';
 import { menuItems } from './menuItems';
 import { MainMenuItem } from './MainMenuItem';
 import SearchFieldV3 from '../../search/SearchField-v2';
@@ -34,16 +33,6 @@ export const MainMenu = ({
                 />
               ))
             : null}
-          {/* <span
-            onClick={e => {
-              e.preventDefault();
-              setSearchOpen(!searchOpen);
-            }}
-            className="c-menu__heading"
-            style={{ marginRight: '0' }}
-          >
-            <SearchIcon />
-          </span> */}
         </>
       ) : (
         <div className="c-menu__search-holder">

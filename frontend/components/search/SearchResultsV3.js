@@ -3,102 +3,16 @@ if (typeof window !== 'undefined') {
   // Can only polyfill if window is present. Not when running on server side.
   require('intersection-observer');
 }
-import { bindActionCreators } from 'redux';
-import { connect, useSelector } from 'react-redux';
-import Link from 'next/link';
+import { useSelector } from 'react-redux';
 import SearchResultsSortingSelect from './SearchResultsSortingSelect';
-import { Post, POST_TYPE } from '../general/post/Post';
-import { getPlaceholder } from '../../helpers/imgloader';
 import { PaginationComponent } from '../general/PaginationComponent';
+import { SearchResult } from './SearchResult';
 
-const SearchResult = props => {
-  const { _source = {} } = props;
-  const { type = '' } = _source;
-  if (type === 'term') {
-    const { termTitle = '', url = '', termContent = {} } = _source;
-    return (
-      <div className="c-search-results-v2__glossary">
-        <span className="c-search-results-v2__items-type">Glossary</span>
-        <br />
-        <Link href={url}>
-          <a className="c-search-results-v2__items-title">{termTitle}</a>
-        </Link>
-        <br />
-        <p>{termContent}</p>
-      </div>
-    );
-  } else if (type === 'topic') {
-    const {
-      url = '',
-      featuredImageUrl = '',
-      topicTitle = '',
-      standfirst = '',
-      isAgendaPresent,
-      numberOfTopicResources = 0,
-      isBasicGuidePresent,
-    } = _source;
-    return (
-      <Post
-        showImage={false}
-        type={POST_TYPE.SEARCH}
-        post={_source}
-        placeholder={getPlaceholder(1)}
-      />
-    );
-  } else if (type === 'publication' && props.publications === false) {
-    const {
-      title = '',
-      subtitle = '',
-      date: { utc: utcDate = '' } = {},
-      topics: { title: topics = '' } = {},
-      url = '',
-      standfirst = '',
-      publicationType: { title: publicationTypeTitle = '' } = {},
-    } = _source;
-    return (
-      <Post
-        showImage={false}
-        type={POST_TYPE.SEARCH}
-        post={_source}
-        placeholder={getPlaceholder(1)}
-      />
-    );
-  } else if (props.publications === true) {
-    const {
-      title = '',
-      subtitle = '',
-      date: { utc: utcDate = '' } = {},
-      topics: { title: topics = '' } = {},
-      url = '',
-      standfirst = '',
-      publicationType: { title: publicationTypeTitle = '' } = {},
-    } = _source;
-    console.log('testing type', POST_TYPE.PUBLICATIONS);
-    return (
-      <Post
-        showImage={false}
-        type={POST_TYPE.PUBLICATIONS}
-        post={_source}
-        placeholder={getPlaceholder(1)}
-      />
-    );
-  }
-  // What to show if the search result did not match any of the items above.
-  const { title = '', url = '', standfirst = '', filedUnderTopicNames = [] } = _source;
-  return (
-    <Post
-      showImage={false}
-      type={POST_TYPE.SEARCH}
-      post={_source}
-      placeholder={getPlaceholder(1)}
-    />
-  );
-};
 export const limit = 10;
 export const SearchResultsV3 = props => {
   const [pageCount, setPageCount] = useState(1);
   const searchResults = useSelector(state => state.searchResults);
-  const { searchFilters = [] } = props;
+  const searchFilters = useSelector(state => state.searchFilters);
   const { hits = [], total: { value = 0 } = {} } = searchResults ? searchResults.hits : {};
   const maxPagesListed = 5;
   const total =
@@ -155,13 +69,3 @@ export const SearchResultsV3 = props => {
     </section>
   );
 };
-
-const mapStateToProps = ({ currentSearchPage, searchFilters }) => ({
-  currentSearchPage,
-  searchFilters,
-});
-const mapDispatchToProps = () => ({});
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchResultsV3);

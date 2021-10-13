@@ -1,17 +1,14 @@
 import React from 'react';
-import { connect, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ElasticDataLoader from '../helpers/elastic-data-loader';
-import { updateSearchPageNum } from '../helpers/redux-store';
 import Layout from '../components/Layout';
 import Footer from '../components/general/footer/Footer';
 import { SearchFieldV3 } from '../components/search/SearchFieldV3';
 import { wrapInRedux } from '../helpers/redux-store-wrapper';
 import { PageIntro } from '../components/general/PageIntro';
 import { SearchResultsV3 } from '../components/search/SearchResultsV3';
-import { bindActionCreators } from 'redux';
-import SearchFiltersV3 from '../components/search/SearchFiltersV3';
-import router, { useRouter } from 'next/router';
-import { PostCarousel } from '../components/front-page/PostCarousel';
+import { SearchFiltersV3 } from '../components/search/SearchFiltersV3';
+import { useRouter } from 'next/router';
 
 const Search = ({ data = {}, url = '' }) => {
   const router = useRouter();
@@ -22,7 +19,6 @@ const Search = ({ data = {}, url = '' }) => {
   if (isPublicationsPage >= 0) {
     publications = true;
   }
-  console.log('publications', data);
   if (!data) return <div />;
   return (
     <Layout
@@ -36,44 +32,18 @@ const Search = ({ data = {}, url = '' }) => {
       searchData={data}
     >
       <div className="c-search-page">
-        {isPublicationsPage >= 0 ? (
-          <div>
-            <div className="o-wrapper-medium">
-              <PageIntro title="Publications" text={'lorem ipsum'} />
-            </div>
-            {/* feratured publications section */}
-            {/* 
-            <section className="">
-              <div className="o-wrapper-medium o-wrapper-mobile-full">
-                <PostCarousel
-                  posts={relatedResources}
-                  type={POST_TYPE.BLOG}
-                  buttonPath="/publications"
-                  title="Related Content"
-                  minPosts={3}
-                />
-                <hr className="u-section-underline--no-margins" />
-              </div>
-            </section> */}
-            <hr className="u-section-underline--no-margins" />
-            <div className="o-wrapper-medium">
-              <h4 className="u-secondary-heading u-secondary-h1 u-detail--blue">Explore all</h4>
+        <div>
+          <div className="o-wrapper-medium">
+            <PageIntro title="Search" text={'Browse the U4 site.'} />
+          </div>
+          <hr className="u-section-underline--no-margins" />
+          <div className="o-wrapper-medium">
+            <div className="c-menu__search-holder">
+              <SearchFieldV3 isOpen={true} isAlwaysOpen={true} searchData={data} />
             </div>
           </div>
-        ) : (
-          <div>
-            <div className="o-wrapper-medium">
-              <PageIntro title="Search" text={'Browse the U4 site.'} />
-            </div>
-            <hr className="u-section-underline--no-margins" />
-            <div className="o-wrapper-medium">
-              <div className="c-menu__search-holder">
-                <SearchFieldV3 isOpen={true} isAlwaysOpen={true} searchData={data} />
-              </div>
-            </div>
-            <hr className="u-section-underline--no-margins" />
-          </div>
-        )}
+          <hr className="u-section-underline--no-margins" />
+        </div>
 
         {showResults && (
           <div className="o-wrapper-medium">
@@ -93,15 +63,4 @@ const Search = ({ data = {}, url = '' }) => {
   );
 };
 
-const mapStateToProps = state => state;
-const mapDispatchToProps = dispatch => ({
-  updateSearchPageNum: bindActionCreators(updateSearchPageNum, dispatch),
-});
-export default wrapInRedux(
-  ElasticDataLoader(
-    connect(
-      mapStateToProps,
-      mapDispatchToProps
-    )(Search)
-  )
-);
+export default wrapInRedux(ElasticDataLoader(Search));

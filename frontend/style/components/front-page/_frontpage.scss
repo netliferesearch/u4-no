@@ -76,11 +76,12 @@
 .c-events-list__content {
   margin-bottom: 64px;
 }
-
-.c-events-calendar-svg {
-  margin-right: 10px;
-  @include mq($from: mobile, $until: desktop) {
-    display: none;
+.c-frontpage {
+  .c-events-calendar-svg {
+    margin-right: 10px;
+    @include mq($from: mobile, $until: desktop) {
+      display: none;
+    }
   }
 }
 

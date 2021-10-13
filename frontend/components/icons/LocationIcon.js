@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CmiLogoWhite(props) {
+export const LocationIcon = () => {
   return (
     <svg
       width="12"
@@ -17,4 +17,4 @@ export default function CmiLogoWhite(props) {
       />
     </svg>
   );
-}
+};

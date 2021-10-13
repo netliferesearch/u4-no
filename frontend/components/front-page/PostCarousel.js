@@ -12,6 +12,7 @@ const columnsByType = {
   [POST_TYPE.SMALL]: 3,
   [POST_TYPE.BLOG]: 3,
   [POST_TYPE.PUBLICATION]: 4,
+  [POST_TYPE.PUBLICATIONS]: 4,
   [POST_TYPE.LARGE]: 3,
   [POST_TYPE.CARD]: 3,
 };
@@ -30,8 +31,6 @@ export const PostCarousel = ({
     568: { items: 2.2 },
     980: { items: columnsByType[type] },
   };
-  console.log('is publicatiosn');
-  //console.log('posts', posts);
   const items =
     posts &&
     posts.map((post, index) =>
@@ -93,12 +92,14 @@ export const PostCarousel = ({
           renderPrevButton={renderPrevButton}
           renderNextButton={renderNextButton}
         />
-        <div className="o-wrapper-medium c-view-all">
-          <a className="c-btn c-btn--link" href={buttonPath}>
-            View all
-            <ArrowNext />
-          </a>
-        </div>
+        {type != 'publications' && (
+          <div className="o-wrapper-medium c-view-all">
+            <a className="c-btn c-btn--link" href={buttonPath}>
+              View all
+              <ArrowNext />
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

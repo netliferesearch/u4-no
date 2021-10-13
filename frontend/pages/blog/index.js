@@ -30,12 +30,10 @@ const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
             text="Practitioners, policymakers, activists, and academics share insights on how to build a
           sustainable and inclusive future by curbing corruption."
           />
-          {/* </div> */}
         </section>
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper-medium">
           <BlogFilteredList blogEntries={blogEntries} topics={topics} />
-          {/* </div> */}
         </section>
       </div>
       <div id="modal" />

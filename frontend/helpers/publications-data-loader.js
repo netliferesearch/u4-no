@@ -46,14 +46,9 @@ const aggregations = {
     },
   },
 };
-
-const doSearch = async ({
-  query,
-  defaultSearchAggs: { publicationTypes: defaultPublicationTypes = {} } = [],
-}) => {
+const doSearch = async ({ query }) => {
   const { search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 1 } = query;
   const filters = filterStr.split(',').map(name => name.replace(/\|/g, ','));
-  const searchQueryFilters = searchQuery.split(' ');
   const activeFilterQueries = [];
   const topicNames = filters
     .filter(filter => /^topic-type-/gi.test(filter))
@@ -63,24 +58,11 @@ const doSearch = async ({
   }
   let searchQueryWithoutFilters = searchQuery;
 
-  searchQueryFilters.forEach(part => {
-    if (part.indexOf('author:') !== -1) {
-      const personSlug = part.replace(/^author:/gi, '');
-      searchQueryWithoutFilters = searchQueryWithoutFilters.replace(part, '');
-      activeFilterQueries.push({ terms: { relatedPersons: [personSlug] } });
-    }
-  });
   searchQueryWithoutFilters = searchQueryWithoutFilters.trim();
   const publicationNames = filters
     .filter(filter => /^pub-/gi.test(filter))
     .map(filter => /pub-(.*)/gi.exec(filter)[1])
     .reduce((acc, name) => {
-      if (name === 'other') {
-        const restOfPubTypes = defaultPublicationTypes.buckets.filter(
-          ({ key }) => !publicationTypesToShow.find(name => name === key)
-        );
-        return [...acc, ...restOfPubTypes];
-      }
       acc.push(name);
       return acc;
     }, []);
@@ -98,9 +80,8 @@ const doSearch = async ({
   }
 
   filters.forEach(filter => {
-    if (filter === 'publications-only') {
-      activeFilterQueries.push({ term: { type: 'publication' } });
-    } else if (/^year-from-/gi.test(filter)) {
+    activeFilterQueries.push({ term: { type: 'publication' } });
+    if (/^year-from-/gi.test(filter)) {
       const yearFrom = /year-from-(.*)/gi.exec(filter)[1];
       activeFilterQueries.push({
         range: { 'date.utc': { gte: `${yearFrom}-01-01` } },
@@ -140,52 +121,13 @@ const doSearch = async ({
                   ...(!searchQueryWithoutFilters && activeFilterQueries.length > 0
                     ? [{ match_all: {} }]
                     : []),
-                  {
-                    multi_match: {
-                      query: searchQueryWithoutFilters,
-                      fields: ['title'],
-                      fuzziness: 'AUTO',
-                      _name: 'Fuzzy search',
-                    },
-                  },
-                  {
-                    multi_match: {
-                      query: searchQueryWithoutFilters,
-                      _name: 'Exact title match',
-                      fields: ['title.exact^10', 'termTitle.exact^10', 'topicTitle.exact^10'],
-                    },
-                  },
-                  {
-                    multi_match: {
-                      query: searchQueryWithoutFilters,
-                      type: 'phrase_prefix',
-                      _name: 'Main query',
-                      fields: [
-                        'title',
-                        'subtitle',
-                        'standfirst',
-                        'lead',
-                        'content',
-                        'authors',
-                        // term (glossary) related
-                        'termTitle^2',
-                        'termContent^2',
-                        // topic related
-                        'topicTitle^3',
-                        'topicContent^3',
-                        'basicGuide',
-                        'agenda',
-                        'type^10',
-                      ],
-                    },
-                  },
                 ],
               },
             },
             boost: 1,
             functions: [
               {
-                filter: [{ match: { type: 'topic' } }],
+                filter: [{ match: { type: 'publication' } }],
                 weight: 5,
               },
             ],
@@ -214,23 +156,6 @@ const doSearch = async ({
               from: 0,
               size: limit,
             }),
-
-        highlight: {
-          fields: {
-            title: {
-              fragment_size: 250,
-              number_of_fragments: 1,
-            },
-            topicTitle: {
-              fragment_size: 250,
-              number_of_fragments: 1,
-            },
-            content: {
-              fragment_size: 250,
-              number_of_fragments: 1,
-            },
-          },
-        },
         _source: [
           'title',
           'authors*',
@@ -259,10 +184,8 @@ const doSearch = async ({
         ],
       },
     });
-    console.log('Elastic data loader received data', { query, result });
     return result;
   } catch (e) {
-    console.error('Elasticsearch query failed', e);
     return {};
   }
 };
@@ -279,15 +202,13 @@ export const getSearchAggregations = async () => {
     });
     return result;
   } catch (e) {
-    console.error('Elasticsearch query failed', e);
     return {};
   }
 };
 
-const ElasticDataLoader = Child =>
+const PublicationsDataLoader = Child =>
   class DataLoader extends Component {
     static async getInitialProps(nextContext) {
-      console.log('Elastic data loader fetching data');
       const { query, store } = nextContext;
       const { defaultSearchAggs = {} } = store.getState();
       // Use Promise.all so that we can fire off 1 or 2 two queries at once,
@@ -325,4 +246,4 @@ const ElasticDataLoader = Child =>
       );
     }
   };
-export default ElasticDataLoader;
+export default PublicationsDataLoader;

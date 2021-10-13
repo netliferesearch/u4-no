@@ -7,13 +7,7 @@ import sanityImageLoader from '../../helpers/sanityImageLoader';
 import Image from 'next/image';
 
 export const CourseHeader = ({ data }) => {
-  const {
-    title = '',
-    lead = '',
-    featuredImage = {},
-    vimeo = '',
-    courseType = {},
-  } = data;
+  const { title = '', lead = '', featuredImage = {}, vimeo = '', courseType = {} } = data;
   return data ? (
     <div className="c-course-entry__header">
       <div
@@ -21,7 +15,13 @@ export const CourseHeader = ({ data }) => {
           (featuredImage && featuredImage.asset) || vimeo ? '' : 'c-course-entry__intro--no-img'
         }`}
       >
-        <PageIntro title={title} text={lead} contentType="Online course" type="withBreadcrumb" single={true}/>
+        <PageIntro
+          title={title}
+          text={lead}
+          contentType="Online course"
+          type="withBreadcrumb"
+          single={true}
+        />
         <div className="c-course-entry__btn-row">
           <RegisterForm courseType={courseType.waitingListId} />
           <ShareOpen text={title} />

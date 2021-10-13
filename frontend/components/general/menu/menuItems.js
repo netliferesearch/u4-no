@@ -1,5 +1,3 @@
-import { SEARCH_PUBLICATIONS, SEARCH } from '../../../helpers/constants';
-
 export const menuItems = [
   {
     label: 'Research Topics',
@@ -61,11 +59,10 @@ export const menuItems = [
   {
     label: 'Publications',
     id: 'publications',
-    slug: '/publications',
+    slug: '/publications?',
   },
   {
     label: 'Search',
     id: 'search',
-    // slug: SEARCH,
   },
 ];

@@ -1,11 +1,9 @@
 import Downshift from 'downshift';
-import router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import queryString from 'query-string';
-import { useDispatch } from 'react-redux';
 import { React, useState, useEffect, useRef } from 'react';
 import { LoaderV2 } from '../LoaderV2';
 import { SearchIcon } from '../icons/SearchIcon';
-import { actionSetSearchVisibility } from '../../helpers/redux-store';
 
 function debounce(fn, time) {
   let timeoutId;
@@ -22,30 +20,29 @@ function debounce(fn, time) {
 }
 export const SearchFieldV3 = props => {
   const router = useRouter();
-  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [typingTimeout, setTypingTimeout] = useState(0);
-  useEffect(() => {
-    const { search: searchValue = '' } = router.query;
-    const { current: input } = inputReference;
-    if (input) {
-      // Trick to put caret after word in input field.
-      // Source: https://stackoverflow.com/a/2345915
-      input.focus();
-      input.value = '';
-      input.value = searchValue;
-    }
-    dispatch(actionSetSearchVisibility(false));
-  }, []);
+  useEffect(
+    () => {
+      const { search: searchValue = '' } = router.query;
+      const { current: input } = inputReference;
+      if (input) {
+        // Trick to put caret after word in input field.
+        // Source: https://stackoverflow.com/a/2345915
+        input.focus();
+        input.value = '';
+        input.value = searchValue;
+      }
+    },
+    [router.query]
+  );
 
   let inputReference = useRef();
   const handleSubmit = e => {
-    console.log('handleSubmit');
     e.preventDefault();
     updateSearch({ urlUpdateType: 'push', value: e.target.value });
   };
   const updateSearch = ({ urlUpdateType, value = '' }) => {
-    console.log('updateSearch', value, urlUpdateType);
     setLoading(value.length > 2);
     debounce(() => {
       const queryParams = queryString.parse(location.search);
@@ -54,11 +51,9 @@ export const SearchFieldV3 = props => {
         search: value,
         searchPageNum: 1,
       });
-      console.log('updatedQueryString', updatedQueryString);
       router[urlUpdateType](`/search?${updatedQueryString}`, null, {
         scroll: false,
       });
-      console.log('debounce was called');
       setLoading(false);
     }, 300)();
   };
@@ -98,7 +93,7 @@ export const SearchFieldV3 = props => {
                 id: 'search',
                 name: 'search',
                 type: 'search',
-                value: searchValue,
+                value: undefined,
                 onKeyDown: event => {
                   // Prevent the user from typing more if search is initiated on
                   // page different from the search page.
@@ -117,7 +112,6 @@ export const SearchFieldV3 = props => {
                 onChange: event => {
                   event.persist();
                   const { value = '' } = event.target;
-                  console.log('event target', event.target);
                   if (typingTimeout) clearTimeout(typingTimeout);
                   setTypingTimeout(
                     setTimeout(() => {
