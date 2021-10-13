@@ -21,7 +21,8 @@ export const Menu = props => {
   useEffect(
     () => {
       if (data) {
-        menuItems[0].items = data;
+        menuItems[0].items = data.topics;
+        menuItems[4].sections[0].items = data.aboutResources.resources;
         return; // no need to fetch data if we got link data passed in.
       }
       const client = new PicoSanity({
@@ -30,7 +31,10 @@ export const Menu = props => {
         token: '',
         useCdn: true,
       });
-      const sanityQuery = '*[_type == "topics"] | order(title){_id, title, slug}';
+      const sanityQuery = `{
+        "topics": *[_type == "topics"] | order(title){_id, title, slug},
+        "aboutResources": *[slug.current == "about-u4-new"][0]{ resources[]->{_id, "label": title, slug} }
+      }`;
       client.fetch(sanityQuery, {}).then(data => {
         setData(data);
       });
@@ -50,6 +54,7 @@ export const Menu = props => {
     },
     [activeItem]
   );
+  console.log(menuItems);
 
   return (
     <div className="c-menu">

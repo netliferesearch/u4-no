@@ -16,7 +16,7 @@ export const SubMenu = ({ activeItem = '', activeItemData = {} }) => {
         <div className="c-sub-menu__sections">
           {activeItem === 'topics' ? (
             <>
-              {columns.map((items, i) =>
+              {columns.map((items, i) => (
                 <ul key={i} className="c-menu__list">
                   {items.map(topic => (
                     <SubMenuItem
@@ -25,11 +25,12 @@ export const SubMenu = ({ activeItem = '', activeItemData = {} }) => {
                       slug={`/topics/${topic.slug.current}`}
                     />
                   ))}
-                </ul>)}
+                </ul>
+              ))}
             </>
           ) : null}
           {activeItem !== 'topics' && activeItemData && activeItemData.sections
-            ? activeItemData.sections.map((s, index) => <SubMenuSection key={index} section={s}/>)
+            ? activeItemData.sections.map((s, index) => <SubMenuSection key={index} section={s} />)
             : null}
         </div>
       </div>

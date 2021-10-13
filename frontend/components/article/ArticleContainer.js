@@ -16,6 +16,7 @@ import { AboutAuthor } from '../blog/AboutAuthor';
 import { Disclaimers } from '../general/disclaimers/Disclaimers';
 import { Keywords } from '../general/keywords/Keywords';
 import { ToggleBlock } from '../../components/publication/ToggleBlock';
+import { getParentPath } from '../../helpers/getParentPath';
 
 const ArticleContainer = (props = {}) => {
   const {
@@ -84,12 +85,6 @@ const ArticleContainer = (props = {}) => {
 
   const [readerOpen, setReaderOpen] = useState(false);
   //console.log('publication', props.data);
-
-  const getParentPath = () => {
-    const pathArray = typeof window === 'undefined' ? '' : window.location.pathname.split('/');
-    const parrentPath = pathArray[pathArray.length - 2];
-    return parrentPath;
-  };
 
   return (
     <Layout

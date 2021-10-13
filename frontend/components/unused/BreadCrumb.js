@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 
-import buildUrl from '../helpers/buildUrl';
-import { client } from '../helpers/sanityClient.pico';
+import buildUrl from '../../helpers/buildUrl';
+import { client } from '../../helpers/sanityClient.pico';
 
-import ArrowRightSmall from './icons/ArrowRightSmall';
+import ArrowRightSmall from '../icons/ArrowRightSmall';
 
 /**
  * The purpose of the BreadCrumb class is to mostly figure out by itself what

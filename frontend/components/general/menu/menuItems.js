@@ -43,10 +43,12 @@ export const menuItems = [
     sections: [
       {
         subtitle: 'About U4',
+        slug: 'about-u4',
+        type: 'about',
         items: [
-          { label: 'About us', slug: '/about-u4' },
-          { label: 'Staff', slug: '/the-team' },
-          { label: 'Partner Information', slug: '/u4-partner-agencies' },
+          // { label: 'About us', slug: '/about-u4' },
+          // { label: 'Staff', slug: '/the-team' },
+          // { label: 'Partner Information', slug: '/u4-partner-agencies' },
         ],
       },
       {

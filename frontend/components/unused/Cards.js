@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import BEMHelper from 'react-bem-helper';
-import buildUrl from '../helpers/buildUrl';
+import buildUrl from '../../helpers/buildUrl';
 import ReactPlayer from 'react-player';
 
 const classes = BEMHelper({

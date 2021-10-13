@@ -2,11 +2,8 @@ import React from 'react';
 import find from 'lodash/find';
 import { useRouter } from 'next/router';
 
-import LongformArticleContainer from '../../../components/LongformArticleContainer';
-import BreadCrumb from '../../../components/BreadCrumb';
 import DataLoader from '../../../helpers/data-loader';
 import { wrapInRedux } from '../../../helpers/redux-store-wrapper';
-import ArticleContainer from '../../../components/article/ArticleContainer';
 import { BreadCrumbV2 } from '../../../components/general/BreadCrumbV2';
 import { ArticleHeader } from '../../../components/general/article-header/ArticleHeader';
 import LongformArticle from '../../../components/LongformArticle';
@@ -16,7 +13,6 @@ import Footer from '../../../components/general/footer/Footer';
 import { ArticleActions } from '../../../components/general/article-actions/ArticleActions';
 import { AboutAuthor } from '../../../components/blog/AboutAuthor';
 import { Disclaimers } from '../../../components/general/disclaimers/Disclaimers';
-import { Keywords } from '../../../components/general/keywords/Keywords';
 
 const firstTitleInContent = (content = []) => {
   const firstTitle = find(content, ({ style = '' }) => style === 'h1' || style === 'h2');

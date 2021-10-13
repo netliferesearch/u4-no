@@ -6,6 +6,8 @@ import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';
 import { PERSON_CARD_TYPE } from '../../components/general/person/PersonCard';
 import { PageIntro } from '../../components/general/PageIntro';
+import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
+import { getParentPath } from '../../helpers/getParentPath';
 
 const Persons = props => {
   const {
@@ -20,8 +22,16 @@ const Persons = props => {
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
       }}
     >
-      <div className="o-wrapper-medium">
+      <div className="o-wrapper-medium c-persons">
+        <BreadCrumbV2
+          home={true}
+          title="About U4"
+          parentSlug={`/about-u4`}
+          currentTitle={frontpage.title}
+          currentSlug={frontpage.slug.current}
+        />
         <PageIntro
+          type="withBreadcrumb"
           title="People"
           text={<BlockContent blocks={frontpage.lead} serializers={serializers} />}
         />

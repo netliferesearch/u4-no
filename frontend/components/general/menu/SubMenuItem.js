@@ -1,12 +1,13 @@
 import React from 'react';
-import Link from 'next/link';
+import LinkToItem from '../LinkToItem';
 
-export const SubMenuItem = ({ label = '', slug = '' }) => {
+export const SubMenuItem = ({ label = '', slug = '', type = '' }) => {
+  console.log(type)
   return (
-    <Link href={slug}>
-      <li className="c-menu__list-item">
+    <li className="c-menu__list-item">
+      <LinkToItem type={type} slug={slug}>
         <a className="c-menu__link u-no-underline u-body--white">{label}</a>
-      </li>
-    </Link>
+      </LinkToItem>
+    </li>
   );
 };
