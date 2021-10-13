@@ -1,3 +1,4 @@
+import { SEARCH_PUBLICATIONS, SEARCH } from '../../../helpers/constants';
 export const menuItems = [
   {
     label: 'Research Topics',
@@ -6,7 +7,16 @@ export const menuItems = [
     items: [],
   },
   {
+    label: 'Publications',
+    id: 'publications',
+    slug: '/publications?',
+  },
+  {
+    label: 'The U4 Blog',
+    id: 'blog',
     slug: '/blog',
+  },
+  {
     label: 'Learning & events',
     id: 'learning',
     headline: 'Anti-corruption training for development practitioners',
@@ -52,16 +62,7 @@ export const menuItems = [
       },
     ],
   },
-  {
-    label: 'The U4 Blog',
-    id: 'blog',
-    slug: '/blog',
-  },
-  {
-    label: 'Publications',
-    id: 'publications',
-    slug: '/publications?',
-  },
+
   {
     label: 'Search',
     id: 'search',
