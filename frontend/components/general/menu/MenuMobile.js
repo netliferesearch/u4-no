@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import PicoSanity from 'picosanity';
+import React from 'react';
 import { SearchIcon } from '../../icons/SearchIcon';
 import { MenuIcon } from '../../icons/MenuIcon';
 import { ArrowDownCollapsible } from '../../icons/ArrowDownCollapsible';
@@ -15,6 +14,7 @@ import SearchFieldV2 from '../../search/SearchField-v2';
 
 export const MenuMobile = props => {
   const {
+    data,
     triggerSearchMenu,
     setSearchOpen,
     activeSearchMenu,
@@ -32,32 +32,6 @@ export const MenuMobile = props => {
     }
   };
 
-  const [data, setData] = useState('');
-
-  useEffect(
-    () => {
-      if (data) {
-        menuItems[0].items = data.topics;
-        menuItems[4].sections[0].items = data.aboutResources.resources;
-        return; // no need to fetch data if we got link data passed in.
-      }
-      const client = new PicoSanity({
-        projectId: '1f1lcoov',
-        dataset: 'production',
-        token: '',
-        useCdn: true,
-      });
-      const sanityQuery = `{
-        "topics": *[_type == "topics"] | order(title){_id, title, slug},
-        "aboutResources": *[slug.current == "about-u4-new"][0]{ resources[]->{_id, "label": title, slug} }
-      }`;
-      client.fetch(sanityQuery, {}).then(data => {
-        setData(data);
-      });
-    },
-
-    [data]
-  );
   return (
     <div className="c-menu--mobile">
       <div className="c-menu__items">
@@ -145,7 +119,7 @@ export const MenuMobile = props => {
           >
             <ul className="c-menu__list">
               {menuItems[4].sections.map((s, index) =>
-                s.items.map((i, index) => <SubMenuItem key={index} label={i.label} slug={i.slug} type={s.type}/>)
+                s.items.map((i, index) => <SubMenuItem key={index} label={i.label} slug={i.slug} type={i._id !== 'frontpage' ? s.type : ''}/>)
               )}
             </ul>
           </Accordion>

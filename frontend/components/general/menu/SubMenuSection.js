@@ -18,7 +18,7 @@ export const SubMenuSection = ({ section }) => {
       )}
 
       {section.items.map((i, index) => (
-        <SubMenuItem key={index} label={i.label} slug={i.slug} type={section.type} />
+        <SubMenuItem key={index} label={i.label} slug={i.slug} type={i._id !== 'frontpage' ? section.type : ''} />
       ))}
     </ul>
   );

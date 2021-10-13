@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
 import HeadComponent from './HeadComponent';
@@ -7,6 +7,10 @@ import LogoU4White from './icons/LogoU4White';
 import { useRouter } from 'next/router';
 import { MenuMobile } from './general/menu/MenuMobile';
 import { useOnClickOutside } from '../helpers/hooks';
+import PicoSanity from 'picosanity';
+import { uniqBy } from 'lodash';
+import { menuItems } from '../components/general/menu/menuItems';
+
 
 const classes = BEMHelper({
   name: 'top-bar-v2',
@@ -25,6 +29,7 @@ export const Layout = props => {
     headComponentConfig = {},
     hideLogo = false,
   } = props;
+  const [data, setData] = useState('');
   const [activeSearchMenu, setActiveSearchMenu] = useState(true);
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(false);
@@ -35,15 +40,36 @@ export const Layout = props => {
     setActiveSearchMenu(!activeSearchMenu);
   };
 
+  useEffect(
+    () => {
+      if (data) {
+        menuItems[0].items = data.topics;
+        menuItems[4].sections[0].items = uniqBy([...data.aboutResources.resources, ...menuItems[4].sections[0].items], '_id');
+        return; // no need to fetch data if we got link data passed in.
+      }
+      const client = new PicoSanity({
+        projectId: '1f1lcoov',
+        dataset: 'production',
+        token: '',
+        useCdn: true,
+      });
+      const sanityQuery = `{
+        "topics": *[_type == "topics"] | order(title){_id, title, slug},
+        "aboutResources": *[slug.current == "about-u4-new"][0]{ resources[]->{_id, "label": title, slug} }
+      }`;
+      client.fetch(sanityQuery, {}).then(data => {
+        setData(data);
+      });
+    },
+
+    [data]
+  );
+
   // console.log(searchOpen, 'searchopen');
 
   return (
     <div
-      className={
-        asPath === '/'
-          ? 'u-print-width '
-          : 'u-print-width o-wrapper-fixed-header'
-      }
+      className={asPath === '/' ? 'u-print-width ' : 'u-print-width o-wrapper-fixed-header'}
       style={{
         transition: 'all 0.1s ease-out',
         opacity: showLoadingScreen ? 0 : 1,
@@ -52,7 +78,11 @@ export const Layout = props => {
       <HeadComponent {...headComponentConfig} />
       {showTopTab && (
         <>
-          <div className={`c-top-bar__background ${activeMenu || searchOpen ? '' : 'u-bg--transparent-blue'}`} />
+          <div
+            className={`c-top-bar__background ${
+              activeMenu || searchOpen ? '' : 'u-bg--transparent-blue'
+            }`}
+          />
           <div {...classes('', 'fixed')}>
             <div className="o-wrapper-medium fixed-header-content" ref={ref}>
               {!hideLogo && (
@@ -64,6 +94,8 @@ export const Layout = props => {
               )}
               {hideLogo && <div />}
               <MenuMobile
+                data={data}
+                setData={setData}
                 triggerSearchMenu={triggerSearchMenu}
                 setSearchOpen={setSearchOpen}
                 activeSearchMenu={activeSearchMenu}
@@ -74,6 +106,8 @@ export const Layout = props => {
                 setActiveMenu={setActiveMenu}
               />
               <Menu
+                data={data}
+                setData={setData}
                 triggerSearchMenu={triggerSearchMenu}
                 setSearchOpen={setSearchOpen}
                 activeSearchMenu={activeSearchMenu}

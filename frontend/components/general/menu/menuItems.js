@@ -46,7 +46,7 @@ export const menuItems = [
         type: 'about',
         items: [
           // { label: 'About us', slug: '/about-u4' },
-          // { label: 'Staff', slug: '/the-team' },
+           { _id: 'frontpage', label: 'Staff', slug: '/the-team' },
           // { label: 'Partner Information', slug: '/u4-partner-agencies' },
         ],
       },

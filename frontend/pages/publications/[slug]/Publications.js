@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DataLoader from '../../helpers/data-loader';
-import { Layout } from '../../components/Layout';
-import BlogFilteredList from '../../components/blog/BlogFilteredList';
-import { wrapInRedux } from '../../helpers/redux-store-wrapper';
-import Footer from '../../components/general/footer/Footer';
-import { PageIntro } from '../../components/general/PageIntro';
+import DataLoader from '../../../helpers/data-loader';
+import { Layout } from '../../../components/Layout';
+import BlogFilteredList from '../../../components/blog/BlogFilteredList';
+import { wrapInRedux } from '../../../helpers/redux-store-wrapper';
+import Footer from '../../../components/general/footer/Footer';
+import { PageIntro } from '../../../components/general/PageIntro';
 
 const Publications = ({ data: { publicationEntries = [] } }) => {
   return (

@@ -30,7 +30,6 @@ const partnersLogos = {
 };
 
 const SinglePartner = ({ partner }) => {
-  console.log(partner);
   return (
     <div {...classes('item')}>
       <a href={partner.website} rel="noopener noreferrer" target="_blank">
