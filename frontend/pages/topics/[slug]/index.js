@@ -23,6 +23,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
     relatedTopics = [],
     relatedPublications = [],
     relatedBlogPosts = [],
+    furtherResources = [],
     resourceCollections = [],
     parent = {},
     slug = {},
@@ -131,20 +132,35 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             </div>
           </section>
         ) : null}
-        {resources.length > 0 && (
+        {furtherResources.length > 0 && (
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel
-              posts={resources.filter(i => Object.keys(i).length !== 0).slice(3)}
+              posts={furtherResources}
               type={POST_TYPE.CARD}
-              buttonPath="/blog"
+              buttonPath={`/search?search=${title}`}
               title="Further Resources"
               minPosts={3}
             />
-            <hr className="u-section-underline--no-margins" />
           </div>
+        )}
+
+        {resourceCollections.length > 0 && (
+          <section className="o-wrapper-full u-bg--light-blue--top">
+            <div className="o-wrapper-medium o-wrapper-mobile-full">
+              <PostCarousel
+                posts={resourceCollections}
+                type={POST_TYPE.CARD}
+                buttonPath={`/collections`}
+                title="Resource Collections"
+                minPosts={3}
+              />
+            </div>
+          </section>
         )}
         {advisors.length > 0 && (
           <div id="advisors" className="o-wrapper-medium">
+            <hr className="u-section-underline--no-margins" />
+
             <Team
               type={PERSON_CARD_TYPE.IMAGE_TOP}
               heading="Topic Experts"
@@ -207,6 +223,20 @@ export default DataLoader(TopicEntry, {
             _updatedAt,
           },
         "resources": resources[]->{
+          _id,
+          _type,
+          "publicationType": publicationType->title,
+          "articleType": articleType[0]->title,
+          title,
+          date,
+          standfirst,
+          lead,
+          "slug": slug.current,
+          "titleColor": featuredImage.asset->metadata.palette.dominant.title,
+          "imageUrl": featuredImage.asset->url,
+          topics[]->{title},
+        },
+        "furtherResources": further_resources[]->{
           _id,
           _type,
           "publicationType": publicationType->title,

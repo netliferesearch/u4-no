@@ -56,7 +56,7 @@ const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
           <PostCarousel
             posts={person.recentWork}
             type={POST_TYPE.BLOG}
-            buttonPath="/blog"
+            buttonPath={`/search?search=${person.surname}`}
             title="Recent work"
             minPosts={3}
           />
@@ -132,7 +132,7 @@ export default DataLoader(Persons, {
           "imageUrl": featuredImage.asset->url, 
           "topicsTitles": topics[]->{title}, 
           "publicationType": publicationType->title, 
-          "articleTypeTitle": articleType[0]->title}, 
+          "articleType": articleType[0]->title}, 
         },
       }`,
     param: {

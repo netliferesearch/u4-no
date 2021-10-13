@@ -44,11 +44,7 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
             subtitle={subtitle}
             text={text}
             abstract={abstract}
-            contentType={
-              _type === 'publication'
-                ? PUBLICATION + ' | ' + publicationType.title
-                : getPostType(data)
-            }
+            contentType={getPostType(data)}
             type="withBreadcrumb"
             single={true}
           />

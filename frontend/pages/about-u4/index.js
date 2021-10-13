@@ -40,6 +40,7 @@ const About = ({ data: { about = {}, url = {} } }) => {
                 slug={link.slug}
                 title={link.title}
                 text={link.standfirst}
+                link="Read more"
               />
             ))}
             <div className="c-linkbox c-linkbox--white">

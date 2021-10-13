@@ -8,6 +8,7 @@ export const LinkBox = ({
   _type = '',
   slug = '',
   color = 'white',
+  link = 'View All'
 }) => {
   return (
     <div className={`c-linkbox c-linkbox--${color}`}>
@@ -29,7 +30,7 @@ export const LinkBox = ({
                   color === 'dark-blue' ? 'c-btn--link--onDark' : ''
                 }`}
               >
-                View All
+                {link}
                 <ArrowNext />
               </div>
             </div>

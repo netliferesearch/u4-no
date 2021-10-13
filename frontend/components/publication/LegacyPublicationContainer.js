@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
 import Footer from '../general/footer/Footer';
 import Layout from '../Layout';
-import PdfViewer from '../PdfViewer';
+// import PdfViewer from '../PdfViewer';
 import { ArticleHeader } from '../general/article-header/ArticleHeader';
 import { BreadCrumbV2 } from '../general/BreadCrumbV2';
 import { SEARCH_PUBLICATIONS } from '../../helpers/constants';
@@ -76,7 +76,7 @@ const LegacyPublicationContainer = props => {
             </div>
           )}
         </section>
-        {legacypdf.asset && <PdfViewer file={{ url: legacypdf.asset.url }} />}
+        {/* {legacypdf.asset && <PdfViewer file={{ url: legacypdf.asset.url }} />} */}
         <PublicationAdditionalInfo data={props.data} />
 
         {recommendedResources.length > 0 || relatedResources.length > 0 ? (

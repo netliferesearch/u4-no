@@ -6,6 +6,7 @@ export const menuItems = [
     items: [],
   },
   {
+    slug: '/blog',
     label: 'Learning & events',
     id: 'learning',
     headline: 'Anti-corruption training for development practitioners',
