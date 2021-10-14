@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
-import dateToString from '../../helpers/dateToString';
-import { AuthorList } from './AuthorList';
-import TableOfContentsSidebar from '../TableOfContents/TableOfContentsSidebar';
 import { PublicationContent } from './PublicationContent';
 import { ArticleHeader } from '../general/article-header/ArticleHeader';
 import { Layout } from '../Layout';
@@ -12,7 +9,7 @@ import { ArticleSidebar } from '../general/article-sidebar/ArticleSidebar';
 import { BreadCrumbV2 } from '../general/BreadCrumbV2';
 import { Reader } from './Reader';
 import LongformArticle from '../LongformArticle';
-import { SEARCH_PUBLICATIONS } from '../../helpers/constants';
+import { PUBLICATIONS } from '../../helpers/constants';
 import Footer from '../general/footer/Footer';
 import { PostCarousel } from '../front-page/PostCarousel';
 import { POST_TYPE } from '../general/post/Post';
@@ -22,48 +19,21 @@ const PublicationContainer = (props = {}) => {
   const {
     data: {
       _type = '',
-      longTitle = '',
       title = '',
-      content = '',
-      authors = [],
-      date = {},
       lead = '',
       standfirst = '',
       slug = '',
-      references = [],
-      acknowledgements = '',
-      methodology = [],
-      notes = '',
-      abstract = '',
-      mainPoints = [],
-      resources = [],
       featuredImage = {},
       relatedUrl = {},
-      publicationType = {},
-      articleType = [],
-      keywords = [],
-      topics = [],
-      pdfFile = {},
       legacypdf = {},
       recommendedResources = [],
-      relatedResources = [],
-      headsUp = [],
-      updatedVersion = false,
-      summary = [],
-      translations = [],
     } = {},
     shortversion = false,
     shortversionContent = [],
     headComponentConfigOverride,
     isArticleMenuOpen,
     showLoadingScreen,
-    toggleArticleMenu,
-    toggleLoadingScreen,
-    isPublicationDrawerOpen,
-    BreadCrumbComponent = null,
     url = {},
-    translation = {},
-    language = '',
   } = props;
 
   const headComponentConfig =
@@ -91,12 +61,11 @@ const PublicationContainer = (props = {}) => {
       showTopTab={!isArticleMenuOpen}
       headComponentConfig={headComponentConfig}
     >
-      {/* {!isArticleMenuOpen && ( */}
       <article className="c-publication-container c-article-v2">
         <span id="js-top" />
         <section id="js-scroll-trigger" className="o-wrapper-medium">
           {_type === 'publication' && !shortversion ? (
-            <BreadCrumbV2 home={true} title="Publications" parentSlug={SEARCH_PUBLICATIONS} />
+            <BreadCrumbV2 home={true} title="Publications" parentSlug={PUBLICATIONS} />
           ) : null}
           {!shortversion && (
             <ArticleHeader
@@ -124,32 +93,7 @@ const PublicationContainer = (props = {}) => {
               </div>
             </div>
           )}
-          {/* {_type !== 'publication' && (
-            <div className="c-article__row">
-              <div className="c-longform-grid u-bg-white u-z-index-x">
-                {articleType.length ? (
-                  <h2 className="c-longform-grid__standard">{articleType[0].target.title}</h2>
-                ) : null}
-                <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
-                {authors.length ? (
-                  <div className="c-article c-longform-grid__standard">
-                    <AuthorList authors={authors} />
-                    {date && date.utc && (
-                      <span> (last update: {dateToString({ start: date.utc })})</span>
-                    )}
-                  </div>
-                ) : null}
-                {lead && <div className="c-article c-longform-grid__standard">{lead}</div>}
-              </div>
-              <div className="c-longform-grid">
-                <div className="c-longform-grid__sidebar-right">
-                  <TableOfContentsSidebar alwaysFollow {...props.data} />
-                </div>
-              </div>
-            </div>
-          )} */}
         </section>
-
         {shortversion && (
           <section className="c-article--shortversion ">
             <div className="o-wrapper-medium">
@@ -175,7 +119,6 @@ const PublicationContainer = (props = {}) => {
 
         <span id="js-bottom" />
       </article>
-      {/* )} */}
       {recommendedResources.length > 0 ? (
         <section className="">
           <div className="o-wrapper-medium o-wrapper-mobile-full">

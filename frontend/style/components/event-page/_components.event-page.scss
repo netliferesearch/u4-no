@@ -9,12 +9,9 @@
   .c-events-calendar-svg {
     margin-right: 10px;
   }
-
   .u-text--grey {
-    @include mq($until: tablet) {
-      display: flex;
-      align-items: center;
-    }
+    align-items: center;
+    display: flex;
   }
   .c-btn--primary {
     a {
