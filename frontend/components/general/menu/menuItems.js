@@ -1,4 +1,3 @@
-import { SEARCH_PUBLICATIONS, SEARCH } from '../../../helpers/constants';
 export const menuItems = [
   {
     label: 'Research Topics',
