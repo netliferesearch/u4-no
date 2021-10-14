@@ -42,7 +42,7 @@ export const menuItems = [
     sections: [
       {
         subtitle: 'About U4',
-        slug: 'about-u4',
+        slug: '/about-u4',
         type: 'about',
         items: [
           // { label: 'About us', slug: '/about-u4' },
