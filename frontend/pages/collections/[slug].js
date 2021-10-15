@@ -105,9 +105,9 @@ const CollectionEntry = ({ data: { collection = {} } }) => {
         {resources.length > 0 && (
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel
-              posts={resources.filter(i => Object.keys(i).length !== 0).slice(3)}
+              posts={resources}
               type={POST_TYPE.CARD}
-              buttonPath="/blog"
+              buttonPath={`/search?search=${title}`}
               title="Further Resources"
               minPosts={3}
             />
