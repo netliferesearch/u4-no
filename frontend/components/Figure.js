@@ -77,14 +77,18 @@ const Figure = ({
 }) => (
   <figure {...classes('figure', null, figureOutFigureClass(size))}>
     {(title || heading) && <p className="c-figure__title">{title || heading}</p>}
-    <Image
-      loader={sanityImageLoader}
-      src={asset.url}
-      alt={altText}
-      layout="responsive"
-      width={asset.metadata.dimensions.width}
-      height={asset.metadata.dimensions.height}
-    />
+    {asset.url ? (
+      <Image
+        loader={sanityImageLoader}
+        src={asset.url}
+        alt={altText}
+        layout="responsive"
+        width={asset.metadata.dimensions.width}
+        height={asset.metadata.dimensions.height}
+      />
+    ) : (
+      <div>(image unavailable)</div>
+    )}
 
     {(caption.length > 0 || credit || sourceUrl || license) && (
       <figcaption className="c-figure__caption">
