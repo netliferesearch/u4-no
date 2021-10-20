@@ -20,6 +20,9 @@ export default {
       type: 'string',
       options: {
         list: [
+          { title: 'Event', value: 'event' },
+          { title: 'Webinar', value: 'webinar' },
+          { title: 'Event recording', value: 'eventrecording' },
           { title: 'In-country workshop', value: 'incountryworkshop' },
           { title: 'HQ workshop', value: 'hqworkshop' },
           { title: 'Other', value: 'other' },
