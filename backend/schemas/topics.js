@@ -240,6 +240,9 @@ export default {
             {
               type: 'blog-post',
             },
+            {
+              type: 'event',
+            },
           ],
         },
       ],
@@ -256,6 +259,9 @@ export default {
             {
               type: 'article',
             },
+            {
+              type: 'event',
+            },            
           ],
         },
       ],
