@@ -418,6 +418,17 @@ export default {
         },
       ],
     },
+    {
+      name: 'basedonpublication',
+      title: 'Based on',
+      description: 'If this post is based on a U4 publication',
+      type: 'reference',
+      to: [
+        {
+          type: 'publication',
+        },
+      ],
+    },
     // {
     //   name: 'updatedVersion',
     //   title: 'Updated version',
