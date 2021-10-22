@@ -19,16 +19,16 @@ export const SearchResultsV3 = props => {
     searchResults && searchResults.hits && searchResults.hits.total
       ? searchResults.hits.total.value
       : 0;
-  let d = total < limit ? 1 : Math.ceil(total / limit);
+  const d = total < limit ? 1 : Math.ceil(total / limit);
   const lastPage = Math.ceil(total / limit);
   const currentSearchPage = useSelector(state => state.searchPageNum);
+  console.log('currentSearchPage', currentSearchPage)
   const currentFrom = currentSearchPage * limit - (limit - 1);
-  let currentTo;
+  let currentTo = currentSearchPage * limit;
   if (lastPage === currentSearchPage) {
     currentTo = total;
-  } else {
-    currentTo = currentSearchPage * limit - limit + limit;
   }
+
   const currentResults = `${currentFrom}-${currentTo}`;
   useEffect(() => {
     setPageCount(Math.ceil(total / d) > maxPagesListed ? maxPagesListed : Math.ceil(total / d));
