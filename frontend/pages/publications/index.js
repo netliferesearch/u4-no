@@ -11,16 +11,30 @@ import PublicationsDataLoader from '../../helpers/publications-data-loader';
 import { SearchResultsV3 } from '../../components/search/SearchResultsV3';
 
 export const Publications = ({ data = {} }) => {
-  const [featured, setFeatured] = useState({});
+  const [featured, setFeatured] = useState([]);
   const initLoad = () => {
     client
       .fetch(
         `{
-      "featured": {"publication": *[_type  == "publication"] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url, "legacypdf": legacypdf.asset->url}[0..3]},
-    }`
+          "collection": *[ _type=='collection']{
+            "featured": resources[]-> | [_type=='publication']{
+              _id,
+              _type,
+              "publicationType": publicationType->title,
+              "articleType": articleType[0]->title,
+              title,
+              date,
+              standfirst,
+              lead,
+              "slug": slug.current,
+              "titleColor": featuredImage.asset->metadata.palette.dominant.title,
+              "imageUrl": featuredImage.asset->url,
+              topics[]->{title},
+            }[0..3],
+        }[0]}`
       )
       .then(results => {
-        setFeatured(results.featured);
+        setFeatured(results.collection.featured);
       })
       .catch(err => console.error('Oh noes: %s', err.message));
   };
@@ -51,7 +65,7 @@ export const Publications = ({ data = {} }) => {
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper-medium o-wrapper-mobile-full">
           <PostCarousel
-            posts={featured.publication}
+            posts={featured}
             type={POST_TYPE.PUBLICATIONS}
             buttonPath="/publications"
             title="Featured"

@@ -47,7 +47,12 @@ const aggregations = {
   },
 };
 const doSearch = async ({ query }) => {
-  const { search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 1 } = query;
+  const {
+    search: searchQuery = '',
+    sort = 'year-desc',
+    filters: filterStr = '',
+    searchPageNum = 1,
+  } = query;
   const filters = filterStr.split(',').map(name => name.replace(/\|/g, ','));
   const activeFilterQueries = [];
   const topicNames = filters
@@ -135,17 +140,8 @@ const doSearch = async ({ query }) => {
         },
 
         aggs: aggregations,
-
+        sort: [{ 'date.utc': { order: 'desc' } }],
         /* eslint-disable no-nested-ternary */
-        ...(sort === 'year-desc'
-          ? {
-              sort: [{ 'date.utc': { order: 'desc' } }],
-            }
-          : sort === 'year-asc'
-          ? {
-              sort: [{ 'date.utc': { order: 'asc' } }],
-            }
-          : {}),
 
         ...(searchPageNum > 1
           ? {
