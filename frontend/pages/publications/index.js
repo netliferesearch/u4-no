@@ -11,36 +11,42 @@ import PublicationsDataLoader from '../../helpers/publications-data-loader';
 import { SearchResultsV3 } from '../../components/search/SearchResultsV3';
 
 export const Publications = ({ data = {} }) => {
-  const [featured, setFeatured] = useState([]);
-  const initLoad = () => {
-    client
-      .fetch(
-        `{
-          "collection": *[ _type=='collection']{
-            "featured": resources[]-> | [_type=='publication']{
-              _id,
-              _type,
-              "publicationType": publicationType->title,
-              "articleType": articleType[0]->title,
-              title,
-              date,
-              standfirst,
-              lead,
-              "slug": slug.current,
-              "titleColor": featuredImage.asset->metadata.palette.dominant.title,
-              "imageUrl": featuredImage.asset->url,
-              topics[]->{title},
-            }[0..3],
-        }[0]}`
-      )
-      .then(results => {
-        setFeatured(results.collection.featured);
-      })
-      .catch(err => console.error('Oh noes: %s', err.message));
-  };
-  useEffect(() => {
-    initLoad();
-  }, []);
+  const [sanityData, setFeatured] = useState({});
+
+  const sanityQuery = `{
+    "publicationsPage": *[_type=="frontpage" && slug.current == "publications"][0]{
+      id,
+      title,
+      sections,
+      "imageUrl": featuredImage.asset->url,
+      "resources": resources[]->{
+        _id,
+        _type, 
+        "publicationType": publicationType->title, 
+        title, 
+        date, 
+        standfirst, 
+        topics[]->{title}, 
+        "slug": slug.current,
+        "titleColor": featuredImage.asset->metadata.palette.dominant.title, 
+        "imageUrl": featuredImage.asset->url, 
+        "pdfFile": pdfFile.asset->url,
+      }[0..3],
+    },
+  }`;
+
+  useEffect(
+    () => {
+      client
+        .fetch(sanityQuery, {})
+        .then(results => {
+          setFeatured(results.publicationsPage);
+        })
+        .catch(err => console.error('Oh noes: %s', err.message));
+    },
+    []
+  );
+
   return (
     <Layout
       hideLogo={false}
@@ -49,7 +55,7 @@ export const Publications = ({ data = {} }) => {
         description: 'lorem ipsum',
         url: 'https://www.u4.no/publications',
         image:
-          featured.ImageUrl ||
+          sanityData.ImageUrl ||
           'https://cdn.sanity.io/images/1f1lcoov/production/3e59eddc41cd02132774902dd229b24e55dbfcb5-1000x207.png',
       }}
     >
@@ -65,7 +71,7 @@ export const Publications = ({ data = {} }) => {
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper-medium o-wrapper-mobile-full">
           <PostCarousel
-            posts={featured}
+            posts={sanityData.resources}
             type={POST_TYPE.PUBLICATIONS}
             buttonPath="/publications"
             title="Featured"
