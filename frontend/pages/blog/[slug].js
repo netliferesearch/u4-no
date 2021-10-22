@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import serializers from '../../components/serializers/serializers';
 import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
@@ -6,7 +6,7 @@ import { Layout } from '../../components/Layout';
 import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
 import findFootnotes from '../../components/findFootnotes';
 import footnoteSerializer from '../../components/footnoteSerializer';
-import { useEffect } from 'react';
+
 import Footer from '../../components/general/footer/Footer';
 import { ArticleHeader } from '../../components/general/article-header/ArticleHeader';
 import { ArticleSidebar } from '../../components/general/article-sidebar/ArticleSidebar';
@@ -57,7 +57,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     >
       <article className={`c-blog-entry ${featuredImage.asset ? '' : 'c-blog-entry--no-img'}`}>
         <section className="o-wrapper-medium">
-          <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} home={true} />
+          <BreadCrumbV2 title="Blog" parentSlug="/blog" home />
           <ArticleHeader data={blogEntry} />
         </section>
         <hr className="u-section-underline--no-margins" />
@@ -125,6 +125,7 @@ export default DataLoader(BlogEntry, {
           "url": url
         }
       },
+            "translations": *[ _type == 'blog-post' && ( _id != ^._id ) && ( ( _id == ^.translation._ref) || translation._ref == coalesce(^.translation._ref, ^._id ))]{title, "slug": slug.current, language},
       "relatedResources": relatedContent[]->{_type, _id, title, publicationType->{ title }, articleType[0]->{ title }, "imageUrl": featuredImage.asset->url, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..2]}
     }`,
     param: { slug },

@@ -1,5 +1,7 @@
 import React from 'react';
 import { PageIntro } from '../general/PageIntro';
+import { getPostType } from '../../helpers/getRouteByType';
+
 export const EventHeader = ({ data }) => {
   const {
     title = '',
@@ -10,19 +12,9 @@ export const EventHeader = ({ data }) => {
     vimeo = '',
     eventLink = '',
     eventType = '',
+    _type = 'event',
   } = data;
-  let contentType;
-  switch (eventType) {
-    case 'incountryworkshop':
-      contentType = 'In-country workshop';
-      break;
-    case 'hqworkshop':
-      contentType = 'HQ workshop';
-      break;
-    default:
-      contentType = 'Event';
-      break;
-  }
+  const contentType = getPostType(data);
   return data ? (
     <div className="c-course-entry__header">
       <div
@@ -35,7 +27,7 @@ export const EventHeader = ({ data }) => {
           text={lead}
           contentType={contentType}
           type="withBreadcrumb"
-          single={true}
+          single
           date={startDate.utc}
           location={location}
         />

@@ -33,11 +33,7 @@ const EventPage = ({ data: { event = {} }, url = {} }) => {
     >
       <div className="c-event-entry">
         <section className="o-wrapper-medium">
-          <BreadCrumbV2
-            title={`Workshops & Events`}
-            parentSlug={'/workshops-and-events'}
-            home={true}
-          />
+          <BreadCrumbV2 title="Workshops & Events" parentSlug="/workshops-and-events" home />
           <EventHeader data={event} />
         </section>
         <div className="u-section-underline--no-margins" />
@@ -70,7 +66,7 @@ const EventPage = ({ data: { event = {} }, url = {} }) => {
 export default DataLoader(EventPage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-       "event": *[_type=="event" && slug.current == $slug][0]{title, eventType, location, startDate, endDate, organiser, leadText, content, slug, eventLink,
+       "event": *[_type=="event" && slug.current == $slug][0]{_type, title, eventType, location, startDate, endDate, organiser, leadText, content, slug, eventLink, eventType,
           "contact": contact[]->{
           _id,
            title,

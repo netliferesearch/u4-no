@@ -1,7 +1,7 @@
 import React from 'react';
 import { Document, Page } from 'react-pdf/build/entry.noworker';
 import { PUBLICATION } from '../../../helpers/constants';
-import { getPostType } from '../../../helpers/getRouteByType';
+import { getPostType, getRouteByType } from '../../../helpers/getRouteByType';
 import { PageIntro } from '../PageIntro';
 import dateToString from '../../../helpers/dateToString';
 import { Translations } from '../translations/Translations';
@@ -46,7 +46,7 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
             abstract={abstract}
             contentType={getPostType(data)}
             type="withBreadcrumb"
-            single={true}
+            single
           />
           <div className="c-article-header__meta">
             {translations.length > 0 && (
