@@ -13,18 +13,20 @@ import {
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   !!searchFilters.find(name => name === filterName);
 
-const SearchFilterPublicationTypes = props => {
+const SearchFilterContentTypes = props => {
   const dispatch = useDispatch();
   const { searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter } = props;
+  console.log({ defaultBuckets });
+
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
-        <h3 className="c-filters-v2__title">Publication type</h3>
+        <h3 className="c-filters-v2__title">Content type</h3>
       </div>
       <span>
         {defaultBuckets.map(bucket => {
           const { key } = bucket;
-          const filterName = `pub-${key}`;
+          const filterName = `content-${key}`;
           return (
             <div key={slugify(key)} className="c-input">
               <input
@@ -33,6 +35,7 @@ const SearchFilterPublicationTypes = props => {
                 value={key}
                 onChange={event => {
                   if (event.target.checked) {
+                    console.log({ filterName });
                     addSearchFilter(filterName);
                     dispatch(updateSearchPageNum(1));
                   } else {
@@ -51,7 +54,7 @@ const SearchFilterPublicationTypes = props => {
 };
 
 const mapStateToProps = ({
-  defaultSearchAggs: { publicationTypes: { buckets: defaultBuckets = [] } = {} } = {},
+  defaultSearchAggs: { contentTypes: { buckets: defaultBuckets = [] } = {} } = {},
   searchFilters,
 }) => ({
   defaultBuckets: sortBy(defaultBuckets, ['key']),
@@ -68,4 +71,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SearchFilterPublicationTypes);
+)(SearchFilterContentTypes);

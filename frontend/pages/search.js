@@ -8,17 +8,10 @@ import { wrapInRedux } from '../helpers/redux-store-wrapper';
 import { PageIntro } from '../components/general/PageIntro';
 import { SearchResultsV3 } from '../components/search/SearchResultsV3';
 import { SearchFiltersV3 } from '../components/search/SearchFiltersV3';
-import { useRouter } from 'next/router';
 
 const Search = ({ data = {}, url = '' }) => {
-  const router = useRouter();
+  console.log({ data });
   const showResults = useSelector(state => state.searchResultsVisible);
-  const isPublicationsPage =
-    router.query.filters && router.query.filters.search('publications-only');
-  let publications = false;
-  if (isPublicationsPage >= 0) {
-    publications = true;
-  }
   if (!data) return <div />;
   return (
     <Layout
@@ -52,7 +45,7 @@ const Search = ({ data = {}, url = '' }) => {
                 <SearchFiltersV3 data={data} />
               </section>
               <section className="o-layout__item u-12/12 u-8/12@desktop u-push-1/12@desktop">
-                <SearchResultsV3 data={data} publications={publications} />
+                <SearchResultsV3 data={data} />
               </section>
             </div>
           </div>

@@ -24,7 +24,7 @@ const ellipsizeLines = {
   [POST_TYPE.BLOG]: 3,
   [POST_TYPE.PUBLICATION]: 3,
   [POST_TYPE.LARGE]: 33,
-  [POST_TYPE.SEARCH]: 4,
+  [POST_TYPE.SEARCH]: 5,
   [POST_TYPE.PUBLICATIONS]: 3,
 };
 
@@ -33,7 +33,7 @@ const standFirstLines = {
   [POST_TYPE.BLOG]: 3,
   [POST_TYPE.PUBLICATION]: 3,
   [POST_TYPE.LARGE]: 33,
-  [POST_TYPE.SEARCH]: 3,
+  [POST_TYPE.SEARCH]: 4,
   [POST_TYPE.PUBLICATIONS]: 2,
 };
 const renderImage = type => {
