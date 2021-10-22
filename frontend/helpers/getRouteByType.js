@@ -64,6 +64,12 @@ export const getPostType = item => {
       break;
     case 'event':
       switch (item.eventType) {
+        case 'event':
+          typeTitle = 'Event';
+          break;
+        case 'eventrecording':
+          typeTitle = 'Event recording';
+          break;
         case 'other':
           typeTitle = 'Event';
           break;

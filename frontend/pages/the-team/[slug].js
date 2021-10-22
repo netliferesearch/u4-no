@@ -21,11 +21,11 @@ const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
     >
       <div className="o-wrapper-medium c-persons">
         <BreadCrumbV2
-          title={`People`}
-          parentSlug={'/the-team'}
-          grandParentTitle={`About U4`}
-          grandParentSlug={'/about-u4'}
-          home={true}
+          title="People"
+          parentSlug="/the-team"
+          grandParentTitle="About U4"
+          grandParentSlug="/about-u4"
+          home
           onDark={false}
         />
       </div>
@@ -120,19 +120,19 @@ export default DataLoader(Persons, {
               "url": url
             }
           }},
-        "courses": *[(_type == "course" || _type=="event") && references(^._id) && defined(startDate) && (endDate.utc > $now)]  | order(startDate.utc asc) {_id, _type, slug, title, startDate, lead},
+        "courses": *[(_type == "course" || _type=="event") && references(^._id) && defined(startDate) && (endDate.utc > $now)]  | order(startDate.utc asc) {_id, _type, slug, title, startDate, lead, eventType},
         "recentWork": *[((_type == "publication" && (^._id in authors[]._ref)) || (_type == "article" && references(^._id) )) && defined(date)] | order(date.utc desc)[0...5]{
-          _id, 
-          _type, 
-          slug, 
-          standfirst, 
-          title, 
-          date, 
+          _id,
+          _type,
+          slug,
+          standfirst,
+          title,
+          date,
           lead,
-          "imageUrl": featuredImage.asset->url, 
-          "topicsTitles": topics[]->{title}, 
-          "publicationType": publicationType->title, 
-          "articleType": articleType[0]->title}, 
+          "imageUrl": featuredImage.asset->url,
+          "topicsTitles": topics[]->{title},
+          "publicationType": publicationType->title,
+          "articleType": articleType[0]->title},
         },
       }`,
     param: {

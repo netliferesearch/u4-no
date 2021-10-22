@@ -105,9 +105,9 @@ const CollectionEntry = ({ data: { collection = {} } }) => {
         {resources.length > 0 && (
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel
-              posts={resources.filter(i => Object.keys(i).length !== 0).slice(3)}
+              posts={resources}
               type={POST_TYPE.CARD}
-              buttonPath="/blog"
+              buttonPath={`/search?search=${title}`}
               title="Further Resources"
               minPosts={3}
             />
@@ -160,7 +160,7 @@ export default DataLoader(CollectionEntry, {
         },
         "relatedPublications": resources[]-> | [_type == 'publication'] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
         "relatedBlogPosts": resources[]-> | [_type == 'blog-post'] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
-        "relatedEvents": resources[]-> | [_type in ["course", "event"]] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}},
+        "relatedEvents": resources[]-> | [_type in ["course", "event"]] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}, eventType },
     }[0]}`,
     param: { slug },
   }),

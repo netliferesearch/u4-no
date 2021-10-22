@@ -150,7 +150,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
               <PostCarousel
                 posts={resourceCollections}
                 type={POST_TYPE.CARD}
-                buttonPath={`/collections`}
+                buttonPath="/collections"
                 title="Resource Collections"
                 minPosts={3}
               />
@@ -252,7 +252,7 @@ export default DataLoader(TopicEntry, {
         },
         "relatedPublications": *[_type == 'publication' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
         "relatedBlogPosts": *[_type == 'blog-post' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
-        "relatedEvents": *[_type in ["course", "event"] && references(^._id)] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}},
+        "relatedEvents": *[_type in ["course", "event"] && references(^._id)] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}, eventType},
         "resourceCollections": *[_type == 'collection' && references(^._id)] {_type, title, "slug": slug.current},
     }[0]}`,
     param: { slug },
