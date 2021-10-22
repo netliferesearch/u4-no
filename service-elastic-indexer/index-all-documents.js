@@ -175,7 +175,8 @@ async function main() {
     'person',
     'frontpage',
     'event',
-    'blog',
+    'collection',
+    'blog-post',
     'course',
   ];
 

@@ -265,6 +265,7 @@ const doSearch = async ({
           'topicContent',
           'numberOfTopicResources',
           'url',
+          'articleTypeTitles',
           'featuredImageUrl',
           'longTitle',
           'explainerText',
