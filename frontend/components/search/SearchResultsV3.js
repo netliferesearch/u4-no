@@ -44,9 +44,11 @@ export const SearchResultsV3 = props => {
             : `Search our publication, courses and more. Enter a query above, and the results will be
           displayed as you type.`}
         </div>
-        <div className="c-search-results-v2__topbar-sortby">
-          <SearchResultsSortingSelect />
-        </div>
+        {!props.publications && (
+          <div className="c-search-results-v2__topbar-sortby">
+            <SearchResultsSortingSelect />
+          </div>
+        )}
       </div>
       <hr className="u-section-underline--no-margins" />
 

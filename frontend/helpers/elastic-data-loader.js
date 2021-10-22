@@ -27,6 +27,12 @@ const aggregations = {
       size: 100,
     },
   },
+  // contentTypes: {
+  //   terms: {
+  //     field: 'contentType',
+  //     size: 100,
+  //   },
+  // },
   topicTitles: {
     terms: {
       field: 'topicTitles',
@@ -52,7 +58,6 @@ const aggregations = {
     },
   },
 };
-
 const doSearch = async ({
   query,
   defaultSearchAggs: { publicationTypes: defaultPublicationTypes = {} } = [],
@@ -68,7 +73,6 @@ const doSearch = async ({
     activeFilterQueries.push({ terms: { filedUnderTopicNames: topicNames } });
   }
   let searchQueryWithoutFilters = searchQuery;
-
   searchQueryFilters.forEach(part => {
     if (part.indexOf('author:') !== -1) {
       const personSlug = part.replace(/^author:/gi, '');
@@ -95,6 +99,15 @@ const doSearch = async ({
       terms: { 'publicationTypeTitle.keyword': publicationNames },
     });
   }
+  // const contentNames = filters
+  //   .filter(filter => /^content-/gi.test(filter))
+  //   .map(filter => /content-(.*)/gi.exec(filter)[1]);
+  // // console.log({ ContentNames });
+  // if (contentNames.length > 0) {
+  //   activeFilterQueries.push({
+  //     terms: { contentTypes: contentNames },
+  //   });
+  // }
 
   const languageNames = filters
     .filter(filter => /^lang-type-/gi.test(filter))
@@ -174,10 +187,8 @@ const doSearch = async ({
                         'lead',
                         'content',
                         'authors',
-                        // term (glossary) related
                         'termTitle^2',
                         'termContent^2',
-                        // topic related
                         'topicTitle^3',
                         'topicContent^3',
                         'basicGuide',
@@ -263,6 +274,7 @@ const doSearch = async ({
           'filedUnderTopicNames',
           'pdfFileUrl',
           'legacypdfFileUrl',
+          // 'articleType',
         ],
       },
     });
