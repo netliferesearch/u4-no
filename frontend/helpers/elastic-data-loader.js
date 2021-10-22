@@ -39,6 +39,12 @@ const aggregations = {
       size: 100,
     },
   },
+  contentTypes: {
+    terms: {
+      field: 'contentType',
+      size: 100,
+    },
+  },
   filedUnderTopicNames: {
     terms: {
       field: 'filedUnderTopicNames',
@@ -176,6 +182,7 @@ const doSearch = async ({
                       fields: [
                         'title',
                         'subtitle',
+                        'type',
                         'standfirst',
                         'lead',
                         'content',

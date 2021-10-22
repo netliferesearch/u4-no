@@ -48,6 +48,7 @@ const addQueryParams = queryParams => {
 
 const updateFilterQueryParams = (filters = []) => {
   addQueryParams({
+    searchPageNum: 1,
     filters: uniq(filters)
       .map(name => name.replace(/,/g, '|'))
       .join(),
@@ -107,16 +108,19 @@ export const reducer = (state = defaultState, action) => {
       updateFilterQueryParams(state.searchFilters.concat(action.searchFilter));
       return Object.assign({}, state, {
         searchFilters: uniq(state.searchFilters.concat(action.searchFilter)),
+        searchPageNum: 1,
       });
     case actionTypes.SEARCH_REMOVE_FILTER:
       updateFilterQueryParams(state.searchFilters.filter(name => name !== action.searchFilter));
       return Object.assign({}, state, {
         searchFilters: state.searchFilters.filter(name => name !== action.searchFilter),
+        searchPageNum: 1,
       });
     case actionTypes.SEARCH_REPLACE_FILTERS:
       updateFilterQueryParams(action.searchFilters);
       return Object.assign({}, state, {
         searchFilters: uniq(action.searchFilters),
+        searchPageNum: 1,
       });
     case actionTypes.SEARCH_UPDATE_PAGE_NUM:
       if (state.searchPageNum !== action.searchPageNum) {

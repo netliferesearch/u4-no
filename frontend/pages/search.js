@@ -32,7 +32,7 @@ const Search = ({ data = {}, url = '' }) => {
           <hr className="u-section-underline--no-margins" />
           <div className="o-wrapper-medium">
             <div className="c-menu__search-holder">
-              <SearchFieldV3 isOpen={true} isAlwaysOpen={true} searchData={data} />
+              <SearchFieldV3 isOpen isAlwaysOpen searchData={data} />
             </div>
           </div>
           <hr className="u-section-underline--no-margins" />
