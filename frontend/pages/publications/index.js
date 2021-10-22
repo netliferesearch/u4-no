@@ -16,8 +16,8 @@ export const Publications = ({ data = {} }) => {
     client
       .fetch(
         `{
-        "featured": {"publication": *[_type  == "publication"] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url, "legacypdf": legacypdf.asset->url}[0..3]},
-      }`
+      "featured": {"publication": *[_type  == "publication"] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url, "legacypdf": legacypdf.asset->url}[0..3]},
+    }`
       )
       .then(results => {
         setFeatured(results.featured);

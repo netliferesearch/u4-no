@@ -8,6 +8,7 @@ import SearchFilterLanguages from './SearchFilterLanguages';
 import SearchFilterYears from './SearchFilterYears';
 import SearchFilterReset from './SearchFilterReset';
 import { getSearchAggregations } from '../../helpers/elastic-data-loader';
+import SearchFilterContentTypes from './SearchFilterContentTypes';
 
 function toggle() {
   if (document) {
@@ -68,6 +69,7 @@ export const SearchFiltersV3 = props => {
         </div>
         <SearchFilterTopics />
         <SearchFilterPublicationTypes />
+        {/* <SearchFilterContentTypes /> */}
         <SearchFilterYears />
         <SearchFilterLanguages />
         <button onClick={toggle} className="c-search-results-v2__topbar-filter-close">

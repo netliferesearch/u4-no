@@ -74,18 +74,18 @@ class SearchFieldV2 extends Component {
         //   // fetching a lot of results per key stroke. We reset to the default.
         //   this.props.updateSearchPageNum(1);
         // }
-        debounce(() => {
-          const queryParams = queryString.parse(location.search);
-          const updatedQueryString = queryString.stringify({
-            ...queryParams,
-            search: value,
-            searchPageNum: 1,
-          });
-          this.props.router[`${urlUpdateType}`](`/search?${updatedQueryString}`, undefined, {
-            scroll: false,
-          });
-          console.log('debounce was called');
-        }, 100)();
+        // debounce(() => {
+        const queryParams = queryString.parse(location.search);
+        const updatedQueryString = queryString.stringify({
+          ...queryParams,
+          search: value,
+          searchPageNum: 1,
+        });
+        this.props.router[`${urlUpdateType}`](`/search?${updatedQueryString}`, undefined, {
+          scroll: false,
+        });
+        console.log('debounce was called');
+        // }, 100)();
       }
     );
   }
@@ -140,11 +140,11 @@ class SearchFieldV2 extends Component {
                   onKeyDown: event => {
                     // Prevent the user from typing more if search is initiated on
                     // page different from the search page.
-                    if (window.location.pathname !== '/search' && this.state.loading) {
-                      event.preventDefault();
-                      event.stopPropagation();
-                      return;
-                    }
+                    // if (window.location.pathname !== '/search' && this.state.loading) {
+                    //   event.preventDefault();
+                    //   event.stopPropagation();
+                    //   return;
+                    // }
                     // While onChange is called every time the input field
                     // changes value, we need to also listen for the enter key
                     // so that we can re-trigger query.
@@ -152,26 +152,41 @@ class SearchFieldV2 extends Component {
                       this.updateSearch({ urlUpdateType: 'push', value: event.target.value });
                     }
                   },
-                  onChange: event => {
-                    event.persist();
-                    const { value = '' } = event.target;
-                    if (this.typingTimeout) clearTimeout(this.typingTimeout);
-                    this.typingTimeout = setTimeout(() => {
-                      if (value.length <= 2) {
-                        return null; // Do nothing.
-                      } else if (window.location.pathname !== '/search') {
-                        return this.updateSearch({ urlUpdateType: 'push', value });
-                      }
-                      return this.updateSearch({
-                        urlUpdateType: 'replace',
-                        value: event.target.value,
-                      });
-                    }, 500);
-                  },
+                  // onChange: event => {
+                  //   event.persist();
+                  //   const { value = '' } = event.target;
+                  //   if (this.typingTimeout) clearTimeout(this.typingTimeout);
+                  //   // this.typingTimeout = setTimeout(() => {
+                  //   if (value.length <= 2) {
+                  //     return null; // Do nothing.
+                  //   } else if (window.location.pathname !== '/search') {
+                  //     return this.updateSearch({ urlUpdateType: 'push', value });
+                  //   }
+                  //   return this.updateSearch({
+                  //     urlUpdateType: 'replace',
+                  //     value: event.target.value,
+                  //   });
+                  //   // }, 500);
+                  // },
                 })}
               />
-              <button {...classes('button')} type="submit" value="Search">
-                {this.state.loading ? <LoaderV2 /> : <SearchIcon />}
+              <button
+                {...classes('button')}
+                onClick={event => {
+                  // Prevent the user from typing more if search is initiated on
+                  // page different from the search page.
+                  // if (window.location.pathname !== '/search' && this.state.loading) {
+                  //   event.preventDefault();
+                  //   event.stopPropagation();
+                  //   return;
+                  // }
+                  // While onChange is called every time the input field
+                  // changes value, we need to also listen for the enter key
+                  // so that we can re-trigger query.
+                  this.updateSearch({ urlUpdateType: 'push', value: event.target.value });
+                }}
+              >
+                {<SearchIcon />}
               </button>
               {!isAlwaysOpen && (
                 <button {...classes('button')} type="button" onClick={triggerSearchMenu}>
