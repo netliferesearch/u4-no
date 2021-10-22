@@ -68,8 +68,7 @@ export const SearchFiltersV3 = props => {
           </div>
         </div>
         <SearchFilterTopics />
-        <SearchFilterPublicationTypes />
-        {/* <SearchFilterContentTypes /> */}
+        {props.publications ?  <SearchFilterPublicationTypes /> :  <SearchFilterContentTypes />}
         <SearchFilterYears />
         <SearchFilterLanguages />
         <button onClick={toggle} className="c-search-results-v2__topbar-filter-close">

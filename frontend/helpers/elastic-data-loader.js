@@ -99,15 +99,15 @@ const doSearch = async ({
       terms: { 'publicationTypeTitle.keyword': publicationNames },
     });
   }
-  // const contentNames = filters
-  //   .filter(filter => /^content-/gi.test(filter))
-  //   .map(filter => /content-(.*)/gi.exec(filter)[1]);
-  // // console.log({ ContentNames });
-  // if (contentNames.length > 0) {
-  //   activeFilterQueries.push({
-  //     terms: { contentTypes: contentNames },
-  //   });
-  // }
+  const contentNames = filters
+    .filter(filter => /^content-/gi.test(filter))
+    .map(filter => /content-(.*)/gi.exec(filter)[1]);
+  // console.log({ ContentNames });
+  if (contentNames.length > 0) {
+    activeFilterQueries.push({
+      terms: { contentType: contentNames },
+    });
+  }
 
   const languageNames = filters
     .filter(filter => /^lang-type-/gi.test(filter))
