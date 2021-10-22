@@ -72,10 +72,12 @@ const Glossary = ({ data: { terms = [] }, url = {} }) => {
           {filteredTerms.map(
             ({ term = '', definition = [], slug = {} }, index) =>
               definition.length > 0 && (
-                <div className="c-glossary__terms" key={index}>
-                  <h4 className="c-glossary__terms-term" id={slug.current ? slug.current : ''}>
-                    {term}
-                  </h4>
+                <div
+                  className="c-glossary__terms"
+                  key={index}
+                  id={slug.current ? slug.current : ''}
+                >
+                  <h4 className="c-glossary__terms-term">{term}</h4>
                   <div className="c-glossary__terms-definition">
                     {definition ? <ServiceArticle blocks={definition} /> : null}
                   </div>
