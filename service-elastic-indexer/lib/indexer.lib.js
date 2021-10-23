@@ -246,6 +246,11 @@ async function processArticle({ document: doc, allDocuments }) {
     references: authors,
   });
   const articleTypeTitles = articleTypes.map(({ title }) => title);
+  const audioVideoTypes = ['video', 'podcast'];
+  let contentType = [doc._type];
+  if(articleTypeTitles.some(type => audioVideoTypes.includes(type.toLowerCase()))) {
+    contentType = [doc._type, 'audio-video'];
+  }
   const articleTypeIds = articleTypes.map(({ _id }) => _id);
   const filedUnderTopics = allDocuments.filter(({ _type = '', resources = [] }) =>
     _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
@@ -265,7 +270,7 @@ async function processArticle({ document: doc, allDocuments }) {
     }),
     articleTypeTitles,
     articleTypeIds,
-    contentType:[doc._type],
+    contentType,
     filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
     filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
     relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),

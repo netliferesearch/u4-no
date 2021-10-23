@@ -13,7 +13,7 @@ import {
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   !!searchFilters.find(name => name === filterName);
 
-const supportedTypes = ['article', 'course', 'event', 'publication', 'blog-post', 'topics', 'collection', 'audio_video']
+const supportedTypes = ['article', 'course', 'event', 'publication', 'blog-post', 'topics', 'collection', 'audio-video']
 const typeLabels = {
   'article': 'Article',
   'course': 'Online course',
@@ -22,7 +22,7 @@ const typeLabels = {
   'blog-post': 'Blog',
   'topics': 'Topic',
   'collection': 'Resource collection',
-  'audio_video': 'Audio & video',
+  'audio-video': 'Audio & video',
 }
 const SearchFilterContentTypes = props => {
   const dispatch = useDispatch();
