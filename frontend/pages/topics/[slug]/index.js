@@ -136,7 +136,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
               <PostCarousel
                 posts={relatedPublications}
                 type={POST_TYPE.PUBLICATION}
-                buttonPath="/publications"
+                buttonPath={`/search?filters=content-publication%2Ctopic-type-${encodeURIComponent(title)}&search=&searchPageNum=1`}
                 title="Latest publications"
                 minPosts={4}
               />
