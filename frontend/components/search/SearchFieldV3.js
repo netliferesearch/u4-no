@@ -43,19 +43,19 @@ export const SearchFieldV3 = props => {
     updateSearch({ urlUpdateType: 'push', value: e.target.value });
   };
   const updateSearch = ({ urlUpdateType, value = '' }) => {
-    setLoading(value.length > 2);
-    debounce(() => {
-      const queryParams = queryString.parse(location.search);
-      const updatedQueryString = queryString.stringify({
-        ...queryParams,
-        search: value,
-        searchPageNum: 1,
-      });
-      router[urlUpdateType](`/search?${updatedQueryString}`, null, {
-        scroll: false,
-      });
-      setLoading(false);
-    }, 300)();
+    // setLoading(value.length > 2);
+    // debounce(() => {
+    const queryParams = queryString.parse(location.search);
+    const updatedQueryString = queryString.stringify({
+      ...queryParams,
+      search: value,
+      searchPageNum: 1,
+    });
+    router[urlUpdateType](`/search?${updatedQueryString}`, null, {
+      scroll: false,
+    });
+    setLoading(false);
+    // }, 300)();
   };
   const { modifier, triggerSearchMenu, isOpen = false, isAlwaysOpen = false } = props;
   const searchValue = router.query.search ?? '';
@@ -85,50 +85,70 @@ export const SearchFieldV3 = props => {
             Search to find topics, publications, people, services, and more:
           </label>
           <div className="c-search-v2__content">
-            <input
-              ref={inputReference}
-              placeholder="What are you looking for?"
-              className={`c-search-v2__input ${modifier}`}
-              {...getInputProps({
-                id: 'search',
-                name: 'search',
-                type: 'search',
-                value: undefined,
-                onKeyDown: event => {
-                  // Prevent the user from typing more if search is initiated on
-                  // page different from the search page.
-                  if (window.location.pathname !== '/search' && loading) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    return;
-                  }
-                  // While onChange is called every time the input field
-                  // changes value, we need to also listen for the enter key
-                  // so that we can re-trigger query.
-                  if (event.keyCode === 13) {
-                    updateSearch({ urlUpdateType: 'push', value: event.target.value });
-                  }
-                },
-                onChange: event => {
-                  event.persist();
-                  const { value = '' } = event.target;
-                  if (typingTimeout) clearTimeout(typingTimeout);
-                  setTypingTimeout(
-                    setTimeout(() => {
-                      if (value.length <= 2) {
-                        return null; // Do nothing.
-                      } else if (window.location.pathname !== '/search') {
-                        return updateSearch({ urlUpdateType: 'push', value });
-                      }
-                      return updateSearch({
-                        urlUpdateType: 'replace',
-                        value: event.target.value,
-                      });
-                    }, 500)
-                  );
-                },
-              })}
-            />
+            {!props.menu ? (
+              <input
+                ref={inputReference}
+                placeholder="What are you looking for?"
+                className={`c-search-v2__input ${modifier}`}
+                {...getInputProps({
+                  id: 'search',
+                  name: 'search',
+                  type: 'search',
+                  value: undefined,
+                  onKeyDown: event => {
+                    // Prevent the user from typing more if search is initiated on
+                    // page different from the search page.
+                    if (window.location.pathname !== '/search' && loading) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      return;
+                    }
+                    // While onChange is called every time the input field
+                    // changes value, we need to also listen for the enter key
+                    // so that we can re-trigger query.
+                    if (event.keyCode === 13) {
+                      updateSearch({ urlUpdateType: 'push', value: event.target.value });
+                    }
+                  },
+                  onChange: event => {
+                    event.persist();
+                    const { value = '' } = event.target;
+                    if (typingTimeout) clearTimeout(typingTimeout);
+                    setTypingTimeout(
+                      setTimeout(() => {
+                        if (value.length <= 2) {
+                          return null; // Do nothing.
+                        } else if (window.location.pathname !== '/search') {
+                          return updateSearch({ urlUpdateType: 'push', value });
+                        }
+                        return updateSearch({
+                          urlUpdateType: 'replace',
+                          value: event.target.value,
+                        });
+                      }, 500)
+                    );
+                  },
+                })}
+              />
+            ) : (
+              <input
+                ref={inputReference}
+                placeholder="What are you looking for?"
+                className={`c-search-v2__input ${modifier}`}
+                {...getInputProps({
+                  id: 'search',
+                  name: 'search',
+                  type: 'search',
+                  value: undefined,
+                  onKeyDown: event => {
+                    if (event.keyCode === 13) {
+                      updateSearch({ urlUpdateType: 'push', value: event.target.value });
+                    }
+                  },
+                })}
+              />
+            )}
+
             <button className="c-search-v2__button" type="submit" value="Search">
               {loading ? <LoaderV2 /> : <SearchIcon />}
             </button>
