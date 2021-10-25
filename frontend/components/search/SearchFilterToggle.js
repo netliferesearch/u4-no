@@ -30,11 +30,11 @@ export default class SearchFilterToggle extends React.Component {
             onClick={this.toggleHandler}
           >
             {isToggleOpen ? (
-              <div>
+              <div className="c-filters-v2-toggle">
                 Show less <ArrowUp />
               </div>
             ) : (
-              <div>
+              <div className="c-filters-v2-toggle">
                 Show more <ArrowDown />
               </div>
             )}

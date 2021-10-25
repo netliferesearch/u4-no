@@ -65,8 +65,8 @@ const Frontpage = ({
           <hr className="u-section-underline--no-margins" />
         </div>
       </section>
-      <section className="">
-        <div className="o-wrapper-medium o-wrapper-mobile-full">
+      <section className="o-wrapper-medium o-wrapper-mobile-full">
+        <div>
           <PostCarousel
             posts={featured.publication}
             type={POST_TYPE.PUBLICATION}

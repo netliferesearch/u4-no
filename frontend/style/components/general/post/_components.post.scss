@@ -5,7 +5,7 @@
   border-bottom: 1px solid $light-grey;
   @include mq($from: tablet) {
     border-bottom: none;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     padding-bottom: 0;
   }
 
@@ -214,11 +214,6 @@
     .c-post__title {
       max-height: inherit;
     }
-  }
-}
-.c-post.search {
-  .c-post__date {
-    color: $dark-blue;
   }
 }
 .c-post.publication {

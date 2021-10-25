@@ -1,10 +1,17 @@
 .c-input {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   display: grid;
   grid-template-columns: 16px auto;
+  align-items: center;
   label {
     margin-left: 14px;
     color: $mid-grey;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.01em;
   }
   input {
     margin-top: 1px;

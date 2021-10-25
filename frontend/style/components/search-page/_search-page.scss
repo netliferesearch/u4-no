@@ -27,8 +27,8 @@
   }
   .o-layout__item:first-of-type {
     padding: 0;
-    position: sticky;
-    top: 120px;
+    // position: sticky;
+    // top: 120px;
   }
   .c-search-page__sections {
     @include mq($from: desktop) {

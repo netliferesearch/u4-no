@@ -43,8 +43,8 @@
   .o-layout__item:first-of-type {
     @include mq($from: desktop) {
       padding: 0;
-      position: sticky;
-      top: 120px;
+      // position: sticky;
+      // top: 120px;
     }
   }
   .c-search-results-v2__content {

@@ -17,6 +17,9 @@
     padding: 15px;
     background-color: rgba(240, 240, 240, 0.4);
   }
+  .c-filters-v2-toggle {
+    font-family: Lato;
+  }
 }
 .c-filters-v2__item--date {
   display: flex;
@@ -30,16 +33,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 45px;
+  // min-height: 45px;
   text-align: right;
   h4 {
     margin: 0;
   }
   button {
     text-transform: uppercase;
-    color: $mid-grey;
     border-bottom: solid 1px $mid-grey;
     font-size: $font-size-nano;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.15em;
+    color: $mid-grey;
   }
 }
 
@@ -54,12 +63,13 @@
   @include inuit-font-size($font-size-small, $line-height-small);
 }
 .c-filters-v2__item--title {
-  margin: 0;
+  margin-bottom: 24px;
 }
 .c-filters-v2__item--title + .c-filters-v2__item {
   margin-top: 0;
 }
 .c-filters-v2__item {
+  line-height: 1;
   font-family: $font-sans;
   padding: 0;
   margin: 40px 0;
@@ -86,13 +96,21 @@
 }
 
 h3.c-filters-v2__title {
-  padding: 0;
+  line-height: normal;
+  padding-bottom: 5px;
   font-size: $font-size-nano;
   text-transform: uppercase;
   width: 100%;
   border-bottom: 1px solid rgba(111, 111, 111, 0.3);
-  margin: 20px 0;
+  margin: 0 0 16px 0;
   font-weight: bold;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 .c-filters-v2__item--date-section {
   width: 50%;
@@ -267,13 +285,18 @@ h3.c-filters-v2__title {
   color: $mid-grey;
   letter-spacing: 0.15em;
   line-height: 14px;
+
   path {
     stroke: $mid-grey;
   }
 }
 
+// .c-filters-v2__clear-all.c-filters-v2-btn {
+
+// }
+
 .c-filters-v2-btn--list-item {
-  margin-top: 10px;
+  // margin-top: 4px;
   margin-left: 30px;
 }
 

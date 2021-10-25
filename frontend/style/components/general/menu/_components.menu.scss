@@ -5,6 +5,9 @@
   }
   .c-menu__list {
     width: 33%;
+    .c-menu__list-item {
+      height: 30px;
+    }
   }
 }
 
@@ -37,7 +40,6 @@
     margin-left: 12px;
   }
   &:hover {
-    font-weight: bold;
     color: $highlight-blue;
   }
 }
@@ -58,7 +60,6 @@
 
 .c-menu__heading--active {
   &:hover {
-    font-weight: bold;
     color: $highlight-blue;
   }
 }
@@ -73,8 +74,7 @@
 }
 
 .c-menu__link {
-  // padding-bottom: 12px;
-  display: inline-block;
+  display: flex;
   &:hover {
     color: $highlight-blue;
   }
@@ -114,6 +114,7 @@
   width: 65%;
   display: flex;
   justify-content: flex-start;
+  align-content: flex-start;
 }
 
 .c-menu__list {

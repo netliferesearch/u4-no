@@ -37,6 +37,21 @@
 
 .c-hero__content {
   width: 100%;
+  .c-breadcrumb__link {
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 400;
+    margin: 0 12px;
+    &:hover,
+    &:active {
+      color: $highlight-blue;
+    }
+  }
+  .u-detail--blue--small {
+    &:after {
+      background-color: $highlight-blue;
+    }
+  }
 }
 
 .c-hero-image {
@@ -57,12 +72,12 @@
     left: 0;
     right: 0;
     background-color: $dark-blue;
-    mix-blend-mode: multiply;
     opacity: 1;
   }
   @include mq($from: desktop) {
     &::after {
-      opacity: 0.3;
+      background-color: #000;
+      opacity: 0.2;
     }
   }
 }

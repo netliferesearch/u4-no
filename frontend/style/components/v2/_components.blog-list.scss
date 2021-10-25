@@ -388,7 +388,7 @@
     font-size: 15px;
     line-height: 1;
     background-color: $white;
-    color: rgba(22, 32, 99, 0.5);
+    color: $dark-blue;
     border: none;
     outline: none;
     width: 30px;
@@ -406,6 +406,7 @@
     }
     &:hover {
       color: $blue;
+      font-weight: 900;
     }
     &.active {
       color: $blue;
@@ -431,7 +432,7 @@
     }
     &.prev-button {
       border-radius: 50%;
-      border: solid rgba(22, 32, 99, 0.5) 0.5px;
+      border: solid $dark-blue 0.5px;
       margin-left: 10px;
       &:hover path {
         stroke: $blue;
@@ -443,7 +444,7 @@
     }
     &.last-button {
       border-radius: 50%;
-      border: solid rgba(22, 32, 99, 0.5) 0.5px;
+      border: solid $dark-blue 0.5px;
       &:hover path {
         stroke: $blue;
         opacity: 100%;
@@ -454,7 +455,7 @@
     }
     &.first-button {
       border-radius: 50%;
-      border: solid rgba(22, 32, 99, 0.5) 0.5px;
+      border: solid $dark-blue 0.5px;
       &:hover path {
         stroke: $blue;
         opacity: 100%;
@@ -465,7 +466,7 @@
     }
     &.next-button {
       border-radius: 50%;
-      border: solid rgba(22, 32, 99, 0.5) 0.5px;
+      border: solid $dark-blue 0.5px;
       margin-right: 10px;
       &:hover path {
         stroke: $blue;
