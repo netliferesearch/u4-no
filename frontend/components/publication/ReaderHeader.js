@@ -69,7 +69,7 @@ export const ReaderHeader = ({ data = '', setReaderOpen = null, targetRef = null
     >
       <span ref={menuRef} />
       <div className="c-reader-header__top u-fixed">
-        <ReaderTop handleClick={handleClick} />
+        <ReaderTop handleClick={handleClick} scrolled={scrolled} title={title} />
         {content.length > 0 && scrolled ? <ReadingProgress targetRef={targetRef} /> : null}
         {sectionNo > 0 && scrolled ? (
           <SectionBar
@@ -135,16 +135,23 @@ export const ReaderHeader = ({ data = '', setReaderOpen = null, targetRef = null
   );
 };
 
-export const ReaderTop = ({ handleClick }) => {
+export const ReaderTop = ({ handleClick, scrolled, title }) => {
   return (
-    <div className="c-reader-header__top-content o-wrapper-medium">
-      <Link href="/">
+    <div
+      className={`c-reader-header__top-content o-wrapper-medium ${
+        scrolled ? 'c-reader-header__top-content--scrolled' : ''
+      }`}
+    >
+      {/* <Link href="/">
         <a className="u-no-underline">
           <LogoU4 />
         </a>
-      </Link>
+      </Link> */}
+      <div>{scrolled && <h6 className="">{title}</h6>}</div>
       <div className="c-reader-header__close">
-        <CloseButton onClick={handleClick} />
+        <button className={`c-btn c-btn--primary c-btn--primary`} onClick={handleClick}>
+          Close
+        </button>
       </div>
     </div>
   );

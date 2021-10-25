@@ -17,6 +17,16 @@
 
 // Reader Header:
 
+.c-reader-header--scrolled {
+  .c-reader-header__top {
+    background-color: $white;
+  }
+}
+
+.c-reader-header__top {
+  background-color: transparent;
+}
+
 .c-reader-header__row {
   display: flex;
   justify-content: flex-end;
@@ -24,10 +34,10 @@
 }
 
 .c-reader-header__main {
-  padding-top: 72px;
-  @include mq($from: tablet) {
-    padding-top: 80px;
-  }
+  // padding-top: 72px;
+  // @include mq($from: tablet) {
+  //   padding-top: 80px;
+  // }
 }
 
 .c-progress-bar__container {
@@ -40,19 +50,14 @@
   background-color: $highlight-blue;
 }
 
-.c-reader-header__top {
-  background-color: white;
-}
-
 .c-reader-header__top-content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px 24px;
+  align-items: flex-start;
+  padding: 0 20px;
 
-  @include mq($from: tablet) {
-    justify-content: space-between;
-    padding: 24px 32px 24px 24px;
+  h6 {
+    margin: 20px 0;
   }
 
   .u-no-underline {

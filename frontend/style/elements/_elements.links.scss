@@ -53,6 +53,24 @@ a.u-link--inText {
   }
 }
 
+a.u-link--inText--arrow {
+  display: flex;
+  align-items: center;
+  svg {
+    stroke: $dark-blue;
+    margin-left: 8px;
+    margin-top: 2px;
+  }
+
+  &:hover {
+    text-decoration: none;
+    svg,
+    path {
+      stroke: $blue;
+    }
+  }
+}
+
 a.u-no-underline {
   text-decoration: none;
   border: none;

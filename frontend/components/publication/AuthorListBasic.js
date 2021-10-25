@@ -1,5 +1,6 @@
 import React from 'react';
 import LinkToItem from '../general/LinkToItem';
+import { ArrowNext } from '../icons/ArrowNext';
 
 export const AuthorListBasic = ({ authors = [] }) => {
   return (
@@ -28,8 +29,9 @@ export const AuthorListBasic = ({ authors = [] }) => {
                       _ref === '3babc8f1-9e38-4493-9823-a9352b46585b'
                   ) ? (
                     <LinkToItem type="person" slug={slug.current}>
-                      <a className="u-link--inText"> {console.log(slug)}
+                      <a className="u-link--inText u-link--inText--arrow">
                         <span>{`${firstName} ${surname}`}</span>
+                        <ArrowNext />
                       </a>
                     </LinkToItem>
                   ) : (
