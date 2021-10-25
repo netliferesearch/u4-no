@@ -229,6 +229,17 @@
   }
 }
 
+.c-btn--primary--highlight {
+  background-color: $highlight-blue;
+  border: 1px solid $highlight-blue;
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
 .c-btn--secondary--onDark {
   color: $light-blue;
   background-color: transparent;
