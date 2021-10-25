@@ -192,8 +192,43 @@ async function processPublication({ document: doc, allDocuments }) {
     publicationTypeTitle,
     languageName,
     pdfFileUrl,
-    contentType:doc._type,
+    contentType:[doc._type],
     legacypdfFileUrl,
+    filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
+    filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
+    relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
+  };
+}
+
+async function processBlog({ document: doc, allDocuments }) {
+  const expand = initExpand(allDocuments);
+  const { slug: { current = '' } = {}, authors = [] } = doc;
+  const url = `/${current}`;
+  const relatedPersons = expand({
+    references: authors,
+  });
+
+  const filedUnderTopics = allDocuments.filter(({ _type = '', resources = [] }) =>
+    _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...doc,
+    // then we override some of those fields with processed data.
+    url,
+    content: blocksToText(doc.content || []),
+    authors: expand({
+      references: doc.authors,
+      process: ({ firstName, surname }) => `${firstName} ${surname}`,
+    }),
+    keywords: _.uniq(expand({
+      references: doc.keywords || [],
+      process: ({ keyword }) => keyword,
+    })),
+    authorIds: expand({
+      references: doc.authors,
+      process: ({ _id }) => _id,
+    }),
+    contentType:[doc._type],
     filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
     filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
     relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
@@ -211,6 +246,11 @@ async function processArticle({ document: doc, allDocuments }) {
     references: authors,
   });
   const articleTypeTitles = articleTypes.map(({ title }) => title);
+  const audioVideoTypes = ['video', 'podcast'];
+  let contentType = [doc._type];
+  if(articleTypeTitles.some(type => audioVideoTypes.includes(type.toLowerCase()))) {
+    contentType = [doc._type, 'audio-video'];
+  }
   const articleTypeIds = articleTypes.map(({ _id }) => _id);
   const filedUnderTopics = allDocuments.filter(({ _type = '', resources = [] }) =>
     _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
@@ -230,7 +270,7 @@ async function processArticle({ document: doc, allDocuments }) {
     }),
     articleTypeTitles,
     articleTypeIds,
-    contentType:doc._type,
+    contentType,
     filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
     filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
     relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
@@ -246,9 +286,20 @@ async function processTerm({ document: doc }) {
     ...restOfDoc,
     // then we override some of those fields with processed data.
     termTitle: term,
-    contentType:doc._type,
+    contentType:[doc._type],
     termContent: blocksToText(definition),
     url: `/terms#${current}`,
+  };
+}
+
+async function processCollection({ document: doc }) {
+  const {
+    slug: { current = '' } = {}, term, definition = [], ...restOfDoc
+  } = doc;
+  return {
+    // by default we add all Sanity fields to elasticsearch.
+    ...restOfDoc,
+    contentType:[doc._type],
   };
 }
 
@@ -263,7 +314,7 @@ async function processPerson({ document: doc }) {
     // then we override some of those fields with processed data.
     title: `${firstName} ${surname}`,
     content: blocksToText(bio),
-    contentType:doc._type,
+    contentType:[doc._type],
     url: `/the-team/${current}`,
   };
 }
@@ -299,7 +350,7 @@ async function processTopic({ document: doc, allDocuments }) {
     // then we override some of those fields with processed data.
     topicTitle,
     url,
-    contentType:doc._type,
+    contentType:[doc._type],
     numberOfTopicResources: resources.length,
     featuredImageUrl,
     topicContent: explainerText,
@@ -322,7 +373,7 @@ async function processFrontpage({ document: doc }) {
     // then we override some of those fields with processed data.
     content: getLeadText(lead),
     url: `/${current}`,
-    contentType:doc._type,
+    contentType:[doc._type],
     frontpageSections: blocksToText(sections),
   };
 }
@@ -338,7 +389,7 @@ async function processEvent({ document: doc, allDocuments = [] }) {
   return {
     // by default we add all Sanity fields to elasticsearch.
     ...restOfDoc,
-    contentType:doc._type,
+    contentType:[doc._type],
     // then we override some of those fields with processed data.
     content: getLeadText(lead),
     url: `/events/${current}`,
@@ -376,7 +427,7 @@ async function processCourse({ document: doc, allDocuments = [] }) {
     url: `/courses/${current}`,
     languageName,
     courseType,
-    contentType:doc._type,
+    contentType:[doc._type],
     courseTypeTitle,
     relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
   };
@@ -413,10 +464,12 @@ async function processDocument({ document, allDocuments }) {
     term: processTerm,
     topics: processTopic,
     article: processArticle,
+    'blog-post': processBlog,
     person: processPerson,
     frontpage: processFrontpage,
     event: processEvent,
     course: processCourse,
+    collection: processCollection,
   };
   // Do a lookup in the list of processors and use function if precent, otherwise
   // just return an unprocessed document.

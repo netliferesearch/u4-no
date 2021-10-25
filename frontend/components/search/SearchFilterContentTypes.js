@@ -13,10 +13,21 @@ import {
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   !!searchFilters.find(name => name === filterName);
 
+const supportedTypes = ['article', 'course', 'event', 'publication', 'blog-post', 'topics', 'collection', 'audio-video']
+const typeLabels = {
+  'article': 'Article',
+  'course': 'Online course',
+  'event': 'Event',
+  'publication': 'Publication',
+  'blog-post': 'Blog',
+  'topics': 'Topic',
+  'collection': 'Resource collection',
+  'audio-video': 'Audio & video',
+}
 const SearchFilterContentTypes = props => {
   const dispatch = useDispatch();
   const { searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter } = props;
-  console.log({ defaultBuckets });
+  console.log('defaultBuckets', defaultBuckets);
 
   return (
     <form className="c-filters-v2__item">
@@ -24,7 +35,7 @@ const SearchFilterContentTypes = props => {
         <h3 className="c-filters-v2__title">Content type</h3>
       </div>
       <span>
-        {defaultBuckets.map(bucket => {
+        {defaultBuckets.filter(bucket => supportedTypes.includes(bucket.key)).map(bucket => {
           const { key } = bucket;
           const filterName = `content-${key}`;
           return (
@@ -37,14 +48,12 @@ const SearchFilterContentTypes = props => {
                   if (event.target.checked) {
                     console.log({ filterName });
                     addSearchFilter(filterName);
-                    dispatch(updateSearchPageNum(1));
                   } else {
                     removeSearchFilter(filterName);
-                    dispatch(updateSearchPageNum(1));
                   }
                 }}
               />
-              <label htmlFor={slugify(key)}>{key}</label>
+              <label htmlFor={slugify(key)}>{typeLabels[key]}</label>
             </div>
           );
         })}
