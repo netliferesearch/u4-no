@@ -36,7 +36,6 @@ export const SearchFieldV3 = props => {
     },
     [router.query]
   );
-
   let inputReference = useRef();
   const handleSubmit = e => {
     e.preventDefault();
@@ -149,7 +148,14 @@ export const SearchFieldV3 = props => {
               />
             )}
 
-            <button className="c-search-v2__button" type="submit" value="Search">
+            <button
+              className="c-search-v2__button"
+              onClick={() =>
+                updateSearch({ urlUpdateType: 'push', value: inputReference.current.value })
+              }
+              type="submit"
+              value="Search"
+            >
               {loading ? <LoaderV2 /> : <SearchIcon />}
             </button>
           </div>

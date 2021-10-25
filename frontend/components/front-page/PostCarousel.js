@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { ArrowCarousel } from '../icons/ArrowCarousel';
 import { BlueCard, CARD_TYPE, CONTENT_BY_TYPE } from '../general/blue-card/BlueCard';
 import { getPlaceholder } from '../../helpers/imgloader';
+import Link from 'next/link';
 
 const columnsByType = {
   [POST_TYPE.SMALL]: 3,
@@ -94,10 +95,12 @@ export const PostCarousel = ({
         />
         {type != 'publications' && (
           <div className="o-wrapper-medium c-view-all">
-            <a className="c-btn c-btn--link" href={buttonPath}>
+            <Link href={buttonPath}>
+            <a className="c-btn c-btn--link">
               View all
               <ArrowNext />
             </a>
+            </Link>
           </div>
         )}
       </div>

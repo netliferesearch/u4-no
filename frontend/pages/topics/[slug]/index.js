@@ -13,6 +13,7 @@ import { CARD_TYPE } from '../../../components/general/blue-card/BlueCard';
 import { Hero } from '../../../components/general/Hero';
 import { PERSON_CARD_TYPE } from '../../../components/general/person/PersonCard';
 import { LearningEvents } from '../../../components/front-page/LearningEvents';
+import { HorizontalLinkBox } from '../../../components/general/link-box/HorizontalLinkBox';
 
 const TopicEntry = ({ data: { topic = {} } }) => {
   const {
@@ -60,31 +61,42 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             topics={relatedTopics}
           />
         </section>
-        <section className="o-wrapper-medium">
-          {introduction.length + agenda.length > 0 && (
-            <div className="c-linkbox-wrapper">
-              {introduction.length > 0 && (
-                <LinkBox
+          <section className="o-wrapper-medium">
+            {introduction.length > 0 && agenda.length > 0 ? (
+              <div className="c-linkbox-wrapper">
+                {introduction.length > 0 && (
+                  <LinkBox
+                    title="Basic guide"
+                    text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
+                    // icon={BasicGuide}
+                    _type="topicsBasics"
+                    slug={slug}
+                    color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
+                  />
+                )}
+                {agenda.length > 0 && (
+                  <LinkBox
+                    title="Research and policy agenda"
+                    text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
+                    // icon={ResearchAgenda}
+                    _type="topicsAgenda"
+                    slug={slug}
+                    color="dark-blue"
+                  />
+                )}
+              </div>
+            ) : (
+              <div>
+                <HorizontalLinkBox
                   title="Basic guide"
                   text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
                   // icon={BasicGuide}
                   _type="topicsBasics"
                   slug={slug}
-                  color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
+                  color="white"
                 />
-              )}
-              {agenda.length > 0 && (
-                <LinkBox
-                  title="Research and policy agenda"
-                  text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
-                  // icon={ResearchAgenda}
-                  _type="topicsAgenda"
-                  slug={slug}
-                  color="dark-blue"
-                />
-              )}
-            </div>
-          )}
+              </div>
+            )}
         </section>
         <section className="o-wrapper-full u-bg--lighter-blue">
           <div className="o-wrapper-medium">
@@ -124,7 +136,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
               <PostCarousel
                 posts={relatedPublications}
                 type={POST_TYPE.PUBLICATION}
-                buttonPath="/publications"
+                buttonPath={`/search?filters=content-publication%2Ctopic-type-${encodeURIComponent(title)}&search=&searchPageNum=1`}
                 title="Latest publications"
                 minPosts={4}
               />

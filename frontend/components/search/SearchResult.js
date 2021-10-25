@@ -9,7 +9,6 @@ export const SearchResult = props => {
   const { _source = {} } = props;
   const { type = '' } = _source;
   //converting empty arrays to strings
-  console.log('_source', _source)
   const pdfFileView = getPdfUrl(_source.pdfFile);
   const pdfFileUrlView = getPdfUrl(_source.pdfFileUrl);
   const legacypdfFileUrlView = getPdfUrl(_source.legacypdfFileUrl);

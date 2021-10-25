@@ -25,9 +25,8 @@ const typeLabels = {
   'audio-video': 'Audio & video',
 }
 const SearchFilterContentTypes = props => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const { searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter } = props;
-  console.log('defaultBuckets', defaultBuckets);
 
   return (
     <form className="c-filters-v2__item">
@@ -43,10 +42,10 @@ const SearchFilterContentTypes = props => {
               <input
                 type="checkbox"
                 id={slugify(key)}
+                checked={isFilterActive({ searchFilters, filterName })}
                 value={key}
                 onChange={event => {
                   if (event.target.checked) {
-                    console.log({ filterName });
                     addSearchFilter(filterName);
                   } else {
                     removeSearchFilter(filterName);
