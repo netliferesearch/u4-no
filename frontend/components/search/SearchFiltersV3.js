@@ -22,27 +22,30 @@ export const SearchFiltersV3 = props => {
 
   const resetFilters = () => {
     // Purpose: Overwrite any filter state in Redux with the actual state in the url.
-    const filterStr = router.query.filters
-    const searchFilters = filterStr
-      .split(',')
-      .filter(value => value)
-      // unescape filters with commas in them.
-      .map(str => str.replace(/\|/g, ','));
+    const filterStr = router.query.filters;
+    const searchFilters =
+      filterStr &&
+      filterStr
+        .split(',')
+        .filter(value => value)
+        // unescape filters with commas in them.
+        .map(str => str.replace(/\|/g, ','));
     // These are old filters from V1 that we need to prevent from messing with the new search filters
     const invalidFilters = ['pub-type', 'pub-topic', 'pub-year', 'pub-author', 'pub-lang'];
     dispatch(
       replaceSearchFilters(
-        searchFilters.filter(
-          filterName =>
-            !invalidFilters.find(invalidFilterName => filterName.startsWith(invalidFilterName))
-        )
+        searchFilters &&
+          searchFilters.filter(
+            filterName =>
+              !invalidFilters.find(invalidFilterName => filterName.startsWith(invalidFilterName))
+          )
       )
     );
   };
 
   const resetSorting = () => {
-    const sort = router.query.sort
-    if(sort) {
+    const sort = router.query.sort;
+    if (sort) {
       dispatch(updateSearchSorting(sort));
     }
   };
@@ -72,7 +75,7 @@ export const SearchFiltersV3 = props => {
           </div>
         </div>
         <SearchFilterTopics />
-        {props.publications ?  <SearchFilterPublicationTypes /> :  <SearchFilterContentTypes />}
+        {props.publications ? <SearchFilterPublicationTypes /> : <SearchFilterContentTypes />}
         <SearchFilterYears />
         <SearchFilterLanguages />
         <button onClick={toggle} className="c-search-results-v2__topbar-filter-close">
