@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { replaceSearchFilters, updateSearchSorting } from '../../helpers/redux-store';
-
+import { useRouter } from 'next/router';
 import SearchFilterPublicationTypes from './SearchFilterPublicationTypes';
 import SearchFilterTopics from './SearchFilterTopics';
 import SearchFilterLanguages from './SearchFilterLanguages';
@@ -18,9 +18,11 @@ function toggle() {
 
 export const SearchFiltersV3 = props => {
   const dispatch = useDispatch();
+  const router = useRouter();
+
   const resetFilters = () => {
-    const { router: { query: { filters: filterStr = '' } = {} } = {} } = props;
     // Purpose: Overwrite any filter state in Redux with the actual state in the url.
+    const filterStr = router.query.filters
     const searchFilters = filterStr
       .split(',')
       .filter(value => value)
@@ -39,8 +41,10 @@ export const SearchFiltersV3 = props => {
   };
 
   const resetSorting = () => {
-    const { router: { query: { sort = '' } = {} } = {} } = props;
-    dispatch(updateSearchSorting(sort));
+    const sort = router.query.sort
+    if(sort) {
+      dispatch(updateSearchSorting(sort));
+    }
   };
 
   useEffect(() => {
