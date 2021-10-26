@@ -13,16 +13,6 @@
     align-items: center;
     display: flex;
   }
-  .c-btn--primary {
-    a {
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 1.7;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: $white;
-    }
-  }
   .c-blue-card__info {
     flex-direction: row;
     @include mq($until: tablet) {

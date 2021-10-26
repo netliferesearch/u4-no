@@ -31,14 +31,14 @@ export const Topics = ({ title = '', topics = [], hr = false, onDark = false }) 
                 <div>{topic.title}</div>
               </a>
             </div>
-          ) : !topic.slug && (topic.title || topic) ? (
+          ) : typeof topic === 'string' ? (
             <div key={index} className="c-btn--tag">
               <a
-                href={`/topics/${spacesToDash(topic.title || topic)}`}
+                href={`/topics/${spacesToDash(topic)}`}
                 className="topic--plain"
                 key={index}
               >
-                {topic.title || topic}
+                {topic}
               </a>
             </div>
           ) : null

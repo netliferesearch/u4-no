@@ -7,6 +7,7 @@
   }
 
   @include mq($from: tablet) {
+    margin-bottom: 64px;
   }
 }
 
@@ -19,6 +20,7 @@
   @include mq($from: tablet) {
     grid-template-columns: 3fr 1fr;
     column-gap: 120px;
+    
   }
 }
 
@@ -51,12 +53,12 @@
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  margin: 24px 0;
+  margin: 24px 0 0 0;
   .c-btn {
     margin: 0 24px 24px 0;
   }
   @include mq($from: tablet) {
-    margin: 24px 0 40px 0;
+    margin: 24px 0 0 0;
     .c-btn {
       margin: 0 24px 0 0;
     }

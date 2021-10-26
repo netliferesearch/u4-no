@@ -49,7 +49,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper-medium">
           <div className="c-course-entry__content">
-            <div className="c-longform c-article__col">
+            <div className="c-longform u-margin--course-top c-article__col">
               {content ? <BlockContent blocks={content} serializers={serializers} /> : null}
               <div className="c-course-entry__btn-row">
                 <RegisterForm courseType={courseType.waitingListId} />

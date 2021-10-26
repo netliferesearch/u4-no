@@ -10,6 +10,7 @@ import { useOnClickOutside } from '../helpers/hooks';
 import PicoSanity from 'picosanity';
 import { uniqBy } from 'lodash';
 import { menuItems } from '../components/general/menu/menuItems';
+import { useScrollInfo } from '../helpers/useScrollInfo';
 
 
 const classes = BEMHelper({
@@ -30,10 +31,12 @@ export const Layout = props => {
     hideLogo = false,
   } = props;
   const [data, setData] = useState('');
+  const [scrolled, setScrolled] = useState(false);
   const [activeSearchMenu, setActiveSearchMenu] = useState(true);
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(false);
   const ref = useRef();
+  const menuRef = useRef(null);
   useOnClickOutside(ref, () => setActiveMenu(false));
   const triggerSearchMenu = e => {
     e.preventDefault();
@@ -65,7 +68,18 @@ export const Layout = props => {
     [data]
   );
 
-  // console.log(searchOpen, 'searchopen');
+  useScrollInfo(
+    ({ currPos }) => {
+      const isScrolled = currPos.y < -100;
+      if (scrolled !== isScrolled) {
+        setScrolled(isScrolled);
+      }
+    },
+    [scrolled],
+    menuRef,
+    false,
+    0
+  );
 
   return (
     <div
@@ -75,13 +89,14 @@ export const Layout = props => {
         opacity: showLoadingScreen ? 0 : 1,
       }}
     >
+      <span ref={menuRef} />
       <HeadComponent {...headComponentConfig} />
       {showTopTab && (
         <>
           <div
             className={`c-top-bar__background ${
-              activeMenu || searchOpen ? '' : 'u-bg--transparent-blue'
-            }`}
+              activeMenu || searchOpen ? '' : 'u-bg--transparent-blue '
+            } ${scrolled ? 'u-bg--blur' : ''}`}
           />
           <div {...classes('', 'fixed')}>
             <div className="o-wrapper-medium fixed-header-content" ref={ref}>
