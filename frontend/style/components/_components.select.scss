@@ -14,9 +14,12 @@
   -moz-appearance: none;
   appearance: none;
   letter-spacing: 0.01em;
+  cursor: pointer;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
   font-size: 12px;
   line-height: 18px;
-  cursor: pointer;
   &:focus,
   :focus-visible {
     outline: none;
