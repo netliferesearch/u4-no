@@ -95,13 +95,13 @@
   font-family: $font-sans;
   font-weight: 700;
   font-size: 12px;
-  line-height: 1.7;
+  line-height: 1;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: $white;
   background-color: $dark-blue;
   border: 1px solid $dark-blue;
-  padding: 6px 14px;
+  padding: 10px 14px;
   min-width: fit-content;
   &:hover,
   &:focus,
@@ -113,7 +113,15 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   }
   @include mq($from: tablet) {
-    padding: 8px 16px;
+    padding: 12px 16px;
+  }
+  a {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $white;
   }
 }
 
@@ -121,13 +129,13 @@
   font-family: $font-sans;
   font-weight: 700;
   font-size: 12px;
-  line-height: 1.7;
+  line-height: 1;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: $dark-blue;
   background-color: transparent;
   border: 1px solid $dark-blue;
-  padding: 6px 14px;
+  padding: 10px 14px;
   min-width: fit-content;
   &:hover,
   &:focus,
@@ -138,7 +146,7 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   }
   @include mq($from: tablet) {
-    padding: 8px 16px;
+    padding: 12px 16px;
   }
 }
 
@@ -363,13 +371,13 @@
   font-family: $font-sans;
   font-weight: 700;
   font-size: 12px;
-  line-height: 1.7;
+  line-height: 1;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: $highlight-yellow;
   background-color: transparent;
   border: 1px solid $highlight-yellow;
-  padding: 6px 14px;
+  padding: 10px 14px;
   min-width: fit-content;
   &:hover,
   &:active,
@@ -379,6 +387,6 @@
     color: $dark-blue;
   }
   @include mq($from: tablet) {
-    padding: 8px 16px;
+    padding: 12px 16px;
   }
 }

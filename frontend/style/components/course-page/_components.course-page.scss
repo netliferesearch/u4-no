@@ -28,22 +28,18 @@
       margin-bottom: 48px;
     }
   }
-
-  // //overriting
-  // a.c-btn--secondary {
-  //   border-color: #dedede;
-  // }
 }
 
 .c-course-entry__header {
   width: 100%;
   display: inline-grid;
   grid-gap: 0;
-  //margin-bottom: 40px;
+  //margin-bottom: 0;
 
   @include mq($from: tablet) {
     grid-template-columns: 1fr 1fr;
     column-gap: 0;
+    //margin-bottom: 64px;
   }
 }
 
@@ -59,7 +55,7 @@
   margin-bottom: 0;
   @include mq($from: tablet) {
     margin-top: 48px;
-    margin-bottom: 48px;
+    margin-bottom: 64px;
   }
 }
 
@@ -71,6 +67,9 @@
   margin: 24px 0 40px 0;
   .c-modal {
     margin-right: 24px;
+  }
+  @include mq($from: tablet) {
+    margin-bottom: 64px;
   }
 }
 

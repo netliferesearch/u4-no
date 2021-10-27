@@ -38,8 +38,8 @@ const EventPage = ({ data: { event = {} }, url = {} }) => {
         </section>
         <div className="u-section-underline--no-margins" />
         <div className="o-wrapper-medium">
-          <div className="c-course-entry__content">
-            <div className="c-persons__article c-longform">
+          <div className="c-course-entry__content ">
+            <div className="c-persons__article c-longform u-margin--course-top">
               <BlockContent blocks={content} serializers={serializers} />
             </div>
             {topics.length || startDate.utc || location ? (

@@ -64,7 +64,10 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
         <section className="o-wrapper-medium o-wrapper-mobile-full">
           <div className="c-article__row">
             <div className="content c-article__col">
-              <LongformArticle content={content} title={title} />
+              <div className="u-margin--article-top">
+                <LongformArticle content={content} title={title} />
+              </div>
+
               {/* <div className="c-longform c-blog-entry__main-text">
                     <BlockContent blocks={content} serializers={serializers} />
                     <div className="footnotes">

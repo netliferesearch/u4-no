@@ -67,14 +67,6 @@ export const Reader = ({ data, setReaderOpen = false, legacypdf = {}, shortversi
             <span ref={footRef}></span>
           </main>
         )}
-
-        {/* {!content.length && legacypdf.asset && (
-          <main className="c-reader__main o-wrapper-section c-article__row">
-            <div className="c-article-v2 c-article-v2__pdf-viewer o-wrapper-section">
-              <PdfViewer file={{ url: legacypdf.asset.url }} />
-            </div>
-          </main>
-        )} */}
       </section>
       {acknowledgements.length > 0 || methodology.length > 0 || notes || partners.length > 0 ? (
         <AdditionalInfo data={data} shortversion={shortversion} />
