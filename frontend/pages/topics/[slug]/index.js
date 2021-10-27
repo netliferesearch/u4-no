@@ -111,7 +111,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
               <PostCarousel
                 posts={relatedBlogPosts}
                 type={POST_TYPE.BLOG}
-                buttonPath="/blog"
+                buttonPath={`/search?filters=content-blog-post%2Ctopic-type-${encodeURIComponent(title)}&search=&searchPageNum=1`}
                 title="From the blog"
                 minPosts={3}
               />
@@ -149,7 +149,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             <PostCarousel
               posts={furtherResources}
               type={POST_TYPE.CARD}
-              buttonPath={`/search?search=${title}`}
+              buttonPath={`/search?filters=content-collection%2Ctopic-type-${encodeURIComponent(title)}&search=&searchPageNum=1`}
               title="Further Resources"
               minPosts={3}
             />
