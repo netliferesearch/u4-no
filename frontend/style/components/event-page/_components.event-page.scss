@@ -23,21 +23,8 @@
       color: $white;
     }
   }
-  .c-blue-card__info {
-    flex-direction: row;
-    @include mq($until: tablet) {
-      flex-direction: column;
-    }
-    .c-blue-card__location {
-      align-items: center;
-      margin-right: 25px;
-    }
-    .c-blue-card__details {
-      .c-blue-card__date {
-        margin: 0;
-        align-items: center;
-        width: auto;
-      }
-    }
+  .c-events-calendor-icon {
+    margin-right: 10px;
+    display: flex;
   }
 }

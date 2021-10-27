@@ -1,6 +1,5 @@
 .c-blue-card {
   background-color: $lighter-blue;
-  //   margin-bottom: 24px;
   padding: 24px 16px 16px 16px;
   width: 100%;
   height: 100%;
@@ -8,48 +7,51 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-  //transition: all 0.4s ease-in-out;
   transition: $global-transition--longer;
+  .c-events-calendar-svg {
+    margin-right: 10px;
+  }
   h2 {
     margin: 0;
   }
   a:hover {
     cursor: pointer;
   }
-  &:hover {
-    background-color: $brand-main;
-    -webkit-box-shadow: -9px 9px 0px 0px $dark-blue !important;
-    -moz-box-shadow: -9px 9px 0px 0px $dark-blue !important;
-    box-shadow: -9px 9px 0px 0px $dark-blue;
-    //transition: all 0.4s ease-in-out;
-    transition: $global-transition--longer;
-    h3,
-    h5,
-    p,
-    .c-blue-card__link,
-    .c-blue-card__link h4,
-    .c-blue-card__lead {
-      color: $white;
-    }
-    .c-blue-card__p--topic {
-      color: $light-grey;
-    }
-    h2 {
-      color: $light-blue;
-    }
-    h4 {
-      color: $light-grey;
-    }
-    h4:after {
-      background-color: $highlight-blue;
-    }
+  @include mq($from: desktop) {
+    &:hover {
+      background-color: $brand-main;
+      -webkit-box-shadow: -9px 9px 0px 0px $dark-blue !important;
+      -moz-box-shadow: -9px 9px 0px 0px $dark-blue !important;
+      box-shadow: -9px 9px 0px 0px $dark-blue;
+      transition: $global-transition--longer;
+      h3,
+      h5,
+      p,
+      .c-blue-card__link,
+      .c-blue-card__link h4,
+      .c-blue-card__lead {
+        color: $white;
+      }
+      .c-blue-card__p--topic {
+        color: $light-grey;
+      }
+      h2 {
+        color: $light-blue;
+      }
+      h4 {
+        color: $light-grey;
+      }
+      h4:after {
+        background-color: $highlight-blue;
+      }
 
-    .c-events-location-icon,
-    .c-events-calendor-icon {
-      fill: $white;
-    }
-    .c-arrow-next-svg path {
-      stroke: $white;
+      .c-events-location-icon,
+      .c-events-calendor-icon {
+        fill: $white;
+      }
+      .c-arrow-next-svg path {
+        stroke: $white;
+      }
     }
   }
 }
@@ -153,7 +155,6 @@
   display: flex;
   align-items: flex-end;
   color: $mid-grey;
-  // margin-bottom: 10px;
   margin: 0;
 }
 

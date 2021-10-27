@@ -8,7 +8,7 @@ export const LinkBox = ({
   _type = '',
   slug = '',
   color = 'white',
-  link = 'View All'
+  link = 'Read more',
 }) => {
   return (
     <div className={`c-linkbox c-linkbox--${color}`}>

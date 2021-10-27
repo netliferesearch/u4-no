@@ -18,11 +18,15 @@ input[type='checkbox'].c-modal__input {
   border: 2px solid $dark-blue;
   margin-right: 12px;
 }
-
+.c-modal__label-title {
+  font-size: 16px;
+  line-height: 42px;
+  letter-spacing: 0.02em;
+  color: #000000;
+}
 input[type='checkbox'].c-modal__input:checked + .c-modal__custom-checkbox {
   border: 2px solid $dark-blue;
   background: $highlight-blue;
-  //background-image: url('public/check-mark.svg');
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -80,9 +84,7 @@ input[type='radio'].c-modal__input {
   margin: 10vh auto 0 auto;
   background-color: $white;
   padding: 24px 32px;
-  //border-radius: 20px;
   transition: transform 0.2s ease;
-  //box-shadow: 0 2px 8px 3px;
 }
 .c-modal__top {
   display: flex;
@@ -98,6 +100,9 @@ input[type='radio'].c-modal__input {
     top: 0;
     right: 7px;
   }
+  .c-btn--close:hover path {
+    fill: $blue;
+  }
 }
 .c-modal__content {
   padding: 16px 0 0 0;
@@ -107,7 +112,7 @@ input[type='radio'].c-modal__input {
 }
 .c-modal__controls {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: flex-start;
   padding: 16px 0 0 0;
   .c-btn--pri {
@@ -144,14 +149,9 @@ input[type='radio'].c-modal__input {
   font-weight: 400;
   font-size: 15px;
   line-height: 1.5;
-  margin-bottom: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  // &:hover,
-  // &:active,
-  // &:focus {
-  // }
 }
 
 .c-modal__text {
@@ -169,9 +169,6 @@ input[type='radio'].c-modal__input {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    // button:not(.c-btn) {
-    //   padding: 2px 6px 4px 6px !important;
-    // }
     .c-btn {
       line-height: 1;
       padding: 8px 0;
@@ -191,7 +188,7 @@ input[type='radio'].c-modal__input {
     }
   }
   .c-modal__controls {
-    justify-content: flex-end;
+    justify-content: center;
   }
   .c-modal__list {
     margin: 32px 24px 24px 24px;
@@ -207,6 +204,7 @@ input[type='radio'].c-modal__input {
     font-size: $font-size-tiny;
     line-height: 22px;
     color: $dark-blue;
+    letter-spacing: 0.15em;
   }
   .c-btn--close path {
     fill: darkblue;

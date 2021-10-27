@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateSearchSorting } from '../../helpers/redux-store';
@@ -7,14 +7,26 @@ const SearchResultsSortingSelect = ({
   searchSorting = 'Sort by',
   updateSearchSorting = () => {},
 }) => {
+  const [expanded, setExpanded] = useState('');
   return (
     <Fragment>
-      {/* <label htmlFor="select-sorting">Sort by </label> */}
       <select
         id="select-sorting"
         value={searchSorting}
+        onClick={e => {
+          e.preventDefault();
+          setExpanded(prevIsExpanded => !prevIsExpanded);
+        }}
+        onBlur={e => {
+          e.preventDefault();
+          setExpanded(false);
+        }}
+        onFocusOut={e => {
+          e.preventDefault();
+          setExpanded(false);
+        }}
         onChange={e => updateSearchSorting(e.target.value)}
-        className="c-select c-select__full-width-mobile"
+        className={`c-select ${expanded && 'expanded'} c-select__full-width-mobile`}
       >
         <option value="relevance">Relevance</option>
         <option value="year-desc">Year, new → old</option>

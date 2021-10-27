@@ -8,7 +8,7 @@ export const HorizontalLinkBox = ({
   _type = '',
   slug = '',
   color = 'white',
-  link = 'View All',
+  link = 'Read more',
 }) => {
   return (
     <div className={`c-horizontal-linkbox c-linkbox c-linkbox--${color}`}>
@@ -24,7 +24,9 @@ export const HorizontalLinkBox = ({
                 </h3>
               )}
               <div>
-                {text && <div className="c-linkbox__text c-horizontal-linkbox__text u-body">{text}</div>}
+                {text && (
+                  <div className="c-linkbox__text c-horizontal-linkbox__text u-body">{text}</div>
+                )}
 
                 <div
                   className={`c-btn c-btn--link ${

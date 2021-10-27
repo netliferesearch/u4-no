@@ -76,8 +76,7 @@
 .c-events-list__content {
   margin-bottom: 64px;
 }
-.c-frontpage,
-.c-events-page {
+.c-frontpage {
   .c-events-calendar-svg {
     margin-right: 10px;
     @include mq($from: mobile, $until: desktop) {

@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import DataLoader from '../../../helpers/data-loader';
 import { wrapInRedux } from '../../../helpers/redux-store-wrapper';
 import { BreadCrumbV2 } from '../../../components/general/BreadCrumbV2';
-import { ArticleHeader } from '../../../components/general/article-header/ArticleHeader';
 import LongformArticle from '../../../components/LongformArticle';
 import { ArticleSidebar } from '../../../components/general/article-sidebar/ArticleSidebar';
 import Layout from '../../../components/Layout';
@@ -25,7 +24,7 @@ const firstParagraphInContent = (content = []) => {
 };
 
 const TopicArticleEntry = props => {
-  const { url = {}, title, lead = {}, relatedUrl = {}, featuredImage = {}, advisors = [] } = props.data;
+  const { url = {}, title, relatedUrl = {}, featuredImage = {}, advisors = [] } = props.data;
   const { query = {} } = url;
   const topicPartMap = {
     basics: 'introduction',
@@ -57,7 +56,6 @@ const TopicArticleEntry = props => {
             currentTitle={firstTitleInContent(content)}
             home={true}
           />
-          <ArticleHeader data={headerData} />
         </section>
         <hr className="u-section-underline--no-margins" />
         <section className="o-wrapper-medium o-wrapper-mobile-full">
@@ -71,28 +69,26 @@ const TopicArticleEntry = props => {
           </div>
         </section>
         <section className="u-bg--lighter-blue c-article__additional-content">
-            <div className="o-wrapper-medium">
-              <div className="o-wrapper-narrow">
-                <ArticleActions data={props.data}/>
-                <AboutAuthor authors={advisors} />
-                <Disclaimers title={true} />
-                {/* {keywords.length > 0 ? (
-                  <Keywords title={true} keywords={keywords} hr={true} />
-                ) : null} */}
-              </div>
+          <div className="o-wrapper-medium">
+            <div className="o-wrapper-narrow">
+              <ArticleActions data={props.data} />
+              <AboutAuthor authors={advisors} />
+              <Disclaimers title={true} />
             </div>
-          </section>
+          </div>
+        </section>
       </article>
       <Footer />
       <div id="modal" />
     </Layout>
   );
 };
- 
+
 export default wrapInRedux(
   DataLoader(TopicArticleEntry, {
     queryFunc: ({ query: { slug = '' } }) => ({
-      sanityQuery: '*[slug.current == $slug && _type == "topics"][0]{...,authors[]->{firstName, surname}}',
+      sanityQuery:
+        '*[slug.current == $slug && _type == "topics"][0]{...,authors[]->{firstName, surname}}',
       param: { slug },
     }),
     materializeDepth: 1,

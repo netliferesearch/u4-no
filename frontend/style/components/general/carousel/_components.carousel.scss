@@ -6,11 +6,9 @@
 }
 
 .alice-carousel__stage {
-  //scroll-padding-left: $inuit-global-spacing-unit;
   display: grid;
   grid-auto-flow: column;
   column-gap: 0;
-  // margin-bottom: 24px;
 }
 
 .alice-carousel__stage-item {
@@ -21,6 +19,7 @@
   .c-post {
     padding-bottom: 0;
     margin-bottom: 0;
+    border-bottom: 0;
   }
 }
 
@@ -92,7 +91,6 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  // position: absolute;
   border: 0.5px solid $dark-blue;
   outline: none;
   border-radius: 50%;

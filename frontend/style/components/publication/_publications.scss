@@ -3,7 +3,9 @@
   background-color: $white;
   font-size: $font-size-tiny;
   margin-bottom: 64px;
-
+  .c-post-list {
+    margin-bottom: 0;
+  }
   .c-search-results-v2__topbar {
     @include mq($from: desktop) {
       margin-top: 0;
@@ -43,8 +45,6 @@
   .o-layout__item:first-of-type {
     @include mq($from: desktop) {
       padding: 0;
-      // position: sticky;
-      // top: 120px;
     }
   }
   .c-search-results-v2__content {
