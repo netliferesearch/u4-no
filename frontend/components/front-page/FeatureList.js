@@ -1,5 +1,6 @@
 import React from 'react';
 import Feature from '../general/feature/Feature';
+import Link from 'next/link';
 
 export const FeatureList = ({ features = [], alt = false }) => {
   return (
@@ -19,7 +20,9 @@ export const FeatureList = ({ features = [], alt = false }) => {
             </div>
           ))}
         </div>
+        <Link href="https://www.u4.no/become-a-partner">
         <button className="c-btn c-btn--secondary c-btn--secondary--onDark">Become a partner</button>
+        </Link>
       </div>
     </div>
   );

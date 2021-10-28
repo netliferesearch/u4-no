@@ -43,7 +43,6 @@ export const PostCarousel = ({
           content={CONTENT_BY_TYPE.PUBLICATION}
         />
       ) : (
-        <div>
           <Post
             key={post._id}
             type={type}
@@ -51,7 +50,6 @@ export const PostCarousel = ({
             placeholder={getPlaceholder(index)}
             publications
           />
-        </div>
       )
     );
   const renderDotsItem = ({ isActive }) => {
@@ -71,7 +69,6 @@ export const PostCarousel = ({
       <ArrowCarousel />
     </button>
   );
-
   return (
     <div
       className={`c-post-list c-carousel c-post-list--2col c-post-list--column-${
