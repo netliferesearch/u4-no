@@ -30,7 +30,7 @@ const GeneralArticle = props => {
     );
   }
   //return <LongformArticleContainer lead={props.data.standfirst} {...props} />;
-  return <ArticleContainer {...props} breadCrumbTitle="About U4" />
+  return <ArticleContainer {...props} breadCrumbTitle="Who we work with" />
 };
 
 export default wrapInRedux(

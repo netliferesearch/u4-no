@@ -7,7 +7,8 @@ import { wrapInRedux } from '../../helpers/redux-store-wrapper';
 import Footer from '../../components/general/footer/Footer';
 import { PageIntro } from '../../components/general/PageIntro';
 
-const BlogPage = ({ data: { blogEntries = [], topics = [] } }) => {
+const BlogPage = ({ data: { blogEntries = [], topics = [], publications = [] } }) => {
+ // console.log('publications', publications)
   return (
     <Layout
       hideLogo={false}

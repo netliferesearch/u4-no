@@ -48,6 +48,7 @@ export const Layout = props => {
       if (data) {
         menuItems[0].items = data.topics;
         menuItems[4].sections[0].items = uniqBy([...data.aboutResources.resources, ...menuItems[4].sections[0].items], '_id');
+        menuItems[4].sections[1].items = uniqBy([...data.workWithResources.resources, ...menuItems[4].sections[1].items], '_id');
         return; // no need to fetch data if we got link data passed in.
       }
       const client = new PicoSanity({
@@ -58,7 +59,8 @@ export const Layout = props => {
       });
       const sanityQuery = `{
         "topics": *[_type == "topics"] | order(title){_id, title, slug},
-        "aboutResources": *[slug.current == "about-u4-new"][0]{ resources[]->{_id, "label": title, slug} }
+        "aboutResources": *[slug.current == "about-u4-new"][0]{ resources[]->{_id, "label": title, slug} },
+        "workWithResources": *[slug.current == "who-we-work-with"][0]{ resources[]->{_id, "label": title, slug} }
       }`;
       client.fetch(sanityQuery, {}).then(data => {
         setData(data);

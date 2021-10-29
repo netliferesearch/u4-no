@@ -57,6 +57,7 @@ const ArticleContainer = (props = {}) => {
     shortversionContent = [],
     headComponentConfigOverride,
     isArticleMenuOpen,
+    breadCrumbTitle,
     showLoadingScreen,
     toggleArticleMenu,
     toggleLoadingScreen,
@@ -98,7 +99,7 @@ const ArticleContainer = (props = {}) => {
           {_type !== 'publication' && !shortversion && getParentPath() !== '' ? (
             <BreadCrumbV2
               home={true}
-              title="About U4"
+              title={breadCrumbTitle}
               parentSlug={`/${getParentPath()}`}
               currentTitle={title}
               currentSlug={slug.current}

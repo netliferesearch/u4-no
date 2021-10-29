@@ -51,10 +51,12 @@ export const menuItems = [
       },
       {
         subtitle: 'Who we work with',
+        slug: '/who-we-work-with',
+        type: 'work-with',
         items: [
-          { label: 'Funding Partners', slug: '/u4-partner-agencies' },
-          { label: 'Expert Network', slug: '/the-team' },
-          { label: 'Anti-Coruption helpdesk', slug: '/helpdesk' },
+          // {_id: 'u4-partner-agencies', label: 'Funding Partners', slug: '/u4-partner-agencies' },
+          // {_id: 'the-team', label: 'Expert Network', slug: '/the-team' },
+          {_id: 'helpdesk', label: 'Anti-Coruption helpdesk', slug: '/helpdesk' },
         ],
       },
       {
