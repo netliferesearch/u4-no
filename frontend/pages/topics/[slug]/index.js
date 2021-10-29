@@ -61,42 +61,42 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             topics={relatedTopics}
           />
         </section>
-          <section className="o-wrapper-medium">
-            {introduction.length > 0 && agenda.length > 0 ? (
-              <div className="c-linkbox-wrapper">
-                {introduction.length > 0 && (
-                  <LinkBox
-                    title="Basic guide"
-                    text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
-                    // icon={BasicGuide}
-                    _type="topicsBasics"
-                    slug={slug}
-                    color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
-                  />
-                )}
-                {agenda.length > 0 && (
-                  <LinkBox
-                    title="Research and policy agenda"
-                    text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
-                    // icon={ResearchAgenda}
-                    _type="topicsAgenda"
-                    slug={slug}
-                    color="dark-blue"
-                  />
-                )}
-              </div>
-            ) : (
-              <div>
-                <HorizontalLinkBox
+        <section className="o-wrapper-medium">
+          {introduction.length > 0 && agenda.length > 0 ? (
+            <div className="c-linkbox-wrapper">
+              {introduction.length > 0 && (
+                <LinkBox
                   title="Basic guide"
                   text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
                   // icon={BasicGuide}
                   _type="topicsBasics"
                   slug={slug}
-                  color="white"
+                  color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
                 />
-              </div>
-            )}
+              )}
+              {agenda.length > 0 && (
+                <LinkBox
+                  title="Research and policy agenda"
+                  text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
+                  // icon={ResearchAgenda}
+                  _type="topicsAgenda"
+                  slug={slug}
+                  color="dark-blue"
+                />
+              )}
+            </div>
+          ) : (
+            <div>
+              <HorizontalLinkBox
+                title="Basic guide"
+                text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
+                // icon={BasicGuide}
+                _type="topicsBasics"
+                slug={slug}
+                color="white"
+              />
+            </div>
+          )}
         </section>
         <section className="o-wrapper-full u-bg--lighter-blue">
           <div className="o-wrapper-medium">
@@ -111,7 +111,9 @@ const TopicEntry = ({ data: { topic = {} } }) => {
               <PostCarousel
                 posts={relatedBlogPosts}
                 type={POST_TYPE.BLOG}
-                buttonPath={`/search?filters=content-blog-post%2Ctopic-type-${encodeURIComponent(title)}&search=&searchPageNum=1`}
+                buttonPath={`/search?filters=content-blog-post%2Ctopic-type-${encodeURIComponent(
+                  title
+                )}&search=&searchPageNum=1`}
                 title="From the blog"
                 minPosts={3}
               />
@@ -136,7 +138,9 @@ const TopicEntry = ({ data: { topic = {} } }) => {
               <PostCarousel
                 posts={relatedPublications}
                 type={POST_TYPE.PUBLICATION}
-                buttonPath={`/search?filters=content-publication%2Ctopic-type-${encodeURIComponent(title)}&search=&searchPageNum=1`}
+                buttonPath={`/search?filters=content-publication%2Ctopic-type-${encodeURIComponent(
+                  title
+                )}&search=&searchPageNum=1`}
                 title="Latest publications"
                 minPosts={4}
               />
@@ -149,7 +153,9 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             <PostCarousel
               posts={furtherResources}
               type={POST_TYPE.CARD}
-              buttonPath={`/search?filters=content-collection%2Ctopic-type-${encodeURIComponent(title)}&search=&searchPageNum=1`}
+              buttonPath={`/search?filters=content-collection%2Ctopic-type-${encodeURIComponent(
+                title
+              )}&search=&searchPageNum=1`}
               title="Further Resources"
               minPosts={3}
             />
@@ -265,7 +271,7 @@ export default DataLoader(TopicEntry, {
         "relatedPublications": *[_type == 'publication' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
         "relatedBlogPosts": *[_type == 'blog-post' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
         "relatedEvents": *[_type in ["course", "event"] && references(^._id)] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}, eventType},
-        "resourceCollections": *[_type == 'collection' && references(^._id)] {_type, title, "slug": slug.current},
+        "resourceCollections": collections[]->{_type, title, "slug": slug.current},
     }[0]}`,
     param: { slug },
   }),
