@@ -61,7 +61,7 @@ export const menuItems = [
       },
       {
         subtitle: 'General enquiries',
-        items: [{ label: 'Contact', slug: '/about-u4' }],
+        items: [{ label: 'Contact', slug: '/contact' }],
       },
     ],
   },
