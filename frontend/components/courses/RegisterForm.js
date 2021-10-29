@@ -4,18 +4,29 @@ import { CloseButton } from '../general/buttons';
 import { useOnClickOutside, useLockBodyScroll } from '../../helpers/hooks';
 
 /**
- * V2 - RegiserForm component to be used in CourseHeader component
+ * V2 - RegisterForm component to be used in CourseHeader component
  * @param {number} courseType
  */
 
-export const RegisterForm = ({ courseType }) => {
+const Register = language => {
+  return language === 'ar_AR' ? 'قم بالتسجيل' : 'Register';
+};
+
+export const RegisterForm = ({ courseType, language = 'en_US' }) => {
   const [open, setOpen] = useState();
   return (
     <div className={`c-modal${open ? ' open' : ''}`}>
       <button className="c-btn c-btn--primary" onClick={() => setOpen(true)}>
-        Register
+        {Register(language)}
       </button>
-      {open && <FormModal title="Register" courseType={courseType} setOpen={setOpen} />}
+      {open && (
+        <FormModal
+          title={Register(language)}
+          courseType={courseType}
+          setOpen={setOpen}
+          language={language}
+        />
+      )}
     </div>
   );
 };
@@ -24,9 +35,9 @@ export const FormModal = props => {
   const { title = '', courseType = 0, setOpen } = props;
   // ref that we add to the element for which we want to detect outside clicks
   const ref = useRef();
-  //hook passing in the ref and a function to call on outside click
+  // hook passing in the ref and a function to call on outside click
   useOnClickOutside(ref, () => setOpen(false));
-  //hook to lock body scroll
+  // hook to lock body scroll
   useLockBodyScroll();
 
   const handleApplyClick = () => {

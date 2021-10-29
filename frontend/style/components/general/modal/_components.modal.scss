@@ -104,6 +104,12 @@ input[type='radio'].c-modal__input {
     fill: $blue;
   }
 }
+// position left for rtl languages
+[dir='rtl'] .c-modal__top .c-btn--close {
+  right: auto;
+  left: 7px;
+}
+
 .c-modal__content {
   padding: 16px 0 0 0;
 }

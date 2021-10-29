@@ -44,7 +44,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
     >
       <div className="c-course-entry" dir={language === 'ar_AR' ? 'rtl' : 'ltr'}>
         <section className="o-wrapper-medium">
-          <BreadCrumbV2 title="Online Courses" parentSlug="/online-courses" home dir="ltr" />
+          <BreadCrumbV2 title="Online Courses" parentSlug="/online-courses" home />
           <CourseHeader data={course} />
         </section>
         <hr className="u-section-underline--no-margins" />
@@ -53,8 +53,8 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
             <div className="c-longform u-margin--course-top c-article__col">
               {content ? <BlockContent blocks={content} serializers={serializers} /> : null}
               <div className="c-course-entry__btn-row">
-                <RegisterForm courseType={courseType.waitingListId} />
-                <ShareOpen text={title} />
+                <RegisterForm courseType={courseType.waitingListId} language={language} />
+                <ShareOpen text={title} language={language} />
               </div>
             </div>
             <div className="c-article__side c-article__col">
