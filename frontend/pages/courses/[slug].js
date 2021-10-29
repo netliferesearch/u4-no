@@ -24,11 +24,12 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
     content = [],
     contact = [],
     courseType = 18,
-    cost = '', 
-    duration = '', 
+    cost = '',
+    duration = '',
     commitment = '',
-    //coordinator = [],
+    // coordinator = [],
     expert = [],
+    language = 'en_US',
   } = course;
 
   return (
@@ -41,9 +42,9 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
         ogp: {},
       }}
     >
-      <div className="c-course-entry">
+      <div className="c-course-entry" dir={language === 'ar_AR' ? 'rtl' : 'ltr'}>
         <section className="o-wrapper-medium">
-          <BreadCrumbV2 title={`Online Courses`} parentSlug={'/online-courses'} home={true} />
+          <BreadCrumbV2 title="Online Courses" parentSlug="/online-courses" home dir="ltr" />
           <CourseHeader data={course} />
         </section>
         <hr className="u-section-underline--no-margins" />
@@ -74,7 +75,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
         </section>
         <div />
 
-        {/* 
+        {/*
           {courseType !== 15 && courseType !== 16 && (
             <div className="o-wrapper-inner u-margin-top u-margin-bottom-large">
               <div>
@@ -165,8 +166,8 @@ export default DataLoader(CoursePage, {
            bio
          },
         otherLanguages[]->{_id, title, language, slug},
-        topics[]->{ _id, title, slug }, 
-        keywords,  _id, 
+        topics[]->{ _id, title, slug },
+        keywords,  _id,
         "featuredImage": {
           "asset": featuredImage.asset->{
             "altText": altText,

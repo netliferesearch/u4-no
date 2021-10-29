@@ -8,9 +8,10 @@ const LanguageName = ({ langcode = '' }) => {
     pt_PT: 'Portuguese',
     ru_RU: 'Russian',
     uk_UA: 'Ukrainian',
+    ar_AR: 'Arabic',
   };
   if (langcode === '') return 'English';
   return languageNames[langcode] ? languageNames[langcode] : 'an other language';
 };
 
-export default LanguageName
+export default LanguageName;

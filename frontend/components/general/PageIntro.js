@@ -24,6 +24,7 @@ export const PageIntro = ({
           className={`u-secondary-heading u-secondary-h4 u-detail--blue--small ${
             onDark ? 'u-text--white' : ''
           }`}
+          dir="ltr"
         >
           {contentType}
         </h4>

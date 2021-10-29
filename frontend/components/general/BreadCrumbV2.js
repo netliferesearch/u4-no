@@ -19,11 +19,11 @@ export const BreadCrumbV2 = ({
   grandParentTitle = '',
 }) => {
   return (
-    <div className={`c-breadcrumb c-breadcrumb--${onDark ? 'onDark' : ''}`}>
+    <div className={`c-breadcrumb c-breadcrumb--${onDark ? 'onDark' : ''}`} dir="ltr">
       <div className="c-breadcrumb-inner">
         {home ? (
           <div className="c-breadcrumb__item">
-            <Link href={'/'}>
+            <Link href="/">
               <a className="c-breadcrumb__link c-btn--link">Home</a>
             </Link>
           </div>
@@ -52,7 +52,9 @@ export const BreadCrumbV2 = ({
         {currentTitle ? (
           <div className="c-breadcrumb__item">
             <ChevronGrey color={onDark ? '#ffffff' : '#333333'} />
-            <span className="c-breadcrumb__link c-btn--link  c-breadcrumb__item--current">{currentTitle}</span>
+            <span className="c-breadcrumb__link c-btn--link  c-breadcrumb__item--current">
+              {currentTitle}
+            </span>
           </div>
         ) : null}
       </div>
