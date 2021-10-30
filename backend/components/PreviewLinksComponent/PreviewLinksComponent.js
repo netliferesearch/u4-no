@@ -11,12 +11,12 @@ class PreviewLinksComponent extends React.PureComponent {
     // no-op
   }
   render() {
-    return !this.props.document.slug ? null : (
+    return !(this.props.document?.slug) ? null : (
       <div className={styles.buttonGroup}>
         {this.props.document._id.startsWith('draft') && (
           <span className={styles.buttonSubgroup}>
             <AnchorButton
-              inverted={true}
+              inverted
               padding="small"
               href={`${previewUrl}/preview/${this.props.document._type}/${this.props.document._id}`}
               target="_blank"
@@ -26,7 +26,7 @@ class PreviewLinksComponent extends React.PureComponent {
             </AnchorButton>
             {this.props.document._type === 'publication' && (
               <AnchorButton
-                inverted={true}
+                inverted
                 padding="small"
                 href={`${previewUrl}/previewpdf/${this.props.document._type}/${
                   this.props.document._id
@@ -39,29 +39,31 @@ class PreviewLinksComponent extends React.PureComponent {
             )}
           </span>
         )}
-        <span className={styles.buttonSubgroup}>
-          <AnchorButton
-            inverted={true}
-            padding="small"
-            href={`${previewUrl +
-              buildUrl({ _type: this.props.document._type, slug: this.props.document.slug })}`}
-            target="_blank"
-            title="View page on site"
-          >
-            View
-          </AnchorButton>
-          {this.props.document._type === 'publication' && (
+        {this.props.document.slug.current && (
+          <span className={styles.buttonSubgroup}>
             <AnchorButton
-              inverted={true}
+              inverted
               padding="small"
-              href={`${previewUrl}/publications/${this.props.document.slug.current}.pdf`}
+              href={`${previewUrl +
+                buildUrl({ _type: this.props.document._type, slug: this.props.document.slug })}`}
               target="_blank"
-              title="View pdf on site"
+              title="View page on site"
             >
-              View pdf
+              View
             </AnchorButton>
-          )}
-        </span>
+            {this.props.document._type === 'publication' && (
+              <AnchorButton
+                inverted
+                padding="small"
+                href={`${previewUrl}/publications/${this.props.document.slug.current}.pdf`}
+                target="_blank"
+                title="View pdf on site"
+              >
+                View pdf
+              </AnchorButton>
+            )}
+          </span>
+        )}
       </div>
     );
   }
