@@ -9,6 +9,7 @@ import { ArticleActions } from '../article-actions/ArticleActions';
 import sanityImageLoader from '../../../helpers/sanityImageLoader';
 import Image from 'next/image';
 import { PhotoCaptionCredit } from '../PhotoCaptionCredit';
+import LinkToItem from '../LinkToItem';
 
 export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
   const {
@@ -30,6 +31,7 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
     date = {},
     updatedVersion = false,
     _updatedAt = '',
+    basedonpublication = false,
   } = data;
   const pdfAsset = legacypdf && legacypdf.asset ? legacypdf.asset : pdfFile.asset;
   const text = _type === 'publication' ? lead || abstract : standfirst;
@@ -49,6 +51,19 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
             single
           />
           <div className="c-article-header__meta">
+            {basedonpublication && (
+              <LinkToItem
+                type="publication"
+                slug={basedonpublication.slug}
+                key={basedonpublication._id}
+              >
+                <span className="u-body--small">
+                  <a className="" title={basedonpublication.title}>
+                    Read the associated publication
+                  </a>
+                </span>
+              </LinkToItem>
+            )}
             {translations.length > 0 && (
               <Translations
                 translations={translations}
