@@ -261,38 +261,6 @@ export default {
             },
             {
               type: 'event',
-            },            
-          ],
-        },
-      ],
-    },
-    {
-      name: 'collections',
-      title: 'Resource collection',
-      description: 'Resource collections for this topic page',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {
-              type: 'collection',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: 'further_resources',
-      title: 'Further resources',
-      description: 'Further resources for this topic page',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {
-              type: 'article',
             },
           ],
         },

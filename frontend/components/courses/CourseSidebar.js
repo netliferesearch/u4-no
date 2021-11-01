@@ -11,6 +11,7 @@ export const CourseSidebar = ({ data }) => {
     endDate = '',
     courseType = {},
     otherLanguages = [],
+    method = '',
     cost = '',
     duration = '',
     commitment = '',
@@ -20,7 +21,7 @@ export const CourseSidebar = ({ data }) => {
   return data ? (
     <div className="c-article-sidebar c-course-sidebar">
       <div className="c-course-sidebar__right">
-        <SidebarItem label="Course Type" content={courseType.title} />
+        {method && <SidebarItem label="Course Type" content={method} />}
         {startDate.utc && (
           <SidebarItem
             label="When"
@@ -35,7 +36,7 @@ export const CourseSidebar = ({ data }) => {
         ) : null}
         {pdfAsset.asset ? (
           <div className="c-article-sidebar__select">
-            <a href={pdfAsset.asset.url} target="_blank" className="c-btn c-btn--primary">
+            <a href={pdfAsset.asset.url} target="_blank" className="c-btn c-btn--primary" rel="noreferrer">
               <span>View course leaflet</span>
             </a>
           </div>

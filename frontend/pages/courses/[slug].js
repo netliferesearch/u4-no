@@ -24,6 +24,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
     content = [],
     contact = [],
     courseType = 18,
+    method = '',
     cost = '',
     duration = '',
     commitment = '',
@@ -130,7 +131,7 @@ const CoursePage = ({ data: { course = {} }, url = {} }) => {
 export default DataLoader(CoursePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-       "course": *[_type=="course" && slug.current == $slug][0]{title, language, link, startDate, endDate, lead, content, slug, cost, duration, commitment,
+       "course": *[_type=="course" && slug.current == $slug][0]{title, language, link, startDate, endDate, lead, content, slug, method, cost, duration, commitment,
           "courseType": courseType->{ title, waitingListId},
           "contact": contact[]->{
           _id,
