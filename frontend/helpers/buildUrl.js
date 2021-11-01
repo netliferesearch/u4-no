@@ -11,7 +11,7 @@ const BuildUrl = ({ _type = 'notype', slug = {} }) => {
   } else if (_type === 'about') {
     return `/about-u4/${actualSlug}`;
   }else if (_type === 'work-with') {
-    return `who-we-work-with/${actualSlug}`;
+    return `/who-we-work-with/${actualSlug}`;
   }
   else if (_type === 'topicsAgenda') {
     return `/topics/${actualSlug}/agenda`;
