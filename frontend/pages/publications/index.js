@@ -9,6 +9,8 @@ import { SearchFiltersV3 } from '../../components/search/SearchFiltersV3';
 import { client } from '../../helpers/sanityClient.pico';
 import PublicationsDataLoader from '../../helpers/publications-data-loader';
 import { SearchResultsV3 } from '../../components/search/SearchResultsV3';
+import BlockContent from '@sanity/block-content-to-react';
+import serializers from '../../components/serializers/serializers';
 
 export const Publications = ({ data = {} }) => {
   const [sanityData, setFeatured] = useState({});
@@ -17,19 +19,20 @@ export const Publications = ({ data = {} }) => {
     "publicationsPage": *[_type=="frontpage" && slug.current == "publications"][0]{
       id,
       title,
+      lead,
       sections,
       "imageUrl": featuredImage.asset->url,
       "resources": resources[]->{
         _id,
-        _type, 
-        "publicationType": publicationType->title, 
-        title, 
-        date, 
-        standfirst, 
-        topics[]->{title}, 
+        _type,
+        "publicationType": publicationType->title,
+        title,
+        date,
+        standfirst,
+        topics[]->{title},
         "slug": slug.current,
-        "titleColor": featuredImage.asset->metadata.palette.dominant.title, 
-        "imageUrl": featuredImage.asset->url, 
+        "titleColor": featuredImage.asset->metadata.palette.dominant.title,
+        "imageUrl": featuredImage.asset->url,
         "pdfFile": pdfFile.asset->url,
       }[0..3],
     },
@@ -46,13 +49,13 @@ export const Publications = ({ data = {} }) => {
     },
     []
   );
-
+  console.log('sanityData', sanityData)
   return (
     <Layout
       hideLogo={false}
       headComponentConfig={{
         title: 'Publications',
-        description: 'lorem ipsum',
+        description: 'Publications',
         url: 'https://www.u4.no/publications',
         image:
           sanityData.ImageUrl ||
@@ -65,7 +68,7 @@ export const Publications = ({ data = {} }) => {
             className="c-page-intro--about-u4"
             title="Publications"
             type="about-u4"
-            text="Lorem ipsum"
+            text={ <BlockContent blocks={sanityData.lead} serializers={serializers} />}
           />
         </section>
         <hr className="u-section-underline--no-margins" />
