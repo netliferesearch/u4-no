@@ -23,12 +23,15 @@ const ServicePage = ({ data: { events = {}, persons = {}, service = {}, url = {}
     relatedUrl = {},
     sections,
   } = service;
-  let date = new Date().toJSON();
+  const date = new Date().toJSON();
   const features = sections.slice(0, 1);
   const boxAndImg1 = sections.filter(i => i._type === 'boxOnImageRef')[0];
   const person = sections.filter(i => i._type === 'HelpdeskTeam')[0];
   const eventsAndWebinars = events.filter(
-    i => i.eventType === 'other' && (!i.startDate || i.startDate.utc > date)
+    i =>
+      i.eventType !== 'incountryworkshop' &&
+      i.eventType !== 'hqworkshop' &&
+      (!i.startDate || i.startDate.utc > date)
   );
   const workshops = events.filter(
     i =>
@@ -75,7 +78,7 @@ const ServicePage = ({ data: { events = {}, persons = {}, service = {}, url = {}
         </section>
         <hr className="u-section-underline--no-margins" />
         <div className="o-wrapper-medium u-top-margin--64">
-          <TextImage text={boxAndImg1.block} image={boxAndImg1.img} imagePosition={true} />
+          <TextImage text={boxAndImg1.block} image={boxAndImg1.img} imagePosition />
         </div>
         <section id="courses" className="o-wrapper-medium">
           <LearningEvents
@@ -86,7 +89,7 @@ const ServicePage = ({ data: { events = {}, persons = {}, service = {}, url = {}
           />
         </section>
         <section>
-          <Banner title={'What participants say'}>
+          <Banner title="What participants say">
             <div className="c-testimonial">
               <div className="c-testimonial__text">
                 <div className="c-pullQuote">
@@ -129,18 +132,18 @@ const ServicePage = ({ data: { events = {}, persons = {}, service = {}, url = {}
 };
 export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `{ 
-      "service": *[_type == "frontpage" && slug.current == "workshops-and-events-NEW"][0]{title, longTitle, slug, lead, leadLinks, _id, 
-        sections[]{..., 
-        personLeft[]->, 
+    sanityQuery: `{
+      "service": *[_type == "frontpage" && slug.current == "workshops-and-events-NEW"][0]{title, longTitle, slug, lead, leadLinks, _id,
+        sections[]{...,
+        personLeft[]->,
         personRight[]->
-      }, 
+      },
       "persons": sections[4]{
-        ..., 
-        personLeft[]->, 
+        ...,
+        personLeft[]->,
         personRight[]->
       }, "featuredImage": featuredImage.asset->url, resources[]->},
-      "events": *[_type == "event"] | order(startDate.utc desc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
+      "events": *[_type == "event" && !(_id in path('drafts.**'))] | order(startDate.utc desc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
     }`,
     param: { slug },
   }),
