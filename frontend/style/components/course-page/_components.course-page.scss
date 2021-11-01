@@ -50,7 +50,7 @@
 .c-course-entry__image-wrapper {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   margin-top: 0;
   margin-bottom: 0;
   @include mq($from: tablet) {

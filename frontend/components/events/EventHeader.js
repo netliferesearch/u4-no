@@ -1,6 +1,9 @@
 import React from 'react';
+import ReactPlayer from 'react-player';
 import { PageIntro } from '../general/PageIntro';
 import { getPostType } from '../../helpers/getRouteByType';
+import sanityImageLoader from '../../helpers/sanityImageLoader';
+import Image from 'next/image';
 
 export const EventHeader = ({ data }) => {
   const {
@@ -39,6 +42,34 @@ export const EventHeader = ({ data }) => {
           </div>
         )}
       </div>
+      {vimeo ? (
+        <div className={`u-video u-hidden--tablet  ${vimeo.size || ''}`}>
+          <ReactPlayer
+            controls
+            width="100%"
+            height="0"
+            config={{
+              preload: true,
+            }}
+            style={{
+              margin: '40px auto 40px',
+            }}
+            url={vimeo.src}
+          />
+        </div>
+      ) : featuredImage && featuredImage.asset ? (
+        <div className="c-course-entry__image-wrapper">
+          <Image
+            loader={sanityImageLoader}
+            src={featuredImage.asset.url}
+            loading="lazy"
+            width="484"
+            height="273"
+            objectFit="cover"
+            objectPosition="center center"
+          />
+        </div>
+      ) : null}
     </div>
   ) : null;
 };
