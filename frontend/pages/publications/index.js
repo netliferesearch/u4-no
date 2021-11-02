@@ -14,7 +14,6 @@ import serializers from '../../components/serializers/serializers';
 
 export const Publications = ({ data = {} }) => {
   const [sanityData, setFeatured] = useState({});
-  console.log({ sanityData });
   const sanityQuery = `{
     "publicationsPage": *[_type=="frontpage" && slug.current == "publications"][0]{
       id,
