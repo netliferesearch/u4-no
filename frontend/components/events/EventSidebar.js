@@ -5,7 +5,7 @@ import DateToString from '../../helpers/dateToString';
 import { Topics } from '../general/topics/Topics';
 
 export const EventSidebar = ({ data }) => {
-  const { startDate = {}, pdfAsset = {}, topics = [] } = data;
+  const { startDate = {}, pdfAsset = {}, topics = [], organiser = '' } = data;
   return data ? (
     <div className="c-article-sidebar c-course-sidebar">
       <div className="c-course-sidebar__right">
@@ -41,6 +41,13 @@ export const EventSidebar = ({ data }) => {
             </a>
           </div>
         ) : null}
+        {organiser && (
+          <div className="c-article-sidebar__item">
+            <h4 className="u-secondary-heading u-secondary-h4">Organiser</h4>
+            <hr className="u-section-underline--grey" />
+            <p className="u-text--grey">{organiser}</p>
+          </div>
+        )}
       </div>
     </div>
   ) : null;

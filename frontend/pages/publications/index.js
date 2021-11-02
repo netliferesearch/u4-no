@@ -14,13 +14,14 @@ import serializers from '../../components/serializers/serializers';
 
 export const Publications = ({ data = {} }) => {
   const [sanityData, setFeatured] = useState({});
-
+  console.log({ sanityData });
   const sanityQuery = `{
     "publicationsPage": *[_type=="frontpage" && slug.current == "publications"][0]{
       id,
       title,
       lead,
       sections,
+      lead,
       "imageUrl": featuredImage.asset->url,
       "resources": resources[]->{
         _id,
@@ -49,7 +50,6 @@ export const Publications = ({ data = {} }) => {
     },
     []
   );
-  console.log('sanityData', sanityData)
   return (
     <Layout
       hideLogo={false}

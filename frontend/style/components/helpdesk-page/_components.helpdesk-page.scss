@@ -1,4 +1,13 @@
 .c-helpdesk-page {
+  .c-longform-grid__standard {
+    // @include mq($until: tablet) {
+    padding-right: 0;
+    padding-left: 0;
+    // }
+  }
+  .c-longform-grid__standard.list-bullets {
+    margin-left: $inuit-global-spacing-unit;
+  }
   .c-helpdesk-page__lead {
     display: grid;
     grid-template-columns: 1fr 1fr;
