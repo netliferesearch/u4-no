@@ -56,7 +56,7 @@ export const menuItems = [
         items: [
           // {_id: 'u4-partner-agencies', label: 'Funding Partners', slug: '/u4-partner-agencies' },
           // {_id: 'the-team', label: 'Expert Network', slug: '/the-team' },
-          {_id: 'frontpage', label: 'Anti-Coruption helpdesk', slug: '/helpdesk' },
+          {_id: 'frontpage', label: 'Anti-coruption helpdesk', slug: '/helpdesk' },
         ],
       },
       {
