@@ -7,8 +7,8 @@
     order: 0;
     width: auto;
     margin-top: 0;
-    margin-left: 8.33333%;
-    margin-right: $spacing;
+    margin-left: 24px;
+    margin-right: 16px;
   }
 }
 
@@ -18,14 +18,14 @@
   height: 0;
   overflow: hidden;
   @include inuit-font-size($font-size-small, $line-height-normal);
-  color: $brand-dark;
+  color: $dark-blue;
   margin: 0;
   font-family: $font-sans;
   font-weight: 400;
 }
 
 .c-search-v2__wrapper {
-  background-color: $brand-lightest;
+  background-color: $light-blue;
   padding-top: $spacing-huge;
   padding-bottom: $spacing;
   @include mq($from: desktop) {
@@ -42,31 +42,45 @@
 }
 
 .c-search-v2__content {
-  border: 1px solid $brand-main;
+  border-bottom: 1px solid rgba($light-grey, 0.5);
   position: relative;
   display: flex;
+  align-items: center;
   flex-wrap: nowrap;
 }
 
 .c-search-v2__input {
   flex-grow: 2;
-  background: $white;
+  background: transparent;
   width: 100%;
   border: 0;
   display: block;
-  color: $black;
+  color: $light-grey;
   margin: 0 0;
   transition: border 0.2s ease-out;
-  @include inuit-font-size($font-size-tiny, $line-height-tiny);
-  @include mq($from: tablet) {
-    @include inuit-font-size($font-size-small, $line-height-small);
+  caret-color: $light-grey;
+  font-family: $font-sans;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  // @include mq($from: tablet) {
+  //   font-size: 20px;
+  //   line-height: 1.4;
+  // }
+
+  &::placeholder {
+    color: $light-grey;
+    opacity: 0.5;
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 400;
+    text-transform: none;
+    margin: 0;
   }
 
   &:hover {
     outline: none;
-    &::placeholder {
-      color: transparent;
-    }
   }
   &:focus {
     outline: none;
@@ -79,7 +93,7 @@
 .c-search-v2__button {
   border-radius: 0;
   border: none;
-  padding: $spacing-small;
+  padding: 4px 0;
   color: $brand-main;
   background-color: transparent;
   border-left: none;
@@ -87,5 +101,29 @@
   &:focus {
     border: none;
     outline: none;
+  }
+}
+
+.c-main-menu {
+  .c-search-v2__icon-svg {
+    .c-search-v2__svg-elements {
+      stroke: $white;
+    }
+    &:hover {
+      .c-search-v2__svg-elements {
+        stroke: $highlight-blue;
+      }
+    }
+  }
+}
+.c-search-v2__close-icon {
+  cursor: pointer;
+  .c-search-v2__close-svg-elements {
+    //stroke: #8a8fb0;
+  }
+  &:hover {
+    path {
+      stroke: $highlight-blue;
+    }
   }
 }

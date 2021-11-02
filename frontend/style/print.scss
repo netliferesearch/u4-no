@@ -276,8 +276,8 @@
   }
 
   .c-print__front-text {
-    //border: solid 0.1cm $brand-dark;
-    background-color: $brand-lightest;
+    //border: solid 0.1cm $dark-blue;
+    background-color: $light-blue;
     z-index: 10;
     padding: 1cm 4cm 1cm 2cm;
     margin-right: -4cm;
@@ -289,7 +289,7 @@
   }
 
   .c-print__title {
-    color: $brand-dark;
+    color: $dark-blue;
     margin: 0;
     font-family: $font-serif;
     font-weight: bold;
@@ -297,7 +297,7 @@
   }
 
   .c-print__subtitle {
-    color: $brand-dark;
+    color: $dark-blue;
     font-weight: lighter;
     font-family: $font-sans;
     padding-top: $spacing-tiny;
@@ -308,10 +308,10 @@
   }
 
   .c-print__meta {
-    color: $brand-dark;
+    color: $dark-blue;
     font-family: $font-sans;
     a {
-      color: $brand-dark;
+      color: $dark-blue;
       font-family: $font-sans;
       border: none;
     }
@@ -338,7 +338,7 @@
   }
 
   blockquote {
-    border-left: $black solid 1px;
+    border-left: $dark-grey solid 1px;
     //font-style: italic;
     //letter-spacing: 0.02em;
     font-weight: 300;
@@ -379,7 +379,7 @@
   }
 
   .c-textbox--longform {
-    background: $brand-lightest;
+    background: $light-blue;
     padding: $spacing-tiny $spacing;
     font-family: $font-sans;
     font-size: 90%;

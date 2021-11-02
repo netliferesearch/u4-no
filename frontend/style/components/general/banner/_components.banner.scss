@@ -1,0 +1,24 @@
+.c-banner__content {
+  padding-bottom: 48px;
+  padding-left: 24px;
+  padding-right: 24px;
+  @include mq($from: tablet) {
+    padding-bottom: 64px;
+    padding-left: 30px;
+    padding-right: 0;
+  }
+  @include mq($from: desktop) {
+    padding-bottom: 64px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.c-banner__body .c-testimonial {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.c-banner__subtitle {
+  color: $dark-blue;
+}

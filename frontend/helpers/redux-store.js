@@ -46,12 +46,14 @@ const addQueryParams = queryParams => {
   Router.replace(newUrl, undefined, { scroll: false });
 };
 
-const updateFilterQueryParams = (filters = []) =>
+const updateFilterQueryParams = (filters = []) => {
   addQueryParams({
+    searchPageNum: 1,
     filters: uniq(filters)
       .map(name => name.replace(/,/g, '|'))
       .join(),
   });
+};
 
 const defaultState = {
   readingProgressId: '',
@@ -60,7 +62,9 @@ const defaultState = {
   storedScrollPosition: false,
   showLoadingScreen: false,
   searchSorting: 'relevance',
+  searchLoading: false,
   searchFilters: [],
+  searchResultsVisible: false,
   searchPageNum: 1,
   searchResults: {},
   defaultSearchAggs: [],
@@ -77,14 +81,24 @@ export const actionTypes = {
   SEARCH_REPLACE_FILTERS: 'SEARCH_REPLACE_FILTERS',
   SEARCH_UPDATE_PAGE_NUM: 'SEARCH_UPDATE_PAGE_NUM',
   SEARCH_UPDATE_RESULTS: 'SEARCH_UPDATE_RESULTS',
+  SEARCH_START: 'SEARCH_START',
   SCROLL_POSITION_SAVE: 'SCROLL_POSITION_SAVE',
   SEARCH_UPDATE_DEFAULT_AGGS: 'SEARCH_UPDATE_DEFAULT_AGGS',
+  BLOG_UPDATE_FILTERS: 'BLOG_UPDATE_FILTERS',
+  BLOG_CLEAR_FILTERS: 'BLOG_CLEAR_FILTERS',
+  BLOG_CLEAR_FILTER: 'BLOG_CLEAR_FILTER',
+  BLOG_UPDATE_PAGE_NUM: 'BLOG_UPDATE_PAGE_NUM',
+  LANG_UPDATE_FILTERS: 'LANG_UPDATE_FILTERS',
+  LANG_CLEAR_FILTERS: 'LANG_CLEAR_FILTERS',
+  CLEAR_SEARCH_STATE: 'CLEAR_SEARCH_STATE',
 };
 
 // REDUCERS
 export const reducer = (state = defaultState, action) => {
   console.log('reducer', action, state);
   switch (action.type) {
+    case actionTypes.BLOG_CLEAR_FILTER:
+      return { ...state, blogFilters: state.blogFilters.filter((f, i) => i !== action.index) };
     case actionTypes.SEARCH_UPDATE_SORT:
       addQueryParams({
         sort: action.sortName,
@@ -94,21 +108,27 @@ export const reducer = (state = defaultState, action) => {
       updateFilterQueryParams(state.searchFilters.concat(action.searchFilter));
       return Object.assign({}, state, {
         searchFilters: uniq(state.searchFilters.concat(action.searchFilter)),
+        searchPageNum: 1,
       });
     case actionTypes.SEARCH_REMOVE_FILTER:
       updateFilterQueryParams(state.searchFilters.filter(name => name !== action.searchFilter));
       return Object.assign({}, state, {
         searchFilters: state.searchFilters.filter(name => name !== action.searchFilter),
+        searchPageNum: 1,
       });
     case actionTypes.SEARCH_REPLACE_FILTERS:
       updateFilterQueryParams(action.searchFilters);
       return Object.assign({}, state, {
         searchFilters: uniq(action.searchFilters),
+        searchPageNum: 1,
       });
     case actionTypes.SEARCH_UPDATE_PAGE_NUM:
       if (state.searchPageNum !== action.searchPageNum) {
         addQueryParams({
           searchPageNum: `${action.searchPageNum}`,
+          filters: uniq(state.searchFilters)
+            .map(name => name.replace(/,/g, '|'))
+            .join(),
         });
         return { ...state, searchPageNum: action.searchPageNum };
       }
@@ -118,12 +138,21 @@ export const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         searchFilters: [],
       });
+    case actionTypes.CLEAR_SEARCH_STATE:
+      return { ...state, searchResultsVisible: action.value };
     case actionTypes.SEARCH_UPDATE_DEFAULT_AGGS:
       return Object.assign({}, state, {
         defaultSearchAggs: action.defaultSearchAggs,
       });
+    case actionTypes.START_SEARCH:
+      return { ...state, searchLoading: true };
     case actionTypes.SEARCH_UPDATE_RESULTS:
-      return { ...state, searchResults: action.searchResults };
+      return {
+        ...state,
+        searchResults: action.searchResults,
+        searchLoading: false,
+        searchResultsVisible: true,
+      };
     case actionTypes.TOGGLE_ARTICLE_MENU:
       return Object.assign({}, state, { isArticleMenuOpen: !state.isArticleMenuOpen });
     case actionTypes.TOGGLE_LOADING_SCREEN:
@@ -136,6 +165,36 @@ export const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, { readingProgressId: action.readingProgressId });
     case actionTypes.SCROLL_POSITION_SAVE:
       return Object.assign({}, state, { storedScrollPosition: action.scrollPosition });
+
+    case actionTypes.BLOG_UPDATE_FILTERS:
+      return Object.assign({}, state, {
+        blogFilters: uniq(action.blogFilters),
+      });
+
+    case actionTypes.BLOG_CLEAR_FILTERS:
+      return Object.assign({}, state, {
+        blogFilters: [],
+      });
+
+    case actionTypes.BLOG_UPDATE_PAGE_NUM:
+      if (state.blogPageNum !== action.blogPageNum) {
+        addQueryParams({
+          blogPageNum: `${action.blogPageNum}`,
+        });
+        return { ...state, blogPageNum: action.blogPageNum };
+      }
+      return state;
+
+    case actionTypes.LANG_UPDATE_FILTERS:
+      return Object.assign({}, state, {
+        langFilters: uniq(action.langFilters),
+      });
+
+    case actionTypes.LANG_CLEAR_FILTERS:
+      return Object.assign({}, state, {
+        langFilters: [],
+      });
+
     default:
       return state;
   }
@@ -151,27 +210,57 @@ export const toggleArticleMenu = () => dispatch =>
 export const toggleLoadingScreen = () => dispatch =>
   dispatch({ type: actionTypes.TOGGLE_LOADING_SCREEN });
 
-export const updateSearchSorting = sortName => dispatch =>
-  dispatch({ type: actionTypes.SEARCH_UPDATE_SORT, sortName });
+export const actionSetSearchVisibility = value => ({ type: actionTypes.CLEAR_SEARCH_STATE, value });
 
-export const addSearchFilter = searchFilter => dispatch =>
-  dispatch({ type: actionTypes.SEARCH_ADD_FILTER, searchFilter });
+export const updateSearchSorting = sortName => {
+  return { type: actionTypes.SEARCH_UPDATE_SORT, sortName };
+};
 
-export const removeSearchFilter = searchFilter => dispatch =>
-  dispatch({ type: actionTypes.SEARCH_REMOVE_FILTER, searchFilter });
+export const addSearchFilter = searchFilter => {
+  return { type: actionTypes.SEARCH_ADD_FILTER, searchFilter };
+};
 
-export const replaceSearchFilters = (searchFilters = []) => dispatch =>
-  dispatch({ type: actionTypes.SEARCH_REPLACE_FILTERS, searchFilters });
+export const removeSearchFilter = searchFilter => {
+  return { type: actionTypes.SEARCH_REMOVE_FILTER, searchFilter };
+};
+
+export const replaceSearchFilters = (searchFilters = []) => {
+  return { type: actionTypes.SEARCH_REPLACE_FILTERS, searchFilters };
+};
 
 export const clearAllSearchFilters = () => dispatch =>
   dispatch({ type: actionTypes.SEARCH_CLEAR_ALL_FILTERS });
 
-export const updateSearchPageNum = searchPageNum => dispatch => {
-  return dispatch({ type: actionTypes.SEARCH_UPDATE_PAGE_NUM, searchPageNum });
+export const updateSearchPageNum = searchPageNum => {
+  return { type: actionTypes.SEARCH_UPDATE_PAGE_NUM, searchPageNum };
+};
+
+export const updateSearchAggregations = defaultSearchAggs => {
+  return { type: actionTypes.SEARCH_UPDATE_DEFAULT_AGGS, defaultSearchAggs };
 };
 
 export const saveScrollPosition = scrollPosition => dispatch =>
   dispatch({ type: actionTypes.SCROLL_POSITION_SAVE, scrollPosition });
+
+export const updateBlogFilters = (blogFilters = []) => dispatch =>
+  dispatch({ type: actionTypes.BLOG_UPDATE_FILTERS, blogFilters });
+
+export const clearBlogFilters = () => dispatch =>
+  dispatch({ type: actionTypes.BLOG_CLEAR_FILTERS });
+
+export const clearBlogFilter = index => ({ type: actionTypes.BLOG_CLEAR_FILTER, index });
+
+export const actionStartSearch = () => ({ type: actionTypes.SEARCH_START });
+
+export const updateBlogPageNum = blogPageNum => dispatch => {
+  return dispatch({ type: actionTypes.BLOG_UPDATE_PAGE_NUM, blogPageNum });
+};
+
+export const updateLangFilters = (langFilters = []) => dispatch =>
+  dispatch({ type: actionTypes.LANG_UPDATE_FILTERS, langFilters });
+
+export const clearLangFilters = () => dispatch =>
+  dispatch({ type: actionTypes.LANG_CLEAR_FILTERS });
 
 export const initStore = (initialState = defaultState, options = {}) => {
   const { query = {} } = options;

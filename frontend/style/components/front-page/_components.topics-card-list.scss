@@ -1,0 +1,43 @@
+.c-topic-card-list__wrapper {
+  display: inline-grid;
+  grid-gap: 30px;
+  @include mq($from: mobile) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  @include mq($from: tablet) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+    grid-template-rows: auto;
+  }
+
+  @include mq($from: desktop) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    //grid-template-rows: 1fr 1fr;
+  }
+}
+
+.c-topic-card-list {
+  margin-bottom: 48px;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: -12px;
+    padding: 0;
+  }
+}
+
+// Component Topics
+
+.c-topics__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.c-topics__link-holder {
+  margin-top: 28px;
+}

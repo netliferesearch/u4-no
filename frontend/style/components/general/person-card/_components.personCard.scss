@@ -1,0 +1,204 @@
+.c-person-card__wrapper {
+  display: flex;
+  flex-direction: column;
+  color: $mid-grey;
+  font-size: $font-size-tiny;
+
+  @include mq($from: tablet) {
+    flex-direction: row;
+  }
+  &:hover {
+    .c-person-card__image-wrapper {
+      opacity: 0.5;
+    }
+    h5.u-text--dark-blue {
+      color: $blue;
+    }
+  }
+  img {
+    border-radius: 50%;
+    align-self: center;
+    width: 100%;
+  }
+
+  a {
+    color: $mid-grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.c-person-card--image-left {
+  margin-bottom: 40px;
+  h5 {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .c-person-card__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 30px;
+    width: auto;
+
+    @include mq($until: tablet) {
+      align-items: center;
+      margin-left: 0;
+      .c-person-card__adress {
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
+      .c-person-card__position {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      a {
+        align-items: center;
+      }
+      h5 {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .c-person-card__adress {
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+}
+
+.c-person-card--profile {
+  margin-bottom: 40px;
+  .c-person-card__position {
+    @include mq($until: tablet) {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .c-person-card__image-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    width: auto;
+
+    @include mq($from: tablet) {
+      margin: 0px;
+    }
+  }
+  h2 {
+    font-weight: bold;
+    margin: 0;
+    //text-align: center;
+  }
+
+  .c-person-card__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    font-size: $font-size-small;
+    line-height: 28px;
+
+    @include mq($from: tablet) {
+      align-items: flex-start;
+      margin-left: 30px;
+    }
+  }
+
+  .c-person-card__adress,
+  .c-btn.c-btn--link {
+    display: none;
+  }
+  .c-social--follow__item {
+    margin-right: 24px;
+    border-radius: 16px;
+    // background-color: $highlight-yellow;
+    svg {
+      .c-social-icons-secondpath {
+        fill: $dark-blue;
+      }
+      .c-social-icons-firstpath {
+        stroke: $dark-blue;
+      }
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    &:hover {
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+      svg {
+        .c-social-icons-secondpath {
+          fill: $dark-blue;
+        }
+        .c-social-icons-firstpath {
+          stroke: $highlight-yellow;
+          fill: $highlight-yellow;
+        }
+      }
+    }
+
+    @include mq($from: tablet) {
+      margin-right: 40px;
+    }
+  }
+}
+
+.c-person-card--image-top {
+  display: flex;
+  flex-direction: column;
+
+  h5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $font-size-tiny;
+    text-align: center;
+  }
+
+  a,
+  .c-person-card__email {
+    align-items: center;
+    display: flex;
+    text-align: center;
+  }
+
+  .c-person-card__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+  }
+
+  .c-person-card__position {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .c-person-card__adress {
+    display: none;
+  }
+}
+
+a {
+  padding: 0;
+}
+
+.c-person-card__image-wrapper {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+
+  @include mq($from: tablet) {
+    margin: 0px;
+  }
+}

@@ -1,0 +1,41 @@
+.c-search-page {
+  .c-menu__search-holder {
+    margin: 60px auto;
+    border-bottom: 1px solid rgba(22, 32, 99, 0.5);
+  }
+  .c-search-v2 {
+    margin: 0;
+    .c-search-v2__button {
+      path,
+      circle {
+        stroke: $mid-grey;
+      }
+      &[type='button'] {
+        path {
+          stroke: rgba(22, 32, 99, 0.5);
+        }
+      }
+    }
+    .c-search-v2__input {
+      color: $dark-blue;
+      caret-color: $highlight-blue;
+      &::placeholder {
+        color: $mid-grey;
+        opacity: 100;
+      }
+    }
+  }
+  .o-layout__item:first-of-type {
+    padding: 0;
+    // position: sticky;
+    // top: 120px;
+  }
+  .c-search-page__sections {
+    @include mq($from: desktop) {
+      margin: 40px 0;
+    }
+  }
+  .u-detail--blue {
+    margin: 0;
+  }
+}

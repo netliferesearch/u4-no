@@ -261,7 +261,7 @@ export default {
             },
             {
               type: 'event',
-            },            
+            },
           ],
         },
       ],

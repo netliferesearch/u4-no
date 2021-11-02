@@ -6,9 +6,9 @@
 
 .o-wrapper-fixed-header {
   max-width: 100%;
-  padding-top: 130px;
+  padding-top: 90px;
   @include mq($from: tablet) {
-    padding-top: 115px;
+    padding-top: 90px;
   }
 }
 
@@ -17,10 +17,8 @@
   margin-right: auto;
   margin-left: auto;
   max-width: $site-width;
-  @include mq($from: tablet) {
-    padding-right: $inuit-global-spacing-unit;
-    padding-left: $inuit-global-spacing-unit;
-  }
+  padding-right: $inuit-global-spacing-unit;
+  padding-left: $inuit-global-spacing-unit;
 }
 
 .o-wrapper--padded {
@@ -38,7 +36,7 @@
 }
 
 .o-wrapper-section {
-  max-width: 1264px;
+  max-width: 1206px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -53,7 +51,24 @@
 .o-wrapper-medium {
   margin-right: auto;
   margin-left: auto;
-  max-width: 1100px;
+  max-width: 1254px;
+  padding-right: $inuit-global-spacing-unit;
+  padding-left: $inuit-global-spacing-unit;
+}
+
+.o-wrapper-medium.o-wrapper-mobile-full {
+  padding-right: 0;
+  padding-left: 0;
+  @include mq($from: tablet) {
+    padding-right: $inuit-global-spacing-unit;
+    padding-left: $inuit-global-spacing-unit;
+  }
+}
+.o-wrapper-medium.o-wrapper-mobile-full  .o-wrapper-medium {
+  @include mq($from: tablet) {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 .o-wrapper--no-padding {
@@ -63,6 +78,11 @@
   }
 }
 
+.o-wrapper-full {
+  width: 100%;
+  max-width: 100%;
+}
+
 .o-wrapper-full-width {
   width: 100vw;
   position: relative;
@@ -70,4 +90,11 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+}
+
+.o-wrapper-narrow {
+  width: 100%;
+  @include mq($from: tablet) {
+    max-width: 691px;
+  }
 }

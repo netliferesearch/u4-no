@@ -1,18 +1,20 @@
-.c-figure {
-}
 .c-figure__title {
   font-weight: bold;
   font-family: $font-sans;
   @include inuit-font-size($font-size-tiny);
-  color: $black;
+  color: $dark-grey;
   margin-bottom: $spacing-small;
   page-break-after: avoid;
+  padding: 0 24px;
+  @include mq($from: tablet) {
+    padding: 0;
+  }
 }
 
 .c-figure__caption {
   font-family: $font-sans;
   @include inuit-font-size($font-size-tiny);
-  color: $black;
+  color: $dark-grey;
 
   & > .c-longform-grid__standard {
     padding-left: 0;
@@ -55,11 +57,13 @@
   }
 }
 .c-figure--wide {
+  max-width: 100vw;
   img {
     width: 100%;
     height: auto;
   }
   @include mq($from: tablet) {
+    max-width: auto;
     padding: 0 $spacing-small;
   }
 }

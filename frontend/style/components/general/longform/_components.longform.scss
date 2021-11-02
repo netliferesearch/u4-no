@@ -1,0 +1,234 @@
+/**
+  Specify defaults to be used if "display: grid" is not supported.
+*/
+.c-longform-grid,
+.c-longform-grid-sub-div > div {
+  max-width: 691px;
+  margin: 0 auto;
+  padding: 0 $spacing-small;
+  @media print {
+    width: 20cm;
+    margin: 0 auto;
+  }
+}
+
+@supports (display: grid) {
+  .c-longform-grid,
+  .c-longform-grid-sub-div > div {
+    max-width: 100%;
+    @include mq($from: tablet) {
+      display: grid;
+      padding: 0;
+      grid-template-columns: 20px auto auto auto 1fr auto auto auto 20px;
+      grid-template-rows: auto;
+      grid-row-gap: 10px;
+      grid-template-columns: 1fr auto auto 1fr 620px 1fr auto auto 1fr;
+    }
+
+    @include mq($from: desktop) {
+      grid-template-columns: 1fr 80px 80px 80px 620px 80px 80px 80px 1fr;
+    }
+  }
+
+  .c-longform-grid__standard {
+    padding: 0 $spacing;
+    //padding: 0;
+    grid-column: 5 / 6;
+    //word-break: break-all;
+    @include mq($from: tablet) {
+      padding: 0;
+      //word-break: normal;
+    }
+  }
+
+  .c-longform-grid__medium {
+    padding: 0 $spacing;
+    //padding: 0;
+    grid-column: 4 / 7;
+  }
+
+  .c-longform-grid__large {
+    padding: 0 $spacing;
+    grid-column: 3 / 8;
+    @include mq($from: tablet) {
+      padding: 0;
+    }
+  }
+
+  .c-longform-grid__large-right {
+    padding: 0 $spacing;
+    grid-column: 5 / 8;
+  }
+
+  .c-longform-grid__larger {
+    padding: 0 $spacing;
+    grid-column: 2 / 9;
+    @include mq($from: tablet) {
+      padding: 0;
+      //word-break: normal;
+    }
+  }
+
+  .c-longform-grid__half {
+    grid-column: 4 / 7;
+  }
+
+  .c-longform-grid__full {
+    grid-column: 1 / 10;
+  }
+  .c-longform-grid__sidebar-right {
+    display: none;
+    @include mq($from: wide) {
+      display: block;
+      grid-column: 7 / 10;
+    }
+  }
+}
+div {
+  .c-longform-grid__large,
+  .c-longform-grid__medium,
+  .c-longform-grid__standard {
+    //padding: 0;
+    margin: 32px 0;
+  }
+  .c-longform-grid__standard {
+    max-width: 691px;
+  }
+}
+
+.c-longform {
+  font-family: $font-serif;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.02em;
+}
+
+.c-article-v2__main-text > div > p.c-longform-grid__standard:last-child {
+  position: relative;
+  &:after {
+    content: '\25A0';
+    color: $blue;
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    bottom: 10px;
+    padding: 0 6px;
+    //left: 0;
+  }
+}
+
+.c-article-v2__main-text {
+  .c-table__caption,
+  .c-textbox--simple {
+    p.c-longform-grid__standard:after {
+      display: none;
+    }
+  }
+}
+
+.c-longform a,
+.c-longform-grid__standard a {
+  color: $blue;
+  border-bottom: 1px solid transparent;
+  &:hover,
+  &:focus {
+    border-bottom: 1px solid $blue;
+  }
+}
+
+h1.c-longform-grid__standard {
+  font-family: $font-sans;
+  color: $dark-grey;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+  letter-spacing: -0.01em;
+  //margin: 64px auto 32px auto;
+}
+
+h2.c-longform-grid__standard {
+  font-family: $font-sans;
+  color: $dark-grey;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0.02em;
+  //margin: 64px auto 32px auto;
+}
+
+h3.c-longform-grid__standard {
+  font-family: $font-sans;
+  color: $dark-grey;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0.02em;
+  //margin: 64px auto 32px auto;
+}
+h4.c-longform-grid__standard {
+  font-family: $font-sans;
+  color: $dark-grey;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.02em;
+  //margin: 64px auto 32px auto;
+}
+h5.c-longform-grid__standard {
+  font-family: $font-sans;
+  color: $dark-grey;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.02em;
+  //margin: 64px auto 32px auto;
+}
+
+.c-article__pullQuote {
+  font-family: $font-serif;
+  color: $dark-blue;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.01em;
+  max-width: 524px;
+  margin: 0 auto;
+  padding-left: 30px;
+  border-left: 8px solid $blue;
+  @include mq($from: tablet) {
+    font-size: 24px;
+    line-height: 1.42;
+    margin: 64px auto;
+  }
+}
+
+.c-article__pullQuote--onDark {
+  color: $light-grey;
+}
+
+.c-figure__caption {
+  margin: 24px 0;
+}
+.c-figure__caption > .c-longform-grid__standard,
+.c-table__caption > .c-longform-grid__standard {
+  font-size: 15px;
+  line-height: 1.33;
+  padding: 0 24px;
+  // margin: 0 auto;
+  @include mq($from: tablet) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+ol.c-longform-grid__standard,
+ul.c-longform-grid__standard {
+  //list-style-position: inside;
+  padding-left: 48px;
+  @include mq($from: tablet) {
+    padding-left: 24px;
+  }
+}

@@ -1,13 +1,103 @@
-.u-bg-light-blue {
-  background: $brand-lightest;
-  padding: $spacing-large 0;
-}
-
-.u-bg-dark-blue {
-  background: $brand-dark;
-  padding: $spacing-large 0;
-}
-
-.u-bg-white {
+.u-bg--white {
   background-color: $white;
+}
+
+.u-bg--lighter-blue {
+  background-color: $lighter-blue;
+}
+
+.u-bg--light-blue--top {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 192px;
+    background-color: $light-blue;
+    z-index: -1;
+  }
+}
+
+.u-bg--light-blue {
+  background: $light-blue;
+}
+
+.u-bg--blue {
+  background: $brand-main;
+  overflow: auto;
+}
+
+.u-bg--dark-blue {
+  background: $dark-blue;
+  //padding: $spacing-large 0;
+}
+
+.u-bg--darkest-blue {
+  background: $darkest-blue;
+  //padding: $spacing-large 0;
+}
+
+.u-bg--light-grey {
+  background-color: $light-grey;
+}
+
+.u-bg--transparent-blue {
+  background-color: $dark-blue;
+  mix-blend-mode: multiply;
+  // position: relative;
+  // z-index: 0;
+}
+
+.u-bg--blur {
+  backdrop-filter: blur(6px);
+}
+
+.u-bg--shifted {
+  position: relative;
+  max-width: 1206px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 16px;
+  background-color: $dark-blue;
+  box-shadow: -16px 16px 0px 0px #0079cf;
+  @include mq($from: desktop) {
+    clip-path: inset(0px 0px -16px -1000px);
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: -900px;
+      background-color: $dark-blue;
+      box-shadow: 0 16px 0px 0px $blue;
+      z-index: -1;
+    }
+  }
+}
+
+.u-bg--shifted--light {
+  position: relative;
+  max-width: 1206px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 16px;
+  background-color: $light-blue;
+  box-shadow: -16px 16px 0px 0px $highlight-blue;
+  @include mq($from: desktop) {
+    clip-path: inset(0px 0px -16px -1000px);
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: -900px;
+      background-color: $light-blue;
+      box-shadow: 0 16px 0px 0px $highlight-blue;
+      z-index: -1;
+    }
+  }
 }

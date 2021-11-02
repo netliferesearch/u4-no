@@ -1,0 +1,44 @@
+.c-disclaimers {
+  color: $dark-grey;
+  margin-bottom: 16px;
+
+  h4 {
+    margin-bottom: 4px;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: $dark-grey;
+    margin-top: 12px;
+    path {
+      fill: $dark-grey;
+    }
+  }
+  p {
+    margin: 0;
+  }
+  .c-disclaimers__content {
+    margin-top: 12px;
+  }
+  @include mq($from: tablet) {
+  }
+}
+
+.c-keywords {
+  margin-bottom: 16px;
+  h4 {
+    margin-bottom: 4px;
+  }
+}
+
+.c-keywords__list {
+  margin-top: 12px;
+  span {
+    margin: 0 2px 0 0;
+    display: inline-block;
+    &:first-letter {
+      text-transform: capitalize;
+    }
+  }
+}

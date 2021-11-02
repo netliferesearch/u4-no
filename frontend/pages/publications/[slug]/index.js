@@ -5,23 +5,31 @@ import { fetchAndMaterialize } from '../../../helpers/data-loader';
 import { localize } from '../../../helpers/translate';
 import { initStore } from '../../../helpers/redux-store';
 import { Provider } from 'react-redux';
+// import { PublicationContainer } from '../../../components/publication/PublicationContainer';
 
-const LongformArticleContainer = dynamic(() =>
-  import('../../../components/LongformArticleContainer')
-);
+// const LongformArticleContainer = dynamic(() =>
+//   import('../../../components/LongformArticleContainer')
+// );
+
 const LegacyPublicationContainer = dynamic(() =>
-  import('../../../components/LegacyPublicationContainer')
+  import('../../../components/publication/LegacyPublicationContainer')
+);
+
+const PublicationContainer = dynamic(() =>
+  import('../../../components/publication/PublicationContainer')
 );
 
 const store = initStore();
 
 const PublicationEntry = props => {
+  console.log(props.data)
   return (
     <Provider store={store}>
       {props.data.legacypdf && !props.data.content ? (
         <LegacyPublicationContainer {...props} />
       ) : (
-        <LongformArticleContainer {...props} />
+        // <LongformArticleContainer {...props} />
+        <PublicationContainer {...props} />
       )}
     </Provider>
   );
@@ -51,17 +59,19 @@ export default PublicationEntry;
 const queryFunc = ({ params: { slug = '' } }) => ({
   sanityQuery: `*[_type == 'publication' && slug.current == $slug]{ _type, _id,
   abbreviations, abstract, acknowledgements,
-  authors[]->{ _id, affiliations, email, ${localize('firstName')}, slug, ${localize('surname')} },
+  authors[]->{..., _id, affiliations, email, ${localize('firstName')}, slug, ${localize('surname')}, position },
   bibliographicalOverride, blurbs, content, date,
-  editors[]->{ _id, affiliations, email, ${localize('firstName')}, slug, ${localize('surname')} },
-  featuredImage, headsUp, keywords, language,
+  editors[]->{ _id, affiliations, email, ${localize('firstName')}, slug, ${localize('surname')}, position },
+  featuredImage, headsUp, 
+  keywords[]->{_id, keyword, category}, 
+  language,
   lead, legacypdf, mainPoints, methodology, notes, partners, pdfFile, publicationNumber,
   publicationType->{ _id, title },
   reference, references,
   "recommendedResources":
-    relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage },
+    relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, "imageUrl": featuredImage.asset->url },
   "relatedResources":
-      related[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, featuredImage },
+      related[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, "imageUrl": featuredImage.asset->url },
   slug, standfirst, subtitle, summary, summaryExternal, title,
   topics[]->{ _id, title, slug },
   "translations":

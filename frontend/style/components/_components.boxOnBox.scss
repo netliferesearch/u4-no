@@ -2,7 +2,7 @@
   display: block;
   font-weight: 300;
   font-family: $font-sans;
-  color: $white-on-blue;
+  color: $light-blue;
   @include inuit-font-size($font-size-small, $font-size-large);
   @include mq($from: tablet) {
     width: 100%;
@@ -15,7 +15,7 @@
   }
 }
 .c-boxOnBox__left {
-  background: $brand-dark;
+  background: $dark-blue;
   color: $white;
   z-index: 9;
   padding: $spacing;
@@ -25,12 +25,12 @@
     grid-column: 1 / 6;
   }
   a {
-    color: $brand-lighter;
+    color: $highlight-blue;
   }
 }
 .c-boxOnBox__right {
-  background: $brand-lightest;
-  color: $brand-dark;
+  background: $light-blue;
+  color: $dark-blue;
   margin: 0;
   padding: $spacing;
   @include mq($from: tablet) {
@@ -51,8 +51,8 @@
     a {
       display: block;
       border: none;
-      color: $brand-dark;
-      border-bottom: 1px solid rgba($brand-dark, 0.1);
+      color: $dark-blue;
+      border-bottom: 1px solid rgba($dark-blue, 0.1);
       padding: $spacing 0;
       &:after {
         content: '';

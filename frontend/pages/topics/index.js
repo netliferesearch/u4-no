@@ -1,78 +1,79 @@
-import React from 'react';
-import { sortBy } from 'lodash';
-import Link from 'next/link';
-import Footer from '../../components/Footer';
+import React, { useEffect, useState } from 'react';
+import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import DataLoader from '../../helpers/data-loader';
+import { CARD_TYPE } from '../../components/general/blue-card/BlueCard';
+import { TopicCardList } from '../../components/general/topics/TopicCardList';
+import { PageIntro } from '../../components/general/PageIntro';
+import {
+  sortByDate,
+  sortTopics,
+  topicsPageContent,
+} from '../../components/general/topics/topics-helpers';
+import { RadioSort } from '../../components/general/sort/RadioSort';
 
-function sortTopics(items, key) {
-  return sortBy(items, [key]);
-}
-const TopicOverview = ({ data: { topics = [] } }) => (
-  <Layout
-    topics={topics}
-    headComponentConfig={{
-      title: 'Topic overview',
-    }}
-  >
-    <div className="o-wrapper u-tc">
-      <h1 className="c-topic-heading">Topics</h1>
+const TopicsOverview = ({ data: { topics = [] } }) => {
+  const [sortType, setSortType] = useState('topics');
+  const [sortedTopics, setSortTopics] = useState(topics);
 
-      <section id="topics" className=" c-topic-index__list u-margin-bottom-huge">
-        {sortTopics(topics, 'title').map(
-          ({
-            _id = false,
-            title = 'Title is lacking',
-            slug = {},
-            relatedCount = 0,
-            _type = '',
-          }) => (
-            <div className="o-layout--middle c-topic-index__item" key={_id}>
-              <div className="o-layout__item c-topic-index__item-child u-1/2@tablet u-tr">
-                <div className="c-topic-index__left">
-                  <Link href={`/topics/${slug.current}`}>
-                    {relatedCount > 0 ? (
-                      <a className="c-topic-index__title">{title}</a>
-                    ) : (
-                      <a className="c-topic-index__title">{title}</a>
-                    )}
-                  </Link>
-                </div>
-              </div>
-              <div className="o-layout__item  c-topic-index__item-child  u-1/2@tablet u-tl">
-                <div className="c-topic-index__right">
-                  <svg
-                    width={`${relatedCount}px`}
-                    height="5px"
-                    viewBox={`0 0 ${relatedCount} 2`}
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                  >
-                    <path d="M167.536783,1 L1,1" id="Line" stroke="#1E2051" />
-                  </svg>
-                  {relatedCount > 0 ? (
-                    <span className="c-topic-index__count">{relatedCount}</span>
-                  ) : (
-                    <span className="c-topic-index__count">{relatedCount}</span>
-                  )}
-                </div>
-              </div>
-            </div>
-          )
-        )}
-      </section>
-    </div>
-    <Footer />
-  </Layout>
-);
+  useEffect(
+    () => {
+      if (sortType === 'topics') {
+        setSortTopics(sortTopics(topics, 'title'));
+      } else {
+        setSortTopics(sortByDate(topics));
+      }
+    },
+    [sortType]
+  );
 
-export default DataLoader(TopicOverview, {
+  const handleChange = event => {
+    setSortType(event.target.value);
+  };
+
+  return (
+    <Layout
+      headComponentConfig={{
+        title: 'Topic overview',
+      }}
+    >
+      <div className="c-topic-index">
+        <section className="o-wrapper-medium">
+          <div>
+            <PageIntro title={topicsPageContent.title} text={topicsPageContent.intro} />
+          </div>
+        </section>
+        <hr className="u-section-underline--no-margins" />
+        <section className="c-topic-index__list o-wrapper-medium">
+          <div>
+            <p className="c-topic-index__topic-count u-body--small u-text--grey">
+              {sortedTopics.length} {topicsPageContent.title}
+            </p>
+            <RadioSort
+              sortTypes={topicsPageContent.sort}
+              handleChange={handleChange}
+              currentSortType={sortType}
+            />
+            <TopicCardList
+              type={CARD_TYPE.TOPIC}
+              topics={sortedTopics}
+              showIntro={false}
+              showLink={false}
+            />
+          </div>
+        </section>
+      </div>
+      <Footer />
+    </Layout>
+  );
+};
+
+export default DataLoader(TopicsOverview, {
   // here you get the next context object that is initially passed into
   // getInitialProps
   queryFunc: () => ({
     sanityQuery:
-      '{"topics": *[_type == "topics"]{_id, title, slug, "relatedCount": count(*[_type in ["publication", "helpdesk"] && references(^._id)])}|order(title asc)}',
+      '{"topics": *[_type == "topics"]{_id, _type, title, longTitle, standfirst, slug, _updatedAt, "relatedCount": count(*[_type in ["publication", "helpdesk"] && references(^._id)])}|order(title asc)}',
   }),
   materializeDepth: 0,
 });

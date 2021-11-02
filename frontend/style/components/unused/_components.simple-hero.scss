@@ -1,0 +1,53 @@
+.c-simple-hero {
+  background: $dark-blue;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  padding: $spacing;
+  color: $white;
+  @include mq($from: tablet) {
+    min-height: 460px;
+    padding: $spacing-large;
+  }
+}
+.c-simple-hero--light {
+  background: $white;
+  color: $dark-blue;
+  @include mq($from: tablet) {
+    min-height: 360px;
+    padding: $spacing $spacing 0;
+  }
+}
+.c-simple-hero__title {
+  @include inuit-font-size($font-size-tiny);
+  font-family: $font-sans;
+  text-transform: uppercase;
+}
+.c-simple-hero__content {
+  font-family: $font-sans;
+  font-weight: 300;
+  max-width: 800px;
+  margin: auto auto $spacing;
+  @include inuit-font-size($font-size-normal, $line-height-normal);
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-larger);
+  }
+}
+.c-simple-hero__cta {
+  display: inline-block;
+  margin: $spacing-large auto;
+  color: $highlight-blue;
+  padding: $spacing-small $spacing;
+  font-family: $font-sans;
+  border: 2px solid $highlight-blue;
+
+  &:hover {
+    border: 2px solid $light-blue;
+    color: $light-blue;
+  }
+}
+.c-simple-hero__mailto {
+  color: $white;
+}

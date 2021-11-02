@@ -1,3 +1,7 @@
+h1, h2, h3, h4, H5, h6 {
+  color:$dark-grey;
+}
+
 h1,
 h2,
 h3 {
@@ -7,36 +11,51 @@ h3 {
   margin-bottom: 0;
 }
 
-h2 {
+h1 {
+  @include inuit-font-size($font-size-larger, 42px);
   @include mq($from: desktop) {
-    @include inuit-font-size($font-size-larger, $font-size-largest);
+    @include inuit-font-size($font-size-largest, 62px);
   }
 }
-h3 {
+
+h2 {
+  @include inuit-font-size($font-size-normal, 32px);
   @include mq($from: desktop) {
-    @include inuit-font-size($font-size-large, $font-size-larger);
+    @include inuit-font-size($font-size-larger, 42px);
+  }
+}
+
+h3 {
+  @include inuit-font-size($font-size-small, $line-height-normal);
+  @include mq($from: desktop) {
+    @include inuit-font-size($font-size-large, 38px);
   }
 }
 
 h4 {
-  @include inuit-font-size($font-size-medium, $font-size-large);
+  @include inuit-font-size($font-size-tiny, 24px);
   @include mq($from: desktop) {
-    @include inuit-font-size($font-size-large, $font-size-larger);
+    @include inuit-font-size($font-size-normal, 32px);
   }
-  margin-top: $spacing-large;
-  margin-bottom: 0;
-  font-weight: bold;
 }
 
 h5 {
-  @include inuit-font-size($font-size-normal, $line-height-large);
+  @include inuit-font-size($font-size-micro, $line-height-normal);
   @include mq($from: desktop) {
-    @include inuit-font-size($font-size-normal, $line-height-large);
+    @include inuit-font-size($font-size-small, $line-height-normal);
   }
   margin-top: $spacing-small;
   margin-bottom: 0;
   font-weight: bold;
 }
+
 h5 + p.c-longform-grid__standard {
   margin-top: 0;
+}
+
+h6 {
+  @include inuit-font-size($font-size-nano, $line-height-mid);
+  @include mq($from: desktop) {
+    @include inuit-font-size($font-size-tiny, 19px);
+  }
 }

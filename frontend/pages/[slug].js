@@ -1,13 +1,13 @@
 import React from 'react';
 import DataLoader from '../helpers/data-loader';
-
-import LongformArticleContainer from '../components/LongformArticleContainer';
-import Footer from '../components/Footer';
+//import LongformArticleContainer from '../components/LongformArticleContainer';
+import Footer from '../components/general/footer/Footer';
 import Layout from '../components/Layout';
-import Newsletter from '../components/Newsletter';
 import ServiceArticle from '../components/ServiceArticle';
-import SimpleHero from '../components/SimpleHero';
+//import SimpleHero from '../components/SimpleHero';
 import { wrapInRedux } from '../helpers/redux-store-wrapper';
+import { PageIntro } from '../components/general/PageIntro';
+import ArticleContainer from '../components/article/ArticleContainer';
 
 const GeneralArticle = props => {
   if (props.data._type === 'frontpage') {
@@ -31,21 +31,21 @@ const GeneralArticle = props => {
           ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
         }}
       >
-        {lead && <SimpleHero light title={title} content={lead} />}
+        {/* {lead && <SimpleHero light title={title} content={lead} />} */}
+        {lead || (title && <PageIntro title={title} text={lead ? lead : ''} />)}
         {sections ? <ServiceArticle blocks={sections} /> : null}
-
-        <Newsletter />
         <Footer />
       </Layout>
     );
   }
-  return <LongformArticleContainer lead={props.data.standfirst} {...props} />;
+  //return <LongformArticleContainer lead={props.data.standfirst} {...props} />;
+  return <ArticleContainer {...props} />;
 };
 
 export default wrapInRedux(
   DataLoader(GeneralArticle, {
     queryFunc: ({ query: { slug = '' } }) => ({
-      sanityQuery: '*[slug.current == $slug][0]',
+      sanityQuery: '*[slug.current == $slug][0]{..., topics[]->{ _id, title, slug }, "articleType": articleType[0]->title }',
       param: { slug },
     }),
     materializeDepth: 2,

@@ -1,0 +1,43 @@
+//dagne version
+
+.c-article-v2,
+.c-legacy-publication-container {
+  .c-article__content {
+    max-width: 691px;
+    @include mq($from: tablet) {
+      margin-top: 40px;
+      margin-bottom: 120px;
+    }
+  }
+
+  @include mq($from: tablet) {
+    //margin-bottom: 160px;
+  }
+}
+
+.c-publication__content.c-article__content {
+  @include mq($from: tablet) {
+    margin-top: 64px;
+  }
+}
+
+.c-article__additional-content {
+  padding: 40px 0;
+}
+
+.c-article__row {
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  @include mq($from: desktop) {
+    grid-template-columns: 5fr 2fr;
+    column-gap: 20px;
+  }
+}
+
+.c-meta {
+  h4 {
+    margin-bottom: 4px;
+  }
+}

@@ -1,0 +1,27 @@
+.c-horizontal-linkbox__body .c-horizontal-linkbox__title {
+  padding-top: 20px;
+  line-height: 32px;
+  @include mq($from: tablet) {
+    padding-top: 0;
+    display: flex;
+  }
+}
+.c-horizontal-linkbox  .c-linkbox__content {
+padding:0 0 24px;
+  @include mq($from: tablet) {
+    padding:48px 0 56px;
+  }
+
+}
+.c-horizontal-linkbox .c-horizontal-linkbox__body {
+
+  align-items: start;
+  column-gap: 20px;
+  @include mq($from: tablet) {
+    column-gap: 120px;
+    display: flex;
+  }
+}
+.c-horizontal-linkbox__text {
+  margin-bottom: 10px;
+}

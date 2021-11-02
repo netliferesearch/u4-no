@@ -1,115 +1,146 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import autobind from 'react-autobind';
+import React, { useEffect, useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
-import HeadComponent from '../components/HeadComponent';
-import Logo from '../components/Logo';
-import MenuV2 from '../components/MenuV2';
-import SearchFieldV2 from '../components/SearchField-v2';
+import HeadComponent from './HeadComponent';
+import { Menu } from './general/menu/Menu';
+import LogoU4White from './icons/LogoU4White';
+import { useRouter } from 'next/router';
+import { MenuMobile } from './general/menu/MenuMobile';
+import { useOnClickOutside } from '../helpers/hooks';
+import PicoSanity from 'picosanity';
+import { uniqBy } from 'lodash';
+import { menuItems } from '../components/general/menu/menuItems';
+import { useScrollInfo } from '../helpers/useScrollInfo';
+
 
 const classes = BEMHelper({
-  name: 'top-bar',
+  name: 'top-bar-v2',
   prefix: 'c-',
 });
+export const Layout = props => {
+  const { asPath } = useRouter(); // window location pathname check
 
-class Layout extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeSearchMenu: false,
-    };
-    autobind(this);
-  }
-
-  triggerSearchMenu(e) {
+  const {
+    showLoadingScreen = false,
+    showTopTab = true,
+    children = [],
+    searchV2 = false,
+    searchData = {},
+    isSearchPage = false,
+    headComponentConfig = {},
+    hideLogo = false,
+  } = props;
+  const [data, setData] = useState('');
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSearchMenu, setActiveSearchMenu] = useState(true);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(false);
+  const ref = useRef();
+  const menuRef = useRef(null);
+  useOnClickOutside(ref, () => setActiveMenu(false));
+  const triggerSearchMenu = e => {
     e.preventDefault();
-    this.setState({
-      activeSearchMenu: !this.state.activeSearchMenu,
-    });
-  }
+    setActiveSearchMenu(!activeSearchMenu);
+  };
 
-  render() {
-    const {
-      showLoadingScreen = false,
-      showTopTab = true,
-      children = [],
-      noSearch = false,
-      searchV2 = false,
-      searchData = {},
-      isSearchPage = false,
-      headComponentConfig = {},
-      hideLogo = false,
-    } = this.props;
+  useEffect(
+    () => {
+      if (data) {
+        menuItems[0].items = data.topics;
+        menuItems[4].sections[0].items = uniqBy([...data.aboutResources.resources, ...menuItems[4].sections[0].items], '_id');
+        menuItems[4].sections[1].items = uniqBy([...data.workWithResources.resources, ...menuItems[4].sections[1].items], '_id');
+        return; // no need to fetch data if we got link data passed in.
+      }
+      const client = new PicoSanity({
+        projectId: '1f1lcoov',
+        dataset: 'production',
+        token: '',
+        useCdn: true,
+      });
+      const sanityQuery = `{
+        "topics": *[_type == "topics"] | order(title){_id, title, slug},
+        "aboutResources": *[slug.current == "about-u4-new"][0]{ resources[]->{_id, "label": title, slug} },
+        "workWithResources": *[slug.current == "who-we-work-with"][0]{ resources[]->{_id, "label": title, slug} }
+      }`;
+      client.fetch(sanityQuery, {}).then(data => {
+        setData(data);
+      });
+    },
 
-    return (
-      <div
-        className="u-print-width o-wrapper-page"
-        style={{
-          transition: 'all 0.1s ease-out',
-          opacity: showLoadingScreen ? 0 : 1,
-        }}
-      >
-        <HeadComponent {...headComponentConfig} />
-        {showTopTab && (
-          <div {...classes('', '', 'u-z-index-xx u-bg-white')}>
-            {!hideLogo && (
-              <Link href="/">
-                <a {...classes('logo')}>
-                  <Logo />
-                </a>
-              </Link>
-            )}
-            {(this.state.activeSearchMenu || isSearchPage) && (
-              <SearchFieldV2
-                isOpen={this.state.activeSearchMenu}
-                isAlwaysOpen={isSearchPage}
-                triggerSearchMenu={this.triggerSearchMenu}
+    [data]
+  );
+
+  useScrollInfo(
+    ({ currPos }) => {
+      const isScrolled = currPos.y < -100;
+      if (scrolled !== isScrolled) {
+        setScrolled(isScrolled);
+      }
+    },
+    [scrolled],
+    menuRef,
+    false,
+    0
+  );
+
+  return (
+    <div
+      className={asPath === '/' ? 'u-print-width ' : 'u-print-width o-wrapper-fixed-header'}
+      style={{
+        transition: 'all 0.1s ease-out',
+        opacity: showLoadingScreen ? 0 : 1,
+      }}
+    >
+      <span ref={menuRef} />
+      <HeadComponent {...headComponentConfig} />
+      {showTopTab && (
+        <>
+          <div
+            className={`c-top-bar__background ${
+              activeMenu || searchOpen ? '' : 'u-bg--transparent-blue '
+            } ${scrolled ? 'u-bg--blur' : ''}`}
+          />
+          <div {...classes('', 'fixed')}>
+            <div className="o-wrapper-medium fixed-header-content" ref={ref}>
+              {!hideLogo && (
+                <Link href="/">
+                  <a {...classes('logo', 'fixed', searchOpen ? '' : 'logo-white')}>
+                    <LogoU4White />
+                  </a>
+                </Link>
+              )}
+              {hideLogo && <div />}
+              <MenuMobile
+                data={data}
+                setData={setData}
+                triggerSearchMenu={triggerSearchMenu}
+                setSearchOpen={setSearchOpen}
+                activeSearchMenu={activeSearchMenu}
+                searchOpen={searchOpen}
+                isAlwaysOpen={true}
                 searchData={searchData}
+                activeMenu={activeMenu}
+                setActiveMenu={setActiveMenu}
               />
-            )}
-            {hideLogo && <div />}
-            <MenuV2
-              noSearch={noSearch}
-              triggerSearchMenu={this.triggerSearchMenu}
-              activeSearchMenu={this.state.activeSearchMenu}
-            />
+              <Menu
+                data={data}
+                setData={setData}
+                triggerSearchMenu={triggerSearchMenu}
+                setSearchOpen={setSearchOpen}
+                activeSearchMenu={activeSearchMenu}
+                searchOpen={searchOpen}
+                isAlwaysOpen={true}
+                searchData={searchData}
+                activeMenu={activeMenu}
+                setActiveMenu={setActiveMenu}
+              />
+            </div>
           </div>
-        )}
-        {children}
-      </div>
-    );
-  }
-}
-
-Layout.propTypes = {
-  showLoadingScreen: PropTypes.bool,
-  showTopTab: PropTypes.bool,
-  children: PropTypes.node,
-  noSearch: PropTypes.bool,
-  searchV2: PropTypes.bool,
-  headComponentConfig: PropTypes.shape({
-    title: PropTypes.string,
-    description: PropTypes.string,
-    image: PropTypes.string,
-    url: PropTypes.string,
-    ogp: PropTypes.shape({
-      title: PropTypes.string,
-      image: PropTypes.string,
-      description: PropTypes.string,
-    }),
-  }),
-  hideLogo: PropTypes.bool,
-};
-
-Layout.defaultProps = {
-  showLoadingScreen: false,
-  showTopTab: true,
-  children: [],
-  noSearch: false,
-  searchV2: false,
-  headComponentConfig: {},
-  hideLogo: false,
+        </>
+      )}
+      {children}
+    </div>
+  );
 };
 
 export default Layout;

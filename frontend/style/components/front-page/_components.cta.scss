@@ -1,0 +1,64 @@
+.c-cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 480px;
+  padding-top: 90px;
+  position: relative;
+  &::after {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $dark-blue;
+    mix-blend-mode: multiply;
+    opacity: 0.75;
+  }
+
+  .u-primary-heading {
+    margin-top: 0;
+    max-width: 692px;
+  }
+
+  @include mq($from: desktop) {
+    height: 518px;
+    padding-top: 108px;
+    &::after {
+      display: none;
+    }
+  }
+}
+.c-cta__content {
+  width: 100%;
+  z-index: 9;
+}
+
+.c-cta__paragraph {
+  max-width: 400px;
+  font-size: 14px;
+  line-height: 20px;
+  color: $white;
+  font-family: $font-sans;
+  @include mq($from: tablet) {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+.c-cta__link {
+  font-weight: 400;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  .c-arrow-next-svg {
+    margin-left: 5px;
+    @include mq($from: mobile, $until: desktop) {
+      width: 7px;
+    }
+  }
+}

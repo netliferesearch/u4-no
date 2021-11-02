@@ -2,14 +2,11 @@ import React from 'react';
 import BlockToContent from '@sanity/block-content-to-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 import Image from 'next/image';
-import sanityImageLoader from './sanityImageLoader';
-
+import sanityImageLoader from '../helpers/sanityImageLoader';
 import { toggleArticleMenu, toggleLoadingScreen } from '../helpers/redux-store';
 import dateToString from '../helpers/dateToString';
-
-import Footer from './Footer';
+import Footer from '../components/general/footer/Footer';
 import Layout from './Layout';
 import LongformArticle from './LongformArticle';
 import PublicationArticleHeader from './PublicationArticleHeader';
@@ -17,12 +14,11 @@ import TableOfContentsButton from './TableOfContents/TableOfContentsButton';
 import TableOfContentsSidebar from './TableOfContents/TableOfContentsSidebar';
 import TableOfContentsBase from './TableOfContents/TableOfContentsBase';
 import RecommendedResources from './RecommendedResources';
-import ToggleBlock from './ToggleBlock';
-import AuthorList from './AuthorList';
+import { ToggleBlock } from './publication/ToggleBlock';
+import AuthorList from './publication/AuthorList';
 import PublicationNotification from './PublicationNotification';
-import TnrcHeader from './TnrcHeader';
-import TnrcFooter from './TnrcFooter';
-
+import TnrcHeader from './general/tnrc/TnrcHeader';
+import TnrcFooter from './general/tnrc/TnrcFooter';
 import CreativecommonsCC from './icons/CreativecommonsCC';
 import CreativecommonsBY from './icons/CreativecommonsBY';
 import CreativecommonsNC from './icons/CreativecommonsNC';
@@ -129,7 +125,7 @@ const LongFormArticleContainer = (props = {}) => {
             {BreadCrumbComponent && BreadCrumbComponent}
             {_type === 'publication' && !shortversion && (
               <div
-                className={`c-hero u-bg-white u-z-index-x ${
+                className={`c-hero u-bg--white u-z-index-x ${
                   publicationType._id === 'pubtype-3' ? 'c-hero-no-image' : ''
                 }`}
               >
@@ -219,11 +215,9 @@ const LongFormArticleContainer = (props = {}) => {
           )}
           {_type !== 'publication' && (
             <div>
-              <div className="c-longform-grid u-bg-white u-z-index-x">
+              <div className="c-longform-grid u-bg--white u-z-index-x">
                 {articleType.length ? (
-                  <h2 className="c-longform-grid__standard c-article-header__meta c-article-header__meta-uppercase">
-                    {articleType[0].target.title}
-                  </h2>
+                  <h2 className="c-longform-grid__standard">{articleType[0].target.title}</h2>
                 ) : null}
                 <h1 className="c-longform-grid__standard">{title || longTitle}</h1>
                 {authors.length ? (

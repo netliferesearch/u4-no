@@ -1,0 +1,47 @@
+.c-tags-section {
+  border-top: 1px solid $light-grey;
+  margin-bottom: $spacing-large;
+
+  h3 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 35px 0 24px 0;
+  }
+
+  .c-tags-section__row {
+    margin-bottom: $spacing;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+
+    .topic {
+      margin-bottom: 0;
+    }
+    .keyword {
+      font-size: $font-size-micro;
+      line-height: initial;
+      background-color: $v2-yellow;
+      margin-bottom: $spacing-tiny;
+    }
+    h6 {
+      margin: 0 $spacing 0 0;
+      font-family: $font-sans;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: inline-block;
+      width: 12%;
+      min-width: 95px;
+    }
+  }
+
+  .c-tags-section__col {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .keyword {
+    margin: 0 11px 0 0;
+  }
+}

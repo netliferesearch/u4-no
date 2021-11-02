@@ -7,82 +7,287 @@
 .u-tl {
   text-align: left;
 }
-.u-blue-underline {
+
+.u-white-font {
+  color: $white;
+}
+
+.u-section-underline--no-margins {
+  border: none;
+  border-bottom: 1px solid $light-grey;
+  margin: 0;
+  width: 100%;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+
+.u-section-underline--grey {
+  border: none;
+  border-bottom: 1px solid $mid-grey;
+  width: 100%;
+  opacity: 0.3;
+  margin: 0;
+}
+
+.u-section-underline--dark-grey {
+  border: none;
+  border-bottom: 1px solid $dark-grey;
+  width: 100%;
+  margin: 0;
+}
+
+.u-primary-heading {
+  font-family: $font-sans;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: $dark-grey;
+}
+
+.u-primary-heading--white {
+  font-family: $font-sans;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: $white;
+}
+
+.u-secondary-heading {
+  font-family: $font-sans;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: $dark-grey;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+.u-secondary-h1 {
+  font-size: $font-size-tiny;
+  line-height: 22px;
+  color: $dark-blue;
+  @include mq($from: tablet) {
+    font-size: $font-size-normal;
+    line-height: 1;
+  }
+}
+
+.u-secondary-h2 {
+  font-size: $font-size-micro;
+  line-height: $font-size-small;
+  letter-spacing: 0.15em;
+  @include mq($from: tablet) {
+    font-size: $font-size-tiny;
+    line-height: 22px;
+  }
+}
+
+.u-secondary-h3 {
+  font-weight: 700;
+  font-size: $font-size-nano;
+  line-height: $line-height-mid;
+}
+
+.u-secondary-h4 {
+  font-size: $font-size-nano;
+  line-height: $font-size-tiny;
+  letter-spacing: 0.1em;
+  @include mq($from: tablet) {
+    letter-spacing: 0.15em;
+  }
+}
+
+.u-body {
+  font-family: $font-sans;
+  font-size: $font-size-tiny;
+  line-height: $font-size-normal;
+  letter-spacing: 0.01em;
+}
+
+.u-body--white {
+  font-family: $font-sans;
+  font-size: $font-size-tiny;
+  line-height: $font-size-normal;
+  letter-spacing: 0.01em;
+  color: $white;
+}
+
+.u-body--grey {
+  font-family: $font-sans;
+  font-size: $font-size-tiny;
+  line-height: $font-size-normal;
+  letter-spacing: 0.01em;
+  color: $mid-grey;
+}
+
+.u-body--dark-grey {
+  font-family: $font-sans;
+  font-size: $font-size-tiny;
+  line-height: $font-size-normal;
+  letter-spacing: 0.01em;
+  color: $dark-grey;
+}
+
+.u-body--small {
+  font-family: $font-sans;
+  font-size: $font-size-nano;
+  line-height: $line-height-mid;
+  letter-spacing: 0.01em;
+}
+
+.u-body--large {
+  font-family: $font-sans;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+  @include mq($from: tablet) {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+.u-detail--blue {
   position: relative;
   display: block;
-  padding-bottom: 50px;
-  margin-bottom: $spacing-large;
-  font-weight: 700;
+  padding-bottom: 12px;
+  padding-top: 36px;
+  margin: 0 0 24px 0;
   &:after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     height: 4px;
-    width: 100px;
+    width: 21px;
     max-width: 100%;
-    background-color: $brand-main;
+    background-color: $blue;
   }
-}
-.u-section-underline {
-  border: none;
-  border-bottom: 1px solid #e6e6e6;
-  margin-bottom: 40px;
-  width: 100%;
-  align-self: flex-end;
-}
-.u-navy-big-headline {
-  font-family: $font-sans;
-  font-size: 47px;
-  line-height: 60px;
-  font-weight: 900;
-  color: $brand-dark;
-}
-.u-navy-mid-headline {
-  font-family: $font-sans;
-  font-size: 36px;
-  line-height: 50px;
-  font-weight: 700;
-  color: $brand-dark;
-  margin: 32px 0;
-}
-.u-navy-small-headline {
-  color: $brand-dark;
-  font-size: 12px;
-  line-height: 32px;
-  font-family: $font-sans;
-  text-transform: uppercase;
-  font-weight: 900;
-  margin: 0;
   @include mq($from: tablet) {
-    font-size: 14px;
-  }
-}
-.u-black-mid-headline {
-  font-family: $font-sans;
-  font-size: 22px;
-  line-height: 24px;
-  font-weight: 700;
-  color: $black;
-  margin: 0;
-}
-.u-button-copy {
-  font-family: $font-sans;
-  font-size: $font-size-tiny;
-  font-weight: 700;
-  border: none;
-  background-color: $brand-lightest;
-  color: $brand-main;
-  border-radius: 2px;
-  padding: $spacing-small $spacing;
-  margin: $spacing-tiny 0;
-  cursor: pointer;
-  &:active {
-    outline: none;
+    margin: 0 0 32px 0;
+    padding-top: 48px;
+    padding-bottom: 18px;
+    &:after {
+      height: 6px;
+      width: 26px;
+    }
   }
 }
 
-.u-grey-container {
-  border-bottom: 1px solid #e6e6e6;
-  border-top:  1px solid #e6e6e6;
+.u-detail--blue--bright {
+  position: relative;
+  display: block;
+  padding-bottom: 12px;
+  padding-top: 36px;
+  margin: 0 0 24px 0;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 21px;
+    max-width: 100%;
+    background-color: $highlight-blue;
+  }
+  @include mq($from: tablet) {
+    margin: 0 0 32px 0;
+    padding-top: 48px;
+    padding-bottom: 18px;
+    &:after {
+      height: 6px;
+      width: 26px;
+    }
+  }
+}
+
+.u-detail--white {
+  position: relative;
+  display: block;
+  padding-top: 24px;
+  padding-bottom: 12px;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 21px;
+    max-width: 100%;
+    background-color: $white;
+  }
+  @include mq($from: tablet) {
+    margin: 0;
+    padding-top: 48px;
+    padding-bottom: 18px;
+    &:after {
+      height: 6px;
+      width: 26px;
+    }
+  }
+}
+
+.u-detail--blue--small {
+  position: relative;
+  display: block;
+  padding-bottom: 4px;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 26px;
+    max-width: 100%;
+    background-color: $blue;
+  }
+  @include mq($from: tablet) {
+    padding-bottom: 6px;
+  }
+}
+
+  //.c-article__lead--abstract::first-letter,
+  //.u-drop-cap > .c-article__lead > p:first-child::first-letter
+  .u-drop-cap > div > p.c-longform-grid__standard:first-child::first-letter {
+    font-size: 72px;
+    line-height: 0.62;
+    padding: 8px 8px 0 0;
+    float: left;
+    @include mq($from: tablet) {
+      font-size: 144px;
+      padding: 0 20px 20px 0;
+      line-height: 0.8;
+    }
+  }
+
+
+.u-text--white {
+  color: $white;
+}
+
+.u-text--light-blue {
+  color: $light-blue;
+}
+
+.u-text--blue {
+  color: $blue;
+}
+
+.u-text--blue--bright {
+  color: $highlight-blue;
+}
+
+.u-text--dark-blue {
+  color: $dark-blue;
+}
+.u-text--grey {
+  color: $mid-grey;
+}
+.u-text--dark-grey {
+  color: $dark-grey;
+}
+
+.u-opacity--60--text {
+  a {
+    opacity: 0.6;
+    &:hover {
+      opacity: 1;
+    }
+  }
 }

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 import Image from 'next/image';
-import sanityImageLoader from './sanityImageLoader';
+import sanityImageLoader from '../helpers/sanityImageLoader';
 
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from './serializers';
+import serializers from './serializers/serializers';
 import imageUrl from '../helpers/imageUrl';
 
 const classes = BEMHelper({

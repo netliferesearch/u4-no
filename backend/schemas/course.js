@@ -95,6 +95,11 @@ export default augmentSchema({
       ],
     },
     {
+      name: 'method',
+      title: 'Method (self-paced, expert led etc.)',
+      type: 'string',
+    },
+    {
       name: 'cost',
       title: 'Cost',
       type: 'string',

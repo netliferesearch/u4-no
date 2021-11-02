@@ -1,0 +1,342 @@
+input[type='checkbox'].c-modal__input {
+  position: absolute;
+  opacity: 0;
+  &:checked {
+    border: 1px solid $dark-blue;
+    background: $highlight-blue;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+.c-modal__custom-checkbox {
+  display: inline-block;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  outline: none;
+  border: 2px solid $dark-blue;
+  margin-right: 12px;
+}
+.c-modal__label-title {
+  font-size: 16px;
+  line-height: 42px;
+  letter-spacing: 0.02em;
+  color: #000000;
+}
+input[type='checkbox'].c-modal__input:checked + .c-modal__custom-checkbox {
+  border: 2px solid $dark-blue;
+  background: $highlight-blue;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+input[type='checkbox'].c-modal__input:focus + .c-modal__custom-checkbox {
+  border: 2px solid $dark-blue;
+}
+input[type='checkbox'].c-modal__input:checked ~ .c-modal__label-title {
+  color: $blue;
+}
+input[type='radio'].c-modal__input {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  outline: none;
+  border: 1px solid $light-grey;
+  &:before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 50% auto 0 auto;
+    transform: translateY(-50%);
+    border-radius: 50%;
+  }
+  &:checked:before {
+    background: $brand-main;
+  }
+  &:checked {
+    border-color: $light-grey;
+  }
+}
+
+.c-modal__input {
+  height: 20px;
+  width: 20px;
+  min-width: 20px;
+  margin-right: $spacing-small;
+}
+
+.c-modal__cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($color: $dark-grey, $alpha: 0.9);
+  transition: opacity 0.2s ease-out;
+  z-index: 110;
+}
+.c-modal__area {
+  max-width: 888px;
+  position: relative;
+  margin: 10vh auto 0 auto;
+  background-color: $white;
+  padding: 24px 32px;
+  transition: transform 0.2s ease;
+}
+.c-modal__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  padding: 0 0 8px 0;
+
+  .c-btn--close {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 0;
+    right: 7px;
+  }
+  .c-btn--close:hover path {
+    fill: $blue;
+  }
+}
+// position left for rtl languages
+[dir='rtl'] .c-modal__top .c-btn--close {
+  right: auto;
+  left: 7px;
+}
+
+.c-modal__content {
+  padding: 16px 0 0 0;
+}
+.c-modal__bottom {
+  padding: 24px 0 0 0;
+}
+.c-modal__controls {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px 0 0 0;
+  .c-btn--pri {
+    margin-left: 16px;
+  }
+  .c-btn--link {
+    font-size: 14px;
+    padding: 8px 16px;
+    line-height: 1.2;
+  }
+}
+.c-modal__title {
+  margin: 0;
+}
+.c-modal__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: space-between;
+  flex-wrap: wrap;
+  max-height: 100%;
+  margin: 32px $spacing-large;
+
+  @include mq($from: tablet) {
+    max-height: 400px;
+  }
+}
+
+.c-modal__label {
+  cursor: pointer;
+  color: $dark-grey;
+  font-family: $font-sans;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.c-modal__text {
+  margin: 0 0 16px 0;
+}
+
+.c-modal--share {
+  &.c-modal__area {
+    max-width: 420px;
+    width: calc(100% - 48px);
+  }
+
+  .c-social--share__buttons {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    .c-btn {
+      line-height: 1;
+      padding: 8px 0;
+    }
+  }
+}
+
+.c-modal--translations {
+  &.c-modal__area {
+    max-width: 300px;
+    width: calc(100% - 48px);
+    border-radius: 10px;
+    .c-btn--ter {
+      color: $mid-grey;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }
+  .c-modal__controls {
+    justify-content: center;
+  }
+  .c-modal__list {
+    margin: 32px 24px 24px 24px;
+  }
+  .c-modal__bottom {
+    padding: 0 16px 24px 16px;
+  }
+}
+
+.c-modal--filters {
+  .c-modal__title {
+    text-transform: uppercase;
+    font-size: $font-size-tiny;
+    line-height: 22px;
+    color: $dark-blue;
+    letter-spacing: 0.15em;
+  }
+  .c-btn--close path {
+    fill: darkblue;
+  }
+  .c-btn--qua--disabled {
+    font-family: $font-sans;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.7;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $dark-blue;
+    cursor: default;
+    background-color: transparent;
+    opacity: 0.2;
+    border: 1px solid $dark-blue;
+    padding: 6px 14px;
+    min-width: fit-content;
+    @include mq($from: tablet) {
+      padding: 8px 16px;
+    }
+  }
+  .c-btn--qua,
+  .c-btn--pri {
+    font-family: $font-sans;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.7;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $dark-blue;
+    background-color: transparent;
+    border: 1px solid $dark-blue;
+    padding: 6px 14px;
+    min-width: fit-content;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      color: $blue;
+      border: 1px solid $blue;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    @include mq($from: tablet) {
+      padding: 8px 16px;
+    }
+  }
+  &.c-modal__area {
+    margin: 0 0 0 auto;
+    border-radius: 0;
+    max-width: 300px;
+    height: 100%;
+    .c-modal__list {
+      display: grid;
+      gap: 0px;
+      grid-template-columns: 1fr;
+
+      @include mq($from: tablet) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+      }
+      @include mq($from: desktop) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+      }
+      padding: 32px 16px;
+      margin: 0;
+      flex-wrap: nowrap;
+      max-height: calc(100vh - 130px);
+      overflow-y: scroll;
+      @include mq($from: tablet) {
+        padding: 0;
+        max-height: 600px;
+        margin: 0;
+        flex-wrap: wrap;
+        overflow-y: auto;
+      }
+    }
+    .c-modal__bottom {
+      padding: 0;
+
+      @include mq($from: tablet) {
+        padding: 0;
+      }
+    }
+    .c-modal__controls {
+      padding: 16px 24px;
+      @include mq($from: tablet) {
+        padding: 16px 0 0 0;
+      }
+    }
+
+    @include mq($from: tablet) {
+      max-width: 888px;
+      margin: 10vh auto 0 auto;
+      height: auto;
+    }
+  }
+}
+
+.c-modal--form {
+  max-width: 888px;
+  padding: 32px 40px;
+
+  .c-modal__content {
+    position: relative;
+    padding: 0;
+    @include mq($from: tablet) {
+      padding: 0 16px;
+    }
+  }
+  iframe {
+    height: 70vh;
+    max-height: 762px;
+  }
+  .c-btn--ter {
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    bottom: 63px;
+    right: 150px;
+  }
+}
+
+.c-modal--partners {
+  iframe {
+    max-height: 880px;
+  }
+}

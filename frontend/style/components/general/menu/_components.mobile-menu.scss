@@ -1,0 +1,121 @@
+.c-menu--mobile {
+  display: block;
+  @include mq($from: desktop) {
+    display: none;
+  }
+  .c-menu__list-item {
+    padding-bottom: 16px;
+  }
+}
+
+.c-menu--mobile__item:not(:last-child) {
+  margin-right: 18px;
+}
+
+.c-menu--mobile__menu-svg-element {
+  fill: $white;
+}
+
+.c-menu--mobile__submenu {
+  .c-search-v2__button {
+    &:hover {
+      .c-search-v2__icon-svg {
+        path,
+        circle {
+          stroke: $highlight-blue;
+        }
+      }
+    }
+  }
+}
+
+.c-menu--mobile__backdrop {
+  position: fixed;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  width: 100vw;
+  height: auto;
+  max-height: 85vh;
+  overflow-y: scroll;
+  z-index: -2;
+  border: 0;
+  border-top: 1px solid $white;
+  background: $dark-blue;
+  // animation-name: sliding-vertically 0.5s;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.c-menu--mobile__button {
+  border-radius: 0;
+  border: none;
+  color: $white;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  &:hover {
+    .c-search-v2__icon-svg,
+    .c-menu--mobile__menu-svg,
+    .c-close-icon {
+      path,
+      circle {
+        stroke: $highlight-blue;
+      }
+    }
+  }
+}
+
+.c-menu--mobile .c-menu__list {
+  padding: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.c-menu--mobile__link {
+  font-weight: 400;
+  color: $white;
+  font-size: 16px;
+  line-height: 24px;
+  border-bottom: 1px solid transparent;
+  font-family: $font-sans;
+  &:hover {
+    color: $highlight-blue;
+  }
+  // &:visited {
+  //   color: inherit;
+  //   font-size: 18px;
+  //   line-height: 40px;
+  //   border-bottom: 1px solid transparent;
+  //   &:hover {
+  //     color: inherit;
+  //   }
+  // }
+}
+
+.c-menu--mobile__search-icon-holder {
+  margin-right: 18px;
+}
+
+.c-menu--mobile__trigger-box {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  &:hover {
+    a,
+    h3 {
+      color: $highlight-blue;
+    }
+  }
+}
+
+.c-accordion--expanded .c-menu--mobile__trigger-box {
+  border-bottom: 1px solid $highlight-blue;
+}
+
+.c-menu--mobile {
+  .c-social--follow {
+    margin: 0;
+    padding: 18px 24px;
+  }
+}

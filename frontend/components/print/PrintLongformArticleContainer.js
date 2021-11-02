@@ -6,7 +6,7 @@ import Head from 'next/head';
 import BEMHelper from 'react-bem-helper';
 import { get } from 'lodash';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from '../printSerializers';
+import serializers from './printSerializers';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
 import { translate, translateField, langCode } from '../../helpers/translate';
 
@@ -18,10 +18,10 @@ import CreativecommonsND from '../icons/CreativecommonsND';
 import CmiLogo from '../icons/CmiLogo';
 
 import LongformArticleContainer from '../LongformArticleContainer';
-import Footer from '../Footer';
-import AuthorList from '../AuthorList';
+import Footer from '../general/footer/Footer';
+import AuthorList from '../publication/AuthorList';
 import EditorList from '../EditorList';
-import Logo from '../Logo';
+import Logo from '../icons/Logo';
 
 const classes = BEMHelper({
   name: 'print',

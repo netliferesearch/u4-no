@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // The popover for the footnote. This popover will be, by default, be sized and positioned
 // by the script. However, many of the sizes can be established in this stylesheet and
 // will be respected by the script. `max-width` will limit the width of the popover
@@ -25,7 +27,7 @@
   display: inline-block;
   left: 0;
   line-height: 0;
-  margin: ((1.4142135624 * $popover-tooltip-size / 2) + $button-height + $popover-margin-top) 0;
+  margin: (math.div(1.4142135624 * $popover-tooltip-size, 2) + $button-height + $popover-margin-top) 0;
   max-width: $popover-max-width;
   opacity: $popover-inactive-opacity;
   position: absolute;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Error404 from '../components/Error404';
+import { limit } from '../components/search/SearchResultsV3';
 
 const elasticsearch = require('elasticsearch');
 
@@ -22,13 +23,25 @@ const aggregations = {
   },
   publicationTypes: {
     terms: {
-      field: 'publicationTypeTitle',
+      field: 'publicationTypeTitle.keyword',
       size: 100,
     },
   },
+  // contentTypes: {
+  //   terms: {
+  //     field: 'contentType',
+  //     size: 100,
+  //   },
+  // },
   topicTitles: {
     terms: {
       field: 'topicTitles',
+      size: 100,
+    },
+  },
+  contentTypes: {
+    terms: {
+      field: 'contentType',
       size: 100,
     },
   },
@@ -45,20 +58,14 @@ const aggregations = {
     },
   },
 };
-
-// Controls what publication type filters to show. The rest will be displayed as Other.
-export const publicationTypesToShow = ['U4 Brief', 'U4 Issue', 'U4 Helpdesk Answer'];
-
 const doSearch = async ({
   query,
   defaultSearchAggs: { publicationTypes: defaultPublicationTypes = {} } = [],
 }) => {
-  const { search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 0 } = query;
+  const { search: searchQuery = '', sort = '', filters: filterStr = '', searchPageNum = 1 } = query;
   const filters = filterStr.split(',').map(name => name.replace(/\|/g, ','));
   const searchQueryFilters = searchQuery.split(' ');
-
   const activeFilterQueries = [];
-
   const topicNames = filters
     .filter(filter => /^topic-type-/gi.test(filter))
     .map(filter => /topic-type-(.*)/gi.exec(filter)[1]);
@@ -66,7 +73,6 @@ const doSearch = async ({
     activeFilterQueries.push({ terms: { filedUnderTopicNames: topicNames } });
   }
   let searchQueryWithoutFilters = searchQuery;
-
   searchQueryFilters.forEach(part => {
     if (part.indexOf('author:') !== -1) {
       const personSlug = part.replace(/^author:/gi, '');
@@ -90,7 +96,16 @@ const doSearch = async ({
     }, []);
   if (publicationNames.length > 0) {
     activeFilterQueries.push({
-      terms: { publicationTypeTitle: publicationNames },
+      terms: { 'publicationTypeTitle.keyword': publicationNames },
+    });
+  }
+  const contentNames = filters
+    .filter(filter => /^content-/gi.test(filter))
+    .map(filter => /content-(.*)/gi.exec(filter)[1]);
+  // console.log({ ContentNames });
+  if (contentNames.length > 0) {
+    activeFilterQueries.push({
+      terms: { contentType: contentNames },
     });
   }
 
@@ -125,7 +140,7 @@ const doSearch = async ({
 
   try {
     const result = await client.search({
-      index: process.env.ES_INDEX || 'u4-production-*',
+      index: process.env.NEXT_PUBLIC_ENV ? `u4-${process.env.NEXT_PUBLIC_ENV}-*` : 'u4-staging-*',
       body: {
         query: {
           function_score: {
@@ -167,14 +182,13 @@ const doSearch = async ({
                       fields: [
                         'title',
                         'subtitle',
+                        'type',
                         'standfirst',
                         'lead',
                         'content',
                         'authors',
-                        // term (glossary) related
                         'termTitle^2',
                         'termContent^2',
-                        // topic related
                         'topicTitle^3',
                         'topicContent^3',
                         'basicGuide',
@@ -209,14 +223,14 @@ const doSearch = async ({
             }
           : {}),
 
-        ...(searchPageNum > 0
+        ...(searchPageNum > 1
           ? {
-              from: 0,
-              size: searchPageNum * 10,
+              from: searchPageNum * limit - limit,
+              size: limit,
             }
           : {
               from: 0,
-              size: 10,
+              size: limit,
             }),
 
         highlight: {
@@ -251,6 +265,7 @@ const doSearch = async ({
           'topicContent',
           'numberOfTopicResources',
           'url',
+          'articleTypeTitles',
           'featuredImageUrl',
           'longTitle',
           'explainerText',
@@ -258,6 +273,9 @@ const doSearch = async ({
           'isBasicGuidePresent',
           'publicationType',
           'filedUnderTopicNames',
+          'pdfFileUrl',
+          'legacypdfFileUrl',
+          // 'articleType',
         ],
       },
     });
@@ -269,17 +287,16 @@ const doSearch = async ({
   }
 };
 
-const getSearchAggregations = async () => {
+export const getSearchAggregations = async () => {
   try {
     const result = await client.search({
-      index: process.env.ES_INDEX || 'u4-production-*',
+      index: process.env.NEXT_PUBLIC_ENV ? `u4-${process.env.NEXT_PUBLIC_ENV}-*` : 'u4-staging-*',
       body: {
         query: { match_all: {} },
         aggs: aggregations,
         size: 1,
       },
     });
-    console.log('getSearchAggregations returned', result);
     return result;
   } catch (e) {
     console.error('Elasticsearch query failed', e);

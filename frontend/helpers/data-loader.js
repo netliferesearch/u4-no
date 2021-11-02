@@ -45,8 +45,8 @@ const DataLoaderWrapper = (Child, { queryFunc = false, materializeDepth = false,
       return result;
     }
     render() {
-      // console.log('DataLoader rendering with these props:');
-      // console.log(this.props);
+      console.log('DataLoader rendering with these props:');
+      console.log(this.props);
       const { error } = this.props;
       if (error) {
         return <Error404 {...this.props} />;

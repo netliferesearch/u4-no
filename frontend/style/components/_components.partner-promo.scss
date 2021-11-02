@@ -9,7 +9,7 @@
 }
 
 .c-partner-promo__title {
-  color: $brand-dark;
+  color: $dark-blue;
   margin: $spacing-large $spacing $spacing-large;
   @include inuit-font-size($font-size-normal, $line-height-large );
   @include mq($from: tablet) {
@@ -23,23 +23,23 @@
   @include inuit-font-size($font-size-normal, 1.5em);
   text-align: center;
   max-width: 700px;
-  color: $brand-dark;
+  color: $dark-blue;
   @include mq($from: tablet) {
     margin: $spacing-huge auto;
   }
   a {
     border: none;
-    color: $brand-dark;
+    color: $dark-blue;
   }
   svg {
     path {
-      fill: $brand-dark;
+      fill: $dark-blue;
     }
     transition: transform .2s ease-out;
   }
   &:hover {
     a {
-      color: $brand-dark;
+      color: $dark-blue;
     }
     svg {
       transform: translateX(10px);
@@ -58,7 +58,7 @@
 }
 .c-partner-promo__statement-link > * {
   display: inline-block;
-  color: $brand-lighter;
+  color: $highlight-blue;
 
   &:hover {
     border-bottom: 1px solid currentColor;
@@ -89,7 +89,7 @@
   @include inuit-font-size($font-size-small, $line-height-normal );
   margin-top: $spacing-small;
   max-width: 550px;
-  color: $white-on-blue;
+  color: $light-blue;
   margin-bottom: 0;
   @include mq($from: tablet) {
     margin-bottom: 0;

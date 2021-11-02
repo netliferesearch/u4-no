@@ -92,6 +92,7 @@ const getAllElasticsearchDocuments = async () => {
   console.log('getAllElasticsearchDocuments()');
   const allDocs = [];
   const version = process.env.ES_ENV || 'staging';
+  console.log('version: ', version)
   const responseQueue = [
     await client.search({
       index: `u4-${version}-*`,
@@ -174,6 +175,8 @@ async function main() {
     'person',
     'frontpage',
     'event',
+    'collection',
+    'blog-post',
     'course',
   ];
 

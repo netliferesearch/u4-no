@@ -1,0 +1,270 @@
+.c-reader {
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  //width: 100vw;
+  min-height: 100%;
+  min-height: 100vh;
+  background-color: $white;
+  .c-article__side {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+}
+
+// Reader Header:
+
+.c-reader-header--scrolled {
+  .c-reader-header__top {
+    background-color: $white;
+  }
+}
+
+.c-reader-header__top {
+  background-color: transparent;
+}
+
+.c-reader-header__row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.c-reader-header__main {
+  // padding-top: 72px;
+  // @include mq($from: tablet) {
+  //   padding-top: 80px;
+  // }
+}
+
+.c-progress-bar__container {
+  height: 12px;
+  background-color: #d9f6ff;
+}
+
+.c-progress-bar {
+  height: 12px;
+  background-color: $highlight-blue;
+}
+
+.c-reader-header__top-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 20px;
+
+  h6 {
+    margin: 20px 0;
+  }
+
+  .u-no-underline {
+    height: 32px;
+  }
+  .c-logo {
+    max-width: 150px;
+    height: 32px;
+    margin: 0;
+  }
+}
+
+.c-reader-header__intro-container {
+  //margin-top: -175px;
+  z-index: 1;
+  position: relative;
+}
+
+.c-reader-header__intro-container--with-img {
+  margin-top: -16px;
+  @include mq($from: tablet) {
+    margin-top: -175px;
+  }
+}
+
+.c-reader-header__intro {
+  overflow: auto;
+  padding: 0 24px;
+  .c-page-intro {
+    margin-top: 24px;
+  }
+  @include mq($from: tablet) {
+    .c-page-intro {
+      margin-top: 64px;
+    }
+  }
+}
+
+.c-reader-header__close {
+  .c-btn--close {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    svg g,
+    svg path {
+      fill: $dark-grey;
+    }
+    // &:hover {
+    //   svg g,
+    //   svg path {
+    //     fill: $v2-blue;
+    //   }
+    //   .c-btn__label {
+    //     color: $v2-blue;
+    //   }
+    // }
+  }
+}
+
+.c-reader-header__featured-image {
+  figure {
+    height: 192px;
+    margin: 0;
+  }
+  @include mq($from: tablet) {
+    figure {
+      height: 560px;
+    }
+  }
+}
+
+.c-reader-header__section {
+  background-color: $blue;
+  padding: 6px 0;
+  .c-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .c-arrow-contents {
+    margin-left: 6px;
+    transform: rotate(0deg);
+    transition: $global-transition;
+  }
+  .c-contents__button--active {
+    .c-arrow-contents {
+      transform: rotate(180deg);
+      transition: $global-transition;
+    }
+  }
+}
+
+//Scroll to top button:
+
+.c-scroll-top {
+  display: none;
+  background-color: $light-grey;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 96px;
+  right: 96px;
+  a {
+    padding: 8px 16px;
+    border: none;
+    &:hover,
+    &:visited,
+    &:active {
+      border: none;
+    }
+  }
+  @include mq($from: tablet) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.c-reader__main {
+  margin-bottom: 40px;
+}
+
+// Contents:
+
+.c-reader__sidebar {
+  //display: unset;
+  position: sticky;
+  top: 122px;
+  max-width: 312px;
+  min-width: 260px;
+}
+
+.c-contents--mobile {
+  background-color: $light-grey;
+}
+
+.c-contents__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.c-scroll-top--contents {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  @include mq($from: tablet) {
+    position: initial;
+  }
+}
+
+.c-contents__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.c-contents__list-item {
+  a {
+    color: $mid-grey;
+    font-family: $font-serif;
+    font-size: 18px;
+    line-height: 24px;
+    display: inline-block;
+    padding: 8px 0 12px 0;
+  }
+  &:hover,
+  &:active {
+    a {
+      color: $blue;
+    }
+    .c-contents__subtitle {
+      color: $highlight-blue;
+    }
+  }
+}
+
+.c-contents__list-item--mobile {
+  padding: 0 24px;
+  a {
+    color: $mid-grey;
+    font-family: $font-sans;
+    display: inline-block;
+    padding: 8px 0 12px 0;
+  }
+  &:hover,
+  &:active {
+    a {
+      color: $blue;
+    }
+    .c-contents__subtitle {
+      color: $highlight-blue;
+    }
+  }
+}
+
+.c-contents__subtitle {
+  margin-bottom: 0;
+}
+
+.c-contents__list-item--active {
+  a {
+    color: $blue;
+  }
+  .c-contents__subtitle {
+    color: $highlight-blue;
+  }
+}

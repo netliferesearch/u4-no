@@ -1,71 +1,54 @@
-.c-partnerAgencies{
-  text-align: center;
-  background-color: $brand-dark;
-  padding: $spacing;
-  font-family: $font-sans;
-  color: $white;
+.c-partnerAgencies {
+  padding-bottom:45px;
 }
-.c-partnerAgencies__wrapper {
-  flex-wrap: wrap;
-  display:flex;
+.c-partnerAgencies__list {
+  padding-top:30px;
+  display: grid;
+  column-gap: 32px;
+  row-gap: 64px;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  // justify-content: space-between;
+  @include mq($from: tablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include mq($from: desktop) {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
-
 
 .c-partnerAgencies__item {
-  align-self: center;
-  box-sizing: border-box;
-  padding: $spacing-small;
-  margin-bottom: $spacing;
-  width: 100%;
-  @include mq($from: tablet, $until: wide) {
-    width: 50%;
-  }
-  @include mq($from: wide) {
-    padding: $spacing $spacing-large;
-    width: 33%;
-  }
-  svg {
-    max-width: 50%;
-    max-height: 100%;
-  }
+  text-align: center;
   a {
+    color: $dark-blue;
     border: none;
   }
-}
-.c-partnerAgencies__item--small {
-  @include mq($from: desktop) {
-    svg {
-      max-width: 30%;
-      max-height: 100%;
+  svg {
+    max-width: 100%;
+    max-height: 64px;
+  }
+  svg,
+  path {
+    fill: $dark-grey;
+  }
+  #Fill-144 {
+    fill: #ffffff;
+  }
+  #Group-21,
+  #Group-141 {
+    svg,
+    path,
+    polygon {
+      fill: $dark-grey;
     }
   }
-}
-.c-partnerAgencies__heading {
-  padding-bottom: $spacing;
-  @include mq($from: tablet, $until: desktop) {
-    padding: 0 $spacing-large $spacing-large;
-  }
-  @include mq($from: desktop) {
-    padding: 0 $spacing-huge*1.5 $spacing-large;
+  polygon#Shape {
+    fill: $dark-grey;
   }
 }
 
-.c-partnerAgencies__text {
-  max-width: 950px;
-  font-weight: 300;
-  margin: auto;
-  @include mq($from: tablet) {
-    padding: 0 $spacing-large;
-    @include inuit-font-size($font-size-normal, $font-size-larger);
-  }
-}
-
-
-.c-partnerAgencies__color-icon {
-  max-width: 100%;
-  @include mq($from: tablet) {
-  }
-  path, polygon {
-    fill: $white;
-  }
+#partnerLogo4,
+#BMZLogo,
+#PartnerLogoCanada {
+  max-height: 100px;
 }

@@ -1,0 +1,15 @@
+.c-overview-page-header {
+  background: $dark-blue;
+  padding: $spacing-large;
+  color: $white;
+}
+.c-overview-page__title {
+  margin: $spacing-small 0 0 0;
+  font-family: $font-serif;
+  font-weight: 100;
+  letter-spacing: 1px;
+  @include inuit-font-size($font-size-large, $line-height-normal);
+  @include mq($from: tablet) {
+    @include inuit-font-size($font-size-largest, $line-height-normal);
+  }
+}

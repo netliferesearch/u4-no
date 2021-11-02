@@ -8,7 +8,12 @@ const BuildUrl = ({ _type = 'notype', slug = {} }) => {
     return `/topics/${actualSlug}`;
   } else if (_type === 'topicsBasics') {
     return `/topics/${actualSlug}/basics`;
-  } else if (_type === 'topicsAgenda') {
+  } else if (_type === 'about') {
+    return `/about-u4/${actualSlug}`;
+  }else if (_type === 'work-with') {
+    return `/who-we-work-with/${actualSlug}`;
+  }
+  else if (_type === 'topicsAgenda') {
     return `/topics/${actualSlug}/agenda`;
   } else if (_type === 'article') {
     return `/${actualSlug}`;
@@ -25,9 +30,13 @@ const BuildUrl = ({ _type = 'notype', slug = {} }) => {
   } else if (_type === 'term') {
     return `/terms#${actualSlug}`;
   } else if (_type === 'people') {
-    return `/the-team`;
+    return `/${actualSlug}`;
+  } else if (_type === 'blog-post') {
+    return `/blog/${actualSlug}`;
+  } else if (_type === 'collection') {
+    return `/collections/${actualSlug}`;
   }
   return actualSlug;
 };
 
-export default BuildUrl
+export default BuildUrl;

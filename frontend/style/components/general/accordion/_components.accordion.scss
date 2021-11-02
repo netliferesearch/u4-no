@@ -1,0 +1,22 @@
+.c-accordion--enter {
+  opacity: 0;
+}
+.c-accordion--enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+.c-accordion--exit {
+  opacity: 1;
+}
+.c-accordion--active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+.c-accordion--expanded svg {
+  transform: rotate(180deg);
+  path {
+    stroke: $highlight-blue;
+    opacity: 1;
+  }
+}

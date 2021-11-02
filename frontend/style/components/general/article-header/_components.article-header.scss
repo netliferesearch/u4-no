@@ -1,0 +1,95 @@
+.c-article-header {
+  .c-page-intro {
+    width: 100%;
+    @include mq($from: tablet) {
+      max-width: 691px;
+    }
+  }
+
+  @include mq($from: tablet) {
+    margin-bottom: 64px;
+  }
+}
+
+.c-article-header__container {
+  width: 100%;
+  display: inline-grid;
+  grid-gap: 0;
+  //margin-bottom: 40px;
+
+  @include mq($from: tablet) {
+    grid-template-columns: 3fr 1fr;
+    column-gap: 120px;
+    
+  }
+}
+
+.c-article-header__img {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin: 0 -24px;
+  .c-credit {
+    align-self: flex-start;
+    padding: 0 24px 24px 24px;
+  }
+  @include mq($from: tablet) {
+    margin: 48px 0 0 0;
+    .c-credit {
+      padding: 0;
+    }
+  }
+
+}
+
+.c-article-header__meta {
+  margin-top: 16px;
+}
+
+.c-article__btn-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 24px 0 0 0;
+  .c-btn {
+    margin: 0 24px 24px 0;
+  }
+  @include mq($from: tablet) {
+    margin: 24px 0 0 0;
+    .c-btn {
+      margin: 0 24px 0 0;
+    }
+  }
+}
+.c-article__additional-content .c-article__btn-row {
+  margin: 0;
+  @include mq($from: tablet) {
+    margin: 24px 0 40px 0;
+  }
+}
+
+.pdf-preview {
+  pointer-events: none;
+  margin: 0 0 40px 0;
+  .ReactPDF__Page__canvas {
+    //border: 1px solid $brand-main;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 289px;
+    height: auto !important;
+  }
+  .ReactPDF__Page__canvas {
+    margin: 0 auto;
+  }
+  .ReactPDF__Page__textContent {
+    visibility: hidden;
+    display: none;
+  }
+
+  @include mq($from: tablet) {
+    margin: 48px 0;
+  }
+}

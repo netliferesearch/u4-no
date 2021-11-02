@@ -1,0 +1,32 @@
+.c-team {
+  margin-bottom: $spacing-large;
+}
+.c-team__wrapper {
+  width: 100%;
+  margin-bottom: 48px;
+  display: inline-grid;
+  grid-gap: 30px;
+  @include mq($from: mobile) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  @include mq($from: tablet) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    grid-template-rows: auto;
+  }
+  @include mq($from: desktop) {
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 30px;
+    grid-template-rows: auto;
+  }
+}
+.c-team__title {
+  color: $dark-blue;
+  margin: $spacing-small 0 $spacing-large;
+  @include inuit-font-size($font-size-normal, $line-height-large);
+  @include mq($from: tablet) {
+    margin: 0 $spacing-huge $spacing-large;
+    @include inuit-font-size($font-size-large, $line-height-large);
+  }
+}

@@ -1,0 +1,13 @@
+.c-related-simple__link {
+  display: inline-block;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+// .c-related-simple__item:nth-child(1) .c-related-simple__link {
+//   margin-top: 0;
+// }
+
+.c-related-simple__link:last-child .c-related-simple__link {
+  margin-bottom: 0;
+}

@@ -1,4 +1,4 @@
-import LinkToItem from './LinkToItem';
+import LinkToItem from './general/LinkToItem';
 
 const RecommendedResource = ({
   _id = '',

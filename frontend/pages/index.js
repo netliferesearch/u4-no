@@ -1,25 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BlockContent from '@sanity/block-content-to-react';
 import DataLoader from '../helpers/data-loader';
-import Link from 'next/link';
-import Layout from '../components/Layout';
-import FrontpageSearchField from '../components/FrontpageSearchField';
-import BoxOnBoxPartnerFeatures from '../components/BoxOnBoxPartnerFeatures';
-import Newsletter from '../components/Newsletter';
-import Footer from '../components/Footer';
-import PartnerAgencies from '../components/PartnerAgencies';
-import FrontpageFeature from '../components/FrontpageFeature';
-import Mosaic from '../components/Mosaic';
+import { Layout } from '../components/Layout';
+import Footer from '../components/general/footer/Footer';
+import PartnerAgencies from '../components/front-page/PartnerAgencies';
+import { CTA } from '../components/front-page/CTA';
+import { FeatureList } from '../components/front-page/FeatureList';
+import { TopicCardList } from '../components/general/topics/TopicCardList';
+import { LearningEvents } from '../components/front-page/LearningEvents';
+import { FeaturedPosts } from '../components/front-page/FeaturedPosts';
+import { POST_TYPE } from '../components/general/post/Post';
+import { CARD_TYPE } from '../components/general/blue-card/BlueCard';
+import { PostCarousel } from '../components/front-page/PostCarousel';
+import { heroData } from '../components/front-page/data';
+import { localize } from '../helpers/translate';
 
-import U4LogoSquare from '../components/icons/U4LogoSquare';
-import ArrowRight from '../components/icons/ArrowRight';
-import serializers from '../components/serializers';
-
-const Frontpage = ({ data: { frontPage = {}, topics = {} } }) => (
+const Frontpage = ({
+  data: {
+    // allFrontPages = [],
+    // ORGfrontPage = {},
+    frontPage = {},
+    topics = {},
+    featured = {},
+    blogPosts = [],
+    events = [],
+    institutions = [],
+  },
+}) => (
   <Layout
-    hideLogo
-    noSearch
+    hideLogo={false}
     headComponentConfig={{
       title: 'U4 Anti-Corruption Resource Centre',
       description:
@@ -30,72 +39,69 @@ const Frontpage = ({ data: { frontPage = {}, topics = {} } }) => (
         'https://cdn.sanity.io/images/1f1lcoov/production/3e59eddc41cd02132774902dd229b24e55dbfcb5-1000x207.png',
     }}
   >
-    <section className="o-wrapper-inner o-wrapper--padded ">
-      <div className="o-layout">
-        <div className="o-layout__item c-logo--center">
-          <Link href="/">
-            <a className="u-no-underline" href="/">
-              <U4LogoSquare className="c-logo" />
-            </a>
-          </Link>
-        </div>
-      </div>
-      <div className="c-search__clean-wrapper">
-        <FrontpageSearchField />
-      </div>
-    </section>
-    <section className="o-wrapper-medium u-margin-bottom-huge">
-      <div className="c-introduction-text">
-        <BlockContent blocks={frontPage.sections} serializers={serializers} />
-      </div>
-    </section>
-
-    <FrontpageFeature topics={topics} />
-
-    <section className="o-wrapper u-margin-bottom-huge">
-      <h2 className="c-topic-section__title">
-        Browse our handpicked anti-corruption <br /> publications, insights and ideas.
-      </h2>
-
-      <Mosaic resources={frontPage.resources} />
-      <h2 className="c-topic-section__cta u-padding-bottom-huge">
-        <a href="/search?search=*">
-          Explore all resources &nbsp;
-          <ArrowRight />
-        </a>
-      </h2>
-    </section>
-
-    <section className="o-wrapper u-margin-bottom-huge">
-      <BoxOnBoxPartnerFeatures />
-      <h2 className="c-topic-section__cta u-padding-bottom">
-        <a href="/u4-partner-agencies">
-          See all our partners &nbsp;
-          <ArrowRight />
-        </a>
-      </h2>
-    </section>
-
-    {false && (
-      <section className="o-wrapper-inner o-wrapper--padded u-margin-bottom-huge">
-        <div className="c-introduction-text">
-          <h2>
-            Looking for someone?
-            <br />
-            <a href="/the-team">
-              The whole U4 team &nbsp;
-              <ArrowRight />
-            </a>
-          </h2>
+    <div className="c-frontpage">
+      {/* {console.log('allFronts', allFrontPages)}
+      {console.log('ORGfrontPage', ORGfrontPage)} */}
+      {/* {console.log('frontPage', frontPage.sections)} */}
+      <section className="o-wrapper-full">
+        <div className="">
+          <CTA img={frontPage.imageUrl} data={heroData} />
         </div>
       </section>
-    )}
-
-    <Newsletter />
-
-    <Footer />
-
-    <PartnerAgencies />
+      <section className="u-bg--lighter-blue o-wrapper-full">
+        <div className="o-wrapper-medium">
+          <FeaturedPosts featured={frontPage.resources} />
+        </div>
+      </section>
+      <section className="">
+        <div className="o-wrapper-medium o-wrapper-mobile-full">
+          <PostCarousel
+            posts={blogPosts}
+            type={POST_TYPE.BLOG}
+            buttonPath="/blog"
+            title="From the blog"
+            minPosts={3}
+          />
+          <hr className="u-section-underline--no-margins" />
+        </div>
+      </section>
+      <section className="o-wrapper-medium o-wrapper-mobile-full">
+        <div>
+          <PostCarousel
+            posts={featured.publication}
+            type={POST_TYPE.PUBLICATION}
+            buttonPath="/publications"
+            title="Latest publications"
+            minPosts={4}
+          />
+          <hr className="u-section-underline--no-margins" />
+        </div>
+      </section>
+      <section className="">
+        <div className="o-wrapper-medium">
+          <LearningEvents
+            events={events}
+            type={events.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL}
+          />
+        </div>
+      </section>
+      <section className="o-wrapper-full">
+        <div className="u-bg--shifted">
+          <FeatureList features={frontPage.sections[2].featureArray} />
+        </div>
+      </section>
+      <section className="">
+        <div className="o-wrapper-medium">
+          <TopicCardList type={CARD_TYPE.TOPIC} topics={topics} />
+        </div>
+      </section>
+      <section className="u-bg--lighter-blue o-wrapper-full">
+        <PartnerAgencies partners={institutions} />
+      </section>
+      <section className="o-wrapper-full">
+        <Footer />
+      </section>
+    </div>
   </Layout>
 );
 
@@ -103,15 +109,51 @@ Frontpage.propTypes = {
   data: PropTypes.shape({
     frontPage: PropTypes.object,
     topics: PropTypes.array,
+    featured: PropTypes.object,
+    blogPosts: PropTypes.array,
+    events: PropTypes.array,
   }).isRequired,
 };
 
 export default DataLoader(Frontpage, {
   queryFunc: () => ({
     sanityQuery: `{
-      "frontPage": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0]{id,title,sections,"imageUrl": featuredImage.asset->url,"resources": resources[]->{_id,_type, "publicationType": publicationType->title, "articleType": articleType[0]->title, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}},
-      "topics": *[_type == "topics"] | order(title) {_id, title, slug,  "imageUrl": featuredImage.asset->url}
+      "frontPage": *[_type=="frontpage" && slug.current == "frontpage-NEW"][0]{id,title,sections,"imageUrl": featuredImage.asset->url,
+      "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title, date, standfirst, topics[]->{title}, "slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title, "imageUrl": featuredImage.asset->url, "pdfFile": pdfFile.asset->url}[0..4]},
+      "topics": *[_type == "topics"] | order(title) {_id, _type, title, longTitle, standfirst, slug, _updatedAt, "imageUrl": featuredImage.asset->url}[0..5],
+      "featured": {"publication": *[_type  == "publication"] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8], "blog": *[_type  == "blog-post" && references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..1],},
+      "blogPosts": *[_type == "blog-post" && !references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
+      "events": *[_type in ["course", "event"]] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}, eventType}[0..2],
+      "institutions": *[_type == 'institution' && funder == true && !(_id in path "drafts.**")]
+      | order(name){_id, ${localize('name')}, funder, svgLogo, website},
     }`,
   }),
   materializeDepth: 0,
 });
+
+// For logging old front page as well:
+// export default DataLoader(Frontpage, {
+//   queryFunc: () => ({
+//     sanityQuery: `{
+//       "allFrontPages": *[_type=="frontpage"],
+//       "ORGfrontPage": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0]{id,title,sections,"imageUrl": featuredImage.asset->url, "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title, date, standfirst, topics[]->{title}, "slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title, "imageUrl": featuredImage.asset->url, "pdfFile": pdfFile.asset->url}[0..2]},
+//       "frontPage": *[_type=="frontpage" && slug.current == "frontpage-NEW"][0]{id,title,sections,"imageUrl": featuredImage.asset->url, "resources": resources[]->{_id,_type, "publicationType": publicationType->title, title, date, standfirst, topics[]->{title}, "slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title, "imageUrl": featuredImage.asset->url, "pdfFile": pdfFile.asset->url}[0..2]},
+//       "topics": *[_type == "topics"] | order(title) {_id, title, longTitle, slug, _updatedAt, "imageUrl": featuredImage.asset->url}[0..5],
+//       "featured": {"publication": *[_type  == "publication"] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8], "blog": *[_type  == "blog-post" && references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..1],},
+//       "blogPosts": *[_type == "blog-post" && !references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
+//       "events": *[_type in ["course", "event"]] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}}[0..2],
+//     }`,
+//   }),
+//   materializeDepth: 0,
+// });
+
+// Original query:
+// export default DataLoader(Frontpage, {
+//   queryFunc: () => ({
+//     sanityQuery: `{
+//       "frontPage": *[_id == "ea5779de-5896-44a9-8d9e-31da9ac1edb2"][0]{id,title,sections,"imageUrl": featuredImage.asset->url,"resources": resources[]->{_id,_type, "publicationType": publicationType->title, "articleType": articleType[0]->title, title,"slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title,  "imageUrl": featuredImage.asset->url}},
+//       "topics": *[_type == "topics"] | order(title) {_id, title, slug,  "imageUrl": featuredImage.asset->url}
+//     }`,
+//   }),
+//   materializeDepth: 0,
+// });

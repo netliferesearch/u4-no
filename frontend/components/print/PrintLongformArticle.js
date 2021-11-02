@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import React, { PureComponent } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from '../printSerializers';
+import serializers from './printSerializers';
 import buildTitleObjects from '../TableOfContents/buildTitleObjects';
 import { translate, translateField, langCode } from '../../helpers/translate';
 

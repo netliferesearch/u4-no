@@ -1,0 +1,27 @@
+.c-learning-events__grid {
+  display: inline-grid;
+  grid-gap: 30px;
+  @include mq($from: mobile) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  @include mq($from: desktop) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    grid-template-rows: auto;
+  }
+}
+
+.c-learning-events__grid--2 {
+  @include mq($from: desktop) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+.c-learning-events__grid--1 {
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 0;
+}

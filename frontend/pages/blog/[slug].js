@@ -1,16 +1,28 @@
-import React from 'react';
-import serializers from '../../components/serializers';
+import React, { useEffect } from 'react';
+import serializers from '../../components/serializers/serializers';
 import DataLoader from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
-import NewsAndEvents from '../../components/v2/NewsAndEvents';
-import Layout from '../../components/v2/Layout';
-import { BlogAccordion } from '../../components/v2/blog/BlogAccordion';
-import { BlogSidebar } from '../../components/v2/blog/BlogSidebar';
-import { TagsSection } from '../../components/v2/TagsSection';
-import { BreadCrumbV2 } from '../../components/v2/BreadCrumbV2';
+import { Layout } from '../../components/Layout';
+import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
+import findFootnotes from '../../components/findFootnotes';
+import footnoteSerializer from '../../components/footnoteSerializer';
+
+import Footer from '../../components/general/footer/Footer';
+import { ArticleHeader } from '../../components/general/article-header/ArticleHeader';
+import { ArticleSidebar } from '../../components/general/article-sidebar/ArticleSidebar';
+import { PostCarousel } from '../../components/front-page/PostCarousel';
+import { POST_TYPE } from '../../components/general/post/Post';
+import { PublicationAdditionalInfo } from '../../components/publication/PublicationAdditionalInfo';
+import LongformArticle from '../../components/LongformArticle';
+
+const littlefootActivator = () => {
+  const littlefoot = require('littlefoot').default;
+  littlefoot();
+};
 
 const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
   const {
+    _type = '',
     title = '',
     authors = [],
     date = '',
@@ -22,82 +34,82 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
     headsUp = '',
     pdfFile = {},
     legacypdf = {},
-    relatedContent = '',
+    relatedResources = '',
     topics = '',
     keywords = '',
   } = blogEntry;
+
+  const blocks = content.filter(block => !['reference'].includes(block._type));
+  const footnotes = findFootnotes(blocks);
+  const footNotesKeys = Object.keys(footnotes);
+
+  useEffect(() => littlefootActivator(), []);
 
   return (
     <Layout
       headComponentConfig={{
         title,
-        description: lead || standfirst,
+        description: standfirst || lead,
         image: featuredImage.asset ? featuredImage.asset.url : '',
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: {},
       }}
     >
-      <hr className="u-section-underline--no-margins" />
-      <div className="o-wrapper c-blog-entry">
-        <BreadCrumbV2 title={'Blog'} parentSlug={'/blog'} />
-        <section className="o-wrapper-section c-blog-entry__post">
-          <BlogSidebar data={blogEntry} />
-          <div className="c-blog-entry__content">
-            <div className="c-blog-entry__head">
-              <h2>{title}</h2>
-              {lead && <p className="c-blog-entry__lead">{lead}</p>}
-              {topics &&
-                topics.map((topic, index) => (
-                  <span className="topic" key={index}>
-                    {topic.title}
-                  </span>
-                ))}
-            </div>
+      <article className={`c-blog-entry ${featuredImage.asset ? '' : 'c-blog-entry--no-img'}`}>
+        <section className="o-wrapper-medium">
+          <BreadCrumbV2 title="Blog" parentSlug="/blog" home />
+          <ArticleHeader data={blogEntry} />
+        </section>
+        <hr className="u-section-underline--no-margins" />
+        <section className="o-wrapper-medium o-wrapper-mobile-full">
+          <div className="c-article__row">
+            <div className="content c-article__col">
+              <div className="u-margin--article-top">
+                <LongformArticle content={content} title={title} />
+              </div>
 
-            {featuredImage.asset && (
-              <figure className="c-blog-entry__featured-image">
-                <img
-                  src={`${featuredImage.asset.url}?w=800`}
-                  alt={featuredImage.asset.altText ? featuredImage.asset.altText : 'Featured image'}
-                />
-                {featuredImage.caption && (
-                  <BlockContent
-                    blocks={featuredImage.caption}
-                    serializers={{
-                      types: {
-                        block: props => (
-                          <p className="c-blog-entry__caption" style={{ display: 'inline' }}>
-                            {props.children}
-                          </p>
-                        ),
-                      },
-                    }}
-                  />
-                )}
-              </figure>
-            )}
-            {content ? (
-              <div className="c-blog-entry__main-text">
-                <BlockContent blocks={content} serializers={serializers} />
-              </div>
-            ) : null}
-            {headsUp && (
-              <div className="c-blog-entry__heads-up">
-                <BlockContent blocks={headsUp} serializers={serializers} />
-              </div>
-            )}
-            {topics.length > 0 || keywords.length > 0 ? (
-              <TagsSection topics={topics} keywords={keywords} />
-            ) : null}
-            <BlogAccordion />
+              {/* <div className="c-longform c-blog-entry__main-text">
+                    <BlockContent blocks={content} serializers={serializers} />
+                    <div className="footnotes">
+                      <ol>
+                        {footNotesKeys.map(key => (
+                          <div key={key}>
+                            <BlockContent
+                              blocks={footnotes[key]}
+                              serializers={footnoteSerializer(key)}
+                            />
+                          </div>
+                        ))}
+                      </ol>
+                    </div>
+                  </div> */}
+            </div>
+            <div className="c-article__side c-article__col">
+              <ArticleSidebar data={blogEntry} />
+            </div>
           </div>
         </section>
-      </div>
-      <section className="o-wrapper c-blog-entry__bottom">
-        <div className="o-wrapper-section">
-          {relatedContent ? <NewsAndEvents items={relatedContent} title={'Related'} /> : null}
-        </div>
-      </section>
+
+        <PublicationAdditionalInfo data={blogEntry} />
+      </article>
+
+      {relatedResources.length > 0 ? (
+        <section className="">
+          <div className="o-wrapper-medium o-wrapper-mobile-full">
+            <PostCarousel
+              posts={relatedResources}
+              type={POST_TYPE.BLOG}
+              buttonPath="/publications"
+              title="Related Content"
+              minPosts={3}
+            />
+            <hr className="u-section-underline--no-margins" />
+          </div>
+        </section>
+      ) : null}
+
+      <Footer />
+      <div id="modal" />
     </Layout>
   );
 };
@@ -105,7 +117,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
 export default DataLoader(BlogEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title}, keywords[]->{category, keyword}, "slug": slug.current, pdfFile, legacypdf,
+      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _type, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title, slug}, keywords[]->{category, keyword}, "slug": slug.current, language, translation,basedonpublication->{_id,_type,title,"slug":slug.current},
       "featuredImage": {
         "caption": featuredImage.caption,
         "credit": featuredImage.credit,
@@ -116,7 +128,8 @@ export default DataLoader(BlogEntry, {
           "url": url
         }
       },
-      "relatedContent": relatedContent[]->{_type, _id, title, publicationType->{ title }, articleType[0]->{ title }, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..2]}
+            "translations": *[ _type == 'blog-post' && ( _id != ^._id ) && ( ( _id == ^.translation._ref) || translation._ref == coalesce(^.translation._ref, ^._id ))]{title, "slug": slug.current, language},
+      "relatedResources": relatedContent[]->{_type, _id, title, publicationType->{ title }, articleType[0]->{ title }, "imageUrl": featuredImage.asset->url, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..2]}
     }`,
     param: { slug },
   }),

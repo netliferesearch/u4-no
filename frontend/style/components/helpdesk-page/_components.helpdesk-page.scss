@@ -1,0 +1,87 @@
+.c-helpdesk-page {
+  .c-longform-grid__standard {
+    // @include mq($until: tablet) {
+    padding-right: 0;
+    padding-left: 0;
+    // }
+  }
+  .c-longform-grid__standard.list-bullets {
+    margin-left: $inuit-global-spacing-unit;
+  }
+  .c-helpdesk-page__lead {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @include mq($until: desktop) {
+      grid-template-columns: 1fr;
+    }
+  }
+  .c-helpdesk-page__lead-content--second {
+    display: flex;
+    justify-content: center;
+    @include mq($from: tablet) {
+      justify-content: flex-start;
+    }
+    @include mq($from: desktop) {
+      justify-content: flex-end;
+    }
+  }
+  .c-helpdesk-page__lead-image {
+    width: 270px;
+    height: 80px;
+    margin-top: 32px;
+  }
+  .c-pullQuote {
+    @include mq($until: tablet) {
+      margin: 0;
+    }
+  }
+  .c-side-box {
+    @include mq($until: desktop) {
+      margin-top: 0px;
+    }
+  }
+  .c-columns--two {
+    padding-top: 0;
+  }
+  .u-bg--shifted--light {
+    h4 {
+      color: $dark-blue;
+    }
+    .c-columns__item {
+      p.c-longform-grid__standard {
+        font-weight: bold;
+        color: $dark-blue;
+        text-transform: uppercase;
+      }
+    }
+  }
+  .c-text-image__body {
+    h3.c-longform-grid__standard {
+      font-size: 36px;
+      line-height: 42px;
+      letter-spacing: -0.01em;
+    }
+  }
+  .c-page-intro__p {
+    padding: 0px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+  }
+  .c-longform-grid__standard {
+    &::before {
+      content: none;
+    }
+    &::after {
+      content: none;
+    }
+  }
+  .c-testimonial__text {
+    a {
+      color: $highlight-blue;
+      path {
+        stroke: $highlight-blue;
+      }
+    }
+  }
+}

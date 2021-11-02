@@ -1,0 +1,30 @@
+.c-event-entry {
+  .c-page-intro--withBreadcrumb {
+    margin-bottom: 30px;
+  }
+  .c-article-sidebar.c-course-sidebar {
+    position: sticky;
+    top: 120px;
+  }
+  .c-events-calendar-svg {
+    margin-right: 10px;
+  }
+  .u-text--grey {
+    align-items: center;
+    display: flex;
+  }
+  .c-btn--primary {
+    a {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 1.7;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: $white;
+    }
+  }
+  .c-events-calendor-icon {
+    margin-right: 10px;
+    display: flex;
+  }
+}

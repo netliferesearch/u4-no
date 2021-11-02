@@ -1,0 +1,12 @@
+.c-main-points {
+  background-color: $lighter-blue;
+  padding: 0px 48px 40px 32px;
+  overflow: auto;
+}
+
+.c-main-points__item {
+  font-family: $font-serif;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0.02em;
+}

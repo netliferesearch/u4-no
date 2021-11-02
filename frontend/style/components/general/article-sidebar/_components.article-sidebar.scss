@@ -1,0 +1,44 @@
+.c-article-sidebar {
+  background-color: white;
+  padding: 16px 20px 24px 16px;
+
+  @include mq($from: tablet) {
+    background-color: $light-grey;
+    margin-top: 64px;
+    margin-bottom: 64px;
+  }
+
+  .pdf-preview {
+    display: none;
+    pointer-events: none;
+    .ReactPDF__Page__canvas {
+      border: 1px solid $brand-main;
+      max-width: 100%;
+      height: auto !important;
+    }
+    .ReactPDF__Page__textContent {
+      visibility: hidden;
+    }
+    @include mq($from: tablet) {
+      display: block;
+      max-width: 240px;
+    }
+  }
+}
+
+.c-article-sidebar__item {
+  h4 {
+    margin: 0 0 4px 0;
+  }
+  p,
+  .c-authors-list--basic,
+  .c-partners,
+  .c-topics {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+  // div {
+  //   margin-top: 12px;
+  //   margin-bottom: 24px;
+  // }
+}
