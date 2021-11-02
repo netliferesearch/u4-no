@@ -9,6 +9,8 @@ import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';
 import { EventSidebar } from '../../components/events/EventSidebar';
 import { PERSON_CARD_TYPE } from '../../components/general/person/PersonCard';
+import { PostCarousel } from '../../components/front-page/PostCarousel';
+import { POST_TYPE } from '../../components/general/post/Post';
 
 const EventPage = ({ data: { event = {} }, url = {} }) => {
   const {
@@ -20,6 +22,8 @@ const EventPage = ({ data: { event = {} }, url = {} }) => {
     content = [],
     contact = [],
     topics = [],
+    organiser = '',
+    relatedResources = [],
   } = event;
   return (
     <Layout
@@ -54,7 +58,21 @@ const EventPage = ({ data: { event = {} }, url = {} }) => {
         {contact.length ? (
           <section className="o-wrapper-medium u-bottom-margin--24">
             <hr className="u-section-underline--no-margins" />
-            <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading="Moderators" members={contact} />
+            <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading="Related experts" members={contact} />
+          </section>
+        ) : null}
+        {relatedResources.length > 0 ? (
+          <section>
+            <div className="o-wrapper-medium o-wrapper-mobile-full">
+              <PostCarousel
+                posts={relatedResources}
+                type={POST_TYPE.BLOG}
+                buttonPath="/publications"
+                title="Related Content"
+                minPosts={3}
+              />
+              <hr className="u-section-underline--no-margins" />
+            </div>
           </section>
         ) : null}
       </div>
@@ -76,9 +94,10 @@ export default DataLoader(EventPage, {
            surname,
            email,
            slug,
+           organiser,
            bio
          },
-        relatedContent, topics[]->{title,slug}, keywords,  _id, "featuredImage": featuredImage.asset->url}}`,
+        "relatedResources": relatedContent[]->{_type, _id, title, publicationType->{ title }, articleType[0]->{ title }, "imageUrl": featuredImage.asset->url, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..3]}}`,
     param: { slug },
   }),
   materializeDepth: 5,

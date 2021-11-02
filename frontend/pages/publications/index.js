@@ -9,15 +9,18 @@ import { SearchFiltersV3 } from '../../components/search/SearchFiltersV3';
 import { client } from '../../helpers/sanityClient.pico';
 import PublicationsDataLoader from '../../helpers/publications-data-loader';
 import { SearchResultsV3 } from '../../components/search/SearchResultsV3';
+import serializers from '../../components/serializers/serializers';
+import BlockContent from '@sanity/block-content-to-react';
 
 export const Publications = ({ data = {} }) => {
   const [sanityData, setFeatured] = useState({});
-
+  console.log({ sanityData });
   const sanityQuery = `{
     "publicationsPage": *[_type=="frontpage" && slug.current == "publications"][0]{
       id,
       title,
       sections,
+      lead,
       "imageUrl": featuredImage.asset->url,
       "resources": resources[]->{
         _id,
@@ -35,18 +38,16 @@ export const Publications = ({ data = {} }) => {
     },
   }`;
 
-  useEffect(
-    () => {
-      client
-        .fetch(sanityQuery, {})
-        .then(results => {
-          setFeatured(results.publicationsPage);
-        })
-        .catch(err => console.error('Oh noes: %s', err.message));
-    },
-    []
-  );
-
+  useEffect(() => {
+    client
+      .fetch(sanityQuery, {})
+      .then(results => {
+        setFeatured(results.publicationsPage);
+      })
+      .catch(err => console.error('Oh noes: %s', err.message));
+  }, []);
+  // lead;
+  // console.log(sanityData.lead.toString());
   return (
     <Layout
       hideLogo={false}
@@ -65,7 +66,7 @@ export const Publications = ({ data = {} }) => {
             className="c-page-intro--about-u4"
             title="Publications"
             type="about-u4"
-            text="Lorem ipsum"
+            text={<BlockContent blocks={sanityData.lead} serializers={serializers} />}
           />
         </section>
         <hr className="u-section-underline--no-margins" />
