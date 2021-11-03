@@ -107,7 +107,7 @@ const doSearch = async ({ query }) => {
 
   try {
     const result = await client.search({
-      index: `u4-${process.env.NEXT_PUBLIC_ENV}-*` || 'u4-staging-*',
+      index: process.env.NEXT_PUBLIC_ENV ? `u4-${process.env.NEXT_PUBLIC_ENV}-*` : 'u4-staging-*',
       body: {
         query: {
           function_score: {

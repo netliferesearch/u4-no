@@ -23,6 +23,7 @@ const ServicePage = ({
     lead = [],
     relatedUrl = {},
     url = '',
+    latestHelpdeskAnswers = [],
   },
 }) => {
   const standFirst = sections.filter(i => i._type === 'heading')[0];
@@ -101,7 +102,7 @@ const ServicePage = ({
         <section>
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel
-              posts={expertPublications.expertAnswersRef}
+              posts={latestHelpdeskAnswers}
               type={POST_TYPE.PUBLICATION}
               buttonPath="/publications"
               title="Latest U4 helpdesk answers"
@@ -120,13 +121,12 @@ export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `*[_type == "frontpage" && slug.current == "helpdesk-new"][0]{
         title,
-            longTitle,
-            slug,
-            lead,
-            _id,
-      sections[]{
-        ...,
-        expertAnswersRef[]->{
+        longTitle,
+        slug,
+        lead,
+        _id,
+        sections[],
+          "latestHelpdeskAnswers": *[_type  == "publication" && language == "en_US" && publicationType->title == "U4 Helpdesk Answer"] | order(date.utc desc) {
           _id,
           _type,
           slug,
@@ -136,9 +136,8 @@ export default DataLoader(ServicePage, {
           title,
           "publicationType": publicationType->title,
           "featuredImage": featuredImage.asset->url
-        }
-      },
-      "featuredImage": featuredImage.asset->url
+        }[0..8],
+       "featuredImage": featuredImage.asset->url
     }
 `,
     param: { slug },

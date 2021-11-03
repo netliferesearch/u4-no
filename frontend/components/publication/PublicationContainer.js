@@ -105,7 +105,7 @@ const PublicationContainer = (props = {}) => {
             <div className="o-wrapper-mobile-full  o-wrapper-medium">
               <div className="c-article__row">
                 <div className="content c-article__col">
-                  <LongformArticle content={shortversionContent} {...props.data} />
+                  <LongformArticle content={shortversionContent} />
                 </div>
               </div>
             </div>

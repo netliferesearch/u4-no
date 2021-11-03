@@ -24,7 +24,7 @@ export const menuItems = [
         subtitle: 'Learning',
         items: [
           { label: 'Online courses', slug: '/online-courses' },
-          { label: 'Helpdesk - Ask your question', slug: '/helpdesk' },
+          { label: 'Anti-corruption helpdesk', slug: '/helpdesk' },
           { label: 'Glossary', slug: '/terms ' },
         ],
       },
@@ -56,7 +56,7 @@ export const menuItems = [
         items: [
           // {_id: 'u4-partner-agencies', label: 'Funding Partners', slug: '/u4-partner-agencies' },
           // {_id: 'the-team', label: 'Expert Network', slug: '/the-team' },
-          {_id: 'frontpage', label: 'Anti-corruption helpdesk', slug: '/helpdesk' },
+          { _id: 'frontpage', label: 'Anti-corruption helpdesk', slug: '/helpdesk' },
         ],
       },
       {
