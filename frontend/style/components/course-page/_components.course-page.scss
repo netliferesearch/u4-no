@@ -34,12 +34,9 @@
   width: 100%;
   display: inline-grid;
   grid-gap: 0;
-  //margin-bottom: 0;
-
   @include mq($from: tablet) {
     grid-template-columns: 1fr 1fr;
     column-gap: 0;
-    //margin-bottom: 64px;
   }
 }
 
@@ -49,7 +46,7 @@
 
 .c-course-entry__image-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-start;
   margin-top: 0;
   margin-bottom: 0;
@@ -82,8 +79,4 @@
     grid-template-columns: 5fr 2fr;
     column-gap: 120px;
   }
-}
-
-.c-course-sidebar {
-  //possibly separate sheet
 }

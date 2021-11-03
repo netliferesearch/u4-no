@@ -86,28 +86,18 @@ export default DataLoader(EventPage, {
     sanityQuery: `{
            "event": *[_type=="event" && slug.current == $slug][0]{_type, title, eventType, location, startDate, endDate, organiser, leadText, content, slug, eventLink, eventType,
           "contact": contact[]->{
-          _id,
-           title,
-           "image": image.asset->{"asset": { "url": url}},
-           position,
-           firstName,
-           surname,
-           email,
-           slug,
-           organiser,
-           bio
-         },
-         relatedContent,
-        "relatedResources": relatedContent[]->{_type, _id, title, publicationType->{ title },
-         articleType[0]->{ title },
-        "imageUrl": featuredImage.asset->url,
-         startDate,
-         date,
-         standfirst,
-         lead,
-         "slug": slug.current,
-         topics[]->{title}}[0..3]},
-         "featuredImage": {
+            _id,
+             title,
+             "image": image.asset->{"asset": { "url": url}},
+             position,
+             firstName,
+             surname,
+             email,
+             slug,
+             bio
+          },
+          relatedContent, topics[]->{title,slug}, keywords,  _id,
+          "featuredImage": {
             "caption": featuredImage.caption,
             "credit": featuredImage.credit,
             "sourceUrl": featuredImage.sourceUrl,
@@ -116,8 +106,9 @@ export default DataLoader(EventPage, {
               "altText": altText,
               "url": url
             }
-          },
-         } `,
+          }
+        },
+      }`,
     param: { slug },
   }),
   materializeDepth: 5,

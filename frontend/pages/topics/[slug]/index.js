@@ -87,14 +87,16 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             </div>
           ) : (
             <div>
-              <HorizontalLinkBox
-                title="Basic guide"
-                text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
-                // icon={BasicGuide}
-                _type="topicsBasics"
-                slug={slug}
-                color="white"
-              />
+              {introduction.length > 0 && (
+                <HorizontalLinkBox
+                  title="Basic guide"
+                  text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
+                  // icon={BasicGuide}
+                  _type="topicsBasics"
+                  slug={slug}
+                  color="white"
+                />
+              )}
             </div>
           )}
         </section>
@@ -268,8 +270,8 @@ export default DataLoader(TopicEntry, {
           "imageUrl": featuredImage.asset->url,
           topics[]->{title},
         },
-        "relatedPublications": *[_type == 'publication' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
-        "relatedBlogPosts": *[_type == 'blog-post' && references(^._id)] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
+        "relatedPublications": *[_type == 'publication' && references(^._id) && language == "en_US"] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
+        "relatedBlogPosts": *[_type == 'blog-post' && references(^._id) && language == "en_US"] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
         "relatedEvents": *[_type in ["course", "event"] && references(^._id)] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}, eventType},
         "resourceCollections": collections[]->{_type, title, "slug": slug.current},
     }[0]}`,

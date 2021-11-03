@@ -44,7 +44,11 @@ const Persons = props => {
         </div>
 
         <div className="o-wrapper-medium">
-          <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading={'Helpdesk'} members={helpdesk} />
+          <Team
+            type={PERSON_CARD_TYPE.IMAGE_TOP}
+            heading={'Helpdesk – Transparency International'}
+            members={helpdesk}
+          />
           <hr className="u-section-underline--no-margins" />
         </div>
 
