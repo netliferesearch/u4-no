@@ -5,10 +5,10 @@ import Footer from '../../components/general/footer/Footer';
 import { PageIntro } from '../../components/general/PageIntro';
 import { PostCarousel } from '../../components/front-page/PostCarousel';
 import { POST_TYPE } from '../../components/general/post/Post';
-import { SearchFiltersV3 } from '../../components/search/SearchFiltersV3';
+import { SearchFilters } from '../../components/search/SearchFilters';
 import { client } from '../../helpers/sanityClient.pico';
 import PublicationsDataLoader from '../../helpers/publications-data-loader';
-import { SearchResultsV3 } from '../../components/search/SearchResultsV3';
+import { SearchResults } from '../../components/search/SearchResults';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';
 
@@ -38,17 +38,14 @@ export const Publications = ({ data = {} }) => {
     },
   }`;
 
-  useEffect(
-    () => {
-      client
-        .fetch(sanityQuery, {})
-        .then(results => {
-          setFeatured(results.publicationsPage);
-        })
-        .catch(err => console.error('Oh noes: %s', err.message));
-    },
-    []
-  );
+  useEffect(() => {
+    client
+      .fetch(sanityQuery, {})
+      .then(results => {
+        setFeatured(results.publicationsPage);
+      })
+      .catch(err => console.error('Oh noes: %s', err.message));
+  }, []);
   return (
     <Layout
       hideLogo={false}
@@ -67,7 +64,7 @@ export const Publications = ({ data = {} }) => {
             className="c-page-intro--about-u4"
             title="Publications"
             type="about-u4"
-            text={ <BlockContent blocks={sanityData.lead} serializers={serializers} />}
+            text={<BlockContent blocks={sanityData.lead} serializers={serializers} />}
           />
         </section>
         <hr className="u-section-underline--no-margins" />
@@ -88,10 +85,10 @@ export const Publications = ({ data = {} }) => {
         <div className="o-wrapper-medium">
           <div className="c-search-page__sections">
             <section className="o-layout__item u-12/12 u-3/12@desktop">
-              <SearchFiltersV3 data={data} publications />
+              <SearchFilters data={data} publications />
             </section>
             <section className="o-layout__item u-12/12 u-8/12@desktop u-push-1/12@desktop">
-              <SearchResultsV3 data={data} publications />
+              <SearchResults data={data} publications />
             </section>
           </div>
         </div>

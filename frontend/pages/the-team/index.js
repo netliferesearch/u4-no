@@ -7,7 +7,6 @@ import serializers from '../../components/serializers/serializers';
 import { PERSON_CARD_TYPE } from '../../components/general/person/PersonCard';
 import { PageIntro } from '../../components/general/PageIntro';
 import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
-import { getParentPath } from '../../helpers/getParentPath';
 
 const Persons = props => {
   const {

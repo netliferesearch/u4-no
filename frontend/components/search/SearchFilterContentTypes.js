@@ -13,19 +13,27 @@ import {
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   !!searchFilters.find(name => name === filterName);
 
-const supportedTypes = ['article', 'course', 'event', 'publication', 'blog-post', 'topics', 'collection', 'audio-video']
+const supportedTypes = [
+  'article',
+  'course',
+  'event',
+  'publication',
+  'blog-post',
+  'topics',
+  'collection',
+  'audio-video',
+];
 const typeLabels = {
-  'article': 'Article',
-  'course': 'Online course',
-  'event': 'Event',
-  'publication': 'Publication',
+  article: 'Article',
+  course: 'Online course',
+  event: 'Event',
+  publication: 'Publication',
   'blog-post': 'Blog',
-  'topics': 'Topic',
-  'collection': 'Resource collection',
+  topics: 'Topic',
+  collection: 'Resource collection',
   'audio-video': 'Audio & video',
-}
+};
 const SearchFilterContentTypes = props => {
-  //const dispatch = useDispatch();
   const { searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter } = props;
 
   return (
@@ -34,28 +42,30 @@ const SearchFilterContentTypes = props => {
         <h3 className="c-filters-v2__title">Content type</h3>
       </div>
       <span>
-        {defaultBuckets.filter(bucket => supportedTypes.includes(bucket.key)).map(bucket => {
-          const { key } = bucket;
-          const filterName = `content-${key}`;
-          return (
-            <div key={slugify(key)} className="c-input">
-              <input
-                type="checkbox"
-                id={slugify(key)}
-                checked={isFilterActive({ searchFilters, filterName })}
-                value={key}
-                onChange={event => {
-                  if (event.target.checked) {
-                    addSearchFilter(filterName);
-                  } else {
-                    removeSearchFilter(filterName);
-                  }
-                }}
-              />
-              <label htmlFor={slugify(key)}>{typeLabels[key]}</label>
-            </div>
-          );
-        })}
+        {defaultBuckets
+          .filter(bucket => supportedTypes.includes(bucket.key))
+          .map(bucket => {
+            const { key } = bucket;
+            const filterName = `content-${key}`;
+            return (
+              <div key={slugify(key)} className="c-input">
+                <input
+                  type="checkbox"
+                  id={slugify(key)}
+                  checked={isFilterActive({ searchFilters, filterName })}
+                  value={key}
+                  onChange={event => {
+                    if (event.target.checked) {
+                      addSearchFilter(filterName);
+                    } else {
+                      removeSearchFilter(filterName);
+                    }
+                  }}
+                />
+                <label htmlFor={slugify(key)}>{typeLabels[key]}</label>
+              </div>
+            );
+          })}
       </span>
     </form>
   );

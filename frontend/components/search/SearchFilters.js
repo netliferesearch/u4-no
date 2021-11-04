@@ -16,7 +16,7 @@ function toggle() {
   }
 }
 
-export const SearchFiltersV3 = props => {
+export const SearchFilters = props => {
   const dispatch = useDispatch();
   const router = useRouter();
 

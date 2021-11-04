@@ -9,7 +9,7 @@ import { PaginationComponent } from '../general/PaginationComponent';
 import { SearchResult } from './SearchResult';
 
 export const limit = 10;
-export const SearchResultsV3 = props => {
+export const SearchResults = props => {
   const [pageCount, setPageCount] = useState(1);
   const searchResults = useSelector(state => state.searchResults);
   const searchFilters = useSelector(state => state.searchFilters);
@@ -22,7 +22,6 @@ export const SearchResultsV3 = props => {
   const d = total < limit ? 1 : Math.ceil(total / limit);
   const lastPage = Math.ceil(total / limit);
   const currentSearchPage = useSelector(state => state.searchPageNum);
-  console.log('currentSearchPage', currentSearchPage)
   const currentFrom = currentSearchPage * limit - (limit - 1);
   let currentTo = currentSearchPage * limit;
   if (lastPage === currentSearchPage) {

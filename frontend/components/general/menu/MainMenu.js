@@ -1,7 +1,7 @@
 import React from 'react';
 import { menuItems } from './menuItems';
 import { MainMenuItem } from './MainMenuItem';
-import { SearchFieldV3 } from '../../search/SearchFieldV3';
+import { SearchField } from '../../search/SearchField';
 import { CloseSearch } from '../../icons/CloseSearch';
 
 export const MainMenu = ({
@@ -36,7 +36,7 @@ export const MainMenu = ({
         </>
       ) : (
         <div className="c-menu__search-holder">
-          <SearchFieldV3
+          <SearchField
             isOpen={activeSearchMenu}
             isAlwaysOpen={true}
             triggerSearchMenu={triggerSearchMenu}

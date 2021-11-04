@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Error404 from '../components/Error404';
-import { limit } from '../components/search/SearchResultsV3';
+import { limit } from '../components/search/SearchResults';
 
 const elasticsearch = require('elasticsearch');
 
