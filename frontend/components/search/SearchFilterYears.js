@@ -1,12 +1,6 @@
 import { React, useState } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import {
-  addSearchFilter,
-  removeSearchFilter,
-  clearAllSearchFilters,
-  replaceSearchFilters,
-} from '../../helpers/redux-store';
+import { useDispatch, useSelector } from 'react-redux';
+import { replaceSearchFilters } from '../../helpers/redux-store';
 
 const getFromYear = ({ searchFilters = [] }) => {
   const yearFilter = searchFilters.find(name => name.startsWith('year-from'));
@@ -24,9 +18,23 @@ const getToYear = ({ searchFilters = [] }) => {
   const toYear = /year-to-(.*)/gi.exec(yearFilter)[1];
   return parseInt(toYear, 10);
 };
-
-const SearchFilterYears = props => {
-  const { searchFilters, years = [], replaceSearchFilters } = props;
+const getYearAggregations = ({
+  minPublicationDateMilliSeconds: { value: min = 0 } = {},
+  maxPublicationDateMilliSeconds: { value: max = 0 } = {},
+} = {}) => {
+  const minYear = new Date(min).getFullYear();
+  const maxYear = new Date(max).getFullYear();
+  const numberOfyears = maxYear - minYear + 1;
+  if (numberOfyears < 0) {
+    return []; // exit early if we can't create a sensible set of options
+  }
+  return [...Array(numberOfyears)].map((x, i) => minYear + i);
+};
+export const SearchFilterYears = () => {
+  const dispatch = useDispatch();
+  const defaultSearchAggs = useSelector(state => state.defaultSearchAggs);
+  const searchFilters = useSelector(state => state.searchFilters);
+  const years = getYearAggregations(defaultSearchAggs);
   const [fromExpanded, setFromExpanded] = useState('');
   const [toExpanded, setToExpanded] = useState('');
   return (
@@ -50,13 +58,12 @@ const SearchFilterYears = props => {
               className={`c-select ${fromExpanded && 'expanded'}`}
               onChange={event => {
                 const value = event.target.value;
-                console.log(value);
                 const newFilters = [...searchFilters.filter(name => !name.startsWith('year-from'))];
                 if (!value) {
-                  return replaceSearchFilters(newFilters);
+                  return dispatch(replaceSearchFilters(newFilters));
                 }
                 newFilters.push(`year-from-${value}`);
-                replaceSearchFilters(newFilters);
+                dispatch(replaceSearchFilters(newFilters));
               }}
               value={getFromYear({ searchFilters })}
             >
@@ -90,10 +97,10 @@ const SearchFilterYears = props => {
                 const value = event.target.value;
                 const newFilters = [...searchFilters.filter(name => !name.startsWith('year-to'))];
                 if (!value) {
-                  return replaceSearchFilters(newFilters);
+                  return dispatch(replaceSearchFilters(newFilters));
                 }
                 newFilters.push(`year-to-${value}`);
-                replaceSearchFilters(newFilters);
+                dispatch(replaceSearchFilters(newFilters));
               }}
               value={getToYear({ searchFilters })}
             >
@@ -112,33 +119,3 @@ const SearchFilterYears = props => {
     </form>
   );
 };
-
-const getYearAggregations = ({
-  minPublicationDateMilliSeconds: { value: min = 0 } = {},
-  maxPublicationDateMilliSeconds: { value: max = 0 } = {},
-} = {}) => {
-  const minYear = new Date(min).getFullYear();
-  const maxYear = new Date(max).getFullYear();
-  const numberOfyears = maxYear - minYear + 1;
-  if (numberOfyears < 0) {
-    return []; // exit early if we can't create a sensible set of options
-  }
-  return [...Array(numberOfyears)].map((x, i) => minYear + i);
-};
-
-const mapStateToProps = ({ defaultSearchAggs, searchFilters }) => ({
-  years: getYearAggregations(defaultSearchAggs),
-  searchFilters,
-});
-
-const mapDispatchToProps = dispatch => ({
-  addSearchFilter: bindActionCreators(addSearchFilter, dispatch),
-  removeSearchFilter: bindActionCreators(removeSearchFilter, dispatch),
-  clearAllSearchFilters: bindActionCreators(clearAllSearchFilters, dispatch),
-  replaceSearchFilters: bindActionCreators(replaceSearchFilters, dispatch),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchFilterYears);

@@ -4,7 +4,7 @@ if (typeof window !== 'undefined') {
   require('intersection-observer');
 }
 import { useSelector } from 'react-redux';
-import SearchResultsSortingSelect from './SearchResultsSortingSelect';
+import { SearchResultsSortingSelect } from './SearchResultsSortingSelect';
 import { PaginationComponent } from '../general/PaginationComponent';
 import { SearchResult } from './SearchResult';
 

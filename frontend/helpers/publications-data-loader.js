@@ -27,6 +27,12 @@ const aggregations = {
       size: 100,
     },
   },
+  contentTypes: {
+    terms: {
+      field: 'contentType',
+      size: 100,
+    },
+  },
   topicTitles: {
     terms: {
       field: 'topicTitles',

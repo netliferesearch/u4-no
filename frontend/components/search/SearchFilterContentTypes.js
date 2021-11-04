@@ -1,15 +1,8 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import sortBy from 'lodash/sortBy';
 import slugify from 'slugify';
-import {
-  addSearchFilter,
-  removeSearchFilter,
-  clearAllSearchFilters,
-  replaceSearchFilters,
-  updateSearchPageNum,
-} from '../../helpers/redux-store';
+import { addSearchFilter, removeSearchFilter } from '../../helpers/redux-store';
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   !!searchFilters.find(name => name === filterName);
 
@@ -33,9 +26,12 @@ const typeLabels = {
   collection: 'Resource collection',
   'audio-video': 'Audio & video',
 };
-const SearchFilterContentTypes = props => {
-  const { searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter } = props;
-
+export const SearchFilterContentTypes = () => {
+  const dispatch = useDispatch();
+  const defaultBuckets = useSelector(state =>
+    sortBy(state.defaultSearchAggs.contentTypes.buckets, ['key'])
+  );
+  const searchFilters = useSelector(state => state.searchFilters);
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
@@ -56,9 +52,9 @@ const SearchFilterContentTypes = props => {
                   value={key}
                   onChange={event => {
                     if (event.target.checked) {
-                      addSearchFilter(filterName);
+                      dispatch(addSearchFilter(filterName));
                     } else {
-                      removeSearchFilter(filterName);
+                      dispatch(removeSearchFilter(filterName));
                     }
                   }}
                 />
@@ -70,23 +66,3 @@ const SearchFilterContentTypes = props => {
     </form>
   );
 };
-
-const mapStateToProps = ({
-  defaultSearchAggs: { contentTypes: { buckets: defaultBuckets = [] } = {} } = {},
-  searchFilters,
-}) => ({
-  defaultBuckets: sortBy(defaultBuckets, ['key']),
-  searchFilters,
-});
-
-const mapDispatchToProps = dispatch => ({
-  addSearchFilter: bindActionCreators(addSearchFilter, dispatch),
-  removeSearchFilter: bindActionCreators(removeSearchFilter, dispatch),
-  clearAllSearchFilters: bindActionCreators(clearAllSearchFilters, dispatch),
-  replaceSearchFilters: bindActionCreators(replaceSearchFilters, dispatch),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchFilterContentTypes);

@@ -64,7 +64,9 @@ export const Publications = ({ data = {} }) => {
             className="c-page-intro--about-u4"
             title="Publications"
             type="about-u4"
-            text={<BlockContent blocks={sanityData.lead} serializers={serializers} />}
+            text={
+              sanityData.lead && <BlockContent blocks={sanityData.lead} serializers={serializers} />
+            }
           />
         </section>
         <hr className="u-section-underline--no-margins" />
