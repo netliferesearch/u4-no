@@ -82,7 +82,7 @@ const LongFormArticleContainer = props => {
           <h1 {...classes('title')}>{title}</h1>
           <p {...classes('subtitle')}>{subtitle}</p>
           <div {...classes('meta')}>
-            <p {...classes('float-left')}>
+            <div {...classes('float-left')}>
               {authors ? (
                 <span>
                   <AuthorList authors={authors} language={language} />
@@ -95,7 +95,7 @@ const LongFormArticleContainer = props => {
                   <br />
                 </span>
               ) : null}
-            </p>
+            </div>
             <div {...classes('float-right')}>
               <CmiLogo />
             </div>

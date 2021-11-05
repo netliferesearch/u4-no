@@ -1,10 +1,13 @@
 .c-authors-list__item {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
-
+.c-authors-list__title {
+  margin-bottom: 0;
+  color: $dark-blue;
+}
 .c-authors-list__name,
 .c-partners__name {
-    display: block;
-    font-weight: 700;
-    color: $dark-blue;
+  display: block;
+  font-weight: 700;
+  color: $dark-blue;
 }

@@ -34,6 +34,7 @@
 @media print {
   body {
     color: black;
+    font-family: $font-serif;
   }
   /* hide divs containing next scripts to avoid trailing blank page */
   body > div + div,
