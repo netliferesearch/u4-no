@@ -4,25 +4,22 @@ import { ArrowNextPage, ArrowPrevPage, ArrowFirstPage, ArrowLastPage } from '../
 import { useDispatch } from 'react-redux';
 import { updateBlogPageNum, updateSearchPageNum } from '../../helpers/redux-store';
 
-export const PaginationComponent = ({ total, limit, pageCount, currentPage, search }) => {
+export const PaginationComponent = ({ total, limit, maxPagesListed = 5, currentPage, search }) => {
+  const dispatch = useDispatch();
+  const d = total < limit ? 1 : Math.ceil(total / limit);
+  const pageCount = Math.ceil(total / d) > maxPagesListed ? maxPagesListed : Math.ceil(total / d);
   const handlePageChange = (page, e) => {
-    {
-      !search && dispatch(updateBlogPageNum(page));
-    }
-
-    {
-      search && dispatch(updateSearchPageNum(page));
-    }
+    !search ? dispatch(updateBlogPageNum(page)) : dispatch(updateSearchPageNum(page));
     if (typeof window !== 'undefined') {
       window.scrollTo(0, 0);
     }
   };
-  const dispatch = useDispatch();
+
   return (
     <div>
       <Pagination total={total} limit={limit} pageCount={pageCount} currentPage={currentPage}>
         {({ pages, currentPage, previousPage, nextPage, totalPages, getPageItemProps }) => (
-          <ul className="c-blog-index__paginator-list">
+          <ul className="paginator-list">
             {currentPage > 2 ? (
               <li>
                 <button
@@ -57,25 +54,22 @@ export const PaginationComponent = ({ total, limit, pageCount, currentPage, sear
               return (
                 <li key={page}>
                   <button
-                    className={`pagination-item ${
-                      currentPage === page ? 'active u-detail--blue' : ''
-                    }`}
+                    className={`pagination-item ${currentPage === page ? 'active ' : ''}`}
                     {...getPageItemProps({
                       pageValue: page,
                       key: page,
-                      style: activePage,
                       onPageChange: handlePageChange,
                     })}
                   >
-                    {page}
+                    {currentPage === page ? <div>{page}</div> : page}
                   </button>
                 </li>
               );
             })}
-            {totalPages > pageCount ? (
+            {totalPages > pageCount && totalPages - currentPage > 2 ? (
               <div className="pagination-item pointer-events--none">...</div>
             ) : null}
-            {totalPages > pageCount ? (
+            {totalPages > pageCount && totalPages - currentPage > 2 ? (
               <li>
                 <button
                   className="pagination-item"

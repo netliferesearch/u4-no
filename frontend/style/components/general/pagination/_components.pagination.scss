@@ -1,0 +1,114 @@
+.paginator-list {
+  padding: 0;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  @include mq($until: desktop) {
+    margin: $spacing auto 45px auto;
+    justify-content: center;
+  }
+  margin: $spacing auto 0;
+  li {
+    display: inline-block;
+    list-style: none;
+  }
+  .pointer-events--none {
+    text-align: center;
+  }
+}
+.pagination-item {
+  font-family: $font-sans;
+  font-size: 15px;
+  line-height: 1;
+  background-color: $white;
+  color: $dark-blue;
+  border: none;
+  outline: none;
+  padding: 7px;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  border-bottom: 4px $white solid;
+  border-top: 4px $white solid;
+  svg {
+    vertical-align: middle;
+  }
+  &.disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+  &:hover {
+    color: $blue;
+    font-weight: 900;
+  }
+  &.active {
+    color: $blue;
+    background-color: $white;
+    cursor: default;
+    pointer-events: none;
+    border-bottom: 4px $blue solid;
+    border-top: 4px $white solid;
+  }
+  &.prev-button {
+    border-radius: 50%;
+    border: solid $dark-blue 0.5px;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    &:hover path {
+      stroke: $blue;
+      opacity: 100%;
+    }
+    &:hover {
+      border: solid $blue 0.5px;
+    }
+  }
+  &.last-button {
+    border-radius: 50%;
+    border: solid $dark-blue 0.5px;
+    width: 30px;
+    height: 30px;
+    &:hover path {
+      stroke: $blue;
+      opacity: 100%;
+    }
+    &:hover {
+      border: solid $blue 0.5px;
+    }
+  }
+  &.first-button {
+    border-radius: 50%;
+    border: solid $dark-blue 0.5px;
+    width: 30px;
+    height: 30px;
+    &:hover path {
+      stroke: $blue;
+      opacity: 100%;
+    }
+    &:hover {
+      border: solid $blue 0.5px;
+    }
+  }
+  &.next-button {
+    border-radius: 50%;
+    border: solid $dark-blue 0.5px;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    &:hover path {
+      stroke: $blue;
+      opacity: 100%;
+    }
+    &:hover {
+      border: solid $blue 0.5px;
+    }
+  }
+  &.c-arrow-prev-page-svg,
+  .c-arrow-next-page-svg,
+  .c-arrow-first-page-svg,
+  .c-arrow-last-page-svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BlogEntriesFilter } from './BlogEntriesFilter';
 import { CloseButton } from '../general/buttons';
-import { clearBlogFilter, updateBlogFilters, updateBlogPageNum } from '../../helpers/redux-store';
-import { connect, useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { clearBlogFilter, updateBlogPageNum } from '../../helpers/redux-store';
+import { useDispatch, useSelector } from 'react-redux';
 import { PaginationComponent } from '../general/PaginationComponent';
 import { Post, POST_TYPE } from '../general/post/Post';
 
@@ -23,21 +22,19 @@ const applyFliters = (filters, elements) => {
 };
 
 export const BlogFilteredList = props => {
-  const { blogFilters, updateBlogFilters, blogPageNum, blogEntries = [], topics = [] } = props;
+  const { blogEntries = [], topics = [] } = props;
   const dispatch = useDispatch();
+  const blogPageNum = useSelector(state => state.blogPageNum);
+  const blogFilters = useSelector(state => state.blogFilters);
   const [filtersResults, setFiltersResults] = useState([]);
   const [currentResults, setCurrentResults] = useState([]);
-  const [pageCount, setPageCount] = useState(1);
   const limit = blogFilters.length === 0 ? 12 : 9;
-  const maxPagesListed = 5;
   const offset = (blogPageNum - 1) * limit;
   const total = filtersResults.length ? filtersResults.length : currentResults.length * limit;
-  let d = currentResults.length < limit ? 1 : currentResults.length;
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (window.location.search.indexOf('blogPageNum') === -1) {
         dispatch(updateBlogPageNum(1));
-        //updateBlogPageNum(1);
       }
     }
   }, []);
@@ -45,7 +42,6 @@ export const BlogFilteredList = props => {
   const handleRemove = index => {
     dispatch(clearBlogFilter(index));
     dispatch(updateBlogPageNum(1));
-    //updateBlogPageNum(1);
   };
 
   useEffect(
@@ -61,17 +57,6 @@ export const BlogFilteredList = props => {
     },
     [filtersResults, offset]
   );
-
-  useEffect(
-    () => {
-      setPageCount(
-        Math.ceil(filtersResults.length / d) > maxPagesListed
-          ? maxPagesListed
-          : Math.ceil(filtersResults.length / d)
-      );
-    },
-    [currentResults, filtersResults]
-  );
   return (
     <div>
       <div
@@ -79,9 +64,8 @@ export const BlogFilteredList = props => {
           blogFilters.length ? 'c-blog-index__filters--active' : ''
         }`}
       >
-        <BlogEntriesFilter topics={topics} setFilters={updateBlogFilters} filters={blogFilters} />
+        <BlogEntriesFilter topics={topics} filters={blogFilters} />
         <div className="c-blog-index__filters-set">
-          {/* {console.log(blogFilters)} */}
           {blogFilters.map((f, index) => (
             <div className="c-blog-index__tag-container" key={index}>
               <div className="c-blog-index__tag">{f.title}</div>
@@ -107,27 +91,7 @@ export const BlogFilteredList = props => {
           ))}
         </div>
       ) : null}
-      {/* {console.log(blogPageNum)} */}
-      {/* {filtersResults && filtersResults.length > 0 && ( */}
-      <PaginationComponent
-        className="c-blog-index__paginator"
-        total={total}
-        limit={limit}
-        pageCount={pageCount}
-        currentPage={blogPageNum}
-      />
-      {/* )} */}
+      <PaginationComponent total={total} limit={limit} currentPage={blogPageNum} />
     </div>
   );
 };
-
-const mapStateToProps = ({ blogFilters = [], blogPageNum = 1 }) => ({ blogFilters, blogPageNum });
-
-const mapDispatchToProps = dispatch => ({
-  updateBlogFilters: bindActionCreators(updateBlogFilters, dispatch),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BlogFilteredList);

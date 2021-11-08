@@ -32,18 +32,11 @@
 
   .c-longform-grid__standard {
     padding: 0 $spacing;
-    //padding: 0;
     grid-column: 5 / 6;
-    //word-break: break-all;
-    @include mq($from: tablet) {
-      padding: 0;
-      //word-break: normal;
-    }
   }
 
   .c-longform-grid__medium {
     padding: 0 $spacing;
-    //padding: 0;
     grid-column: 4 / 7;
   }
 
@@ -65,7 +58,6 @@
     grid-column: 2 / 9;
     @include mq($from: tablet) {
       padding: 0;
-      //word-break: normal;
     }
   }
 
@@ -88,7 +80,7 @@ div {
   .c-longform-grid__large,
   .c-longform-grid__medium,
   .c-longform-grid__standard {
-    //padding: 0;
+    padding: 0;
     margin: 32px 0;
   }
   .c-longform-grid__standard {
@@ -146,7 +138,6 @@ h1.c-longform-grid__standard {
   font-size: 36px;
   line-height: 42px;
   letter-spacing: -0.01em;
-  //margin: 64px auto 32px auto;
 }
 
 h2.c-longform-grid__standard {
@@ -156,7 +147,6 @@ h2.c-longform-grid__standard {
   font-size: 24px;
   line-height: 32px;
   letter-spacing: 0.02em;
-  //margin: 64px auto 32px auto;
 }
 
 h3.c-longform-grid__standard {
@@ -166,7 +156,6 @@ h3.c-longform-grid__standard {
   font-size: 20px;
   line-height: 26px;
   letter-spacing: 0.02em;
-  //margin: 64px auto 32px auto;
 }
 h4.c-longform-grid__standard {
   font-family: $font-sans;
@@ -175,7 +164,6 @@ h4.c-longform-grid__standard {
   font-size: 16px;
   line-height: 19px;
   letter-spacing: 0.02em;
-  //margin: 64px auto 32px auto;
 }
 h5.c-longform-grid__standard {
   font-family: $font-sans;
@@ -184,7 +172,6 @@ h5.c-longform-grid__standard {
   font-size: 16px;
   line-height: 19px;
   letter-spacing: 0.02em;
-  //margin: 64px auto 32px auto;
 }
 
 .c-article__pullQuote {
@@ -217,7 +204,6 @@ h5.c-longform-grid__standard {
   font-size: 15px;
   line-height: 1.33;
   padding: 0 24px;
-  // margin: 0 auto;
   @include mq($from: tablet) {
     padding-left: 0;
     padding-right: 0;
@@ -226,7 +212,6 @@ h5.c-longform-grid__standard {
 
 ol.c-longform-grid__standard,
 ul.c-longform-grid__standard {
-  //list-style-position: inside;
   padding-left: 48px;
   @include mq($from: tablet) {
     padding-left: 24px;

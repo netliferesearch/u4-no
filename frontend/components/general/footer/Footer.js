@@ -13,7 +13,7 @@ const classes = BEMHelper({
 });
 
 const Footer = () => (
-  <footer className="c-footer o-wrapper-full-width u-bg--dark-blue">
+  <footer className="c-footer u-bg--dark-blue">
     <div className="u-flex-sb o-wrapper-medium">
       <div className="c-footer__col1">
         <Newsletter cta="Subscribe to our emails" text1="" text2="" button="Sign up" />

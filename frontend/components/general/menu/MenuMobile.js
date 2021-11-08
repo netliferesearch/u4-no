@@ -10,7 +10,7 @@ import { MainMenuMobileItem } from './MainMenuMobileItem';
 import { SubMenuItem } from './SubMenuItem';
 import { Accordion } from '../accordion/Accordion';
 import { CloseSearch } from '../../icons/CloseSearch';
-import SearchFieldV2 from '../../search/SearchField-v2';
+import { SearchField } from '../../search/SearchField';
 
 export const MenuMobile = props => {
   const {
@@ -119,7 +119,14 @@ export const MenuMobile = props => {
           >
             <ul className="c-menu__list">
               {menuItems[4].sections.map((s, index) =>
-                s.items.map((i, index) => <SubMenuItem key={index} label={i.label} slug={i.slug} type={i._id !== 'frontpage' ? s.type : ''}/>)
+                s.items.map((i, index) => (
+                  <SubMenuItem
+                    key={index}
+                    label={i.label}
+                    slug={i.slug}
+                    type={i._id !== 'frontpage' ? s.type : ''}
+                  />
+                ))
               )}
             </ul>
           </Accordion>
@@ -129,11 +136,12 @@ export const MenuMobile = props => {
       {searchOpen ? (
         <div className="c-menu--mobile__backdrop c-menu--mobile__submenu">
           <div className="c-menu--mobile__trigger-box">
-            <SearchFieldV2
+            <SearchField
               isOpen={activeSearchMenu}
               isAlwaysOpen={true}
               triggerSearchMenu={triggerSearchMenu}
               searchData={searchData}
+              menu={true}
             />
           </div>
         </div>

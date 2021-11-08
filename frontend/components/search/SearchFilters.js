@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { replaceSearchFilters, updateSearchSorting } from '../../helpers/redux-store';
 import { useRouter } from 'next/router';
-import SearchFilterPublicationTypes from './SearchFilterPublicationTypes';
-import SearchFilterTopics from './SearchFilterTopics';
-import SearchFilterLanguages from './SearchFilterLanguages';
-import SearchFilterYears from './SearchFilterYears';
-import SearchFilterReset from './SearchFilterReset';
+import { SearchFilterPublicationTypes } from './SearchFilterPublicationTypes';
+import { SearchFilterTopics } from './SearchFilterTopics';
+import { SearchFilterLanguages } from './SearchFilterLanguages';
+import { SearchFilterYears } from './SearchFilterYears';
+import { SearchFilterReset } from './SearchFilterReset';
 import { getSearchAggregations } from '../../helpers/elastic-data-loader';
-import SearchFilterContentTypes from './SearchFilterContentTypes';
+import { SearchFilterContentTypes } from './SearchFilterContentTypes';
 
 function toggle() {
   if (document) {
@@ -16,7 +16,7 @@ function toggle() {
   }
 }
 
-export const SearchFiltersV3 = props => {
+export const SearchFilters = props => {
   const dispatch = useDispatch();
   const router = useRouter();
 

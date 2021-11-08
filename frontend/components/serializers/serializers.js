@@ -18,7 +18,6 @@ import Mosaic from '../Mosaic';
 import { ArticlePullQuote } from '../general/pull-quote/ArticlePullQuote';
 import SimpleMosaic from '../SimpleMosaic';
 import Table from '../Table';
-//import ToggleTextBox from '../general/text-box/ToggleTextBox';
 import WorkshopMosaic from '../WorkshopMosaic';
 import { SimpleTextBox } from '../general/textbox/SimpleTextBox';
 const FunkyTable = dynamic(() => import('../FunkyTable'));
@@ -82,7 +81,6 @@ const serializers = {
     box: ({ node: { content = false } }) =>
       content && (
         <div className="c-longform-grid__standard">
-          {/* <ToggleTextBox content={content} /> */}
           <SimpleTextBox content={content} />
         </div>
       ),
@@ -196,25 +194,23 @@ const serializers = {
     ),
     vimeo: ({ node: { src, title, size } }) => (
       <div {...classes('full')}>
-        <div className="">
-          <div className="o-wrapper o-wrapper-medium ">
-            <h2 className="c-topic-section__title u-margin-top-large u-margin-bottom-huge">
-              {title}
-            </h2>
-            <div className={`u-video u-margin-bottom-huge ${size || ''}`}>
-              <ReactPlayer
-                controls
-                width="100%"
-                height="0"
-                config={{
-                  preload: true,
-                }}
-                style={{
-                  margin: '40px auto 40px',
-                }}
-                url={src}
-              />
-            </div>
+        <div>
+          <h2 className="c-topic-section__title u-margin-top-large u-margin-bottom-huge">
+            {title}
+          </h2>
+          <div className={`u-video u-margin-bottom-huge ${size || ''}`}>
+            <ReactPlayer
+              controls
+              width="100%"
+              height="0"
+              config={{
+                preload: true,
+              }}
+              style={{
+                margin: '40px auto 40px',
+              }}
+              url={src}
+            />
           </div>
         </div>
       </div>
