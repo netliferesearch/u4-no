@@ -3,6 +3,8 @@ import { menuItems } from './menuItems';
 import { MainMenuItem } from './MainMenuItem';
 import { SearchField } from '../../search/SearchField';
 import { CloseSearch } from '../../icons/CloseSearch';
+import { Provider } from 'react-redux';
+import { initStore } from '../../../helpers/redux-store';
 
 export const MainMenu = ({
   searchOpen,
@@ -15,6 +17,7 @@ export const MainMenu = ({
   searchData,
   setSearchOpen,
 }) => {
+  const store = initStore();
   return (
     <div className="c-menu__items c-main-menu">
       {searchOpen === false ? (
@@ -36,13 +39,15 @@ export const MainMenu = ({
         </>
       ) : (
         <div className="c-menu__search-holder">
-          <SearchField
-            isOpen={activeSearchMenu}
-            isAlwaysOpen={true}
-            triggerSearchMenu={triggerSearchMenu}
-            searchData={searchData}
-            menu={true}
-          />
+          <Provider store={store}>
+            <SearchField
+              isOpen={activeSearchMenu}
+              isAlwaysOpen={true}
+              triggerSearchMenu={triggerSearchMenu}
+              searchData={searchData}
+              menu={true}
+            />
+          </Provider>
           <CloseSearch setSearchOpen={setSearchOpen} searchOpen={searchOpen} />
         </div>
       )}
