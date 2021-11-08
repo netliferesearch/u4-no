@@ -10,7 +10,6 @@
 @import 'objects/objects.wrapper';
 
 // COMPONENTS
-//@import 'components/components.article-header';
 @import 'components/components.article';
 @import 'components/components.article-nav';
 @import 'components/components.boxOnBox';
@@ -19,7 +18,6 @@
 @import 'components/components.color-box';
 @import 'components/components.chart';
 @import 'components/components.duo';
-//@import 'components/components.frontpage-feature';
 @import 'components/components.figure';
 @import 'components/components.filters-v2';
 @import 'components/components.glossary';
@@ -30,7 +28,6 @@
 @import 'components/components.link-list';
 @import 'components/components.logo';
 @import 'components/components.oneColumnBox';
-//@import 'components/components.overview-page';
 @import 'components/components.top-bar';
 @import 'components/components.headroom';
 @import 'components/components.boxOnImage';
@@ -43,33 +40,19 @@
 @import 'components/components.table';
 @import 'components/components.toggle-block';
 @import 'components/components.workshop-mosaic';
-//@import 'components/components.simple-hero';
-// @import "components/components.buttons";
-// @import "components/components.page-head";
-// @import "components/components.page-foot";
-// @import "components/components.site-nav";
-// @import "components/components.ads";
-// @import "components/components.promo";
-//@import 'components/_components.frontpageSearch';
-//@import 'components/components.person';
-//@import 'components/components.persons';
 @import 'components/_components.search-v2';
 @import 'components/v2/components.search';
 @import 'components/v2/components.top-bar';
-//@import 'components/_components.introduction-text';
 @import 'components/_components.partner-agencies';
 @import 'components/_components.search-results-v2';
 @import 'components/_components.publication-drawer';
 @import 'components/_components.pdf-viewer';
 @import 'components/components.pagebreak';
-
 @import 'components/v2/components.blog-list';
 @import 'components/v2/components.blog-single';
-//@import 'components/v2/components.tags-section';
-//@import 'components/v2/components.related-items-list';
 @import 'components/v2/components.abaut-author';
-
 @import 'components/general/accordion/components.accordion';
+@import 'components/general/pagination/components.pagination';
 @import 'components/general/article-header/components.article-header';
 @import 'components/general/article-sidebar/components.article-sidebar';
 @import 'components/general/authors-list/components.authors-list';

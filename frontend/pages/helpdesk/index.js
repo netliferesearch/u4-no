@@ -12,7 +12,6 @@ import { PartnerLogo10Blue } from '../../components/icons/PartnerLogo10Blue';
 import { PostCarousel } from '../../components/front-page/PostCarousel';
 import { POST_TYPE } from '../../components/general/post/Post';
 import { TextImage } from '../../components/general/text-image/TextImage';
-import PartnerLogo8 from '../../components/icons/PartnerLogo10';
 
 const ServicePage = ({
   data: {
@@ -72,7 +71,7 @@ const ServicePage = ({
             </div>
           </div>
         </div>
-        <div className="o-wrapper-medium o-wrapper-mobile-full">
+        <div className="o-wrapper-medium o-wrapper-tablet-full">
           <div className="u-top-margin--64">
             <Banner title={'Ask our free helpdesk'}>
               <div className="c-testimonial">
@@ -91,7 +90,7 @@ const ServicePage = ({
           </div>
         </div>
         <div className="u-top-margin--64" />
-        <div className="o-wrapper-medium o-wrapper-mobile-full">
+        <div className="o-wrapper-medium o-wrapper-tablet-full">
           <Banner bannerSubtitle={bannerSubtitle} title={bannerHeading.headingValue} onDark={false}>
             <BlockContent blocks={bannerContent} serializers={serializers} />
           </Banner>

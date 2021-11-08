@@ -79,9 +79,6 @@
 .c-frontpage {
   .c-events-calendar-svg {
     margin-right: 10px;
-    @include mq($from: mobile, $until: desktop) {
-      display: none;
-    }
   }
 }
 

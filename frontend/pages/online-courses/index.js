@@ -86,7 +86,7 @@ const CoursesPage = ({
             text="In-depth, expert-led courses for our partner agencies"
           />
         </section>
-        <section>
+        <section className="o-wrapper-medium o-wrapper-tablet-full">
           <Banner title={'What participant say'}>
             {resources.length > 0
               ? resources
@@ -99,7 +99,7 @@ const CoursesPage = ({
           <TextImage text={boxAndImg1.block} image={boxAndImg1.img} imagePosition={true} />
           <TextImage text={boxAndImg2.block} image={boxAndImg2.img} imagePosition={false} />
         </div>
-        <div className="o-wrapper-medium o-wrapper-mobile-full u-top-margin--48">
+        <div className="o-wrapper-medium o-wrapper-tablet-full u-top-margin--48">
           <Banner onDark={false}>
             <BlockContent blocks={twoCols} serializers={serializers} />
           </Banner>

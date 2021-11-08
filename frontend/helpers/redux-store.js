@@ -66,6 +66,8 @@ const defaultState = {
   searchFilters: [],
   searchResultsVisible: false,
   searchPageNum: 1,
+  blogPageNum: 1,
+  blogFilters: [],
   searchResults: {},
   defaultSearchAggs: [],
 };
@@ -242,8 +244,9 @@ export const updateSearchAggregations = defaultSearchAggs => {
 export const saveScrollPosition = scrollPosition => dispatch =>
   dispatch({ type: actionTypes.SCROLL_POSITION_SAVE, scrollPosition });
 
-export const updateBlogFilters = (blogFilters = []) => dispatch =>
-  dispatch({ type: actionTypes.BLOG_UPDATE_FILTERS, blogFilters });
+export const updateBlogFilters = blogFilters => {
+  return { type: actionTypes.BLOG_UPDATE_FILTERS, blogFilters };
+};
 
 export const clearBlogFilters = () => dispatch =>
   dispatch({ type: actionTypes.BLOG_CLEAR_FILTERS });

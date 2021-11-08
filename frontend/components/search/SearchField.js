@@ -4,9 +4,11 @@ import queryString from 'query-string';
 import { React, useState, useEffect, useRef } from 'react';
 import { LoaderV2 } from '../LoaderV2';
 import { SearchIcon } from '../icons/SearchIcon';
+import { useDispatch } from 'react-redux';
 
 export const SearchField = props => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [typingTimeout, setTypingTimeout] = useState(0);
   useEffect(
@@ -90,6 +92,7 @@ export const SearchField = props => {
                     // changes value, we need to also listen for the enter key
                     // so that we can re-trigger query.
                     if (event.keyCode === 13) {
+                      dispatch(updateSearchPageNum(1));
                       updateSearch({ urlUpdateType: 'push', value: event.target.value });
                     }
                   },

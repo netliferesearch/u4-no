@@ -60,7 +60,7 @@
   transform: translateY(50%);
   top: calc(50% - 84px);
   width: 62px;
-  @include mq($from: mobile, $until: desktop) {
+  @include mq($from: mobile, $until: 1350px) {
     display: none;
   }
 }

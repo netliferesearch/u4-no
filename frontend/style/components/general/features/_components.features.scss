@@ -24,8 +24,6 @@
 }
 
 .c-feature-list__item {
-  //width: 100%;
-  //max-width: 370px;
   @include mq($from: tablet) {
   }
 }
@@ -34,7 +32,7 @@
   padding-bottom: 48px;
   padding-left: 24px;
   padding-right: 24px;
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     padding-bottom: 64px;
     padding-left: 0;
     padding-right: 0;
@@ -44,9 +42,6 @@
 .c-features__icon {
   img {
     width: 90px;
-    // filter: brightness(600%);
-    // mix-blend-mode: exclusion;
-    // opacity: 0.9;
     filter: brightness(8);
     opacity: 0.7;
   }
