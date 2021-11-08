@@ -11,6 +11,8 @@ import { SubMenuItem } from './SubMenuItem';
 import { Accordion } from '../accordion/Accordion';
 import { CloseSearch } from '../../icons/CloseSearch';
 import { SearchField } from '../../search/SearchField';
+import { Provider } from 'react-redux';
+import { initStore } from '../../../helpers/redux-store';
 
 export const MenuMobile = props => {
   const {
@@ -23,7 +25,7 @@ export const MenuMobile = props => {
     activeMenu,
     setActiveMenu,
   } = props;
-
+  const store = initStore();
   const triggerMenu = e => {
     e.preventDefault();
     setActiveMenu(!activeMenu);
@@ -136,13 +138,15 @@ export const MenuMobile = props => {
       {searchOpen ? (
         <div className="c-menu--mobile__backdrop c-menu--mobile__submenu">
           <div className="c-menu--mobile__trigger-box">
-            <SearchField
-              isOpen={activeSearchMenu}
-              isAlwaysOpen={true}
-              triggerSearchMenu={triggerSearchMenu}
-              searchData={searchData}
-              menu={true}
-            />
+            <Provider store={store}>
+              <SearchField
+                isOpen={activeSearchMenu}
+                isAlwaysOpen={true}
+                triggerSearchMenu={triggerSearchMenu}
+                searchData={searchData}
+                menu={true}
+              />
+            </Provider>
           </div>
         </div>
       ) : null}
