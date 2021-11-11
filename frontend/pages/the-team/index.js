@@ -7,7 +7,6 @@ import serializers from '../../components/serializers/serializers';
 import { PERSON_CARD_TYPE } from '../../components/general/person/PersonCard';
 import { PageIntro } from '../../components/general/PageIntro';
 import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
-import { getParentPath } from '../../helpers/getParentPath';
 
 const Persons = props => {
   const {
@@ -44,7 +43,11 @@ const Persons = props => {
         </div>
 
         <div className="o-wrapper-medium">
-          <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading={'Helpdesk'} members={helpdesk} />
+          <Team
+            type={PERSON_CARD_TYPE.IMAGE_TOP}
+            heading={'Helpdesk – Transparency International'}
+            members={helpdesk}
+          />
           <hr className="u-section-underline--no-margins" />
         </div>
 

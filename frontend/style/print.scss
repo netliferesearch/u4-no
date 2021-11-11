@@ -34,6 +34,7 @@
 @media print {
   body {
     color: black;
+    font-family: $font-serif;
   }
   /* hide divs containing next scripts to avoid trailing blank page */
   body > div + div,
@@ -427,4 +428,9 @@
     height: 0;
     page-break-after: always;
   }
+}
+
+.c-authors-list__title {
+  margin-bottom: 0;
+  color: $dark-blue;
 }

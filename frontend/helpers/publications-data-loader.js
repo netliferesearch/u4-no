@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Error404 from '../components/Error404';
-import { limit } from '../components/search/SearchResultsV3';
+import { limit } from '../components/search/SearchResults';
 
 const elasticsearch = require('elasticsearch');
 
@@ -24,6 +24,12 @@ const aggregations = {
   publicationTypes: {
     terms: {
       field: 'publicationTypeTitle.keyword',
+      size: 100,
+    },
+  },
+  contentTypes: {
+    terms: {
+      field: 'contentType',
       size: 100,
     },
   },
@@ -107,7 +113,7 @@ const doSearch = async ({ query }) => {
 
   try {
     const result = await client.search({
-      index: process.env.ES_INDEX || 'u4-staging-*',
+      index: process.env.NEXT_PUBLIC_ENV ? `u4-${process.env.NEXT_PUBLIC_ENV}-*` : 'u4-staging-*',
       body: {
         query: {
           function_score: {
@@ -189,7 +195,7 @@ const doSearch = async ({ query }) => {
 export const getSearchAggregations = async () => {
   try {
     const result = await client.search({
-      index: process.env.ES_INDEX || 'u4-staging-*',
+      index: `u4-${process.env.NEXT_PUBLIC_ENV}-*` || 'u4-staging-*',
       body: {
         query: { match_all: {} },
         aggs: aggregations,

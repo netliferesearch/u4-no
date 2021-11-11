@@ -12,7 +12,6 @@ import { PartnerLogo10Blue } from '../../components/icons/PartnerLogo10Blue';
 import { PostCarousel } from '../../components/front-page/PostCarousel';
 import { POST_TYPE } from '../../components/general/post/Post';
 import { TextImage } from '../../components/general/text-image/TextImage';
-import PartnerLogo8 from '../../components/icons/PartnerLogo10';
 
 const ServicePage = ({
   data: {
@@ -23,6 +22,7 @@ const ServicePage = ({
     lead = [],
     relatedUrl = {},
     url = '',
+    latestHelpdeskAnswers = [],
   },
 }) => {
   const standFirst = sections.filter(i => i._type === 'heading')[0];
@@ -71,7 +71,7 @@ const ServicePage = ({
             </div>
           </div>
         </div>
-        <div className="o-wrapper-medium o-wrapper-mobile-full">
+        <div className="o-wrapper-medium o-wrapper-tablet-full">
           <div className="u-top-margin--64">
             <Banner title={'Ask our free helpdesk'}>
               <div className="c-testimonial">
@@ -90,7 +90,7 @@ const ServicePage = ({
           </div>
         </div>
         <div className="u-top-margin--64" />
-        <div className="o-wrapper-medium o-wrapper-mobile-full">
+        <div className="o-wrapper-medium o-wrapper-tablet-full">
           <Banner bannerSubtitle={bannerSubtitle} title={bannerHeading.headingValue} onDark={false}>
             <BlockContent blocks={bannerContent} serializers={serializers} />
           </Banner>
@@ -101,7 +101,7 @@ const ServicePage = ({
         <section>
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel
-              posts={expertPublications.expertAnswersRef}
+              posts={latestHelpdeskAnswers}
               type={POST_TYPE.PUBLICATION}
               buttonPath="/publications"
               title="Latest U4 helpdesk answers"
@@ -120,13 +120,12 @@ export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `*[_type == "frontpage" && slug.current == "helpdesk-new"][0]{
         title,
-            longTitle,
-            slug,
-            lead,
-            _id,
-      sections[]{
-        ...,
-        expertAnswersRef[]->{
+        longTitle,
+        slug,
+        lead,
+        _id,
+        sections[],
+          "latestHelpdeskAnswers": *[_type  == "publication" && language == "en_US" && publicationType->title == "U4 Helpdesk Answer"] | order(date.utc desc) {
           _id,
           _type,
           slug,
@@ -136,9 +135,8 @@ export default DataLoader(ServicePage, {
           title,
           "publicationType": publicationType->title,
           "featuredImage": featuredImage.asset->url
-        }
-      },
-      "featuredImage": featuredImage.asset->url
+        }[0..8],
+       "featuredImage": featuredImage.asset->url
     }
 `,
     param: { slug },

@@ -88,7 +88,7 @@ const ServicePage = ({ data: { events = {}, persons = {}, service = {}, url = {}
             text="Upcoming workshops for our partner staff. "
           />
         </section>
-        <section>
+        <section className="o-wrapper-medium o-wrapper-tablet-full">
           <Banner title="What participants say">
             <div className="c-testimonial">
               <div className="c-testimonial__text">

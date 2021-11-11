@@ -66,7 +66,7 @@ const About = ({ data: { about = {}, url = {} } }) => {
 export default DataLoader(About, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery:
-      '{ "about": *[slug.current == "about-u4-new"][0]{title, slug, lead, _id, "resources": resources[]->{...,slug}, "sections": sections, "featuredImage": featuredImage.asset->url} }',
+      '{ "about": *[(_id == "f54d724e-8471-4413-aeb8-3ef5276e9dfc") || (slug.current == "about-u4-new")][0]{title, slug, lead, _id, "resources": resources[]->{...,slug}, "sections": sections, "featuredImage": featuredImage.asset->url} }',
     param: { slug },
   }),
   materializeDepth: 3,

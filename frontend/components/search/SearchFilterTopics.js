@@ -1,22 +1,18 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import sortBy from 'lodash/sortBy';
 import slugify from 'slugify';
-import {
-  addSearchFilter,
-  removeSearchFilter,
-  clearAllSearchFilters,
-  replaceSearchFilters,
-  updateSearchPageNum,
-} from '../../helpers/redux-store';
-import SearchFilterToggle from './SearchFilterToggle';
+import { addSearchFilter, removeSearchFilter } from '../../helpers/redux-store';
+import { SearchFilterToggle } from './SearchFilterToggle';
 const isFilterActive = ({ searchFilters = [], filterName }) =>
   !!searchFilters.find(name => name === filterName);
 
-const SearchFilterTopics = props => {
+export const SearchFilterTopics = () => {
   const dispatch = useDispatch();
-  const { searchFilters, defaultBuckets = [], addSearchFilter, removeSearchFilter } = props;
+  const searchFilters = useSelector(state => state.searchFilters);
+  const defaultBuckets = useSelector(state =>
+    sortBy(state.defaultSearchAggs.filedUnderTopicNames.buckets, ['key'])
+  );
   return (
     <form className="c-filters-v2__item">
       <div className="c-filters-v2__item-head">
@@ -37,11 +33,9 @@ const SearchFilterTopics = props => {
                     value={key}
                     onChange={event => {
                       if (event.target.checked) {
-                        addSearchFilter(filterName);
-                        dispatch(updateSearchPageNum(1));
+                        dispatch(addSearchFilter(filterName));
                       } else {
-                        removeSearchFilter(filterName);
-                        dispatch(updateSearchPageNum(1));
+                        dispatch(removeSearchFilter(filterName));
                       }
                     }}
                   />
@@ -55,23 +49,3 @@ const SearchFilterTopics = props => {
     </form>
   );
 };
-
-const mapStateToProps = ({
-  defaultSearchAggs: { filedUnderTopicNames: { buckets: defaultBuckets = [] } = {} } = {},
-  searchFilters,
-}) => ({
-  defaultBuckets: sortBy(defaultBuckets, ['key']),
-  searchFilters,
-});
-
-const mapDispatchToProps = dispatch => ({
-  addSearchFilter: bindActionCreators(addSearchFilter, dispatch),
-  removeSearchFilter: bindActionCreators(removeSearchFilter, dispatch),
-  clearAllSearchFilters: bindActionCreators(clearAllSearchFilters, dispatch),
-  replaceSearchFilters: bindActionCreators(replaceSearchFilters, dispatch),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchFilterTopics);

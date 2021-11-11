@@ -8,7 +8,6 @@ const AuthorList = ({ authors = [], intro = 'Author', pluralize = true }) => {
       <h4 className="c-authors-list__title">
         {intro}
         {pluralize && authors.length > 1 ? 's' : ''}
-        {':'}
       </h4>
       {authors &&
         authors
@@ -28,31 +27,8 @@ const AuthorList = ({ authors = [], intro = 'Author', pluralize = true }) => {
             }) => (
               <div key={_id} className="author c-authors-list__item">
                 <div className="c-authors-list__name">
-                  <span>
-                    {slug &&
-                    affiliations.length &&
-                    affiliations.some(
-                      ({ _ref }) =>
-                        _ref === '419c2497-8e24-4599-9028-b5023830c87f' ||
-                        _ref === '17ec3576-0afa-4203-9626-a38a16b27c2a' ||
-                        _ref === '3babc8f1-9e38-4493-9823-a9352b46585b'
-                    ) ? (
-                      <LinkToItem type="person" slug={slug.current}>
-                        <a className="c-btn--link">
-                          <span>{`${firstName} ${surname}`}</span>
-                        </a>
-                      </LinkToItem>
-                    ) : (
-                      `${firstName} ${surname}`
-                    )}
-                  </span>
+                  <span>{`${firstName} ${surname}`}</span>
                 </div>
-                {position && (
-                  <div className="c-authors-list__position">
-                    <span>{position}</span>
-                  </div>
-                )}
-                {/* {affiliations && affiliations[0] ? <p>{affiliations[0].target.name}</p> : null} */}
               </div>
             )
           )}
@@ -81,8 +57,6 @@ AuthorList.propTypes = {
 };
 
 export default AuthorList;
-
-
 
 // import React from 'react';
 // import PropTypes from 'prop-types';
@@ -155,4 +129,4 @@ export default AuthorList;
 //   ).isRequired,
 // };
 
-//export default AuthorList;
+// export default AuthorList;

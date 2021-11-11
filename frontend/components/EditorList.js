@@ -7,42 +7,27 @@ const EditorList = ({ editors = [], intro = 'Series editor', pluralize = true })
       <h4 className="c-authors-list__title">
         {intro}
         {pluralize && editors.length > 1 ? 's' : ''}
-        {':'}
       </h4>
       {editors
         .map(editor => (editor.target ? editor.target : editor))
-        .map(({ _id = '', firstName = '', surname = '', slug = {}, position = '' }, affiliations = []) => (
-          <div key={_id} className="author c-authors-list__item">
-            <div className="c-authors-list__name">
-              {_id ? (
-                <LinkToItem type="person" slug={slug}>
-                  <a className="c-btn--link">
-                    <span>{firstName} {surname}</span>
-                  </a>
-                </LinkToItem>
-              ) : (
-                <p>
-                  <span>
-                    {firstName} {surname}
-                  </span>
-                </p>
-              )}
-            </div>
-            {position && (
-              <div className="c-authors-list__position">
-                <span>{position}</span>
+        .map(
+          (
+            { _id = '', firstName = '', surname = '', slug = {}, position = '' },
+            affiliations = []
+          ) => (
+            <div key={_id} className="author c-authors-list__item">
+              <div className="c-authors-list__name">
+                <span>
+                  {firstName} {surname}
+                </span>
               </div>
-            )}
-            {/* {editors.length > 1 && index + 2 < editors.length && <span>, </span>}
-            {editors.length > 1 && index + 2 === editors.length && <span> {`${and}`} </span>} */}
-            {/* {affiliations && affiliations[0] ? <p>{affiliations[0].target.name}</p> : null} */}
-          </div>
-        ))}
+            </div>
+          )
+        )}
     </div>
   );
 
 export default EditorList;
-
 
 // import React from 'react';
 // import LinkToItem from './LinkToItem';

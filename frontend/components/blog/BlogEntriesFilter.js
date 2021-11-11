@@ -3,16 +3,9 @@ import ClientOnlyPortal from '../general/ClientOnlyPortal';
 import { CloseButton, TextButton } from '../general/buttons';
 import { useOnClickOutside, useLockBodyScroll } from '../../helpers/hooks';
 import { useDispatch } from 'react-redux';
-import { updateBlogPageNum } from '../../helpers/redux-store';
+import { updateBlogPageNum, updateBlogFilters } from '../../helpers/redux-store';
 
-/**
- * V2 - Blog filter component to be used in BlogPage component
- * @param {Array} topics
- * @param {function} setFilter
- * @param {Array} filters
- */
-
-export const BlogEntriesFilter = ({ topics, setFilters, filters }) => {
+export const BlogEntriesFilter = ({ topics, filters }) => {
   const [open, setOpen] = useState();
   return (
     <div className={`c-modal${open ? ' open' : ''}`}>
@@ -27,7 +20,6 @@ export const BlogEntriesFilter = ({ topics, setFilters, filters }) => {
           title="Filter by topic"
           options={topics}
           setOpen={setOpen}
-          setFilters={setFilters}
           filters={filters}
         />
       )}
@@ -37,7 +29,9 @@ export const BlogEntriesFilter = ({ topics, setFilters, filters }) => {
 
 export const MultiselectModal = props => {
   const dispatch = useDispatch();
-  const { title = '', options, setOpen, setFilters, filters } = props;
+  const { title = '', options, setOpen, filters } = props;
+  console.log(filters);
+
   const [selectedItems, setSelectedItems] = useState(filters);
   // ref that we add to the element for which we want to detect outside clicks
   const ref = useRef();
@@ -47,7 +41,7 @@ export const MultiselectModal = props => {
   useLockBodyScroll();
 
   const handleApplyClick = () => {
-    setFilters(selectedItems);
+    dispatch(updateBlogFilters(selectedItems));
     dispatch(updateBlogPageNum(1));
     setOpen(false);
   };

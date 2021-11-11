@@ -1,12 +1,6 @@
 import { React, useState } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import {
-  addSearchFilter,
-  removeSearchFilter,
-  clearAllSearchFilters,
-  replaceSearchFilters,
-} from '../../helpers/redux-store';
+import { useDispatch, useSelector } from 'react-redux';
+import { replaceSearchFilters } from '../../helpers/redux-store';
 import sortBy from 'lodash/sortBy';
 import slugify from 'slugify';
 
@@ -18,8 +12,12 @@ const getLanguage = ({ searchFilters = [] }) => {
   const language = /lang-type-(.*)/gi.exec(languageFilter)[1];
   return language;
 };
-const SearchFilterLanguages = props => {
-  const { searchFilters, defaultBuckets = [], replaceSearchFilters } = props;
+export const SearchFilterLanguages = () => {
+  const dispatch = useDispatch();
+  const defaultBuckets = useSelector(state =>
+    sortBy(state.defaultSearchAggs.languages.buckets, ['key'])
+  );
+  const searchFilters = useSelector(state => state.searchFilters);
   const [langExpanded, setLangExpanded] = useState('');
   return (
     <form className="c-filters-v2__item">
@@ -43,10 +41,10 @@ const SearchFilterLanguages = props => {
               const value = event.target.value;
               const newFilters = [...searchFilters.filter(name => !name.startsWith('lang-type'))];
               if (!value) {
-                return replaceSearchFilters(newFilters);
+                return dispatch(replaceSearchFilters(newFilters));
               }
               newFilters.push(`lang-type-${value}`);
-              replaceSearchFilters(newFilters);
+              dispatch(replaceSearchFilters(newFilters));
             }}
             value={getLanguage({ searchFilters })}
           >
@@ -64,23 +62,3 @@ const SearchFilterLanguages = props => {
     </form>
   );
 };
-
-const mapStateToProps = ({
-  defaultSearchAggs: { languages: { buckets: defaultBuckets = [] } = {} } = {},
-  searchFilters,
-}) => ({
-  defaultBuckets: sortBy(defaultBuckets, ['key']),
-  searchFilters,
-});
-
-const mapDispatchToProps = dispatch => ({
-  addSearchFilter: bindActionCreators(addSearchFilter, dispatch),
-  removeSearchFilter: bindActionCreators(removeSearchFilter, dispatch),
-  clearAllSearchFilters: bindActionCreators(clearAllSearchFilters, dispatch),
-  replaceSearchFilters: bindActionCreators(replaceSearchFilters, dispatch),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchFilterLanguages);

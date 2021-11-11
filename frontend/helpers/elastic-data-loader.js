@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Error404 from '../components/Error404';
-import { limit } from '../components/search/SearchResultsV3';
+import { limit } from '../components/search/SearchResults';
 
 const elasticsearch = require('elasticsearch');
 
@@ -27,12 +27,6 @@ const aggregations = {
       size: 100,
     },
   },
-  // contentTypes: {
-  //   terms: {
-  //     field: 'contentType',
-  //     size: 100,
-  //   },
-  // },
   topicTitles: {
     terms: {
       field: 'topicTitles',
@@ -102,7 +96,6 @@ const doSearch = async ({
   const contentNames = filters
     .filter(filter => /^content-/gi.test(filter))
     .map(filter => /content-(.*)/gi.exec(filter)[1]);
-  // console.log({ ContentNames });
   if (contentNames.length > 0) {
     activeFilterQueries.push({
       terms: { contentType: contentNames },
@@ -275,11 +268,10 @@ const doSearch = async ({
           'filedUnderTopicNames',
           'pdfFileUrl',
           'legacypdfFileUrl',
-          // 'articleType',
         ],
       },
     });
-    console.log('Elastic data loader received data', { query, result });
+    // console.log('Elastic data loader received data', { query, result });
     return result;
   } catch (e) {
     console.error('Elasticsearch query failed', e);
@@ -307,7 +299,7 @@ export const getSearchAggregations = async () => {
 const ElasticDataLoader = Child =>
   class DataLoader extends Component {
     static async getInitialProps(nextContext) {
-      console.log('Elastic data loader fetching data');
+      // console.log('Elastic data loader fetching data');
       const { query, store } = nextContext;
       const { defaultSearchAggs = {} } = store.getState();
       // Use Promise.all so that we can fire off 1 or 2 two queries at once,

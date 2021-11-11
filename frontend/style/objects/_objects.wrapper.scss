@@ -55,7 +55,14 @@
   padding-right: $inuit-global-spacing-unit;
   padding-left: $inuit-global-spacing-unit;
 }
-
+.o-wrapper-medium.o-wrapper-tablet-full {
+  padding-right: 0;
+  padding-left: 0;
+  @include mq($from: desktop) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
 .o-wrapper-medium.o-wrapper-mobile-full {
   padding-right: 0;
   padding-left: 0;
@@ -64,7 +71,7 @@
     padding-left: $inuit-global-spacing-unit;
   }
 }
-.o-wrapper-medium.o-wrapper-mobile-full  .o-wrapper-medium {
+.o-wrapper-medium.o-wrapper-mobile-full .o-wrapper-medium {
   @include mq($from: tablet) {
     padding-right: 0;
     padding-left: 0;

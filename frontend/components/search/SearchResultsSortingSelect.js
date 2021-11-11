@@ -1,18 +1,14 @@
 import React, { Fragment, useState } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateSearchSorting } from '../../helpers/redux-store';
 
-const SearchResultsSortingSelect = ({
-  searchSorting = 'Sort by',
-  updateSearchSorting = () => {},
-}) => {
+export const SearchResultsSortingSelect = ({ searchSorting = 'Sort by' }) => {
+  const dispatch = useDispatch();
   const [expanded, setExpanded] = useState('');
   return (
     <Fragment>
       <select
         id="select-sorting"
-        value={searchSorting}
         onClick={e => {
           e.preventDefault();
           setExpanded(prevIsExpanded => !prevIsExpanded);
@@ -21,11 +17,7 @@ const SearchResultsSortingSelect = ({
           e.preventDefault();
           setExpanded(false);
         }}
-        onFocusOut={e => {
-          e.preventDefault();
-          setExpanded(false);
-        }}
-        onChange={e => updateSearchSorting(e.target.value)}
+        onChange={e => dispatch(updateSearchSorting(e.target.value))}
         className={`c-select ${expanded && 'expanded'} c-select__full-width-mobile`}
       >
         <option value="relevance">Relevance</option>
@@ -35,13 +27,3 @@ const SearchResultsSortingSelect = ({
     </Fragment>
   );
 };
-
-const mapStateToProps = state => state;
-const mapDispatchToProps = dispatch => ({
-  updateSearchSorting: bindActionCreators(updateSearchSorting, dispatch),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchResultsSortingSelect);
