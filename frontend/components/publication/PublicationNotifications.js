@@ -3,6 +3,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import BEMHelper from 'react-bem-helper';
 import serializers from '../serializers/serializers';
 import buildUrl from '../../helpers/buildUrl';
+import { ArrowNextWhite } from '../icons/ArrowNextWhite';
 
 const classes = BEMHelper({
   name: 'notifications',
@@ -33,7 +34,7 @@ export const PublicationNotifications = ({
 
   return headsUpHasContent ||
     updatedVersion ||
-    publicationType._id == '080dc28c-9d5e-4c14-972f-73f83a206b92' ||
+    publicationType._id === '080dc28c-9d5e-4c14-972f-73f83a206b92' ||
     (!headsUpHasContent &&
       !updatedVersion &&
       date &&
@@ -48,23 +49,38 @@ export const PublicationNotifications = ({
         <div className="c-notifications__note-item c-notifications__updatedVersion">
           {/* <Note /> */}
           <h4 className="u-secondary-heading">A more recent publication is available:</h4>
-          <p {...classes('label')}>
-            {/* This publication is from {pubyear}.A more recent version has been published,{' '} */}
+          <div {...classes('updatedVersionLink')}>
             <a
               href={buildUrl({
                 _type: 'publication',
                 slug: updatedVersion.slug,
               })}
               title={updatedVersion.title}
-              className="c-btn--link"
+              className=""
             >
-              {updatedVersion.title}
+              <p {...classes('label')}>
+                {/* This publication is from {pubyear}.A more recent version has been published,{' '} */}
+                {updatedVersion.title} <br />
+                <span>
+                  {updatedVersion.publicationType?.title} {updatedVersion.publicationNumber}
+                </span>
+              </p>
             </a>
-            {'.'}
-          </p>
+            <a
+              className="c-btn c-btn--link"
+              href={buildUrl({
+                _type: 'publication',
+                slug: updatedVersion.slug,
+              })}
+              title={updatedVersion.title}
+            >
+              View
+              <ArrowNextWhite />
+            </a>
+          </div>
         </div>
       )}
-      {publicationType._id == '080dc28c-9d5e-4c14-972f-73f83a206b92' && (
+      {publicationType._id === '080dc28c-9d5e-4c14-972f-73f83a206b92' && (
         <div className="c-notifications__note-item c-notifications__partner">
           {/* <Note /> */}
           <p {...classes('label')}>

@@ -48,6 +48,24 @@
     }
   }
 
+  .c-notifications__updatedVersion {
+    h4 {
+      border-bottom: 1px solid $highlight-yellow;
+      font-size: 1rem;
+      letter-spacing: 0.1rem;
+    }
+    a {
+      color: white;
+    }
+  }
+  .c-notifications__updatedVersionLink {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
   .c-notifications__label {
     margin: 0;
   }
