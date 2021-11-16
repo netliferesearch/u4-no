@@ -7,7 +7,7 @@
   @include mq($from: tablet) {
     flex-direction: row;
   }
-  &:hover {
+  &:not(.c-person-card--profile):hover {
     .c-person-card__image-wrapper {
       opacity: 0.5;
     }
