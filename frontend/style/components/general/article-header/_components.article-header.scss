@@ -20,7 +20,6 @@
   @include mq($from: tablet) {
     grid-template-columns: 3fr 1fr;
     column-gap: 120px;
-    
   }
 }
 
@@ -40,11 +39,16 @@
       padding: 0;
     }
   }
-
 }
 
 .c-article-header__meta {
   margin-top: 16px;
+}
+
+.c-article-header__download-icon {
+  height: 1em;
+  width: auto;
+  padding-left: 1em;
 }
 
 .c-article__btn-row {

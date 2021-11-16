@@ -1,6 +1,7 @@
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import { translate, langCode } from '../../helpers/translate';
+import LinkToItem from '../general/LinkToItem';
 
 export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) => {
   const trans = translate(language);
@@ -38,7 +39,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                     </h4>
                   </div>
                 ) : null}
-                {/* <div className="c-about-author__name">
+                <div className="c-about-author__name">
                   <span>
                     {slug &&
                     affiliations.length &&
@@ -55,7 +56,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                       `${firstName} ${surname}`
                     )}
                   </span>
-                </div> */}
+                </div>
                 {/* {position && (
                   <div classname="c-about-author__position">
                     <span>{position}</span>

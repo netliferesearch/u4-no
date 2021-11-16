@@ -54,7 +54,7 @@ export const RelatedSimple = ({ items }) => {
               <div key={index} className="c-related-simple__item">
                 {index > 0 && <hr className="u-section-underline--grey" />}
                 <a
-                  className="c-related-simple__link u-link--inText u-body--small u-text--grey"
+                  className="c-related-simple__link u-link--inText u-text--grey"
                   href={`/${getStringsByType(item).slugOfType}${
                     typeof item.slug === 'string' ? item.slug : item.slug.current
                   }`}

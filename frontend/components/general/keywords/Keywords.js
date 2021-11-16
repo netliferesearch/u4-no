@@ -13,13 +13,14 @@ export const Keywords = ({ title = true, keywords = [], hr = false }) => {
   return (
     <div className="c-keywords">
       {title ? <h4 className="u-secondary-heading u-secondary-h3">Keywords</h4> : null}
-      {hr ?  <hr className="u-section-underline--dark-grey" /> : null}
+      {hr ? <hr className="u-section-underline--dark-grey" /> : null}
       <div className="c-keywords__list">
         {keywords
-          .filter(keyword => keyword.category === 'keyword')
+          /* .filter(keyword => keyword.category === 'keyword') */
           .map((keyword, index) => (
             <span className="u-body--small" key={index}>
-              {keyword.keyword}{index < keywords.length - 1 ? ', ': ''}
+              {keyword.keyword}
+              {index < keywords.length - 1 ? ', ' : ''}
             </span>
           ))}
       </div>
