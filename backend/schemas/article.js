@@ -1,5 +1,6 @@
 import publicationContent from './fields/publicationContent';
 import annotations from './fields/annotations';
+import annotationsLinksOnly from './fields/annotationsLinksOnly';
 import { title, longTitle, standfirst, image, leadText, featuredImage, slug } from './fields';
 
 export default {
@@ -64,8 +65,11 @@ export default {
           lists: [],
           styles: [],
           marks: {
-            // Only allow these decorators
-            decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
+            decorators: [
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+            ],
+            annotations: annotationsLinksOnly,
           },
         },
       ],

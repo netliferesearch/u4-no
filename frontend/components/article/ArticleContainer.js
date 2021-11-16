@@ -16,6 +16,7 @@ import { AboutAuthor } from '../blog/AboutAuthor';
 import { Disclaimers } from '../general/disclaimers/Disclaimers';
 import { Keywords } from '../general/keywords/Keywords';
 import { ToggleBlock } from '../../components/publication/ToggleBlock';
+import { PublicationNotifications } from '../publication/PublicationNotifications';
 import { getParentPath } from '../../helpers/getParentPath';
 
 const ArticleContainer = (props = {}) => {
@@ -85,7 +86,7 @@ const ArticleContainer = (props = {}) => {
     );
 
   const [readerOpen, setReaderOpen] = useState(false);
-  //console.log('publication', props.data);
+  // console.log('publication', props.data);
 
   return (
     <Layout
@@ -98,7 +99,7 @@ const ArticleContainer = (props = {}) => {
         <section id="js-scroll-trigger" className="o-wrapper-medium">
           {_type !== 'publication' && !shortversion && getParentPath() !== '' ? (
             <BreadCrumbV2
-              home={true}
+              home
               title={breadCrumbTitle}
               parentSlug={`/${getParentPath()}`}
               currentTitle={title}
@@ -106,7 +107,7 @@ const ArticleContainer = (props = {}) => {
             />
           ) : null}
           {_type !== 'publication' && !shortversion && getParentPath() === '' ? (
-            <BreadCrumbV2 home={true} currentTitle={title} currentSlug={slug.current} />
+            <BreadCrumbV2 home currentTitle={title} currentSlug={slug.current} />
           ) : null}
           {/* {articleType.length ? (
                   <h2 className="c-longform-grid__standard">{articleType[0].target.title}</h2>
@@ -131,8 +132,16 @@ const ArticleContainer = (props = {}) => {
           {content.length > 0 && (
             <main className="c-reader__main o-wrapper-section c-article__row">
               <div className="c-article__content c-article__col">
+                {headsUp ? (
+                  <PublicationNotifications
+                    headsUp={headsUp}
+                    updatedVersion={false}
+                    date={date}
+                    publicationType={publicationType}
+                  />
+                ) : null}
                 {lead || abstract ? <ArticleLeadMain lead={lead} abstract={abstract} /> : null}
-                <LongformArticle content={content} title={title} lead={lead || abstract ? true : false}/>
+                <LongformArticle content={content} title={title} lead={!!(lead || abstract)} />
                 {references.length > 0 && <ToggleBlock title="References" content={references} />}
                 {abbreviations.length > 0 && (
                   <ToggleBlock title="Abbreviations" content={abbreviations} />
@@ -151,10 +160,8 @@ const ArticleContainer = (props = {}) => {
               <div className="o-wrapper-narrow">
                 <ArticleActions data={props.data} setReaderOpen={setReaderOpen} />
                 <AboutAuthor authors={authors} />
-                <Disclaimers title={true} />
-                {keywords.length > 0 ? (
-                  <Keywords title={true} keywords={keywords} hr={true} />
-                ) : null}
+                <Disclaimers title />
+                {keywords.length > 0 ? <Keywords title keywords={keywords} hr /> : null}
               </div>
             </div>
           </section>
