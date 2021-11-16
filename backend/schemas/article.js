@@ -85,7 +85,10 @@ export default {
             {
               type: 'article',
             },
-          ],
+            {
+              type: 'blog-post',
+            },
+        ],
         },
       ],
     },
