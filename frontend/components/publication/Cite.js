@@ -16,7 +16,13 @@ export const Cite = ({
   // console.log(authorsFiltered)
   const authorsString = authorsFiltered
     .map((a, index) => {
-      return `${a.surname}, ${a.firstName.substring(0, 1)}.; `;
+      return a.surname && a.firstName
+        ? `${a.surname}, ${a.firstName.substring(0, 1)}.; `
+        : a.surname
+        ? `${a.surname}; `
+        : a.firstName
+        ? `${a.firstName}; `
+        : '';
     })
     .join('');
   return (
