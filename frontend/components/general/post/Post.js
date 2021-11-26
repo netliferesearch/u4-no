@@ -11,13 +11,13 @@ import { imgLoader } from '../../../helpers/imgloader';
 import { Document, Page } from 'react-pdf/build/entry.noworker';
 
 export const POST_TYPE = {
-  SMALL: 'small', //collapsable in mobile view/normal in desktop
-  BLOG: 'blog', //special post for blogs
-  PUBLICATION: 'publication', //special post for publication
-  LARGE: 'large', //large in desktop, full with image in mobile
-  CARD: 'card', //render BlueCard onstead of Post
-  SEARCH: 'search', //displaying in search results
-  PUBLICATIONS: 'publications', //displaying in publications page results
+  SMALL: 'small', // collapsable in mobile view/normal in desktop
+  BLOG: 'blog', // special post for blogs
+  PUBLICATION: 'publication', // special post for publication
+  LARGE: 'large', // large in desktop, full with image in mobile
+  CARD: 'card', // render BlueCard onstead of Post
+  SEARCH: 'search', // displaying in search results
+  PUBLICATIONS: 'publications', // displaying in publications page results
 };
 const ellipsizeLines = {
   [POST_TYPE.SMALL]: 4,
@@ -43,6 +43,13 @@ const renderImage = type => {
     default:
       return true;
   }
+};
+
+const fullTitle = ({ title, subtitle }) => {
+  if (title && subtitle) {
+    return '.!?'.includes(title.slice(-1)) ? `${title} {subtitle}` : `${title}. ${subtitle}`;
+  }
+  return title;
 };
 
 export const Post = ({ post, type, placeholder, showImage = true }) => {
@@ -88,7 +95,7 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
                 </div>
               )}
               <h4 className="c-post__title">
-                <TextClamp text={post.title || post.topicTitle} lines={ellipsizeLines[type]} />
+                <TextClamp text={fullTitle(post) || post.topicTitle} lines={ellipsizeLines[type]} />
               </h4>
               {post.standfirst && (
                 <div className="c-post__article-content u-body">
