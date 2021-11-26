@@ -121,7 +121,7 @@ export default DataLoader(Persons, {
             }
           }},
         "courses": *[(_type == "course" || _type=="event") && references(^._id) && defined(startDate) && (endDate.utc > $now)]  | order(startDate.utc asc) {_id, _type, slug, title, startDate, lead, eventType},
-        "recentWork": *[((_type == "publication" && (^._id in authors[]._ref)) || (_type == "article" && references(^._id) )) && defined(date)] | order(date.utc desc)[0...5]{
+        "recentWork": *[((_type in ["publication","blog-post"] && (^._id in authors[]._ref)) || (_type == "article" && references(^._id) )) && defined(date)] | order(date.utc desc)[0...5]{
           _id,
           _type,
           slug,
