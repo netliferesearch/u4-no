@@ -146,6 +146,10 @@
     display: prince-footnote;
     footnote-style-position: inside;
     float: footnote;
+
+    a {
+      border-bottom: 0.2pt solid #ccc;
+    }
   }
 
   /* footnote markers */
