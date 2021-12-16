@@ -23,9 +23,9 @@ const Persons = props => {
     >
       <div className="o-wrapper-medium c-persons">
         <BreadCrumbV2
-          home={true}
+          home
           title="About U4"
-          parentSlug={`/about-u4`}
+          parentSlug="/about-u4"
           currentTitle={frontpage.title}
           currentSlug={frontpage.slug.current}
         />
@@ -38,14 +38,14 @@ const Persons = props => {
       </div>
       <div className="c-article u-margin-bottom-huge">
         <div className="o-wrapper-medium">
-          <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading={'The u4 team'} members={persons} />
+          <Team type={PERSON_CARD_TYPE.IMAGE_TOP} heading="The u4 team" members={persons} />
           <hr className="u-section-underline--no-margins" />
         </div>
 
         <div className="o-wrapper-medium">
           <Team
             type={PERSON_CARD_TYPE.IMAGE_TOP}
-            heading={'Helpdesk – Transparency International'}
+            heading="Helpdesk – Transparency International"
             members={helpdesk}
           />
           <hr className="u-section-underline--no-margins" />
@@ -54,7 +54,7 @@ const Persons = props => {
         <div className="o-wrapper-medium">
           <Team
             type={PERSON_CARD_TYPE.IMAGE_TOP}
-            heading={'Affiliates'}
+            heading="Affiliates"
             members={affiliatedexperts}
           />
         </div>
@@ -68,9 +68,9 @@ export default DataLoader(Persons, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
         "frontpage": *[_id == "627b8d42-d8f7-4cf6-9567-f6337678b688"][0],
-        "persons": *[_type == "person" && references("419c2497-8e24-4599-9028-b5023830c87f")][0..100]{..., "image": image.asset->url[0], affiliations},
-        "helpdesk": *[_type == "person" && references("17ec3576-0afa-4203-9626-a38a16b27c2a")][0..100]{..., "image": image.asset->url[0], affiliations},
-        "affiliatedexperts": *[_type == "person" && references("3babc8f1-9e38-4493-9823-a9352b46585b")][0..100]{..., "image": image.asset->url[0], affiliations},
+        "persons": *[_type == "person" && references("419c2497-8e24-4599-9028-b5023830c87f")] | order(surname asc) [0..100]{..., "image": image.asset->url[0], affiliations},
+        "helpdesk": *[_type == "person" && references("17ec3576-0afa-4203-9626-a38a16b27c2a")]| order(surname asc) [0..100]{..., "image": image.asset->url[0], affiliations},
+        "affiliatedexperts": *[_type == "person" && references("3babc8f1-9e38-4493-9823-a9352b46585b")]| order(surname asc) [0..100]{..., "image": image.asset->url[0], affiliations},
       }`,
   }),
   materializeDepth: 2,
