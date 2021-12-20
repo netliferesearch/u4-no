@@ -66,8 +66,8 @@ const PublicationNotification = ({ headsUp = false, updatedVersion = false, date
         new Date().getFullYear() - Number(pubyear) > 5 && (
           <div {...classes()}>
             <p {...classes('body')}>
-              This publication is from {pubyear}. Some of the content may be outdated. Search
-              related topics to find more recent resources.
+              This publication is from {pubyear}. Newer material may be available. Please search
+              related topics and keywords.
             </p>
           </div>
         )}
