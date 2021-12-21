@@ -95,8 +95,8 @@ export const PublicationNotifications = ({
           <div className="c-notifications__note-item c-notifications__old">
             {/* <Note /> */}
             <p {...classes('label')}>
-              This publication is from {pubyear}. Some of the content may be outdated. Search
-              related topics to find more recent resources.
+              This publication is from {pubyear}. Newer material may be available. Please search
+              related topics and keywords.
             </p>
           </div>
         )}
