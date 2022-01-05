@@ -248,7 +248,7 @@ const serializers = {
 
       if (style === 'blockquote') {
         return (
-          <div {...classes('large-right')}>
+          <div {...classes('standard')}>
             <blockquote>{children}</blockquote>
           </div>
         );

@@ -33,6 +33,7 @@ const content = {
         { title: 'H3', value: 'h3' },
         { title: 'H4', value: 'h4' },
         { title: 'H5', value: 'h5' },
+        { title: 'Quote', value: 'blockquote'}
       ],
       // Only allow numbered lists
       marks: {
