@@ -1,0 +1,11 @@
+blockquote {
+  @include inuit-font-size($font-size-tiny, $line-height-normal);
+  //border-left: $dark-grey solid 1px;
+  font-style: italic;
+  text-align: left;
+  //letter-spacing: 0.02em;
+  font-weight: 300;
+  padding: 0 $spacing;
+  margin: $spacing-small 0;
+  //line-height: 1.2em;
+}
