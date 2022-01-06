@@ -1,8 +1,10 @@
 // font css inlined in Head component instead for improved performance
 // @import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900');
+// chinese fonts (KaiTi, STKaiTi, Noto Serif TC) only if they happen to be available locally
+// but Noto Serif TC imported in print.scss for improved appearance in pdf
 
-$font-sans: 'Lato', Helvetica, Arial, sans-serif;
-$font-serif: Georgia, serif;
+$font-sans: 'Lato', Helvetica, Arial, 'KaiTi', 'STKaiti', 'Noto Serif TC', sans-serif;
+$font-serif: Georgia, 'KaiTi', 'STKaiti', 'Noto Serif TC', serif;
 
 $line-height-tiny: 1;
 $line-height-small: 1.2;
