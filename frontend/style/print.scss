@@ -347,8 +347,9 @@
 
   blockquote {
     font-size: 11pt;
+    line-height: $line-height-mid;
     //border-left: $dark-grey solid 1px;
-    font-style: italic;
+    //font-style: italic;
     text-align: left;
     //letter-spacing: 0.02em;
     font-weight: 300;

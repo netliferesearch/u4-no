@@ -1,7 +1,8 @@
 blockquote {
   @include inuit-font-size($font-size-tiny, $line-height-normal);
   //border-left: $dark-grey solid 1px;
-  font-style: italic;
+  font-style: normal;
+  line-height: $line-height-mid;
   text-align: left;
   //letter-spacing: 0.02em;
   font-weight: 300;
