@@ -76,6 +76,7 @@ export const FormModal = props => {
                     height="450px"
                     scrolling="auto"
                     style={{ border: 0, overflow: 'hidden' }}
+                    loading="lazy"
                   >
                     Your browser seems to have problems with our sign-up form. Send an e-mail to
                     course@u4.no if you wish to sign up for this course.
@@ -92,6 +93,7 @@ export const FormModal = props => {
                 height="600px"
                 scrolling="no"
                 style={{ border: 0, overflow: 'hidden' }}
+                loading="lazy"
               >
                 Your browser seems to have problems with iframes. Please try a different browser!
               </iframe>
@@ -105,6 +107,7 @@ export const FormModal = props => {
                 height="600px"
                 scrolling="no"
                 style={{ border: 0, overflow: 'hidden' }}
+                loading="lazy"
               >
                 Your browser seems to have problems with iframes. Please try a different browser!
               </iframe>
