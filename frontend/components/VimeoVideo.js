@@ -1,13 +1,10 @@
 import React from 'react';
+import ReactPlayer from 'react-player';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import Image from 'next/image';
-import sanityImageLoader from '../helpers/sanityImageLoader';
-
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from './serializers/serializers';
-import imageUrl from '../helpers/imageUrl';
 
 const classes = BEMHelper({
   name: 'article',
@@ -16,7 +13,7 @@ const classes = BEMHelper({
 
 const renderCaption = caption => {
   if (Array.isArray(caption)) {
-    return <BlockContent blocks={caption} serializers={serializers} />;
+    return <BlockContent blocks={caption} serializers={{ container: 'span', ...serializers }} />;
   }
   return caption;
 };
@@ -62,62 +59,51 @@ const figureOutFigureClass = size => {
   return 'c-figure--wide c-longform-grid__large';
 };
 
-const Figure = ({
-  asset = {},
-  altText = '',
-  crop,
-  hotspot,
-  caption = [],
-  title,
-  heading = '',
-  credit = '',
-  size,
-  sourceUrl,
-  license,
-}) => (
-  <figure {...classes('figure', null, figureOutFigureClass(size))}>
-    {(title || heading) && <p className="c-figure__title">{title || heading}</p>}
-    {asset.url ? (
-      <Image
-        loader={sanityImageLoader}
-        src={asset.url}
-        alt={altText}
-        layout="responsive"
-        width={asset.metadata.dimensions.width}
-        height={asset.metadata.dimensions.height}
-      />
+const VimeoVideo = ({ src = '', title, caption = [], credit = '', sourceUrl, license, size }) => (
+  <div {...classes('figure', null, figureOutFigureClass(size))}>
+    {title && <p className="c-figure__title">{title}</p>}
+    {src ? (
+      <div className={`u-video ${size || ''}`}>
+        <ReactPlayer
+          controls
+          width="100%"
+          height="0"
+          config={{
+            preload: true,
+          }}
+          url={src}
+        />
+      </div>
     ) : (
-      <div>(image unavailable)</div>
+      <div>(video unavailable)</div>
     )}
 
     {(caption.length > 0 || credit || sourceUrl || license) && (
-      <figcaption className="c-figure__caption">
+      <div className="c-figure__caption">
         {renderCaption(caption)}
         {renderCredit({ credit, sourceUrl, license })}
-      </figcaption>
+      </div>
     )}
-  </figure>
+  </div>
 );
 
-Figure.propTypes = {
-  asset: PropTypes.shape({
-    url: PropTypes.string,
-    altText: PropTypes.string,
-  }).isRequired,
+VimeoVideo.propTypes = {
+  src: PropTypes.string.isRequired,
   title: PropTypes.string,
-  heading: PropTypes.string,
+  caption: PropTypes.array,
   license: PropTypes.string,
   size: PropTypes.string,
+  credit: PropTypes.string,
   sourceUrl: PropTypes.string,
 };
 
-Figure.defaultProps = {
+VimeoVideo.defaultProps = {
   title: '',
-  heading: '',
   caption: [],
   license: '',
   size: '',
+  credit: '',
   sourceUrl: '',
 };
 
-export default Figure;
+export default VimeoVideo;
