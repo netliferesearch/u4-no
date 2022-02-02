@@ -21,6 +21,11 @@
     padding-right: 0;
     margin-top: $spacing-small;
   }
+
+  // remove margin between caption and credit
+  .c-longform-grid__standard.credit {
+    margin-top: -2em;
+  }
 }
 
 .c-figure--narrow {

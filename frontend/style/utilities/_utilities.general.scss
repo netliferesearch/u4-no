@@ -23,7 +23,8 @@ iframe {
     }
   }
   &.normal {
-    max-width: 768px;
+    //max-width: 768px;
+    max-width: 100%;
   }
   &.small {
     max-width: 512px;

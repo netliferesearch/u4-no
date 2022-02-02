@@ -20,6 +20,7 @@ import SimpleMosaic from '../SimpleMosaic';
 import Table from '../Table';
 import WorkshopMosaic from '../WorkshopMosaic';
 import { SimpleTextBox } from '../general/textbox/SimpleTextBox';
+import VimeoVideo from '../VimeoVideo';
 const FunkyTable = dynamic(() => import('../FunkyTable'));
 const LineChart = dynamic(() => import('../LineChart'));
 const Chart = dynamic(() => import('../Chart'));
@@ -192,29 +193,7 @@ const serializers = {
         <SimpleMosaic resources={coursesRef} cta="Register" />
       </div>
     ),
-    vimeo: ({ node: { src, title, size } }) => (
-      <div {...classes('full')}>
-        <div>
-          <h2 className="c-topic-section__title u-margin-top-large u-margin-bottom-huge">
-            {title}
-          </h2>
-          <div className={`u-video u-margin-bottom-huge ${size || ''}`}>
-            <ReactPlayer
-              controls
-              width="100%"
-              height="0"
-              config={{
-                preload: true,
-              }}
-              style={{
-                margin: '40px auto 40px',
-              }}
-              url={src}
-            />
-          </div>
-        </div>
-      </div>
-    ),
+    vimeo: ({ node }) => <VimeoVideo {...node} />,
     workshops: ({ node: { workshopsRef } }) => (
       <div className="o-wrapper">
         <WorkshopMosaic resources={workshopsRef} />
