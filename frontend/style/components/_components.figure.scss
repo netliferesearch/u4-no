@@ -23,7 +23,7 @@
   }
 
   // remove margin between caption and credit
-  .c-longform-grid__standard.credit {
+  .c-longform-grid__standard:not(:first-child).credit {
     margin-top: -2em;
   }
 }
