@@ -3,7 +3,8 @@
 .c-article-v2,
 .c-legacy-publication-container {
   .c-article__content {
-    max-width: 691px;
+    // robert removed this 08.02.2022
+    // max-width: 691px;
     @include mq($from: tablet) {
       margin-top: 40px;
       margin-bottom: 120px;

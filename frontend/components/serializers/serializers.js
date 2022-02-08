@@ -21,6 +21,7 @@ import Table from '../Table';
 import WorkshopMosaic from '../WorkshopMosaic';
 import { SimpleTextBox } from '../general/textbox/SimpleTextBox';
 import VimeoVideo from '../VimeoVideo';
+import PdfEmbed from '../pdfEmbed/PdfEmbed';
 const FunkyTable = dynamic(() => import('../FunkyTable'));
 const LineChart = dynamic(() => import('../LineChart'));
 const Chart = dynamic(() => import('../Chart'));
@@ -194,6 +195,7 @@ const serializers = {
       </div>
     ),
     vimeo: ({ node }) => <VimeoVideo {...node} />,
+    pdfEmbed: ({ node }) => <PdfEmbed {...node} />,
     workshops: ({ node: { workshopsRef } }) => (
       <div className="o-wrapper">
         <WorkshopMosaic resources={workshopsRef} />
