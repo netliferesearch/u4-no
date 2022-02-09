@@ -61,7 +61,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
           <ArticleHeader data={blogEntry} />
         </section>
         <hr className="u-section-underline--no-margins" />
-        <section className="o-wrapper-medium o-wrapper-mobile-full">
+        <section className="o-wrapper-medium ">
           <div className="c-article__row">
             <div className="content c-article__col">
               <div className="u-margin--article-top">
