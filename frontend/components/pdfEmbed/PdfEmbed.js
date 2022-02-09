@@ -13,7 +13,7 @@ import InLine from './InLine';
 
 const PdfEmbed = ({ src = '', title = '', mode = '' }) => (
   <div>
-    <div>API key: ({process.env.ADOBE_PDF_API_KEY})</div>
+    <div>API key: ({process.env.NEXT_PUBLIC_ADOBE_PDF_API_KEY})</div>
     <Script id="pdfembed" src="https://documentcloud.adobe.com/view-sdk/main.js" />
 
     {(() => {
