@@ -23,12 +23,13 @@ class FullWindow extends Component {
         embedMode: 'FULL_WINDOW',
         src: this.props.src,
         title: this.props.title,
-      });
+        showAnnotationTools: false
+      },);
     });
   }
 
   render() {
-    return <div id="pdf-div" className="full-window-div" />;
+    return <div id="pdf-div" className="full-window-div c-pdfembed-fullwindow" />;
   }
 }
 
