@@ -28,10 +28,13 @@
 
 .c-article__row {
   width: 100%;
-  display: inline-grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
+  // robert removed 09.02.2022 trying to regain padding on mobile
+  //display: inline-grid;
+  //grid-template-columns: 1fr;
+  //grid-template-rows: auto;
   @include mq($from: desktop) {
+    display: inline-grid;
+    grid-template-rows: auto;
     grid-template-columns: 5fr 2fr;
     column-gap: 20px;
   }
