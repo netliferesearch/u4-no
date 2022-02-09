@@ -27,7 +27,7 @@ class SizedContainer extends Component {
   }
 
   render() {
-    return <div id="pdf-div" className="sized-container-div" />;
+    return <div id="pdf-div" className="sized-container-div o-wrapper-medium" />;
   }
 }
 

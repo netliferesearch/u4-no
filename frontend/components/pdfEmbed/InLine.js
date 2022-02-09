@@ -28,7 +28,7 @@ class InLine extends Component {
 
   render() {
     return (
-      <div className="in-line-container">
+      <div className="in-line-container o-wrapper-medium">
         <div id="pdf-div" className="in-line-div" />
       </div>
     );
