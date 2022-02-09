@@ -126,7 +126,7 @@ const ArticleContainer = (props = {}) => {
         <hr className="u-section-underline--no-margins" />
 
         <section
-          className="o-wrapper-medium o-wrapper-mobile-full"
+          className="o-wrapper-medium "
           style={{ display: readerOpen ? 'none' : 'block' }}
         >
           {content.length > 0 && (
