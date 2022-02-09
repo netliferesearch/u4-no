@@ -3,6 +3,7 @@ import BEMHelper from 'react-bem-helper';
 
 import Layout from '../../components/Layout';
 import PdfViewer from '../../components/PdfViewer';
+import PdfEmbed from '../../components/pdfEmbed/PdfEmbed';
 import Download from '../../components/icons/Download';
 
 import DataLoader from '../../helpers/data-loader';
@@ -17,22 +18,17 @@ const Asset = ({ data: { title = '', slug = {}, asset = {} } }) => {
   const isDoc = asset.asset.url.slice(-4) === '.doc' || asset.asset.url.slice(-5) === '.docx';
   return (
     <Layout>
-      <header>
-        <div className="u-tc u-margin-bottom">
-          <a href={asset.asset.url} {...classes('download-text')}>
-            <span>Download {isPdf ? 'PDF' : 'file'}</span>
-            <Download {...classes('download-icon')} />
-          </a>
-        </div>
-      </header>
-      {isPdf && (
-        <PdfViewer
-          file={{
-            url: asset.asset.url,
-          }}
-          standalone
-        />
+      {!isPdf && (
+        <header>
+          <div className="u-tc u-margin-bottom">
+            <a href={asset.asset.url} {...classes('download-text')}>
+              <span>Download {isPdf ? 'PDF' : 'file'}</span>
+              <Download {...classes('download-icon')} />
+            </a>
+          </div>
+        </header>
       )}
+      {isPdf && <PdfEmbed src={asset.asset.url} title={title} mode="inline" />}
       {isDoc && (
         <div className="o-wrapper u-tc">
           <iframe

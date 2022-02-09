@@ -1,5 +1,5 @@
 import annotations from './annotations';
-import { image, box, vimeoVideo } from './';
+import { image, box, vimeoVideo, pdfEmbed } from './';
 import { FaTable } from 'react-icons/fa';
 
 import {
@@ -7,6 +7,7 @@ import {
   HtmlTableEditorPreview,
   HighChartsEditor,
   HighChartsEditorPreview,
+
 } from '../../components';
 
 import React from 'react'
@@ -77,6 +78,7 @@ const content = {
     },
     image,
     vimeoVideo,
+    pdfEmbed,
     {
       name: 'table',
       title: 'Table',
