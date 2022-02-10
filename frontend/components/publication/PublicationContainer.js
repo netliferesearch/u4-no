@@ -102,7 +102,7 @@ const PublicationContainer = (props = {}) => {
                 parentSlug={`/publications/${slug.current}`}
               />
             </div>
-            <div className="o-wrapper-mobile-full  o-wrapper-medium">
+            <div className="o-wrapper-medium">
               <div className="c-article__row">
                 <div className="content c-article__col">
                   <LongformArticle content={shortversionContent} />
