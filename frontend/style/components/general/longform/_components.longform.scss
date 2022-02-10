@@ -100,13 +100,13 @@ div {
   &:after {
     content: '\25A0';
     color: $blue;
-    font-size: 24px;
+    font-size: 12px;
     font-weight: bold;
     display: inline-block;
     width: 24px;
     height: 24px;
-    position: absolute;
-    bottom: 10px;
+    position: relative;
+    //bottom: 10px;
     padding: 0 6px;
     //left: 0;
   }
