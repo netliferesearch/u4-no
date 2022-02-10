@@ -105,8 +105,8 @@ div {
     display: inline-block;
     width: 24px;
     height: 24px;
-    position: relative;
-    //bottom: 10px;
+    position: absolute;
+    bottom: 0px;
     padding: 0 6px;
     //left: 0;
   }
