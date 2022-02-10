@@ -58,7 +58,7 @@ const TopicArticleEntry = props => {
           />
         </section>
         <hr className="u-section-underline--no-margins" />
-        <section className="o-wrapper-medium o-wrapper-mobile-full">
+        <section className="o-wrapper-medium">
           <div className="c-article__row">
             <div className="content c-article__col">
               <LongformArticle content={content} title={title} />
