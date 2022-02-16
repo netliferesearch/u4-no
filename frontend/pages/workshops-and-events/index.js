@@ -133,7 +133,7 @@ const ServicePage = ({ data: { events = {}, persons = {}, service = {}, url = {}
 export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
-      "service": *[_type == "frontpage" && slug.current == "workshops-and-events-NEW"][0]{title, longTitle, slug, lead, leadLinks, _id,
+      "service": *[_type == "frontpage" && ((slug.current == "workshops-and-events-NEW") || ( _id == "e2d9451d-a1ce-43fc-869c-7128ff603099"))][0]{title, longTitle, slug, lead, leadLinks, _id,
         sections[]{...,
         personLeft[]->,
         personRight[]->

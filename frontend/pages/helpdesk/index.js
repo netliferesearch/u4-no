@@ -118,7 +118,7 @@ const ServicePage = ({
 
 export default DataLoader(ServicePage, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `*[_type == "frontpage" && slug.current == "helpdesk-new"][0]{
+    sanityQuery: `*[_type == "frontpage" && ((slug.current == "helpdesk-new" || _id == "d4a9815b-f214-4245-a401-376243bdf714"))][0]{
         title,
         longTitle,
         slug,
