@@ -128,7 +128,7 @@ const CoursesPage = ({
 };
 export default DataLoader(CoursesPage, {
   queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `{ "service": *[_type=="frontpage" && slug.current == "online-courses-NEW"][0]{ 
+    sanityQuery: `{ "service": *[_type=="frontpage" && ((slug.current == "online-courses-NEW") || (_id == "BFLko89wLLImRF8IEozLT9"))][0]{ 
         title, 
         longTitle, 
         slug, 
