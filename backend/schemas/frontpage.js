@@ -5,13 +5,14 @@ import annotationsLinksOnly from './fields/annotationsLinksOnly';
  * A publication is a long form document
  */
 import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
-import { title, longTitle, date, image, leadText, featuredImage, vimeoVideo } from './fields';
+import { title, longTitle, date, image, leadText, featuredImage, vimeoVideo, previewLinks } from './fields';
 
 export default {
   name: 'frontpage',
   type: 'document',
   title: 'Frontpage',
   fields: [
+    previewLinks,
     title,
     longTitle,
     {

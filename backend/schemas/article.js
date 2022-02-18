@@ -1,13 +1,14 @@
 import publicationContent from './fields/publicationContent';
 import annotations from './fields/annotations';
 import annotationsLinksOnly from './fields/annotationsLinksOnly';
-import { title, longTitle, standfirst, image, leadText, featuredImage, slug } from './fields';
+import { title, longTitle, standfirst, image, leadText, featuredImage, slug, previewLinks } from './fields';
 
 export default {
   name: 'article',
   title: 'Article',
   type: 'document',
   fields: [
+    previewLinks,
     title,
     {
       name: 'articleType',
