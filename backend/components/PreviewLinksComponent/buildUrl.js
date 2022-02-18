@@ -18,6 +18,8 @@ const buildUrl = ({ _type = 'notype', slug = {} }) => {
     return `/terms#${actualSlug}`;
   } else if (_type === 'people') {
     return `/the-team`;
+  } else if (_type === 'blog-post') {
+    return `/blog`;
   }
   return actualSlug;
 };
@@ -40,6 +42,8 @@ const previewUrl = ({ _type = '', _id = '' }) => {
     return `preview/assets/${_id}`;
   } else if (_type === 'term') {
     return `preview/terms/#${_id}`;
+  } else if (_type === 'blog-post') {
+    return `preview/blog/${_id}`;
   }
   return `preview/${_type}/${_id}`;
 };
