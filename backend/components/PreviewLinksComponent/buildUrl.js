@@ -19,7 +19,7 @@ const buildUrl = ({ _type = 'notype', slug = {} }) => {
   } else if (_type === 'people') {
     return `/the-team`;
   } else if (_type === 'blog-post') {
-    return `/blog`;
+    return `/blog/${actualSlug}`;
   }
   return actualSlug;
 };
