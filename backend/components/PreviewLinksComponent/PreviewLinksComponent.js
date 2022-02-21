@@ -28,6 +28,17 @@ class PreviewLinksComponent extends React.PureComponent {
               <AnchorButton
                 inverted
                 padding="small"
+                href={`${previewDomain}/${previewUrl( this.props.document )}/shortversion`}
+                target="_blank"
+                title="Preview short version"
+              >
+                Preview short version
+              </AnchorButton>
+            )}
+            {this.props.document._type === 'publication' && (
+              <AnchorButton
+                inverted
+                padding="small"
                 href={`${previewDomain}/previewpdf/${this.props.document._type}/${
                   this.props.document._id
                 }`}
