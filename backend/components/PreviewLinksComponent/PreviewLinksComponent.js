@@ -11,7 +11,7 @@ class PreviewLinksComponent extends React.PureComponent {
     // no-op
   }
   render() {
-    return !(this.props.document?.slug) ? null : (
+    return (
       <div className={styles.buttonGroup}>
         {this.props.document._id.startsWith('draft') && (
           <span className={styles.buttonSubgroup}>
@@ -50,7 +50,7 @@ class PreviewLinksComponent extends React.PureComponent {
             )}
           </span>
         )}
-        {this.props.document.slug.current && (
+        {this.props.document?.slug?.current && (
           <span className={styles.buttonSubgroup}>
             <AnchorButton
               inverted
