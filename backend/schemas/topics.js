@@ -10,6 +10,7 @@ import {
   box,
   vimeoVideo,
   tableBlock,
+  previewLinks
 } from './fields';
 import annotationsLinksOnly from './fields/annotationsLinksOnly';
 
@@ -18,6 +19,7 @@ export default {
   title: 'Topic',
   type: 'document',
   fields: [
+    previewLinks,
     {
       name: 'title',
       type: 'string',

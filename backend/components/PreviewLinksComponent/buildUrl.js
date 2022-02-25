@@ -18,8 +18,34 @@ const buildUrl = ({ _type = 'notype', slug = {} }) => {
     return `/terms#${actualSlug}`;
   } else if (_type === 'people') {
     return `/the-team`;
+  } else if (_type === 'blog-post') {
+    return `/blog/${actualSlug}`;
   }
   return actualSlug;
 };
 
-export default buildUrl;
+const previewUrl = ({ _type = '', _id = '' }) => {
+  
+  if (_type === 'publication') {
+    return `preview/publications/${_id}`;
+  } else if (_type === 'topics') {
+    return `preview/topics/${_id}`;
+  } else if (_type === 'article') {
+    return `preview/articles/${_id}`;
+  } else if (_type === 'person') {
+    return `preview/the-team/${_id}`;
+  } else if (_type === 'frontpage') {
+    return `preview/frontpages/${_id}`;
+  } else if (_type === 'course') {
+    return `preview/courses/${_id}`;
+  } else if (_type === 'asset') {
+    return `preview/assets/${_id}`;
+  } else if (_type === 'term') {
+    return `preview/terms/#${_id}`;
+  } else if (_type === 'blog-post') {
+    return `preview/blog/${_id}`;
+  }
+  return `preview/${_type}/${_id}`;
+};
+
+export { buildUrl, previewUrl }
