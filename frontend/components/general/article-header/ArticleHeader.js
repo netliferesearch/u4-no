@@ -19,6 +19,7 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
     subtitle = '',
     standfirst = '',
     lead = '',
+    leadText = '',
     abstract = '',
     slug = {},
     pdfFile = {},
@@ -34,7 +35,7 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
     basedonpublication = false,
   } = data;
   const pdfAsset = legacypdf && legacypdf.asset ? legacypdf.asset : pdfFile.asset;
-  const text = _type === 'publication' ? lead || abstract : standfirst;
+  const text = _type === 'publication' ? lead || abstract : leadText || lead || standfirst;
   // {lead || abstract ? <ArticleLead lead={lead} abstract={abstract} /> : null}
   return (
     <header className="c-article-header">
