@@ -90,8 +90,11 @@ export const getPostType = item => {
       typeTitle = 'Blog';
       break;
     case 'article':
-      if(item.articleTypeTitles && item.articleTypeTitles.length > 0) {
-        return item.articleTypeTitles[0]
+      if( item.articleTypeTitles && item.articleTypeTitles.length > 0 ) {
+        return item.articleTypeTitles[0];
+      }
+      if( item.articleTypeTitle && typeof item.articleTypeTitle === 'string' ) {
+        return item.articleTypeTitle;
       }
       typeTitle =
         item.articleType && typeof item.articleType === 'string' ? item.articleType : 'Article';
