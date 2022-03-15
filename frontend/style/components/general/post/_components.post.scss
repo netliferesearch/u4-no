@@ -121,10 +121,11 @@
 }
 
 //unsused css for image 50% background, delete if opacity is enough
+//not in use, kept for reference only
 .c-post.small .u-overlay--light-blue {
   position: relative;
   &::before {
-    display: block;
+    display: none;
     content: '';
     position: absolute;
     top: 0;
