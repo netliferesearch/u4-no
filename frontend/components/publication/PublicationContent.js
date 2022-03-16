@@ -14,23 +14,15 @@ export const PublicationContent = ({
 }) => {
   return (
     <div className="c-article__content c-publication__content">
-      {!headsUp ? (
+      {headsUp || updatedVersion ? (
         <PublicationNotifications
-          headsUp={false}
+          headsUp={headsUp}
           updatedVersion={updatedVersion}
           date={date}
           publicationType={publicationType}
         />
       ) : null}
       {mainPoints.length > 0 && <MainPoints items={mainPoints} />}
-      {headsUp ? (
-        <PublicationNotifications
-          headsUp={headsUp}
-          updatedVersion={false}
-          date={date}
-          publicationType={publicationType}
-        />
-      ) : null}
     </div>
   );
 };
