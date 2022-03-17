@@ -31,8 +31,8 @@
 
     .c-longform-grid__standard {
       color: $mid-grey;
-      font-size: 12px;
-      line-height: 18px;
+      font-size: $font-size-micro;
+      line-height: $line-height-normal;
       padding: 0;
       margin: 12px 0;
     }
