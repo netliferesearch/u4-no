@@ -133,7 +133,7 @@ export default DataLoader(BlogEntry, {
         }
       },
             "translations": *[ _type == 'blog-post' && ( _id != ^._id ) && ( ( _id == ^.translation._ref) || translation._ref == coalesce(^.translation._ref, ^._id ))]{title, "slug": slug.current, language},
-      "relatedResources": relatedContent[]->{_type, _id, title, publicationType->{ title }, articleType[0]->{ title }, "imageUrl": featuredImage.asset->url, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..2]}
+      "relatedResources": relatedContent[]->{_type, _id, title, publicationType->{ title }, "articleTypeTitle": articleType[0]->title, "imageUrl": featuredImage.asset->url, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..2]}
     }`,
     param: { slug },
   }),

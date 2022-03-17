@@ -119,7 +119,8 @@ export default DataLoader(Persons, {
               "altText": altText,
               "url": url
             }
-          }},
+          }
+        },
         "courses": *[(_type == "course" || _type=="event") && references(^._id) && defined(startDate) && (endDate.utc > $now)]  | order(startDate.utc asc) {_id, _type, slug, title, startDate, lead, eventType},
         "recentWork": *[((_type in ["publication","blog-post"] && (^._id in authors[]._ref)) || (_type == "article" && references(^._id) )) && defined(date)] | order(date.utc desc)[0...5]{
           _id,
@@ -132,7 +133,7 @@ export default DataLoader(Persons, {
           "imageUrl": featuredImage.asset->url,
           "topicsTitles": topics[]->{title},
           "publicationType": publicationType->title,
-          "articleType": articleType[0]->title},
+          "articleTypeTitle": articleType[0]->title
         },
       }`,
     param: {
