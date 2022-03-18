@@ -14,6 +14,7 @@ import { PostCarousel } from '../../components/front-page/PostCarousel';
 import { POST_TYPE } from '../../components/general/post/Post';
 import { PublicationAdditionalInfo } from '../../components/publication/PublicationAdditionalInfo';
 import LongformArticle from '../../components/LongformArticle';
+import { PublicationNotifications } from '../../components/publication/PublicationNotifications';
 
 const littlefootActivator = () => {
   const littlefoot = require('littlefoot').default;
@@ -65,6 +66,9 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
           <div className="c-article__row">
             <div className="content c-article__col">
               <div className="u-margin--article-top">
+
+                {headsUp &&  <PublicationNotifications headsUp={headsUp} />}  
+
                 <LongformArticle content={content} title={title} />
               </div>
 
@@ -129,7 +133,7 @@ export default DataLoader(BlogEntry, {
         }
       },
             "translations": *[ _type == 'blog-post' && ( _id != ^._id ) && ( ( _id == ^.translation._ref) || translation._ref == coalesce(^.translation._ref, ^._id ))]{title, "slug": slug.current, language},
-      "relatedResources": relatedContent[]->{_type, _id, title, publicationType->{ title }, articleType[0]->{ title }, "imageUrl": featuredImage.asset->url, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..2]}
+      "relatedResources": relatedContent[]->{_type, _id, title, publicationType->{ title }, "articleTypeTitle": articleType[0]->title, "imageUrl": featuredImage.asset->url, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..2]}
     }`,
     param: { slug },
   }),

@@ -80,7 +80,7 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
                 </span>
               ) : null}
               {updatedVersion ? (
-                <span className="u-body--small u-text--grey">
+                <span className="u-body--small u-text--grey u-margin-left-tiny">
                   Updated {dateToString({ start: updatedVersion.date.utc })}
                 </span>
               ) : null}

@@ -69,9 +69,9 @@ const queryFunc = ({ params: { slug = '' } }) => ({
   publicationType->{ _id, title },
   reference, references,
   "recommendedResources":
-    relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, "imageUrl": featuredImage.asset->url },
+    relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, "articleTypeTitle": articleType[0]->title, publicationNumber, date, reference, "imageUrl": featuredImage.asset->url },
   "relatedResources":
-      related[]->{ _type, _id, title, slug, publicationType->{ title }, articleType[0]->{ title }, publicationNumber, date, reference, "imageUrl": featuredImage.asset->url },
+      related[]->{ _type, _id, title, slug, publicationType->{ title }, "articleTypeTitle": articleType[0]->title, publicationNumber, date, reference, "imageUrl": featuredImage.asset->url },
   slug, standfirst, subtitle, summary, summaryExternal, title,
   topics[]->{ _id, title, slug },
   "translations":
