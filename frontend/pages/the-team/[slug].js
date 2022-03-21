@@ -133,7 +133,7 @@ export default DataLoader(Persons, {
           "imageUrl": featuredImage.asset->url,
           "topicsTitles": topics[]->{title},
           "publicationType": publicationType->title,
-          "articleTypeTitle": articleType[0]->title
+          "articleTypeTitle": articleType[0]->title},
         },
       }`,
     param: {
