@@ -1,7 +1,6 @@
 import React from 'react';
 import dateToString from '../../../helpers/dateToString';
 import LinkToItem from '../LinkToItem';
-import { LocationIcon } from '../../icons/LocationIcon';
 import { getPostType } from '../../../helpers/getRouteByType';
 import { CalendorIcon } from '../../icons/CalendorIcon';
 import { ArrowNext } from '../../icons/ArrowNext';
@@ -128,11 +127,6 @@ export const CourseContent = ({ post = {}, content = {} }) => (
     </div>
     <div className="c-blue-card__bottom-content ">
       <div className="c-blue-card__info">
-        {post.startDate && post.startDate.timezone && (
-          <p className="c-blue-card__location u-body--small">
-            <LocationIcon /> {post.startDate.timezone}
-          </p>
-        )}
         <div className="c-blue-card__details">
           <p className="c-blue-card__date u-body--small">
             {post.startDate && <CalendorIcon />}

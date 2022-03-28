@@ -112,11 +112,12 @@ const CoursesPage = ({
               heading={persons.headingLeft}
               members={persons.personLeft}
             />
+            {(persons.personRight?.length > 0) && 
             <Team
               type={PERSON_CARD_TYPE.IMAGE_LEFT}
               heading={persons.headingRight}
               members={persons.personRight}
-            />
+            />}
           </div>
         </div>
       </div>
@@ -143,11 +144,11 @@ export default DataLoader(CoursesPage, {
             "featuredImage": featuredImage.asset->url
           } 
         }, 
-          "persons": sections[7]{
-            ..., 
-            personLeft[]->, 
-            personRight[]->
-          }, 
+        "persons": sections[7]{
+          ..., 
+          personLeft[]->, 
+          personRight[]->
+        }, 
         resources[]->, "featuredImage": featuredImage.asset->url}}`,
     param: { slug },
   }),
