@@ -101,7 +101,11 @@ export function getRedirect(ctx) {
       from: '/topics/international-drivers-of-corruption',
       to: '/topics/illicit-financial-flows',
     },
-
+    {
+      from: '/topics/people-s-engagement-1',
+      to: '/topics/civil-society',
+    },
+    
     {
       from: '/training/online-training/corruption-in-natural-resource-management',
       to: '/courses/addressing-corruption-in-natural-resources-and-renewable-energy-sectors',
