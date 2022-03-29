@@ -82,3 +82,11 @@ a.u-no-underline {
     border: none;
   }
 }
+
+/* avoid target of anchor links being hidden behind header */
+:target::before {
+  content: "";
+  display: block;
+  height: 90px; /* fixed header height*/
+  margin: -90px 0 0; /* negative fixed header height */
+}
