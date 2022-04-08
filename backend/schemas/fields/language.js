@@ -2,6 +2,7 @@ export default {
   name: "language",
   title: "Language",
   type: "string",
+  initialValue: "en_US",
   options: {
     list: [
       { title: 'English', value: 'en_US'},

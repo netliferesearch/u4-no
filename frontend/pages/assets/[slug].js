@@ -18,9 +18,10 @@ const Asset = ({ data: { title = '', slug = {}, asset = {} } }) => {
   const isDoc = asset.asset.url.slice(-4) === '.doc' || asset.asset.url.slice(-5) === '.docx';
   return (
     <Layout>
-      {!isPdf && (
+      {true && (
         <header>
           <div className="u-tc u-margin-bottom">
+            <h2 className="c-page-intro__h u-primary-heading">{title}</h2>
             <a href={asset.asset.url} {...classes('download-text')}>
               <span>Download {isPdf ? 'PDF' : 'file'}</span>
               <Download {...classes('download-icon')} />

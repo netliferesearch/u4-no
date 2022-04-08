@@ -99,33 +99,7 @@ export default {
         license,
       ],
     },
-    {
-      name: 'summary',
-      title: 'Short version',
-      description:
-        'One-pager, blog-like, light narrative. Bite-sized chunks with descriptive sub-headings. Explain: 1. the main recommendations and/or implications and findings, and  2. why this is important. Max 1000 words.',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'H2', value: 'h2' },
-            { title: 'H3', value: 'h3' },
-            { title: 'H4', value: 'h4' },
-            { title: 'H5', value: 'h5' },
-          ],
-          // Only allow numbered lists
-          marks: {
-            // Only allow these decorators
-            decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
-            // Support annotating text with a reference to an author
-            annotations,
-          },
-        },
-        image,
-      ],
-    },
+    
     // {
     //   name: 'summaryExternal',
     //   title: 'Link to external short version',
@@ -296,10 +270,6 @@ export default {
     //     },
     //   ],
     // },
-    {
-      name: 'acknowledgements',
-      type: 'text',
-    },
     // {
     //   name: 'abstract',
     //   type: 'text',
@@ -328,6 +298,10 @@ export default {
           type: 'publicationType',
         },
       ],
+      initialValue: {
+        _ref: '0f373d96-7a38-4bde-89f8-aca43aab7a0b',
+        _type: 'reference',
+      },
     },
     // {
     //   name: 'publicationNumber',
