@@ -33,7 +33,7 @@ const Frontpage = ({
         'U4 translates anti-corruption research into practical advice for international development actors. We offer publications, training, workshops, helpdesk, and policy advice to government agencies and the global anti-corruption community.',
       url: 'https://www.u4.no',
       image:
-        frontPage.ImageUrl ||
+        frontPage.imageUrl ||
         'https://cdn.sanity.io/images/1f1lcoov/production/3e59eddc41cd02132774902dd229b24e55dbfcb5-1000x207.png',
     }}
   >
