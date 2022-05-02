@@ -24,11 +24,6 @@ const HeadComponent = ({ title, description, image, url = '', ogp }) => (
     <meta name="twitter:site" content="@U4_ACRC" />
     <link rel="icon" type="image/png" href="/public/favicon.png" />
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900&display=swap"
-      rel="stylesheet"
-    />
-
     <script
       dangerouslySetInnerHTML={{
         __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
