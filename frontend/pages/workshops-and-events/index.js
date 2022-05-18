@@ -13,7 +13,7 @@ import { Team } from '../../components/general/team/Team';
 import { PERSON_CARD_TYPE } from '../../components/general/person/PersonCard';
 import { CARD_TYPE } from '../../components/general/blue-card/BlueCard';
 
-const ServicePage = ({ data: { events = {}, persons = {}, service = {}, url = {} } }) => {
+const ServicePage = ({ data: { eventsAndWebinars = {}, previousEvents = {}, workshops = {}, persons = {}, service = {}, url = {} } }) => {
   const {
     title = '',
     longTitle = '',
@@ -27,18 +27,6 @@ const ServicePage = ({ data: { events = {}, persons = {}, service = {}, url = {}
   const features = sections.slice(0, 1);
   const boxAndImg1 = sections.filter(i => i._type === 'boxOnImageRef')[0];
   const person = sections.filter(i => i._type === 'HelpdeskTeam')[0];
-  const eventsAndWebinars = events.filter(
-    i =>
-      i.eventType !== 'incountryworkshop' &&
-      i.eventType !== 'hqworkshop' &&
-      (!i.startDate || i.startDate.utc > date)
-  );
-  const workshops = events.filter(
-    i =>
-      i.eventType === ('incountryworkshop' || 'hqworkshop') &&
-      (!i.startDate || i.startDate.utc > date)
-  );
-  const previousEvents = events.filter(i => i.startDate && i.startDate.utc < date);
   const citationContent = sections[2].text[0].children[0].text;
   const citationAuthor = sections[2].text[1].children[0].text;
 
@@ -46,7 +34,7 @@ const ServicePage = ({ data: { events = {}, persons = {}, service = {}, url = {}
     <Layout
       headComponentConfig={{
         title,
-        description: lead.length ? lead[0].text : lead,
+        description: lead.length && lead[0].children.length ? lead[0].children[0].text : lead,
         image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
@@ -143,7 +131,9 @@ export default DataLoader(ServicePage, {
         personLeft[]->,
         personRight[]->
       }, "featuredImage": featuredImage.asset->url, resources[]->},
-      "events": *[_type == "event" && !(_id in path('drafts.**'))] | order(startDate.utc desc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
+      "eventsAndWebinars": *[_type == "event" && (!startDate || startDate.utc > now()) && !(eventType in ['incountryworkshop','hqworkshop'])] | order(startDate.utc asc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
+      "workshops": *[_type == "event" && (!startDate || startDate.utc > now()) && (eventType in ['incountryworkshop','hqworkshop'])] | order(startDate.utc asc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
+      "previousEvents": *[_type == "event" && (startDate.utc < now())] | order(startDate.utc desc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
     }`,
     param: { slug },
   }),
