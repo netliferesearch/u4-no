@@ -479,6 +479,11 @@ export default {
       type: 'urlWithMetadata',
       inputComponent: UrlWithMetadataInput,
     },
+    {
+      name: 'pdfThumbnail',
+      title: 'Thumbnail of publication pdf',
+      type: 'image'
+    },
 
   ],
   initialValue: {
