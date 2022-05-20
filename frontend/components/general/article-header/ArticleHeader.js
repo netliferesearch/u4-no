@@ -97,7 +97,7 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
               <Image
                 loader={sanityImageLoader}
                 src={pdfThumbnail.asset.url}
-                priority="true"
+                loading="lazy"
                 layout="responsive"
                 width={pdfThumbnail.asset.metadata.dimensions.width}
                 height={pdfThumbnail.asset.metadata.dimensions.height}
