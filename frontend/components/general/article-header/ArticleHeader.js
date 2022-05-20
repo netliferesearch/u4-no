@@ -24,6 +24,7 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
     slug = {},
     pdfFile = {},
     legacypdf = {},
+    pdfThumbnail = {},
     featuredImage = {},
     content = [],
     summary = [],
@@ -90,7 +91,22 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
         </div>
 
         <div className="c-article-header__col">
-          {(pdfFile.asset || legacypdf.asset) && (
+          {pdfThumbnail.asset?.url && (
+            <div className="pdf-preview">
+              <div className='pdf-preview-thumbnail'>
+              <Image
+                loader={sanityImageLoader}
+                src={pdfThumbnail.asset.url}
+                loading="lazy"
+                layout="responsive"
+                width={pdfThumbnail.asset.metadata.dimensions.width}
+                height={pdfThumbnail.asset.metadata.dimensions.height}
+                sizes="289px"
+              />
+              </div>
+            </div>
+          )}
+          {!pdfThumbnail.asset && (pdfFile.asset || legacypdf.asset) && (
             <div className="pdf-preview">
               <Document file={pdfFile.asset ? pdfFile.asset : legacypdf.asset}>
                 <Page pageNumber={1} />
