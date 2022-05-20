@@ -26,6 +26,7 @@ const PublicationContainer = (props = {}) => {
       featuredImage = {},
       relatedUrl = {},
       legacypdf = {},
+      pdfThumbnail = {},
       recommendedResources = [],
     } = {},
     shortversion = false,
