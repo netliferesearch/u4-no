@@ -1,11 +1,19 @@
 import React from 'react';
+import Head from 'next/head';
 import PrintLongformArticleContainer from '../../components/print/PrintLongformArticleContainer';
 import DataLoaderPreview from '../../helpers/data-loader-preview';
 import { wrapInRedux } from '../../helpers/redux-store-wrapper';
 import { localize } from '../../helpers/translate';
 
 const PublicationEntry = ({ data: { current, institutions = [], u4 } = {} }) => (
-  <div>{current && <PrintLongformArticleContainer {...{ ...current, institutions, u4 }} />}</div>
+  <div>
+    <Head>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap"
+        rel="stylesheet"
+      />
+    </Head>
+    {current && <PrintLongformArticleContainer {...{ ...current, institutions, u4 }} />}</div>
 );
 
 export default wrapInRedux(
