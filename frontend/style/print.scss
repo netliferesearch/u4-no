@@ -1,6 +1,6 @@
-/* import chinese font */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap');
-
+/* import chinese font (doing this only on print and print preview pages instead) 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap'); 
+*/
 // COMPONENTS
 @import 'components/components.figure';
 @import 'components/components.table';
