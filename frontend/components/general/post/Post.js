@@ -44,7 +44,18 @@ const renderImage = type => {
       return true;
   }
 };
-
+const imageSizes = type => {
+  switch (type) {
+    case POST_TYPE.LARGE:
+      return '(max-width: 739px) 100vw, (max-width: 979px) 50vw,  (max-width: 1269px) 66vw, 784px';
+    case POST_TYPE.SMALL:
+      return '(max-width: 739px) 160px, (max-width: 979px) 50vw, (max-width: 1269px) 33vw, 392px';
+    case POST_TYPE.BLOG:
+      return '(max-width: 568px) 80vw, (max-width: 979px) 40vw, (max-width: 1269px) 33vw, 372px';
+     default:
+      return '(max-width: 568px) 80vw, (max-width: 979px) 40vw, (max-width: 1269px) 25vw, 272px';
+  }
+}
 const fullTitle = ({ title, subtitle }) => {
   if (title && subtitle) {
     return '.!?'.includes(title.slice(-1)) ? `${title} {subtitle}` : `${title}. ${subtitle}`;
@@ -74,6 +85,7 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
                   loading="lazy"
                   layout="fill"
                   objectFit="cover"
+                  sizes={imageSizes( type )}
                 />
               </div>
             ) : (
@@ -85,6 +97,7 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
                   loading="lazy"
                   layout="fill"
                   objectFit="cover"
+                  sizes={imageSizes( type )}
                 />
               </div>
             )}
