@@ -88,7 +88,7 @@ export default wrapInRedux(
   DataLoader(TopicArticleEntry, {
     queryFunc: ({ query: { slug = '' } }) => ({
       sanityQuery:
-        '*[slug.current == $slug && _type == "topics"][0]{...,authors[]->{firstName, surname}}',
+        '*[slug.current == $slug && _type == "topics"][0]{title, longTitle, explainerText, slug, introduction, agenda, relatedUrl, url, featuredImage, authors[]->{firstName, surname}}',
       param: { slug },
     }),
     materializeDepth: 1,
