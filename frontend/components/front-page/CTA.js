@@ -13,6 +13,7 @@ export const CTA = ({ img = '', data = {} }) => {
         layout="fill"
         objectFit="cover"
         priority="true"
+        quality="60"
       />
       <div className="o-wrapper-medium c-cta__content">
         <h1 className="u-primary-heading u-text--white">{data.title}</h1>
