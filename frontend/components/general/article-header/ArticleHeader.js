@@ -97,7 +97,7 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
               <Image
                 loader={sanityImageLoader}
                 src={pdfThumbnail.asset.url}
-                loading="lazy"
+                loading="eager"
                 layout="responsive"
                 width={pdfThumbnail.asset.metadata.dimensions.width}
                 height={pdfThumbnail.asset.metadata.dimensions.height}
@@ -118,11 +118,12 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
               <Image
                 loader={sanityImageLoader}
                 src={featuredImage.asset.url}
-                loading="lazy"
+                loading="eager"
                 width="691"
                 height="353"
                 objectFit="cover"
                 objectPosition="center center"
+                sizes="(max-width: 739px) 100vw, (max-width: 979px) 55vw, 688px"
               />
               <PhotoCaptionCredit image={featuredImage} />
             </div>
