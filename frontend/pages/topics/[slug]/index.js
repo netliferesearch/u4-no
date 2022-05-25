@@ -211,7 +211,7 @@ export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
       "topic": *[slug.current == $slug && _type=='topics']{
-        ...,
+        title, longTitle, explainerText, slug, "hasIntroduction": count(introduction), "hasAgenda": count(agenda), relatedUrl, url,
         "featuredImage": {
           "caption": featuredImage.caption,
           "credit": featuredImage.credit,
@@ -230,8 +230,7 @@ export default DataLoader(TopicEntry, {
           firstName,
           surname,
           email,
-          slug,
-          bio
+          slug
         },
         "relatedTopics":
           *[_type == 'topics' && _id != ^._id && (_id==coalesce(^.parent._ref,^._id) || (parent._ref == coalesce(^.parent._ref,^._id)))]{
