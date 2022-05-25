@@ -30,6 +30,8 @@ export const Hero = ({
             objectFit="cover"
             objectPosition="center 30%"
             priority="true"
+            sizes="100vw"
+            quality="60"
           />
           <PhotoCaptionCredit image={image} showCaption={false} />
         </figure>
