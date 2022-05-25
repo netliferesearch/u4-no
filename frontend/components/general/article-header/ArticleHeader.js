@@ -123,7 +123,6 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
                 height="353"
                 objectFit="cover"
                 objectPosition="center center"
-                sizes="(max-width: 739px) 100vw, (max-width: 979px) 55vw, 688px"
               />
               <PhotoCaptionCredit image={featuredImage} />
             </div>
