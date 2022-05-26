@@ -31,7 +31,7 @@ export const Hero = ({
             objectPosition="center 30%"
             priority="true"
             sizes="100vw"
-            quality="60"
+            quality="70"
           />
           <PhotoCaptionCredit image={image} showCaption={false} />
         </figure>
