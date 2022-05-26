@@ -28,8 +28,8 @@ const TopicEntry = ({ data: { topic = {} } }) => {
     resourceCollections = [],
     parent = {},
     slug = {},
-    introduction = [],
-    agenda = [],
+    introductionLength = 0,
+    agendaLength = 0,
     advisors = [],
     resources = [],
     relatedEvents = [],
@@ -62,19 +62,19 @@ const TopicEntry = ({ data: { topic = {} } }) => {
           />
         </section>
         <section className="o-wrapper-medium">
-          {introduction.length > 0 && agenda.length > 0 ? (
+          {introductionLength > 0 && agendaLength > 0 ? (
             <div className="c-linkbox-wrapper">
-              {introduction.length > 0 && (
+              {introductionLength > 0 && (
                 <LinkBox
                   title="Basic guide"
                   text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
                   // icon={BasicGuide}
                   _type="topicsBasics"
                   slug={slug}
-                  color={`${agenda.length > 0 ? 'white' : 'lighter-blue--full'}`}
+                  color={`${agendaLength > 0 ? 'white' : 'lighter-blue--full'}`}
                 />
               )}
-              {agenda.length > 0 && (
+              {agendaLength > 0 && (
                 <LinkBox
                   title="Research and policy agenda"
                   text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
@@ -87,7 +87,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             </div>
           ) : (
             <div>
-              {introduction.length > 0 && (
+              {introductionLength > 0 && (
                 <HorizontalLinkBox
                   title="Basic guide"
                   text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
@@ -211,7 +211,7 @@ export default DataLoader(TopicEntry, {
   queryFunc: ({ query: { slug = '' } }) => ({
     sanityQuery: `{
       "topic": *[slug.current == $slug && _type=='topics']{
-        title, longTitle, explainerText, slug, "introduction": introduction, "agenda": agenda, relatedUrl, url,
+        title, longTitle, explainerText, slug, "introductionLength": count(introduction), "agendaLength": count(agenda), relatedUrl, url,
         "featuredImage": {
           "caption": featuredImage.caption,
           "credit": featuredImage.credit,
