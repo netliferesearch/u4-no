@@ -95,7 +95,7 @@ export const getStaticProps = async ctx => {
   }
   return {
     props: { data },
-    revalidate: 10,
+    revalidate: 600,
   };
 };
 
