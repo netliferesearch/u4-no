@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import serializers from '../../components/serializers/serializers';
-import DataLoader from '../../helpers/data-loader';
-import BlockContent from '@sanity/block-content-to-react';
+import { fetchAndMaterialize } from '../../helpers/data-loader';
 import { Layout } from '../../components/Layout';
 import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
 import findFootnotes from '../../components/findFootnotes';
@@ -118,24 +116,51 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
   );
 };
 
-export default DataLoader(BlogEntry, {
-  queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `{
-      "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _type, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title, slug}, keywords[]->{category, keyword}, "slug": slug.current, language, translation,basedonpublication->{_id,_type,title,"slug":slug.current},
-      "featuredImage": {
-        "caption": featuredImage.caption,
-        "credit": featuredImage.credit,
-        "sourceUrl": featuredImage.sourceUrl,
-        "license": featuredImage.license,
-        "asset": featuredImage.asset->{
-          "altText": altText,
-          "url": url
-        }
-      },
-            "translations": *[ _type == 'blog-post' && ( _id != ^._id ) && ( ( _id == ^.translation._ref) || translation._ref == coalesce(^.translation._ref, ^._id ))]{title, "slug": slug.current, language},
-      "relatedResources": relatedContent[]->{_type, _id, title, publicationType->{ title }, "articleTypeTitle": articleType[0]->title, "imageUrl": featuredImage.asset->url, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..2]}
-    }`,
-    param: { slug },
-  }),
-  materializeDepth: 2,
+BlogEntry.defaultProps = {
+  data: {
+    blogEntry: {},
+  },
+};
+
+export default BlogEntry;
+
+const queryFunc = ({ params: { slug = '' } }) => ({
+  sanityQuery: `{
+    "blogEntry": *[_type  == "blog-post" && slug.current == $slug][0] | order(date.utc desc) {_id, _type, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title, slug}, keywords[]->{category, keyword}, "slug": slug.current, language, translation,basedonpublication->{_id,_type,title,"slug":slug.current},
+    "featuredImage": {
+      "caption": featuredImage.caption,
+      "credit": featuredImage.credit,
+      "sourceUrl": featuredImage.sourceUrl,
+      "license": featuredImage.license,
+      "asset": featuredImage.asset->{
+        "altText": altText,
+        "url": url
+      }
+    },
+    "translations": *[ _type == 'blog-post' && ( _id != ^._id ) && ( ( _id == ^.translation._ref) || translation._ref == coalesce(^.translation._ref, ^._id ))]{title, "slug": slug.current, language},
+    "relatedResources": relatedContent[]->{_type, _id, title, publicationType->{ title }, "articleTypeTitle": articleType[0]->title, "imageUrl": featuredImage.asset->url, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..2]}
+  }`,
+  param: { slug },
 });
+
+export const getStaticProps = async ctx => {
+  const { data, error = '' } = await fetchAndMaterialize({
+    nextContext: ctx,
+    queryFunc,
+    materializeDepth: 2,
+  });
+  if (error === 'No content found (dataLoader said this)') {
+    return { notFound: true };
+  }
+  return {
+    props: { data },
+    revalidate: 60,
+  };
+};
+
+export const getStaticPaths = async ctx => {
+  return {
+    paths: [],
+    fallback: true,
+  };
+};
