@@ -90,12 +90,12 @@ export const PublicationNotifications = ({
       )}
       {!headsUpHasContent &&
         !updatedVersion &&
-        date &&
+        pubyear &&
         new Date().getFullYear() - Number(pubyear) > 5 && (
           <div className="c-notifications__note-item c-notifications__old">
             {/* <Note /> */}
             <p {...classes('label')}>
-              This publication is from {pubyear}. Newer material may be available. Please search
+              This publication is {pubyear ? `from ${pubyear}` : 'some years old'}. Newer material may be available. Please search
               related topics and keywords.
             </p>
           </div>
