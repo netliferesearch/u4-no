@@ -44,7 +44,6 @@ const FrontPage = props => {
 }
 
 const GeneralArticle = props => {
-
   return (
     <Provider store={store}>
       {props.data && props.data._type === 'frontpage' ? (
@@ -55,9 +54,6 @@ const GeneralArticle = props => {
     </Provider>
   );
 }
-//return <LongformArticleContainer lead={props.data.standfirst} {...props} />;
-//return <Provider store={store}><ArticleContainer {...props} /></Provider>;
-
 
 export default GeneralArticle;
 

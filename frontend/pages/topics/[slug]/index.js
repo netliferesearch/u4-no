@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DataLoader from '../../../helpers/data-loader';
+import { fetchAndMaterialize } from '../../../helpers/data-loader';
 import Footer from '../../../components/general/footer/Footer';
 import Layout from '../../../components/Layout';
 import { Team } from '../../../components/general/team/Team';
@@ -207,74 +207,99 @@ TopicEntry.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default DataLoader(TopicEntry, {
-  queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `{
-      "topic": *[slug.current == $slug && _type=='topics']{
-        title, longTitle, explainerText, slug, "introductionLength": count(introduction), "agendaLength": count(agenda), relatedUrl, url,
-        "featuredImage": {
-          "caption": featuredImage.caption,
-          "credit": featuredImage.credit,
-          "sourceUrl": featuredImage.sourceUrl,
-          "license": featuredImage.license,
-          "asset": featuredImage.asset->{
-            "altText": altText,
-            "url": url
-          }
-        },
-        "advisors": advisors[]->{
-          _id,
-          title,
-          "image": image.asset->{"asset": { "url": url}},
-          position,
-          firstName,
-          surname,
-          email,
-          slug
-        },
-        "relatedTopics":
-          *[_type == 'topics' && _id != ^._id && (_id==coalesce(^.parent._ref,^._id) || (parent._ref == coalesce(^.parent._ref,^._id)))]{
-            _id,
-            _type,
-            title,
-            "slug": slug.current,
-            longTitle,
-            _updatedAt,
-          },
-        "resources": resources[]->{
+TopicEntry.defaultProps = {
+  data: {},
+};
+
+export default TopicEntry;
+
+const queryFunc = ({ params: { slug = '' } }) => ({
+  sanityQuery: `{
+    "topic": *[slug.current == $slug && _type=='topics']{
+      title, longTitle, explainerText, slug, "introductionLength": count(introduction), "agendaLength": count(agenda), relatedUrl, url,
+      "featuredImage": {
+        "caption": featuredImage.caption,
+        "credit": featuredImage.credit,
+        "sourceUrl": featuredImage.sourceUrl,
+        "license": featuredImage.license,
+        "asset": featuredImage.asset->{
+          "altText": altText,
+          "url": url
+        }
+      },
+      "advisors": advisors[]->{
+        _id,
+        title,
+        "image": image.asset->{"asset": { "url": url}},
+        position,
+        firstName,
+        surname,
+        email,
+        slug
+      },
+      "relatedTopics":
+        *[_type == 'topics' && _id != ^._id && (_id==coalesce(^.parent._ref,^._id) || (parent._ref == coalesce(^.parent._ref,^._id)))]{
           _id,
           _type,
-          "publicationType": publicationType->title,
-          "articleType": articleType[0]->title,
           title,
-          date,
-          standfirst,
-          lead,
           "slug": slug.current,
-          "titleColor": featuredImage.asset->metadata.palette.dominant.title,
-          "imageUrl": featuredImage.asset->url,
-          topics[]->{title},
+          longTitle,
+          _updatedAt,
         },
-        "furtherResources": further_resources[]->{
-          _id,
-          _type,
-          "publicationType": publicationType->title,
-          "articleType": articleType[0]->title,
-          title,
-          date,
-          standfirst,
-          lead,
-          "slug": slug.current,
-          "titleColor": featuredImage.asset->metadata.palette.dominant.title,
-          "imageUrl": featuredImage.asset->url,
-          topics[]->{title},
-        },
-        "relatedPublications": *[_type == 'publication' && references(^._id) && language == "en_US"] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
-        "relatedBlogPosts": *[_type == 'blog-post' && references(^._id) && language == "en_US"] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
-        "relatedEvents": *[_type in ["course", "event"] && references(^._id)] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}, eventType},
-        "resourceCollections": collections[]->{_type, title, "slug": slug.current},
-    }[0]}`,
-    param: { slug },
-  }),
-  materializeDepth: 0,
+      "resources": resources[]->{
+        _id,
+        _type,
+        "publicationType": publicationType->title,
+        "articleType": articleType[0]->title,
+        title,
+        date,
+        standfirst,
+        lead,
+        "slug": slug.current,
+        "titleColor": featuredImage.asset->metadata.palette.dominant.title,
+        "imageUrl": featuredImage.asset->url,
+        topics[]->{title},
+      },
+      "furtherResources": further_resources[]->{
+        _id,
+        _type,
+        "publicationType": publicationType->title,
+        "articleType": articleType[0]->title,
+        title,
+        date,
+        standfirst,
+        lead,
+        "slug": slug.current,
+        "titleColor": featuredImage.asset->metadata.palette.dominant.title,
+        "imageUrl": featuredImage.asset->url,
+        topics[]->{title},
+      },
+      "relatedPublications": *[_type == 'publication' && references(^._id) && language == "en_US"] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
+      "relatedBlogPosts": *[_type == 'blog-post' && references(^._id) && language == "en_US"] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
+      "relatedEvents": *[_type in ["course", "event"] && references(^._id)] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}, eventType},
+      "resourceCollections": collections[]->{_type, title, "slug": slug.current},
+  }[0]}`,
+  param: { slug },
 });
+
+export const getStaticProps = async ctx => {
+  const { data, error = '' } = await fetchAndMaterialize({
+    nextContext: ctx,
+    queryFunc,
+    materializeDepth: 0,
+  });
+  if (error === 'No content found (dataLoader said this)') {
+    return { notFound: true };
+  }
+  return {
+    props: { data },
+    revalidate: 60,
+  };
+};
+
+export const getStaticPaths = async ctx => {
+  return {
+    paths: [],
+    fallback: true,
+  };
+};

@@ -22,7 +22,7 @@ const PublicationContainer = dynamic(() =>
 const store = initStore();
 
 const PublicationEntry = props => {
-  console.log(props.data)
+  // console.log(props.data)
   return (
     <Provider store={store}>
       {props.data.legacypdf && !props.data.content ? (
@@ -95,7 +95,7 @@ export const getStaticProps = async ctx => {
   }
   return {
     props: { data },
-    revalidate: 600,
+    revalidate: 60,
   };
 };
 
