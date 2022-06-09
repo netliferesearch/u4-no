@@ -86,6 +86,8 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
                   layout="fill"
                   objectFit="cover"
                   sizes={imageSizes( type )}
+                  placeholder={post.imageBlurDataURL ? "blur" : "empty"}
+                  blurDataURL={post.imageBlurDataURL}
                 />
               </div>
             ) : (
