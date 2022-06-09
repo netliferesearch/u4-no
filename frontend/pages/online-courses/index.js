@@ -1,5 +1,5 @@
 import React from 'react';
-import DataLoader from '../../helpers/data-loader';
+import { fetchAndMaterialize } from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';
 import Layout from '../../components/Layout';
@@ -127,30 +127,45 @@ const CoursesPage = ({
     </Layout>
   );
 };
-export default DataLoader(CoursesPage, {
-  queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `{ "service": *[_type=="frontpage" && ((slug.current == "online-courses-NEW") || (_id == "BFLko89wLLImRF8IEozLT9"))][0]{ 
-        title, 
-        longTitle, 
-        slug, 
-        lead, 
-        leadLinks, 
-        _id, 
-        sections[]{..., 
-          personLeft[]->, 
-          personRight[]->, 
-          coursesRef[]->{
-            ...,
-            "featuredImage": featuredImage.asset->url
-          } 
-        }, 
-        "persons": sections[7]{
-          ..., 
-          personLeft[]->, 
-          personRight[]->
-        }, 
-        resources[]->, "featuredImage": featuredImage.asset->url}}`,
-    param: { slug },
-  }),
-  materializeDepth: 2,
+
+export default CoursesPage;
+
+const queryFunc = () => ({
+  sanityQuery: `{ 
+    "service": *[_type=="frontpage" && ((slug.current == "online-courses-NEW") || (_id == "BFLko89wLLImRF8IEozLT9"))][0]{ 
+    title, 
+    longTitle, 
+    slug, 
+    lead, 
+    leadLinks, 
+    _id, 
+    sections[]{..., 
+      personLeft[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}},
+      personRight[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}}, 
+      coursesRef[]->{
+        _type,title,lead,language,startDate,slug,courseType,
+        "featuredImage": featuredImage.asset->url
+      } 
+    }, 
+    "persons": sections[7]{
+      ..., 
+      personLeft[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}},
+      personRight[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}}
+    }, 
+    resources[]->, "featuredImage": featuredImage.asset->url}}`,
 });
+
+export const getStaticProps = async ctx => {
+  const { data, error = '' } = await fetchAndMaterialize({
+    nextContext: ctx,
+    queryFunc,
+    materializeDepth: 2,
+  });
+  if (error === 'No content found (dataLoader said this)') {
+    return { notFound: true };
+  }
+  return {
+    props: { data },
+    revalidate: 60,
+  };
+};

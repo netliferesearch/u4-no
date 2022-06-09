@@ -1,4 +1,6 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
+
 import { Provider } from 'react-redux';
 import { initStore } from '../helpers/redux-store';
 
@@ -6,10 +8,18 @@ import { fetchAndMaterialize } from '../helpers/data-loader';
 //import LongformArticleContainer from '../components/LongformArticleContainer';
 import Footer from '../components/general/footer/Footer';
 import Layout from '../components/Layout';
-import ServiceArticle from '../components/ServiceArticle';
+//import ServiceArticle from '../components/ServiceArticle';
 //import SimpleHero from '../components/SimpleHero';
 import { PageIntro } from '../components/general/PageIntro';
-import ArticleContainer from '../components/article/ArticleContainer';
+//import ArticleContainer from '../components/article/ArticleContainer';
+
+const ServiceArticle = dynamic(() =>
+  import('../components/ServiceArticle')
+);
+
+const ArticleContainer = dynamic(() =>
+  import('../components/article/ArticleContainer')
+);
 
 const store = initStore();
 

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import sanityImageLoader from '../../helpers/sanityImageLoader';
 import { ArrowNext } from '../icons/ArrowNext';
 
-export const CTA = ({ img = '', data = {} }) => {
+export const CTA = ({ img = '', blurDataURL = "", data = {} }) => {
   return (
     <div className="c-cta">
       <Image 
@@ -14,6 +14,8 @@ export const CTA = ({ img = '', data = {} }) => {
         objectFit="cover"
         priority="true"
         quality="60"
+        placeholder={blurDataURL ? "blur" : "empty"}
+        blurDataURL={blurDataURL}
       />
       <div className="o-wrapper-medium c-cta__content">
         <h1 className="u-primary-heading u-text--white">{data.title}</h1>

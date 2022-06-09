@@ -1,8 +1,9 @@
 import React from 'react';
 import find from 'lodash/find';
+import { Provider } from 'react-redux';
 
-import DataLoader from '../../../helpers/data-loader';
-import { wrapInRedux } from '../../../helpers/redux-store-wrapper';
+import { initStore } from '../../../helpers/redux-store';
+import { fetchAndMaterialize } from '../../../helpers/data-loader';
 import { BreadCrumbV2 } from '../../../components/general/BreadCrumbV2';
 import LongformArticle from '../../../components/LongformArticle';
 import { ArticleSidebar } from '../../../components/general/article-sidebar/ArticleSidebar';
@@ -22,68 +23,95 @@ const firstParagraphInContent = (content = []) => {
   return firstParagraph ? firstParagraph.children[0].text : '';
 };
 
+const store = initStore();
+
 const TopicArticleEntry = props => {
   const { url = {}, title, relatedUrl = {}, featuredImage = {}, advisors = [] } = props.data;
-  const { query = {} } = url;
-  const content =  props.data.agenda;
+  const content = props.data.agenda;
   const headerData = {
     ...props.data,
     title: firstTitleInContent(content),
     lead: firstParagraphInContent(content),
   };
   return (
-    <Layout
-      headComponentConfig={{
-        title,
-        description: firstParagraphInContent(content),
-        image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
-        url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
-        ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
-      }}
-    >
-      <article className="c-publication-container c-article-v2">
-        <section className="o-wrapper-medium">
-          <BreadCrumbV2
-            title={title}
-            parentSlug={'/topics/' + props.data.slug.current}
-            currentTitle={firstTitleInContent(content)}
-            home={true}
-          />
-        </section>
-        <hr className="u-section-underline--no-margins" />
-        <section className="o-wrapper-medium">
-          <div className="c-article__row">
-            <div className="content c-article__col">
-              <LongformArticle content={content} title={title} />
+    <Provider store={store}>
+      <Layout
+        headComponentConfig={{
+          title,
+          description: firstParagraphInContent(content),
+          image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
+          url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
+          ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
+        }}
+      >
+        <article className="c-publication-container c-article-v2">
+          <section className="o-wrapper-medium">
+            <BreadCrumbV2
+              title={title}
+              parentSlug={'/topics/' + props.data.slug.current}
+              currentTitle={firstTitleInContent(content)}
+              home={true}
+            />
+          </section>
+          <hr className="u-section-underline--no-margins" />
+          <section className="o-wrapper-medium">
+            <div className="c-article__row">
+              <div className="content c-article__col">
+                <LongformArticle content={content} title={title} />
+              </div>
+              <div className="c-article__side c-article__col">
+                <ArticleSidebar data={props.data} />
+              </div>
             </div>
-            <div className="c-article__side c-article__col">
-              <ArticleSidebar data={props.data} />
+          </section>
+          <section className="u-bg--lighter-blue c-article__additional-content">
+            <div className="o-wrapper-medium">
+              <div className="o-wrapper-narrow">
+                <ArticleActions data={props.data} />
+                <AboutAuthor authors={advisors} />
+                <Disclaimers title={true} />
+              </div>
             </div>
-          </div>
-        </section>
-        <section className="u-bg--lighter-blue c-article__additional-content">
-          <div className="o-wrapper-medium">
-            <div className="o-wrapper-narrow">
-              <ArticleActions data={props.data} />
-              <AboutAuthor authors={advisors} />
-              <Disclaimers title={true} />
-            </div>
-          </div>
-        </section>
-      </article>
-      <Footer />
-      <div id="modal" />
-    </Layout>
+          </section>
+        </article>
+        <Footer />
+        <div id="modal" />
+      </Layout>
+    </Provider>
   );
 };
 
-export default wrapInRedux(
-  DataLoader(TopicArticleEntry, {
-    queryFunc: ({ query: { slug = '' } }) => ({
-      sanityQuery:
-        '*[slug.current == $slug && _type == "topics"][0]{title, longTitle, explainerText, slug, agenda, relatedUrl, url, featuredImage, authors[]->{firstName, surname}}',
-      param: { slug },
-    }),
+TopicArticleEntry.defaultProps = {
+  data: {
+    slug: {},
+  },
+};
+
+export default TopicArticleEntry;
+
+const queryFunc = ({ params: { slug = '' } }) => ({
+  sanityQuery: '*[slug.current == $slug && _type == "topics"][0]{title, longTitle, explainerText, slug, agenda, relatedUrl, url, featuredImage, authors[]->{firstName, surname}}',
+  param: { slug },
+});
+
+export const getStaticProps = async ctx => {
+  const { data, error = '' } = await fetchAndMaterialize({
+    nextContext: ctx,
+    queryFunc,
     materializeDepth: 1,
-  })
-);
+  });
+  if (error === 'No content found (dataLoader said this)') {
+    return { notFound: true };
+  }
+  return {
+    props: { data },
+    revalidate: 60,
+  };
+};
+
+export const getStaticPaths = async ctx => {
+  return {
+    paths: [],
+    fallback: true,
+  };
+};
