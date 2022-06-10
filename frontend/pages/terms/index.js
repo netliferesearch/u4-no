@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DataLoader from '../../helpers/data-loader';
+import { fetchAndMaterialize } from '../../helpers/data-loader';
 import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import ServiceArticle from '../../components/ServiceArticle';
@@ -91,11 +91,25 @@ const Glossary = ({ data: { terms = [] }, url = {} }) => {
   );
 };
 
-export default DataLoader(Glossary, {
-  queryFunc: () => ({
-    sanityQuery: `{
-      "terms": *[_type == "term"] | order(term)
-    }`,
-  }),
-  materializeDepth: 2,
+export default Glossary;
+
+const queryFunc = () => ({
+  sanityQuery: `{
+    "terms": *[_type == "term"] | order(term)
+  }`,
 });
+
+export const getStaticProps = async ctx => {
+  const { data, error = '' } = await fetchAndMaterialize({
+    nextContext: ctx,
+    queryFunc,
+    materializeDepth: 1,
+  });
+  if (error === 'No content found (dataLoader said this)') {
+    return { notFound: true };
+  }
+  return {
+    props: { data },
+    revalidate: 60,
+  };
+};
