@@ -101,6 +101,8 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
                 layout="responsive"
                 width={pdfThumbnail.asset.metadata.dimensions.width}
                 height={pdfThumbnail.asset.metadata.dimensions.height}
+                placeholder={pdfThumbnail.asset.metadata.lqip ? "blur" : "empty"}
+                blurDataURL={pdfThumbnail.asset.metadata.lqip}
                 sizes="289px"
               />
               </div>
@@ -123,6 +125,8 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
                 height="353"
                 objectFit="cover"
                 objectPosition="center center"
+                placeholder={featuredImage.asset.metadata.lqip ? "blur" : "empty"}
+                blurDataURL={featuredImage.asset.metadata.lqip}
               />
               <PhotoCaptionCredit image={featuredImage} />
             </div>

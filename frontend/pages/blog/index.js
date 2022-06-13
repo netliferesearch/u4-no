@@ -58,7 +58,10 @@ export default BlogPage;
 
 const queryFunc = () => ({
   sanityQuery: `{
-    "blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {_id, _type, title, date, content, authors, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current},
+    "blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {
+      _id, _type, title, date, authors, date, standfirst, topics[]->{title}, 
+      "imageUrl": featuredImage.asset->url,"imageBlurDataURL":featuredImage.asset->metadata.lqip, "slug": slug.current 
+    },
     "topics": *[_type == "topics"] | order(title){_id, title, slug},
   }`,
 });

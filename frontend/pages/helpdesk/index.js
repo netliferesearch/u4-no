@@ -1,5 +1,5 @@
 import React from 'react';
-import DataLoader from '../../helpers/data-loader';
+import { fetchAndMaterialize } from '../../helpers/data-loader';
 import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import { PageIntro } from '../../components/general/PageIntro';
@@ -40,7 +40,7 @@ const ServicePage = ({
       headComponentConfig={{
         title,
         description: '',
-        image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
+        image: featuredImage.asset && featuredImage.asset.url ? '' : '',
         url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
         ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
       }}
@@ -66,7 +66,7 @@ const ServicePage = ({
             </div>
             <div className="c-helpdesk-page__lead-content--second">
               <div className="c-helpdesk-page__lead-image">
-                <PartnerLogo10Blue />
+                <img src={featuredImage.asset.url} style={{maxWidth: "100%"}} />
               </div>
             </div>
           </div>
@@ -116,30 +116,38 @@ const ServicePage = ({
   );
 };
 
-export default DataLoader(ServicePage, {
-  queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `*[_type == "frontpage" && ((slug.current == "helpdesk-new" || _id == "d4a9815b-f214-4245-a401-376243bdf714"))][0]{
-        title,
-        longTitle,
-        slug,
-        lead,
-        _id,
-        sections[],
-          "latestHelpdeskAnswers": *[_type  == "publication" && language == "en_US" && publicationType->title == "U4 Helpdesk Answer"] | order(date.utc desc) {
-          _id,
-          _type,
-          slug,
-          standfirst,
-          date,
-          topics[]->{title, slug},
-          title,
-          "publicationType": publicationType->title,
-          "featuredImage": featuredImage.asset->url
-        }[0..8],
-       "featuredImage": featuredImage.asset->url
-    }
-`,
-    param: { slug },
-  }),
-  materializeDepth: 5,
+export default ServicePage;
+
+const queryFunc = () => ({
+  sanityQuery: `*[_type == "frontpage" && ((slug.current == "helpdesk-new" || _id == "d4a9815b-f214-4245-a401-376243bdf714"))][0]{
+    _id, title, longTitle, slug, lead, 
+    sections[]{_type == 'expertAnswers' => {}, _type != 'expertAnswers' => {...}},
+    "latestHelpdeskAnswers": *[_type  == "publication" && language == "en_US" && publicationType->title == "U4 Helpdesk Answer"] | order(date.utc desc) {
+      _id,
+      _type,
+      slug,
+      standfirst,
+      date,
+      topics[]->{title, slug},
+      title,
+      "publicationType": publicationType->title,
+      "featuredImage": featuredImage.asset->url
+    }[0..8],
+    featuredImage{asset->{url}}
+  }`,
 });
+
+export const getStaticProps = async ctx => {
+  const { data, error = '' } = await fetchAndMaterialize({
+    nextContext: ctx,
+    queryFunc,
+    materializeDepth: 1,
+  });
+  if (error === 'No content found (dataLoader said this)') {
+    return { notFound: true };
+  }
+  return {
+    props: { data },
+    revalidate: 60,
+  };
+};
