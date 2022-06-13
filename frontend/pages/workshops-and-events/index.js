@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DataLoader from '../../helpers/data-loader';
+import { fetchAndMaterialize } from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';
 import Footer from '../../components/general/footer/Footer';
@@ -118,24 +118,38 @@ const ServicePage = ({ data: { eventsAndWebinars = {}, previousEvents = {}, work
     </Layout>
   );
 };
-export default DataLoader(ServicePage, {
-  queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `{
-      "service": *[_type == "frontpage" && ((slug.current == "workshops-and-events-NEW") || ( _id == "e2d9451d-a1ce-43fc-869c-7128ff603099"))][0]{title, longTitle, slug, lead, leadLinks, _id,
-        sections[]{...,
-        personLeft[]->,
-        personRight[]->
-      },
-      "persons": sections[4]{
-        ...,
-        personLeft[]->,
-        personRight[]->
-      }, "featuredImage": featuredImage.asset->url, resources[]->},
-      "eventsAndWebinars": *[_type == "event" && (!startDate || startDate.utc > now()) && !(eventType in ['incountryworkshop','hqworkshop'])] | order(startDate.utc asc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
-      "workshops": *[_type == "event" && (!startDate || startDate.utc > now()) && (eventType in ['incountryworkshop','hqworkshop'])] | order(startDate.utc asc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
-      "previousEvents": *[_type == "event" && (startDate.utc < now())] | order(startDate.utc desc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
-    }`,
-    param: { slug },
-  }),
-  materializeDepth: 1,
+
+export default ServicePage;
+
+const queryFunc = () => ({
+  sanityQuery: `{
+    "service": *[_type == "frontpage" && ((slug.current == "workshops-and-events-NEW") || ( _id == "e2d9451d-a1ce-43fc-869c-7128ff603099"))][0]{title, longTitle, slug, lead, leadLinks, _id,
+      sections[]{...,
+      personLeft[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}},
+      personRight[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}},
+    },
+    "persons": sections[4]{
+      ...,
+      personLeft[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}},
+      personRight[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}}
+    }, "featuredImage": featuredImage.asset->url, resources[]->},
+    "eventsAndWebinars": *[_type == "event" && (!startDate || startDate.utc > now()) && !(eventType in ['incountryworkshop','hqworkshop'])] | order(startDate.utc asc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
+    "workshops": *[_type == "event" && (!startDate || startDate.utc > now()) && (eventType in ['incountryworkshop','hqworkshop'])] | order(startDate.utc asc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
+    "previousEvents": *[_type == "event" && (startDate.utc < now())] | order(startDate.utc desc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
+  }`,
 });
+
+export const getStaticProps = async ctx => {
+  const { data, error = '' } = await fetchAndMaterialize({
+    nextContext: ctx,
+    queryFunc,
+    materializeDepth: 1,
+  });
+  if (error === 'No content found (dataLoader said this)') {
+    return { notFound: true };
+  }
+  return {
+    props: { data },
+    revalidate: 60,
+  };
+};
