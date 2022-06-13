@@ -7,11 +7,11 @@ import { PostCarousel } from '../../components/front-page/PostCarousel';
 import { PersonCard, PERSON_CARD_TYPE } from '../../components/general/person/PersonCard';
 import { CARD_TYPE } from '../../components/general/blue-card/BlueCard';
 import { POST_TYPE } from '../../components/general/post/Post';
-import DataLoader from '../../helpers/data-loader';
+import { fetchAndMaterialize } from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';
 
-const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
+const Person = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
   return (
     <Layout
       headComponentConfig={{
@@ -106,39 +106,75 @@ const Persons = ({ data: { person = {} }, url = { query: { slug: '' } } }) => {
 //   </div>
 // );
 
-export default DataLoader(Persons, {
-  queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `{
-      "person": *[slug.current == $slug][0]{...,
-        "topics": *[_type == "topics" && references(^._id)]{_id, _type, longTitle, slug, title, standfirst,
-         "introductions": count(introduction),
-         "resources": count(resources),
-         "agenda": count(agenda),
-         "featuredImage": {
-            "asset": featuredImage.asset->{
-              "altText": altText,
-              "url": url
-            }
-          }
-        },
-        "courses": *[(_type == "course" || _type=="event") && references(^._id) && defined(startDate) && (endDate.utc > $now)]  | order(startDate.utc asc) {_id, _type, slug, title, startDate, lead, eventType},
-        "recentWork": *[((_type in ["publication","blog-post"] && (^._id in authors[]._ref)) || (_type == "article" && references(^._id) )) && defined(date)] | order(date.utc desc)[0...5]{
-          _id,
-          _type,
-          slug,
-          standfirst,
-          title,
-          date,
-          lead,
-          "imageUrl": featuredImage.asset->url,
-          "topicsTitles": topics[]->{title},
-          "publicationType": publicationType->title,
-          "articleTypeTitle": articleType[0]->title},
-        },
-      }`,
-    param: {
-      slug,
+Person.defaultProps = {
+  data: {
+    person: {
+      image: {
+        asset: {}
+      },
+      topics: [],
+      courses: [],
+      recentWork: [],
+      featuredImage: {
+        asset: {}
+      }
     },
-  }),
-  materializeDepth: 5,
+  }
+};
+
+export default Person;
+
+const queryFunc = ({ params: { slug = '' } }) => ({
+  sanityQuery: `{
+    "person": *[slug.current == $slug][0]{...,
+      "topics": *[_type == "topics" && references(^._id)]{_id, _type, longTitle, slug, title, standfirst,
+       "introductions": count(introduction),
+       "resources": count(resources),
+       "agenda": count(agenda),
+       "featuredImage": {
+          "asset": featuredImage.asset->{
+            "altText": altText,
+            "url": url
+          }
+        }
+      },
+      "courses": *[(_type == "course" || _type=="event") && references(^._id) && defined(startDate) && (endDate.utc > $now)]  | order(startDate.utc asc) {_id, _type, slug, title, startDate, lead, eventType},
+      "recentWork": *[((_type in ["publication","blog-post"] && (^._id in authors[]._ref)) || (_type == "article" && references(^._id) )) && defined(date)] | order(date.utc desc)[0...5]{
+        _id,
+        _type,
+        slug,
+        standfirst,
+        title,
+        date,
+        lead,
+        "imageUrl": featuredImage.asset->url,
+        "topicsTitles": topics[]->{title},
+        "publicationType": publicationType->title,
+        "articleTypeTitle": articleType[0]->title
+      },
+    },
+  }`,
+  param: { slug },
 });
+
+export const getStaticProps = async ctx => {
+  const { data, error = '' } = await fetchAndMaterialize({
+    nextContext: ctx,
+    queryFunc,
+    materializeDepth: 2,
+  });
+  if (error === 'No content found (dataLoader said this)') {
+    return { notFound: true };
+  }
+  return {
+    props: { data },
+    revalidate: 60,
+  };
+};
+
+export const getStaticPaths = async ctx => {
+  return {
+    paths: [],
+    fallback: true,
+  };
+};
