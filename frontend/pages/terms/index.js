@@ -50,7 +50,7 @@ const Glossary = ({ data: { terms = [] }, url = {} }) => {
             className="c-page-intro--about-u4"
             title="Glossary"
             type="about-u4"
-            text="This glossary presents how anti-corruption our experts explain and apply typical governance and corruption jargon."
+            text="This glossary presents how our anti-corruption experts explain and apply typical governance and corruption jargon."
           />
         </section>
         <hr className="u-section-underline--no-margins" />
