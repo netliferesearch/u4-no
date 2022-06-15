@@ -217,7 +217,7 @@ const queryFunc = ({ params: { slug = '' } }) => ({
   sanityQuery: `{
     "topic": *[slug.current == $slug && _type=='topics']{
       title, longTitle, explainerText, slug, "introductionLength": count(introduction), "agendaLength": count(agenda), relatedUrl, url,
-      featuredImage{caption,credit,sourceUrl,license,asset->{...}},
+      featuredImage{caption,credit,sourceUrl,license,asset->{altText,url,metadata{lqip}}},
       "advisors": advisors[]->{
         _id,
         title,
@@ -249,6 +249,7 @@ const queryFunc = ({ params: { slug = '' } }) => ({
         "slug": slug.current,
         "titleColor": featuredImage.asset->metadata.palette.dominant.title,
         "imageUrl": featuredImage.asset->url,
+        "imageBlurDataURL":featuredImage.asset->metadata.lqip,
         topics[]->{title},
       },
       "furtherResources": further_resources[]->{
@@ -262,11 +263,10 @@ const queryFunc = ({ params: { slug = '' } }) => ({
         lead,
         "slug": slug.current,
         "titleColor": featuredImage.asset->metadata.palette.dominant.title,
-        "imageUrl": featuredImage.asset->url,
         topics[]->{title},
       },
-      "relatedPublications": *[_type == 'publication' && references(^._id) && language == "en_US"] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
-      "relatedBlogPosts": *[_type == 'blog-post' && references(^._id) && language == "en_US"] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
+      "relatedPublications": *[_type == 'publication' && references(^._id) && language == "en_US"] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8],
+      "relatedBlogPosts": *[_type == 'blog-post' && references(^._id) && language == "en_US"] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "imageBlurDataURL":featuredImage.asset->metadata.lqip, "slug": slug.current}[0..8],
       "relatedEvents": *[_type in ["course", "event"] && references(^._id)] | order(startDate.utc desc) {_type, title, startDate, lead, "slug": slug.current, topics[]->{title}, eventType},
       "resourceCollections": collections[]->{_type, title, "slug": slug.current},
   }[0]}`,
