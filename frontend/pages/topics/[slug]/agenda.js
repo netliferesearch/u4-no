@@ -49,7 +49,8 @@ const TopicArticleEntry = props => {
             <BreadCrumbV2
               title={title}
               parentSlug={'/topics/' + props.data.slug.current}
-              currentTitle={firstTitleInContent(content)}
+              grandParentTitle={'Topics'}
+              grandParentSlug={'/topics'}
               home={true}
             />
           </section>
