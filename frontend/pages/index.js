@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import dynamic from 'next/dynamic';
 
 import { fetchAndMaterialize } from '../helpers/data-loader';
 import { Layout } from '../components/Layout';
 import Footer from '../components/general/footer/Footer';
-//import PartnerAgencies from '../components/front-page/PartnerAgencies';
+import PartnerAgencies from '../components/front-page/PartnerAgencies';
 import { CTA } from '../components/front-page/CTA';
 import { FeatureList } from '../components/front-page/FeatureList';
 import { TopicCardList } from '../components/general/topics/TopicCardList';
@@ -16,10 +15,6 @@ import { CARD_TYPE } from '../components/general/blue-card/BlueCard';
 import { PostCarousel } from '../components/front-page/PostCarousel';
 import { heroData } from '../components/front-page/data';
 import { localize } from '../helpers/translate';
-
-const PartnerAgencies = dynamic(() =>
-  import('../components/front-page/PartnerAgencies')
-);
 
 const Frontpage = ({
   data: {
@@ -124,7 +119,7 @@ const queryFunc = () => ({
     "resources": resources[]->{_id,_type, "publicationType": publicationType->title, "articleTypeTitle": articleType[0]->title, title, date, standfirst, topics[]->{title}, "slug": slug.current,"titleColor": featuredImage.asset->metadata.palette.dominant.title, "imageUrl": featuredImage.asset->url,"imageBlurDataURL":featuredImage.asset->metadata.lqip, "pdfFile": pdfFile.asset->url}[0..4]},
     "topics": *[_type == "topics"] | order(title) {_id, _type, title, longTitle, standfirst, slug, _updatedAt, "imageUrl": featuredImage.asset->url}[0..5],
     "featured": {"publication": *[_type  == "publication" && language == "en_US"] | order(date.utc desc) {_id, _type, title, date, standfirst, "publicationType": publicationType->title, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "slug": slug.current, "pdfFile": pdfFile.asset->url}[0..8], "blog": *[_type  == "blog-post" && references("daecef41-f87b-41ec-ad35-eefe31568ae0") && language == "en_US"] | order(date.utc desc) {_id, _type, title, date, standfirst, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..1],},
-    "blogPosts": *[_type == "blog-post" && language == "en_US" && !references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "slug": slug.current}[0..8],
+    "blogPosts": *[_type == "blog-post" && language == "en_US" && !references("daecef41-f87b-41ec-ad35-eefe31568ae0")] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title}, "imageUrl": featuredImage.asset->url, "imageBlurDataURL":featuredImage.asset->metadata.lqip, "slug": slug.current}[0..8],
     "events": *[_type in ["course", "event"] && defined(startDate)]{_type, title, startDate, lead, "slug": slug.current, topics[]->{title}, eventType,"future": select(dateTime(startDate.utc)-dateTime(now()) >=0 => 1,0),"timedistance": select(dateTime(startDate.utc)-dateTime(now()) >=0 => dateTime(startDate.utc)-dateTime(now()),dateTime(now())-dateTime(startDate.utc))}|order(future desc,timedistance asc)[0..2],
     "institutions": *[_type == 'institution' && funder == true && !(_id in path "drafts.**")]
     | order(name){_id, ${localize('name')}, funder, svgLogo, website},

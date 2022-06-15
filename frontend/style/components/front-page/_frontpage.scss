@@ -104,3 +104,10 @@
     margin: 16px 0;
   }
 }
+
+// default width of alice carousel posts on front page
+.alice-carousel ul:not(.alice-carousel__dots) li {
+  max-width: 100%;
+  min-width: 200px;
+  width: 402px;
+}
