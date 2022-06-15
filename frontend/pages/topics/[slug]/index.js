@@ -217,16 +217,7 @@ const queryFunc = ({ params: { slug = '' } }) => ({
   sanityQuery: `{
     "topic": *[slug.current == $slug && _type=='topics']{
       title, longTitle, explainerText, slug, "introductionLength": count(introduction), "agendaLength": count(agenda), relatedUrl, url,
-      "featuredImage": {
-        "caption": featuredImage.caption,
-        "credit": featuredImage.credit,
-        "sourceUrl": featuredImage.sourceUrl,
-        "license": featuredImage.license,
-        "asset": featuredImage.asset->{
-          "altText": altText,
-          "url": url
-        }
-      },
+      featuredImage{caption,credit,sourceUrl,license,asset->{...}},
       "advisors": advisors[]->{
         _id,
         title,

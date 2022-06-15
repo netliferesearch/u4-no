@@ -7,6 +7,7 @@ import LinkToItem from '../LinkToItem';
 import { getPostType } from '../../../helpers/getRouteByType';
 import PropTypes from 'prop-types';
 import TextClamp from 'react-string-clamp';
+import { TextClampSSR} from './TextClampSSR';
 import { imgLoader } from '../../../helpers/imgloader';
 import { Document, Page } from 'react-pdf/build/entry.noworker';
 
@@ -110,11 +111,11 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
                 </div>
               )}
               <h4 className="c-post__title">
-                <TextClamp text={fullTitle(post) || post.topicTitle} lines={ellipsizeLines[type]} />
+                <TextClampSSR text={fullTitle(post) || post.topicTitle} lines={ellipsizeLines[type]} />
               </h4>
               {post.standfirst && (
                 <div className="c-post__article-content u-body">
-                  <TextClamp text={post.standfirst} lines={standFirstLines[type]} />
+                  <TextClampSSR text={post.standfirst} lines={standFirstLines[type]} />
                 </div>
               )}
 

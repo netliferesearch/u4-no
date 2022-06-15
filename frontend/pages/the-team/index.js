@@ -1,7 +1,8 @@
+import React from 'react';
 import Layout from '../../components/Layout';
 import Footer from '../../components/general/footer/Footer';
 import { Team } from '../../components/general/team/Team';
-import DataLoader from '../../helpers/data-loader';
+import { fetchAndMaterialize } from '../../helpers/data-loader';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';
 import { PERSON_CARD_TYPE } from '../../components/general/person/PersonCard';
@@ -64,14 +65,31 @@ const Persons = props => {
   );
 };
 
-export default DataLoader(Persons, {
-  queryFunc: ({ query: { slug = '' } }) => ({
-    sanityQuery: `{
-        "frontpage": *[_id == "627b8d42-d8f7-4cf6-9567-f6337678b688"][0],
-        "persons": *[_type == "person" && references("419c2497-8e24-4599-9028-b5023830c87f")] | order(surname asc) [0..100]{..., "image": image.asset->url[0], affiliations},
-        "helpdesk": *[_type == "person" && references("17ec3576-0afa-4203-9626-a38a16b27c2a")]| order(surname asc) [0..100]{..., "image": image.asset->url[0], affiliations},
-        "affiliatedexperts": *[_type == "person" && references("3babc8f1-9e38-4493-9823-a9352b46585b")]| order(surname asc) [0..100]{..., "image": image.asset->url[0], affiliations},
-      }`,
-  }),
-  materializeDepth: 2,
+export default Persons;
+
+const queryFunc = () => ({
+  sanityQuery: `{
+    "frontpage": *[_id == "627b8d42-d8f7-4cf6-9567-f6337678b688"][0],
+    "persons": *[_type == "person" && references("419c2497-8e24-4599-9028-b5023830c87f")] | order(surname asc) [0..100]{
+      _id, firstName, surname, position, slug, "image": image.asset->url[0], image{asset->{url}}},
+    "helpdesk": *[_type == "person" && references("17ec3576-0afa-4203-9626-a38a16b27c2a")]| order(surname asc) [0..100]{
+      _id, firstName, surname, position, slug, "image": image.asset->url[0], image{asset->{url}}},
+    "affiliatedexperts": *[_type == "person" && references("3babc8f1-9e38-4493-9823-a9352b46585b")]| order(surname asc) [0..100]{
+      _id, firstName, surname, position, slug, "image": image.asset->url[0], image{asset->{url}}}
+  }`,
 });
+
+export const getStaticProps = async ctx => {
+  const { data, error = '' } = await fetchAndMaterialize({
+    nextContext: ctx,
+    queryFunc,
+    materializeDepth: 2,
+  });
+  if (error === 'No content found (dataLoader said this)') {
+    return { notFound: true };
+  }
+  return {
+    props: { data },
+    revalidate: 60,
+  };
+};
