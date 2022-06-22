@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Layout } from '../../components/Layout';
 import { wrapInRedux } from '../../helpers/redux-store-wrapper';
 import Footer from '../../components/general/footer/Footer';
@@ -33,19 +33,19 @@ export const Publications = ({ data = {} }) => {
         "slug": slug.current,
         "titleColor": featuredImage.asset->metadata.palette.dominant.title,
         "imageUrl": featuredImage.asset->url,
+        "imageBlurDataURL":featuredImage.asset->metadata.lqip,
         "pdfFile": pdfFile.asset->url,
       }[0..3],
     },
   }`;
 
-  useEffect(() => {
-    client
-      .fetch(sanityQuery, {})
-      .then(results => {
-        setFeatured(results.publicationsPage);
-      })
-      .catch(err => console.error('Oh noes: %s', err.message));
-  }, []);
+  client
+    .fetch(sanityQuery, {})
+    .then(results => {
+      setFeatured(results.publicationsPage);
+    })
+    .catch(err => console.error('Failed to get featured publications: %s', err.message));
+
   return (
     <Layout
       hideLogo={false}
