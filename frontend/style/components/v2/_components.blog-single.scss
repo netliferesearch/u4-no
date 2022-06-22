@@ -35,8 +35,8 @@
 .c-credit__caption > a {
   display: inline-block;
   font-family: $font-sans;
-  font-size: $font-size-nano;
-  line-height: 14px;
+  font-size: $font-size-micro;
+  line-height: $line-height-tiny;
   text-align: right;
   color: $mid-grey;
 }

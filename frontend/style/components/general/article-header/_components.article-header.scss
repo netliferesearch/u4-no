@@ -31,6 +31,7 @@
   margin: 0 -24px;
   .c-credit {
     align-self: flex-start;
+    margin-top: $font-size-micro;
     padding: 0 24px 24px 24px;
   }
   @include mq($from: tablet) {
