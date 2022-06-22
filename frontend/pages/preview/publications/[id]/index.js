@@ -65,7 +65,9 @@ const queryFunc = ({ params: { id = '' } }) => ({
   featuredImage, headsUp, 
   keywords[]->{_id, keyword, category}, 
   language,
-  lead, legacypdf, mainPoints, methodology, notes, partners, pdfFile, publicationNumber,
+  lead, legacypdf, mainPoints, methodology, notes, partners, pdfFile,
+  pdfThumbnail{_type,asset->{url,metadata{lqip,dimensions{width,height}}}},
+  publicationNumber,
   publicationType->{ _id, title },
   reference, references,
   "recommendedResources":
