@@ -120,7 +120,8 @@
   }
   ul.c-longform-grid__standard,
   ol.c-longform-grid__standard {
-    padding: 24px;
+    margin: 16px 0 32px;
+    padding-left: 24px;
   }
   @include mq($from: tablet) {
     margin: 0;
