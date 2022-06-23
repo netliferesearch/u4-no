@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { client as sanityClient } from './sanityClient.pico';
 import Error404 from '../components/Error404';
 import { limit } from '../components/search/SearchResults';
 
@@ -208,6 +209,35 @@ export const getSearchAggregations = async () => {
   }
 };
 
+const getSanityData = async () => {
+  const sanityQuery = `*[_type=="frontpage" && slug.current == "publications"][0]{
+      id,
+      title,
+      lead,
+      sections,
+      lead,
+      "imageUrl": featuredImage.asset->url,
+      "resources": resources[]->{
+        _id,
+        _type,
+        "publicationType": publicationType->title,
+        title,
+        date,
+        standfirst,
+        topics[]->{title},
+        "slug": slug.current,
+        "titleColor": featuredImage.asset->metadata.palette.dominant.title,
+        "imageUrl": featuredImage.asset->url,
+        "imageBlurDataURL":featuredImage.asset->metadata.lqip,
+        "pdfFile": pdfFile.asset->url,
+      }[0..3],
+    }`;
+
+  const result = await sanityClient.fetch(sanityQuery, {});
+
+  return result;
+}
+
 const PublicationsDataLoader = Child =>
   class DataLoader extends Component {
     static async getInitialProps(nextContext) {
@@ -215,7 +245,8 @@ const PublicationsDataLoader = Child =>
       const { defaultSearchAggs = {} } = store.getState();
       // Use Promise.all so that we can fire off 1 or 2 two queries at once,
       // without one waiting for the other.
-      const [result] = await Promise.all([
+      const [sanityData,result] = await Promise.all([
+        getSanityData(),
         doSearch({ query, defaultSearchAggs }),
         (async () => {
           if (defaultSearchAggs.length > 0) {
@@ -234,7 +265,7 @@ const PublicationsDataLoader = Child =>
         type: 'SEARCH_UPDATE_RESULTS',
         searchResults: result,
       });
-      return { data: result };
+      return { data: result, sanityData: sanityData };
     }
     render() {
       const { error } = this.props;

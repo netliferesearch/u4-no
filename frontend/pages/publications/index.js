@@ -6,46 +6,12 @@ import { PageIntro } from '../../components/general/PageIntro';
 import { PostCarousel } from '../../components/front-page/PostCarousel';
 import { POST_TYPE } from '../../components/general/post/Post';
 import { SearchFilters } from '../../components/search/SearchFilters';
-import { client } from '../../helpers/sanityClient.pico';
 import PublicationsDataLoader from '../../helpers/publications-data-loader';
 import { SearchResults } from '../../components/search/SearchResults';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../components/serializers/serializers';
 
-export const Publications = ({ data = {} }) => {
-  const [sanityData, setFeatured] = useState({});
-  const sanityQuery = `{
-    "publicationsPage": *[_type=="frontpage" && slug.current == "publications"][0]{
-      id,
-      title,
-      lead,
-      sections,
-      lead,
-      "imageUrl": featuredImage.asset->url,
-      "resources": resources[]->{
-        _id,
-        _type,
-        "publicationType": publicationType->title,
-        title,
-        date,
-        standfirst,
-        topics[]->{title},
-        "slug": slug.current,
-        "titleColor": featuredImage.asset->metadata.palette.dominant.title,
-        "imageUrl": featuredImage.asset->url,
-        "pdfFile": pdfFile.asset->url,
-      }[0..3],
-    },
-  }`;
-
-  useEffect(() => {
-    client
-      .fetch(sanityQuery, {})
-      .then(results => {
-        setFeatured(results.publicationsPage);
-      })
-      .catch(err => console.error('Oh noes: %s', err.message));
-  }, []);
+export const Publications = ({ data = {}, sanityData = {} }) => {
   return (
     <Layout
       hideLogo={false}
