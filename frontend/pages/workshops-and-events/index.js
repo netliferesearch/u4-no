@@ -133,9 +133,9 @@ const queryFunc = () => ({
       personLeft[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}},
       personRight[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}}
     }, "featuredImage": featuredImage.asset->url, resources[]->},
-    "eventsAndWebinars": *[_type == "event" && (!startDate || startDate.utc > now()) && !(eventType in ['incountryworkshop','hqworkshop'])] | order(startDate.utc asc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
-    "workshops": *[_type == "event" && (!startDate || startDate.utc > now()) && (eventType in ['incountryworkshop','hqworkshop'])] | order(startDate.utc asc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
-    "previousEvents": *[_type == "event" && (startDate.utc < now())] | order(startDate.utc desc) {_type, eventType, title, startDate, lead, "slug": slug.current, topics[]->{title}},
+    "eventsAndWebinars": *[_type == "event" && (!startDate || startDate.utc > now()) && !(eventType in ['incountryworkshop','hqworkshop'])] | order(startDate.utc asc) {_type, eventType, title, startDate, location, lead, "slug": slug.current, topics[]->{title}},
+    "workshops": *[_type == "event" && (!startDate || startDate.utc > now()) && (eventType in ['incountryworkshop','hqworkshop'])] | order(startDate.utc asc) {_type, eventType, title, startDate, location, lead, "slug": slug.current, topics[]->{title}},
+    "previousEvents": *[_type == "event" && (startDate.utc < now())] | order(startDate.utc desc) {_type, eventType, title, startDate, location, lead, "slug": slug.current, topics[]->{title}},
   }`,
 });
 

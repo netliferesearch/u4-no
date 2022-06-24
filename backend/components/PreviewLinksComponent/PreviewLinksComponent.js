@@ -13,7 +13,7 @@ class PreviewLinksComponent extends React.PureComponent {
   render() {
     return (
       <div className={styles.buttonGroup}>
-        {this.props.document._id.startsWith('draft') && (
+        {this.props.document._id?.startsWith('draft') && (
           <span className={styles.buttonSubgroup}>
             <AnchorButton
               inverted
@@ -41,9 +41,10 @@ class PreviewLinksComponent extends React.PureComponent {
                 padding="small"
                 href={`${previewDomain}/previewpdf/${this.props.document._type}/${
                   this.props.document._id
-                }`}
+                }.pdf`}
                 target="_blank"
                 title="Preview draft as pdf"
+                download={`${this.props.document.slug.current}.pdf`}
               >
                 Preview pdf
               </AnchorButton>
