@@ -57,7 +57,7 @@ app.prepare().then(() => {
    * To be replaced by '/generate-pdf-preview' which is a bit more clearly worded
    * and has extra features. Keeping this around to avoid breaking old urls.
    */
-  server.get('/previewpdf/:type/:id', publicationPdfPreviewHandler);
+  server.get('/previewpdf/:type/:id.pdf', publicationPdfPreviewHandler);
   server.get('/r/:shortSlug', shortUrlHandler);
 
   server.all('*', (req, res) => {
