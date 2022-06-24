@@ -9,7 +9,11 @@ import PropTypes from 'prop-types';
 import TextClamp from 'react-string-clamp';
 import { TextClampSSR} from './TextClampSSR';
 import { imgLoader } from '../../../helpers/imgloader';
-import { Document, Page } from 'react-pdf/build/entry.noworker';
+//import { Document, Page } from 'react-pdf/build/entry.noworker';
+
+import dynamic from "next/dynamic";
+const Document = dynamic(() => import("react-pdf/build/entry.noworker").then(module => module.Document));
+const Page = dynamic(() => import("react-pdf/build/entry.noworker").then(module => module.Page));
 
 export const POST_TYPE = {
   SMALL: 'small', // collapsable in mobile view/normal in desktop
@@ -138,7 +142,9 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
 
 Post.defaultProps = {
   type: POST_TYPE.BLOG,
-  post: {},
+  post: {
+    filedUnderTopicNames: []
+  },
   placeholder: '',
 };
 
