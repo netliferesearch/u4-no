@@ -3,6 +3,7 @@ import dateToString from '../../../helpers/dateToString';
 import LinkToItem from '../LinkToItem';
 import { getPostType } from '../../../helpers/getRouteByType';
 import { CalendorIcon } from '../../icons/CalendorIcon';
+import { LocationIcon } from '../../icons/LocationIcon';
 import { ArrowNext } from '../../icons/ArrowNext';
 import TextClamp from 'react-string-clamp';
 
@@ -127,6 +128,11 @@ export const CourseContent = ({ post = {}, content = {} }) => (
     </div>
     <div className="c-blue-card__bottom-content ">
       <div className="c-blue-card__info">
+        {post.location && (
+          <p className="c-blue-card__location u-body--small">
+            <LocationIcon /> {post.location}
+          </p>
+        )}
         <div className="c-blue-card__details">
           <p className="c-blue-card__date u-body--small">
             {post.startDate && <CalendorIcon />}

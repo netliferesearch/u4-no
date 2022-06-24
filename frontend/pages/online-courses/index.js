@@ -143,7 +143,7 @@ const queryFunc = () => ({
       personLeft[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}},
       personRight[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}}, 
       coursesRef[]->{
-        _type,title,lead,language,startDate,slug,courseType,
+        _type,title,lead,language,startDate,location,slug,courseType,
         "featuredImage": featuredImage.asset->url
       } 
     }, 
