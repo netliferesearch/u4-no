@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Head from 'next/head';
 import BEMHelper from 'react-bem-helper';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from './printSerializers';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
