@@ -44,7 +44,6 @@ class PreviewLinksComponent extends React.PureComponent {
                 }.pdf`}
                 target="_blank"
                 title="Preview draft as pdf"
-                download={`${this.props.document.slug.current}.pdf`}
               >
                 Preview pdf
               </AnchorButton>
