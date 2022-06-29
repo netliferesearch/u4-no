@@ -34,7 +34,7 @@ export const SearchResults = props => {
         <div className="c-search-results-v2__topbar__results">
           {searchFilters.length > 0 || value > 0
             ? `Showing ${currentResults} of ${value} Results`
-            : `Search our publication, courses and more. Enter a query above, and the results will be
+            : `Search our publications, courses and more. Enter a query above, and the results will be
           displayed as you type.`}
         </div>
         {!props.publications && (
