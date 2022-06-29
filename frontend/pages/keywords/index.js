@@ -1,5 +1,5 @@
 import React from 'react';
-import { sortBy } from 'lodash';
+import sortBy from 'lodash/sortBy';
 import Footer from '../../components/general/footer/Footer';
 import Layout from '../../components/Layout';
 import DataLoader from '../../helpers/data-loader';

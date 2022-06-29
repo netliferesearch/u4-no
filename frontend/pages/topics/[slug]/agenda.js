@@ -91,7 +91,12 @@ TopicArticleEntry.defaultProps = {
 export default TopicArticleEntry;
 
 const queryFunc = ({ params: { slug = '' } }) => ({
-  sanityQuery: '*[slug.current == $slug && _type == "topics"][0]{title, longTitle, explainerText, slug, agenda, relatedUrl, url, featuredImage, authors[]->{firstName, surname}}',
+  sanityQuery: `*[slug.current == $slug && _type == "topics"][0]{title, longTitle, explainerText, slug, 
+    agenda[]{'markDefs':markDefs[]{
+      _type == 'internalReferance' => {_key,_type,"target": @->{_id,_type,title,slug}},
+      _type != 'internalReferance' => {...},
+    },...}, 
+    relatedUrl, url, featuredImage, authors[]->{firstName, surname}}`,
   param: { slug },
 });
 

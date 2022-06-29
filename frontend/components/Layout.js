@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { MenuMobile } from './general/menu/MenuMobile';
 import { useOnClickOutside } from '../helpers/hooks';
 import PicoSanity from 'picosanity';
-import { uniqBy } from 'lodash';
+import uniqBy from 'lodash/uniqBy';
 import { menuItems } from '../components/general/menu/menuItems';
 import { useScrollInfo } from '../helpers/useScrollInfo';
 

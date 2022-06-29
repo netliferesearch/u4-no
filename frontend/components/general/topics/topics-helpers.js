@@ -1,4 +1,4 @@
-import { sortBy } from 'lodash';
+import sortBy from 'lodash/sortBy';
 
 export const sortTopics = (items, key) => {
   return sortBy(items, [key]);
