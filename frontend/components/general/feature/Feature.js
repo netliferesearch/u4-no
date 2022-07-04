@@ -6,7 +6,7 @@ const Feature = ({ title = '', text = '', icon = () => null, iconUrl = {} }) => 
     {/* {icon && <div className="c-features__icon">{icon()}</div>} */}
     {iconUrl && (
       <div className="c-features__icon">
-        <img src={ImageUrl(iconUrl)} alt={title} />
+        <img src={ImageUrl(iconUrl)} alt={title} loading="lazy" width="90" />
       </div>
     )}
     {title && <h2 className="u-secondary-h2 u-text--light-blue">{title}</h2>}

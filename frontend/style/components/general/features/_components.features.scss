@@ -40,6 +40,7 @@
 }
 
 .c-features__icon {
+  height: 96px;
   img {
     width: 90px;
     filter: brightness(8);
@@ -60,6 +61,7 @@
     max-width: 384px;
   }
   .c-features__icon {
+    height: auto;
     margin-right: 24px;
     img {
       width: 48px;
