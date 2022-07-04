@@ -3,7 +3,7 @@ import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
 import HeadComponent from './HeadComponent';
 import { Menu } from './general/menu/Menu';
-import LogoU4White from './icons/LogoU4White';
+import LogoU4White from './icons/LogoU4WhiteMini';
 import { useRouter } from 'next/router';
 import { MenuMobile } from './general/menu/MenuMobile';
 import { useOnClickOutside } from '../helpers/hooks';
