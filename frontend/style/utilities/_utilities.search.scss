@@ -1,0 +1,20 @@
+/*
+  these inuit classes are normally generated from settings.global
+  manually typed in here instead
+  since very few are actually used
+  and it shaves around 150kB off the final css
+*/
+
+@include mq($from: desktop) {
+  .u-3\/12\@desktop {
+    width: 25%!important;
+  }
+  .u-8\/12\@desktop {
+    width: 66.6666666667%!important;
+  }
+  .u-push-1\/12\@desktop {
+    position: relative!important;
+    right: auto!important;
+    left: 8.3333333333%!important;
+  }
+}

@@ -6,7 +6,7 @@ function U4App({ Component, pageProps }) {
   // When generating a PDF we want to completely switch the global styles.
   const isPrinting = ['/publications/[slug]/print', '/printpreview/[id]'].includes(router.route);
   return (
-    <div className={isPrinting ? 'print-style' : 'main-style'}>
+    <div className={isPrinting ? 'print-style' : 'm'}>
       {!isPrinting && (
         <style jsx global>
           {`
