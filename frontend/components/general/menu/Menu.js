@@ -6,7 +6,6 @@ import { MainMenu } from './MainMenu';
 
 export const Menu = props => {
   const {
-    data,
     triggerSearchMenu,
     setSearchOpen,
     activeSearchMenu,
