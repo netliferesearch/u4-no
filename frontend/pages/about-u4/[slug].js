@@ -50,8 +50,13 @@ const GeneralArticle = props => {
 export default GeneralArticle;
 
 const queryFunc = ({ params: { slug = '' } }) => ({
-  sanityQuery: `*[slug.current == $slug][0]
-    {..., topics[]->{ _id, title, slug }, "articleType": articleType[0]->title}`,
+  sanityQuery: `*[slug.current == $slug][0] {
+    content[]{'markDefs':markDefs[]{
+      _type == 'internalReferance' => {_key,_type,"target": @->{_id,_type,title,slug}},
+      _type != 'internalReferance' => {...},
+    },...}, 
+    ..., topics[]->{ _id, title, slug }, "articleType": articleType[0]->title
+  }`,
   param: { slug },
 });
 
