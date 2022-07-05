@@ -11,7 +11,7 @@ import serializers from '../../components/serializers/serializers';
 import { LinkBox } from '../../components/general/link-box/LinkBox';
 
 const About = ({ data: { about = {}, url = {} } }) => {
-  const { title = '', featuredImage = {}, lead = '', relatedUrl = {} } = about;
+  const { title = '', featuredImage = '', imageBlurDataURL = '', lead = '', relatedUrl = {} } = about;
   return (
     <Layout
       headComponentConfig={{
@@ -47,6 +47,7 @@ const About = ({ data: { about = {}, url = {} } }) => {
               <Image
                 loader={sanityImageLoader}
                 src={about.featuredImage}
+                blurDataURL={imageBlurDataURL}
                 loading="lazy"
                 layout="fill"
                 objectFit="cover"
@@ -67,9 +68,13 @@ const About = ({ data: { about = {}, url = {} } }) => {
 export default About;
 
 const queryFunc = () => ({
-  sanityQuery: `{ "about": *[(_id == "f54d724e-8471-4413-aeb8-3ef5276e9dfc") || (slug.current == "about-u4-new")][0]
-    {title, slug, lead, _id, 
-    "resources": resources[]->{...,slug}, "sections": sections, "featuredImage": featuredImage.asset->url} 
+  sanityQuery: `{ 
+    "about": *[(_id == "f54d724e-8471-4413-aeb8-3ef5276e9dfc") || (slug.current == "about-u4-new")][0] {
+      title, slug, lead, _id, 
+      "resources": resources[]->{title, standfirst, slug{current}}, 
+      "featuredImage": featuredImage.asset->url,
+      "imageBlurDataURL":featuredImage.asset->metadata.lqip,
+    } 
   }`,
 });
 
@@ -77,7 +82,7 @@ export const getStaticProps = async ctx => {
   const { data, error = '' } = await fetchAndMaterialize({
     nextContext: ctx,
     queryFunc,
-    materializeDepth: 3,
+    materializeDepth: 0,
   });
   if (error === 'No content found (dataLoader said this)') {
     return { notFound: true };

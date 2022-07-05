@@ -7,9 +7,6 @@ import LogoU4White from './icons/LogoU4WhiteMini';
 import { useRouter } from 'next/router';
 import { MenuMobile } from './general/menu/MenuMobile';
 import { useOnClickOutside } from '../helpers/hooks';
-import PicoSanity from 'picosanity';
-import uniqBy from 'lodash/uniqBy';
-import { menuItems } from '../components/general/menu/menuItems';
 import { useScrollInfo } from '../helpers/useScrollInfo';
 
 
@@ -30,7 +27,6 @@ export const Layout = props => {
     headComponentConfig = {},
     hideLogo = false,
   } = props;
-  const [data, setData] = useState('');
   const [scrolled, setScrolled] = useState(false);
   const [activeSearchMenu, setActiveSearchMenu] = useState(true);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -42,33 +38,6 @@ export const Layout = props => {
     e.preventDefault();
     setActiveSearchMenu(!activeSearchMenu);
   };
-
-  useEffect(
-    () => {
-      if (data) {
-        menuItems[0].items = data.topics;
-        menuItems[4].sections[0].items = uniqBy([...data.aboutResources.resources, ...menuItems[4].sections[0].items], '_id');
-        menuItems[4].sections[1].items = uniqBy([...data.workWithResources.resources, ...menuItems[4].sections[1].items], '_id');
-        return; // no need to fetch data if we got link data passed in.
-      }
-      const client = new PicoSanity({
-        projectId: '1f1lcoov',
-        dataset: 'production',
-        token: '',
-        useCdn: true,
-      });
-      const sanityQuery = `{
-        "topics": *[_type == "topics"] | order(title){_id, title, slug},
-        "aboutResources": *[slug.current == "about-u4-new"][0]{ resources[]->{_id, "label": title, slug} },
-        "workWithResources": *[slug.current == "who-we-work-with"][0]{ resources[]->{_id, "label": title, slug} }
-      }`;
-      client.fetch(sanityQuery, {}).then(data => {
-        setData(data);
-      });
-    },
-
-    [data]
-  );
 
   useScrollInfo(
     ({ currPos }) => {
@@ -111,8 +80,6 @@ export const Layout = props => {
               )}
               {hideLogo && <div />}
               <MenuMobile
-                data={data}
-                setData={setData}
                 triggerSearchMenu={triggerSearchMenu}
                 setSearchOpen={setSearchOpen}
                 activeSearchMenu={activeSearchMenu}
@@ -123,8 +90,6 @@ export const Layout = props => {
                 setActiveMenu={setActiveMenu}
               />
               <Menu
-                data={data}
-                setData={setData}
                 triggerSearchMenu={triggerSearchMenu}
                 setSearchOpen={setSearchOpen}
                 activeSearchMenu={activeSearchMenu}

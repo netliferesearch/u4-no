@@ -5,9 +5,9 @@ import { SubMenuSection } from './SubMenuSection';
 
 export const SubMenu = ({ activeItem = '', activeItemData = {} }) => {
   const item = menuItems.find(i => i.id === activeItem);
-  const firstCol = menuItems[0].items.slice(0, 9);
-  const secondCol = menuItems[0].items.slice(9, 18);
-  const thirdCol = menuItems[0].items.slice(18);
+  const firstCol = menuItems[0].items.slice(0, 10);
+  const secondCol = menuItems[0].items.slice(10, 20);
+  const thirdCol = menuItems[0].items.slice(20);
   const columns = [firstCol, secondCol, thirdCol];
   return (
     <div className="c-sub-menu__backdrop">
