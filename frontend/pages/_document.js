@@ -8,7 +8,7 @@ class U4Document extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <script
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{

@@ -16,7 +16,6 @@ import { initStore } from '../../../helpers/redux-store';
 
 export const MenuMobile = props => {
   const {
-    data,
     triggerSearchMenu,
     setSearchOpen,
     activeSearchMenu,
@@ -79,9 +78,9 @@ export const MenuMobile = props => {
               </div>
             }
           >
-            {data && (
+            {(
               <ul className="c-menu__list">
-                {menuItems[0].items.slice(0, 27).map(topic => (
+                {menuItems[0].items.map(topic => (
                   <SubMenuItem
                     key={topic._id}
                     label={topic.title}
