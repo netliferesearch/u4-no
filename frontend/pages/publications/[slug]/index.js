@@ -49,7 +49,11 @@ PublicationEntry.propTypes = {
 
 PublicationEntry.defaultProps = {
   data: {
-    legacypdf: {},
+    legacypdf: {
+      asset: {
+        url: ''
+      }
+    },
     content: [],
   },
 };
@@ -59,7 +63,7 @@ export default PublicationEntry;
 const queryFunc = ({ params: { slug = '' } }) => ({
   sanityQuery: `*[_type == 'publication' && slug.current == $slug]{ _type, _id,
   abbreviations, abstract, acknowledgements,
-  authors[]->{_id, shortbio, affiliations, email, ${localize('firstName')}, slug, ${localize('surname')}, position },
+  authors[]->{_id, ${localize('bioShort')}, affiliations[]->{_id,name}, email, ${localize('firstName')}, slug, ${localize('surname')}, position },
   bibliographicalOverride, blurbs, content, date,
   editors[]->{ _id, affiliations, email, ${localize('firstName')}, slug, ${localize('surname')}, position },
   featuredImage{asset->{url}}, 
