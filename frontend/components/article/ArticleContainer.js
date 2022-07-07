@@ -29,6 +29,7 @@ const ArticleContainer = (props = {}) => {
       authors = [],
       date = {},
       lead = '',
+      leadText = '',
       standfirst = '',
       slug = '',
       references = [],
@@ -86,7 +87,6 @@ const ArticleContainer = (props = {}) => {
     );
 
   const [readerOpen, setReaderOpen] = useState(false);
-  // console.log('publication', props.data);
 
   return (
     <Layout

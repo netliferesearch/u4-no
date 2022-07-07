@@ -1,21 +1,20 @@
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import { translate, langCode } from '../../helpers/translate';
+import { translateField, langCode } from '../../helpers/translate';
 import LinkToItem from '../general/LinkToItem';
 
 export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) => {
-  const trans = translate(language);
   const lang = langCode(language);
-  // console.log(authors);
+  const transField = translateField(language);
+
   return (
     <div className="c-about-author">
       {authors &&
         authors
           .filter(author => author)
           .map(author => (author.target ? author.target : author))
-          .map(
-            (
-              {
+          .map( ( author, index ) => {
+              const {
                 _id = Math.random(),
                 firstName = '',
                 surname = '',
@@ -23,16 +22,11 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                 affiliations = [],
                 position = '',
                 bioShort = [],
-                bioShort_fr = [],
-                bioShort_es = [],
-              },
-              index
-            ) => (
+              } = author;
+              
+              return (
               <div className="c-about-author__item" key={_id}>
-                {index === 0 &&
-                ((lang === 'en' && bioShort.length) ||
-                  (lang === 'fr' && bioShort_fr.lenth) ||
-                  (lang === 'es' && bioShort_es.length)) ? (
+                {(index === 0 && bioShort.length) ? (
                   <div>
                     <h4 className="u-primary-heading u-text--dark-blue">
                       About the author{`${authors.length > 1 ? 's' : ''}`}
@@ -44,10 +38,10 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                     {slug &&
                     affiliations.length &&
                     affiliations.some(
-                      ({ _ref }) =>
-                        _ref === '419c2497-8e24-4599-9028-b5023830c87f' ||
-                        _ref === '17ec3576-0afa-4203-9626-a38a16b27c2a' ||
-                        _ref === '3babc8f1-9e38-4493-9823-a9352b46585b'
+                      ({ _id }) =>
+                        _id === '419c2497-8e24-4599-9028-b5023830c87f' ||
+                        _id === '17ec3576-0afa-4203-9626-a38a16b27c2a' ||
+                        _id === '3babc8f1-9e38-4493-9823-a9352b46585b'
                     ) ? (
                       <LinkToItem type="person" slug={slug.current}>
                         <a>{`${firstName} ${surname}`}</a>
@@ -63,12 +57,10 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                   </div>
                 )} */}
                 <div className="c-longform">
-                  {lang === 'en' && bioShort && <BlockContent blocks={bioShort} />}
-                  {lang === 'fr' && bioShort_fr && <BlockContent blocks={bioShort_fr} />}
-                  {lang === 'es' && bioShort_es && <BlockContent blocks={bioShort_es} />}
+                  <BlockContent blocks={transField(author,'bioShort')} />
                 </div>
               </div>
-            )
+            )}
           )}
     </div>
   );
