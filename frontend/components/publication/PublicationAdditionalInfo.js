@@ -7,7 +7,7 @@ import TnrcFooter from '../general/tnrc/TnrcFooter';
 import { ArticleActions } from '../general/article-actions/ArticleActions';
 
 export const PublicationAdditionalInfo = ({ data = {}, setReaderOpen = () => null }) => {
-  const { _type = '', authors = [], publicationType = {}, keywords = [] } = data;
+  const { _type = '', authors = [], publicationType = {}, keywords = [], language = 'en' } = data;
 
   return (
     <>
@@ -24,7 +24,7 @@ export const PublicationAdditionalInfo = ({ data = {}, setReaderOpen = () => nul
         <div className="o-wrapper-medium">
           <div className="o-wrapper-narrow">
             <ArticleActions data={data} setReaderOpen={setReaderOpen} />
-            <AboutAuthor authors={authors} />
+            <AboutAuthor authors={authors} language={language} />
             <Disclaimers title={true} />
             {keywords.length > 0 ? <Keywords title={true} keywords={keywords} hr={true} /> : null}
           </div>
