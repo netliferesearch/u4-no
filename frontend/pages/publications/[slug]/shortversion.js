@@ -1,47 +1,66 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DataLoader from '../../../helpers/data-loader';
-import { wrapInRedux } from '../../../helpers/redux-store-wrapper';
+import { fetchAndMaterialize } from '../../../helpers/data-loader';
+import { initStore } from '../../../helpers/redux-store';
+import { Provider } from 'react-redux';
 import PublicationContainer from '../../../components/publication/PublicationContainer';
 
-const TopicArticleEntry = props => {
-  const {
-    data: { title = '', summary = [], _type = '', slug = '' },
-    url = {},
-  } = props;
-  console.log("summary", summary)
+const store = initStore();
+
+const PublicationEntry = props => {
   return (
-    // <LongformArticleContainer
-    //   BreadCrumbComponent={<BreadCrumb data={{ _type: _type, slug: slug, title }} />}
-    //   content={summary}
-    //   shortversion
-    // />
-    <PublicationContainer data={props.data} shortversionContent={summary} shortversion />
+    <Provider store={store}>
+      <PublicationContainer data={props.data} shortversionContent={props.data.summary} shortversion />
+    </Provider>
   );
 };
 
-TopicArticleEntry.propTypes = {
+PublicationEntry.propTypes = {
   data: PropTypes.shape({
-    title: PropTypes.string,
     summary: PropTypes.arrayOf(PropTypes.object),
   }),
-  url: PropTypes.shape({
-    current: PropTypes.string,
-  }).isRequired,
 };
-TopicArticleEntry.defaultProps = {
+
+PublicationEntry.defaultProps = {
   data: {
-    title: 'No title',
-    summary: 'No summary',
+    summary: [],
   },
 };
 
-export default wrapInRedux(
-  DataLoader(TopicArticleEntry, {
-    queryFunc: ({ query: { slug = '' } }) => ({
-      sanityQuery: '*[slug.current == $slug][0]',
-      param: { slug },
-    }),
-    materializeDepth: 1,
-  })
-);
+export default PublicationEntry;
+
+const queryFunc = ({ params: { slug = '' } }) => ({
+  sanityQuery: `*[_type == 'publication' && slug.current == $slug]{ _type, _id,
+  featuredImage{asset->{url}}, 
+  language,
+  publicationType->{ _id, title },
+  "recommendedResources":
+    relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, "articleTypeTitle": articleType[0]->title, publicationNumber, date, reference, "imageUrl": featuredImage.asset->url },
+  "relatedResources":
+      related[]->{ _type, _id, title, slug, publicationType->{ title }, "articleTypeTitle": articleType[0]->title, publicationNumber, date, reference, "imageUrl": featuredImage.asset->url },
+  slug, subtitle, summary, summaryExternal, title,
+}[0]`,
+  param: { slug },
+});
+
+export const getStaticProps = async ctx => {
+  const { data, error = '' } = await fetchAndMaterialize({
+    nextContext: ctx,
+    queryFunc,
+    materializeDepth: 2,
+  });
+  if (error === 'No content found (dataLoader said this)') {
+    return { notFound: true };
+  }
+  return {
+    props: { data },
+    revalidate: 60,
+  };
+};
+
+export const getStaticPaths = async ctx => {
+  return {
+    paths: [],
+    fallback: true,
+  };
+};
