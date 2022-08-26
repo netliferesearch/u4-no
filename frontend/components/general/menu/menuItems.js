@@ -129,13 +129,6 @@ export const menuItems = [
         "title": "Illicit financial flows"
       },
       {
-        "_id": "33481819-743e-498a-accb-beaa17157b7d",
-        "slug": {
-          "current": "informal-contexts"
-        },
-        "title": "Informal contexts"
-      },
-      {
         "_id": "217db47a-ecd8-4ed5-b446-52cc674bff0b",
         "slug": {
           "current": "justice-sector"
