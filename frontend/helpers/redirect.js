@@ -97,6 +97,7 @@ export function getRedirect(ctx) {
 
     { from: '/topics/basic-services', to: '/topics/public-service-delivery' },
     { from: '/topics/evaluation-and-measurement', to: '/topics/measurement-and-evaluation' },
+    { from: '/topics/informal-contexts', to: '/topics/social-norms-and-networks' },
     {
       from: '/topics/international-drivers-of-corruption',
       to: '/topics/illicit-financial-flows',
