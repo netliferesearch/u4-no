@@ -142,7 +142,7 @@ export default DataLoader(CoursePage, {
            surname,
            email,
            slug,
-           bio
+           
          },
         "coordinator": coordinator[]->{
           _id,
@@ -153,7 +153,7 @@ export default DataLoader(CoursePage, {
            surname,
            email,
            slug,
-           bio
+           
          },
          "expert": expert[]->{
           _id,
@@ -164,7 +164,7 @@ export default DataLoader(CoursePage, {
            surname,
            email,
            slug,
-           bio
+           
          },
         otherLanguages[]->{_id, title, language, slug},
         topics[]->{ _id, title, slug },
@@ -179,5 +179,5 @@ export default DataLoader(CoursePage, {
         pdfAsset}}`,
     param: { slug },
   }),
-  materializeDepth: 5,
+  materializeDepth: 1,
 });
