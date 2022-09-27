@@ -140,7 +140,7 @@ const ArticleContainer = (props = {}) => {
                     publicationType={publicationType}
                   />
                 ) : null}
-                {lead || abstract ? <ArticleLeadMain lead={lead} abstract={abstract} /> : null}
+                {abstract ? <ArticleLeadMain abstract={abstract} /> : null}
                 <LongformArticle content={content} title={title} lead={!!(lead || abstract)} />
                 {references.length > 0 && <ToggleBlock title="References" content={references} />}
                 {abbreviations.length > 0 && (
