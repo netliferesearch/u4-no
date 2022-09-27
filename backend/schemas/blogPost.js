@@ -5,9 +5,7 @@ import annotations from './fields/annotations';
 import {
   title,
   subtitle,
-  standfirst,
   image,
-  leadText,
   slug,
   language,
   license,
@@ -23,8 +21,15 @@ export default {
     title,
     subtitle,
     publicationContent,
-    standfirst,
-    leadText,
+    {
+      name: 'standfirst',
+      type: 'string',
+      description: `Quick promo-text for blog page overview and other channels. It appears below the title on the blog page itself. 
+      What is the post about? Say one thing that convinces readers that they will lose out by not reading it.
+    
+    (Aim for: 170–200 characters with spaces)
+    `
+    },
     {
       name: 'pdfFile',
       title: 'Pdf file (generated)',
