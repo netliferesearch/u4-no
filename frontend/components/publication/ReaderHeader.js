@@ -99,7 +99,7 @@ export const ReaderHeader = ({ data = '', setReaderOpen = null, targetRef = null
               />
             </figure>
             <figcaption className="">
-              <PhotoCaptionCredit featuredImage={featuredImage} />
+              <PhotoCaptionCredit image={featuredImage} />
             </figcaption>
           </div>
         )}

@@ -122,9 +122,29 @@
     height: 192px;
     margin: 0;
   }
+  figcaption {
+    display: none;
+  }
   @include mq($from: tablet) {
     figure {
       height: 560px;
+    }
+  }
+  @include mq($from: 1024px) {
+    figcaption {
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 1254px;
+      padding-right: 24px;
+      padding-left: 24px;
+      display: grid;
+      grid-template-rows: auto;
+      grid-template-columns: 5fr 2fr;
+      column-gap: 20px;
+      
+      c-credit {
+        grid-column-start: 2;
+      }
     }
   }
 }
