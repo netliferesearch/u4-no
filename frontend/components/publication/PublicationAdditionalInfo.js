@@ -5,9 +5,10 @@ import { Cite } from '../publication/Cite';
 import { Keywords } from '../general/keywords/Keywords';
 import TnrcFooter from '../general/tnrc/TnrcFooter';
 import { ArticleActions } from '../general/article-actions/ArticleActions';
+import { PhotoCredit } from '../general/PhotoCredit';
 
 export const PublicationAdditionalInfo = ({ data = {}, setReaderOpen = () => null }) => {
-  const { _type = '', authors = [], publicationType = {}, keywords = [], language = 'en' } = data;
+  const { _type = '', authors = [], publicationType = {}, keywords = [], language = 'en', featuredImage = {} } = data;
 
   return (
     <>
@@ -27,6 +28,7 @@ export const PublicationAdditionalInfo = ({ data = {}, setReaderOpen = () => nul
             <AboutAuthor authors={authors} language={language} />
             <Disclaimers title={true} />
             {keywords.length > 0 ? <Keywords title={true} keywords={keywords} hr={true} /> : null}
+            <PhotoCredit image={featuredImage} />
           </div>
         </div>
       </section>
