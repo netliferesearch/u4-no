@@ -76,3 +76,12 @@
     }
   }
 }
+
+.c-credit.onDark {
+  margin-top: $spacing-small;
+
+  .c-credit__caption,
+  .c-credit__caption>a {
+    color: $white;
+  }
+}

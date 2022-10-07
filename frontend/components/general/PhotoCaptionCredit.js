@@ -1,10 +1,10 @@
 import React from 'react';
 import BlockToContent from '@sanity/block-content-to-react';
 
-export const PhotoCaptionCredit = ({ image = {}, showCaption = true }) => {
+export const PhotoCaptionCredit = ({ image = {}, showCaption = true, onDark = false }) => {
   const { license = '', credit = '', sourceUrl = '', caption } = image;
   return (
-    <div className="c-credit">
+    <div className={`c-credit ${onDark ? 'onDark' : ''}`}>
       {caption && showCaption && (
         <BlockToContent
           blocks={caption}
