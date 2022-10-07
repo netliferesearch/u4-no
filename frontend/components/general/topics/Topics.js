@@ -1,7 +1,6 @@
 import React from 'react';
 import { spacesToDash } from '../../../helpers/stringHelpers';
 import uniq from 'lodash/uniq';
-import { PhotoCaptionCredit } from '../PhotoCaptionCredit';
 
 
 /**
@@ -13,7 +12,7 @@ import { PhotoCaptionCredit } from '../PhotoCaptionCredit';
  * @param {Boolean} hr
  */
 
-export const Topics = ({ title = '', topics = [], hr = false, onDark = false, image = {} }) => {
+export const Topics = ({ title = '', topics = [], hr = false, onDark = false }) => {
   return topics ? (
     <div className="c-topics">
       {hr ? <hr className="u-section-underline--no-margins" /> : null}
@@ -46,7 +45,6 @@ export const Topics = ({ title = '', topics = [], hr = false, onDark = false, im
           ) : null
         )}
       </div>
-      <PhotoCaptionCredit image={image} showCaption={false} onDark={onDark} />
     </div>
   ) : null;
 };

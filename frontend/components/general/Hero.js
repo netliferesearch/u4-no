@@ -61,9 +61,14 @@ export const Hero = ({
           )}
           <div className="c-hero__row">
             <PageIntro title={title} text={text} onDark={onDark} />
-            {topics.length > 0 ? (
-              <Topics title="Related topics" topics={topics} hr onDark={onDark} image={image} />
-            ) : null}
+            <div>
+              {(topics.length > 0) &&
+                <Topics title="Related topics" topics={topics} hr onDark={onDark} image={image} />
+              }
+              {image &&
+               <PhotoCaptionCredit image={image} showCaption={false} onDark={onDark} />
+              }
+            </div>
           </div>
         </div>
       </div>
