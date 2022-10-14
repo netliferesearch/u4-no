@@ -109,6 +109,7 @@ async function processPublication({ document: doc, allDocuments }) {
     language: languageCode,
     pdfFile:  { asset: pdfFileAsset } = {},
     legacypdf:  { asset: legacypdfAsset } = {},
+    pdfThumbnail: { asset: pdfThumbnailAsset } = {},
     ...restOfDoc
   } = doc;
   console.log(doc.title);
@@ -137,6 +138,10 @@ async function processPublication({ document: doc, allDocuments }) {
   });
   const legacypdfFileUrl = expand({
     reference: legacypdfAsset,
+    process: ({ url }) => url,
+  });
+  const pdfThumbnailUrl = expand({
+    reference: pdfThumbnailAsset,
     process: ({ url }) => url,
   });
   const relatedPersons = relatedAuthors.concat(relatedEditors);
@@ -194,6 +199,7 @@ async function processPublication({ document: doc, allDocuments }) {
     pdfFileUrl,
     contentType:[doc._type],
     legacypdfFileUrl,
+    pdfThumbnailUrl,
     filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
     filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
     relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
@@ -503,7 +509,7 @@ function getIndexName({ language = 'en_US' }) {
  * Expand Sanity references into the referenced documents.
  * Can optionally process document after being expanded
  *
- * Call initExpand with all Sanity documents, so that it can search for refences
+ * Call initExpand with all Sanity documents, so that it can search for references
  * there. It will return a function which you can use to expand references.
  */
 function initExpand(allDocuments = []) {
