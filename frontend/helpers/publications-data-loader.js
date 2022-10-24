@@ -114,7 +114,7 @@ const doSearch = async ({ query }) => {
 
   try {
     const result = await client.search({
-      index: process.env.NEXT_PUBLIC_ENV ? `u4-${process.env.NEXT_PUBLIC_ENV}-*` : 'u4-staging-*',
+      index: process.env.ES_ENV ? `u4-${process.env.ES_ENV}-*` : 'u4-staging-*',
       body: {
         query: {
           function_score: {
@@ -184,6 +184,7 @@ const doSearch = async ({ query }) => {
           'filedUnderTopicNames',
           'pdfFileUrl',
           'legacypdfFileUrl',
+          'pdfThumbnailUrl',
         ],
       },
     });
@@ -196,7 +197,7 @@ const doSearch = async ({ query }) => {
 export const getSearchAggregations = async () => {
   try {
     const result = await client.search({
-      index: `u4-${process.env.NEXT_PUBLIC_ENV}-*` || 'u4-staging-*',
+      index: process.env.ES_ENV ? `u4-${process.env.ES_ENV}-*` : 'u4-staging-*',
       body: {
         query: { match_all: {} },
         aggs: aggregations,
