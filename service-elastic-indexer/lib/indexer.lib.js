@@ -72,7 +72,7 @@ async function findLegacyPdfContent({ document = {}, allDocuments, isRetrying = 
       isFile = await fileExists(destinationFilePath);
     }
     if (!isFile) {
-      console.log('downloading file', destinationFilePath);
+      //console.log('downloading file', destinationFilePath);
       await downloadFile({
         url,
         destinationFilePath,
@@ -80,7 +80,7 @@ async function findLegacyPdfContent({ document = {}, allDocuments, isRetrying = 
     }
     try {
       const pdfText = await extractText({ pathOrUrl: destinationFilePath, reThrowOnFail: true });
-      console.log('finished extracting text from', destinationFilePath);
+      //console.log('finished extracting text from', destinationFilePath);
       return pdfText;
     } catch (err) {
       if (isRetrying) {
@@ -112,7 +112,7 @@ async function processPublication({ document: doc, allDocuments }) {
     pdfThumbnail: { asset: pdfThumbnailAsset } = {},
     ...restOfDoc
   } = doc;
-  console.log(doc.title);
+  console.log('Processing publication', doc.title);
   const url = `/publications/${current}`;
   const publicationType = expand({
     reference: doc.publicationType,

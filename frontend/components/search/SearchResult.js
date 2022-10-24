@@ -4,6 +4,9 @@ import { getPdfUrl } from '../../helpers/getPdfUrl';
 import { Post, POST_TYPE } from '../general/post/Post';
 import { getPlaceholder } from '../../helpers/imgloader';
 import Link from 'next/link';
+import sanityImageLoader from '../../helpers/sanityImageLoader';
+import Image from 'next/image';
+
 
 export const SearchResult = props => {
   const { _source = {} } = props;
@@ -12,6 +15,7 @@ export const SearchResult = props => {
   const pdfFileView = getPdfUrl(_source.pdfFile);
   const pdfFileUrlView = getPdfUrl(_source.pdfFileUrl);
   const legacypdfFileUrlView = getPdfUrl(_source.legacypdfFileUrl);
+  const pdfThumbnailUrlView = getPdfUrl(_source.pdfThumbnailUrl);
   const { termTitle = '', url = '', termContent = {} } = _source;
   return (
     <div>
@@ -27,11 +31,26 @@ export const SearchResult = props => {
         </div>
       ) : (
         <div className="c-search-results-v2__pdf-container">
-          {props.publications && (pdfFileView || pdfFileUrlView || legacypdfFileUrlView) ? (
+          {props.publications && (pdfFileView || pdfFileUrlView || legacypdfFileUrlView || pdfThumbnailUrlView) ? (
             <div className="pdf-preview">
+              {pdfThumbnailUrlView ? (
+                <div className="pdf-thumbnail">
+                <Image
+                loader={sanityImageLoader}
+                src={pdfThumbnailUrlView}
+                alt=""
+                loading="lazy"
+                layout="fill"
+                objectFit="fit"
+                sizes="180px"
+              />
+              </div>
+
+              ) : (
               <Document file={pdfFileView || pdfFileUrlView || legacypdfFileUrlView}>
                 <Page pageNumber={1} />
               </Document>
+              )}
             </div>
           ) : null}
 
