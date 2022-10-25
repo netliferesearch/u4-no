@@ -30,7 +30,7 @@ export const PhotoCaptionCredit = ({ image = {}, showCaption = true, onDark = fa
       )}
       {license && (
         <span className="c-credit__caption">
-          {license.startsWith('copyrighted') || 'CC'} {license.toUpperCase()}
+          {license.startsWith('by') && 'CC'} {license.toUpperCase()}
         </span>
       )}
       {/* {license && (
