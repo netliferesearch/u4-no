@@ -164,7 +164,7 @@ const LongFormArticleContainer = props => {
             <p>
               {featuredImage.credit && (
                 <span>
-                  {featuredImage.credit} {featuredImage.license && `(CC ${featuredImage.license})`}{' '}
+                  {featuredImage.credit} {featuredImage.license && `(${featuredImage.license.startsWith('BY') ? 'CC ' : ''}${featuredImage.license})`}{' '}
                 </span>
               )}
               {featuredImage.sourceUrl && (
