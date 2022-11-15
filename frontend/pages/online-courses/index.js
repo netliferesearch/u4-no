@@ -38,6 +38,19 @@ const CoursesPage = ({
   const boxAndImg1 = sections.filter(i => i._type === 'boxOnImageRef')[0];
   const boxAndImg2 = sections.filter(i => i._type === 'boxOnImageRef')[1];
   const twoCols = sections.filter(i => i._type === 'twoColumns')[0];
+  const defaultTestimonial = {
+    text: [  {
+      "_type": "block",
+      "style": "normal",
+      "children": [{
+        "_type": "span",
+        "marks": [],
+        "text": "This course has allowed me to explore aspects of corruption that I had never been confronted with. I now have a new vision regarding the factors and risks of fighting corruption in the health sector."
+      }],
+      "markDefs": []
+      }],
+    cite: "Participant, 2022"
+  }
 
   return (
     <Layout
@@ -102,7 +115,8 @@ const CoursesPage = ({
               ? resources
                 .filter(r => r._type === 'testimonial')
                 .map(r => <Testimonial key={r._id} testimonial={r} />)
-              : null}
+              : (<Testimonial key={1} testimonial={defaultTestimonial} />)
+              }
           </Banner>
         </section>
         <div className="o-wrapper-medium u-top-margin--64">
