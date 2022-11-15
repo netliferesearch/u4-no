@@ -34,9 +34,23 @@ const CoursesPage = ({
   const features = sections.slice(1, 2);
   const courses1 = sections.filter(i => i._type === 'courses')[0].coursesRef;
   const courses2 = sections.filter(i => i._type === 'courses')[1].coursesRef;
+  const courses3 = sections.filter(i => i._type === 'courses')[2].coursesRef;
   const boxAndImg1 = sections.filter(i => i._type === 'boxOnImageRef')[0];
   const boxAndImg2 = sections.filter(i => i._type === 'boxOnImageRef')[1];
   const twoCols = sections.filter(i => i._type === 'twoColumns')[0];
+  const defaultTestimonial = {
+    text: [  {
+      "_type": "block",
+      "style": "normal",
+      "children": [{
+        "_type": "span",
+        "marks": [],
+        "text": "This course has allowed me to explore aspects of corruption that I had never been confronted with. I now have a new vision regarding the factors and risks of fighting corruption in the health sector."
+      }],
+      "markDefs": []
+      }],
+    cite: "Participant, 2022"
+  }
 
   return (
     <Layout
@@ -73,8 +87,17 @@ const CoursesPage = ({
           <LearningEvents
             events={courses1}
             type={courses1.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL}
-            title="Open for Everyone"
-            text="Pass the self-paced, 1-hour course"
+            title="Anti-corruption basics (open for everyone)"
+            text="1-hour, self-paced course available in four languages"
+          />
+        </section>
+        <hr className="u-section-underline--no-margins" />
+        <section className="o-wrapper-medium">
+          <LearningEvents
+            events={courses3}
+            type={courses3.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL}
+            title="Natural resource sector (open for everyone)"
+            text="1-hour, self-paced courses"
           />
         </section>
         <hr className="u-section-underline--no-margins" />
@@ -87,12 +110,13 @@ const CoursesPage = ({
           />
         </section>
         <section className="o-wrapper-medium o-wrapper-tablet-full">
-          <Banner title={'What participant say'}>
+          <Banner title={'What participants say'}>
             {resources.length > 0
               ? resources
-                  .filter(r => r._type === 'testimonial')
-                  .map(r => <Testimonial key={r._id} testimonial={r} />)
-              : null}
+                .filter(r => r._type === 'testimonial')
+                .map(r => <Testimonial key={r._id} testimonial={r} />)
+              : (<Testimonial key={1} testimonial={defaultTestimonial} />)
+              }
           </Banner>
         </section>
         <div className="o-wrapper-medium u-top-margin--64">
@@ -107,17 +131,18 @@ const CoursesPage = ({
         <div className="o-wrapper-medium u-top-margin--64">
           <hr className="u-section-underline--no-margins" />
           <div className="o-grid-container--2">
-            <Team
-              type={PERSON_CARD_TYPE.IMAGE_LEFT}
-              heading={persons.headingLeft}
-              members={persons.personLeft}
-            />
-            {(persons.personRight?.length > 0) && 
-            <Team
-              type={PERSON_CARD_TYPE.IMAGE_LEFT}
-              heading={persons.headingRight}
-              members={persons.personRight}
-            />}
+            {(persons.personLeft?.length > 0) &&
+              <Team
+                type={PERSON_CARD_TYPE.IMAGE_LEFT}
+                heading={persons.headingLeft}
+                members={persons.personLeft}
+              />}
+            {(persons.personRight?.length > 0) &&
+              <Team
+                type={PERSON_CARD_TYPE.IMAGE_LEFT}
+                heading={persons.headingRight}
+                members={persons.personRight}
+              />}
           </div>
         </div>
       </div>
@@ -147,7 +172,7 @@ const queryFunc = () => ({
         "featuredImage": featuredImage.asset->url
       } 
     }, 
-    "persons": sections[7]{
+    "persons": sections[8]{
       ..., 
       personLeft[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}},
       personRight[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,slug,image{asset->{url}}}
