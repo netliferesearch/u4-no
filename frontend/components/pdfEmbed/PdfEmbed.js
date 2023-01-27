@@ -13,7 +13,7 @@ import InLine from './InLine';
 
 const PdfEmbed = ({ src = '', title = '', mode = '' }) => (
   <div>
-    <Script id="pdfembed" src="https://documentcloud.adobe.com/view-sdk/main.js" />
+    <Script id="pdfembed" src="https://documentcloud.adobe.com/view-sdk/viewer.js" />
 
     {(() => {
       switch (mode) {
