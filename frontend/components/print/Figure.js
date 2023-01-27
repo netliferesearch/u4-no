@@ -19,14 +19,14 @@ const renderCaption = caption => {
 const renderCredit = ({ credit = '', sourceUrl = '', license = '' }) => (
   <p className="c-longform-grid__standard">
     {sourceUrl && credit ? (
-      <span>
+      <span className='c-figure-credit'>
         Credit: <a href={sourceUrl}>{credit}</a> {license}
       </span>
     ) : (
       ''
     )}
     {!sourceUrl && credit ? (
-      <span>
+      <span className='c-figure-credit'>
         Credit: {credit} {license}
       </span>
     ) : (

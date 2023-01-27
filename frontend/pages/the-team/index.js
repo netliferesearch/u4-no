@@ -71,11 +71,11 @@ const queryFunc = () => ({
   sanityQuery: `{
     "frontpage": *[_id == "627b8d42-d8f7-4cf6-9567-f6337678b688"][0],
     "persons": *[_type == "person" && references("419c2497-8e24-4599-9028-b5023830c87f")] | order(surname asc) [0..100]{
-      _id, firstName, surname, position, slug, "image": image.asset->url[0], image{asset->{url}}},
+      _id, firstName, surname, position, slug, "imageUrl": image.asset->url[0], image{asset->{url}}},
     "helpdesk": *[_type == "person" && references("17ec3576-0afa-4203-9626-a38a16b27c2a")]| order(surname asc) [0..100]{
-      _id, firstName, surname, position, slug, "image": image.asset->url[0], image{asset->{url}}},
+      _id, firstName, surname, position, slug, "imageUrl": image.asset->url[0], image{asset->{url}}},
     "affiliatedexperts": *[_type == "person" && references("3babc8f1-9e38-4493-9823-a9352b46585b")]| order(surname asc) [0..100]{
-      _id, firstName, surname, position, slug, "image": image.asset->url[0], image{asset->{url}}}
+      _id, firstName, surname, position, slug, "imageUrl": image.asset->url[0], image{asset->{url}}}
   }`,
 });
 

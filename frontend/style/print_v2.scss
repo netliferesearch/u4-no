@@ -1,0 +1,970 @@
+/*
+  styles for pdf version of publication
+  pdf is created by docraptor service using print.js and this stylesheet
+
+  to test new pdf design: 
+  - change global.scss:116 to reference print_v2
+  - change print.js:3 to reference PrintLongFormArticleContainer_v2
+  -change pdfConfig.js:29 comment out baseurl to work with ngrok
+*/
+
+// COMPONENTS
+//@import 'components/components.figure';
+//@import 'components/components.table';
+@import 'components/components.chart';
+
+@import '../node_modules/inuitcss/utilities/utilities.widths';
+@import '../node_modules/inuitcss/utilities/utilities.headings';
+@import '../node_modules/inuitcss/utilities/utilities.spacings';
+@import 'utilities/utilities.print';
+@import 'utilities/utilities.typography';
+@import 'utilities/utilities.general';
+
+/**
+* Resets
+*/
+
+.print-style {
+  .c-article-header__language,
+  .c-article-header__download,
+  .c-top-bar,
+  .c-footer {
+    display: none;
+  }
+}
+
+/*
+  document layout:
+
+  front-cover
+  front-inside
+
+  main-points
+  table of contents
+  summary (header and page numbers from here)
+  abbreviations
+
+  main-body
+
+  methodology
+  references
+  about-the-authors
+  acknowledgements
+  about-the-collaboration
+
+  back-inside
+  back-cover
+*/
+
+@media print {
+  body {
+    color: black;
+    font-family: $font-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* hide divs containing next scripts to avoid trailing blank page */
+  body > div + div,
+  div#__next-error {
+    display: none;
+  }
+}
+
+@media print {
+
+  /* cover pages have no margins */
+  @page cover {
+    size: A4 portrait;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    margin-inside: 0;
+    margin-outside: 0;
+    @top-left {
+      content: '';
+    }
+    @top-right {
+      content: '';
+    }
+  }
+
+  /* page with margins but no header */
+  @page no-header {
+    size: A4 portrait;
+    margin-top: 96px;
+    padding-top: 0;
+    margin-bottom: 96px;
+    margin-inside: 72px;
+    margin-outside: 72px;
+    @top-left {
+      content: '';
+    }
+    @top-right {
+      content: '';
+    }
+  }
+ 
+  /* default pages have margins and header with publication title and page number */
+  @page {
+    size: A4 portrait;
+    margin-top: 59px; //59px+37px=96px
+    padding-top: 37px;
+    padding-bottom: 0;
+    margin-bottom: 96px;
+    margin-inside: 72px;
+    margin-outside: 72px;
+
+    @top-left{
+      content: string(publication-title);
+      font-family: $font-sans;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    @top-right {
+      content: counter(page);
+      font-family: $font-sans;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    @footnote {
+      border-top: solid $blue 4px;
+      border-clip: 63px;
+      padding-top: 16px;
+      padding-bottom: 0;
+      margin-top: 48px;
+      bottom: 0;
+    }
+  }
+
+  /* all purpose utility styles */
+.line-above {
+  padding-top: 20px; // make space below line
+}
+.line-above:before {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 48px;
+  max-width: 100%;
+  background-color: $blue;
+  margin-top: -20px; // subtract padding-top above
+}
+
+.margin-below {
+  margin-bottom: 48px;
+}
+
+/* columns for print, see https://www.princexml.com/doc/styling/#columns */
+.two-columns {
+  column-count: 2;
+  column-gap: 72px;
+}
+
+.bold-blue {
+  font-weight: 700;
+  color: $blue;
+}
+
+.main-content {
+  display: unset;
+}
+
+/* headings for front matter and end matter pages */
+.page-heading {
+  font-family: $font-sans;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 44px;
+  color: $blue;
+  min-height: 108px; //132px - 24px margin
+  margin-bottom: 24px;
+}
+
+/* page specific styles */
+
+/* cover page logos */
+.cover-cmi-logo {
+  position: absolute;
+  top: 48px;
+  left: 48px;
+  height: 37px;
+}
+.cover-u4-logo {
+  position: absolute;
+  top: 48px;
+  right: 48px;
+  height: 35px;
+}
+
+  /* front cover */
+  .front-cover {
+    page: cover;
+    counter-reset: page 1;
+    font-family: $font-sans;
+
+    .front-cover-image {
+      position: absolute;
+      top: 133px;
+      height: 556px;
+      min-width: 100%;
+      overflow: hidden;
+      object-fit: cover;
+      margin: 0;
+    }
+    .front-cover-art-left {
+      position: absolute;
+      top: 133px;
+      left:0;
+      height: 556px;
+      width: 80px;
+      z-index: 100;
+    }
+    .front-cover-art-right {
+      position: absolute;
+      top: 519px;
+      right: 0;
+      width: 164px;
+      height: 226.3px;
+      z-index: 100;
+    }
+    .front-cover-pubtype {
+      position: absolute;
+      top: 733px;
+      left: 281px;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1em;
+      color: $blue;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+    }
+    .front-cover-title-area {
+      position: absolute;
+      top: 789px;
+      left: 281px;
+      right: 48px;
+      margin: 0;
+      padding: 0;
+    }
+    .front-cover-title {
+      font-weight: 800;
+      font-size: 30px;
+      line-height: 36px;
+      color: $dark-blue;
+      margin: 0;
+      padding: 0;
+      string-set: publication-title content();
+
+    }
+    .front-cover-subtitle {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 27px;
+      color: $dark-blue;
+      margin-top: 16px;
+      padding: 0;
+    }
+    .front-cover-authors-area {
+      position: absolute;
+      top: 802px;
+      left: 48px;
+      width: 208px;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0.01em;
+      color: $dark-blue;
+    }
+    .front-cover-authorname {
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .front-cover-editorintro {
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+    .front-cover-logos-area {
+      position: absolute;
+      top: 1035px;
+      left: 281px;
+      right: 48px;
+      margin: 0;
+      padding: 0;
+    }
+    .front-cover-logo {
+      position: relative;
+      max-width: 160px;
+      height: 40px;
+      margin-right: 24px;
+    }
+  }
+
+  /* back cover */
+  .back-cover {
+    page: cover;
+    page-break-before: always;
+    font-family: $font-sans;
+
+    .back-cover-content-area {
+      position: absolute;
+      top: 133px;
+      height: 556px;
+      left: 0;
+      width: 100%;
+      background-color: $dark-blue;
+    }
+    .back-cover-content {
+      position: relative;
+      padding-left: 48px;
+      padding-right: 433px;
+      font-size: 16px;
+      line-height: 22px;
+      color: white;
+    }
+    .back-cover-art {
+      position: absolute;
+      top: 133px;
+      height: 591px;
+      right: 0;
+      width: 280px;
+      z-index: 10;
+    }
+    .back-cover-footer-left {
+      position: absolute;
+      top: 1061px;
+      left: 48px;
+      font-size: 16px;
+      color: $dark-blue;
+    }
+    .back-cover-footer-right {
+      position: absolute;
+      top: 1061px;
+      right: 48px;
+      font-size: 16px;
+      color: $dark-blue;
+    }
+
+  }
+
+  /* inside pages */
+  .inside-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 397px;
+    height: 1123px;
+    padding-top: 133px;
+    padding-left: 72px;
+    padding-right: 36px;
+  }
+  .inside-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 397px;
+    height: 1123px;
+    padding-top: 133px;
+    padding-left: 36px;
+    padding-right: 72px;
+  }
+  .inside-background {
+    background-color: #E6F9FF;
+  }
+
+  .inside-heading {
+    font-family: $font-sans;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    padding-top: 20px;
+    margin-bottom: 16px;
+    page-break-after: avoid;
+  }
+  .inside-text {
+    font-family: $font-sans;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+    p {
+      margin-top: 0;
+      margin-bottom: .8em;
+    }
+  }
+
+  .front-inside {
+
+    page: cover;
+    page-break-before: always;
+    font-family: $font-sans;
+
+    .front-inside-about {
+      position: relative;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+      color: $blue;
+      margin-bottom: 48px;
+    }
+    
+    .front-inside-notes {
+      position: relative;
+    }
+
+  }
+
+  .back-inside {
+
+    page: cover;
+    page-break-before: always;
+    font-family: $font-sans;
+    
+    .back-inside-content {
+      position: relative;
+    }
+
+    .back-inside-details {
+      font-size: 10px;
+      margin-bottom: 24px;
+    }
+    .back-inside-details-heading {
+      margin-top: 8px;
+      font-weight: 700;
+      line-height: 14px;
+      color: $blue;
+    }
+    .back-inside-details-content {
+      line-height: 16px;
+      p {
+        margin: 0 0 10px;
+      }
+    }
+    .back-inside-cc-logo {
+      height: 32px;
+      width: 32px;
+      margin: 0 5px 0 0;
+    }
+  }
+
+  /* main points */
+  .main-points {
+    page: no-header;
+    page-break-before: always;
+    font-family: $font-sans;
+
+    .main-points-lead {
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 700;
+      color: $blue;
+    }
+  
+    .main-points-list {
+      list-style: square;
+      margin-left: 0;
+      padding-left: 17px;
+
+      ::marker {
+        color: $blue;
+        font-size: 1.2em;
+      }
+    }
+    .main-points-list-item {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+
+  /* table of contents */
+  .table-of-contents {
+    page: no-header;
+    page-break-before: always;
+    font-family: $font-sans;
+    font-size: 14px;
+
+    .toc-list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .toc-list-item {
+      margin: 16px 0;
+      padding: 0;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+  
+      a {
+        position: relative;
+        display: block;
+        padding-right: 2cm;
+        word-break: normal;
+        hyphens: none;
+        color: #000;
+      }
+    }
+  
+    .toc-list-subitem {
+      font-weight: normal;
+    }
+
+    .toc-list-item a[href]::after {
+      content: leader(' ') target-counter(attr(href), page);
+      margin-left: 1cm;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  /* front matter page has header and sans serif font */
+  .front-matter-page {
+    page-break-before: always;
+    font-family: $font-sans;
+    font-size: 14px;
+    line-height: 22px;
+
+    p {
+      margin: .8em 0;
+    }
+    a.inlineLink {
+      color: #000;
+      border-bottom: 0.2pt solid $highlight-blue;
+    }
+    a.inlineLink.referencesLink {
+      color: #000;
+      border-bottom: none;
+    }
+  }
+}
+
+
+/* main body */
+
+@media print {
+
+  .publication-body {
+    page-break-before: always;
+    display: block;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: $font-serif;
+    width: 524px;
+    margin: 0 auto;
+
+    /* headings */
+
+    h1, h2, h3, h4, h5, h6 {
+      page-break-after: avoid;
+      page-break-inside: avoid;
+      font-family: $font-sans;
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 40px;
+      line-height: 44px;
+      color: $blue;
+      margin: 48px 0 24px;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+    h3 {
+      font-size: 18px;
+      line-height: 22px;
+      margin: 24px 0 8px;
+    }
+    h4 {
+      font-size: 16px;
+      line-height: 22px;
+      margin: 16px 0 8px;
+    }
+    h4 + p {
+      margin-top: 0.2em;
+      margin-block-start: 0.2em;
+    }
+    h5 {
+      font-size: 14px;
+      line-height: 18px;
+      margin: 16px 0 8px;
+    }
+    h5 + p {
+      margin-top: 0.2em;
+      margin-block-start: 0.2em;
+    }
+
+    a {
+      border-bottom: 0.2pt solid $highlight-blue;
+      color: black;
+      text-decoration: none;
+    }
+    p {
+      margin: .8em 0;
+      orphans: 2;
+      widows: 2;
+    }
+
+    /* lists */
+
+    ul, ol {
+      list-style: square;
+      margin: 16px 0;
+      padding-left: 17px;
+
+      ::marker {
+        color: $blue;
+        font-size: 1.2em;
+      }
+      li {
+        padding-bottom: 0;
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+
+  /* footnotes */  
+
+  .fn {
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: normal !important;
+    font-style: normal !important;
+    font-family: $font-serif !important;
+    counter-increment: footnote;
+    display: prince-footnote;
+    footnote-style-position: inside;
+    float: footnote;
+
+    a {
+      border-bottom: 0.2pt solid black;
+    }
+  }
+
+  /* footnote markers */
+  .fn::footnote-call {
+    content: counter(footnote);
+    font-size: 83%;
+    vertical-align: super;
+    line-height: none;
+  }
+  /* consecutive footnote markers separated by comma */
+  .fn + .fn::footnote-call {
+    content: ', ' counter(footnote);
+  }
+  /* format links as links instead of footnotes */
+  a.inlineLink {
+    color: #000;
+    border-bottom: 0.2pt solid $highlight-blue;
+  }
+  a.inlineLink.referencesLink {
+    color: #000;
+    border-bottom: none;
+  }
+
+  /* .referencesLink { } */
+  p {
+    prince-footnote-policy: keep-with-line;
+  }
+  .c-print__publication-type-and-number {
+    string-set: publication-type-and-number content();
+  }
+
+
+  /* abbreviations */
+
+  .abbreviations {
+    p {
+      padding-left: 63px; // 47px + 16px
+      text-indent: -63px;
+
+      & > span:first-of-type {
+        display: inline-block;
+        min-width: 47px;
+        margin-right: 16px;
+        font-weight: 700;
+        text-indent: 0;
+      }
+
+      & > br:first-of-type {
+        display: none;
+      }
+    }
+  }
+
+
+  /* text box */
+
+  .c-textbox--longform {
+    background: #E6F9FF;
+    margin: 32px -63px;
+    padding: 20px 63px;
+    font-family: $font-sans;
+    font-size: 14px;
+    line-height: 22px;
+    orphans: 3;
+    widows: 3;
+    // page-break-inside: avoid; 
+    box-decoration-break: clone;
+
+    p:first-child,
+    h4:first-child {
+      margin-top: 0;
+      margin-block-start: 0;
+    }
+    p:last-child {
+      padding-bottom: 0;
+      padding-block-end: 0;
+    }
+  }
+
+  .c-textbox--longform:before {
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 63px;
+    background-color: $blue;
+    margin-top: -20px; // subtract padding-top above
+  }
+  
+
+  /* figure */
+
+  figure {
+
+    margin: 32px 0;
+    width: 100%;
+    font-family: $font-sans;
+
+    .c-figure__title {
+      margin: 16px 0;
+      padding: 0;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 700;
+    }
+
+    .c-figure__caption {
+      font-size: 10px;
+      line-height: 16px;
+      margin: 16px 0;
+
+      p {
+        margin: 0 0 4px;
+      }
+    }
+    .c-figure-credit,
+    .c-figure-credit a {
+      color: #666;
+    }
+    img {
+      width: 100%;
+      max-height: 23cm;
+    }
+  }
+
+  /* small figure with title and caption to the left */
+  figure.c-figure--small {
+    margin: 32px -63px;
+    display: block;
+    overflow: hidden;
+    width: 650px; // fixed size required for princexml to work?
+
+    .c-figure__title {
+      float: left;
+      width: 222px;
+      margin: 0;
+      padding-top: 20px;
+    }
+    .c-figure__caption {
+      float: left;
+      width: 222px;
+      margin: 0;
+
+      p:first-of-type {
+        margin-top: 4px;
+      }
+    }
+    img {
+      float: right;
+      width: 412px;
+    }
+
+    .c-figure__title:before {
+      content: "";
+      position: absolute;
+      height: 4px;
+      width: 48px;
+      background-color: $blue;
+      margin-top: -20px; // subtract padding-top above
+    }
+  
+  }
+
+  figure.c-figure--wide {
+    margin: 32px -63px;
+    width: 650px; // fixed size required for princexml to work?
+  }
+
+
+  /* table */
+
+  .c-table {
+    overflow-x: visible;
+    margin: 32px 0;
+    padding: 0;
+    font-family: $font-sans;
+    font-size: 12px;
+    line-height: 12px;
+    position: relative;
+
+    .c-table__title {
+      page-break-after: avoid;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 700;
+      margin: 16px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }  
+
+    tbody {
+      border-top: 4px solid $blue;
+    }
+    th, td {
+      border-bottom: 1px solid $blue;
+      padding: 12px 8px;
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+    thead, th {
+      font-weight: 700;
+    }
+
+    .c-table__caption {
+      font-size: 10px;
+      p {
+        margin: 16px 0;
+        line-height: 16px;
+      }
+    }
+  }
+  .c-table--full {
+    margin-left: -3.5cm;
+    margin-right: -3.5cm;
+  }
+  .c-table--wide {
+    margin-left: -63px;
+    margin-right: -63px;
+    width: 650px; // fixed size required for princexml to work?
+  }
+
+  /* pull quote */
+  .c-article__pullQuote {
+    font-family: $font-sans;
+    font-size: 16px;
+    line-height: 22px;
+    font-family: $font-sans;
+    font-weight: 700;
+    font-style: normal;
+    text-align: left;
+    color: $blue;
+    margin: 32px 0 32px 35px;
+    page-break-inside: avoid;
+  }
+
+  /* block quote */
+
+  blockquote {
+    font-family: $font-sans;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: left;
+    margin: 32px 0 32px 35px;
+    page-break-inside: avoid;
+  }
+
+  /* manual pagebreak */
+
+  .c-pagebreak {
+    height: 0;
+    page-break-after: always;
+  }
+
+}
+
+
+/* obsolete styles */
+@media screen {
+
+  .footnotes {
+    display: block;
+    ol {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .c-footnote__item {
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    a {
+      display: none;
+    }
+  }
+
+  .c-toggle-block__title {
+    display: none;
+  }
+
+
+  #references {
+    page-break-before: always;
+  }
+  @page main {
+    @top {
+      content: string(publication-type-and-number);
+      font-family: $font-sans;
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    @bottom {
+      content: counter(page);
+      font-family: $font-sans;
+      font-size: 9pt;
+      // content: 'Page ' counter(page) ' of ' counter(pages);
+    }
+    @footnote {
+      border-top: solid black thin;
+      padding-top: 11pt;
+      margin-top: 4pt;
+      bottom: 0;
+    }
+  }
+
+}
+
+.c-authors-list__title {
+  margin-bottom: 0;
+  color: $dark-blue;
+}

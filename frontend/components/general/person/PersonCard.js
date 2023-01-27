@@ -16,6 +16,7 @@ export const PersonCard = ({ person, type }) => {
     <div className={`c-person-card__wrapper c-person-card--${type}`}>
       {type === PERSON_CARD_TYPE.PROFILE ? (
         <div className="c-person-card__image-wrapper">
+          {person.image?.asset?.url ? (
           <Image
             loader={sanityImageLoader}
             src={person.image.asset.url}
@@ -28,11 +29,13 @@ export const PersonCard = ({ person, type }) => {
             auto="format"
             fit="crop"
           />
+          ) : ( null )}
         </div>
       ) : (
         <Link href={`/the-team/${person.slug.current}`}>
           <a>
             <div className="c-person-card__image-wrapper">
+            {person.image?.asset?.url ? (
               <Image
                 loader={sanityImageLoader}
                 src={person.image.asset.url}
@@ -45,6 +48,7 @@ export const PersonCard = ({ person, type }) => {
                 auto="format"
                 fit="crop"
               />
+              ) : ( null )}
             </div>
           </a>
         </Link>
