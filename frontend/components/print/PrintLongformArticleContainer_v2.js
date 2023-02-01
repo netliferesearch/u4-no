@@ -9,8 +9,10 @@ import BlockContent from '@sanity/block-content-to-react';
 import serializers from './printSerializers';
 import { toggleArticleMenu, toggleLoadingScreen } from '../../helpers/redux-store';
 import { translate, translateField, langCode } from '../../helpers/translate';
+import dateToString from '../../helpers/dateToString';
 
 import PrintLongformArticle from './PrintLongformArticle_v2';
+import { Cite } from './PrintCite';
 import CreativecommonsCC from '../icons/CreativecommonsCC';
 import CreativecommonsBY from '../icons/CreativecommonsBY';
 import CreativecommonsNC from '../icons/CreativecommonsNC';
@@ -22,6 +24,7 @@ import Footer from '../general/footer/Footer';
 import AuthorList from '../publication/AuthorList';
 import EditorList from '../EditorList';
 import Logo from '../icons/Logo';
+import { dateFormat } from 'highcharts';
 
 const classes = BEMHelper({
   name: 'print',
@@ -57,6 +60,8 @@ const LongFormArticleContainer = props => {
     language = 'en',
     slug = {},
     shortSlug = {},
+    date = {},
+    updatedVersion = {}
   } = props;
 
   const lang = langCode(language);
@@ -64,7 +69,7 @@ const LongFormArticleContainer = props => {
   const transField = translateField(language);
 
   return (
-    <article className="u-relative u-print-width o-wrapper-page">
+    <article className="u-relative u-print-width o-wrapper-page print_v2">
 
       <div className='front-cover'>
 
@@ -218,11 +223,6 @@ const LongFormArticleContainer = props => {
 
       <PrintLongformArticle {...props} />
 
-
-
-
-
-
       <div className='back-inside'>
       
         <div className='inside-left'>
@@ -245,27 +245,25 @@ const LongFormArticleContainer = props => {
           <div className='inside-heading line-above'>
             How to cite
           </div>
-          
-          {Array.isArray(reference) && (
-            <div className='inside-text'>
-              <p>
-                {Array.isArray(reference) && (
-                  <BlockContent
-                    blocks={reference.filter(ref => ref)}
-                    serializers={serializers(reference.filter(ref => ref))}
-                  />
-                )}
-              </p>
-            </div>
-          )}
+          <div className='back-inside-details'>
+            <Cite {...props} />
+          </div>
 
           <div className='back-inside-details'>
             <div className='back-inside-details-heading'>
               Publication
             </div>
             <div className='back-inside-details-content'>
-              <div>First published:</div>
-              <div>Generated:</div>
+            {date ? (
+                <div>First published:
+                  {dateToString({ start: date.utc })}
+                </div>
+              ) : null}
+              {updatedVersion?.date ? (
+                <div>
+                  Updated {dateToString({ start: updatedVersion.date.utc })}
+                </div>
+              ) : null}
             </div>
           </div>
 

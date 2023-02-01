@@ -112,5 +112,13 @@ namespace these styles and toggle their presence in app.js.
 .m {
   @import 'main';
 }
+/* 
+  First build with the print stylesheets, then copy resulting css file to /public/main-print.css, then comment out the print stylesheets and rebuild
+  /public/main-print.css is included in print.js as media:print
+  With print css: 32.6 kB
+  Without print css: 28.1 kB
 
 @import 'print';
+
+@import 'print_v2';
+*/

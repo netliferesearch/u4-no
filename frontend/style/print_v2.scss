@@ -60,7 +60,7 @@
   body {
     color: black;
     font-family: $font-serif;
-    -webkit-font-smoothing: antialiased;
+    //-webkit-font-smoothing: antialiased;
   }
 
   /* hide divs containing next scripts to avoid trailing blank page */
@@ -105,7 +105,7 @@
   }
  
   /* default pages have margins and header with publication title and page number */
-  @page {
+  @page page-v2 {
     size: A4 portrait;
     margin-top: 59px; //59px+37px=96px
     padding-top: 37px;
@@ -119,12 +119,14 @@
       font-family: $font-sans;
       font-size: 12px;
       font-weight: 700;
+      vertical-align: bottom;
     }
     @top-right {
       content: counter(page);
       font-family: $font-sans;
       font-size: 12px;
       font-weight: 700;
+      vertical-align: bottom;
     }
     @footnote {
       border-top: solid $blue 4px;
@@ -132,7 +134,7 @@
       padding-top: 16px;
       padding-bottom: 0;
       margin-top: 48px;
-      bottom: 0;
+      vertical-align: bottom;
     }
   }
 
@@ -551,6 +553,10 @@
 
 @media print {
 
+  /* in order not to interfere with old style pdf generation */
+  .print_v2 {
+    page: page-v2;
+
   .publication-body {
     page-break-before: always;
     display: block;
@@ -618,17 +624,24 @@
     /* lists */
 
     ul, ol {
-      list-style: square;
       margin: 16px 0;
       padding-left: 17px;
 
       ::marker {
         color: $blue;
-        font-size: 1.2em;
       }
+
       li {
         padding-bottom: 0;
         margin-bottom: 8px;
+      }
+    }
+
+    ul {
+      list-style: square;
+
+      ::marker {
+        font-size: 1.2em;
       }
     }
   }
@@ -646,7 +659,6 @@
     display: prince-footnote;
     footnote-style-position: inside;
     float: footnote;
-
     a {
       border-bottom: 0.2pt solid black;
     }
@@ -840,10 +852,10 @@
     table {
       width: 100%;
       border-collapse: collapse;
+      border-top: 4px solid $blue;
     }  
 
     tbody {
-      border-top: 4px solid $blue;
     }
     th, td {
       border-bottom: 1px solid $blue;
@@ -854,7 +866,7 @@
         padding: 0;
       }
     }
-    thead, th {
+    thead, th, thead td {
       font-weight: 700;
     }
 
@@ -909,62 +921,4 @@
   }
 
 }
-
-
-/* obsolete styles */
-@media screen {
-
-  .footnotes {
-    display: block;
-    ol {
-      margin: 0;
-      padding: 0;
-    }
-  }
-
-  .c-footnote__item {
-    float: left;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    a {
-      display: none;
-    }
-  }
-
-  .c-toggle-block__title {
-    display: none;
-  }
-
-
-  #references {
-    page-break-before: always;
-  }
-  @page main {
-    @top {
-      content: string(publication-type-and-number);
-      font-family: $font-sans;
-      font-size: 9pt;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-    @bottom {
-      content: counter(page);
-      font-family: $font-sans;
-      font-size: 9pt;
-      // content: 'Page ' counter(page) ' of ' counter(pages);
-    }
-    @footnote {
-      border-top: solid black thin;
-      padding-top: 11pt;
-      margin-top: 4pt;
-      bottom: 0;
-    }
-  }
-
-}
-
-.c-authors-list__title {
-  margin-bottom: 0;
-  color: $dark-blue;
 }
