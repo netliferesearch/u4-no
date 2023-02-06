@@ -1,11 +1,22 @@
 import React from 'react';
 import Head from 'next/head';
-import PrintLongformArticleContainer from '../../../components/print/PrintLongformArticleContainer';
+import dynamic from 'next/dynamic';
+//import PrintLongformArticleContainer from '../../../components/print/PrintLongformArticleContainer_v2';
 import DataLoader from '../../../helpers/data-loader';
 import { wrapInRedux } from '../../../helpers/redux-store-wrapper';
 import { localize } from '../../../helpers/translate';
 
+const PrintLongformArticleContainer = dynamic(() =>
+  import( '../../../components/print/PrintLongformArticleContainer' )
+);
+const PrintLongformArticleContainer_v2 = dynamic(() =>
+  import( '../../../components/print/PrintLongformArticleContainer_v2' )
+);
+
 const PublicationEntry = ({ data: { current, institutions = [], u4 } = {} }) => {
+  const newPdfLayoutFromDate = new Date( "2022-01-01" );
+  const pubDate = current.date?.utc ? new Date( current.date.utc ) : new Date().getFullYear();
+
   return (
     <div>
       <Head>
@@ -13,9 +24,19 @@ const PublicationEntry = ({ data: { current, institutions = [], u4 } = {} }) => 
           href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="/public/main-print.css"
+          rel="stylesheet"
+          media="print"
+        />
       </Head>
 
-      {current && <PrintLongformArticleContainer {...{ ...current, institutions, u4 }} />}</div>
+      {current && ( pubDate >= newPdfLayoutFromDate ) ? (
+        <PrintLongformArticleContainer_v2 {...{ ...current, institutions, u4 }} />
+      ) : (
+        <PrintLongformArticleContainer {...{ ...current, institutions, u4 }} />
+      )}
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import PrintLongformArticleContainer from '../../components/print/PrintLongformArticleContainer';
+import PrintLongformArticleContainer from '../../components/print/PrintLongformArticleContainer_v2';
 import DataLoaderPreview from '../../helpers/data-loader-preview';
 import { wrapInRedux } from '../../helpers/redux-store-wrapper';
 import { localize } from '../../helpers/translate';
@@ -11,6 +11,11 @@ const PublicationEntry = ({ data: { current, institutions = [], u4 } = {} }) => 
       <link
         href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap"
         rel="stylesheet"
+      />
+      <link
+        href="/public/main-print.css"
+        rel="stylesheet"
+        media="print"
       />
     </Head>
     {current && <PrintLongformArticleContainer {...{ ...current, institutions, u4 }} />}</div>
