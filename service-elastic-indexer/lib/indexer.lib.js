@@ -209,7 +209,7 @@ async function processPublication({ document: doc, allDocuments }) {
 async function processBlog({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
   const { slug: { current = '' } = {}, authors = [] } = doc;
-  const url = `/${current}`;
+  const url = `/blog/${current}`;
   const relatedPersons = expand({
     references: authors,
   });
