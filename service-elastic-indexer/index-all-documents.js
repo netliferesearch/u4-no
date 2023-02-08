@@ -207,7 +207,7 @@ async function main() {
     docsToInsertOrUpdate,
     document =>
       processDocument({ document, allDocuments }).catch(err =>
-        console.error('Failed to process document', document, err)),
+        console.error('Failed to process document', err)),
     // add concurrency cap because we download legacy pdfs if not present locally.
     { concurrency: process.env.CACHE_PDF ? -1 : 5 },
   );
