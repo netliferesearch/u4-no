@@ -87,7 +87,7 @@ async function findLegacyPdfContent({ document = {}, allDocuments, isRetrying = 
         console.error('Already retried, failing hard. Tried to read', destinationFilePath);
         process.exit(1);
       }
-      console.log('Deleting file that we failed to read, and retrying once');
+      //console.log('Deleting file that we failed to read, and retrying once');
       await unlink(destinationFilePath);
       return findLegacyPdfContent({ document, allDocuments, isRetrying: true });
     }
@@ -112,7 +112,7 @@ async function processPublication({ document: doc, allDocuments }) {
     pdfThumbnail: { asset: pdfThumbnailAsset } = {},
     ...restOfDoc
   } = doc;
-  console.log('Processing publication', doc.title);
+  //console.log('Processing publication', doc.title);
   const url = `/publications/${current}`;
   const publicationType = expand({
     reference: doc.publicationType,
@@ -152,6 +152,7 @@ async function processPublication({ document: doc, allDocuments }) {
     ...restOfDoc,
     // then we override some of those fields with processed data.
     url,
+    slug: { current: current },
     // If it is a legacy publication without main content we index the pdf instead
     // but since that pdf lops both content, frontpage, table of contents, reference,
     // weird characters etc we index that content into a different property so
@@ -289,7 +290,7 @@ async function processTerm({ document: doc }) {
   } = doc;
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...restOfDoc,
+    ...doc,
     // then we override some of those fields with processed data.
     termTitle: term,
     contentType:[doc._type],
@@ -304,8 +305,9 @@ async function processCollection({ document: doc }) {
   } = doc;
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...restOfDoc,
+    ...doc,
     contentType:[doc._type],
+    url: `/collections/${current}`,
   };
 }
 
@@ -316,7 +318,7 @@ async function processPerson({ document: doc }) {
   // TODO: Index person image with caption information.
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...restOfDoc,
+    ...doc,
     // then we override some of those fields with processed data.
     title: `${firstName} ${surname}`,
     content: blocksToText(bio),
@@ -352,7 +354,7 @@ async function processTopic({ document: doc, allDocuments }) {
   const isAgendaPresent = agenda.length > 0;
   const isBasicGuidePresent = basicGuide.length > 0;
   return {
-    ...restOfDoc,
+    ...doc,
     // then we override some of those fields with processed data.
     topicTitle,
     url,
@@ -374,7 +376,7 @@ async function processFrontpage({ document: doc }) {
   } = doc;
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...restOfDoc,
+    ...doc,
     frontpageTitle: doc.title,
     // then we override some of those fields with processed data.
     content: getLeadText(lead),
@@ -394,7 +396,7 @@ async function processEvent({ document: doc, allDocuments = [] }) {
   });
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...restOfDoc,
+    ...doc,
     contentType:[doc._type],
     // then we override some of those fields with processed data.
     content: getLeadText(lead),
@@ -427,7 +429,7 @@ async function processCourse({ document: doc, allDocuments = [] }) {
   const { title: courseTypeTitle } = courseType;
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...restOfDoc,
+    ...doc,
     // then we override some of those fields with processed data.
     content: `${getLeadText(lead)} ${blocksToText(content)}`,
     url: `/courses/${current}`,

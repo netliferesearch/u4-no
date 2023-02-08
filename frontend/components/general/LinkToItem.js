@@ -2,11 +2,11 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import buildUrl from '../../helpers/buildUrl';
 
-const LinkToItem = ({ type = '', _type = '', slug = '', children }) => {
+const LinkToItem = ({ url = '', type = '', _type = '', slug = '', children }) => {
   // Handle both type and _type as possible input props. Ideally,
   // we only want to use type.
   const actualType = type || _type;
-  return <Link href={buildUrl({ _type: actualType, slug })}>{children}</Link>;
+  return <Link href={url || buildUrl({ _type: actualType, slug })}>{children}</Link>;
 };
 
 LinkToItem.propTypes = {

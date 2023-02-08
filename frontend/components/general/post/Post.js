@@ -79,7 +79,7 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
         </div>
       )}
       <div>
-        <LinkToItem type={post.type} _type={post._type} slug={post.slug || post.url}>
+        <LinkToItem url={post.url} type={post.type} _type={post._type} slug={post.slug}>
           <a className="c-post__link u-fake-anchor">
             {showImage && post.imageUrl && renderImage(type) ? (
               <div className={`c-post__post-image ${type} u-overlay--light-blue`}>
