@@ -9,7 +9,14 @@ import { useOnClickOutside, useLockBodyScroll } from '../../helpers/hooks';
  */
 
 const Register = language => {
-  return language === 'ar_AR' ? 'قم بالتسجيل' : 'Register';
+  const term = {
+    en_EN: 'Register',
+    ar_AR: 'قم بالتسجيل',
+    es_ES: 'Regístrate',
+    fr_FR: 'S\'inscrire',
+    uk_UA: 'зареєструватися',
+  }
+  return term[language] ? term[language] : 'Register';
 };
 
 export const RegisterForm = ({ courseType, language = 'en_US' }) => {
