@@ -35,6 +35,7 @@ const CoursesPage = ({
   const courses1 = sections.filter(i => i._type === 'courses')[0].coursesRef;
   const courses2 = sections.filter(i => i._type === 'courses')[1].coursesRef;
   const courses3 = sections.filter(i => i._type === 'courses')[2].coursesRef;
+  const courses4 = sections.filter(i => i._type === 'courses')[3].coursesRef;
   const boxAndImg1 = sections.filter(i => i._type === 'boxOnImageRef')[0];
   const boxAndImg2 = sections.filter(i => i._type === 'boxOnImageRef')[1];
   const twoCols = sections.filter(i => i._type === 'twoColumns')[0];
@@ -98,6 +99,15 @@ const CoursesPage = ({
             type={courses3.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL}
             title="Natural resource sector (open for everyone)"
             text="1-hour, self-paced courses"
+          />
+        </section>
+        <hr className="u-section-underline--no-margins" />
+        <section className="o-wrapper-medium">
+          <LearningEvents
+            events={courses4}
+            type={courses4.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL}
+            title="Health sector (open for everyone)"
+            text="Self-paced courses"
           />
         </section>
         <hr className="u-section-underline--no-margins" />
