@@ -17,13 +17,14 @@ import CreativecommonsCC from '../icons/CreativecommonsCC';
 import CreativecommonsBY from '../icons/CreativecommonsBY';
 import CreativecommonsNC from '../icons/CreativecommonsNC';
 import CreativecommonsND from '../icons/CreativecommonsND';
-import CmiLogo from '../icons/CmiLogo';
+import CmiLogo from './icons/CmiLogo';
+import Logo from './icons/Logo';
+import LogoWhite from './icons/LogoWhite';
 
 import LongformArticleContainer from '../LongformArticleContainer';
 import Footer from '../general/footer/Footer';
 import AuthorList from '../publication/AuthorList';
 import EditorList from '../EditorList';
-import Logo from '../icons/Logo';
 import { dateFormat } from 'highcharts';
 
 const classes = BEMHelper({
@@ -73,28 +74,6 @@ const LongFormArticleContainer = props => {
 
       <div className='front-cover'>
 
-        <div className='cover-cmi-logo'>
-          <CmiLogo />
-        </div>
-
-        <div className='cover-u4-logo'>
-          <Logo />
-        </div>
-
-        {featuredImage.asset && (
-          <img className='front-cover-image' src={featuredImage.asset.url} alt={featuredImage.credit} />
-        )}
-        <div className="front-cover-art-left">
-          <svg width="80" height="556" viewBox="0 0 80 556" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 556C9.74132 548.984 19.0259 540.936 27.8453 531.857C62.5134 495.92 79.9208 450.163 79.9208 394.594V0H0.147894L0.140173 372.705C0.140173 376.336 0.0935015 379.889 0 383.363V556Z" fill="#0079CF"/>
-          </svg>
-        </div>
-
-        <div className="front-cover-art-right">
-          <svg width="164" height="227" viewBox="0 0 164 227" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M164 0L0 226.266H164V169.665H113.146L164 99.5322V0Z" fill="#162063"/>
-          </svg>
-        </div>
 
         <div className='front-cover-pubtype'>
           {publicationType.title} {publicationNumber}
@@ -119,7 +98,7 @@ const LongFormArticleContainer = props => {
                 </div>
               )
             )}
-        {editors.length ? (<div className="front-cover-editorintro">Edited by</div>) : null }
+        {editors.length ? (<div className="front-cover-editorintro">Series editor</div>) : null }
         {editors && 
           editors.map(person => (person.target ? person.target : person))
           .map(
@@ -135,18 +114,41 @@ const LongFormArticleContainer = props => {
             )}
         </div>
 
+        <div className='cover-u4-logo'>
+          <Logo />
+        </div>
+
+        <div className='cover-cmi-logo'>
+          <CmiLogo />
+        </div>
+
         <div className='front-cover-logos-area'>
         {partners.map(
                 ({ _id = '', institution = {} }, index) =>
                   get(institution, 'logo.asset.url') && (
                     <img
                       key={_id + index}
-                      className="front-cover-logo"
+                      className="cover-partner-logo"
                       alt="Partner Logo"
                       src={institution.logo.asset.url}
                     />
                   )
               )}         
+        </div>
+
+        {featuredImage.asset && (
+          <img className='front-cover-image' src={featuredImage.asset.url} alt={featuredImage.credit} />
+        )}
+        <div className="front-cover-art-left">
+          <svg width="80" height="556" viewBox="0 0 80 556" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 556C9.74132 548.984 19.0259 540.936 27.8453 531.857C62.5134 495.92 79.9208 450.163 79.9208 394.594V0H0.147894L0.140173 372.705C0.140173 376.336 0.0935015 379.889 0 383.363V556Z" fill="#0079CF"/>
+          </svg>
+        </div>
+
+        <div className="front-cover-art-right">
+          <svg width="164" height="227" viewBox="0 0 164 227" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M164 0L0 226.266H164V169.665H113.146L164 99.5322V0Z" fill="#162063"/>
+          </svg>
         </div>
 
       </div>
@@ -162,7 +164,16 @@ const LongFormArticleContainer = props => {
                 serializers={serializers(transField(u4, 'about'))}
               />
             </div>
+            <div className='inside-text'>
+            <a href="https://www.u4.no" title="Homepage - U4 Anti-Corruption Resource Centre">www.u4.no</a>
           </div>
+
+          <div className='inside-text'>
+            <a href="mailto:u4@cmi.no" title="Send e-mail to U4 Anti-Corruption Resource Centre">u4@cmi.no</a>
+          </div>
+
+          </div>
+
 
           <div className='inside-heading line-above'>
             Read online
@@ -175,6 +186,37 @@ const LongFormArticleContainer = props => {
         </div>
 
         <div className='inside-right'>
+
+          { partners.length >0 && (
+            <div className="front-inside-notes">
+              <div className='inside-heading line-above'>{trans('collaborators')}</div>
+          
+              {partners.map(({ _id = '', institution = {}, description = '' }, index) => (
+                <div key={_id + index} className='inside-text'>
+                  {description && <span>{description} </span>}
+                  {!description && institution.name && <span>{institution.name}</span>}
+                  {partners.length === index + 1
+                    ? ''
+                    : partners.length - 1 > index + 1
+                    ? ', '
+                    : ` ${trans('and')} `}
+                </div>
+              ))}
+              {partners.map(
+                ({ _id = '', institution = {}, description = '' }, index) =>
+                  get(institution, 'logo.asset.url') && (
+                    <img
+                      key={_id + index}
+                      className="cover-partner-logo"
+                      alt={institution.name}
+                      src={institution.logo.asset.url}
+                    />
+                  )
+              )}
+            </div>
+          )}
+
+
           {notes.length > 0 && (
             <div className="front-inside-notes">
               <div className='inside-heading line-above'>{trans('notes')}</div>
@@ -190,7 +232,7 @@ const LongFormArticleContainer = props => {
 
       <div className='main-points'>
 
-        <div className="two-columns">
+        <div className="two-columns column-fill-auto">
         {lead && (
           <p className='main-points-lead'>{lead}</p>
             )}
@@ -337,14 +379,6 @@ const LongFormArticleContainer = props => {
 
       <div className='back-cover'>
 
-        <div className='cover-cmi-logo'>
-          <CmiLogo />
-        </div>
-
-        <div className='cover-u4-logo'>
-          <Logo />
-        </div>
-
         <div className='back-cover-content-area'>
           <div className='back-cover-content'>
             <div className='line-above'>
@@ -353,6 +387,11 @@ const LongFormArticleContainer = props => {
                 serializers={serializers(transField(u4, 'about'))}
               />
             </div>
+
+            <div className='back-cover-u4-logo'>
+              <LogoWhite />
+            </div>
+
           </div>
         </div>
 

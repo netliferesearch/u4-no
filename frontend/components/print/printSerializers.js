@@ -12,6 +12,7 @@ import FunkyTable from '../FunkyTable';
 import printFootnoteSerializer from './printFootnoteSerializer';
 import { ArticlePullQuote } from '../general/pull-quote/ArticlePullQuote';
 import Table from '../Table';
+import { random } from 'lodash';
 
 const LineChart = dynamic(() => import('../LineChart'));
 
@@ -86,6 +87,21 @@ function printSerializers(blocks) {
             typeof heading === 'string' && (level === 2 || level === 3)
               ? slugify(heading, { lower: true, remove: /[$*_+~.:()'"!:@]/g })
               : undefined;
+
+          // if h2 and text starts with numbering (digit followed by . and space)
+          if ( (style == 'h2') && (/^\d+\.\ /.test(heading))) {
+            // separate number and text
+            const num_text = ( node.children[0].text ? node.children[0].text.split('.', 2) : false);
+
+            if ( num_text) {
+              return ( 
+                <h2 id={id} className={'c-longform-grid__standard has_numbering'}>
+                  <span className='h2_numbering'>{num_text[0]}</span>
+                  {num_text[1].trim()} {children.slice(1,)}
+                </h2>
+              );
+            }
+          }
 
           return React.createElement(
             style,

@@ -72,7 +72,7 @@ const strings = {
     series_editor: 'Series editor',
     series_editors: 'Series editors',
     main_points: 'Main points',
-    table_of_contents: 'Table of contents',
+    table_of_contents: 'Contents',
     abstract: 'Abstract',
     about_the_author: 'About the author',
     about_the_authors: 'About the authors',
@@ -81,6 +81,7 @@ const strings = {
     and: 'and',
     methodology: 'Methodology',
     abbreviations: 'Abbreviations',
+    collaborators: 'Collaborators',
   },
 
   fr: {

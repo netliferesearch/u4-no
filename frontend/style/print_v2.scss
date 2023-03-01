@@ -5,7 +5,7 @@
   to test new pdf design: 
   - change global.scss:116 to reference print_v2
   - change print.js:3 to reference PrintLongFormArticleContainer_v2
-  -change pdfConfig.js:29 comment out baseurl to work with ngrok
+  - change pdfConfig.js:29 comment out baseurl to work with ngrok
 */
 
 // COMPONENTS
@@ -160,6 +160,13 @@
 .two-columns {
   column-count: 2;
   column-gap: 72px;
+  orphans: 2;
+  widows: 2;
+  column-fill: auto;
+}
+
+.two-columns.column-fill-balance {
+  column-fill: balance;
 }
 
 .bold-blue {
@@ -186,17 +193,35 @@
 /* page specific styles */
 
 /* cover page logos */
-.cover-cmi-logo {
-  position: absolute;
-  top: 48px;
-  left: 48px;
-  height: 37px;
-}
 .cover-u4-logo {
   position: absolute;
   top: 48px;
+  left: 48px;
+  height: 42px;
+}
+.cover-partner-logo {
+  position: relative;
+  max-width: 160px;
+  height: 42px;
+  margin-right: 24px;
+}
+.cover-cmi-logo {
+  position: absolute;
+  top: 1023px; // 1123px - 59px - 48px
   right: 48px;
-  height: 35px;
+  height: 52px; //28px + 20px + 4px
+  width: 163.7px; // 119.7 + 40 + 4
+  border: 2px solid $dark-blue;
+  padding: 10px 20px;
+}
+// fit logos to height of container
+.cover-u4-logo,
+.cover-cmi-logo,
+.cover-partner-logo {
+  & > * {
+    height: 100%;
+    width: auto;
+  }
 }
 
   /* front cover */
@@ -290,8 +315,8 @@
     }
     .front-cover-logos-area {
       position: absolute;
-      top: 1035px;
-      left: 281px;
+      top: 48px;
+      left: 240px; //48px + 168px + 24px
       right: 48px;
       margin: 0;
       padding: 0;
@@ -325,7 +350,19 @@
       font-size: 16px;
       line-height: 22px;
       color: white;
+      height: 100%;
     }
+    .back-cover-u4-logo {
+      position: absolute;
+      bottom: 48px;
+      left: 48px;
+      height: 35px;
+
+      svg {
+        height: 35px;
+        width: auto;
+      }
+    }    
     .back-cover-art {
       position: absolute;
       top: 133px;
@@ -481,6 +518,7 @@
     .main-points-list-item {
       font-size: 14px;
       line-height: 22px;
+      margin-bottom: 8px;
     }
   }
 
@@ -543,7 +581,7 @@
     }
     a.inlineLink.referencesLink {
       color: #000;
-      border-bottom: none;
+      border-bottom: 0.2pt solid $highlight-blue;
     }
   }
 }
@@ -577,24 +615,37 @@
     }
 
     h2 {
+      page-break-before: always;
       font-size: 40px;
       line-height: 44px;
       color: $blue;
-      margin: 48px 0 24px;
+      margin: 0 0 24px;
 
       &:first-of-type {
         margin-top: 0;
       }
+      .h2_numbering {
+        position: absolute;
+        margin-left: -87px;
+        // or right: 492px
+        margin-top: 20px;
+        z-index: -1;
+        font-size: 101px;
+        font-weight: 800;
+        color: #99E7FF;
+      }
     }
     h3 {
-      font-size: 18px;
-      line-height: 22px;
-      margin: 24px 0 8px;
+      font-size: 22px;
+      //font-size: 18px;
+      line-height: 1.22em;
+      margin: 1.22em 0 8px;
     }
     h4 {
-      font-size: 16px;
-      line-height: 22px;
-      margin: 16px 0 8px;
+      font-size: 18px;
+      //font-size: 16px;
+      line-height: 1.22em;
+      margin: 1.22em 0 8px;
     }
     h4 + p {
       margin-top: 0.2em;
@@ -602,8 +653,8 @@
     }
     h5 {
       font-size: 14px;
-      line-height: 18px;
-      margin: 16px 0 8px;
+      line-height: 1.22em;
+      margin: 1.22em 0 8px;
     }
     h5 + p {
       margin-top: 0.2em;
@@ -682,7 +733,7 @@
   }
   a.inlineLink.referencesLink {
     color: #000;
-    border-bottom: none;
+    border-bottom: 0.2pt solid $highlight-blue;
   }
 
   /* .referencesLink { } */
@@ -778,7 +829,7 @@
     }
     .c-figure-credit,
     .c-figure-credit a {
-      color: #666;
+      opacity: 0.6f;
     }
     img {
       width: 100%;
@@ -857,7 +908,13 @@
 
     tbody {
     }
+
+    tr:nth-child(2n) {
+      background-color: inherit;
+    }
+
     th, td {
+      border: none;
       border-bottom: 1px solid $blue;
       padding: 12px 8px;
 
@@ -907,6 +964,7 @@
   blockquote {
     font-family: $font-sans;
     font-size: 14px;
+    font-weight: 400;
     line-height: 22px;
     text-align: left;
     margin: 32px 0 32px 35px;

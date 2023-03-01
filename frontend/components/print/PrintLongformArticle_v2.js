@@ -53,7 +53,7 @@ class LongformArticle extends PureComponent {
                   )}
                 </li>
               ))}
-            {methodology.length > 0 && (
+            {false && methodology.length > 0 && (
               <li key="references" className="toc-list-item">
                 <a href="#methodology">{trans('methodology')}</a>
               </li>
@@ -99,7 +99,7 @@ class LongformArticle extends PureComponent {
           />
         </div>
 
-          {methodology.length > 0 ? (
+          {false && methodology.length > 0 ? (
           <div className="front-matter-page">
             <div className='page-heading' id="methodology">{trans('methodology')}</div>
             <div className='two-columns'>
