@@ -888,8 +888,6 @@
     margin: 32px 0;
     padding: 0;
     font-family: $font-sans;
-    font-size: 12px;
-    line-height: 12px;
     position: relative;
 
     .c-table__title {
@@ -904,7 +902,9 @@
       width: 100%;
       border-collapse: collapse;
       border-top: 4px solid $blue;
-    }  
+      font-size: 12px;
+      line-height: 14px;
+      }  
 
     tbody {
     }
