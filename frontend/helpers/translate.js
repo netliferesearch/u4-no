@@ -55,6 +55,7 @@ const strings = {
     disclaimer_text:
       'All views in this text are the author(s)’, and may differ from the U4 partner agencies’ policies.',
     partner_agencies: 'Partner agencies',
+    u4_partner_agencies: 'U4 partner agencies',
     about_u4: 'About U4',
     cover_photo: 'Cover photo',
     publisher_and_bibliographic_reference: 'Publisher and bibliographic reference',
@@ -89,6 +90,7 @@ const strings = {
     disclaimer_text:
       'Les opinions exprimées dans ce texte n’engagent que les auteurs et peuvent différer des politiques des organismes partenaires d’U4.',
     partner_agencies: 'Organismes partenaires',
+    u4_partner_agencies: 'Organismes partenaires U4',
     about_u4: 'A propos d’U4',
     cover_photo: 'Photo de couverture',
     publisher_and_bibliographic_reference: 'Publisher and bibliographic reference',
@@ -120,6 +122,7 @@ const strings = {
     disclaimer_text:
       'Los puntos de vista expresados en este artículo pertenecen únicamente a los autores y no reflejan necesariamente las opiniones de las instituciones asociadas al U4.',
     partner_agencies: 'Instituciones asociadas',
+    u4_partner_agencies: 'Instituciones asociadas',
     about_u4: 'Sobre U4',
     cover_photo: 'Foto de portada',
     publisher_and_bibliographic_reference: 'Publisher and bibliographic reference',
@@ -152,6 +155,7 @@ const strings = {
     disclaimer_text:
       'Semua pandangan dalam teks ini adalah milik penulis dan bisa berbeda dengan lembaga mitra U4.',
     partner_agencies: 'Lembaga Mitra',
+    u4_partner_agencies: 'Lembaga mitra U4',
     about_u4: 'Tentang U4',
     cover_photo: 'Foto sampul',
     publisher_and_bibliographic_reference: 'Publisher and bibliographic reference',
@@ -183,6 +187,7 @@ const strings = {
     disclaimer_text:
       'Усі погляди авторів, висловлені в цьому тексті, не обов’язково відображають погляди партнерів U4.',
     partner_agencies: 'Партнери',
+    u4_partner_agencies: 'Партнери',
     about_u4: 'Про U4',
     cover_photo: 'Фото на обкладинці',
     publisher_and_bibliographic_reference: 'Publisher and bibliographic reference',

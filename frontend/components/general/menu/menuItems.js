@@ -218,9 +218,16 @@ export const menuItems = [
           "current": "tax-and-revenue-collection"
         },
         "title": "Tax and revenue collection"
+      },
+      {
+        "_id": "cf717144-4e91-437c-89b8-de61ac70d01b",
+        "slug": {
+          "current": "ukraine"
+        },
+        "title": "Ukraine"
       }
     ],
-  },
+   },
   {
     label: 'Publications',
     id: 'publications',

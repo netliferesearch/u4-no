@@ -39,6 +39,17 @@ const renderCaption = caption => {
   return <em>{caption}</em>;
 };
 
+const renderImageCredit = image => {
+  const licenseText = image.license && image.license.toUpperCase().startsWith('BY') ? `CC-${image.license.toUpperCase()}` : image.license;
+  return (
+    image.credit ? (
+    <span>
+      {image.credit} { ` \u2013 license: ${licenseText}`}
+    </span>
+    ) : ('')
+  )
+}
+
 const LongFormArticleContainer = props => {
   const {
     lead = '',
@@ -277,7 +288,7 @@ const LongFormArticleContainer = props => {
               <div className='inside-text'>
                   {keywords.map(({ target: { _id = '', keyword = '' } = {} }, index) => (
                     <span key={_id + index}>
-                      {keyword} {index + 1 < keywords.length && ' - '}
+                      {keyword} {index + 1 < keywords.length && ' \u2013 '}
                     </span>
                   ))}
               </div>
@@ -297,8 +308,8 @@ const LongFormArticleContainer = props => {
             </div>
             <div className='back-inside-details-content'>
             {date ? (
-                <div>First published:
-                  {dateToString({ start: date.utc })}
+                <div>First published
+                  {' ' + dateToString({ start: date.utc })}
                 </div>
               ) : null}
               {updatedVersion?.date ? (
@@ -313,7 +324,7 @@ const LongFormArticleContainer = props => {
             <div className='back-inside-details-heading'>
               {trans('disclaimer')}
             </div>
-            <div className='back-inside-details'>
+            <div className='back-inside-details-content'>
               {trans('disclaimer_text')}
             </div>
           </div>
@@ -325,26 +336,17 @@ const LongFormArticleContainer = props => {
               </div>
               <div className='back-inside-details-content'>
                 {featuredImage.caption && renderCaption(featuredImage.caption)}
-                <p>
-                  {featuredImage.credit && (
-                    <span>
-                      {featuredImage.credit} {featuredImage.license && `(${featuredImage.license.startsWith('BY') ? 'CC ' : ''}${featuredImage.license})`}{' '}
-                    </span>
-                  )}
+                <div>
+                  <div>{renderImageCredit(featuredImage)}</div>
                   {featuredImage.sourceUrl && (
-                    <a href={featuredImage.sourceUrl}>{featuredImage.sourceUrl}</a>
+                    <div>
+                      <a href={featuredImage.sourceUrl} title="Link to the original source">{featuredImage.sourceUrl}</a>
+                    </div>
                   )}
-                </p>
+                </div>
               </div>
             </div>
           )}
-
-          <div className='back-inside-cc-logos'>
-            <CreativecommonsCC className="back-inside-cc-logo" />
-            <CreativecommonsBY className="back-inside-cc-logo" />
-            <CreativecommonsNC className="back-inside-cc-logo" />
-            <CreativecommonsND className="back-inside-cc-logo" />
-          </div>
 
           <div className='back-inside-details'>
             <div className='back-inside-details-heading'>{trans('creative_commons')}</div>
@@ -353,13 +355,20 @@ const LongFormArticleContainer = props => {
             </div>
           </div>
 
+          <div className='back-inside-cc-logos'>
+            <CreativecommonsCC className="back-inside-cc-logo" />
+            <CreativecommonsBY className="back-inside-cc-logo" />
+            <CreativecommonsNC className="back-inside-cc-logo" />
+            <CreativecommonsND className="back-inside-cc-logo" />
+          </div>
+
         </div>
 
         <div className='inside-right inside-background'>
 
           {institutions.length && (
             <div>
-              <div className="inside-heading line-above">{trans('partner_agencies')}</div>
+              <div className="inside-heading line-above">{trans('u4_partner_agencies')}</div>
               <div className='inside-text'>
                 {institutions.map((inst, index) => (
                   <p key={inst._id}>
