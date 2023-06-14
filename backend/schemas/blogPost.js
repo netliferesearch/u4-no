@@ -10,6 +10,7 @@ import {
   language,
   license,
   previewLinks,
+  shortSlug,
 } from './fields';
 
 export default {
@@ -481,6 +482,7 @@ export default {
     //   inputComponent: UrlWithMetadataInput,
     // },
     slug,
+    shortSlug,
   ],
   orderings: [
     {
