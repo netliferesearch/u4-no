@@ -2,7 +2,7 @@ import license from './license';
 
 export default {
   name: 'vimeo',
-  title: 'Vimeo video',
+  title: 'Video',
   type: 'object',
   fields: [
     {

@@ -53,6 +53,7 @@ export const RelatedSimple = ({ items }) => {
           ? items.map((item, index) => (
               <div key={index} className="c-related-simple__item">
                 {index > 0 && <hr className="u-section-underline--grey" />}
+                {item && 
                 <a
                   className="c-related-simple__link u-link--inText u-text--grey"
                   href={`/${getStringsByType(item).slugOfType}${
@@ -61,6 +62,7 @@ export const RelatedSimple = ({ items }) => {
                 >
                   <span>{item.title}</span>
                 </a>
+                }
               </div>
             ))
           : null}
