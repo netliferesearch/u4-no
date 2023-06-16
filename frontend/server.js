@@ -15,10 +15,10 @@ const handle = app.getRequestHandler();
 
 // force www
 function forceWww(req, res, next) {
-  if (req.headers.host.slice(0, 4) !== 'www.') {
-      return res.redirect(301, 'https://www.u4.no' + req.originalUrl);
+  if (( process.env.NODE_ENV === 'production' ) && (req.headers.host.slice(0, 4) !== 'www.' )) {
+      return res.redirect( 'https://www.u4.no' + req.originalUrl);
   }
-  next();
+  return next();
 };
 
 // With express
@@ -29,8 +29,8 @@ app.prepare().then(() => {
   server.use(express.json());
   if (process.env.NODE_ENV === 'production' && process.env.SKIP_SSL !== 'true') {
     server.use(forceSsl);
-    server.use(forceWww);
   }
+  server.use(forceWww);
 
   server.get('/robots.txt', (req, res) => {
     res.type('text/plain');
