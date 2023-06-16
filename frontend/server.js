@@ -13,6 +13,14 @@ const { shortUrlHandler } = require('./helpers/_shorturl');
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
 const handle = app.getRequestHandler();
 
+// force www
+function forceWww(req, res, next) {
+  if (req.headers.host.slice(0, 4) !== 'www.') {
+      return res.redirect(301, 'https://www.u4.no' + req.originalUrl);
+  }
+  next();
+};
+
 // With express
 const express = require('express');
 
@@ -21,6 +29,7 @@ app.prepare().then(() => {
   server.use(express.json());
   if (process.env.NODE_ENV === 'production' && process.env.SKIP_SSL !== 'true') {
     server.use(forceSsl);
+    server.use(forceWww);
   }
 
   server.get('/robots.txt', (req, res) => {
