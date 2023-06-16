@@ -15,7 +15,9 @@ const handle = app.getRequestHandler();
 
 // force www
 function forceWww(req, res, next) {
-  if (( process.env.NODE_ENV === 'production' ) && (req.headers.host.slice(0, 4) !== 'www.' )) {
+  if (( process.env.NODE_ENV === 'production' ) 
+    && (req.headers.host.slice(0, 4) !== 'www.' )
+    && (req.headers.host.slice(0, 20) !== 'u4-frontend-staging.' )) {
       return res.redirect( 'https://www.u4.no' + req.originalUrl);
   }
   return next();
