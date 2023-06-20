@@ -53,7 +53,6 @@ async function shortUrlHandler(req, res) {
     // if no results go home
     res.redirect(301, '/');
   }
-  console.log(sanityResults);
   const pageUrl = buildUrl(sanityResults);
   res.redirect( 301, 'https://www.u4.no' + pageUrl );
 }
