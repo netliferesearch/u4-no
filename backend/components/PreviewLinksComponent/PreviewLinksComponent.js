@@ -4,7 +4,7 @@ import styles from './PreviewLinksComponent.css';
 import AnchorButton from 'part:@sanity/components/buttons/anchor';
 import { buildUrl, previewUrl } from './buildUrl';
 
-const previewDomain = 'https://u4-frontend-staging.herokuapp.com';
+const previewDomain = 'https://preview.u4.no';
 
 class PreviewLinksComponent extends React.PureComponent {
   focus() {
