@@ -9,4 +9,5 @@ export default {
   Pain points and solutions. Keywords first.
   (Aim for: 8-14 words / 70 characters with spaces)
   `,
+  validation: Rule => Rule.required(),
 }
