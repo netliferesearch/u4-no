@@ -43,7 +43,7 @@ const shortSlug = {
     source: '_id', // slugify uses this to verify uniqueness
     slugify: slugify,
     isUnique,
-    urlPrefix: 'https://www.u4.no/r/',
+    urlPrefix: 'u4.no/r/',
     placeholder: 'Enter a custom value or generate random'
   },
   inputComponent: ShortSlugInput,

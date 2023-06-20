@@ -90,6 +90,7 @@ export default {
           ],
         },
       ],
+      validation: Rule => Rule.required(),
       preview: {
         title: 'topics.title',
       },
@@ -150,12 +151,14 @@ export default {
           type: 'publicationType',
         },
       ],
+      validation: Rule => Rule.required(),
     },
     {
       name: 'publicationNumber',
       title: 'Publication Number',
       description: 'e.g. "2016:1" ',
       type: 'string',
+      validation: Rule => Rule.required(),
     },
     {
       name: 'date',
@@ -167,6 +170,7 @@ export default {
         inputDate: true,
         inputTime: false,
       },
+      validation: Rule => Rule.required(),
     },
     {
       name: 'featuredImage',
