@@ -153,6 +153,17 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                   analyzer,
                 },
                 // term specific, end
+
+                // keywords used by publication, blog
+                keywords: {
+                  type: 'keyword',
+                },
+                countries: {
+                  type: 'keyword',
+                },
+                regions: {
+                  type: 'keyword',
+                }
               },
             },
           },
