@@ -6,6 +6,7 @@ import {
   title,
   subtitle,
   image,
+  keywords,
   slug,
   language,
   license,
@@ -280,21 +281,7 @@ export default {
     //   name: 'abstract',
     //   type: 'text',
     // },
-    {
-      name: 'keywords',
-      description: 'Chose from drop-down menu of the available U4 keywords.',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {
-              type: 'keyword',
-            },
-          ],
-        },
-      ],
-    },
+    keywords,
     {
       name: 'publicationType',
       title: 'Publication type',

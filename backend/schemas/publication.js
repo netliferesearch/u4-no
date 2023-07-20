@@ -5,7 +5,7 @@ import HighChartsEditor from '../components/HighChartsEditor';
  * A publication is a long form document
  */
 import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
-import { title, subtitle, standfirst, image, leadText, slug, language, license, previewLinks, shortSlug, vimeoVideo } from './fields';
+import { title, subtitle, standfirst, image, keywords, leadText, slug, language, license, previewLinks, shortSlug, vimeoVideo } from './fields';
 
 export default {
   name: 'publication',
@@ -95,21 +95,7 @@ export default {
         title: 'topics.title',
       },
     },
-    {
-      name: 'keywords',
-      description: 'Chose from drop-down menu of the available U4 keywords.',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {
-              type: 'keyword',
-            },
-          ],
-        },
-      ],
-    },
+    keywords,
     {
       name: 'mainPoints',
       title: 'Main points',
