@@ -155,7 +155,7 @@ const setupMappings = async ({ types = [], languages = [] }) => {
                 // term specific, end
 
                 // keywords used by publication, blog
-                keywords: {
+                keywordTerms: {
                   type: 'keyword',
                 },
                 countries: {

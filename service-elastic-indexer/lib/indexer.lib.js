@@ -469,12 +469,14 @@ function keywordsCountriesRegions( doc = {}, expand ) {
     return {}
   } else {
     const keywords = expand({ references: doc.keywords });
+    const keywordTerms = keywords.filter(({category}) => (category=='keyword'));
     const countries = keywords.filter(({category}) => (category=='country'));
     const countryRegions = countries.map(({regions}) => (expand({ references: regions, process: ({keyword}) => keyword }))).flat();
     const regions = keywords.filter(({category}) => (category=='region')).map(({keyword}) => keyword );
 
     return {
       keywords: keywords.map( ({ keyword }) => keyword ),
+      keywordTerms: keywordTerms.map( ({ keyword }) => keyword ),
       countries: _.uniq(countries.map(({keyword}) => keyword )),
       regions: _.uniq(regions.concat(countryRegions)),
     }
