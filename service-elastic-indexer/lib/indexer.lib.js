@@ -212,7 +212,7 @@ async function processPublication({ document: doc, allDocuments }) {
 
 async function processBlog({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
-  const { slug: { current = '' } = {}, authors = [] } = doc;
+  const { slug: { current = '' } = {}, authors = [], ...restOfDoc } = doc;
   const url = `/blog/${current}`;
   const relatedPersons = expand({
     references: authors,
@@ -222,7 +222,7 @@ async function processBlog({ document: doc, allDocuments }) {
     _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     // then we override some of those fields with processed data.
     url,
     content: blocksToText(doc.content || []),
@@ -244,7 +244,7 @@ async function processBlog({ document: doc, allDocuments }) {
 
 async function processArticle({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
-  const { slug: { current = '' } = {}, authors = [] } = doc;
+  const { slug: { current = '' } = {}, authors = [], ...restOfDoc } = doc;
   const url = `/${current}`;
   const articleTypes = expand({
     references: doc.articleType,
@@ -263,7 +263,7 @@ async function processArticle({ document: doc, allDocuments }) {
     _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     // then we override some of those fields with processed data.
     url,
     content: blocksToText(doc.content || []),
@@ -290,7 +290,7 @@ async function processTerm({ document: doc }) {
   } = doc;
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     // then we override some of those fields with processed data.
     termTitle: term,
     contentType:[doc._type],
@@ -301,11 +301,11 @@ async function processTerm({ document: doc }) {
 
 async function processCollection({ document: doc }) {
   const {
-    slug: { current = '' } = {}, term, definition = [], ...restOfDoc
+    slug: { current = '' } = {}, term, definition = [], resources = [], ...restOfDoc
   } = doc;
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     contentType:[doc._type],
     url: `/collections/${current}`,
   };
@@ -313,12 +313,23 @@ async function processCollection({ document: doc }) {
 
 async function processPerson({ document: doc }) {
   const {
-    slug: { current = '' } = {}, firstName = '', surname = '', bio = [], ...restOfDoc
+    slug: { current = '' } = {}, 
+    firstName = '', 
+    surname = '', 
+    bio = [], 
+    bioShort = [],
+    bioShort_ar = [],
+    bioShort_es = [],
+    bioShort_fr = [],
+    bioShort_in = [],
+    bioShort_uk = [],
+    affiliations = [],
+    ...restOfDoc
   } = doc;
   // TODO: Index person image with caption information.
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     // then we override some of those fields with processed data.
     title: `${firstName} ${surname}`,
     content: blocksToText(bio),
@@ -376,7 +387,7 @@ async function processFrontpage({ document: doc }) {
   } = doc;
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     frontpageTitle: doc.title,
     // then we override some of those fields with processed data.
     content: `${getLeadText(lead)} ${blocksToText(sections)}`,
@@ -397,7 +408,7 @@ async function processEvent({ document: doc, allDocuments = [] }) {
   });
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     contentType:[doc._type],
     // then we override some of those fields with processed data.
     content: `${getLeadText(lead)} ${blocksToText(content)}`,
@@ -432,7 +443,6 @@ async function processCourse({ document: doc, allDocuments = [] }) {
     content: `${getLeadText(lead)} ${blocksToText(content)}`,
     url: `/courses/${current}`,
     languageName,
-    courseType,
     contentType:[doc._type],
     courseTypeTitle,
     relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
