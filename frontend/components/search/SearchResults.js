@@ -32,12 +32,12 @@ export const SearchResults = props => {
     <section className="c-search-results-v2--search">
       <div className="c-search-results-v2__topbar">
         <div className="c-search-results-v2__topbar__results">
-          {searchFilters.length > 0 || value > 0
-            ? `Showing ${currentResults} of ${value} Results`
+          {searchFilters.length > 0 || total > 0
+            ? `Showing ${currentResults} of ${total} results`
             : `Search our publications, courses and more. Enter a query above, and the results will be
           displayed as you type.`}
         </div>
-        {!props.publications && (
+        {!props.publications && ( total > 0 ) && (
           <div className="c-search-results-v2__topbar-sortby">
             <SearchResultsSortingSelect />
           </div>

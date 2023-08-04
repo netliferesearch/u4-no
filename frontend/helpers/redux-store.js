@@ -97,7 +97,7 @@ export const actionTypes = {
 
 // REDUCERS
 export const reducer = (state = defaultState, action) => {
-  console.log('reducer', action, state);
+  // console.log('reducer', action, state);
   switch (action.type) {
     case actionTypes.BLOG_CLEAR_FILTER:
       return { ...state, blogFilters: state.blogFilters.filter((f, i) => i !== action.index) };

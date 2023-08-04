@@ -303,3 +303,32 @@ h3.c-filters-v2__title {
 .c-filters-v2-btn:hover {
   cursor: pointer;
 }
+
+// react-select has built-in styles, these are overrides only
+.react-select__control {
+  border-radius: 0;
+  color: $dark-blue;
+
+  &.react-select__control--is-focused {
+    border-color: $highlight-blue;  
+    box-shadow: none;
+  }
+  .react-select__multi-value {
+    background-color: #e1f1fb;
+  }
+  // search icon
+  .c-search-v2__icon-svg {
+    width: 14px;
+  }
+  .c-search-v2__svg-elements {
+    stroke: $dark-blue;
+  }
+}
+.react-select__menu {
+  border-radius: 0;
+  box-shadow: 0 0 0 1px $highlight-blue, 0 4px 11px hsla(0, 0%, 0%, 0.1);
+  color: $dark-blue;
+}
+.react-select__option--is-focused {
+  background-color: #e1f1fb;
+}
