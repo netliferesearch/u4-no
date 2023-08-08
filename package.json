@@ -60,7 +60,6 @@
     "react-player": "^0.25.3",
     "react-redux": "^7.2.4",
     "react-scrollchor": "^7.0.0",
-    "react-select": "^5.7.4",
     "react-share": "^4.0.1",
     "react-string-clamp": "^0.3.1",
     "react-transition-group": "^1.2.1",
@@ -82,7 +81,7 @@
     "build": "cd frontend && next build",
     "analyze": "cross-env ANALYZE=true npm run build",
     "start": "cd frontend && node server.js",
-    "start:skip-ssl": "cd frontend && cross-env SKIP_SSL=true node server.js"
+    "start:skip-ssl": "cd frontend && cross-env NODE_ENV=production SKIP_SSL=true node server.js"
   },
   "engines": {
     "node": "14.x",

@@ -4,7 +4,6 @@ import { replaceSearchFilters, updateSearchSorting } from '../../helpers/redux-s
 import { useRouter } from 'next/router';
 import { SearchFilterPublicationTypes } from './SearchFilterPublicationTypes';
 import { SearchFilterTopics } from './SearchFilterTopics';
-import { SearchFilterSearchSelect } from './SearchFilterSearchSelect';
 import { SearchFilterLanguages } from './SearchFilterLanguages';
 import { SearchFilterYears } from './SearchFilterYears';
 import { SearchFilterReset } from './SearchFilterReset';
@@ -76,27 +75,6 @@ export const SearchFilters = props => {
           </div>
         </div>
         <SearchFilterTopics />
-        <SearchFilterSearchSelect
-          id="select-country"
-          title="Country"
-          placeholder="All countries"
-          aggregationName="countries"
-          filterPrefix="country"
-        />
-        <SearchFilterSearchSelect
-          id="select-region"
-          title="Region"
-          placeholder="All regions"
-          aggregationName="regions"
-          filterPrefix="region"
-        />
-        <SearchFilterSearchSelect
-          id="select-keyword"
-          title="Keyword"
-          placeholder="All keywords"
-          aggregationName="keywords"
-          filterPrefix="keyword"
-        />
         {props.publications ? <SearchFilterPublicationTypes /> : <SearchFilterContentTypes />}
         <SearchFilterYears />
         <SearchFilterLanguages />

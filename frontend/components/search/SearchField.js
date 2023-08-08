@@ -5,7 +5,6 @@ import { React, useState, useEffect, useRef } from 'react';
 import { LoaderV2 } from '../LoaderV2';
 import { SearchIcon } from '../icons/SearchIcon';
 import { useDispatch } from 'react-redux';
-import { updateSearchPageNum } from '../../helpers/redux-store';
 
 export const SearchField = props => {
   const router = useRouter();

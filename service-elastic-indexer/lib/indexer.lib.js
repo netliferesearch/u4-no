@@ -212,7 +212,7 @@ async function processPublication({ document: doc, allDocuments }) {
 
 async function processBlog({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
-  const { slug: { current = '' } = {}, authors = [], basedonpublication, ...restOfDoc } = doc;
+  const { slug: { current = '' } = {}, authors = [], ...restOfDoc } = doc;
   const url = `/blog/${current}`;
   const relatedPersons = expand({
     references: authors,
@@ -244,7 +244,7 @@ async function processBlog({ document: doc, allDocuments }) {
 
 async function processArticle({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
-  const { slug: { current = '' } = {}, authors = [], articleType, ...restOfDoc } = doc;
+  const { slug: { current = '' } = {}, authors = [], ...restOfDoc } = doc;
   const url = `/${current}`;
   const articleTypes = expand({
     references: doc.articleType,
@@ -469,16 +469,15 @@ function keywordsCountriesRegions( doc = {}, expand ) {
     return {}
   } else {
     const keywords = expand({ references: doc.keywords });
-    const keywordTerms = keywords.filter(({category,language}) => (( category=='keyword' ) && ( language == 'en_US' )));
-    const countries = keywords.filter(({category,language}) => (( category=='country' ) && ( language == 'en_US' )));
-    const countriesOtherLang = keywords.filter(({category,translation}) => (( category=='country' ) && ( translation ))).map(({translation}) => (expand({ reference: translation, process: ({keyword}) => keyword })));
+    const keywordTerms = keywords.filter(({category}) => (category=='keyword'));
+    const countries = keywords.filter(({category}) => (category=='country'));
     const countryRegions = countries.map(({regions}) => (expand({ references: regions, process: ({keyword}) => keyword }))).flat();
-    const regions = keywords.filter(({category,language}) => (( category=='region' )) && ( language == 'en_US' )).map(({keyword}) => keyword );
+    const regions = keywords.filter(({category}) => (category=='region')).map(({keyword}) => keyword );
 
     return {
       keywords: keywords.map( ({ keyword }) => keyword ),
       keywordTerms: keywordTerms.map( ({ keyword }) => keyword ),
-      countries: _.uniq(countries.map(({keyword}) => keyword ).concat(countriesOtherLang)),
+      countries: _.uniq(countries.map(({keyword}) => keyword )),
       regions: _.uniq(regions.concat(countryRegions)),
     }
   }
