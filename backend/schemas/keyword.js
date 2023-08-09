@@ -30,14 +30,45 @@ export default {
     {
       name: 'translation',
       title: 'Translation of',
+      hidden: ({document}) => document?.language === 'en_US',
       description: 'Which keyword (in English) this is a translation of',
       type: 'reference',
       to: [
         {
           type: 'keyword'
         }
-      ]
+      ],
+      options: {
+        disableNew: true,
+        filter: ({document}) => {
+          if (!document.category) {
+            return {};
+          } else {
+            return {
+              filter: '( category == $category ) && ( language == "en_US" )',
+              params: {category: document.category}
+            }
+          }
+        }
+      }
     },
+    {
+      name: 'regions',
+      title: 'Part of region(s)',
+      description: 'Region(s) that this country is part of',
+      hidden: ({document}) => document?.category !== 'country',
+      type: 'array',
+      of: [
+        { 
+          type: 'reference', 
+          to: [ { type: 'keyword' } ],
+          options: {
+            filter: '( category == "region" ) && ( language == "en_US" )',
+            disableNew: true,
+          }    
+        }
+      ]
+    }
 
   ],
   orderings: [

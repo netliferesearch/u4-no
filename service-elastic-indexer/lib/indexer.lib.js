@@ -147,6 +147,12 @@ async function processPublication({ document: doc, allDocuments }) {
   const relatedPersons = relatedAuthors.concat(relatedEditors);
   const filedUnderTopics = topicsThatRelateToPublication.concat(publicationRelatesToTopics);
   const isLegacyPublication = content.length === 0;
+
+  const keywords = expand({ references: doc.keywords });
+  const countries = keywords.filter(({category}) => (category=='country'));
+  const countryRegions = countries.map(({regions}) => (expand({ references: regions, process: ({keyword}) => keyword }))).flat();
+  const regions = keywords.filter(({category}) => (category=='region')).map(({keyword}) => keyword );
+
   return {
     // by default we add all Sanity fields to elasticsearch.
     ...restOfDoc,
@@ -185,10 +191,6 @@ async function processPublication({ document: doc, allDocuments }) {
       references: doc.editors,
       process: ({ _id }) => _id,
     }),
-    keywords: _.uniq(expand({
-      references: doc.keywords || [],
-      process: ({ keyword }) => keyword,
-    })),
     topicTitles: expand({
       references: topics,
       process: ({ title }) => title,
@@ -204,12 +206,13 @@ async function processPublication({ document: doc, allDocuments }) {
     filedUnderTopicNames: filedUnderTopics.map(({ title = '' }) => title),
     filedUnderTopicIds: filedUnderTopics.map(({ _id = '' }) => _id),
     relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
+    ...keywordsCountriesRegions( doc, expand ),
   };
 }
 
 async function processBlog({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
-  const { slug: { current = '' } = {}, authors = [] } = doc;
+  const { slug: { current = '' } = {}, authors = [], ...restOfDoc } = doc;
   const url = `/blog/${current}`;
   const relatedPersons = expand({
     references: authors,
@@ -219,7 +222,7 @@ async function processBlog({ document: doc, allDocuments }) {
     _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     // then we override some of those fields with processed data.
     url,
     content: blocksToText(doc.content || []),
@@ -227,10 +230,7 @@ async function processBlog({ document: doc, allDocuments }) {
       references: doc.authors,
       process: ({ firstName, surname }) => `${firstName} ${surname}`,
     }),
-    keywords: _.uniq(expand({
-      references: doc.keywords || [],
-      process: ({ keyword }) => keyword,
-    })),
+    ...keywordsCountriesRegions( doc, expand ),
     authorIds: expand({
       references: doc.authors,
       process: ({ _id }) => _id,
@@ -244,7 +244,7 @@ async function processBlog({ document: doc, allDocuments }) {
 
 async function processArticle({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
-  const { slug: { current = '' } = {}, authors = [] } = doc;
+  const { slug: { current = '' } = {}, authors = [], ...restOfDoc } = doc;
   const url = `/${current}`;
   const articleTypes = expand({
     references: doc.articleType,
@@ -263,7 +263,7 @@ async function processArticle({ document: doc, allDocuments }) {
     _type === 'topics' && resources.find(({ _ref = '' }) => _ref === doc._id));
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     // then we override some of those fields with processed data.
     url,
     content: blocksToText(doc.content || []),
@@ -290,7 +290,7 @@ async function processTerm({ document: doc }) {
   } = doc;
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     // then we override some of those fields with processed data.
     termTitle: term,
     contentType:[doc._type],
@@ -301,11 +301,11 @@ async function processTerm({ document: doc }) {
 
 async function processCollection({ document: doc }) {
   const {
-    slug: { current = '' } = {}, term, definition = [], ...restOfDoc
+    slug: { current = '' } = {}, term, definition = [], resources = [], ...restOfDoc
   } = doc;
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     contentType:[doc._type],
     url: `/collections/${current}`,
   };
@@ -313,12 +313,23 @@ async function processCollection({ document: doc }) {
 
 async function processPerson({ document: doc }) {
   const {
-    slug: { current = '' } = {}, firstName = '', surname = '', bio = [], ...restOfDoc
+    slug: { current = '' } = {}, 
+    firstName = '', 
+    surname = '', 
+    bio = [], 
+    bioShort = [],
+    bioShort_ar = [],
+    bioShort_es = [],
+    bioShort_fr = [],
+    bioShort_in = [],
+    bioShort_uk = [],
+    affiliations = [],
+    ...restOfDoc
   } = doc;
   // TODO: Index person image with caption information.
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     // then we override some of those fields with processed data.
     title: `${firstName} ${surname}`,
     content: blocksToText(bio),
@@ -354,7 +365,7 @@ async function processTopic({ document: doc, allDocuments }) {
   const isAgendaPresent = agenda.length > 0;
   const isBasicGuidePresent = basicGuide.length > 0;
   return {
-    ...doc,
+    ...restOfDoc,
     // then we override some of those fields with processed data.
     topicTitle,
     url,
@@ -376,10 +387,11 @@ async function processFrontpage({ document: doc }) {
   } = doc;
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     frontpageTitle: doc.title,
     // then we override some of those fields with processed data.
-    content: getLeadText(lead),
+    content: `${getLeadText(lead)} ${blocksToText(sections)}`,
+    lead: '',
     url: `/${current}`,
     contentType:[doc._type],
     frontpageSections: blocksToText(sections),
@@ -388,7 +400,7 @@ async function processFrontpage({ document: doc }) {
 
 async function processEvent({ document: doc, allDocuments = [] }) {
   const {
-    slug: { current = '' } = {}, keywords = [], contact= [], lead = '', ...restOfDoc
+    slug: { current = '' } = {}, keywords = [], content = [], contact = [], lead = '', ...restOfDoc
   } = doc;
   const expand = initExpand(allDocuments);
   const relatedPersons = expand({
@@ -396,15 +408,12 @@ async function processEvent({ document: doc, allDocuments = [] }) {
   });
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     contentType:[doc._type],
     // then we override some of those fields with processed data.
-    content: getLeadText(lead),
+    content: `${getLeadText(lead)} ${blocksToText(content)}`,
     url: `/events/${current}`,
-    keywords: _.uniq(expand({
-      references: doc.keywords || [],
-      process: ({ keyword }) => keyword,
-    })),
+    ...keywordsCountriesRegions( doc, expand ),
     relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
   };
 }
@@ -429,12 +438,11 @@ async function processCourse({ document: doc, allDocuments = [] }) {
   const { title: courseTypeTitle } = courseType;
   return {
     // by default we add all Sanity fields to elasticsearch.
-    ...doc,
+    ...restOfDoc,
     // then we override some of those fields with processed data.
     content: `${getLeadText(lead)} ${blocksToText(content)}`,
     url: `/courses/${current}`,
     languageName,
-    courseType,
     contentType:[doc._type],
     courseTypeTitle,
     relatedPersons: relatedPersons.map(({ slug = '' }) => slug.current),
@@ -452,6 +460,27 @@ function getLanguageName(languageCode) {
     uk_UA: 'Ukrainian',
   };
   return languageMap[languageCode];
+}
+
+// keywords field contain countries and regions
+// return these as separate fields parsed from the keywords field
+function keywordsCountriesRegions( doc = {}, expand ) {
+  if (!doc.keywords) {
+    return {}
+  } else {
+    const keywords = expand({ references: doc.keywords });
+    const keywordTerms = keywords.filter(({category}) => (category=='keyword'));
+    const countries = keywords.filter(({category}) => (category=='country'));
+    const countryRegions = countries.map(({regions}) => (expand({ references: regions, process: ({keyword}) => keyword }))).flat();
+    const regions = keywords.filter(({category}) => (category=='region')).map(({keyword}) => keyword );
+
+    return {
+      keywords: keywords.map( ({ keyword }) => keyword ),
+      keywordTerms: keywordTerms.map( ({ keyword }) => keyword ),
+      countries: _.uniq(countries.map(({keyword}) => keyword )),
+      regions: _.uniq(regions.concat(countryRegions)),
+    }
+  }
 }
 
 // The lead property has proven to sometimes be blocks and sometimes plain

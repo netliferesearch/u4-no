@@ -1,4 +1,4 @@
-import { leadText, featuredImage, slug, image } from './fields'
+import { leadText, featuredImage, slug, image, keywords } from './fields'
 import annotationsLinksOnly from './fields/annotationsLinksOnly'
 import defaultBlock from './fields/defaultBlock';
 import publicationContent from './fields/publicationContent';
@@ -131,22 +131,7 @@ export default {
         title: 'topics.title',
       },
     },
-
-    {
-      name: 'keywords',
-      description: 'Select relevant U4 keywords',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {
-              type: 'keyword',
-            },
-          ],
-        },
-      ],
-    },
+    keywords,
     slug,
   ],
 

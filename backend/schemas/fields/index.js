@@ -4,6 +4,7 @@ export { default as date } from './date';
 export { default as explainerText } from './explainerText';
 export { default as featuredImage } from './featuredImage';
 export { default as image } from './image';
+export { default as keywords } from './keywords';
 export { default as leadText } from './leadText';
 export { default as longTitle } from './longTitle';
 export { default as slug } from './slug';

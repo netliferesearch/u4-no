@@ -1,4 +1,4 @@
-import { slug, language } from './fields'
+import { slug, language, keywords } from './fields'
 
 export default {
   name: 'resource',
@@ -71,21 +71,7 @@ export default {
         title: 'topics.title'
       }
     },
-    {
-      name: 'keywords',
-      description: 'Choose from drop-down menu of the available U4 keywords.',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {
-              type: 'keyword'
-            }
-          ]
-        }
-      ],
-    },
+    keywords,
     slug,
   ],
   orderings: [

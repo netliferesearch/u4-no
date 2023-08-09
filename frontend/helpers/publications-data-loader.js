@@ -8,7 +8,6 @@ const elasticsearch = require('elasticsearch');
 // anonymous has read access to elasticsearch index so this works
 const client = new elasticsearch.Client({
   host: 'https://34f28f12080e435795254ec8886248ba.eu-central-1.aws.cloud.es.io/',
-  apiVersion: '7.7',
 });
 
 const aggregations = {
@@ -114,7 +113,7 @@ const doSearch = async ({ query }) => {
 
   try {
     const result = await client.search({
-      index: process.env.ES_ENV ? `u4-${process.env.ES_ENV}-*` : 'u4-production-*',
+      index: process.env.ES_ENV ? `u4-${process.env.ES_ENV}-*` : 'u4-staging-*',
       body: {
         query: {
           function_score: {
@@ -197,7 +196,7 @@ const doSearch = async ({ query }) => {
 export const getSearchAggregations = async () => {
   try {
     const result = await client.search({
-      index: process.env.ES_ENV ? `u4-${process.env.ES_ENV}-*` : 'u4-production-*',
+      index: process.env.ES_ENV ? `u4-${process.env.ES_ENV}-*` : 'u4-staging-*',
       body: {
         query: { match_all: {} },
         aggs: aggregations,
