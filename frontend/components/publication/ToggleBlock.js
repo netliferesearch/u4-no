@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../serializers/serializers';
 import { ArrowDown } from '../icons/ArrowDown';
-import { CSSTransitionGroup } from 'react-transition-group';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 export const ToggleBlock = ({ title = '', content = '', children }) => {
   const [open, toggleOpen] = useState(false);
@@ -15,14 +15,10 @@ export const ToggleBlock = ({ title = '', content = '', children }) => {
           <ArrowDown />
         </div>
       </div>
-      <CSSTransitionGroup
-        transitionName={'c-accordion-'}
-        transitionAppear={true}
-        transitionAppearTimeout={200}
-        transitionEnterTimeout={200}
-        transitionLeaveTimeout={200}
-      >
+      <TransitionGroup>
+      
         {open && (
+          <CSSTransition classNames={'c-toggle-block-'} timeout={200}>
           <div
             className={`c-toggle-block__content ${
               open ? 'c-toggle-block__content--open' : 'c-toggle-block__content--closed'
@@ -34,8 +30,10 @@ export const ToggleBlock = ({ title = '', content = '', children }) => {
             )}
             {children}
           </div>
+          </CSSTransition>
         )}
-      </CSSTransitionGroup>
+        
+      </TransitionGroup>
     </div>
   );
 };

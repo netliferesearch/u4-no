@@ -1,5 +1,5 @@
 import React from 'react';
-import { Document, Page } from 'react-pdf/build/entry.noworker';
+//import { Document, Page } from 'react-pdf/build/entry.noworker';
 import { getPdfUrl } from '../../helpers/getPdfUrl';
 import { Post, POST_TYPE } from '../general/post/Post';
 import { getPlaceholder } from '../../helpers/imgloader';
@@ -46,11 +46,8 @@ export const SearchResult = props => {
               />
               </div>
 
-              ) : (
-              <Document file={pdfFileView || pdfFileUrlView || legacypdfFileUrlView}>
-                <Page pageNumber={1} />
-              </Document>
-              )}
+              ) : null
+              }
             </div>
           ) : null}
 

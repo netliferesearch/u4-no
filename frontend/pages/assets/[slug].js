@@ -2,7 +2,7 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 
 import Layout from '../../components/Layout';
-import PdfViewer from '../../components/PdfViewer';
+//import PdfViewer from '../../components/PdfViewer';
 import PdfEmbed from '../../components/pdfEmbed/PdfEmbed';
 import Download from '../../components/icons/Download';
 
