@@ -148,11 +148,6 @@ async function processPublication({ document: doc, allDocuments }) {
   const filedUnderTopics = topicsThatRelateToPublication.concat(publicationRelatesToTopics);
   const isLegacyPublication = content.length === 0;
 
-  const keywords = expand({ references: doc.keywords });
-  const countries = keywords.filter(({category}) => (category=='country'));
-  const countryRegions = countries.map(({regions}) => (expand({ references: regions, process: ({keyword}) => keyword }))).flat();
-  const regions = keywords.filter(({category}) => (category=='region')).map(({keyword}) => keyword );
-
   return {
     // by default we add all Sanity fields to elasticsearch.
     ...restOfDoc,
@@ -212,7 +207,7 @@ async function processPublication({ document: doc, allDocuments }) {
 
 async function processBlog({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
-  const { slug: { current = '' } = {}, authors = [], ...restOfDoc } = doc;
+  const { slug: { current = '' } = {}, authors = [], basedonpublication, ...restOfDoc } = doc;
   const url = `/blog/${current}`;
   const relatedPersons = expand({
     references: authors,
@@ -244,7 +239,7 @@ async function processBlog({ document: doc, allDocuments }) {
 
 async function processArticle({ document: doc, allDocuments }) {
   const expand = initExpand(allDocuments);
-  const { slug: { current = '' } = {}, authors = [], ...restOfDoc } = doc;
+  const { slug: { current = '' } = {}, authors = [], articleType, ...restOfDoc } = doc;
   const url = `/${current}`;
   const articleTypes = expand({
     references: doc.articleType,
@@ -468,17 +463,24 @@ function keywordsCountriesRegions( doc = {}, expand ) {
   if (!doc.keywords) {
     return {}
   } else {
+    const toKeyword = ( {keyword}) => keyword;
+
     const keywords = expand({ references: doc.keywords });
-    const keywordTerms = keywords.filter(({category}) => (category=='keyword'));
-    const countries = keywords.filter(({category}) => (category=='country'));
-    const countryRegions = countries.map(({regions}) => (expand({ references: regions, process: ({keyword}) => keyword }))).flat();
-    const regions = keywords.filter(({category}) => (category=='region')).map(({keyword}) => keyword );
+    const keywordTerms_en = keywords.filter(({ category, language }) => (( category=='keyword' ) && ( language == 'en_US' ))).map( toKeyword );
+    const keywordTerms_other = keywords.filter(({ category, translation }) => (( category=='keyword' ) && ( translation ))).map(({ translation }) => (expand({ reference: translation, process: toKeyword })));
+
+    const countries_en = keywords.filter(({ category,language }) => (( category=='country' ) && ( language == 'en_US' )));
+    const countries_other = keywords.filter(({ category,translation }) => (( category=='country' ) && ( translation ))).map(({ translation }) => (expand({ reference: translation })));
+
+    const countryRegions = countries_en.concat( countries_other ).map(({ regions }) => (expand({ references: regions, process: toKeyword }))).flat();
+    const regions_en = keywords.filter(({ category,language }) => (( category=='region' )) && ( language == 'en_US' )).map( toKeyword );
+    const regions_other = keywords.filter(({ category,translation }) => (( category=='region' ) && ( translation ))).map(({ translation }) => (expand({ reference: translation, process: toKeyword })));
 
     return {
-      keywords: keywords.map( ({ keyword }) => keyword ),
-      keywordTerms: keywordTerms.map( ({ keyword }) => keyword ),
-      countries: _.uniq(countries.map(({keyword}) => keyword )),
-      regions: _.uniq(regions.concat(countryRegions)),
+      keywords: keywords.map( toKeyword ),
+      keywordTerms: _.uniq( keywordTerms_en.concat( keywordTerms_other )),
+      countries: _.uniq( countries_en.map( toKeyword ).concat( countries_other.map( toKeyword ))),
+      regions: _.uniq( regions_en.concat( regions_other ).concat( countryRegions )),
     }
   }
 }
