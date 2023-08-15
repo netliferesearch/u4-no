@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 /**
  * Keywords component to list keywords (keyword categories: "keywords")
@@ -19,7 +20,7 @@ export const Keywords = ({ title = true, keywords = [], hr = false }) => {
           /* .filter(keyword => keyword.category === 'keyword') */
           .map((keyword, index) => (
             <span className="u-body--small" key={index}>
-              {keyword.keyword}
+              <Link href={`/search?filters=${keyword.category}-${keyword.keyword}`}>{keyword.keyword}</Link>
               {index < keywords.length - 1 ? ', ' : ''}
             </span>
           ))}
