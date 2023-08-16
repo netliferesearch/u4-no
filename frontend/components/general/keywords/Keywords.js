@@ -20,7 +20,10 @@ export const Keywords = ({ title = true, keywords = [], hr = false }) => {
           /* .filter(keyword => keyword.category === 'keyword') */
           .map((keyword, index) => (
             <span className="u-body--small" key={index}>
-              <Link href={`/search?filters=${keyword.category}-${keyword.keyword}`}>{keyword.keyword}</Link>
+              { keyword.translation 
+                ? <Link href={`/search?filters=${keyword.category}-${keyword.translation.keyword}`}>{keyword.keyword}</Link>
+                : <Link href={`/search?filters=${keyword.category}-${keyword.keyword}`}>{keyword.keyword}</Link>
+              }
               {index < keywords.length - 1 ? ', ' : ''}
             </span>
           ))}
