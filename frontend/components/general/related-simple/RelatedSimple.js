@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const getStringsByType = item => {
   const itemType = item._type;
@@ -54,14 +55,13 @@ export const RelatedSimple = ({ items }) => {
               <div key={index} className="c-related-simple__item">
                 {index > 0 && <hr className="u-section-underline--grey" />}
                 {item && 
-                <a
-                  className="c-related-simple__link u-link--inText u-text--grey"
-                  href={`/${getStringsByType(item).slugOfType}${
-                    typeof item.slug === 'string' ? item.slug : item.slug.current
-                  }`}
-                >
-                  <span>{item.title}</span>
-                </a>
+                <Link href={`/${getStringsByType(item).slugOfType}${
+                  typeof item.slug === 'string' ? item.slug : item.slug.current
+                }`}>
+                  <a className="c-related-simple__link u-link--inText u-text--grey">
+                    <span>{item.title}</span>
+                  </a>
+                </Link>
                 }
               </div>
             ))
