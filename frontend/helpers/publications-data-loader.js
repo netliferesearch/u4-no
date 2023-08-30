@@ -51,6 +51,24 @@ const aggregations = {
       size: 100,
     },
   },
+  keywords: {
+    terms: {
+      field: 'keywordTerms',
+      size: 200,
+    },
+  },
+  countries: {
+    terms: {
+      field: 'countries',
+      size: 200,
+    },
+  },
+  regions: {
+    terms: {
+      field: 'regions',
+      size: 100,
+    },
+  },
 };
 const doSearch = async ({ query }) => {
   const {
@@ -82,7 +100,24 @@ const doSearch = async ({ query }) => {
       terms: { 'publicationTypeTitle.keyword': publicationNames },
     });
   }
-
+  const countryNames = filters
+    .filter(filter => /^country-/gi.test(filter))
+    .map(filter => /country-(.*)/gi.exec(filter)[1]);
+  if (countryNames.length > 0) {
+    activeFilterQueries.push({ terms: { countries: countryNames }});
+  }
+  const regionNames = filters
+    .filter(filter => /^region-/gi.test(filter))
+    .map(filter => /region-(.*)/gi.exec(filter)[1]);
+  if (regionNames.length > 0) {
+    activeFilterQueries.push({ terms: { regions: regionNames }});
+  }
+  const keywordNames = filters
+    .filter(filter => /^keyword-/gi.test(filter))
+    .map(filter => /keyword-(.*)/gi.exec(filter)[1]);
+  if (keywordNames.length > 0) {
+    activeFilterQueries.push({ terms: { keywordTerms: keywordNames }});
+  }
   const languageNames = filters
     .filter(filter => /^lang-type-/gi.test(filter))
     .map(filter => /lang-type-(.*)/gi.exec(filter)[1]);
@@ -113,7 +148,7 @@ const doSearch = async ({ query }) => {
 
   try {
     const result = await client.search({
-      index: process.env.ES_ENV ? `u4-${process.env.ES_ENV}-*` : 'u4-production-*',
+      index: process.env.ES_ENV ? `u4-${process.env.ES_ENV}-*` : 'u4-staging-*',
       body: {
         query: {
           function_score: {
@@ -196,7 +231,7 @@ const doSearch = async ({ query }) => {
 export const getSearchAggregations = async () => {
   try {
     const result = await client.search({
-      index: process.env.ES_ENV ? `u4-${process.env.ES_ENV}-*` : 'u4-production-*',
+      index: process.env.ES_ENV ? `u4-${process.env.ES_ENV}-*` : 'u4-staging-*',
       body: {
         query: { match_all: {} },
         aggs: aggregations,
