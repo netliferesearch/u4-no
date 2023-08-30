@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 /**
  * Keywords component to list keywords (keyword categories: "keywords")
@@ -10,6 +11,7 @@ import React from 'react';
  */
 
 export const Keywords = ({ title = true, keywords = [], hr = false }) => {
+  const urlsafe = text => text.replace( ",", "%7C" );
   return (
     <div className="c-keywords">
       {title ? <h4 className="u-secondary-heading u-secondary-h3">Keywords</h4> : null}
@@ -19,7 +21,7 @@ export const Keywords = ({ title = true, keywords = [], hr = false }) => {
           /* .filter(keyword => keyword.category === 'keyword') */
           .map((keyword, index) => (
             <span className="u-body--small" key={index}>
-              {keyword.keyword}
+              <Link href={`/search?filters=${keyword.category}-${keyword.translation ? urlsafe( keyword.translation.keyword ) : urlsafe( keyword.keyword )}`}>{keyword.keyword}</Link>
               {index < keywords.length - 1 ? ', ' : ''}
             </span>
           ))}

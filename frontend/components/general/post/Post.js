@@ -11,9 +11,9 @@ import { TextClampSSR} from './TextClampSSR';
 import { imgLoader } from '../../../helpers/imgloader';
 //import { Document, Page } from 'react-pdf/build/entry.noworker';
 
-import dynamic from "next/dynamic";
-const Document = dynamic(() => import("react-pdf/build/entry.noworker").then(module => module.Document));
-const Page = dynamic(() => import("react-pdf/build/entry.noworker").then(module => module.Page));
+//import dynamic from "next/dynamic";
+//const Document = dynamic(() => import("react-pdf/build/entry.noworker").then(module => module.Document));
+//const Page = dynamic(() => import("react-pdf/build/entry.noworker").then(module => module.Page));
 
 export const POST_TYPE = {
   SMALL: 'small', // collapsable in mobile view/normal in desktop
@@ -73,9 +73,11 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
     <div className={`c-post ${type} ${type === 'large' ? 'u-sticky' : ''}`}>
       {type === 'search' && (post.pdfFile || post.legacypdf) && (
         <div className="pdf-preview">
+          {/* 
           <Document file={post.pdfFile || post.legacypdf}>
             <Page pageNumber={1} />
           </Document>
+          */}
         </div>
       )}
       <div>
