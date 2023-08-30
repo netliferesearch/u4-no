@@ -108,6 +108,6 @@ export const getStaticProps = async ctx => {
 export const getStaticPaths = async ctx => {
   return {
     paths: [],
-    fallback: true,
+    fallback: 'blocking',
   };
 };
