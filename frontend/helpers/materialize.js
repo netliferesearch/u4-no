@@ -17,6 +17,10 @@ function extractRefs(obj) {
 }
 
 function fetchAll(ids) {
+  if ( ids.length == 0) {
+    // console.log( 'Nothing to materialize here');
+    return Promise.resolve({});
+  }
   const query = `*[${ids.map(id => `_id=="${id}"`).join('||')}]`;
   return client.fetch(query).then(docs => {
     const result = {};
