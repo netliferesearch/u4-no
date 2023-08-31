@@ -48,6 +48,7 @@ export const SearchFilterLanguages = () => {
             }}
             value={getLanguage({ searchFilters })}
           >
+            <option key="any" value="">All languages</option>
             {defaultBuckets.map(bucket => {
               const { key } = bucket;
               return (

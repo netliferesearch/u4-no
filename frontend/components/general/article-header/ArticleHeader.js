@@ -1,5 +1,5 @@
 import React from 'react';
-import { Document, Page } from 'react-pdf/build/entry.noworker';
+//import { Document, Page } from 'react-pdf/build/entry.noworker';
 import { PUBLICATION } from '../../../helpers/constants';
 import { getPostType, getRouteByType } from '../../../helpers/getRouteByType';
 import { PageIntro } from '../PageIntro';
@@ -110,9 +110,11 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
           )}
           {!pdfThumbnail.asset && (pdfFile.asset || legacypdf.asset) && (
             <div className="pdf-preview">
+              {/*
               <Document file={pdfFile.asset ? pdfFile.asset : legacypdf.asset}>
                 <Page pageNumber={1} />
               </Document>
+              */}
             </div>
           )}
           {_type === 'blog-post' && featuredImage && featuredImage.asset && (

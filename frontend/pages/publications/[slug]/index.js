@@ -68,7 +68,7 @@ const queryFunc = ({ params: { slug = '' } }) => ({
   editors[]->{ _id, affiliations[]->{_id,name}, email, ${localize('firstName')}, slug, ${localize('surname')}, position },
   featuredImage{caption,credit,sourceUrl,license,asset->{url}}, 
   headsUp, 
-  keywords[]->{_id, keyword, category}, 
+  keywords[]->{_id, keyword, category, translation->{_id, keyword}}, 
   language,
   lead, legacypdf, mainPoints, methodology, notes, partners, pdfFile, 
   pdfThumbnail{_type,asset->{url,metadata{lqip,dimensions{width,height}}}},
@@ -108,6 +108,6 @@ export const getStaticProps = async ctx => {
 export const getStaticPaths = async ctx => {
   return {
     paths: [],
-    fallback: true,
+    fallback: 'blocking',
   };
 };
