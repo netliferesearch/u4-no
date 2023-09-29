@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import Script from 'next/script';
 
 const HeadComponent = ({ title, description, image, url = '', ogp }) => (
   <Head>
@@ -24,7 +25,7 @@ const HeadComponent = ({ title, description, image, url = '', ogp }) => (
     <meta name="twitter:site" content="@U4_ACRC" />
     <link rel="icon" type="image/png" href="/public/favicon.png" />
 
-    <script
+    <Script
       dangerouslySetInnerHTML={{
         __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

@@ -22,12 +22,10 @@ export const PersonBasic = ({ person, showEmail = true }) => {
       </div>
       <div className="c-person-basic__text">
         {person.slug && person.bio ? (
-          <Link href={`/the-team/${person.slug.current}`}>
-            <a className="c-btn--link">
-              <p {...classes('item-title--name')}>
-                {person.firstName && person.firstName} {person.surname && person.surname}
-              </p>
-            </a>
+          <Link href={`/the-team/${person.slug.current}`} className="c-btn--link">
+            <p {...classes('item-title--name')}>
+              {person.firstName && person.firstName} {person.surname && person.surname}
+            </p>
           </Link>
         ) : (
           <p {...classes('item-title--name')}>
@@ -54,12 +52,10 @@ export const PersonContactBasic = ({ person, cta = 'Questions about the course?'
       <div>
         {/* <p className="u-secondary-heading">{person.position && `${person.position}`}</p> */}
         {person.slug && person.bio ? (
-          <Link href={`/the-team/${person.slug.current}`}>
-            <a className="c-btn--link">
-              <span {...classes('item-title--name')}>
-                {person.firstName && person.firstName} {person.surname && person.surname}
-              </span>
-            </a>
+          <Link href={`/the-team/${person.slug.current}`} className="c-btn--link">
+            <span {...classes('item-title--name')}>
+              {person.firstName && person.firstName} {person.surname && person.surname}
+            </span>
           </Link>
         ) : (
           <span {...classes('item-title--name')}>

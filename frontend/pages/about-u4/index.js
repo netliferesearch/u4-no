@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import Image from 'next/image';
+import Image from "next/image";
 import sanityImageLoader from '../../helpers/sanityImageLoader';
 import { fetchAndMaterialize } from '../../helpers/data-loader';
 import { blocksToText } from '../../helpers/blocksToText';
@@ -49,13 +49,15 @@ const About = ({ data: { about = {}, url = {} } }) => {
                 src={about.featuredImage}
                 blurDataURL={imageBlurDataURL}
                 loading="lazy"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="top center"
                 crop="focalpoint"
                 auto="format"
                 fit="crop"
-              />
+                fill
+                sizes="100vw"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "top center"
+                }} />
             </div>
           </div>
         </div>

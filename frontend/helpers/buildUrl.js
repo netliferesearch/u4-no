@@ -10,10 +10,9 @@ const BuildUrl = ({ _type = 'notype', slug = {} }) => {
     return `/topics/${actualSlug}/basics`;
   } else if (_type === 'about') {
     return `/about-u4/${actualSlug}`;
-  }else if (_type === 'work-with') {
+  } else if (_type === 'work-with') {
     return `/who-we-work-with/${actualSlug}`;
-  }
-  else if (_type === 'topicsAgenda') {
+  } else if (_type === 'topicsAgenda') {
     return `/topics/${actualSlug}/agenda`;
   } else if (_type === 'article') {
     return `/${actualSlug}`;

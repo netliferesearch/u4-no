@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import Image from 'next/image';
+import Image from "next/image";
 import sanityImageLoader from '../../helpers/sanityImageLoader';
 import { getPostType } from '../../helpers/getRouteByType';
 import { useScrollInfo } from '../../helpers/useScrollInfo';
@@ -92,11 +92,13 @@ export const ReaderHeader = ({ data = '', setReaderOpen = null, targetRef = null
                 loader={sanityImageLoader}
                 src={featuredImage.asset.url}
                 alt={featuredImage.altText ? featuredImage.altText : ''}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center 30%"
                 priority="true"
-              />
+                fill
+                sizes="100vw"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center 30%"
+                }} />
             </figure>
             <figcaption className="">
               <PhotoCaptionCredit image={featuredImage} />

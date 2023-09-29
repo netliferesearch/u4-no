@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import Image from "next/image";
 import sanityImageLoader from '../../helpers/sanityImageLoader';
 import { Topics } from '../../components/general/topics/Topics';
 import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
@@ -28,13 +28,14 @@ export const Hero = ({
             alt={image.asset.altText ? image.asset.altText : ''}
             placeholder={image.asset.metadata?.lqip ? "blur" : "empty"}
             blurDataURL={image.asset.metadata?.lqip ? image.asset.metadata.lqip : ""}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center 30%"
             priority="true"
-            sizes="100vw"
             quality="70"
-          />
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "cover",
+              objectPosition: "center 30%"
+            }} />
           <PhotoCaptionCredit image={image} showCaption={false} />
         </figure>
       ) : (

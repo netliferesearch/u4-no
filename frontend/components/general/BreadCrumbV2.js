@@ -23,28 +23,28 @@ export const BreadCrumbV2 = ({
       <div className="c-breadcrumb-inner">
         {home ? (
           <div className="c-breadcrumb__item">
-            <Link href="/">
-              <a className="c-breadcrumb__link c-btn--link">Home</a>
+            <Link href="/" className="c-breadcrumb__link c-btn--link">
+              Home
             </Link>
           </div>
         ) : null}
         {grandParentSlug && grandParentTitle ? (
           <div className="c-breadcrumb__item">
             <ChevronGrey color={onDark ? '#ffffff' : '#333333'} />
-            <Link href={grandParentSlug}>
-              <a className="c-breadcrumb__link c-btn--link">
-                <span>{grandParentTitle}</span>
-              </a>
+            <Link href={grandParentSlug} className="c-breadcrumb__link c-btn--link">
+
+              <span>{grandParentTitle}</span>
+
             </Link>
           </div>
         ) : null}
         {parentSlug && title ? (
           <div className="c-breadcrumb__item">
             <ChevronGrey color={onDark ? '#ffffff' : '#333333'} />
-            <Link href={parentSlug}>
-              <a className="c-breadcrumb__link c-btn--link">
-                <span>{title}</span>
-              </a>
+            <Link href={parentSlug} className="c-breadcrumb__link c-btn--link">
+
+              <span>{title}</span>
+
             </Link>
           </div>
         ) : null}

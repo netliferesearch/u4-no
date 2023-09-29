@@ -1,7 +1,7 @@
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../serializers/serializers';
-import Image from 'next/image';
+import Image from "next/image";
 import sanityImageLoader from '../../../helpers/sanityImageLoader';
 
 export const TextImage = ({ text = '', image = {}, imagePosition = true }) => (
@@ -13,10 +13,12 @@ export const TextImage = ({ text = '', image = {}, imagePosition = true }) => (
           src={image.asset.url}
           alt=""
           loading="lazy"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="top center"
-        />
+          fill
+          sizes="100vw"
+          style={{
+            objectFit: "cover",
+            objectPosition: "top center"
+          }} />
       )}
     </div>
     <div className="c-text-image__body">

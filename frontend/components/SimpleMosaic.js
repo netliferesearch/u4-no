@@ -19,17 +19,15 @@ const SimpleMosaic = ({ resources = [], cta = '' }) => (
         return (
           <div {...classes('item')} key={item.title}>
             <Link href={linkTo}>
-              <a>
-                <div {...classes('title')}>{item.title}</div>
-                <div>
-                  {item.lead && item.lead.split('\n').map((i, index) => <p key={index}>{i}</p>)}
+              <div {...classes('title')}>{item.title}</div>
+              <div>
+                {item.lead && item.lead.split('\n').map((i, index) => <p key={index}>{i}</p>)}
+              </div>
+              {cta && (
+                <div {...classes('cta')}>
+                  {cta} &nbsp; <ArrowRight />
                 </div>
-                {cta && (
-                  <div {...classes('cta')}>
-                    {cta} &nbsp; <ArrowRight />
-                  </div>
-                )}
-              </a>
+              )}
             </Link>
           </div>
         );

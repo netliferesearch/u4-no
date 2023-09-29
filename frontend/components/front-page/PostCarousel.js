@@ -92,11 +92,9 @@ export const PostCarousel = ({
         />
         {type != 'publications' && (
           <div className="o-wrapper-medium c-view-all">
-            <Link href={buttonPath}>
-            <a className="c-btn c-btn--link">
-              View all
-              <ArrowNext />
-            </a>
+            <Link href={buttonPath} className="c-btn c-btn--link">
+              View all<ArrowNext />
+
             </Link>
           </div>
         )}
