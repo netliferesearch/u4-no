@@ -4,18 +4,15 @@ import Link from 'next/link';
 import HeadComponent from './HeadComponent';
 import { Menu } from './general/menu/Menu';
 import LogoU4White from './icons/LogoU4WhiteMini';
-import { useRouter } from 'next/router';
 import { MenuMobile } from './general/menu/MenuMobile';
 import { useOnClickOutside } from '../helpers/hooks';
 import { useScrollInfo } from '../helpers/useScrollInfo';
-
 
 const classes = BEMHelper({
   name: 'top-bar-v2',
   prefix: 'c-',
 });
 export const Layout = props => {
-  const { asPath } = useRouter(); // window location pathname check
 
   const {
     showLoadingScreen = false,
@@ -54,7 +51,7 @@ export const Layout = props => {
 
   return (
     <div
-      className={asPath === '/' ? 'u-print-width ' : 'u-print-width o-wrapper-fixed-header'}
+      className='u-print-width o-wrapper-fixed-header'
       style={{
         transition: 'all 0.1s ease-out',
         opacity: showLoadingScreen ? 0 : 1,
