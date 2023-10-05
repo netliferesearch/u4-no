@@ -7,7 +7,7 @@ import dateToString from '../../../helpers/dateToString';
 import { Translations } from '../translations/Translations';
 import { ArticleActions } from '../article-actions/ArticleActions';
 import sanityImageLoader from '../../../helpers/sanityImageLoader';
-import Image from 'next/image';
+import Image from "next/image";
 import { PhotoCaptionCredit } from '../PhotoCaptionCredit';
 import LinkToItem from '../LinkToItem';
 
@@ -98,13 +98,15 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
                 loader={sanityImageLoader}
                 src={pdfThumbnail.asset.url}
                 loading="eager"
-                layout="responsive"
                 width={pdfThumbnail.asset.metadata.dimensions.width}
                 height={pdfThumbnail.asset.metadata.dimensions.height}
                 placeholder={pdfThumbnail.asset.metadata.lqip ? "blur" : "empty"}
                 blurDataURL={pdfThumbnail.asset.metadata.lqip}
                 sizes="289px"
-              />
+                style={{
+                  width: "100%",
+                  height: "auto"
+                }} />
               </div>
             </div>
           )}
@@ -125,11 +127,14 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
                 loading="eager"
                 width="691"
                 height="353"
-                objectFit="cover"
-                objectPosition="center center"
                 placeholder={featuredImage.asset.metadata.lqip ? "blur" : "empty"}
                 blurDataURL={featuredImage.asset.metadata.lqip}
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                  objectPosition: "center center"
+                }} />
               <PhotoCaptionCredit image={featuredImage} />
             </div>
           )}

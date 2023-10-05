@@ -82,9 +82,13 @@ const Figure = ({
         loader={sanityImageLoader}
         src={asset.url}
         alt={altText}
-        layout="responsive"
         width={asset.metadata.dimensions.width}
         height={asset.metadata.dimensions.height}
+        sizes="100vw"
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
       />
     ) : (
       <div>(image unavailable)</div>

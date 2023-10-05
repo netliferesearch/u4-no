@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player';
 import { RegisterForm } from './RegisterForm';
 import { PageIntro } from '../general/PageIntro';
 import sanityImageLoader from '../../helpers/sanityImageLoader';
-import Image from 'next/image';
+import Image from "next/image";
 
 export const CourseHeader = ({ data }) => {
   const {
@@ -57,9 +57,12 @@ export const CourseHeader = ({ data }) => {
             loading="lazy"
             width="484"
             height="273"
-            objectFit="cover"
-            objectPosition="center center"
-          />
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+              objectFit: "cover",
+              objectPosition: "center center"
+            }} />
         </div>
       ) : null}
     </div>

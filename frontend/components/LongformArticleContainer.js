@@ -135,9 +135,12 @@ const LongFormArticleContainer = (props = {}) => {
                       loader={sanityImageLoader}
                       src={featuredImage.asset.url}
                       alt=""
-                      layout="fill"
-                      objectFit="cover"
                       priority="true"
+                      fill
+                      sizes="100vw"
+                      style={{
+                        objectFit: 'cover',
+                      }}
                     />
                   )}
                 </div>

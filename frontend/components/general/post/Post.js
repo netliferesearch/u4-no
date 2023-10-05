@@ -1,7 +1,7 @@
 import React from 'react';
 import dateToString from '../../../helpers/dateToString';
 import sanityImageLoader from '../../../helpers/sanityImageLoader';
-import Image from 'next/image';
+import Image from "next/image";
 import { Topics } from '../topics/Topics';
 import LinkToItem from '../LinkToItem';
 import { getPostType } from '../../../helpers/getRouteByType';
@@ -90,12 +90,13 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
                   src={post.imageUrl}
                   alt=""
                   loading="lazy"
-                  layout="fill"
-                  objectFit="cover"
-                  sizes={imageSizes( type )}
                   placeholder={post.imageBlurDataURL ? "blur" : "empty"}
                   blurDataURL={post.imageBlurDataURL}
-                />
+                  fill
+                  sizes={imageSizes( type )}
+                  style={{
+                    objectFit: "cover"
+                  }} />
               </div>
             ) : (
               <div className="c-post__post-image u-overlay--light-blue">
@@ -104,10 +105,11 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
                   src={placeholder}
                   alt=""
                   loading="lazy"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
                   sizes={imageSizes( type )}
-                />
+                  style={{
+                    objectFit: "cover"
+                  }} />
               </div>
             )}
             <div className="c-post__post-info">

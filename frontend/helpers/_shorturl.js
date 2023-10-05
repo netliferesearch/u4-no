@@ -8,7 +8,7 @@ const buildUrl = ({ _type = 'notype', slug = {} }) => {
     return `/publications/${actualSlug}`;
   } else if (_type === 'blog-post') {
     return `/blog/${actualSlug}`;
-} else if (_type === 'topics') {
+  } else if (_type === 'topics') {
     return `/topics/${actualSlug}`;
   } else if (_type === 'article') {
     return `/${actualSlug}`;

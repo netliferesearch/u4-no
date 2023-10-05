@@ -20,7 +20,7 @@ export const FeatureList = ({ features = [], alt = false }) => {
             </div>
           ))}
         </div>
-        <Link href="https://www.u4.no/become-a-partner">
+        <Link href="https://www.u4.no/become-a-partner" legacyBehavior>
         <button className="c-btn c-btn--secondary c-btn--secondary--onDark">Become a partner</button>
         </Link>
       </div>

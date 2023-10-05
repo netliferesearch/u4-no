@@ -25,15 +25,15 @@ export const MainMenuItem = ({
     setActiveItem(id);
   };
   return item.slug ? (
-    <Link href={item.slug}>
-      <a className="c-btn c-menu__link u-no-underline">
-        <h3
-          className={`c-menu__heading c-menu__heading${activeItem === item.id ? '--active' : ''}`}
-        >
-          {item.label}
-        </h3>
-      </a>
-    </Link>
+    (<Link href={item.slug} className="c-btn c-menu__link u-no-underline">
+
+      <h3
+        className={`c-menu__heading c-menu__heading${activeItem === item.id ? '--active' : ''}`}
+      >
+        {item.label}
+      </h3>
+
+    </Link>)
   ) : (
     <h3
       onClick={e => handleClick(e, item.id)}

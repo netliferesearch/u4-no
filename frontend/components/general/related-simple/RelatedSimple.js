@@ -55,12 +55,14 @@ export const RelatedSimple = ({ items }) => {
               <div key={index} className="c-related-simple__item">
                 {index > 0 && <hr className="u-section-underline--grey" />}
                 {item && 
-                <Link href={`/${getStringsByType(item).slugOfType}${
-                  typeof item.slug === 'string' ? item.slug : item.slug.current
-                }`}>
-                  <a className="c-related-simple__link u-link--inText u-text--grey">
-                    <span>{item.title}</span>
-                  </a>
+                <Link
+                  href={`/${getStringsByType(item).slugOfType}${
+                    typeof item.slug === 'string' ? item.slug : item.slug.current
+                  }`}
+                  className="c-related-simple__link u-link--inText u-text--grey">
+
+                  <span>{item.title}</span>
+
                 </Link>
                 }
               </div>
