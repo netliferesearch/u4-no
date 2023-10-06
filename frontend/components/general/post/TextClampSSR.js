@@ -1,4 +1,7 @@
+"use client";
+
 import React from 'react';
+import { useEffect, useState } from 'react';
 //import dynamic from 'next/dynamic';
 
 import TextClamp from 'react-string-clamp';
@@ -15,9 +18,16 @@ const TextClampStatic = ({ text = '', lines = 1 }) => {
 }
 
 export const TextClampSSR = ({ text = '', lines = 1 }) => {
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    if ( typeof window !== 'undefined' ) {
+      setIsClient(true);
+    }
+  }, []);
+
   //console.log(text,lines,typeof window);
   //return <TextClampStatic text={text} lines={lines} />;
-  return (typeof window !== 'undefined') 
+  return ( isClient ) 
     ? <TextClamp text={text} lines={lines} />
     : <TextClampStatic text={text} lines={lines} />;
 }
