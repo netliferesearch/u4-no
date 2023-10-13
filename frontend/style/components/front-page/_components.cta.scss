@@ -4,6 +4,7 @@
   justify-content: center;
   height: 480px;
   padding-top: 90px;
+  margin-top: -90px;
   position: relative;
   &::after {
     content: '';

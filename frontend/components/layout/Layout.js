@@ -1,18 +1,19 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
-import HeadComponent from './HeadComponent';
-import { Menu } from './general/menu/Menu';
-import LogoU4White from './icons/LogoU4WhiteMini';
-import { MenuMobile } from './general/menu/MenuMobile';
-import { useOnClickOutside } from '../helpers/hooks';
-import { useScrollInfo } from '../helpers/useScrollInfo';
-
+import { Menu } from '../general/menu/Menu';
+import LogoU4White from '../icons/LogoU4WhiteMini';
+import { MenuMobile } from '../general/menu/MenuMobile';
+import { useOnClickOutside } from '../../helpers/hooks';
+import { useScrollInfo } from '../../helpers/useScrollInfo';
 
 const classes = BEMHelper({
   name: 'top-bar-v2',
   prefix: 'c-',
 });
+
 export const Layout = props => {
 
   const {
@@ -23,7 +24,6 @@ export const Layout = props => {
     searchData = {},
     isSearchPage = false,
     headComponentConfig = {},
-    hideLogo = false,
   } = props;
   const [scrolled, setScrolled] = useState(false);
   const [activeSearchMenu, setActiveSearchMenu] = useState(true);
@@ -51,6 +51,7 @@ export const Layout = props => {
   );
 
   return (
+    
     <div
       className='u-print-width o-wrapper-fixed-header'
       style={{
@@ -59,7 +60,6 @@ export const Layout = props => {
       }}
     >
       <span ref={menuRef} />
-      <HeadComponent {...headComponentConfig} />
       {showTopTab && (
         <>
           <div
@@ -69,12 +69,11 @@ export const Layout = props => {
           />
           <div {...classes('', 'fixed')}>
             <div className="o-wrapper-medium fixed-header-content" ref={ref}>
-              {!hideLogo && (
-                <Link href="/" {...classes('logo', 'fixed', searchOpen ? '' : 'logo-white')}>
-                  <LogoU4White />
-                </Link>
-              )}
-              {hideLogo && <div />}
+              
+              <Link href="/" {...classes('logo', 'fixed', searchOpen ? '' : 'logo-white')}>
+                <LogoU4White />
+              </Link>
+              
               <MenuMobile
                 triggerSearchMenu={triggerSearchMenu}
                 setSearchOpen={setSearchOpen}

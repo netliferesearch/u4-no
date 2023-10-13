@@ -1,27 +1,23 @@
-import React, { Component } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import Image from "next/image";
-import sanityImageLoader from '../../helpers/sanityImageLoader';
-import { fetchAndMaterialize } from '../../helpers/data-loader';
-import { blocksToText } from '../../helpers/blocksToText';
-import Layout from '../../components/Layout';
-import Footer from '../../components/general/footer/Footer';
 import { PageIntro } from '../../components/general/PageIntro';
-import serializers from '../../components/serializers/serializers';
+import Footer from '../../components/general/footer/Footer';
 import { LinkBox } from '../../components/general/link-box/LinkBox';
+import Layout from '../../components/layout/Layout';
+import serializers from '../../components/serializers/serializers';
+import { blocksToText } from '../../helpers/blocksToText';
+import { fetchAndMaterialize } from '../../helpers/fetchAndMaterialize';
+import getMetadata from '../../helpers/getMetadata';
+import sanityImageLoader from '../../helpers/sanityImageLoader';
 
-const About = ({ data: { about = {}, url = {} } }) => {
-  const { title = '', featuredImage = '', imageBlurDataURL = '', lead = '', relatedUrl = {} } = about;
+export default async function About({params}) {
+
+  const data = await getData( params );
+  const {about = {}} = data;
+  const {about: { title = '', featuredImage = '', imageBlurDataURL = '', lead = '', relatedUrl = {} }} = data;
+
   return (
-    <Layout
-      headComponentConfig={{
-        title,
-        description: blocksToText(lead),
-        image: featuredImage.asset && featuredImage.asset.url ? featuredImage.asset.url : '',
-        url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
-        ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
-      }}
-    >
+    <Layout>
       <section className="o-wrapper-medium">
         <PageIntro
           className="c-page-intro--about-u4"
@@ -64,33 +60,31 @@ const About = ({ data: { about = {}, url = {} } }) => {
       </section>
       <Footer />
     </Layout>
-  );
+  )
 };
 
-export default About;
+export async function generateMetadata({ params, searchParams }, parent) {
 
-const queryFunc = () => ({
-  sanityQuery: `{ 
+  const data = await getData( params );
+  const {about: {title = '', lead = '', featuredImage = ''}} = data;
+ 
+  return getMetadata({
+    title: title,
+    description: blocksToText(lead),
+    image: featuredImage
+  });
+}
+
+const sanityQuery =  `{ 
     "about": *[(_id == "f54d724e-8471-4413-aeb8-3ef5276e9dfc") || (slug.current == "about-u4-new")][0] {
       title, slug, lead, _id, 
       "resources": resources[]->{title, standfirst, slug{current}}, 
       "featuredImage": featuredImage.asset->url,
       "imageBlurDataURL":featuredImage.asset->metadata.lqip,
     } 
-  }`,
-});
+  }`;
 
-export const getStaticProps = async ctx => {
-  const { data, error = '' } = await fetchAndMaterialize({
-    nextContext: ctx,
-    queryFunc,
-    materializeDepth: 0,
-  });
-  if (error === 'No content found (dataLoader said this)') {
-    return { notFound: true };
-  }
-  return {
-    props: { data },
-    revalidate: 60,
-  };
+async function getData( params ) {
+  const data = await fetchAndMaterialize( {sanityQuery, params, materializeDepth: 0} );
+  return data;
 };

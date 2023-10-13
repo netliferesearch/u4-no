@@ -6,7 +6,7 @@ import { Topics } from '../topics/Topics';
 import LinkToItem from '../LinkToItem';
 import { getPostType } from '../../../helpers/getRouteByType';
 import PropTypes from 'prop-types';
-import TextClamp from 'react-string-clamp';
+//import TextClamp from 'react-string-clamp';
 import { TextClampSSR} from './TextClampSSR';
 import { imgLoader } from '../../../helpers/imgloader';
 //import { Document, Page } from 'react-pdf/build/entry.noworker';
