@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
-import styles from './HtmlTableEditorPreview.css'
-import Button from 'part:@sanity/components/buttons/default'
+import styles from './HtmlTableEditorPreview.css?inline'
+// import Button from 'part:@sanity/components/buttons/default'
 
 export default class HtmlTableEditorPreview extends React.Component {
   state = {

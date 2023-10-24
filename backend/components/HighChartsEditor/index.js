@@ -1,1 +1,1 @@
-export {default} from './HighChartsEditor'
+export { default } from './HighChartsEditor'

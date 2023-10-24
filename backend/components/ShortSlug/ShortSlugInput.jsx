@@ -1,15 +1,12 @@
 import React from 'react';
 import { get } from '@sanity/util/paths';
-import Button from 'part:@sanity/components/buttons/default';
-import FormField from 'part:@sanity/components/formfields/default';
-import TextInput from 'part:@sanity/components/textinputs/default';
-import { PatchEvent, set, setIfMissing, unset } from 'part:@sanity/form-builder/patch-event';
-import client from 'part:@sanity/base/client';
-import styles from './ShortSlugInput.css';
-import AnchorButton from 'part:@sanity/components/buttons/anchor';
+// import Button from 'part:@sanity/components/buttons/default';
+// import FormField from 'part:@sanity/components/formfields/default';
+// import TextInput from 'part:@sanity/components/textinputs/default';
+// import { PatchEvent, set, setIfMissing, unset } from 'part:@sanity/form-builder/patch-event';
+import styles from './ShortSlugInput.css?inline';
 
-import { withDocument } from 'part:@sanity/form-builder';
-import { withValuePath } from 'part:@sanity/form-builder';
+import { useFormValue } from 'sanity';
 
 // Fallback slugify function if not defined in field options
 function defaultSlugify(value, type) {
@@ -125,6 +122,7 @@ class ShortSlugInput extends React.PureComponent {
   };
 
   render() {
+    const title = useFormValue([`title`]);
     const { value, type, level, markers, readOnly } = this.props;
     const { loading, inputText } = this.state;
     const hasSourceField = type.options && type.options.source;
@@ -180,4 +178,4 @@ class ShortSlugInput extends React.PureComponent {
     );
   }
 }
-export default withValuePath(withDocument(ShortSlugInput));
+export default ShortSlugInput;

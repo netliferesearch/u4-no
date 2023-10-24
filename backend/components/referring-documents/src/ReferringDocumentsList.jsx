@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {withDocument } from 'part:@sanity/form-builder'
-import {List, Item} from 'part:@sanity/components/lists/default'
-import QueryContainer from 'part:@sanity/base/query-container'
+import { useFormValue } from 'sanity'
+// import {List, Item} from 'part:@sanity/components/lists/default'
+// import QueryContainer from 'part:@sanity/base/query-container'
 import ReferringDocumentListItem from './ReferringDocumentListItem'
 
 class ReferringDocumentsList extends Component {
@@ -10,10 +10,12 @@ class ReferringDocumentsList extends Component {
   render() {
     const { props } = this
 
+    const docId = useFormValue([`_id`])
+
     return (
     <QueryContainer
       query="*[!(_id in path('drafts.*')) && references($docId)] [0...101] {_id, _type}"
-      params={{docId: props.document._id}}>
+      params={{docId}}>
       {({result, loading, error, onRetry}) => {
         if (error) {
           return <div>Error: {error}</div>
@@ -50,4 +52,4 @@ class ReferringDocumentsList extends Component {
   }
 }
 
-export default withDocument(ReferringDocumentsList)
+export default ReferringDocumentsList

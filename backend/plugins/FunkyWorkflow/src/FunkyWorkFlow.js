@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { route } from 'part:@sanity/base/router'
-import client from 'part:@sanity/base/client'
 import Spinner from 'part:@sanity/components/loading/spinner'
 import Icon from './components/Icon'
 
@@ -33,7 +32,7 @@ class FunkyWorkflow extends Component {
 
   }
   fetchData() {
-    client.fetch('*[_type == "publication" && defined(workflow.progress)][0..100] | order(_updatedAt){_type, _id, title, "workflow": workflow{progress,"assigned": assigned[]->{firstName, surname, _id, _type}}}').then(data => this.setState({ data, loaded: true })).catch(err => console.log(err))
+    getClient.fetch('*[_type == "publication" && defined(workflow.progress)][0..100] | order(_updatedAt){_type, _id, title, "workflow": workflow{progress,"assigned": assigned[]->{firstName, surname, _id, _type}}}').then(data => this.setState({ data, loaded: true })).catch(err => console.log(err))
   }
   render() {
     if (!this.state.loaded) return <Spinner fullscreen center message="Loading documents" />

@@ -1,6 +1,5 @@
-import createSchema from 'part:@sanity/base/schema-creator';
-import schemaTypes from 'all:part:@sanity/base/schema-type';
-import richDate from 'part:@sanity/form-builder/input/rich-date/schema';
+
+// import richDate from 'part:@sanity/form-builder/input/rich-date/schema';
 import funkyTable from './fields/funkyTable';
 import publication from './publication';
 import nugget from './nugget';
@@ -27,7 +26,7 @@ import blogPost from './blogPost';
 import defaultBlocks from './fields/defaultBlocks';
 import collection from './collection';
 
-const types = [
+export default [
   article,
   blogPost,
   collection,
@@ -50,11 +49,7 @@ const types = [
   funkyTable,
   nugget,
   pullQuote,
-  richDate,
-  //localeString,
+  // // richDate,
+  // // localeString,
   defaultBlocks,
 ];
-export default createSchema({
-  name: 'default',
-  types: schemaTypes.concat(types),
-});

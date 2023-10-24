@@ -21,7 +21,7 @@ export default {
       description: 'Shows next to/ below video. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
       type: 'array',
       options: {
-        isHighlighted: true
+        // isHighlighted: true
       },
       of: [
         {
@@ -42,7 +42,7 @@ export default {
       description: 'Photographer/publisher’s name.',
       type: 'string',
       options: {
-        isHighlighted: true
+        // isHighlighted: true
       }
     },
     {
@@ -51,7 +51,7 @@ export default {
       type: 'url',
       description: 'Enter link to publisher/ originator',
       options: {
-        isHighlighted: true
+        // isHighlighted: true
       }
     },
     license,
@@ -61,7 +61,7 @@ export default {
       description: 'Set size for the video player.',
       type: 'string',
       options: {
-        isHighlighted: true,
+        // isHighlighted: true,
         list: [
           { title: 'Wide', value: 'wide' },
           { title: 'Normal', value: 'normal' },

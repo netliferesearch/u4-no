@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import PatchEvent, {set, unset, setIfMissing} from 'part:@sanity/form-builder/patch-event'
-import { FormBuilderInput } from "part:@sanity/form-builder";
+import {set, unset, setIfMissing} from 'sanity';
+// import { FormBuilderInput } from "part:@sanity/form-builder";
 
 export default class HighChartsEditor extends React.Component {
 

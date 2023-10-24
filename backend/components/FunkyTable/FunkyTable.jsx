@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'react-autobind'
 import ReactDataSheet from 'react-datasheet'
-import DefaultSelect from 'part:@sanity/components/selects/default';
-import styles from './FunkyTable.css'
-import PatchEvent, {insert, set, unset, setIfMissing} from '@sanity/form-builder/PatchEvent'
+// import DefaultSelect from 'part:@sanity/components/selects/default';
+import styles from './FunkyTable.css?inline'
+import {insert, set, unset, setIfMissing} from 'sanity'
 
 /**
  * Create an empty table
@@ -69,16 +69,14 @@ export default class FunkyTable extends Component {
   handleInitializeTable() {
     const {type, onChange} = this.props
     const emptyGrid = createEmptyGrid(type.options)
-    onChange(PatchEvent.from(setIfMissing({_type: type.name}), set(emptyGrid, ['rows'])))
+    onChange(setIfMissing({_type: type.name}), set(emptyGrid, ['rows']))
   }
 
   handleTableChange(cell, row, column, value) {
     const {onChange, type} = this.props
     onChange(
-      PatchEvent.from(
         setIfMissing({_type: type.name}),
         set(value || '', ['rows', row, 'columns', column])
-      )
     )
   }
 
@@ -86,19 +84,15 @@ export default class FunkyTable extends Component {
     const { onChange, type } = this.props
     const value = event.target.value
     onChange(
-      PatchEvent.from(
         setIfMissing({_type: type.name}),
         value ? set(event.target.value, ['title']) : unset(['title'])
-      )
     )
   }
   handleDisplayChange({ value = '' }) {
     const { onChange, type } = this.props
     onChange(
-      PatchEvent.from(
         setIfMissing({_type: type.name}),
         value ? set(value, ['display']) : unset(['display'])
-      )
     )
   }
   /* handleHeaderRowsChange(event) {
@@ -123,10 +117,8 @@ export default class FunkyTable extends Component {
     }
 
     onChange(
-      PatchEvent.from(
         setIfMissing({_type: type.name}),
         insert([{columns: cols}], 'after', ['rows', -1])
-      )
     )
   }
 
@@ -137,7 +129,7 @@ export default class FunkyTable extends Component {
       return
     }
 
-    onChange(PatchEvent.from(setIfMissing({_type: type.name}), unset(['rows', grid.length - 1])))
+    onChange(setIfMissing({_type: type.name}), unset(['rows', grid.length - 1]))
   }
 
   handleAddColumn() {
@@ -148,7 +140,7 @@ export default class FunkyTable extends Component {
       insert([options.defaultValue || ''], 'after', ['rows', i, 'columns', -1])
     )
 
-    onChange(PatchEvent.from([setIfMissing({_type: type.name})].concat(insertOps)))
+    onChange([setIfMissing({_type: type.name})].concat(insertOps))
   }
 
   handleRemoveColumn() {
@@ -162,7 +154,7 @@ export default class FunkyTable extends Component {
 
     const delColIndex = rows[0].columns.length - 1
     const delOps = rows.map((row, i) => unset(['rows', i, 'columns', delColIndex]))
-    onChange(PatchEvent.from([setIfMissing({_type: type.name})].concat(delOps)))
+    onChange([setIfMissing({_type: type.name})].concat(delOps))
   }
 
   render() {

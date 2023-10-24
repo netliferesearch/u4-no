@@ -1,13 +1,11 @@
 import annotations from './annotations';
-import { image, box, vimeoVideo, pdfEmbed } from './';
+import { image, box, vimeoVideo, pdfEmbed } from '.';
 import { FaTable } from 'react-icons/fa';
 
 import {
   HtmlTableEditor,
   HtmlTableEditorPreview,
   HighChartsEditor,
-  HighChartsEditorPreview,
-
 } from '../../components';
 
 import React from 'react'
@@ -78,7 +76,7 @@ const content = {
     },
     image,
     vimeoVideo,
-    pdfEmbed,
+    // pdfEmbed,
     {
       name: 'table',
       title: 'Table',
@@ -108,7 +106,7 @@ const content = {
           description: 'Select display width',
           type: 'string',
           options: {
-            isHighlighted: true,
+            // isHighlighted: true,
             list: [
               { title: 'Full width', value: 'fullwidth' },
               { title: 'Wide', value: 'wide' },
@@ -149,7 +147,7 @@ const content = {
           description: 'Select display width',
           type: 'string',
           options: {
-            isHighlighted: true,
+            // isHighlighted: true,
             list: [
               { title: 'Full width', value: 'fullwidth' },
               { title: 'Wide', value: 'wide' },

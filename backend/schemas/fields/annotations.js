@@ -57,34 +57,37 @@ const annotations = [
       },
     ],
   },
-  {
-    name: 'footnote',
-    type: 'object',
-    fields: [
-      {
-        name: 'content',
-        title: 'Footnote content',
-        type: 'array',
-        of: [
-          {
-            type: 'block',
-            styles: [{ title: 'Normal', value: 'normal' }],
-            lists: [],
-            // Only allow numbered lists
-            marks: {
-              // Only allow these decorators
-              decorators: [
-                { title: 'Strong', value: 'strong' },
-                { title: 'Emphasis', value: 'em' },
-              ],
-              // Support annotating text with a reference to an author
-              annotations,
-            },
-          },
-        ],
-      },
-    ],
-  },
 ];
+
+const footnote = {
+  name: 'footnote',
+  type: 'object',
+  fields: [
+    {
+      name: 'content',
+      title: 'Footnote content',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [{ title: 'Normal', value: 'normal' }],
+          lists: [],
+          // Only allow numbered lists
+          marks: {
+            // Only allow these decorators
+            decorators: [
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+            ],
+            // Support annotating text with a reference to an author
+            // annotations, // Todo: Self-referencing error?
+          },
+        },
+      ],
+    },
+  ],
+};
+
+annotations.push(footnote);
 
 export default annotations;

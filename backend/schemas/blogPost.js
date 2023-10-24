@@ -1,7 +1,7 @@
 import publicationContent from './fields/publicationContent';
 import annotations from './fields/annotations';
 
-//import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
+// import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
 import {
   title,
   subtitle,
@@ -50,7 +50,7 @@ export default {
         'This is the image that illustrates this publication in the hero, frontpage and previews',
       type: 'image',
       options: {
-        isHighlighted: true,
+        // isHighlighted: true,
         hotspot: true,
       },
       fields: [
@@ -106,7 +106,6 @@ export default {
         license,
       ],
     },
-    
     // {
     //   name: 'summaryExternal',
     //   title: 'Link to external short version',
@@ -116,7 +115,7 @@ export default {
     {
       name: 'date',
       description: 'Date of publication',
-      type: 'richDate',
+      type: 'datetime',
       options: {
         inputUtc: true,
         dateFormat: 'YYYY-MM-DD',
@@ -124,6 +123,8 @@ export default {
         inputTime: false,
       },
     },
+    
+    // Note: Legacy code commented out before upgrade to Sanity v3. Not sure if we need this.
     // {
     //   name: 'methodology',
     //   title: 'Methodology',
@@ -210,6 +211,7 @@ export default {
         {
           type: 'reference',
           to: [
+          
             {
               type: 'person',
             },
@@ -217,6 +219,8 @@ export default {
         },
       ],
     },
+  
+    // Note: Note: Legacy code commented out before upgrade to Sanity v3. Not sure if we need this.
     // {
     //   name: 'notes',
     //   description: 'Optional notes for PDFs and similiar',
@@ -281,6 +285,7 @@ export default {
     //   name: 'abstract',
     //   type: 'text',
     // },
+
     keywords,
     {
       name: 'publicationType',
@@ -296,6 +301,8 @@ export default {
         _type: 'reference',
       },
     },
+
+    // Note: Legacy code commented out before upgrade to Sanity v3. Not sure if we need this.
     // {
     //   name: 'publicationNumber',
     //   title: 'Publication Number',
@@ -354,6 +361,7 @@ export default {
     //     },
     //   ],
     // },
+
     {
       name: 'topics',
       description: 'Select relevant U4 topics',
@@ -396,6 +404,8 @@ export default {
         },
       ],
     },
+
+    // Note: Legacy code commented out before upgrade to Sanity v3. Not sure if we need this.
     // {
     //   name: 'updatedVersion',
     //   title: 'Updated version',
@@ -407,6 +417,7 @@ export default {
     //     },
     //   ],
     // },
+
     {
       name: 'headsUp',
       title: 'Heads up',
@@ -425,6 +436,8 @@ export default {
         },
       ],
     },
+
+    // Note: Legacy code commented out before upgrade to Sanity v3. Not sure if we need this.
     // {
     //   name: 'workflow',
     //   type: 'object',

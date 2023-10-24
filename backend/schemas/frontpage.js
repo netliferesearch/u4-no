@@ -4,7 +4,7 @@ import annotationsLinksOnly from './fields/annotationsLinksOnly';
 /**
  * A publication is a long form document
  */
-import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
+// import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
 import { title, longTitle, date, image, leadText, featuredImage, vimeoVideo, previewLinks } from './fields';
 
 export default {
@@ -905,12 +905,13 @@ export default {
             .slice(0, 200),
       },
     },
-    {
-      name: 'relatedUrl',
-      title: 'Related URL',
-      type: 'urlWithMetadata',
-      inputComponent: UrlWithMetadataInput,
-    },
+    // Todo: v3 update
+    // {
+    //   name: 'relatedUrl',
+    //   title: 'Related URL',
+    //   type: 'urlWithMetadata',
+    //   inputComponent: UrlWithMetadataInput,
+    // },
   ],
   orderings: [
     {

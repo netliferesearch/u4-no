@@ -1,4 +1,4 @@
-import client from 'part:@sanity/base/client';
+
 import ShortSlugInput from '../../components/ShortSlug';
 
 const getRandomString = () => {
@@ -19,7 +19,6 @@ const slugify = (_id, _type) => {
 };
 
 const isGloballyUnique = (slug, _id) => {
-  const client = require('part:@sanity/base/client');
   const id = _id.replace(/^drafts\./, '');
   const params = {
     draft: `drafts.${id}`,
@@ -27,7 +26,7 @@ const isGloballyUnique = (slug, _id) => {
     slug,
   };
   const query = `!defined(*[!(_id in [$draft, $published]) && shortSlug.current == $slug][0]._id)`;
-  return client.fetch(query, params);
+  return getClient.fetch(query, params);
 };
 
 const isUnique = (slug, options) => {

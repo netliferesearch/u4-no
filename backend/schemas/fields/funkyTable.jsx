@@ -25,7 +25,10 @@ export default {
   name: 'funkyTable',
   title: 'Data table',
   type: 'object',
-  inputComponent: FunkyTable,
+  components: {
+    input: FunkyTable,
+    preview: TablePreview,
+  },
   fields: [
     {
       name: 'title',
@@ -65,11 +68,11 @@ export default {
       ],
     }
   ],
-  preview: {
-    select: {
-      rows: 'rows',
-      title: 'title'
-    },
-    component: TablePreview,
-  },
+  // preview: {
+  //   select: {
+  //     rows: 'rows',
+  //     title: 'title'
+  //   },
+  //   component: TablePreview,
+  // },
 }

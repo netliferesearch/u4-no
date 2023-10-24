@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import schema from 'part:@sanity/base/schema'
-import Preview from 'part:@sanity/base/preview'
-import {Item} from 'part:@sanity/components/lists/default'
-import {StateLink} from 'part:@sanity/base/router'
+// import schema from 'part:@sanity/base/schema'
+// import Preview from 'part:@sanity/base/preview'
+// import {Item} from 'part:@sanity/components/lists/default'
+// import {StateLink} from 'part:@sanity/base/router'
 
 function ReferringDocumentListItem(props) {
   const item = props.document

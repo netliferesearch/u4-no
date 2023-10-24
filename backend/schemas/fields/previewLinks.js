@@ -6,7 +6,9 @@ const previewLinks = {
   description: 'Links to preview of longform and pdf (for publications)',
   type: 'boolean',
   readOnly: true,
-  inputComponent: PreviewLinksComponent,
+  components: {
+    input: PreviewLinksComponent,
+  },
 };
 
 export default previewLinks;

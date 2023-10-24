@@ -88,7 +88,7 @@ export default augmentSchema({
       name: 'image',
       type: 'image',
       options: {
-        isHighlighted: true,
+        // isHighlighted: true,
         hotspot: true,
       },
       fields: [

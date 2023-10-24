@@ -1,7 +1,7 @@
 import React from 'react';
-import { withDocument } from 'part:@sanity/form-builder';
-import styles from './PreviewLinksComponent.css';
-import AnchorButton from 'part:@sanity/components/buttons/anchor';
+import { useFormValue } from 'sanity';
+import styles from './PreviewLinksComponent.css?inline';
+// import AnchorButton from 'part:@sanity/components/buttons/anchor';
 import { buildUrl, previewUrl } from './buildUrl';
 
 const previewDomain = 'https://preview.u4.no';
@@ -11,6 +11,7 @@ class PreviewLinksComponent extends React.PureComponent {
     // no-op
   }
   render() {
+    const title = useFormValue([`title`]);
     return (
       <div className={styles.buttonGroup}>
         {this.props.document._id?.startsWith('draft') && (
@@ -80,4 +81,4 @@ class PreviewLinksComponent extends React.PureComponent {
   }
 }
 
-export default withDocument(PreviewLinksComponent);
+export default PreviewLinksComponent;

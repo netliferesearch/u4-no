@@ -29,7 +29,7 @@ export default {
       description: 'Select display width',
       type: 'string',
       options: {
-        isHighlighted: true,
+        // isHighlighted: true,
         list: [
           { title: 'Full width', value: 'fullwidth' },
           { title: 'Wide', value: 'wide' },

@@ -5,7 +5,7 @@ export default {
   title: 'Featured image',
   type: 'image',
   options: {
-    isHighlighted: true,
+    // isHighlighted: true,
     hotspot: true,
   },
   fields: [

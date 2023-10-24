@@ -4,7 +4,7 @@ export default {
   name: 'image',
   type: 'image',
   options: {
-    isHighlighted: true,
+    // isHighlighted: true,
     hotspot: true,
   },
   fields: [
@@ -14,7 +14,7 @@ export default {
       description: '(displayed above image)',
       type: 'string',
       options: {
-        isHighlighted: true
+        // isHighlighted: true
       }
     },
     {
@@ -23,7 +23,7 @@ export default {
       description: 'For users that can\'t see images',
       type: 'string',
       options: {
-        isHighlighted: true
+        // isHighlighted: true
       }
     },
     {
@@ -32,7 +32,7 @@ export default {
       description: 'Shows next to image. Title from Flickr – if applicable. Describe context and/or message. Name people and places.',
       type: 'array',
       options: {
-        isHighlighted: true
+        // isHighlighted: true
       },
       of: [
         {
@@ -53,7 +53,7 @@ export default {
       description: 'Set image display width',
       type: 'string',
       options: {
-        isHighlighted: true,
+        // isHighlighted: true,
         list: [
           { title: 'Full width', value: 'fullwidth' },
           { title: 'Wide', value: 'wide' },
@@ -69,7 +69,7 @@ export default {
       description: 'Photographer/publisher’s name.',
       type: 'text',
       options: {
-        isHighlighted: true
+        // isHighlighted: true
       }
     },
     {
@@ -78,7 +78,7 @@ export default {
       type: 'url',
       description: 'Enter link for source for the image or the originator',
       options: {
-        isHighlighted: true
+        // isHighlighted: true
       }
     },
     license,

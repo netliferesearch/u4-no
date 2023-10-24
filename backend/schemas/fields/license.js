@@ -4,7 +4,7 @@ export default {
   description: "See https://creativecommons.org for more information on Creative Commons",
   type: "string",
   options: {
-    isHighlighted: true,
+    // isHighlighted: true,
     list: [
       { title: 'Attribution-NonCommercial-NoDerivs (by-nc-nd)', value: 'by-nc-nd' },
       { title: 'Attribution-NonCommercial-ShareAlike (by-nc-sa)', value: 'by-nc-sa' },
