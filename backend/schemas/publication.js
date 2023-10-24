@@ -12,7 +12,7 @@ export default {
   title: 'Publication',
   type: 'document',
   fields: [
-    previewLinks,
+    // previewLinks, // Note: this breaks in V3, 'Invalid hook call' error.
     title,
     subtitle,
     publicationContent,
@@ -149,7 +149,7 @@ export default {
     {
       name: 'date',
       description: 'Date of publication',
-      type: 'datetime',
+      type: 'richDate',
       options: {
         inputUtc: true,
         dateFormat: 'YYYY-MM-DD',

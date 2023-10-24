@@ -12,7 +12,7 @@ export default {
   type: 'document',
   title: 'Frontpage',
   fields: [
-    previewLinks,
+    // previewLinks, // Note: this breaks in V3, 'Invalid hook call' error.
     title,
     longTitle,
     {

@@ -23,7 +23,7 @@ export default augmentSchema({
     {
       name: 'startDate',
       title: 'Start date',
-      type: 'datetime',
+      type: 'richDate',
       options: {
         inputDate: true,
         inputTime: false,
@@ -32,7 +32,7 @@ export default augmentSchema({
     {
       name: 'endDate',
       title: 'End date',
-      type: 'datetime',
+      type: 'richDate',
       options: {
         inputDate: true,
         inputTime: false,

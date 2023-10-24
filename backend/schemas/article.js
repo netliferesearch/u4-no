@@ -8,7 +8,7 @@ export default {
   title: 'Article',
   type: 'document',
   fields: [
-    previewLinks,
+    // previewLinks, // Note: this breaks in V3, 'Invalid hook call' error.
     title,
     {
       name: 'articleType',
@@ -31,7 +31,7 @@ export default {
       {
         name: 'date',
         description: 'Date of publication/last update',
-        type: 'datetime',
+        type: 'richDate',
       },
       {
         name: 'authors',
@@ -91,7 +91,7 @@ export default {
           },
         ],
       },
-      {
+        {
         name: 'topics',
         description: 'Select relevant U4 topics',
         type: 'array',
@@ -106,8 +106,10 @@ export default {
             ],
           },
         ],
-        preview: {
-          title: 'topics.title',
+        component: {
+          preview: {
+            title: 'topics.title',
+          },
         },
       },
     slug,

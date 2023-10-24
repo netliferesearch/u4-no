@@ -34,7 +34,7 @@ const content = {
         { title: 'H5', value: 'h5' },
         { title: 'Quote', value: 'blockquote'}
       ],
-      // Only allow numbered lists
+      // Only allow numbered lists 
       marks: {
         // Only allow these decorators
         decorators: [
@@ -44,13 +44,10 @@ const content = {
           {
             title: 'Subscript',
             value: 'sub',
-            blockEditor: {
-              icon: subscriptIcon,
-              render: subscriptRender,
-            }
+            icon: subscriptIcon,
+            component: subscriptRender,
           }
         ],
-
         // Support annotating text with a reference to an author
         annotations,
       },
@@ -81,9 +78,11 @@ const content = {
       name: 'table',
       title: 'Table',
       type: 'object',
-      inputComponent: HtmlTableEditor,
+      components: {
+        input: HtmlTableEditor,
+      },
       options: {
-        editModal: 'fullscreen',
+        modal: 'fullscreen',
       },
       fields: [
         {
@@ -130,9 +129,11 @@ const content = {
       name: 'chart',
       title: 'Chart',
       type: 'object',
-      inputComponent: HighChartsEditor,
+      components: {
+        input: HighChartsEditor,
+      },
       options: {
-        editModal: 'fullscreen',
+        modal: 'fullscreen',
       },
       fields: [
         { name: 'title', type: 'string' },

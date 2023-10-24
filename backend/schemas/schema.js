@@ -49,7 +49,6 @@ export default [
   funkyTable,
   nugget,
   pullQuote,
-  // // richDate,
-  // // localeString,
+  // richDate,
   defaultBlocks,
 ];

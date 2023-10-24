@@ -68,11 +68,11 @@ export default {
       ],
     }
   ],
-  // preview: {
-  //   select: {
-  //     rows: 'rows',
-  //     title: 'title'
-  //   },
-  //   component: TablePreview,
-  // },
+  preview: {
+    select: {
+      rows: 'rows',
+      title: 'title'
+    },
+    component: TablePreview,
+  },
 }

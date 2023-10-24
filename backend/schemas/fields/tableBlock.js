@@ -4,9 +4,11 @@ export default {
   name: 'table',
   title: 'Table',
   type: 'object',
-  inputComponent: HtmlTableEditor,
+  components: {
+    input: HtmlTableEditor,
+  },
   options: {
-    editModal: 'fullscreen',
+    modal: 'fullscreen',
   },
   fields: [
     {

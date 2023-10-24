@@ -8,10 +8,9 @@ export default defineConfig({
   title: "u4-no",
   projectId: "1f1lcoov",
   dataset: "production",
-  plugins: [deskTool()],
-  // plugins: [deskTool({
-  //   structure: deskStructure
-  // })],
+  plugins: [deskTool({
+    structure: deskStructure
+  })],
   schema: {
     types: schemas,
   },

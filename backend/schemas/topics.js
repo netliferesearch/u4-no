@@ -19,7 +19,7 @@ export default {
   title: 'Topic',
   type: 'document',
   fields: [
-    previewLinks,
+    // previewLinks, // Note: this breaks in V3, 'Invalid hook call' error.
     {
       name: 'title',
       type: 'string',

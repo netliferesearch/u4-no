@@ -45,7 +45,9 @@ const shortSlug = {
     urlPrefix: 'u4.no/r/',
     placeholder: 'Enter a custom value or generate random'
   },
-  inputComponent: ShortSlugInput,
+  components: {
+    input: ShortSlugInput,
+  },
 };
 
 export default shortSlug;
