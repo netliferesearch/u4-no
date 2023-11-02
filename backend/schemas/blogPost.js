@@ -10,7 +10,7 @@ import {
   slug,
   language,
   license,
-  // previewLinks,
+  previewLinks,
   shortSlug,
 } from './fields';
 
@@ -106,6 +106,7 @@ export default {
         license,
       ],
     },
+    // Note: Legacy code commented out before upgrade to Sanity v3. Not sure if we need this.
     // {
     //   name: 'summaryExternal',
     //   title: 'Link to external short version',
@@ -115,7 +116,7 @@ export default {
     {
       name: 'date',
       description: 'Date of publication',
-      type: 'richDate',
+      type: 'datetime',
       options: {
         inputUtc: true,
         dateFormat: 'YYYY-MM-DD',
@@ -482,7 +483,7 @@ export default {
     //   inputComponent: UrlWithMetadataInput,
     // },
     slug,
-    shortSlug,
+    shortSlug, // Note: this breaks in V3, 'Invalid hook call' error.
   ],
   orderings: [
     {

@@ -40,7 +40,7 @@ export default {
     {
       name: 'startDate',
       title: 'Start date',
-      type: 'richDate',
+      type: 'datetime',
       options: {
         inputDate: true,
         inputTime: true,
@@ -49,7 +49,7 @@ export default {
     {
       name: 'endDate',
       title: 'End date',
-      type: 'richDate',
+      type: 'datetime',
       options: {
         inputDate: true,
         inputTime: true,

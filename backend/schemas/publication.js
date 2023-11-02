@@ -149,7 +149,7 @@ export default {
     {
       name: 'date',
       description: 'Date of publication',
-      type: 'richDate',
+      type: 'datetime',
       options: {
         inputUtc: true,
         dateFormat: 'YYYY-MM-DD',
@@ -244,7 +244,7 @@ export default {
       ],
     },
     slug,
-    shortSlug,
+    // shortSlug, // Note: this breaks in V3, 'Invalid hook call' error.
     {
       name: 'pdfFile',
       title: 'Pdf file (generated)',

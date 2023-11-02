@@ -31,7 +31,7 @@ export default {
       {
         name: 'date',
         description: 'Date of publication/last update',
-        type: 'richDate',
+        type: 'datetime',
       },
       {
         name: 'authors',

@@ -7,7 +7,7 @@ import deskStructure from './deskStructure'
 export default defineConfig({
   title: "u4-no",
   projectId: "1f1lcoov",
-  dataset: "production",
+  dataset: "staging",
   plugins: [deskTool({
     structure: deskStructure
   })],

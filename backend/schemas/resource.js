@@ -18,7 +18,7 @@ export default {
     {
       name: 'date',
       description: 'When published (leave empty if the resource has no meaningful date of publication)',
-      type: 'richDate',
+      type: 'datetime',
       options: {
         inputUtc: true,
         dateFormat: 'YYYY-MM-DD',

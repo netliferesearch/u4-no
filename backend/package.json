@@ -19,6 +19,7 @@
     "@sanity/cli": "^2.19.1",
     "@sanity/components": "^2.14.0",
     "@sanity/google-maps-input": "^3.0.1",
+    "@sanity/ui": "^1.8.3",
     "@sanity/vision": "^3.18.1",
     "axios": "^0.18.0",
     "bluebird": "^3.5.3",
