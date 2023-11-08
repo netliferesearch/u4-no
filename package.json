@@ -84,8 +84,8 @@
     "start:skip-ssl": "cd frontend && cross-env NODE_ENV=production SKIP_SSL=true node server.js"
   },
   "engines": {
-    "node": "16.x",
-    "npm": "8.x"
+    "node": "18.x",
+    "npm": "10.x"
   },
   "os": [
     "darwin",
