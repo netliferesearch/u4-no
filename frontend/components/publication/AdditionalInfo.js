@@ -50,12 +50,12 @@ export const AdditionalInfo = ({ data, shortversion = false }) => {
                 {typeof notes !== 'string' && (
                   <BlockContent blocks={notes} serializers={serializers} />
                 )}
-                {featuredImage.caption && (
+                {featuredImage?.caption && (
                   <div className="c-credit__caption">
                     <p>
                       <b>Header image:</b>
                     </p>
-                    <BlockToContent
+                    <BlockContent
                       blocks={featuredImage.caption}
                       serializers={{
                         types: {

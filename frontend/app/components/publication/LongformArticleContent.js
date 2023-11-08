@@ -1,11 +1,11 @@
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from 'components/serializers/serializers';
 import findFootnotes from 'components/findFootnotes';
 import footnoteSerializer from 'components/footnoteSerializer';
+import serializers from 'components/serializers/serializers';
 
-export default function LongformArticleContent({ content = [], title = '', lead = false }) {
+export default function LongformArticleContent( { content = [], lead = false } ) {
 
-  if (!content) return <div />;
+  if (!content) return <div></div>;
   const blocks = content.filter(block => !['reference'].includes(block._type));
   const footnotes = findFootnotes(blocks);
   const footNotesKeys = Object.keys(footnotes);

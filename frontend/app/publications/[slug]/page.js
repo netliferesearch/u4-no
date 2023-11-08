@@ -1,30 +1,36 @@
-import { StoreProvider } from 'helpers/redux-provider';
-import { fetchAndMaterialize } from 'helpers/fetchAndMaterialize';
-import getMetadata from 'helpers/getMetadata';
+import { Suspense } from 'react';
+import { groq } from 'next-sanity';
+import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
+import getMetadata from '@/app/lib/getMetadata';
 import { localize } from 'helpers/translate';
-import Layout from 'components/layout/Layout';
-import PublicationContainer from './PublicationContainer';
-import LongformArticle from './LongformArticle';
-import LongformArticleContent from './LongformArticleContent';
+import BlockContent from '@sanity/block-content-to-react';
+import serializers from 'components/serializers/serializers';
+import Layout from '@/app/components/layout/Layout';
+import PublicationContainer from '../../components/publication/PublicationContainer';
+import { PublicationContent } from 'components/publication/PublicationContent';
+import { ArticleSidebar } from 'components/general/article-sidebar/ArticleSidebar';
 
 export default async function PublicationEntry( {params} ) {
 
   const data = await getData( params );
+  const { 
+    title = '',
+    references = [],
+    abbreviations = [],
+  } = data;
 
   return (
-    <StoreProvider>
       <Layout
         showLoadingScreen={false}
         showTopTab={true}
       >
-        <PublicationContainer data={data}>
-          <LongformArticle>
-            <LongformArticleContent data={data} />
-          </LongformArticle>
+        <PublicationContainer data={data}
+          publicationContentComponent={<PublicationContent {...data} />}
+          articleSidebarComponent={<ArticleSidebar data={data} />}
+          >
         </PublicationContainer>
         
       </Layout>
-    </StoreProvider>
   );
 };
 
@@ -41,10 +47,10 @@ export async function generateMetadata({ params, searchParams }, parent) {
   });
 }
 
-const sanityQuery = `*[_type == 'publication' && slug.current == $slug]{ _type, _id,
-  abbreviations, abstract, acknowledgements,
+const sanityQuery = groq`*[_type == 'publication' && slug.current == $slug]{ _type, _id,
+  "abbreviations": [], abstract, acknowledgements,
   authors[]->{_id, ${localize('bioShort')}, affiliations[]->{_id,name}, email, ${localize('firstName')}, slug, ${localize('surname')}, position },
-  bibliographicalOverride, blurbs, content, date,
+  bibliographicalOverride, blurbs, "content": content[0..1], date,
   editors[]->{ _id, affiliations[]->{_id,name}, email, ${localize('firstName')}, slug, ${localize('surname')}, position },
   featuredImage{caption,credit,sourceUrl,license,asset->{url}}, 
   headsUp, 
@@ -54,7 +60,7 @@ const sanityQuery = `*[_type == 'publication' && slug.current == $slug]{ _type, 
   pdfThumbnail{_type,asset->{url,metadata{lqip,dimensions{width,height}}}},
   publicationNumber,
   publicationType->{ _id, title },
-  reference, references,
+  reference, "references": [],
   "recommendedResources":
     relatedContent[]->{ _type, _id, title, slug, publicationType->{ title }, "articleTypeTitle": articleType[0]->title, publicationNumber, date, reference, "imageUrl": featuredImage.asset->url },
   "relatedResources":
@@ -69,6 +75,18 @@ const sanityQuery = `*[_type == 'publication' && slug.current == $slug]{ _type, 
 }[0]`;
 
 async function getData( params ) {
-  const data = await fetchAndMaterialize( {sanityQuery, params, materializeDepth: 2} );
+  const data = await fetchAndMaterialize({
+    query: sanityQuery, 
+    params, 
+    tags: [`publication:${params.slug}`],
+    materializeDepth: 0
+  });
+  return data;
+};
+
+// pre-render 100 most recent
+export async function generateStaticParams() {
+  const sanityQuery = `*[_type == 'publication']{ "slug": slug.current } | order(_updatedAt desc) [0..1000]`;
+  const data = await fetchAndMaterialize( {query: sanityQuery, materializeDepth: 0} );
   return data;
 };

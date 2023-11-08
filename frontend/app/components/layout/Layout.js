@@ -3,11 +3,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 import Link from 'next/link';
-import { Menu } from '../general/menu/Menu';
-import LogoU4White from '../icons/LogoU4WhiteMini';
-import { MenuMobile } from '../general/menu/MenuMobile';
-import { useOnClickOutside } from '../../helpers/hooks';
-import { useScrollInfo } from '../../helpers/useScrollInfo';
+import { Menu } from '@/app/components/layout/Menu';
+import LogoU4White from 'components/icons/LogoU4WhiteMini';
+import { MenuMobile } from '@/app/components/layout/MenuMobile';
+import { useOnClickOutside } from 'helpers/hooks';
+import { useScrollInfo } from 'helpers/useScrollInfo';
 
 const classes = BEMHelper({
   name: 'top-bar-v2',

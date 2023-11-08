@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from 'react';
 
 export const useOnScreen = (refCurrent, rootElement) => {
@@ -9,7 +11,14 @@ export const useOnScreen = (refCurrent, rootElement) => {
     // threshold: 1.0
   }
 
-  const observer = new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting));
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    if ( typeof window !== 'undefined' ) {
+      setIsClient(true);
+    }
+  }, []);
+
+  const observer = isClient && new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting));
 
   useEffect(() => {
     if (refCurrent) {

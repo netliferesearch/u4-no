@@ -39,16 +39,15 @@ const DataLoaderWrapper = (Child, { queryFunc = false, materializeDepth = false,
   class DataLoader extends Component {
     static async getInitialProps(nextContext) {
       const { params = {} } = nextContext;
-      const time = timer(`DataLoader, params: ${JSON.stringify(params)}`);
+      //console.log('DataLoader context:', nextContext);
+      //const time = timer(`DataLoader, params: ${JSON.stringify(params)}`);
       const result = await fetchAndMaterialize({ queryFunc, nextContext, materializeDepth });
-      time();
+      //time();
       return result;
     }
     render() {
-      console.log('DataLoader rendering with these props:');
-      console.log(this.props);
-      const { error } = this.props;
-      if (error) {
+      // console.log('DataLoader rendering with these props:', this.props);
+      if (this?.props?.error) {
         return <Error404 {...this.props} />;
       }
       return (

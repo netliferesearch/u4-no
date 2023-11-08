@@ -1,7 +1,6 @@
 import { BreadCrumbV2 } from 'components/general/BreadCrumbV2';
-import LongformArticle from '../LongformArticle';
+import LongformArticle from './LongformArticle';
 import { PUBLICATIONS } from 'helpers/constants';
-import Footer from 'components/general/footer/Footer';
 import { PostCarousel } from 'components/front-page/PostCarousel';
 import { POST_TYPE } from 'components/general/post/Post';
 
@@ -39,7 +38,7 @@ export default function ShortVersionContainer( props = {} ) {
         <span id="js-bottom" />
       </article>
 
-      {recommendedResources.length > 0 ? (
+      {recommendedResources &&
         <section className="">
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel
@@ -52,8 +51,7 @@ export default function ShortVersionContainer( props = {} ) {
             <hr className="u-section-underline--no-margins" />
           </div>
         </section>
-      ) : null}
-      <Footer />
+      }
       <div id="modal" />
     </>
   );

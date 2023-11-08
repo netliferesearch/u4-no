@@ -1,15 +1,10 @@
-//import React from 'react';
-//import { Provider } from 'react-redux';
-//import { initStore } from '../../../helpers/redux-store';
-import { StoreProvider } from '../../../helpers/redux-provider';
-import { fetchAndMaterialize } from '../../../helpers/fetchAndMaterialize';
-import getMetadata from '../../../helpers/getMetadata';
-import { blocksToText } from '../../../helpers/blocksToText';
-import Footer from '../../../components/general/footer/Footer';
-import Layout from '../../../components/layout/Layout';
-import ServiceArticle from '../../../components/ServiceArticle';
-import { PageIntro } from '../../../components/general/PageIntro';
-import ArticleContainer from '../../../components/article/ArticleContainer';
+import { StoreProvider } from '@/app/lib/redux/redux-provider';
+import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
+import getMetadata from '@/app/lib/getMetadata';
+import Layout from '@/app/components/layout/Layout';
+import ServiceArticle from 'components/ServiceArticle';
+import { PageIntro } from 'components/general/PageIntro';
+import ArticleContainer from 'components/article/ArticleContainer';
 
 //const store = initStore();
 
@@ -20,7 +15,6 @@ async function FrontPage( data ){
     <Layout  >
       {lead || (title && <PageIntro title={title} text={lead ? lead : ''} />)}
       {sections ? <ServiceArticle blocks={sections} /> : null}
-      <Footer />
     </Layout>
   )
 }
@@ -63,7 +57,12 @@ const sanityQuery = `*[slug.current == $slug][0] {
 
 async function getData( params ) {
   console.log(params);
-  const data = await fetchAndMaterialize( {sanityQuery, params, materializeDepth: 2} );
+  const data = await fetchAndMaterialize({
+    query: sanityQuery, 
+    params, 
+    materializeDepth: 2, 
+    tags: [`frontpage:${params.slug}`]
+  });
   return data;
 };
 

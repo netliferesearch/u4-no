@@ -1,21 +1,11 @@
-'use client';
-
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { toggleArticleMenu, toggleLoadingScreen } from 'helpers/redux-store';
-import { PublicationContent } from 'components/publication/PublicationContent';
-import { ArticleHeader } from 'components/general/article-header/ArticleHeader';
-import { ArticleSidebar } from 'components/general/article-sidebar/ArticleSidebar';
+import { ArticleHeader } from '../article/ArticleHeader';
 import { BreadCrumbV2 } from 'components/general/BreadCrumbV2';
-import { Reader } from 'components/publication/Reader';
 import { PUBLICATIONS } from 'helpers/constants';
-import Footer from 'components/general/footer/Footer';
 import { PostCarousel } from 'components/front-page/PostCarousel';
 import { POST_TYPE } from 'components/general/post/Post';
-import { PublicationAdditionalInfo } from 'components/publication/PublicationAdditionalInfo';
+import { PublicationAdditionalInfo } from './PublicationAdditionalInfo';
 
-const PublicationContainer = (props = {}) => {
+export default function PublicationContainer (props = {}) {
   const {
     data: {
       _type = '',
@@ -34,9 +24,9 @@ const PublicationContainer = (props = {}) => {
     showLoadingScreen,
     url = {},
     children = {},
+    publicationContentComponent = {},
+    articleSidebarComponent = {},
   } = props;
-
-  const [readerOpen, setReaderOpen] = useState(false);
 
   return (
     <>
@@ -48,8 +38,6 @@ const PublicationContainer = (props = {}) => {
           ) : null}
           <ArticleHeader
             data={props.data}
-            readerOpen={readerOpen}
-            setReaderOpen={setReaderOpen}
           />
         </section>
 
@@ -57,25 +45,25 @@ const PublicationContainer = (props = {}) => {
 
         <section
           className="o-wrapper-medium o-wrapper-mobile-full"
-          style={{ display: readerOpen ? 'none' : 'block' }}
+          style={{ display: 'block' }}
         >
           {_type === 'publication' && !shortversion && (
             <div className="c-article__row">
               <div className="content c-article__col">
-                <PublicationContent {...props.data} />
+                {publicationContentComponent}
               </div>
               <div className="c-article__side c-article__col">
-                <ArticleSidebar data={props.data} />
+                {articleSidebarComponent}
               </div>
             </div>
           )}
         </section>
 
-        <PublicationAdditionalInfo data={props.data} setReaderOpen={setReaderOpen} />
+        <PublicationAdditionalInfo data={props.data} />
 
         <span id="js-bottom" />
       </article>
-      {recommendedResources.length > 0 ? (
+      {recommendedResources &&
         <section className="">
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel
@@ -88,27 +76,8 @@ const PublicationContainer = (props = {}) => {
             <hr className="u-section-underline--no-margins" />
           </div>
         </section>
-      ) : null}
-      {readerOpen && (
-        <Reader
-          data={props.data}
-          setReaderOpen={setReaderOpen}
-          legacypdf={legacypdf}
-        >
-          {children}
-        </Reader>
-      )}
-      <Footer />
+      }
       <div id="modal" />
     </>
   );
 };
-
-// export default PublicationContainer
-export default connect(
-  state => state,
-  dispatch => ({
-    toggleArticleMenu: bindActionCreators(toggleArticleMenu, dispatch),
-    toggleLoadingScreen: bindActionCreators(toggleLoadingScreen, dispatch),
-  })
-)(PublicationContainer);

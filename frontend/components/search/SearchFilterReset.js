@@ -7,7 +7,7 @@ export const SearchFilterReset = props => {
   const dispatch = useDispatch();
   const { buttonText } = props;
   const searchFilters = useSelector(state => state.searchFilters);
-  if (searchFilters.length === 0) {
+  if (searchFilters?.length === 0) {
     return null;
   }
   return (

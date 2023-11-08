@@ -1,17 +1,16 @@
-import { StoreProvider } from 'helpers/redux-provider';
-import { fetchAndMaterialize } from 'helpers/fetchAndMaterialize';
-import getMetadata from 'helpers/getMetadata';
-import Layout from 'components/layout/Layout';
-import ShortVersionContainer from './ShortVersionContainer';
-import LongformArticleContent from '../LongformArticleContent';
-import LongformArticle from '../LongformArticle';
+import { groq } from 'next-sanity';
+import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
+import getMetadata from '@/app/lib/getMetadata';
+import Layout from '@/app/components/layout/Layout';
+import ShortVersionContainer from '../../../components/publication/ShortVersionContainer';
+import LongformArticleContent from '../../../components/publication/LongformArticleContent';
+import LongformArticle from '../../../components/publication/LongformArticle';
 
 export default async function PublicationEntry( {params} ) {
   
   const data = await getData( params );
 
   return (
-    <StoreProvider>
       <Layout
         showLoadingScreen={false}
         showTopTab={true}
@@ -22,7 +21,6 @@ export default async function PublicationEntry( {params} ) {
           </LongformArticle>
         </ShortVersionContainer>
       </Layout>
-    </StoreProvider>
   );
 };
 
@@ -50,13 +48,18 @@ const sanityQuery = `*[_type == 'publication' && slug.current == $slug]{ _type, 
 }[0]`;
 
 async function getData( params ) {
-  const data = await fetchAndMaterialize( {sanityQuery, params, materializeDepth: 2} );
+  const data = await fetchAndMaterialize( {
+    query: sanityQuery, 
+    params, 
+    materializeDepth: 2,
+    tags: [`publication:${params.slug}`]
+  } );
   return data;
 };
 
-export const getStaticPaths = async ctx => {
-  return {
-    paths: [],
-    fallback: true,
-  };
+// pre-render 1000 most recent
+export async function generateStaticParams() {
+  const sanityQuery = groq`*[(_type == 'publication') && defined(summary)]{ "slug": slug.current } | order(_updatedAt desc) [0..1000]`;
+  const data = await fetchAndMaterialize( {query: sanityQuery, materializeDepth: 0} );
+  return data;
 };

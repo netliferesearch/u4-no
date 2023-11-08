@@ -7,7 +7,7 @@ const languageCodes = ['fr', 'es', 'in', 'uk'];
 
 // 2 letter code from language code
 export const langCode = (language = 'en') => {
-  return language.length >= 2 ? language.substr(0, 2) : 'en';
+  return language?.length >= 2 ? language.substr(0, 2) : 'en';
 };
 
 // for sanity queries: list of localised field names

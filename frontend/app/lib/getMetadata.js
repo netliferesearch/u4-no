@@ -4,6 +4,7 @@ export default async function getMetadata({ title='', description='', image=''})
     title,
     description: description,
     image: image,
+    metadataBase: 'https://www.u4.no',
     openGraph: {
       title,
       description,

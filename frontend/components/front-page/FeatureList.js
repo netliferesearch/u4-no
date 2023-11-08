@@ -10,15 +10,17 @@ export const FeatureList = ({ features = [], alt = false }) => {
           Become a partner
         </h4>
         <div className="c-feature-list">
-          {features.map(feature => (
+          {features.map(feature => {
+            const { _key, title = '', text = '', iconUrl = ''} = feature;
+            return (
             <div className="c-feature-list__item" key={feature._key}>
               <Feature
                 title={feature.image.title}
                 text={feature.featureText}
-                iconUrl={feature.image}
+                iconUrl={feature.image.url ? feature.image.url : feature.image}
               />
             </div>
-          ))}
+          )})}
         </div>
         <Link href="https://www.u4.no/become-a-partner" legacyBehavior>
         <button className="c-btn c-btn--secondary c-btn--secondary--onDark">Become a partner</button>

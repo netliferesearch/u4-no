@@ -1,6 +1,7 @@
 import Script from 'next/script';
 import '../style/global.scss';
 import '../style/html.css';
+import Footer from 'components/general/footer/Footer';
 
 export default function RootLayout({ children }) {
     return (
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
             <body>
                 <div className='m'>
                     {children}
+                    <Footer />
                 </div>
             </body>
         </html>

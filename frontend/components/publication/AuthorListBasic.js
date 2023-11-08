@@ -21,7 +21,7 @@ export const AuthorListBasic = ({ authors = [] }) => {
               <div key={_id} className="c-authors-list__item">
                 <span className="c-authors-list__name">
                   {slug &&
-                  affiliations.length &&
+                  affiliations &&
                   affiliations.some(
                     ({ _ref }) =>
                       _ref === '419c2497-8e24-4599-9028-b5023830c87f' ||

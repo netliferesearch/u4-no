@@ -3,11 +3,11 @@ import Image from "next/image";
 import { PageIntro } from '../../components/general/PageIntro';
 import Footer from '../../components/general/footer/Footer';
 import { LinkBox } from '../../components/general/link-box/LinkBox';
-import Layout from '../../components/layout/Layout';
+import Layout from '../components/layout/Layout';
 import serializers from '../../components/serializers/serializers';
 import { blocksToText } from '../../helpers/blocksToText';
-import { fetchAndMaterialize } from '../../helpers/fetchAndMaterialize';
-import getMetadata from '../../helpers/getMetadata';
+import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
+import getMetadata from '@/app/lib/getMetadata';
 import sanityImageLoader from '../../helpers/sanityImageLoader';
 
 export default async function About({params}) {
@@ -85,6 +85,11 @@ const sanityQuery = `{
 }`;
 
 async function getData( params ) {
-  const data = await fetchAndMaterialize( {sanityQuery, params, materializeDepth: 0} );
+  const data = await fetchAndMaterialize( {
+    query: sanityQuery, 
+    params, 
+    materializeDepth: 0,
+    tags: ['frontpage:who-we-work-with']
+  });
   return data;
 };
