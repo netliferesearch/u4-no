@@ -29,6 +29,7 @@ export const PersonCard = ({ person, type }) => {
             style={{
               maxWidth: "100%",
               height: "auto",
+              aspectRatio: "1",
               objectFit: "cover",
               objectPosition: "top center"
             }} />
@@ -51,6 +52,7 @@ export const PersonCard = ({ person, type }) => {
               style={{
                 maxWidth: "100%",
                 height: "auto",
+                aspectRatio: "1",
                 objectFit: "cover",
                 objectPosition: "top center"
               }} />
