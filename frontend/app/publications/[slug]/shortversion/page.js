@@ -32,7 +32,10 @@ export async function generateMetadata({ params, searchParams }, parent) {
   return getMetadata({
     title: title,
     description: lead,
-    image: featuredImage?.asset?.url
+    image: featuredImage?.asset?.url,
+    robots: {
+      index: false,
+    }
   });
 }
 

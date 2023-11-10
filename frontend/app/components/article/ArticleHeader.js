@@ -29,7 +29,7 @@ export const ArticleHeader = ({ data = {}}) => {
     content = [],
     summary = [],
     language = {},
-    translations = [],
+    translations = null,
     date = {},
     updatedVersion = false,
     _updatedAt = '',

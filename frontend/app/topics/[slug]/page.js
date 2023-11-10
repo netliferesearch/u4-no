@@ -1,21 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { fetchAndMaterialize } from '../../../helpers/data-loader';
-import Footer from '../../../components/general/footer/Footer';
-import Layout from '../../../components/Layout';
-import { Team } from '../../../components/general/team/Team';
-import { LinkBox } from '../../../components/general/link-box/LinkBox';
-import { FeaturedPosts } from '../../../components/front-page/FeaturedPosts';
-import { PostCarousel } from '../../../components/front-page/PostCarousel';
-import { POST_TYPE } from '../../../components/general/post/Post';
-import { TopicCardList } from '../../../components/general/topics/TopicCardList';
-import { CARD_TYPE } from '../../../components/general/blue-card/BlueCard';
-import { Hero } from '../../../components/general/Hero';
-import { PERSON_CARD_TYPE } from '../../../components/general/person/PersonCard';
-import { LearningEvents } from '../../../components/front-page/LearningEvents';
-import { HorizontalLinkBox } from '../../../components/general/link-box/HorizontalLinkBox';
+import { groq } from 'next-sanity';
+import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
+import getMetadata from '@/app/lib/getMetadata';
+import Layout from '@/app/components/layout/Layout';
+import { Team } from 'components/general/team/Team';
+import { LinkBox } from 'components/general/link-box/LinkBox';
+import { FeaturedPosts } from 'components/front-page/FeaturedPosts';
+import { PostCarousel } from 'components/front-page/PostCarousel';
+import { POST_TYPE } from 'components/general/post/Post';
+import { TopicCardList } from 'components/general/topics/TopicCardList';
+import { CARD_TYPE } from 'components/general/blue-card/BlueCard';
+import { Hero } from 'components/general/Hero';
+import { PERSON_CARD_TYPE } from 'components/general/person/PersonCard';
+import { LearningEvents } from 'components/front-page/LearningEvents';
+import { HorizontalLinkBox } from 'components/general/link-box/HorizontalLinkBox';
 
-const TopicEntry = ({ data: { topic = {} } }) => {
+export default async function TopicEntry({ params }) {
+
+  const data = await getData( params );
+
   const {
     title = '',
     longTitle = '',
@@ -35,21 +37,12 @@ const TopicEntry = ({ data: { topic = {} } }) => {
     relatedEvents = [],
     relatedUrl = {},
     url = {},
-  } = topic;
+  } = data;
+
   return (
-    <Layout
-      headComponentConfig={Object.assign(
-        {
-          title,
-          description: explainerText,
-          image: featuredImage && featuredImage.asset ? featuredImage.asset.url : '',
-          url: url.asPath ? `https://www.u4.no${url.asPath}` : '',
-          ogp: relatedUrl.openGraph ? relatedUrl.openGraph : {},
-        },
-        relatedUrl
-      )}
-    >
+    <Layout>
       <div className="c-topic-page">
+
         <section className="o-wrapper-full">
           <Hero
             contentType="topic"
@@ -61,6 +54,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             topics={relatedTopics}
           />
         </section>
+
         <section className="o-wrapper-medium">
           {introductionLength > 0 && agendaLength > 0 ? (
             <div className="c-linkbox-wrapper">
@@ -100,14 +94,17 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             </div>
           )}
         </section>
+
         <section className="o-wrapper-full u-bg--lighter-blue">
           <div className="o-wrapper-medium">
             <FeaturedPosts
-              featured={resources.filter(i => Object.keys(i).length !== 0).slice(0, 5)}
+              featured={resources}
+              // featured={resources.filter(i => Object.keys(i).length !== 0).slice(0, 5)}
             />
           </div>
         </section>
-        {relatedBlogPosts.length > 0 ? (
+
+        {relatedBlogPosts && (
           <section className="">
             <div className="o-wrapper-medium o-wrapper-mobile-full">
               <PostCarousel
@@ -122,9 +119,9 @@ const TopicEntry = ({ data: { topic = {} } }) => {
               <hr className="u-section-underline--no-margins" />
             </div>
           </section>
-        ) : null}
+        )}
 
-        {relatedEvents.length ? (
+        {relatedEvents && (
           <section className="">
             <div className="o-wrapper-medium">
               <LearningEvents
@@ -133,8 +130,9 @@ const TopicEntry = ({ data: { topic = {} } }) => {
               />
             </div>
           </section>
-        ) : null}
-        {relatedPublications.length > 0 ? (
+        )}
+
+        {relatedPublications && (
           <section className="">
             <div className="o-wrapper-medium o-wrapper-mobile-full">
               <PostCarousel
@@ -149,8 +147,9 @@ const TopicEntry = ({ data: { topic = {} } }) => {
               <hr className="u-section-underline--no-margins" />
             </div>
           </section>
-        ) : null}
-        {furtherResources.length > 0 && (
+        )}
+
+        {furtherResources && (
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel
               posts={furtherResources}
@@ -164,7 +163,7 @@ const TopicEntry = ({ data: { topic = {} } }) => {
           </div>
         )}
 
-        {resourceCollections.length > 0 && (
+        {resourceCollections && (
           <section className="o-wrapper-full u-bg--light-blue--top">
             <div className="o-wrapper-medium o-wrapper-mobile-full">
               <PostCarousel
@@ -177,7 +176,8 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             </div>
           </section>
         )}
-        {advisors.length > 0 && (
+
+        {advisors && (
           <div id="advisors" className="o-wrapper-medium">
             <hr className="u-section-underline--no-margins" />
 
@@ -190,32 +190,38 @@ const TopicEntry = ({ data: { topic = {} } }) => {
             <hr className="u-section-underline--no-margins" />
           </div>
         )}
-        {relatedTopics.length > 0 ? (
+
+        {relatedTopics && (
           <section className="">
             <div className="o-wrapper-medium">
               <TopicCardList type={CARD_TYPE.TOPIC} topics={relatedTopics} title="Related topics" />
             </div>
           </section>
-        ) : null}
+        )}
+
       </div>
-      <Footer />
+
     </Layout>
   );
 };
 
-TopicEntry.propTypes = {
-  data: PropTypes.object.isRequired,
-};
+export async function generateMetadata({ params, searchParams }, parent) {
 
-TopicEntry.defaultProps = {
-  data: {},
-};
+  const data = await getData( params );
+  const {
+    title = '', 
+    lead = '', 
+    featuredImage = '',
+  } = data;
+ 
+  return getMetadata({
+    title: title,
+    description: lead,
+    image: featuredImage?.asset?.url
+  });
+}
 
-export default TopicEntry;
-
-const queryFunc = ({ params: { slug = '' } }) => ({
-  sanityQuery: `{
-    "topic": *[slug.current == $slug && _type=='topics']{
+const sanityQuery = groq`*[_type == 'topics' && slug.current == $slug]{
       title, longTitle, explainerText, slug, "introductionLength": count(introduction), "agendaLength": count(agenda), relatedUrl, url,
       featuredImage{caption,credit,sourceUrl,license,asset->{altText,url,metadata{lqip}}},
       "advisors": advisors[]->{
@@ -237,7 +243,7 @@ const queryFunc = ({ params: { slug = '' } }) => ({
           longTitle,
           _updatedAt,
         },
-      "resources": resources[]->{
+      "resources": resources[0..4]->{
         _id,
         _type,
         "publicationType": publicationType->title,
@@ -269,28 +275,21 @@ const queryFunc = ({ params: { slug = '' } }) => ({
       "relatedBlogPosts": *[_type == 'blog-post' && references(^._id) && language == "en_US"] | order(date.utc desc) {_id, _type, title, date, standfirst, authors[]->{firstName, surname}, topics[]->{title, slug}, "imageUrl": featuredImage.asset->url, "imageBlurDataURL":featuredImage.asset->metadata.lqip, "slug": slug.current}[0..8],
       "relatedEvents": *[_type in ["course", "event"] && references(^._id) && ( startDate > now())] | order(startDate.utc desc) {_type, title, startDate, location, lead, "slug": slug.current, topics[]->{title}, eventType},
       "resourceCollections": collections[]->{_type, title, "slug": slug.current},
-  }[0]}`,
-  param: { slug },
-});
+  }[0]`;
 
-export const getStaticProps = async ctx => {
-  const { data, error = '' } = await fetchAndMaterialize({
-    nextContext: ctx,
-    queryFunc,
-    materializeDepth: 0,
+async function getData( params ) {
+  const data = await fetchAndMaterialize({
+    query: sanityQuery, 
+    params, 
+    tags: [`topics:${params.slug}`],
+    materializeDepth: 0
   });
-  if (error === 'No content found (dataLoader said this)') {
-    return { notFound: true };
-  }
-  return {
-    props: { data },
-    revalidate: 60,
-  };
+  return data;
 };
 
-export const getStaticPaths = async ctx => {
-  return {
-    paths: [],
-    fallback: true,
-  };
+// pre-render
+export async function generateStaticParams() {
+  const sanityQuery = `*[_type == 'topics']{ "slug": slug.current } | order(_updatedAt desc) [0..1000]`;
+  const data = await fetchAndMaterialize( {query: sanityQuery, materializeDepth: 0} );
+  return data;
 };

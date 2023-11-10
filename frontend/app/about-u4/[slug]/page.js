@@ -56,7 +56,6 @@ const sanityQuery = `*[slug.current == $slug][0] {
 
 
 async function getData( params ) {
-  console.log(params);
   const data = await fetchAndMaterialize({
     query: sanityQuery, 
     params, 

@@ -18,7 +18,7 @@ export const FeaturedPosts = ({ featured }) => {
         </div>
         <div className="small">
           {featured
-            .filter((p, i) => i !== 0)
+            .filter((p, i) => (i !== 0) && p )
             .map((post, index) => (
               <Post
                 key={post._id}

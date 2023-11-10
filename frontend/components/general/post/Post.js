@@ -101,7 +101,7 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
             ) : (
               <div className="c-post__post-image u-overlay--light-blue">
                 <Image
-                  loader={imgLoader}
+                  // loader={imgLoader}
                   src={placeholder}
                   alt=""
                   loading="lazy"

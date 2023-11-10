@@ -8,14 +8,16 @@ import { Topics } from '../topics/Topics';
 export const ArticleSidebar = ({ data }) => {
   const {
     publicationType = {},
-    authors = [],
-    editors = [],
-    partners = [],
-    recommendedResources = [],
-    relatedResources = [],
-    topics = [],
+    authors = null,
+    editors = null,
+    partners = null,
+    recommendedResources = null,
+    relatedResources = null,
+    topics = null,
   } = data;
   
+  console.log ( topics );
+
   return (authors || editors || partners || recommendedResources || relatedResources || topics) &&
     <div className="c-article-sidebar">
       {authors && 
@@ -31,8 +33,8 @@ export const ArticleSidebar = ({ data }) => {
         </SidebarItem>
       }
       {(partners ||
-        publicationType._id === 'pubtype-3' ||
-        publicationType._id === '080dc28c-9d5e-4c14-972f-73f83a206b92') &&
+        publicationType?._id === 'pubtype-3' ||
+        publicationType?._id === '080dc28c-9d5e-4c14-972f-73f83a206b92') &&
         <SidebarItem label="In collaboration with">
           <Partners partners={partners} publicationType={publicationType} />
         </SidebarItem>
