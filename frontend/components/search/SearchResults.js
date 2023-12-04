@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 if (typeof window !== 'undefined') {
   // Can only polyfill if window is present. Not when running on server side.
@@ -10,6 +12,7 @@ import { SearchResult } from './SearchResult';
 import { useRouter } from 'next/router';
 
 export const limit = 10;
+
 export const SearchResults = props => {
   const router = useRouter();
   const searchResults = useSelector(state => state.searchResults);

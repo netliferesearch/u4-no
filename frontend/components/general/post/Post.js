@@ -144,14 +144,6 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
   );
 };
 
-Post.defaultProps = {
-  type: POST_TYPE.BLOG,
-  post: {
-    filedUnderTopicNames: []
-  },
-  placeholder: '',
-};
-
 Post.propTypes = {
   type: PropTypes.string,
   post: PropTypes.any,

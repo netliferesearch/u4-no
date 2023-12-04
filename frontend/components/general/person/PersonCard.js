@@ -20,14 +20,14 @@ export const PersonCard = ({ person, type }) => {
           <Image
             loader={sanityImageLoader}
             src={person.image.asset.url}
+            alt={`${person.firstName} ${person.surname}`}
             loading="lazy"
             width="176"
             height="176"
-            crop="focalpoint"
-            auto="format"
-            fit="crop"
+            placeholder={person.image.asset.metadata?.lqip ? "blur" : "empty"}
+            blurDataURL={person.image.asset.metadata?.lqip}
             style={{
-              maxWidth: "100%",
+              width: "176px",
               height: "auto",
               aspectRatio: "1",
               objectFit: "cover",
@@ -36,7 +36,7 @@ export const PersonCard = ({ person, type }) => {
           ) : ( null )}
         </div>
       ) : (
-        (<Link href={`/the-team/${person.slug.current}`}>
+        (<Link href={`/the-team/${person.slug}`}>
 
           <div className="c-person-card__image-wrapper">
           {person.image?.asset?.url ? (
@@ -46,11 +46,13 @@ export const PersonCard = ({ person, type }) => {
               loading="lazy"
               width="176"
               height="176"
+              placeholder={person.image.asset.metadata?.lqip ? "blur" : "empty"}
+              blurDataURL={person.image.asset.metadata?.lqip}  
               crop="focalpoint"
               auto="format"
               fit="crop"
               style={{
-                maxWidth: "100%",
+                width: "176px",
                 height: "auto",
                 aspectRatio: "1",
                 objectFit: "cover",
@@ -71,7 +73,7 @@ export const PersonCard = ({ person, type }) => {
           {type === PERSON_CARD_TYPE.PROFILE ? (
             <h2>{`${person.firstName} ${person.surname}`}</h2>
           ) : (
-            (<Link href={`/the-team/${person.slug.current}`}>
+            (<Link href={`/the-team/${person.slug}`}>
 
               <h5 className="u-text--dark-blue">{`${person.firstName} ${person.surname}`}</h5>
 

@@ -16,8 +16,6 @@ export const ArticleSidebar = ({ data }) => {
     topics = null,
   } = data;
   
-  console.log ( topics );
-
   return (authors || editors || partners || recommendedResources || relatedResources || topics) &&
     <div className="c-article-sidebar">
       {authors && 

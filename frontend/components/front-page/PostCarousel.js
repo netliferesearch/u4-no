@@ -114,14 +114,6 @@ export const PostCarousel = ({
   );
 };
 
-PostCarousel.defaultProps = {
-  posts: [],
-  type: '',
-  title: '',
-  buttonPath: '',
-  minPosts: 0,
-};
-
 PostCarousel.propTypes = {
   posts: PropTypes.array,
   type: PropTypes.string,

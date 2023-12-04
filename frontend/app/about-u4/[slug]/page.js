@@ -5,6 +5,7 @@ import Layout from '@/app/components/layout/Layout';
 import ServiceArticle from 'components/ServiceArticle';
 import { PageIntro } from 'components/general/PageIntro';
 import ArticleContainer from 'components/article/ArticleContainer';
+import { groq } from 'next-sanity';
 
 //const store = initStore();
 
@@ -46,7 +47,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
   });
 }
 
-const sanityQuery = `*[slug.current == $slug][0] {
+const sanityQuery = groq`*[slug.current == $slug][0] {
   content[]{'markDefs':markDefs[]{
     _type == 'internalReferance' => {_key,_type,"target": @->{_id,_type,title,slug}},
     _type != 'internalReferance' => {...},

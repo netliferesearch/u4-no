@@ -1,20 +1,26 @@
+import Layout from '@/app/components/layout/Layout';
+import getMetadata from '@/app/lib/getMetadata';
+import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
 import BlockContent from '@sanity/block-content-to-react';
 import Image from "next/image";
 import { PageIntro } from '../../components/general/PageIntro';
 import Footer from '../../components/general/footer/Footer';
 import { LinkBox } from '../../components/general/link-box/LinkBox';
-import Layout from '../components/layout/Layout';
 import serializers from '../../components/serializers/serializers';
 import { blocksToText } from '../../helpers/blocksToText';
-import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
-import getMetadata from '@/app/lib/getMetadata';
 import sanityImageLoader from '../../helpers/sanityImageLoader';
+import { groq } from 'next-sanity';
 
 export default async function About({params}) {
 
   const data = await getData( params );
-  const {about = {}} = data;
-  const {about: { title = '', featuredImage = '', imageBlurDataURL = '', lead = '', relatedUrl = {} }} = data;
+  const {
+    title = '', 
+    featuredImage = '', 
+    imageBlurDataURL = '', 
+    lead = '', 
+    resources = [],
+  } = data;
 
   return (
     <Layout>
@@ -29,7 +35,7 @@ export default async function About({params}) {
       <section className="o-wrapper-full">
         <div className="o-wrapper-medium o-wrapper-mobile-full">
           <div className="c-linkbox-wrapper--about">
-            {about.resources.map((link, index) => (
+            {resources.map((link, index) => (
               <LinkBox
                 key={index}
                 _type="work-with"
@@ -42,7 +48,7 @@ export default async function About({params}) {
             <div className="c-linkbox c-linkbox--white">
               <Image
                 loader={sanityImageLoader}
-                src={about.featuredImage}
+                src={featuredImage}
                 blurDataURL={imageBlurDataURL}
                 loading="lazy"
                 crop="focalpoint"
@@ -58,7 +64,6 @@ export default async function About({params}) {
           </div>
         </div>
       </section>
-      <Footer />
     </Layout>
   );
 };
@@ -66,7 +71,11 @@ export default async function About({params}) {
 export async function generateMetadata({ params, searchParams }, parent) {
 
   const data = await getData( params );
-  const {about: {title = '', lead = '', featuredImage = ''}} = data;
+  const {
+    title = '', 
+    lead = '', 
+    featuredImage = ''
+  } = data;
  
   return getMetadata({
     title: title,
@@ -75,14 +84,14 @@ export async function generateMetadata({ params, searchParams }, parent) {
   });
 }
 
-const sanityQuery = `{ 
-  "about": *[(_id == "7157dd32-061a-48f5-a405-8899d815f5a3") || (slug.current == "who-we-work-with")][0] {
-    title, slug, lead, _id, 
-    "resources": resources[]->{title, standfirst, slug{current}}, 
-    "featuredImage": featuredImage.asset->url,
-    "imageBlurDataURL":featuredImage.asset->metadata.lqip,
-  } 
-}`;
+const sanityQuery = groq`*[(_id == "7157dd32-061a-48f5-a405-8899d815f5a3") || (slug.current == "who-we-work-with")][0] {
+  title, 
+  "slug": slug.current, 
+  lead, 
+  "resources": resources[]->{title, standfirst, "slug":slug.current}, 
+  "featuredImage": featuredImage.asset->url,
+  "imageBlurDataURL":featuredImage.asset->metadata.lqip,
+ }`;
 
 async function getData( params ) {
   const data = await fetchAndMaterialize( {

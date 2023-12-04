@@ -21,8 +21,8 @@ export default async function PublicationEntry({ params }) {
 
   const {
     content = [],
-    references = [],
-    abbreviations = [],
+    references = null,
+    abbreviations = null,
     lead = false,
     ...readerData
   } = data;
@@ -58,11 +58,15 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const data = await getData(params);
   const { title = '', lead = '', featuredImage = '' } = data;
 
-  return getMetadata({
+  const metadata = getMetadata({
     title: title,
     description: lead,
-    image: featuredImage?.asset?.url
+    image: featuredImage?.asset?.url,
+    robots: {
+      index: false,
+    }
   });
+  return metadata;
 }
 
 const sanityQuery = groq`*[_type == 'publication' && slug.current == $slug]{ _type, _id,
@@ -104,7 +108,7 @@ async function getData(params) {
 
 // pre-render 1000 most recent
 export async function generateStaticParams() {
-  const sanityQuery = groq`*[_type == 'publication' && defined(content)]{ "slug": slug.current } | order(_updatedAt desc) [0..1000]`;
+  const sanityQuery = groq`*[_type == 'publication' && defined(content)]{ "slug": slug.current } | order(_updatedAt desc) [0..10]`;
   const data = await fetchAndMaterialize({ query: sanityQuery, materializeDepth: 0 });
   return data;
 };

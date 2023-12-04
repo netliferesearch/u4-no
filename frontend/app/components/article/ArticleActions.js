@@ -7,28 +7,28 @@ export const ArticleActions = ({ data = {}, setReaderOpen = null }) => {
   const {
     _type = '',
     title = '',
-    slug = {},
+    slug = '',
     pdfFile = {},
     legacypdf = {},
-    content = [],
-    summary = [],
+    hasContent = false,
+    hasSummary = false,
   } = data;
   const pdfAsset = legacypdf?.asset ? legacypdf.asset : pdfFile?.asset;
   return (
     <div className="c-article__btn-row c-article__actions">
-      {content && _type === 'publication' ? (
-        <Link href={`/publications/${slug.current}/fullversion`} >
+      {hasContent && _type === 'publication' && (
+        <Link href={`/publications/${slug}/fullversion`} >
         <button
           className="c-btn c-btn--primary"
         >
           Read online
         </button>
         </Link>
-      ) : null}
-      {pdfAsset && content && (
+      )}
+      {pdfAsset && hasContent && (
         <Link
-          href={`/publications/${slug.current}.pdf`}
-          //download={`/publication/${slug.current}.pdf`}
+          href={`/publications/${slug}.pdf`}
+          //download={`/publication/${slug}.pdf`}
           target="_blank"
           className="c-btn c-btn--secondary"
         >
@@ -36,20 +36,20 @@ export const ArticleActions = ({ data = {}, setReaderOpen = null }) => {
         </Link>
       )}
 
-      {!content && legacypdf?.asset &&
+      {!hasContent && legacypdf?.asset &&
         <Link
-          href={`/publications/${slug.current}.pdf`}
-          //download={`/publication/${slug.current}.pdf`}
+          href={`/publications/${slug}.pdf`}
+          //download={`/publication/${slug}.pdf`}
           target="_blank"
           className="c-btn c-btn--primary"
         >
           <span>Read online</span>
         </Link>
       }
-      {!content && legacypdf?.asset &&
+      {!hasContent && legacypdf?.asset &&
         <Link
-          href={`/publications/${slug.current}.pdf`}
-          download={`/publication/${slug.current}.pdf`}
+          href={`/publications/${slug}.pdf`}
+          download={`/publication/${slug}.pdf`}
           target="_blank"
           className="c-btn c-btn--secondary"
         >
@@ -57,8 +57,8 @@ export const ArticleActions = ({ data = {}, setReaderOpen = null }) => {
         </Link>
       }
 
-      {summary && (
-        <LinkToItem type="shortVersionPublication" slug={slug.current}>
+      {hasSummary && (
+        <LinkToItem type="shortVersionPublication" slug={slug}>
           <a className="c-btn c-btn--secondary">
             <span>Read short version</span>
           </a>

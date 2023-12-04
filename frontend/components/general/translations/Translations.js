@@ -3,6 +3,9 @@ import LinkToItem from '../LinkToItem';
 
 export const Translations = ({ translations, language, type = 'publication', currentSlug }) => {
 
+  if (!translations || !translations.length) {
+    return null;
+  }
   return (
     <div className="c-translations">
       <span className="u-body--small u-text--grey">Also available in</span>{' '}

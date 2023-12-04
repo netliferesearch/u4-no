@@ -1,23 +1,23 @@
-import { groq } from 'next-sanity';
-import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
-import getMetadata from '@/app/lib/getMetadata';
 import Layout from '@/app/components/layout/Layout';
-import { Team } from 'components/general/team/Team';
-import { LinkBox } from 'components/general/link-box/LinkBox';
+import getMetadata from '@/app/lib/getMetadata';
+import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
+import hasContent from '@/app/lib/util/hasContent';
 import { FeaturedPosts } from 'components/front-page/FeaturedPosts';
-import { PostCarousel } from 'components/front-page/PostCarousel';
-import { POST_TYPE } from 'components/general/post/Post';
-import { TopicCardList } from 'components/general/topics/TopicCardList';
-import { CARD_TYPE } from 'components/general/blue-card/BlueCard';
-import { Hero } from 'components/general/Hero';
-import { PERSON_CARD_TYPE } from 'components/general/person/PersonCard';
 import { LearningEvents } from 'components/front-page/LearningEvents';
+import { PostCarousel } from 'components/front-page/PostCarousel';
+import { Hero } from 'components/general/Hero';
+import { CARD_TYPE } from 'components/general/blue-card/BlueCard';
 import { HorizontalLinkBox } from 'components/general/link-box/HorizontalLinkBox';
+import { LinkBox } from 'components/general/link-box/LinkBox';
+import { PERSON_CARD_TYPE } from 'components/general/person/PersonCard';
+import { POST_TYPE } from 'components/general/post/Post';
+import { Team } from 'components/general/team/Team';
+import { TopicCardList } from 'components/general/topics/TopicCardList';
+import { groq } from 'next-sanity';
 
-export default async function TopicEntry({ params }) {
+export default async function Topic({ params }) {
 
   const data = await getData( params );
-
   const {
     title = '',
     longTitle = '',
@@ -30,8 +30,8 @@ export default async function TopicEntry({ params }) {
     resourceCollections = [],
     parent = {},
     slug = {},
-    introductionLength = 0,
-    agendaLength = 0,
+    hasIntroduction = false,
+    hasAgenda = false,
     advisors = [],
     resources = [],
     relatedEvents = [],
@@ -56,19 +56,19 @@ export default async function TopicEntry({ params }) {
         </section>
 
         <section className="o-wrapper-medium">
-          {introductionLength > 0 && agendaLength > 0 ? (
+          {hasIntroduction && hasAgenda ? (
             <div className="c-linkbox-wrapper">
-              {introductionLength > 0 && (
+              {hasIntroduction && (
                 <LinkBox
                   title="Basic guide"
                   text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
                   // icon={BasicGuide}
                   _type="topicsBasics"
                   slug={slug}
-                  color={`${agendaLength > 0 ? 'white' : 'lighter-blue--full'}`}
+                  color={`${hasAgenda ? 'white' : 'lighter-blue--full'}`}
                 />
               )}
-              {agendaLength > 0 && (
+              {hasAgenda && (
                 <LinkBox
                   title="Research and policy agenda"
                   text={`Discover what U4 and others do to advance research and reduce corruption in ${title.toLowerCase()}.`}
@@ -81,7 +81,7 @@ export default async function TopicEntry({ params }) {
             </div>
           ) : (
             <div>
-              {introductionLength > 0 && (
+              {hasIntroduction && (
                 <HorizontalLinkBox
                   title="Basic guide"
                   text={`Read our introduction to corruption and anti-corruption efforts in ${title.toLowerCase()}.`}
@@ -222,8 +222,21 @@ export async function generateMetadata({ params, searchParams }, parent) {
 }
 
 const sanityQuery = groq`*[_type == 'topics' && slug.current == $slug]{
-      title, longTitle, explainerText, slug, "introductionLength": count(introduction), "agendaLength": count(agenda), relatedUrl, url,
-      featuredImage{caption,credit,sourceUrl,license,asset->{altText,url,metadata{lqip}}},
+      title, 
+      longTitle, 
+      explainerText, 
+      "slug": slug.current, 
+      "hasIntroduction": defined(introduction), 
+      "hasAgenda": defined(agenda), 
+      relatedUrl, 
+      url,
+      featuredImage{
+        caption,
+        credit,
+        sourceUrl,
+        license,
+        asset->{altText,url,metadata{lqip}}
+      },
       "advisors": advisors[]->{
         _id,
         title,
@@ -232,7 +245,7 @@ const sanityQuery = groq`*[_type == 'topics' && slug.current == $slug]{
         firstName,
         surname,
         email,
-        slug
+        "slug": slug.current,
       },
       "relatedTopics":
         *[_type == 'topics' && _id != ^._id && (_id==coalesce(^.parent._ref,^._id) || (parent._ref == coalesce(^.parent._ref,^._id)))]{
@@ -289,7 +302,7 @@ async function getData( params ) {
 
 // pre-render
 export async function generateStaticParams() {
-  const sanityQuery = `*[_type == 'topics']{ "slug": slug.current } | order(_updatedAt desc) [0..1000]`;
+  const sanityQuery = groq`*[_type == 'topics']{ "slug": slug.current } | order(_updatedAt desc) [0..1000]`;
   const data = await fetchAndMaterialize( {query: sanityQuery, materializeDepth: 0} );
   return data;
 };

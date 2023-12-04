@@ -1,4 +1,11 @@
-export default async function getMetadata({ title='', description='', image=''}) {
+export default function getMetadata( metadata ) {
+
+  const {
+    title = '', 
+    description = '', 
+    image = '',
+    ...otherMetadata
+  } = metadata;
 
   return {
     title,
@@ -21,6 +28,7 @@ export default async function getMetadata({ title='', description='', image=''})
     },
     other: {
       'google-site-verification': 'IuEUdfNVUT1nJ-DJUcrg99bbRIha348aLY0tC4tOIk0',
-    }
-  }
+    },
+    ...otherMetadata
+  };
 }

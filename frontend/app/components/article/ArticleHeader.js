@@ -26,17 +26,15 @@ export const ArticleHeader = ({ data = {}}) => {
     legacypdf = {},
     pdfThumbnail = {},
     featuredImage = {},
-    content = [],
-    summary = [],
     language = {},
     translations = null,
     date = {},
     updatedVersion = false,
-    _updatedAt = '',
     basedonpublication = false,
   } = data;
   const text = _type === 'publication' ? lead || abstract : leadText || lead || standfirst;
   // {lead || abstract ? <ArticleLead lead={lead} abstract={abstract} /> : null}
+
   return (
     <header className="c-article-header">
       <div className="c-article-header__container">
