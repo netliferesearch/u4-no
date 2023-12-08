@@ -108,7 +108,7 @@ async function getData(params) {
 
 // pre-render 1000 most recent
 export async function generateStaticParams() {
-  const sanityQuery = groq`*[_type == 'publication' && defined(content)]{ "slug": slug.current } | order(_updatedAt desc) [0..10]`;
+  const sanityQuery = groq`*[_type == 'publication' && defined(content)]{ "slug": slug.current } | order(_updatedAt desc) [0..1000]`;
   const data = await fetchAndMaterialize({ query: sanityQuery, materializeDepth: 0 });
   return data;
 };

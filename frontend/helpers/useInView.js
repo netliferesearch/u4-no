@@ -21,7 +21,7 @@ export const useOnScreen = (refCurrent, rootElement) => {
   const observer = isClient && new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting));
 
   useEffect(() => {
-    if (refCurrent) {
+    if (refCurrent && observer) {
       observer.observe(refCurrent);
       // Remove the observer as soon as the component is unmounted
       return () => {

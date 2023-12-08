@@ -19,7 +19,7 @@ export default async function Event({ params }){
   const {
     title = '',
     location = '',
-    startDate = {},
+    startDate = null,
     featuredImage = {},
     leadText = '',
     content = [],
@@ -46,7 +46,7 @@ export default async function Event({ params }){
               <BlockContent blocks={content} serializers={serializers} />
             </div>
 
-            {(hasContent(topics) || startDate.utc || location ) && (
+            {(hasContent(topics) || startDate || location ) && (
               <div className="c-article__side c-article__col">
                 <EventSidebar data={data} />
               </div>

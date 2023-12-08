@@ -31,7 +31,7 @@ export const EventHeader = ({ data }) => {
           contentType={contentType}
           type="withBreadcrumb"
           single
-          date={startDate.utc}
+          date={startDate?.utc}
           location={location}
         />
         {eventLink && (

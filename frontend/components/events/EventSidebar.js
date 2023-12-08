@@ -9,7 +9,7 @@ export const EventSidebar = ({ data }) => {
   return data ? (
     <div className="c-article-sidebar c-course-sidebar">
       <div className="c-course-sidebar__right">
-        {startDate.utc || data.location ? (
+        {startDate || data.location ? (
           <div className="c-article-sidebar__item">
             <h4 className="u-secondary-heading u-secondary-h4">Event details</h4>
             <hr className="u-section-underline--grey" />
@@ -18,7 +18,7 @@ export const EventSidebar = ({ data }) => {
                 <LocationIcon /> {data.location}
               </p>
             )}
-            {startDate.utc && (
+            {startDate?.utc && (
               <p className="u-text--grey">
                 <CalendorIcon />
                 {DateToString({ start: startDate.utc })}
