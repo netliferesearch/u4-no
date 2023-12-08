@@ -57,7 +57,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                   </div>
                 )} */}
                 <div className="c-longform">
-                  <BlockContent blocks={transField(author,'bioShort')} />
+                  <BlockContent blocks={bioShort.length > 0 ? transField(author,'bioShort') : []} />
                 </div>
               </div>
             )}

@@ -11,9 +11,9 @@ export async function fetchAndMaterialize({ nextContext, queryFunc, materializeD
     return {};
   }
   const { sanityQuery, param = {} } = queryFunc(nextContext);
-
+  param.slug && console.time('Get sanity data:' + param.slug);
   const sanityResults = await client.fetch(sanityQuery, param);
-
+  param.slug && console.timeEnd('Get sanity data:' + param.slug);
   if (!sanityResults || Object.keys(sanityResults).length === 0) {
     console.warn('Sanity results was empty, nothing to materialize', sanityResults);
     // throw new Error('No content found');

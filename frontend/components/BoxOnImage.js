@@ -30,9 +30,12 @@ const BoxOnImage = ({
           loader={sanityImageLoader}
           src={image.asset.url}
           alt=""
-          layout="fill"
-          objectFit="cover"
           priority="true"
+          fill
+          sizes="100vw"
+          style={{
+            objectFit: 'cover',
+          }}
         />
       )}
     </figure>
@@ -47,9 +50,7 @@ const BoxOnImage = ({
               .map(person => (
                 <p key={person._id}>
                   <Link href={buildUrl({ _type: 'person', slug: person.slug.current })}>
-                    <a>
-                      {person.firstName} {person.surname}
-                    </a>
+                    {person.firstName} {person.surname}
                   </Link>
                 </p>
               ))}
@@ -71,9 +72,7 @@ const BoxOnImage = ({
                 .map(person => (
                   <p key={person._id}>
                     <Link href={buildUrl({ _type: 'person', slug: person.slug.current })}>
-                      <a>
-                        {person.firstName} {person.surname}
-                      </a>
+                      {person.firstName} {person.surname}
                     </Link>
                   </p>
                 ))}

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import sanityImageLoader from '../../../helpers/sanityImageLoader';
-import Image from 'next/image';
+import Image from "next/image";
 import { SocialFollow } from '../social/SocialFollow';
 import { socialItems } from '../social/socialItems';
 
@@ -23,35 +23,41 @@ export const PersonCard = ({ person, type }) => {
             loading="lazy"
             width="176"
             height="176"
-            objectFit="cover"
-            objectPosition="top center"
             crop="focalpoint"
             auto="format"
             fit="crop"
-          />
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+              objectFit: "cover",
+              objectPosition: "top center"
+            }} />
           ) : ( null )}
         </div>
       ) : (
-        <Link href={`/the-team/${person.slug.current}`}>
-          <a>
-            <div className="c-person-card__image-wrapper">
-            {person.image?.asset?.url ? (
-              <Image
-                loader={sanityImageLoader}
-                src={person.image.asset.url}
-                loading="lazy"
-                width="176"
-                height="176"
-                objectFit="cover"
-                objectPosition="top center"
-                crop="focalpoint"
-                auto="format"
-                fit="crop"
-              />
-              ) : ( null )}
-            </div>
-          </a>
-        </Link>
+        (<Link href={`/the-team/${person.slug.current}`}>
+
+          <div className="c-person-card__image-wrapper">
+          {person.image?.asset?.url ? (
+            <Image
+              loader={sanityImageLoader}
+              src={person.image.asset.url}
+              loading="lazy"
+              width="176"
+              height="176"
+              crop="focalpoint"
+              auto="format"
+              fit="crop"
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+                objectFit: "cover",
+                objectPosition: "top center"
+              }} />
+            ) : ( null )}
+          </div>
+
+        </Link>)
       )}
       <div className="c-person-card__info">
         {type === PERSON_CARD_TYPE.PROFILE && (
@@ -63,11 +69,11 @@ export const PersonCard = ({ person, type }) => {
           {type === PERSON_CARD_TYPE.PROFILE ? (
             <h2>{`${person.firstName} ${person.surname}`}</h2>
           ) : (
-            <Link href={`/the-team/${person.slug.current}`}>
-              <a>
-                <h5 className="u-text--dark-blue">{`${person.firstName} ${person.surname}`}</h5>
-              </a>
-            </Link>
+            (<Link href={`/the-team/${person.slug.current}`}>
+
+              <h5 className="u-text--dark-blue">{`${person.firstName} ${person.surname}`}</h5>
+
+            </Link>)
           )}
           {person.position && (
             <span className="c-person-card__position u-text--grey">{person.position}</span>

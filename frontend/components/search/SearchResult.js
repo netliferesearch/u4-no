@@ -5,7 +5,7 @@ import { Post, POST_TYPE } from '../general/post/Post';
 import { getPlaceholder } from '../../helpers/imgloader';
 import Link from 'next/link';
 import sanityImageLoader from '../../helpers/sanityImageLoader';
-import Image from 'next/image';
+import Image from "next/image";
 
 
 export const SearchResult = props => {
@@ -23,8 +23,8 @@ export const SearchResult = props => {
         <div className="c-search-results-v2__glossary">
           <span className="c-search-results-v2__items-type">Glossary</span>
           <br />
-          <Link href={url}>
-            <a className="c-search-results-v2__items-title">{termTitle}</a>
+          <Link href={url} className="c-search-results-v2__items-title">
+            {termTitle}
           </Link>
           <br />
           <p>{termContent}</p>
@@ -36,14 +36,15 @@ export const SearchResult = props => {
               {pdfThumbnailUrlView ? (
                 <div className="pdf-thumbnail">
                 <Image
-                loader={sanityImageLoader}
-                src={pdfThumbnailUrlView}
-                alt=""
-                loading="lazy"
-                layout="fill"
-                objectFit="fit"
-                sizes="180px"
-              />
+                  loader={sanityImageLoader}
+                  src={pdfThumbnailUrlView}
+                  alt=""
+                  loading="lazy"
+                  fill
+                  sizes="180px"
+                  style={{
+                    objectFit: "fit"
+                  }} />
               </div>
 
               ) : null

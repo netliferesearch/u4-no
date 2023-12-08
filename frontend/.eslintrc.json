@@ -1,6 +1,6 @@
 {
-  "parser": "babel-eslint",
-  "plugins": ["babel"],
+  "parser": "@babel/eslint-parser",
+  "plugins": ["@babel"],
   "rules": {
     "no-debugger": "off",
     "global-require": "off",
