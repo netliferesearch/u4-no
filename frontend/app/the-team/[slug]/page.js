@@ -123,7 +123,6 @@ export async function generateMetadata({ params }) {
     lead = '', 
     featuredImage = {} 
   } = data;
-  console.log('person', params);
   return getMetadata({
     title: `${person.firstName} ${person.surname}`,
     description: lead,
