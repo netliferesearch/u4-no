@@ -66,7 +66,7 @@ const PublicationArticleHeader = ({
   legacypdf = {},
   reference = '',
   translation = {},
-  translations = {},
+  translations = null,
   language = '',
   partners = [],
 }) => {
@@ -119,8 +119,7 @@ const PublicationArticleHeader = ({
             ) : null}
             {bibliographicReference({ publicationType, publicationNumber, reference })}
           </p>
-
-          {translations.length > 0 && (
+          {translations && (
             <p>
               Also available in{' '}
               {translations.map(

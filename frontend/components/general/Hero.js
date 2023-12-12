@@ -63,7 +63,7 @@ export const Hero = ({
           <div className="c-hero__row">
             <PageIntro title={title} text={text} onDark={onDark} />
             <div>
-              {(topics.length > 0) &&
+              {topics &&
                 <Topics title="Related topics" topics={topics} hr onDark={onDark} image={image} />
               }
               {image &&

@@ -1,11 +1,12 @@
-import React from 'react';
 import dateToString from '../../../helpers/dateToString';
 import LinkToItem from '../LinkToItem';
 import { getPostType } from '../../../helpers/getRouteByType';
 import { CalendorIcon } from '../../icons/CalendorIcon';
 import { LocationIcon } from '../../icons/LocationIcon';
 import { ArrowNext } from '../../icons/ArrowNext';
-import TextClamp from 'react-string-clamp';
+//import TextClamp from 'react-string-clamp';
+import { TextClampSSR} from '../post/TextClampSSR';
+
 
 export const CARD_TYPE = {
   FULL: '1-col',
@@ -46,7 +47,7 @@ export const TopicContent = ({ post = {} }) => (
       <h2 className="u-secondary-heading u-secondary-h2 u-text--dark-blue">{post.title}</h2>
       {post.standfirst ? (
         <div className="u-body u-text--dark-blue c-blue-card__p--topic">
-          <TextClamp text={post.standfirst} lines={3} />
+          <TextClampSSR text={post.standfirst} lines={3} />
         </div>
       ) : (
         <p className="u-body u-text--dark-blue c-blue-card__p--topic">{post.longTitle}</p>
@@ -93,7 +94,7 @@ export const PublicationContent = ({ post = {} }) => (
       <h4 className="c-blue-card__heading u-primary-heading">{post.title}</h4>
       {post.standfirst ? (
         <div className="c-blue-card__lead u-body--dark-grey">
-          <TextClamp text={post.standfirst} lines={3} />
+          <TextClampSSR text={post.standfirst} lines={3} />
         </div>
       ) : null}
     </div>
@@ -120,7 +121,7 @@ export const CourseContent = ({ post = {}, content = {} }) => (
         <div>
           {post.lead && (
             <div className="c-blue-card__lead u-body--dark-grey">
-              <TextClamp text={post.lead} lines={3} />
+              <TextClampSSR text={post.lead} lines={3} />
             </div>
           )}
         </div>

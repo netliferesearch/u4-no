@@ -1,3 +1,5 @@
+"use client";
+
 import React, { Component } from 'react';
 import { client as sanityClient } from './sanityClient.pico';
 import Error404 from '../components/Error404';
@@ -71,6 +73,7 @@ const aggregations = {
   },
 };
 const doSearch = async ({ query }) => {
+  // console.log('doSearch query:', query);
   const {
     search: searchQuery = '',
     sort = 'year-desc',

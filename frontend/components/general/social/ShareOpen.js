@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useState } from 'react';
 import { Modal } from '../Modal';
 import { SocialShare } from './SocialShare';

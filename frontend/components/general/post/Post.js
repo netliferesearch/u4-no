@@ -6,7 +6,7 @@ import { Topics } from '../topics/Topics';
 import LinkToItem from '../LinkToItem';
 import { getPostType } from '../../../helpers/getRouteByType';
 import PropTypes from 'prop-types';
-import TextClamp from 'react-string-clamp';
+//import TextClamp from 'react-string-clamp';
 import { TextClampSSR} from './TextClampSSR';
 import { imgLoader } from '../../../helpers/imgloader';
 //import { Document, Page } from 'react-pdf/build/entry.noworker';
@@ -101,7 +101,7 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
             ) : (
               <div className="c-post__post-image u-overlay--light-blue">
                 <Image
-                  loader={imgLoader}
+                  // loader={imgLoader}
                   src={placeholder}
                   alt=""
                   loading="lazy"
@@ -142,14 +142,6 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
       </div>
     </div>
   );
-};
-
-Post.defaultProps = {
-  type: POST_TYPE.BLOG,
-  post: {
-    filedUnderTopicNames: []
-  },
-  placeholder: '',
 };
 
 Post.propTypes = {

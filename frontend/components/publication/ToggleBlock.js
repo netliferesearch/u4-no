@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../serializers/serializers';

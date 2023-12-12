@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from 'react';
 import { CopyToClipboardButton } from '../general/CopyToClipboardButton';
 import dateToString from '../../helpers/dateToString';

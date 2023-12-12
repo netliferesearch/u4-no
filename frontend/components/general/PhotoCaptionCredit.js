@@ -2,6 +2,9 @@ import React from 'react';
 import BlockToContent from '@sanity/block-content-to-react';
 
 export const PhotoCaptionCredit = ({ image = {}, showCaption = true, onDark = false }) => {
+  if (!image) {
+    return null;
+  }
   const { license = '', credit = '', sourceUrl = '', caption } = image;
   return (
     <div className={`c-credit ${onDark ? 'onDark' : ''}`}>

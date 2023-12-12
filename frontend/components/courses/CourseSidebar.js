@@ -7,8 +7,8 @@ import { SidebarItem } from '../general/sidebar-item/SidebarItem';
 export const CourseSidebar = ({ data }) => {
   const {
     language = '',
-    startDate = '',
-    endDate = '',
+    startDate = null,
+    endDate = null,
     courseType = {},
     otherLanguages = [],
     method = '',
@@ -22,10 +22,10 @@ export const CourseSidebar = ({ data }) => {
     <div className="c-article-sidebar c-course-sidebar">
       <div className="c-course-sidebar__right">
         {method && <SidebarItem label="Course Type" content={method} />}
-        {startDate.utc && (
+        {startDate && (
           <SidebarItem
             label="When"
-            content={dateToString({ start: startDate.utc, end: endDate.utc || '' })}
+            content={dateToString({ start: startDate.utc, end: endDate?.utc || '' })}
           />
         )}
         {cost ? <SidebarItem label="Cost" content={cost} /> : null}
@@ -34,7 +34,7 @@ export const CourseSidebar = ({ data }) => {
         {language ? (
           <SidebarItem label="Language" content={languageName({ langcode: language })} />
         ) : null}
-        {pdfAsset.asset ? (
+        {pdfAsset?.asset ? (
           <div className="c-article-sidebar__select">
             <a href={pdfAsset.asset.url} target="_blank" className="c-btn c-btn--primary" rel="noreferrer">
               <span>View course leaflet</span>

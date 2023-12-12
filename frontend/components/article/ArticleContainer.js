@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -169,7 +171,7 @@ const ArticleContainer = (props = {}) => {
 
         <span id="js-bottom" />
       </article>
-      {recommendedResources.length > 0 ? (
+      {recommendedResources?.length > 0 ? (
         <section className="">
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel
