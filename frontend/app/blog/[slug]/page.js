@@ -1,6 +1,7 @@
 import Layout from '@/app/components/layout/Layout';
 import getMetadata from '@/app/lib/getMetadata';
 import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
+import hasContent from '@/app/lib/util/hasContent';
 import { BreadCrumbV2 } from 'components/general/BreadCrumbV2';
 import { ArticleHeader } from 'components/general/article-header/ArticleHeader';
 import { ArticleSidebar } from 'components/general/article-sidebar/ArticleSidebar';
@@ -28,7 +29,7 @@ export default async function BlogPage( {params} ) {
     headsUp = '',
     pdfFile = {},
     legacypdf = {},
-    relatedResources = null,
+    relatedResources = [],
     topics = '',
     keywords = null,
   } = data;
@@ -63,7 +64,7 @@ export default async function BlogPage( {params} ) {
         <PublicationAdditionalInfo data={data} />
       </article>
 
-      {relatedResources &&
+      {hasContent(relatedResources) &&
         <section className="">
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel

@@ -94,17 +94,19 @@ export default async function Topic({ params }) {
             </div>
           )}
         </section>
+        
+        {hasContent(resources) &&
+          <section className="o-wrapper-full u-bg--lighter-blue">
+            <div className="o-wrapper-medium">
+              <FeaturedPosts
+                featured={resources}
+                // featured={resources.filter(i => Object.keys(i).length !== 0).slice(0, 5)}
+              />
+            </div>
+          </section>
+        }
 
-        <section className="o-wrapper-full u-bg--lighter-blue">
-          <div className="o-wrapper-medium">
-            <FeaturedPosts
-              featured={resources}
-              // featured={resources.filter(i => Object.keys(i).length !== 0).slice(0, 5)}
-            />
-          </div>
-        </section>
-
-        {relatedBlogPosts && (
+        {hasContent(relatedBlogPosts) && (
           <section className="">
             <div className="o-wrapper-medium o-wrapper-mobile-full">
               <PostCarousel
@@ -121,7 +123,7 @@ export default async function Topic({ params }) {
           </section>
         )}
 
-        {relatedEvents && (
+        {hasContent(relatedEvents) && (
           <section className="">
             <div className="o-wrapper-medium">
               <LearningEvents
@@ -132,7 +134,7 @@ export default async function Topic({ params }) {
           </section>
         )}
 
-        {relatedPublications && (
+        {hasContent(relatedPublications) && (
           <section className="">
             <div className="o-wrapper-medium o-wrapper-mobile-full">
               <PostCarousel
@@ -149,7 +151,7 @@ export default async function Topic({ params }) {
           </section>
         )}
 
-        {furtherResources && (
+        {hasContent(furtherResources) && (
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel
               posts={furtherResources}
@@ -163,7 +165,7 @@ export default async function Topic({ params }) {
           </div>
         )}
 
-        {resourceCollections && (
+        {hasContent(resourceCollections) && (
           <section className="o-wrapper-full u-bg--light-blue--top">
             <div className="o-wrapper-medium o-wrapper-mobile-full">
               <PostCarousel
@@ -177,7 +179,7 @@ export default async function Topic({ params }) {
           </section>
         )}
 
-        {advisors && (
+        {hasContent(advisors) && (
           <div id="advisors" className="o-wrapper-medium">
             <hr className="u-section-underline--no-margins" />
 
@@ -191,7 +193,7 @@ export default async function Topic({ params }) {
           </div>
         )}
 
-        {relatedTopics && (
+        {hasContent(relatedTopics) && (
           <section className="">
             <div className="o-wrapper-medium">
               <TopicCardList type={CARD_TYPE.TOPIC} topics={relatedTopics} title="Related topics" />
