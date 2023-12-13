@@ -1,4 +1,5 @@
 import React from 'react';
+import sanityImageLoader from 'helpers/sanityImageLoader';
 
 export const PartnersList = ({ institutions = [] }) => (
   <div className="c-partners-list">
@@ -12,7 +13,7 @@ export const PartnersList = ({ institutions = [] }) => (
               {institution && institution.name ? ` ${institution.name}` : ''}
             </p>
             {institution.logo && institution.logo.asset ? (
-              <img src={institution.logo.asset.url} alt={institution.name} className="c-logo"/>
+              <img src={sanityImageLoader({src: institution.logo.asset.url, width: 250})} alt={institution.name} className="c-logo"/>
             ) : null}
             <p className="c-partners__description u-body--small u-text--grey" >{description}</p>
           </div>

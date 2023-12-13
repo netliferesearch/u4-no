@@ -23,7 +23,7 @@ export const Topics = ({ title = '', topics = [], hr = false, onDark = false }) 
       ) : null}
       <div className="c-topics__list">
         {uniq(topics).map((topic, index) =>
-          topic.slug && topic.title ? (
+          topic?.slug && topic.title ? (
             <div key={index} className={`c-btn--tag ${onDark ? 'c-btn--tag--onDark' : ''}`}>
               <a
                 href={`/topics/${topic.slug.current ? topic.slug.current : topic.slug}`}

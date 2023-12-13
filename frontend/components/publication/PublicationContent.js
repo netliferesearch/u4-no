@@ -22,7 +22,7 @@ export const PublicationContent = ({
           publicationType={publicationType}
         />
       ) : null}
-      {mainPoints.length > 0 && <MainPoints items={mainPoints} />}
+      {mainPoints && <MainPoints items={mainPoints} />}
     </div>
   );
 };

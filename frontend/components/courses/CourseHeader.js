@@ -1,6 +1,6 @@
 import React from 'react';
 import { ShareOpen } from '../general/social/ShareOpen';
-import ReactPlayer from 'react-player';
+import VimeoPlayer from '@/app/components/general/VimeoPlayer';
 import { RegisterForm } from './RegisterForm';
 import { PageIntro } from '../general/PageIntro';
 import sanityImageLoader from '../../helpers/sanityImageLoader';
@@ -36,7 +36,7 @@ export const CourseHeader = ({ data }) => {
       </div>
       {vimeo ? (
         <div className={`u-video u-hidden--tablet  ${vimeo.size || ''}`}>
-          <ReactPlayer
+          <VimeoPlayer
             controls
             width="100%"
             height="0"
@@ -52,11 +52,13 @@ export const CourseHeader = ({ data }) => {
       ) : featuredImage && featuredImage.asset ? (
         <div className="c-course-entry__image-wrapper">
           <Image
+            alt={title}
             loader={sanityImageLoader}
             src={featuredImage.asset.url}
-            loading="lazy"
             width="484"
             height="273"
+            placeholder={featuredImage.asset.metadata.lqip ? "blur" : "empty"}
+            blurDataURL={featuredImage.asset.metadata.lqip}
             style={{
               maxWidth: "100%",
               height: "auto",

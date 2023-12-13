@@ -1,4 +1,7 @@
+"use client";
+
 import React from 'react';
+import { useEffect, useState } from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { ArrowNext } from '../icons/ArrowNext';
@@ -69,6 +72,13 @@ export const PostCarousel = ({
       <ArrowCarousel />
     </button>
   );
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    if ( typeof window !== 'undefined' ) {
+      setIsClient(true);
+    }
+  }, []);
+
   return (
     <div
       className={`c-post-list c-carousel c-post-list--2col c-post-list--column-${
@@ -84,6 +94,7 @@ export const PostCarousel = ({
         <AliceCarousel
           items={items}
           responsive={responsive}
+          innerWidth={isClient ? undefined : 980} // default value for SSR 
           renderDotsItem={renderDotsItem}
           disableButtonsControls={items.length > minPosts ? false : true}
           disableDotsControls={items.length > minPosts ? false : true}
@@ -101,14 +112,6 @@ export const PostCarousel = ({
       </div>
     </div>
   );
-};
-
-PostCarousel.defaultProps = {
-  posts: [],
-  type: '',
-  title: '',
-  buttonPath: '',
-  minPosts: 0,
 };
 
 PostCarousel.propTypes = {

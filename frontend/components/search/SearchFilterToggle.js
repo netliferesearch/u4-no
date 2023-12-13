@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ArrowDown, ArrowUp } from '../icons/ArrowDown';
 
-export const SearchFilterToggle = ({ bucketsToToggle, children }) => {
+export const SearchFilterToggle = ({ bucketsToToggle = [], children = () => null }) => {
   const [isToggleOpen, setToggleOpen] = useState(false);
   const toggleHandler = e => {
     e.preventDefault();
@@ -33,9 +33,4 @@ export const SearchFilterToggle = ({ bucketsToToggle, children }) => {
 SearchFilterToggle.propTypes = {
   bucketsToToggle: PropTypes.arrayOf(PropTypes.object),
   children: PropTypes.func,
-};
-
-SearchFilterToggle.defaultProps = {
-  bucketsToToggle: [],
-  children: () => null,
 };

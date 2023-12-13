@@ -8,7 +8,7 @@ import { ArticleActions } from '../general/article-actions/ArticleActions';
 import { PhotoCredit } from '../general/PhotoCredit';
 
 export const PublicationAdditionalInfo = ({ data = {}, setReaderOpen = () => null }) => {
-  const { _type = '', authors = [], publicationType = {}, keywords = [], language = 'en', featuredImage = {} } = data;
+  const { _type = '', authors = [], publicationType = {}, keywords = null, language = 'en', featuredImage = {} } = data;
 
   return (
     <>
@@ -27,7 +27,7 @@ export const PublicationAdditionalInfo = ({ data = {}, setReaderOpen = () => nul
             <ArticleActions data={data} setReaderOpen={setReaderOpen} />
             <AboutAuthor authors={authors} language={language} />
             <Disclaimers title={true} />
-            {keywords.length > 0 ? <Keywords title={true} keywords={keywords} hr={true} /> : null}
+            {keywords && <Keywords title={true} keywords={keywords} hr={true} />}
             <PhotoCredit image={featuredImage} />
           </div>
         </div>

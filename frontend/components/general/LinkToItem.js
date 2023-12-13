@@ -20,8 +20,4 @@ LinkToItem.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-LinkToItem.defaultProps = {
-  type: '',
-};
-
 export default LinkToItem;

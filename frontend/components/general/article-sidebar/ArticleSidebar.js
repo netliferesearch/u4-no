@@ -8,52 +8,46 @@ import { Topics } from '../topics/Topics';
 export const ArticleSidebar = ({ data }) => {
   const {
     publicationType = {},
-    authors = [],
-    editors = [],
-    partners = [],
-    recommendedResources = [],
-    relatedResources = [],
-    topics = [],
+    authors = null,
+    editors = null,
+    partners = null,
+    recommendedResources = null,
+    relatedResources = null,
+    topics = null,
   } = data;
   
-  return authors.length > 0 ||
-    editors.length > 0 ||
-    partners.length > 0 ||
-    recommendedResources.length > 0 ||
-    relatedResources.length > 0 ||
-    topics.length > 0 ? (
+  return (authors || editors || partners || recommendedResources || relatedResources || topics) &&
     <div className="c-article-sidebar">
-      {authors.length ? (
+      {authors && 
         <SidebarItem label="By">
           <AuthorListBasic authors={authors} />
         </SidebarItem>
-      ) : null}
-      {editors.length ? (
+      }
+      {editors && 
         <SidebarItem
           label={`${publicationType._id === 'pubtype-3' ? 'Reviewed by' : 'Series editor'}`}
         >
           <AuthorListBasic authors={editors} />
         </SidebarItem>
-      ) : null}
-      {partners.length > 0 ||
-      publicationType._id === 'pubtype-3' ||
-      publicationType._id === '080dc28c-9d5e-4c14-972f-73f83a206b92' ? (
+      }
+      {(partners ||
+        publicationType?._id === 'pubtype-3' ||
+        publicationType?._id === '080dc28c-9d5e-4c14-972f-73f83a206b92') &&
         <SidebarItem label="In collaboration with">
           <Partners partners={partners} publicationType={publicationType} />
         </SidebarItem>
-      ) : null}
-      {topics.length ? (
+      }
+      {topics &&
         <SidebarItem label="Topics">
           <Topics title={false} topics={topics} hr={false} />
         </SidebarItem>
-      ) : null}
-      {recommendedResources.length || relatedResources.length ? (
+      }
+      {(recommendedResources || relatedResources) &&
         <SidebarItem label="Related">
           <RelatedSimple
-            items={recommendedResources.length > 0 ? recommendedResources : relatedResources}
+            items={recommendedResources ? recommendedResources : relatedResources}
           />
         </SidebarItem>
-      ) : null}
+      }
     </div>
-  ) : null;
-};
+  };
