@@ -7,7 +7,7 @@ const FindFootnotes = (blocks = []) => {
    */
   const footnoteChecker = _type => _type === 'footnote' || _type === 'blockNote';
   const markDefinitions = blocks
-    .filter(({ markDefs = [] }) => markDefs.filter(({ _type }) => footnoteChecker(_type)).length)
+    .filter(({ markDefs = [] }) => markDefs?.filter(({ _type }) => footnoteChecker(_type)).length)
     .map(({ markDefs }) => markDefs.filter(({ _type = '' }) => footnoteChecker(_type)))
     .reduce((acc, elem) => ([...elem, ...acc]), []);
 

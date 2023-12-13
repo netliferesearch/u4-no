@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactPlayer from 'react-player';
+import VimeoPlayer from '@/app/components/general/VimeoPlayer';
 import { PageIntro } from '../general/PageIntro';
 import { getPostType } from '../../helpers/getRouteByType';
 import sanityImageLoader from '../../helpers/sanityImageLoader';
@@ -22,7 +22,7 @@ export const EventHeader = ({ data }) => {
     <div className="c-course-entry__header">
       <div
         className={`c-course-entry__intro ${
-          (featuredImage && featuredImage.asset) || vimeo ? '' : 'c-course-entry__intro--no-img'
+          (featuredImage?.asset) || vimeo ? '' : 'c-course-entry__intro--no-img'
         }`}
       >
         <PageIntro
@@ -31,7 +31,7 @@ export const EventHeader = ({ data }) => {
           contentType={contentType}
           type="withBreadcrumb"
           single
-          date={startDate.utc}
+          date={startDate?.utc}
           location={location}
         />
         {eventLink && (
@@ -44,7 +44,7 @@ export const EventHeader = ({ data }) => {
       </div>
       {vimeo ? (
         <div className={`u-video u-hidden--tablet  ${vimeo.size || ''}`}>
-          <ReactPlayer
+          <VimeoPlayer
             controls
             width="100%"
             height="0"
@@ -57,17 +57,22 @@ export const EventHeader = ({ data }) => {
             url={vimeo.src}
           />
         </div>
-      ) : featuredImage && featuredImage.asset ? (
+      ) : featuredImage?.asset ? (
         <div className="c-course-entry__image-wrapper">
           <Image
+            alt={title}
             loader={sanityImageLoader}
             src={featuredImage.asset.url}
-            loading="lazy"
             width="484"
             height="273"
-            objectFit="cover"
-            objectPosition="center center"
-          />
+            placeholder={featuredImage.asset.metadata.lqip ? "blur" : "empty"}
+            blurDataURL={featuredImage.asset.metadata.lqip}
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+              objectFit: "cover",
+              objectPosition: "center center"
+            }} />
         </div>
       ) : null}
     </div>

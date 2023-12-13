@@ -26,7 +26,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
               
               return (
               <div className="c-about-author__item" key={_id}>
-                {(index === 0 && bioShort.length) ? (
+                {(index === 0 && bioShort) ? (
                   <div>
                     <h4 className="u-primary-heading u-text--dark-blue">
                       About the author{`${authors.length > 1 ? 's' : ''}`}
@@ -36,7 +36,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                 <div className="c-about-author__name">
                   <span>
                     {slug &&
-                    affiliations.length &&
+                    affiliations &&
                     affiliations.some(
                       ({ _id }) =>
                         _id === '419c2497-8e24-4599-9028-b5023830c87f' ||
@@ -57,7 +57,7 @@ export const AboutAuthor = ({ authors = [], introkey = 'by', language = 'en' }) 
                   </div>
                 )} */}
                 <div className="c-longform">
-                  <BlockContent blocks={bioShort.length > 0 ? transField(author,'bioShort') : []} />
+                  <BlockContent blocks={bioShort ? transField(author,'bioShort') : []} />
                 </div>
               </div>
             )}

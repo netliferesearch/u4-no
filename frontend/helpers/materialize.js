@@ -8,7 +8,7 @@ function extractRefs(obj) {
     });
   } else if (obj && obj._ref) {
     return [obj._ref];
-  } else if (typeof obj === 'object') {
+  } else if (obj && (typeof obj === 'object')) {
     Object.keys(obj).forEach(key => {
       result = result.concat(extractRefs(obj[key]));
     });
@@ -34,9 +34,9 @@ function fetchAll(ids) {
 function merge(obj, children) {
   if (Array.isArray(obj)) {
     return obj.map(sub => merge(sub, children));
-  } else if (children[obj._ref]) {
+  } else if (obj && (children[obj._ref])) {
     return obj._key ? Object.assign({}, obj, { target: children[obj._ref] }) : children[obj._ref];
-  } else if (typeof obj === 'object') {
+  } else if (obj && (typeof obj === 'object')) {
     const result = {};
     Object.keys(obj).forEach(key => {
       result[key] = merge(obj[key], children);

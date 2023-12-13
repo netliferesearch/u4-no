@@ -30,7 +30,7 @@ export const BlogEntriesFilter = ({ topics, filters }) => {
 export const MultiselectModal = props => {
   const dispatch = useDispatch();
   const { title = '', options, setOpen, filters } = props;
-  console.log(filters);
+  // console.log(filters);
 
   const [selectedItems, setSelectedItems] = useState(filters);
   // ref that we add to the element for which we want to detect outside clicks

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useState } from 'react';
 import ClientOnlyPortal from '../general/ClientOnlyPortal';
 import { CloseButton } from '../general/buttons';
