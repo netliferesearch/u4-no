@@ -102,7 +102,7 @@ export const Post = ({ post, type, placeholder, showImage = true }) => {
               <div className="c-post__post-image u-overlay--light-blue">
                 <Image
                   // loader={imgLoader}
-                  src={placeholder}
+                  src={`https://www.u4.no${placeholder}`}
                   alt=""
                   loading="lazy"
                   fill

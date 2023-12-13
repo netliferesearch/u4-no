@@ -28,6 +28,11 @@ if (process.env.ANALYZE === 'true') {
           hostname: 'cdn.sanity.io',
           pathname: '/images/**',
         },
+        {
+          protocol: 'https',
+          hostname: 'www.u4.no',
+          pathname: '/public/**',
+        },
       ],
     },
   }
