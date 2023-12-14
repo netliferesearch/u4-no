@@ -15,9 +15,9 @@ export async function POST(req) {
       return new Response('Bad Request', { status: 400 })
     }
 
-    revalidateTag(body._type)
+    await revalidateTag(body._type)
     if (body.slug) {
-      revalidateTag(`${body._type}:${body.slug}`)
+      await revalidateTag(`${body._type}:${body.slug}`)
     }
     return NextResponse.json({
       status: 200,
