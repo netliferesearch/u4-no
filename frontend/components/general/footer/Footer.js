@@ -29,7 +29,9 @@ const Footer = () => (
     <div className="c-footer__bottom">
       <div className="c-footer__row u-flex-sb o-wrapper-medium">
         <div className="c-footer__col1">
-          <a href={footerText.url} className="c-footer__logo u-border--none">
+          <a href={footerText.url} className="c-footer__logo u-border--none"
+            title="Chr. Michelsen Institute"
+          >
             <CmiLogoWhite {...classes('color-icon')} />
           </a>
           <p className="u-body--small u-text--light-blue c-footer-description">

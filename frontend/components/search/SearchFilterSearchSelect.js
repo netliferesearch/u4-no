@@ -49,6 +49,7 @@ export const SearchFilterSearchSelect = ({ id, title, placeholder = 'Select...',
           onChange={handleSelect} 
           value={selectedValue}
           placeholder={placeholder}
+          aria-label={title}
           isMulti 
           isSearchable={true} 
           isClearable={false}

@@ -27,6 +27,7 @@ export const SearchFilterLanguages = () => {
       <span>
         <div className="c-filters-v2__select">
           <select
+            aria-label='Language'
             onClick={e => {
               e.preventDefault();
               setLangExpanded(prevIsExpanded => !prevIsExpanded);

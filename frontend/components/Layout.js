@@ -69,7 +69,7 @@ export const Layout = props => {
           <div {...classes('', 'fixed')}>
             <div className="o-wrapper-medium fixed-header-content" ref={ref}>
               {!hideLogo && (
-                <Link href="/" {...classes('logo', 'fixed', searchOpen ? '' : 'logo-white')}>
+                <Link href="/" {...classes('logo', 'fixed', searchOpen ? '' : 'logo-white')} title="U4 Home">
                   <LogoU4White />
                 </Link>
               )}

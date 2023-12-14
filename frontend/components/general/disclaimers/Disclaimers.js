@@ -18,11 +18,11 @@ export const Disclaimers = ({ title = false }) => {
           <p className="u-body--small">
             This work is licenced under a Creative Commons Attribution-NonCommercial-NoDerivatives
             4.0 International licence (
-            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>)
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="See definitions by Creative Commons">CC BY-NC-ND 4.0</a>)
           </p>
         </div>
         <p className="c-disclaimers__link">
-          <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+          <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="See definitions by Creative Commons">
             <CreativecommonsCC className="page2-ccimage" />
             <CreativecommonsBY className="page2-ccimage" />
             <CreativecommonsNC className="page2-ccimage" />

@@ -3,11 +3,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  @include mq($until: desktop) {
-    margin: $spacing auto 45px auto;
-    justify-content: center;
-  }
-  margin: $spacing auto 0;
+
   li {
     display: inline-block;
     list-style: none;

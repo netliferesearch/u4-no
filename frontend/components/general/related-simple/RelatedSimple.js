@@ -59,7 +59,7 @@ export const RelatedSimple = ({ items }) => {
                   href={`/${getStringsByType(item).slugOfType}${
                     typeof item.slug === 'string' ? item.slug : item.slug.current
                   }`}
-                  className="c-related-simple__link u-link--inText u-text--grey">
+                  className="c-related-simple__link u-link--inText u-text--dark-grey">
 
                   <span>{item.title}</span>
 

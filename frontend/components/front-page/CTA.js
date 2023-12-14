@@ -4,12 +4,13 @@ import Image from "next/image";
 import sanityImageLoader from '../../helpers/sanityImageLoader';
 import { ArrowNext } from '../icons/ArrowNext';
 
-export const CTA = ({ img = '', blurDataURL = "", data = {} }) => {
+export const CTA = ({ img = '', blurDataURL = "", data = {}, altText = '' }) => {
   return (
-    <div className="c-cta">
+    <div className="c-cta u-bg--darkest-blue">
       <Image
         loader={sanityImageLoader}
         src={img}
+        alt={altText}
         priority="true"
         quality="60"
         placeholder={blurDataURL ? "blur" : "empty"}

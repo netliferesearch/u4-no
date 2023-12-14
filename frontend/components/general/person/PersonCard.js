@@ -36,13 +36,14 @@ export const PersonCard = ({ person, type }) => {
           ) : ( null )}
         </div>
       ) : (
-        (<Link href={`/the-team/${person.slug}`}>
+        (<Link href={`/the-team/${person.slug}`} title={`${person.firstName} ${person.surname}`}>
 
           <div className="c-person-card__image-wrapper">
           {person.image?.asset?.url ? (
             <Image
               loader={sanityImageLoader}
               src={person.image.asset.url}
+              alt={`${person.firstName} ${person.surname}`}
               loading="lazy"
               width="176"
               height="176"
@@ -73,7 +74,7 @@ export const PersonCard = ({ person, type }) => {
           {type === PERSON_CARD_TYPE.PROFILE ? (
             <h2>{`${person.firstName} ${person.surname}`}</h2>
           ) : (
-            (<Link href={`/the-team/${person.slug}`}>
+            (<Link href={`/the-team/${person.slug}`} title={`${person.firstName} ${person.surname}`}>
 
               <h5 className="u-text--dark-blue">{`${person.firstName} ${person.surname}`}</h5>
 
@@ -82,17 +83,18 @@ export const PersonCard = ({ person, type }) => {
           {person.position && (
             <span className="c-person-card__position u-text--grey">{person.position}</span>
           )}
+          {/* {person.email && (
+            <a href={`mailto:${person.email}`}>
+              <div className="c-person-card__email">
+                <div className="c-person-card__adress">{`Email: ${person.email}`}</div>
+              </div>
+            </a>
+          )} */}
         </div>
-        {person.email && (
-          <a href={`mailto:${person.email}`}>
-            <div className="c-person-card__email">
-              <div className="c-person-card__adress">{`Email: ${person.email}`}</div>
-            </div>
-          </a>
-        )}
         {type === PERSON_CARD_TYPE.PROFILE && (
           <div className=" c-person-card__social">
             <SocialFollow
+              target={`${person.firstName} ${person.surname}`}
               twitter={person.twitter}
               linkedIn={person.linkedIn}
               faceBook={person.faceBook}

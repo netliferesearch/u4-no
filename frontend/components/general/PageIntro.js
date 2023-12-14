@@ -62,7 +62,7 @@ export const PageIntro = ({
       )}
       {text && pubType !== 'publication' && (
         <div
-          className={`c-page-intro__p ${onDark ? 'u-text--white' : 'u-text--grey'} ${
+          className={`c-page-intro__p ${onDark ? 'u-text--white' : 'u-text--dark-grey'} ${
             single ? 'u-body--large u-text--dark-grey' : 'u-body'
           }`}
         >
