@@ -16,7 +16,9 @@ $highlight-blue: #00c2ff;
 $highlight-yellow: #fac230;
 $light-blue: #e4f1fa;
 $lighter-blue: #f4f9fd;
+$darker-grey: #292929;
 $dark-grey: #333333;
+$mid-grey-darker: #6B6B6B;
 $mid-grey: #6f6f6f;
 $light-grey: #f0f0f0;
 $lightest-grey: #F8F8F8;
@@ -27,3 +29,16 @@ $v2-yellow: #fef0cb;
 $v2-brown: #5c460c;
 $v2-lightest-green: #e9f0dc;
 $v2-teal: #34c2d0;
+
+// on light blue background text and link color slightly adjusted for contrast
+@mixin bg--lighter-blue {
+    background-color: $lighter-blue;
+    color: $darker-grey;
+
+    a:not(.c-btn) {
+        color: #0073D4;
+    }
+}
+.u-bg--lighter-blue {
+    @include bg--lighter-blue;
+}

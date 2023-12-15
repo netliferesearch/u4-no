@@ -124,6 +124,7 @@ export const ArticleHeader = ({ data = {}, setReaderOpen = null }) => {
               <Image
                 loader={sanityImageLoader}
                 src={featuredImage.asset.url}
+                alt={featuredImage.altText}
                 loading="eager"
                 width="691"
                 height="353"

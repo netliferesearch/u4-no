@@ -113,7 +113,7 @@ const sanityQuery = groq`*[_type  == "blog-post" && slug.current == $slug]{
     language, 
     translation,
     basedonpublication->{_id,_type,title,"slug":slug.current},
-    featuredImage{caption,credit,sourceUrl,license, asset->{altText,url,metadata{lqip,dimensions{width,height}}}},
+    featuredImage{caption,credit,sourceUrl,license,altText,asset->{url,metadata{lqip,dimensions{width,height}}}},
     "translations": *[ _type == 'blog-post' && ( _id != ^._id ) && ( ( _id == ^.translation._ref) || translation._ref == coalesce(^.translation._ref, ^._id ))]{title, "slug": slug.current, language},
     "relatedResources": relatedContent[0..2]->{_type, _id, title, publicationType->{ title }, "articleTypeTitle": articleType[0]->title, "imageUrl": featuredImage.asset->url, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}
   }[0]`;
