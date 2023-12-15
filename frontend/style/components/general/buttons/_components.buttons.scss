@@ -94,7 +94,7 @@
 .c-btn--primary {
   font-family: $font-sans;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -117,7 +117,7 @@
   }
   a {
     font-weight: 700;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -128,7 +128,7 @@
 .c-btn--secondary {
   font-family: $font-sans;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -192,12 +192,12 @@
   a {
     font-family: $font-sans;
     font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 14px;
+    line-height: 16px;
     letter-spacing: 0.01em;
     display: inline-block;
     padding: 7px 12px;
-    color: $mid-grey;
+    color: $dark-grey;
     transition: $global-transition--longer;
   }
 
@@ -370,7 +370,7 @@
 .c-btn--submit {
   font-family: $font-sans;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1;
   letter-spacing: 0.15em;
   text-transform: uppercase;

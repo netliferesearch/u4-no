@@ -16,13 +16,13 @@ export const PaginationComponent = ({ total, limit, maxPagesListed = 5, currentP
   };
 
   return (
-    <div>
       <Pagination total={total} limit={limit} pageCount={pageCount} currentPage={currentPage}>
         {({ pages, currentPage, previousPage, nextPage, totalPages, getPageItemProps }) => (
           <ul className="paginator-list">
             {currentPage > 2 ? (
               <li>
-                <button
+                <button 
+                  title="First page"
                   className={`pagination-item first-button ${currentPage <= 1 ? 'disabled' : ''}`}
                   {...getPageItemProps({
                     pageValue: 1,
@@ -36,6 +36,7 @@ export const PaginationComponent = ({ total, limit, maxPagesListed = 5, currentP
             {currentPage > 1 ? (
               <li>
                 <button
+                  title="Previous page"
                   className={`pagination-item prev-button ${currentPage <= 1 ? 'disabled' : ''}`}
                   {...getPageItemProps({
                     pageValue: previousPage,
@@ -54,6 +55,7 @@ export const PaginationComponent = ({ total, limit, maxPagesListed = 5, currentP
               return (
                 <li key={page}>
                   <button
+                    title={`Page ${currentPage}`}
                     className={`pagination-item ${currentPage === page ? 'active ' : ''}`}
                     {...getPageItemProps({
                       pageValue: page,
@@ -67,11 +69,12 @@ export const PaginationComponent = ({ total, limit, maxPagesListed = 5, currentP
               );
             })}
             {totalPages > pageCount && totalPages - currentPage > 2 ? (
-              <div className="pagination-item pointer-events--none">...</div>
+              <li className="pagination-item pointer-events--none">...</li>
             ) : null}
             {totalPages > pageCount && totalPages - currentPage > 2 ? (
               <li>
                 <button
+                  title="Last page"
                   className="pagination-item"
                   {...getPageItemProps({
                     pageValue: totalPages,
@@ -85,6 +88,7 @@ export const PaginationComponent = ({ total, limit, maxPagesListed = 5, currentP
             {currentPage < totalPages ? (
               <li>
                 <button
+                  title="Next page"
                   className={`pagination-item next-button ${
                     totalPages - 1 >= currentPage ? '' : 'disabled'
                   }`}
@@ -100,6 +104,7 @@ export const PaginationComponent = ({ total, limit, maxPagesListed = 5, currentP
             {currentPage < totalPages - 1 ? (
               <li>
                 <button
+                  title="Last page"
                   className={`pagination-item last-button ${
                     currentPage >= totalPages ? 'disabled' : ''
                   }`}
@@ -115,6 +120,5 @@ export const PaginationComponent = ({ total, limit, maxPagesListed = 5, currentP
           </ul>
         )}
       </Pagination>
-    </div>
   );
 };

@@ -31,7 +31,7 @@ export default async function Frontpage(params) {
     <div className="c-frontpage">
       <section className="o-wrapper-full">
         <div className="">
-          <CTA img={frontPage.imageUrl} data={heroData} blurDataURL={frontPage.imageBlurDataURL} />
+          <CTA img={frontPage.imageUrl} data={heroData} blurDataURL={frontPage.imageBlurDataURL} altText={frontPage.imageAltText}/>
         </div>
       </section>
       <section className="u-bg--lighter-blue o-wrapper-full">
@@ -119,6 +119,7 @@ const sanityQuery2 = `{
       "sections": sections[]{...,featureArray[]{_key,featureText,image{title,"url":asset->url}}},
       "imageUrl":featuredImage.asset->url,
       "imageBlurDataURL":featuredImage.asset->metadata.lqip,
+      "imageAltText" : featuredImage.altText,
       "resources": resources[0..4]->{
         _id,
         _type, 

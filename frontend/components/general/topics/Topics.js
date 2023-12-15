@@ -29,7 +29,7 @@ export const Topics = ({ title = '', topics = [], hr = false, onDark = false }) 
                 href={`/topics/${topic.slug.current ? topic.slug.current : topic.slug}`}
                 className="topic--plain"
               >
-                <div>{topic.title}</div>
+                {topic.title}
               </a>
             </div>
           ) : typeof topic === 'string' ? (

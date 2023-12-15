@@ -4,6 +4,10 @@
 
 .u-bg--lighter-blue {
   background-color: $lighter-blue;
+
+  a:not(.c-btn) {
+    color: $brand-medium;
+  }
 }
 
 .u-bg--light-blue--top {

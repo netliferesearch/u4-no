@@ -46,6 +46,7 @@ export const SearchFilterYears = () => {
         <span>
           <div className="c-filters-v2__select">
             <select
+              aria-label='Year from'
               onClick={e => {
                 e.preventDefault();
                 setFromExpanded(prevIsExpanded => !prevIsExpanded);
@@ -83,6 +84,7 @@ export const SearchFilterYears = () => {
         <span>
           <div className="c-filters-v2__select">
             <select
+              aria-label='Year to'
               onClick={e => {
                 e.preventDefault();
                 setToExpanded(prevToExpanded => !prevToExpanded);
