@@ -2,12 +2,17 @@
   background-color: $white;
 }
 
-.u-bg--lighter-blue {
+// on light blue background slightly adjusted text and link color for contrast
+@mixin bg--lighter-blue {
   background-color: $lighter-blue;
+  color: #292929;
 
   a:not(.c-btn) {
-    color: $brand-medium;
+    color: #0073D4;
   }
+}
+.u-bg--lighter-blue {
+  @include bg--lighter-blue;
 }
 
 .u-bg--light-blue--top {
