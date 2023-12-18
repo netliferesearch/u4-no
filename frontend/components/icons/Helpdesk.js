@@ -6,7 +6,9 @@ export default function Helpdesk(props) {
       width="60"
       height="72"
       viewBox="0 0 60 72"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="Helpdesk"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >

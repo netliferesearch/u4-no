@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Loading(props) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19">
+    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" role="img" >
       <g fill="none" stroke="#0079CF" strokeWidth="2" transform="translate(1 1)">
         <circle cx="8.5" cy="8.5" r="8.5" stroke="none" />
         <path strokeOpacity=".05" d="M8.5,17 C11.0624041,17 13.3599856,15.8661591 14.918399,14.0728225" />

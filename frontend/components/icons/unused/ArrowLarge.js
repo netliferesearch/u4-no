@@ -6,7 +6,9 @@ export default function ArrowLarge(props) {
       width={48}
       height={12}
       viewBox="0 0 48 12"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="Arrow"
       {...props}
     >
       <path

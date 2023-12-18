@@ -3,6 +3,11 @@
   background-color: $lightest-grey;
   max-width: 691px;
   margin-bottom: 8px;
+
+  a,
+  .c-longform-grid__standard a {
+    color: $blue-on-bg;
+  }
 }
 
 .c-toggle-block__h {

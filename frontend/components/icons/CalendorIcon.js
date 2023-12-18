@@ -9,6 +9,8 @@ export const CalendorIcon = () => {
       viewBox="0 0 14 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      title="Calendar"
     >
       <path
         className="c-events-calendor-icon"

@@ -3,7 +3,7 @@ import React from 'react';
 export const ArrowRightSlim = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" role="img" 
       width="17.707"
       height="9.302"
       viewBox="0 0 17.707 9.302"

@@ -6,7 +6,9 @@ export default function CmiLogo(props) {
       width="171"
       height="40"
       viewBox="0 0 171 40"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="CMI Logo"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >

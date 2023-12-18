@@ -186,7 +186,6 @@ const ArticleContainer = (props = {}) => {
         </section>
       ) : null}
 
-      <Footer />
       <div id="modal" />
     </Layout>
   );

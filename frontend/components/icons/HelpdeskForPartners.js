@@ -3,7 +3,7 @@ import React from 'react';
 export const HelpdeskForPartners = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" role="img" 
       version="1.0"
       width="89.000000pt"
       height="89.000000pt"

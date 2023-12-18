@@ -9,6 +9,8 @@ export const ArrowDownCollapsible = () => {
       viewBox="0 0 15 9"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      title="Down"
     >
       <path opacity="0.5" d="M1 1L7.5 7.5L14 1" stroke="white" strokeWidth="1.5" />
     </svg>

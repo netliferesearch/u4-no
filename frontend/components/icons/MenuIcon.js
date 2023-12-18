@@ -8,7 +8,9 @@ export const MenuIcon = props => {
       height="17"
       viewBox="0 0 19 17"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="Menu"
     >
       <path d="M0 1.71436H18.5714" stroke="white" strokeWidth="2" />
       <path d="M0 8.85718H18.5714" stroke="white" strokeWidth="2" />

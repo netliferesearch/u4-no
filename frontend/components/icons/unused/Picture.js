@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Picture(props) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" xmlnsXlink="http://www.w3.org/1999/xlink" width={44} height={44} {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" role="img"  viewBox="0 0 44 44" xmlnsXlink="http://www.w3.org/1999/xlink" width={44} height={44} {...props}>
       <defs>
         <polygon id="a" points="0 43.826 43.293 43.826 43.293 0 0 0" />
       </defs>

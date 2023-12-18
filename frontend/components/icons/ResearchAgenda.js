@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ResearchAgenda(props) {
   return (
-    <svg width="72px" height="70px" viewBox="0 0 72 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+    <svg width="72px" height="70px" viewBox="0 0 72 70" version="1.1" xmlns="http://www.w3.org/2000/svg" role="img" title="Research Agenda"  xmlnsXlink="http://www.w3.org/1999/xlink">
       <defs>
         <polygon id="path-1" points="0 0.0024 0 47.8757333 22.0920756 47.8757333 22.0920756 0.0024" />
         <polygon id="path-3" points="39.7008 0.933333333 0.0848 0.933333333 0.0848 70.6664 39.7008 70.6664 39.7008 0.933333333" />

@@ -1,16 +1,16 @@
-import getMetadata from '@/app/lib/getMetadata';
 import { StoreProvider } from '@/app/lib/redux/redux-provider';
 import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
+import getMetadata from '@/app/lib/getMetadata';
 import ArticleContainer from 'components/article/ArticleContainer';
 import { groq } from 'next-sanity';
 
-export default async function Page({params}){
+export default async function AboutPage({params}){
 
   const data = await getData( params );
 
   return (
     <StoreProvider>
-      <ArticleContainer data={data} />
+        <ArticleContainer data={data} breadCrumbTitle="About" />
     </StoreProvider>
   );
 }

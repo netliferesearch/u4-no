@@ -4,7 +4,9 @@ export const SearchIcon = (props) => {
   return (
     <svg
       className="c-search-v2__icon-svg"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="Search"
       width="19"
       height="19"
       viewBox="0 0 19 19"

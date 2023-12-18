@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Copy = () => {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" title="Copy" >
       <path
         d="M6.46788 8.9375C6.74913 9.21875 7.21788 9.21875 7.49913 8.9375L13.5929 2.875C13.8741 2.5625 13.8741 2.09375 13.5929 1.8125L12.8741 1.09375C12.5929 0.8125 12.1241 0.8125 11.8116 1.09375L6.99913 5.90625L2.15538 1.09375C1.84288 0.8125 1.37413 0.8125 1.09288 1.09375L0.374132 1.8125C0.0928822 2.09375 0.0928822 2.5625 0.374132 2.875L6.46788 8.9375Z"
         fill="#BDBDBD"

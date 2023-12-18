@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Logo(props) {
   return (
-    <svg className="c-logo" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 50" {...props}>
+    <svg className="c-logo" xmlns="http://www.w3.org/2000/svg" role="img" title="U4 Logo" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 50" {...props}>
       <g className="c-logo__symbol">
         <path fill="#fff" d="M44.19.9L14.55 43.53h22.67V50h6.97v-6.48h4.9v-6.27h-4.9V.9zm-6.97 21.05v15.3H26.57l10.65-15.3z" />
 

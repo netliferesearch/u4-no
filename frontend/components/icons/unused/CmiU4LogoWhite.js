@@ -5,7 +5,7 @@ export const CmiU4LogoWhite = () => {
       height="90"
       viewBox="0 0 1366 90"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" role="img" 
     >
       <g style="mix-blend-mode:multiply">
         <rect x="-36" width="1440" height="90" fill="#162063" />

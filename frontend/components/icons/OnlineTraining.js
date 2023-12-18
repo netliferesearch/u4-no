@@ -7,6 +7,8 @@ export default function OnlineTraining(props) {
       height="72"
       viewBox="0 0 73 72"
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      title="Online Training"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >
