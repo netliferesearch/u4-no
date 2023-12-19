@@ -87,13 +87,13 @@ export const CloseButton = ({ onClick = () => null, modifier = 'close', children
 //   </button>
 // );
 
-export const SubmitButton = ({ onClick = () => null, modifier = 'submit', text = 'Submit' }) => (
+export const SubmitButton = ({ onClick = () => null, modifier = 'submit', text = 'Submit', value = 'submit' }) => (
   <button
     {...classes({ modifier })}
     onClick={onClick}
-    aria-label="submit"
+    aria-label={text}
     type="submit"
-    value="Subscribe"
+    value={value}
   >
     {text}
   </button>
