@@ -12,6 +12,7 @@ export const MainMenuItem = ({
   searchOpen = false,
 }) => {
   const handleClick = (e, id) => {
+    console.log( "handleClick", e.target);
     e.preventDefault();
     if (item.id !== 'search') {
       setActiveMenu(!activeMenu);
@@ -25,22 +26,23 @@ export const MainMenuItem = ({
     setActiveItem(id);
   };
   return item.slug ? (
-    (<Link href={item.slug} className="c-btn c-menu__link u-no-underline">
+    (<Link href={item.slug} className="c-btn c-menu__link u-no-underline" >
 
-      <h3
+      <span
         className={`c-menu__heading c-menu__heading${activeItem === item.id ? '--active' : ''}`}
       >
         {item.label}
-      </h3>
+      </span>
 
     </Link>)
   ) : (
-    <h3
+    <button
+      tabIndex={0}
       onClick={e => handleClick(e, item.id)}
       className={`c-menu__heading c-menu__heading${activeItem === item.id ? '--active' : ''} c-menu__heading${item.id === 'search' ? '--search' : ''}`}
     >
       {item.label}
       {item.id === 'search' && <SearchIcon />}
-    </h3>
+    </button>
   );
 };
