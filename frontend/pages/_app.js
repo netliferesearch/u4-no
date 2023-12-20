@@ -1,5 +1,13 @@
+import { Lato } from 'next/font/google';
 import '../style/global.scss';
 import { useRouter } from 'next/router';
+
+const lato = Lato({
+  weight: ['400', '700'], // 300 and 900 left out
+  style: ['normal'], // 'italic' left out
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 function U4App({ Component, pageProps }) {
   const router = useRouter();
@@ -16,6 +24,7 @@ function U4App({ Component, pageProps }) {
               overflow-y: scroll;
               min-height: 100%;
               overflow-y: initial;
+              --font-lato: ${lato.style.fontFamily}, 'KaiTi', 'STKaiti', 'Noto Serif TC', sans-serif;
             }
           `}
         </style>
