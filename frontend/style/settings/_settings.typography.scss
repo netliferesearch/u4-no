@@ -5,14 +5,14 @@
 
 
 // fallback for Lato optimized at https://deploy-preview-15--upbeat-shirley-608546.netlify.app/perfect-ish-font-fallback/?font=Lato
-@font-face {
-    font-family: "Lato-fallback";
-    size-adjust: 97.37%;
-    ascent-override: 94%;
-    src: local("Arial");
-}
+// @font-face {
+//     font-family: "Lato-fallback";
+//     size-adjust: 97.37%;
+//     ascent-override: 94%;
+//     src: local("Arial");
+// }
 
-$font-sans: 'Lato','Lato-fallback', Helvetica, Arial, 'KaiTi', 'STKaiti', 'Noto Serif TC', sans-serif;
+$font-sans: var(--font-lato); //'Lato','Lato-fallback', Helvetica, Arial, 'KaiTi', 'STKaiti', 'Noto Serif TC', sans-serif;
 $font-serif: Georgia, 'KaiTi', 'STKaiti', 'Noto Serif TC', serif;
 
 $line-height-tiny: 1;
