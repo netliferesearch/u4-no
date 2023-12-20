@@ -6,7 +6,9 @@ export default function Pin(props) {
       width="31"
       height="40"
       viewBox="0 0 31 44"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="Pin"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >

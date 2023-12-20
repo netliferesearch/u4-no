@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function U4LogoSquare(props) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284 284" width={284} height={284} {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" role="img"  viewBox="0 0 284 284" width={284} height={284} {...props}>
       <g fill="#0079CF" transform="translate(0 -1)">
         <path d="M7.6 225.6L0 252.5h5.3l1.4-5.7h7.1l1.6 5.7h5.3l-7.6-26.9H7.6zm2.7 7.5h.1l2.4 9.5h-5l2.5-9.5z" />
         <polygon points="36.3 242.9 36.2 242.9 28 225.7 22.7 225.7 22.7 252.6 28 252.6 28 235.4 28.1 235.4 36.3 252.6 41.5 252.6 41.5 225.799 36.3 225.799" />

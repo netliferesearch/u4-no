@@ -3,7 +3,7 @@ import React from 'react';
 export default function FbRound(props) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" role="img" 
       width="37.29"
       height="37.29"
       viewBox="0 0 37.29 37.29"

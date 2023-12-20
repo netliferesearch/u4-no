@@ -6,7 +6,9 @@ export default function Download(props) {
       width="128"
       height="199"
       viewBox="0 0 128 199"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="Download"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >

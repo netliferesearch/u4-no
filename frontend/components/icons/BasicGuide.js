@@ -8,6 +8,8 @@ export default function BasicGuide(props) {
       viewBox="0 0 57 58"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      title="Basic guide icon"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       <defs>

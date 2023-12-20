@@ -175,7 +175,7 @@ export const SectionBar = ({ sectionNo = 0, setContentsOpen, contentsOpen = fals
             }}
           >
             <h5 className="u-secondary-heading u-secondary-h3 u-text--white">Contents</h5>
-            <ArrowContent />
+            <ArrowContent title="Show/hide contents" />
           </button>
         </div>
       </div>

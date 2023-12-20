@@ -61,7 +61,7 @@ export const Layout = props => {
     >
       <span ref={menuRef} />
       {showTopTab && (
-        <>
+        <header>
           <div
             className={`c-top-bar__background ${
               activeMenu || searchOpen ? '' : 'u-bg--transparent-blue '
@@ -98,9 +98,11 @@ export const Layout = props => {
               />
             </div>
           </div>
-        </>
+        </header>
       )}
+      <main>
       {children}
+      </main>
     </div>
   );
 };

@@ -4,6 +4,8 @@ export const OnlineTrainingIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      title="Online Training icon"
       version="1.0"
       width="90.000000pt"
       height="89.000000pt"

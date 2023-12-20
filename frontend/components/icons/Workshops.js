@@ -6,7 +6,9 @@ export default function Workshops(props) {
       width="60"
       height="60"
       viewBox="0 0 60 60"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="Workshops"
       {...props}
     >
       <g fill="#FFF" fillRule="evenodd">

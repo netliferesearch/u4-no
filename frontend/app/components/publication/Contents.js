@@ -89,7 +89,7 @@ export const Contents = ({ title = '', titleObjects = [], scrolled = false, foot
           <h3 className="u-secondary-heading u-secondary-h4">Contents</h3>
           {scrolled && (
             <div className="c-scroll-top--contents">
-              <Scrollchor to="#js-top-reader" disableHistory>
+              <Scrollchor to="#js-top-reader" disableHistory title="Scroll to top">
                 <ToTop />
               </Scrollchor>
             </div>

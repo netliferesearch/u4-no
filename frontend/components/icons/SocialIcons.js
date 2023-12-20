@@ -3,7 +3,9 @@ import React from 'react';
 export const FacebookIcon = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="Facebook"
       width="32"
       height="32"
       viewBox="0 0 32 32"
@@ -28,7 +30,9 @@ export const FacebookIcon = () => {
 export const LinkedInIcon = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="LinkedIn"
       width="32"
       height="32"
       viewBox="0 0 32 32"
@@ -55,7 +59,9 @@ export const TwitterIcon = () => {
     
     <svg
       className="c-social-icons-svg"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="X / Twitter"
       // version="1.2"
       baseProfile="tiny-ps"
       width="32"
@@ -93,7 +99,9 @@ export const EmailIcon = () => {
   return (
     <svg
       className="c-social-icons-svg"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="E-mail"
       width="32"
       height="32"
       viewBox="0 0 32 32"
@@ -118,7 +126,7 @@ export const EmailIcon = () => {
 
 export const EmailIconSmall = () => {
   return (
-    <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" title="E-mail" >
       <path
         d="M16.2686 1.5V10.5C16.2686 11.33 15.5986 12 14.7686 12H1.76855C0.938555 12 0.268555 11.33 0.268555 10.5V1.5C0.268555 0.67 0.938555 0 1.76855 0H14.7686C15.5986 0 16.2686 0.67 16.2686 1.5ZM1.26855 1.5V2.79C1.95855 3.37 2.92855 4.17 5.97855 6.58C6.49855 7 7.54855 8.01 8.26855 8C8.99855 8.01 10.0386 7 10.5586 6.58C13.5986 4.16 14.5786 3.37 15.2686 2.79V1.5C15.2686 1.23 15.0486 1 14.7686 1H1.76855C1.49855 1 1.26855 1.23 1.26855 1.5ZM15.2686 10.5V4.09C14.5586 4.67 13.4286 5.58 11.1886 7.36C10.5286 7.89 9.40856 9.01 8.26855 9C7.12855 9.01 5.99855 7.88 5.34855 7.37C3.10855 5.58 1.97855 4.68 1.26855 4.09V10.5C1.26855 10.77 1.49855 11 1.76855 11H14.7686C15.0486 11 15.2686 10.77 15.2686 10.5Z"
         fill="#6F6F6F"

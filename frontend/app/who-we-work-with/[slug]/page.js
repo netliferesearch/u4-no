@@ -1,17 +1,12 @@
-//import React from 'react';
-//import { Provider } from 'react-redux';
-//import { initStore } from '../../../helpers/redux-store';
-import { StoreProvider } from '../../lib/redux/redux-provider';
+import { StoreProvider } from '@/app/lib/redux/redux-provider';
 import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
 import getMetadata from '@/app/lib/getMetadata';
-import { blocksToText } from '../../../helpers/blocksToText';
-import Footer from '../../../components/general/footer/Footer';
-import Layout from '../../components/layout/Layout';
-import ServiceArticle from '../../../components/ServiceArticle';
-import { PageIntro } from '../../../components/general/PageIntro';
-import ArticleContainer from '../../../components/article/ArticleContainer';
+import Layout from '@/app/components/layout/Layout';
+import ServiceArticle from 'components/ServiceArticle';
+import { PageIntro } from 'components/general/PageIntro';
+import ArticleContainer from 'components/article/ArticleContainer';
+import { groq } from 'next-sanity';
 
-//const store = initStore();
 
 async function FrontPage( data ){
   const { title = '', featuredImage = {}, lead = '', sections, relatedUrl = {} } = data;
@@ -20,7 +15,6 @@ async function FrontPage( data ){
     <Layout  >
       {lead || (title && <PageIntro title={title} text={lead ? lead : ''} />)}
       {sections ? <ServiceArticle blocks={sections} /> : null}
-      <Footer />
     </Layout>
   )
 }
@@ -43,7 +37,11 @@ export default async function AboutPage({params}){
 export async function generateMetadata({ params, searchParams }, parent) {
 
   const data = await getData( params );
-  const {title = '', lead = '', featuredImage = ''} = data;
+  const {
+    title = '', 
+    lead = '', 
+    featuredImage = ''
+  } = data;
  
   return getMetadata({
     title: title,
@@ -52,7 +50,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
   });
 }
 
-const sanityQuery = `*[slug.current == $slug][0] {
+const sanityQuery = groq`*[slug.current == $slug][0] {
     content[]{'markDefs':markDefs[]{
       _type == 'internalReferance' => {_key,_type,"target": @->{_id,_type,title,slug}},
       _type != 'internalReferance' => {...},

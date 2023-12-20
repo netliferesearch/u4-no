@@ -7,6 +7,8 @@ export default function Download(props) {
       height={12}
       viewBox="0 0 18 12"
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      title="Download"
       {...props}
     >
       <path

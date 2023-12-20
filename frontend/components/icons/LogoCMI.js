@@ -4,7 +4,9 @@ export const LogoCMI = props => {
   return (
     <svg
       className="cmi-logo"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="CMI Logo"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       width={61.384}
       height={29.1}

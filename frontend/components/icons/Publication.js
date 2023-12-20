@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Publication(props) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 44" xmlnsXlink="http://www.w3.org/1999/xlink" width={49} height={44} {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" role="img" title="Publication" viewBox="0 0 49 44" xmlnsXlink="http://www.w3.org/1999/xlink" width={49} height={44} {...props}>
       <defs>
         <polygon id="a" points=".013 .305 48.708 .305 48.708 43.5 .013 43.5" />
       </defs>

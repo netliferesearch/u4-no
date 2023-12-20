@@ -6,7 +6,7 @@ export default function FacebookLogo (props) {
       width="70"
       height="70"
       viewBox="0 0 70 70"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" role="img" 
       {...props}
     >
     <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914

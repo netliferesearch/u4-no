@@ -4,7 +4,9 @@ export default function CreativecommonsCC(props) {
   return (
     <svg
       version="1.0"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="Creative Commons CC"
       width="64px"
       height="64px"
       viewBox="5.5 -3.5 64 64"

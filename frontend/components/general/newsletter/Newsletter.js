@@ -25,8 +25,8 @@ export const Newsletter = ({
         {text2 && <p className="c-newsletter__text u-hidden--desktop">{text2}</p>}
         <form onSubmit={onFormSubmit}>
           <div className="c-newsletter__form-content">
-            <input className="c-newsletter__input" type="email" name="email" placeholder={title} />
-            <SubmitButton text={button} />
+            <input className="c-newsletter__input" type="email" id="email" name="email" placeholder={title} title={title}/>
+            <SubmitButton text={button} value="subscribe" />
           </div>
         </form>
         {text1 && <p className="c-newsletter__text u-hidden--tablet">{text1}</p>}

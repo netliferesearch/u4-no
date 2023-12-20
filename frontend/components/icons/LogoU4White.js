@@ -6,7 +6,9 @@ export default function LogoU4White(props) {
       height="33"
       viewBox="0 0 240 33"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="U4 Logo"
     >
       <g clipPath="url(#clip0)">
         <path

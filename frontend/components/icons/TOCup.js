@@ -7,7 +7,9 @@ export default function TOCup(props) {
       height="16px"
       viewBox="0 0 9 16"
       version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
+      role="img" 
+      title="TOC"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >

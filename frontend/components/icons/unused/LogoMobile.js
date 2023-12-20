@@ -4,7 +4,7 @@ export const LogoMobile = (props) => {
   return (
     <svg
       className="logo-mobile"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" role="img" 
       xmlnsXlink="http://www.w3.org/1999/xlink"
       width="29.995"
       height="30"

@@ -251,10 +251,10 @@
   &:hover,
   &:active {
     a {
-      color: $blue;
+      color: $blue-on-bg;
     }
     .c-contents__subtitle {
-      color: $highlight-blue;
+      color: $blue-on-bg;
     }
   }
 }
@@ -284,9 +284,9 @@
 
 .c-contents__list-item--active {
   a {
-    color: $blue;
+    color: $blue-on-bg;
   }
   .c-contents__subtitle {
-    color: $highlight-blue;
+    color: $blue-on-bg;
   }
 }

@@ -1,5 +1,5 @@
 export const Note = () => {
-    return <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22">
+    return <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" role="img" title="Note" >
     <g id="Group_108" data-name="Group 108" transform="translate(-712 -922)">
       <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(712 923)" fill="#0079cf" stroke="#0079cf" strokeWidth="1">
         <circle cx="10" cy="10" r="10" stroke="none"/>
