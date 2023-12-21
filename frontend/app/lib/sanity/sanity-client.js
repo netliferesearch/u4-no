@@ -19,10 +19,10 @@ export async function sanityFetch({
   tags = [],
 }) {
   return client.fetch(query, params, {
-    cache: 'force-cache',
+    //cache: 'force-cache',
     next: {
-      //revalidate: 30, // for simple, time-based revalidation
-      tags, // for tag-based revalidation
+      revalidate: 600, // for simple, time-based revalidation
+      //tags, // for tag-based revalidation
     },
   })
 }
