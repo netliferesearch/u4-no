@@ -12,6 +12,7 @@ export default function CmiLogo(props) {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >
+      <title>CMI - Chr. Michelsen Institute (logo)</title>
       <defs>
         <path id="a" d="M0 39.4h170V0H0z" /></defs><g id="Welcome" fill="none" stroke="none" strokeWidth="1">
           <g id="Topic" transform="translate(-85.000000, -5836.000000)">

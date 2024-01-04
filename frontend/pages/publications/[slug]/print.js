@@ -20,6 +20,7 @@ const PublicationEntry = ({ data: { current, institutions = [], u4 } = {} }) => 
   return (
     <div>
       <Head>
+        <title>{current.title}</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap"
           rel="stylesheet"

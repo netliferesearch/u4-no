@@ -31,6 +31,7 @@
   .c-footer {
     display: none;
   }
+  // --font-lato: 'Lato', 'KaiTi', 'STKaiti', 'Noto Serif TC', sans-serif;
 }
 
 /*
@@ -60,6 +61,7 @@
   body {
     color: black;
     font-family: $font-serif;
+    --font-lato: 'Lato', 'KaiTi', 'STKaiti', 'Noto Serif TC', sans-serif;
     //-webkit-font-smoothing: antialiased;
   }
 
@@ -188,6 +190,16 @@
   color: $blue;
   min-height: 108px; //132px - 24px margin
   margin-bottom: 24px;
+}
+
+/* decorative elements */
+.artifact {
+  -prince-pdf-tag-type: Artifact;
+}
+
+/* reference list accessible tags */
+#references p {
+  -prince-pdf-tag-type: BibEntry;
 }
 
 /* page specific styles */
@@ -529,6 +541,8 @@
     font-family: $font-sans;
     font-size: 14px;
 
+    -prince-pdf-tag-type: TOC;
+
     .toc-list {
       list-style-type: none;
       margin: 0;
@@ -549,6 +563,8 @@
         word-break: normal;
         hyphens: none;
         color: #000;
+
+        -prince-pdf-tag-type: TOCI;
       }
     }
   

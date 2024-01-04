@@ -148,15 +148,15 @@ const LongFormArticleContainer = props => {
         </div>
 
         {featuredImage.asset && (
-          <img className='front-cover-image' src={featuredImage.asset.url} alt={featuredImage.credit} />
+          <img className='front-cover-image' src={featuredImage.asset.url} alt={`${featuredImage.altText} ${featuredImage.credit}`}  />
         )}
-        <div className="front-cover-art-left">
+        <div className="front-cover-art-left artifact">
           <svg width="80" height="556" viewBox="0 0 80 556" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" >
           <path d="M0 556C9.74132 548.984 19.0259 540.936 27.8453 531.857C62.5134 495.92 79.9208 450.163 79.9208 394.594V0H0.147894L0.140173 372.705C0.140173 376.336 0.0935015 379.889 0 383.363V556Z" fill="#0079CF"/>
           </svg>
         </div>
 
-        <div className="front-cover-art-right">
+        <div className="front-cover-art-right artifact">
           <svg width="164" height="227" viewBox="0 0 164 227" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" >
           <path d="M164 0L0 226.266H164V169.665H113.146L164 99.5322V0Z" fill="#162063"/>
           </svg>
@@ -404,7 +404,7 @@ const LongFormArticleContainer = props => {
           </div>
         </div>
 
-        <div className='back-cover-art'>
+        <div className='back-cover-art artifact'>
           <svg width="280" height="591" viewBox="0 0 280 591" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" >
           <path d="M280 482.481C262.245 501.603 239.771 512.768 212.496 515.975C203.911 517.229 188.781 517.608 178.496 515.975C146.375 512.198 121.068 497.385 102.129 471.535C87.2778 450.522 79.8521 417.42 79.8521 372.075V0H0V393.985C0 449.609 17.4247 495.404 52.1272 531.385C75.7644 555.718 102.74 572.652 132.891 582.171C164.371 593.943 227.131 593.943 258.109 582.171C265.603 579.805 272.901 576.981 280 573.699V482.481Z" fill="#0078CF"/>
           </svg>
