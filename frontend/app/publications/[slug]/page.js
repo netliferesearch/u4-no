@@ -33,12 +33,12 @@ export default async function PublicationEntry( {params} ) {
 export async function generateMetadata({ params, searchParams }, parent) {
 
   const data = await getData( params );
-  const {title = '', lead = '', featuredImage = {}} = data;
+  const {title = '', lead = '', featuredImage = {}, pdfThumbnail = {}} = data;
  
   return getMetadata({
     title: title,
     description: lead,
-    image: featuredImage?.asset?.url
+    image: featuredImage ? featuredImage.asset?.url : pdfThumbnail?.asset?.url
   });
 }
 

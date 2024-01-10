@@ -7,8 +7,6 @@ export default function getMetadata( metadata ) {
     ...otherMetadata
   } = metadata;
 
-  console.log('metadata', metadata);
-
   return {
     title,
     description: description,

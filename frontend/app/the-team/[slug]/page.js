@@ -121,12 +121,12 @@ export async function generateMetadata({ params }) {
   const { 
     person = {}, 
     lead = '', 
-    featuredImage = {} 
+    imageUrl = '' 
   } = data;
   return getMetadata({
     title: `${person.firstName} ${person.surname}`,
     description: lead,
-    image: featuredImage
+    image: imageUrl
   });
 }
 
