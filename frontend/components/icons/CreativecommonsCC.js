@@ -13,6 +13,7 @@ export default function CreativecommonsCC(props) {
       enableBackground="new 5.5 -3.5 64 64"
       {...props}
     >
+      <title>Creative Commons CC</title>
       <g>
         <circle fill="#FFFFFF" cx="37.785" cy="28.501" r="28.836" />
         <path

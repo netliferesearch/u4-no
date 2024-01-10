@@ -25,8 +25,10 @@ const pdfConfig = ({ url = '', title = 'output' }) => {
         type: 'pdf',
         name: title,
         test: process.env.PDF_TEST || false,
+        pipeline: '10.1',
         prince_options: {
           baseurl: 'https://www.u4.no', // URL to use for generating absolute URLs for assets from relative URLs
+          profile: 'PDF/UA-1',
           //   media:   "screen",          // use screen styles instead of print styles
         },
       },
