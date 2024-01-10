@@ -33,7 +33,7 @@ export default async function PublicationEntry( {params} ) {
 export async function generateMetadata({ params, searchParams }, parent) {
 
   const data = await getData( params );
-  const {title = '', lead = '', featuredImage = ''} = data;
+  const {title = '', lead = '', featuredImage = {}} = data;
  
   return getMetadata({
     title: title,

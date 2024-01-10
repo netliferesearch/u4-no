@@ -7,6 +7,8 @@ export default function getMetadata( metadata ) {
     ...otherMetadata
   } = metadata;
 
+  console.log('metadata', metadata);
+
   return {
     title,
     description: description,
@@ -15,9 +17,9 @@ export default function getMetadata( metadata ) {
     openGraph: {
       title,
       description,
-      image: {
+      images: [{
         url: image,
-      },
+      }],
       type: 'article',
       siteName: "U4 Anti-Corruption Resource Centre",
       locale: 'en_US',
