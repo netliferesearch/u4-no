@@ -3,6 +3,7 @@ import React from 'react';
 export default function Logo(props) {
   return (
     <svg className="c-logo" xmlns="http://www.w3.org/2000/svg" role="img" xmlnsXlink="http://www.w3.org/1999/xlink" width={240} height={50} {...props}>
+      <title>U4 Anti-Corruption Resource Centre (logo)</title>
       <g className="c-logo__symbol">
         <path fill="#0079CF" d="M44.19.9L14.55 43.53h22.67V50h6.97v-6.48h4.9v-6.27h-4.9V.9zm-6.97 21.05v15.3H26.57l10.65-15.3z" />
 

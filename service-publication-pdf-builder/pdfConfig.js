@@ -6,7 +6,7 @@ require('dotenv').config();
  * to prevent using of quota when testing the service.
  *
  * @param  {String} [url='']        url to page we want to render
- * @param  {String} [title='output' }]  title of the pdf returned
+ * @param  {String} [title='output']  title of the pdf returned
  * @return {Object}                 axios request configuration
  */
 const pdfConfig = ({ url = '', title = 'output' }) => {
@@ -28,8 +28,9 @@ const pdfConfig = ({ url = '', title = 'output' }) => {
         pipeline: '10.1',
         prince_options: {
           baseurl: 'https://www.u4.no', // URL to use for generating absolute URLs for assets from relative URLs
-          profile: 'PDF/UA-1',
-          //   media:   "screen",          // use screen styles instead of print styles
+          //baseurl: 'https://28ca-2001-700-2a01-100-8467-f280-217f-beec.ngrok-free.app', // when testing locally
+          profile: 'PDF/UA-1', // create accessibility tags
+          // media: "screen", // use screen styles instead of print styles
         },
       },
     },

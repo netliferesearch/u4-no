@@ -31,6 +31,7 @@
   .c-footer {
     display: none;
   }
+  // variable doesn't work for DocRaptor
   // --font-lato: 'Lato', 'KaiTi', 'STKaiti', 'Noto Serif TC', sans-serif;
 }
 
@@ -192,14 +193,54 @@
   margin-bottom: 24px;
 }
 
+/* accessibility tags */
+
 /* decorative elements */
 .artifact {
   -prince-pdf-tag-type: Artifact;
 }
 
 /* reference list accessible tags */
-#references p {
+.references p {
   -prince-pdf-tag-type: BibEntry;
+}
+
+/* adjust tagging of headings since h1 is not used */
+h2 {
+  -prince-pdf-tag-type: H1;
+}
+h3 {
+  -prince-pdf-tag-type: H2;
+}
+h4 {
+  -prince-pdf-tag-type: H3;
+}
+h5 {
+  -prince-pdf-tag-type: H4;
+}
+h6 {
+  -prince-pdf-tag-type: H5;
+}
+
+.c-article__pullQuote {
+  -prince-pdf-tag-type: BlockQuote;
+}
+
+.c-textbox--longform {
+  -prince-pdf-tag-type: Sect;
+
+  h4 {
+    -prince-pdf-tag-type: P;
+  }
+}
+
+.c-table__title,
+.c-figure__title {
+  -prince-pdf-tag-type: Caption;
+}
+
+.back-inside-cc-logos {
+  -prince-pdf-tag-type: Sect;
 }
 
 /* page specific styles */
@@ -461,7 +502,7 @@
       font-weight: 700;
       font-size: 16px;
       line-height: 22px;
-      color: $blue;
+      color: #0A72CD; // $blue does not have enough contrast with the background color
       margin-bottom: 48px;
     }
     
@@ -541,12 +582,11 @@
     font-family: $font-sans;
     font-size: 14px;
 
-    -prince-pdf-tag-type: TOC;
-
     .toc-list {
       list-style-type: none;
       margin: 0;
       padding: 0;
+      -prince-pdf-tag-type: TOC;
     }
   
     .toc-list-item {
@@ -555,6 +595,7 @@
       font-size: 14px;
       line-height: 20px;
       font-weight: 700;
+      -prince-pdf-tag-type: TOCI;
   
       a {
         position: relative;
@@ -563,8 +604,6 @@
         word-break: normal;
         hyphens: none;
         color: #000;
-
-        -prince-pdf-tag-type: TOCI;
       }
     }
   

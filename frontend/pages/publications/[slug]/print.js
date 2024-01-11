@@ -14,13 +14,24 @@ const PrintLongformArticleContainer_v2 = dynamic(() =>
 );
 
 const PublicationEntry = ({ data: { current, institutions = [], u4 } = {} }) => {
-  const newPdfLayoutFromDate = new Date( "2022-01-01" );
+  const newPdfLayoutFromDate = new Date( "2023-01-01" );
   const pubDate = current.date?.utc ? new Date( current.date.utc ) : new Date().getFullYear();
 
   return (
     <div>
       <Head>
         <title>{current.title}</title>
+        {current.authors && 
+          current.authors.map(person => (person.target ? person.target : person))
+          .map(
+              ({
+                firstName = '',
+                surname = '',
+              }) => (
+                <meta name='author' content={`${firstName} ${surname}`} />
+              )
+            )}
+        <meta name='date' content={current.date?.utc} />
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap"
           rel="stylesheet"
