@@ -124,7 +124,7 @@ class LongformArticle extends PureComponent {
           {references.length > 0 ? (
             <div className="front-matter-page">
               <div className='page-heading' id="references">{trans('references')}</div>
-              <div className='two-columns'>
+              <div className='two-columns references'>
               <BlockContent
                 blocks={references}
                 serializers={{

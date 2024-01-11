@@ -69,7 +69,7 @@ const LongFormArticleContainer = props => {
         </div>
         {featuredImage.asset && (
           <figure {...classes('front-image')}>
-            <img src={featuredImage.asset.url} alt={featuredImage.credit} />
+            <img src={featuredImage.asset.url} alt={`${featuredImage.altText} ${featuredImage.credit}`} />
           </figure>
         )}
         <div {...classes('front-text')}>

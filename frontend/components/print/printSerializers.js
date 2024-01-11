@@ -180,8 +180,9 @@ function printSerializers(blocks) {
       },
     },
     text: props => {
-      if (!props.children.trim()) return props.children;
-      return <span>{props.children}</span>;
+      // replace non-breaking hyphen with html entity
+      if (!props.children.trim()) return props.children.replaceAll('‑','&#8209;');
+      return <span>{props.children.replaceAll('‑','&#8209;')}</span>;
     },
   };
 }
