@@ -58,7 +58,6 @@ async function getData( params ) {
     materializeDepth: 2, 
     tags: [`article:${params.slug}`]
   });
-  console.log(data);
 
   return data;
 };
