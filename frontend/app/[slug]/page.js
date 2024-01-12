@@ -21,13 +21,13 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const {
     title = '', 
     lead = '', 
-    featuredImage = ''
+    imageUrl = ''
   } = data;
  
   return getMetadata({
     title: title,
     description: lead,
-    image: featuredImage
+    image: imageUrl
   });
 }
 
@@ -58,5 +58,7 @@ async function getData( params ) {
     materializeDepth: 2, 
     tags: [`article:${params.slug}`]
   });
+  console.log(data);
+
   return data;
 };
