@@ -52,7 +52,6 @@ export default async function Page({params}) {
       }],
     cite: "Participant, 2022"
   }
-
   return (
     <Layout>
       <div className="c-service-page c-courses-page">
@@ -205,7 +204,7 @@ const sanityQuery = groq`*[_type=="frontpage" && ((slug.current == "online-cours
     personLeft[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,"slug": slug.current,image{asset->{url}}},
     personRight[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,"slug": slug.current,image{asset->{url}}}, 
     coursesRef[]->{
-      _type,title,lead,language,startDate,location,"slug": slug.current,courseType,
+      _type,title,lead,language,startDate{"utc": local},location,"slug": slug.current,courseType,
       "featuredImage": featuredImage.asset->url
     } 
   }, 
@@ -222,7 +221,7 @@ async function getData( params ) {
   const data = await fetchAndMaterialize( {
     query: sanityQuery, 
     params, 
-    materializeDepth: 0,
+    materializeDepth: 1,
     tags: ['frontpage:online-courses-NEW']
   });
   return data;
