@@ -5,22 +5,27 @@ import { format } from 'date-fns'
   if start and end dates don't repeat year and month if same
 */
 const DateToString = ({ start = '', end = '', dateFormat = 'D MMMM YYYY' }) => {
+
+  // just use date part to avoid any timezone hassle
+  const startDate = start? new Date(start.split('T')[0]) : null;
+  const endDate = end ? new Date(end.split('T')[0]) : null;
+  
   if (start === '') {
     return '';
 
   } else if (end === '') {
-    return format(new Date(start), dateFormat)
+    return format(startDate, dateFormat)
     
-  } else if (format(new Date(start), 'Y') !== format(new Date(end), 'Y') ){
-    return `${format(new Date(start), dateFormat)} - ${format(new Date(end), dateFormat)}`;
+  } else if (format(startDate, 'Y') !== format(endDate, 'Y') ){
+    return `${format(startDate, dateFormat)} - ${format(endDate, dateFormat)}`;
 
-  } else if (format(new Date(start), 'M') !== format(new Date(end), 'M') ){
-    return `${format(new Date(start), 'D MMMM')} - ${format(new Date(end), dateFormat)}`;
+  } else if (format(startDate, 'M') !== format(endDate, 'M') ){
+    return `${format(startDate, 'D MMMM')} - ${format(endDate, dateFormat)}`;
 
-  } else if (format(new Date(start), 'd') !== format(new Date(end), 'd') ){
-    return `${format(new Date(start), 'D')} - ${format(new Date(end), dateFormat)}`;
+  } else if (format(startDate, 'd') !== format(endDate, 'd') ){
+    return `${format(startDate, 'D')} - ${format(endDate, dateFormat)}`;
   }
-  return format(new Date(start), dateFormat)
+  return format(startDate, dateFormat)
 };
 
 export default DateToString

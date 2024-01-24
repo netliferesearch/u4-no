@@ -25,7 +25,7 @@ export const CourseSidebar = ({ data }) => {
         {startDate && (
           <SidebarItem
             label="When"
-            content={dateToString({ start: startDate.utc, end: endDate?.utc || '' })}
+            content={dateToString({ start: startDate.local || startDate.utc, end: endDate?.local || endDate?.utc || '' })}
           />
         )}
         {cost ? <SidebarItem label="Cost" content={cost} /> : null}
