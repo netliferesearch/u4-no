@@ -204,7 +204,7 @@ const sanityQuery = groq`*[_type=="frontpage" && ((slug.current == "online-cours
     personLeft[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,"slug": slug.current,image{asset->{url}}},
     personRight[]->{_id,firstName,surname,email,position,twitter,linkedin,facebook,"slug": slug.current,image{asset->{url}}}, 
     coursesRef[]->{
-      _type,title,lead,language,startDate{"utc": local},location,"slug": slug.current,courseType,
+      _type,title,lead,language,startDate{utc,local},location,"slug": slug.current,courseType,
       "featuredImage": featuredImage.asset->url
     } 
   }, 

@@ -137,7 +137,7 @@ export const CourseContent = ({ post = {}, content = {} }) => (
         <div className="c-blue-card__details">
           <p className="c-blue-card__date u-body--small">
             {post.startDate && <CalendorIcon />}
-            {post.startDate && dateToString({ start: post.startDate.utc })}
+            {post.startDate && dateToString({ start: post.startDate.local ||post.startDate.utc })}
           </p>
           {post._type !== 'event' && (
             <div className="c-blue-card__more">
