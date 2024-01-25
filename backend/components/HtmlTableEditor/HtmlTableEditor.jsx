@@ -1,9 +1,14 @@
 import React, {Fragment} from 'react';
 import { Editor } from '@tinymce/tinymce-react';
-import PatchEvent, {set, unset, setIfMissing} from 'part:@sanity/form-builder/patch-event'
-import { FormBuilderInput } from "part:@sanity/form-builder";
+//import PatchEvent, {set, unset, setIfMissing} from 'part:@sanity/form-builder/patch-event'
+//import { FormBuilderInput } from "part:@sanity/form-builder";
+import { PatchEvent, set, unset, useClient, useFormValue } from 'sanity'
 
-export default class HtmlTableEditor extends React.Component {
+export default function HtmlTableEditor(props) {
+  return props.renderDefault(props);
+}
+
+export  class oldHtmlTableEditor extends React.Component {
 
   constructor(props) {
     super()

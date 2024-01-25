@@ -6,6 +6,7 @@ import { buildUrl, previewUrl } from './buildUrl';
 
 const previewDomain = 'https://preview.u4.no';
 
+
 class PreviewLinksComponent extends React.PureComponent {
   focus() {
     // no-op

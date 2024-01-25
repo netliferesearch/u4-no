@@ -9,15 +9,16 @@ import {
   HighChartsEditorPreview,
 
 } from '../../components';
+import { TinyEditor } from '../../components/HtmlTableEditor/TinyEditor';
 
 import React from 'react'
 
-const subscriptIcon = () => (
-  <span>X<sub>y</sub></span>
-  )
-const subscriptRender = props => (
-  <sub>{props.children}</sub>
-)
+// const subscriptIcon = () => (
+//   <span>X<sub>y</sub></span>
+// )
+// const subscriptRender = props => (
+//   <sub>{props.children}</sub>
+// )
 
 const content = {
   name: 'content',
@@ -46,10 +47,8 @@ const content = {
           {
             title: 'Subscript',
             value: 'sub',
-            blockEditor: {
-              icon: subscriptIcon,
-              render: subscriptRender,
-            }
+            // icon: subscriptIcon,
+            // component: Subscript
           }
         ],
 
@@ -69,13 +68,13 @@ const content = {
     {
       type: 'pullQuote',
     },
-    {
-      type: 'funkyTable',
-      options: {
-        defaultNumRows: 3,
-        defaultNumColumns: 3,
-      },
-    },
+    // {
+    //   type: 'funkyTable',
+    //   options: {
+    //     defaultNumRows: 3,
+    //     defaultNumColumns: 3,
+    //   },
+    // },
     image,
     vimeoVideo,
     pdfEmbed,
@@ -83,7 +82,10 @@ const content = {
       name: 'table',
       title: 'Table',
       type: 'object',
-      inputComponent: HtmlTableEditor,
+      components: {
+        input: HtmlTableEditor,
+        preview: HtmlTableEditorPreview,
+      },
       options: {
         editModal: 'fullscreen',
       },
@@ -101,6 +103,9 @@ const content = {
           name: 'htmlStr',
           readOnly: true,
           type: 'string',
+          components: {
+            input: TinyEditor,
+          }
         },
         {
           name: 'size',

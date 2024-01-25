@@ -6,3 +6,4 @@ node_modules/
 skisser/
 .idea
 frontend/.env.local
+backend/.sanity

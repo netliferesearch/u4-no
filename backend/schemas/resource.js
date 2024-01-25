@@ -1,4 +1,4 @@
-import { slug, language, keywords } from './fields'
+import { date, slug, language, keywords } from './fields'
 
 export default {
   name: 'resource',
@@ -16,15 +16,8 @@ export default {
       type: 'string'
     },
     {
-      name: 'date',
+      ...date,
       description: 'When published (leave empty if the resource has no meaningful date of publication)',
-      type: 'richDate',
-      options: {
-        inputUtc: true,
-        dateFormat: 'YYYY-MM-DD',
-        inputDate: true,
-        inputTime: false,
-      }
     },
     {
       name: 'reference',
