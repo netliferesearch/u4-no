@@ -4,6 +4,7 @@ import { PageIntro } from '../general/PageIntro';
 import { getPostType } from '../../helpers/getRouteByType';
 import sanityImageLoader from '../../helpers/sanityImageLoader';
 import Image from 'next/image';
+import { PhotoCaptionCredit } from '@/components/general/PhotoCaptionCredit';
 
 export const EventHeader = ({ data }) => {
   const {
@@ -31,7 +32,7 @@ export const EventHeader = ({ data }) => {
           contentType={contentType}
           type="withBreadcrumb"
           single
-          date={startDate?.utc}
+          date={startDate?.local || startDate?.utc}
           location={location}
         />
         {eventLink && (
@@ -59,6 +60,7 @@ export const EventHeader = ({ data }) => {
         </div>
       ) : featuredImage?.asset ? (
         <div className="c-course-entry__image-wrapper">
+          <div>
           <Image
             alt={title}
             loader={sanityImageLoader}
@@ -73,6 +75,8 @@ export const EventHeader = ({ data }) => {
               objectFit: "cover",
               objectPosition: "center center"
             }} />
+            <PhotoCaptionCredit image={featuredImage} />
+          </div>
         </div>
       ) : null}
     </div>

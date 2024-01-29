@@ -21,7 +21,7 @@ export const EventSidebar = ({ data }) => {
             {startDate?.utc && (
               <p className="u-text--grey">
                 <CalendorIcon />
-                {DateToString({ start: startDate.utc })}
+                {DateToString({ start: startDate?.local || startDate?.utc })}
               </p>
             )}
           </div>
