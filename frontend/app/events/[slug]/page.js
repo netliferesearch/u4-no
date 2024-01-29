@@ -21,7 +21,7 @@ export default async function Event({ params }){
     location = '',
     startDate = null,
     featuredImage = {},
-    leadText = '',
+    lead = '',
     content = [],
     contact = [],
     topics = [],
@@ -89,13 +89,13 @@ export async function generateMetadata({ params }) {
   const data = await getData(params);
   const {
     title = '',
-    leadText = '',
+    lead = '',
     featuredImage = '',
   } = data;
 
   return getMetadata({
     title: title,
-    description: leadText,
+    description: lead,
     image: featuredImage?.asset?.url
   });
 }
@@ -108,7 +108,7 @@ const sanityQuery = groq`*[_type=="event" && slug.current == $slug][0]{
   startDate, 
   endDate, 
   organiser, 
-  leadText, 
+  lead, 
   content, 
   "slug": slug.current, 
   eventLink, 
