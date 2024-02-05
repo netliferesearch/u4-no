@@ -9,7 +9,6 @@ const previewLinks = {
   components: {
     field: PreviewLinksField
   }
-  // inputComponent: PreviewLinksComponent,
 };
 
 export default previewLinks;

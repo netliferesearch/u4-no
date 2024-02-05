@@ -1,13 +1,132 @@
 // import React, { Fragment } from 'react';
 // import PatchEvent, {set, unset, setIfMissing} from 'part:@sanity/form-builder/patch-event'
 // import { FormBuilderInput } from "part:@sanity/form-builder";
+import { Card, TextInput, Select, Stack } from '@sanity/ui';
+import { Fragment, useEffect, useState } from 'react';
 
-export default function HighChartsEditor() {
-  return null
+export default function HighChartsEditor(props) {
+  console.log('HighChartsEditor', props);
+  // const { fields: { members = [] } = {}, name: { title, caption, size } = {}, onFocus } = props;
+  console.log(props.members, props.name, props.onFocus);
+  const { members: fields = [], onPathFocus: onFocus } = props;
+  const titleField = fields.find(({ name = '' }) => name === 'title');
+  const captionField = fields.find(({ name = '' }) => name === 'caption');
+  const sizeField = fields.find(({ name = '' }) => name === 'size');
+
+  console.log({ titleField, captionField, sizeField });
+
+  const [editor, setEditor] = useState(null);
+  const [svgStr, setSvgStr] = useState('');
+  const [htmlStr, setHtmlStr] = useState('');
+
+  const [title, setTitle] = useState('');
+  const [caption, setCaption] = useState('');
+  const [size, setSize] = useState('');
+
+  useEffect(
+    () => {
+      loadProjectData(editor);
+    },
+    [editor]
+  );
+
+  useEffect(() => {
+    const mountNode = document.getElementById('highed-mountpoint');
+    const iframe = document.createElement('iframe');
+    iframe.setAttribute('width', '100%');
+    iframe.setAttribute('height', '800px');
+    iframe.setAttribute('id', 'highed-editor');
+    iframe.setAttribute('src', '/highcharts-iframe-content.html');
+    iframe.onload = () => onEditorIframeLoaded(iframe);
+    mountNode.appendChild(iframe);
+  }, []);
+
+  const chartChangeHandler = editor => {
+    console.log(editor);
+    if (!editor) {
+      return;
+    }
+    setSvgStr(editor.getEmbeddableSVG());
+    setHtmlStr(editor.getEmbeddableHTML());
+    console.log('chartChangeHandler', svgStr, htmlStr);
+  };
+
+  const onEditorIframeLoaded = iframe => {
+    iframe.contentWindow.editorReadyCallback = editor => {
+      console.log('editorReadyCallback', editor);
+      window.highchartsEditorInstance = editor;
+      editor.on('ChartChangedLately', chartChangeHandler(editor));
+      setEditor(editor);
+    };
+  };
+
+  const loadProjectData = editor => {
+    if (!editor) {
+      return;
+    }
+    console.log({ editor, props });
+    const { value: { editorConfigWithData } = {} } = props;
+    console.log('loadProjectData', editorConfigWithData);
+    if (!editorConfigWithData) {
+      return;
+    }
+    try {
+      editor.chart.loadProject(JSON.parse(editorConfigWithData));
+    } catch (e) {
+      console.log('Failed to load higcharts editor', e);
+    }
+  };
+
+  const formBuilderInputHandler = (prefix, patchEvent) => {
+    console.log('formBuilderInputHandler', prefix, patchEvent);
+    const { onChange } = props;
+    onChange(patchEvent.prefixAll(prefix));
+  };
+
+  return (
+    <Fragment>
+      <div>HighChartsEditor</div>
+      <Card padding={2} radius={2} shadow={1}>
+        <Stack space={3}>
+          <label htmlFor={titleField.name}>Title</label>
+          <TextInput
+            id={titleField.name}
+            fontSize={[2, 2, 3, 4]}
+            onChange={event => setTitle(event.currentTarget.value)}
+            padding={[3, 3, 4]}
+            value={title}
+          />
+          <label htmlFor={captionField.name}>Caption</label>
+          <TextInput
+            id={captionField.name}
+            fontSize={[2, 2, 3, 4]}
+            onChange={event => setCaption(event.currentTarget.value)}
+            padding={[3, 3, 4]}
+            value={caption}
+          />
+          <label htmlFor={sizeField.name}>Size</label>
+          <Select
+            id={sizeField.name}
+            fontSize={[2, 2, 3, 4]}
+            onChange={event => setSize(event.currentTarget.value)}
+            padding={[3, 3, 4]}
+            value={size}
+          >
+            {sizeField.field.schemaType.options.list.map(option => (
+              <option key={option.title} value={option.value}>
+                {option.title}
+              </option>
+            ))}
+          </Select>
+        </Stack>
+      </Card>
+      <div id="highed-mountpoint" />
+    </Fragment>
+  );
 }
 
 export function HighChartsEditorPreview() {
-  return null
+  return null;
 }
 
 // export default class HighChartsEditor extends React.Component {

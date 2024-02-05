@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { PatchEvent, set, unset, useClient, useFormValue } from 'sanity'
 

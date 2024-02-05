@@ -137,7 +137,10 @@ const content = {
       name: 'chart',
       title: 'Chart',
       type: 'object',
-      inputComponent: HighChartsEditor,
+      components: {
+        input: HighChartsEditor,
+        // preview: HighChartsEditorPreview,
+      },
       options: {
         editModal: 'fullscreen',
       },
