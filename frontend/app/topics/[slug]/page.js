@@ -212,13 +212,13 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const data = await getData( params );
   const {
     title = '', 
-    lead = '', 
+    longTitle = '', 
     featuredImage = '',
   } = data;
  
   return getMetadata({
     title: title,
-    description: lead,
+    description: longTitle,
     image: featuredImage?.asset?.url
   });
 }
