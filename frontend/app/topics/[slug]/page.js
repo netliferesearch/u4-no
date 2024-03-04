@@ -156,7 +156,7 @@ export default async function Topic({ params }) {
             <PostCarousel
               posts={furtherResources}
               type={POST_TYPE.CARD}
-              buttonPath={`/search?filters=content-collection%2Ctopic-type-${encodeURIComponent(
+              buttonPath={`/search?filters=topic-type-${encodeURIComponent(
                 title
               )}&search=&searchPageNum=1`}
               title="Further Resources"
