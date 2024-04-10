@@ -4,8 +4,8 @@ import HighChartsEditor from '../components/HighChartsEditor';
 /**
  * A publication is a long form document
  */
-import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
-import { title, subtitle, standfirst, image, keywords, leadText, slug, language, license, previewLinks, shortSlug, vimeoVideo } from './fields';
+// import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
+import { date, title, subtitle, standfirst, image, keywords, leadText, slug, language, license, previewLinks, shortSlug, vimeoVideo } from './fields';
 
 export default {
   name: 'publication',
@@ -147,15 +147,8 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'date',
+      ...date,
       description: 'Date of publication',
-      type: 'richDate',
-      options: {
-        inputUtc: true,
-        dateFormat: 'YYYY-MM-DD',
-        inputDate: true,
-        inputTime: false,
-      },
       validation: Rule => Rule.required(),
     },
     {
@@ -463,12 +456,12 @@ export default {
         },
       ],
     },
-    {
-      name: 'relatedUrl',
-      title: 'Related URL',
-      type: 'urlWithMetadata',
-      inputComponent: UrlWithMetadataInput,
-    },
+    // {
+    //   name: 'relatedUrl',
+    //   title: 'Related URL',
+    //   type: 'urlWithMetadata',
+    //   inputComponent: UrlWithMetadataInput,
+    // },
     {
       name: 'pdfThumbnail',
       title: 'Thumbnail of publication pdf',
