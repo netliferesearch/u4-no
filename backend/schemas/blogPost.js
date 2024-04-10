@@ -1,5 +1,6 @@
 import publicationContent from './fields/publicationContent';
 import annotations from './fields/annotations';
+import date from './fields/date';
 
 //import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
 import {
@@ -114,15 +115,8 @@ export default {
     //   type: 'url',
     // },
     {
-      name: 'date',
+      ...date,
       description: 'Date of publication',
-      type: 'richDate',
-      options: {
-        inputUtc: true,
-        dateFormat: 'YYYY-MM-DD',
-        inputDate: true,
-        inputTime: false,
-      },
     },
     // {
     //   name: 'methodology',

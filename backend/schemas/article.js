@@ -1,7 +1,7 @@
 import publicationContent from './fields/publicationContent';
 import annotations from './fields/annotations';
 import annotationsLinksOnly from './fields/annotationsLinksOnly';
-import { title, longTitle, standfirst, image, leadText, featuredImage, slug, previewLinks } from './fields';
+import { date, title, longTitle, standfirst, image, leadText, featuredImage, slug, previewLinks } from './fields';
 
 export default {
   name: 'article',
@@ -29,15 +29,7 @@ export default {
     standfirst,
     featuredImage,
     {
-      name: 'date',
-      description: 'Date of publication/last update',
-      type: 'richDate',
-      options: {
-        inputUtc: true,
-        dateFormat: 'YYYY-MM-DD',
-        inputDate: true,
-        inputTime: false,
-      },
+      ...date
     },
     {
       name: 'authors',

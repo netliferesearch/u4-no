@@ -1,52 +1,32 @@
-import client from 'part:@sanity/base/client';
 import ShortSlugInput from '../../components/ShortSlug';
 
-const getRandomString = () => {
-  const length = 3;
-  let result = '';
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-};
-
-const slugify = (_id, _type) => {
-  const randomString = getRandomString();
-  // if unique return value else call recursively until unique
-  return isGloballyUnique(randomString, _id) ? randomString : slugify(_id, _type);
-};
-
-const isGloballyUnique = (slug, _id) => {
-  const client = require('part:@sanity/base/client');
-  const id = _id.replace(/^drafts\./, '');
+async function isUniqueAcrossAllDocuments(slug, context) {
+  const {document, getClient} = context
+  const client = getClient({apiVersion: '2022-12-07'})
+  const id = document._id.replace(/^drafts\./, '')
   const params = {
     draft: `drafts.${id}`,
     published: id,
     slug,
-  };
-  const query = `!defined(*[!(_id in [$draft, $published]) && shortSlug.current == $slug][0]._id)`;
-  return client.fetch(query, params);
-};
-
-const isUnique = (slug, options) => {
-  const { document } = options;
-  return isGloballyUnique(slug, document._id);
-};
+  }
+  const query = `!defined(*[!(_id in [$draft, $published]) && shortSlug.current == $slug][0]._id)`
+  const result = await client.fetch(query, params)
+  return result
+}
 
 const shortSlug = {
   title: 'Short URL',
   name: 'shortSlug',
   type: 'slug',
   options: {
-    source: '_id', // slugify uses this to verify uniqueness
-    slugify: slugify,
-    isUnique,
+    source: '_id', 
+    isUnique: isUniqueAcrossAllDocuments,
     urlPrefix: 'u4.no/r/',
     placeholder: 'Enter a custom value or generate random'
   },
-  inputComponent: ShortSlugInput,
+  components: {
+    input: ShortSlugInput
+  }
 };
 
 export default shortSlug;

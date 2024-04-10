@@ -40,13 +40,13 @@ export default {
         {
           type: 'pullQuote',
         },
-        {
-          type: 'funkyTable',
-          options: {
-            defaultNumRows: 3,
-            defaultNumColumns: 3,
-          },
-        },
+        // {
+        //   type: 'funkyTable',
+        //   options: {
+        //     defaultNumRows: 3,
+        //     defaultNumColumns: 3,
+        //   },
+        // },
         image,
         vimeoVideo,
       ],

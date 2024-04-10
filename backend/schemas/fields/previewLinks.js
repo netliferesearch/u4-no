@@ -1,4 +1,4 @@
-import PreviewLinksComponent from '../../components/PreviewLinksComponent';
+import PreviewLinksField from '../../components/PreviewLinks/PreviewLinksField';
 
 const previewLinks = {
   name: 'previewLinks',
@@ -6,7 +6,9 @@ const previewLinks = {
   description: 'Links to preview of longform and pdf (for publications)',
   type: 'boolean',
   readOnly: true,
-  inputComponent: PreviewLinksComponent,
+  components: {
+    field: PreviewLinksField
+  }
 };
 
 export default previewLinks;

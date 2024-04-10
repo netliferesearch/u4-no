@@ -78,7 +78,7 @@ const annotations = [
                 { title: 'Emphasis', value: 'em' },
               ],
               // Support annotating text with a reference to an author
-              annotations,
+              // annotations,
             },
           },
         ],
