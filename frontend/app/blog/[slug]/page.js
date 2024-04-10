@@ -87,11 +87,11 @@ export default async function BlogPage( {params} ) {
 export async function generateMetadata({ params, searchParams }, parent) {
 
   const data = await getData( params );
-  const {title = '', lead = '', featuredImage = ''} = data;
+  const {title = '', standfirst = '', featuredImage = ''} = data;
  
   return getMetadata({
     title: title,
-    description: lead,
+    description: standfirst,
     image: featuredImage?.asset?.url
   });
 }

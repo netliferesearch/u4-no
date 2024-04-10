@@ -156,7 +156,7 @@ export default async function Topic({ params }) {
             <PostCarousel
               posts={furtherResources}
               type={POST_TYPE.CARD}
-              buttonPath={`/search?filters=content-collection%2Ctopic-type-${encodeURIComponent(
+              buttonPath={`/search?filters=topic-type-${encodeURIComponent(
                 title
               )}&search=&searchPageNum=1`}
               title="Further Resources"
@@ -212,13 +212,14 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const data = await getData( params );
   const {
     title = '', 
-    lead = '', 
+    longTitle = '', 
+    explainerText = '',
     featuredImage = '',
   } = data;
  
   return getMetadata({
-    title: title,
-    description: lead,
+    title: longTitle ? `${title} - ${longTitle}` : title,
+    description: explainerText,
     image: featuredImage?.asset?.url
   });
 }
