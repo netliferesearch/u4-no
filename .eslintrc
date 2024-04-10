@@ -3,8 +3,8 @@
   "parserOptions": {
     "requireConfigFile": false,
     "babelOptions": {
-      "presets": ["@babel/preset-react"],
-    },
+      "presets": ["@babel/preset-react"]
+    }
   },
   "extends": ["airbnb", "plugin:jest/recommended", "prettier", "prettier/react"],
   "rules": {
