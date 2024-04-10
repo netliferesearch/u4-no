@@ -11,7 +11,7 @@
     "@sanity/block-content-to-tree": "^0.3.0",
     "@sanity/client": "^0.139.0",
     "autoprefixer": "^10.4.15",
-    "axios": "^0.21.1",
+    "axios": "^1.6.8",
     "babel-jest": "^27.0.1",
     "babel-polyfill": "^6.26.0",
     "bluebird": "^3.5.3",
@@ -69,7 +69,7 @@
     "sass": "^1.34.1",
     "slugify": "^1.2.9",
     "styled-jsx": "^5.1.2",
-    "textract": "^2.5.0",
+    "textract": "^0.20.0",
     "victory": "^36.6.11"
   },
   "scripts": {
