@@ -6,7 +6,10 @@ export default {
   type: 'object',
   inputComponent: HtmlTableEditor,
   options: {
-    editModal: 'fullscreen',
+    modal: {
+      type: 'dialog',
+      with: 900,
+    },
   },
   fields: [
     {

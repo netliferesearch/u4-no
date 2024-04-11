@@ -1,2 +1,1 @@
-export {default} from './HighChartsEditor'
-export {HighChartsEditorPreview} from './HighChartsEditor'
+export { default } from './HighChartsEditor';

@@ -67,7 +67,7 @@
       type="text/javascript"
     ></script>
 
-    <script src="highcharts-editor.min.js"></script>
+    <script src="highcharts-editor.complete.min.js"></script>
     <link href="highcharts-editor.min.css" type="text/css" rel="stylesheet" />
 
     <style>
@@ -82,25 +82,21 @@
       }
     </style>
   </head>
+
   <body>
     <script>
-      //Create an editor widget and attach it to the document body
-      highed.Editor(document.body).on('ChartChange', function(data) {
-        console.log('data', {data})
-        //Do something with the modified chart here.
-      });
       // Highcharts is loaded and ready to be instantiated
-      // highed.ready(function () {
-      //     var intervalID = setInterval(function () {
-      //       // we need to wait for our custom component to have added a callback
-      //       // before we can instantiate the editor and call the callback.
-      //       if (window.editorReadyCallback) {
-      //         clearInterval(intervalID)
-      //         var editorInstance = highed.Editor(document.body)
-      //         window.editorReadyCallback(editorInstance)
-      //       }
-      //     }, 200)
-      // });
+      highed.ready(() => {
+        const intervalID = setInterval(() => {
+          // We need to wait for our custom component to have added a callback
+          // before we can instantiate the editor and call the callback.
+          if (window.editorReadyCallback) {
+            clearInterval(intervalID);
+            const editorInstance = highed.Editor(document.body);
+            window.editorReadyCallback(editorInstance);
+          }
+        }, 200);
+      });
     </script>
   </body>
 </html>
