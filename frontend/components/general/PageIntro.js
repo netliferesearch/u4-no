@@ -15,6 +15,7 @@ export const PageIntro = ({
   onDark = false,
   single = false,
   date = '',
+  altDateText = null,
   location = '',
 }) => {
   return (
@@ -75,11 +76,11 @@ export const PageIntro = ({
             <LocationIcon /> {location}
           </p>
         )}
-        {date && (
+        {(date || altDateText) && (
           <div className="c-blue-card__details">
             <p className="c-blue-card__date ">
               <CalendorIcon />
-              {DateToString({ start: date })}
+              {altDateText ? altDateText : DateToString({ start: date })}
             </p>
           </div>
         )}

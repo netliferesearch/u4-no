@@ -11,6 +11,8 @@ export const EventHeader = ({ data }) => {
     title = '',
     lead = '',
     startDate = {},
+    endDate = {},
+    altDateText = null,
     location = '',
     featuredImage = {},
     vimeo = '',
@@ -33,6 +35,7 @@ export const EventHeader = ({ data }) => {
           type="withBreadcrumb"
           single
           date={startDate?.local || startDate?.utc}
+          altDateText={altDateText}
           location={location}
         />
         {eventLink && (
