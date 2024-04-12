@@ -58,7 +58,7 @@ export default {
     {
       name: 'altDateText',
       title: 'Approximate date text',
-      description: 'Display this text instead of the actual dates (start date still used for sorting)',
+      description: 'Display this text instead of the actual dates (start date still required for sorting)',
       type: 'string',
     },
     {

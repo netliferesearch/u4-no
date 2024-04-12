@@ -1,0 +1,10 @@
+/* increase default font size */
+:root {
+    font-size: 18px;
+}
+
+/* reduce space between fields */
+[data-as='form'] > [data-ui='Stack'],
+[data-as='fieldset'] > [data-ui='Box'] > [data-ui='Grid'] > [data-ui='Stack'] {
+    gap: 2rem;
+}
