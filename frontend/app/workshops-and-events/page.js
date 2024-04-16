@@ -83,7 +83,7 @@ export default async function Page({params}) {
             events={workshops}
             type={workshops.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL}
             title="Workshops"
-            text="Upcoming workshops for our partner staff. "
+            text="Upcoming U4 workshops for U4 partner staff and guests"
           />
         </section>
 
