@@ -245,6 +245,9 @@ export default {
             {
               type: 'event',
             },
+            {
+              type: 'course',
+            },
           ],
         },
       ],
