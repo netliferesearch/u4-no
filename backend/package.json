@@ -15,7 +15,6 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/portable-text-editor": "^3.37.2",
     "@sanity/rich-date-input": "^3.0.0",
     "@sanity/ui": "^2.0.0",
     "@sanity/vision": "^3.25.0",
