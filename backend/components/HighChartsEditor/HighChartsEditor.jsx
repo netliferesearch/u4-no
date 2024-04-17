@@ -10,8 +10,8 @@ export default function HighChartsEditor(props) {
   const captionField = members.find(({ name }) => name === 'caption');
   const sizeField = members.find(({ name }) => name === 'size');
 
-  console.log(members);
-
+  // Patch input data to sanity
+  // This function is debounced to prevent input lag
   const inputChangeHandler = useDebouncedCallback((fieldName, newValue) => {
     if (value[fieldName] === newValue) return;
 
@@ -23,6 +23,7 @@ export default function HighChartsEditor(props) {
     onChange(set(nextValue));
   }, 100);
 
+  // Patch chart data to sanity
   function chartChangeHandler(editor) {
     if (!editor) return;
 
@@ -33,9 +34,11 @@ export default function HighChartsEditor(props) {
       htmlStr: editor.getEmbeddableHTML(),
     };
 
+    // Todo: double check that chart gets updated properly
     onChange(set(nextValue));
   }
 
+  // Load data from sanity into the HighCharts editor
   function loadProjectData(editor) {
     const { editorConfigWithData } = value;
     if (!editor || !editorConfigWithData) return;
@@ -47,6 +50,7 @@ export default function HighChartsEditor(props) {
     }
   }
 
+  // Load data and setup change event when the HighCharts editor is ready
   function onEditorIframeLoaded(iframe) {
     iframe.contentWindow.editorReadyCallback = editorInstance => {
       editorInstance.chart.on('ChartChangeLately', () => chartChangeHandler(editorInstance));
@@ -54,8 +58,9 @@ export default function HighChartsEditor(props) {
     };
   }
 
+  // Mount HighChart editor iframe when component mounts
   useEffect(() => {
-    // Append iframe on mount
+    // Append iframe to 'highed-mountpoint' on component mount
     const mountNode = document.getElementById('highed-mountpoint');
     if (!mountNode) return;
 
@@ -67,7 +72,7 @@ export default function HighChartsEditor(props) {
     iframe.onload = () => onEditorIframeLoaded(iframe);
     mountNode.appendChild(iframe);
 
-    // Remove on cleanup
+    // Remove editor on cleanup
     return () => mountNode.removeChild(iframe);
   }, []);
 
@@ -106,13 +111,15 @@ export default function HighChartsEditor(props) {
               id={captionField.name}
               fontSize={2}
               rows={5}
+              padding={3}
+              // Convert plain text to portable text, because thats what the schema expects
               onChange={event => {
                 inputChangeHandler(
                   captionField.name,
                   plainTextToPortableText(event.currentTarget.value)
                 );
               }}
-              padding={3}
+              // Convert portable text back to plain text to make it editable in text area
               defaultValue={blocksToText(captionField.field.value)}
             />
           </Stack>
@@ -142,7 +149,7 @@ export default function HighChartsEditor(props) {
   );
 }
 
-// remove all this:
+// Todo: move these functions somewhere else
 
 // Convert Sanity's portable text into plain string.
 function blocksToText(blocks, opts = {}) {
