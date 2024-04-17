@@ -1,4 +1,4 @@
-import { title, leadText, featuredImage, image, language, shortSlug, slug, vimeoVideo } from './fields';
+import { title, leadText, featuredImage, image, language, shortSlug, slug, standfirst, vimeoVideo } from './fields';
 import annotationsLinksOnly from './fields/annotationsLinksOnly';
 import augmentSchema from './fields/augmentSchema';
 import defaultBlock from './fields/defaultBlock';
@@ -9,6 +9,7 @@ export default augmentSchema({
   type: 'document',
   fields: [
     title,
+    standfirst,
     leadText,
     {
       name: 'content',
