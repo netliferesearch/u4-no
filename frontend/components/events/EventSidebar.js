@@ -34,7 +34,7 @@ export const EventSidebar = ({ data }) => {
           </div>
         ) : null}
 
-        {topics.length ? (
+        {topics?.length ? (
           <div className="c-article-sidebar__item">
             <h4 className="u-secondary-heading u-secondary-h4">Topics</h4>
             <hr className="u-section-underline--grey" />
