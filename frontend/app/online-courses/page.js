@@ -92,8 +92,8 @@ export default async function Page({params}) {
 
         <section className="o-wrapper-medium">
           <LearningEvents
-            events={courses5}
-            type={courses5.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL}
+            events={courses6}
+            type={courses6.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL}
             title="Illicit financial flows (open for everyone)"
             text="Self-paced courses"
           />
