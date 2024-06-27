@@ -8,7 +8,7 @@ import { ArticleActions } from '../article/ArticleActions';
 import { PhotoCredit } from 'components/general/PhotoCredit';
 
 export const PublicationAdditionalInfo = ({ data = {} }) => {
-  const { _type = '', authors = [], publicationType = {}, keywords = [], language = 'en', featuredImage = {} } = data;
+  const { _type = '', authors = [], publicationType = {}, keywords = [], language = 'en', featuredImage = {}, reference = '' } = data;
 
   return (
     <>
