@@ -101,6 +101,7 @@ const content = {
         },
         {
           name: 'htmlStr',
+          title: 'Table contents',
           readOnly: true,
           type: 'string',
           components: {
