@@ -227,22 +227,22 @@ export default {
     //     },
     //   ],
     // },
-    // {
-    //   name: 'editors',
-    //   title: 'Series editors',
-    //   description: 'Responsible U4 staff member',
-    //   type: 'array',
-    //   of: [
-    //     {
-    //       type: 'reference',
-    //       to: [
-    //         {
-    //           type: 'person',
-    //         },
-    //       ],
-    //     },
-    //   ],
-    // },
+    {
+      name: 'editors',
+      title: 'Series editors',
+      description: 'Responsible U4 staff member',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'person',
+            },
+          ],
+        },
+      ],
+    },
     // {
     //   name: 'partners',
     //   title: 'Partnership',

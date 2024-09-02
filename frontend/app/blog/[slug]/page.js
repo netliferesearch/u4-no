@@ -104,6 +104,7 @@ const sanityQuery = groq`*[_type  == "blog-post" && slug.current == $slug]{
     date, 
     content, 
     authors[]->{ firstName, surname, position, "slug": slug.current, bioShort },
+    editors[]->{ firstName, surname, position, "slug": slug.current, bioShort },
     lead, 
     standfirst, 
     headsUp, 
