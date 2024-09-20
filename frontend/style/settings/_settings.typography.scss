@@ -13,8 +13,13 @@
 // }
 
 // using variable here doesn't work for DocRaptor so must use actual font family names when compiling print stylesheet
-$font-sans: var(--font-lato); //'Lato','Lato-fallback', Helvetica, Arial, 'KaiTi', 'STKaiti', 'Noto Serif TC', sans-serif; // 
+$font-sans: var(--font-lato); 
+// for print stylesheet:
+//$font-sans: 'Lato','Lato-fallback', Helvetica, Arial, 'KaiTi', 'Noto Serif TC', sans-serif; // 
+
 $font-serif: Georgia, 'KaiTi', 'STKaiti', 'Noto Serif TC', serif;
+// DocRaptor issue with STKaiti so for print stylesheet:
+//$font-serif: Georgia, 'KaiTi', 'Noto Serif TC', serif;
 
 $line-height-tiny: 1;
 $line-height-small: 1.2;
