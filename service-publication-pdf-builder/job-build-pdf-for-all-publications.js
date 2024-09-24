@@ -1,10 +1,22 @@
 /* eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
-const { getSanityClient, uploadPDF, buildPDF } = require('./pdf-lib');
+// const { getSanityClient, uploadPDF, buildPDF } = require('./pdf-lib');
+const { uploadPDF, buildPDF } = require('./pdf-lib');
+const { createClient } = require('next-sanity');
+
+const getSanityClient = () =>
+  createClient({
+    projectId: process.env.SANITY_PROJECT_ID,
+    dataset: process.env.SANITY_DATASET || "production",
+    token: process.env.THUMBNAIL_GENERATOR_SANITY_TOKEN,
+    apiVersion: process.env.SANITY_API_VERSION,
+  });
 
 async function main() {
   console.log('Starting work');
   const client = getSanityClient();
-  const docs = await client.fetch('*[_type in ["publication"] && _id == "f62b433d-9bbf-4bcb-8a4d-9aed37e5afcd" ]');
+
+
+  const docs = await client.fetch('*[_type in ["publication"] && _id == "8441ffe5-361a-4be9-8344-838fd5c38841" ]');
 
   /* eslint-disable no-restricted-syntax, no-await-in-loop */
   for (const doc of docs) {
