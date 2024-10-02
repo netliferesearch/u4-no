@@ -94,8 +94,10 @@
             clearInterval(intervalID);
             const editorInstance = highed.Editor(document.body);
             window.editorReadyCallback(editorInstance);
+          } else {
+            console.log('window.editorReadyCallback not ready yet ...')
           }
-        }, 200);
+        }, 1000);
       });
     </script>
   </body>

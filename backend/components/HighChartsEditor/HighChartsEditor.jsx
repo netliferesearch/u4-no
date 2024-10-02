@@ -26,12 +26,13 @@ export default function HighChartsEditor(props) {
   // Patch chart data to sanity
   function chartChangeHandler(editor) {
     if (!editor) return;
-
+    const editorConfigJson = editor.chart.options.full;
     const nextValue = {
       ...value,
       editorConfigWithData: editor.chart.toProjectStr(),
       svgStr: editor.getEmbeddableSVG(),
       htmlStr: editor.getEmbeddableHTML(),
+      jsonStr: editorConfigJson ? JSON.stringify(editorConfigJson) : '',
     };
 
     // Todo: double check that chart gets updated properly
