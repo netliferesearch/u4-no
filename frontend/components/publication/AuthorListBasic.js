@@ -35,7 +35,7 @@ export const AuthorListBasic = ({ authors = [] }) => {
                       </a>
                     </LinkToItem>
                   ) : (
-                    `${firstName} ${surname}`
+                    `${firstName} ${surname ? surname : ''}`
                   )}
                 </span>
                 {position && <span className="c-authors-list__position">{position}</span>}

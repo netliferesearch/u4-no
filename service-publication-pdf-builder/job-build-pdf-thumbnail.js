@@ -2,17 +2,14 @@
 require('dotenv').config();
 
 const axios = require('axios');
-const sanityClient = require('@sanity/client');
-/*
-const THUMBNAIL_GENERATOR_SANITY_TOKEN = process.env.THUMBNAIL_GENERATOR_SANITY_TOKEN;
-*/
-const THUMBNAIL_GENERATOR_SANITY_TOKEN="skLCM2nnKqLZI7RCzKlJ1CMmvZKZYDZaINpITVMKFCNcGMHmXfBeGiGGGDf2EBWerLytPuWThSrjxer1qiyF9aZ31Gl0V7v4qi2siOWdmKPSc7EhQyYNdfIKKwZXYngVO7AalIQCFmjcaEJD2CTMIrrwT7WAT2zCZGHeYxqX6ittIPrbkSnO";
+const { createClient } = require('next-sanity');
 
 const getSanityClient = () =>
-  sanityClient({
-    projectId: '1f1lcoov',
-    dataset: 'production',
-    token: THUMBNAIL_GENERATOR_SANITY_TOKEN,
+  createClient({
+    projectId: process.env.SANITY_PROJECT_ID,
+    dataset: process.env.SANITY_DATASET || "production",
+    token: process.env.THUMBNAIL_GENERATOR_SANITY_TOKEN,
+    apiVersion: process.env.SANITY_API_VERSION,
   });
 
 

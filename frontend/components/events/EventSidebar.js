@@ -5,7 +5,14 @@ import DateToString from '../../helpers/dateToString';
 import { Topics } from '../general/topics/Topics';
 
 export const EventSidebar = ({ data }) => {
-  const { startDate = {}, pdfAsset = {}, topics = [], organiser = '' } = data;
+  const { 
+    startDate = {}, 
+    altDateText = null,
+    pdfAsset = {}, 
+    topics = [], 
+    organiser = '' 
+  } = data;
+
   return data ? (
     <div className="c-article-sidebar c-course-sidebar">
       <div className="c-course-sidebar__right">
@@ -18,16 +25,16 @@ export const EventSidebar = ({ data }) => {
                 <LocationIcon /> {data.location}
               </p>
             )}
-            {startDate?.utc && (
+            {(startDate?.utc || altDateText) && (
               <p className="u-text--grey">
                 <CalendorIcon />
-                {DateToString({ start: startDate?.local || startDate?.utc })}
+                {altDateText ? altDateText : DateToString({ start: startDate?.local || startDate?.utc })}
               </p>
             )}
           </div>
         ) : null}
 
-        {topics.length ? (
+        {topics?.length ? (
           <div className="c-article-sidebar__item">
             <h4 className="u-secondary-heading u-secondary-h4">Topics</h4>
             <hr className="u-section-underline--grey" />

@@ -57,6 +57,9 @@ export default {
             {
               type: 'resource',
             },
+            {
+              type: 'course',
+            },
           ],
         },
       ],

@@ -187,6 +187,7 @@ const sanityQuery2 = `{
       _type, 
       title, 
       startDate, 
+      altDateText,
       location, 
       lead, 
       "slug": slug.current, 

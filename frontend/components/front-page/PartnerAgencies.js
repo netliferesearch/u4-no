@@ -8,11 +8,20 @@ const classes = BEMHelper({
 
 const SinglePartner = ({ partner }) => {
   return (
-    <div {...classes('item')}>
-      <a href={partner.website} rel="noopener noreferrer" target="_blank" title={partner.name}>
-        <img src={`/public/partnerlogos/${partner.svgLogo}.svg`} id={partner.svgLogo} loading="lazy" alt={partner.name}/>
-      </a>
-    </div>
+    <React.Fragment>
+      {(partner._id === '8cdcdae8-11ad-4e58-983b-5ab9b5f26bd4') &&
+        <div {...classes('item')}>
+          <a href={partner.website} rel="noopener noreferrer" target="_blank" title={partner.name}>
+            <img src={`/public/partnerlogos/PartnerLogoNorway.svg`} loading="lazy" alt="Norway" />
+          </a>
+        </div>}
+
+      <div {...classes('item')}>
+        <a href={partner.website} rel="noopener noreferrer" target="_blank" title={partner.name}>
+          <img src={`/public/partnerlogos/${partner.svgLogo}.svg`} id={partner._id} loading="lazy" alt={partner.name} />
+        </a>
+      </div>
+    </React.Fragment>
   );
 };
 

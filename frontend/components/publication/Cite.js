@@ -11,6 +11,7 @@ export const Cite = ({
   publicationType = {},
   header = 'publication',
   publicationNumber = '',
+  reference = '',
 }) => {
   const citeRef = useRef(null);
   // const authorsString = authors.map(author => (author.target ? author.target : author)).map((a,index) => (`${a.surname}, ${a.firstName.slice(1)}. ${index < authors.length - 1 ? ', ' : ''}`)
@@ -19,14 +20,16 @@ export const Cite = ({
   const authorsString = authorsFiltered
     .map((a, index) => {
       return a.surname && a.firstName
-        ? `${a.surname}, ${a.firstName.substring(0, 1)}.; `
+        ? `${a.surname}, ${a.firstName.substring(0, 1)}.`
         : a.surname
-        ? `${a.surname}; `
+        ? `${a.surname}`
         : a.firstName
-        ? `${a.firstName}; `
+        ? `${a.firstName}`
         : '';
     })
-    .join('');
+    .join('; ');
+  const titleString = title.endsWith('.') || title.endsWith('?') ? `${title}` : `${title}.`;
+  const refString = reference || `Bergen: U4 Anti-Corruption Resource Centre, Chr. Michelsen Institute (${publicationType.title} ${publicationNumber})`;
   return (
     <div className="c-cite">
       <div className="c-cite__container">
@@ -34,10 +37,7 @@ export const Cite = ({
         <hr className="u-section-underline--no-margins" />
         <div className="c-cite__content">
           <p className="u-body--white" ref={citeRef}>
-            {`${authorsString} (${
-              date ? dateToString({ start: date.utc }).split(' ')[2] : ''
-            }) ${title}. Bergen: U4 Anti-Corruption Resource Centre, Chr. Michelsen Institute
-            (${publicationType.title} ${publicationNumber})`}
+            {`${authorsString} (${ date ? dateToString({ start: date.utc }).split(' ')[2] : '' }) ${titleString} ${refString}`}
           </p>
         </div>
         <div className="c-cite__action">

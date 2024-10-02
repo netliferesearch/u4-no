@@ -13,6 +13,7 @@ export default function PublicationContainer (props = {}) {
       lead = '',
       standfirst = '',
       slug = '',
+      reference = '',
       featuredImage = {},
       relatedUrl = {},
       legacypdf = {},

@@ -4,7 +4,7 @@ const path = require('path');
 const util = require('util');
 const _ = require('lodash');
 const axios = require('axios');
-const htmlToText = require('html-to-text');
+const { htmlToText } = require('html-to-text');
 const os = require('os')
 
 const unlink = util.promisify(fs.unlink);
@@ -159,7 +159,7 @@ async function processPublication({ document: doc, allDocuments }) {
     // weird characters etc we index that content into a different property so
     // it can be better scored.
     content: isLegacyPublication
-      ? htmlToText.fromString(abstract, { wordwrap: false })
+      ? htmlToText(abstract, { wordwrap: false })
       : blocksToText(doc.content || []),
     ...(isLegacyPublication
       ? { legacyPdfContent: await findLegacyPdfContent({ document: doc, allDocuments }) }

@@ -79,7 +79,7 @@ const sanityQuery = groq`*[_type == 'publication' && slug.current == $slug]{
   mainPoints, 
   methodology, 
   notes, 
-  partners, 
+  "partners":partners[]{_id,description,institution->{_id,name,description}} , 
   pdfFile, 
   pdfThumbnail{_type,asset->{url,metadata{lqip,dimensions{width,height}}}},
   publicationNumber,

@@ -36,6 +36,7 @@ export default async function Page({params}) {
   const courses3 = sections.filter(i => i._type === 'courses')[2].coursesRef;
   const courses4 = sections.filter(i => i._type === 'courses')[3].coursesRef;
   const courses5 = sections.filter(i => i._type === 'courses')[4].coursesRef;
+  const courses6 = sections.filter(i => i._type === 'courses')[5].coursesRef;
   const boxAndImg1 = sections.filter(i => i._type === 'boxOnImageRef')[0];
   const boxAndImg2 = sections.filter(i => i._type === 'boxOnImageRef')[1];
   const twoCols = sections.filter(i => i._type === 'twoColumns')[0];
@@ -84,6 +85,17 @@ export default async function Page({params}) {
             type={courses1.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL}
             title="Anti-corruption basics (open for everyone)"
             text="1-hour, self-paced course available in four languages"
+          />
+        </section>
+
+        <hr className="u-section-underline--no-margins" />
+
+        <section className="o-wrapper-medium">
+          <LearningEvents
+            events={courses6}
+            type={courses6.length > 1 ? CARD_TYPE.MEDIUM : CARD_TYPE.FULL}
+            title="Illicit financial flows (open for everyone)"
+            text="Self-paced courses"
           />
         </section>
 
