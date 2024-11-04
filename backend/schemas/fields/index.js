@@ -21,4 +21,3 @@ export { default as previewLinks } from './previewLinks';
 export { default as vimeoVideo } from './vimeoVideo';
 export { default as shortSlug } from './shortSlug';
 export { default as tableBlock } from './tableBlock';
-export { default as testimonial } from './testimonial';

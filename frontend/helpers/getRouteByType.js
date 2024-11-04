@@ -60,7 +60,7 @@ export const getPostType = item => {
           : 'Publication';
       break;
     case 'course':
-      typeTitle = item.mode ? `${item.mode} course` : 'Online course';
+      typeTitle = 'Online course';
       break;
     case 'event':
       switch (item.eventType) {

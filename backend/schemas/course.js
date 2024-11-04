@@ -2,7 +2,6 @@ import { title, leadText, featuredImage, image, language, shortSlug, slug, stand
 import annotationsLinksOnly from './fields/annotationsLinksOnly';
 import augmentSchema from './fields/augmentSchema';
 import defaultBlock from './fields/defaultBlock';
-import testimonial from './fields/testimonial';
 
 export default augmentSchema({
   title: 'Course',
@@ -98,18 +97,8 @@ export default augmentSchema({
       ],
     },
     {
-      name: "mode",
-      title: "Mode",
-      type: "string",
-      initialValue: "Self-paced",
-      options: {
-        list: ["Self-paced", "Facilitated"], // <-- predefined values
-      },
-      layout: "dropdown",
-    },  
-    {
       name: 'method',
-      title: 'Mode (same as above, in the language of the course)',
+      title: 'Method (self-paced, expert led etc.)',
       type: 'string',
     },
     {
@@ -152,29 +141,6 @@ export default augmentSchema({
       preview: {
         title: 'topics.title',
       },
-    },
-    {
-      name: 'relatedCourses',
-      title: 'Related courses',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {
-              type: 'course',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: 'testimonials',
-      title: 'Testimonials',
-      type: 'array',
-      of: [
-        testimonial,
-      ],
     },
     slug,
     shortSlug,

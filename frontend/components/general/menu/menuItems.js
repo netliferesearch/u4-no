@@ -246,7 +246,7 @@ export const menuItems = [
       {
         subtitle: 'Learning',
         items: [
-          { label: 'Online courses', slug: '/courses' },
+          { label: 'Online courses', slug: '/online-courses' },
           { label: 'Anti-corruption helpdesk', slug: '/helpdesk' },
           { label: 'Glossary', slug: '/terms ' },
         ],

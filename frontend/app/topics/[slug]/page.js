@@ -14,10 +14,10 @@ import { POST_TYPE } from 'components/general/post/Post';
 import { Team } from 'components/general/team/Team';
 import { TopicCardList } from 'components/general/topics/TopicCardList';
 import { groq } from 'next-sanity';
-import { FeaturedCourses } from '@/app/components/course/FeaturedCourses';
 
 export default async function Topic({ params }) {
-  const data = await getData(params);
+
+  const data = await getData( params );
   const {
     title = '',
     longTitle = '',
@@ -33,7 +33,6 @@ export default async function Topic({ params }) {
     hasIntroduction = false,
     hasAgenda = false,
     advisors = [],
-    courses = [],
     resources = [],
     relatedEvents = [],
     relatedUrl = {},
@@ -43,6 +42,7 @@ export default async function Topic({ params }) {
   return (
     <Layout>
       <div className="c-topic-page">
+
         <section className="o-wrapper-full">
           <Hero
             contentType="topic"
@@ -94,8 +94,8 @@ export default async function Topic({ params }) {
             </div>
           )}
         </section>
-
-        {hasContent(resources) && (
+        
+        {hasContent(resources) &&
           <section className="o-wrapper-full u-bg--lighter-blue">
             <div className="o-wrapper-medium">
               <FeaturedPosts
@@ -104,7 +104,7 @@ export default async function Topic({ params }) {
               />
             </div>
           </section>
-        )}
+        }
 
         {hasContent(relatedBlogPosts) && (
           <section className="">
@@ -120,12 +120,6 @@ export default async function Topic({ params }) {
               />
               <hr className="u-section-underline--no-margins" />
             </div>
-          </section>
-        )}
-
-        {hasContent(courses) && (
-          <section id="featuredCourses" className="o-wrapper-medium">
-            <FeaturedCourses courses={courses} title={`Featured course${courses.length > 1 ? 's' : ''}`} text=" " />
           </section>
         )}
 
@@ -206,19 +200,27 @@ export default async function Topic({ params }) {
             </div>
           </section>
         )}
+
       </div>
+
     </Layout>
   );
-}
+};
 
 export async function generateMetadata({ params, searchParams }, parent) {
-  const data = await getData(params);
-  const { title = '', longTitle = '', explainerText = '', featuredImage = '' } = data;
 
+  const data = await getData( params );
+  const {
+    title = '', 
+    longTitle = '', 
+    explainerText = '',
+    featuredImage = '',
+  } = data;
+ 
   return getMetadata({
     title: longTitle ? `${title} - ${longTitle}` : title,
     description: explainerText,
-    image: featuredImage?.asset?.url,
+    image: featuredImage?.asset?.url
   });
 }
 
@@ -272,23 +274,6 @@ const sanityQuery = groq`*[_type == 'topics' && slug.current == $slug]{
         "imageBlurDataURL":featuredImage.asset->metadata.lqip,
         topics[]->{title},
       },
-      "courses": courses[0..1]->{
-          _id,
-        "type": _type,
-        title,
-        lead,
-        standfirst,
-        language,
-        "slug": slug.current,
-        startDate{utc, local},
-        endDate{utc, local},
-        mode,
-        method,
-        duration,
-        featuredImage{asset->{url}},
-        "imageUrl": featuredImage.asset->url,
-        "imageBlurDataURL": featuredImage.asset->metadata.lqip
-      },
       "furtherResources": further_resources[]->{
         _id,
         _type,
@@ -308,19 +293,19 @@ const sanityQuery = groq`*[_type == 'topics' && slug.current == $slug]{
       "resourceCollections": collections[]->{_type, title, "slug": slug.current},
   }[0]`;
 
-async function getData(params) {
+async function getData( params ) {
   const data = await fetchAndMaterialize({
-    query: sanityQuery,
-    params,
+    query: sanityQuery, 
+    params, 
     tags: [`topics:${params.slug}`],
-    materializeDepth: 0,
+    materializeDepth: 0
   });
   return data;
-}
+};
 
 // pre-render
 export async function generateStaticParams() {
   const sanityQuery = groq`*[_type == 'topics']{ "slug": slug.current } | order(_updatedAt desc) [0..1000]`;
-  const data = await fetchAndMaterialize({ query: sanityQuery, materializeDepth: 0 });
+  const data = await fetchAndMaterialize( {query: sanityQuery, materializeDepth: 0} );
   return data;
-}
+};
