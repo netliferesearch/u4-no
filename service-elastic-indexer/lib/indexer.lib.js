@@ -46,6 +46,7 @@ async function fileExists(filePath) {
  * Purpose: Find corresponding pdf file and load its contents
  */
 async function findLegacyPdfContent({ document = {}, allDocuments, isRetrying = false }) {
+  return null;
   if (_.isEmpty(document.legacypdf)) {
     return null;
   }
@@ -228,6 +229,14 @@ async function processBlog({ document: doc, allDocuments }) {
     ...keywordsCountriesRegions( doc, expand ),
     authorIds: expand({
       references: doc.authors,
+      process: ({ _id }) => _id,
+    }),
+    editors: expand({
+      references: doc.editors,
+      process: ({ firstName, surname }) => `${firstName} ${surname}`,
+    }),
+    editorIds: expand({
+      references: doc.editors,
       process: ({ _id }) => _id,
     }),
     contentType:[doc._type],
