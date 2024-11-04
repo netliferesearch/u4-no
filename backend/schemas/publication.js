@@ -1,11 +1,25 @@
 import publicationContent from './fields/publicationContent';
 import annotations from './fields/annotations';
-import HighChartsEditor from '../components/HighChartsEditor';
+
 /**
  * A publication is a long form document
  */
 // import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
-import { date, title, subtitle, standfirst, image, keywords, leadText, slug, language, license, previewLinks, shortSlug, vimeoVideo } from './fields';
+import {
+  date,
+  title,
+  subtitle,
+  standfirst,
+  image,
+  keywords,
+  leadText,
+  slug,
+  language,
+  license,
+  previewLinks,
+  shortSlug,
+  vimeoVideo,
+} from './fields';
 
 export default {
   name: 'publication',
@@ -465,9 +479,8 @@ export default {
     {
       name: 'pdfThumbnail',
       title: 'Thumbnail of publication pdf',
-      type: 'image'
+      type: 'image',
     },
-
   ],
   initialValue: {
     language: 'en_US',

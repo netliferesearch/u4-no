@@ -5,11 +5,4 @@ export default defineCliConfig({
     projectId: '1f1lcoov',
     dataset: 'production',
   },
-  env: {
-    development: {
-      api: {
-        dataset: 'staging',
-      },
-    },
-  },
 });

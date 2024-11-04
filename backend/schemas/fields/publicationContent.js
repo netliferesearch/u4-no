@@ -1,17 +1,10 @@
 import annotations from './annotations';
 import { image, box, vimeoVideo, pdfEmbed } from './';
-import { FaTable } from 'react-icons/fa';
 
-import {
-  HtmlTableEditor,
-  HtmlTableEditorPreview,
-  HighChartsEditor,
-  HighChartsEditorPreview,
-
-} from '../../components';
+import { HtmlTableEditor, HtmlTableEditorPreview, HighChartsEditor } from '../../components';
 import { TinyEditor } from '../../components/HtmlTableEditor/TinyEditor';
 
-import React from 'react'
+import React from 'react';
 
 // const subscriptIcon = () => (
 //   <span>X<sub>y</sub></span>
@@ -35,7 +28,7 @@ const content = {
         { title: 'H3', value: 'h3' },
         { title: 'H4', value: 'h4' },
         { title: 'H5', value: 'h5' },
-        { title: 'Quote', value: 'blockquote'}
+        { title: 'Quote', value: 'blockquote' },
       ],
       // Only allow numbered lists
       marks: {
@@ -43,13 +36,13 @@ const content = {
         decorators: [
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
-          { "title": "Strike", "value": "strike-through" },
+          { title: 'Strike', value: 'strike-through' },
           {
             title: 'Subscript',
             value: 'sub',
             // icon: subscriptIcon,
             // component: Subscript
-          }
+          },
         ],
 
         // Support annotating text with a reference to an author
@@ -87,7 +80,10 @@ const content = {
         preview: HtmlTableEditorPreview,
       },
       options: {
-        editModal: 'fullscreen',
+        modal: {
+          type: 'dialog',
+          with: 900,
+        },
       },
       fields: [
         {
@@ -106,7 +102,7 @@ const content = {
           type: 'string',
           components: {
             input: TinyEditor,
-          }
+          },
         },
         {
           name: 'size',
@@ -140,18 +136,16 @@ const content = {
       type: 'object',
       components: {
         input: HighChartsEditor,
-        // preview: HighChartsEditorPreview,
       },
       options: {
-        editModal: 'fullscreen',
+        modal: {
+          type: 'dialog',
+          with: 900,
+        },
       },
       fields: [
         { name: 'title', type: 'string' },
         { name: 'caption', type: 'array', of: [{ type: 'block' }] },
-        { name: 'htmlStr', readOnly: true, type: 'string' },
-        { name: 'jsonStr', readOnly: true, type: 'string' },
-        { name: 'svgStr', readOnly: true, type: 'string' },
-        { name: 'editorConfigWithData', readOnly: true, type: 'string' },
         {
           name: 'size',
           title: 'Size',
@@ -168,6 +162,10 @@ const content = {
             ],
           },
         },
+        { name: 'htmlStr', readOnly: true, type: 'string' },
+        { name: 'jsonStr', readOnly: true, type: 'string' },
+        { name: 'svgStr', readOnly: true, type: 'string' },
+        { name: 'editorConfigWithData', readOnly: true, type: 'string' },
       ],
       preview: {
         select: {
@@ -198,10 +196,10 @@ const content = {
       preview: {
         prepare() {
           return {
-            title: 'Insert a page break here in the generated pdf'
-          }
-        }
-      }
+            title: 'Insert a page break here in the generated pdf',
+          };
+        },
+      },
     },
   ],
 };
