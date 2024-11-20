@@ -4,7 +4,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import slugify from 'slugify';
 import serializers from './serializers/serializers';
 
-const sizeClass = (size) => {
+const sizeClass = size => {
   if (size === 'narrow') {
     return 'c-table--narrow c-longform-grid__standard ';
   } else if (size === 'small') {
@@ -21,10 +21,10 @@ const sizeClass = (size) => {
 };
 
 // We trust html content coming from Sanity and output htmlStr raw.
-const Table = ({
-  title, caption, size, htmlStr,
-}) => (
-  <div className={`c-table ${sizeClass(size)}`}>
+const Table = ({ title, caption, size, htmlStr }) => (
+  <div
+    className={`c-table ${sizeClass(size)} ${htmlStr.includes('rowspan') && 'c-table--hasrowspan'}`}
+  >
     <p
       id={slugify(title, { lower: true, remove: /[$*_+~.()'"!\-:@]/g })}
       className="c-table__title"
