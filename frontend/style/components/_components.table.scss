@@ -31,7 +31,7 @@
     margin: $spacing-small 0;
   }
 
-  tr:nth-child(even) {
+  &:not(.c-table--hasrowspan)tr:nth-child(even) {
     background-color: $light-grey;
   }
 
@@ -64,6 +64,10 @@
     padding-right: 0;
     margin-top: $spacing-small;
   }
+}
+// no alternate row color if any cell has rowspan
+.c-table--hasrowspan .c-table tr:nth-child(even) {
+      background-color: none;
 }
 
 @media print {

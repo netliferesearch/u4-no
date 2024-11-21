@@ -13,6 +13,7 @@ import printFootnoteSerializer from './printFootnoteSerializer';
 import { ArticlePullQuote } from '../general/pull-quote/ArticlePullQuote';
 import Table from '../Table';
 import { random } from 'lodash';
+import VimeoVideo from '../VimeoVideo';
 
 const LineChart = dynamic(() => import('../LineChart'));
 
@@ -75,6 +76,7 @@ function printSerializers(blocks) {
         ),
       table: ({ node }) => <Table {...node} />,
       chart: ({ node }) => <ChartPrint {...node} />,
+      vimeo: ({ node }) => <></>, // TODO: print version of <VimeoVideo {...node} />
       pagebreak: props => <div className="c-pagebreak" />,
       block: ({ node, children }) => {
         const style = node.style || 'normal';
@@ -89,15 +91,15 @@ function printSerializers(blocks) {
               : undefined;
 
           // if h2 and text starts with numbering (digit followed by . and space)
-          if ( (style == 'h2') && (/^\d+\.\ /.test(heading))) {
+          if (style == 'h2' && /^\d+\.\ /.test(heading)) {
             // separate number and text
-            const num_text = ( node.children[0].text ? node.children[0].text.split('.', 2) : false);
+            const num_text = node.children[0].text ? node.children[0].text.split('.', 2) : false;
 
-            if ( num_text) {
-              return ( 
+            if (num_text) {
+              return (
                 <h2 id={id} className={'c-longform-grid__standard has_numbering'}>
-                  <span className='h2_numbering'>{num_text[0]}</span>
-                  {num_text[1].trim()} {children.slice(1,)}
+                  <span className="h2_numbering">{num_text[0]}</span>
+                  {num_text[1].trim()} {children.slice(1)}
                 </h2>
               );
             }
@@ -121,7 +123,6 @@ function printSerializers(blocks) {
         return <p {...classes('standard')}>{children}</p>;
       },
     },
-
     list: ({ type, children }) => {
       if (type === 'bullet') {
         return <ul {...classes('standard', null, 'list-bullets')}>{children}</ul>;
@@ -181,8 +182,8 @@ function printSerializers(blocks) {
     },
     text: props => {
       // replace non-breaking hyphen with html entity
-      if (!props.children.trim()) return props.children.replaceAll('‑','&#8209;');
-      return <span>{props.children.replaceAll('‑','&#8209;')}</span>;
+      if (!props.children.trim()) return props.children.replaceAll('‑', '&#8209;');
+      return <span>{props.children.replaceAll('‑', '&#8209;')}</span>;
     },
   };
 }
