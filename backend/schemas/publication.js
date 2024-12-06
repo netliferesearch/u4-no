@@ -1,5 +1,7 @@
 import publicationContent from './fields/publicationContent';
 import annotations from './fields/annotations';
+import { GeneratedFileInput } from '../components/GeneratedFileInput/GeneratedFileInput';
+import { ThumbnailInput } from '../components/ThumbnailInput/ThumbnailInput';
 
 /**
  * A publication is a long form document
@@ -255,7 +257,11 @@ export default {
     {
       name: 'pdfFile',
       title: 'Pdf file (generated)',
+      description: 'This file is generated from the content of this publication',
       type: 'file',
+      components: {
+        input: GeneratedFileInput,
+      },
     },
     {
       name: 'legacypdf',
@@ -480,6 +486,9 @@ export default {
       name: 'pdfThumbnail',
       title: 'Thumbnail of publication pdf',
       type: 'image',
+      components: {
+        input: ThumbnailInput,
+      },
     },
   ],
   initialValue: {

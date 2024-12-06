@@ -5,7 +5,7 @@ import { visionTool } from '@sanity/vision';
 import { richDate } from '@sanity/rich-date-input';
 import schemas from './schemas/schema';
 import { Logo } from './plugins/u4-studio-logo/Logo';
-import "./styles/studioOverrides.css";
+import './styles/studioOverrides.css';
 
 export default defineConfig({
   title: 'u4-no',
@@ -18,6 +18,11 @@ export default defineConfig({
   studio: {
     components: {
       logo: Logo,
+    },
+  },
+  env: {
+    development: {
+      dataset: 'staging',
     },
   },
 });

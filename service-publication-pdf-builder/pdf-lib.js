@@ -1,15 +1,16 @@
 /* eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
 require('dotenv').config();
 const axios = require('axios');
-const sanityClient = require('@sanity/client');
+const { createClient } = require('next-sanity');
 const fs = require('fs');
 const pdfConfig = require('./pdfConfig');
 
 const getSanityClient = () =>
-  sanityClient({
-    projectId: '1f1lcoov',
-    dataset: 'production',
-    token: process.env.PDF_WORKER_SANITY_TOKEN,
+  createClient({
+    projectId: process.env.SANITY_PROJECT_ID,
+    dataset: process.env.SANITY_DATASET || 'production',
+    token: process.env.THUMBNAIL_GENERATOR_SANITY_TOKEN,
+    apiVersion: process.env.SANITY_API_VERSION,
   });
 
 const buildPDF = async ({ url, title = 'output.pdf' }) => {
@@ -30,10 +31,13 @@ const uploadPDF = async ({ targetDocument, pdfFilename }) => {
   if (!fs.existsSync(pdfFilename)) {
     throw Error(`Could not find file to upload: ${pdfFilename}`);
   }
+  console.log('Uploading file to Sanity:', pdfFilename);
   const document = await client.assets.upload('file', fs.createReadStream(pdfFilename), {
-    filename: pdfFilename,
+    filename: pdfFilename.split('/').pop(),
     contentType: 'application/pdf',
   });
+  console.log('Sanity file asset created:', document._id);
+
   const patchPayload = {
     pdfFile: {
       _type: 'file',
