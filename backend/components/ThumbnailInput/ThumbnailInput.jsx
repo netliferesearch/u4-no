@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Button, Flex, Spinner, useToast } from '@sanity/ui';
 import { useClient, useFormValue, set, unset } from 'sanity';
-import { DocumentPdfIcon } from '@sanity/icons';
+import { ImageIcon } from '@sanity/icons';
 
-const pngGeneratorApi = 'http://www.u4.no/api/get-png';
+const pngGeneratorApi = 'https://www.u4.no/api/get-png';
 
 export const ThumbnailInput = props => {
   const { type, value, onChange } = props;
@@ -62,7 +62,7 @@ export const ThumbnailInput = props => {
     <Flex style={{ gap: '0.5em' }}>
       <Button
         text="Generate"
-        iconRight={isLoading ? <Spinner muted size={2} /> : <DocumentPdfIcon />}
+        iconRight={isLoading ? <Spinner muted size={2} /> : <ImageIcon />}
         onClick={handleGenerateClick}
         tone={fileFieldValue ? 'default' : 'positive'}
       />

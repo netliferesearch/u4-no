@@ -3,7 +3,7 @@ import { Box, Button, Flex, Spinner, useToast } from '@sanity/ui';
 import { useClient, useFormValue, set, unset } from 'sanity';
 import { DocumentPdfIcon } from '@sanity/icons';
 
-const pdfGeneratorApi = 'http://www.u4.no/api/get-pdf';
+const pdfGeneratorApi = 'https://www.u4.no/api/get-pdf';
 
 export const GeneratedFileInput = props => {
   const { type, value, onChange } = props;
