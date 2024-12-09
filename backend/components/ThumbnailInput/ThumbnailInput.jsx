@@ -4,6 +4,7 @@ import { useClient, useFormValue, set, unset } from 'sanity';
 import { ImageIcon } from '@sanity/icons';
 
 const pngGeneratorApi = 'https://www.u4.no/api/get-png';
+const debug = true;
 
 export const ThumbnailInput = props => {
   const { type, value, onChange } = props;
@@ -16,7 +17,7 @@ export const ThumbnailInput = props => {
   const handleGenerateClick = async () => {
     const { asset } = fileFieldValue;
     const assetId = asset?._ref ? asset._ref.split('-')[1] : null;
-    console.log('Generating thumbnail for:', fileFieldValue);
+    debug && console.log('Generating thumbnail for:', fileFieldValue);
 
     setIsLoading(true);
     try {
@@ -24,30 +25,30 @@ export const ThumbnailInput = props => {
       const response = await fetch(`${pngGeneratorApi}?assetId=${assetId}`, {
         method: 'GET',
       });
-      console.log('Response from /api/get-png:', response);
+      debug && console.log('Response from /api/get-png:', response);
 
       if (!response.ok) {
         throw new Error('Png generation failed');
       }
       // get the blob
       const blob = await response.blob();
-      //console.log('Blob received:', blob);
+      debug && console.log('Blob received:', blob);
 
       // create a file from the blob
       const pngFilename = `${slug}.png`;
       const file = new File([blob], pngFilename, { type: 'image/png' });
-      //console.log('File created', file);
+      debug && console.log('File created', file);
 
       // create a Sanity asset
       const pngAsset = await client.assets.upload('image', file, {
         filename: pngFilename,
         contentType: 'image/png',
       });
-      // console.log('Asset created:', pngAsset);
+      debug && console.log('Asset created:', pngAsset);
 
       // set the value of the pdfThumbnail field
       onChange(set({ _type: 'image', asset: { _ref: pngAsset._id } }));
-      // console.log('Png uploaded and field updated:', pngAsset);
+      debug && console.log('Png uploaded and field updated:', pngAsset);
       toast.push({ status: 'success', title: 'Success', description: 'Png generated' });
     } catch (error) {
       console.error('Error fetching png:', error);
