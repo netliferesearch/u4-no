@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Box, Button, Flex, Spinner, useToast } from '@sanity/ui';
+import { Box, Button, Spinner, useToast } from '@sanity/ui';
 import { useClient, useFormValue, set, unset } from 'sanity';
 import { ImageIcon } from '@sanity/icons';
 
 const pngGeneratorApi = 'https://www.u4.no/api/get-png';
-const debug = true;
+const debug = false;
 
 export const ThumbnailInput = props => {
   const { type, value, onChange } = props;
   const client = useClient({ apiVersion: '2021-06-07' });
   const fileFieldValue = useFormValue(['pdfFile']);
+  const thumbnailFieldValue = useFormValue(['pdfThumbnail']);
   const slug = useFormValue(['slug', 'current']);
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
@@ -49,7 +50,7 @@ export const ThumbnailInput = props => {
       // set the value of the pdfThumbnail field
       onChange(set({ _type: 'image', asset: { _ref: pngAsset._id } }));
       debug && console.log('Png uploaded and field updated:', pngAsset);
-      toast.push({ status: 'success', title: 'Success', description: 'Png generated' });
+      toast.push({ status: 'success', title: 'Success', description: 'Thumbnail generated' });
     } catch (error) {
       console.error('Error fetching png:', error);
       toast.push({ status: 'error', title: 'Error', description: error.message });
@@ -60,14 +61,22 @@ export const ThumbnailInput = props => {
   };
 
   return (
-    <Flex style={{ gap: '0.5em' }}>
+    <Box
+      style={{
+        display: 'flex',
+        gap: '0.5em',
+        flexDirection: thumbnailFieldValue ? 'column' : 'row',
+      }}
+    >
       <Button
         text="Generate"
         iconRight={isLoading ? <Spinner muted size={2} /> : <ImageIcon />}
         onClick={handleGenerateClick}
-        tone={fileFieldValue ? 'default' : 'positive'}
+        tone={thumbnailFieldValue ? 'default' : 'positive'}
+        disabled={!fileFieldValue}
+        style={{ width: 'fit-content' }}
       />
       <Box flex={1}>{props.renderDefault(props)}</Box>
-    </Flex>
+    </Box>
   );
 };

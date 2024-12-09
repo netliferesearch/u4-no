@@ -4,7 +4,6 @@ import { useClient, useFormValue, set, unset } from 'sanity';
 import { DocumentPdfIcon } from '@sanity/icons';
 
 const pdfGeneratorApi = 'https://www.u4.no/api/get-pdf';
-const debug = true;
 
 export const GeneratedFileInput = props => {
   const { type, value, onChange } = props;
@@ -22,30 +21,30 @@ export const GeneratedFileInput = props => {
       const response = await fetch(`${pdfGeneratorApi}?docId=${docId}`, {
         method: 'GET',
       });
-      debug && console.log('Response from /api/get-pdf:', response);
+      // console.log('Response from /api/get-pdf:', response);
 
       if (!response.ok) {
         throw new Error('Pdf generation failed');
       }
       // get the blob
       const blob = await response.blob();
-      debug && console.log('Blob received:', blob);
+      // console.log('Blob received:', blob);
 
       // create a file from the blob
       const pdfFilename = `${slug}.pdf`;
       const file = new File([blob], pdfFilename, { type: 'application/pdf' });
-      debug && console.log('File created', file);
+      // console.log('File created', file);
 
       // create a Sanity asset
       const asset = await client.assets.upload('file', file, {
         filename: pdfFilename,
         contentType: 'application/pdf',
       });
-      debug && console.log('Asset created:', asset);
+      // console.log('Asset created:', asset);
 
       // set the value of the pdfFile field
       onChange(set({ _type: 'file', asset: { _ref: asset._id } }));
-      debug && console.log('PDF uploaded and field updated:', asset);
+      // console.log('PDF uploaded and field updated:', asset);
       toast.push({ status: 'success', title: 'Success', description: 'PDF generated' });
     } catch (error) {
       console.error('Error fetching PDF:', error);
