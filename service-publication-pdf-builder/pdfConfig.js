@@ -9,7 +9,7 @@ require('dotenv').config();
  * @param  {String} [title='output']  title of the pdf returned
  * @return {Object}                 axios request configuration
  */
-const pdfConfig = ({ url = '', title = 'output' }) => {
+const pdfConfig = ({ url = '', title = 'output', test = false }) => {
   const token = process.env.DOCRAPTOR_API_KEY;
   return {
     url: `https://${token}@docraptor.com/docs`,
@@ -24,7 +24,7 @@ const pdfConfig = ({ url = '', title = 'output' }) => {
         document_url: `${url}/print`,
         type: 'pdf',
         name: title,
-        test: process.env.PDF_TEST || false,
+        test: test,
         pipeline: '10.1',
         prince_options: {
           baseurl: 'https://www.u4.no', // URL to use for generating absolute URLs for assets from relative URLs
