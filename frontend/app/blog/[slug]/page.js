@@ -13,9 +13,8 @@ import LongformArticleContent from '@/app/components/publication/LongformArticle
 import { PublicationNotifications } from 'components/publication/PublicationNotifications';
 import { groq } from 'next-sanity';
 
-export default async function BlogPage( {params} ) {
-
-  const data = await getData( params );
+export default async function BlogPage({ params }) {
+  const data = await getData(params);
   const {
     _type = '',
     title = '',
@@ -46,14 +45,12 @@ export default async function BlogPage( {params} ) {
           <div className="c-article__row">
             <div className="content c-article__col">
               <div className="u-margin--article-top">
-
-                {headsUp &&  <PublicationNotifications headsUp={headsUp} />}  
+                {headsUp && <PublicationNotifications headsUp={headsUp} />}
 
                 <LongformArticle>
                   <LongformArticleContent content={content} title={title} />
                 </LongformArticle>
               </div>
-
             </div>
             <div className="c-article__side c-article__col">
               <ArticleSidebar data={data} />
@@ -64,7 +61,7 @@ export default async function BlogPage( {params} ) {
         <PublicationAdditionalInfo data={data} />
       </article>
 
-      {hasContent(relatedResources) &&
+      {hasContent(relatedResources) && (
         <section className="">
           <div className="o-wrapper-medium o-wrapper-mobile-full">
             <PostCarousel
@@ -77,22 +74,21 @@ export default async function BlogPage( {params} ) {
             <hr className="u-section-underline--no-margins" />
           </div>
         </section>
-      }
+      )}
 
       <div id="modal" />
     </Layout>
   );
-};
+}
 
 export async function generateMetadata({ params, searchParams }, parent) {
+  const data = await getData(params);
+  const { title = '', standfirst = '', featuredImage = '' } = data;
 
-  const data = await getData( params );
-  const {title = '', standfirst = '', featuredImage = ''} = data;
- 
   return getMetadata({
     title: title,
     description: standfirst,
-    image: featuredImage?.asset?.url
+    image: featuredImage?.asset?.url,
   });
 }
 
@@ -119,19 +115,19 @@ const sanityQuery = groq`*[_type  == "blog-post" && slug.current == $slug]{
     "relatedResources": relatedContent[0..2]->{_type, _id, title, publicationType->{ title }, "articleTypeTitle": articleType[0]->title, "imageUrl": featuredImage.asset->url, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}
   }[0]`;
 
-  async function getData( params ) {
-    const data = await fetchAndMaterialize({
-      query: sanityQuery, 
-      params, 
-      tags: [`blog-post:${params.slug}`],
-      materializeDepth: 2
-    });
-    return data;
-  };
-  
+async function getData(params) {
+  const data = await fetchAndMaterialize({
+    query: sanityQuery,
+    params,
+    tags: [`blog-post:${params.slug}`],
+    materializeDepth: 2,
+  });
+  return data;
+}
+
 // pre-render 1000 most recent
 export async function generateStaticParams() {
   const sanityQuery = `*[_type == 'blog-post']{ "slug": slug.current } | order(_updatedAt desc) [0..1000]`;
-  const data = await fetchAndMaterialize( {query: sanityQuery, materializeDepth: 0} );
+  const data = await fetchAndMaterialize({ query: sanityQuery, materializeDepth: 0 });
   return data;
-};
+}

@@ -31,7 +31,7 @@ export default {
       What is the post about? Say one thing that convinces readers that they will lose out by not reading it.
     
     (Aim for: 170–200 characters with spaces)
-    `
+    `,
     },
     {
       name: 'pdfFile',
@@ -107,7 +107,7 @@ export default {
         license,
       ],
     },
-    
+
     // {
     //   name: 'summaryExternal',
     //   title: 'Link to external short version',
@@ -487,7 +487,6 @@ export default {
       title: 'title',
       authors: 'authors',
       publicationType: 'publicationType.title',
-      publicationNumber: 'publicationNumber',
       reference: 'reference',
       date: 'date',
       imageUrl: 'featuredImage.asset.url',
@@ -496,7 +495,6 @@ export default {
     prepare({
       title = '(title missing)',
       authors = {},
-      publicationNumber = '',
       publicationType = '',
       reference = '',
       date = '',
@@ -505,10 +503,7 @@ export default {
     }) {
       const author = authors.length == 0 ? '(authors missing)' : '';
       const pubYear = date != '' ? date.utc.split('-')[0] : '';
-      const subtitle =
-        publicationNumber != ''
-          ? `${publicationType} ${publicationNumber} ${author}`
-          : `${publicationType} ${pubYear} ${reference} ${author}`;
+      const subtitle = `${publicationType} ${pubYear} ${reference} ${author}`;
       return {
         title,
         subtitle,
