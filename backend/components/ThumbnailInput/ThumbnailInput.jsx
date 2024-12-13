@@ -4,21 +4,22 @@ import { useClient, useFormValue, set, unset } from 'sanity';
 import { ImageIcon } from '@sanity/icons';
 
 const pngGeneratorApi = 'https://www.u4.no/api/get-png';
-const debug = false;
+const debug = true;
 
 export const ThumbnailInput = props => {
   const { type, value, onChange } = props;
   const client = useClient({ apiVersion: '2021-06-07' });
   const fileFieldValue = useFormValue(['pdfFile']);
+  const overrideFileFieldValue = useFormValue(['legacypdf']);
   const thumbnailFieldValue = useFormValue(['pdfThumbnail']);
   const slug = useFormValue(['slug', 'current']);
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
 
   const handleGenerateClick = async () => {
-    const { asset } = fileFieldValue;
+    const { asset } = overrideFileFieldValue || fileFieldValue;
     const assetId = asset?._ref ? asset._ref.split('-')[1] : null;
-    debug && console.log('Generating thumbnail for:', fileFieldValue);
+    debug && console.log('Generating thumbnail for:', overrideFileFieldValue || fileFieldValue);
 
     setIsLoading(true);
     try {
@@ -73,7 +74,7 @@ export const ThumbnailInput = props => {
         iconRight={isLoading ? <Spinner muted size={2} /> : <ImageIcon />}
         onClick={handleGenerateClick}
         tone={thumbnailFieldValue ? 'default' : 'positive'}
-        disabled={!fileFieldValue}
+        disabled={!(overrideFileFieldValue || fileFieldValue)}
         style={{ width: 'fit-content' }}
       />
       <Box flex={1}>{props.renderDefault(props)}</Box>

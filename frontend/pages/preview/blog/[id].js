@@ -117,7 +117,7 @@ const BlogEntry = ({ data: { blogEntry = {} }, url = {} }) => {
 export default DataLoaderPreview(BlogEntry, {
   queryFunc: ({ query: { id = '' } }) => ({
     sanityQuery: `{
-      "blogEntry": *[_type  == "blog-post" && _id == $id][0] | order(date.utc desc) {_id, _type, _updatedAt, title, date, content, authors, lead, standfirst, headsUp, topics[]->{title, slug}, keywords[]->{category, keyword}, "slug": slug.current, language, translation,basedonpublication->{_id,_type,title,"slug":slug.current},
+      "blogEntry": *[_type  == "blog-post" && _id == $id][0] | order(date.utc desc) {_id, _type, _updatedAt, title, date, content, authors, editors,lead, standfirst, headsUp, topics[]->{title, slug}, keywords[]->{category, keyword}, "slug": slug.current, language, translation,basedonpublication->{_id,_type,title,"slug":slug.current},
         featuredImage{caption,credit,sourceUrl,license,asset->{altText,url,metadata{lqip}}},
         "translations": *[ _type == 'blog-post' && ( _id != ^._id ) && ( ( _id == ^.translation._ref) || translation._ref == coalesce(^.translation._ref, ^._id ))]{title, "slug": slug.current, language},
         "relatedResources": relatedContent[]->{_type, _id, title, publicationType->{ title }, articleType[0]->{ title }, "imageUrl": featuredImage.asset->url, startDate, date, standfirst, lead, "slug": slug.current, topics[]->{title}}[0..2]}
