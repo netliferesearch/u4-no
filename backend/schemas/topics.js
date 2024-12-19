@@ -10,7 +10,7 @@ import {
   box,
   vimeoVideo,
   tableBlock,
-  previewLinks
+  previewLinks,
 } from './fields';
 import annotationsLinksOnly from './fields/annotationsLinksOnly';
 
