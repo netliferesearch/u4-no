@@ -20,8 +20,8 @@ export const CourseFilterCheckboxes = props => {
         <h3 className="c-filters-v2__title">{title}</h3>
       </div>
       <span>
-        <ShowMoreItems items={filterValues} >
-          {( {slicedItems} ) =>
+        <ShowMoreItems items={filterValues}>
+          {({ slicedItems }) =>
             slicedItems.map(item => {
               const filterKey = `${filterName}-${slugify(item)}`;
               return (

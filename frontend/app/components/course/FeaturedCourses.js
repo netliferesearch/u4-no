@@ -10,7 +10,6 @@ import { CalendorIcon } from '@/components/icons/CalendorIcon';
 
 export const FeaturedCourses = ({ courses, title = 'Featured courses', text = '' }) => {
   if (!courses || courses.length === 0) return null;
-
   const columnClass = courses.length >= 3 ? 'column-3' : `column-${courses.length}`;
   const cardTypes = ['', CARD_TYPE.FULL, CARD_TYPE.LARGE, CARD_TYPE.MEDIUM];
   const cardType = courses.length >= 3 ? CARD_TYPE.MEDIUM : cardTypes[courses.length];

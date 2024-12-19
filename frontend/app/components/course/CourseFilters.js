@@ -46,6 +46,7 @@ export const CourseFilters = ({ courses = [], filters = {}, toggleFilter, resetF
             )}
           </div>
         </div>
+
         <CourseFilterCheckboxes
           id="select-mode"
           title="Delivery Mode"

@@ -5,7 +5,6 @@ import { CourseFilters } from './CourseFilters';
 import { CourseResults } from './CourseResults';
 
 export const CourseList = ({ courses }) => {
-
   const [filters, setFilters] = useState({});
   const totalCourses = courses.length;
   const filteredCourses = filterCourses(courses, filters);
@@ -19,7 +18,6 @@ export const CourseList = ({ courses }) => {
           if (!course.hasOwnProperty(filterName)) {
             return false;
           }
-
           let courseValue = course[filterName];
           let courseValues = Array.isArray(courseValue) ? courseValue : [courseValue];
 
@@ -32,7 +30,6 @@ export const CourseList = ({ courses }) => {
       return true;
     });
   }
-
 
   function toggleFilter(filterName, value) {
     setFilters(prevFilters => {

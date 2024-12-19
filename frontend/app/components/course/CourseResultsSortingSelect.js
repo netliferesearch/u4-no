@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 
 export const CourseResultsSortingSelect = ({ setSortby }) => (
-  <Fragment>
+  <>
     <select
       id="select-sorting"
       onChange={e => setSortby(e.target.value)}
@@ -11,5 +11,5 @@ export const CourseResultsSortingSelect = ({ setSortby }) => (
       <option value="date">Order by date</option>
       <option value="alphabetically">Order alphabetically</option>
     </select>
-  </Fragment>
+  </>
 );

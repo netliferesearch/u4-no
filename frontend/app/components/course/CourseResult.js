@@ -62,7 +62,6 @@ export const CourseResult = props => {
             </div>
           </a>
         </LinkToItem>
-        {false && course.topic && <Topics title={false} topics={course.topic} hr={false} />}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ export const CourseFilterReset = props => {
   if (searchFilters?.length === 0) {
     return null;
   }
+
   return (
     <button className="c-filters-v2-btn" onClick={onClick}>
       {buttonText}

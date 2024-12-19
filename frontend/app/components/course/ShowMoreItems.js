@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ArrowDown, ArrowUp } from '@/components/icons/ArrowDown';
 
 export const ShowMoreItems = ({ items = [], itemLimit = 5, children = () => null }) => {
-
   const [isToggleOpen, setToggleOpen] = useState(false);
   const toggleHandler = e => {
     e.preventDefault();
@@ -10,6 +9,7 @@ export const ShowMoreItems = ({ items = [], itemLimit = 5, children = () => null
   };
 
   const slicedItems = isToggleOpen ? items : items.slice(0, itemLimit);
+
   return (
     <div>
       {children({ slicedItems })}
