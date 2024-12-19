@@ -5,22 +5,30 @@ import { CourseResultsSortingSelect } from './CourseResultsSortingSelect';
 export const CourseResults = props => {
   const { totalCourses = 0 } = props;
   const [sortby, setSortby] = useState('recommended');
-  
+
   // sort course list according to selected value of sortby
   const courses = props.courses.slice().sort((a, b) => {
     switch (sortby) {
-      case 'recommended':
-        return a.defaultIndex - b.defaultIndex;
       case 'date':
-        const dateA = a.startDate?.utc ? new Date(a.startDate.utc) : null;
-        const dateB = b.startDate?.utc ? new Date(b.startDate.utc) : null;
-        const selfpacedFirst = a.mode === 'Self-paced' ? -1 : b.mode === 'Self-paced' ? 1 : 0;
-        const dateFirst = dateA ? (dateB ? dateA - dateB : -1) : dateB ? 1 : 0;
-        return selfpacedFirst || dateFirst;
+        // Check if both courses have a startDate
+        if (a.startDate?.utc && b.startDate?.utc) {
+          return new Date(a.startDate.utc) - new Date(b.startDate.utc);
+        }
+
+        // If only one course has a startDate, it should come first
+        if (a.startDate?.utc) return -1;
+        if (b.startDate?.utc) return 1;
+
+        // If neither course has a startDate, Self-paced comes first
+        if (a.mode === 'Self-paced' && b.mode !== 'Self-paced') return -1;
+        if (a.mode !== 'Self-paced' && b.mode === 'Self-paced') return 1;
+
+        // else use default order
+        return a.defaultIndex - b.defaultIndex;
       case 'alphabetically':
         return a.title.localeCompare(b.title);
       default:
-        return 0;
+        return a.defaultIndex - b.defaultIndex;
     }
   });
 
