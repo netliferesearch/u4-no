@@ -14,15 +14,12 @@ export const CourseResults = props => {
         if (a.startDate?.utc && b.startDate?.utc) {
           return new Date(a.startDate.utc) - new Date(b.startDate.utc);
         }
-
         // If only one course has a startDate, it should come first
         if (a.startDate?.utc) return -1;
         if (b.startDate?.utc) return 1;
-
         // If neither course has a startDate, Self-paced comes first
         if (a.mode === 'Self-paced' && b.mode !== 'Self-paced') return -1;
         if (a.mode !== 'Self-paced' && b.mode === 'Self-paced') return 1;
-
         // else use default order
         return a.defaultIndex - b.defaultIndex;
       case 'alphabetically':
