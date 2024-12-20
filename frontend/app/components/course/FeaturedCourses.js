@@ -7,6 +7,8 @@ import { ArrowNext } from '@/components/icons/ArrowNext';
 import Image from 'next/image';
 import sanityImageLoader from '@/helpers/sanityImageLoader';
 import { CalendorIcon } from '@/components/icons/CalendorIcon';
+import dateToString from 'helpers/dateToString';
+import { LocationIcon } from '@/components/icons/LocationIcon';
 
 export const FeaturedCourses = ({ courses, title = 'Featured courses', text = '' }) => {
   if (!courses || courses.length === 0) return null;
