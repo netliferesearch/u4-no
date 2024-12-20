@@ -255,6 +255,22 @@ export default {
       ],
     },
     {
+      name: 'courses',
+      title: 'Featured courses',
+      description: 'Featured courses for this topic page',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'course',
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: 'further_resources',
       title: 'Further resources',
       description: 'Further resources for this topic page',
