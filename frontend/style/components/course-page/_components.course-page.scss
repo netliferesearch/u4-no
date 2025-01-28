@@ -1,9 +1,11 @@
 .c-course-entry {
+
   // modal jump fix:
   .c-header--fixed {
     width: 100vw;
     overflow-x: hidden;
   }
+
   .u-scroll-bar {
     @include mq($from: tablet) {
       width: 100%;
@@ -14,6 +16,7 @@
     button {
       margin-left: 16px;
     }
+
     @include mq($from: tablet) {
       button {
         margin-left: 32px;
@@ -24,6 +27,7 @@
   .c-team__wrapper {
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 0;
+
     @include mq($from: tablet) {
       margin-bottom: 48px;
     }
@@ -34,6 +38,7 @@
   width: 100%;
   display: inline-grid;
   grid-gap: 0;
+
   @include mq($from: tablet) {
     grid-template-columns: 1fr 1fr;
     column-gap: 0;
@@ -50,6 +55,7 @@
   align-items: flex-start;
   margin-top: 0;
   margin-bottom: 0;
+
   @include mq($from: tablet) {
     margin-top: 48px;
     margin-bottom: 64px;
@@ -62,9 +68,11 @@
   align-items: center;
   width: 100%;
   margin: 24px 0 40px 0;
+
   .c-modal {
     margin-right: 24px;
   }
+
   @include mq($from: tablet) {
     margin-bottom: 64px;
   }
@@ -75,8 +83,88 @@
   display: inline-grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
+
   @include mq($from: desktop) {
     grid-template-columns: 5fr 2fr;
     column-gap: 120px;
   }
+}
+
+// course result shown on the online courses page
+.c-course-results__item {
+  list-style: none;
+  border-bottom: 1px solid $light-grey;
+  margin: 1em 0;
+  padding: 1em 0;
+}
+
+.c-post.course {
+  margin-bottom: 0;
+}
+
+.c-course-result {
+  display: flex;
+  align-items: flex-start;
+
+  .c-course-result__image-container {
+    margin: 0 30px 0 0;
+    min-width: 180px;
+
+    @include mq($until: tablet) {
+      display: none;
+    }
+
+    .c-course-result__image {
+      position: relative;
+      margin-top: 20px;
+    }
+  }
+
+  .c-events-calendar-svg {
+    margin-right: 10px;
+  }
+}
+
+// featured course
+.c-featured-courses {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.c-featured-courses__item {
+  flex: 1 0 400px;
+  background-color: $lighter-blue;
+  padding: 24px 16px 16px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+    transform: scale(1.01);
+
+    .c-blue-card__heading {
+      color: $blue;
+    }
+  }
+}
+
+.c-featured-courses__content {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.c-featured-courses__image {
+  position: relative;
+  flex: 1;
+}
+
+.course-date {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

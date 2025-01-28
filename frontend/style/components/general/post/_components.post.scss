@@ -143,8 +143,9 @@
 }
 
 .small .c-post__post-info {
-  display: flex;
-  flex-direction: column;
+  // removed, seems not in use and caused double margin-bottom
+  // display: flex;
+  // flex-direction: column;
   margin-left: 8px;
   @include mq($from: tablet) {
     margin-left: 0px;

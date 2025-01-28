@@ -1,10 +1,11 @@
 import React from 'react';
-import Image from "next/image";
+import Image from 'next/image';
 import sanityImageLoader from '../../helpers/sanityImageLoader';
 import { Topics } from '../../components/general/topics/Topics';
 import { BreadCrumbV2 } from '../../components/general/BreadCrumbV2';
 import { PhotoCaptionCredit } from './PhotoCaptionCredit';
 import { PageIntro } from './PageIntro';
+import hasContent from '@/app/lib/util/hasContent';
 
 export const Hero = ({
   contentType = '',
@@ -26,16 +27,17 @@ export const Hero = ({
             loader={sanityImageLoader}
             src={image.asset.url}
             alt={image.asset.altText ? image.asset.altText : ''}
-            placeholder={image.asset.metadata?.lqip ? "blur" : "empty"}
-            blurDataURL={image.asset.metadata?.lqip ? image.asset.metadata.lqip : ""}
+            placeholder={image.asset.metadata?.lqip ? 'blur' : 'empty'}
+            blurDataURL={image.asset.metadata?.lqip ? image.asset.metadata.lqip : ''}
             priority="true"
             quality="70"
             fill
             sizes="100vw"
             style={{
-              objectFit: "cover",
-              objectPosition: "center 30%"
-            }} />
+              objectFit: 'cover',
+              objectPosition: 'center 30%',
+            }}
+          />
           <PhotoCaptionCredit image={image} showCaption={false} />
         </figure>
       ) : (
@@ -62,13 +64,11 @@ export const Hero = ({
           )}
           <div className="c-hero__row">
             <PageIntro title={title} text={text} onDark={onDark} />
-            <div>
-              {topics &&
+            <div className="c-hero__topics-credits">
+              {hasContent(topics) && (
                 <Topics title="Related topics" topics={topics} hr onDark={onDark} image={image} />
-              }
-              {image &&
-               <PhotoCaptionCredit image={image} showCaption={false} onDark={onDark} />
-              }
+              )}
+              {image && <PhotoCaptionCredit image={image} showCaption={false} onDark={onDark} />}
             </div>
           </div>
         </div>

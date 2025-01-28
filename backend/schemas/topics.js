@@ -10,7 +10,7 @@ import {
   box,
   vimeoVideo,
   tableBlock,
-  previewLinks
+  previewLinks,
 } from './fields';
 import annotationsLinksOnly from './fields/annotationsLinksOnly';
 
@@ -247,6 +247,22 @@ export default {
             {
               type: 'event',
             },
+            {
+              type: 'course',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'courses',
+      title: 'Featured courses',
+      description: 'Featured courses for this topic page',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
             {
               type: 'course',
             },

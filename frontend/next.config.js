@@ -24,9 +24,11 @@ if (process.env.ANALYZE === 'true') {
         { protocol: 'https', hostname: 'cdn.sanity.io', pathname: '/images/**' },
         { protocol: 'https', hostname: 'www.u4.no', pathname: '/public/**' },
       ],
+      imageSizes: [180, 320, 392, 443],
+      deviceSizes: [640, 784, 1080, 1206, 1920, 2048, 3840],
     },
-    // set CORS headers for api routes
     async headers() {
+      // set CORS headers for api routes
       return [
         {
           source: '/api/:path*',

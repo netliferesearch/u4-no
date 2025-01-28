@@ -5,8 +5,7 @@ import { Post, POST_TYPE } from '../general/post/Post';
 import { getPlaceholder } from '../../helpers/imgloader';
 import Link from 'next/link';
 import sanityImageLoader from '../../helpers/sanityImageLoader';
-import Image from "next/image";
-
+import Image from 'next/image';
 
 export const SearchResult = props => {
   const { _source = {} } = props;
@@ -31,24 +30,26 @@ export const SearchResult = props => {
         </div>
       ) : (
         <div className="c-search-results-v2__pdf-container">
-          {props.publications && (pdfFileView || pdfFileUrlView || legacypdfFileUrlView || pdfThumbnailUrlView) ? (
+          {props.publications &&
+          (pdfFileView || pdfFileUrlView || legacypdfFileUrlView || pdfThumbnailUrlView) ? (
             <div className="pdf-preview">
               {pdfThumbnailUrlView ? (
                 <div className="pdf-thumbnail">
-                <Image
-                  loader={sanityImageLoader}
-                  src={pdfThumbnailUrlView}
-                  alt=""
-                  loading="lazy"
-                  fill
-                  sizes="180px"
-                  style={{
-                    objectFit: "fit"
-                  }} />
-              </div>
-
-              ) : null
-              }
+                  <Image
+                    loader={sanityImageLoader}
+                    src={pdfThumbnailUrlView}
+                    alt=""
+                    loading="lazy"
+                    width={180}
+                    height={0}
+                    style={{
+                      objectFit: 'contain',
+                      width: '180px',
+                      height: 'auto',
+                    }}
+                  />
+                </div>
+              ) : null}
             </div>
           ) : null}
 
