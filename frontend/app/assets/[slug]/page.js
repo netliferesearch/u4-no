@@ -11,18 +11,14 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-export default async function Asset({ params }){
-  
+export default async function Asset({ params }) {
   const data = await getData(params);
-  const { 
-    title = '', 
-    slug = '', 
-    url = '', 
-  } = data;
+  const { title = '', slug = '', url = '' } = data;
 
   const isPdf = url.slice(-4) === '.pdf';
   const isDoc = url.slice(-4) === '.doc' || url.slice(-5) === '.docx';
-  
+  const isXsl = url.slice(-4) === '.xls' || url.slice(-5) === '.xlsx';
+
   return (
     <Layout>
       <header>
@@ -35,11 +31,9 @@ export default async function Asset({ params }){
         </div>
       </header>
 
-      {isPdf && 
-        <PdfEmbed src={url} title={title} mode="inline" />
-      }
+      {isPdf && <PdfEmbed src={url} title={title} mode="inline" />}
 
-      {isDoc && (
+      {(isDoc || isXsl) && (
         <div className="o-wrapper u-tc">
           <iframe
             className="c-pdf-viewer"
@@ -48,30 +42,24 @@ export default async function Asset({ params }){
             width="100%"
             height="800"
             frameBorder="0"
-            style={{ maxWidth: 1000, maxHeight: '75vh' }}
+            style={{ maxWidth: isDoc ? '1000px' : '100%', maxHeight: '75vh' }}
           >
             Your browser does not allow embedding of word documents, please use the download link
             above
           </iframe>
         </div>
       )}
-
     </Layout>
   );
-};
+}
 export async function generateMetadata({ params }) {
-
   const data = await getData(params);
-  const {
-    title = '',
-    lead = '',
-    featuredImage = '',
-  } = data;
+  const { title = '', lead = '', featuredImage = '' } = data;
 
   return getMetadata({
     title: title,
     description: lead,
-    image: featuredImage?.asset?.url
+    image: featuredImage?.asset?.url,
   });
 }
 
@@ -82,11 +70,11 @@ const sanityQuery = groq`*[_type=="asset" && slug.current == $slug][0]{
 }`;
 
 async function getData(params) {
-  const data = await fetchAndMaterialize({ 
-    query: sanityQuery, 
+  const data = await fetchAndMaterialize({
+    query: sanityQuery,
     params,
     tags: [`asset:${params.slug}`],
-    materializeDepth: 0
+    materializeDepth: 0,
   });
   return data;
 }
