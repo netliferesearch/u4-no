@@ -7,9 +7,11 @@ import serializers from 'components/serializers/serializers';
 import { CourseList } from '@/app/components/course/CourseList';
 import { groq } from 'next-sanity';
 import { CARD_TYPE } from '@/components/general/blue-card/BlueCard';
+import { TextImage } from 'components/general/text-image/TextImage';
 
 import { LearningEvents } from '@/components/front-page/LearningEvents';
 import { FeaturedCourses } from '@/app/components/course/FeaturedCourses';
+import { da } from 'date-fns/locale';
 
 export const languageName = ({ langcode = 'en_US' }) => {
   const languages = [
@@ -30,8 +32,9 @@ export const languageName = ({ langcode = 'en_US' }) => {
 export default async function Courses({ params }) {
   const data = await getData(params);
   const { frontPage } = data;
-  const featuredCourses = frontPage.sections[0]?.coursesRef;
-  const topCourses = frontPage.sections[1]?.coursesRef;
+  const sections = frontPage.sections.slice(4);
+  const featuredCourses = frontPage.courseSections[0]?.coursesRef;
+  const topCourses = frontPage.courseSections[1]?.coursesRef;
   /* topCourses followed by the rest of the courses (that are not in topCourses */
   const courses = topCourses
     .concat(
@@ -66,8 +69,21 @@ export default async function Courses({ params }) {
         <div className="o-wrapper-medium ">
           <h4 className="u-secondary-heading u-secondary-h1 u-detail--blue">Explore all courses</h4>
         </div>
+
         <div className="o-wrapper-medium">
           <CourseList courses={courses} />
+        </div>
+
+        <hr className="u-section-underline--no-margins" style={{ margin: '64px 0 80px' }} />
+
+        <div className="o-wrapper-medium u-top-margin-64">
+          {sections.map((section, index) => {
+            return section._type === 'boxOnImageRef' ? (
+              <TextImage text={section.block} image={section.img} imagePosition={!index % 2} />
+            ) : (
+              <BlockContent blocks={section} serializers={serializers} />
+            );
+          })}
         </div>
       </div>
     </Layout>
@@ -90,7 +106,8 @@ const sanityQuery = groq`{
       _id,
       title,
       lead,
-      "sections": sections[_type=="courses"]{coursesRef[]->{
+      sections,
+      "courseSections": sections[_type=="courses"]{coursesRef[]->{
       _id,
       "type": _type,
       title,
@@ -133,8 +150,8 @@ async function getData(params) {
   const data = await fetchAndMaterialize({
     query: sanityQuery,
     params,
-    tags: ['course', 'frontPage:online-learning'],
-    materializeDepth: 0,
+    tags: ['course', 'frontpage:online-learning'],
+    materializeDepth: 2,
   });
   return data;
 }

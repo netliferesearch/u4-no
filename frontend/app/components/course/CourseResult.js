@@ -14,25 +14,32 @@ export const CourseResult = props => {
     ...props.course,
     topics: props.course?.topic,
   };
+  const placeholderImageUrl = 'https://www.u4.no/public/placeholder-course.png';
 
   return (
     <div className="c-course-result">
       <div className="c-course-result__image-container">
-        {course.imageUrl && (
+        {course.imageUrl ? (
           <div className="c-course-result__image">
             <Image
               loader={sanityImageLoader}
               src={course.imageUrl}
               alt=""
               loading="lazy"
-              width={0}
+              width={180}
               height={0}
-              sizes="180px"
-              style={{
-                objectFit: 'contain',
-                width: '180px',
-                height: 'auto',
-              }}
+              style={{ objectFit: 'contain', width: '180px', height: 'auto' }}
+            />
+          </div>
+        ) : (
+          <div className="c-course-result__image">
+            <Image
+              src={`${placeholderImageUrl}`}
+              alt=""
+              loading="lazy"
+              width={180}
+              height={0}
+              style={{ objectFit: 'contain', width: '180px', height: 'auto' }}
             />
           </div>
         )}
