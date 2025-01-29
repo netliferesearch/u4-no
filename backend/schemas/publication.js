@@ -334,6 +334,8 @@ export default {
     {
       name: 'abbreviations',
       title: 'Abbreviations',
+      description:
+        'To enter abbreviations, put an abbreviation on one line, then shift line break and add the full name/description. Do not add any bold.',
       type: 'array',
       of: [
         {
