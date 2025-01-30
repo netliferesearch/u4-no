@@ -17,8 +17,7 @@ import { Team } from 'components/general/team/Team';
 import { PERSON_CARD_TYPE } from 'components/general/person/PersonCard';
 import { groq } from 'next-sanity';
 
-export default async function Course({ params }){
-
+export default async function Course({ params }) {
   const data = await getData(params);
   const {
     title = '',
@@ -27,6 +26,7 @@ export default async function Course({ params }){
     content = [],
     contact = [],
     courseType = 18,
+    mode = '',
     method = '',
     cost = '',
     duration = '',
@@ -41,7 +41,6 @@ export default async function Course({ params }){
   return (
     <Layout>
       <div className="c-course-entry" dir={language === 'ar_AR' ? 'rtl' : 'ltr'}>
-
         <section className="o-wrapper-medium">
           <BreadCrumbV2 title="Online Courses" parentSlug="/online-courses" home />
           <CourseHeader data={data} />
@@ -126,26 +125,22 @@ export default async function Course({ params }){
       </div>
     </Layout>
   );
-};
+}
 
 export async function generateMetadata({ params }) {
-
   const data = await getData(params);
-  const {
-    title = '',
-    lead = '',
-    featuredImage = '',
-  } = data;
+  const { title = '', lead = '', featuredImage = '' } = data;
 
   return getMetadata({
     title: title,
     description: lead,
-    image: featuredImage?.asset?.url
+    image: featuredImage?.asset?.url,
   });
 }
 
 const sanityQuery = groq`*[_type=="course" && slug.current == $slug][0]{
   _id, 
+  _type,
   title, 
   language, 
   link, 
@@ -154,6 +149,7 @@ const sanityQuery = groq`*[_type=="course" && slug.current == $slug][0]{
   lead, 
   content, 
   "slug": slug.current, 
+  mode,
   method, 
   cost, 
   duration, 
@@ -214,13 +210,13 @@ async function getData(params) {
     query: sanityQuery,
     params,
     tags: [`course:${params.slug}`],
-    materializeDepth: 2
+    materializeDepth: 2,
   });
   return data;
-};
+}
 
 export async function generateStaticParams() {
   const sanityQuery = groq`*[_type == 'course']{ "slug": slug.current } | order(_updatedAt desc) [0..1000]`;
   const data = await fetchAndMaterialize({ query: sanityQuery, materializeDepth: 0 });
   return data;
-};
+}
