@@ -230,4 +230,8 @@ ul.c-longform-grid__standard {
   @include mq($from: tablet) {
     padding-left: 24px;
   }
+
+  li {
+    margin-bottom: $spacing-small;
+  }
 }
