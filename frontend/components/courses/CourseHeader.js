@@ -3,8 +3,9 @@ import { ShareOpen } from '../general/social/ShareOpen';
 import VimeoPlayer from '@/app/components/general/VimeoPlayer';
 import { RegisterForm } from './RegisterForm';
 import { PageIntro } from '../general/PageIntro';
-import sanityImageLoader from '../../helpers/sanityImageLoader';
-import Image from "next/image";
+import { getPostType } from '@/helpers/getRouteByType';
+import sanityImageLoader from '@/helpers/sanityImageLoader';
+import Image from 'next/image';
 
 export const CourseHeader = ({ data }) => {
   const {
@@ -14,6 +15,7 @@ export const CourseHeader = ({ data }) => {
     vimeo = '',
     courseType = {},
     language = 'en_US',
+    mode = '',
   } = data;
   return data ? (
     <div className="c-course-entry__header">
@@ -25,7 +27,7 @@ export const CourseHeader = ({ data }) => {
         <PageIntro
           title={title}
           text={lead}
-          contentType="Online course"
+          contentType={getPostType(data)}
           type="withBreadcrumb"
           single
         />
@@ -57,14 +59,15 @@ export const CourseHeader = ({ data }) => {
             src={featuredImage.asset.url}
             width="484"
             height="273"
-            placeholder={featuredImage.asset.metadata.lqip ? "blur" : "empty"}
+            placeholder={featuredImage.asset.metadata.lqip ? 'blur' : 'empty'}
             blurDataURL={featuredImage.asset.metadata.lqip}
             style={{
-              maxWidth: "100%",
-              height: "auto",
-              objectFit: "cover",
-              objectPosition: "center center"
-            }} />
+              maxWidth: '100%',
+              height: 'auto',
+              objectFit: 'cover',
+              objectPosition: 'center center',
+            }}
+          />
         </div>
       ) : null}
     </div>
