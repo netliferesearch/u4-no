@@ -7,21 +7,19 @@ import { PageIntro } from 'components/general/PageIntro';
 import ArticleContainer from 'components/article/ArticleContainer';
 import { groq } from 'next-sanity';
 
-
-async function FrontPage( data ){
+async function FrontPage(data) {
   const { title = '', featuredImage = {}, lead = '', sections, relatedUrl = {} } = data;
 
   return (
-    <Layout  >
+    <Layout>
       {lead || (title && <PageIntro title={title} text={lead ? lead : ''} />)}
       {sections ? <ServiceArticle blocks={sections} /> : null}
     </Layout>
-  )
+  );
 }
 
-export default async function AboutPage({params}){
-
-  const data = await getData( params );
+export default async function AboutPage({ params }) {
+  const data = await getData(params);
 
   return (
     <StoreProvider>
@@ -35,18 +33,13 @@ export default async function AboutPage({params}){
 }
 
 export async function generateMetadata({ params, searchParams }, parent) {
+  const data = await getData(params);
+  const { title = '', lead = '', featuredImage = '' } = data;
 
-  const data = await getData( params );
-  const {
-    title = '', 
-    lead = '', 
-    featuredImage = ''
-  } = data;
- 
   return getMetadata({
     title: title,
     description: lead,
-    image: featuredImage
+    image: featuredImage,
   });
 }
 
@@ -58,19 +51,16 @@ const sanityQuery = groq`*[slug.current == $slug][0] {
     ..., topics[]->{ _id, title, slug }, "articleType": articleType[0]->title
   }`;
 
-  async function getData( params ) {
-    const data = await fetchAndMaterialize({
-      query: sanityQuery, 
-      params, 
-      materializeDepth: 2,
-      tags: [`frontpage:${params.slug}`]
-    });
-    return data;
-  };
-  
-  export async function generateStaticParams() {
-    return [
-      { slug: 'u4-partner-agencies' }, 
-      { slug: 'become-a-partner' },
-    ]
-  };
+async function getData(params) {
+  const data = await fetchAndMaterialize({
+    query: sanityQuery,
+    params,
+    materializeDepth: 2,
+    tags: [`frontpage:${params.slug}`, `article:${params.slug}`],
+  });
+  return data;
+}
+
+export async function generateStaticParams() {
+  return [{ slug: 'u4-partner-agencies' }, { slug: 'become-a-partner' }];
+}
