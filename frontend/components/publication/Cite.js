@@ -44,9 +44,9 @@ export const Cite = ({
         <hr className="u-section-underline--no-margins" />
         <div className="c-cite__content">
           <p className="u-body--white" ref={citeRef}>
-            {`${authorsString} (${
+            {`${authorsString} ${authorsString.slice(-1) === '.' ? '' : '.'} ${
               date ? dateToString({ start: date.utc }).split(' ')[2] : ''
-            }) ${titleString} ${refString}`}
+            }. ${titleString} ${refString}`}
           </p>
         </div>
         <div className="c-cite__action">
