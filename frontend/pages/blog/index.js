@@ -9,10 +9,7 @@ import { PageIntro } from '../../components/general/PageIntro';
 
 const store = initStore();
 
-const BlogPage = ({
-  data: { blogEntries1 = [], blogEntries2 = [], topics = [], publications = [] },
-}) => {
-  const blogEntries = [...blogEntries1, ...blogEntries2.slice(11, -1)];
+const BlogPage = ({ data: { blogEntries = [], topics = [], publications = [] } }) => {
   return (
     <Provider store={store}>
       <Layout
@@ -53,15 +50,10 @@ export default BlogPage;
 
 const queryFunc = () => ({
   sanityQuery: `{
-    "blogEntries1": *[_type  == "blog-post"] | order(date.utc desc)[0..12] {
+    "blogEntries": *[_type  == "blog-post"] | order(date.utc desc) {
       _id, _type, title, date, date, standfirst, topics[]->{title}, 
       "imageUrl": featuredImage.asset->url,
       "imageBlurDataURL": featuredImage.asset->metadata.lqip, 
-      "slug": slug.current 
-    },
-    "blogEntries2": *[_type  == "blog-post"] | order(date.utc desc) {
-      _id, _type, title, date, date, standfirst, topics[]->{title}, 
-      "imageUrl": featuredImage.asset->url,
       "slug": slug.current 
     },
     "topics": *[_type == "topics"] | order(title){_id, title, slug},
