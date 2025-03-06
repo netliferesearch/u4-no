@@ -25,6 +25,7 @@ export default async function Course({ params }) {
     lead = '',
     content = [],
     contact = [],
+    registrationLink = '',
     courseType = 18,
     mode = '',
     method = '',
@@ -53,7 +54,11 @@ export default async function Course({ params }) {
             <div className="c-longform u-margin--course-top c-article__col">
               {content ? <BlockContent blocks={content} serializers={serializers} /> : null}
               <div className="c-course-entry__btn-row">
-                <RegisterForm courseType={courseType.waitingListId} language={language} />
+                <RegisterForm
+                  courseType={courseType.waitingListId}
+                  language={language}
+                  registrationLink={registrationLink}
+                />
                 <ShareOpen text={title} language={language} />
               </div>
             </div>
@@ -154,6 +159,7 @@ const sanityQuery = groq`*[_type=="course" && slug.current == $slug][0]{
   cost, 
   duration, 
   commitment,
+  registrationLink,
   "courseType": courseType->{ 
     title, 
     waitingListId

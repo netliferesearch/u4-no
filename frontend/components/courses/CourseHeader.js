@@ -16,6 +16,7 @@ export const CourseHeader = ({ data }) => {
     courseType = {},
     language = 'en_US',
     mode = '',
+    registrationLink,
   } = data;
   return data ? (
     <div className="c-course-entry__header">
@@ -32,7 +33,11 @@ export const CourseHeader = ({ data }) => {
           single
         />
         <div className="c-course-entry__btn-row">
-          <RegisterForm courseType={courseType.waitingListId} language={language} />
+          <RegisterForm
+            courseType={courseType.waitingListId}
+            language={language}
+            registrationLink={registrationLink}
+          />
           <ShareOpen text={title} />
         </div>
       </div>

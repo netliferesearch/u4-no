@@ -13,18 +13,17 @@ import { PERSON_CARD_TYPE } from 'components/general/person/PersonCard';
 import { CARD_TYPE } from 'components/general/blue-card/BlueCard';
 import { groq } from 'next-sanity';
 
-export default async function Page({params}) {
+export default async function Page({ params }) {
+  const data = await getData(params);
 
-  const data = await getData( params );
-
-  const { 
-    eventsAndWebinars = {}, 
-    previousEvents = {}, 
-    workshops = {}, 
-    persons = {}, 
-    service = {}
+  const {
+    eventsAndWebinars = {},
+    previousEvents = {},
+    workshops = {},
+    persons = {},
+    service = {},
   } = data;
-  
+
   const {
     title = '',
     longTitle = '',
@@ -45,7 +44,6 @@ export default async function Page({params}) {
   return (
     <Layout>
       <div className="c-service-page c-events-page">
-
         <section className="o-wrapper-medium">
           <div className="c-service-page__top">
             <div className="c-service-page__intro">
@@ -126,28 +124,21 @@ export default async function Page({params}) {
             )}
           </div>
         </div>
-
       </div>
-
     </Layout>
   );
-};
+}
 
 export async function generateMetadata({ params }) {
-
-  const data = await getData( params );
+  const data = await getData(params);
   const {
-    service: {
-      title = '', 
-      lead = '', 
-      featuredImage = {},
-    }
+    service: { title = '', lead = '', featuredImage = {} },
   } = data;
- 
+
   return getMetadata({
     title: title,
     description: lead.length && lead[0].children.length ? lead[0].children[0].text : lead,
-    image: featuredImage
+    image: featuredImage,
   });
 }
 
@@ -176,12 +167,12 @@ const sanityQuery = groq`{
     "previousEvents": *[_type == "event" && (startDate.utc < now())] | order(startDate.utc desc) {_type, eventType, title, startDate, altDateText, location, lead, "slug": slug.current, topics[]->{title}},
   }`;
 
-async function getData( params ) {
-  const data = await fetchAndMaterialize( {
-    query: sanityQuery, 
-    params, 
+async function getData(params) {
+  const data = await fetchAndMaterialize({
+    query: sanityQuery,
+    params,
     materializeDepth: 2,
-    tags: ['frontpage:workshops-and-events-NEW']
+    tags: ['frontpage:workshops-and-events-NEW', 'event'],
   });
   return data;
-};
+}
