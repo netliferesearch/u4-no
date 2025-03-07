@@ -55,7 +55,7 @@ export default async function Course({ params }) {
               {content ? <BlockContent blocks={content} serializers={serializers} /> : null}
               <div className="c-course-entry__btn-row">
                 <RegisterForm
-                  courseType={courseType.waitingListId}
+                  courseType={courseType?.waitingListId}
                   language={language}
                   registrationLink={registrationLink}
                 />
