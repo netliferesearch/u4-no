@@ -116,7 +116,7 @@ div {
   }
 }
 
-.c-longform a,
+.c-longform a:not(.c-btn),
 .c-longform-grid__standard a {
   color: $blue;
   border-bottom: 1px solid transparent;

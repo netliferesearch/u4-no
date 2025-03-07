@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useRef, useState } from 'react';
 import ClientOnlyPortal from '../general/ClientOnlyPortal';
@@ -15,15 +15,19 @@ const Register = language => {
     en_EN: 'Register',
     ar_AR: 'قم بالتسجيل',
     es_ES: 'Regístrate',
-    fr_FR: 'S\'inscrire',
+    fr_FR: "S'inscrire",
     uk_UA: 'зареєструватися',
-  }
+  };
   return term[language] ? term[language] : 'Register';
 };
 
-export const RegisterForm = ({ courseType, language = 'en_US' }) => {
+export const RegisterForm = ({ courseType, language = 'en_US', registrationLink }) => {
   const [open, setOpen] = useState();
-  return (
+  return registrationLink ? (
+    <a href={registrationLink} target="_blank">
+      <button className="c-btn c-btn--primary c-btn-right-margin">{Register(language)}</button>
+    </a>
+  ) : (
     <div className={`c-modal${open ? ' open' : ''}`}>
       <button className="c-btn c-btn--primary" onClick={() => setOpen(true)}>
         {Register(language)}

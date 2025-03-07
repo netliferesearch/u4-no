@@ -3,6 +3,7 @@ import {
   leadText,
   featuredImage,
   image,
+  box,
   language,
   shortSlug,
   slug,
@@ -26,7 +27,7 @@ export default augmentSchema({
       name: 'content',
       title: 'Description',
       type: 'array',
-      of: [defaultBlock, image, vimeoVideo],
+      of: [defaultBlock, image, box, vimeoVideo],
     },
     {
       name: 'startDate',
@@ -94,6 +95,12 @@ export default augmentSchema({
       ],
     },
     {
+      name: 'registrationLink',
+      title: 'Registration link',
+      type: 'url',
+      description: 'Link to the enrolment page, like https://learn.u4.no/enrol/index.php?id=4',
+    },
+    {
       name: 'courseType',
       title: 'Course type',
       type: 'reference',
@@ -102,6 +109,7 @@ export default augmentSchema({
           type: 'courseType',
         },
       ],
+      description: '(not in use for courses at learn.u4.no)',
     },
     {
       name: 'mode',
