@@ -34,7 +34,7 @@ export const CourseHeader = ({ data }) => {
         />
         <div className="c-course-entry__btn-row">
           <RegisterForm
-            courseType={courseType.waitingListId}
+            courseType={courseType?.waitingListId}
             language={language}
             registrationLink={registrationLink}
           />
