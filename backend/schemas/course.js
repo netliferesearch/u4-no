@@ -3,6 +3,7 @@ import {
   leadText,
   featuredImage,
   image,
+  box,
   language,
   shortSlug,
   slug,
@@ -26,7 +27,7 @@ export default augmentSchema({
       name: 'content',
       title: 'Description',
       type: 'array',
-      of: [defaultBlock, image, vimeoVideo],
+      of: [defaultBlock, image, box, vimeoVideo],
     },
     {
       name: 'startDate',
