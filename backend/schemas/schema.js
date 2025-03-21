@@ -24,6 +24,7 @@ import file from './file';
 import articleType from './articleType';
 import u4Event from './event';
 import blogPost from './blogPost';
+import measurementTool from './measurementTool';
 //import localeString from './fields/localeString'
 import defaultBlocks from './fields/defaultBlocks';
 import collection from './collection';
@@ -43,6 +44,7 @@ const types = [
   publication,
   resource,
   topics,
+  measurementTool,
   articleType,
   courseType,
   publicationType,
