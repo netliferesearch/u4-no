@@ -4,6 +4,6 @@ export const socialItems = [
     label: 'linkedin',
     url: 'https://www.linkedin.com/showcase/u4-anti-corruption-resource-centre/',
   },
-  { label: 'twitter', url: 'https://twitter.com/U4_ACRC' },
+  { label: 'bluesky', url: 'https://bsky.app/profile/u4acrc.bsky.social' },
   { label: 'email', url: 'mailto:u4@cmi.no' },
 ];

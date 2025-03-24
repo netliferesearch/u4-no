@@ -1,7 +1,7 @@
 import React from 'react';
-import { EmailIcon, FacebookIcon, LinkedInIcon, TwitterIcon } from '../../icons/SocialIcons';
+import { BlueskyIcon, EmailIcon, FacebookIcon, LinkedInIcon } from '../../icons/SocialIcons';
 
-export const SocialFollow = ({ footer, items, faceBook, linkedIn, twitter, email, target = 'U4' }) => {
+export const SocialFollow = ({ footer, items, faceBook, linkedIn, bluesky, email, target = 'U4' }) => {
   return (
     <div className="c-social c-social--follow">
       {!faceBook && !footer ? null : (
@@ -13,23 +13,23 @@ export const SocialFollow = ({ footer, items, faceBook, linkedIn, twitter, email
       )}
       {!linkedIn && !footer ? null : (
         <a className="c-social--follow__item" href={linkedIn ? linkedIn : items[1].url}
-        title={`Follow ${target} on LinkedIn`}
+          title={`Follow ${target} on LinkedIn`}
         >
           <LinkedInIcon />
         </a>
       )}
 
-      {!twitter && !footer ? null : (
-        <a className="c-social--follow__item" href={twitter ? twitter : items[2].url}
-        title={`Follow ${target} on X/Twitter`}
+      {!bluesky && !footer ? null : (
+        <a className="c-social--follow__item" href={bluesky ? bluesky : items[2].url}
+          title={`Follow ${target} on Bluesky`}
         >
-          <TwitterIcon />
+          <BlueskyIcon />
         </a>
       )}
 
       {!email && !footer ? null : (
         <a className="c-social--follow__item" href={email ? `mailto:${email}` : items[3].url}
-        title={`E-mail ${target}`}
+          title={`E-mail ${target}`}
         >
           <EmailIcon />
         </a>
