@@ -1,4 +1,4 @@
 backend/
 old-data-import/
 frontend/.babelrc
-node_modules
+/node_modules/
