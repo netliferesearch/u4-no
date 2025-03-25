@@ -1,0 +1,15 @@
+{
+  "name": "u4-no",
+  "description": "U4 No",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/carwow/heroku-buildpack-pdftotext"
+    },
+    {
+      "url": "https://github.com/Lostmyname/heroku-buildpack-post-build-clean"
+    }
+  ]
+}
