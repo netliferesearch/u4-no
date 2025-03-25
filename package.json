@@ -83,7 +83,8 @@
     "build": "cd frontend && next build",
     "analyze": "cross-env ANALYZE=true npm run build",
     "start": "cd frontend && node server.js",
-    "start:skip-ssl": "cd frontend && cross-env NODE_ENV=production SKIP_SSL=true node server.js"
+    "start:skip-ssl": "cd frontend && cross-env NODE_ENV=production SKIP_SSL=true node server.js",
+    "heroku-cleanup": "rm -rf .next/cache && find node_modules/@next -depth -maxdepth 1 -type d -name 'swc*' -exec rm -rf {} \\; -prune #Remove cache and SWC binaries to reduce heroku slug size"
   },
   "engines": {
     "node": "18.x",

@@ -1,3 +1,4 @@
 backend/
 old-data-import/
 frontend/.babelrc
+frontend/.next/cache/
