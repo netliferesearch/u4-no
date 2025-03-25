@@ -7,6 +7,9 @@
     },
     {
       "url": "https://github.com/carwow/heroku-buildpack-pdftotext"
+    },
+    {
+      "url": "https://github.com/leoafarias/heroku-buildpack-node-modules-cleanup"
     }
   ]
 }
