@@ -33,17 +33,17 @@ export const Result = props => {
           <div className="c-tools-info">
             <div className="u-body--dark-grey c-tools-description">
               <BlockContent blocks={tool.description} serializers={serializers} />
-              {tool.strengths && (
-                <div>
-                  <p className="c-tools-label">Strengths</p>
+              {tool.strengths?.length > 0 && (
+                <>
+                  <p className="c-tools-label u-margin-top">Strengths</p>
                   <BlockContent blocks={tool.strengths} serializers={serializers} />
-                </div>
+                </>
               )}
-              {tool.limitations && (
-                <div>
+              {tool.limitations?.length > 0 && (
+                <>
                   <p className="c-tools-label">Limitations</p>
                   <BlockContent blocks={tool.limitations} serializers={serializers} />
-                </div>
+                </>
               )}
             </div>
             <div className="u-body--dark-grey c-tools-data">

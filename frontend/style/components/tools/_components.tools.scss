@@ -20,6 +20,11 @@
         margin-bottom: 6px;
     }
 }
+.c-post.tool {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+}
 .c-tools-label-value {
     margin: 0 0 2em;
 }
@@ -34,6 +39,7 @@
     display: flex;
     flex-direction: column;
     gap: $spacing;
+    margin-top: $spacing;
 
     @include mq($from: tablet) {
         flex-direction: row;
@@ -42,6 +48,10 @@
             padding-left: $spacing;
             border-left: 1px solid rgba(111, 111, 111, 0.3);
 
+        }
+        .c-tools-description > p:first-child,
+        .c-tools-description > div > p:first-child {
+            margin-top: 0;
         }
     }
 }
