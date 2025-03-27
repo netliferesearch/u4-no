@@ -41,6 +41,10 @@
     gap: $spacing;
     margin-top: $spacing;
 
+    p {
+        margin: 1em 0;
+    }
+
     @include mq($from: tablet) {
         flex-direction: row;
         .c-tools-data{
