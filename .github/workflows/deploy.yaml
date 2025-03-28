@@ -1,0 +1,29 @@
+name: Deploy Sanity Studio
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - production
+
+jobs:
+  sanity-deploy:
+    runs-on: ubuntu-latest
+    name: Deploy Sanity
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+      - name: Install dependencies
+        working-directory: backend
+        run: npm ci
+      - name: Deploy Sanity
+        working-directory: backend
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+          SANITY_STUDIO_CONFIG_PATH: backend/
+        run: npx sanity deploy
