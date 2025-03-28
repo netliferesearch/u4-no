@@ -1,4 +1,4 @@
-import { FaPaperclip as linkIcon } from 'react-icons/fa'
+import { FaPaperclip as linkIcon } from 'react-icons/fa';
 
 const annotations = [
   {
@@ -10,12 +10,12 @@ const annotations = [
         name: 'href',
         title: 'URL',
         type: 'string',
-        validation: Rule => Rule.custom( url => {
+        validation: Rule => Rule.custom(url => {
           if (typeof url === 'undefined') {
             return "Link URL cannot be empty";
-          } else if ( url.match(/^(mailto:|tel:|#)/i) ) {
+          } else if (url.match(/^(mailto:|tel:|#)/i)) {
             return true;
-          } else if ( url.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/i) ) {
+          } else if (url.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,10}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/i)) {
             return true;
           } else return "Invalid URL";
         }),
