@@ -70,21 +70,23 @@ export const PageIntro = ({
           {text}
         </div>
       )}
-      <div className="c-blue-card__info">
-        {location && (
-          <p className="c-blue-card__location ">
-            <LocationIcon /> {location}
-          </p>
-        )}
-        {(date || altDateText) && (
-          <div className="c-blue-card__details">
-            <p className="c-blue-card__date ">
-              <CalendorIcon />
-              {altDateText ? altDateText : DateToString({ start: date })}
+      {(location || date || altDateText) && (
+        <div className="c-blue-card__info">
+          {location && (
+            <p className="c-blue-card__location ">
+              <LocationIcon /> {location}
             </p>
-          </div>
-        )}
-      </div>
+          )}
+          {(date || altDateText) && (
+            <div className="c-blue-card__details">
+              <p className="c-blue-card__date ">
+                <CalendorIcon />
+                {altDateText ? altDateText : DateToString({ start: date })}
+              </p>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

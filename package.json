@@ -61,7 +61,7 @@
     "react-redux": "^8.1.2",
     "react-scrollchor": "^7.0.0",
     "react-select": "^5.8.0",
-    "react-share": "^4.4.1",
+    "react-share": "^5.2.2",
     "react-string-clamp": "^0.3.1",
     "react-transition-group": "^4.4.5",
     "redux": "^4.1.1",
@@ -83,7 +83,8 @@
     "build": "cd frontend && next build",
     "analyze": "cross-env ANALYZE=true npm run build",
     "start": "cd frontend && node server.js",
-    "start:skip-ssl": "cd frontend && cross-env NODE_ENV=production SKIP_SSL=true node server.js"
+    "start:skip-ssl": "cd frontend && cross-env NODE_ENV=production SKIP_SSL=true node server.js",
+    "heroku-cleanup": "rm -rf .next/cache && find node_modules/@next -depth -maxdepth 1 -type d -name 'swc*' -exec rm -rf {} \\; -prune #Remove cache and SWC binaries to reduce heroku slug size"
   },
   "engines": {
     "node": "18.x",

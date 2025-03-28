@@ -3,8 +3,8 @@ import React from 'react';
 export const FacebookIcon = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg" 
-      role="img" 
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
       title="Facebook"
       width="32"
       height="32"
@@ -27,11 +27,37 @@ export const FacebookIcon = () => {
   );
 };
 
+export const BlueskyIcon = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      title="BlueSky"
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      className="c-social-icons-svg">
+      <path
+        className="c-social-icons-firstpath"
+        d="M0.249995 16C0.249994 7.30152 7.30151 0.250004 16 0.250003C24.6985 0.250003 31.75 7.30152 31.75 16C31.75 24.6985 24.6985 31.75 16 31.75C7.30151 31.75 0.249996 24.6985 0.249995 16Z"
+        stroke="#E4F1FA"
+        strokeWidth="0.5"
+      />
+      <path
+        className="c-social-icons-secondpath"
+        d="M16 8.5c4.157 3.12 8.626 9.446 10.268 12.841 1.641-3.395 6.11-9.72 10.267-12.84 2.999-2.252 7.858-3.994 7.858 1.55 0 1.107-0.635 9.3-1.007 10.629-1.294 4.624-6.009 5.803-10.203 5.09 7.331 1.247 9.196 5.38 5.168 9.513-7.649 7.85-10.994-1.97-11.853-4.486-0.157-0.461-0.231-0.677-0.232-0.493-0.001-0.184-0.075 0.032-0.232 0.493-0.857 2.516-4.202 12.336-11.853 4.486-4.028-4.133-2.163-8.266 5.169-9.514-4.194 0.714-8.909-0.465-10.203-5.09-0.372-1.33-1.007-9.522-1.007-10.629 0-5.543 4.859-3.801 7.858-1.55z"
+        fill="#E4F1FA"
+        transform="scale(0.5) translate(6,10)"
+      />
+    </svg>
+  );
+};
+
 export const LinkedInIcon = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg" 
-      role="img" 
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
       title="LinkedIn"
       width="32"
       height="32"
@@ -56,11 +82,10 @@ export const LinkedInIcon = () => {
 
 export const TwitterIcon = () => {
   return (
-    
     <svg
       className="c-social-icons-svg"
-      xmlns="http://www.w3.org/2000/svg" 
-      role="img" 
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
       title="X / Twitter"
       // version="1.2"
       baseProfile="tiny-ps"
@@ -99,8 +124,8 @@ export const EmailIcon = () => {
   return (
     <svg
       className="c-social-icons-svg"
-      xmlns="http://www.w3.org/2000/svg" 
-      role="img" 
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
       title="E-mail"
       width="32"
       height="32"
@@ -126,7 +151,15 @@ export const EmailIcon = () => {
 
 export const EmailIconSmall = () => {
   return (
-    <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" title="E-mail" >
+    <svg
+      width="17"
+      height="12"
+      viewBox="0 0 17 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      title="E-mail"
+    >
       <path
         d="M16.2686 1.5V10.5C16.2686 11.33 15.5986 12 14.7686 12H1.76855C0.938555 12 0.268555 11.33 0.268555 10.5V1.5C0.268555 0.67 0.938555 0 1.76855 0H14.7686C15.5986 0 16.2686 0.67 16.2686 1.5ZM1.26855 1.5V2.79C1.95855 3.37 2.92855 4.17 5.97855 6.58C6.49855 7 7.54855 8.01 8.26855 8C8.99855 8.01 10.0386 7 10.5586 6.58C13.5986 4.16 14.5786 3.37 15.2686 2.79V1.5C15.2686 1.23 15.0486 1 14.7686 1H1.76855C1.49855 1 1.26855 1.23 1.26855 1.5ZM15.2686 10.5V4.09C14.5586 4.67 13.4286 5.58 11.1886 7.36C10.5286 7.89 9.40856 9.01 8.26855 9C7.12855 9.01 5.99855 7.88 5.34855 7.37C3.10855 5.58 1.97855 4.68 1.26855 4.09V10.5C1.26855 10.77 1.49855 11 1.76855 11H14.7686C15.0486 11 15.2686 10.77 15.2686 10.5Z"
         fill="#6F6F6F"
