@@ -1,9 +1,7 @@
 name: Deploy Sanity Studio
 
 on:
-  pull_request:
-    types:
-      - closed
+  push:
     branches:
       - production
 
@@ -26,4 +24,4 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
           SANITY_STUDIO_CONFIG_PATH: backend/
-        run: npx sanity deploy
+        run: npm run deploy
