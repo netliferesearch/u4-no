@@ -55,11 +55,6 @@ export const menuItems = [
         title: 'Corruption risk management',
       },
       {
-        _id: '6852dca9-7645-4429-9839-a7718c4e7ced',
-        slug: { current: 'covid-19-and-corruption' },
-        title: 'Covid-19 and corruption',
-      },
-      {
         _id: 'f6df5f07-1d6c-424c-befd-1fc7697452c5',
         slug: { current: 'development-cooperation' },
         title: 'Development cooperation',
@@ -76,6 +71,11 @@ export const menuItems = [
       },
       { _id: '929285b7-7036-44fd-b0bc-bca6f1bb5c78', slug: { current: 'gender' }, title: 'Gender' },
       { _id: '464e6452-36fd-4862-a35b-1dc2b04241b8', slug: { current: 'health' }, title: 'Health' },
+      {
+        _id: '6852dca9-7645-4429-9839-a7718c4e7ced',
+        slug: { current: 'health-emergencies' },
+        title: 'Health emergencies',
+      },
       {
         _id: '05a51cc4-97a1-4753-b566-6fc49b61c1de',
         slug: { current: 'human-rights' },
