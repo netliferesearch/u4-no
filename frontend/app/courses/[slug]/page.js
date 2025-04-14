@@ -2,20 +2,20 @@ import Layout from '@/app/components/layout/Layout';
 import getMetadata from '@/app/lib/getMetadata';
 import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
 import hasContent from '@/app/lib/util/hasContent';
-import Link from 'next/link';
 import BlockContent from '@sanity/block-content-to-react';
-import { CourseHeader } from 'components/courses/CourseHeader';
-import { BreadCrumbV2 } from 'components/general/BreadCrumbV2';
-import { CourseSidebar } from 'components/courses/CourseSidebar';
-import { ShareOpen } from 'components/general/social/ShareOpen';
-import serializers from 'components/serializers/serializers';
 import { PersonBasic } from 'components/PersonBasic';
-import LogoU4 from 'components/icons/LogoU4';
+import { CourseHeader } from 'components/courses/CourseHeader';
+import { CourseSidebar } from 'components/courses/CourseSidebar';
 import { RegisterForm } from 'components/courses/RegisterForm';
+import { BreadCrumbV2 } from 'components/general/BreadCrumbV2';
 import Footer from 'components/general/footer/Footer';
-import { Team } from 'components/general/team/Team';
 import { PERSON_CARD_TYPE } from 'components/general/person/PersonCard';
+import { ShareOpen } from 'components/general/social/ShareOpen';
+import { Team } from 'components/general/team/Team';
+import LogoU4 from 'components/icons/LogoU4';
+import serializers from 'components/serializers/serializers';
 import { groq } from 'next-sanity';
+import Link from 'next/link';
 
 export default async function Course({ params }) {
   const data = await getData(params);
@@ -203,6 +203,12 @@ const sanityQuery = groq`*[_type=="course" && slug.current == $slug][0]{
   topics[]->{
     _id, 
     title, 
+    "slug": slug.current
+  },
+  relatedCourses[]->{
+    _id,
+    _type,
+    title,
     "slug": slug.current
   },
   keywords,
