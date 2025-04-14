@@ -1,16 +1,17 @@
 // sanity.config.js
+import { richDate } from '@sanity/rich-date-input';
+import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
-import { visionTool } from '@sanity/vision';
-import { richDate } from '@sanity/rich-date-input';
-import schemas from './schemas/schema';
+import { sanityDataset, sanityProjectId, sanityProjectName } from './config/environment';
 import { Logo } from './plugins/u4-studio-logo/Logo';
+import schemas from './schemas/schema';
 import './styles/studioOverrides.css';
 
 export default defineConfig({
-  title: 'u4-no',
-  projectId: '1f1lcoov',
-  dataset: 'production',
+  title: sanityProjectName,
+  projectId: sanityProjectId,
+  dataset: sanityDataset,
   plugins: [structureTool(), visionTool(), richDate()],
   schema: {
     types: schemas,
@@ -20,9 +21,9 @@ export default defineConfig({
       logo: Logo,
     },
   },
-  env: {
-    development: {
-      dataset: 'staging',
-    },
-  },
+  // env: {
+  //   development: {
+  //     dataset: 'staging',
+  //   },
+  // },
 });
