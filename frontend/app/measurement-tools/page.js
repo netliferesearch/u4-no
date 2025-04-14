@@ -47,7 +47,7 @@ export default async function Tools({ params }) {
 
         <div className="o-wrapper-medium ">
           <h4 className="u-secondary-heading u-secondary-h1 u-detail--blue u-padding-top--no">
-            Explore definitions
+            Explore&nbsp;categories
           </h4>
           <div className=" u-bottom-margin--24" />
           {sections &&

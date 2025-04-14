@@ -5,7 +5,7 @@ module.exports = {
 
 /* rewrite array formatted for next.config redirects */
 async function redirects() {
-  return redirectsArray.map( ({ from, to }) => ({
+  return redirectsArray.map(({ from, to }) => ({
     'source': from,
     'destination': to,
     'permanent': true,
@@ -16,6 +16,8 @@ const redirectsArray = [
   { from: '/articles/the-basics-of-anti-corruption', to: '/topics' },
   { from: '/articles-fr-FR', to: '/' },
   { from: '/articles', to: '/' },
+
+  { from: '/topics/covid-19-and-corruption', to: '/topics/health-emergencies' },
 
   { from: '/document', to: '/' },
 
@@ -105,7 +107,7 @@ const redirectsArray = [
     from: '/topics/people-s-engagement-1',
     to: '/topics/civil-society',
   },
-  
+
   {
     from: '/training/online-training/corruption-in-natural-resource-management',
     to: '/courses/addressing-corruption-in-natural-resources-and-renewable-energy-sectors',
