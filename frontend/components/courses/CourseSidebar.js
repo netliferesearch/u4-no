@@ -1,9 +1,10 @@
 import React from 'react';
-import languageName from '../../helpers/languageName';
-import { Translations } from '../general/translations/Translations';
 import dateToString from '../../helpers/dateToString';
+import languageName from '../../helpers/languageName';
+import { RelatedSimple } from '../general/related-simple/RelatedSimple';
 import { SidebarItem } from '../general/sidebar-item/SidebarItem';
-
+import { Topics } from '../general/topics/Topics';
+import { Translations } from '../general/translations/Translations';
 export const CourseSidebar = ({ data }) => {
   const {
     language = '',
@@ -16,6 +17,9 @@ export const CourseSidebar = ({ data }) => {
     duration = '',
     commitment = '',
     pdfAsset = {},
+    topics = [],
+    relatedCourses = [],
+    relatedContent = [],
   } = data;
 
   return data ? (
@@ -34,6 +38,16 @@ export const CourseSidebar = ({ data }) => {
         {language ? (
           <SidebarItem label="Language" content={languageName({ langcode: language })} />
         ) : null}
+        {topics && (
+          <SidebarItem label="Topics">
+            <Topics title={false} topics={topics} hr={false} />
+          </SidebarItem>
+        )}
+        {(relatedContent || relatedCourses) && (
+          <SidebarItem label="Related content">
+            <RelatedSimple items={relatedContent || relatedCourses} />
+          </SidebarItem>
+        )}
         {pdfAsset?.asset ? (
           <div className="c-article-sidebar__select">
             <a href={pdfAsset.asset.url} target="_blank" className="c-btn c-btn--primary" rel="noreferrer">

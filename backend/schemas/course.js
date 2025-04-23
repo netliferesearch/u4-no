@@ -1,13 +1,13 @@
 import {
-  title,
-  leadText,
+  box,
   featuredImage,
   image,
-  box,
   language,
+  leadText,
   shortSlug,
   slug,
   standfirst,
+  title,
   vimeoVideo,
 } from './fields';
 import annotationsLinksOnly from './fields/annotationsLinksOnly';
@@ -168,8 +168,34 @@ export default augmentSchema({
       },
     },
     {
+      name: 'relatedContent',
+      title: 'Related blog articles, publications and courses',
+      description: 'Add related content, max 3 will be displayed in the frontend',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'course',
+            },
+            {
+              type: 'publication',
+            },
+            {
+              type: 'blog-post',
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: 'relatedCourses',
       title: 'Related courses',
+      deprecated: {
+        reason: 'Use Related blog articles, publications and courses instead',
+      },
+      hidden: ({ value }) => (value === undefined ? true : false),
       type: 'array',
       of: [
         {
