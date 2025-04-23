@@ -45,8 +45,11 @@ sanity install # install dependencies the first time
 sanity start
 ```
 
-Deploy changes for Sanity with `sanity deploy`. Remember to commit and push
-changes to git as well.
+Deployments to Sanity are now handled automatically through [GitHub Actions](.github/workflows/deploy.yaml) when code is merged into the `production` branch. No manual deployment steps are required.
+
+The studio can be found on [u4-no](https://u4-no.sanity.studio)
+
+Note: Remember to commit and push your changes to git as well.
 
 ## Develop pdf builder service
 
