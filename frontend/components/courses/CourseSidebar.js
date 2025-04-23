@@ -19,6 +19,7 @@ export const CourseSidebar = ({ data }) => {
     pdfAsset = {},
     topics = [],
     relatedCourses = [],
+    relatedContent = [],
   } = data;
 
   return data ? (
@@ -42,9 +43,9 @@ export const CourseSidebar = ({ data }) => {
             <Topics title={false} topics={topics} hr={false} />
           </SidebarItem>
         )}
-        {relatedCourses && (
-          <SidebarItem label="Related courses">
-            <RelatedSimple items={relatedCourses} />
+        {(relatedContent || relatedCourses) && (
+          <SidebarItem label="Related content">
+            <RelatedSimple items={relatedContent || relatedCourses} />
           </SidebarItem>
         )}
         {pdfAsset?.asset ? (
