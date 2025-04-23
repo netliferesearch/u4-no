@@ -205,6 +205,12 @@ const sanityQuery = groq`*[_type=="course" && slug.current == $slug][0]{
     title, 
     "slug": slug.current
   },
+  relatedContent[0..2]->{
+    _id,
+    _type,
+    title,
+    "slug": slug.current
+  },
   relatedCourses[]->{
     _id,
     _type,
