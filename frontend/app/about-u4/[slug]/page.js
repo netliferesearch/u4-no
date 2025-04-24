@@ -1,15 +1,15 @@
+import Layout from '@/app/components/layout/Layout';
+import getMetadata from '@/app/lib/getMetadata';
 import { StoreProvider } from '@/app/lib/redux/redux-provider';
 import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
-import getMetadata from '@/app/lib/getMetadata';
-import Layout from '@/app/components/layout/Layout';
 import ServiceArticle from 'components/ServiceArticle';
-import { PageIntro } from 'components/general/PageIntro';
 import ArticleContainer from 'components/article/ArticleContainer';
+import { PageIntro } from 'components/general/PageIntro';
 import { groq } from 'next-sanity';
 
 //const store = initStore();
 
-async function FrontPage( data ){
+async function FrontPage(data) {
   const { title = '', featuredImage = {}, lead = '', sections, relatedUrl = {} } = data;
 
   return (
@@ -20,9 +20,9 @@ async function FrontPage( data ){
   )
 }
 
-export default async function AboutPage({params}){
+export default async function AboutPage({ params }) {
 
-  const data = await getData( params );
+  const data = await getData(params);
 
   return (
     <StoreProvider>
@@ -37,9 +37,9 @@ export default async function AboutPage({params}){
 
 export async function generateMetadata({ params, searchParams }, parent) {
 
-  const data = await getData( params );
-  const {title = '', lead = '', featuredImage = ''} = data;
- 
+  const data = await getData(params);
+  const { title = '', lead = '', featuredImage = '' } = data;
+
   return getMetadata({
     title: title,
     description: lead,
@@ -56,19 +56,19 @@ const sanityQuery = groq`*[slug.current == $slug][0] {
 }`;
 
 
-async function getData( params ) {
+async function getData(params) {
   const data = await fetchAndMaterialize({
-    query: sanityQuery, 
-    params, 
-    materializeDepth: 2, 
-    tags: [`frontpage:${params.slug}`]
+    query: sanityQuery,
+    params,
+    materializeDepth: 2,
+    tags: [`frontpage:${params.slug}`, `article:${params.slug}`]
   });
   return data;
 };
 
 export async function generateStaticParams() {
   return [
-    { slug: 'our-organisation-history' }, 
+    { slug: 'our-organisation-history' },
     { slug: 'vision-strategy' },
     { slug: 'operational-guides-policies' },
     { slug: 'vacancies-opportunities' },
