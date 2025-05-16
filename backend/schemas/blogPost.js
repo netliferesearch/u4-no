@@ -1,18 +1,18 @@
-import publicationContent from './fields/publicationContent';
 import annotations from './fields/annotations';
 import date from './fields/date';
+import publicationContent from './fields/publicationContent';
 
 //import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
 import {
-  title,
-  subtitle,
   image,
   keywords,
-  slug,
   language,
   license,
   previewLinks,
   shortSlug,
+  slug,
+  subtitle,
+  title,
 } from './fields';
 
 export default {
@@ -23,7 +23,7 @@ export default {
     previewLinks,
     title,
     subtitle,
-    publicationContent,
+    publicationContent(),
     {
       name: 'standfirst',
       type: 'string',
