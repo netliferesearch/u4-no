@@ -25,9 +25,7 @@ const annotations = [
   {
     name: 'internalReferance',
     title: 'Link to internal resource',
-    blockEditor: {
-      icon: linkIcon,
-    },
+    icon: linkIcon,
     type: 'reference',
     to: [
       { type: 'person' },

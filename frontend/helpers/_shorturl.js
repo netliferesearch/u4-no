@@ -40,8 +40,8 @@ async function shortUrlHandler(req, res) {
   }
 
   const client = sanityClient({
-    projectId: '1f1lcoov',
-    dataset: 'production',
+    projectId: process.env.SANITY_PROJECT_ID || '1f1lcoov',
+    dataset: process.env.SANITY_DATASET || 'production',
     useCdn: true,
   });
 
@@ -54,7 +54,7 @@ async function shortUrlHandler(req, res) {
     res.redirect(301, '/');
   }
   const pageUrl = buildUrl(sanityResults);
-  res.redirect( 301, 'https://www.u4.no' + pageUrl );
+  res.redirect(301, 'https://www.u4.no' + pageUrl);
 }
 
 module.exports = { shortUrlHandler };

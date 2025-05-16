@@ -1,7 +1,7 @@
-import publicationContent from './fields/publicationContent';
+import { date, featuredImage, image, leadText, longTitle, previewLinks, slug, standfirst, title } from './fields';
 import annotations from './fields/annotations';
 import annotationsLinksOnly from './fields/annotationsLinksOnly';
-import { date, title, longTitle, standfirst, image, leadText, featuredImage, slug, previewLinks } from './fields';
+import publicationContent from './fields/publicationContent';
 
 export default {
   name: 'article',
@@ -24,7 +24,7 @@ export default {
         },
       ],
     },
-    publicationContent,
+    publicationContent(),
     leadText,
     standfirst,
     featuredImage,
@@ -85,7 +85,7 @@ export default {
             {
               type: 'blog-post',
             },
-        ],
+          ],
         },
       ],
     },

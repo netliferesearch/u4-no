@@ -1,17 +1,17 @@
 import React from 'react';
 //import { Document, Page } from 'react-pdf/build/entry.noworker';
-import { PUBLICATION } from 'helpers/constants';
-import { getPostType, getRouteByType } from 'helpers/getRouteByType';
+import LinkToItem from 'components/general/LinkToItem';
 import { PageIntro } from 'components/general/PageIntro';
-import dateToString from 'helpers/dateToString';
+import { PhotoCaptionCredit } from 'components/general/PhotoCaptionCredit';
 import { Translations } from 'components/general/translations/Translations';
-import { ArticleActions } from './ArticleActions';
+import { PUBLICATION } from 'helpers/constants';
+import dateToString from 'helpers/dateToString';
+import { getPostType, getRouteByType } from 'helpers/getRouteByType';
 import sanityImageLoader from 'helpers/sanityImageLoader';
 import Image from "next/image";
-import { PhotoCaptionCredit } from 'components/general/PhotoCaptionCredit';
-import LinkToItem from 'components/general/LinkToItem';
+import { ArticleActions } from './ArticleActions';
 
-export const ArticleHeader = ({ data = {}}) => {
+export const ArticleHeader = ({ data = {} }) => {
   const {
     _type = '',
     publicationType = {},
@@ -21,6 +21,7 @@ export const ArticleHeader = ({ data = {}}) => {
     lead = '',
     leadText = '',
     abstract = '',
+    explainerText = '',
     slug = {},
     pdfFile = {},
     legacypdf = {},
@@ -29,10 +30,12 @@ export const ArticleHeader = ({ data = {}}) => {
     language = {},
     translations = null,
     date = {},
+    guideUpdateDate = {},
     updatedVersion = false,
     basedonpublication = false,
   } = data;
-  const text = _type === 'publication' ? lead || abstract : leadText || lead || standfirst;
+
+  const text = _type === 'publication' ? lead || abstract : leadText || lead || standfirst || explainerText;
   // {lead || abstract ? <ArticleLead lead={lead} abstract={abstract} /> : null}
 
   return (
@@ -63,7 +66,7 @@ export const ArticleHeader = ({ data = {}}) => {
                 </span>
               </LinkToItem>
             )}
-            {translations && 
+            {translations &&
               <Translations
                 translations={translations}
                 language={language}
@@ -72,14 +75,19 @@ export const ArticleHeader = ({ data = {}}) => {
               />
             }
             <div>
-              {date && 
+              {date &&
                 <span className="u-body--small u-text--grey">
                   {dateToString({ start: date.utc })}
                 </span>
               }
-              {updatedVersion && 
+              {updatedVersion &&
                 <span className="u-body--small u-text--grey u-margin-left-tiny">
                   Updated {dateToString({ start: updatedVersion.date.utc })}
+                </span>
+              }
+              {guideUpdateDate &&
+                <span className="u-body--small u-text--grey">
+                  Last updated at: {dateToString({ start: guideUpdateDate.utc })}
                 </span>
               }
             </div>
@@ -91,20 +99,20 @@ export const ArticleHeader = ({ data = {}}) => {
           {pdfThumbnail?.asset?.url && (
             <div className="pdf-preview">
               <div className='pdf-preview-thumbnail'>
-              <Image
-                alt={title}
-                loader={sanityImageLoader}
-                src={pdfThumbnail.asset.url}
-                priority="true"
-                width={pdfThumbnail.asset.metadata.dimensions.width}
-                height={pdfThumbnail.asset.metadata.dimensions.height}
-                placeholder={pdfThumbnail.asset.metadata.lqip ? "blur" : "empty"}
-                blurDataURL={pdfThumbnail.asset.metadata.lqip}
-                sizes="289px"
-                style={{
-                  width: "100%",
-                  height: "auto"
-                }} />
+                <Image
+                  alt={title}
+                  loader={sanityImageLoader}
+                  src={pdfThumbnail.asset.url}
+                  priority="true"
+                  width={pdfThumbnail.asset.metadata.dimensions.width}
+                  height={pdfThumbnail.asset.metadata.dimensions.height}
+                  placeholder={pdfThumbnail.asset.metadata.lqip ? "blur" : "empty"}
+                  blurDataURL={pdfThumbnail.asset.metadata.lqip}
+                  sizes="289px"
+                  style={{
+                    width: "100%",
+                    height: "auto"
+                  }} />
               </div>
             </div>
           )}
