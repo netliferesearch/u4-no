@@ -1,4 +1,4 @@
-import { FaPaperclip as linkIcon } from 'react-icons/fa'
+import { FaPaperclip as linkIcon } from 'react-icons/fa';
 
 const annotationsLinksOnly = [
   {
@@ -19,9 +19,7 @@ const annotationsLinksOnly = [
   {
     name: 'internalReferance',
     title: 'Link to internal resource',
-    blockEditor: {
-      icon: linkIcon,
-    },
+    icon: linkIcon,
     type: 'reference',
     to: [
       { type: 'person' },
