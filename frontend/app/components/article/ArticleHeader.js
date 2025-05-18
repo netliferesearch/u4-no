@@ -30,7 +30,7 @@ export const ArticleHeader = ({ data = {} }) => {
     language = {},
     translations = null,
     date = {},
-    guideUpdateDate = {},
+    guideUpdateDate = false,
     updatedVersion = false,
     basedonpublication = false,
   } = data;
@@ -75,7 +75,7 @@ export const ArticleHeader = ({ data = {} }) => {
               />
             }
             <div>
-              {date &&
+              {date.length > 0 &&
                 <span className="u-body--small u-text--grey">
                   {dateToString({ start: date.utc })}
                 </span>

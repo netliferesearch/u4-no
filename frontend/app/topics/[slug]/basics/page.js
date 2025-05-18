@@ -104,6 +104,9 @@ const sanityQuery = groq`*[slug.current == $slug && _type == "topics"][0]{
   relatedUrl, 
   url, 
   featuredImage{asset->{url}}, 
+  pdfThumbnail{_type,asset->{url,metadata{lqip,dimensions{width,height}}}},
+  legacypdf,
+  "hasContent": (defined(content) || defined(introduction)),
   "guideUpdateDate": date,
   "relatedResources":relatedContent[0..2]->{
     _id,
