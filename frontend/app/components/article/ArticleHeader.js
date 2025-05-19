@@ -75,7 +75,7 @@ export const ArticleHeader = ({ data = {} }) => {
               />
             }
             <div>
-              {date.length > 0 &&
+              {date?.length > 0 &&
                 <span className="u-body--small u-text--grey">
                   {dateToString({ start: date.utc })}
                 </span>
