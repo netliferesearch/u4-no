@@ -1,7 +1,7 @@
-import publicationContent from './fields/publicationContent';
-import annotations from './fields/annotations';
 import { GeneratedFileInput } from '../components/GeneratedFileInput/GeneratedFileInput';
 import { ThumbnailInput } from '../components/ThumbnailInput/ThumbnailInput';
+import annotations from './fields/annotations';
+import publicationContent from './fields/publicationContent';
 
 /**
  * A publication is a long form document
@@ -9,17 +9,17 @@ import { ThumbnailInput } from '../components/ThumbnailInput/ThumbnailInput';
 // import { Input as UrlWithMetadataInput } from 'part:url-metadata-input/input';
 import {
   date,
-  title,
-  subtitle,
-  standfirst,
   image,
   keywords,
-  leadText,
-  slug,
   language,
+  leadText,
   license,
   previewLinks,
   shortSlug,
+  slug,
+  standfirst,
+  subtitle,
+  title,
   vimeoVideo,
 } from './fields';
 
@@ -31,7 +31,7 @@ export default {
     previewLinks,
     title,
     subtitle,
-    publicationContent,
+    publicationContent(),
     {
       name: 'summary',
       title: 'Short version',

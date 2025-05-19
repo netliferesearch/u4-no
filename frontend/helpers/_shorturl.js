@@ -33,18 +33,18 @@ const buildUrl = ({ _type = 'notype', slug = {} }) => {
 // find entry and redirect
 async function shortUrlHandler(req, res) {
   const { shortSlug = '' } = req.params;
-
+  const dataset = process.env.SANITY_DATASET || 'production';
   // if no shortslug go to home
   if (!shortSlug) {
     res.redirect(301, '/');
   }
 
   const client = sanityClient({
-    projectId: '1f1lcoov',
-    dataset: 'production',
+    projectId: process.env.SANITY_PROJECT_ID || '1f1lcoov',
+    dataset,
     useCdn: true,
   });
-
+  console.log('from _shortUrl.js, using dataset: ', dataset);
   const sanityQuery = '*[shortSlug.current == $shortSlug][0]{_type, slug}';
   const sanityQueryParam = { shortSlug };
   const sanityResults = await client.fetch(sanityQuery, sanityQueryParam);
@@ -54,7 +54,7 @@ async function shortUrlHandler(req, res) {
     res.redirect(301, '/');
   }
   const pageUrl = buildUrl(sanityResults);
-  res.redirect( 301, 'https://www.u4.no' + pageUrl );
+  res.redirect(301, 'https://www.u4.no' + pageUrl);
 }
 
 module.exports = { shortUrlHandler };
