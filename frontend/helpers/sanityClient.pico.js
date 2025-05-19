@@ -10,6 +10,7 @@ export const defaultConfig = {
  * Configure PicoSanity client.
  */
 export const configureClient = (config = {}) => {
+  console.log('from sanityClient.pico.js, using dataset: ', defaultConfig.dataset);
   return sanityClient({
     ...defaultConfig,
     ...config,

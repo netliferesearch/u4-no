@@ -33,7 +33,7 @@ const buildUrl = ({ _type = 'notype', slug = {} }) => {
 // find entry and redirect
 async function shortUrlHandler(req, res) {
   const { shortSlug = '' } = req.params;
-
+  const dataset = process.env.SANITY_DATASET || 'production';
   // if no shortslug go to home
   if (!shortSlug) {
     res.redirect(301, '/');
@@ -41,10 +41,10 @@ async function shortUrlHandler(req, res) {
 
   const client = sanityClient({
     projectId: process.env.SANITY_PROJECT_ID || '1f1lcoov',
-    dataset: process.env.SANITY_DATASET || 'production',
+    dataset,
     useCdn: true,
   });
-
+  console.log('from _shortUrl.js, using dataset: ', dataset);
   const sanityQuery = '*[shortSlug.current == $shortSlug][0]{_type, slug}';
   const sanityQueryParam = { shortSlug };
   const sanityResults = await client.fetch(sanityQuery, sanityQueryParam);
