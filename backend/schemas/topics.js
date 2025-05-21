@@ -305,6 +305,9 @@ export default {
       title: 'Basic guide',
       type: 'array',
       group: 'basicGuide',
+      hidden: ({ document, currentUser }) => {
+        return !(currentUser.roles.find(({ name }) => name === 'administrator'))
+      },
       deprecated: {
         reason: 'Please use Content field instead',
       },
