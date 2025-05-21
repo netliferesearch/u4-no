@@ -1,3 +1,4 @@
+import { ArticleActions } from '@/app/components/article/ArticleActions';
 import { ArticleHeader } from '@/app/components/article/ArticleHeader';
 import Layout from '@/app/components/layout/Layout';
 import LongformArticle from '@/app/components/publication/LongformArticle';
@@ -6,9 +7,8 @@ import getMetadata from '@/app/lib/getMetadata';
 import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
 import { firstParagraphIn, firstTitleIn } from '@/app/lib/sanity/findInBlocks';
 import { AboutAuthor } from 'components/blog/AboutAuthor';
-import { BreadCrumbV2 } from 'components/general/BreadCrumbV2';
-import { ArticleActions } from 'components/general/article-actions/ArticleActions';
 import { ArticleSidebar } from 'components/general/article-sidebar/ArticleSidebar';
+import { BreadCrumbV2 } from 'components/general/BreadCrumbV2';
 import { Disclaimers } from 'components/general/disclaimers/Disclaimers';
 import { groq } from 'next-sanity';
 
@@ -22,6 +22,11 @@ export default async function TopicArticle({ params }) {
     content = [],
     advisors = [],
   } = data;
+
+  const dataWithTopic = {
+    ...data,
+    topics: [{ title, slug: data.slug }]
+  };
 
   return (
     <Layout>
@@ -50,7 +55,7 @@ export default async function TopicArticle({ params }) {
               </LongformArticle>
             </div>
             <div className="c-article__side c-article__col">
-              <ArticleSidebar data={data} />
+              <ArticleSidebar data={dataWithTopic} />
             </div>
           </div>
         </section>
@@ -89,6 +94,7 @@ export async function generateMetadata({ params }) {
 }
 
 const sanityQuery = groq`*[slug.current == $slug && _type == "topics"][0]{
+  _type,
   title, 
   longTitle, 
   explainerText, 
