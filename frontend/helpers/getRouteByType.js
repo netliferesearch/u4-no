@@ -5,13 +5,13 @@ import {
   SEARCH_U4_GUIDE,
   SEARCH_U4_HELPDESK,
   SEARCH_U4_ISSUE,
-  SEARCH_U4_REPORT,
   SEARCH_U4_PRACTITIONER_EXPERIENCE_NOTE,
-  U4_PRACTITIONER_EXPERIENCE_NOTE,
+  SEARCH_U4_REPORT,
   U4_BRIEF,
   U4_GUIDE,
   U4_HELPDESK,
   U4_ISSUE,
+  U4_PRACTITIONER_EXPERIENCE_NOTE,
   U4_REPORT,
 } from './constants';
 
@@ -56,8 +56,8 @@ export const getPostType = item => {
         item.publicationType && typeof item.publicationType.title === 'string'
           ? item.publicationType.title
           : typeof item.publicationType === 'string'
-          ? item.publicationType
-          : 'Publication';
+            ? item.publicationType
+            : 'Publication';
       break;
     case 'course':
       typeTitle = item.mode ? `${item.mode} course` : 'Online course';
@@ -101,6 +101,9 @@ export const getPostType = item => {
       break;
     case 'topic':
       typeTitle = 'Topic';
+      break;
+    case 'topics':
+      typeTitle = 'U4 Basic Guide';
       break;
     case 'collection':
       typeTitle = 'Collection';
