@@ -1,8 +1,8 @@
 import React from 'react';
-import { RelatedSimple } from '../related-simple/RelatedSimple';
-import { Partners } from '../partners/Partners';
-import { SidebarItem } from '../sidebar-item/SidebarItem';
 import { AuthorListBasic } from '../../publication/AuthorListBasic';
+import { Partners } from '../partners/Partners';
+import { RelatedSimple } from '../related-simple/RelatedSimple';
+import { SidebarItem } from '../sidebar-item/SidebarItem';
 import { Topics } from '../topics/Topics';
 
 export const ArticleSidebar = ({ data }) => {
@@ -15,15 +15,14 @@ export const ArticleSidebar = ({ data }) => {
     relatedResources = null,
     topics = null,
   } = data;
-  
   return (authors || editors || partners || recommendedResources || relatedResources || topics) &&
     <div className="c-article-sidebar">
-      {authors && 
+      {authors &&
         <SidebarItem label="By">
           <AuthorListBasic authors={authors} />
         </SidebarItem>
       }
-      {editors && 
+      {editors &&
         <SidebarItem
           label={`${publicationType._id === 'pubtype-3' ? 'Reviewed by' : 'Series editor'}`}
         >
@@ -50,4 +49,4 @@ export const ArticleSidebar = ({ data }) => {
         </SidebarItem>
       }
     </div>
-  };
+};

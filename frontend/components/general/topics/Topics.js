@@ -1,6 +1,6 @@
+import uniq from 'lodash/uniq';
 import React from 'react';
 import { spacesToDash } from '../../../helpers/stringHelpers';
-import uniq from 'lodash/uniq';
 
 
 /**

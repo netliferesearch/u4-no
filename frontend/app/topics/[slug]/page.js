@@ -1,3 +1,4 @@
+import { FeaturedCourses } from '@/app/components/course/FeaturedCourses';
 import Layout from '@/app/components/layout/Layout';
 import getMetadata from '@/app/lib/getMetadata';
 import { fetchAndMaterialize } from '@/app/lib/sanity/fetchAndMaterialize';
@@ -13,9 +14,8 @@ import { PERSON_CARD_TYPE } from 'components/general/person/PersonCard';
 import { POST_TYPE } from 'components/general/post/Post';
 import { Team } from 'components/general/team/Team';
 import { TopicCardList } from 'components/general/topics/TopicCardList';
-import { groq } from 'next-sanity';
-import { FeaturedCourses } from '@/app/components/course/FeaturedCourses';
 import dateToString from 'helpers/dateToString';
+import { groq } from 'next-sanity';
 
 export default async function Topic({ params }) {
   const data = await getData(params);
@@ -101,7 +101,7 @@ export default async function Topic({ params }) {
             <div className="o-wrapper-medium">
               <FeaturedPosts
                 featured={resources}
-                // featured={resources.filter(i => Object.keys(i).length !== 0).slice(0, 5)}
+              // featured={resources.filter(i => Object.keys(i).length !== 0).slice(0, 5)}
               />
             </div>
           </section>
@@ -232,7 +232,7 @@ const sanityQuery = groq`*[_type == 'topics' && slug.current == $slug]{
       longTitle, 
       explainerText, 
       "slug": slug.current, 
-      "hasIntroduction": defined(introduction), 
+      "hasIntroduction": (defined(content) || defined(introduction)), 
       "hasAgenda": defined(agenda), 
       relatedUrl, 
       url,
