@@ -24,4 +24,7 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
           SANITY_STUDIO_CONFIG_PATH: backend/
+          SANITY_STUDIO_PROJECT_NAME: ${{ secrets.SANITY_STUDIO_PROJECT_NAME || 'U4-no' }}
+          SANITY_STUDIO_PROJECT_ID: ${{ secrets.SANITY_STUDIO_PROJECT_ID || '1f1lcoov' }}
+          SANITY_STUDIO_API_DATASET: ${{ secrets.SANITY_STUDIO_API_DATASET || 'production' }}
         run: npm run deploy
